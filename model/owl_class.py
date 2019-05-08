@@ -39,11 +39,9 @@ class OwlClasses(Entities):
                 }
     
                 # removing upper ontology class declarations by filtering out specifics
-                FILTER (?uri NOT IN (
-                    <http://www.w3.org/2002/07/owl#Nothing>,
-                    <http://www.w3.org/2002/07/owl#Thing>
-                    )
-                )     
+                FILTER NOT EXISTS { 
+                    FILTER(regex(STR(?uri), "http://www.w3.org/2002/07/owl#"))
+                }      
             }
             ORDER BY ?name 
         '''
