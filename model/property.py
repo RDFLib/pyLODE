@@ -7,7 +7,7 @@ from rdflib import URIRef
 class Properties(Entities):
     def __init__(self, g, existing_fids):
         self.op_instances = []
-        self.dtp_instances = []
+        self.dp_instances = []
         self.ap_instances = []
 
         q = '''
@@ -86,7 +86,7 @@ class Properties(Entities):
                     if p.property_type == URIRef('http://www.w3.org/2002/07/owl#ObjectProperty'):
                         self.op_instances.append(p)
                     elif p.property_type == URIRef('http://www.w3.org/2002/07/owl#DatatypeProperty'):
-                        self.dtp_instances.append(p)
+                        self.dp_instances.append(p)
                     else:  # AnnotationProperty
                         self.ap_instances.append(p)
 
@@ -120,7 +120,7 @@ class Properties(Entities):
         template = Environment(loader=FileSystemLoader(template_dir)).get_template('properties.html')
         return template.render(
             op_instances=self.op_instances,
-            dtp_instances=self.dtp_instances,
+            dp_instances=self.dp_instances,
             ap_instances=self.ap_instances
         )
 

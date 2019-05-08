@@ -47,7 +47,6 @@ class OwlClasses(Entities):
             }
             ORDER BY ?name 
         '''
-        # TODO: fix class ordering
 
         for r in g.query(q):
             self.instances.append(

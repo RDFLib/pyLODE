@@ -13,11 +13,11 @@
     <section id="datatypeproperties">
       <h2>Datatype Properties</h2>
       <ul class="hlist">
-      {%- for instance in dtp_instances %}
+      {%- for instance in dp_instances %}
           <li><a href="#{{ instance.fid }}">{{ instance.name }}</a></li>
       {%- endfor %}
       </ul>
-      {%- for instance in dtp_instances %}
+      {%- for instance in dp_instances %}
           {{ instance.html }}
       {%- endfor %}
     </section>
