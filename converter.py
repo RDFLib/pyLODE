@@ -1,10 +1,12 @@
 import argparse
-import os.path
 import requests
-import io
 import rdflib
+import owlrl
+import collections
+from jinja2 import Environment, FileSystemLoader
 
 
+# used to know what RDF file types rdflib can handle
 RDF_FILE_EXTENSIONS = [
     '.rdf',
     '.owl',
@@ -14,6 +16,7 @@ RDF_FILE_EXTENSIONS = [
     '.json'
 ]
 
+# used to know what RDF Media Types rdflib can handle
 RDF_SERIALIZER_MAP = {
     'text/turtle': 'turtle',
     'text/n3': 'n3',
@@ -32,12 +35,190 @@ RDF_SERIALIZER_MAP = {
 }
 
 
-# used to determine whether or not a fiven path is actually a real file
+# used to ensure that in any HTML doc, no fragment IDs are duplicated
+class HtmlDocument:
+
+    def __init__(self):
+        self.fragment_ids = []
+
+
+# used to determine whether or not a given path is actually a real file
 def is_valid_file(parser, arg):
     try:
         return open(arg, 'r')
     except:
         parser.error('The file %s does not exist!' % arg)
+
+
+# used to capture graph parsing and content errors
+class RdfGraphError(Exception):
+    pass
+
+
+# assists get_classes when no name is given for an element
+def _get_element_name_from_uri(uri):
+    # can't tolerate any URI faults so return None if anything is wrong
+
+    # URIs with no path segments or ending in slash
+    segments = uri.split('/')
+    if len(segments[-1]) < 1:
+        return None
+
+    # URIs with only a domain - no path segments
+    if len(segments) < 4:
+        return None
+
+    # URIs ending in hash
+    if segments[-1].endswith('#'):
+        return None
+
+    return segments[-1].split('#')[-1] if segments[-1].split('#')[-1] != '' else segments[-1].split('#')[-2]
+
+
+# get all Classes from graph
+def get_classes(g, html_document):
+    q = '''
+    PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>     
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX dct:  <http://purl.org/dc/terms/>
+    SELECT * 
+    WHERE {
+        # only need this one type call since OWL-RL is expanding all subclasses to this
+        ?c  a               rdfs:Class . 
+        
+        # name / label
+        OPTIONAL {
+            { ?c  rdfs:label      ?name . }
+            UNION
+            { ?c  dct:title      ?name . }
+        }
+        
+        # description / definitions
+        OPTIONAL {
+            { ?c rdfs:comment       ?description . }
+            UNION
+            { ?c skos:definition    ?description . }
+        }
+        
+        # usage notes
+        OPTIONAL {
+            ?c skos:scopeNote     ?usage .
+        }
+        
+        # removing upper ontology class declarations by filtering out specifics
+        FILTER (?c NOT IN (
+            <http://www.w3.org/2002/07/owl#Nothing>,
+            <http://www.w3.org/2002/07/owl#Thing>
+            )
+        )     
+    }    
+    '''
+    html = ''
+    for r in g.query(q):
+        template = Environment(loader=FileSystemLoader('templates')).get_template('class.html')
+        output = template.render({
+            'id': make_fragment_id(r.c, r.name, html_document),
+            'iri': r.c,
+            'name': r.name if r.name is not None else _get_element_name_from_uri(r.c),
+            'description': r.description
+        })
+        html += output + '\n'
+
+    with open('classes.html', 'w') as f:
+        f.write(html)
+
+
+# assists other methods by removing non-ASCII chars from a string
+def _remove_non_ascii(s):
+    return ''.join(i for i in s if ord(i) < 128)
+
+
+# TODO: complete make_fragment_id
+# makes the fragment ID for a class, property, Named Individual (any entity) based on URI & label
+def make_fragment_id(uri, name, html_document):
+    # try creating an ID from label
+    # lowercase, remove spaces, escape all non-ASCII chars
+    if name is not None:
+        fid = _remove_non_ascii(name.lower().replace(' ', ''))
+
+        if fid not in html_document.fragment_ids:
+            html_document.fragment_ids.append(fid)
+            return fid
+
+    # this fid is already present in fragment ids so generate a fid from the URI instead
+
+    # split URI for last slash segment
+    segments = uri.split('/')
+    # return None for empty string - URI ends in slash
+    if len(segments[-1]) < 1:
+        return None
+
+    # return None for domains, i.e. ['http:', '', '{domain}'] - no path segments
+    if len(segments) < 4:
+        return None
+
+    # split out hash URIs
+    # remove any training hashes
+    if segments[-1].endswith('#'):
+        return None
+
+    fid = segments[-1].split('#')[-1] if segments[-1].split('#')[-1] != '' else segments[-1].split('#')[-2]
+    fid = fid.lower()
+
+    return fid
+
+
+# TODO: make_listing
+def make_listing(entities):
+    # makes Classes / Properties / Named Individuals listings like:
+    # driller hasDiameter hadDrillingMethod hadDrillingTime hasElevation hasInclination hasPurpose...
+    # at the start of each section
+    pass
+
+
+def make_domain():
+    # don't forget to include domainIncludes
+    pass
+
+
+def make_range():
+    # don't forget to include domainIncludes
+    pass
+
+
+# TODO: add prefix.cc lookups
+def render_ontology(g):
+
+
+    #
+    #   Namespaces
+    #
+    test_namespaces = {
+        ':': 'http://linked.data.gov.au/def/borehole/',
+        'dc': 'http://purl.org/dc/elements/1.1/',
+        'dct': 'http://purl.org/dc/terms/',
+        'geo': 'http://www.opengis.net/ont/geosparql#',
+        'geox': 'http://linked.data.gov.au/def/geox/',
+        'loci': 'http://linked.data.gov.au/def/loci/',
+        'owl': 'http://www.w3.org/2002/07/owl#',
+        'prov': 'http://www.w3.org/ns/prov#',
+        'qudt': 'http://qudt.org/schema/qudt/',
+        'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+        'rdfs': 'http://www.w3.org/2000/01/rdf-schema#',
+        'skos': 'http://www.w3.org/2004/02/skos/core#',
+        'sdo': 'https://schema.org/',
+        'xsd': 'http://www.w3.org/2001/XMLSchema#',
+        'time': 'http://www.w3.org/2006/time#'
+    }
+    test_namespaces_ordered = collections.OrderedDict(sorted(test_namespaces.items(), key=lambda x: x[0]))
+    template = Environment(loader=FileSystemLoader('templates')).get_template('ontology.html')
+    output = template.render(namespaces=test_namespaces_ordered)
+
+    with open('my_new_html_file.html', 'w') as f:
+        f.write(output)
+
+    return
 
 
 if __name__ == '__main__':
@@ -74,7 +255,7 @@ if __name__ == '__main__':
         else:
             fmt = 'json-ld' if args.inputfile.name.endswith('.json') else rdflib.util.guess_format(args.inputfile.name)
             data = args.inputfile.read()
-            g = rdflib.Graph().parse(data=data, foramt=fmt)
+            g = rdflib.Graph().parse(data=data, format=fmt)
     elif args.url:
         r = requests.get(
             args.url,
@@ -101,6 +282,28 @@ if __name__ == '__main__':
         parser.error('Either an inputfile or a url is required to access the ontology\'s RDF')
 
 
-    # # generate the graph
-    # try:
-    #     g = rdflib.Graph().parse(format=rdflib.util.guess_format(args.inputfile))
+    # here we have a parsed graph from either a local file or a URI
+
+    with open('g.ttl', 'w') as f:
+        f.write(g.serialize(format='turtle').decode('utf-8'))
+
+    # expand the graph using OWL-RL
+    try:
+        owlrl.DeductiveClosure(owlrl.RDFS_OWLRL_Semantics).expand(g)
+    except Exception as e:
+        raise RdfGraphError(
+            'Error while running OWL-RL Deductive Closure\n{}'.format(str(e.args[0]))
+        )
+
+    with open('g-expanded.ttl', 'w') as f:
+        f.write(g.serialize(format='turtle').decode('utf-8'))
+
+    # here we have the expanded graph
+
+    # make the document
+    doc = HtmlDocument()
+
+    # get classes
+    get_classes(g, doc)
+
+    # render_ontology(None)
