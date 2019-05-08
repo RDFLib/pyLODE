@@ -40,6 +40,7 @@ class HtmlDocument:
 
     def __init__(self):
         self.fragment_ids = []
+        self.class_listing = []
 
 
 # used to determine whether or not a given path is actually a real file
@@ -114,16 +115,29 @@ def get_classes(g, html_document):
         )     
     }    
     '''
+
+    # generate the HTML snippet for each class
     html = ''
     for r in g.query(q):
-        template = Environment(loader=FileSystemLoader('templates')).get_template('class.html')
-        output = template.render({
-            'id': make_fragment_id(r.c, r.name, html_document),
+        fid = make_fragment_id(r.c, r.name, html_document)
+        name = r.name if r.name is not None else _get_element_name_from_uri(r.c)
+        element_details = {
+            'fid': fid,
             'iri': r.c,
-            'name': r.name if r.name is not None else _get_element_name_from_uri(r.c),
+            'name': name,
             'description': r.description
-        })
+        }
+
+        template = Environment(loader=FileSystemLoader('templates')).get_template('class.html')
+        output = template.render(element_details)
+
         html += output + '\n'
+
+        # add this class's details to the doc's class_details to make lists
+        doc.class_listing.append({
+            'fid': fid,
+            'name': name
+        })
 
     with open('classes.html', 'w') as f:
         f.write(html)
@@ -134,7 +148,6 @@ def _remove_non_ascii(s):
     return ''.join(i for i in s if ord(i) < 128)
 
 
-# TODO: complete make_fragment_id
 # makes the fragment ID for a class, property, Named Individual (any entity) based on URI & label
 def make_fragment_id(uri, name, html_document):
     # try creating an ID from label
@@ -170,11 +183,15 @@ def make_fragment_id(uri, name, html_document):
 
 
 # TODO: make_listing
-def make_listing(entities):
+def make_listing(element_list):
     # makes Classes / Properties / Named Individuals listings like:
     # driller hasDiameter hadDrillingMethod hadDrillingTime hasElevation hasInclination hasPurpose...
     # at the start of each section
-    pass
+    html = ''
+    for element in sorted(element_list, key=lambda k: k['fid']):
+        html += '<a href="#{}">{}</a> '.format(element['fid'], element['name'])
+
+    return html
 
 
 def make_domain():
@@ -305,5 +322,6 @@ if __name__ == '__main__':
 
     # get classes
     get_classes(g, doc)
+    make_listing(doc.class_listing)
 
     # render_ontology(None)
