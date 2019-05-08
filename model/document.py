@@ -1,4 +1,6 @@
+import os
 from os import path
+import shutil
 import collections
 from model.ontology import *
 from model.owl_class import *
@@ -54,8 +56,6 @@ if __name__ == '__main__':
     class RdfGraphError(Exception):
         pass
 
-    existing_fids = []
-
     g = Graph().parse(
         path.join(path.dirname(path.dirname(path.realpath(__file__))), 'examples', 'prof.ttl'),
         format='turtle'
@@ -69,4 +69,15 @@ if __name__ == '__main__':
             'Error while running OWL-RL Deductive Closure\n{}'.format(str(e.args[0]))
         )
 
+    main_dir = path.dirname(path.dirname(path.realpath(__file__)))
+    publication_dir = path.join(main_dir, 'output_files')
+    style_dir = path.join(main_dir, 'style')
+    os.makedirs(publication_dir, exist_ok=True)
 
+    # generate the HTML doc
+    h = HtmlDocument(g)
+    with open(path.join(publication_dir, 'doc.html'), 'w') as f:
+        f.write(h.html)
+
+    # copy in the CSS file
+    shutil.copyfile(path.join(style_dir, 'pylode.css'), path.join(publication_dir, 'style.css'))
