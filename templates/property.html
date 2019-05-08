@@ -1,10 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+    <div class="entity property" id="{{ fid }}">
+      <h3>{{ name }}
+        {%- if property_type == 'http://www.w3.org/2002/07/owl#ObjectProperty' -%}
+        <sup title="object property" class="type-op">op</sup>
+        {%- elif property_type == 'http://www.w3.org/2002/07/owl#DatatypeProperty' -%}
+        <sup title="datatype property" class="type-dp">dp</sup>
+        {%- else -%}
+        <sup title="annotation property" class="type-ap">ap</sup>
+        {%- endif -%}
+      </h3>
+      <table>
+        <tr>
+          <th>IRI</th>
+          <td><code>{{ uri }}</code></td>
+        </tr>
+        <tr>
+        {%- if description is not none %}
+          <th>Description</th>
+          <td>
+            {{ description }}
+          </td>
+        </tr>
+        {%- endif %}
+        {%- if usage is not none %}
+        <tr>
+          <th>Usage Note</th>
+          <td>
+            {{ usage }}
+          </td>
+        </tr>
+        {%- endif %}
+        {%- if super_properties is not none %}
+        <tr>
+          <th>Super-properties</th>
+          <td>
+            <a href="http://www.w3.org/ns/prov#wasAttributedTo">prov:wasAttributedTo</a><sup title="object property" class="type-op">op</sup>
+          </td>
+        </tr>
+        {%- endif %}
+        {%- if domain is not none %}
+        <tr>
+          <th>Domain(s)</th>
+          <td>
+            (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>) <a href="#Borehole">Borehole</a><sup title="class" class="type-c">c</sup>
+          </td>
+        </tr>
+        {%- endif %}
+        {%- if range is not none %}
+        <tr>
+          <th>Range(s)</th>
+          <td>
+            <a href="http://www.w3.org/ns/prov#Agent">Agent</a><sup title="class" class="type-c">c</sup>
+          </td>
+        </tr>
+        {%- endif %}
+      </table>
+    </div>

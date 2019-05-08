@@ -1,0 +1,11 @@
+    <section id="classes">
+      <h2>Classes</h2>
+      <ul class="hlist">
+      {%- for instance in instances %}
+          <li><a href="#{{ instance.fid }}">{{ instance.name }}</a></li>
+      {%- endfor %}
+      </ul>
+      {%- for instance in instances %}
+          {{ instance.html }}
+      {%- endfor %}
+    </section>

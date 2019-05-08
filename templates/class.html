@@ -1,31 +1,32 @@
-      <div class="entity class" id="{{ id }}">
-        <h3>{{ name }}<sup title="class" class="type-c">c</sup></h3>
-        <table>
-          <tr>
-            <th>IRI</th>
-            <td>{{ iri }}</td>
-          </tr>
-          {% if description is not none %}}
-          <tr>
-            <th>Description</th>
-            <td>
-              {{ description }}
-            </td>
-          </tr>
-          {% endif %}}
-          <tr>
-            <th>Super-classes</th>
-            <td>
-              <a href="#hasStatus">hasStatus</a><sup title="object property" class="type-op">op</sup> <em>exactly</em> <strong>1</strong>
-            </td>
-          </tr>
-          <tr>
-            <th>In domain of</th>
-            <td>
-              <ul class="hlist-simple">
-                <li><a href="#hasStatus">hasStatus</a><sup title="object property" class="type-op">op</sup>,</li>
-              </ul>
-            </td>
-          </tr>
-        </table>
-      </div>
+
+    <div class="entity class" id="{{ fid }}">
+      <h3>{{ name }}<sup title="class" class="type-c">c</sup></h3>
+      <table>
+        <tr>
+          <th>IRI</th>
+          <td>{{ uri }}</td>
+        </tr>
+        {%- if description is not none %}
+        <tr>
+          <th>Description</th>
+          <td>
+            {{ description }}
+          </td>
+        </tr>
+        {%- endif %}
+        <tr>
+          <th>Super-classes</th>
+          <td>
+            <a href="#hasStatus">hasStatus</a><sup title="object property" class="type-op">op</sup> <em>exactly</em> <strong>1</strong>
+          </td>
+        </tr>
+        <tr>
+          <th>In domain of</th>
+          <td>
+            <ul class="hlist-simple">
+              <li><a href="#hasStatus">hasStatus</a><sup title="object property" class="type-op">op</sup>,</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </div>

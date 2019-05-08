@@ -3,7 +3,7 @@ import requests
 import rdflib
 import owlrl
 import collections
-from jinja2 import Environment, FileSystemLoader
+from model import *
 
 
 # used to know what RDF file types rdflib can handle
@@ -56,130 +56,17 @@ class RdfGraphError(Exception):
     pass
 
 
-# assists get_classes when no name is given for an element
-def _get_element_name_from_uri(uri):
-    # can't tolerate any URI faults so return None if anything is wrong
-
-    # URIs with no path segments or ending in slash
-    segments = uri.split('/')
-    if len(segments[-1]) < 1:
-        return None
-
-    # URIs with only a domain - no path segments
-    if len(segments) < 4:
-        return None
-
-    # URIs ending in hash
-    if segments[-1].endswith('#'):
-        return None
-
-    return segments[-1].split('#')[-1] if segments[-1].split('#')[-1] != '' else segments[-1].split('#')[-2]
 
 
-# get all Classes from graph
-def get_classes(g, html_document):
-    q = '''
-    PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>     
-    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-    PREFIX dct:  <http://purl.org/dc/terms/>
-    SELECT * 
-    WHERE {
-        # only need this one type call since OWL-RL is expanding all subclasses to this
-        ?c  a               rdfs:Class . 
-        
-        # name / label
-        OPTIONAL {
-            { ?c  rdfs:label      ?name . }
-            UNION
-            { ?c  dct:title      ?name . }
-        }
-        
-        # description / definitions
-        OPTIONAL {
-            { ?c rdfs:comment       ?description . }
-            UNION
-            { ?c skos:definition    ?description . }
-        }
-        
-        # usage notes
-        OPTIONAL {
-            ?c skos:scopeNote     ?usage .
-        }
-        
-        # removing upper ontology class declarations by filtering out specifics
-        FILTER (?c NOT IN (
-            <http://www.w3.org/2002/07/owl#Nothing>,
-            <http://www.w3.org/2002/07/owl#Thing>
-            )
-        )     
-    }    
-    '''
-
-    # generate the HTML snippet for each class
-    html = ''
-    for r in g.query(q):
-        fid = make_fragment_id(r.c, r.name, html_document)
-        name = r.name if r.name is not None else _get_element_name_from_uri(r.c)
-        element_details = {
-            'fid': fid,
-            'iri': r.c,
-            'name': name,
-            'description': r.description
-        }
-
-        template = Environment(loader=FileSystemLoader('templates')).get_template('class.html')
-        output = template.render(element_details)
-
-        html += output + '\n'
-
-        # add this class's details to the doc's class_details to make lists
-        doc.class_listing.append({
-            'fid': fid,
-            'name': name
-        })
-
-    with open('classes.html', 'w') as f:
-        f.write(html)
 
 
-# assists other methods by removing non-ASCII chars from a string
-def _remove_non_ascii(s):
-    return ''.join(i for i in s if ord(i) < 128)
 
 
-# makes the fragment ID for a class, property, Named Individual (any entity) based on URI & label
-def make_fragment_id(uri, name, html_document):
-    # try creating an ID from label
-    # lowercase, remove spaces, escape all non-ASCII chars
-    if name is not None:
-        fid = _remove_non_ascii(name.lower().replace(' ', ''))
 
-        if fid not in html_document.fragment_ids:
-            html_document.fragment_ids.append(fid)
-            return fid
 
-    # this fid is already present in fragment ids so generate a fid from the URI instead
 
-    # split URI for last slash segment
-    segments = uri.split('/')
-    # return None for empty string - URI ends in slash
-    if len(segments[-1]) < 1:
-        return None
 
-    # return None for domains, i.e. ['http:', '', '{domain}'] - no path segments
-    if len(segments) < 4:
-        return None
 
-    # split out hash URIs
-    # remove any training hashes
-    if segments[-1].endswith('#'):
-        return None
-
-    fid = segments[-1].split('#')[-1] if segments[-1].split('#')[-1] != '' else segments[-1].split('#')[-2]
-    fid = fid.lower()
-
-    return fid
 
 
 # TODO: make_listing
