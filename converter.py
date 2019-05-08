@@ -57,40 +57,6 @@ class RdfGraphError(Exception):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-# TODO: make_listing
-def make_listing(element_list):
-    # makes Classes / Properties / Named Individuals listings like:
-    # driller hasDiameter hadDrillingMethod hadDrillingTime hasElevation hasInclination hasPurpose...
-    # at the start of each section
-    html = ''
-    for element in sorted(element_list, key=lambda k: k['fid']):
-        html += '<a href="#{}">{}</a> '.format(element['fid'], element['name'])
-
-    return html
-
-
-def make_domain():
-    # don't forget to include domainIncludes
-    pass
-
-
-def make_range():
-    # don't forget to include domainIncludes
-    pass
-
-
 # TODO: add prefix.cc lookups
 def render_ontology(g):
 

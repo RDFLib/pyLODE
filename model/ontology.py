@@ -3,7 +3,7 @@ from model.entity import *
 from jinja2 import Environment, FileSystemLoader
 
 
-class Ontology():
+class Ontology:
     def __init__(self, g):
         self.uri = None
         self.name = None
@@ -231,24 +231,6 @@ class Ontology():
         )
 
 
-class OwlClass(Entity):
-    def __init__(self, existing_fids, uri, name, description, usage):
-        super().__init__(existing_fids, uri, name, description, usage)
-
-        self.html = self.render_html()
-
-    def render_html(self):
-        template_dir = path.join(path.dirname(path.dirname(path.realpath(__file__))), 'templates')
-        template = Environment(loader=FileSystemLoader(template_dir)).get_template('class.html')
-        return template.render(
-            uri=self.uri,
-            fid=self.fid,
-            name=self.name,
-            description=self.description,  # TODO: handle Markdown in description
-            usage=self.usage
-        )
-
-
 if __name__ == '__main__':
     from rdflib import Graph
     import owlrl
@@ -256,7 +238,6 @@ if __name__ == '__main__':
     # used to capture graph parsing and content errors
     class RdfGraphError(Exception):
         pass
-
 
     existing_fids = []
 
