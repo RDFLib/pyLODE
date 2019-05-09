@@ -4,6 +4,8 @@ import rdflib
 import owlrl
 import collections
 from model import *
+from rdflib import Graph
+import owlrl
 
 
 # used to know what RDF file types rdflib can handle
@@ -35,14 +37,6 @@ RDF_SERIALIZER_MAP = {
 }
 
 
-# used to ensure that in any HTML doc, no fragment IDs are duplicated
-class HtmlDocument:
-
-    def __init__(self):
-        self.fragment_ids = []
-        self.class_listing = []
-
-
 # used to determine whether or not a given path is actually a real file
 def is_valid_file(parser, arg):
     try:
@@ -54,41 +48,6 @@ def is_valid_file(parser, arg):
 # used to capture graph parsing and content errors
 class RdfGraphError(Exception):
     pass
-
-
-
-# TODO: add prefix.cc lookups
-def render_ontology(g):
-
-
-    #
-    #   Namespaces
-    #
-    test_namespaces = {
-        ':': 'http://linked.data.gov.au/def/borehole/',
-        'dc': 'http://purl.org/dc/elements/1.1/',
-        'dct': 'http://purl.org/dc/terms/',
-        'geo': 'http://www.opengis.net/ont/geosparql#',
-        'geox': 'http://linked.data.gov.au/def/geox/',
-        'loci': 'http://linked.data.gov.au/def/loci/',
-        'owl': 'http://www.w3.org/2002/07/owl#',
-        'prov': 'http://www.w3.org/ns/prov#',
-        'qudt': 'http://qudt.org/schema/qudt/',
-        'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-        'rdfs': 'http://www.w3.org/2000/01/rdf-schema#',
-        'skos': 'http://www.w3.org/2004/02/skos/core#',
-        'sdo': 'https://schema.org/',
-        'xsd': 'http://www.w3.org/2001/XMLSchema#',
-        'time': 'http://www.w3.org/2006/time#'
-    }
-    test_namespaces_ordered = collections.OrderedDict(sorted(test_namespaces.items(), key=lambda x: x[0]))
-    template = Environment(loader=FileSystemLoader('templates')).get_template('ontology.html')
-    output = template.render(namespaces=test_namespaces_ordered)
-
-    with open('my_new_html_file.html', 'w') as f:
-        f.write(output)
-
-    return
 
 
 if __name__ == '__main__':
@@ -107,6 +66,14 @@ if __name__ == '__main__':
         help='The RDF ontology you wish to generate HTML for, online. '
              'Must be an absolute URL that can be resolved to RDF, preferably via Content Negotiation.'
     )
+
+    parser.add_argument(
+        '-c', '--css',
+        help='Whether (true) or not (false) to copy the default CSS file to the output directory',
+        choices=['true', 'false'],
+        default='false'
+    )
+
     parser.add_argument(
         '-o', '--outputfile',
         help='A name you wish to assign to the output file. Will be postfixed with .html. If not specified, '
@@ -151,13 +118,8 @@ if __name__ == '__main__':
         # we have neither an input file or a URI supplied
         parser.error('Either an inputfile or a url is required to access the ontology\'s RDF')
 
-
     # here we have a parsed graph from either a local file or a URI
 
-    with open('g.ttl', 'w') as f:
-        f.write(g.serialize(format='turtle').decode('utf-8'))
-
-    # expand the graph using OWL-RL
     try:
         owlrl.DeductiveClosure(owlrl.RDFS_OWLRL_Semantics).expand(g)
     except Exception as e:
@@ -165,16 +127,24 @@ if __name__ == '__main__':
             'Error while running OWL-RL Deductive Closure\n{}'.format(str(e.args[0]))
         )
 
-    with open('g-expanded.ttl', 'w') as f:
-        f.write(g.serialize(format='turtle').decode('utf-8'))
+    # set up output directories and resources
+    main_dir = path.dirname(path.realpath(__file__))
+    publication_dir = path.join(main_dir, 'output_files')
+    style_dir = path.join(main_dir, 'style')
+    os.makedirs(publication_dir, exist_ok=True)
 
-    # here we have the expanded graph
+    # include CSS
+    if args.css == 'true':
+        shutil.copyfile(path.join(style_dir, 'pylode.css'), path.join(publication_dir, 'style.css'))
 
-    # make the document
-    doc = HtmlDocument()
+    output_filename = os.path.basename(args.outputfile) if args.outputfile else 'doc.html'
 
-    # get classes
-    get_classes(g, doc)
-    make_listing(doc.class_listing)
+    if not output_filename.endswith('.html'):
+        output_filename += '.html'
 
-    # render_ontology(None)
+    # generate the HTML doc
+    h = HtmlDocument(g)
+    with open(path.join(publication_dir, output_filename), 'w') as f:
+        f.write(h.html)
+
+

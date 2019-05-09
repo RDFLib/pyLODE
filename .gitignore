@@ -109,3 +109,5 @@ venv.bak/
 # Jetbrains tools
 .idea/
 
+# temp dirs
+output_files/
