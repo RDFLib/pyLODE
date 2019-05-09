@@ -9,9 +9,25 @@ This tool is a complete re-implementation of LODE's functionality using Python &
 
 
 ## Use
-Currently pyLODE presents as a (CURRENTLY INCOMPLETE!) Python command-line utility. Soon an online version of it will be available too, just as LODE is (was) available online.
+Currently pyLODE presents as a Python command-line utility, [pylode.py](pylode.py), and Bash and Windows scripts for it are available in the [bin/](bin/) directory. All use the same command line arguments.
+
+Soon an online version of it will be available too, just as LODE is (was) available online.
 
 
+### Command line arguments
+For the command line running of pyLODE, these are the command line argument options:
+
+* `-i` or `--inputfile`, *required if `-u` not used*
+  * The RDF ontology file you wish to generate HTML for Must be in either Turtle, RDF/XML, JSON-LD or N-Triples formats indicated by the file type extensions .rdf, .owl, .ttl, .n3, .nt, .json respectively
+* `-u` or `--url`, *required if `-1` not used*
+  * The RDF ontology you wish to generate HTML for, onlin. Must be an absolute URL that can be resolved to RDF, preferably via Content Negotiation.
+* `-c` or `--css, *optional, default 'false'*
+  * Whether (true) or not (false) to copy the default CSS file to the output directory.
+* `-o` or `--outputfile`, *optional*
+  * A name you wish to assign to the output file. Will be postfixed with .html. If not specified, the name of the input file or last segment of RDF URI will be used, + .html.
+
+#### Example call
+This call will create an HTML document for an ontology
 
 ## License
 This code is licensed using the GPL v3 licence. See the [LICENSE file](LICENSE) for the deed.

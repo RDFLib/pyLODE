@@ -1,6 +1,6 @@
 from os import path
-from model.entity import *
 from jinja2 import Environment, FileSystemLoader
+import markdown
 
 
 class Ontology:
@@ -46,6 +46,8 @@ class Ontology:
                     { ?uri rdfs:comment       ?description . }
                     UNION
                     { ?uri skos:definition    ?description . }
+                    UNION
+                    { ?uri dct:description    ?description . }
                 }                               
                 
                 OPTIONAL { ?uri    dct:created     ?created . }
@@ -58,7 +60,7 @@ class Ontology:
         for r in g.query(q):
             self.uri = r.uri
             self.name = r.name
-            self.description = r.description
+            self.description = markdown.markdown(r.description) if r.description is not None else None
             self.created = r.created
             self.modified = r.modified
             self.version_info = r.version_info

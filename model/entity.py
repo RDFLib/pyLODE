@@ -1,4 +1,5 @@
 from abc import ABC
+import markdown
 
 
 class Entities(ABC):
@@ -14,7 +15,7 @@ class Entity(ABC):
         self.uri = uri
         self.name = name if name is not None else self._get_element_name_from_uri()
         self.fid = self._make_fid(existing_fids)
-        self.description = description
+        self.description = markdown.markdown(description) if description is not None else None
         self.usage = usage
 
     def render_html(self):

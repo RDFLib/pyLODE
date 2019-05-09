@@ -69,7 +69,7 @@ if __name__ == '__main__':
 
     parser.add_argument(
         '-c', '--css',
-        help='Whether (true) or not (false) to copy the default CSS file to the output directory',
+        help='Whether (true) or not (false) to copy the default CSS file to the output directory.',
         choices=['true', 'false'],
         default='false'
     )
@@ -146,5 +146,3 @@ if __name__ == '__main__':
     h = HtmlDocument(g)
     with open(path.join(publication_dir, output_filename), 'w') as f:
         f.write(h.html)
-
-

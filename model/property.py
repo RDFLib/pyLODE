@@ -34,6 +34,8 @@ class Properties(Entities):
                 { ?uri rdfs:comment       ?description . }
                 UNION
                 { ?uri skos:definition    ?description . }
+                UNION
+                { ?uri dct:description    ?description . }
             }
 
             # usage notes
@@ -95,7 +97,7 @@ class Properties(Entities):
                     existing_fids,
                     r.uri,
                     r.name if r.name is not None else None,
-                    r.description,
+                    markdown.markdown(r.description) if r.description is not None else None,
                     r.usage,
                     [],
                     [],

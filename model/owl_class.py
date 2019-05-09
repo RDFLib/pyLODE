@@ -1,6 +1,7 @@
 from os import path
 from model.entity import *
 from jinja2 import Environment, FileSystemLoader
+import markdown
 
 
 class OwlClasses(Entities):
@@ -31,6 +32,8 @@ class OwlClasses(Entities):
                     { ?uri rdfs:comment       ?description . }
                     UNION
                     { ?uri skos:definition    ?description . }
+                    UNION
+                    { ?uri dct:description    ?description . }
                 }
     
                 # usage notes
@@ -52,7 +55,7 @@ class OwlClasses(Entities):
                     existing_fids,
                     r.uri,
                     r.name,
-                    r.description,
+                    markdown.markdown(r.description) if r.description is not None else None,
                     r.usage
                 )
             )
@@ -80,7 +83,7 @@ class OwlClass(Entity):
             uri=self.uri,
             fid=self.fid,
             name=self.name,
-            description=self.description,  # TODO: handle Markdown in description
+            description=self.description,
             usage=self.usage
         )
 
