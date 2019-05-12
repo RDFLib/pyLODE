@@ -6,7 +6,9 @@ import markdown
 
 class OwlClasses(Entities):
     def __init__(self, g, existing_fids):
-        super().__init__()
+        super().__init__(g, existing_fids)
+
+        self.instances = []
 
         q = '''
             PREFIX owl:  <http://www.w3.org/2002/07/owl#>
@@ -15,54 +17,17 @@ class OwlClasses(Entities):
             PREFIX dct:  <http://purl.org/dc/terms/>
             SELECT * 
             WHERE {
-                # only need this one type call since OWL-RL is expanding all subclasses to this
-                ?uri  a               rdfs:Class . 
-    
-                # name / label
-                OPTIONAL {
-                    { ?uri  rdfs:label     ?name . }
-                    UNION
-                    { ?uri  dct:title      ?name . }
-                    UNION
-                    { ?uri  skos:prefLabel ?name . }               
-                }
-    
-                # description / definitions
-                OPTIONAL {
-                    { ?uri rdfs:comment       ?description . }
-                    UNION
-                    { ?uri skos:definition    ?description . }
-                    UNION
-                    { ?uri dct:description    ?description . }
-                }
-    
-                # usage notes
-                OPTIONAL {
-                    ?uri skos:scopeNote     ?usage .
-                }
-    
-                # removing upper ontology class declarations by filtering out specifics
-                FILTER NOT EXISTS { 
-                    FILTER(regex(STR(?uri), "http://www.w3.org/2002/07/owl#"))
-                }      
+                ?uri    a   owl:Class .                  
             }
-            ORDER BY ?name 
         '''
 
         for r in g.query(q):
             self.instances.append(
-                OwlClass(
-                    existing_fids,
-                    r.uri,
-                    r.name,
-                    markdown.markdown(r.description) if r.description is not None else None,
-                    r.usage
-                )
+                OwlClass(self.g, str(r.uri), self.existing_fids)
             )
 
-        self.html = self.render_html()
-
-    def render_html(self):
+    @property
+    def html(self):
         template_dir = path.join(path.dirname(path.dirname(path.realpath(__file__))), 'templates')
         template = Environment(loader=FileSystemLoader(template_dir)).get_template('classes.html')
         return template.render(
@@ -71,12 +36,11 @@ class OwlClasses(Entities):
 
 
 class OwlClass(Entity):
-    def __init__(self, existing_fids, uri, name, description, usage):
-        super().__init__(existing_fids, uri, name, description, usage)
+    def __init__(self, g, uri, existing_fids):
+        super().__init__(g, uri, existing_fids)
 
-        self.html = self.render_html()
-
-    def render_html(self):
+    @property
+    def html(self):
         template_dir = path.join(path.dirname(path.dirname(path.realpath(__file__))), 'templates')
         template = Environment(loader=FileSystemLoader(template_dir)).get_template('class.html')
         return template.render(

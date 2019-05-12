@@ -38,19 +38,37 @@
           </td>
         </tr>
         {%- endif %}
-        {%- if domain is not none %}
+        {%- if domains|length > 0 or domainIncludes|length > 0 %}
         <tr>
           <th>Domain(s)</th>
           <td>
-            (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>) <a href="#Borehole">Borehole</a><sup title="class" class="type-c">c</sup>
+          {%- if domains|length > 0 %}
+          {%- for domain in domains %}
+            <a href="{{ domain['uri'] }}">{{ domain['name'] }}</a><sup title="class" class="type-c">c</sup>
+          {%- endfor %}
+          {%- endif %}
+          {%- if domainIncludes|length > 0 %}
+          {%- for domainInclude in domainIncludes %}
+            (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>) <a href="{{ domainInclude['uri'] }}">{{ domainInclude['name'] }}</a><sup title="class" class="type-c">c</sup>
+          {%- endfor %}
+          {%- endif %}
           </td>
         </tr>
         {%- endif %}
-        {%- if range is not none %}
+        {%- if ranges|length > 0 or rangeIncludes|length > 0 %}
         <tr>
           <th>Range(s)</th>
           <td>
-            <a href="http://www.w3.org/ns/prov#Agent">Agent</a><sup title="class" class="type-c">c</sup>
+          {%- if ranges|length > 0 %}
+          {%- for range in ranges %}
+            <a href="{{ range['uri'] }}">{{ range['name'] }}</a><sup title="class" class="type-c">c</sup>
+          {%- endfor %}
+          {%- endif %}
+          {%- if rangeIncludes|length > 0 %}
+          {%- for rangeInclude in rangeIncludes %}
+            (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>) <a href="{{ rangeInclude['uri'] }}">{{ rangeInclude['name'] }}</a><sup title="class" class="type-c">c</sup>
+          {%- endfor %}
+          {%- endif %}
           </td>
         </tr>
         {%- endif %}
