@@ -1,0 +1,48 @@
+
+    <div class="entity class" id="{{ fid }}">
+      <h3>{{ title }}<sup title="class" class="type-c">c</sup></h3>
+      <table>
+        <tr>
+          <th>IRI</th>
+          <td>{{ uri }}</td>
+        </tr>
+        {%- if description is not none %}
+        <tr>
+          <th>Description</th>
+          <td>
+            {{ description }}
+          </td>
+        </tr>
+        {%- endif %}
+        {%- if supers|length > 0 %}
+        <tr>
+          <th>Super-classes</th>
+          <td>
+            {%- for super in supers %}
+            {{ super }}<br />
+            {%- endfor %}
+          </td>
+        </tr>
+        {%- endif %}
+        {%- if restrictions|length > 0 %}
+        <tr>
+          <th>Restrictions</th>
+          <td>
+            {%- for r in restrictions %}
+            {{ r }}<br />
+            {%- endfor %}
+          </td>
+        </tr>
+        {%- endif %}
+        {%- if subs|length > 0 %}
+        <tr>
+          <th>Sub-classes</th>
+          <td>
+            {%- for sub in subs %}
+            {{ sub }}<br />
+            {%- endfor %}
+          </td>
+        </tr>
+        {%- endif %}
+      </table>
+    </div>

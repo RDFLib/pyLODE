@@ -1,4 +1,7 @@
 # pyLODE
+
+# WARNING: not working yet! Do Not use!
+
 An OWL ontology documentation tool using Python and templating, based on LODE.
 
 

@@ -1,93 +1,4 @@
-from rdflib import Graph, URIRef
-import requests
-
-
-class Namespaces:
-    def __init__(self, g):
-        # get declared namespaces, keyed by URI
-        self.instances = {}
-        uris = set()
-        for k, v in g.namespaces():
-            self.instances[str(v)] = k
-
-        # get other namespaces
-        for s, p, o in g:
-            # only add URI subjects (not Blank Nodes)
-            if type(s) == URIRef:
-                uris.add(self.get_namespace_from_uri(self, s))
-
-            # predicates are always URIs
-            uris.add(self.get_namespace_from_uri(self, p))
-
-            # only add URI objects (not Literals)
-            if type(o) == URIRef:
-                uris.add(self.get_namespace_from_uri(self, o))
-
-        for uri in uris:
-            if self.instances.get(uri) is None:
-                self.instances[uri] = self.get_curie(self, uri)
-
-        for k, v in self.instances.items():
-            if v == '':
-                self.default_namespace = v
-
-    @staticmethod
-    def get_namespace_from_uri(self, uri):
-        # split on hash
-        segments = uri.split('#')
-        if len(segments) == 2:
-            return segments[0] + '#'
-        else:
-            segments = uri.split('/')
-            if len(segments) > 1:
-                return '/'.join(segments[0:-1]) + '/'
-            else:
-                return None
-
-    @staticmethod
-    def get_curie(self, uri):
-        def get_curie_online(uri):
-            r = requests.get(
-                'http://prefix.cc/reverse',
-                params={
-                    'uri': uri,
-                    'format': 'txt'
-                }
-            )
-            if r.status_code == 200:
-                return r.text.split('\t')[0]
-            else:
-                return None
-
-        def get_curie_from_namespace(uri):
-            # strip off trailing hash or slash and return last path segment
-            c = uri.rstrip('#/').split('/')[-1]
-
-            # prevent CURIE collision = return None if we already have this one
-            for k, v in self.instances.items():
-                if c == v:
-                    return None
-
-            return c
-
-        # attempt to look up the well-known curie for this Namespace in http://prefix.cc dump
-        for k, v in CURIES.items():
-            if v == uri:
-                return k
-
-        for k, v in EXTRA_CURIES.items():
-            if v == uri:
-                return k
-
-        # attempt to look up the well-known CURIE for this Namespace using http://prefix.cc online (more up-to-date)
-        c = get_curie_online(uri)
-        if c is not None:
-            return c
-
-        # can't fund CURIE online so make up one
-        c = get_curie_from_namespace(uri)
-        return c if c is not None else ''
-
+# this file holds a list of CURIES from prefix.cc and some extras
 
 CURIES = {
     'aair': 'http://xmlns.notu.be/aair#',
@@ -293,7 +204,7 @@ CURIES = {
     'campsite': 'http://www.openlinksw.com/campsites/schema#',
     'cao': 'http://purl.org/makolab/caont/',
     'caplibacl': 'http://schemas.capita-libraries.co.uk/2015/acl/schema#',
-    'card': 'http://www.ashutosh.com/test/',
+    'card': 'http://www.ashutosh.com/tests/',
     'care': 'http://eulersharp.sourceforge.net/2003/03swap/care#',
     'carfo': 'http://purl.org/carfo#',
     'cart': 'http://purl.org/net/cartCoord#',
@@ -458,7 +369,7 @@ CURIES = {
     'dataid': 'http://dataid.dbpedia.org/ns/core#',
     'date': 'http://contextus.net/ontology/ontomedia/misc/date#',
     'datex': 'http://vocab.datex.org/terms#',
-    'dawgt': 'http://www.w3.org/2001/sw/DataAccess/tests/test-dawg#',
+    'dawgt': 'http://www.w3.org/2001/sw/DataAccess/tests/tests-dawg#',
     'days': 'http://ontologi.es/days#',
     'dayta': 'http://dayta.me/resource#',
     'db': 'http://dbpedia.org/',
@@ -738,7 +649,7 @@ CURIES = {
     'fo': 'http://www.w3.org/1999/XSL/Format#',
     'foaf': 'http://xmlns.com/foaf/0.1/',
     'foaffff': 'http://gogl.com/',
-    'foam': 'https://www.koerperfettwaage-test.de/',
+    'foam': 'https://www.koerperfettwaage-tests.de/',
     'fog': 'https://w3id.org/fog#',
     'foo': 'http://filmontology.org/ontology/1.0/',
     'food': 'http://purl.org/foodontology#',
@@ -1189,7 +1100,7 @@ CURIES = {
     'mexcore': 'http://mex.aksw.org/mex-core#',
     'mexperf': 'http://mex.aksw.org/mex-perf#',
     'mexv': 'http://mex.aksw.org/mex-algo#',
-    'mf': 'http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#',
+    'mf': 'http://www.w3.org/2001/sw/DataAccess/tests/tests-manifest#',
     'mged': 'http://mged.sourceforge.net/ontologies/MGEDOntology.owl#',
     'mico': 'http://www.mico-project.eu/ns/platform/1.0/schema#',
     'mil': 'http://rdf.muninn-project.org/ontologies/military#',
@@ -1223,7 +1134,7 @@ CURIES = {
     'ms': 'http://purl.org/obo/owl/MS#',
     'msm': 'http://iserve.kmi.open.ac.uk/ns/msm#',
     'msr': 'http://www.telegraphis.net/ontology/measurement/measurement#',
-    'mt': 'http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#',
+    'mt': 'http://www.w3.org/2001/sw/DataAccess/tests/tests-manifest#',
     'mte': 'http://nl.ijs.si/ME/owl/',
     'mtecore': 'http://purl.org/olia/mte/multext-east.owl#',
     'mtlo': 'http://www.ics.forth.gr/isl/MarineTLO/v4/marinetlo.owl#',
@@ -2031,7 +1942,7 @@ CURIES = {
     'tei': 'http://www.tei-c.org/ns/1.0/',
     'telix': 'http://purl.org/telix#',
     'telmap': 'http://purl.org/telmap/',
-    'test': 'http://test2.example.com/',
+    'tests': 'http://test2.example.com/',
     'test2': 'http://this.invalid/test2#',
     'text': 'http://jena.apache.org/text#',
     'tg': 'http://www.turnguard.com/turnguard#',
@@ -2073,7 +1984,7 @@ CURIES = {
     'tsnchange': 'http://purl.org/net/tsnchange#',
     'ttl': 'http://www.w3.org/2008/turtle#',
     'ttla': 'https://w3id.org/ttla/',
-    'ttp': 'http://eample.com/test#',
+    'ttp': 'http://eample.com/tests#',
     'tui': 'http://data.ifs.tuwien.ac.at/study/resource/',
     'turismo': 'http://idi.fundacionctic.org/cruzar/turismo#',
     'tvc': 'http://www.essepuntato.it/2012/04/tvc/',
@@ -2298,17 +2209,5 @@ CURIES = {
 
 EXTRA_CURIES = {
     'orcid': 'https://orcid.org/',
+    # 'sdo': 'https://schema.org/',  # prefix.cc only has HTTP version, not needed here though as bound in main
 }
-
-if __name__ == '__main__':
-    from os import path
-
-    g = Graph().parse(
-        path.join(path.dirname(path.dirname(path.realpath(__file__))), 'examples', 'plot.ttl'),
-        format='turtle'
-    )
-
-    ns = Namespaces(g)
-
-    import pprint
-    pprint.pprint(ns.instances)

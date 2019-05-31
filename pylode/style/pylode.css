@@ -29,6 +29,10 @@ ul.hlist-simple li {
 }
 
 
+.property table th {
+    text-align: left;
+}
+
 
 section#overview img {
     max-width: 1000px;

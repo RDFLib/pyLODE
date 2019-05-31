@@ -53,18 +53,28 @@ class RdfGraphError(Exception):
 if __name__ == '__main__':
     # read the input ontology file into a graph
     parser = argparse.ArgumentParser()
-    group = parser.add_mutually_exclusive_group()
-    group.add_argument(
+    overarching_group = parser.add_mutually_exclusive_group()
+    inputs_group = overarching_group.add_mutually_exclusive_group()
+
+    inputs_group.add_argument(
         '-i', '--inputfile',
         help='The RDF ontology file you wish to generate HTML for. '
              'Must be in either Turtle, RDF/XML, JSON-LD or N-Triples formats indicated by the file type extensions:'
              '{} respectively.'.format(', '.join(RDF_FILE_EXTENSIONS)),
         type=lambda x: is_valid_file(parser, x)
     )
-    group.add_argument(
+    inputs_group.add_argument(
         '-u', '--url',
         help='The RDF ontology you wish to generate HTML for, online. '
              'Must be an absolute URL that can be resolved to RDF, preferably via Content Negotiation.'
+    )
+
+    # TODO: remove requirement to have an input arg with -lp
+    overarching_group.add_argument(
+        '-lp', '--listprofiles',
+        help='This flag, if used, must be the only flag supplied. It will cause the program to list all the ontology'
+             ' documentation profiles that it supprts, indicating both their URI and their short token for use with the'
+             ' -p (--profile) flag when creating HTML documentation'
     )
 
     parser.add_argument(
@@ -75,6 +85,13 @@ if __name__ == '__main__':
     )
 
     parser.add_argument(
+        '-p', '--profile',
+        help='A profile - a specified information model - for an ontology. You can indicate this via the profile\'s URI'
+             'or via the profile\'s token. The list of profiles, URIs and tokens, that this application supports can be'
+             'found by running the program with the flag -lp or --listprofiles only.'
+    )
+
+    parser.add_argument(
         '-o', '--outputfile',
         help='A name you wish to assign to the output file. Will be postfixed with .html. If not specified, '
              'the name of the input file or last segment of RDF URI will be used, + .html.'
@@ -82,41 +99,48 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    # args are present so getting RDF from input file / uri into an rdflid Graph
-    if args.inputfile:
-        if not args.inputfile.name.endswith(tuple(RDF_FILE_EXTENSIONS)):
-            parser.error(
-                'If supplying an input RDF file, it must end with one of the following file type extensions: {}.'
-                .format(', '.join(RDF_FILE_EXTENSIONS))
+    if args.listprofiles:
+        print('list profiles')
+        exit()
+    elif args.inputfile or args.url:
+        # args are present so getting RDF from input file / uri into an rdflid Graph
+        if args.inputfile:
+            if not args.inputfile.name.endswith(tuple(RDF_FILE_EXTENSIONS)):
+                parser.error(
+                    'If supplying an input RDF file, it must end with one of the following file type extensions: {}.'
+                    .format(', '.join(RDF_FILE_EXTENSIONS))
+                )
+            else:
+                fmt = 'json-ld' if args.inputfile.name.endswith('.json') else rdflib.util.guess_format(args.inputfile.name)
+                data = args.inputfile.read()
+                g = rdflib.Graph().parse(data=data, format=fmt)
+        elif args.url:
+            r = requests.get(
+                args.url,
+                headers={
+                    'Accept': ', '.join(RDF_SERIALIZER_MAP.keys())
+                }
             )
-        else:
-            fmt = 'json-ld' if args.inputfile.name.endswith('.json') else rdflib.util.guess_format(args.inputfile.name)
-            data = args.inputfile.read()
-            g = rdflib.Graph().parse(data=data, format=fmt)
-    elif args.url:
-        r = requests.get(
-            args.url,
-            headers={
-                'Accept': ', '.join(RDF_SERIALIZER_MAP.keys())
-            }
-        )
-        # get RDF format from Media Type
-        media_type = r.headers.get('Content-Type')
-        if RDF_SERIALIZER_MAP.get(media_type):
-            fmt = RDF_SERIALIZER_MAP.get(media_type)
-        else:
-            fmt = 'json-ld' if args.inputfile.name.endswith('.json') else rdflib.util.guess_format(args.inputfile.name)
+            # get RDF format from Media Type
+            media_type = r.headers.get('Content-Type')
+            if RDF_SERIALIZER_MAP.get(media_type):
+                fmt = RDF_SERIALIZER_MAP.get(media_type)
+            else:
+                fmt = 'json-ld' if args.inputfile.name.endswith('.json') else rdflib.util.guess_format(args.inputfile.name)
 
-        if fmt is None:
-            parser.error(
-                'Could not parse the supplied URI. The RDF format could not be determined from Media Type '
-                '({} was given) or from a file extension'.format(media_type)
-            )
+            if fmt is None:
+                parser.error(
+                    'Could not parse the supplied URI. The RDF format could not be determined from Media Type '
+                    '({} was given) or from a file extension'.format(media_type)
+                )
 
-        g = rdflib.Graph().parse(data=r.text, format=fmt)
+            g = rdflib.Graph().parse(data=r.text, format=fmt)
+        else:
+            # we have neither an input file or a URI supplied
+            parser.error('Either an inputfile or a url is required to access the ontology\'s RDF')
     else:
-        # we have neither an input file or a URI supplied
-        parser.error('Either an inputfile or a url is required to access the ontology\'s RDF')
+        parser.error('Either an ontology source (-i/--inputfile or a -u/--url) is required or one of the documentation '
+                     'commands, such as -lp (--listprofiles)')
 
     # here we have a parsed graph from either a local file or a URI
 
