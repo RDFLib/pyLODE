@@ -1,6 +1,6 @@
 
     <div class="entity property" id="{{ fid }}">
-      <h3>{{ name }}
+      <h3>{{ title }}
         {%- if property_type == 'http://www.w3.org/2002/07/owl#ObjectProperty' -%}
         <sup title="object property" class="type-op">op</sup>
         {%- elif property_type == 'http://www.w3.org/2002/07/owl#DatatypeProperty' -%}
@@ -22,19 +22,21 @@
           </td>
         </tr>
         {%- endif %}
-        {%- if usage is not none %}
+        {%- if usageNote is not none %}
         <tr>
           <th>Usage Note</th>
           <td>
-            {{ usage }}
+            {{ usageNote }}
           </td>
         </tr>
         {%- endif %}
-        {%- if super_properties is not none %}
+        {%- if super_properties|length > 0 %}
         <tr>
           <th>Super-properties</th>
           <td>
-            <a href="http://www.w3.org/ns/prov#wasAttributedTo">prov:wasAttributedTo</a><sup title="object property" class="type-op">op</sup>
+            {%- for super in supers %}
+            {{ super }}
+            {%- endfor %}
           </td>
         </tr>
         {%- endif %}

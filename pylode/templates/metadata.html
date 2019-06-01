@@ -1,80 +1,92 @@
 
     <h1>{{ title }}</h1>
     <section id="metadata">
-      <dl>
-        <dt>IRI</dt>
-        <dd><code>{{ uri }}</code></dd>
-        {%- if version_uri is not none %}
-        <dt>Version IRI</dt>
-        <dd>{{ version_uri }}</dd>
-        {%- endif %}
-        {%- if publishers is not none > 0 %}
-        <dt>Publisher(s)</dt>
-        <dd>
-        {%- for publisher in publishers %}
-          {{ publisher }}<br />
-        {%- endfor %}
-        </dd>
-        {%- endif %}
-        {%- if creators|length > 0 %}
-        <dt>Creator(s)</dt>
-        <dd>
-        {%- for creator in creators %}
-          {{ creator }}<br />
-        {%- endfor %}
-        </dd>
-        {%- endif %}
-        {%- if contributors|length > 0 %}
-        <dt>Contributors(s)</dt>
-        <dd>
-        {%- for contributor in contributors %}
-          {{ contributor }}<br />
-        {%- endfor %}
-        </dd>
-        {%- endif %}
-        {%- if created is not none %}
-        <dt>Created</dt>
-        <dd>{{ created }}</dd>
-        {%- endif %}
-        {%- if modified is not none %}
-        <dt>Modified</dt>
-        <dd>{{ modified }}</dd>
-        {%- endif %}
-        {%- if description is not none %}
-        <dt>Description</dt>
-        <dd>{{ description }}</dd>
-        {%- endif %}
-        {%- if version_info is not none %}
-        <dt>Version Information</dt>
-        <dd>{{ version_info }}</dd>
-        {%- endif %}
-      </dl>
+        <dl>
+            <dt>IRI</dt>
+            <dd><code>{{ uri }}</code></dd>
+            {%- if version_uri is not none %}
+            <dt>Version IRI</dt>
+            <dd>{{ version_uri }}</dd>
+            {%- endif %}
+            {%- if publishers is not none > 0 %}
+            <dt>Publisher(s)</dt>
+            <dd>
+            {%- for publisher in publishers %}
+              {{ publisher }}<br />
+            {%- endfor %}
+            </dd>
+            {%- endif %}
+            {%- if creators|length > 0 %}
+            <dt>Creator(s)</dt>
+            <dd>
+            {%- for creator in creators %}
+              {{ creator }}<br />
+            {%- endfor %}
+            </dd>
+            {%- endif %}
+            {%- if contributors is not none > 0 %}
+            <dt>Contributors(s)</dt>
+            <dd>
+            {%- for contributor in contributors %}
+              {{ contributor }}<br />
+            {%- endfor %}
+            </dd>
+            {%- endif %}
+            {%- if publishers is not none > 0 %}
+            <dt>Publishers(s)</dt>
+            <dd>
+            {%- for publisher in publishers %}
+              {{ publishers }}<br />
+            {%- endfor %}
+            </dd>
+            {%- endif %}
+            {%- if created is not none %}
+            <dt>Created</dt>
+            <dd>{{ created }}</dd>
+            {%- endif %}
+            {%- if modified is not none %}
+            <dt>Modified</dt>
+            <dd>{{ modified }}</dd>
+            {%- endif %}
+            {%- if issued is not none %}
+            <dt>Issued</dt>
+            <dd>{{ issued }}</dd>
+            {%- endif %}
+            {%- if description is not none %}
+            <dt>Description</dt>
+            <dd>{{ description }}</dd>
+            {%- endif %}
+            {%- if version_info is not none %}
+            <dt>Version Information</dt>
+            <dd>{{ version_info }}</dd>
+            {%- endif %}
+        </dl>
     </section>
     <section id="toc">
-      <h2>Table of Contents</h2>
-      <ol>
-        {%- if has_classes %}
-        <li><a href="#classes">Classes</a></li>
-        {%- endif %}
-        {%- if has_ops %}
-        <li><a href="#objectproperties">Object Properties</a></li>
-        {%- endif %}
-        {%- if has_dps %}
-        <li><a href="#datatypeproperties">Datatype Properties</a></li>
-        {%- endif %}
-        {%- if has_aps %}
-        <li><a href="#annotationproperties">Annotation Properties</a></li>
-        {%- endif %}
-        {%- if has_nis %}
-        <li><a href="#namedindividuals">Named Individuals</a></li>
-        {%- endif %}
-        <li><a href="#namespaces">Namespaces</a></li>
-      </ol>
+        <h2>Table of Contents</h2>
+        <ol>
+            {%- if has_classes %}
+            <li><a href="#classes">Classes</a></li>
+            {%- endif %}
+            {%- if has_ops %}
+            <li><a href="#objectproperties">Object Properties</a></li>
+            {%- endif %}
+            {%- if has_dps %}
+            <li><a href="#datatypeproperties">Datatype Properties</a></li>
+            {%- endif %}
+            {%- if has_aps %}
+            <li><a href="#annotationproperties">Annotation Properties</a></li>
+            {%- endif %}
+            {%- if has_nis %}
+            <li><a href="#namedindividuals">Named Individuals</a></li>
+            {%- endif %}
+            <li><a href="#namespaces">Namespaces</a></li>
+        </ol>
     </section>
     <section id="overview">
-      <h2>Overview</h2>
-      <div class="figure">
-        <div style="width:500px; height:500px; background-color: black;">&nbsp;</div>
-        <div class="caption"><strong>Figure 1:</strong> Properties of the Borehole class</div>
-      </div>
+        <h2>Overview</h2>
+        <div class="figure">
+            <div style="width:500px; height:500px; background-color: black;">&nbsp;</div>
+            <div class="caption"><strong>Figure 1:</strong> Properties of the Borehole class</div>
+        </div>
     </section>

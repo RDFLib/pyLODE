@@ -7,7 +7,6 @@ import requests
 import collections
 import dateutil.parser
 from jinja2 import Environment, FileSystemLoader
-import operator
 
 APP_DIR = path.dirname(path.realpath(__file__))
 
@@ -145,150 +144,39 @@ def _extract_namespaces(g):
     return instances
 
 
-def _extract_ontology_metadata(g, classes, properties):
-    metadata = {}
-    if len(classes) > 0:
-        metadata['has_classes'] = True
+def _get_default_namespace(g, ns, metadata):
+    # if this ontology declares a preferred URI, use that
+    if metadata.get('preferredNamespaceUri'):
+        return metadata.get('preferredNamespaceUri')
 
-    pprint.pprint(properties)
+    # ... or try a namespace declared with prefix ''
+    for k, v in ns.items():
+        if k == '':
+            return v
 
-    metadata['has_op'] = False
-    metadata['has_dp'] = False
-    metadata['has_a'] = False
+    # not using - erroneous
+    # # if it doesn't declare a preferredNamespaceUri but does declare a versionIRI, use that
+    # if metadata.get('versionIRI'):
+    #     return metadata.get('versionIRI')
 
-    for k, v in properties.items():
-        if v.get('prop_type') == 'op':
-            metadata['has_ops'] = True
-        if v.get('prop_type') == 'dp':
-            metadata['has_dps'] = True
-        if v.get('prop_type') == 'ap':
-            metadata['has_aps'] = True
-
-    s_str = None
-    creators = []
-    contributors = []
-    publishers = []
+    # finally try the URI of the ontology compared to all prefixes
+    ontology_uri = None
     for s in g.subjects(predicate=RDF.type, object=OWL.Ontology):
-        s_str = str(s)  # this is the Ontology's URI
-        metadata['uri'] = s_str
+        ontology_uri = str(s)
 
-        for p, o in g.predicate_objects(subject=s):
-            if p == RDFS.label:
-                metadata['title'] = str(o)
-
-            if p == RDFS.comment:
-                metadata['description'] = str(o)
-
-            if p == DCTERMS.created:
-                metadata['created'] = dateutil.parser.parse(str(o))
-
-            if p == DCTERMS.modified:
-                metadata['modified'] = dateutil.parser.parse(str(o))
-
-            if p == OWL.versionIRI:
-                metadata['versionIRI'] = str(o)
-
-            if p == OWL.versionInfo:
-                metadata['versionInfo'] = str(o)
-
-            # Agents - strings
-            if p == DC.creator:
-                creators.append(str(o))
-
-            if p == DC.contributor:
-                contributors.append(str(o))
-
-            if p == DC.publisher:
-                publishers.append(str(o))
-
-            if p == URIRef('http://purl.org/vocab/vann/preferredNamespacePrefix'):
-                metadata['preferredNamespacePrefix'] = str(o)
-
-            if p == URIRef('http://purl.org/vocab/vann/preferredNamespaceUri'):
-                metadata['preferredNamespaceUri'] = str(o)
-
-            # Agents - URIs or BNs
-            if p == DCTERMS.creator:
-                if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
-                    creators.append(str(o))
-                else:  # Blank Node
-                    # we understand foaf:name & foaf:homepage  # TODO: cater for other Agent representations
-                    for p2, o2 in g.predicate_objects(subject=o):
-                        if p2 == FOAF.homepage:
-                            homepage = p2
-                        elif p2 == FOAF.name:
-                            name = p2
-                    creators.append('<a href="{}">{}</a>'.format(homepage, name))
-
-            if p == DCTERMS.contributor:
-                if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
-                    contributors.append(str(o))
-                else:  # Blank Node
-                    # we understand foaf:name & foaf:homepage  # TODO: cater for other Agent representations
-                    for p2, o2 in g.predicate_objects(subject=o):
-                        if p2 == FOAF.homepage:
-                            homepage = str(o2)
-                        elif p2 == FOAF.name:
-                            name = str(o2)  # TODO: remove duplicated plain-text agent
-                    contributors.append('<a href="{}">{}</a>'.format(homepage, name))
-
-            if p == DCTERMS.publisher:
-                if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
-                    publishers.append(str(o))
-                else:  # Blank Node
-                    # we understand foaf:name & foaf:homepage  # TODO: cater for other Agent representations
-                    for p2, o2 in g.predicate_objects(subject=o):
-                        if p2 == FOAF.homepage:
-                            homepage = p2
-                        elif p2 == FOAF.name:
-                            name = p2
-                    publishers.append('<a href="{}">{}</a>'.format(homepage, name))
-
-        if len(creators) > 0:
-            metadata['creators'] = creators
-
-        if len(contributors) > 0:
-            metadata['contributors'] = contributors
-
-        if len(publishers) > 0:
-            metadata['publishers'] = publishers
-
-        if metadata.get('title') is None:
-            raise ValueError(
-                'Your ontology does not indicate any form of label or title. '
-                'You must declare one of the following for your ontology: rdfs:label, dct:title, skos:prefLabel'
-            )
-
-    if s_str is None:
-        raise Exception('Your RDF file does not define an ontology. '
-                        'It must contains a declaration such as <...> rdf:type owl:Ontology .')
-
-    return metadata
+    for v in ns.values():
+        if v.startswith(ontology_uri):
+            return v
 
 
-def _make_metadata_html(metadata):
+def _make_namespaces_html(namespaces):
     template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-    metadata_template = Environment(loader=FileSystemLoader(template_dir)).get_template('metadata.html')
-    html = metadata_template.render(
-        title=metadata.get('title'),
-        uri=metadata.get('uri'),
-        version_uri=metadata.get('version_uri'),
-        publishers=metadata.get('publishers'),
-        creators=metadata.get('creators'),
-        contributors=metadata.get('contributors'),
-        created=metadata.get('created').strftime('%Y-%m-%d'),  # TODO: auto-detect format
-        modified=metadata.get('modified').strftime('%Y-%m-%d'),
-        issued=None,  # TODO: cater for issued
-        description=metadata.get('description'),
-        version_info=metadata.get('version_info'),
-        has_classes=metadata.get('has_classes'),
-        has_ops=metadata.get('has_ops'),
-        has_dps=metadata.get('has_dps'),
-        has_aps=metadata.get('has_aps'),
-        has_nis=False
+    namespaces_template = Environment(loader=FileSystemLoader(template_dir)).get_template('namespaces.html')
+    namespaces_html = namespaces_template.render(
+        namespaces=namespaces,
     )
 
-    return html
+    return namespaces_html
 
 
 def _extract_properties(g, existing_fids, namespaces):
@@ -461,96 +349,43 @@ def _extract_properties(g, existing_fids, namespaces):
     return properties
 
 
-def _make_class_html(uri, namespaces):
-    return _get_curie(str(uri), namespaces) + '<sup class="sup-c" title="class">c</sup>'
+def _make_property_html(property):
+    template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
+    template = Environment(loader=FileSystemLoader(template_dir)).get_template('property.html')
+
+    return template.render(
+        uri=property[0],
+        fid=property[1]['fid'],
+        title=property[1]['title'],
+        description=property[1]['description'],
+        # usageNote=property[1].get(['usageNote']),
+        supers=property[1]['supers'],
+        subs=property[1]['subs'],
+    )
 
 
-def _make_collection_class_html(g, parent_uri, o, namespaces):
-    # TODO: bug, this SPARQL returns results for all Collections for a parent_uri, not only one
-    '''
-      rdfs:subClassOf [
-      a owl:Restriction ;
-      rdfs:comment "A Site is established to sample some biome, bioregion, ecosystem, etc." ;
-      owl:onProperty sosa:isSampleOf ;
-      owl:someValuesFrom [
-          a owl:Class ;
-          owl:unionOf (
-              plot-x:Environmental-system
-              plot-x:Environmental-zone
-            ) ;
-        ] ;
-    '''
-    q = '''
-        PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+def _make_properties_html(properties):
+    template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
+    template = Environment(loader=FileSystemLoader(template_dir)).get_template('properties.html')
+    op_instances = []
+    dp_instances = []
+    ap_instances = []
 
-        SELECT ?col_type ?col_member
-        WHERE {{
-            <{0}> ?xx _:{1} .
-            _:{1} ?y ?z .
-            ?z owl:unionOf|owl:intersectionOf ?collection .
-            ?z ?col_type ?collection . 
-            ?collection rdf:rest*/rdf:first ?col_member .              
-        }} 
-    '''.format(parent_uri, o)
-    collection_members = []
-    for r in g.query(q):
-        if r.col_type == OWL.unionOf:
-            j = ' or '
-        elif r.col_type == OWL.intersectionOf:
-            j = ' and '
+    for k, v in properties.items():
+        if v.get('prop_type') == 'op':
+            op_instances.append((v['title'], v['fid'], _make_property_html((k, v))))
+        if v.get('prop_type') == 'dp':
+            dp_instances.append((v['title'], v['fid'], _make_property_html((k, v))))
+        if v.get('prop_type') == 'ap':
+            ap_instances.append((v['title'], v['fid'], _make_property_html((k, v))))
 
-        collection_members.append(_get_curie(str(r.col_member), namespaces))
+    html = template.render(
+        op_instances=op_instances,
+        dp_instances=dp_instances,
+        ap_instances=ap_instances
+    )
 
-    return '({})'.format(j.join(collection_members))
-
-
-def _make_restriction_html(g, subject, restriction_bn, namespaces):
-    prop = None
-    card = None
-    cls = None
-
-    for p2, o2 in g.predicate_objects(subject=restriction_bn):
-        if p2 != RDF.type:
-            if p2 == OWL.onProperty:
-                prop = _get_curie(str(o2), namespaces)
-            elif p2 == OWL.onClass:
-                if type(o2) == BNode:
-                    if (o2, OWL.unionOf) in g.subject_predicates() or (o2, OWL.intersectionOf) in g.subject_predicates():
-                        cls = _make_collection_class_html(g, subject, restriction_bn, namespaces)
-                else:
-                    cls = _get_curie(str(o2), namespaces)
-            elif p2 in [
-                OWL.cardinality,
-                OWL.qualifiedCardinality,
-                OWL.minCardinality,
-                OWL.minQualifiedCardinality,
-                OWL.maxCardinality,
-                OWL.maxQualifiedCardinality,
-            ]:
-                if p2 in [OWL.minCardinality, OWL.minQualifiedCardinality]:
-                    card = 'min'
-                elif p2 in [OWL.maxCardinality, OWL.maxQualifiedCardinality]:
-                    card = 'max'
-                elif p2 in [OWL.cardinality, OWL.qualifiedCardinality]:
-                    card = 'exactly'
-
-                card = '<span class="cardinality">{}</span> {}'.format(card, str(o2))
-            elif p2 in [OWL.allValuesFrom, OWL.someValuesFrom]:
-                if p2 == OWL.allValuesFrom:
-                    card = 'only'
-                else:  # p2 == OWL.someValuesFrom
-                    card = 'some'
-
-                if type(o2) == BNode:
-                    c = _make_collection_class_html(g, subject, restriction_bn, namespaces)
-                else:
-                    c = str(_get_curie(str(o2), namespaces))
-                card = '<span class="cardinality">{}</span> {}'.format(card, c)
-
-    restriction = prop + ' ' + card if card is not None else prop
-    restriction = restriction + ' ' + cls if cls is not None else restriction
-    return restriction
+    return html
 
 
 def _extract_classes(g, existing_fids, namespaces):
@@ -665,12 +500,16 @@ def _extract_classes(g, existing_fids, namespaces):
     return classes
 
 
+def _make_class_html(uri, namespaces):
+    return _get_curie(str(uri), namespaces) + '<sup class="sup-c" title="class">c</sup>'
+
+
 def _make_classes_html(classes):
     template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
     class_template = Environment(loader=FileSystemLoader(template_dir)).get_template('class.html')
-    classes_htmls = []
+    class_htmls = []
     for k, v in classes.items():
-        classes_htmls.append(
+        class_htmls.append(
             class_template.render(
                     uri=k,
                     fid=v['fid'],
@@ -686,10 +525,98 @@ def _make_classes_html(classes):
     fids = sorted([(v.get('fid'), v.get('title')) for k, v in classes.items()], key=lambda tup: tup[1])
     classes_html = classes_template.render(
         fids=fids,
-        classes=classes_htmls,
+        classes=class_htmls,
     )
 
     return classes_html
+
+
+def _make_collection_class_html(g, parent_uri, o, namespaces):
+    # TODO: bug, this SPARQL returns results for all Collections for a parent_uri, not only one
+    '''
+      rdfs:subClassOf [
+      a owl:Restriction ;
+      rdfs:comment "A Site is established to sample some biome, bioregion, ecosystem, etc." ;
+      owl:onProperty sosa:isSampleOf ;
+      owl:someValuesFrom [
+          a owl:Class ;
+          owl:unionOf (
+              plot-x:Environmental-system
+              plot-x:Environmental-zone
+            ) ;
+        ] ;
+    '''
+    q = '''
+        PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+
+        SELECT ?col_type ?col_member
+        WHERE {{
+            <{0}> ?xx _:{1} .
+            _:{1} ?y ?z .
+            ?z owl:unionOf|owl:intersectionOf ?collection .
+            ?z ?col_type ?collection . 
+            ?collection rdf:rest*/rdf:first ?col_member .              
+        }} 
+    '''.format(parent_uri, o)
+    collection_members = []
+    for r in g.query(q):
+        if r.col_type == OWL.unionOf:
+            j = ' or '
+        elif r.col_type == OWL.intersectionOf:
+            j = ' and '
+
+        collection_members.append(_get_curie(str(r.col_member), namespaces))
+
+    return '({})'.format(j.join(collection_members))
+
+
+def _make_restriction_html(g, subject, restriction_bn, namespaces):
+    prop = None
+    card = None
+    cls = None
+
+    for p2, o2 in g.predicate_objects(subject=restriction_bn):
+        if p2 != RDF.type:
+            if p2 == OWL.onProperty:
+                prop = _get_curie(str(o2), namespaces)
+            elif p2 == OWL.onClass:
+                if type(o2) == BNode:
+                    if (o2, OWL.unionOf) in g.subject_predicates() or (o2, OWL.intersectionOf) in g.subject_predicates():
+                        cls = _make_collection_class_html(g, subject, restriction_bn, namespaces)
+                else:
+                    cls = _get_curie(str(o2), namespaces)
+            elif p2 in [
+                OWL.cardinality,
+                OWL.qualifiedCardinality,
+                OWL.minCardinality,
+                OWL.minQualifiedCardinality,
+                OWL.maxCardinality,
+                OWL.maxQualifiedCardinality,
+            ]:
+                if p2 in [OWL.minCardinality, OWL.minQualifiedCardinality]:
+                    card = 'min'
+                elif p2 in [OWL.maxCardinality, OWL.maxQualifiedCardinality]:
+                    card = 'max'
+                elif p2 in [OWL.cardinality, OWL.qualifiedCardinality]:
+                    card = 'exactly'
+
+                card = '<span class="cardinality">{}</span> {}'.format(card, str(o2))
+            elif p2 in [OWL.allValuesFrom, OWL.someValuesFrom]:
+                if p2 == OWL.allValuesFrom:
+                    card = 'only'
+                else:  # p2 == OWL.someValuesFrom
+                    card = 'some'
+
+                if type(o2) == BNode:
+                    c = _make_collection_class_html(g, subject, restriction_bn, namespaces)
+                else:
+                    c = str(_get_curie(str(o2), namespaces))
+                card = '<span class="cardinality">{}</span> {}'.format(card, c)
+
+    restriction = prop + ' ' + card if card is not None else prop
+    restriction = restriction + ' ' + cls if cls is not None else restriction
+    return restriction
 
 
 def _get_curie_prefix(uri, ns):
@@ -778,39 +705,151 @@ def _get_uri_id(uri):
         return uri.split('/')[-1]  # could return None if URI ends in /
 
 
-def _get_default_namespace(g, ns, metadata):
-    # if this ontology declares a preferred URI, use that
-    if metadata.get('preferredNamespaceUri'):
-        return metadata.get('preferredNamespaceUri')
+def _extract_ontology_metadata(g, classes, properties):
+    metadata = {}
+    if len(classes) > 0:
+        metadata['has_classes'] = True
 
-    # ... or try a namespace declared with prefix ''
-    for k, v in ns.items():
-        if k == '':
-            return v
+    metadata['has_op'] = False
+    metadata['has_dp'] = False
+    metadata['has_a'] = False
 
-    # not using - erroneous
-    # # if it doesn't declare a preferredNamespaceUri but does declare a versionIRI, use that
-    # if metadata.get('versionIRI'):
-    #     return metadata.get('versionIRI')
+    for k, v in properties.items():
+        if v.get('prop_type') == 'op':
+            metadata['has_ops'] = True
+        if v.get('prop_type') == 'dp':
+            metadata['has_dps'] = True
+        if v.get('prop_type') == 'ap':
+            metadata['has_aps'] = True
 
-    # finally try the URI of the ontology compared to all prefixes
-    ontology_uri = None
+    s_str = None
+    creators = []
+    contributors = []
+    publishers = []
     for s in g.subjects(predicate=RDF.type, object=OWL.Ontology):
-        ontology_uri = str(s)
+        s_str = str(s)  # this is the Ontology's URI
+        metadata['uri'] = s_str
 
-    for v in ns.values():
-        if v.startswith(ontology_uri):
-            return v
+        for p, o in g.predicate_objects(subject=s):
+            if p == RDFS.label:
+                metadata['title'] = str(o)
+
+            if p == RDFS.comment:
+                metadata['description'] = str(o)
+
+            if p == DCTERMS.created:
+                metadata['created'] = dateutil.parser.parse(str(o)).strftime('%Y-%m-%d')
+
+            if p == DCTERMS.modified:
+                metadata['modified'] = dateutil.parser.parse(str(o)).strftime('%Y-%m-%d')
+
+            if p == DCTERMS.issued:
+                metadata['issued'] = dateutil.parser.parse(str(o)).strftime('%Y-%m-%d')
+
+            if p == OWL.versionIRI:
+                metadata['versionIRI'] = str(o)
+
+            if p == OWL.versionInfo:
+                metadata['versionInfo'] = str(o)
+
+            # Agents - strings
+            if p == DC.creator:
+                creators.append(str(o))
+
+            if p == DC.contributor:
+                contributors.append(str(o))
+
+            if p == DC.publisher:
+                publishers.append(str(o))
+
+            if p == URIRef('http://purl.org/vocab/vann/preferredNamespacePrefix'):
+                metadata['preferredNamespacePrefix'] = str(o)
+
+            if p == URIRef('http://purl.org/vocab/vann/preferredNamespaceUri'):
+                metadata['preferredNamespaceUri'] = str(o)
+
+            # Agents - URIs or BNs
+            if p == DCTERMS.creator:
+                if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
+                    creators.append(str(o))
+                else:  # Blank Node
+                    # we understand foaf:name & foaf:homepage  # TODO: cater for other Agent representations
+                    for p2, o2 in g.predicate_objects(subject=o):
+                        if p2 == FOAF.homepage:
+                            homepage = p2
+                        elif p2 == FOAF.name:
+                            name = p2
+                    creators.append('<a href="{}">{}</a>'.format(homepage, name))
+
+            if p == DCTERMS.contributor:
+                if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
+                    contributors.append(str(o))
+                else:  # Blank Node
+                    # we understand foaf:name & foaf:homepage  # TODO: cater for other Agent representations
+                    for p2, o2 in g.predicate_objects(subject=o):
+                        if p2 == FOAF.homepage:
+                            homepage = str(o2)
+                        elif p2 == FOAF.name:
+                            name = str(o2)  # TODO: remove duplicated plain-text agent
+                    contributors.append('<a href="{}">{}</a>'.format(homepage, name))
+
+            if p == DCTERMS.publisher:
+                if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
+                    publishers.append(str(o))
+                else:  # Blank Node
+                    # we understand foaf:name & foaf:homepage  # TODO: cater for other Agent representations
+                    for p2, o2 in g.predicate_objects(subject=o):
+                        if p2 == FOAF.homepage:
+                            homepage = p2
+                        elif p2 == FOAF.name:
+                            name = p2
+                    publishers.append('<a href="{}">{}</a>'.format(homepage, name))
+
+        if len(creators) > 0:
+            metadata['creators'] = creators
+
+        if len(contributors) > 0:
+            metadata['contributors'] = contributors
+
+        if len(publishers) > 0:
+            metadata['publishers'] = publishers
+
+        if metadata.get('title') is None:
+            raise ValueError(
+                'Your ontology does not indicate any form of label or title. '
+                'You must declare one of the following for your ontology: rdfs:label, dct:title, skos:prefLabel'
+            )
+
+    if s_str is None:
+        raise Exception('Your RDF file does not define an ontology. '
+                        'It must contains a declaration such as <...> rdf:type owl:Ontology .')
+
+    return metadata
 
 
-def _make_namespaces_html(namespaces):
+def _make_metadata_html(metadata):
     template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-    namespaces_template = Environment(loader=FileSystemLoader(template_dir)).get_template('namespaces.html')
-    namespaces_html = namespaces_template.render(
-        namespaces=namespaces,
+    metadata_template = Environment(loader=FileSystemLoader(template_dir)).get_template('metadata.html')
+    html = metadata_template.render(
+        title=metadata.get('title'),
+        uri=metadata.get('uri'),
+        version_uri=metadata.get('version_uri'),
+        publishers=metadata.get('publishers'),
+        creators=metadata.get('creators'),
+        contributors=metadata.get('contributors'),
+        created=metadata.get('created'),  # TODO: auto-detect format
+        modified=metadata.get('modified'),
+        issued=None,  # TODO: cater for issued
+        description=metadata.get('description'),
+        version_info=metadata.get('version_info'),
+        has_classes=metadata.get('has_classes'),
+        has_ops=metadata.get('has_ops'),
+        has_dps=metadata.get('has_dps'),
+        has_aps=metadata.get('has_aps'),
+        has_nis=False
     )
 
-    return namespaces_html
+    return html
 
 
 def _make_document_html(ontology_html, classes_html, properties_html, namespaces_html):
@@ -827,7 +866,9 @@ def _make_document_html(ontology_html, classes_html, properties_html, namespaces
 
 
 if __name__ == '__main__':
-    g = Graph().parse(APP_DIR + '/examples/prof.ttl', format='turtle')
+    f = APP_DIR + '/examples/prof.ttl'
+
+    g = Graph().parse(f, format='turtle')
     _expand_graph_for_pylode(g)
 
     SCO = Namespace('https://schema.org')
@@ -842,13 +883,25 @@ if __name__ == '__main__':
     namespaces_html = _make_namespaces_html(namespaces)
 
     # imports
+    imports = []
+    # TODO: add reading of baseURI to default namespace checks
+    '''
+    # baseURI: http://www.tern.org.au/ns/plot
+    # imports: http://purl.org/dc/elements/1.1/
+    # imports: http://www.w3.org/ns/ssn/ext
+    '''
+    for l in open(f, 'r').readlines():
+        if l.startswith('# imports:'):
+            imports.append(l[11:].lstrip('\n'))
     # TODO: cater for import declarations
+    print(imports)
 
     classes = _extract_classes(g, existing_fids, namespaces)
     classes_html = _make_classes_html(classes)
 
     properties = _extract_properties(g, existing_fids, namespaces)
     # pprint.pprint(properties)
+    properties_html = _make_properties_html(properties)
 
     metadata = _extract_ontology_metadata(g, classes, properties)
     # pprint.pprint(metadata)
@@ -858,48 +911,11 @@ if __name__ == '__main__':
     # pprint.pprint(default_namespace)
 
     with open('out.html', 'w') as f:
-        f.write(_make_document_html(metadata_html, classes_html, None, namespaces_html))
+        f.write(_make_document_html(metadata_html, classes_html, properties_html, namespaces_html))
 
     # replace all this-ont URIs with : CURIE using this ont's URI in metadata object
 
     # replace all domain/range, super/sub etc. class & property URIs with any CURIEs from namepaces
-
-
-
-# for k, v in properties.items():
-#     print(k, v.property_type, [e.uri for e in v.super_properties])
-#
-#
-# for k, v in properties.items():
-#     print(k, v.name if v.name is not None else None)
-
-# for k, v in properties.items():
-#     print(k, v.name if hasattr(v, 'name') else None)
-# # # classes
-# # classes = {}
-# # for s, p, o in g.subjects(predicate=RDF.type, object=RDFS.Class):
-# #     classes[s] = OwlClass(g, s, existing_fids)
-
-
-# # cardinalities
-# q = '''
-#     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-#     PREFIX owl: <http://www.w3.org/2002/07/owl#>
-#
-#     SELECT ?sub
-#     WHERE {{
-#         <{0}> rdfs:subPropertyOf owl:Restriction .
-#         <{0}> rdfs:subPropertyOf ?r .
-#         ?r owl:hasValue | owl:cardinality | owl:qualifiedCardinality | owl:maxCardinality | owl:maxQualifiedCardinality | owl:minCardinality | owl:minQualifiedCardinality ?card .
-#
-#     }}
-# '''.format(s)
-# subs = []
-# for r in g.query(q):
-#     if r.sub is not None:
-#         subs.append(str(r.sub))
-#
-# classes[s]['restrictions'] = subs
 
 
 
