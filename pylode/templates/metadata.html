@@ -1,5 +1,5 @@
 
-    <h1>{{ name }}</h1>
+    <h1>{{ title }}</h1>
     <section id="metadata">
       <dl>
         <dt>IRI</dt>
@@ -8,7 +8,7 @@
         <dt>Version IRI</dt>
         <dd>{{ version_uri }}</dd>
         {%- endif %}
-        {%- if publishers|length > 0 %}
+        {%- if publishers is not none > 0 %}
         <dt>Publisher(s)</dt>
         <dd>
         {%- for publisher in publishers %}
@@ -74,7 +74,7 @@
     <section id="overview">
       <h2>Overview</h2>
       <div class="figure">
-        <a href="model/properties.svg"><img src="model/properties.svg" title="overview diagram" /></a>
+        <div style="width:500px; height:500px; background-color: black;">&nbsp;</div>
         <div class="caption"><strong>Figure 1:</strong> Properties of the Borehole class</div>
       </div>
     </section>

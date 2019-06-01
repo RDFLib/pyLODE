@@ -1,5 +1,5 @@
 from rdflib import Graph, RDF, RDFS, OWL, Namespace
-from rdflib.namespace import SKOS, DC, DCTERMS
+from rdflib.namespace import SKOS, DC, DCTERMS, FOAF
 from rdflib.term import URIRef, Literal, BNode
 import pprint
 from os import path
@@ -145,8 +145,25 @@ def _extract_namespaces(g):
     return instances
 
 
-def _extract_ontology_metadata(g):
+def _extract_ontology_metadata(g, classes, properties):
     metadata = {}
+    if len(classes) > 0:
+        metadata['has_classes'] = True
+
+    pprint.pprint(properties)
+
+    metadata['has_op'] = False
+    metadata['has_dp'] = False
+    metadata['has_a'] = False
+
+    for k, v in properties.items():
+        if v.get('prop_type') == 'op':
+            metadata['has_ops'] = True
+        if v.get('prop_type') == 'dp':
+            metadata['has_dps'] = True
+        if v.get('prop_type') == 'ap':
+            metadata['has_aps'] = True
+
     s_str = None
     creators = []
     contributors = []
@@ -195,26 +212,37 @@ def _extract_ontology_metadata(g):
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
                     creators.append(str(o))
                 else:  # Blank Node
-                    c = {}
+                    # we understand foaf:name & foaf:homepage  # TODO: cater for other Agent representations
                     for p2, o2 in g.predicate_objects(subject=o):
-                        c[str(p2)] = str(o2)
-                    creators.append(c)
+                        if p2 == FOAF.homepage:
+                            homepage = p2
+                        elif p2 == FOAF.name:
+                            name = p2
+                    creators.append('<a href="{}">{}</a>'.format(homepage, name))
 
             if p == DCTERMS.contributor:
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
                     contributors.append(str(o))
-                    c2 = {}
+                else:  # Blank Node
+                    # we understand foaf:name & foaf:homepage  # TODO: cater for other Agent representations
                     for p2, o2 in g.predicate_objects(subject=o):
-                        c2[str(p2)] = str(o2)
-                    creators.append(c2)
+                        if p2 == FOAF.homepage:
+                            homepage = str(o2)
+                        elif p2 == FOAF.name:
+                            name = str(o2)  # TODO: remove duplicated plain-text agent
+                    contributors.append('<a href="{}">{}</a>'.format(homepage, name))
 
             if p == DCTERMS.publisher:
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
                     publishers.append(str(o))
-                    p = {}
+                else:  # Blank Node
+                    # we understand foaf:name & foaf:homepage  # TODO: cater for other Agent representations
                     for p2, o2 in g.predicate_objects(subject=o):
-                        p[str(p2)] = str(o2)
-                    creators.append(p)
+                        if p2 == FOAF.homepage:
+                            homepage = p2
+                        elif p2 == FOAF.name:
+                            name = p2
+                    publishers.append('<a href="{}">{}</a>'.format(homepage, name))
 
         if len(creators) > 0:
             metadata['creators'] = creators
@@ -236,6 +264,31 @@ def _extract_ontology_metadata(g):
                         'It must contains a declaration such as <...> rdf:type owl:Ontology .')
 
     return metadata
+
+
+def _make_metadata_html(metadata):
+    template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
+    metadata_template = Environment(loader=FileSystemLoader(template_dir)).get_template('metadata.html')
+    html = metadata_template.render(
+        title=metadata.get('title'),
+        uri=metadata.get('uri'),
+        version_uri=metadata.get('version_uri'),
+        publishers=metadata.get('publishers'),
+        creators=metadata.get('creators'),
+        contributors=metadata.get('contributors'),
+        created=metadata.get('created').strftime('%Y-%m-%d'),  # TODO: auto-detect format
+        modified=metadata.get('modified').strftime('%Y-%m-%d'),
+        issued=None,  # TODO: cater for issued
+        description=metadata.get('description'),
+        version_info=metadata.get('version_info'),
+        has_classes=metadata.get('has_classes'),
+        has_ops=metadata.get('has_ops'),
+        has_dps=metadata.get('has_dps'),
+        has_aps=metadata.get('has_aps'),
+        has_nis=False
+    )
+
+    return html
 
 
 def _extract_properties(g, existing_fids, namespaces):
@@ -413,6 +466,7 @@ def _make_class_html(uri, namespaces):
 
 
 def _make_collection_class_html(g, parent_uri, o, namespaces):
+    # TODO: bug, this SPARQL returns results for all Collections for a parent_uri, not only one
     '''
       rdfs:subClassOf [
       a owl:Restriction ;
@@ -749,8 +803,31 @@ def _get_default_namespace(g, ns, metadata):
             return v
 
 
+def _make_namespaces_html(namespaces):
+    template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
+    namespaces_template = Environment(loader=FileSystemLoader(template_dir)).get_template('namespaces.html')
+    namespaces_html = namespaces_template.render(
+        namespaces=namespaces,
+    )
+
+    return namespaces_html
+
+
+def _make_document_html(ontology_html, classes_html, properties_html, namespaces_html):
+    template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
+    document_template = Environment(loader=FileSystemLoader(template_dir)).get_template('document.html')
+    namespaces_html = document_template.render(
+        ontology_html=ontology_html,
+        classes_html=classes_html,
+        properties_html=properties_html,
+        namespaces_html=namespaces_html
+    )
+
+    return namespaces_html
+
+
 if __name__ == '__main__':
-    g = Graph().parse(APP_DIR + '/examples/plot.ttl', format='turtle')
+    g = Graph().parse(APP_DIR + '/examples/prof.ttl', format='turtle')
     _expand_graph_for_pylode(g)
 
     SCO = Namespace('https://schema.org')
@@ -762,23 +839,26 @@ if __name__ == '__main__':
 
     # do namespaces first so we can use then to CURIE-ise metadata
     namespaces = _extract_namespaces(g)
+    namespaces_html = _make_namespaces_html(namespaces)
 
     # imports
+    # TODO: cater for import declarations
 
-    metadata = _extract_ontology_metadata(g)
-    pprint.pprint(metadata)
-
-    default_namespace = _get_default_namespace(g, namespaces, metadata)
-    # pprint.pprint(default_namespace)
+    classes = _extract_classes(g, existing_fids, namespaces)
+    classes_html = _make_classes_html(classes)
 
     properties = _extract_properties(g, existing_fids, namespaces)
     # pprint.pprint(properties)
 
-    classes = _extract_classes(g, existing_fids, namespaces)
+    metadata = _extract_ontology_metadata(g, classes, properties)
+    # pprint.pprint(metadata)
+    metadata_html = _make_metadata_html(metadata)
 
+    default_namespace = _get_default_namespace(g, namespaces, metadata)
+    # pprint.pprint(default_namespace)
 
     with open('out.html', 'w') as f:
-        f.write(_make_classes_html(classes))
+        f.write(_make_document_html(metadata_html, classes_html, None, namespaces_html))
 
     # replace all this-ont URIs with : CURIE using this ont's URI in metadata object
 

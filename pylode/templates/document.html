@@ -1,25 +1,17 @@
 <html lang="en">
   <head>
-    <title>GSQ Borehole Profile</title>
+    <title>XXXX</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
 
-    {{- ontology|safe }}
+    {{- ontology_html|safe }}
 
-    {{ classes|safe }}
+    {{ classes_html|safe }}
 
-    {{ properties|safe }}
+    {{ properties_html|safe }}
 
-    <section id="namespaces">
-      <h2>Namespaces</h2>
-      <dl>
-      {%- for key, value in namespaces.items() %}
-        <dt>{{ key }}</dt>
-        <dd><code>{{ value }}</code></dd>
-      {%- endfor %}
-      </dl>
-    </section>
+    {{ namespaces_html|safe }}
   </body>
 </html>
