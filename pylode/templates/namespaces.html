@@ -1,6 +1,10 @@
 <section id="namespaces">
     <h2>Namespaces</h2>
     <dl>
+        {%- if default_namespace is not none %}
+        <dt><em>default</em></dt>
+        <dd><code>{{ default_namespace }}</code></dd>
+        {%- endif %}
         {%- for key, value in namespaces.items() %}
         <dt>{{ key }}</dt>
         <dd><code>{{ value }}</code></dd>

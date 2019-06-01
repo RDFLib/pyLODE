@@ -1,11 +1,10 @@
 import argparse
+import os
+from os import path
+import shutil
 import requests
 import rdflib
-import owlrl
-import collections
-from model import *
-from rdflib import Graph
-import owlrl
+from makehtml import generate_html
 
 
 # used to know what RDF file types rdflib can handle
@@ -50,7 +49,7 @@ class RdfGraphError(Exception):
     pass
 
 
-if __name__ == '__main__':
+def main():
     # read the input ontology file into a graph
     parser = argparse.ArgumentParser()
     overarching_group = parser.add_mutually_exclusive_group()
@@ -144,13 +143,6 @@ if __name__ == '__main__':
 
     # here we have a parsed graph from either a local file or a URI
 
-    try:
-        owlrl.DeductiveClosure(owlrl.RDFS_OWLRL_Semantics).expand(g)
-    except Exception as e:
-        raise RdfGraphError(
-            'Error while running OWL-RL Deductive Closure\n{}'.format(str(e.args[0]))
-        )
-
     # set up output directories and resources
     main_dir = path.dirname(path.realpath(__file__))
     publication_dir = path.join(main_dir, 'output_files')
@@ -158,8 +150,10 @@ if __name__ == '__main__':
     os.makedirs(publication_dir, exist_ok=True)
 
     # include CSS
+    msg_css = ''
     if args.css == 'true':
         shutil.copyfile(path.join(style_dir, 'pylode.css'), path.join(publication_dir, 'style.css'))
+        msg_css = ' and CSS'
 
     output_filename = os.path.basename(args.outputfile) if args.outputfile else 'doc.html'
 
@@ -167,6 +161,13 @@ if __name__ == '__main__':
         output_filename += '.html'
 
     # generate the HTML doc
-    h = HtmlDocument(g)
     with open(path.join(publication_dir, output_filename), 'w') as f:
-        f.write(h.html)
+        f.write(generate_html(g))
+        #print(g.serialize(format='turtle').decode('utf-8'))
+
+    msg = 'Finished. HTML{} file in {}/.'.format(msg_css, publication_dir)
+    print(msg)
+
+
+if __name__ == '__main__':
+    main()

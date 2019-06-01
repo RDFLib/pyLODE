@@ -1,9 +1,25 @@
+#pylode {
+    position: fixed;
+    top: 40px;
+    left: -20px;
+    font-weight: bold;
+    font-size: larger;
+    transform: rotate(-90deg);
+}
+#pylode a {
+    text-decoration: none;
+    color: #005A9C;
+}
+#pylode a:hover {
+    color: blue;
+}
+
 /*
     structure
  */
 dt {
     font-weight: bold;
-    margin-top: 10px;
+    padding: 5px 0 5px 0;
 }
 
 ul.hlist {
@@ -19,28 +35,9 @@ ul.hlist li {
     margin-right: 10px;
 }
 
-ul.hlist-simple {
-    list-style-type: none;
-}
-
-ul.hlist-simple li {
-    display: inline;
-    margin-right: 10px;
-}
-
-
-.property table th {
-    text-align: left;
-}
-
-
-section#overview img {
-    max-width: 1000px;
-}
-
 .entity {
     border: 1px solid navy;
-    margin:5px 0px 5px 0px;
+    margin:5px 0 5px 0;
     padding: 5px;
 }
 
@@ -52,6 +49,34 @@ section#overview img {
 .entity th,
 .entity td {
     padding-bottom: 20px;
+}
+
+.entity table th {
+    text-align: left;
+}
+
+.sup-c {
+    color: orange;
+}
+
+.sup-op {
+    color: navy;
+}
+
+.sup-dp {
+    color: green;
+}
+
+.sup-ap {
+    color: maroon;
+}
+
+.sup-ni {
+    color: brown;
+}
+
+section#overview img {
+    max-width: 1000px;
 }
 
 h1, h2, h3, h4, h5, h6 {

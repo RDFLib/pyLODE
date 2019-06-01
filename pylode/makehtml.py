@@ -1,7 +1,6 @@
 from rdflib import Graph, RDF, RDFS, OWL, Namespace
 from rdflib.namespace import SKOS, DC, DCTERMS, FOAF
 from rdflib.term import URIRef, Literal, BNode
-import pprint
 from os import path
 import requests
 import collections
@@ -180,6 +179,9 @@ def _make_namespaces_html(namespaces):
 
 
 def _extract_properties(g, existing_fids, namespaces):
+    SCO = Namespace('https://schema.org/')  # used for domainIncludes & rangeIncludes
+    g.bind('sco', SCO)
+
     # properties
     properties = {}
     for s in g.subjects(predicate=RDF.type, object=RDF.Property):
@@ -509,13 +511,13 @@ def _make_uri_html(uri, namespaces, type=None):
     short = _get_curie(uri, namespaces)
     html = '<a href="{}">{}</a>'.format(uri, short)
     if type == 'c':
-        return html + '<sup class="sup-c" title="class">c</sup>'
+        return html + ' <sup class="sup-c" title="class">c</sup>'
     elif type == 'op':
-        return html + '<sup class="sup-op" title="object property">op</sup>'
+        return html + ' <sup class="sup-op" title="object property">op</sup>'
     elif type == 'dp':
-        return html + '<sup class="sup-dp" title="datatype property">dp</sup>'
+        return html + ' <sup class="sup-dp" title="datatype property">dp</sup>'
     elif type == 'ap':
-        return html + '<sup class="sup-ap" title="annotation property">ap</sup>'
+        return html + ' <sup class="sup-ap" title="annotation property">ap</sup>'
     else:
         return html
 
@@ -639,7 +641,7 @@ def _make_restriction_html(g, subject, restriction_bn, namespaces):
 def _get_curie_prefix(uri, ns):
     ns_count = 0
 
-    from pylode import CURIES, EXTRA_CURIES
+    from curies import CURIES, EXTRA_CURIES
 
     # TODO: replace this with a once-per run update CURIES function
     def get_curie_online(uri):
@@ -865,28 +867,23 @@ def _make_metadata_html(metadata):
     return html
 
 
-def _make_document_html(title, metadata_html, classes_html, properties_html, namespaces_html):
+def _make_document_html(title, metadata_html, classes_html, properties_html, default_namespace, namespaces_html):
     template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
     document_template = Environment(loader=FileSystemLoader(template_dir)).get_template('document.html')
-    namespaces_html = document_template.render(
+    html = document_template.render(
         title=title,
         metadata_html=metadata_html,
         classes_html=classes_html,
         properties_html=properties_html,
+        default_namespace=default_namespace,
         namespaces_html=namespaces_html
     )
 
-    return namespaces_html
+    return html
 
 
-if __name__ == '__main__':
-    f = APP_DIR + '/examples/prof.ttl'
-
-    g = Graph().parse(f, format='turtle')
+def generate_html(g):
     _expand_graph_for_pylode(g)
-
-    SCO = Namespace('https://schema.org/')  # used for domainIncludes & rangeIncludes
-    g.bind('sco', SCO)
 
     existing_fids = {}
 
@@ -901,14 +898,26 @@ if __name__ == '__main__':
     properties_html = _make_properties_html(properties)
 
     metadata = _extract_ontology_metadata(g, classes, properties, namespaces)
+    metadata['default_namespace'] = _get_default_namespace(g, namespaces, metadata)  # TODO: use default_namespace
     metadata_html = _make_metadata_html(metadata)
 
-    default_namespace = _get_default_namespace(g, namespaces, metadata)
+    return _make_document_html(
+        metadata['title'],
+        metadata_html,
+        classes_html,
+        properties_html,
+        metadata['default_namespace'],
+        namespaces_html
+    )
 
-    # TODO: cater for profile information
+
+if __name__ == '__main__':
+    f = APP_DIR + '/examples/prof.ttl'
+
+    g = Graph().parse(f, format='turtle')
 
     with open('out.html', 'w') as f:
-        f.write(_make_document_html(metadata['title'], metadata_html, classes_html, properties_html, namespaces_html))
+        f.write(generate_html(g))
 
     # replace all this-ont URIs with : CURIE using this ont's URI in metadata object
 
