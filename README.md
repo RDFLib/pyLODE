@@ -37,8 +37,8 @@ This code is licensed using the GPL v3 licence. See the [LICENSE file](LICENSE) 
 
 
 ## Contacts
-*Author*:
-**Nicholas Car**
-*Senior Experimental Scientist*
-CSIRO Land & Water, Environmental Informatics Group
-<nicholas.car@csiro.au>
+*Author*:  
+**Nicholas Car**  
+*Senior Experimental Scientist*  
+CSIRO Land & Water, Environmental Informatics Group  
+<nicholas.car@csiro.au>  
