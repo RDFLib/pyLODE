@@ -1,35 +1,35 @@
-    <section id="objectproperties">
-      <h2>Object Properties</h2>
-      <ul class="hlist">
-      {%- for p in op_instances %}
-          <li><a href="#{{ p[1] }}">{{ p[0] }}</a></li>
-      {%- endfor %}
-      </ul>
-      {%- for p in op_instances %}
-          {{ p[2]|safe }}
-      {%- endfor %}
-    </section>
+<section id="objectproperties">
+    <h2>Object Properties</h2>
+    <ul class="hlist">
+        {%- for p in op_instances %}
+        <li><a href="#{{ p[1] }}">{{ p[0] }}</a></li>
+        {%- endfor %}
+    </ul>
+    {%- for p in op_instances %}
+    {{ p[2]|safe }}
+    {%- endfor %}
+</section>
 
-    <section id="datatypeproperties">
-      <h2>Datatype Properties</h2>
-      <ul class="hlist">
-      {%- for p in dp_instances %}
-          <li><a href="#{{ p[1] }}">{{ p[0] }}</a></li>
-      {%- endfor %}
-      </ul>
-      {%- for p in dp_instances %}
-          {{ p[2]|safe }}
-      {%- endfor %}
-    </section>
+<section id="datatypeproperties">
+    <h2>Datatype Properties</h2>
+    <ul class="hlist">
+        {%- for p in dp_instances %}
+        <li><a href="#{{ p[1] }}">{{ p[0] }}</a></li>
+        {%- endfor %}
+    </ul>
+    {%- for p in dp_instances %}
+    {{ p[2]|safe }}
+    {%- endfor %}
+</section>
 
-    <section id="annotationproperties">
-      <h2>Annotation Properties</h2>
-      <ul class="hlist">
-      {%- for p in ap_instances %}
-          <li><a href="#{{ p[1] }}">{{ p[0] }}</a></li>
-      {%- endfor %}
-      </ul>
-      {%- for p in ap_instances %}
-          {{ p[2]|safe }}
-      {%- endfor %}
-    </section>
+<section id="annotationproperties">
+    <h2>Annotation Properties</h2>
+    <ul class="hlist">
+        {%- for p in ap_instances %}
+        <li><a href="#{{ p[1] }}">{{ p[0] }}</a></li>
+        {%- endfor %}
+    </ul>
+    {%- for p in ap_instances %}
+    {{ p[2]|safe }}
+    {%- endfor %}
+</section>

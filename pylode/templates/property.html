@@ -1,6 +1,5 @@
-
-    <div class="entity property" id="{{ fid }}">
-      <h3>{{ title }}
+<div class="entity property" id="{{ fid }}">
+    <h3>{{ title }}
         {%- if property_type == 'http://www.w3.org/2002/07/owl#ObjectProperty' -%}
         <sup title="object property" class="type-op">op</sup>
         {%- elif property_type == 'http://www.w3.org/2002/07/owl#DatatypeProperty' -%}
@@ -8,71 +7,73 @@
         {%- else -%}
         <sup title="annotation property" class="type-ap">ap</sup>
         {%- endif -%}
-      </h3>
-      <table>
+    </h3>
+    <table>
         <tr>
-          <th>IRI</th>
-          <td><code>{{ uri }}</code></td>
+            <th>IRI</th>
+            <td><code>{{ uri }}</code></td>
         </tr>
         <tr>
-        {%- if description is not none %}
-          <th>Description</th>
-          <td>
-            {{ description }}
-          </td>
-        </tr>
-        {%- endif %}
-        {%- if usageNote is not none %}
-        <tr>
-          <th>Usage Note</th>
-          <td>
-            {{ usageNote }}
-          </td>
+            {%- if description is not none %}
+            <th>Description</th>
+            <td>
+                {{ description }}
+            </td>
         </tr>
         {%- endif %}
-        {%- if super_properties|length > 0 %}
+        {%- if scopeNote is not none %}
         <tr>
-          <th>Super-properties</th>
-          <td>
-            {%- for super in supers %}
-            {{ super }}
-            {%- endfor %}
-          </td>
+            <th>Usage Note</th>
+            <td>
+                {{ scopeNote }}
+            </td>
+        </tr>
+        {%- endif %}
+        {%- if supers|length > 0 %}
+        <tr>
+            <th>Super-properties</th>
+            <td>
+                {%- for super in supers %}
+                {{ super }}
+                {%- endfor %}
+            </td>
         </tr>
         {%- endif %}
         {%- if domains|length > 0 or domainIncludes|length > 0 %}
         <tr>
-          <th>Domain(s)</th>
-          <td>
-          {%- if domains|length > 0 %}
-          {%- for domain in domains %}
-            <a href="{{ domain['uri'] }}">{{ domain['name'] }}</a><sup title="class" class="type-c">c</sup>
-          {%- endfor %}
-          {%- endif %}
-          {%- if domainIncludes|length > 0 %}
-          {%- for domainInclude in domainIncludes %}
-            (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>) <a href="{{ domainInclude['uri'] }}">{{ domainInclude['name'] }}</a><sup title="class" class="type-c">c</sup>
-          {%- endfor %}
-          {%- endif %}
-          </td>
+            <th>Domain(s)</th>
+            <td>
+                {%- if domains|length > 0 %}
+                {%- for domain in domains %}
+                {{ domain }}
+                {%- endfor %}
+                {%- endif %}
+                {%- if domainIncludes|length > 0 %}
+                (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                {%- for domainInclude in domainIncludes %}
+                {{ domainInclude }}
+                {%- endfor %}
+                {%- endif %}
+            </td>
         </tr>
         {%- endif %}
         {%- if ranges|length > 0 or rangeIncludes|length > 0 %}
         <tr>
-          <th>Range(s)</th>
-          <td>
-          {%- if ranges|length > 0 %}
-          {%- for range in ranges %}
-            <a href="{{ range['uri'] }}">{{ range['name'] }}</a><sup title="class" class="type-c">c</sup>
-          {%- endfor %}
-          {%- endif %}
-          {%- if rangeIncludes|length > 0 %}
-          {%- for rangeInclude in rangeIncludes %}
-            (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>) <a href="{{ rangeInclude['uri'] }}">{{ rangeInclude['name'] }}</a><sup title="class" class="type-c">c</sup>
-          {%- endfor %}
-          {%- endif %}
-          </td>
+            <th>Range(s)</th>
+            <td>
+                {%- if ranges|length > 0 %}
+                {%- for range in ranges %}
+                {{ range }}
+                {%- endfor %}
+                {%- endif %}
+                {%- if rangeIncludes|length > 0 %}
+                (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                {%- for rangeInclude in rangeIncludes %}
+                {{ rangeInclude }}
+                {%- endfor %}
+                {%- endif %}
+            </td>
         </tr>
         {%- endif %}
-      </table>
-    </div>
+    </table>
+</div>
