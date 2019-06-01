@@ -742,9 +742,9 @@ def _extract_ontology_metadata(g, classes, properties, namespaces):
             metadata['has_aps'] = True
 
     s_str = None
-    metadata['imports'] = []
-    metadata['creators'] = []
-    metadata['contributors'] = []
+    metadata['imports'] = set()
+    metadata['creators'] = set()
+    metadata['contributors'] = set()
     metadata['publishers'] = set()
     for s in g.subjects(predicate=RDF.type, object=OWL.Ontology):
         s_str = str(s)  # this is the Ontology's URI
@@ -752,7 +752,7 @@ def _extract_ontology_metadata(g, classes, properties, namespaces):
 
         for p, o in g.predicate_objects(subject=s):
             if p == OWL.imports:
-                metadata['imports'].append(_make_uri_html(o, namespaces))
+                metadata['imports'].add(_make_uri_html(o, namespaces))
 
             if p == RDFS.label:
                 metadata['title'] = str(o)
@@ -782,36 +782,35 @@ def _extract_ontology_metadata(g, classes, properties, namespaces):
                 metadata['preferredNamespaceUri'] = str(o)
 
             # Agents
-
             if p == DC.creator:
-                metadata['creators'].append(str(o))
+                metadata['creators'].add(str(o))
 
             if p == DCTERMS.creator:
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
-                    metadata['creators'].append(str(o))
+                    metadata['creators'].add(str(o))
                 else:  # Blank Node
-                    # we understand foaf:name & foaf:homepage  # TODO: cater for other Agent representations
+                    # we understand foaf:name, foaf:homepage & sco:name & sco:identifier (as a URI)  # TODO: cater for other Agent representations
                     for p2, o2 in g.predicate_objects(subject=o):
-                        if p2 == FOAF.homepage:
-                            homepage = p2
-                        elif p2 == FOAF.name:
-                            name = p2
-                    metadata['creators'].append('<a href="{}">{}</a>'.format(homepage, name))
+                        if p2 == FOAF.homepage or p2 == URIRef('https://schema.org/identifier'):
+                            url = str(o2)
+                        elif p2 == FOAF.name or p2 == URIRef('https://schema.org/name'):
+                            name = str(o2)
+                    metadata['creators'].add('<a href="{}">{}</a>'.format(url, name))
 
             if p == DC.contributor:
-                metadata['contributors'].append(str(o))
+                metadata['contributors'].add(str(o))
 
             if p == DCTERMS.contributor:
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
-                    metadata['contributors'].append(str(o))
+                    metadata['contributors'].add(str(o))
                 else:  # Blank Node
-                    # we understand foaf:name & foaf:homepage  # TODO: cater for other Agent representations
+                    # we understand foaf:name & foaf:homepage
                     for p2, o2 in g.predicate_objects(subject=o):
-                        if p2 == FOAF.homepage:
-                            homepage = str(o2)
-                        elif p2 == FOAF.name:
-                            name = str(o2)  # TODO: remove duplicated plain-text agent
-                    metadata['contributors'].append('<a href="{}">{}</a>'.format(homepage, name))
+                        if p2 == FOAF.homepage or p2 == URIRef('https://schema.org/identifier'):
+                            url = str(o2)
+                        elif p2 == FOAF.name or p2 == URIRef('https://schema.org/name'):
+                            name = str(o2)
+                    metadata['contributors'].add('<a href="{}">{}</a>'.format(url, name))
 
             if p == DC.publisher:
                 metadata['publishers'].add(str(o))
@@ -822,11 +821,11 @@ def _extract_ontology_metadata(g, classes, properties, namespaces):
                 else:  # Blank Node
                     # we understand foaf:name & foaf:homepage  # TODO: cater for other Agent representations
                     for p2, o2 in g.predicate_objects(subject=o):
-                        if p2 == FOAF.homepage:
-                            homepage = p2
-                        elif p2 == FOAF.name:
-                            name = p2
-                    metadata['publishers'].add('<a href="{}">{}</a>'.format(homepage, name))
+                        if p2 == FOAF.homepage or p2 == URIRef('https://schema.org/identifier'):
+                            url = str(o2)
+                        elif p2 == FOAF.name or p2 == URIRef('https://schema.org/name'):
+                            name = str(o2)
+                    metadata['publishers'].add('<a href="{}">{}</a>'.format(url, name))
 
         if metadata.get('title') is None:
             raise ValueError(
