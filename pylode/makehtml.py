@@ -853,7 +853,7 @@ def _make_metadata_html(metadata):
         contributors=metadata['contributors'],
         created=metadata.get('created'),  # TODO: auto-detect format
         modified=metadata.get('modified'),
-        issued=None,  # TODO: cater for issued
+        issued=metadata.get('issued'),
         description=metadata.get('description'),
         version_info=metadata.get('version_info'),
         has_classes=metadata.get('has_classes'),

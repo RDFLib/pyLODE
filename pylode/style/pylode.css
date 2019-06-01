@@ -1,17 +1,19 @@
 #pylode {
     position: fixed;
-    top: 40px;
-    left: -20px;
-    font-weight: bold;
-    font-size: larger;
+    top: 80px;
+    left: -60px;
+    font-size: small;
     transform: rotate(-90deg);
+    color: grey;
 }
 #pylode a {
+    font-size: 2em;
+    font-weight: bold;
     text-decoration: none;
     color: #005A9C;
 }
 #pylode a:hover {
-    color: blue;
+    color: #333;
 }
 
 .cardinality {
