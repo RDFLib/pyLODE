@@ -7,7 +7,7 @@
         <dt>Version IRI</dt>
         <dd>{{ version_uri }}</dd>
         {%- endif %}
-        {%- if publishers is not none > 0 %}
+        {%- if publishers|length > 0 %}
         <dt>Publisher(s)</dt>
         <dd>
             {%- for publisher in publishers %}
@@ -28,14 +28,6 @@
         <dd>
             {%- for contributor in contributors %}
             {{ contributor }}<br/>
-            {%- endfor %}
-        </dd>
-        {%- endif %}
-        {%- if publishers|length > 0 %}
-        <dt>Publishers(s)</dt>
-        <dd>
-            {%- for publisher in publishers %}
-            {{ publishers }}<br/>
             {%- endfor %}
         </dd>
         {%- endif %}

@@ -745,7 +745,7 @@ def _extract_ontology_metadata(g, classes, properties, namespaces):
     metadata['imports'] = []
     metadata['creators'] = []
     metadata['contributors'] = []
-    metadata['publishers'] = []
+    metadata['publishers'] = set()
     for s in g.subjects(predicate=RDF.type, object=OWL.Ontology):
         s_str = str(s)  # this is the Ontology's URI
         metadata['uri'] = s_str
@@ -775,23 +775,17 @@ def _extract_ontology_metadata(g, classes, properties, namespaces):
             if p == OWL.versionInfo:
                 metadata['versionInfo'] = str(o)
 
-            # Agents - strings
-            if p == DC.creator:
-                metadata['creators'].append(str(o))
-
-            if p == DC.contributor:
-                metadata['contributors'].append(str(o))
-
-            if p == DC.publisher:
-                metadata['publishers'].append(str(o))
-
             if p == URIRef('http://purl.org/vocab/vann/preferredNamespacePrefix'):
                 metadata['preferredNamespacePrefix'] = str(o)
 
             if p == URIRef('http://purl.org/vocab/vann/preferredNamespaceUri'):
                 metadata['preferredNamespaceUri'] = str(o)
 
-            # Agents - URIs or BNs
+            # Agents
+
+            if p == DC.creator:
+                metadata['creators'].append(str(o))
+
             if p == DCTERMS.creator:
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
                     metadata['creators'].append(str(o))
@@ -803,6 +797,9 @@ def _extract_ontology_metadata(g, classes, properties, namespaces):
                         elif p2 == FOAF.name:
                             name = p2
                     metadata['creators'].append('<a href="{}">{}</a>'.format(homepage, name))
+
+            if p == DC.contributor:
+                metadata['contributors'].append(str(o))
 
             if p == DCTERMS.contributor:
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
@@ -816,9 +813,12 @@ def _extract_ontology_metadata(g, classes, properties, namespaces):
                             name = str(o2)  # TODO: remove duplicated plain-text agent
                     metadata['contributors'].append('<a href="{}">{}</a>'.format(homepage, name))
 
+            if p == DC.publisher:
+                metadata['publishers'].add(str(o))
+
             if p == DCTERMS.publisher:
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
-                    metadata['publishers'].append.append(str(o))
+                    metadata['publishers'].add(str(o))
                 else:  # Blank Node
                     # we understand foaf:name & foaf:homepage  # TODO: cater for other Agent representations
                     for p2, o2 in g.predicate_objects(subject=o):
@@ -826,7 +826,7 @@ def _extract_ontology_metadata(g, classes, properties, namespaces):
                             homepage = p2
                         elif p2 == FOAF.name:
                             name = p2
-                    metadata['publishers'].append.append('<a href="{}">{}</a>'.format(homepage, name))
+                    metadata['publishers'].add('<a href="{}">{}</a>'.format(homepage, name))
 
         if metadata.get('title') is None:
             raise ValueError(
