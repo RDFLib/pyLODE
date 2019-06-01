@@ -1,0 +1,656 @@
+@prefix : <http://purl.org/linked-data/registry#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ssd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix version: <http://purl.org/linked-data/version#> .
+
+<http://purl.org/linked-data/registry> a owl:Ontology ;
+	dct:creator "Dave Reynolds" ;
+	dct:date "2012-11-11"^^xsd:date ;
+	dct:description <https://github.com/ukgovld/registry-core/wiki/images/registry-diagram.png> , "Core ontology for linked data registry services. Based on ISO19135 but heavily modified to suit Linked Data representations and applications."@en ;
+	dct:modified "2015-04-29"^^xsd:date ;
+	rdfs:comment "Core ontology for linked data registry services. Based on ISO19135 but heavily modified to suit Linked Data representations and applications."@en ;
+	rdfs:label "Registry ontology"@en ;
+	owl:versionInfo "0.4" .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/2002/07/owl#cardinality
+
+owl:cardinality a owl:AnnotationProperty .
+# 
+# http://www.w3.org/2002/07/owl#maxCardinality
+
+owl:maxCardinality a owl:AnnotationProperty .
+# 
+# http://www.w3.org/2002/07/owl#minCardinality
+
+owl:minCardinality a owl:AnnotationProperty .
+# 
+# http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+
+vs:term_status a owl:AnnotationProperty .
+# 
+# http://www.w3.org/2004/02/skos/core#altlabel
+
+skos:altlabel a owl:AnnotationProperty .
+# 
+# http://www.w3.org/2004/02/skos/core#prefLabel
+
+skos:prefLabel a owl:AnnotationProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/dc/terms/publisher
+
+dct:publisher a owl:ObjectProperty .
+# 
+# http://purl.org/linked-data/registry#alias
+
+:alias a owl:ObjectProperty ;
+	rdfs:range :EntityReference ;
+	rdfs:comment "An alternative URI for the entity, the alias resource is regarded by this register as owl:sameAs the definition entity"@en ;
+	rdfs:label "alias"@en ;
+	vs:term_status "experimental" .
+# 
+# http://purl.org/linked-data/registry#annotation
+
+:annotation a owl:ObjectProperty ;
+	rdfs:comment "The URI of a graph of annotation statements associate with this item"@en ;
+	rdfs:label "annotation"@en .
+# 
+# http://purl.org/linked-data/registry#category
+
+:category a owl:ObjectProperty ;
+	rdfs:range skos:Concept .
+
+skos:Concept a owl:Class .
+
+:category rdfs:comment "Optional classification for a registered item within one or more SKOS classification schemes to support navigation and discovery. Orthogonal to the structure provided by the register hierarchy which is about governance."@en ;
+	rdfs:label "category"@en .
+# 
+# http://purl.org/linked-data/registry#containedItemClass
+
+:containedItemClass a owl:ObjectProperty ;
+	rdfs:range owl:Class .
+
+owl:Class a owl:Class .
+
+:containedItemClass rdfs:comment "A class of entities that can occur in this register"@en ;
+	rdfs:label "contained item class"@en .
+# 
+# http://purl.org/linked-data/registry#definition
+
+:definition a owl:ObjectProperty ;
+	rdfs:range :EntityReference ;
+	rdfs:comment "The entity which has been registered."@en ;
+	rdfs:label "definition"@en .
+# 
+# http://purl.org/linked-data/registry#delegationTarget
+
+:delegationTarget a owl:ObjectProperty ;
+	rdfs:domain :Delegated ;
+	rdfs:range rdfs:Resource .
+
+rdfs:Resource a owl:Class .
+
+:delegationTarget rdfs:comment "A resource to which the delegated register delegates, may be a register in another registry service, a SPARQL endpoint or some other web resource"@en ;
+	rdfs:label "delegation target"@en .
+# 
+# http://purl.org/linked-data/registry#entity
+
+:entity a owl:ObjectProperty ;
+	rdfs:domain :EntityReference ;
+	rdfs:range rdfs:Resource ;
+	rdfs:comment "The RDF resource identified by an entity reference"@en ;
+	rdfs:label "entity"@en .
+# 
+# http://purl.org/linked-data/registry#entityVersion
+
+:entityVersion a owl:ObjectProperty ;
+	rdfs:domain :EntityReference ;
+	rdfs:range rdfs:Resource ;
+	rdfs:comment "Indicates the particular version:Version of the entity being referenced."@en ;
+	rdfs:label "entity version"@en .
+# 
+# http://purl.org/linked-data/registry#enumerationObject
+
+:enumerationObject a owl:ObjectProperty ;
+	rdfs:range rdfs:Resource ;
+	rdfs:comment "Specifies the object part of a triple pattern used to enumerate the members of a delegated register"@en ;
+	rdfs:label "enumeration object"@en .
+# 
+# http://purl.org/linked-data/registry#enumerationPredicate
+
+:enumerationPredicate a owl:ObjectProperty ;
+	rdfs:range rdfs:Resource ;
+	rdfs:comment "Specifies the predicate part of a triple pattern used to enumerate the members of a delegated register"@en ;
+	rdfs:label "enumeration predicate"@en .
+# 
+# http://purl.org/linked-data/registry#enumerationSubject
+
+:enumerationSubject a owl:ObjectProperty ;
+	rdfs:range rdfs:Resource ;
+	rdfs:comment "Specifies the subject part of a triple pattern used to enumerate the members of a delegated register"@en ;
+	rdfs:label "enumeration subject"@en .
+# 
+# http://purl.org/linked-data/registry#governancePolicy
+
+:governancePolicy a owl:ObjectProperty ;
+	rdfs:range rdfs:Resource ;
+	rdfs:comment "A resource, such as a web accessible-document, which describes the governance policy applicable to this register."@en ;
+	rdfs:label "governance policy"@en .
+# 
+# http://purl.org/linked-data/registry#inverseMembershipPredicate
+
+:inverseMembershipPredicate a owl:ObjectProperty ;
+	rdfs:domain ldp:Container .
+
+ldp:Container a owl:Class .
+
+:inverseMembershipPredicate rdfs:range rdf:Property .
+
+rdf:Property a owl:Class .
+
+:inverseMembershipPredicate rdfs:comment "Indicates a property which links a member of a collection back to the collection itself, this is the reverse direction to the normal ldp:membershipPredicate"@en ;
+	rdfs:label "inverse membership predicate"@en .
+# 
+# http://purl.org/linked-data/registry#itemClass
+
+:itemClass a owl:ObjectProperty ;
+	rdfs:range rdfs:Class .
+
+rdfs:Class a owl:Class .
+
+:itemClass rdfs:comment "The type of the entity that this record is about. Note that it may be possible to register a non-RDF resource in which case this property provides a way to state the intended class of the entity even though no direct RDF assertion of type is available."@en ;
+	rdfs:label "item class"@en .
+# 
+# http://purl.org/linked-data/registry#manager
+
+:manager a owl:ObjectProperty ;
+	rdfs:range foaf:Agent .
+
+foaf:Agent a owl:Class .
+
+:manager rdfs:comment "The manager of the register, may be a person (foaf:Person) or an organization (org:Organization). Operates the register on behalf of the owner, makes day to day decisions on acceptance of entries based on agreed principles but it may be possible to appeal to the owner to override a decision by the manager."@en ;
+	rdfs:label "manager"@en .
+# 
+# http://purl.org/linked-data/registry#operatingLanguage
+
+:operatingLanguage a owl:ObjectProperty ;
+	rdfs:range rdfs:Resource ;
+	rdfs:comment "Indicates a language supported by the register and the items within it. The language should be indicated by a resource within a well-maintained URI set such as the Library of Congress language URIs e.g. http://id.loc.gov/vocabulary/iso639-1/en"@en ;
+	rdfs:label "operating language"@en .
+# 
+# http://purl.org/linked-data/registry#owner
+
+:owner a owl:ObjectProperty ;
+	rdfs:subPropertyOf dct:publisher ;
+	rdfs:range foaf:Agent ;
+	rdfs:comment "The owner of the register, may be a person (foaf:Person) or an organization (org:Organization). The owner has final authority over the contents of the regster."@en ;
+	rdfs:label "owner"@en .
+# 
+# http://purl.org/linked-data/registry#predecessor
+
+:predecessor a owl:ObjectProperty ;
+	owl:inverseOf :successor ;
+	rdfs:comment "An item which has been replaced this one within the register. Should be asserted between hub resources (VersionedThing)."@en ;
+	rdfs:label "predecessor"@en .
+# 
+# http://purl.org/linked-data/registry#register
+
+:register a owl:ObjectProperty ;
+	rdfs:comment "The register in which this item has been registered."@en ;
+	rdfs:label "register"@en .
+# 
+# http://purl.org/linked-data/registry#release
+
+:release a owl:ObjectProperty .
+# 
+# http://purl.org/linked-data/registry#representationOf
+
+:representationOf a owl:ObjectProperty ;
+	rdfs:comment "A resource, typically a real-world object, which the registered entity is a representation for."@en ;
+	rdfs:label "representation of"@en ;
+	vs:term_status "experimental" .
+# 
+# http://purl.org/linked-data/registry#sourceDataset
+
+:sourceDataset a owl:ObjectProperty ;
+	rdfs:domain void:Linkset .
+
+void:Linkset a owl:Class .
+
+:sourceDataset rdfs:range void:Dataset .
+
+void:Dataset a owl:Class .
+
+:sourceDataset rdfs:comment "Gives the source dataset in a Linkset, the other link target is assumed to be the destination"@en ;
+	rdfs:label "source dataset"@en .
+# 
+# http://purl.org/linked-data/registry#sourceGraph
+
+:sourceGraph a owl:ObjectProperty ;
+	rdfs:domain :EntityReference ;
+	rdfs:range ssd:Graph .
+
+ssd:Graph a owl:Class .
+
+:sourceGraph rdfs:comment "A resource representing an RDF graph (within the Registry's SPARQL dataset) containing the properties of the reference entity. If not present then assume default graph."@en ;
+	rdfs:label "source graph"@en .
+# 
+# http://purl.org/linked-data/registry#status
+
+:status a owl:ObjectProperty ;
+	rdfs:range :Status ;
+	rdfs:comment "The status of this register entry"@en ;
+	rdfs:label "status"@en .
+# 
+# http://purl.org/linked-data/registry#submitter
+
+:submitter a owl:ObjectProperty ;
+	rdfs:subPropertyOf dct:publisher ;
+	rdfs:range foaf:Agent ;
+	rdfs:comment "The person or organization who originally submitted this register entry. Subsequent chages to the entry may have been made by other agents."@en ;
+	rdfs:label "submitter"@en .
+# 
+# http://purl.org/linked-data/registry#subregister
+
+:subregister a owl:ObjectProperty ;
+	rdfs:comment "Indicates a register that is itself an entry in this principle register."@en ;
+	rdfs:label "subregister"@en .
+# 
+# http://purl.org/linked-data/registry#successor
+
+:successor a owl:ObjectProperty ;
+	rdfs:comment "Indicates the replacement for a superseded item."@en ;
+	rdfs:label "successor"@en .
+# 
+# http://purl.org/linked-data/registry#validationQuery
+
+:validationQuery a owl:ObjectProperty ;
+	rdfs:range :SPARQLAskQuery ;
+	rdfs:comment "A SPARQL ASK query which can be used to validate a proposed entry in this register. Returns true of an error is found."@en ;
+	rdfs:label "validation query"@en .
+# 
+# http://www.w3.org/2004/02/skos/core#broader
+
+skos:broader a owl:ObjectProperty .
+# 
+# http://www.w3.org/2004/02/skos/core#inScheme
+
+skos:inScheme a owl:ObjectProperty .
+# 
+# http://www.w3.org/2004/02/skos/core#topConceptOf
+
+skos:topConceptOf a owl:ObjectProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/linked-data/registry#forwardingCode
+
+:forwardingCode a owl:DatatypeProperty ;
+	rdfs:domain :NamespaceForward ;
+	rdfs:range xsd:int ;
+	rdfs:comment "The HTTP status code to return the requester in order to forward the request."@en ;
+	rdfs:label "forwarding code"@en .
+# 
+# http://purl.org/linked-data/registry#nextState
+
+:nextState a owl:DatatypeProperty ;
+	rdfs:domain :Status ;
+	rdfs:range xsd:string ;
+	rdfs:comment "Gives the label of a state which can follow from this state"@en ;
+	rdfs:label "next state"@en .
+# 
+# http://purl.org/linked-data/registry#notation
+
+:notation a owl:DatatypeProperty ;
+	rdfs:range xsd:string ;
+	rdfs:comment "A short text string which can be used to denote the register item. Must be unique within the register. If available it should be used as the path segment, relative to the parent register, for the RegisterItem (and for the item itself, if managed). Restricted to be a syntactically legal URI segment (i.e. *pchar)."@en ;
+	rdfs:label "notation"@en .
+# 
+# http://purl.org/linked-data/registry#presentation
+
+:presentation a owl:DatatypeProperty ;
+	rdfs:domain :Status ;
+	rdfs:range xsd:string ;
+	rdfs:comment "Presentational hint for showing items with this status"@en ;
+	rdfs:label "presentation"@en .
+# 
+# http://purl.org/linked-data/registry#priorState
+
+:priorState a owl:DatatypeProperty ;
+	rdfs:domain :Status ;
+	rdfs:range xsd:string ;
+	rdfs:comment "Gives the label of a state which can precede this state"@en ;
+	rdfs:label "next state"@en .
+# 
+# http://purl.org/linked-data/registry#query
+
+:query a owl:DatatypeProperty ;
+	rdfs:range xsd:string ;
+	rdfs:comment "The source of a SPARQL query"@en ;
+	rdfs:label "query"@en .
+# 
+# http://purl.org/linked-data/registry#release
+
+:release a owl:DatatypeProperty ;
+	rdfs:range prov:Collection .
+
+prov:Collection a rdfs:Datatype .
+# 
+# http://purl.org/linked-data/registry#tag
+
+:tag a owl:DatatypeProperty ;
+	rdfs:domain prov:Collection .
+
+prov:Collection a owl:Class .
+
+:tag rdfs:range xsd:string ;
+	rdfs:comment "The tag used to label a collection which snapshots the state of a register"@en ;
+	rdfs:label "tag"@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/linked-data/registry#Delegated
+
+:Delegated a owl:Class ;
+	rdfs:subClassOf _:genid1 .
+
+_:genid1 a owl:Restriction ;
+	owl:onProperty :delegationTarget ;
+	owl:cardinality "1"^^xsd:nonNegativeInteger .
+
+:Delegated rdfs:comment "A registerable entity which represents some form of delegation"@en ;
+	rdfs:label "Delegated"@en .
+# 
+# http://purl.org/linked-data/registry#EntityReference
+
+:EntityReference a owl:Class ;
+	rdfs:subClassOf _:genid2 .
+
+_:genid2 a owl:Restriction ;
+	owl:onProperty :entity ;
+	owl:cardinality "1"^^xsd:nonNegativeInteger .
+
+:EntityReference rdfs:subClassOf _:genid3 .
+
+_:genid3 a owl:Restriction ;
+	owl:onProperty :entityVersion ;
+	owl:maxCardinality "1"^^xsd:nonNegativeInteger .
+
+:EntityReference rdfs:subClassOf _:genid4 .
+
+_:genid4 a owl:Restriction ;
+	owl:onProperty :sourceGraph ;
+	owl:maxCardinality "1"^^xsd:nonNegativeInteger .
+
+:EntityReference rdfs:comment "A reference to some internal or external Linked Data resource. The reg:reference gives the URI of the resource being referenced. If a reg:sourceGraph value is present then it is the URI for a named graph within the Registry containing the properties of the referenced entity. If reg:entityVersion is present it gives URI for the particular version:Version of the entity being referenced. Normally only one of reg:sourceGraph and reg:entityVersion is needed since versioned entities are normally stored in the default graph."@en ;
+	rdfs:label "Entity Reference"@en .
+# 
+# http://purl.org/linked-data/registry#NamespaceForward
+
+:NamespaceForward a owl:Class ;
+	rdfs:subClassOf :Delegated , _:genid5 .
+
+_:genid5 a owl:Restriction ;
+	owl:onProperty :forwardingCode ;
+	owl:maxCardinality "1"^^xsd:nonNegativeInteger .
+
+:NamespaceForward rdfs:comment "A registerable entity which simply forwards all requests to the delegation target."@en ;
+	rdfs:label "Namespace Forward"@en .
+# 
+# http://purl.org/linked-data/registry#SPARQLAskQuery
+
+:SPARQLAskQuery a owl:Class ;
+	rdfs:comment "Represents a SPARQL ASK query as might be used for validation."@en ;
+	rdfs:label "SPARQL ASK query"@en .
+# 
+# http://purl.org/linked-data/registry#SPARQLConstructQuery
+
+:SPARQLConstructQuery a owl:Class ;
+	rdfs:comment "Represents a SPARQL CONSTRUCT query."@en ;
+	rdfs:label "SPARQL CONSTRUCT query"@en .
+# 
+# http://purl.org/linked-data/registry#SPARQLQuery
+
+:SPARQLQuery a owl:Class ;
+	rdfs:subClassOf _:genid6 .
+
+_:genid6 a owl:Restriction ;
+	owl:onProperty :query ;
+	owl:cardinality "1"^^xsd:nonNegativeInteger .
+
+:SPARQLQuery rdfs:comment "Represents a SPARQL query as a reusable resource."@en ;
+	rdfs:label "SPARQL query"@en .
+# 
+# http://purl.org/linked-data/registry#SPARQLSelectQuery
+
+:SPARQLSelectQuery a owl:Class ;
+	rdfs:comment "Represents a SPARQL SELECT query."@en ;
+	rdfs:label "SPARQL SELECT query"@en .
+# 
+# http://purl.org/linked-data/registry#Status
+
+:Status a owl:Class ;
+	rdfs:subClassOf skos:Concept ;
+	rdfs:comment "Open set of status code for entries in a register"@en ;
+	rdfs:label "Status"@en .
+# 
+# http://rdfs.org/ns/void#Dataset
+# 
+# http://rdfs.org/ns/void#Linkset
+# 
+# http://www.w3.org/1999/02/22-rdf-syntax-ns#Property
+# 
+# http://www.w3.org/2000/01/rdf-schema#Class
+# 
+# http://www.w3.org/2000/01/rdf-schema#Resource
+# 
+# http://www.w3.org/2002/07/owl#Class
+# 
+# http://www.w3.org/2004/02/skos/core#Concept
+# 
+# http://www.w3.org/2004/02/skos/core#ConceptScheme
+
+skos:ConceptScheme a owl:Class .
+# 
+# http://www.w3.org/ns/ldp#Container
+# 
+# http://www.w3.org/ns/sparql-service-description#Graph
+# 
+# http://xmlns.com/foaf/0.1/Agent
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/linked-data/registry#StatusScheme
+
+:StatusScheme a owl:NamedIndividual , skos:ConceptScheme ;
+	rdfs:comment "Concept scheme containing registry status codes"@en ;
+	rdfs:label "Status Scheme"@en .
+# 
+# http://purl.org/linked-data/registry#statusAccepted
+
+:statusAccepted a owl:NamedIndividual , :Status , skos:Concept ;
+	skos:topConceptOf :StatusScheme ;
+	rdfs:comment "An entry that has been accepted for use and is visible in the default register listing. Includes entries that have seen been retired or superseded."@en ;
+	skos:prefLabel "accepted"@en .
+# 
+# http://purl.org/linked-data/registry#statusDeprecated
+
+:statusDeprecated a owl:NamedIndividual , :Status , skos:Concept ;
+	skos:broader :statusAccepted ;
+	skos:inScheme :StatusScheme ;
+	rdfs:comment "An entry that has been retired or replaced and is no longer to be used."@en ;
+	skos:prefLabel "deprecated"@en .
+# 
+# http://purl.org/linked-data/registry#statusExperimental
+
+:statusExperimental a owl:NamedIndividual , :Status , skos:Concept ;
+	skos:broader :statusValid .
+
+:statusValid a owl:NamedIndividual .
+
+:statusExperimental skos:inScheme :StatusScheme ;
+	rdfs:comment "An entry that has been accepted into the register temporarily and may be subject to change or withdrawal."@en ;
+	skos:altlabel "provisional"@en ;
+	skos:prefLabel "experimental"@en .
+# 
+# http://purl.org/linked-data/registry#statusInvalid
+
+:statusInvalid a owl:NamedIndividual , :Status , skos:Concept ;
+	skos:broader :statusNotAccepted .
+
+:statusNotAccepted a owl:NamedIndividual .
+
+:statusInvalid skos:inScheme :StatusScheme ;
+	rdfs:comment "An entry which has been invalidated due to serious flaws, distinct from retrirement. Corresponds to ISO 19135(redraft) 'invalid'"@en ;
+	skos:prefLabel "invalid"@en .
+# 
+# http://purl.org/linked-data/registry#statusNotAccepted
+
+:statusNotAccepted a :Status , skos:Concept ;
+	skos:topConceptOf :StatusScheme ;
+	rdfs:comment "An entry that should not be visible in the default register listing. Corresponds to ISO 19135:2005 'notValid'"@en ;
+	skos:prefLabel "notAccepted"@en .
+# 
+# http://purl.org/linked-data/registry#statusReserved
+
+:statusReserved a owl:NamedIndividual , :Status , skos:Concept ;
+	skos:broader :statusNotAccepted ;
+	skos:inScheme :StatusScheme ;
+	rdfs:comment "A reserved entry allocated for some as yet undetermined future use."@en ;
+	skos:prefLabel "reserved"@en .
+# 
+# http://purl.org/linked-data/registry#statusRetired
+
+:statusRetired a owl:NamedIndividual , :Status , skos:Concept ;
+	skos:broader :statusDeprecated ;
+	skos:inScheme :StatusScheme ;
+	rdfs:comment "An entry that has been withdrawn from use.  Corresponds to ISO 19135:2005 'retired'"@en ;
+	skos:altlabel "withdrawn"@en ;
+	skos:prefLabel "retired"@en .
+# 
+# http://purl.org/linked-data/registry#statusStable
+
+:statusStable a owl:NamedIndividual , :Status , skos:Concept ;
+	skos:broader :statusValid ;
+	skos:inScheme :StatusScheme ;
+	rdfs:comment "An entry that is seen as having a reasonable measure of stability, may be used to mark the full adoption of a previously 'experimental' entry."@en ;
+	skos:prefLabel "stable"@en .
+# 
+# http://purl.org/linked-data/registry#statusSubmitted
+
+:statusSubmitted a owl:NamedIndividual , :Status , skos:Concept ;
+	skos:broader :statusNotAccepted ;
+	skos:inScheme :StatusScheme ;
+	rdfs:comment "A proposed entry which is not yet approved for use for use. Corresponds to ISO 19135:(redraft) 'submitted'"@en ;
+	skos:prefLabel "submitted"@en .
+# 
+# http://purl.org/linked-data/registry#statusSuperseded
+
+:statusSuperseded a owl:NamedIndividual , :Status , skos:Concept ;
+	skos:broader :statusDeprecated ;
+	skos:inScheme :StatusScheme ;
+	rdfs:comment "An entry that has been replaced by a new alternative which should be used instead.  Corresponds to ISO 19135:2005 'superseded'."@en ;
+	skos:altlabel "replaced"@en ;
+	skos:prefLabel "superseded"@en .
+# 
+# http://purl.org/linked-data/registry#statusValid
+
+:statusValid a :Status , skos:Concept ;
+	skos:broader :statusAccepted ;
+	skos:inScheme :StatusScheme ;
+	rdfs:comment "An entry that has been accepted into the register and is deemed fit for use. Corresponds to ISO 19135:2005 'valid'."@en ;
+	skos:prefLabel "valid"@en .
+# 
+
+_:genid7 owl:minCardinality "0"^^xsd:integer .
+
+_:genid8 owl:minCardinality "0"^^xsd:integer .
+
+_:genid9 owl:minCardinality "0"^^xsd:integer .
+
+_:genid10 owl:maxCardinality "1"^^xsd:integer .
+
+_:genid11 owl:maxCardinality "1"^^xsd:integer .
+
+_:genid12 owl:minCardinality "0"^^xsd:integer .
+
+_:genid13 owl:maxCardinality "1"^^xsd:integer .
+
+_:genid14 owl:minCardinality "0"^^xsd:integer .
+
+_:genid15 owl:cardinality "1"^^xsd:integer .
+
+_:genid16 owl:minCardinality "0"^^xsd:integer .
+
+_:genid17 owl:minCardinality "1"^^xsd:integer .
+
+_:genid18 owl:maxCardinality "1"^^xsd:integer .
+
+_:genid19 owl:minCardinality "0"^^xsd:integer .
+
+_:genid20 owl:minCardinality "1"^^xsd:integer .
+
+_:genid21 owl:minCardinality "1"^^xsd:integer .
+# 
+# 
+# #################################################################
+# #
+# #    Annotations
+# #
+# #################################################################
+# 
+# 
+
+:release rdfs:label "release"@en ;
+	rdfs:comment "A tagged snapshot of a register"@en .
+# 
+# Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi
