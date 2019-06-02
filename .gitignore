@@ -109,5 +109,8 @@ venv.bak/
 # Jetbrains tools
 .idea/
 
+# Mac
+.DS_Store
+
 # temp dirs
 output_files/
