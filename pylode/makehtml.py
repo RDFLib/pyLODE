@@ -214,7 +214,7 @@ def _extract_properties(g, existing_fids, namespaces):
             if p == RDFS.isDefinedBy:
                 properties[s_str]['isDefinedBy'] = str(o)
 
-        # patch title from URI if we haven;t got one
+        # patch title from URI if we haven't got one
         if properties[s_str]['title'] is None:
             properties[s_str]['title'] = _make_title_from_uri(s_str)
 
@@ -257,8 +257,13 @@ def _extract_properties(g, existing_fids, namespaces):
                 collection_type = None
                 collection_members = []
                 for r in g.query(q):
-                    collection_type = _get_curie(str(r.col_type), namespaces)
-                    collection_members.append(_get_curie(str(r.col_member), namespaces))
+                    if r.col_type == OWL.unionOf:
+                        sep = ' <em>or</em> '
+                    else:
+                        sep = ' <em>and</em> '
+                    collection_members.append('<a href="{}">{}</a>'.format(str(r.col_member), _get_curie(str(r.col_member), namespaces)))
+
+                # format collection as string
                 domains.append((collection_type, collection_members))
 
         properties[s_str]['domains'] = domains
@@ -285,8 +290,13 @@ def _extract_properties(g, existing_fids, namespaces):
                 collection_type = None
                 collection_members = []
                 for r in g.query(q):
-                    collection_type = _get_curie(str(r.col_type), namespaces)
-                    collection_members.append(_get_curie(str(r.col_member), namespaces))
+                    if r.col_type == OWL.unionOf:
+                        sep = ' <em>or</em> '
+                    else:
+                        sep = ' <em>and</em> '
+                    collection_members.append('<a href="{}">{}</a>'.format(str(r.col_member), _get_curie(str(r.col_member), namespaces)))
+
+                # format collection as string
                 domainIncludes.append((collection_type, collection_members))
 
         properties[s_str]['domainIncludes'] = domainIncludes
@@ -310,12 +320,16 @@ def _extract_properties(g, existing_fids, namespaces):
                         ?collection rdf:rest*/rdf:first ?col_member .              
                     }} 
                 '''.format(s)
-                collection_type = None
                 collection_members = []
                 for r in g.query(q):
-                    collection_type = _get_curie(str(r.col_type), namespaces)
-                    collection_members.append(_get_curie(str(r.col_member), namespaces))
-                ranges.append((collection_type, collection_members))
+                    if r.col_type == OWL.unionOf:
+                        sep = ' <em>or</em> '
+                    else:
+                        sep = ' <em>and</em> '
+                    collection_members.append('<a href="{}">{}</a>'.format(str(r.col_member), _get_curie(str(r.col_member), namespaces)))
+
+                # format collection as string
+                ranges.append('({})'.format(sep.join(collection_members)))
 
         properties[s_str]['ranges'] = ranges
 
@@ -341,15 +355,26 @@ def _extract_properties(g, existing_fids, namespaces):
                 collection_type = None
                 collection_members = []
                 for r in g.query(q):
-                    collection_type = _get_curie(str(r.col_type), namespaces)
-                    collection_members.append(_get_curie(str(r.col_member), namespaces))
+                    if r.col_type == OWL.unionOf:
+                        sep = ' <em>or</em> '
+                    else:
+                        sep = ' <em>and</em> '
+                    collection_members.append('<a href="{}">{}</a>'.format(str(r.col_member), _get_curie(str(r.col_member), namespaces)))
+
+                # format collection as string
                 rangeIncludes.append((collection_type, collection_members))
 
         properties[s_str]['rangeIncludes'] = rangeIncludes
 
         # TODO: cater for sub property chains
 
-    return properties
+    # sort properties by title
+    x = sorted([(k, v) for k, v in properties.items()], key=lambda tup: tup[1]['title'])
+    y = collections.OrderedDict()
+    for n in x:
+        y[n[0]] = n[1]
+
+    return y
 
 
 def _make_property_html(property):
@@ -366,7 +391,7 @@ def _make_property_html(property):
         subs=property[1].get('subs'),
         domains=property[1]['domains'],
         domainIncludes=property[1]['domainIncludes'],
-        range=property[1]['ranges'],
+        ranges=property[1]['ranges'],
         rangeIncludes=property[1]['rangeIncludes'],
     )
 
@@ -504,7 +529,13 @@ def _extract_classes(g, existing_fids, namespaces):
 
             # TODO: cater for Named Individuals of this class - "has members"
 
-    return classes
+    # sort properties by title
+    x = sorted([(k, v) for k, v in classes.items()], key=lambda tup: tup[1]['title'])
+    y = collections.OrderedDict()
+    for n in x:
+        y[n[0]] = n[1]
+
+    return y
 
 
 def _make_uri_html(uri, namespaces, type=None):
@@ -847,7 +878,7 @@ def _make_metadata_html(metadata):
         imports=metadata['imports'],
         title=metadata.get('title'),
         uri=metadata.get('uri'),
-        version_uri=metadata.get('version_uri'),
+        version_uri=metadata.get('versionIRI'),
         publishers=metadata['publishers'],
         creators=metadata['creators'],
         contributors=metadata['contributors'],
@@ -855,7 +886,7 @@ def _make_metadata_html(metadata):
         modified=metadata.get('modified'),
         issued=metadata.get('issued'),
         description=metadata.get('description'),
-        version_info=metadata.get('version_info'),
+        version_info=metadata.get('versionInfo'),
         has_classes=metadata.get('has_classes'),
         has_ops=metadata.get('has_ops'),
         has_dps=metadata.get('has_dps'),

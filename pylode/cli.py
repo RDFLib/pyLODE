@@ -155,7 +155,7 @@ def main():
         shutil.copyfile(path.join(style_dir, 'pylode.css'), path.join(publication_dir, 'style.css'))
         msg_css = ' and CSS'
 
-    output_filename = os.path.basename(args.outputfile) if args.outputfile else 'doc.html'
+    output_filename = os.path.basename(args.outputfile) if args.outputfile else 'placenames.html'
 
     if not output_filename.endswith('.html'):
         output_filename += '.html'

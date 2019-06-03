@@ -12,7 +12,18 @@ This tool is a complete re-implementation of LODE's functionality using Python a
 * use of more modern & simpler HTML
 * catering for a wider range of ontology options such as:
     * schema.org `domainIncludes` & `rangeIncludes` for properties
+* better Agent linking
     * `foaf:Agent` or `schema:Person` objects for creators, contributors & publishers
+    * you can still use simple string peoperties like `dc:contributor "Nicholas J. Car"` too if you really must!
+
+```
+<ontology_x>
+    dct:creator [
+        sdo:name "Nicholas J. Car" ;
+        sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+    ] ;
+```
+
 * smarter CURIES - pyLODE looks up well-known prefixes to make more/better CURIES
 * **active development**
     * this software is in use and will be improved for the foreseeable future so we will cater fro more and more things
@@ -38,7 +49,7 @@ For the command line running of pyLODE, these are the command line argument opti
   * A name you wish to assign to the output file. Will be postfixed with .html. If not specified, the name of the input file or last segment of RDF URI will be used, + .html.
 
 #### Example call
-This call to the BASH script in [pylode/bin/](pylode/bin/) will create an HTML document for an ontology called `doc.html` and save it with a basic CSS file into [pylode/output_files/](pylode/output_files/):
+This call to the BASH script in [pylode/bin/](pylode/bin/) will create an HTML document for an ontology called `placenames.html` and save it with a basic CSS file into [pylode/output_files/](pylode/output_files/):
 
 ```
 $ ./pylode -i ../example/prof.ttl --css true
@@ -112,9 +123,10 @@ pyLODE has been tested with all of the ontologies in [pylode/examples/](pylode/e
 
 Ontologies online using pyLODE:
 
+* Boreholes Profile - <http://linked.data.gov.au/def/borehole>
 * Place Names Profile - <http://linked.data.gov.au/def/placenames>
 
-
+See pairs of RDF & HTML files in the [pylode/examples/](pylode/examples/) directory for preprocessed examples.
 
 
 ## Contacts

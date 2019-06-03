@@ -1,13 +1,14 @@
 @prefix : <http://linked.data.gov.au/def/borehole/> .
-@prefix asgs: <http://linked.data.gov.au/def/asgs#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix gsq: <http://linked.data.gov.au/def/gsq> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sdo: <https://schema.org/> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix asgs: <http://linked.data.gov.au/def/asgs#> .
 @prefix geox: <http://linked.data.gov.au/def/geox/> .
 @prefix loci: <http://linked.data.gov.au/def/loci/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -18,31 +19,21 @@
 @base <http://linked.data.gov.au/def/borehole> .
 
 <http://linked.data.gov.au/def/borehole> rdf:type owl:Ontology ;
-                                          # owl:imports <http://www.w3.org/2006/time#2016> ,
-                                          #            <http://www.w3.org/ns/sosa/> ,
-                                          #            <http://www.w3.org/ns/ssn/ext> ;
-                                          dc:creator "Nicholas J. Car" ;
-                                          dc:publisher "Geological Survey of Queensland" ;
-                                          dct:created "2019-04-30"^^xsd:date ;
-                                          dct:creator <http://orcid.org/0000-0002-8742-7730> ;
-                                          dct:modified "2019-04-30"^^xsd:date ;
-                                          dct:publisher <http://catalogue.linked.data.gov.au/org/gsq> ;
+                                          dct:modified "2019-05-02"^^xsd:date ;
+                                          dct:creator [
+                                              sdo:name "Nicholas J. Car" ;
+                                              sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+                                          ] ;
+                                          rdfs:label "GSQ Borehole Profile" ;
                                           rdfs:comment """The Geological Survey of Queensland's profile of several specifications to characterise a borehole.
 
 This profile contains alignments to specifications that it does not directly profile but is informed by, such as GeoSciML."""@en ;
-                                          rdfs:label "GSQ Borehole Profile" ;
+                                          dct:publisher [
+                                            sdo:name "Geological Survey of Queensland" ;
+                                            sdo:identifier <http://catalogue.linked.data.gov.au/org/gsq> ;
+                                          ] ;
+                                          dct:created "2019-04-30"^^xsd:date ;
                                           owl:versionInfo "See the GitHub repo https://github.com/geological-survey-of-queensland/gsq-borehole-profile for versioning"@en .
-
-#################################################################
-#    Annotation properties
-#################################################################
-
-###  http://www.w3.org/2004/02/skos/core#usageNote
-skos:usageNote rdf:type owl:AnnotationProperty .
-
-
-###  https://schema.org/domainIncludes
-sdo:domainIncludes rdf:type owl:AnnotationProperty .
 
 
 #################################################################
@@ -51,20 +42,13 @@ sdo:domainIncludes rdf:type owl:AnnotationProperty .
 
 ###  http://linked.data.gov.au/def/borehole/driller
 :driller rdf:type owl:ObjectProperty ;
-         rdfs:range prov:Agent ;
          rdfs:subPropertyOf prov:wasAttributedTo ;
+         rdfs:range prov:Agent ;
          rdfs:comment "An organisation that drilled the borehole."@en ;
          rdfs:label "driller"@en ;
-         skos:usageNote "If the borehole was drilled by multiple organisations, add multiple :driller properties. Different periods of drilling, as indicated by :hadDrillingTime may have the specific driller indicated by qualifying the Agent (driller) / Activity (drilling episode), as per PROV-O's qualifiedAssociation pattern."@en ;
+         skos:scopeNote "If the borehole was drilled by multiple organisations, add multiple :driller properties. Different periods of drilling, as indicated by :hadDrillingTime may have the specific driller indicated by qualifying the Agent (driller) / Activity (drilling episode), as per PROV-O's qualifiedAssociation pattern."@en ;
          sdo:domainIncludes :Borehole .
 
-###  http://linked.data.gov.au/def/borehole/hasDiameter
-:hasDiameter rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf qudt:hasQuantity ;
-                 rdfs:range qudt:Quantity ;
-                 rdfs:comment "The average width of the borehole shaft."@en ;
-                 rdfs:label "has diameter"@en ;
-                 sdo:domainIncludes :Borehole .
 
 ###  http://linked.data.gov.au/def/borehole/hadDrillingMethod
 :hadDrillingMethod rdf:type owl:ObjectProperty ;
@@ -73,7 +57,7 @@ sdo:domainIncludes rdf:type owl:AnnotationProperty .
                    rdfs:range skos:Concept ;
                    rdfs:comment "The method of drilling used to create this borehole."@en ;
                    rdfs:label "had drilling method" ;
-                   skos:usageNote """Drilling Methods must be selected from the Borehole Drilling Methods vocabulary. If multiple methods were used, multiple :hadDrillingMethod properties should be used.
+                   skos:scopeNote """Drilling Methods must be selected from the Borehole Drilling Methods vocabulary. If multiple methods were used, multiple :hadDrillingMethod properties should be used.
 
 This method is a sub property of the Loc-I Ontology's had:GenerationMethod which is a property chain axiom for PROV's  prov:wasGeneratedBy / prov:qualifiedAssociation / prov:hadPlan which allows an Entity (the borehole) to indicate the method (a PROV Plan) that was used to instruct the Activity that generated it (here the event of drilling)."""@en .
 
@@ -84,8 +68,26 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
                  rdfs:range time:ProperInterval ;
                  rdfs:comment "The time period during which the borehole was drilled."@en ;
                  rdfs:label "had drilling time"@en ;
-                 skos:usageNote "If the borehole was drilled at multiple times, add multiple :hasDrillingTime properties."@en ;
+                 skos:scopeNote "If the borehole was drilled at multiple times, add multiple :hasDrillingTime properties."@en ;
                  sdo:domainIncludes :Borehole .
+
+
+###  http://linked.data.gov.au/def/borehole/hasCasing
+:hasCasing rdf:type owl:ObjectProperty ;
+           rdfs:domain :BoreholeInterval ;
+           rdfs:range :Casing ;
+           rdfs:comment "Casing is a cladding on the inside of the well / bore shaft"@en ;
+           rdfs:label "has casing"@en .
+
+
+###  http://linked.data.gov.au/def/borehole/hasDiameter
+:hasDiameter rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf qudt:hasQuantity ;
+             rdfs:range qudt:Quantity ;
+             rdfs:comment "The average width of the borehole shaft."@en ;
+             rdfs:label "has diameter"@en ;
+             sdo:domainIncludes :Borehole ,
+                                :BoreholeInterval .
 
 
 ###  http://linked.data.gov.au/def/borehole/hasElevation
@@ -102,7 +104,7 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
                 rdfs:range skos:Concept ;
                 rdfs:comment "The angle to the vertical of the borehole main shaft."@en ;
                 rdfs:label "has inclination" ;
-                skos:usageNote "Inclinations must be selected from the Borehole Inclination vocabulary. If the borehole shaft has multiple angles, multiple :hasInclination properties should be used."@en .
+                skos:scopeNote "Inclinations must be selected from the Borehole Inclination vocabulary. If the borehole shaft has multiple angles, multiple :hasInclination properties should be used."@en .
 
 
 ###  http://linked.data.gov.au/def/borehole/hasPurpose
@@ -111,7 +113,7 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
             rdfs:range skos:Concept ;
             rdfs:comment "The reason for which this borehole was drilled."@en ;
             rdfs:label "has purpose" ;
-            skos:usageNote "Purposes must be selected from the Borehole Purpose vocabulary. Multiple purposes may be selected. If purposes are time-bound, this should be indicated by assigning the purpose a time:hasTime property."@en .
+            skos:scopeNote "Purposes must be selected from the Borehole Purpose vocabulary. Multiple purposes may be selected. If purposes are time-bound, this should be indicated by assigning the purpose a time:hasTime property."@en .
 
 
 ###  http://linked.data.gov.au/def/borehole/hasStateOrTerritory
@@ -119,7 +121,7 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
                      rdfs:range asgs:StateOrTerritory ;
                      rdfs:comment "The Australian State or Territory that this borehole is juristictionally within."@en ;
                      rdfs:label "has state" ;
-                     skos:usageNote "The borehole need bot be spatially within the Australian State or Territory."@en ;
+                     skos:scopeNote "The borehole need bot be spatially within the Australian State or Territory."@en ;
                      sdo:domainIncludes :Borehole .
 
 
@@ -129,7 +131,7 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
            rdfs:range skos:Concept ;
            rdfs:comment "The lifecycle stage of the borehole."@en ;
            rdfs:label "has status" ;
-           skos:usageNote "Status must be selected from the Borehole Status vocabulary."@en .
+           skos:scopeNote "Status must be selected from the Borehole Status vocabulary."@en .
 
 
 ###  http://linked.data.gov.au/def/borehole/hasSurfaceCircumstance
@@ -138,9 +140,17 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
                         rdfs:range skos:Concept ;
                         rdfs:comment "The circumstances of a borehole's entrance." ;
                         rdfs:label "has surface circumstance" ;
-                        skos:usageNote """Surface Circumstances must be selected from the Borehole Surface Circumstance vocabulary.
+                        skos:scopeNote """Surface Circumstances must be selected from the Borehole Surface Circumstance vocabulary.
 
 This property maps to GeoSciML's Borehole Start property.""" .
+
+
+###  http://linked.data.gov.au/def/borehole/nextBoreholeInterval
+:nextBoreholeInterval rdf:type owl:ObjectProperty ;
+                      rdfs:domain :BoreholeInterval ;
+                      rdfs:range :BoreholeInterval ;
+                      rdfs:comment "Indicates the next BoreholeInterval after this one, in the direction away from the Borehole's start"@en ;
+                      rdfs:label "next borehole interval"@en .
 
 
 ###  http://linked.data.gov.au/def/borehole/operator
@@ -148,17 +158,8 @@ This property maps to GeoSciML's Borehole Start property.""" .
           rdfs:subPropertyOf prov:wasAttributedTo ;
           rdfs:comment "An organisation that maintains/uses/runs the borehole."@en ;
           rdfs:label "operator"@en ;
-          skos:usageNote "If the borehole was/is operated by multiple organisations, add multiple :operator properties. Different periods of operation, may have the specific operator indicated by qualifying the Entity (Borehole) / Agent (operator) relations, as per PROV-O's qualifiedAttribution pattern."@en ;
+          skos:scopeNote "If the borehole was/is operated by multiple organisations, add multiple :operator properties. Different periods of operation, may have the specific operator indicated by qualifying the Entity (Borehole) / Agent (operator) relations, as per PROV-O's qualifiedAttribution pattern."@en ;
           sdo:domainIncludes :Borehole .
-
-
-###  http://linked.data.gov.au/def/loci/hadGenerationMethod
-loci:hadGenerationMethod rdf:type owl:ObjectProperty .
-
-
-###  http://www.w3.org/ns/prov#wasAttributedTo
-prov:wasAttributedTo rdf:type owl:ObjectProperty .
-
 
 #################################################################
 #    Classes
@@ -166,7 +167,8 @@ prov:wasAttributedTo rdf:type owl:ObjectProperty .
 
 ###  http://linked.data.gov.au/def/borehole/Borehole
 :Borehole rdf:type owl:Class ;
-          rdfs:subClassOf [ rdf:type owl:Restriction ;
+          rdfs:subClassOf geo:Feature ,
+                          [ rdf:type owl:Restriction ;
                             owl:onProperty :hasStatus ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass skos:Concept
@@ -175,16 +177,29 @@ prov:wasAttributedTo rdf:type owl:ObjectProperty .
           rdfs:label "Borehole" .
 
 
-###  http://linked.data.gov.au/def/geox/VerticalGeometry
-geox:VerticalGeometry rdf:type owl:Class .
+###  http://linked.data.gov.au/def/borehole/BoreholeInterval
+:BoreholeInterval rdf:type owl:Class ;
+                  rdfs:subClassOf geo:Feature .
 
 
-###  http://www.w3.org/2004/02/skos/core#Concept
-skos:Concept rdf:type owl:Class .
+###  http://linked.data.gov.au/def/borehole/Casing
+:Casing rdf:type owl:Class ;
+        rdfs:subClassOf skos:Concept .
 
 
-###  http://www.w3.org/2006/time#ProperInterval
-time:ProperInterval rdf:type owl:Class .
+###  http://linked.data.gov.au/def/borehole/Well
+:Well rdf:type owl:Class ;
+      rdfs:subClassOf :Borehole ;
+      rdfs:comment "A Well is a Borehole that is made of multiple Wellbores."@en ;
+      rdfs:label "Well"@en .
 
 
-###  Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi
+###  http://linked.data.gov.au/def/borehole/Wellbore
+:Wellbore rdf:type owl:Class ;
+          rdfs:subClassOf :Borehole ;
+          rdfs:comment """Wellbores are a type of Borehole that constitutes part of a Well.
+
+Commonly, Wellbores within a Well share a starting point."""@en ;
+          rdfs:label "Wellbore"@en .
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
