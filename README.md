@@ -56,7 +56,7 @@ $ ./pylode -i ../example/prof.ttl --css true
 ```
 
 
-## Annotations understood
+## Annotations
 pyLODE understands the following ontology annotations:
 
 * **ontology metadata**
@@ -102,6 +102,10 @@ To help pyLODE understand more annotations, see **Suggestions** below.
 This tool generates HTML that is shamelessly similar to LODE's styling. That's because we want things to look familiar and LODE's outputs look great.
 
 Feel free to extend your styling with your own CSS.
+
+
+## Online use
+Soon (June 2019?) an online, hosted, version of this tool will be implemented so you can see it in action live.
 
 
 ## License
