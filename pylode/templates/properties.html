@@ -1,4 +1,4 @@
-{% if op_instances|length > 0 %}
+{%- if op_instances|length > 0 %}
 <section id="objectproperties">
     <h2>Object Properties</h2>
     <ul class="hlist">
@@ -11,7 +11,7 @@
     {%- endfor %}
 </section>
 {% endif %}
-{% if dp_instances|length > 0 %}
+{%- if dp_instances|length > 0 %}
 <section id="datatypeproperties">
     <h2>Datatype Properties</h2>
     <ul class="hlist">
@@ -24,7 +24,7 @@
     {%- endfor %}
 </section>
 {% endif %}
-{% if ap_instances|length > 0 %}
+{%- if ap_instances|length > 0 %}
 <section id="annotationproperties">
     <h2>Annotation Properties</h2>
     <ul class="hlist">

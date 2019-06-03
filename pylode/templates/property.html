@@ -13,8 +13,8 @@
                 <th>IRI</th>
                 <td><code>{{ uri }}</code></td>
             </tr>
+            {%- if description is not none %}
             <tr>
-                {%- if description is not none %}
                 <th>Description</th>
                 <td>
                     {{ description }}
