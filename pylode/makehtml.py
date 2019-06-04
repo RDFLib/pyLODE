@@ -793,7 +793,8 @@ def _extract_ontology_metadata(g, classes, properties, namespaces):
                 metadata['title'] = str(o)
 
             if p == RDFS.comment:
-                metadata['description'] = str(o)
+                import markdown
+                metadata['description'] = markdown.markdown(str(o))
 
             if p == DCTERMS.created:
                 metadata['created'] = dateutil.parser.parse(str(o)).strftime('%Y-%m-%d')
