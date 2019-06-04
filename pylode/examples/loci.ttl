@@ -4,6 +4,8 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix sdo: <https://schema.org/> .
 @base <http://linked.data.gov.au/def/loci> .
 
 <http://linked.data.gov.au/def/loci> rdf:type owl:Ontology ;
@@ -15,12 +17,16 @@
                                                   <http://www.w3.org/2002/07/owl> ,
                                                   <http://www.w3.org/ns/dcat> ,
                                                   <http://xmlns.com/foaf/0.1/> ;
-                                      <http://purl.org/dc/elements/1.1/creator> "Nicholas J. Car" ;
-                                      <http://purl.org/dc/elements/1.1/publisher> "CSIRO" ;
                                       <http://purl.org/dc/terms/created> "2018-10-29"^^xsd:date ;
-                                      <http://purl.org/dc/terms/creator> <http://orcid.org/0000-0002-8742-7730> ;
+                                      dct:creator [
+                                          sdo:name "Nicholas J. Car" ;
+                                          sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+                                      ] ;
                                       <http://purl.org/dc/terms/modified> "2018-11-09"^^xsd:date ;
-                                      <http://purl.org/dc/terms/publisher> <http://www.csiro.au> ;
+                                      dct:publisher [
+                                        sdo:name "CSIRO" ;
+                                        sdo:identifier <http://catalogue.linked.data.gov.au/org/csiro> ;
+                                      ] ;
                                       rdfs:comment """A profile of several ontologies implemented to govern Linked Data resources published within the LOC-I project.
 
 This is a profile of the [GeoSPARQL](http://www.opengeospatial.org/standards/geosparql) and [DCAT v2](https://www.w3.org/TR/vocab-dcat-2/) & [VOID](http://www.w3.org/TR/void/) that require certain properties defined by those ontologies be present for several classes of resource that are of particular importance to the [LOC-I](https://confluence.csiro.au/display/DIPAAnalyticHubs/Location+Integration+Capability+Loc-I) project.

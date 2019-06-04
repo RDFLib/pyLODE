@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Place Names Profile</title>
@@ -8,6 +9,7 @@
 <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
 <h1>Place Names Profile</h1>
 <section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
     <dl>
         <dt>IRI</dt>
         <dd><code>http://linked.data.gov.au/def/placenames</code></dd>
@@ -39,8 +41,6 @@
     <ol>
         <li><a href="#classes">Classes</a></li>
         <li><a href="#objectproperties">Object Properties</a></li>
-        <li><a href="#datatypeproperties">Datatype Properties</a></li>
-        <li><a href="#annotationproperties">Annotation Properties</a></li>
         <li><a href="#namespaces">Namespaces</a></li>
     </ol>
 </section>
@@ -54,155 +54,15 @@
 <section id="classes">
     <h2>Classes</h2>
     <ul class="hlist">
-        <li><a href="#asgsfeature">ASGS Feature</a></li>
-        <li><a href="#address">Address</a></li>
-        <li><a href="#agent">Agent</a></li>
-        <li><a href="#concept">Concept</a></li>
-        <li><a href="#contractedcatchment">ContractedCatchment</a></li>
-        <li><a href="#feature">Feature</a></li>
         <li><a href="#gazetteer">Gazetteer</a></li>
-        <li><a href="#geometry">Geometry</a></li>
-        <li><a href="#identifier">Identifier</a></li>
         <li><a href="#jurisdiction">Jurisdiction</a></li>
-        <li><a href="#organisation">Organisation</a></li>
         <li><a href="#place">Place</a></li>
         <li><a href="#placename">Place Name</a></li>
         <li><a href="#placenameformality">Place Name Formality</a></li>
         <li><a href="#placetype">Place Type</a></li>
         <li><a href="#pointofinterest">Point of Interest</a></li>
         <li><a href="#region">Region</a></li>
-        <li><a href="#register">Register</a></li>
-        <li><a href="#registereditem">Registered Item</a></li>
-        <li><a href="#registrystatus">Registry Status</a></li>
-        <li><a href="#stateorterritory">State or Territory</a></li>
-        <li><a href="#temporalentity">Temporal Entity</a></li>
-        <li><a href="#string">string</a></li>
     </ul>
-    <div class="entity class" id="asgsfeature">
-        <h3>ASGS Feature<sup title="class" class="type-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/asgs#Feature</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    The ASGS Ontology's Feature Class
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="address">
-        <h3>Address<sup title="class" class="type-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/gnaf#Address</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    The GNAF Ontology's Address Class
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="agent">
-        <h3>Agent<sup title="class" class="type-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.w3.org/ns/prov#Agent</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    The Provenance Ontology's Agent Class
-                </td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="https://schema.org/Organization">schema:Organization</a> <sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="concept">
-        <h3>Concept<sup title="class" class="type-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="http://purl.org/linked-data/registry#Status">reg:Status</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/placenames/PlaceNameFormality">:PlaceNameFormality</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/placenames/PlaceType">:PlaceType</a> <sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="contractedcatchment">
-        <h3>ContractedCatchment<sup title="class" class="type-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/placenames/ContractedCatchment</code></td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="feature">
-        <h3>Feature<sup title="class" class="type-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.opengis.net/ont/geosparql#Feature</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    The GeoSPARQL Ontology's Feature Class
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="http://linked.data.gov.au/def/placenames/hasPlaceName">:hasPlaceName</a> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/placenames/PlaceName">:PlaceName</a><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="http://linked.data.gov.au/def/placenames/ContractedCatchment">:ContractedCatchment</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/gnaf#Address">gnaf:Address</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/placenames/Place">:Place</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/asgs#Feature">asgs:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
     <div class="entity class" id="gazetteer">
         <h3>Gazetteer<sup title="class" class="type-c">c</sup></h3>
         <table>
@@ -230,30 +90,6 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="geometry">
-        <h3>Geometry<sup title="class" class="type-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.opengis.net/ont/geosparql#Geometry</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    The GeoSPARQL Ontology's Geometry Class
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="identifier">
-        <h3>Identifier<sup title="class" class="type-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://www.w3.org/ns/adms#Identifier</code></td>
-            </tr>
-        </table>
-    </div>
     <div class="entity class" id="jurisdiction">
         <h3>Jurisdiction<sup title="class" class="type-c">c</sup></h3>
         <table>
@@ -273,39 +109,6 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
                 <th>Super-classes</th>
                 <td>
                     <a href="https://schema.org/Organization">schema:Organization</a> <sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="http://linked.data.gov.au/def/asgs#StateOrTerritory">asgs:StateOrTerritory</a> <sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="organisation">
-        <h3>Organisation<sup title="class" class="type-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://schema.org/Organization</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    Schema.org's Organization Class
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="http://www.w3.org/ns/prov#Agent">prov:Agent</a> <sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="http://linked.data.gov.au/def/placenames/Jurisdiction">:Jurisdiction</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -332,8 +135,8 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/placenames/hasFeatureClassification">:hasFeatureClassification</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/placenames/PlaceType">:PlaceType</a><br/>
                     <a href="http://linked.data.gov.au/def/placenames/register">:register</a> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/placenames/Gazetteer">:Gazetteer</a><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/hasFeatureClassification">:hasFeatureClassification</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/placenames/PlaceType">:PlaceType</a><br/>
                 </td>
             </tr>
             <tr>
@@ -367,11 +170,11 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/placenames/wasNamedBy">:wasNamedBy</a> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/placenames/Jurisdiction">:Jurisdiction</a><br/>
                     <a href="http://linked.data.gov.au/def/placenames/hasPronunciation">:hasPronunciation</a> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><br/>
                     <a href="http://purl.org/linked-data/registry#status">reg:status</a> <span class="cardinality">some</span> <a href="http://purl.org/linked-data/registry#Status">reg:Status</a><br/>
-                    <a href="http://linked.data.gov.au/def/placenames/register">:register</a> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/placenames/Gazetteer">:Gazetteer</a><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/wasNamedBy">:wasNamedBy</a> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/placenames/Jurisdiction">:Jurisdiction</a><br/>
                     <a href="https://www.w3.org/ns/adms#identifier">adms:identifier</a> <span class="cardinality">some</span> <a href="https://www.w3.org/ns/adms#Identifier">adms:Identifier</a><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/register">:register</a> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/placenames/Gazetteer">:Gazetteer</a><br/>
                 </td>
             </tr>
         </table>
@@ -466,106 +269,19 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             </tr>
         </table>
     </div>
-    <div class="entity class" id="register">
-        <h3>Register<sup title="class" class="type-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://purl.org/linked-data/registry#Register</code></td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="http://linked.data.gov.au/def/placenames/Gazetteer">:Gazetteer</a> <sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="registereditem">
-        <h3>Registered Item<sup title="class" class="type-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://purl.org/linked-data/registry#RegisteredItem</code></td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="http://linked.data.gov.au/def/placenames/PlaceName">:PlaceName</a> <sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="registrystatus">
-        <h3>Registry Status<sup title="class" class="type-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://purl.org/linked-data/registry#Status</code></td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="stateorterritory">
-        <h3>State or Territory<sup title="class" class="type-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/asgs#StateOrTerritory</code></td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="http://linked.data.gov.au/def/placenames/Jurisdiction">:Jurisdiction</a> <sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="temporalentity">
-        <h3>Temporal Entity<sup title="class" class="type-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.w3.org/2006/time#TemporalEntity</code></td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="string">
-        <h3>string<sup title="class" class="type-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
-            </tr>
-        </table>
-    </div>
 </section>
-
 <section id="objectproperties">
     <h2>Object Properties</h2>
     <ul class="hlist">
         <li><a href="#containeditemclass">containedItemClass</a></li>
         <li><a href="#hasfeatureclassification">has feature classification</a></li>
-        <li><a href="#hasgeometry1">has geometry</a></li>
         <li><a href="#hasplacename">has place name</a></li>
         <li><a href="#hasplacenameformality">has place name formality</a></li>
         <li><a href="#hasplacenamingauthority">has place naming authority</a></li>
         <li><a href="#hasstatus">has status</a></li>
-        <li><a href="#hastime">has time</a></li>
-        <li><a href="#hasgeometry">hasGeometry</a></li>
-        <li><a href="#identifier1">identifier</a></li>
-        <li><a href="#notation">notation</a></li>
         <li><a href="#placenameof">place name of</a></li>
         <li><a href="#pronunciation">pronunciation</a></li>
-        <li><a href="#register1">register</a></li>
-        <li><a href="#theme">theme</a></li>
         <li><a href="#wasnamedby">was named by</a></li>
-        <li><a href="#wasattributedto">wasAttributedTo</a></li>
     </ul>
     <div class="entity property" id="containeditemclass">
         <h3>containedItemClass<sup title="annotation property" class="type-ap">ap</sup></h3>
@@ -574,7 +290,6 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
                 <th>IRI</th>
                 <td><code>http://purl.org/linked-data/registry#containedItemClass</code></td>
             </tr>
-            <tr>
         </table>
     </div>
     <div class="entity property" id="hasfeatureclassification">
@@ -610,33 +325,6 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             </tr>
         </table>
     </div>
-    <div class="entity property" id="hasgeometry1">
-        <h3>has geometry<sup title="annotation property" class="type-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.opengis.net/ont/geosparql#hasGeometry</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    GeoSPARQL Ontology's hasGeometry property
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a> <sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Geometry">geo:Geometry</a> <sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
     <div class="entity property" id="hasplacename">
         <h3>has place name<sup title="annotation property" class="type-ap">ap</sup></h3>
         <table>
@@ -665,7 +353,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    ('owl:unionOf', [':PlaceName', 'xsd:string'])
+                    (<a href="http://linked.data.gov.au/def/placenames/PlaceName">:PlaceName</a> <em>or</em> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)
                 </td>
             </tr>
         </table>
@@ -738,7 +426,6 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
                 <td><code>http://purl.org/linked-data/registry#status</code></td>
             </tr>
             <tr>
-            <tr>
                 <th>Usage Note</th>
                 <td>
                     This property is the generic Registry Ontology status property indicating the status of a RegisteredItem in a Registry but in this ontology it is used to indicate only the status of a Place Name in a Gazetteer.
@@ -752,46 +439,6 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             </tr>
         </table>
     </div>
-    <div class="entity property" id="hastime">
-        <h3>has time<sup title="annotation property" class="type-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.w3.org/2006/time#hastime</code></td>
-            </tr>
-            <tr>
-        </table>
-    </div>
-    <div class="entity property" id="hasgeometry">
-        <h3>hasGeometry<sup title="annotation property" class="type-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/placenames/hasGeometry</code></td>
-            </tr>
-            <tr>
-        </table>
-    </div>
-    <div class="entity property" id="identifier1">
-        <h3>identifier<sup title="annotation property" class="type-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://www.w3.org/ns/adms#identifier</code></td>
-            </tr>
-            <tr>
-        </table>
-    </div>
-    <div class="entity property" id="notation">
-        <h3>notation<sup title="annotation property" class="type-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.w3.org/2004/02/skos/core#notation</code></td>
-            </tr>
-            <tr>
-        </table>
-    </div>
     <div class="entity property" id="placenameof">
         <h3>place name of<sup title="annotation property" class="type-ap">ap</sup></h3>
         <table>
@@ -799,7 +446,6 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
                 <th>IRI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/placeNameOf</code></td>
             </tr>
-            <tr>
         </table>
     </div>
     <div class="entity property" id="pronunciation">
@@ -827,26 +473,6 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
                     <a href="http://linked.data.gov.au/def/placenames/PlaceName">:PlaceName</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
-        </table>
-    </div>
-    <div class="entity property" id="register1">
-        <h3>register<sup title="annotation property" class="type-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/placenames/register</code></td>
-            </tr>
-            <tr>
-        </table>
-    </div>
-    <div class="entity property" id="theme">
-        <h3>theme<sup title="annotation property" class="type-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.w3.org/ns/dcat#theme</code></td>
-            </tr>
-            <tr>
         </table>
     </div>
     <div class="entity property" id="wasnamedby">
@@ -882,76 +508,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             </tr>
         </table>
     </div>
-    <div class="entity property" id="wasattributedto">
-        <h3>wasAttributedTo<sup title="annotation property" class="type-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.w3.org/ns/prov#wasAttributedTo</code></td>
-            </tr>
-            <tr>
-        </table>
-    </div>
 </section>
-
-
-<section id="datatypeproperties">
-    <h2>Datatype Properties</h2>
-    <ul class="hlist">
-        <li><a href="#identifier1">identifier</a></li>
-        <li><a href="#string">string</a></li>
-    </ul>
-    <div class="entity property" id="identifier1">
-        <h3>identifier<sup title="annotation property" class="type-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://schema.org/identifier</code></td>
-            </tr>
-            <tr>
-        </table>
-    </div>
-    <div class="entity property" id="string">
-        <h3>string<sup title="annotation property" class="type-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
-            </tr>
-            <tr>
-        </table>
-    </div>
-</section>
-
-
-<section id="annotationproperties">
-    <h2>Annotation Properties</h2>
-    <ul class="hlist">
-        <li><a href="#name">name</a></li>
-        <li><a href="#scopenote">scopeNote</a></li>
-    </ul>
-    <div class="entity property" id="name">
-        <h3>name<sup title="annotation property" class="type-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://schema.org/name</code></td>
-            </tr>
-            <tr>
-        </table>
-    </div>
-    <div class="entity property" id="scopenote">
-        <h3>scopeNote<sup title="annotation property" class="type-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.w3.org/2004/02/skos/core#scopeNote</code></td>
-            </tr>
-            <tr>
-        </table>
-    </div>
-</section>
-
 <section id="namespaces">
     <h2>Namespaces</h2>
     <dl>
