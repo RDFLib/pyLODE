@@ -4,10 +4,6 @@
     <dl>
         <dt>IRI</dt>
         <dd><code>{{ uri }}</code></dd>
-        {%- if version_uri is not none %}
-        <dt>Version IRI</dt>
-        <dd>{{ version_uri }}</dd>
-        {%- endif %}
         {%- if publishers|length > 0 %}
         <dt>Publisher(s)</dt>
         <dd>
@@ -44,15 +40,15 @@
         <dt>Issued</dt>
         <dd>{{ issued }}</dd>
         {%- endif %}
-        {%- if description is not none %}
-        <dt>Description</dt>
-        <dd>{{ description }}</dd>
-        {%- endif %}
         {%- if version_info is not none %}
         <dt>Version Information</dt>
         <dd>{{ version_info }}</dd>
         {%- endif %}
         {%- if imports|length > 0 %}
+        {%- if version_uri is not none %}
+        <dt>Version IRI</dt>
+        <dd>{{ version_uri }}</dd>
+        {%- endif %}
         <dt>Imports</dt>
         <dd>
             {%- for import in imports %}
@@ -60,7 +56,15 @@
             {%- endfor %}
         </dd>
         {%- endif %}
+        <dt>Ontology Source</dt>
+        <dd>{{ ont_source }}</dd>
     </dl>
+    {%- if description is not none %}
+    <h2>Description</h2>
+    <div id="description">
+        {{ description }}
+    </div>
+    {%- endif %}
 </section>
 <section id="toc">
     <h2>Table of Contents</h2>

@@ -729,6 +729,10 @@ def _get_curie(uri, ns):
         if v == n:
             return '{}:{}'.format(k, _get_uri_id(uri))
 
+        # try finding a match after removing / or # before giving up
+        if v.strip('/#') == n:
+            return '{}:{}'.format(k, _get_uri_id(uri))
+
     # if no match, return the original URI
     return uri
 
@@ -871,7 +875,11 @@ def _extract_ontology_metadata(g, classes, properties, namespaces):
     return metadata
 
 
-def _make_metadata_html(metadata):
+def _make_source_file_link(source_info):
+    return '<a href="{}">RDF ({})</a>'.format(source_info[0], source_info[1])
+
+
+def _make_metadata_html(metadata, source_info):
     template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
     template = Environment(loader=FileSystemLoader(template_dir)).get_template('metadata.html')
     html = template.render(
@@ -887,6 +895,7 @@ def _make_metadata_html(metadata):
         issued=metadata.get('issued'),
         description=metadata.get('description'),
         version_info=metadata.get('versionInfo'),
+        ont_source=_make_source_file_link(source_info),
         has_classes=metadata.get('has_classes'),
         has_ops=metadata.get('has_ops'),
         has_dps=metadata.get('has_dps'),
@@ -912,7 +921,7 @@ def _make_document_html(title, metadata_html, classes_html, properties_html, def
     return html
 
 
-def generate_html(g):
+def generate_html(g, source_file_name):
     _expand_graph_for_pylode(g)
 
     existing_fids = {}
@@ -929,7 +938,7 @@ def generate_html(g):
 
     metadata = _extract_ontology_metadata(g, classes, properties, namespaces)
     metadata['default_namespace'] = _get_default_namespace(g, namespaces, metadata)  # TODO: use default_namespace
-    metadata_html = _make_metadata_html(metadata)
+    metadata_html = _make_metadata_html(metadata, source_file_name)
 
     return _make_document_html(
         metadata['title'],

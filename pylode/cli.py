@@ -110,9 +110,12 @@ def main():
                     .format(', '.join(RDF_FILE_EXTENSIONS))
                 )
             else:
-                fmt = 'json-ld' if args.inputfile.name.endswith('.json') else rdflib.util.guess_format(args.inputfile.name)
+                fmt = 'json-ld' \
+                    if args.inputfile.name.endswith('.json') or args.inputfile.name.endswith('.jsonld') \
+                    else rdflib.util.guess_format(args.inputfile.name)
                 data = args.inputfile.read()
                 g = rdflib.Graph().parse(data=data, format=fmt)
+                source_info = (args.inputfile.name, fmt)
         elif args.url:
             r = requests.get(
                 args.url,
@@ -125,7 +128,7 @@ def main():
             if RDF_SERIALIZER_MAP.get(media_type):
                 fmt = RDF_SERIALIZER_MAP.get(media_type)
             else:
-                fmt = 'json-ld' if args.inputfile.name.endswith('.json') else rdflib.util.guess_format(args.inputfile.name)
+                fmt = 'json-ld' if media_type == 'application/ld+json' or media_type == 'application/json' else None
 
             if fmt is None:
                 parser.error(
@@ -134,6 +137,7 @@ def main():
                 )
 
             g = rdflib.Graph().parse(data=r.text, format=fmt)
+            source_info = (args.url, fmt)
         else:
             # we have neither an input file or a URI supplied
             parser.error('Either an inputfile or a url is required to access the ontology\'s RDF')
@@ -162,8 +166,7 @@ def main():
 
     # generate the HTML doc
     with open(path.join(publication_dir, output_filename), 'w') as f:
-        f.write(generate_html(g))
-        #print(g.serialize(format='turtle').decode('utf-8'))
+        f.write(generate_html(g, source_info))
 
     msg = 'Finished. HTML{} file in {}/.'.format(msg_css, publication_dir)
     print(msg)
