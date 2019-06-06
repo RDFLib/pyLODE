@@ -168,11 +168,12 @@ def _get_default_namespace(g, ns, metadata):
             return v
 
 
-def _make_namespaces_html(namespaces):
+def _make_namespaces_html(namespaces, default_namespace):
     template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
     namespaces_template = Environment(loader=FileSystemLoader(template_dir)).get_template('namespaces.html')
     namespaces_html = namespaces_template.render(
         namespaces=namespaces,
+        default_namespace=default_namespace
     )
 
     return namespaces_html
@@ -929,7 +930,6 @@ def generate_html(g, source_file_name):
 
     # do namespaces first so we can use then to CURIE-ise metadata
     namespaces = _extract_namespaces(g)
-    namespaces_html = _make_namespaces_html(namespaces)
 
     classes = _extract_classes(g, existing_fids, namespaces)
     classes_html = _make_classes_html(classes)
@@ -939,6 +939,7 @@ def generate_html(g, source_file_name):
 
     metadata = _extract_ontology_metadata(g, classes, properties, namespaces)
     metadata['default_namespace'] = _get_default_namespace(g, namespaces, metadata)  # TODO: use default_namespace
+    namespaces_html = _make_namespaces_html(namespaces, metadata['default_namespace'])
     metadata_html = _make_metadata_html(metadata, source_file_name)
 
     return _make_document_html(
