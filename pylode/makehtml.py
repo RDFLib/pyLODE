@@ -39,6 +39,10 @@ def _expand_graph_for_pylode(g):
     for s in g.subjects(predicate=RDF.type, object=OWL.Class):
         g.add((s, RDF.type, RDFS.Class))
 
+    # owl:Restrictions from Blank Nodes
+    for s in g.subjects(predicate=OWL.onProperty):
+        g.add((s, RDF.type, OWL.Restriction))
+
 
 def _make_title_from_uri(uri):
     # can't tolerate any URI faults so return None if anything is wrong
@@ -421,7 +425,7 @@ def _make_properties_html(properties):
     return html
 
 
-def _extract_classes(g, existing_fids, namespaces):
+def _extract_classes(g, existing_fids, namespaces, properties):
     classes = {}
     for s in g.subjects(predicate=RDF.type, object=RDFS.Class):
         # ignore blank nodes for things like [ owl:unionOf ( ... ) ]
@@ -496,7 +500,7 @@ def _extract_classes(g, existing_fids, namespaces):
                     if (o, OWL.unionOf) in g.subject_predicates() or (o, OWL.intersectionOf) in g.subject_predicates():
                         supers.append(_make_collection_class_html(g, s, o, namespaces))
                     elif (o, RDF.type, OWL.Restriction) in g:  # this o is a Restriction
-                        restrictions.append(_make_restriction_html(g, s, o, namespaces))
+                        restrictions.append(_make_restriction_html(g, s, o, namespaces, properties))
 
             classes[s_str]['supers'] = supers
             classes[s_str]['restrictions'] = restrictions
@@ -621,7 +625,7 @@ def _make_collection_class_html(g, parent_uri, o, namespaces):
     return '({})'.format(j.join(collection_members))
 
 
-def _make_restriction_html(g, subject, restriction_bn, namespaces):
+def _make_restriction_html(g, subject, restriction_bn, namespaces, properties):
     prop = None
     card = None
     cls = None
@@ -630,7 +634,10 @@ def _make_restriction_html(g, subject, restriction_bn, namespaces):
         if p2 != RDF.type:
             if p2 == OWL.onProperty:
                 # TODO: add the property type for HTML
-                prop = _make_uri_html(o2, namespaces)
+                t = None
+                if str(o2) in properties.keys():
+                    t = properties[str(o2)]['prop_type']
+                prop = _make_uri_html(o2, namespaces, t)
             elif p2 == OWL.onClass:
                 if type(o2) == BNode:
                     if (o2, OWL.unionOf) in g.subject_predicates() or (o2, OWL.intersectionOf) in g.subject_predicates():
@@ -667,6 +674,11 @@ def _make_restriction_html(g, subject, restriction_bn, namespaces):
 
     restriction = prop + ' ' + card if card is not None else prop
     restriction = restriction + ' ' + cls if cls is not None else restriction
+
+    # import pprint
+    # pprint.pprint(properties)
+    # for k in properties.keys():
+    #     print(k)
     return restriction
 
 
@@ -931,11 +943,11 @@ def generate_html(g, source_file_name):
     # do namespaces first so we can use then to CURIE-ise metadata
     namespaces = _extract_namespaces(g)
 
-    classes = _extract_classes(g, existing_fids, namespaces)
-    classes_html = _make_classes_html(classes)
-
     properties = _extract_properties(g, existing_fids, namespaces)
     properties_html = _make_properties_html(properties)
+
+    classes = _extract_classes(g, existing_fids, namespaces, properties)
+    classes_html = _make_classes_html(classes)
 
     metadata = _extract_ontology_metadata(g, classes, properties, namespaces)
     metadata['default_namespace'] = _get_default_namespace(g, namespaces, metadata)  # TODO: use default_namespace
