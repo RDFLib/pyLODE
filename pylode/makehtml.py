@@ -797,6 +797,34 @@ def _get_uri_id(uri):
         return uri.split('/')[-1]  # could return None if URI ends in /
 
 
+def _make_agent(g, agent_blank_node):
+    agent = None
+    # we understand foaf:name, foaf:homepage & sdo:name & sdo:identifier & sdo:email (as a URI)
+    # TODO: cater for other Agent representations
+
+    name = None
+    url = None
+    email = None
+    for p, o in g.predicate_objects(subject=agent_blank_node):
+        if p == FOAF.homepage or p == URIRef('https://schema.org/identifier'):
+            url = str(o)
+        elif p == FOAF.name or p == URIRef('https://schema.org/name'):
+            name = str(o)
+        elif p == FOAF.mbox or p == URIRef('https://schema.org/email'):
+            email = str(o).split('/')[-1].split('#')[-1]  # remove base URI leaving only email address
+
+    if url is not None and email is not None:
+        agent = '<a href="{0}">{1}</a> (<a href="mailto:{2}">{2}</a>)'.format(url, name, email)
+    elif url is not None and email is None:
+        agent = '<a href="{0}">{1}</a>'.format(url, name)
+    elif url is None and email is not None:
+        agent = '<a href="{0}">{1}</a>'.format(email, name)
+    elif url is not None:
+        agent = '<a href="{}">{}</a>'.format(url, name)
+
+    return agent
+
+
 def _extract_ontology_metadata(g, classes, properties, namespaces):
     metadata = {}
     if len(classes) > 0:
@@ -863,13 +891,7 @@ def _extract_ontology_metadata(g, classes, properties, namespaces):
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
                     metadata['creators'].add(str(o))
                 else:  # Blank Node
-                    # we understand foaf:name, foaf:homepage & sco:name & sco:identifier (as a URI)  # TODO: cater for other Agent representations
-                    for p2, o2 in g.predicate_objects(subject=o):
-                        if p2 == FOAF.homepage or p2 == URIRef('https://schema.org/identifier'):
-                            url = str(o2)
-                        elif p2 == FOAF.name or p2 == URIRef('https://schema.org/name'):
-                            name = str(o2)
-                    metadata['creators'].add('<a href="{}">{}</a>'.format(url, name))
+                    metadata['creators'].add(_make_agent(g, o))
 
             if p == DC.contributor:
                 metadata['contributors'].add(str(o))
@@ -878,13 +900,7 @@ def _extract_ontology_metadata(g, classes, properties, namespaces):
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
                     metadata['contributors'].add(str(o))
                 else:  # Blank Node
-                    # we understand foaf:name & foaf:homepage
-                    for p2, o2 in g.predicate_objects(subject=o):
-                        if p2 == FOAF.homepage or p2 == URIRef('https://schema.org/identifier'):
-                            url = str(o2)
-                        elif p2 == FOAF.name or p2 == URIRef('https://schema.org/name'):
-                            name = str(o2)
-                    metadata['contributors'].add('<a href="{}">{}</a>'.format(url, name))
+                    metadata['contributors'].add(_make_agent(g, o))
 
             if p == DC.publisher:
                 metadata['publishers'].add(str(o))
@@ -893,13 +909,9 @@ def _extract_ontology_metadata(g, classes, properties, namespaces):
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
                     metadata['publishers'].add(str(o))
                 else:  # Blank Node
-                    # we understand foaf:name & foaf:homepage  # TODO: cater for other Agent representations
-                    for p2, o2 in g.predicate_objects(subject=o):
-                        if p2 == FOAF.homepage or p2 == URIRef('https://schema.org/identifier'):
-                            url = str(o2)
-                        elif p2 == FOAF.name or p2 == URIRef('https://schema.org/name'):
-                            name = str(o2)
-                    metadata['publishers'].add('<a href="{}">{}</a>'.format(url, name))
+                    metadata['publishers'].add(_make_agent(g, o))
+
+            # TODO: cater for other Agent representations
 
         if metadata.get('title') is None:
             raise ValueError(
@@ -990,9 +1002,9 @@ def generate_html(g, source_file_name):
 
 
 if __name__ == '__main__':
-    f = APP_DIR + '/examples/reg.ttl'
+    f = APP_DIR + '/examples/gnaf.ttl'
 
     g = Graph().parse(f, format='turtle')
 
-    with open('out.html', 'w') as f:
+    with open(APP_DIR + '/examples/gnaf.html', 'w') as f:
         f.write(generate_html(g, 'reg.ttl'))
