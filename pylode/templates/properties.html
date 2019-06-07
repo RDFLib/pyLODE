@@ -1,6 +1,6 @@
 {%- if op_instances|length > 0 %}
 <section id="objectproperties">
-    <h2>Object Properties</h2>
+    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
         {%- for p in op_instances %}
         <li><a href="#{{ p[1] }}">{{ p[0] }}</a></li>
@@ -13,7 +13,7 @@
 {% endif %}
 {%- if dp_instances|length > 0 %}
 <section id="datatypeproperties">
-    <h2>Datatype Properties</h2>
+    <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
         {%- for p in dp_instances %}
         <li><a href="#{{ p[1] }}">{{ p[0] }}</a></li>
@@ -26,7 +26,7 @@
 {% endif %}
 {%- if ap_instances|length > 0 %}
 <section id="annotationproperties">
-    <h2>Annotation Properties</h2>
+    <h2>Annotation Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
         {%- for p in ap_instances %}
         <li><a href="#{{ p[1] }}">{{ p[0] }}</a></li>

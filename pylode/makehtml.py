@@ -872,7 +872,7 @@ def _extract_ontology_metadata(g, classes, properties, namespaces):
                 metadata['issued'] = dateutil.parser.parse(str(o)).strftime('%Y-%m-%d')
 
             if p == OWL.versionIRI:
-                metadata['versionIRI'] = str(o)
+                metadata['versionIRI'] = '<a href="{0}">{0}</a>'.format(str(o))
 
             if p == OWL.versionInfo:
                 metadata['versionInfo'] = str(o)
@@ -972,7 +972,7 @@ def _make_document_html(title, metadata_html, classes_html, properties_html, def
     return html
 
 
-def generate_html(g, source_file_name):
+def generate_html(g, source_info):
     _expand_graph_for_pylode(g)
 
     existing_fids = {}
@@ -989,7 +989,7 @@ def generate_html(g, source_file_name):
     metadata = _extract_ontology_metadata(g, classes, properties, namespaces)
     metadata['default_namespace'] = _get_default_namespace(g, namespaces, metadata)  # TODO: use default_namespace
     namespaces_html = _make_namespaces_html(namespaces, metadata['default_namespace'])
-    metadata_html = _make_metadata_html(metadata, source_file_name)
+    metadata_html = _make_metadata_html(metadata, source_info)
 
     return _make_document_html(
         metadata['title'],
@@ -1002,9 +1002,9 @@ def generate_html(g, source_file_name):
 
 
 if __name__ == '__main__':
-    f = APP_DIR + '/examples/gnaf.ttl'
+    i = APP_DIR + '/examples/gnaf.ttl'
 
-    g = Graph().parse(f, format='turtle')
+    g = Graph().parse(i, format='turtle')
 
     with open(APP_DIR + '/examples/gnaf.html', 'w') as f:
-        f.write(generate_html(g, 'reg.ttl'))
+        f.write(generate_html(g, (i, 'turtle')))
