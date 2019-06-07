@@ -43,5 +43,48 @@
                 </td>
             </tr>
             {%- endif %}
+
+
+
+            {%- if in_domain_of|length > 0 %}
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    {%- for d in in_domain_of %}
+                    {{ d }}<br/>
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if in_domain_includes_of|length > 0 %}
+            <tr>
+                <th>In domainIncludes of</th>
+                <td>
+                    {%- for d in in_domain_includes_of %}
+                    {{ d }}<br/>
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if in_range_of|length > 0 %}
+            <tr>
+                <th>In range of</th>
+                <td>
+                    {%- for r in in_range_of %}
+                    {{ r }}<br/>
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if in_range_includes_of|length > 0 %}
+            <tr>
+                <th>In rangeIncludes of</th>
+                <td>
+                    {%- for r in in_range_includes_of %}
+                    {{ r }}<br/>
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
         </table>
     </div>

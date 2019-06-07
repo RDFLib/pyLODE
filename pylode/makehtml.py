@@ -532,6 +532,27 @@ def _extract_classes(g, existing_fids, namespaces, properties):
                     subs.append((collection_type, collection_members))
             classes[s_str]['subs'] = subs
 
+            in_domain_of = []
+            for o in g.subjects(predicate=RDFS.domain, object=s):
+                in_domain_of.append(_make_uri_html(str(o), namespaces, type=properties[str(o)]['prop_type']))
+            classes[s_str]['in_domain_of'] = in_domain_of
+
+            in_domain_includes_of = []
+            for o in g.subjects(predicate=URIRef('https://schema.org/domainIncludes'), object=s):
+                in_domain_includes_of.append(_make_uri_html(str(o), namespaces, type=properties[str(o)]['prop_type']))
+            classes[s_str]['in_domain_includes_of'] = in_domain_includes_of
+
+            in_range_of = []
+            for o in g.subjects(predicate=RDFS.range, object=s):
+                in_range_of.append(_make_uri_html(str(o), namespaces, type=properties[str(o)]['prop_type']))
+            classes[s_str]['in_range_of'] = in_range_of
+
+            in_range_includes_of = []
+            for o in g.subjects(predicate=URIRef('https://schema.org/rangeIncludes'), object=s):
+                in_range_includes_of.append(_make_uri_html(str(o), namespaces, type=properties[str(o)]['prop_type']))
+            classes[s_str]['in_range_includes_of'] = in_range_includes_of
+
+
             # TODO: cater for Named Individuals of this class - "has members"
 
     # sort properties by title
@@ -572,6 +593,10 @@ def _make_classes_html(classes):
                     supers=v['supers'],
                     restrictions=v['restrictions'],
                     subs=v['subs'],
+                    in_domain_of=v['in_domain_of'],
+                    in_domain_includes_of=v['in_domain_includes_of'],
+                    in_range_of=v['in_range_of'],
+                    in_range_includes_of=v['in_range_includes_of']
             )
         )
 
@@ -965,16 +990,9 @@ def generate_html(g, source_file_name):
 
 
 if __name__ == '__main__':
-    f = APP_DIR + '/examples/prof.ttl'
+    f = APP_DIR + '/examples/reg.ttl'
 
     g = Graph().parse(f, format='turtle')
 
     with open('out.html', 'w') as f:
-        f.write(generate_html(g))
-
-    # replace all this-ont URIs with : CURIE using this ont's URI in metadata object
-
-    # replace all domain/range, super/sub etc. class & property URIs with any CURIEs from namepaces
-
-
-
+        f.write(generate_html(g, 'reg.ttl'))
