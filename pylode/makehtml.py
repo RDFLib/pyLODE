@@ -9,39 +9,512 @@ from jinja2 import Environment, FileSystemLoader
 
 APP_DIR = path.dirname(path.realpath(__file__))
 
+G = Graph()
+SDO = Namespace('https://schema.org/')
+G.bind('sdo', SDO)
+CLASSES = collections.OrderedDict()
+PROPERTIES = collections.OrderedDict()
+NAMESPACES = collections.OrderedDict()
+FIDS = {}
+METADATA = {}
 
-def _expand_graph_for_pylode(g):
+
+def _expand_graph_for_pylode():
     # name
-    for s, o in g.subject_objects(predicate=DCTERMS.title):
-        g.add((s, RDFS.label, o))
+    for s, o in G.subject_objects(predicate=DCTERMS.title):
+        G.add((s, RDFS.label, o))
 
-    for s, o in g.subject_objects(predicate=SKOS.prefLabel):
-        g.add((s, RDFS.label, o))
+    for s, o in G.subject_objects(predicate=SKOS.prefLabel):
+        G.add((s, RDFS.label, o))
 
     # description
-    for s, o in g.subject_objects(predicate=DCTERMS.description):
-        g.add((s, RDFS.comment, o))
+    for s, o in G.subject_objects(predicate=DCTERMS.description):
+        G.add((s, RDFS.comment, o))
 
-    for s, o in g.subject_objects(predicate=SKOS.definition):
-        g.add((s, RDFS.comment, o))
+    for s, o in G.subject_objects(predicate=SKOS.definition):
+        G.add((s, RDFS.comment, o))
 
     # property types
-    for s in g.subjects(predicate=RDF.type, object=OWL.ObjectProperty):
-        g.add((s, RDF.type, RDF.Property))
+    for s in G.subjects(predicate=RDF.type, object=OWL.ObjectProperty):
+        G.add((s, RDF.type, RDF.Property))
 
-    for s in g.subjects(predicate=RDF.type, object=OWL.DatatypeProperty):
-        g.add((s, RDF.type, RDF.Property))
+    for s in G.subjects(predicate=RDF.type, object=OWL.DatatypeProperty):
+        G.add((s, RDF.type, RDF.Property))
 
-    for s in g.subjects(predicate=RDF.type, object=OWL.AnnotationProperty):
-        g.add((s, RDF.type, RDF.Property))
+    for s in G.subjects(predicate=RDF.type, object=OWL.AnnotationProperty):
+        G.add((s, RDF.type, RDF.Property))
 
     # class types
-    for s in g.subjects(predicate=RDF.type, object=OWL.Class):
-        g.add((s, RDF.type, RDFS.Class))
+    for s in G.subjects(predicate=RDF.type, object=OWL.Class):
+        G.add((s, RDF.type, RDFS.Class))
 
     # owl:Restrictions from Blank Nodes
-    for s in g.subjects(predicate=OWL.onProperty):
-        g.add((s, RDF.type, OWL.Restriction))
+    for s in G.subjects(predicate=OWL.onProperty):
+        G.add((s, RDF.type, OWL.Restriction))
+
+
+def _extract_properties_uris():
+    properties = []
+    for s in G.subjects(predicate=RDF.type, object=RDF.Property):
+        properties.append(str(s))
+
+    for p in sorted(properties):
+        PROPERTIES[p] = {}
+
+
+def _extract_classes_uris():
+    classes = []
+    for s in G.subjects(predicate=RDF.type, object=OWL.Class):
+        # ignore blank nodes for things like [ owl:unionOf ( ... ) ]
+        if type(s) == BNode:
+            pass
+        else:
+            classes.append(str(s))
+
+    for p in sorted(classes):
+        CLASSES[p] = {}
+
+
+def _get_namespace_from_uri(uri):
+    # split on hash
+    segments = uri.split('#')
+    if len(segments) == 2:
+        return segments[0] + '#'
+    else:
+        segments = uri.split('/')
+        if len(segments) > 1:
+            return '/'.join(segments[0:-1]) + '/'
+        else:
+            return None
+
+
+def _get_curie_prefix(uri, ns):
+    ns_count = 0
+
+    from curies import CURIES
+
+    # TODO: replace this with a once-per run update CURIES function
+    def get_curie_online(uri):
+        try:
+            r = requests.get(
+                'http://prefix.cc/reverse',
+                params={
+                    'uri': uri,
+                    'format': 'txt'
+                }
+            )
+            if r.status_code == 200:
+                # primitive check to see if it really is prefix.cc replying with a text/plain response
+                if r.headers['Content-Type'] == 'text/plain':
+                    return r.text.split('\t')[0]
+                else:
+                    return None
+            else:
+                return None
+        except requests.exceptions.ConnectionError:
+            # presumably this module can't access the internet or prefix.cc is down
+            return None
+
+    def get_curie_from_namespace(uri, ns_count):
+        # strip off trailing hash or slash and return last path segment
+        c = uri.rstrip('#/').split('/')[-1]
+
+        # prevent CURIE collision = return nsX (x int) if we already have this one
+        for k, v in ns.items():
+            if c == v:
+                ns_count += 1
+                return 'ns' + str(ns_count)
+
+        return c
+
+    # attempt to look up the well-known curie for this Namespace in http://prefix.cc dump
+    for k, v in CURIES.items():
+        if v == uri:
+            return k
+
+    # attempt to look up the well-known CURIE for this Namespace using http://prefix.cc online (more up-to-date)
+    c = get_curie_online(uri)
+    if c is not None:
+        return c
+
+    # can't fund CURIE online so make up one
+    c = get_curie_from_namespace(uri, ns_count)
+    return c if c is not None else ''
+
+
+def _extract_namespaces():
+    """
+    First we get the namespaces from rdflib
+
+    Then we cycle through all the URIs in the graph (all s, p & o),
+        create a set of them,
+        extract their base URIS (i.e. a non-duplicative list of them)
+        see if they are in the namespaces,
+            if not, generate their CURIE and add them to namespaces
+    """
+    # get declared namespaces, keyed by URI
+    ns = {}
+    uris = set()
+    for k, v in G.namespaces():
+        ns[str(v)] = k
+
+    # get other namespaces
+    for s, p, o in G:
+        # exclude certain annotation URIs
+        # and individuals (SDO.identifier)
+        # exclude known annoying URIs (ORCID)
+        if p == OWL.versionIRI or \
+                p == OWL.imports or \
+                p == SDO.identifier or \
+                str(o).startswith('https://orcid'):
+            pass
+        else:
+            # add only URI subjects (not Blank Nodes)
+            if type(s) == URIRef:
+                uris.add(str(s))
+
+            # predicates are always URIs so add them all
+            uris.add(str(p))
+
+            # add only URI objects (not Blank Nodes or Literals)
+            # exclude emails
+            if type(o) == URIRef and '@' not in str(o):
+                uris.add(str(o))
+
+    # for the de-duplicated URIs, get if not in namespaces, get CURIE and add
+    for uri in uris:
+        uri_base = _get_namespace_from_uri(uri)
+        if ns.get(uri_base) is None:
+            ns[uri_base] = _get_curie_prefix(uri_base, ns)
+
+    # invert the key/values in instances
+    for k, v in sorted(ns.items(), key=lambda x: x[1]):
+        NAMESPACES[v] = k
+
+
+def _extract_properties():
+    for prop in PROPERTIES.keys():
+        s = URIRef(prop)
+        # property type
+        if (s, RDF.type, OWL.ObjectProperty) in G:
+            PROPERTIES[prop]['prop_type'] = 'op'
+        elif (s, RDF.type, OWL.DatatypeProperty) in G:
+            PROPERTIES[prop]['prop_type'] = 'dp'
+        else:
+            PROPERTIES[prop]['prop_type'] = 'ap'
+
+        PROPERTIES[prop]['title'] = None
+        PROPERTIES[prop]['description'] = None
+        PROPERTIES[prop]['scopeNote'] = None
+        PROPERTIES[prop]['isDefinedBy'] = None
+
+        for p, o in G.predicate_objects(subject=s):
+            if p == RDFS.label:
+                PROPERTIES[prop]['title'] = str(o)
+
+            if p == RDFS.comment:
+                PROPERTIES[prop]['description'] = str(o)
+
+            if p == SKOS.scopeNote:
+                PROPERTIES[prop]['scopeNote'] = str(o)
+
+            if p == RDFS.isDefinedBy:
+                PROPERTIES[prop]['isDefinedBy'] = str(o)
+
+        # patch title from URI if we haven't got one
+        if PROPERTIES[prop]['title'] is None:
+            PROPERTIES[prop]['title'] = _make_title_from_uri(prop)
+
+        # make fid
+        PROPERTIES[prop]['fid'] = _make_fid(PROPERTIES[prop]['title'], prop)
+
+        # super properties
+        supers = []
+        for o in G.objects(subject=s, predicate=RDFS.subPropertyOf):
+            if type(o) != BNode:
+                supers.append(_make_uri_html(o, type=PROPERTIES[prop]['prop_type']))
+        PROPERTIES[prop]['supers'] = supers
+
+        # sub properties
+        subs = []
+        for o in G.subjects(predicate=RDFS.subPropertyOf, object=s):
+            if type(o) != BNode:
+                subs.append(str(o))
+        PROPERTIES[prop]['subs'] = subs
+
+        # domains
+        domains = []
+        for o in G.objects(subject=s, predicate=RDFS.domain):
+            if type(o) != BNode:
+                domains.append(_make_uri_html(o, type='c'))  # domains that are just classes
+            else:
+                # domain collections (unionOf | intersectionOf
+                q = '''
+                    PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+                    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+
+                    SELECT ?col_type ?col_member
+                    WHERE {{
+                        <{}> rdfs:domain ?domain .  
+                        ?domain owl:unionOf|owl:intersectionOf ?collection .
+                        ?domain ?col_type ?collection . 
+                        ?collection rdf:rest*/rdf:first ?col_member .              
+                    }} 
+                '''.format(s)
+                collection_type = None
+                collection_members = []
+                for r in G.query(q):
+                    if r.col_type == OWL.unionOf:
+                        sep = ' <em>or</em> '
+                    else:
+                        sep = ' <em>and</em> '
+                    collection_members.append('<a href="{}">{}</a>'.format(str(r.col_member), _get_curie(str(r.col_member))))
+
+                # format collection as string
+                domains.append((collection_type, collection_members))
+
+        PROPERTIES[prop]['domains'] = domains
+
+        # domainIncludes
+        domainIncludes = []
+        for o in G.objects(subject=s, predicate=SDO.domainIncludes):
+            if type(o) != BNode:
+                domainIncludes.append(_make_uri_html(o, type='c'))  # domainIncludes that are just classes
+            else:
+                # domainIncludes collections (unionOf | intersectionOf
+                q = '''
+                    PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+                    PREFIX sdo: <https://schema.org/>  
+
+                    SELECT ?col_type ?col_member
+                    WHERE {{
+                        <{}> sdo:domainIncludes ?domainIncludes .  
+                        ?domainIncludes owl:unionOf|owl:intersectionOf ?collection .
+                        ?domainIncludes ?col_type ?collection . 
+                        ?collection rdf:rest*/rdf:first ?col_member .              
+                    }} 
+                '''.format(s)
+                collection_type = None
+                collection_members = []
+                for r in G.query(q):
+                    if r.col_type == OWL.unionOf:
+                        sep = ' <em>or</em> '
+                    else:
+                        sep = ' <em>and</em> '
+                    collection_members.append('<a href="{}">{}</a>'.format(str(r.col_member), _get_curie(str(r.col_member))))
+
+                # format collection as string
+                domainIncludes.append((collection_type, collection_members))
+
+        PROPERTIES[prop]['domainIncludes'] = domainIncludes
+
+        # ranges
+        ranges = []
+        for o in G.objects(subject=s, predicate=RDFS.range):
+            if type(o) != BNode:
+                ranges.append(_make_uri_html(o, type='c'))  # ranges that are just classes
+            else:
+                # range collections (unionOf | intersectionOf
+                q = '''
+                    PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+                    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+
+                    SELECT ?col_type ?col_member
+                    WHERE {{
+                        <{}> rdfs:range ?range .  
+                        ?range owl:unionOf|owl:intersectionOf ?collection .
+                        ?range ?col_type ?collection . 
+                        ?collection rdf:rest*/rdf:first ?col_member .              
+                    }} 
+                '''.format(s)
+                collection_members = []
+                for r in G.query(q):
+                    if r.col_type == OWL.unionOf:
+                        sep = ' <em>or</em> '
+                    else:
+                        sep = ' <em>and</em> '
+                    collection_members.append('<a href="{}">{}</a>'.format(str(r.col_member), _get_curie(str(r.col_member))))
+
+                # format collection as string
+                ranges.append('({})'.format(sep.join(collection_members)))
+
+        PROPERTIES[prop]['ranges'] = ranges
+
+        # rangeIncludes
+        rangeIncludes = []
+        for o in G.objects(subject=s, predicate=SDO.rangeIncludes):
+            if type(o) != BNode:
+                rangeIncludes.append(_make_uri_html(o, type='c'))  # rangeIncludes that are just classes
+            else:
+                # rangeIncludes collections (unionOf | intersectionOf
+                q = '''
+                    PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+                    PREFIX sdo: <https://schema.org/>  
+
+                    SELECT ?col_type ?col_member
+                    WHERE {{
+                        <{}> sdo:rangeIncludes ?rangeIncludes .  
+                        ?rangeIncludes owl:unionOf|owl:intersectionOf ?collection .
+                        ?rangeIncludes ?col_type ?collection . 
+                        ?collection rdf:rest*/rdf:first ?col_member .              
+                    }} 
+                '''.format(s)
+                collection_type = None
+                collection_members = []
+                for r in G.query(q):
+                    if r.col_type == OWL.unionOf:
+                        sep = ' <em>or</em> '
+                    else:
+                        sep = ' <em>and</em> '
+                    collection_members.append('<a href="{}">{}</a>'.format(str(r.col_member), _get_curie(str(r.col_member))))
+
+                # format collection as string
+                rangeIncludes.append((collection_type, collection_members))
+
+        PROPERTIES[prop]['rangeIncludes'] = rangeIncludes
+
+        # TODO: cater for sub property chains
+
+    # # sort properties by title
+    # x = sorted([(k, v) for k, v in PROPERTIES.items()], key=lambda tup: tup[1]['title'])
+    # y = collections.OrderedDict()
+    # for n in x:
+    #     y[n[0]] = n[1]
+    #
+    # return y
+
+
+def _extract_classes():
+    for cls in CLASSES.keys():
+        s = URIRef(cls)
+        # create Python dict for each class
+        CLASSES[cls] = {}
+
+        # basic class properties
+        CLASSES[cls]['title'] = None
+        CLASSES[cls]['description'] = None
+        CLASSES[cls]['scopeNote'] = None
+        CLASSES[cls]['isDefinedBy'] = None
+
+        for p, o in G.predicate_objects(subject=s):
+            if p == RDFS.label:
+                CLASSES[cls]['title'] = str(o)
+
+            if p == RDFS.comment:
+                CLASSES[cls]['description'] = str(o)
+
+            if p == SKOS.scopeNote:
+                CLASSES[cls]['scopeNote'] = str(o)
+
+            if p == RDFS.isDefinedBy:
+                CLASSES[cls]['isDefinedBy'] = str(o)
+
+        # patch title from URI if we haven;t got one
+        if CLASSES[cls]['title'] is None:
+            CLASSES[cls]['title'] = _make_title_from_uri(cls)
+
+        # make fid
+        CLASSES[cls]['fid'] = _make_fid(CLASSES[cls]['title'], cls)
+
+        # equivalent classes
+        equivalent_classes = []
+        for o in G.objects(subject=s, predicate=OWL.equivalentClass):
+            if type(o) != BNode:
+                equivalent_classes.append(_get_curie(str(o)))  # ranges that are just classes
+            else:
+                # equivalent classes collections (unionOf | intersectionOf
+                q = '''
+                    PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+                    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+
+                    SELECT ?col_type ?col_member
+                    WHERE {{
+                        <{}> owl:equivalentClass ?eq .  
+                        ?eq owl:unionOf|owl:intersectionOf ?collection .
+                        ?eq ?col_type ?collection . 
+                        ?collection rdf:rest*/rdf:first ?col_member .              
+                    }} 
+                '''.format(s)
+                collection_type = None
+                collection_members = []
+                for r in G.query(q):
+                    collection_type = _get_curie(str(r.col_type))
+                    collection_members.append(_get_curie(str(r.col_member)))
+                equivalent_classes.append((collection_type, collection_members))
+        CLASSES[cls]['equivalentClasses'] = equivalent_classes
+
+        # super classes & restrictions
+        supers = []
+        restrictions = []
+        for o in G.objects(subject=s, predicate=RDFS.subClassOf):
+            if type(o) != BNode:
+                # TODO: replace all _get_curie with _make_class_html
+                supers.append(_make_uri_html(o, type='c'))  # supers that are just classes
+            else:  # we have a Blank Node
+                if (o, OWL.unionOf) in G.subject_predicates() or (o, OWL.intersectionOf) in G.subject_predicates():
+                    supers.append(_make_collection_class_html(s, o))
+                elif (o, RDF.type, OWL.Restriction) in G:  # this o is a Restriction
+                    restrictions.append(_make_restriction_html(s, o))
+
+        CLASSES[cls]['supers'] = supers
+        CLASSES[cls]['restrictions'] = restrictions
+
+        # sub classes
+        subs = []
+        for o in G.subjects(predicate=RDFS.subClassOf, object=s):
+            if type(o) != BNode:
+                subs.append(_make_uri_html(o, type='c'))
+            else:
+                # sub classes collections (unionOf | intersectionOf
+                q = '''
+                    PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+                    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+
+                    SELECT ?col_type ?col_member
+                    WHERE {{
+                        ?sub rdfs:subClassOf <{}> . 
+                        ?sub owl:unionOf|owl:intersectionOf ?collection .
+                        ?sub ?col_type ?collection . 
+                        ?collection rdf:rest*/rdf:first ?col_member .              
+                    }} 
+                '''.format(s)
+                collection_type = None
+                collection_members = []
+                for r in G.query(q):
+                    collection_type = _get_curie(str(r.col_type))
+                    collection_members.append(_get_curie(str(r.col_member)))
+                subs.append((collection_type, collection_members))
+        CLASSES[cls]['subs'] = subs
+
+        in_domain_of = []
+        for o in G.subjects(predicate=RDFS.domain, object=s):
+            in_domain_of.append(_make_uri_html(str(o), type=PROPERTIES[str(o)]['prop_type']))
+        CLASSES[cls]['in_domain_of'] = in_domain_of
+
+        in_domain_includes_of = []
+        for o in G.subjects(predicate=SDO.domainIncludes, object=s):
+            in_domain_includes_of.append(_make_uri_html(str(o), type=PROPERTIES[str(o)]['prop_type']))
+        CLASSES[cls]['in_domain_includes_of'] = in_domain_includes_of
+
+        in_range_of = []
+        for o in G.subjects(predicate=RDFS.range, object=s):
+            in_range_of.append(_make_uri_html(str(o), type=PROPERTIES[str(o)]['prop_type']))
+        CLASSES[cls]['in_range_of'] = in_range_of
+
+        in_range_includes_of = []
+        for o in G.subjects(predicate=SDO.rangeIncludes, object=s):
+            in_range_includes_of.append(_make_uri_html(str(o), type=PROPERTIES[str(o)]['prop_type']))
+        CLASSES[cls]['in_range_includes_of'] = in_range_includes_of
+
+        # TODO: cater for Named Individuals of this class - "has members"
+
+    # # sort properties by title
+    # x = sorted([(k, v) for k, v in classes.items()], key=lambda tup: tup[1]['title'])
+    # y = collections.OrderedDict()
+    # for n in x:
+    #     y[n[0]] = n[1]
+    #
+    # return y
 
 
 def _make_title_from_uri(uri):
@@ -64,14 +537,13 @@ def _make_title_from_uri(uri):
 
 
 # makes the fragment ID for a class, property, Named Individual (any entity) based on URI or name
-def _make_fid(title, uri, existing_fids):
+def _make_fid(title, uri):
     # does this URI already have a fid?
-    existing_fid = existing_fids.get(uri)
+    existing_fid = FIDS.get(uri)
     if existing_fid is not None:
         return existing_fid
 
     # no, so make one
-
     def _remove_non_ascii_chars(s):
         return ''.join(i for i in s if ord(i) < 128)
 
@@ -81,8 +553,8 @@ def _make_fid(title, uri, existing_fids):
         fid = _remove_non_ascii_chars(title.lower().replace(' ', ''))
 
         # do not return fid if it's already in use
-        if fid not in existing_fids.values():
-            existing_fids[uri] = fid
+        if fid not in FIDS.values():
+            FIDS[uri] = fid
             return fid
 
     # this fid is already present so generate a new one from the URI instead
@@ -106,280 +578,49 @@ def _make_fid(title, uri, existing_fids):
     fid = fid.lower()
 
     # do not return fid if it's already in use
-    if fid not in existing_fids.values():
-        existing_fids[uri] = fid
+    if fid not in FIDS.values():
+        FIDS[uri] = fid
         return fid
     else:
         # since it's in use but we've exhausted generation options, just add 1 to existing fid name
-        existing_fids[uri] = fid + '1'
+        FIDS[uri] = fid + '1'
         return fid + '1'  # yeah yeah, there could be more than one but unlikely
 
 
-def _extract_namespaces(g):
-    # get declared namespaces, keyed by URI
-    ns = {}
-    uris = set()
-    for k, v in g.namespaces():
-        ns[str(v)] = k
-
-    # get other namespaces
-    for s, p, o in g:
-        # only add URI subjects (not Blank Nodes)
-        if type(s) == URIRef:
-            uris.add(_get_namespace_from_uri(s))
-
-        # predicates are always URIs
-        uris.add(_get_namespace_from_uri(p))
-
-        # only add URI objects (not Literals)
-        if type(o) == URIRef:
-            uris.add(_get_namespace_from_uri(o))
-
-    for uri in uris:
-        if ns.get(uri) is None:
-            ns[uri] = _get_curie_prefix(uri, ns)
-
-    # invert the key/values in instances
-    instances = collections.OrderedDict()
-    for k, v in sorted(ns.items(), key=lambda x: x[1]):
-        instances[v] = k
-
-    return instances
-
-
-def _get_default_namespace(g, ns, metadata):
+def _get_default_namespace():
     # if this ontology declares a preferred URI, use that
-    if metadata.get('preferredNamespaceUri'):
-        return metadata.get('preferredNamespaceUri')
+    if METADATA.get('preferredNamespaceUri'):
+        return METADATA.get('preferredNamespaceUri')
 
     # ... or try a namespace declared with prefix ''
-    for k, v in ns.items():
+    for k, v in NAMESPACES.items():
         if k == '':
             return v
 
     # not using - erroneous
     # # if it doesn't declare a preferredNamespaceUri but does declare a versionIRI, use that
-    # if metadata.get('versionIRI'):
-    #     return metadata.get('versionIRI')
+    # if METADATA.get('versionIRI'):
+    #     return METADATA.get('versionIRI')
 
     # finally try the URI of the ontology compared to all prefixes
     ontology_uri = None
-    for s in g.subjects(predicate=RDF.type, object=OWL.Ontology):
+    for s in G.subjects(predicate=RDF.type, object=OWL.Ontology):
         ontology_uri = str(s)
 
-    for v in ns.values():
+    for v in NAMESPACES.values():
         if v.startswith(ontology_uri):
             return v
 
 
-def _make_namespaces_html(namespaces, default_namespace):
+def _make_namespaces_html():
     template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
     namespaces_template = Environment(loader=FileSystemLoader(template_dir)).get_template('namespaces.html')
     namespaces_html = namespaces_template.render(
-        namespaces=namespaces,
-        default_namespace=default_namespace
+        namespaces=NAMESPACES,
+        default_namespace=METADATA['default_namespace']
     )
 
     return namespaces_html
-
-
-def _extract_properties(g, existing_fids, namespaces):
-    SCO = Namespace('https://schema.org/')  # used for domainIncludes & rangeIncludes
-    g.bind('sco', SCO)
-
-    # properties
-    properties = {}
-    for s in g.subjects(predicate=RDF.type, object=RDF.Property):
-        s_str = str(s)
-        properties[s_str] = {}
-
-        # property type
-        if (s, RDF.type, OWL.ObjectProperty) in g:
-            properties[s_str]['prop_type'] = 'op'
-        elif (s, RDF.type, OWL.DatatypeProperty) in g:
-            properties[s_str]['prop_type'] = 'dp'
-        else:
-            properties[s_str]['prop_type'] = 'ap'
-
-        properties[s_str]['title'] = None
-        properties[s_str]['description'] = None
-        properties[s_str]['scopeNote'] = None
-        properties[s_str]['isDefinedBy'] = None
-
-        for p, o in g.predicate_objects(subject=s):
-            if p == RDFS.label:
-                properties[s_str]['title'] = str(o)
-
-            if p == RDFS.comment:
-                properties[s_str]['description'] = str(o)
-
-            if p == SKOS.scopeNote:
-                properties[s_str]['scopeNote'] = str(o)
-
-            if p == RDFS.isDefinedBy:
-                properties[s_str]['isDefinedBy'] = str(o)
-
-        # patch title from URI if we haven't got one
-        if properties[s_str]['title'] is None:
-            properties[s_str]['title'] = _make_title_from_uri(s_str)
-
-        # make fid
-        properties[s_str]['fid'] = _make_fid(properties[s_str]['title'], s_str, existing_fids)
-
-        # super properties
-        supers = []
-        for o in g.objects(subject=s, predicate=RDFS.subPropertyOf):
-            if type(o) != BNode:
-                supers.append(_make_uri_html(o, namespaces, type=properties[s_str]['prop_type']))
-        properties[s_str]['supers'] = supers
-
-        # sub properties
-        subs = []
-        for o in g.subjects(predicate=RDFS.subPropertyOf, object=s):
-            if type(o) != BNode:
-                subs.append(str(o))
-        properties[s_str]['subs'] = subs
-
-        # domains
-        domains = []
-        for o in g.objects(subject=s, predicate=RDFS.domain):
-            if type(o) != BNode:
-                domains.append(_make_uri_html(o, namespaces, type='c'))  # domains that are just classes
-            else:
-                # domain collections (unionOf | intersectionOf
-                q = '''
-                    PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
-
-                    SELECT ?col_type ?col_member
-                    WHERE {{
-                        <{}> rdfs:domain ?domain .  
-                        ?domain owl:unionOf|owl:intersectionOf ?collection .
-                        ?domain ?col_type ?collection . 
-                        ?collection rdf:rest*/rdf:first ?col_member .              
-                    }} 
-                '''.format(s)
-                collection_type = None
-                collection_members = []
-                for r in g.query(q):
-                    if r.col_type == OWL.unionOf:
-                        sep = ' <em>or</em> '
-                    else:
-                        sep = ' <em>and</em> '
-                    collection_members.append('<a href="{}">{}</a>'.format(str(r.col_member), _get_curie(str(r.col_member), namespaces)))
-
-                # format collection as string
-                domains.append((collection_type, collection_members))
-
-        properties[s_str]['domains'] = domains
-
-        # domainIncludes
-        domainIncludes = []
-        for o in g.objects(subject=s, predicate=SCO.domainIncludes):
-            if type(o) != BNode:
-                domainIncludes.append(_make_uri_html(o, namespaces, type='c'))  # domainIncludes that are just classes
-            else:
-                # domainIncludes collections (unionOf | intersectionOf
-                q = '''
-                    PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                    PREFIX sco: <https://schema.org/>  
-
-                    SELECT ?col_type ?col_member
-                    WHERE {{
-                        <{}> sco:domainIncludes ?domainIncludes .  
-                        ?domainIncludes owl:unionOf|owl:intersectionOf ?collection .
-                        ?domainIncludes ?col_type ?collection . 
-                        ?collection rdf:rest*/rdf:first ?col_member .              
-                    }} 
-                '''.format(s)
-                collection_type = None
-                collection_members = []
-                for r in g.query(q):
-                    if r.col_type == OWL.unionOf:
-                        sep = ' <em>or</em> '
-                    else:
-                        sep = ' <em>and</em> '
-                    collection_members.append('<a href="{}">{}</a>'.format(str(r.col_member), _get_curie(str(r.col_member), namespaces)))
-
-                # format collection as string
-                domainIncludes.append((collection_type, collection_members))
-
-        properties[s_str]['domainIncludes'] = domainIncludes
-
-        # ranges
-        ranges = []
-        for o in g.objects(subject=s, predicate=RDFS.range):
-            if type(o) != BNode:
-                ranges.append(_make_uri_html(o, namespaces, type='c'))  # ranges that are just classes
-            else:
-                # range collections (unionOf | intersectionOf
-                q = '''
-                    PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
-
-                    SELECT ?col_type ?col_member
-                    WHERE {{
-                        <{}> rdfs:range ?range .  
-                        ?range owl:unionOf|owl:intersectionOf ?collection .
-                        ?range ?col_type ?collection . 
-                        ?collection rdf:rest*/rdf:first ?col_member .              
-                    }} 
-                '''.format(s)
-                collection_members = []
-                for r in g.query(q):
-                    if r.col_type == OWL.unionOf:
-                        sep = ' <em>or</em> '
-                    else:
-                        sep = ' <em>and</em> '
-                    collection_members.append('<a href="{}">{}</a>'.format(str(r.col_member), _get_curie(str(r.col_member), namespaces)))
-
-                # format collection as string
-                ranges.append('({})'.format(sep.join(collection_members)))
-
-        properties[s_str]['ranges'] = ranges
-
-        # rangeIncludes
-        rangeIncludes = []
-        for o in g.objects(subject=s, predicate=SCO.rangeIncludes):
-            if type(o) != BNode:
-                rangeIncludes.append(_make_uri_html(o, namespaces, type='c'))  # rangeIncludes that are just classes
-            else:
-                # rangeIncludes collections (unionOf | intersectionOf
-                q = '''
-                    PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                    PREFIX sco: <https://schema.org/>  
-
-                    SELECT ?col_type ?col_member
-                    WHERE {{
-                        <{}> sco:rangeIncludes ?rangeIncludes .  
-                        ?rangeIncludes owl:unionOf|owl:intersectionOf ?collection .
-                        ?rangeIncludes ?col_type ?collection . 
-                        ?collection rdf:rest*/rdf:first ?col_member .              
-                    }} 
-                '''.format(s)
-                collection_type = None
-                collection_members = []
-                for r in g.query(q):
-                    if r.col_type == OWL.unionOf:
-                        sep = ' <em>or</em> '
-                    else:
-                        sep = ' <em>and</em> '
-                    collection_members.append('<a href="{}">{}</a>'.format(str(r.col_member), _get_curie(str(r.col_member), namespaces)))
-
-                # format collection as string
-                rangeIncludes.append((collection_type, collection_members))
-
-        properties[s_str]['rangeIncludes'] = rangeIncludes
-
-        # TODO: cater for sub property chains
-
-    # sort properties by title
-    x = sorted([(k, v) for k, v in properties.items()], key=lambda tup: tup[1]['title'])
-    y = collections.OrderedDict()
-    for n in x:
-        y[n[0]] = n[1]
-
-    return y
 
 
 def _make_property_html(property):
@@ -401,14 +642,14 @@ def _make_property_html(property):
     )
 
 
-def _make_properties_html(properties):
+def _make_properties_html():
     template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
     template = Environment(loader=FileSystemLoader(template_dir)).get_template('properties.html')
     op_instances = []
     dp_instances = []
     ap_instances = []
 
-    for k, v in properties.items():
+    for k, v in PROPERTIES.items():
         if v.get('prop_type') == 'op':
             op_instances.append((v['title'], v['fid'], _make_property_html((k, v))))
         if v.get('prop_type') == 'dp':
@@ -425,147 +666,8 @@ def _make_properties_html(properties):
     return html
 
 
-def _extract_classes(g, existing_fids, namespaces, properties):
-    classes = {}
-    for s in g.subjects(predicate=RDF.type, object=RDFS.Class):
-        # ignore blank nodes for things like [ owl:unionOf ( ... ) ]
-        if type(s) == BNode:
-            pass
-        else:
-            # create Python dict for class
-            s_str = str(s)
-            classes[s_str] = {}
-
-            # basic class properties
-            classes[s_str]['title'] = None
-            classes[s_str]['description'] = None
-            classes[s_str]['scopeNote'] = None
-            classes[s_str]['isDefinedBy'] = None
-
-            for p, o in g.predicate_objects(subject=s):
-                if p == RDFS.label:
-                    classes[s_str]['title'] = str(o)
-
-                if p == RDFS.comment:
-                    classes[s_str]['description'] = str(o)
-
-                if p == SKOS.scopeNote:
-                    classes[s_str]['scopeNote'] = str(o)
-
-                if p == RDFS.isDefinedBy:
-                    classes[s_str]['isDefinedBy'] = str(o)
-
-            # patch title from URI if we haven;t got one
-            if classes[s_str]['title'] is None:
-                classes[s_str]['title'] = _make_title_from_uri(s_str)
-
-            # make fid
-            classes[s_str]['fid'] = _make_fid(classes[s_str]['title'], s_str, existing_fids)
-
-            # equivalent classes
-            equivalentClasses = []
-            for o in g.objects(subject=s, predicate=OWL.equivalentClass):
-                if type(o) != BNode:
-                    equivalentClasses.append(_get_curie(str(o), namespaces))  # ranges that are just classes
-                else:
-                    # equivalent classes collections (unionOf | intersectionOf
-                    q = '''
-                        PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
-
-                        SELECT ?col_type ?col_member
-                        WHERE {{
-                            <{}> owl:equivalentClass ?eq .  
-                            ?eq owl:unionOf|owl:intersectionOf ?collection .
-                            ?eq ?col_type ?collection . 
-                            ?collection rdf:rest*/rdf:first ?col_member .              
-                        }} 
-                    '''.format(s)
-                    collection_type = None
-                    collection_members = []
-                    for r in g.query(q):
-                        collection_type = _get_curie(str(r.col_type), namespaces)
-                        collection_members.append(_get_curie(str(r.col_member), namespaces))
-                    equivalentClasses.append((collection_type, collection_members))
-            classes[s_str]['equivalentClasses'] = equivalentClasses
-
-            # super classes & restrictions
-            supers = []
-            restrictions = []
-            for o in g.objects(subject=s, predicate=RDFS.subClassOf):
-                if type(o) != BNode:
-                    # TODO: replace all _get_curie with _make_class_html
-                    supers.append(_make_uri_html(o, namespaces, type='c'))  # supers that are just classes
-                else:  # we have a Blank Node
-                    if (o, OWL.unionOf) in g.subject_predicates() or (o, OWL.intersectionOf) in g.subject_predicates():
-                        supers.append(_make_collection_class_html(g, s, o, namespaces))
-                    elif (o, RDF.type, OWL.Restriction) in g:  # this o is a Restriction
-                        restrictions.append(_make_restriction_html(g, s, o, namespaces, properties))
-
-            classes[s_str]['supers'] = supers
-            classes[s_str]['restrictions'] = restrictions
-
-            # sub classes
-            subs = []
-            for o in g.subjects(predicate=RDFS.subClassOf, object=s):
-                if type(o) != BNode:
-                    subs.append(_make_uri_html(o, namespaces, type='c'))
-                else:
-                    # sub classes collections (unionOf | intersectionOf
-                    q = '''
-                        PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
-
-                        SELECT ?col_type ?col_member
-                        WHERE {{
-                            ?sub rdfs:subClassOf <{}> . 
-                            ?sub owl:unionOf|owl:intersectionOf ?collection .
-                            ?sub ?col_type ?collection . 
-                            ?collection rdf:rest*/rdf:first ?col_member .              
-                        }} 
-                    '''.format(s)
-                    collection_type = None
-                    collection_members = []
-                    for r in g.query(q):
-                        collection_type = _get_curie(str(r.col_type), namespaces)
-                        collection_members.append(_get_curie(str(r.col_member), namespaces))
-                    subs.append((collection_type, collection_members))
-            classes[s_str]['subs'] = subs
-
-            in_domain_of = []
-            for o in g.subjects(predicate=RDFS.domain, object=s):
-                in_domain_of.append(_make_uri_html(str(o), namespaces, type=properties[str(o)]['prop_type']))
-            classes[s_str]['in_domain_of'] = in_domain_of
-
-            in_domain_includes_of = []
-            for o in g.subjects(predicate=URIRef('https://schema.org/domainIncludes'), object=s):
-                in_domain_includes_of.append(_make_uri_html(str(o), namespaces, type=properties[str(o)]['prop_type']))
-            classes[s_str]['in_domain_includes_of'] = in_domain_includes_of
-
-            in_range_of = []
-            for o in g.subjects(predicate=RDFS.range, object=s):
-                in_range_of.append(_make_uri_html(str(o), namespaces, type=properties[str(o)]['prop_type']))
-            classes[s_str]['in_range_of'] = in_range_of
-
-            in_range_includes_of = []
-            for o in g.subjects(predicate=URIRef('https://schema.org/rangeIncludes'), object=s):
-                in_range_includes_of.append(_make_uri_html(str(o), namespaces, type=properties[str(o)]['prop_type']))
-            classes[s_str]['in_range_includes_of'] = in_range_includes_of
-
-
-            # TODO: cater for Named Individuals of this class - "has members"
-
-    # sort properties by title
-    x = sorted([(k, v) for k, v in classes.items()], key=lambda tup: tup[1]['title'])
-    y = collections.OrderedDict()
-    for n in x:
-        y[n[0]] = n[1]
-
-    return y
-
-
-def _make_uri_html(uri, namespaces, type=None):
-    short = _get_curie(uri, namespaces)
+def _make_uri_html(uri, type=None):
+    short = _get_curie(uri)
     html = '<a href="{}">{}</a>'.format(uri, short)
     if type == 'c':
         return html + ' <sup class="sup-c" title="class">c</sup>'
@@ -579,11 +681,11 @@ def _make_uri_html(uri, namespaces, type=None):
         return html
 
 
-def _make_classes_html(classes):
+def _make_classes_html():
     template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
     class_template = Environment(loader=FileSystemLoader(template_dir)).get_template('class.html')
     class_htmls = []
-    for k, v in classes.items():
+    for k, v in CLASSES.items():
         class_htmls.append(
             class_template.render(
                     uri=k,
@@ -601,7 +703,7 @@ def _make_classes_html(classes):
         )
 
     classes_template = Environment(loader=FileSystemLoader(template_dir)).get_template('classes.html')
-    fids = sorted([(v.get('fid'), v.get('title')) for k, v in classes.items()], key=lambda tup: tup[1])
+    fids = sorted([(v.get('fid'), v.get('title')) for k, v in CLASSES.items()], key=lambda tup: tup[1])
     classes_html = classes_template.render(
         fids=fids,
         classes=class_htmls,
@@ -610,7 +712,7 @@ def _make_classes_html(classes):
     return classes_html
 
 
-def _make_collection_class_html(g, parent_uri, o, namespaces):
+def _make_collection_class_html(parent_uri, o):
     # TODO: bug, this SPARQL returns results for all Collections for a parent_uri, not only one
     '''
       rdfs:subClassOf [
@@ -639,36 +741,36 @@ def _make_collection_class_html(g, parent_uri, o, namespaces):
         }} 
     '''.format(parent_uri, o)
     collection_members = []
-    for r in g.query(q):
+    for r in G.query(q):
         if r.col_type == OWL.unionOf:
             j = ' or '
         elif r.col_type == OWL.intersectionOf:
             j = ' and '
 
-        collection_members.append(_make_uri_html(r.col_member, namespaces))
+        collection_members.append(_make_uri_html(r.col_member))
 
     return '({})'.format(j.join(collection_members))
 
 
-def _make_restriction_html(g, subject, restriction_bn, namespaces, properties):
+def _make_restriction_html(subject, restriction_bn):
     prop = None
     card = None
     cls = None
 
-    for p2, o2 in g.predicate_objects(subject=restriction_bn):
+    for p2, o2 in G.predicate_objects(subject=restriction_bn):
         if p2 != RDF.type:
             if p2 == OWL.onProperty:
                 # TODO: add the property type for HTML
                 t = None
-                if str(o2) in properties.keys():
-                    t = properties[str(o2)]['prop_type']
-                prop = _make_uri_html(o2, namespaces, t)
+                if str(o2) in PROPERTIES.keys():
+                    t = PROPERTIES[str(o2)]['prop_type']
+                prop = _make_uri_html(o2, t)
             elif p2 == OWL.onClass:
                 if type(o2) == BNode:
-                    if (o2, OWL.unionOf) in g.subject_predicates() or (o2, OWL.intersectionOf) in g.subject_predicates():
-                        cls = _make_collection_class_html(g, subject, restriction_bn, namespaces)
+                    if (o2, OWL.unionOf) in G.subject_predicates() or (o2, OWL.intersectionOf) in G.subject_predicates():
+                        cls = _make_collection_class_html(g, subject, restriction_bn)
                 else:
-                    cls = _make_uri_html(o2, namespaces, type='c')
+                    cls = _make_uri_html(o2, type='c')
             elif p2 in [
                 OWL.cardinality,
                 OWL.qualifiedCardinality,
@@ -692,9 +794,9 @@ def _make_restriction_html(g, subject, restriction_bn, namespaces, properties):
                     card = 'some'
 
                 if type(o2) == BNode:
-                    c = _make_collection_class_html(g, subject, restriction_bn, namespaces)
+                    c = _make_collection_class_html(g, subject, restriction_bn)
                 else:
-                    c = _make_uri_html(o2, namespaces)
+                    c = _make_uri_html(o2)
                 card = '<span class="cardinality">{}</span> {}'.format(card, c)
 
     restriction = prop + ' ' + card if card is not None else prop
@@ -707,63 +809,9 @@ def _make_restriction_html(g, subject, restriction_bn, namespaces, properties):
     return restriction
 
 
-def _get_curie_prefix(uri, ns):
-    ns_count = 0
-
-    from curies import CURIES, EXTRA_CURIES
-
-    # TODO: replace this with a once-per run update CURIES function
-    def get_curie_online(uri):
-        try:
-            r = requests.get(
-                'http://prefix.cc/reverse',
-                params={
-                    'uri': uri,
-                    'format': 'txt'
-                }
-            )
-            if r.status_code == 200:
-                return r.text.split('\t')[0]
-            else:
-                return None
-        except requests.exceptions.ConnectionError:
-            # presumably this module can't access the internet or prefix.cc is down
-            return None
-
-    def get_curie_from_namespace(uri, ns_count):
-        # strip off trailing hash or slash and return last path segment
-        c = uri.rstrip('#/').split('/')[-1]
-
-        # prevent CURIE collision = return nsX (x int) if we already have this one
-        for k, v in ns.items():
-            if c == v:
-                ns_count += 1
-                return 'ns' + str(ns_count)
-
-        return c
-
-    # attempt to look up the well-known curie for this Namespace in http://prefix.cc dump
-    for k, v in CURIES.items():
-        if v == uri:
-            return k
-
-    for k, v in EXTRA_CURIES.items():
-        if v == uri:
-            return k
-
-    # attempt to look up the well-known CURIE for this Namespace using http://prefix.cc online (more up-to-date)
-    c = get_curie_online(uri)
-    if c is not None:
-        return c
-
-    # can't fund CURIE online so make up one
-    c = get_curie_from_namespace(uri, ns_count)
-    return c if c is not None else ''
-
-
-def _get_curie(uri, ns):
+def _get_curie(uri):
     n = _get_namespace_from_uri(str(uri))
-    for k, v in ns.items():
+    for k, v in NAMESPACES.items():
         if v == n:
             return '{}:{}'.format(k, _get_uri_id(uri))
 
@@ -775,19 +823,6 @@ def _get_curie(uri, ns):
     return uri
 
 
-def _get_namespace_from_uri(uri):
-    # split on hash
-    segments = uri.split('#')
-    if len(segments) == 2:
-        return segments[0] + '#'
-    else:
-        segments = uri.split('/')
-        if len(segments) > 1:
-            return '/'.join(segments[0:-1]) + '/'
-        else:
-            return None
-
-
 def _get_uri_id(uri):
     # split on hash
     segments = uri.split('#')
@@ -797,7 +832,7 @@ def _get_uri_id(uri):
         return uri.split('/')[-1]  # could return None if URI ends in /
 
 
-def _make_agent(g, agent_blank_node):
+def _make_agent(agent_blank_node):
     agent = None
     # we understand foaf:name, foaf:homepage & sdo:name & sdo:identifier & sdo:email (as a URI)
     # TODO: cater for other Agent representations
@@ -805,12 +840,12 @@ def _make_agent(g, agent_blank_node):
     name = None
     url = None
     email = None
-    for p, o in g.predicate_objects(subject=agent_blank_node):
-        if p == FOAF.homepage or p == URIRef('https://schema.org/identifier'):
+    for p, o in G.predicate_objects(subject=agent_blank_node):
+        if p == FOAF.homepage or p == SDO.identifier:
             url = str(o)
-        elif p == FOAF.name or p == URIRef('https://schema.org/name'):
+        elif p == FOAF.name or p == SDO.name:
             name = str(o)
-        elif p == FOAF.mbox or p == URIRef('https://schema.org/email'):
+        elif p == FOAF.mbox or p == SDO.email:
             email = str(o).split('/')[-1].split('#')[-1]  # remove base URI leaving only email address
 
     if url is not None and email is not None:
@@ -825,95 +860,94 @@ def _make_agent(g, agent_blank_node):
     return agent
 
 
-def _extract_ontology_metadata(g, classes, properties, namespaces):
-    metadata = {}
-    if len(classes) > 0:
-        metadata['has_classes'] = True
+def _extract_metadata():
+    if len(CLASSES.keys()) > 0:
+        METADATA['has_classes'] = True
 
-    metadata['has_op'] = False
-    metadata['has_dp'] = False
-    metadata['has_a'] = False
+    METADATA['has_ops'] = False
+    METADATA['has_dps'] = False
+    METADATA['has_aps'] = False
 
-    for k, v in properties.items():
+    for k, v in PROPERTIES.items():
         if v.get('prop_type') == 'op':
-            metadata['has_ops'] = True
+            METADATA['has_ops'] = True
         if v.get('prop_type') == 'dp':
-            metadata['has_dps'] = True
+            METADATA['has_dps'] = True
         if v.get('prop_type') == 'ap':
-            metadata['has_aps'] = True
+            METADATA['has_aps'] = True
 
     s_str = None
-    metadata['imports'] = set()
-    metadata['creators'] = set()
-    metadata['contributors'] = set()
-    metadata['publishers'] = set()
-    for s in g.subjects(predicate=RDF.type, object=OWL.Ontology):
+    METADATA['imports'] = set()
+    METADATA['creators'] = set()
+    METADATA['contributors'] = set()
+    METADATA['publishers'] = set()
+    for s in G.subjects(predicate=RDF.type, object=OWL.Ontology):
         s_str = str(s)  # this is the Ontology's URI
-        metadata['uri'] = s_str
+        METADATA['uri'] = s_str
 
-        for p, o in g.predicate_objects(subject=s):
+        for p, o in G.predicate_objects(subject=s):
             if p == OWL.imports:
-                metadata['imports'].add(_make_uri_html(o, namespaces))
+                METADATA['imports'].add(_make_uri_html(o))
 
             if p == RDFS.label:
-                metadata['title'] = str(o)
+                METADATA['title'] = str(o)
 
             if p == RDFS.comment:
                 import markdown
-                metadata['description'] = markdown.markdown(str(o))
+                METADATA['description'] = markdown.markdown(str(o))
 
             if p == DCTERMS.created:
-                metadata['created'] = dateutil.parser.parse(str(o)).strftime('%Y-%m-%d')
+                METADATA['created'] = dateutil.parser.parse(str(o)).strftime('%Y-%m-%d')
 
             if p == DCTERMS.modified:
-                metadata['modified'] = dateutil.parser.parse(str(o)).strftime('%Y-%m-%d')
+                METADATA['modified'] = dateutil.parser.parse(str(o)).strftime('%Y-%m-%d')
 
             if p == DCTERMS.issued:
-                metadata['issued'] = dateutil.parser.parse(str(o)).strftime('%Y-%m-%d')
+                METADATA['issued'] = dateutil.parser.parse(str(o)).strftime('%Y-%m-%d')
 
             if p == OWL.versionIRI:
-                metadata['versionIRI'] = '<a href="{0}">{0}</a>'.format(str(o))
+                METADATA['versionIRI'] = '<a href="{0}">{0}</a>'.format(str(o))
 
             if p == OWL.versionInfo:
-                metadata['versionInfo'] = str(o)
+                METADATA['versionInfo'] = str(o)
 
             if p == URIRef('http://purl.org/vocab/vann/preferredNamespacePrefix'):
-                metadata['preferredNamespacePrefix'] = str(o)
+                METADATA['preferredNamespacePrefix'] = str(o)
 
             if p == URIRef('http://purl.org/vocab/vann/preferredNamespaceUri'):
-                metadata['preferredNamespaceUri'] = str(o)
+                METADATA['preferredNamespaceUri'] = str(o)
 
             # Agents
             if p == DC.creator:
-                metadata['creators'].add(str(o))
+                METADATA['creators'].add(str(o))
 
             if p == DCTERMS.creator:
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
-                    metadata['creators'].add(str(o))
+                    METADATA['creators'].add(str(o))
                 else:  # Blank Node
-                    metadata['creators'].add(_make_agent(g, o))
+                    METADATA['creators'].add(_make_agent(o))
 
             if p == DC.contributor:
-                metadata['contributors'].add(str(o))
+                METADATA['contributors'].add(str(o))
 
             if p == DCTERMS.contributor:
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
-                    metadata['contributors'].add(str(o))
+                    METADATA['contributors'].add(str(o))
                 else:  # Blank Node
-                    metadata['contributors'].add(_make_agent(g, o))
+                    METADATA['contributors'].add(_make_agent(o))
 
             if p == DC.publisher:
-                metadata['publishers'].add(str(o))
+                METADATA['publishers'].add(str(o))
 
             if p == DCTERMS.publisher:
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
-                    metadata['publishers'].add(str(o))
+                    METADATA['publishers'].add(str(o))
                 else:  # Blank Node
-                    metadata['publishers'].add(_make_agent(g, o))
+                    METADATA['publishers'].add(_make_agent(o))
 
             # TODO: cater for other Agent representations
 
-        if metadata.get('title') is None:
+        if METADATA.get('title') is None:
             raise ValueError(
                 'Your ontology does not indicate any form of label or title. '
                 'You must declare one of the following for your ontology: rdfs:label, dct:title, skos:prefLabel'
@@ -923,34 +957,32 @@ def _extract_ontology_metadata(g, classes, properties, namespaces):
         raise Exception('Your RDF file does not define an ontology. '
                         'It must contains a declaration such as <...> rdf:type owl:Ontology .')
 
-    return metadata
-
 
 def _make_source_file_link(source_info):
     return '<a href="{}">RDF ({})</a>'.format(source_info[0], source_info[1])
 
 
-def _make_metadata_html(metadata, source_info):
+def _make_metadata_html(source_info):
     template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
     template = Environment(loader=FileSystemLoader(template_dir)).get_template('metadata.html')
     html = template.render(
-        imports=metadata['imports'],
-        title=metadata.get('title'),
-        uri=metadata.get('uri'),
-        version_uri=metadata.get('versionIRI'),
-        publishers=metadata['publishers'],
-        creators=metadata['creators'],
-        contributors=metadata['contributors'],
-        created=metadata.get('created'),  # TODO: auto-detect format
-        modified=metadata.get('modified'),
-        issued=metadata.get('issued'),
-        description=metadata.get('description'),
-        version_info=metadata.get('versionInfo'),
+        imports=METADATA['imports'],
+        title=METADATA.get('title'),
+        uri=METADATA.get('uri'),
+        version_uri=METADATA.get('versionIRI'),
+        publishers=METADATA['publishers'],
+        creators=METADATA['creators'],
+        contributors=METADATA['contributors'],
+        created=METADATA.get('created'),  # TODO: auto-detect format
+        modified=METADATA.get('modified'),
+        issued=METADATA.get('issued'),
+        description=METADATA.get('description'),
+        version_info=METADATA.get('versionInfo'),
         ont_source=_make_source_file_link(source_info),
-        has_classes=metadata.get('has_classes'),
-        has_ops=metadata.get('has_ops'),
-        has_dps=metadata.get('has_dps'),
-        has_aps=metadata.get('has_aps'),
+        has_classes=METADATA.get('has_classes'),
+        has_ops=METADATA.get('has_ops'),
+        has_dps=METADATA.get('has_dps'),
+        has_aps=METADATA.get('has_aps'),
         has_nis=False
     )
 
@@ -972,39 +1004,51 @@ def _make_document_html(title, metadata_html, classes_html, properties_html, def
     return html
 
 
-def generate_html(g, source_info):
-    _expand_graph_for_pylode(g)
+def generate_html(source_info):
+    # add some extra triples to the graph for easier querying
+    _expand_graph_for_pylode()
+    # get the IDs (URIs) of all properties -> PROPERTIES
+    _extract_properties_uris()
+    # get the IDs (URIs) of all classes -> CLASSES
+    _extract_classes_uris()
+    # get all the namespaces using several methods
+    _extract_namespaces()
+    # get all the properties' details
+    _extract_properties()
+    # get all the classes' details
+    _extract_classes()
+    # get the ontology's metadata
+    _extract_metadata()
 
-    existing_fids = {}
-
-    # do namespaces first so we can use then to CURIE-ise metadata
-    namespaces = _extract_namespaces(g)
-
-    properties = _extract_properties(g, existing_fids, namespaces)
-    properties_html = _make_properties_html(properties)
-
-    classes = _extract_classes(g, existing_fids, namespaces, properties)
-    classes_html = _make_classes_html(classes)
-
-    metadata = _extract_ontology_metadata(g, classes, properties, namespaces)
-    metadata['default_namespace'] = _get_default_namespace(g, namespaces, metadata)  # TODO: use default_namespace
-    namespaces_html = _make_namespaces_html(namespaces, metadata['default_namespace'])
-    metadata_html = _make_metadata_html(metadata, source_info)
+    properties_html = _make_properties_html()
+    classes_html = _make_classes_html()
+    METADATA['default_namespace'] = _get_default_namespace()  # TODO: use default_namespace
+    namespaces_html = _make_namespaces_html()
+    metadata_html = _make_metadata_html(source_info)
 
     return _make_document_html(
-        metadata['title'],
+        METADATA['title'],
         metadata_html,
         classes_html,
         properties_html,
-        metadata['default_namespace'],
+        METADATA['default_namespace'],
         namespaces_html
     )
 
 
 if __name__ == '__main__':
+    # get the input file
     i = APP_DIR + '/examples/gnaf.ttl'
+    # parse the input file into an in-memory RDF graph
+    G.parse(i, format='turtle')
 
-    g = Graph().parse(i, format='turtle')
+    print('parsed {} ok'.format(i))
 
-    with open(APP_DIR + '/examples/gnaf.html', 'w') as f:
-        f.write(generate_html(g, (i, 'turtle')))
+    # prepare source_info to allow for link to source file in HTML
+    source_info = (i, 'turtle')
+    # generate the HTML doc
+    html = generate_html(source_info)
+
+    # write HTML to file
+    with open(i.replace('ttl', 'html'), 'w') as f:
+        f.write(generate_html(source_info))

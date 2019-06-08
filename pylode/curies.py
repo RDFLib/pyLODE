@@ -2206,8 +2206,3 @@ CURIES = {
     'zoomaterms': 'http://rdf.ebi.ac.uk/vocabulary/zooma/',
     'zr': 'http://explain.z3950.org/dtd/2.0/',
 }
-
-EXTRA_CURIES = {
-    'orcid': 'https://orcid.org/',
-    # 'sdo': 'https://schema.org/',  # prefix.cc only has HTTP version, not needed here though as bound in main
-}
