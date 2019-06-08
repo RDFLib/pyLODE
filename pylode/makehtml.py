@@ -7,16 +7,18 @@ import collections
 import dateutil.parser
 from jinja2 import Environment, FileSystemLoader
 
-APP_DIR = path.dirname(path.realpath(__file__))
 
-G = Graph()
-SDO = Namespace('https://schema.org/')
-G.bind('sdo', SDO)
+# shared variables
+APP_DIR = path.dirname(path.realpath(__file__))
 CLASSES = collections.OrderedDict()
 PROPERTIES = collections.OrderedDict()
 NAMESPACES = collections.OrderedDict()
 FIDS = {}
 METADATA = {}
+
+G = Graph()
+SDO = Namespace('https://schema.org/')
+G.bind('sdo', SDO)
 
 
 def _expand_graph_for_pylode():
@@ -64,7 +66,7 @@ def _extract_properties_uris():
 
 def _extract_classes_uris():
     classes = []
-    for s in G.subjects(predicate=RDF.type, object=OWL.Class):
+    for s in G.subjects(predicate=RDF.type, object=RDFS.Class):
         # ignore blank nodes for things like [ owl:unionOf ( ... ) ]
         if type(s) == BNode:
             pass
@@ -88,7 +90,7 @@ def _get_namespace_from_uri(uri):
             return None
 
 
-def _get_curie_prefix(uri, ns):
+def _get_curie_prefix(uri, existing_curies):
     ns_count = 0
 
     from curies import CURIES
@@ -115,15 +117,14 @@ def _get_curie_prefix(uri, ns):
             # presumably this module can't access the internet or prefix.cc is down
             return None
 
-    def get_curie_from_namespace(uri, ns_count):
+    def get_curie_from_namespace(uri, existing_curies, ns_count):
         # strip off trailing hash or slash and return last path segment
         c = uri.rstrip('#/').split('/')[-1]
 
         # prevent CURIE collision = return nsX (x int) if we already have this one
-        for k, v in ns.items():
-            if c == v:
-                ns_count += 1
-                return 'ns' + str(ns_count)
+        if c in existing_curies:
+            ns_count += 1
+            return 'ns' + str(ns_count)
 
         return c
 
@@ -138,7 +139,7 @@ def _get_curie_prefix(uri, ns):
         return c
 
     # can't fund CURIE online so make up one
-    c = get_curie_from_namespace(uri, ns_count)
+    c = get_curie_from_namespace(uri, existing_curies, ns_count)
     return c if c is not None else ''
 
 
@@ -154,11 +155,11 @@ def _extract_namespaces():
     """
     # get declared namespaces, keyed by URI
     ns = {}
-    uris = set()
+    uri_bases = set()
     for k, v in G.namespaces():
         ns[str(v)] = k
 
-    # get other namespaces
+    # get other namespaces by extracting base URIs from all URIs
     for s, p, o in G:
         # exclude certain annotation URIs
         # and individuals (SDO.identifier)
@@ -171,21 +172,20 @@ def _extract_namespaces():
         else:
             # add only URI subjects (not Blank Nodes)
             if type(s) == URIRef:
-                uris.add(str(s))
+                uri_bases.add(_get_namespace_from_uri(str(s)))
 
             # predicates are always URIs so add them all
-            uris.add(str(p))
+            uri_bases.add(_get_namespace_from_uri(str(p)))
 
-            # add only URI objects (not Blank Nodes or Literals)
-            # exclude emails
+            # add only URI objects (not Blank Nodes or Literals), exclude emails
             if type(o) == URIRef and '@' not in str(o):
-                uris.add(str(o))
+                uri_bases.add(_get_namespace_from_uri(str(o)))
 
-    # for the de-duplicated URIs, get if not in namespaces, get CURIE and add
-    for uri in uris:
-        uri_base = _get_namespace_from_uri(uri)
+    # for the de-duplicated URIs, if the uri_base is not in namespaces, get CURIE and add it
+    for uri_base in uri_bases:
         if ns.get(uri_base) is None:
-            ns[uri_base] = _get_curie_prefix(uri_base, ns)
+            uri_prefix = _get_curie_prefix(uri_base, [x for x in ns.values()])
+            ns[uri_base] = uri_prefix
 
     # invert the key/values in instances
     for k, v in sorted(ns.items(), key=lambda x: x[1]):
@@ -232,7 +232,7 @@ def _extract_properties():
         supers = []
         for o in G.objects(subject=s, predicate=RDFS.subPropertyOf):
             if type(o) != BNode:
-                supers.append(_make_uri_html(o, type=PROPERTIES[prop]['prop_type']))
+                supers.append(str(o))  # _make_uri_html
         PROPERTIES[prop]['supers'] = supers
 
         # sub properties
@@ -242,11 +242,13 @@ def _extract_properties():
                 subs.append(str(o))
         PROPERTIES[prop]['subs'] = subs
 
+        # TODO: cater for equvalentProperty
+
         # domains
         domains = []
         for o in G.objects(subject=s, predicate=RDFS.domain):
             if type(o) != BNode:
-                domains.append(_make_uri_html(o, type='c'))  # domains that are just classes
+                domains.append(str(o))  # domains that are just classes
             else:
                 # domain collections (unionOf | intersectionOf
                 q = '''
@@ -264,22 +266,16 @@ def _extract_properties():
                 collection_type = None
                 collection_members = []
                 for r in G.query(q):
-                    if r.col_type == OWL.unionOf:
-                        sep = ' <em>or</em> '
-                    else:
-                        sep = ' <em>and</em> '
-                    collection_members.append('<a href="{}">{}</a>'.format(str(r.col_member), _get_curie(str(r.col_member))))
-
-                # format collection as string
+                    collection_type = _get_curie(str(r.col_type))
+                    collection_members.append(str(r.col_member))
                 domains.append((collection_type, collection_members))
-
         PROPERTIES[prop]['domains'] = domains
 
         # domainIncludes
-        domainIncludes = []
+        domain_includes = []
         for o in G.objects(subject=s, predicate=SDO.domainIncludes):
             if type(o) != BNode:
-                domainIncludes.append(_make_uri_html(o, type='c'))  # domainIncludes that are just classes
+                domain_includes.append(str(o))  # domainIncludes that are just classes
             else:
                 # domainIncludes collections (unionOf | intersectionOf
                 q = '''
@@ -297,22 +293,16 @@ def _extract_properties():
                 collection_type = None
                 collection_members = []
                 for r in G.query(q):
-                    if r.col_type == OWL.unionOf:
-                        sep = ' <em>or</em> '
-                    else:
-                        sep = ' <em>and</em> '
-                    collection_members.append('<a href="{}">{}</a>'.format(str(r.col_member), _get_curie(str(r.col_member))))
-
-                # format collection as string
-                domainIncludes.append((collection_type, collection_members))
-
-        PROPERTIES[prop]['domainIncludes'] = domainIncludes
+                    collection_type = _get_curie(str(r.col_type))
+                    collection_members.append(str(r.col_member))
+                domain_includes.append((collection_type, collection_members))
+        PROPERTIES[prop]['domainIncludes'] = domain_includes
 
         # ranges
         ranges = []
         for o in G.objects(subject=s, predicate=RDFS.range):
             if type(o) != BNode:
-                ranges.append(_make_uri_html(o, type='c'))  # ranges that are just classes
+                ranges.append(str(o))  # ranges that are just classes
             else:
                 # range collections (unionOf | intersectionOf
                 q = '''
@@ -327,24 +317,19 @@ def _extract_properties():
                         ?collection rdf:rest*/rdf:first ?col_member .              
                     }} 
                 '''.format(s)
+                collection_type = None
                 collection_members = []
                 for r in G.query(q):
-                    if r.col_type == OWL.unionOf:
-                        sep = ' <em>or</em> '
-                    else:
-                        sep = ' <em>and</em> '
-                    collection_members.append('<a href="{}">{}</a>'.format(str(r.col_member), _get_curie(str(r.col_member))))
-
-                # format collection as string
-                ranges.append('({})'.format(sep.join(collection_members)))
-
+                    collection_type = _get_curie(str(r.col_type))
+                    collection_members.append(str(r.col_member))
+                ranges.append((collection_type, collection_members))
         PROPERTIES[prop]['ranges'] = ranges
 
         # rangeIncludes
-        rangeIncludes = []
+        range_includes = []
         for o in G.objects(subject=s, predicate=SDO.rangeIncludes):
             if type(o) != BNode:
-                rangeIncludes.append(_make_uri_html(o, type='c'))  # rangeIncludes that are just classes
+                range_includes.append(str(o))  # rangeIncludes that are just classes
             else:
                 # rangeIncludes collections (unionOf | intersectionOf
                 q = '''
@@ -362,16 +347,10 @@ def _extract_properties():
                 collection_type = None
                 collection_members = []
                 for r in G.query(q):
-                    if r.col_type == OWL.unionOf:
-                        sep = ' <em>or</em> '
-                    else:
-                        sep = ' <em>and</em> '
-                    collection_members.append('<a href="{}">{}</a>'.format(str(r.col_member), _get_curie(str(r.col_member))))
-
-                # format collection as string
-                rangeIncludes.append((collection_type, collection_members))
-
-        PROPERTIES[prop]['rangeIncludes'] = rangeIncludes
+                    collection_type = _get_curie(str(r.col_type))
+                    collection_members.append(str(r.col_member))
+                range_includes.append((collection_type, collection_members))
+        PROPERTIES[prop]['rangeIncludes'] = range_includes
 
         # TODO: cater for sub property chains
 
@@ -441,7 +420,7 @@ def _extract_classes():
                     collection_type = _get_curie(str(r.col_type))
                     collection_members.append(_get_curie(str(r.col_member)))
                 equivalent_classes.append((collection_type, collection_members))
-        CLASSES[cls]['equivalentClasses'] = equivalent_classes
+        CLASSES[cls]['equivalents'] = equivalent_classes
 
         # super classes & restrictions
         supers = []
@@ -449,13 +428,12 @@ def _extract_classes():
         for o in G.objects(subject=s, predicate=RDFS.subClassOf):
             if type(o) != BNode:
                 # TODO: replace all _get_curie with _make_class_html
-                supers.append(_make_uri_html(o, type='c'))  # supers that are just classes
+                supers.append(str(o))  # supers that are just classes
             else:  # we have a Blank Node
                 if (o, OWL.unionOf) in G.subject_predicates() or (o, OWL.intersectionOf) in G.subject_predicates():
                     supers.append(_make_collection_class_html(s, o))
                 elif (o, RDF.type, OWL.Restriction) in G:  # this o is a Restriction
                     restrictions.append(_make_restriction_html(s, o))
-
         CLASSES[cls]['supers'] = supers
         CLASSES[cls]['restrictions'] = restrictions
 
@@ -463,7 +441,7 @@ def _extract_classes():
         subs = []
         for o in G.subjects(predicate=RDFS.subClassOf, object=s):
             if type(o) != BNode:
-                subs.append(_make_uri_html(o, type='c'))
+                subs.append(str(o))
             else:
                 # sub classes collections (unionOf | intersectionOf
                 q = '''
@@ -488,22 +466,22 @@ def _extract_classes():
 
         in_domain_of = []
         for o in G.subjects(predicate=RDFS.domain, object=s):
-            in_domain_of.append(_make_uri_html(str(o), type=PROPERTIES[str(o)]['prop_type']))
+            in_domain_of.append(str(o))
         CLASSES[cls]['in_domain_of'] = in_domain_of
 
         in_domain_includes_of = []
         for o in G.subjects(predicate=SDO.domainIncludes, object=s):
-            in_domain_includes_of.append(_make_uri_html(str(o), type=PROPERTIES[str(o)]['prop_type']))
+            in_domain_includes_of.append(str(o))
         CLASSES[cls]['in_domain_includes_of'] = in_domain_includes_of
 
         in_range_of = []
         for o in G.subjects(predicate=RDFS.range, object=s):
-            in_range_of.append(_make_uri_html(str(o), type=PROPERTIES[str(o)]['prop_type']))
+            in_range_of.append(str(o))
         CLASSES[cls]['in_range_of'] = in_range_of
 
         in_range_includes_of = []
         for o in G.subjects(predicate=SDO.rangeIncludes, object=s):
-            in_range_includes_of.append(_make_uri_html(str(o), type=PROPERTIES[str(o)]['prop_type']))
+            in_range_includes_of.append(str(o))
         CLASSES[cls]['in_range_includes_of'] = in_range_includes_of
 
         # TODO: cater for Named Individuals of this class - "has members"
@@ -515,349 +493,6 @@ def _extract_classes():
     #     y[n[0]] = n[1]
     #
     # return y
-
-
-def _make_title_from_uri(uri):
-    # can't tolerate any URI faults so return None if anything is wrong
-
-    # URIs with no path segments or ending in slash
-    segments = uri.split('/')
-    if len(segments[-1]) < 1:
-        return None
-
-    # URIs with only a domain - no path segments
-    if len(segments) < 4:
-        return None
-
-    # URIs ending in hash
-    if segments[-1].endswith('#'):
-        return None
-
-    return segments[-1].split('#')[-1] if segments[-1].split('#')[-1] != '' else segments[-1].split('#')[-2]
-
-
-# makes the fragment ID for a class, property, Named Individual (any entity) based on URI or name
-def _make_fid(title, uri):
-    # does this URI already have a fid?
-    existing_fid = FIDS.get(uri)
-    if existing_fid is not None:
-        return existing_fid
-
-    # no, so make one
-    def _remove_non_ascii_chars(s):
-        return ''.join(i for i in s if ord(i) < 128)
-
-    # try creating an ID from label
-    # lowercase, remove spaces, escape all non-ASCII chars
-    if title is not None:
-        fid = _remove_non_ascii_chars(title.lower().replace(' ', ''))
-
-        # do not return fid if it's already in use
-        if fid not in FIDS.values():
-            FIDS[uri] = fid
-            return fid
-
-    # this fid is already present so generate a new one from the URI instead
-
-    # split URI for last slash segment
-    segments = uri.split('/')
-    # return None for empty string - URI ends in slash
-    if len(segments[-1]) < 1:
-        return None
-
-    # return None for domains, i.e. ['http:', '', '{domain}'] - no path segments
-    if len(segments) < 4:
-        return None
-
-    # split out hash URIs
-    # remove any training hashes
-    if segments[-1].endswith('#'):
-        return None
-
-    fid = segments[-1].split('#')[-1] if segments[-1].split('#')[-1] != '' else segments[-1].split('#')[-2]
-    fid = fid.lower()
-
-    # do not return fid if it's already in use
-    if fid not in FIDS.values():
-        FIDS[uri] = fid
-        return fid
-    else:
-        # since it's in use but we've exhausted generation options, just add 1 to existing fid name
-        FIDS[uri] = fid + '1'
-        return fid + '1'  # yeah yeah, there could be more than one but unlikely
-
-
-def _get_default_namespace():
-    # if this ontology declares a preferred URI, use that
-    if METADATA.get('preferredNamespaceUri'):
-        return METADATA.get('preferredNamespaceUri')
-
-    # ... or try a namespace declared with prefix ''
-    for k, v in NAMESPACES.items():
-        if k == '':
-            return v
-
-    # not using - erroneous
-    # # if it doesn't declare a preferredNamespaceUri but does declare a versionIRI, use that
-    # if METADATA.get('versionIRI'):
-    #     return METADATA.get('versionIRI')
-
-    # finally try the URI of the ontology compared to all prefixes
-    ontology_uri = None
-    for s in G.subjects(predicate=RDF.type, object=OWL.Ontology):
-        ontology_uri = str(s)
-
-    for v in NAMESPACES.values():
-        if v.startswith(ontology_uri):
-            return v
-
-
-def _make_namespaces_html():
-    template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-    namespaces_template = Environment(loader=FileSystemLoader(template_dir)).get_template('namespaces.html')
-    namespaces_html = namespaces_template.render(
-        namespaces=NAMESPACES,
-        default_namespace=METADATA['default_namespace']
-    )
-
-    return namespaces_html
-
-
-def _make_property_html(property):
-    template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-    template = Environment(loader=FileSystemLoader(template_dir)).get_template('property.html')
-
-    return template.render(
-        uri=property[0],
-        fid=property[1].get('fid'),
-        title=property[1].get('title'),
-        description=property[1].get('description'),
-        scopeNote=property[1].get('scopeNote'),
-        supers=property[1].get('supers'),
-        subs=property[1].get('subs'),
-        domains=property[1]['domains'],
-        domainIncludes=property[1]['domainIncludes'],
-        ranges=property[1]['ranges'],
-        rangeIncludes=property[1]['rangeIncludes'],
-    )
-
-
-def _make_properties_html():
-    template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-    template = Environment(loader=FileSystemLoader(template_dir)).get_template('properties.html')
-    op_instances = []
-    dp_instances = []
-    ap_instances = []
-
-    for k, v in PROPERTIES.items():
-        if v.get('prop_type') == 'op':
-            op_instances.append((v['title'], v['fid'], _make_property_html((k, v))))
-        if v.get('prop_type') == 'dp':
-            dp_instances.append((v['title'], v['fid'], _make_property_html((k, v))))
-        if v.get('prop_type') == 'ap':
-            ap_instances.append((v['title'], v['fid'], _make_property_html((k, v))))
-
-    html = template.render(
-        op_instances=op_instances,
-        dp_instances=dp_instances,
-        ap_instances=ap_instances
-    )
-
-    return html
-
-
-def _make_uri_html(uri, type=None):
-    short = _get_curie(uri)
-    html = '<a href="{}">{}</a>'.format(uri, short)
-    if type == 'c':
-        return html + ' <sup class="sup-c" title="class">c</sup>'
-    elif type == 'op':
-        return html + ' <sup class="sup-op" title="object property">op</sup>'
-    elif type == 'dp':
-        return html + ' <sup class="sup-dp" title="datatype property">dp</sup>'
-    elif type == 'ap':
-        return html + ' <sup class="sup-ap" title="annotation property">ap</sup>'
-    else:
-        return html
-
-
-def _make_classes_html():
-    template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-    class_template = Environment(loader=FileSystemLoader(template_dir)).get_template('class.html')
-    class_htmls = []
-    for k, v in CLASSES.items():
-        class_htmls.append(
-            class_template.render(
-                    uri=k,
-                    fid=v['fid'],
-                    title=v['title'],
-                    description=v['description'],
-                    supers=v['supers'],
-                    restrictions=v['restrictions'],
-                    subs=v['subs'],
-                    in_domain_of=v['in_domain_of'],
-                    in_domain_includes_of=v['in_domain_includes_of'],
-                    in_range_of=v['in_range_of'],
-                    in_range_includes_of=v['in_range_includes_of']
-            )
-        )
-
-    classes_template = Environment(loader=FileSystemLoader(template_dir)).get_template('classes.html')
-    fids = sorted([(v.get('fid'), v.get('title')) for k, v in CLASSES.items()], key=lambda tup: tup[1])
-    classes_html = classes_template.render(
-        fids=fids,
-        classes=class_htmls,
-    )
-
-    return classes_html
-
-
-def _make_collection_class_html(parent_uri, o):
-    # TODO: bug, this SPARQL returns results for all Collections for a parent_uri, not only one
-    '''
-      rdfs:subClassOf [
-      a owl:Restriction ;
-      rdfs:comment "A Site is established to sample some biome, bioregion, ecosystem, etc." ;
-      owl:onProperty sosa:isSampleOf ;
-      owl:someValuesFrom [
-          a owl:Class ;
-          owl:unionOf (
-              plot-x:Environmental-system
-              plot-x:Environmental-zone
-            ) ;
-        ] ;
-    '''
-    q = '''
-        PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
-
-        SELECT ?col_type ?col_member
-        WHERE {{
-            <{0}> ?xx _:{1} .
-            _:{1} ?y ?z .
-            ?z owl:unionOf|owl:intersectionOf ?collection .
-            ?z ?col_type ?collection . 
-            ?collection rdf:rest*/rdf:first ?col_member .              
-        }} 
-    '''.format(parent_uri, o)
-    collection_members = []
-    for r in G.query(q):
-        if r.col_type == OWL.unionOf:
-            j = ' or '
-        elif r.col_type == OWL.intersectionOf:
-            j = ' and '
-
-        collection_members.append(_make_uri_html(r.col_member))
-
-    return '({})'.format(j.join(collection_members))
-
-
-def _make_restriction_html(subject, restriction_bn):
-    prop = None
-    card = None
-    cls = None
-
-    for p2, o2 in G.predicate_objects(subject=restriction_bn):
-        if p2 != RDF.type:
-            if p2 == OWL.onProperty:
-                # TODO: add the property type for HTML
-                t = None
-                if str(o2) in PROPERTIES.keys():
-                    t = PROPERTIES[str(o2)]['prop_type']
-                prop = _make_uri_html(o2, t)
-            elif p2 == OWL.onClass:
-                if type(o2) == BNode:
-                    if (o2, OWL.unionOf) in G.subject_predicates() or (o2, OWL.intersectionOf) in G.subject_predicates():
-                        cls = _make_collection_class_html(g, subject, restriction_bn)
-                else:
-                    cls = _make_uri_html(o2, type='c')
-            elif p2 in [
-                OWL.cardinality,
-                OWL.qualifiedCardinality,
-                OWL.minCardinality,
-                OWL.minQualifiedCardinality,
-                OWL.maxCardinality,
-                OWL.maxQualifiedCardinality,
-            ]:
-                if p2 in [OWL.minCardinality, OWL.minQualifiedCardinality]:
-                    card = 'min'
-                elif p2 in [OWL.maxCardinality, OWL.maxQualifiedCardinality]:
-                    card = 'max'
-                elif p2 in [OWL.cardinality, OWL.qualifiedCardinality]:
-                    card = 'exactly'
-
-                card = '<span class="cardinality">{}</span> {}'.format(card, str(o2))
-            elif p2 in [OWL.allValuesFrom, OWL.someValuesFrom]:
-                if p2 == OWL.allValuesFrom:
-                    card = 'only'
-                else:  # p2 == OWL.someValuesFrom
-                    card = 'some'
-
-                if type(o2) == BNode:
-                    c = _make_collection_class_html(g, subject, restriction_bn)
-                else:
-                    c = _make_uri_html(o2)
-                card = '<span class="cardinality">{}</span> {}'.format(card, c)
-
-    restriction = prop + ' ' + card if card is not None else prop
-    restriction = restriction + ' ' + cls if cls is not None else restriction
-
-    # import pprint
-    # pprint.pprint(properties)
-    # for k in properties.keys():
-    #     print(k)
-    return restriction
-
-
-def _get_curie(uri):
-    n = _get_namespace_from_uri(str(uri))
-    for k, v in NAMESPACES.items():
-        if v == n:
-            return '{}:{}'.format(k, _get_uri_id(uri))
-
-        # try finding a match after removing / or # before giving up
-        if v.strip('/#') == n:
-            return '{}:{}'.format(k, _get_uri_id(uri))
-
-    # if no match, return the original URI
-    return uri
-
-
-def _get_uri_id(uri):
-    # split on hash
-    segments = uri.split('#')
-    if len(segments) == 2:
-        return segments[1]
-    else:
-        return uri.split('/')[-1]  # could return None if URI ends in /
-
-
-def _make_agent(agent_blank_node):
-    agent = None
-    # we understand foaf:name, foaf:homepage & sdo:name & sdo:identifier & sdo:email (as a URI)
-    # TODO: cater for other Agent representations
-
-    name = None
-    url = None
-    email = None
-    for p, o in G.predicate_objects(subject=agent_blank_node):
-        if p == FOAF.homepage or p == SDO.identifier:
-            url = str(o)
-        elif p == FOAF.name or p == SDO.name:
-            name = str(o)
-        elif p == FOAF.mbox or p == SDO.email:
-            email = str(o).split('/')[-1].split('#')[-1]  # remove base URI leaving only email address
-
-    if url is not None and email is not None:
-        agent = '<a href="{0}">{1}</a> (<a href="mailto:{2}">{2}</a>)'.format(url, name, email)
-    elif url is not None and email is None:
-        agent = '<a href="{0}">{1}</a>'.format(url, name)
-    elif url is None and email is not None:
-        agent = '<a href="{0}">{1}</a>'.format(email, name)
-    elif url is not None:
-        agent = '<a href="{}">{}</a>'.format(url, name)
-
-    return agent
 
 
 def _extract_metadata():
@@ -958,8 +593,357 @@ def _extract_metadata():
                         'It must contains a declaration such as <...> rdf:type owl:Ontology .')
 
 
+def _make_title_from_uri(uri):
+    # can't tolerate any URI faults so return None if anything is wrong
+
+    # URIs with no path segments or ending in slash
+    segments = uri.split('/')
+    if len(segments[-1]) < 1:
+        return None
+
+    # URIs with only a domain - no path segments
+    if len(segments) < 4:
+        return None
+
+    # URIs ending in hash
+    if segments[-1].endswith('#'):
+        return None
+
+    return segments[-1].split('#')[-1] if segments[-1].split('#')[-1] != '' else segments[-1].split('#')[-2]
+
+
+# makes the fragment ID for a class, property, Named Individual (any entity) based on URI or name
+def _make_fid(title, uri):
+    # does this URI already have a fid?
+    existing_fid = FIDS.get(uri)
+    if existing_fid is not None:
+        return existing_fid
+
+    # no, so make one
+    def _remove_non_ascii_chars(s):
+        return ''.join(i for i in s if ord(i) < 128)
+
+    # try creating an ID from label
+    # lowercase, remove spaces, escape all non-ASCII chars
+    if title is not None:
+        fid = _remove_non_ascii_chars(title.lower().replace(' ', ''))
+
+        # do not return fid if it's already in use
+        if fid not in FIDS.values():
+            FIDS[uri] = fid
+            return fid
+
+    # this fid is already present so generate a new one from the URI instead
+
+    # split URI for last slash segment
+    segments = uri.split('/')
+    # return None for empty string - URI ends in slash
+    if len(segments[-1]) < 1:
+        return None
+
+    # return None for domains, i.e. ['http:', '', '{domain}'] - no path segments
+    if len(segments) < 4:
+        return None
+
+    # split out hash URIs
+    # remove any training hashes
+    if segments[-1].endswith('#'):
+        return None
+
+    fid = segments[-1].split('#')[-1] if segments[-1].split('#')[-1] != '' else segments[-1].split('#')[-2]
+    fid = fid.lower()
+
+    # do not return fid if it's already in use
+    if fid not in FIDS.values():
+        FIDS[uri] = fid
+        return fid
+    else:
+        # since it's in use but we've exhausted generation options, just add 1 to existing fid name
+        FIDS[uri] = fid + '1'
+        return fid + '1'  # yeah yeah, there could be more than one but unlikely
+
+
+def _get_default_namespace():
+    METADATA['default_namespace'] = None
+
+    # if this ontology declares a preferred URI, use that
+    if METADATA.get('preferredNamespaceUri'):
+        METADATA['default_namespace'] = METADATA.get('preferredNamespaceUri')
+
+    # if not, try the URI of the ontology compared to all prefixes
+    for s in G.subjects(predicate=RDF.type, object=OWL.Ontology):
+        ont_uri = str(s)
+    for k, v in NAMESPACES.items():
+        # i.e. the ontology URI is the same as the default namespace + / or #
+        if v == ont_uri + '/' or v == ont_uri + '#':
+            METADATA['default_namespace'] = v
+
+
+def _make_namespaces_html():
+    template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
+    namespaces_template = Environment(loader=FileSystemLoader(template_dir)).get_template('namespaces.html')
+    namespaces_html = namespaces_template.render(
+        namespaces=NAMESPACES,
+        default_namespace=METADATA['default_namespace']
+    )
+
+    return namespaces_html
+
+
+def _make_uri_html(uri, type=None):
+    # set display to CURIE
+    short = _get_curie(uri)
+    # if the URI base is within the default namespace of this ontology
+    #   use the fragment URI
+    # else
+    #   use the given URI
+    uri_base = _get_namespace_from_uri(uri)
+    if uri_base == METADATA.get('default_namespace'):
+        if PROPERTIES.get(uri):
+            html = '<a href="#{}">{}</a>'.format(PROPERTIES[uri]['fid'], short)
+        elif CLASSES.get(uri):
+            html = '<a href="#{}">{}</a>'.format(CLASSES[uri]['fid'], short)
+        else:
+            html = '<a href="{}">{}</a>'.format(uri, short)
+    else:
+        html = '<a href="{}">{}</a>'.format(uri, short)
+
+    if type == 'c':
+        return html + ' <sup class="sup-c" title="class">c</sup>'
+    elif type == 'op':
+        return html + ' <sup class="sup-op" title="object property">op</sup>'
+    elif type == 'dp':
+        return html + ' <sup class="sup-dp" title="datatype property">dp</sup>'
+    elif type == 'ap':
+        return html + ' <sup class="sup-ap" title="annotation property">ap</sup>'
+    else:
+        return html
+
+
+def _make_collection_class_html(parent_uri, o):
+    # TODO: bug, this SPARQL returns results for all Collections for a parent_uri, not only one
+    '''
+      rdfs:subClassOf [
+      a owl:Restriction ;
+      rdfs:comment "A Site is established to sample some biome, bioregion, ecosystem, etc." ;
+      owl:onProperty sosa:isSampleOf ;
+      owl:someValuesFrom [
+          a owl:Class ;
+          owl:unionOf (
+              plot-x:Environmental-system
+              plot-x:Environmental-zone
+            ) ;
+        ] ;
+    '''
+    q = '''
+        PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+
+        SELECT ?col_type ?col_member
+        WHERE {{
+            <{0}> ?xx _:{1} .
+            _:{1} ?y ?z .
+            ?z owl:unionOf|owl:intersectionOf ?collection .
+            ?z ?col_type ?collection . 
+            ?collection rdf:rest*/rdf:first ?col_member .              
+        }} 
+    '''.format(parent_uri, o)
+    collection_members = []
+    for r in G.query(q):
+        if r.col_type == OWL.unionOf:
+            j = ' or '
+        elif r.col_type == OWL.intersectionOf:
+            j = ' and '
+
+        collection_members.append(_make_uri_html(r.col_member))
+
+    return '({})'.format(j.join(collection_members))
+
+
+def _make_restriction_html(subject, restriction_bn):
+    prop = None
+    card = None
+    cls = None
+
+    for p2, o2 in G.predicate_objects(subject=restriction_bn):
+        if p2 != RDF.type:
+            if p2 == OWL.onProperty:
+                # TODO: add the property type for HTML
+                t = None
+                if str(o2) in PROPERTIES.keys():
+                    t = PROPERTIES[str(o2)]['prop_type']
+                prop = _make_uri_html(o2, t)
+            elif p2 == OWL.onClass:
+                if type(o2) == BNode:
+                    if (o2, OWL.unionOf) in G.subject_predicates() or (o2, OWL.intersectionOf) in G.subject_predicates():
+                        cls = _make_collection_class_html(subject, restriction_bn)
+                else:
+                    cls = _make_uri_html(o2, type='c')
+            elif p2 in [
+                OWL.cardinality,
+                OWL.qualifiedCardinality,
+                OWL.minCardinality,
+                OWL.minQualifiedCardinality,
+                OWL.maxCardinality,
+                OWL.maxQualifiedCardinality,
+            ]:
+                if p2 in [OWL.minCardinality, OWL.minQualifiedCardinality]:
+                    card = 'min'
+                elif p2 in [OWL.maxCardinality, OWL.maxQualifiedCardinality]:
+                    card = 'max'
+                elif p2 in [OWL.cardinality, OWL.qualifiedCardinality]:
+                    card = 'exactly'
+
+                card = '<span class="cardinality">{}</span> {}'.format(card, str(o2))
+            elif p2 in [OWL.allValuesFrom, OWL.someValuesFrom]:
+                if p2 == OWL.allValuesFrom:
+                    card = 'only'
+                else:  # p2 == OWL.someValuesFrom
+                    card = 'some'
+
+                if type(o2) == BNode:
+                    c = _make_collection_class_html(subject, restriction_bn)
+                else:
+                    c = _make_uri_html(o2)
+                card = '<span class="cardinality">{}</span> {}'.format(card, c)
+
+    restriction = prop + ' ' + card if card is not None else prop
+    restriction = restriction + ' ' + cls if cls is not None else restriction
+
+    # import pprint
+    # pprint.pprint(properties)
+    # for k in properties.keys():
+    #     print(k)
+    return restriction
+
+
+def _get_curie(uri):
+    n = _get_namespace_from_uri(str(uri))
+    for k, v in NAMESPACES.items():
+        if v == n:
+            return '{}:{}'.format(k, _get_uri_id(uri))
+
+        # try finding a match after removing / or # before giving up
+        if v.strip('/#') == n:
+            return '{}:{}'.format(k, _get_uri_id(uri))
+
+    # if no match, return the original URI
+    return uri
+
+
+def _get_uri_id(uri):
+    # split on hash
+    segments = uri.split('#')
+    if len(segments) == 2:
+        return segments[1]
+    else:
+        return uri.split('/')[-1]  # could return None if URI ends in /
+
+
+def _make_agent(agent_blank_node):
+    agent = None
+    # we understand foaf:name, foaf:homepage & sdo:name & sdo:identifier & sdo:email (as a URI)
+    # TODO: cater for other Agent representations
+
+    name = None
+    url = None
+    email = None
+    for p, o in G.predicate_objects(subject=agent_blank_node):
+        if p == FOAF.homepage or p == SDO.identifier:
+            url = str(o)
+        elif p == FOAF.name or p == SDO.name:
+            name = str(o)
+        elif p == FOAF.mbox or p == SDO.email:
+            email = str(o).split('/')[-1].split('#')[-1]  # remove base URI leaving only email address
+
+    if url is not None and email is not None:
+        agent = '<a href="{0}">{1}</a> (<a href="mailto:{2}">{2}</a>)'.format(url, name, email)
+    elif url is not None and email is None:
+        agent = '<a href="{0}">{1}</a>'.format(url, name)
+    elif url is None and email is not None:
+        agent = '<a href="{0}">{1}</a>'.format(email, name)
+    elif url is not None:
+        agent = '<a href="{}">{}</a>'.format(url, name)
+
+    return agent
+
+
 def _make_source_file_link(source_info):
     return '<a href="{}">RDF ({})</a>'.format(source_info[0], source_info[1])
+
+
+def _make_property_html(property):
+    template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
+    template = Environment(loader=FileSystemLoader(template_dir)).get_template('property.html')
+
+    return template.render(
+        uri=property[0],
+        fid=property[1].get('fid'),
+        title=property[1].get('title'),
+        description=property[1].get('description'),
+        scopeNote=property[1].get('scopeNote'),
+        supers=property[1].get('supers'),
+        subs=property[1].get('subs'),
+        domains=property[1]['domains'],
+        domainIncludes=property[1]['domainIncludes'],
+        ranges=property[1]['ranges'],
+        rangeIncludes=property[1]['rangeIncludes'],
+    )
+
+
+def _make_properties_html():
+    template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
+    template = Environment(loader=FileSystemLoader(template_dir)).get_template('properties.html')
+    op_instances = []
+    dp_instances = []
+    ap_instances = []
+
+    for k, v in PROPERTIES.items():
+        if v.get('prop_type') == 'op':
+            op_instances.append((v['title'], v['fid'], _make_property_html((k, v))))
+        if v.get('prop_type') == 'dp':
+            dp_instances.append((v['title'], v['fid'], _make_property_html((k, v))))
+        if v.get('prop_type') == 'ap':
+            ap_instances.append((v['title'], v['fid'], _make_property_html((k, v))))
+
+    html = template.render(
+        op_instances=op_instances,
+        dp_instances=dp_instances,
+        ap_instances=ap_instances
+    )
+
+    return html
+
+
+def _make_classes_html():
+    template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
+    class_template = Environment(loader=FileSystemLoader(template_dir)).get_template('class.html')
+    class_htmls = []
+    for k, v in CLASSES.items():
+        class_htmls.append(
+            class_template.render(
+                    uri=k,
+                    fid=v['fid'],
+                    title=v['title'],
+                    description=v['description'],
+                    supers=v['supers'],
+                    restrictions=v['restrictions'],
+                    subs=v['subs'],
+                    in_domain_of=v['in_domain_of'],
+                    in_domain_includes_of=v['in_domain_includes_of'],
+                    in_range_of=v['in_range_of'],
+                    in_range_includes_of=v['in_range_includes_of']
+            )
+        )
+
+    classes_template = Environment(loader=FileSystemLoader(template_dir)).get_template('classes.html')
+    fids = sorted([(v.get('fid'), v.get('title')) for k, v in CLASSES.items()], key=lambda tup: tup[1])
+    classes_html = classes_template.render(
+        fids=fids,
+        classes=class_htmls,
+    )
+
+    return classes_html
 
 
 def _make_metadata_html(source_info):
@@ -1019,10 +1003,126 @@ def generate_html(source_info):
     _extract_classes()
     # get the ontology's metadata
     _extract_metadata()
+    # get the default namespace
+    _get_default_namespace()
+
+    # create fragment URIs for default namespace classes & properties
+    # for each CURIE, if it's in the default namespace, i.e. this ontology, use its fragment URI
+
+    for uri, prop in PROPERTIES.items():
+        html = []
+        for p in prop['supers']:
+            prop_type = PROPERTIES.get(p).get('prop_type') if PROPERTIES.get(p) else None
+            html.append(_make_uri_html(p, type=prop_type))
+        PROPERTIES[uri]['supers'] = html
+
+        html = []
+        for p in prop['subs']:
+            prop_type = PROPERTIES.get(p).get('prop_type') if PROPERTIES.get(p) else None
+            html.append(_make_uri_html(p, type=prop_type))
+        PROPERTIES[uri]['subs'] = html
+
+        html = []
+        for d in prop['domains']:
+            if type(d) == tuple:
+                for m in d[1]:
+                    html.append(_make_uri_html(m, type='c'))
+            else:
+                html.append(_make_uri_html(d, type='c'))
+        PROPERTIES[uri]['domains'] = html
+
+        html = []
+        for d in prop['domainIncludes']:
+            if type(d) == tuple:
+                for m in d[1]:
+                    html.append(_make_uri_html(m, type='c'))
+            else:
+                html.append(_make_uri_html(d, type='c'))
+        PROPERTIES[uri]['domainIncludes'] = html
+
+        html = []
+        for d in prop['ranges']:
+            if type(d) == tuple:
+                for m in d[1]:
+                    html.append(_make_uri_html(m, type='c'))
+            else:
+                html.append(_make_uri_html(d, type='c'))
+        PROPERTIES[uri]['ranges'] = html
+
+        html = []
+        for d in prop['rangeIncludes']:
+            if type(d) == tuple:
+                for m in d[1]:
+                    html.append(_make_uri_html(m, type='c'))
+            else:
+                html.append(_make_uri_html(d, type='c'))
+        PROPERTIES[uri]['rangeIncludes'] = html
+
+    for uri, cls in CLASSES.items():
+        html = []
+        for d in cls['equivalents']:
+            if type(d) == tuple:
+                for m in d[1]:
+                    html.append(_make_uri_html(m, type='c'))
+            else:
+                html.append(_make_uri_html(d, type='c'))
+        CLASSES[uri]['equivalents'] = html
+
+        html = []
+        for d in cls['supers']:
+            if type(d) == tuple:
+                for m in d[1]:
+                    html.append(_make_uri_html(m, type='c'))
+            else:
+                html.append(_make_uri_html(d, type='c'))
+        CLASSES[uri]['supers'] = html
+
+        # html = []
+        # for d in cls['restrictions']:
+        #     if type(d) == tuple:
+        #         for m in d[1]:
+        #             html.append(_make_uri_html(m, type='c'))
+        #     else:
+        #         html.append(_make_uri_html(d, type='c'))
+        # CLASSES[uri]['restrictions'] = html
+
+        html = []
+        for d in cls['subs']:
+            if type(d) == tuple:
+                for m in d[1]:
+                    html.append(_make_uri_html(m, type='c'))
+            else:
+                html.append(_make_uri_html(d, type='c'))
+        CLASSES[uri]['subs'] = html
+
+        html = []
+        for p in cls['in_domain_of']:
+            prop_type = PROPERTIES.get(p).get('prop_type') if PROPERTIES.get(p) else None
+            html.append(_make_uri_html(p, type=prop_type))
+        CLASSES[uri]['in_domain_of'] = html
+
+        html = []
+        for p in cls['in_domain_includes_of']:
+            prop_type = PROPERTIES.get(p).get('prop_type') if PROPERTIES.get(p) else None
+            html.append(_make_uri_html(p, type=prop_type))
+        CLASSES[uri]['in_domain_includes_of'] = html
+
+        html = []
+        for p in cls['in_range_of']:
+            prop_type = PROPERTIES.get(p).get('prop_type') if PROPERTIES.get(p) else None
+            html.append(_make_uri_html(p, type=prop_type))
+        CLASSES[uri]['in_range_of'] = html
+
+        html = []
+        for p in cls['in_range_includes_of']:
+            prop_type = PROPERTIES.get(p).get('prop_type') if PROPERTIES.get(p) else None
+            html.append(_make_uri_html(p, type=prop_type))
+        CLASSES[uri]['in_range_includes_of'] = html
+
 
     properties_html = _make_properties_html()
     classes_html = _make_classes_html()
-    METADATA['default_namespace'] = _get_default_namespace()  # TODO: use default_namespace
+
     namespaces_html = _make_namespaces_html()
     metadata_html = _make_metadata_html(source_info)
 
@@ -1038,11 +1138,9 @@ def generate_html(source_info):
 
 if __name__ == '__main__':
     # get the input file
-    i = APP_DIR + '/examples/gnaf.ttl'
+    i = APP_DIR + '/examples/plot.ttl'
     # parse the input file into an in-memory RDF graph
     G.parse(i, format='turtle')
-
-    print('parsed {} ok'.format(i))
 
     # prepare source_info to allow for link to source file in HTML
     source_info = (i, 'turtle')
@@ -1051,4 +1149,4 @@ if __name__ == '__main__':
 
     # write HTML to file
     with open(i.replace('ttl', 'html'), 'w') as f:
-        f.write(generate_html(source_info))
+        f.write(html)
