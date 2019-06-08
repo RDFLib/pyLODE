@@ -422,18 +422,36 @@ def _extract_classes():
                 equivalent_classes.append((collection_type, collection_members))
         CLASSES[cls]['equivalents'] = equivalent_classes
 
-        # super classes & restrictions
+        # super classes
         supers = []
         restrictions = []
         for o in G.objects(subject=s, predicate=RDFS.subClassOf):
-            if type(o) != BNode:
-                # TODO: replace all _get_curie with _make_class_html
-                supers.append(str(o))  # supers that are just classes
-            else:  # we have a Blank Node
-                if (o, OWL.unionOf) in G.subject_predicates() or (o, OWL.intersectionOf) in G.subject_predicates():
-                    supers.append(_make_collection_class_html(s, o))
-                elif (o, RDF.type, OWL.Restriction) in G:  # this o is a Restriction
-                    restrictions.append(_make_restriction_html(s, o))
+            if (o, RDF.type, OWL.Restriction) not in G:
+                if type(o) != BNode:
+                    supers.append(str(o))  # supers that are just classes
+                else:
+                    # super collections (unionOf | intersectionOf
+                    q = '''
+                        PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+    
+                        SELECT ?col_type ?col_member
+                        WHERE {{
+                            <{}> rdfs:subClassOf ?sup .  
+                            ?sup owl:unionOf|owl:intersectionOf ?collection .
+                            ?sup ?col_type ?collection . 
+                            ?collection rdf:rest*/rdf:first ?col_member .              
+                        }} 
+                    '''.format(s)
+                    collection_type = None
+                    collection_members = []
+                    for r in G.query(q):
+                        collection_type = _get_curie(str(r.col_type))
+                        collection_members.append(str(r.col_member))
+                    supers.append((collection_type, collection_members))
+            else:
+                restrictions.append(o)
+
         CLASSES[cls]['supers'] = supers
         CLASSES[cls]['restrictions'] = restrictions
 
@@ -741,8 +759,14 @@ def _make_collection_class_html(parent_uri, o):
 
         SELECT ?col_type ?col_member
         WHERE {{
-            <{0}> ?xx _:{1} .
-            _:{1} ?y ?z .
+            {{
+                <{0}> ?xx _:{1} .
+                _:{1} ?y ?z .
+            }}
+            UNION
+            {{
+                <{0}> ?y ?z.
+            }}
             ?z owl:unionOf|owl:intersectionOf ?collection .
             ?z ?col_type ?collection . 
             ?collection rdf:rest*/rdf:first ?col_member .              
@@ -754,10 +778,25 @@ def _make_collection_class_html(parent_uri, o):
             j = ' or '
         elif r.col_type == OWL.intersectionOf:
             j = ' and '
+        # TODO: cater for other OWL set relations in collections
+        # elif r.col_type == OWL.complementOf:
+        #     j = ' and '
 
         collection_members.append(_make_uri_html(r.col_member))
 
-    return '({})'.format(j.join(collection_members))
+    html = '({})'.format(j.join(collection_members))
+    return html
+
+
+def _make_collection_class_html2(col_type, col_members):
+    if col_type == 'owl:unionOf':
+        j = ' or '
+    elif col_type == 'owl:intersectionOf':
+        j = ' and '
+    else:
+        j = ' ? '
+    # others...
+    return '({})'.format(j.join([_make_uri_html(x, type='c') for x in col_members]))
 
 
 def _make_restriction_html(subject, restriction_bn):
@@ -772,13 +811,59 @@ def _make_restriction_html(subject, restriction_bn):
                 t = None
                 if str(o2) in PROPERTIES.keys():
                     t = PROPERTIES[str(o2)]['prop_type']
-                prop = _make_uri_html(o2, t)
+                prop = _make_uri_html(str(o2), t)
             elif p2 == OWL.onClass:
+                """
+                domains = []
+                for o in G.objects(subject=s, predicate=RDFS.domain):
+                    if type(o) != BNode:
+                        domains.append(str(o))  # domains that are just classes
+                    else:
+                        # domain collections (unionOf | intersectionOf
+                        q = '''
+                            PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+                            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+        
+                            SELECT ?col_type ?col_member
+                            WHERE {{
+                                <{}> rdfs:domain ?domain .  
+                                ?domain owl:unionOf|owl:intersectionOf ?collection .
+                                ?domain ?col_type ?collection . 
+                                ?collection rdf:rest*/rdf:first ?col_member .              
+                            }} 
+                        '''.format(s)
+                        collection_type = None
+                        collection_members = []
+                        for r in G.query(q):
+                            collection_type = _get_curie(str(r.col_type))
+                            collection_members.append(str(r.col_member))
+                        domains.append((collection_type, collection_members))
+                PROPERTIES[prop]['domains'] = domains                
+                
+                """
                 if type(o2) == BNode:
-                    if (o2, OWL.unionOf) in G.subject_predicates() or (o2, OWL.intersectionOf) in G.subject_predicates():
-                        cls = _make_collection_class_html(subject, restriction_bn)
+                    # onClass collections (unionOf | intersectionOf
+                    q = '''
+                        PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+
+                        SELECT ?col_type ?col_member
+                        WHERE {{
+                            <{}> owl:onClass ?onClass .  
+                            ?onClass owl:unionOf|owl:intersectionOf ?collection .
+                            ?onClass ?col_type ?collection . 
+                            ?collection rdf:rest*/rdf:first ?col_member .              
+                        }} 
+                    '''.format(str(subject))
+                    collection_type = None
+                    collection_members = []
+                    for r in G.query(q):
+                        collection_type = _get_curie(str(r.col_type))
+                        collection_members.append(str(r.col_member))
+
+                    cls = _make_collection_class_html2(collection_type, collection_members)
                 else:
-                    cls = _make_uri_html(o2, type='c')
+                    cls = _make_uri_html(str(o2), type='c')
             elif p2 in [
                 OWL.cardinality,
                 OWL.qualifiedCardinality,
@@ -802,9 +887,29 @@ def _make_restriction_html(subject, restriction_bn):
                     card = 'some'
 
                 if type(o2) == BNode:
-                    c = _make_collection_class_html(subject, restriction_bn)
+                    # someValuesFrom collections (unionOf | intersectionOf
+                    q = '''
+                        PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+
+                        SELECT ?col_type ?col_member
+                        WHERE {{
+                            <{0}> ?x _:{1} .
+                            _:{1} owl:someValuesFrom|owl:allValuesFrom ?bn2 .
+                            ?bn2 owl:unionOf|owl:intersectionOf ?collection .
+                            ?s ?col_type ?collection . 
+                            ?collection rdf:rest*/rdf:first ?col_member .              
+                        }} 
+                    '''.format(str(subject), str(o2))
+                    collection_type = None
+                    collection_members = []
+                    for r in G.query(q):
+                        collection_type = _get_curie(str(r.col_type))
+                        collection_members.append(str(r.col_member))
+
+                    c = _make_collection_class_html2(collection_type, collection_members)
                 else:
-                    c = _make_uri_html(o2)
+                    c = _make_uri_html(str(o2), type='c')
                 card = '<span class="cardinality">{}</span> {}'.format(card, c)
 
     restriction = prop + ' ' + card if card is not None else prop
@@ -922,17 +1027,17 @@ def _make_classes_html():
     for k, v in CLASSES.items():
         class_htmls.append(
             class_template.render(
-                    uri=k,
-                    fid=v['fid'],
-                    title=v['title'],
-                    description=v['description'],
-                    supers=v['supers'],
-                    restrictions=v['restrictions'],
-                    subs=v['subs'],
-                    in_domain_of=v['in_domain_of'],
-                    in_domain_includes_of=v['in_domain_includes_of'],
-                    in_range_of=v['in_range_of'],
-                    in_range_includes_of=v['in_range_includes_of']
+                uri=k,
+                fid=v['fid'],
+                title=v['title'],
+                description=v['description'],
+                supers=v['supers'],
+                restrictions=v['restrictions'],
+                subs=v['subs'],
+                in_domain_of=v['in_domain_of'],
+                in_domain_includes_of=v['in_domain_includes_of'],
+                in_range_of=v['in_range_of'],
+                in_range_includes_of=v['in_range_includes_of']
             )
         )
 
@@ -1025,8 +1130,7 @@ def generate_html(source_info):
         html = []
         for d in prop['domains']:
             if type(d) == tuple:
-                for m in d[1]:
-                    html.append(_make_uri_html(m, type='c'))
+                html.append(_make_collection_class_html2(d[0], d[1]))
             else:
                 html.append(_make_uri_html(d, type='c'))
         PROPERTIES[uri]['domains'] = html
@@ -1071,20 +1175,15 @@ def generate_html(source_info):
         html = []
         for d in cls['supers']:
             if type(d) == tuple:
-                for m in d[1]:
-                    html.append(_make_uri_html(m, type='c'))
+                html.append(_make_collection_class_html2(d[0], d[1]))
             else:
                 html.append(_make_uri_html(d, type='c'))
         CLASSES[uri]['supers'] = html
 
-        # html = []
-        # for d in cls['restrictions']:
-        #     if type(d) == tuple:
-        #         for m in d[1]:
-        #             html.append(_make_uri_html(m, type='c'))
-        #     else:
-        #         html.append(_make_uri_html(d, type='c'))
-        # CLASSES[uri]['restrictions'] = html
+        html = []
+        for d in cls['restrictions']:
+            html.append(_make_restriction_html(uri, d))
+        CLASSES[uri]['restrictions'] = html
 
         html = []
         for d in cls['subs']:
@@ -1118,7 +1217,6 @@ def generate_html(source_info):
             prop_type = PROPERTIES.get(p).get('prop_type') if PROPERTIES.get(p) else None
             html.append(_make_uri_html(p, type=prop_type))
         CLASSES[uri]['in_range_includes_of'] = html
-
 
     properties_html = _make_properties_html()
     classes_html = _make_classes_html()
