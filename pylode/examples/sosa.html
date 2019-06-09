@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sensor, Observation, Sample, and Actuator (SOSA) Ontology</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<h1>Sensor, Observation, Sample, and Actuator (SOSA) Ontology</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>IRI</dt>
+        <dd><code>http://www.w3.org/ns/sosa/</code></dd>
+        <dt>Creator(s)</dt>
+        <dd>
+            None<br/>
+        </dd>
+        <dt>Created</dt>
+        <dd>2017-04-17</dd>
+        <dt>Ontology Source</dt>
+        <dd><a href="/Users/car587/work/pyLODE/pylode/examples/sosa.ttl">RDF (turtle)</a></dd>
+    </dl>
+    <h2>Description</h2>
+    <div id="description">
+        <p>This ontology is based on the SSN Ontology by the W3C Semantic Sensor Networks Incubator Group (SSN-XG), together with considerations from the W3C/OGC Spatial Data on the Web Working Group.</p>
+    </div>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#objectproperties">Object Properties</a></li>
+        <li><a href="#datatypeproperties">Datatype Properties</a></li>
+        <li><a href="#annotationproperties">Annotation Properties</a></li>
+        <li><a href="#namespaces">Namespaces</a></li>
+    </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+        <div style="width:500px; height:500px; background-color: black;">&nbsp;</div>
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
+</section>
+<section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#actuatableproperty">Actuatable Property</a></li>
+        <li><a href="#actuation">Actuation</a></li>
+        <li><a href="#actuator">Actuator</a></li>
+        <li><a href="#agent">Agent</a></li>
+        <li><a href="#featureofinterest">Feature Of Interest</a></li>
+        <li><a href="#observableproperty">Observable Property</a></li>
+        <li><a href="#observation">Observation</a></li>
+        <li><a href="#platform">Platform</a></li>
+        <li><a href="#procedure">Procedure</a></li>
+        <li><a href="#result">Result</a></li>
+        <li><a href="#sample">Sample</a></li>
+        <li><a href="#sampler">Sampler</a></li>
+        <li><a href="#sampling">Sampling</a></li>
+        <li><a href="#sensor">Sensor</a></li>
+        <li><a href="#temporalentity">TemporalEntity</a></li>
+        <li><a href="#vocabulary">Vocabulary</a></li>
+    </ul>
+    <div class="entity class" id="vocabulary">
+        <h3>Vocabulary<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/vocommons/voaf#Vocabulary</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="temporalentity">
+        <h3>TemporalEntity<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/2006/time#TemporalEntity</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="actuatableproperty">
+        <h3>Actuatable Property<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/ActuatableProperty</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An actuatable quality (property, characteristic) of a FeatureOfInterest.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="actuation">
+        <h3>Actuation<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/Actuation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An Actuation carries out an (Actuation) Procedure to change the state of the world using an Actuator.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="actuator">
+        <h3>Actuator<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/Actuator</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A device that is used by, or implements, an (Actuation) Procedure that changes the state of the world.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="featureofinterest">
+        <h3>Feature Of Interest<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/FeatureOfInterest</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The thing whose property is being estimated or calculated in the course of an Observation to arrive at a Result or whose property is being manipulated by an Actuator, or which is being sampled or transformed in an act of Sampling.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="observableproperty">
+        <h3>Observable Property<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/ObservableProperty</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An observable quality (property, characteristic) of a FeatureOfInterest.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="observation">
+        <h3>Observation<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/Observation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest. Links to a Sensor to describe what made the Observation and how; links to an ObservableProperty to describe what the result is an estimate of, and to a FeatureOfInterest to detail what that property was associated with.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="platform">
+        <h3>Platform<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/Platform</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A Platform is an entity that hosts other entities, particularly Sensors, Actuators, Samplers, and other Platforms.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="procedure">
+        <h3>Procedure<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/Procedure</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A workflow, protocol, plan, algorithm, or computational method specifying how to make an Observation, create a Sample, or make a change to the state of the world (via an Actuator). A Procedure is re-usable, and might be involved in many Observations, Samplings, or Actuations. It explains the steps to be carried out to arrive at reproducible results.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="result">
+        <h3>Result<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/Result</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The Result of an Observation, Actuation, or act of Sampling. To store an observation's simple result value one can use the hasSimpleResult property.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="sample">
+        <h3>Sample<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/Sample</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Physical samples are sometimes known as 'specimens'.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="sampler">
+        <h3>Sampler<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/Sampler</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A device that is used by, or implements, a Sampling Procedure to create or transform one or more samples.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="sampling">
+        <h3>Sampling<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/Sampling</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An act of Sampling carries out a sampling Procedure to create or transform one or more samples.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="sensor">
+        <h3>Sensor<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/Sensor</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure. Sensors respond to a stimulus, e.g., a change in the environment, or input data composed from the results of prior Observations, and generate a Result. Sensors can be hosted by Platforms.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="agent">
+        <h3>Agent<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://xmlns.com/foaf/0.1/Agent</code></td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="objectproperties">
+    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#actsonproperty">acts on property</a></li>
+        <li><a href="#hasfeatureofinterest">has feature of interest</a></li>
+        <li><a href="#hasresult">has result</a></li>
+        <li><a href="#hassample">has sample</a></li>
+        <li><a href="#hosts">hosts</a></li>
+        <li><a href="#isactedonby">is acted on by</a></li>
+        <li><a href="#isfeatureofinterestof">is feature of interest of</a></li>
+        <li><a href="#ishostedby">is hosted by</a></li>
+        <li><a href="#isobservedby">is observed by</a></li>
+        <li><a href="#isresultof">is result of</a></li>
+        <li><a href="#issampleof">is sample of</a></li>
+        <li><a href="#madeactuation">made actuation</a></li>
+        <li><a href="#madebyactuator">made by actuator</a></li>
+        <li><a href="#madebysampler">made by sampler</a></li>
+        <li><a href="#madebysensor">made by sensor</a></li>
+        <li><a href="#madeobservation">made observation</a></li>
+        <li><a href="#madesampling">made sampling</a></li>
+        <li><a href="#observedproperty">observed property</a></li>
+        <li><a href="#observes">observes</a></li>
+        <li><a href="#phenomenontime">phenomenon time</a></li>
+        <li><a href="#usedprocedure">used procedure</a></li>
+    </ul>
+    <div class="entity property" id="actsonproperty">
+        <h3>acts on property<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/actsOnProperty</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation between an Actuation and the property of a FeatureOfInterest it is acting upon.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#actuatableproperty">sosa:ActuatableProperty</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasfeatureofinterest">
+        <h3>has feature of interest<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/hasFeatureOfInterest</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#featureofinterest">sosa:FeatureOfInterest</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sample">sosa:Sample</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasresult">
+        <h3>has result<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/hasResult</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation linking an Observation or Actuation or act of Sampling and a Result or Sample.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#sample">sosa:Sample</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#result">sosa:Result</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hassample">
+        <h3>has sample<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/hasSample</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation between a FeatureOfInterest and the Sample used to represent it.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#featureofinterest">sosa:FeatureOfInterest</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#sample">sosa:Sample</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hosts">
+        <h3>hosts<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/hosts</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation between a Platform and a Sensor, Actuator, Sampler, or Platform, hosted or mounted on it.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#platform">sosa:Platform</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#platform">sosa:Platform</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#actuator">sosa:Actuator</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sensor">sosa:Sensor</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sampler">sosa:Sampler</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="isactedonby">
+        <h3>is acted on by<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/isActedOnBy</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation between an ActuatableProperty of a FeatureOfInterest and an Actuation changing its state.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#actuatableproperty">sosa:ActuatableProperty</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="isfeatureofinterestof">
+        <h3>is feature of interest of<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/isFeatureOfInterestOf</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A relation between a FeatureOfInterest and an Observation about it, an Actuation acting on it, or an act of Sampling that sampled it.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#sample">sosa:Sample</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#featureofinterest">sosa:FeatureOfInterest</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="ishostedby">
+        <h3>is hosted by<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/isHostedBy</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation between a Sensor, Actuator, Sampler, or Platform, and the Platform that it is mounted on or hosted by.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#platform">sosa:Platform</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sampler">sosa:Sampler</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sensor">sosa:Sensor</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#actuator">sosa:Actuator</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#platform">sosa:Platform</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="isobservedby">
+        <h3>is observed by<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/isObservedBy</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation between an ObservableProperty and the Sensor able to observe it.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#observableproperty">sosa:ObservableProperty</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#sensor">sosa:Sensor</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="isresultof">
+        <h3>is result of<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/isResultOf</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation linking a Result to the Observation or Actuation or act of Sampling that created or caused it.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#sample">sosa:Sample</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#result">sosa:Result</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="issampleof">
+        <h3>is sample of<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/isSampleOf</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation from a Sample to the FeatureOfInterest that it is intended to be representative of.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#sample">sosa:Sample</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#featureofinterest">sosa:FeatureOfInterest</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="madeactuation">
+        <h3>made actuation<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/madeActuation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation between an Actuator and the Actuation it has made.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#actuator">sosa:Actuator</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="madebyactuator">
+        <h3>made by actuator<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/madeByActuator</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation linking an Actuation to the Actuator that made that Actuation.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#actuator">sosa:Actuator</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="madebysampler">
+        <h3>made by sampler<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/madeBySampler</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation linking an act of Sampling to the Sampler (sampling device or entity) that made it.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#sampler">sosa:Sampler</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="madebysensor">
+        <h3>made by sensor<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/madeBySensor</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation between an Observation and the Sensor which made the Observation.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#sensor">sosa:Sensor</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="madeobservation">
+        <h3>made observation<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/madeObservation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation between a Sensor and an Observation made by the Sensor.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#sensor">sosa:Sensor</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="madesampling">
+        <h3>made sampling<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/madeSampling</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation between a Sampler (sampling device or entity) and the Sampling act it performed.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#sampler">sosa:Sampler</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="observedproperty">
+        <h3>observed property<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/observedProperty</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation linking an Observation to the property that was observed. The ObservableProperty should be a property of the FeatureOfInterest (linked by hasFeatureOfInterest) of this Observation.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#observableproperty">sosa:ObservableProperty</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="observes">
+        <h3>observes<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/observes</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relation between a Sensor and an ObservableProperty that it is capable of sensing.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#sensor">sosa:Sensor</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#observableproperty">sosa:ObservableProperty</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="phenomenontime">
+        <h3>phenomenon time<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/phenomenonTime</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The time that the Result of an Observation, Actuation or Sampling applies to the FeatureOfInterest. Not necessarily the same as the resultTime. May be an Interval or an Instant, or some other compound TemporalEntity.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="http://www.w3.org/2006/time#TemporalEntity">time:TemporalEntity</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="usedprocedure">
+        <h3>used procedure<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/usedProcedure</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A relation to link to a re-usable Procedure used in making an Observation, an Actuation, or a Sample, typically through a Sensor, Actuator or Sampler.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    <a href="#procedure">sosa:Procedure</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="datatypeproperties">
+    <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#hassimpleresult">has simple result</a></li>
+        <li><a href="#resulttime">result time</a></li>
+    </ul>
+    <div class="entity property" id="hassimpleresult">
+        <h3>has simple result<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/hasSimpleResult</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The simple value of an Observation or Actuation or act of Sampling.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="resulttime">
+        <h3>result time<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/resultTime</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The result time is the instant of time when the Observation, Actuation or Sampling activity was completed.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="annotationproperties">
+    <h2>Annotation Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#created">created</a></li>
+        <li><a href="#creator">creator</a></li>
+        <li><a href="#description">description</a></li>
+        <li><a href="#license">license</a></li>
+        <li><a href="#rights">rights</a></li>
+        <li><a href="#title">title</a></li>
+        <li><a href="#preferrednamespaceprefix">preferredNamespacePrefix</a></li>
+        <li><a href="#preferrednamespaceuri">preferredNamespaceUri</a></li>
+        <li><a href="#domainincludes">domainIncludes</a></li>
+        <li><a href="#rangeincludes">rangeIncludes</a></li>
+        <li><a href="#definition">definition</a></li>
+        <li><a href="#example">example</a></li>
+        <li><a href="#note">note</a></li>
+        <li><a href="#name">name</a></li>
+    </ul>
+    <div class="entity property" id="created">
+        <h3>created<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/created</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="creator">
+        <h3>creator<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/creator</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="description">
+        <h3>description<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/description</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="license">
+        <h3>license<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/license</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="rights">
+        <h3>rights<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/rights</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="title">
+        <h3>title<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/title</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="preferrednamespaceprefix">
+        <h3>preferredNamespacePrefix<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/vocab/vann/preferredNamespacePrefix</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="preferrednamespaceuri">
+        <h3>preferredNamespaceUri<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/vocab/vann/preferredNamespaceUri</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="domainincludes">
+        <h3>domainIncludes<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://schema.org/domainIncludes</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="rangeincludes">
+        <h3>rangeIncludes<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://schema.org/rangeIncludes</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="definition">
+        <h3>definition<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/2004/02/skos/core#definition</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="example">
+        <h3>example<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/2004/02/skos/core#example</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="note">
+        <h3>note<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/2004/02/skos/core#note</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="name">
+        <h3>name<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://xmlns.com/foaf/0.1/name</code></td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt><em>default (:)</em></dt>
+        <dd><code>http://www.w3.org/ns/sosa/</code></dd>
+        <dt>dcterms</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>foaf</dt>
+        <dd><code>http://xmlns.com/foaf/0.1/</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>schema</dt>
+        <dd><code>http://schema.org/</code></dd>
+        <dt>sdo</dt>
+        <dd><code>https://schema.org/</code></dd>
+        <dt>skos</dt>
+        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>sosa</dt>
+        <dd><code>http://www.w3.org/ns/sosa/</code></dd>
+        <dt>time</dt>
+        <dd><code>http://www.w3.org/2006/time#</code></dd>
+        <dt>vann</dt>
+        <dd><code>http://purl.org/vocab/vann/</code></dd>
+        <dt>voaf</dt>
+        <dd><code>http://purl.org/vocommons/voaf#</code></dd>
+        <dt>xml</dt>
+        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+    <div id="legend">
+    <h2>Legend</h2>
+    <table class="entity">
+        <tr><td><sup class="type-c" title="Classes">c</sup></td><td>Classes</td></tr>
+        <tr><td><sup class="type-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+        <tr><td><sup class="type-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+        <tr><td><sup class="type-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+    </table>
+    </div>
+</body>
+</html>

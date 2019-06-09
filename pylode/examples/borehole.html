@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>GSQ Borehole Profile</title>
@@ -8,6 +9,7 @@
 <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
 <h1>GSQ Borehole Profile</h1>
 <section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
     <dl>
         <dt>IRI</dt>
         <dd><code>http://linked.data.gov.au/def/borehole</code></dd>
@@ -23,13 +25,16 @@
         <dd>2019-04-30</dd>
         <dt>Modified</dt>
         <dd>2019-05-02</dd>
-        <dt>Description</dt>
-        <dd>The Geological Survey of Queensland's profile of several specifications to characterise a borehole.
-
-This profile contains alignments to specifications that it does not directly profile but is informed by, such as GeoSciML.</dd>
         <dt>Version Information</dt>
         <dd>See the GitHub repo https://github.com/geological-survey-of-queensland/gsq-borehole-profile for versioning</dd>
+        <dt>Ontology Source</dt>
+        <dd><a href="/Users/car587/work/pyLODE/pylode/examples/borehole.ttl">RDF (turtle)</a></dd>
     </dl>
+    <h2>Description</h2>
+    <div id="description">
+        <p>The Geological Survey of Queensland's profile of several specifications to characterise a borehole.</p>
+<p>This profile contains alignments to specifications that it does not directly profile but is informed by, such as GeoSciML.</p>
+    </div>
 </section>
 <section id="toc">
     <h2>Table of Contents</h2>
@@ -47,7 +52,7 @@ This profile contains alignments to specifications that it does not directly pro
     </div>
 </section>
 <section id="classes">
-    <h2>Classes</h2>
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
         <li><a href="#borehole">Borehole</a></li>
         <li><a href="#boreholeinterval">BoreholeInterval</a></li>
@@ -77,14 +82,35 @@ This profile contains alignments to specifications that it does not directly pro
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/borehole/hasStatus">:hasStatus</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasstatus">:hasStatus</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/borehole/Wellbore">:Wellbore</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/borehole/Well">:Well</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#well">:Well</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#wellbore">:Wellbore</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#haddrillingmethod">:hadDrillingMethod</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hassurfacecircumstance">:hasSurfaceCircumstance</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasinclination">:hasInclination</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#haspurpose">:hasPurpose</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasstatus">:hasStatus</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domainIncludes of</th>
+                <td>
+                    <a href="#hasdiameter">:hasDiameter</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#haddrillingtime">:hadDrillingTime</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#operator">:operator</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#driller">:driller</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasstate">:hasStateOrTerritory</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#haselevation">:hasElevation</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -102,6 +128,25 @@ This profile contains alignments to specifications that it does not directly pro
                     <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#nextboreholeinterval">:nextBoreholeInterval</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hascasing">:hasCasing</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domainIncludes of</th>
+                <td>
+                    <a href="#hasdiameter">:hasDiameter</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#nextboreholeinterval">:nextBoreholeInterval</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
         </table>
     </div>
     <div class="entity class" id="casing">
@@ -115,6 +160,12 @@ This profile contains alignments to specifications that it does not directly pro
                 <th>Super-classes</th>
                 <td>
                     <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#hascasing">:hasCasing</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -135,7 +186,7 @@ This profile contains alignments to specifications that it does not directly pro
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/borehole/Borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -158,15 +209,14 @@ Commonly, Wellbores within a Well share a starting point.
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/borehole/Borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
 </section>
-
 <section id="objectproperties">
-    <h2>Object Properties</h2>
+    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
         <li><a href="#driller">driller</a></li>
         <li><a href="#haddrillingmethod">had drilling method</a></li>
@@ -204,14 +254,14 @@ Commonly, Wellbores within a Well share a starting point.
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#wasAttributedTo">prov:wasAttributedTo</a> <sup class="sup-op" title="object property">op</sup>
+                    <a href="http://www.w3.org/ns/prov#wasAttributedTo">prov:wasAttributedTo</a>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
-                    <a href="http://linked.data.gov.au/def/borehole/Borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -246,13 +296,13 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/loci/hadGenerationMethod">loci:hadGenerationMethod</a> <sup class="sup-op" title="object property">op</sup>
+                    <a href="http://linked.data.gov.au/def/loci/hadGenerationMethod">loci:hadGenerationMethod</a>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/borehole/Borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -285,14 +335,14 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://www.w3.org/2006/time#hasTime">time:hasTime</a> <sup class="sup-op" title="object property">op</sup>
+                    <a href="http://www.w3.org/2006/time#hasTime">time:hasTime</a>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
-                    <a href="http://linked.data.gov.au/def/borehole/Borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -319,13 +369,13 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/borehole/BoreholeInterval">:BoreholeInterval</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#boreholeinterval">:BoreholeInterval</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/borehole/Casing">:Casing</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#casing">:Casing</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -346,15 +396,15 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://qudt.org/schema/qudt/hasQuantity">qudt:hasQuantity</a> <sup class="sup-op" title="object property">op</sup>
+                    <a href="http://qudt.org/schema/qudt/hasQuantity">qudt:hasQuantity</a>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
-                    <a href="http://linked.data.gov.au/def/borehole/BoreholeInterval">:BoreholeInterval</a> <sup class="sup-c" title="class">c</sup>
-                    <a href="http://linked.data.gov.au/def/borehole/Borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#boreholeinterval">:BoreholeInterval</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -382,7 +432,7 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
                 <th>Domain(s)</th>
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
-                    <a href="http://linked.data.gov.au/def/borehole/Borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -415,7 +465,7 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/borehole/Borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -448,7 +498,7 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/borehole/Borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -482,7 +532,7 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
                 <th>Domain(s)</th>
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
-                    <a href="http://linked.data.gov.au/def/borehole/Borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -515,7 +565,7 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/borehole/Borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -550,7 +600,7 @@ This property maps to GeoSciML's Borehole Start property.
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/borehole/Borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -577,13 +627,13 @@ This property maps to GeoSciML's Borehole Start property.
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/borehole/BoreholeInterval">:BoreholeInterval</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#boreholeinterval">:BoreholeInterval</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/borehole/BoreholeInterval">:BoreholeInterval</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#boreholeinterval">:BoreholeInterval</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -610,27 +660,24 @@ This property maps to GeoSciML's Borehole Start property.
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#wasAttributedTo">prov:wasAttributedTo</a> <sup class="sup-op" title="object property">op</sup>
+                    <a href="http://www.w3.org/ns/prov#wasAttributedTo">prov:wasAttributedTo</a>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
-                    <a href="http://linked.data.gov.au/def/borehole/Borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
 </section>
-
-
-
 <section id="namespaces">
-    <h2>Namespaces</h2>
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
         <dt><em>default (:)</em></dt>
-        <dd><code></code></dd>
+        <dd><code>http://linked.data.gov.au/def/borehole/</code></dd>
         <dt></dt>
         <dd><code>http://linked.data.gov.au/def/borehole/</code></dd>
         <dt>asgs</dt>
@@ -649,10 +696,6 @@ This property maps to GeoSciML's Borehole Start property.
         <dd><code>http://linked.data.gov.au/def/gsq</code></dd>
         <dt>loci</dt>
         <dd><code>http://linked.data.gov.au/def/loci/</code></dd>
-        <dt>orcid</dt>
-        <dd><code>http://orcid.org/</code></dd>
-        <dt>org</dt>
-        <dd><code>http://catalogue.linked.data.gov.au/org/</code></dd>
         <dt>owl</dt>
         <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
         <dt>prov</dt>
@@ -675,5 +718,14 @@ This property maps to GeoSciML's Borehole Start property.
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>
 </section>
+    <div id="legend">
+    <h2>Legend</h2>
+    <table class="entity">
+        <tr><td><sup class="type-c" title="Classes">c</sup></td><td>Classes</td></tr>
+        <tr><td><sup class="type-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+        <tr><td><sup class="type-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+        <tr><td><sup class="type-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+    </table>
+    </div>
 </body>
 </html>

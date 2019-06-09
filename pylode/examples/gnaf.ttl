@@ -472,7 +472,7 @@ dbo:Location rdf:type owl:Class .
     rdfs:subClassOf asgs:MeshBlock ;
     dct:contributor <http://orcid.org/0000-0002-8742-7730> ;
     dct:source "G-NAF Data Product Description, November 2017"^^xsd:string ;
-    rdfs:isDefinedBy <http://linked.data.gov.au/def/gnaf/> ;
+    rdfs:isDefinedBy <http://linked.data.gov.au/def/gnaf> ;
     rdfs:comment "A Mesh Block from the 2011 census"@en ;
     rdfs:label "2011 Mesh Block"@en .
 
@@ -482,7 +482,7 @@ dbo:Location rdf:type owl:Class .
     rdfs:subClassOf asgs:MeshBlock ;
     dct:contributor <http://orcid.org/0000-0002-8742-7730> ;
     dct:source "G-NAF Data Product Description, November 2017"^^xsd:string ;
-    rdfs:isDefinedBy <http://linked.data.gov.au/def/gnaf/> ;
+    rdfs:isDefinedBy <http://linked.data.gov.au/def/gnaf> ;
     rdfs:comment "A Mesh Block from the 2016 census"@en ;
     rdfs:label "2016 Mesh Block"@en .
 

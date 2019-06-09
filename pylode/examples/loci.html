@@ -3,7 +3,7 @@
 <head>
     <title>LOC-I Ontology</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" type="text/css" href="../output_files/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
@@ -28,17 +28,17 @@
         <dt>Version Information</dt>
         <dd>Beta version</dd>
         <dt>Version IRI</dt>
-        <dd>http://linked.data.gov.au/def/loci/1.0</dd>
+        <dd><a href="http://linked.data.gov.au/def/loci/1.0">http://linked.data.gov.au/def/loci/1.0</a></dd>
         <dt>Imports</dt>
         <dd>
-            <a href="http://xmlns.com/foaf/0.1/">foaf:</a><br/>
-            <a href="http://www.w3.org/2002/07/owl">07:owl</a><br/>
-            <a href="http://purl.org/linked-data/registry">linked-data:registry</a><br/>
-            <a href="http://www.w3.org/ns/dcat">ns:dcat</a><br/>
+            <a href="http://www.w3.org/ns/dcat">http://www.w3.org/ns/dcat</a><br/>
+            <a href="http://purl.org/linked-data/registry">http://purl.org/linked-data/registry</a><br/>
             <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">rdf:</a><br/>
+            <a href="http://www.w3.org/2002/07/owl">http://www.w3.org/2002/07/owl</a><br/>
+            <a href="http://xmlns.com/foaf/0.1/">foaf:</a><br/>
         </dd>
         <dt>Ontology Source</dt>
-        <dd><a href="loci.ttl">RDF (turtle)</a></dd>
+        <dd><a href="/Users/car587/work/pyLODE/pylode/examples/loci.ttl">RDF (turtle)</a></dd>
     </dl>
     <h2>Description</h2>
     <div id="description">
@@ -64,7 +64,7 @@
     </div>
 </section>
 <section id="classes">
-    <h2>Classes</h2>
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
         <li><a href="#locidatapublishers">LOCI Data Publishers</a></li>
         <li><a href="#locidataset">LOCI Dataset</a></li>
@@ -110,24 +110,24 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://rdfs.org/ns/void#Dataset">void:Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/dcat#Dataset">dcat:Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://rdfs.org/ns/void#Dataset">void:Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="http://purl.org/dc/terms/publisher">dct:publisher</a> <span class="cardinality">exactly</span> 1 <a href="http://xmlns.com/foaf/0.1/Organization">foaf:Organization</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/dc/terms/title">dct:title</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/issued">dct:issued</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://www.w3.org/ns/dcat#contactPoint">dcat:contactPoint</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://purl.org/dc/terms/title">dct:title</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://purl.org/dc/terms/publisher">dct:publisher</a> <span class="cardinality">exactly</span> 1 <a href="http://xmlns.com/foaf/0.1/Organization">foaf:Organization</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/dc/terms/issued">dct:issued</a> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/loci#Linkset">:Linkset</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#locilinkset">:Linkset</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -154,10 +154,10 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">rdf:subject</a> <span class="cardinality">exactly</span> 1 <a href="http://linked.data.gov.au/def/loci#Feature">:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a> <span class="cardinality">exactly</span> 1 <a href="http://linked.data.gov.au/def/loci#Feature">:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#register">registry:register</a> <span class="cardinality">exactly</span> 1 <a href="http://linked.data.gov.au/def/loci#Linkset">:Linkset</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/loci#hadGenerationMethod">:hadGenerationMethod</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/ns/prov#Plan">prov:Plan</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">rdf:subject</a> <span class="cardinality">exactly</span> 1 <a href="#locifeature">:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hadgenerationmethod">:hadGenerationMethod</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/ns/prov#Plan">prov:Plan</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#register">registry:register</a> <span class="cardinality">exactly</span> 1 <a href="#locilinkset">:Linkset</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a> <span class="cardinality">exactly</span> 1 <a href="#locifeature">:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -194,7 +194,7 @@
                 <th>Super-classes</th>
                 <td>
                     <a href="http://rdfs.org/ns/void#Linkset">void:Linkset</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/loci#Dataset">:Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#locidataset">:Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -209,14 +209,14 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/loci#DatasetLinkingStatement">:DatasetLinkingStatement</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#locidatasetlinkingstatement">:DatasetLinkingStatement</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
 </section>
 <section id="objectproperties">
-    <h2>Object Properties</h2>
+    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
         <li><a href="#hadgenerationmethod">had generation method</a></li>
     </ul>
@@ -244,21 +244,12 @@
 </section>
 
 <section id="annotationproperties">
-    <h2>Annotation Properties</h2>
+    <h2>Annotation Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
-        <li><a href="#member">member</a></li>
         <li><a href="#minqualifiedcardinality">minQualifiedCardinality</a></li>
         <li><a href="#qualifiedcardinality">qualifiedCardinality</a></li>
+        <li><a href="#member">member</a></li>
     </ul>
-    <div class="entity property" id="member">
-        <h3>member<sup title="annotation property" class="type-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.w3.org/2004/02/skos/core#member</code></td>
-            </tr>
-        </table>
-    </div>
     <div class="entity property" id="minqualifiedcardinality">
         <h3>minQualifiedCardinality<sup title="annotation property" class="type-ap">ap</sup></h3>
         <table>
@@ -277,16 +268,23 @@
             </tr>
         </table>
     </div>
+    <div class="entity property" id="member">
+        <h3>member<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/2004/02/skos/core#member</code></td>
+            </tr>
+        </table>
+    </div>
 </section>
 <section id="namespaces">
-    <h2>Namespaces</h2>
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
         <dt><em>default (:)</em></dt>
-        <dd><code></code></dd>
+        <dd><code>http://linked.data.gov.au/def/loci#</code></dd>
         <dt></dt>
         <dd><code>http://linked.data.gov.au/def/loci#</code></dd>
-        <dt>07</dt>
-        <dd><code>http://www.w3.org/2002/07/</code></dd>
         <dt>dataset</dt>
         <dd><code>http://linked.data.gov.au/dataset/</code></dd>
         <dt>dcat</dt>
@@ -299,14 +297,6 @@
         <dd><code>http://xmlns.com/foaf/0.1/</code></dd>
         <dt>geosparql</dt>
         <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
-        <dt>linked-data</dt>
-        <dd><code>http://purl.org/linked-data/</code></dd>
-        <dt>loci</dt>
-        <dd><code>http://linked.data.gov.au/def/loci/</code></dd>
-        <dt>ns</dt>
-        <dd><code>http://www.w3.org/ns/</code></dd>
-        <dt>orcid</dt>
-        <dd><code>http://orcid.org/</code></dd>
         <dt>org</dt>
         <dd><code>http://catalogue.linked.data.gov.au/org/</code></dd>
         <dt>owl</dt>

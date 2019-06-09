@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registry ontology</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<h1>Registry ontology</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>IRI</dt>
+        <dd><code>http://purl.org/linked-data/registry</code></dd>
+        <dt>Creator(s)</dt>
+        <dd>
+            Dave Reynolds<br/>
+        </dd>
+        <dt>Modified</dt>
+        <dd>2015-04-29</dd>
+        <dt>Version Information</dt>
+        <dd>0.4</dd>
+        <dt>Ontology Source</dt>
+        <dd><a href="/Users/car587/work/pyLODE/pylode/examples/reg.ttl">RDF (turtle)</a></dd>
+    </dl>
+    <h2>Description</h2>
+    <div id="description">
+        <p>Core ontology for linked data registry services. Based on ISO19135 but heavily modified to suit Linked Data representations and applications.</p>
+    </div>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#objectproperties">Object Properties</a></li>
+        <li><a href="#datatypeproperties">Datatype Properties</a></li>
+        <li><a href="#namespaces">Namespaces</a></li>
+    </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+        <div style="width:500px; height:500px; background-color: black;">&nbsp;</div>
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
+</section>
+<section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#delegated">Delegated</a></li>
+        <li><a href="#delegatedregister">Delegated Register</a></li>
+        <li><a href="#entityreference">Entity Reference</a></li>
+        <li><a href="#federatedregister">Federated Register</a></li>
+        <li><a href="#namespaceforward">Namespace Forward</a></li>
+        <li><a href="#register1">Register</a></li>
+        <li><a href="#registeritem">RegisterItem</a></li>
+        <li><a href="#sparqlaskquery">SPARQL ASK query</a></li>
+        <li><a href="#sparqlconstructquery">SPARQL CONSTRUCT query</a></li>
+        <li><a href="#sparqlselectquery">SPARQL SELECT query</a></li>
+        <li><a href="#sparqlquery">SPARQL query</a></li>
+        <li><a href="#status1">Status</a></li>
+    </ul>
+    <div class="entity class" id="delegated">
+        <h3>Delegated<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#Delegated</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A registerable entity which represents some form of delegation
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#delegationtarget">reg:delegationTarget</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#namespaceforward">reg:NamespaceForward</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#delegatedregister">reg:DelegatedRegister</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#federatedregister">reg:FederatedRegister</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#delegationtarget">reg:delegationTarget</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="delegatedregister">
+        <h3>Delegated Register<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#DelegatedRegister</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A register whose member contents are determined through delegation to a SPARQL endpoint
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#delegated">reg:Delegated</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#enumerationsubject">reg:enumerationSubject</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#enumerationpredicate">reg:enumerationPredicate</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#enumerationobject">reg:enumerationObject</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#enumerationpredicate">reg:enumerationPredicate</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#enumerationsubject">reg:enumerationSubject</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#enumerationobject">reg:enumerationObject</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="entityreference">
+        <h3>Entity Reference<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#EntityReference</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A reference to some internal or external Linked Data resource. The reg:reference gives the URI of the resource being referenced. If a reg:sourceGraph value is present then it is the URI for a named graph within the Registry containing the properties of the referenced entity. If reg:entityVersion is present it gives URI for the particular version:Version of the entity being referenced. Normally only one of reg:sourceGraph and reg:entityVersion is needed since versioned entities are normally stored in the default graph.
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#sourcegraph">reg:sourceGraph</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#entity">reg:entity</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#entityversion">reg:entityVersion</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#entity">reg:entity</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sourcegraph">reg:sourceGraph</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#entityversion">reg:entityVersion</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#definition">reg:definition</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#alias">reg:alias</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="federatedregister">
+        <h3>Federated Register<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#FederatedRegister</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A registerable entity which forwards all requests to a remote register. Queries which traverse the register hierarchy such as entity search will also be forwarded
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#delegated">reg:Delegated</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="namespaceforward">
+        <h3>Namespace Forward<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#NamespaceForward</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A registerable entity which simply forwards all requests to the delegation target.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#delegated">reg:Delegated</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#forwardingcode">reg:forwardingCode</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#forwardingcode">reg:forwardingCode</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="register1">
+        <h3>Register<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#Register</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Represents a collection of registered items, together with some associated governance regime. If one or more licenses is stated then each license applies to all the entries in the register. 
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/ns/ldp#Container">ldp:Container</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/version#VersionedThing">version:VersionedThing</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://rdfs.org/ns/void#Dataset">void:Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/description">dct:description</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://rdfs.org/ns/void#exampleResource">void:exampleResource</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://rdfs.org/ns/void#uriLookupEndpoint">void:uriLookupEndpoint</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/dc/terms/license">dct:license</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://rdfs.org/ns/void#openSearchDescription">void:openSearchDescription</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="#containeditemclass">reg:containedItemClass</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="#owner">reg:owner</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#manager">reg:manager</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#operatinglanguage">reg:operatingLanguage</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">max</span> 1<br/>
+                    <a href="http://rdfs.org/ns/void#uriSpace">void:uriSpace</a> <span class="cardinality">max</span> 1<br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="#governancepolicy">reg:governancePolicy</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="#validationquery">reg:validationQuery</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#federatedregister">reg:FederatedRegister</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#delegatedregister">reg:DelegatedRegister</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#containeditemclass">reg:containedItemClass</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#release">reg:release</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#validationquery">reg:validationQuery</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#owner">reg:owner</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#subregister">reg:subregister</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#governancepolicy">reg:governancePolicy</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#manager">reg:manager</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#operatinglanguage">reg:operatingLanguage</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#register">reg:register</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#subregister">reg:subregister</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="registeritem">
+        <h3>RegisterItem<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#RegisterItem</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A metadata record for an entry in a register. Note that cardinality constraints can be met by sub-properties, for example an item with a skos:prefLabel implies an rdfs:label and so meets the cardinality constraint on rdfs:label.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/linked-data/version#VersionedThing">version:VersionedThing</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="http://purl.org/linked-data/registry#hasView">reg:hasView</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="#predecessor">reg:predecessor</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/dc/terms/description">dct:description</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">max</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/dateAccepted">dct:dateAccepted</a> <span class="cardinality">max</span> 1<br/>
+                    <a href="#status">reg:status</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="#category">reg:category</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="#definition">reg:definition</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#alias">reg:alias</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="#representationof">reg:representationOf</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="#submitter">reg:submitter</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/dateSubmitted">dct:dateSubmitted</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#notation">reg:notation</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#itemclass">reg:itemClass</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/license">dct:license</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#itemclass">reg:itemClass</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#predecessor">reg:predecessor</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#alias">reg:alias</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#register">reg:register</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#annotation">reg:annotation</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#status">reg:status</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#submitter">reg:submitter</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#definition">reg:definition</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#notation">reg:notation</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#category">reg:category</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#successor">reg:successor</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#representationof">reg:representationOf</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#predecessor">reg:predecessor</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#successor">reg:successor</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="sparqlaskquery">
+        <h3>SPARQL ASK query<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#SPARQLAskQuery</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Represents a SPARQL ASK query as might be used for validation.
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#validationquery">reg:validationQuery</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="sparqlconstructquery">
+        <h3>SPARQL CONSTRUCT query<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#SPARQLConstructQuery</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Represents a SPARQL CONSTRUCT query.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="sparqlquery">
+        <h3>SPARQL query<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#SPARQLQuery</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Represents a SPARQL query as a reusable resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#query">reg:query</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="sparqlselectquery">
+        <h3>SPARQL SELECT query<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#SPARQLSelectQuery</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Represents a SPARQL SELECT query.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="status1">
+        <h3>Status<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#Status</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Open set of status code for entries in a register
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#nextstate">reg:nextState</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#priorstate">reg:priorState</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#presentation">reg:presentation</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#status">reg:status</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="objectproperties">
+    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#alias">alias</a></li>
+        <li><a href="#annotation">annotation</a></li>
+        <li><a href="#category">category</a></li>
+        <li><a href="#containeditemclass">contained item class</a></li>
+        <li><a href="#definition">definition</a></li>
+        <li><a href="#delegationtarget">delegation target</a></li>
+        <li><a href="#entity">entity</a></li>
+        <li><a href="#entityversion">entity version</a></li>
+        <li><a href="#enumerationobject">enumeration object</a></li>
+        <li><a href="#enumerationpredicate">enumeration predicate</a></li>
+        <li><a href="#enumerationsubject">enumeration subject</a></li>
+        <li><a href="#governancepolicy">governance policy</a></li>
+        <li><a href="#inversemembershippredicate">inverse membership predicate</a></li>
+        <li><a href="#itemclass">item class</a></li>
+        <li><a href="#manager">manager</a></li>
+        <li><a href="#operatinglanguage">operating language</a></li>
+        <li><a href="#owner">owner</a></li>
+        <li><a href="#predecessor">predecessor</a></li>
+        <li><a href="#register">register</a></li>
+        <li><a href="#release">release</a></li>
+        <li><a href="#representationof">representation of</a></li>
+        <li><a href="#sourcedataset">source dataset</a></li>
+        <li><a href="#sourcegraph">source graph</a></li>
+        <li><a href="#status">status</a></li>
+        <li><a href="#submitter">submitter</a></li>
+        <li><a href="#subregister">subregister</a></li>
+        <li><a href="#successor">successor</a></li>
+        <li><a href="#validationquery">validation query</a></li>
+    </ul>
+    <div class="entity property" id="alias">
+        <h3>alias<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#alias</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An alternative URI for the entity, the alias resource is regarded by this register as owl:sameAs the definition entity
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#entityreference">reg:EntityReference</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="annotation">
+        <h3>annotation<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#annotation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The URI of a graph of annotation statements associate with this item
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="category">
+        <h3>category<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#category</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Optional classification for a registered item within one or more SKOS classification schemes to support navigation and discovery. Orthogonal to the structure provided by the register hierarchy which is about governance.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="containeditemclass">
+        <h3>contained item class<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#containedItemClass</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A class of entities that can occur in this register
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="definition">
+        <h3>definition<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#definition</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The entity which has been registered.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#entityreference">reg:EntityReference</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="delegationtarget">
+        <h3>delegation target<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#delegationTarget</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A resource to which the delegated register delegates, may be a register in another registry service, a SPARQL endpoint or some other web resource
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#delegated">reg:Delegated</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="entity">
+        <h3>entity<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#entity</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The RDF resource identified by an entity reference
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#entityreference">reg:EntityReference</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="entityversion">
+        <h3>entity version<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#entityVersion</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Indicates the particular version:Version of the entity being referenced.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#entityreference">reg:EntityReference</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="enumerationobject">
+        <h3>enumeration object<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#enumerationObject</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Specifies the object part of a triple pattern used to enumerate the members of a delegated register
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#delegatedregister">reg:DelegatedRegister</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="enumerationpredicate">
+        <h3>enumeration predicate<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#enumerationPredicate</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Specifies the predicate part of a triple pattern used to enumerate the members of a delegated register
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#delegatedregister">reg:DelegatedRegister</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="enumerationsubject">
+        <h3>enumeration subject<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#enumerationSubject</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Specifies the subject part of a triple pattern used to enumerate the members of a delegated register
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#delegatedregister">reg:DelegatedRegister</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="governancepolicy">
+        <h3>governance policy<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#governancePolicy</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A resource, such as a web accessible-document, which describes the governance policy applicable to this register.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="inversemembershippredicate">
+        <h3>inverse membership predicate<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#inverseMembershipPredicate</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Indicates a property which links a member of a collection back to the collection itself, this is the reverse direction to the normal ldp:membershipPredicate
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.w3.org/ns/ldp#Container">ldp:Container</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">rdf:Property</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="itemclass">
+        <h3>item class<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#itemClass</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The type of the entity that this record is about. Note that it may be possible to register a non-RDF resource in which case this property provides a way to state the intended class of the entity even though no direct RDF assertion of type is available.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="manager">
+        <h3>manager<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#manager</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The manager of the register, may be a person (foaf:Person) or an organization (org:Organization). Operates the register on behalf of the owner, makes day to day decisions on acceptance of entries based on agreed principles but it may be possible to appeal to the owner to override a decision by the manager.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="operatinglanguage">
+        <h3>operating language<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#operatingLanguage</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Indicates a language supported by the register and the items within it. The language should be indicated by a resource within a well-maintained URI set such as the Library of Congress language URIs e.g. http://id.loc.gov/vocabulary/iso639-1/en
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="owner">
+        <h3>owner<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#owner</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The owner of the register, may be a person (foaf:Person) or an organization (org:Organization). The owner has final authority over the contents of the regster.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/publisher">dct:publisher</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="predecessor">
+        <h3>predecessor<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#predecessor</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An item which has been replaced this one within the register. Should be asserted between hub resources (VersionedThing).
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="register">
+        <h3>register<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#register</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The register in which this item has been registered.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="release">
+        <h3>release<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#release</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A tagged snapshot of a register
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/ns/prov#Collection">prov:Collection</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="representationof">
+        <h3>representation of<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#representationOf</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A resource, typically a real-world object, which the registered entity is a representation for.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="sourcedataset">
+        <h3>source dataset<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#sourceDataset</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Gives the source dataset in a Linkset, the other link target is assumed to be the destination
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://rdfs.org/ns/void#Linkset">void:Linkset</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://rdfs.org/ns/void#Dataset">void:Dataset</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="sourcegraph">
+        <h3>source graph<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#sourceGraph</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A resource representing an RDF graph (within the Registry's SPARQL dataset) containing the properties of the reference entity. If not present then assume default graph.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#entityreference">reg:EntityReference</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/ns/sparql-service-description#Graph">ssd:Graph</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="status">
+        <h3>status<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#status</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The status of this register entry
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#status1">reg:Status</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="submitter">
+        <h3>submitter<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#submitter</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The person or organization who originally submitted this register entry. Subsequent chages to the entry may have been made by other agents.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/publisher">dct:publisher</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="subregister">
+        <h3>subregister<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#subregister</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Indicates a register that is itself an entry in this principle register.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="successor">
+        <h3>successor<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#successor</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Indicates the replacement for a superseded item.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="validationquery">
+        <h3>validation query<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#validationQuery</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A SPARQL ASK query which can be used to validate a proposed entry in this register. Returns true of an error is found.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#sparqlaskquery">reg:SPARQLAskQuery</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="datatypeproperties">
+    <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#forwardingcode">forwarding code</a></li>
+        <li><a href="#nextstate">next state</a></li>
+        <li><a href="#notation">notation</a></li>
+        <li><a href="#presentation">presentation</a></li>
+        <li><a href="#priorstate">next state</a></li>
+        <li><a href="#query">query</a></li>
+        <li><a href="#tag">tag</a></li>
+    </ul>
+    <div class="entity property" id="forwardingcode">
+        <h3>forwarding code<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#forwardingCode</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The HTTP status code to return the requester in order to forward the request.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#namespaceforward">reg:NamespaceForward</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#int">xsd:int</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="nextstate">
+        <h3>next state<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#nextState</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Gives the label of a state which can follow from this state
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#status1">reg:Status</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="notation">
+        <h3>notation<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#notation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A short text string which can be used to denote the register item. Must be unique within the register. If available it should be used as the path segment, relative to the parent register, for the RegisterItem (and for the item itself, if managed). Restricted to be a syntactically legal URI segment (i.e. *pchar).
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="presentation">
+        <h3>presentation<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#presentation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Presentational hint for showing items with this status
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#status1">reg:Status</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="priorstate">
+        <h3>next state<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#priorState</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Gives the label of a state which can precede this state
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#status1">reg:Status</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="query">
+        <h3>query<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#query</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The source of a SPARQL query
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="tag">
+        <h3>tag<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/linked-data/registry#tag</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The tag used to label a collection which snapshots the state of a register
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.w3.org/ns/prov#Collection">prov:Collection</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt><em>default (:)</em></dt>
+        <dd><code>http://purl.org/linked-data/registry#</code></dd>
+        <dt>dc</dt>
+        <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+        <dt>dct</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>foaf</dt>
+        <dd><code>http://xmlns.com/foaf/0.1/</code></dd>
+        <dt>images</dt>
+        <dd><code>https://github.com/ukgovld/registry-core/wiki/images/</code></dd>
+        <dt>ldp</dt>
+        <dd><code>http://www.w3.org/ns/ldp#</code></dd>
+        <dt>linked-data</dt>
+        <dd><code>http://purl.org/linked-data/</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>prov</dt>
+        <dd><code>http://www.w3.org/ns/prov#</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>reg</dt>
+        <dd><code>http://purl.org/linked-data/registry#</code></dd>
+        <dt>sdo</dt>
+        <dd><code>https://schema.org/</code></dd>
+        <dt>skos</dt>
+        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>ssd</dt>
+        <dd><code>http://www.w3.org/ns/sparql-service-description#</code></dd>
+        <dt>version</dt>
+        <dd><code>http://purl.org/linked-data/version#</code></dd>
+        <dt>void</dt>
+        <dd><code>http://rdfs.org/ns/void#</code></dd>
+        <dt>vs</dt>
+        <dd><code>http://www.w3.org/2003/06/sw-vocab-status/ns#</code></dd>
+        <dt>xml</dt>
+        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+    <div id="legend">
+    <h2>Legend</h2>
+    <table class="entity">
+        <tr><td><sup class="type-c" title="Classes">c</sup></td><td>Classes</td></tr>
+        <tr><td><sup class="type-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+        <tr><td><sup class="type-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+        <tr><td><sup class="type-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+    </table>
+    </div>
+</body>
+</html>
