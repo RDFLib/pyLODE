@@ -20,6 +20,9 @@ G = Graph()
 SDO = Namespace('https://schema.org/')
 G.bind('sdo', SDO)
 
+SDO2 = Namespace('http://schema.org/')
+G.bind('sdo2', SDO2)
+
 
 def _expand_graph_for_pylode():
     # name
@@ -166,7 +169,7 @@ def _extract_namespaces():
         # exclude known annoying URIs (ORCID)
         if p == OWL.versionIRI or \
                 p == OWL.imports or \
-                p == SDO.identifier or \
+                p == SDO.identifier or SDO2.identifier or \
                 str(o).startswith('https://orcid'):
             pass
         else:
@@ -298,6 +301,32 @@ def _extract_properties():
                 domain_includes.append((collection_type, collection_members))
         PROPERTIES[prop]['domainIncludes'] = domain_includes
 
+        domain_includes = []
+        for o in G.objects(subject=s, predicate=SDO2.domainIncludes):
+            if type(o) != BNode:
+                domain_includes.append(str(o))  # domainIncludes that are just classes
+            else:
+                # domainIncludes collections (unionOf | intersectionOf
+                q = '''
+                    PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+                    PREFIX sdo2: <https://schema.org/>  
+
+                    SELECT ?col_type ?col_member
+                    WHERE {{
+                        <{}> sdo2:domainIncludes ?domainIncludes .  
+                        ?domainIncludes owl:unionOf|owl:intersectionOf ?collection .
+                        ?domainIncludes ?col_type ?collection . 
+                        ?collection rdf:rest*/rdf:first ?col_member .              
+                    }} 
+                '''.format(s)
+                collection_type = None
+                collection_members = []
+                for r in G.query(q):
+                    collection_type = _get_curie(str(r.col_type))
+                    collection_members.append(str(r.col_member))
+                domain_includes.append((collection_type, collection_members))
+        PROPERTIES[prop]['domainIncludes'] = domain_includes
+
         # ranges
         ranges = []
         for o in G.objects(subject=s, predicate=RDFS.range):
@@ -339,6 +368,32 @@ def _extract_properties():
                     SELECT ?col_type ?col_member
                     WHERE {{
                         <{}> sdo:rangeIncludes ?rangeIncludes .  
+                        ?rangeIncludes owl:unionOf|owl:intersectionOf ?collection .
+                        ?rangeIncludes ?col_type ?collection . 
+                        ?collection rdf:rest*/rdf:first ?col_member .              
+                    }} 
+                '''.format(s)
+                collection_type = None
+                collection_members = []
+                for r in G.query(q):
+                    collection_type = _get_curie(str(r.col_type))
+                    collection_members.append(str(r.col_member))
+                range_includes.append((collection_type, collection_members))
+        PROPERTIES[prop]['rangeIncludes'] = range_includes
+
+        range_includes = []
+        for o in G.objects(subject=s, predicate=SDO2.rangeIncludes):
+            if type(o) != BNode:
+                range_includes.append(str(o))  # rangeIncludes that are just classes
+            else:
+                # rangeIncludes collections (unionOf | intersectionOf
+                q = '''
+                    PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+                    PREFIX sdo2: <http://schema.org/>  
+
+                    SELECT ?col_type ?col_member
+                    WHERE {{
+                        <{}> sdo2:rangeIncludes ?rangeIncludes .  
                         ?rangeIncludes owl:unionOf|owl:intersectionOf ?collection .
                         ?rangeIncludes ?col_type ?collection . 
                         ?collection rdf:rest*/rdf:first ?col_member .              
@@ -578,7 +633,7 @@ def _extract_metadata():
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
                     METADATA['creators'].add(str(o))
                 else:  # Blank Node
-                    METADATA['creators'].add(_make_agent(o))
+                    METADATA['creators'].add(_make_agent_html(o))
 
             if p == DC.contributor:
                 METADATA['contributors'].add(str(o))
@@ -587,7 +642,7 @@ def _extract_metadata():
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
                     METADATA['contributors'].add(str(o))
                 else:  # Blank Node
-                    METADATA['contributors'].add(_make_agent(o))
+                    METADATA['contributors'].add(_make_agent_html(o))
 
             if p == DC.publisher:
                 METADATA['publishers'].add(str(o))
@@ -596,7 +651,7 @@ def _extract_metadata():
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
                     METADATA['publishers'].add(str(o))
                 else:  # Blank Node
-                    METADATA['publishers'].add(_make_agent(o))
+                    METADATA['publishers'].add(_make_agent_html(o))
 
             # TODO: cater for other Agent representations
 
@@ -945,7 +1000,7 @@ def _get_uri_id(uri):
         return uri.split('/')[-1]  # could return None if URI ends in /
 
 
-def _make_agent(agent_blank_node):
+def _make_agent_html(agent_blank_node):
     agent = None
     # we understand foaf:name, foaf:homepage & sdo:name & sdo:identifier & sdo:email (as a URI)
     # TODO: cater for other Agent representations
@@ -966,7 +1021,7 @@ def _make_agent(agent_blank_node):
     elif url is not None and email is None:
         agent = '<a href="{0}">{1}</a>'.format(url, name)
     elif url is None and email is not None:
-        agent = '<a href="{0}">{1}</a>'.format(email, name)
+        agent = '<a href="mailto:{0}">{1}</a>'.format(email.split('/')[-1], name)
     elif url is not None:
         agent = '<a href="{}">{}</a>'.format(url, name)
 
@@ -1110,7 +1165,6 @@ def generate_html(source_info):
     _extract_metadata()
     # get the default namespace
     _get_default_namespace()
-
     # create fragment URIs for default namespace classes & properties
     # for each CURIE, if it's in the default namespace, i.e. this ontology, use its fragment URI
 
@@ -1236,7 +1290,7 @@ def generate_html(source_info):
 
 if __name__ == '__main__':
     # get the input file
-    i = APP_DIR + '/examples/plot.ttl'
+    i = APP_DIR + '/examples/sosa.ttl'
     # parse the input file into an in-memory RDF graph
     G.parse(i, format='turtle')
 
