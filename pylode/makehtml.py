@@ -627,7 +627,10 @@ def _extract_metadata():
 
             # Agents
             if p == DC.creator:
-                METADATA['creators'].add(str(o))
+                if type(o) == URIRef:
+                    METADATA['creators'].add('<a href="{0}">{0}</a>'.format(str(o)))
+                else:
+                    METADATA['creators'].add(str(o))
 
             if p == DCTERMS.creator:
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
@@ -636,7 +639,10 @@ def _extract_metadata():
                     METADATA['creators'].add(_make_agent_html(o))
 
             if p == DC.contributor:
-                METADATA['contributors'].add(str(o))
+                if type(o) == URIRef:
+                    METADATA['contributors'].add('<a href="{0}">{0}</a>'.format(str(o)))
+                else:
+                    METADATA['contributors'].add(str(o))
 
             if p == DCTERMS.contributor:
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
@@ -645,7 +651,10 @@ def _extract_metadata():
                     METADATA['contributors'].add(_make_agent_html(o))
 
             if p == DC.publisher:
-                METADATA['publishers'].add(str(o))
+                if type(o) == URIRef:
+                    METADATA['publishers'].add('<a href="{0}">{0}</a>'.format(str(o)))
+                else:
+                    METADATA['publishers'].add(str(o))
 
             if p == DCTERMS.publisher:
                 if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
@@ -1009,11 +1018,11 @@ def _make_agent_html(agent_blank_node):
     url = None
     email = None
     for p, o in G.predicate_objects(subject=agent_blank_node):
-        if p == FOAF.homepage or p == SDO.identifier:
+        if p == FOAF.homepage or p == SDO.identifier or p == SDO2.identifier:
             url = str(o)
-        elif p == FOAF.name or p == SDO.name:
+        elif p == FOAF.name or p == SDO.name or p == SDO2.name:
             name = str(o)
-        elif p == FOAF.mbox or p == SDO.email:
+        elif p == FOAF.mbox or p == SDO.email or p == SDO2.email:
             email = str(o).split('/')[-1].split('#')[-1]  # remove base URI leaving only email address
 
     if url is not None and email is not None:
@@ -1290,7 +1299,7 @@ def generate_html(source_info):
 
 if __name__ == '__main__':
     # get the input file
-    i = APP_DIR + '/examples/sosa.ttl'
+    i = APP_DIR + '/examples/void.ttl'
     # parse the input file into an in-memory RDF graph
     G.parse(i, format='turtle')
 
