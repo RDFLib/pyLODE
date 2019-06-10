@@ -1038,7 +1038,7 @@ def _make_agent_html(agent_blank_node):
 
 
 def _make_source_file_link(source_info):
-    return '<a href="{}">RDF ({})</a>'.format(source_info[0], source_info[1])
+    return '<a href="{}">RDF ({})</a>'.format(source_info[0].split('/')[-1], source_info[1])
 
 
 def _make_property_html(property):
@@ -1299,7 +1299,7 @@ def generate_html(source_info):
 
 if __name__ == '__main__':
     # get the input file
-    i = APP_DIR + '/examples/void.ttl'
+    i = APP_DIR + '/examples/agrif.ttl'
     # parse the input file into an in-memory RDF graph
     G.parse(i, format='turtle')
 

@@ -9,23 +9,27 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sdo: <https://schema.org/> .
 @base <http://linked.data.gov.au/def/agrif> .
 
 <http://linked.data.gov.au/def/agrif> rdf:type owl:Ontology ;
                                               owl:versionIRI <http://linked.data.gov.au/def/agrif/0.7> ;
                                               owl:versionInfo "0.7"@en ;
-                                              dc:contributor "Nicholas Car"@en ;
+                                              dct:contributor [
+                                                sdo:name "Nicholas Car"@en ;
+                                                sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+                                              ] ;
                                               vann:preferredNamespaceUri "http://linked.data.gov.au/def/agrif#"^^xsd:string ;
-                                              dc:creator "Armin Haller"@en ;
+                                              dc:creator "Armin Haller" , "John Machin" , "Katherine Stuart" ;
                                               rdfs:label "The Australian Government Records Interoperability Framework (AGRIF) ontology"@en ;
-                                              dc:creator "John Machin"@en ;
                                               rdfs:comment "The Australian Government Records Interoperability Framework (AGRIF, ‘the Framework’) is a system of related semantic ontologies that describe the structure, functions, and activities of the Australian Government, providing sufficient context for the effective use – including but not limited to management – of Australian Government information assets. It complies with the World Wide Web Consortium’s Web Ontology Language (OWL2) Recommendation and makes reference to other Recommendations and existing domain ontologies for archival and preservation processes."@en ;
-                                              dc:creator "Katherine Stuart"@en ;
                                               owl:priorVersion "0.6"@en ;
                                               vann:preferredNamespacePrefix "agrif"@en ;
-                                              dc:publisher "Department of Finance"@en ;
-					      dct:publisher <http://catalogue.linked.data.gov.au/org/O-000850> ;
-                                              rdfs:seeAlso <https://github.com/nicholascar/agrif-ont> ;
+                                              dct:publisher [
+                                                sdo:name "Department of Finance"@en ;
+                                                sdo:identifier <http://catalogue.linked.data.gov.au/org/finance> ;
+                                              ] ;
+                                              rdfs:seeAlso <https://github.com/agldwg/agrif-ont> ;
                                               dcterms:modified "2017-08-21"@en ;
                                               dcterms:rights "(c) Commonwealth of Australia (Department of Finance) 2017"@en ;
                                               dcterms:created "2016-12-06"^^xsd:date .
