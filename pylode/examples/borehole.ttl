@@ -38,7 +38,9 @@ This profile contains alignments to specifications that it does not directly pro
                                             sdo:identifier <http://catalogue.linked.data.gov.au/org/gsq> ;
                                           ] ;
                                           dct:created "2019-04-30"^^xsd:date ;
-                                          owl:versionInfo "See the GitHub repo https://github.com/geological-survey-of-queensland/gsq-borehole-profile for versioning"@en .
+                                          owl:versionInfo "See the GitHub repo https://github.com/geological-survey-of-queensland/gsq-borehole-profile for versioning"@en ;
+                                          dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                          dct:rights "Copyright 2019 Geological Survey of Queensland" .
 
 
 #################################################################

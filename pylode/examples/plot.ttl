@@ -46,6 +46,8 @@ PLOT is technically an extension to the W3C SSN/SOSA vocabulary, and also uses e
   rdfs:seeAlso <https://www.w3.org/ns/ssn/> ;
   owl:imports <http://purl.org/dc/elements/1.1/> ;
   owl:imports ssn:ext ;
+  dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+  dcterms:rights "Copyright 2019 CSIRO" ;
 .
 plot:Location
   a owl:Class ;

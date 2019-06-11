@@ -625,6 +625,12 @@ def _extract_metadata():
             if p == URIRef('http://purl.org/vocab/vann/preferredNamespaceUri'):
                 METADATA['preferredNamespaceUri'] = str(o)
 
+            if p == DCTERMS.license:
+                METADATA['license'] = '<a href="{0}">{0}</a>'.format(str(o)) if str(o).startswith('http') else str(o)
+
+            if p == DCTERMS.rights:
+                METADATA['rights'] = str(o).replace('Copyright', '&copy;').replace('copyright', '&copy;')
+
             # Agents
             if p == DC.creator:
                 if type(o) == URIRef:
@@ -1152,6 +1158,8 @@ def _make_metadata_html(source_info):
         issued=METADATA.get('issued'),
         description=METADATA.get('description'),
         version_info=METADATA.get('versionInfo'),
+        license=METADATA.get('license'),
+        rights=METADATA.get('rights'),
         ont_source=_make_source_file_link(source_info),
         has_classes=METADATA.get('has_classes'),
         has_ops=METADATA.get('has_ops'),

@@ -56,6 +56,19 @@
             {%- endfor %}
         </dd>
         {%- endif %}
+        {%- if rights is not none and license is not none %}
+        <dt>License &amp; Rights</dt>
+        <dd>
+            {{ license }}<br />
+            {{ rights }}
+        </dd>
+        {%- elif rights is not none and license is none %}
+        <dt>Rights</dt>
+        <dd>{{ rights }}</dd>
+        {%- elif rights is none and license is not none %}
+        <dt>License</dt>
+        <dd>{{ license }}</dd>
+        {%- endif %}
         <dt>Ontology Source</dt>
         <dd>{{ ont_source }}</dd>
     </dl>

@@ -6,17 +6,16 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix sdo: <https://schema.org/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix reg: <http://purl.org/linked-data/registry> .
 @base <http://linked.data.gov.au/def/loci> .
 
 <http://linked.data.gov.au/def/loci> rdf:type owl:Ontology ;
                                       owl:versionIRI <http://linked.data.gov.au/def/loci/1.0> ;
-                                      owl:imports <http://purl.org/linked-data/registry> ,
-
-
+                                      owl:imports reg: ,
                                                   rdf: ,
-                                                  <http://www.w3.org/2002/07/owl> ,
-                                                  <http://www.w3.org/ns/dcat> ,
-                                                  <http://xmlns.com/foaf/0.1/> ;
+                                                  owl: ,
+                                                  dcat: ;
                                       <http://purl.org/dc/terms/created> "2018-10-29"^^xsd:date ;
                                       dct:creator [
                                         sdo:name "Nicholas Car"@en ;
@@ -39,7 +38,9 @@ This is a profile of the [GeoSPARQL](http://www.opengeospatial.org/standards/geo
 This ontology constrains both normative instruction on what constitutes LOC-I objects and supplies executable constraints to validate instances.""" ;
                                       rdfs:label "LOC-I Ontology"@en ;
                                       rdfs:seeAlso "http://github.com/CSIRO-enviro-informatics/loci-ont/"@en ;
-                                      owl:versionInfo "Beta version"@en .
+                                      owl:versionInfo "Beta version"@en ;
+                                      dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                      dct:rights "Copyright 2019 CSIRO" .
 
 #################################################################
 #    Annotation properties
@@ -129,7 +130,7 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
                                            owl:onClass <http://www.w3.org/ns/prov#Plan>
                                          ] ,
                                          [ rdf:type owl:Restriction ;
-                                           owl:onProperty <http://purl.org/linked-data/registry#register> ;
+                                           owl:onProperty reg:register ;
                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                            owl:onClass :Linkset
                                          ] ,
