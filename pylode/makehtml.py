@@ -975,14 +975,12 @@ def _make_restriction_html(subject, restriction_bn):
                 else:
                     c = _make_uri_html(str(o2), type='c')
                 card = '<span class="cardinality">{}</span> {}'.format(card, c)
+            elif p2 == OWL.hasValue:
+                card = '<span class="cardinality">value</span> {}'.format(_make_uri_html(str(o2), type='c'))
 
     restriction = prop + ' ' + card if card is not None else prop
     restriction = restriction + ' ' + cls if cls is not None else restriction
 
-    # import pprint
-    # pprint.pprint(properties)
-    # for k in properties.keys():
-    #     print(k)
     return restriction
 
 
@@ -1009,22 +1007,7 @@ def _get_uri_id(uri):
         return uri.split('/')[-1]  # could return None if URI ends in /
 
 
-def _make_agent_html(agent_blank_node):
-    agent = None
-    # we understand foaf:name, foaf:homepage & sdo:name & sdo:identifier & sdo:email (as a URI)
-    # TODO: cater for other Agent representations
-
-    name = None
-    url = None
-    email = None
-    for p, o in G.predicate_objects(subject=agent_blank_node):
-        if p == FOAF.homepage or p == SDO.identifier or p == SDO2.identifier:
-            url = str(o)
-        elif p == FOAF.name or p == SDO.name or p == SDO2.name:
-            name = str(o)
-        elif p == FOAF.mbox or p == SDO.email or p == SDO2.email:
-            email = str(o).split('/')[-1].split('#')[-1]  # remove base URI leaving only email address
-
+def _make_agent_link(name, url=None, email=None):
     if url is not None and email is not None:
         agent = '<a href="{0}">{1}</a> (<a href="mailto:{2}">{2}</a>)'.format(url, name, email)
     elif url is not None and email is None:
@@ -1033,6 +1016,44 @@ def _make_agent_html(agent_blank_node):
         agent = '<a href="mailto:{0}">{1}</a>'.format(email.split('/')[-1], name)
     elif url is not None:
         agent = '<a href="{}">{}</a>'.format(url, name)
+    else:
+        agent = name
+
+    return agent
+
+
+def _make_agent_html(agent_blank_node):
+    agent = None
+    # we understand foaf:name, foaf:homepage & sdo:name & sdo:identifier & sdo:email (as a URI)
+    # TODO: cater for other Agent representations
+
+    name = None
+    url = None
+    email = None
+    org_name = None
+    org_url = None
+    org_email = None
+    for p, o in G.predicate_objects(subject=agent_blank_node):
+        if p == FOAF.homepage or p == SDO.identifier or p == SDO2.identifier:
+            url = str(o)
+        elif p == FOAF.name or p == SDO.name or p == SDO2.name:
+            name = str(o)
+        elif p == FOAF.mbox or p == SDO.email or p == SDO2.email:
+            email = str(o).split('/')[-1].split('#')[-1]  # remove base URI leaving only email address
+        elif p == SDO.memberOf or p == SDO2.memberOf:
+            for p2, o2 in G.predicate_objects(subject=o):
+                if p2 == FOAF.homepage or p2 == SDO.identifier or p2 == SDO2.identifier:
+                    org_url = str(o2)
+                elif p2 == FOAF.name or p2 == SDO.name or p2 == SDO2.name:
+                    org_name = str(o2)
+                elif p == FOAF.mbox or p == SDO.email or p == SDO2.email:
+                    org_email = str(o2).split('/')[-1].split('#')[-1]  # remove base URI leaving only email address
+
+    agent = _make_agent_link(name, url=url, email=email)
+
+    if org_name is not None:
+        org = _make_agent_link(org_name, url=org_url, email=org_email)
+        agent += ' of ' + org
 
     return agent
 
@@ -1299,7 +1320,7 @@ def generate_html(source_info):
 
 if __name__ == '__main__':
     # get the input file
-    i = APP_DIR + '/examples/agrif.ttl'
+    i = APP_DIR + '/examples/plot.ttl'
     # parse the input file into an in-memory RDF graph
     G.parse(i, format='turtle')
 

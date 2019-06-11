@@ -19,7 +19,7 @@
         </dd>
         <dt>Creator(s)</dt>
         <dd>
-            <a href="http://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a><br/>
+            <a href="http://orcid.org/0000-0002-8742-7730">Nicholas Car</a> (<a href="mailto:nicholas.car@csiro.au">nicholas.car@csiro.au</a>) of <a href="http://catalogue.linked.data.gov.au/def/csiro">CSIRO</a><br/>
         </dd>
         <dt>Created</dt>
         <dd>2018-10-29</dd>
@@ -31,14 +31,14 @@
         <dd><a href="http://linked.data.gov.au/def/loci/1.0">http://linked.data.gov.au/def/loci/1.0</a></dd>
         <dt>Imports</dt>
         <dd>
-            <a href="http://www.w3.org/ns/dcat">http://www.w3.org/ns/dcat</a><br/>
-            <a href="http://purl.org/linked-data/registry">http://purl.org/linked-data/registry</a><br/>
-            <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">rdf:</a><br/>
             <a href="http://www.w3.org/2002/07/owl">http://www.w3.org/2002/07/owl</a><br/>
-            <a href="http://xmlns.com/foaf/0.1/">foaf:</a><br/>
+            <a href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</a><br/>
+            <a href="http://www.w3.org/ns/dcat">http://www.w3.org/ns/dcat</a><br/>
+            <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">rdf:</a><br/>
+            <a href="http://purl.org/linked-data/registry">http://purl.org/linked-data/registry</a><br/>
         </dd>
         <dt>Ontology Source</dt>
-        <dd><a href="/Users/car587/work/pyLODE/pylode/examples/loci.ttl">RDF (turtle)</a></dd>
+        <dd><a href="loci.ttl">RDF (turtle)</a></dd>
     </dl>
     <h2>Description</h2>
     <div id="description">
@@ -89,7 +89,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://xmlns.com/foaf/0.1/Group">foaf:Group</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/Group">http://xmlns.com/foaf/0.1/Group</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -110,18 +110,18 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.w3.org/ns/dcat#Dataset">dcat:Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://rdfs.org/ns/void#Dataset">void:Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://rdfs.org/ns/void#Dataset">http://rdfs.org/ns/void#Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/dcat#Dataset">http://www.w3.org/ns/dcat#Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.org/dc/terms/publisher">dct:publisher</a> <span class="cardinality">exactly</span> 1 <a href="http://xmlns.com/foaf/0.1/Organization">foaf:Organization</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/dc/terms/title">dct:title</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/publisher">dct:publisher</a> <span class="cardinality">exactly</span> 1 <a href="http://xmlns.com/foaf/0.1/Organization">http://xmlns.com/foaf/0.1/Organization</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/dcat#contactPoint">http://www.w3.org/ns/dcat#contactPoint</a> <span class="cardinality">min</span> 1<br/>
                     <a href="http://purl.org/dc/terms/issued">dct:issued</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/dcat#contactPoint">dcat:contactPoint</a> <span class="cardinality">min</span> 1<br/>
                 </td>
             </tr>
             <tr>
@@ -154,10 +154,10 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="http://purl.org/linked-data/registry#register">http://purl.org/linked-data/registry#register</a> <span class="cardinality">exactly</span> 1 <a href="#locilinkset">:Linkset</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">rdf:subject</a> <span class="cardinality">exactly</span> 1 <a href="#locifeature">:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hadgenerationmethod">:hadGenerationMethod</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/ns/prov#Plan">prov:Plan</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#register">registry:register</a> <span class="cardinality">exactly</span> 1 <a href="#locilinkset">:Linkset</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a> <span class="cardinality">exactly</span> 1 <a href="#locifeature">:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hadgenerationmethod">:hadGenerationMethod</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/ns/prov#Plan">http://www.w3.org/ns/prov#Plan</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -172,7 +172,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Feature">geosparql:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#Feature">http://www.opengis.net/ont/geosparql#Feature</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -193,8 +193,8 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://rdfs.org/ns/void#Linkset">void:Linkset</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="#locidataset">:Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://rdfs.org/ns/void#Linkset">http://rdfs.org/ns/void#Linkset</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -236,7 +236,7 @@
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#Plan">prov:Plan</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/ns/prov#Plan">http://www.w3.org/ns/prov#Plan</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -285,36 +285,18 @@
         <dd><code>http://linked.data.gov.au/def/loci#</code></dd>
         <dt></dt>
         <dd><code>http://linked.data.gov.au/def/loci#</code></dd>
-        <dt>dataset</dt>
-        <dd><code>http://linked.data.gov.au/dataset/</code></dd>
-        <dt>dcat</dt>
-        <dd><code>http://www.w3.org/ns/dcat#</code></dd>
         <dt>dct</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
-        <dt>def</dt>
-        <dd><code>http://linked.data.gov.au/def/</code></dd>
-        <dt>foaf</dt>
-        <dd><code>http://xmlns.com/foaf/0.1/</code></dd>
-        <dt>geosparql</dt>
-        <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
-        <dt>org</dt>
-        <dd><code>http://catalogue.linked.data.gov.au/org/</code></dd>
         <dt>owl</dt>
         <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
-        <dt>prov</dt>
-        <dd><code>http://www.w3.org/ns/prov#</code></dd>
         <dt>rdf</dt>
         <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
         <dt>rdfs</dt>
         <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
-        <dt>registry</dt>
-        <dd><code>http://purl.org/linked-data/registry#</code></dd>
         <dt>sdo</dt>
         <dd><code>https://schema.org/</code></dd>
-        <dt>skos</dt>
-        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
-        <dt>void</dt>
-        <dd><code>http://rdfs.org/ns/void#</code></dd>
+        <dt>sdo2</dt>
+        <dd><code>http://schema.org/</code></dd>
         <dt>xml</dt>
         <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>

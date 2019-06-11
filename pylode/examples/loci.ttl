@@ -19,8 +19,13 @@
                                                   <http://xmlns.com/foaf/0.1/> ;
                                       <http://purl.org/dc/terms/created> "2018-10-29"^^xsd:date ;
                                       dct:creator [
-                                          sdo:name "Nicholas J. Car" ;
-                                          sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+                                        sdo:name "Nicholas Car"@en ;
+                                        sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+                                        sdo:email <nicholas.car@csiro.au> ;
+                                        sdo:memberOf [
+                                            sdo:name "CSIRO" ;
+                                            sdo:identifier <http://catalogue.linked.data.gov.au/def/csiro> ;
+                                        ] ;
                                       ] ;
                                       <http://purl.org/dc/terms/modified> "2018-11-09"^^xsd:date ;
                                       dct:publisher [

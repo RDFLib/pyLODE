@@ -19,7 +19,7 @@
         </dd>
         <dt>Creator(s)</dt>
         <dd>
-            <a href="http://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a><br/>
+            <a href="http://orcid.org/0000-0002-8742-7730">Nicholas Car</a> (<a href="mailto:nicholas.car@csiro.au">nicholas.car@csiro.au</a>) of <a href="http://catalogue.linked.data.gov.au/def/csiro">CSIRO</a><br/>
         </dd>
         <dt>Created</dt>
         <dd>2019-04-30</dd>
@@ -28,7 +28,7 @@
         <dt>Version Information</dt>
         <dd>See the GitHub repo https://github.com/geological-survey-of-queensland/gsq-borehole-profile for versioning</dd>
         <dt>Ontology Source</dt>
-        <dd><a href="/Users/car587/work/pyLODE/pylode/examples/borehole.ttl">RDF (turtle)</a></dd>
+        <dd><a href="borehole.ttl">RDF (turtle)</a></dd>
     </dl>
     <h2>Description</h2>
     <div id="description">
@@ -88,29 +88,29 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#well">:Well</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="#wellbore">:Wellbore</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#well">:Well</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#haddrillingmethod">:hadDrillingMethod</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hassurfacecircumstance">:hasSurfaceCircumstance</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasinclination">:hasInclination</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#haspurpose">:hasPurpose</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasstatus">:hasStatus</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hassurfacecircumstance">:hasSurfaceCircumstance</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#haddrillingmethod">:hadDrillingMethod</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domainIncludes of</th>
                 <td>
-                    <a href="#hasdiameter">:hasDiameter</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#haddrillingtime">:hadDrillingTime</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#operator">:operator</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#driller">:driller</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasdiameter">:hasDiameter</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasstate">:hasStateOrTerritory</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#haselevation">:hasElevation</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#operator">:operator</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#haddrillingtime">:hadDrillingTime</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -258,13 +258,6 @@ Commonly, Wellbores within a Well share a starting point.
                 </td>
             </tr>
             <tr>
-                <th>Domain(s)</th>
-                <td>
-                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
-                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
                 <th>Range(s)</th>
                 <td>
                     <a href="http://www.w3.org/ns/prov#Agent">prov:Agent</a> <sup class="sup-c" title="class">c</sup>
@@ -339,13 +332,6 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
                 </td>
             </tr>
             <tr>
-                <th>Domain(s)</th>
-                <td>
-                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
-                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
                 <th>Range(s)</th>
                 <td>
                     <a href="http://www.w3.org/2006/time#ProperInterval">time:ProperInterval</a> <sup class="sup-c" title="class">c</sup>
@@ -400,14 +386,6 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
                 </td>
             </tr>
             <tr>
-                <th>Domain(s)</th>
-                <td>
-                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
-                    <a href="#boreholeinterval">:BoreholeInterval</a> <sup class="sup-c" title="class">c</sup>
-                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
                 <th>Range(s)</th>
                 <td>
                     <a href="http://qudt.org/schema/qudt/Quantity">qudt:Quantity</a> <sup class="sup-c" title="class">c</sup>
@@ -426,13 +404,6 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
                 <th>Description</th>
                 <td>
                     The position of a borehole vertically, with reference to the earthe's surface.
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
-                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -526,13 +497,6 @@ This method is a sub property of the Loc-I Ontology's had:GenerationMethod which
                 <th>Usage Note</th>
                 <td>
                     The borehole need bot be spatially within the Australian State or Territory.
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
-                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -663,13 +627,6 @@ This property maps to GeoSciML's Borehole Start property.
                     <a href="http://www.w3.org/ns/prov#wasAttributedTo">prov:wasAttributedTo</a>
                 </td>
             </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
-                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
         </table>
     </div>
 </section>
@@ -686,8 +643,6 @@ This property maps to GeoSciML's Borehole Start property.
         <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
         <dt>dct</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
-        <dt>def</dt>
-        <dd><code>http://linked.data.gov.au/def/</code></dd>
         <dt>geo</dt>
         <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
         <dt>geox</dt>
@@ -708,6 +663,8 @@ This property maps to GeoSciML's Borehole Start property.
         <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
         <dt>sdo</dt>
         <dd><code>https://schema.org/</code></dd>
+        <dt>sdo2</dt>
+        <dd><code>http://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
         <dt>time</dt>

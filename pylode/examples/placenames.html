@@ -19,12 +19,12 @@
         </dd>
         <dt>Creator(s)</dt>
         <dd>
-            <a href="http://orcid.org/0000-0002-8742-7730">Nicholas Car</a><br/>
+            <a href="http://orcid.org/0000-0002-8742-7730">Nicholas Car</a> (<a href="mailto:nicholas.car@csiro.au">nicholas.car@csiro.au</a>) of <a href="http://catalogue.linked.data.gov.au/def/csiro">CSIRO</a><br/>
         </dd>
         <dt>Contributors(s)</dt>
         <dd>
-            Irina Bastrakova<br/>
             Armin Haller<br/>
+            Irina Bastrakova<br/>
         </dd>
         <dt>Created</dt>
         <dd>2018-08-02</dd>
@@ -33,7 +33,7 @@
         <dt>Version Information</dt>
         <dd>2</dd>
         <dt>Ontology Source</dt>
-        <dd><a href="/Users/car587/work/pyLODE/pylode/examples/placenames.ttl">RDF (turtle)</a></dd>
+        <dd><a href="placenames.ttl">RDF (turtle)</a></dd>
     </dl>
     <h2>Description</h2>
     <div id="description">
@@ -178,7 +178,7 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.org/linked-data/registry#containedItemClass">reg:containedItemClass</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#containedItemClass">reg:containedItemClass</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">value</span> <a href="#placename">:PlaceName</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -213,8 +213,8 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#hasplacenamingauthority">:hasPlaceNamingAuthority</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#wasnamedby">:wasNamedBy</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasplacenamingauthority">:hasPlaceNamingAuthority</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -248,8 +248,8 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#region">:Region</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="#pointofinterest">:PointOfInterest</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#region">:Region</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -283,19 +283,19 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
                 <th>Restrictions</th>
                 <td>
                     <a href="#wasnamedby">:wasNamedBy</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#jurisdiction">:Jurisdiction</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#pronunciation">:hasPronunciation</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#status">reg:status</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.org/linked-data/registry#Status">reg:Status</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#register">:register</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#gazetteer">:Gazetteer</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://www.w3.org/ns/adms#identifier">adms:identifier</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="https://www.w3.org/ns/adms#Identifier">adms:Identifier</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#register">:register</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#gazetteer">:Gazetteer</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#status">reg:status</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.org/linked-data/registry#Status">reg:Status</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#pronunciation">:hasPronunciation</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
                     <a href="#hasplacenamingauthority">:hasPlaceNamingAuthority</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasplacenameformality">:hasPlaceNameFormality</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#wasnamedby">:wasNamedBy</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#pronunciation">:hasPronunciation</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#wasnamedby">:wasNamedBy</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasplacenameformality">:hasPlaceNameFormality</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -475,17 +475,17 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#contractedcatchment">:ContractedCatchment</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#place">:Place</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/gnaf#Address">gnaf:Address</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://linked.data.gov.au/def/asgs#Feature">asgs:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/gnaf#Address">gnaf:Address</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#place">:Place</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#contractedcatchment">:ContractedCatchment</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#hasplacename">:hasPlaceName</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#hasGeometry">geo:hasGeometry</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasplacename">:hasPlaceName</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -530,9 +530,9 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#placetype">:PlaceType</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#placenameformality">:PlaceNameFormality</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/linked-data/registry#Status">reg:Status</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#placenameformality">:PlaceNameFormality</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#placetype">:PlaceType</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1011,14 +1011,10 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
         <dd><code>http://www.w3.org/ns/dcat#</code></dd>
         <dt>dct</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
-        <dt>def</dt>
-        <dd><code>http://linked.data.gov.au/def/</code></dd>
         <dt>geo</dt>
         <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
         <dt>gnaf</dt>
         <dd><code>http://linked.data.gov.au/def/gnaf#</code></dd>
-        <dt>https:</dt>
-        <dd><code>https://</code></dd>
         <dt>owl</dt>
         <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
         <dt>prov</dt>
@@ -1031,6 +1027,8 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
         <dd><code>http://purl.org/linked-data/registry#</code></dd>
         <dt>schema</dt>
         <dd><code>https://schema.org/</code></dd>
+        <dt>sdo2</dt>
+        <dd><code>http://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
         <dt>time</dt>

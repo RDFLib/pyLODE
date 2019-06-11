@@ -1,86 +1,49 @@
-# baseURI: http://www.tern.org.au/ns/plot
+# baseURI: http://linked.data.gov.au/def/plot/
 # imports: http://purl.org/dc/elements/1.1/
 # imports: http://www.w3.org/ns/ssn/ext
+# prefix: plot
 
+@prefix : <http://linked.data.gov.au/def/plot/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geosparql: <http://www.opengis.net/ont/geosparql#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix plot: <http://www.tern.org.au/ns/plot/> .
-@prefix plot-x: <http://www.tern.org.au/ns/plot/x/> .
+@prefix plot: <http://linked.data.gov.au/def/plot/> .
+@prefix plot-x: <http://linked.data.gov.au/def/plot/x/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <http://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix ssn: <http://www.w3.org/ns/ssn/> .
 @prefix ssn-ext: <http://www.w3.org/ns/ssn/ext/> .
 @prefix w3cgeo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix op: <http://www.tern.org.au/cv/op/> .
 
-<http://www.tern.org.au/dataset/examples/corveg-0/D-3729-1>
-  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
-.
-<http://www.tern.org.au/dataset/examples/corveg-0/D-3729-1-1>
-  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
-.
-<http://www.tern.org.au/dataset/examples/corveg-0/D-3729-1-2>
-  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
-.
-<http://www.tern.org.au/dataset/examples/corveg-0/D-3729-1-3>
-  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
-.
-<http://www.tern.org.au/dataset/examples/corveg-0/Site-3729>
-  a plot:Site ;
-  dcterms:description "Swampy depression still holding water.  Variable 20% shrubs in patches, lower 50-1m.  Patches 80% shrubs taller 1.5m tall.  Patches where shrubs more open/variable water depths.MU175 now in RE3.2.18 after v11 review." ;
-  dcterms:identifier "3729"^^<http://www.tern.org.au/ns/supplier/corveg/SITE_ID> ;
-  dcterms:identifier "FLAT14"^^<http://www.tern.org.au/ns/supplier/corveg/SITE_NUMBER> ;
-  dcterms:modified "2018-01-09"^^xsd:date ;
-  dcterms:type <http://www.tern.org.au/cv/corveg/site-sample-level-R> ;
-  dcterms:type <http://www.tern.org.au/cv/corveg/site-sample-type-C> ;
-  plot:siteDescription <http://www.tern.org.au/dataset/examples/corveg-0/D-3729-1> ;
-  locn:location <http://www.tern.org.au/dataset/examples/corveg-0/L-3614> ;
-  prov:wasGeneratedBy <http://www.tern.org.au/dataset/examples/corveg-0/P-265> ;
-  ssn-ext:hasUltimateFeatureOfInterest <http://registry.it.csiro.au/sandbox/tern/plot/bioregionqld-CHC> ;
-.
-<http://www.tern.org.au/dataset/examples/corveg-0/Soil-3729>
-  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
-.
-<http://www.tern.org.au/dataset/examples/corveg-0/Soil-3729-1>
-  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
-.
-<http://www.tern.org.au/dataset/examples/corveg-0/Soil-3729-2>
-  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
-.
-<http://www.tern.org.au/dataset/examples/corveg-0/Soil-3729-3>
-  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
-.
-<http://www.tern.org.au/dataset/examples/corveg-0/Soil-3729-4>
-  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
-.
-<http://www.tern.org.au/dataset/examples/corveg-0/VegetationCommunity-3729>
-  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
-.
-<http://www.tern.org.au/dataset/examples/corveg-0/VegetationCommunity-3729-1>
-  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
-.
-<http://www.tern.org.au/dataset/examples/corveg-0/VegetationCommunity-3729-2>
-  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
-.
-<http://www.tern.org.au/dataset/examples/corveg-0/VegetationCommunity-3729-3>
-  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
-.
-<http://www.tern.org.au/dataset/examples/corveg-0/VegetationCommunity-3729-4>
-  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
-.
-<http://www.tern.org.au/dataset/examples/corveg-0/VegetationCommunity-3729-5>
-  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
-.
-<http://www.tern.org.au/ns/plot>
+plot:
   a owl:Ontology ;
-  rdfs:label "Plot Ontology" ;
   dcterms:created "2019-03-25"^^xsd:date ;
-  dcterms:creator <https://orcid.org/0000-0002-3884-3420> ;
+  dcterms:creator [
+      a sdo:Person ;
+      sdo:email "simon.cox@csiro.au" ;
+      sdo:identifier <https://orcid.org/0000-0002-3884-3420> ;
+      sdo:memberOf [
+          a sdo:Organization ;
+          sdo:identifier <http://catalogue.linked.data.gov.au/def/csiro> ;
+          sdo:name "CSIRO" ;
+        ] ;
+      sdo:name "Simon J.D.Cox" ;
+    ] ;
+  dcterms:modified "2019-06-11"^^xsd:date ;
+  rdfs:comment """This vocabulary provides a set of classes to support capture of plot- and site-based ecological survey data. It is primary related to vegetation surveys, following the methdologies outlined in the Australian Soil and Land Survey Field Handbook.
+
+PLOT is technically an extension to the W3C SSN/SOSA vocabulary, and also uses elements from the SSN-EXT ontology.""" ;
+  rdfs:label "The PLOT ontology" ;
+  rdfs:seeAlso <https://www.publish.csiro.au/book/5230/> ;
+  rdfs:seeAlso <https://www.w3.org/TR/vocab-ssn-ext/> ;
+  rdfs:seeAlso <https://www.w3.org/ns/ssn/> ;
   owl:imports <http://purl.org/dc/elements/1.1/> ;
   owl:imports ssn:ext ;
 .
@@ -91,17 +54,17 @@ plot:Location
   rdfs:subClassOf [
       a owl:Restriction ;
       owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty plot:mapScale ;
+      owl:onProperty <http://www.tern.org.au/ns/plot/mapScale> ;
     ] ;
   rdfs:subClassOf [
       a owl:Restriction ;
       owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty plot:mapsheetName ;
+      owl:onProperty <http://www.tern.org.au/ns/plot/mapsheetName> ;
     ] ;
   rdfs:subClassOf [
       a owl:Restriction ;
       owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty plot:mapsheetNumber ;
+      owl:onProperty <http://www.tern.org.au/ns/plot/mapsheetNumber> ;
     ] ;
   rdfs:subClassOf [
       a owl:Restriction ;
@@ -109,7 +72,7 @@ plot:Location
       owl:someValuesFrom w3cgeo:Point ;
     ] ;
 .
-plot:Organism-occurrence
+plot:OrganismOccurence
   a owl:Class ;
   rdfs:comment "Making observations on an organism occurrence is primarily interesting if it represents a commuity or assemblage. " ;
   rdfs:label "Organism Occurrence " ;
@@ -120,7 +83,7 @@ plot:Organism-occurrence
       a owl:Restriction ;
       rdfs:comment "An organism-occurrence is a sample of a community or assemblage" ;
       owl:onProperty sosa:isSampleOf ;
-      owl:someValuesFrom plot-x:Ecological-community ;
+      owl:someValuesFrom plot-x:EcologicalCommunity ;
     ] ;
   rdfs:subClassOf [
       a owl:Restriction ;
@@ -151,8 +114,8 @@ May be a plot, quadrat, transect, trap etc""" ;
       owl:someValuesFrom [
           a owl:Class ;
           owl:unionOf (
-              plot-x:Environmental-system
-              plot-x:Environmental-zone
+              plot-x:EnvironmentalSystem
+              plot-x:EnvironmentalZone
             ) ;
         ] ;
     ] ;
@@ -193,7 +156,7 @@ Different visits might create sites in the same place with different identifiers
   rdfs:subClassOf [
       a owl:Restriction ;
       owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty plot:siteDescription ;
+      owl:onProperty <http://www.tern.org.au/ns/plot/siteDescription> ;
     ] ;
   rdfs:subClassOf [
       a owl:Restriction ;
@@ -214,7 +177,7 @@ plot:SiteStratum
   rdfs:subClassOf [
       a owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty plot:stratum ;
+      owl:onProperty <http://www.tern.org.au/ns/plot/stratum> ;
     ] ;
 .
 plot:SiteStratumTaxon
@@ -226,7 +189,7 @@ plot:SiteStratumTaxon
       a owl:Restriction ;
       rdfs:comment "While the value of the SiteStratumTaxon/taxon property might be fixed a-priori, the taxon-classification is typically the result of an observation whose feature-of-interest is an individual of the SiteStratumTaxon class. " ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty plot:taxon ;
+      owl:onProperty <http://www.tern.org.au/ns/plot/taxon> ;
     ] ;
   rdfs:subClassOf [
       a owl:Restriction ;
@@ -250,7 +213,7 @@ plot:SiteStratumTaxon
   rdfs:subClassOf [
       a owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty plot:stratum ;
+      owl:onProperty <http://www.tern.org.au/ns/plot/stratum> ;
     ] ;
   rdfs:subClassOf [
       a owl:Restriction ;
@@ -272,7 +235,7 @@ plot:SiteTaxon
   rdfs:subClassOf [
       a owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty plot:taxon ;
+      owl:onProperty <http://www.tern.org.au/ns/plot/taxon> ;
     ] ;
 .
 plot:SiteVisit
@@ -282,7 +245,7 @@ plot:SiteVisit
   rdfs:subClassOf [
       a owl:Restriction ;
       rdfs:comment "link from site-visit to survey of which it is a part" ;
-      owl:onProperty plot:wasSubActivityOf ;
+      owl:onProperty <http://www.tern.org.au/ns/plot/wasSubActivityOf> ;
       owl:someValuesFrom plot-x:Survey ;
     ] ;
   rdfs:subClassOf [
@@ -293,7 +256,7 @@ plot:SiteVisit
     ] ;
   rdfs:subClassOf [
       a owl:Restriction ;
-      owl:onProperty plot:hadSubActivity ;
+      owl:onProperty <http://www.tern.org.au/ns/plot/hadSubActivity> ;
       owl:someValuesFrom [
           a owl:Class ;
           owl:unionOf (
@@ -320,137 +283,34 @@ plot:TaxonAssignment
       owl:onProperty sosa:observedProperty ;
     ] ;
 .
-plot:floristics
-  a owl:ObjectProperty ;
-  rdfs:domain plot:Site ;
-  rdfs:label "Site floristics classification" ;
-  rdfs:range skos:Concept ;
-  rdfs:subPropertyOf dcterms:type ;
-.
-plot:hadSubActivity
-  a owl:ObjectProperty ;
-  rdfs:comment "To allow links between observations or site-visits and projects, programs and initiatives, between observations and site-visits, etc" ;
-  rdfs:domain prov:Activity ;
-  rdfs:label "pointer to child activity" ;
-  rdfs:range prov:Activity ;
-.
-plot:hasResultQuality
-  a owl:ObjectProperty ;
-  rdfs:comment "this property allows an indication of the quality of the data to be provided at the level of either an individual observation or a thematic group. This is commonly done by some kind of description of the method, protocol, sensor, observer, etc. " ;
-  rdfs:domain [
-      a owl:Class ;
-      owl:unionOf (
-          sosa:Observation
-          ssn-ext:ObservationCollection
-        ) ;
-    ] ;
-  rdfs:label "Quality of individual or related observation results" ;
-.
-plot:isLocationOf
-  a owl:ObjectProperty ;
-  rdfs:comment "Links an individual location description to the resource (e.g. a plot:Site) that it relates to" ;
-  rdfs:domain plot:Location ;
-  rdfs:label "describes the location of" ;
-  owl:inverseOf locn:location ;
-.
-plot:mapScale
-  a owl:ObjectProperty ;
-  rdfs:label "Map scale" ;
-.
-plot:mapsheetName
-  a owl:DatatypeProperty ;
-  rdfs:label "Mapsheet" ;
-  rdfs:range xsd:string ;
-.
-plot:mapsheetNumber
-  a owl:DatatypeProperty ;
-  rdfs:label "Mapsheet" ;
-  rdfs:range xsd:string ;
-.
-plot:observer
-  a owl:ObjectProperty ;
-  rdfs:label "Observer" ;
-  rdfs:subPropertyOf prov:wasAssociatedWith ;
-  rdfs:subPropertyOf sosa:madeBySensor ;
-.
-plot:sampleLevel
-  a owl:ObjectProperty ;
-  rdfs:domain plot:Site ;
-  rdfs:label "sample level classification" ;
-  rdfs:range skos:Concept ;
-  rdfs:subPropertyOf dcterms:type ;
-.
-plot:sampleType
-  a owl:ObjectProperty ;
-  rdfs:comment "The site's plot shape description, e.g. square, circle, etc." ;
-  rdfs:domain plot:Site ;
-  rdfs:label "sample type classification" ;
-  rdfs:range skos:Concept ;
-  rdfs:subPropertyOf dcterms:type ;
-.
-plot:sampler
-  a owl:ObjectProperty ;
-  rdfs:label "Sampler" ;
-  rdfs:subPropertyOf prov:wasAssociatedWith ;
-  rdfs:subPropertyOf sosa:madeBySampler ;
-.
-plot:siteDescription
-  a owl:ObjectProperty ;
-  rdfs:domain plot:Site ;
-  rdfs:range ssn-ext:ObservationCollection ;
-  rdfs:subPropertyOf sosa:isFeatureOfInterestOf ;
-.
-plot:stratum
-  a owl:ObjectProperty ;
-  rdfs:label "stratum classification" ;
-  rdfs:range skos:Concept ;
-  rdfs:subPropertyOf dcterms:type ;
-.
-plot:taxon
-  a owl:ObjectProperty ;
-  rdfs:label "taxon classification" ;
-  rdfs:range skos:Concept ;
-  rdfs:subPropertyOf dcterms:type ;
-.
-plot:visitor
-  a owl:ObjectProperty ;
-  rdfs:label "Site visitor" ;
-  rdfs:subPropertyOf prov:wasAssociatedWith ;
-.
-plot:wasSubActivityOf
-  a owl:ObjectProperty ;
-  rdfs:label "pointer to parent activity" ;
-  rdfs:subPropertyOf prov:wasInformedBy ;
-  owl:inverseOf plot:hadSubActivity ;
-.
 plot-x:Assemblage
   a owl:Class ;
   rdfs:label "Organism assemblage" ;
-  rdfs:subClassOf plot-x:Ecological-community ;
+  rdfs:subClassOf plot-x:EcologicalCommunity ;
 .
-plot-x:Ecological-community
+plot-x:EcologicalCommunity
   a owl:Class ;
   rdfs:label "Ecological Community" ;
-  rdfs:subClassOf plot-x:Environmental-system ;
+  rdfs:subClassOf plot-x:EnvironmentalSystem ;
   skos:closeMatch <http://purl.obolibrary.org/obo/PCO_0000002> ;
 .
-plot-x:Environmental-continuant
+plot-x:EnvironmentalContinuant
   a owl:Class ;
   rdfs:comment "Union of environmental system, environmental zone, and ecological community?" ;
   rdfs:label "Environmental continuant" ;
   rdfs:subClassOf sosa:FeatureOfInterest ;
   skos:closeMatch <http://purl.obolibrary.org/obo/ENVO_01000408> ;
 .
-plot-x:Environmental-system
+plot-x:EnvironmentalSystem
   a owl:Class ;
   rdfs:label "Environmental region defined primarily by its function and membership" ;
-  rdfs:subClassOf plot-x:Environmental-continuant ;
+  rdfs:subClassOf plot-x:EnvironmentalContinuant ;
   rdfs:subClassOf owl:Thing ;
 .
-plot-x:Environmental-zone
+plot-x:EnvironmentalZone
   a owl:Class ;
   rdfs:label "Environmental region defined primarily by its location and extent" ;
-  rdfs:subClassOf plot-x:Environmental-continuant ;
+  rdfs:subClassOf plot-x:EnvironmentalContinuant ;
   rdfs:subClassOf owl:Thing ;
 .
 plot-x:FluxTower
@@ -481,7 +341,7 @@ plot-x:Observation
           a owl:Class ;
           owl:unionOf (
               plot:Site
-              plot:Organism-occurrence
+              plot:OrganismOccurence
             ) ;
         ] ;
       owl:onProperty sosa:hasFeatureOfInterest ;
@@ -491,26 +351,26 @@ plot-x:Observation
       owl:allValuesFrom [
           a owl:Class ;
           owl:unionOf (
-              plot-x:Environmental-continuant
-              plot:Organism-occurrence
+              plot-x:EnvironmentalContinuant
+              plot:OrganismOccurence
             ) ;
         ] ;
       owl:onProperty ssn-ext:hasUltimateFeatureOfInterest ;
     ] ;
 .
-plot-x:Study-location
+plot-x:StudyLocation
   a rdfs:Class ;
   rdfs:label "Location of study" ;
   rdfs:subClassOf prov:Entity ;
 .
-plot-x:Study-location-visit
+plot-x:StudyLocationVisit
   a owl:Class ;
   rdfs:label "Visit to a study location" ;
   rdfs:subClassOf prov:Activity ;
   rdfs:subClassOf [
       a owl:Restriction ;
       owl:onProperty prov:used ;
-      owl:someValuesFrom plot-x:Study-location ;
+      owl:someValuesFrom plot-x:StudyLocation ;
     ] ;
 .
 plot-x:Survey
@@ -562,6 +422,167 @@ In this context the value of feature-of-interest is expected to be the value of 
   skos:editorialNote "Do we also need Survey to be classified by: - data theme?" ;
   skos:editorialNote "Do we need an association between Survey and SiteVisit?" ;
 .
+<http://www.tern.org.au/dataset/examples/corveg-0/D-3729-1>
+  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
+.
+<http://www.tern.org.au/dataset/examples/corveg-0/D-3729-1-1>
+  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
+.
+<http://www.tern.org.au/dataset/examples/corveg-0/D-3729-1-2>
+  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
+.
+<http://www.tern.org.au/dataset/examples/corveg-0/D-3729-1-3>
+  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
+.
+<http://www.tern.org.au/dataset/examples/corveg-0/Site-3729>
+  a plot:Site ;
+  dcterms:description "Swampy depression still holding water.  Variable 20% shrubs in patches, lower 50-1m.  Patches 80% shrubs taller 1.5m tall.  Patches where shrubs more open/variable water depths.MU175 now in RE3.2.18 after v11 review." ;
+  dcterms:identifier "3729"^^<http://www.tern.org.au/ns/supplier/corveg/SITE_ID> ;
+  dcterms:identifier "FLAT14"^^<http://www.tern.org.au/ns/supplier/corveg/SITE_NUMBER> ;
+  dcterms:modified "2018-01-09"^^xsd:date ;
+  dcterms:type <http://www.tern.org.au/cv/corveg/site-sample-level-R> ;
+  dcterms:type <http://www.tern.org.au/cv/corveg/site-sample-type-C> ;
+  <http://www.tern.org.au/ns/plot/siteDescription> <http://www.tern.org.au/dataset/examples/corveg-0/D-3729-1> ;
+  locn:location <http://www.tern.org.au/dataset/examples/corveg-0/L-3614> ;
+  prov:wasGeneratedBy <http://www.tern.org.au/dataset/examples/corveg-0/P-265> ;
+  ssn-ext:hasUltimateFeatureOfInterest <http://registry.it.csiro.au/sandbox/tern/plot/bioregionqld-CHC> ;
+.
+<http://www.tern.org.au/dataset/examples/corveg-0/Soil-3729>
+  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
+.
+<http://www.tern.org.au/dataset/examples/corveg-0/Soil-3729-1>
+  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
+.
+<http://www.tern.org.au/dataset/examples/corveg-0/Soil-3729-2>
+  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
+.
+<http://www.tern.org.au/dataset/examples/corveg-0/Soil-3729-3>
+  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
+.
+<http://www.tern.org.au/dataset/examples/corveg-0/Soil-3729-4>
+  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
+.
+<http://www.tern.org.au/dataset/examples/corveg-0/VegetationCommunity-3729>
+  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
+.
+<http://www.tern.org.au/dataset/examples/corveg-0/VegetationCommunity-3729-1>
+  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
+.
+<http://www.tern.org.au/dataset/examples/corveg-0/VegetationCommunity-3729-2>
+  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
+.
+<http://www.tern.org.au/dataset/examples/corveg-0/VegetationCommunity-3729-3>
+  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
+.
+<http://www.tern.org.au/dataset/examples/corveg-0/VegetationCommunity-3729-4>
+  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
+.
+<http://www.tern.org.au/dataset/examples/corveg-0/VegetationCommunity-3729-5>
+  sosa:hasFeatureOfInterest <http://www.tern.org.au/dataset/examples/corveg-0/Site-3729> ;
+.
+<http://www.tern.org.au/ns/plot/floristics>
+  a owl:ObjectProperty ;
+  rdfs:domain plot:Site ;
+  rdfs:label "Site floristics classification" ;
+  rdfs:range skos:Concept ;
+  rdfs:subPropertyOf dcterms:type ;
+.
+<http://www.tern.org.au/ns/plot/hadSubActivity>
+  a owl:ObjectProperty ;
+  rdfs:comment "To allow links between observations or site-visits and projects, programs and initiatives, between observations and site-visits, etc" ;
+  rdfs:domain prov:Activity ;
+  rdfs:label "pointer to child activity" ;
+  rdfs:range prov:Activity ;
+.
+<http://www.tern.org.au/ns/plot/hasResultQuality>
+  a owl:ObjectProperty ;
+  rdfs:comment "this property allows an indication of the quality of the data to be provided at the level of either an individual observation or a thematic group. This is commonly done by some kind of description of the method, protocol, sensor, observer, etc. " ;
+  rdfs:domain [
+      a owl:Class ;
+      owl:unionOf (
+          sosa:Observation
+          ssn-ext:ObservationCollection
+        ) ;
+    ] ;
+  rdfs:label "Quality of individual or related observation results" ;
+.
+<http://www.tern.org.au/ns/plot/isLocationOf>
+  a owl:ObjectProperty ;
+  rdfs:comment "Links an individual location description to the resource (e.g. a plot:Site) that it relates to" ;
+  rdfs:domain plot:Location ;
+  rdfs:label "describes the location of" ;
+  owl:inverseOf locn:location ;
+.
+<http://www.tern.org.au/ns/plot/mapScale>
+  a owl:ObjectProperty ;
+  rdfs:label "Map scale" ;
+.
+<http://www.tern.org.au/ns/plot/mapsheetName>
+  a owl:DatatypeProperty ;
+  rdfs:label "Mapsheet" ;
+  rdfs:range xsd:string ;
+.
+<http://www.tern.org.au/ns/plot/mapsheetNumber>
+  a owl:DatatypeProperty ;
+  rdfs:label "Mapsheet" ;
+  rdfs:range xsd:string ;
+.
+<http://www.tern.org.au/ns/plot/observer>
+  a owl:ObjectProperty ;
+  rdfs:label "Observer" ;
+  rdfs:subPropertyOf prov:wasAssociatedWith ;
+  rdfs:subPropertyOf sosa:madeBySensor ;
+.
+<http://www.tern.org.au/ns/plot/sampleLevel>
+  a owl:ObjectProperty ;
+  rdfs:domain plot:Site ;
+  rdfs:label "sample level classification" ;
+  rdfs:range skos:Concept ;
+  rdfs:subPropertyOf dcterms:type ;
+.
+<http://www.tern.org.au/ns/plot/sampleType>
+  a owl:ObjectProperty ;
+  rdfs:comment "The site's plot shape description, e.g. square, circle, etc." ;
+  rdfs:domain plot:Site ;
+  rdfs:label "sample type classification" ;
+  rdfs:range skos:Concept ;
+  rdfs:subPropertyOf dcterms:type ;
+.
+<http://www.tern.org.au/ns/plot/sampler>
+  a owl:ObjectProperty ;
+  rdfs:label "Sampler" ;
+  rdfs:subPropertyOf prov:wasAssociatedWith ;
+  rdfs:subPropertyOf sosa:madeBySampler ;
+.
+<http://www.tern.org.au/ns/plot/siteDescription>
+  a owl:ObjectProperty ;
+  rdfs:domain plot:Site ;
+  rdfs:range ssn-ext:ObservationCollection ;
+  rdfs:subPropertyOf sosa:isFeatureOfInterestOf ;
+.
+<http://www.tern.org.au/ns/plot/stratum>
+  a owl:ObjectProperty ;
+  rdfs:label "stratum classification" ;
+  rdfs:range skos:Concept ;
+  rdfs:subPropertyOf dcterms:type ;
+.
+<http://www.tern.org.au/ns/plot/taxon>
+  a owl:ObjectProperty ;
+  rdfs:label "taxon classification" ;
+  rdfs:range skos:Concept ;
+  rdfs:subPropertyOf dcterms:type ;
+.
+<http://www.tern.org.au/ns/plot/visitor>
+  a owl:ObjectProperty ;
+  rdfs:label "Site visitor" ;
+  rdfs:subPropertyOf prov:wasAssociatedWith ;
+.
+<http://www.tern.org.au/ns/plot/wasSubActivityOf>
+  a owl:ObjectProperty ;
+  rdfs:label "pointer to parent activity" ;
+  rdfs:subPropertyOf prov:wasInformedBy ;
+  owl:inverseOf <http://www.tern.org.au/ns/plot/hadSubActivity> ;
+.
 w3cgeo:Point
   rdfs:subClassOf sosa:Result ;
 .
@@ -578,7 +599,7 @@ locn:geometry
   rdfs:subPropertyOf sosa:hasResult ;
 .
 ssn-ext:hasMember
-  rdfs:subPropertyOf plot:hadSubActivity ;
+  rdfs:subPropertyOf <http://www.tern.org.au/ns/plot/hadSubActivity> ;
 .
 ssn-ext:isMemberOf
   a owl:ObjectProperty ;
@@ -592,6 +613,6 @@ ssn-ext:isMemberOf
     ] ;
   rdfs:label "is member of" ;
   rdfs:range ssn-ext:ObservationCollection ;
-  rdfs:subPropertyOf plot:wasSubActivityOf ;
+  rdfs:subPropertyOf <http://www.tern.org.au/ns/plot/wasSubActivityOf> ;
   owl:inverseOf ssn-ext:hasMember ;
 .

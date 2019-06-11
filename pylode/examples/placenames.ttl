@@ -37,9 +37,15 @@
 
 The first version of this Place Names ontology is archived online at https://github.com/GeoscienceAustralia/Place-Names."""@en ;
                                             owl:versionInfo "2" ;
-                                            dct:creator [ schema:identifier <http://orcid.org/0000-0002-8742-7730> ;
-                                                          schema:name "Nicholas Car"@en
-                                                        ] ;
+                                            dct:creator [
+                                                schema:name "Nicholas Car"@en ;
+                                                schema:identifier <http://orcid.org/0000-0002-8742-7730> ;
+                                                schema:email <nicholas.car@csiro.au> ;
+                                                schema:memberOf [
+                                                    schema:name "CSIRO" ;
+                                                    schema:identifier <http://catalogue.linked.data.gov.au/def/csiro> ;
+                                                ] ;
+                                              ] ;
                                             dct:publisher [ rdfs:seeAlso <https://www.ga.gov.au> ;
                                                             schema:identifier "http://catalogue.linked.data.gov.au/org/ga" ;
                                                             schema:name "Geoscience Australia"

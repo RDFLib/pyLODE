@@ -21,8 +21,13 @@
 <http://linked.data.gov.au/def/borehole> rdf:type owl:Ontology ;
                                           dct:modified "2019-05-02"^^xsd:date ;
                                           dct:creator [
-                                              sdo:name "Nicholas J. Car" ;
+                                              sdo:name "Nicholas Car"@en ;
                                               sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+                                              sdo:email <nicholas.car@csiro.au> ;
+                                              sdo:memberOf [
+                                                sdo:name "CSIRO" ;
+                                                sdo:identifier <http://catalogue.linked.data.gov.au/def/csiro> ;
+                                              ] ;
                                           ] ;
                                           rdfs:label "GSQ Borehole Profile" ;
                                           rdfs:comment """The Geological Survey of Queensland's profile of several specifications to characterise a borehole.
