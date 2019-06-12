@@ -1,212 +1,693 @@
-@prefix : <http://linked.data.gov.au/def/borehole/> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix dct: <http://purl.org/dc/terms/> .
-@prefix geo: <http://www.opengis.net/ont/geosparql#> .
-@prefix gsq: <http://linked.data.gov.au/def/gsq> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix sdo: <https://schema.org/> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix asgs: <http://linked.data.gov.au/def/asgs#> .
-@prefix geox: <http://linked.data.gov.au/def/geox/> .
-@prefix loci: <http://linked.data.gov.au/def/loci/> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix qudt: <http://qudt.org/schema/qudt/> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix time: <http://www.w3.org/2006/time#> .
-@base <http://linked.data.gov.au/def/borehole> .
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GSQ Borehole Profile</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<h1>GSQ Borehole Profile</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>IRI</dt>
+        <dd><code>http://linked.data.gov.au/def/borehole</code></dd>
+        <dt>Publisher(s)</dt>
+        <dd>
+            <a href="http://catalogue.linked.data.gov.au/org/gsq">Geological Survey of Queensland</a><br/>
+        </dd>
+        <dt>Creator(s)</dt>
+        <dd>
+            <a href="http://orcid.org/0000-0002-8742-7730">Nicholas Car</a> (<a href="mailto:nicholas.car@csiro.au">nicholas.car@csiro.au</a>) of <a href="http://catalogue.linked.data.gov.au/def/csiro">CSIRO</a><br/>
+        </dd>
+        <dt>Created</dt>
+        <dd>2019-04-30</dd>
+        <dt>Modified</dt>
+        <dd>2019-05-02</dd>
+        <dt>Version Information</dt>
+        <dd>See the GitHub repo https://github.com/geological-survey-of-queensland/gsq-borehole-profile for versioning</dd>
+        <dt>License &amp; Rights</dt>
+        <dd>
+            <a href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a><br />
+            &copy; 2019 Geological Survey of Queensland
+        </dd>
+        <dt>Ontology Source</dt>
+        <dd><a href="borehole.ttl">RDF (turtle)</a></dd>
+    </dl>
+    <h2>Description</h2>
+    <div id="description">
+        <p>The Geological Survey of Queensland's profile of several specifications to characterise a borehole.</p>
+<p>This profile contains alignments to specifications that it does not directly profile but is informed by, such as GeoSciML.</p>
+    </div>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#objectproperties">Object Properties</a></li>
+        <li><a href="#namespaces">Namespaces</a></li>
+    </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+        <div style="width:500px; height:500px; background-color: black;">&nbsp;</div>
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
+</section>
+<section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#borehole">Borehole</a></li>
+        <li><a href="#boreholeinterval">BoreholeInterval</a></li>
+        <li><a href="#casing">Casing</a></li>
+        <li><a href="#well">Well</a></li>
+        <li><a href="#wellbore">Wellbore</a></li>
+    </ul>
+    <div class="entity class" id="borehole">
+        <h3>Borehole<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/Borehole</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A borehole is a narrow shaft bored in the ground. A borehole may be constructed for many different purposes, including the extraction of water, other liquids (such as petroleum) or gases (such as natural gas), as part of a geotechnical investigation, environmental site assessment, mineral exploration, temperature measurement, as a pilot hole for installing piers or underground utilities, for geothermal installations, or for underground storage of unwanted substances, e.g. in carbon capture and storage.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#hasstatus">:hasStatus</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#well">:Well</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#wellbore">:Wellbore</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#hasstatus">:hasStatus</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hassurfacecircumstance">:hasSurfaceCircumstance</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#haddrillingmethod">:hadDrillingMethod</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#haspurpose">:hasPurpose</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasinclination">:hasInclination</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domainIncludes of</th>
+                <td>
+                    <a href="#hasdiameter">:hasDiameter</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#haddrillingtime">:hadDrillingTime</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#driller">:driller</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasstate">:hasStateOrTerritory</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#operator">:operator</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#haselevation">:hasElevation</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="boreholeinterval">
+        <h3>BoreholeInterval<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/BoreholeInterval</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#nextboreholeinterval">:nextBoreholeInterval</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hascasing">:hasCasing</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domainIncludes of</th>
+                <td>
+                    <a href="#hasdiameter">:hasDiameter</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#nextboreholeinterval">:nextBoreholeInterval</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="casing">
+        <h3>Casing<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/Casing</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#hascasing">:hasCasing</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="well">
+        <h3>Well<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/Well</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A Well is a Borehole that is made of multiple Wellbores.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="wellbore">
+        <h3>Wellbore<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/Wellbore</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Wellbores are a type of Borehole that constitutes part of a Well.
 
-<http://linked.data.gov.au/def/borehole> rdf:type owl:Ontology ;
-                                          dct:modified "2019-05-02"^^xsd:date ;
-                                          dct:creator [
-                                              sdo:name "Nicholas Car"@en ;
-                                              sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
-                                              sdo:email <nicholas.car@csiro.au> ;
-                                              sdo:memberOf [
-                                                sdo:name "CSIRO" ;
-                                                sdo:identifier <http://catalogue.linked.data.gov.au/def/csiro> ;
-                                              ] ;
-                                          ] ;
-                                          rdfs:label "GSQ Borehole Profile" ;
-                                          rdfs:comment """The Geological Survey of Queensland's profile of several specifications to characterise a borehole.
+Commonly, Wellbores within a Well share a starting point.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="objectproperties">
+    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#driller">driller</a></li>
+        <li><a href="#haddrillingmethod">had drilling method</a></li>
+        <li><a href="#haddrillingtime">had drilling time</a></li>
+        <li><a href="#hascasing">has casing</a></li>
+        <li><a href="#hasdiameter">has diameter</a></li>
+        <li><a href="#haselevation">has elevation</a></li>
+        <li><a href="#hasinclination">has inclination</a></li>
+        <li><a href="#haspurpose">has purpose</a></li>
+        <li><a href="#hasstate">has state</a></li>
+        <li><a href="#hasstatus">has status</a></li>
+        <li><a href="#hassurfacecircumstance">has surface circumstance</a></li>
+        <li><a href="#nextboreholeinterval">next borehole interval</a></li>
+        <li><a href="#operator">operator</a></li>
+    </ul>
+    <div class="entity property" id="driller">
+        <h3>driller<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/driller</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An organisation that drilled the borehole.
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    If the borehole was drilled by multiple organisations, add multiple :driller properties. Different periods of drilling, as indicated by :hadDrillingTime may have the specific driller indicated by qualifying the Agent (driller) / Activity (drilling episode), as per PROV-O's qualifiedAssociation pattern.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/ns/prov#wasAttributedTo">prov:wasAttributedTo</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/ns/prov#Agent">prov:Agent</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="haddrillingmethod">
+        <h3>had drilling method<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/hadDrillingMethod</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The method of drilling used to create this borehole.
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    Drilling Methods must be selected from the Borehole Drilling Methods vocabulary. If multiple methods were used, multiple :hadDrillingMethod properties should be used.
 
-This profile contains alignments to specifications that it does not directly profile but is informed by, such as GeoSciML."""@en ;
-                                          dct:publisher [
-                                            sdo:name "Geological Survey of Queensland" ;
-                                            sdo:identifier <http://catalogue.linked.data.gov.au/org/gsq> ;
-                                          ] ;
-                                          dct:created "2019-04-30"^^xsd:date ;
-                                          owl:versionInfo "See the GitHub repo https://github.com/geological-survey-of-queensland/gsq-borehole-profile for versioning"@en ;
-                                          dct:license <https://creativecommons.org/licenses/by/4.0/> ;
-                                          dct:rights "Copyright 2019 Geological Survey of Queensland" .
+This method is a sub property of the Loc-I Ontology's had:GenerationMethod which is a property chain axiom for PROV's  prov:wasGeneratedBy / prov:qualifiedAssociation / prov:hadPlan which allows an Entity (the borehole) to indicate the method (a PROV Plan) that was used to instruct the Activity that generated it (here the event of drilling).
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://linked.data.gov.au/def/loci/hadGenerationMethod">loci:hadGenerationMethod</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="haddrillingtime">
+        <h3>had drilling time<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/hadDrillingTime</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The time period during which the borehole was drilled.
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    If the borehole was drilled at multiple times, add multiple :hasDrillingTime properties.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2006/time#hasTime">time:hasTime</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2006/time#ProperInterval">time:ProperInterval</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hascasing">
+        <h3>has casing<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/hasCasing</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Casing is a cladding on the inside of the well / bore shaft
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#boreholeinterval">:BoreholeInterval</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#casing">:Casing</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasdiameter">
+        <h3>has diameter<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/hasDiameter</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The average width of the borehole shaft.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://qudt.org/schema/qudt/hasQuantity">qudt:hasQuantity</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://qudt.org/schema/qudt/Quantity">qudt:Quantity</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="haselevation">
+        <h3>has elevation<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/hasElevation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The position of a borehole vertically, with reference to the earthe's surface.
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://linked.data.gov.au/def/geox/VerticalGeometry">geox:VerticalGeometry</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasinclination">
+        <h3>has inclination<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/hasInclination</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The angle to the vertical of the borehole main shaft.
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    Inclinations must be selected from the Borehole Inclination vocabulary. If the borehole shaft has multiple angles, multiple :hasInclination properties should be used.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="haspurpose">
+        <h3>has purpose<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/hasPurpose</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The reason for which this borehole was drilled.
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    Purposes must be selected from the Borehole Purpose vocabulary. Multiple purposes may be selected. If purposes are time-bound, this should be indicated by assigning the purpose a time:hasTime property.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasstate">
+        <h3>has state<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/hasStateOrTerritory</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The Australian State or Territory that this borehole is juristictionally within.
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    The borehole need bot be spatially within the Australian State or Territory.
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://linked.data.gov.au/def/asgs#StateOrTerritory">asgs:StateOrTerritory</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasstatus">
+        <h3>has status<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/hasStatus</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The lifecycle stage of the borehole.
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    Status must be selected from the Borehole Status vocabulary.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hassurfacecircumstance">
+        <h3>has surface circumstance<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/hasSurfaceCircumstance</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The circumstances of a borehole's entrance.
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    Surface Circumstances must be selected from the Borehole Surface Circumstance vocabulary.
 
-
-#################################################################
-#    Object Properties
-#################################################################
-
-###  http://linked.data.gov.au/def/borehole/driller
-:driller rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf prov:wasAttributedTo ;
-         rdfs:range prov:Agent ;
-         rdfs:comment "An organisation that drilled the borehole."@en ;
-         rdfs:label "driller"@en ;
-         skos:scopeNote "If the borehole was drilled by multiple organisations, add multiple :driller properties. Different periods of drilling, as indicated by :hadDrillingTime may have the specific driller indicated by qualifying the Agent (driller) / Activity (drilling episode), as per PROV-O's qualifiedAssociation pattern."@en ;
-         sdo:domainIncludes :Borehole .
-
-
-###  http://linked.data.gov.au/def/borehole/hadDrillingMethod
-:hadDrillingMethod rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf loci:hadGenerationMethod ;
-                   rdfs:domain :Borehole ;
-                   rdfs:range skos:Concept ;
-                   rdfs:comment "The method of drilling used to create this borehole."@en ;
-                   rdfs:label "had drilling method" ;
-                   skos:scopeNote """Drilling Methods must be selected from the Borehole Drilling Methods vocabulary. If multiple methods were used, multiple :hadDrillingMethod properties should be used.
-
-This method is a sub property of the Loc-I Ontology's had:GenerationMethod which is a property chain axiom for PROV's  prov:wasGeneratedBy / prov:qualifiedAssociation / prov:hadPlan which allows an Entity (the borehole) to indicate the method (a PROV Plan) that was used to instruct the Activity that generated it (here the event of drilling)."""@en .
-
-
-###  http://linked.data.gov.au/def/borehole/hadDrillingTime
-:hadDrillingTime rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf time:hasTime ;
-                 rdfs:range time:ProperInterval ;
-                 rdfs:comment "The time period during which the borehole was drilled."@en ;
-                 rdfs:label "had drilling time"@en ;
-                 skos:scopeNote "If the borehole was drilled at multiple times, add multiple :hasDrillingTime properties."@en ;
-                 sdo:domainIncludes :Borehole .
-
-
-###  http://linked.data.gov.au/def/borehole/hasCasing
-:hasCasing rdf:type owl:ObjectProperty ;
-           rdfs:domain :BoreholeInterval ;
-           rdfs:range :Casing ;
-           rdfs:comment "Casing is a cladding on the inside of the well / bore shaft"@en ;
-           rdfs:label "has casing"@en .
-
-
-###  http://linked.data.gov.au/def/borehole/hasDiameter
-:hasDiameter rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf qudt:hasQuantity ;
-             rdfs:range qudt:Quantity ;
-             rdfs:comment "The average width of the borehole shaft."@en ;
-             rdfs:label "has diameter"@en ;
-             sdo:domainIncludes :Borehole ,
-                                :BoreholeInterval .
-
-
-###  http://linked.data.gov.au/def/borehole/hasElevation
-:hasElevation rdf:type owl:ObjectProperty ;
-              rdfs:range geox:VerticalGeometry ;
-              rdfs:comment "The position of a borehole vertically, with reference to the earthe's surface."@en ;
-              rdfs:label "has elevation" ;
-              sdo:domainIncludes :Borehole .
-
-
-###  http://linked.data.gov.au/def/borehole/hasInclination
-:hasInclination rdf:type owl:ObjectProperty ;
-                rdfs:domain :Borehole ;
-                rdfs:range skos:Concept ;
-                rdfs:comment "The angle to the vertical of the borehole main shaft."@en ;
-                rdfs:label "has inclination" ;
-                skos:scopeNote "Inclinations must be selected from the Borehole Inclination vocabulary. If the borehole shaft has multiple angles, multiple :hasInclination properties should be used."@en .
-
-
-###  http://linked.data.gov.au/def/borehole/hasPurpose
-:hasPurpose rdf:type owl:ObjectProperty ;
-            rdfs:domain :Borehole ;
-            rdfs:range skos:Concept ;
-            rdfs:comment "The reason for which this borehole was drilled."@en ;
-            rdfs:label "has purpose" ;
-            skos:scopeNote "Purposes must be selected from the Borehole Purpose vocabulary. Multiple purposes may be selected. If purposes are time-bound, this should be indicated by assigning the purpose a time:hasTime property."@en .
-
-
-###  http://linked.data.gov.au/def/borehole/hasStateOrTerritory
-:hasStateOrTerritory rdf:type owl:ObjectProperty ;
-                     rdfs:range asgs:StateOrTerritory ;
-                     rdfs:comment "The Australian State or Territory that this borehole is juristictionally within."@en ;
-                     rdfs:label "has state" ;
-                     skos:scopeNote "The borehole need bot be spatially within the Australian State or Territory."@en ;
-                     sdo:domainIncludes :Borehole .
-
-
-###  http://linked.data.gov.au/def/borehole/hasStatus
-:hasStatus rdf:type owl:ObjectProperty ;
-           rdfs:domain :Borehole ;
-           rdfs:range skos:Concept ;
-           rdfs:comment "The lifecycle stage of the borehole."@en ;
-           rdfs:label "has status" ;
-           skos:scopeNote "Status must be selected from the Borehole Status vocabulary."@en .
-
-
-###  http://linked.data.gov.au/def/borehole/hasSurfaceCircumstance
-:hasSurfaceCircumstance rdf:type owl:ObjectProperty ;
-                        rdfs:domain :Borehole ;
-                        rdfs:range skos:Concept ;
-                        rdfs:comment "The circumstances of a borehole's entrance." ;
-                        rdfs:label "has surface circumstance" ;
-                        skos:scopeNote """Surface Circumstances must be selected from the Borehole Surface Circumstance vocabulary.
-
-This property maps to GeoSciML's Borehole Start property.""" .
-
-
-###  http://linked.data.gov.au/def/borehole/nextBoreholeInterval
-:nextBoreholeInterval rdf:type owl:ObjectProperty ;
-                      rdfs:domain :BoreholeInterval ;
-                      rdfs:range :BoreholeInterval ;
-                      rdfs:comment "Indicates the next BoreholeInterval after this one, in the direction away from the Borehole's start"@en ;
-                      rdfs:label "next borehole interval"@en .
-
-
-###  http://linked.data.gov.au/def/borehole/operator
-:operator rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf prov:wasAttributedTo ;
-          rdfs:comment "An organisation that maintains/uses/runs the borehole."@en ;
-          rdfs:label "operator"@en ;
-          skos:scopeNote "If the borehole was/is operated by multiple organisations, add multiple :operator properties. Different periods of operation, may have the specific operator indicated by qualifying the Entity (Borehole) / Agent (operator) relations, as per PROV-O's qualifiedAttribution pattern."@en ;
-          sdo:domainIncludes :Borehole .
-
-#################################################################
-#    Classes
-#################################################################
-
-###  http://linked.data.gov.au/def/borehole/Borehole
-:Borehole rdf:type owl:Class ;
-          rdfs:subClassOf geo:Feature ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasStatus ;
-                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                            owl:onClass skos:Concept
-                          ] ;
-          rdfs:comment "A borehole is a narrow shaft bored in the ground. A borehole may be constructed for many different purposes, including the extraction of water, other liquids (such as petroleum) or gases (such as natural gas), as part of a geotechnical investigation, environmental site assessment, mineral exploration, temperature measurement, as a pilot hole for installing piers or underground utilities, for geothermal installations, or for underground storage of unwanted substances, e.g. in carbon capture and storage."@en ;
-          rdfs:label "Borehole" .
-
-
-###  http://linked.data.gov.au/def/borehole/BoreholeInterval
-:BoreholeInterval rdf:type owl:Class ;
-                  rdfs:subClassOf geo:Feature .
-
-
-###  http://linked.data.gov.au/def/borehole/Casing
-:Casing rdf:type owl:Class ;
-        rdfs:subClassOf skos:Concept .
-
-
-###  http://linked.data.gov.au/def/borehole/Well
-:Well rdf:type owl:Class ;
-      rdfs:subClassOf :Borehole ;
-      rdfs:comment "A Well is a Borehole that is made of multiple Wellbores."@en ;
-      rdfs:label "Well"@en .
-
-
-###  http://linked.data.gov.au/def/borehole/Wellbore
-:Wellbore rdf:type owl:Class ;
-          rdfs:subClassOf :Borehole ;
-          rdfs:comment """Wellbores are a type of Borehole that constitutes part of a Well.
-
-Commonly, Wellbores within a Well share a starting point."""@en ;
-          rdfs:label "Wellbore"@en .
-
-###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
+This property maps to GeoSciML's Borehole Start property.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#borehole">:Borehole</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="nextboreholeinterval">
+        <h3>next borehole interval<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/nextBoreholeInterval</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Indicates the next BoreholeInterval after this one, in the direction away from the Borehole's start
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#boreholeinterval">:BoreholeInterval</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#boreholeinterval">:BoreholeInterval</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="operator">
+        <h3>operator<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/borehole/operator</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An organisation that maintains/uses/runs the borehole.
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    If the borehole was/is operated by multiple organisations, add multiple :operator properties. Different periods of operation, may have the specific operator indicated by qualifying the Entity (Borehole) / Agent (operator) relations, as per PROV-O's qualifiedAttribution pattern.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/ns/prov#wasAttributedTo">prov:wasAttributedTo</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt><em>default (:)</em></dt>
+        <dd><code>http://linked.data.gov.au/def/borehole/</code></dd>
+        <dt></dt>
+        <dd><code>http://linked.data.gov.au/def/borehole/</code></dd>
+        <dt>asgs</dt>
+        <dd><code>http://linked.data.gov.au/def/asgs#</code></dd>
+        <dt>dc</dt>
+        <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+        <dt>dct</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>geo</dt>
+        <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
+        <dt>geox</dt>
+        <dd><code>http://linked.data.gov.au/def/geox/</code></dd>
+        <dt>gsq</dt>
+        <dd><code>http://linked.data.gov.au/def/gsq</code></dd>
+        <dt>loci</dt>
+        <dd><code>http://linked.data.gov.au/def/loci/</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>prov</dt>
+        <dd><code>http://www.w3.org/ns/prov#</code></dd>
+        <dt>qudt</dt>
+        <dd><code>http://qudt.org/schema/qudt/</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>sdo</dt>
+        <dd><code>https://schema.org/</code></dd>
+        <dt>sdo2</dt>
+        <dd><code>http://schema.org/</code></dd>
+        <dt>skos</dt>
+        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>time</dt>
+        <dd><code>http://www.w3.org/2006/time#</code></dd>
+        <dt>xml</dt>
+        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+    <div id="legend">
+    <h2>Legend</h2>
+    <table class="entity">
+        <tr><td><sup class="type-c" title="Classes">c</sup></td><td>Classes</td></tr>
+        <tr><td><sup class="type-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+        <tr><td><sup class="type-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+        <tr><td><sup class="type-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+    </table>
+    </div>
+</body>
+</html>

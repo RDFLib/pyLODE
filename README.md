@@ -24,10 +24,25 @@ This tool is a complete re-implementation of LODE's functionality using Python a
     ] ;
 ```
 
-* smarter CURIES - pyLODE looks up well-known prefixes to make more/better CURIES
+* smarter CURIES
+    * pyLODE caches and looks up well-known prefixes to make more/better CURIES
+    * it tries to be smart with CURIE presentation by CURIE-ising all URIs it finds, rather than printing them
 * **active development**
     * this software is in use and will be improved for the foreseeable future so we will cater fro more and more things
     * recent ontology documentation initiatives such as the [MOD Ontology](https://github.com/sifrproject/MOD-Ontology) will be handled, if requested
+
+
+## Examples
+pyLODE has been tested with all of the ontologies in [pylode/examples/](pylode/examples/) and we are trying to ensure it captures all of their annotations. For each example, there is the original RDF file and the corresponding output HTML.
+
+### Ontologies online using pyLODE:
+
+* [Geological Survey of Queensland](https://www.business.qld.gov.au/industries/mining-energy-water/resources/geoscience-information/gsq)'s **Boreholes Profile** - <http://linked.data.gov.au/def/borehole>
+* [Geoscience Australia](http://www.ga.gov.au/)'s **Place Names Profile** - <http://linked.data.gov.au/def/placenames>
+* [Epimorphic](https://www.epimorphics.com/)'s **Registry Ontology** - <https://epimorphics.com/public/vocabulary/Registry.html>
+
+See pairs of RDF & HTML files in the [pylode/examples/](pylode/examples/) directory for other, preprocessed examples.
+
 
 
 ## Use
@@ -60,33 +75,41 @@ $ ./pylode -i ../example/prof.ttl --css true
 pyLODE understands the following ontology annotations:
 
 * **ontology metadata**
-    * imports - `owl:imports`
-    * title - `rdfs:label` or `skos:prefLabel` or `dct:title`
-    * version_uri - `owl:versionIRI`
-    * publishers, creators, contributors
-        * either `dc:publisher` etc. as a string or `dct:publisher` etc. as a `foaf:Agent` or `schema:Person` with `foaf:name` & `foaf:homepage` or `schema:name` & `schema:identifier` properties respectively
-    * created, modified, issued - `dct:created` etc., all as `xsd:date` or `xsd:dateTime` datatype properties
-    * description - `rdf:comment` or `skos:definition` or `dct:description`
-    * versionInfo - `owl:versionInfo` as a string
+    * *imports* - `owl:imports`
+    * *title* - `rdfs:label` or `skos:prefLabel` or `dct:title`
+    * *version URI* - `owl:versionIRI` as a URI
+    * *version info* - `owl:versionInfo` as a string
+    * *publishers*, *creators*, *contributors*
+        * either the DC versions of properties (`dc:publisher` etc.) or the DCT versions (`dct:publisher` etc.)
+        * if using the DC form, the range should just be a string, e.g. `dc:publisher "Geoscience Australia" .
+        * if using the DCT form, range should be a `foaf:Agent` or `schema:Person` Blank Node with the following properties:
+            *`foaf:name`/`sdo:name`, `foaf:mbox`/`sdo:email` or `foaf:homepage`/`schema:identifier` properties
+        * see the [pylode/examples/](pylode/examples/) directory for examples!
+    * *created*, modified, issued - `dct:created` etc., all as `xsd:date` or `xsd:dateTime` datatype properties
+    * *description* - `rdf:comment` or `skos:definition` or `dct:description`
+    * *license* - `dct:license` as a URI
+    * *rights* - `dct:rights` as a string
+
 
 * **classes**
     * per `rdfs:Class` or `owl:Class`
-    * title - `rdfs:label` or `skos:prefLabel` or `dct:title`
-    * description - `rdf:comment` or `skos:definition` or `dct:description`
-    * usage note - a `skos:scopeNote` string
-    * super classes - by declaring a class to be `owl:subClassOf` something
-    * sub classes - pyLODE will work these out itself
-    * restrictions - by declaring a class to be `owl:subClassOf` of an `owl:Restriction` with any of the normal cardinality or property existence etc. restrictions
+    * *title* - `rdfs:label` or `skos:prefLabel` or `dct:title`
+    * *description* - `rdf:comment` or `skos:definition` or `dct:description` as a string or using [Markdown](https://daringfireball.net/projects/markdown/) or HTML
+    * *usage note* - a `skos:scopeNote` string
+    * *super classes* - by declaring a class to be `owl:subClassOf` something
+    * *sub classes* - pyLODE will work these out itself
+    * *restrictions* - by declaring a class to be `owl:subClassOf` of an `owl:Restriction` with any of the normal cardinality or property existence etc. restrictions
+    * *in domain/range of* - pyLODE will auto-calculate these
 
 * **properties**
     * per `owl:ObjectProperty`, `owl:DatatypeProperty` or `owl:AnnotationProperty`
-    * title - `rdfs:label` or `skos:prefLabel` or `dct:title`
-    * description - `rdf:comment` or `skos:definition` or `dct:description`
-    * usage note - a `skos:scopeNote` string
-    * super properties - by declaring a class to be `owl:subPropertyOf` something
-    * sub properties - pyLODE will work these out itself
-    * domains - `rdfs:domain` or `schema:domainIncludes`
-    * ranges - `rdfs:range` or `schema:rangeIncludes`
+    * *title* - `rdfs:label` or `skos:prefLabel` or `dct:title`
+    * *description* - `rdf:comment` or `skos:definition` or `dct:description`
+    * *usage note* - a `skos:scopeNote` string
+    * *super properties* - by declaring a class to be `owl:subPropertyOf` something
+    * *sub properties* - pyLODE will work these out itself
+    * *domains* - `rdfs:domain` or `schema:domainIncludes`
+    * *ranges* - `rdfs:range` or `schema:rangeIncludes`
 
 * **namespaces**
     * pyLODE will honour any namespace prefixes you set and look up others in [http://prefix.cc](http://prefix.cc/)
@@ -101,36 +124,27 @@ To help pyLODE understand more annotations, see **Suggestions** below.
 ## Styling
 This tool generates HTML that is shamelessly similar to LODE's styling. That's because we want things to look familiar and LODE's outputs look great.
 
+Also, pyLODE generates and uses only static HTML + CSS, no JavaScript, live loading Google Fonts etc. This is to ensure that all you nned for nice display is within a couple of static, easy to use and maintain, files. Prevents documentation breaking over time.
+
 Feel free to extend your styling with your own CSS.
 
 
 ## Online use
-Soon (June 2019?) an online, hosted, version of this tool will be implemented so you can see it in action live.
+Soon (July 2019?) an online, hosted, version of this tool will be implemented so you can use it live, online.
 
 
 ## License
-This code is licensed using the GPL v3 licence. See the [LICENSE file](LICENSE) for the deed.
+This code is licensed using the GPL v3 licence. See the [LICENSE file](LICENSE) for the deed. Note *Citation* below though for attribution.
 
 
 ## Citation
-If you use pyLODE, please leave the pyLODE logo in the top left of published HTML pages.
+If you use pyLODE, please leave the pyLODE logo with a hyperlink back here in the top left of published HTML pages.
 
 
 ## Suggestions
 If you have suggestions, please email the contacts below or leave Issues in this repositories [Issue tracker](https://github.com/rdflib/pyLODE/issues).
 
 But the very best thing you could do is create a Pull Request for us to action!
-
-
-## Examples
-pyLODE has been tested with all of the ontologies in [pylode/examples/](pylode/examples/) and we are trying to ensure it captures all of their annotations.
-
-Ontologies online using pyLODE:
-
-* Boreholes Profile - <http://linked.data.gov.au/def/borehole>
-* Place Names Profile - <http://linked.data.gov.au/def/placenames>
-
-See pairs of RDF & HTML files in the [pylode/examples/](pylode/examples/) directory for preprocessed examples.
 
 
 ## Contacts
