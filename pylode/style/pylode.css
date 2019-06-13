@@ -118,7 +118,14 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     text-align: justify;
+}
 
+section {
+    max-width: 1500px;
+}
+
+figure {
+    margin-bottom 20px;
 }
 
 :link { color: #00C; background: transparent }

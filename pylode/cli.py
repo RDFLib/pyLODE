@@ -4,7 +4,7 @@ from os import path
 import shutil
 import requests
 import rdflib
-from makehtml import generate_html
+from makehtml import MakeHtml
 
 
 # used to know what RDF file types rdflib can handle
@@ -164,9 +164,12 @@ def main():
     if not output_filename.endswith('.html'):
         output_filename += '.html'
 
+    h = MakeHtml()
+    h.G = g
+
     # generate the HTML doc
     with open(path.join(publication_dir, output_filename), 'w') as f:
-        f.write(generate_html(g, source_info))
+        f.write(h.generate_html(source_info))
 
     msg = 'Finished. HTML{} file in {}/.'.format(msg_css, publication_dir)
     print(msg)
