@@ -15,12 +15,17 @@
         <dd><code>http://www.w3.org/ns/sosa/</code></dd>
         <dt>Creator(s)</dt>
         <dd>
-            None<br/>
+            W3C/OGC Spatial Data on the Web Working Group<br/>
         </dd>
         <dt>Created</dt>
         <dd>2017-04-17</dd>
+        <dt>License &amp; Rights</dt>
+        <dd>
+            <a href="http://www.opengeospatial.org/ogc/Software">http://www.opengeospatial.org/ogc/Software</a><br />
+            &copy; 2017 W3C/OGC.
+        </dd>
         <dt>Ontology Source</dt>
-        <dd><a href="/Users/car587/work/pyLODE/pylode/examples/sosa.ttl">RDF (turtle)</a></dd>
+        <dd><a href="sosa.ttl">RDF (turtle)</a></dd>
     </dl>
     <h2>Description</h2>
     <div id="description">
@@ -227,7 +232,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Physical samples are sometimes known as 'specimens'.
+                    Feature which is intended to be representative of a FeatureOfInterest on which Observations may be made.
                 </td>
             </tr>
         </table>
@@ -313,7 +318,7 @@
         <li><a href="#usedprocedure">used procedure</a></li>
     </ul>
     <div class="entity property" id="actsonproperty">
-        <h3>acts on property<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>acts on property<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -342,7 +347,7 @@
         </table>
     </div>
     <div class="entity property" id="hasfeatureofinterest">
-        <h3>has feature of interest<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>has feature of interest<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -358,8 +363,8 @@
                 <th>Domain(s)</th>
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
-                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
@@ -367,14 +372,14 @@
                 <th>Range(s)</th>
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
-                    <a href="#featureofinterest">sosa:FeatureOfInterest</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#sample">sosa:Sample</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#featureofinterest">sosa:FeatureOfInterest</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity property" id="hasresult">
-        <h3>has result<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>has result<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -391,22 +396,22 @@
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
                     <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
-                    <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
-                    <a href="#sample">sosa:Sample</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#result">sosa:Result</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sample">sosa:Sample</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity property" id="hassample">
-        <h3>has sample<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>has sample<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -435,7 +440,7 @@
         </table>
     </div>
     <div class="entity property" id="hosts">
-        <h3>hosts<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>hosts<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -458,16 +463,16 @@
                 <th>Range(s)</th>
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
-                    <a href="#platform">sosa:Platform</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#actuator">sosa:Actuator</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#sensor">sosa:Sensor</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#platform">sosa:Platform</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#sampler">sosa:Sampler</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity property" id="isactedonby">
-        <h3>is acted on by<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>is acted on by<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -496,7 +501,7 @@
         </table>
     </div>
     <div class="entity property" id="isfeatureofinterestof">
-        <h3>is feature of interest of<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>is feature of interest of<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -512,8 +517,8 @@
                 <th>Domain(s)</th>
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
-                    <a href="#sample">sosa:Sample</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#featureofinterest">sosa:FeatureOfInterest</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sample">sosa:Sample</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -521,14 +526,14 @@
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
                     <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
-                    <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity property" id="ishostedby">
-        <h3>is hosted by<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>is hosted by<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -544,10 +549,10 @@
                 <th>Domain(s)</th>
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#actuator">sosa:Actuator</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sensor">sosa:Sensor</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#platform">sosa:Platform</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#sampler">sosa:Sampler</a> <sup class="sup-c" title="class">c</sup>
-                    <a href="#sensor">sosa:Sensor</a> <sup class="sup-c" title="class">c</sup>
-                    <a href="#actuator">sosa:Actuator</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -560,7 +565,7 @@
         </table>
     </div>
     <div class="entity property" id="isobservedby">
-        <h3>is observed by<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>is observed by<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -589,7 +594,7 @@
         </table>
     </div>
     <div class="entity property" id="isresultof">
-        <h3>is result of<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>is result of<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -613,15 +618,15 @@
                 <th>Range(s)</th>
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
-                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
-                    <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity property" id="issampleof">
-        <h3>is sample of<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>is sample of<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -650,7 +655,7 @@
         </table>
     </div>
     <div class="entity property" id="madeactuation">
-        <h3>made actuation<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>made actuation<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -679,7 +684,7 @@
         </table>
     </div>
     <div class="entity property" id="madebyactuator">
-        <h3>made by actuator<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>made by actuator<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -708,7 +713,7 @@
         </table>
     </div>
     <div class="entity property" id="madebysampler">
-        <h3>made by sampler<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>made by sampler<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -737,7 +742,7 @@
         </table>
     </div>
     <div class="entity property" id="madebysensor">
-        <h3>made by sensor<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>made by sensor<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -766,7 +771,7 @@
         </table>
     </div>
     <div class="entity property" id="madeobservation">
-        <h3>made observation<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>made observation<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -795,7 +800,7 @@
         </table>
     </div>
     <div class="entity property" id="madesampling">
-        <h3>made sampling<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>made sampling<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -824,7 +829,7 @@
         </table>
     </div>
     <div class="entity property" id="observedproperty">
-        <h3>observed property<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>observed property<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -853,7 +858,7 @@
         </table>
     </div>
     <div class="entity property" id="observes">
-        <h3>observes<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>observes<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -882,7 +887,7 @@
         </table>
     </div>
     <div class="entity property" id="phenomenontime">
-        <h3>phenomenon time<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>phenomenon time<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -913,7 +918,7 @@
         </table>
     </div>
     <div class="entity property" id="usedprocedure">
-        <h3>used procedure<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>used procedure<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -929,9 +934,9 @@
                 <th>Domain(s)</th>
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
-                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -952,7 +957,7 @@
         <li><a href="#resulttime">result time</a></li>
     </ul>
     <div class="entity property" id="hassimpleresult">
-        <h3>has simple result<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>has simple result<sup title="datatype property" class="type-dp">dp</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -968,15 +973,15 @@
                 <th>Domain(s)</th>
                 <td>
                     (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#actuation">sosa:Actuation</a> <sup class="sup-c" title="class">c</sup>
                     <a href="#observation">sosa:Observation</a> <sup class="sup-c" title="class">c</sup>
-                    <a href="#sampling">sosa:Sampling</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity property" id="resulttime">
-        <h3>result time<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>result time<sup title="datatype property" class="type-dp">dp</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1193,6 +1198,8 @@
         <tr><td><sup class="type-c" title="Classes">c</sup></td><td>Classes</td></tr>
         <tr><td><sup class="type-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
         <tr><td><sup class="type-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+        <tr><td><sup class="type-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+        <tr><td><sup class="type-p" title="Properties">p</sup></td><td>Properties</td></tr>
         <tr><td><sup class="type-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
     </table>
     </div>

@@ -8,6 +8,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://www.opengis.net/ont/geosparql> a owl:Ontology ;
+    dc:title "GeoSPARQL Ontology" ;
 	dc:creator "Open Geospatial Consortium"^^xsd:string ;
 	dc:date "2012-04-30"^^xsd:date ;
 	dc:description "An RDF/OWL vocabulary for representing spatial information"^^xsd:string ;

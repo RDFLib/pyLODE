@@ -23,8 +23,8 @@
         </dd>
         <dt>Contributors(s)</dt>
         <dd>
-            Armin Haller<br/>
             Irina Bastrakova<br/>
+            Armin Haller<br/>
         </dd>
         <dt>Created</dt>
         <dd>2018-08-02</dd>
@@ -32,6 +32,8 @@
         <dd>2019-06-01</dd>
         <dt>Version Information</dt>
         <dd>2</dd>
+        <dt>Rights</dt>
+        <dd>(c) Commonwealth of Australia (Geoscience Australia) 2019</dd>
         <dt>Ontology Source</dt>
         <dd><a href="placenames.ttl">RDF (turtle)</a></dd>
     </dl>
@@ -70,7 +72,7 @@
         <li><a href="#geometry">Geometry</a></li>
         <li><a href="#identifier1">Identifier</a></li>
         <li><a href="#jurisdiction">Jurisdiction</a></li>
-        <li><a href="#organisation">Organisation</a></li>
+        <li><a href="#organization">Organization</a></li>
         <li><a href="#place">Place</a></li>
         <li><a href="#placename">Place Name</a></li>
         <li><a href="#placenameformality">Place Name Formality</a></li>
@@ -115,7 +117,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#jurisdiction">:Jurisdiction</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#jurisdiction">http://linked.data.gov.au/def/placenames/Jurisdiction</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -178,7 +180,7 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.org/linked-data/registry#containedItemClass">reg:containedItemClass</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">value</span> <a href="#placename">:PlaceName</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#containedItemClass">reg:containedItemClass</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">value</span> <a href="#placename">http://linked.data.gov.au/def/placenames/PlaceName</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -213,8 +215,8 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#wasnamedby">:wasNamedBy</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasplacenamingauthority">:hasPlaceNamingAuthority</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#wasnamedby">http://linked.data.gov.au/def/placenames/wasNamedBy</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasplacenamingauthority">http://linked.data.gov.au/def/placenames/hasPlaceNamingAuthority</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -241,21 +243,21 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasfeatureclassification">:hasFeatureClassification</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#placetype">:PlaceType</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#register">:register</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#gazetteer">:Gazetteer</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#register">http://linked.data.gov.au/def/placenames/register</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#gazetteer">http://linked.data.gov.au/def/placenames/Gazetteer</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasfeatureclassification">http://linked.data.gov.au/def/placenames/hasFeatureClassification</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#placetype">http://linked.data.gov.au/def/placenames/PlaceType</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#pointofinterest">:PointOfInterest</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#region">:Region</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#pointofinterest">http://linked.data.gov.au/def/placenames/PointOfInterest</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#region">http://linked.data.gov.au/def/placenames/Region</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#hasfeatureclassification">:hasFeatureClassification</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasfeatureclassification">http://linked.data.gov.au/def/placenames/hasFeatureClassification</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -282,20 +284,20 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#wasnamedby">:wasNamedBy</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#jurisdiction">:Jurisdiction</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#pronunciation">http://linked.data.gov.au/def/placenames/hasPronunciation</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#register">http://linked.data.gov.au/def/placenames/register</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#gazetteer">http://linked.data.gov.au/def/placenames/Gazetteer</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://www.w3.org/ns/adms#identifier">adms:identifier</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="https://www.w3.org/ns/adms#Identifier">adms:Identifier</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#register">:register</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#gazetteer">:Gazetteer</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#wasnamedby">http://linked.data.gov.au/def/placenames/wasNamedBy</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#jurisdiction">http://linked.data.gov.au/def/placenames/Jurisdiction</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/linked-data/registry#status">reg:status</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.org/linked-data/registry#Status">reg:Status</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#pronunciation">:hasPronunciation</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#hasplacenamingauthority">:hasPlaceNamingAuthority</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#pronunciation">:hasPronunciation</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#wasnamedby">:wasNamedBy</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasplacenameformality">:hasPlaceNameFormality</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasplacenameformality">http://linked.data.gov.au/def/placenames/hasPlaceNameFormality</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#pronunciation">http://linked.data.gov.au/def/placenames/hasPronunciation</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#wasnamedby">http://linked.data.gov.au/def/placenames/wasNamedBy</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasplacenamingauthority">http://linked.data.gov.au/def/placenames/hasPlaceNamingAuthority</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -322,7 +324,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#hasplacenameformality">:hasPlaceNameFormality</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasplacenameformality">http://linked.data.gov.au/def/placenames/hasPlaceNameFormality</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -349,7 +351,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#hasfeatureclassification">:hasFeatureClassification</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasfeatureclassification">http://linked.data.gov.au/def/placenames/hasFeatureClassification</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -370,13 +372,13 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#place">:Place</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#place">http://linked.data.gov.au/def/placenames/Place</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#wasnamedby">:wasNamedBy</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/prov#Agent">prov:Agent</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#wasnamedby">http://linked.data.gov.au/def/placenames/wasNamedBy</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/prov#Agent">prov:Agent</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -397,7 +399,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#place">:Place</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#place">http://linked.data.gov.au/def/placenames/Place</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -412,7 +414,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#gazetteer">:Gazetteer</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#gazetteer">http://linked.data.gov.au/def/placenames/Gazetteer</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -427,7 +429,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#placename">:PlaceName</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#placename">http://linked.data.gov.au/def/placenames/PlaceName</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -469,23 +471,23 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasplacename">:hasPlaceName</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#placename">:PlaceName</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasplacename">http://linked.data.gov.au/def/placenames/hasPlaceName</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#placename">http://linked.data.gov.au/def/placenames/PlaceName</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/asgs#Feature">asgs:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://linked.data.gov.au/def/gnaf#Address">gnaf:Address</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#place">:Place</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#contractedcatchment">:ContractedCatchment</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#contractedcatchment">http://linked.data.gov.au/def/placenames/ContractedCatchment</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/asgs#Feature">asgs:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#place">http://linked.data.gov.au/def/placenames/Place</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
+                    <a href="#hasplacename">http://linked.data.gov.au/def/placenames/hasPlaceName</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#hasGeometry">geo:hasGeometry</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasplacename">:hasPlaceName</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -531,8 +533,8 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
                 <th>Sub-classes</th>
                 <td>
                     <a href="http://purl.org/linked-data/registry#Status">reg:Status</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#placenameformality">:PlaceNameFormality</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#placetype">:PlaceType</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#placenameformality">http://linked.data.gov.au/def/placenames/PlaceNameFormality</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#placetype">http://linked.data.gov.au/def/placenames/PlaceType</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -567,8 +569,8 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             </tr>
         </table>
     </div>
-    <div class="entity class" id="organisation">
-        <h3>Organisation<sup title="class" class="type-c">c</sup></h3>
+    <div class="entity class" id="organization">
+        <h3>Organization<sup title="class" class="type-c">c</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -589,7 +591,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#jurisdiction">:Jurisdiction</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#jurisdiction">http://linked.data.gov.au/def/placenames/Jurisdiction</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -626,7 +628,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
         <li><a href="#identifier1">identifier</a></li>
     </ul>
     <div class="entity property" id="hasfeatureclassification">
-        <h3>has feature classification<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>has feature classification<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -647,19 +649,19 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#place">:Place</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#place">http://linked.data.gov.au/def/placenames/Place</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#placetype">:PlaceType</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#placetype">http://linked.data.gov.au/def/placenames/PlaceType</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity property" id="hasgeometry">
-        <h3>hasGeometry<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>hasGeometry<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -668,7 +670,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
         </table>
     </div>
     <div class="entity property" id="hasplacename">
-        <h3>has place name<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>has place name<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -695,14 +697,14 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#placename">:PlaceName</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#placename">http://linked.data.gov.au/def/placenames/PlaceName</a> <sup class="sup-c" title="class">c</sup>
                     <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity property" id="hasplacenameformality">
-        <h3>has place name formality<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>has place name formality<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -723,19 +725,19 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#placename">:PlaceName</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#placename">http://linked.data.gov.au/def/placenames/PlaceName</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#placenameformality">:PlaceNameFormality</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#placenameformality">http://linked.data.gov.au/def/placenames/PlaceNameFormality</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity property" id="hasplacenamingauthority">
-        <h3>has place naming authority<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>has place naming authority<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -750,19 +752,19 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#placename">:PlaceName</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#placename">http://linked.data.gov.au/def/placenames/PlaceName</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#jurisdiction">:Jurisdiction</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#jurisdiction">http://linked.data.gov.au/def/placenames/Jurisdiction</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity property" id="pronunciation">
-        <h3>pronunciation<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>pronunciation<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -783,13 +785,13 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#placename">:PlaceName</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#placename">http://linked.data.gov.au/def/placenames/PlaceName</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity property" id="placenameof">
-        <h3>place name of<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>place name of<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -798,7 +800,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
         </table>
     </div>
     <div class="entity property" id="register">
-        <h3>register<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>register<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -807,7 +809,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
         </table>
     </div>
     <div class="entity property" id="wasnamedby">
-        <h3>was named by<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>was named by<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -828,19 +830,19 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#placename">:PlaceName</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#placename">http://linked.data.gov.au/def/placenames/PlaceName</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#jurisdiction">:Jurisdiction</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="#jurisdiction">http://linked.data.gov.au/def/placenames/Jurisdiction</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity property" id="containeditemclass">
-        <h3>containedItemClass<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>containedItemClass<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -849,7 +851,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
         </table>
     </div>
     <div class="entity property" id="hasstatus">
-        <h3>has status<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>has status<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -870,7 +872,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
         </table>
     </div>
     <div class="entity property" id="hasgeometry1">
-        <h3>has geometry<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>has geometry<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -897,7 +899,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
         </table>
     </div>
     <div class="entity property" id="notation">
-        <h3>notation<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>notation<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -906,7 +908,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
         </table>
     </div>
     <div class="entity property" id="hastime">
-        <h3>has time<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>has time<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -915,7 +917,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
         </table>
     </div>
     <div class="entity property" id="theme">
-        <h3>theme<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>theme<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -924,7 +926,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
         </table>
     </div>
     <div class="entity property" id="wasattributedto">
-        <h3>wasAttributedTo<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>wasAttributedTo<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -933,7 +935,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
         </table>
     </div>
     <div class="entity property" id="identifier1">
-        <h3>identifier<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>identifier<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -950,7 +952,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
         <li><a href="#identifier">identifier</a></li>
     </ul>
     <div class="entity property" id="string">
-        <h3>string<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>string<sup title="datatype property" class="type-dp">dp</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -959,7 +961,7 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
         </table>
     </div>
     <div class="entity property" id="identifier">
-        <h3>identifier<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>identifier<sup title="datatype property" class="type-dp">dp</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -998,8 +1000,6 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
         <dt><em>default (:)</em></dt>
-        <dd><code>http://linked.data.gov.au/def/placenames/</code></dd>
-        <dt></dt>
         <dd><code>http://linked.data.gov.au/def/placenames/</code></dd>
         <dt>adms</dt>
         <dd><code>https://www.w3.org/ns/adms#</code></dd>
@@ -1047,6 +1047,8 @@ In the context of the Place Names Profile, Jurisdictions may select Place Names 
         <tr><td><sup class="type-c" title="Classes">c</sup></td><td>Classes</td></tr>
         <tr><td><sup class="type-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
         <tr><td><sup class="type-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+        <tr><td><sup class="type-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+        <tr><td><sup class="type-p" title="Properties">p</sup></td><td>Properties</td></tr>
         <tr><td><sup class="type-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
     </table>
     </div>

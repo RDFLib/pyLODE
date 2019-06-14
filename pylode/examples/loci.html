@@ -32,9 +32,9 @@
         <dt>Imports</dt>
         <dd>
             <a href="http://purl.org/linked-data/registry">http://purl.org/linked-data/registry</a><br/>
+            <a href="http://www.w3.org/2002/07/owl#">owl:</a><br/>
             <a href="http://www.w3.org/ns/dcat#">dcat:</a><br/>
             <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">rdf:</a><br/>
-            <a href="http://www.w3.org/2002/07/owl#">owl:</a><br/>
         </dd>
         <dt>License &amp; Rights</dt>
         <dd>
@@ -114,24 +114,24 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://rdfs.org/ns/void#Dataset">http://rdfs.org/ns/void#Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/dcat#Dataset">dcat:Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://rdfs.org/ns/void#Dataset">http://rdfs.org/ns/void#Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.org/dc/terms/title">dct:title</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://purl.org/dc/terms/publisher">dct:publisher</a> <span class="cardinality">exactly</span> 1 <a href="http://xmlns.com/foaf/0.1/Organization">http://xmlns.com/foaf/0.1/Organization</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/dc/terms/issued">dct:issued</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/dcat#contactPoint">dcat:contactPoint</a> <span class="cardinality">min</span> 1<br/>
                     <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/publisher">dct:publisher</a> <span class="cardinality">exactly</span> 1 <a href="http://xmlns.com/foaf/0.1/Organization">http://xmlns.com/foaf/0.1/Organization</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/dcat#contactPoint">dcat:contactPoint</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/issued">dct:issued</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/title">dct:title</a> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#locilinkset">:Linkset</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#locilinkset">http://linked.data.gov.au/def/loci#Linkset</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -158,10 +158,10 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a> <span class="cardinality">exactly</span> 1 <a href="#locifeature">:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hadgenerationmethod">:hadGenerationMethod</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/ns/prov#Plan">http://www.w3.org/ns/prov#Plan</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">rdf:subject</a> <span class="cardinality">exactly</span> 1 <a href="#locifeature">:Feature</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/linked-data/registryregister">http://purl.org/linked-data/registryregister</a> <span class="cardinality">exactly</span> 1 <a href="#locilinkset">:Linkset</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a> <span class="cardinality">exactly</span> 1 <a href="#locifeature">http://linked.data.gov.au/def/loci#Feature</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/registryregister">http://purl.org/linked-data/registryregister</a> <span class="cardinality">exactly</span> 1 <a href="#locilinkset">http://linked.data.gov.au/def/loci#Linkset</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hadgenerationmethod">http://linked.data.gov.au/def/loci#hadGenerationMethod</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/ns/prov#Plan">http://www.w3.org/ns/prov#Plan</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">rdf:subject</a> <span class="cardinality">exactly</span> 1 <a href="#locifeature">http://linked.data.gov.au/def/loci#Feature</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -197,7 +197,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#locidataset">:Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#locidataset">http://linked.data.gov.au/def/loci#Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://rdfs.org/ns/void#Linkset">http://rdfs.org/ns/void#Linkset</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -213,7 +213,7 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#locidatasetlinkingstatement">:DatasetLinkingStatement</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#locidatasetlinkingstatement">http://linked.data.gov.au/def/loci#DatasetLinkingStatement</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -225,7 +225,7 @@
         <li><a href="#hadgenerationmethod">had generation method</a></li>
     </ul>
     <div class="entity property" id="hadgenerationmethod">
-        <h3>had generation method<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <h3>had generation method<sup title="object property" class="type-op">op</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -287,8 +287,6 @@
     <dl>
         <dt><em>default (:)</em></dt>
         <dd><code>http://linked.data.gov.au/def/loci#</code></dd>
-        <dt></dt>
-        <dd><code>http://linked.data.gov.au/def/loci#</code></dd>
         <dt>dcat</dt>
         <dd><code>http://www.w3.org/ns/dcat#</code></dd>
         <dt>dct</dt>
@@ -317,6 +315,8 @@
         <tr><td><sup class="type-c" title="Classes">c</sup></td><td>Classes</td></tr>
         <tr><td><sup class="type-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
         <tr><td><sup class="type-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+        <tr><td><sup class="type-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+        <tr><td><sup class="type-p" title="Properties">p</sup></td><td>Properties</td></tr>
         <tr><td><sup class="type-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
     </table>
     </div>

@@ -767,6 +767,9 @@ class MakeHtml:
             if v == ont_uri + '/' or v == ont_uri + '#':
                 self.METADATA['default_namespace'] = v
 
+        if self.NAMESPACES.get('') is not None:
+            del(self.NAMESPACES[''])
+
     def _make_namespaces_html(self):
         template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
         namespaces_template = Environment(loader=FileSystemLoader(template_dir)).get_template('namespaces.html')
@@ -1271,7 +1274,7 @@ class MakeHtml:
 if __name__ == '__main__':
     h = MakeHtml()
     # get the input file
-    i = h.APP_DIR + '/examples/rdf.ttl'
+    i = h.APP_DIR + '/examples/placenames.ttl'
     # parse the input file into an in-memory RDF graph
     h.G.parse(i, format='turtle')
 

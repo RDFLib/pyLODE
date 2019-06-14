@@ -118,7 +118,14 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     text-align: justify;
+}
 
+section {
+    max-width: 1500px;
+}
+
+.figure {
+    margin-bottom: 20px;
 }
 
 :link { color: #00C; background: transparent }
@@ -129,6 +136,7 @@ a:active { color: #C00; background: transparent }
 .type-op,
 .type-dp,
 .type-ap,
+.type-p,
 .type-ni {
     cursor:help;
     margin-left: 3px;
@@ -147,7 +155,11 @@ a:active { color: #C00; background: transparent }
 }
 
 .type-ap {
-    color:maroon;
+    color:darkred;
+}
+
+.type-p {
+    color:black;
 }
 
 .type-ni {
