@@ -26,7 +26,7 @@
     </dl>
     <h2>Description</h2>
     <div id="description">
-        <p>https://github.com/ukgovld/registry-core/wiki/images/registry-diagram.png</p>
+        <p>Core ontology for linked data registry services. Based on ISO19135 but heavily modified to suit Linked Data representations and applications.</p>
     </div>
 </section>
 <section id="toc">
@@ -84,8 +84,8 @@
                 <th>Sub-classes</th>
                 <td>
                     <a href="#namespaceforward">reg:NamespaceForward</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#federatedregister">reg:FederatedRegister</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="#delegatedregister">reg:DelegatedRegister</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#federatedregister">reg:FederatedRegister</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -112,24 +112,24 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="#delegated">reg:Delegated</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
                     <a href="#enumerationsubject">reg:enumerationSubject</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="#enumerationobject">reg:enumerationObject</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
                     <a href="#enumerationpredicate">reg:enumerationPredicate</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#enumerationobject">reg:enumerationObject</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
                     <a href="#enumerationpredicate">reg:enumerationPredicate</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#enumerationobject">reg:enumerationObject</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#enumerationsubject">reg:enumerationSubject</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#enumerationobject">reg:enumerationObject</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -150,24 +150,24 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="#entityversion">reg:entityVersion</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
                     <a href="#sourcegraph">reg:sourceGraph</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
                     <a href="#entity">reg:entity</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="#entityversion">reg:entityVersion</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#entity">reg:entity</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#entityversion">reg:entityVersion</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#sourcegraph">reg:sourceGraph</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#entity">reg:entity</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#alias">reg:alias</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#definition">reg:definition</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#alias">reg:alias</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -243,28 +243,28 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.w3.org/ns/ldp#Container">ldp:Container</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://rdfs.org/ns/void#Dataset">void:Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/linked-data/version#VersionedThing">version:VersionedThing</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/ldp#Container">ldp:Container</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://rdfs.org/ns/void#openSearchDescription">void:openSearchDescription</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="#operatinglanguage">reg:operatingLanguage</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
-                    <a href="#manager">reg:manager</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">max</span> 1<br/>
                     <a href="#validationquery">reg:validationQuery</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
                     <a href="#governancepolicy">reg:governancePolicy</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://rdfs.org/ns/void#uriLookupEndpoint">void:uriLookupEndpoint</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://rdfs.org/ns/void#uriSpace">void:uriSpace</a> <span class="cardinality">max</span> 1<br/>
-                    <a href="#containeditemclass">reg:containedItemClass</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
                     <a href="http://purl.org/dc/terms/description">dct:description</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="#owner">reg:owner</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://purl.org/dc/terms/license">dct:license</a> <span class="cardinality">min</span> 0<br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://rdfs.org/ns/void#openSearchDescription">void:openSearchDescription</a> <span class="cardinality">min</span> 0<br/>
                     <a href="http://rdfs.org/ns/void#exampleResource">void:exampleResource</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">max</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/license">dct:license</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="#containeditemclass">reg:containedItemClass</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="#owner">reg:owner</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://rdfs.org/ns/void#uriSpace">void:uriSpace</a> <span class="cardinality">max</span> 1<br/>
+                    <a href="#operatinglanguage">reg:operatingLanguage</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://rdfs.org/ns/void#uriLookupEndpoint">void:uriLookupEndpoint</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="#manager">reg:manager</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
@@ -277,21 +277,21 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#governancepolicy">reg:governancePolicy</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#release">reg:release</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#subregister">reg:subregister</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#containeditemclass">reg:containedItemClass</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#manager">reg:manager</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#operatinglanguage">reg:operatingLanguage</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#owner">reg:owner</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#containeditemclass">reg:containedItemClass</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#validationquery">reg:validationQuery</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#release">reg:release</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#governancepolicy">reg:governancePolicy</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#operatinglanguage">reg:operatingLanguage</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#subregister">reg:subregister</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#register">reg:register</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#subregister">reg:subregister</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#register">reg:register</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -318,46 +318,46 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="#category">reg:category</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="#itemclass">reg:itemClass</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
                     <a href="http://purl.org/dc/terms/dateSubmitted">dct:dateSubmitted</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="#notation">reg:notation</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">max</span> 1<br/>
-                    <a href="#predecessor">reg:predecessor</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://purl.org/dc/terms/license">dct:license</a> <span class="cardinality">min</span> 0<br/>
                     <a href="http://purl.org/dc/terms/dateAccepted">dct:dateAccepted</a> <span class="cardinality">max</span> 1<br/>
-                    <a href="#submitter">reg:submitter</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#notation">reg:notation</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#category">reg:category</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="#representationof">reg:representationOf</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/license">dct:license</a> <span class="cardinality">min</span> 0<br/>
                     <a href="#alias">reg:alias</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">max</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/description">dct:description</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="#definition">reg:definition</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#submitter">reg:submitter</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="#status">reg:status</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
                     <a href="http://purl.org/linked-data/registry#hasView">reg:hasView</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="#representationof">reg:representationOf</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://purl.org/dc/terms/description">dct:description</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="#itemclass">reg:itemClass</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
-                    <a href="#definition">reg:definition</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#predecessor">reg:predecessor</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#itemclass">reg:itemClass</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#successor">reg:successor</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#status">reg:status</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#category">reg:category</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#annotation">reg:annotation</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#definition">reg:definition</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#predecessor">reg:predecessor</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#notation">reg:notation</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#submitter">reg:submitter</a> <sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#alias">reg:alias</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#annotation">reg:annotation</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#representationof">reg:representationOf</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#successor">reg:successor</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#submitter">reg:submitter</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#itemclass">reg:itemClass</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#predecessor">reg:predecessor</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#status">reg:status</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#register">reg:register</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#alias">reg:alias</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#category">reg:category</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#successor">reg:successor</a> <sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#predecessor">reg:predecessor</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#successor">reg:successor</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -457,8 +457,8 @@
                 <th>In domain of</th>
                 <td>
                     <a href="#priorstate">reg:priorState</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#nextstate">reg:nextState</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#presentation">reg:presentation</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#nextstate">reg:nextState</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
             <tr>

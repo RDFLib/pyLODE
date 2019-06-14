@@ -1274,7 +1274,7 @@ class MakeHtml:
 if __name__ == '__main__':
     h = MakeHtml()
     # get the input file
-    i = h.APP_DIR + '/examples/placenames.ttl'
+    i = h.APP_DIR + '/examples/void.ttl'
     # parse the input file into an in-memory RDF graph
     h.G.parse(i, format='turtle')
 

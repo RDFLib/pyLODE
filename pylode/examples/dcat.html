@@ -1,0 +1,3332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>データ・カタログ語彙（DCAT）</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<h1>データ・カタログ語彙（DCAT）</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>IRI</dt>
+        <dd><code>http://www.w3.org/ns/dcat</code></dd>
+        <dt>Creator(s)</dt>
+        <dd>
+            John Erickson<br/>
+            Fadi Maali<br/>
+        </dd>
+        <dt>Contributors(s)</dt>
+        <dd>
+            Boris Villazón-Terrazas<br/>
+            <a href="http://www.asahi-net.or.jp/~ax2s-kmtn/">Shuji Kamitsuna</a><br/>
+            Richard Cyganiak<br/>
+            Simon J D Cox<br/>
+            Vassilios Peristeras<br/>
+            Marios Meimaris<br/>
+            <a href="https://jakubklimek.com">Jakub Klímek</a><br/>
+            Alejandra Gonzalez-Beltran<br/>
+            Martin Alvarez-Espinar<br/>
+            <a href="http://makxdekkers.com/">Makx Dekkers</a><br/>
+            Ghislain Auguste Atemezing<br/>
+            Rufus Pollock<br/>
+            <a href="http://www.w3.org/People/all#phila">Phil Archer</a><br/>
+            David Browning<br/>
+        </dd>
+        <dt>Modified</dt>
+        <dd>2017-12-19</dd>
+        <dt>Version Information</dt>
+        <dd>Esta es una copia del vocabulario DCAT v1.0 disponible en https://www.w3.org/ns/dcat.ttl
+con modificaciones en progreso para la nueva versión de DCAT que resultará del grupo 'W3C Data Exchange Working Group'</dd>
+        <dt>Imports</dt>
+        <dd>
+            <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a><br/>
+            <a href="http://www.w3.org/ns/prov-o">http://www.w3.org/ns/prov-o</a><br/>
+        </dd>
+        <dt>Ontology Source</dt>
+        <dd><a href="dcat.ttl">RDF (turtle)</a></dd>
+    </dl>
+    <h2>Description</h2>
+    <div id="description">
+        <p>DCAT je RDF slovník navržený pro zprostředkování interoperability mezi datovými katalogy publikovanými na Webu. Poskytovatelé dat používáním slovníku DCAT pro popis datových sad v datových katalozích zvyšují jejich dohledatelnost a umožňují aplikacím konzumovat metadata z více katalogů. Dále je umožňena decentralizovaná publikace katalogů a federované dotazování na datové sady napříč katalogy. Agregovaná DCAT metadata mohou také sloužit jako průvodka umožňující digitální uchování informace. DCAT je definován na http://www.w3.org/TR/vocab-dcat/. Jakýkoliv nesoulad mezi odkazovaným dokumentem a tímto schématem je chybou v tomto schématu.</p>
+    </div>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#objectproperties">Object Properties</a></li>
+        <li><a href="#datatypeproperties">Datatype Properties</a></li>
+        <li><a href="#annotationproperties">Annotation Properties</a></li>
+        <li><a href="#namespaces">Namespaces</a></li>
+    </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+        <div style="width:500px; height:500px; background-color: black;">&nbsp;</div>
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
+</section>
+<section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#agent">Agent</a></li>
+        <li><a href="#agentclass">Agent Class</a></li>
+        <li><a href="#bibliographicresource">Bibliographic Resource</a></li>
+        <li><a href="#cataloguedresource">Catalogued resource</a></li>
+        <li><a href="#catlogo">Catálogo</a></li>
+        <li><a href="#class">Class</a></li>
+        <li><a href="#collection">Collection</a></li>
+        <li><a href="#datadistributionservice">Data distribution service</a></li>
+        <li><a href="#dataservice">Data service</a></li>
+        <li><a href="#dataset1">Dataset</a></li>
+        <li><a href="#discoveryservice">Discovery Service</a></li>
+        <li><a href="#distribution">Distribution</a></li>
+        <li><a href="#document">Document</a></li>
+        <li><a href="#fileformat">File Format</a></li>
+        <li><a href="#frequency">Frequency</a></li>
+        <li><a href="#jurisdiction">Jurisdiction</a></li>
+        <li><a href="#kind">Kind</a></li>
+        <li><a href="#licensedocument">License Document</a></li>
+        <li><a href="#linguisticsystem">Linguistic System</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#location,period,orjurisdiction">Location, Period, or Jurisdiction</a></li>
+        <li><a href="#mediatype1">Media Type</a></li>
+        <li><a href="#mediatypeorextent">Media Type or Extent</a></li>
+        <li><a href="#methodofaccrual">Method of Accrual</a></li>
+        <li><a href="#methodofinstruction">Method of Instruction</a></li>
+        <li><a href="#periodoftime">Period of Time</a></li>
+        <li><a href="#person">Person</a></li>
+        <li><a href="#physicalmedium">Physical Medium</a></li>
+        <li><a href="#physicalresource">Physical Resource</a></li>
+        <li><a href="#policy">Policy</a></li>
+        <li><a href="#provenancestatement">Provenance Statement</a></li>
+        <li><a href="#resource">Resource</a></li>
+        <li><a href="#rightsstatement">Rights Statement</a></li>
+        <li><a href="#service1">Service</a></li>
+        <li><a href="#sizeorduration">Size or Duration</a></li>
+        <li><a href="#standard">Standard</a></li>
+        <li><a href="#vocabularyencodingscheme">VocabularyEncodingScheme</a></li>
+    </ul>
+    <div class="entity class" id="vocabularyencodingscheme">
+        <h3>VocabularyEncodingScheme<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/dcam/VocabularyEncodingScheme</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="collection">
+        <h3>Collection<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/dcmitype/Collection</code></td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/accrualPolicy">dct:accrualPolicy</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/dc/terms/accrualMethod">dct:accrualMethod</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/dc/terms/accrualPeriodicity">dct:accrualPeriodicity</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="service1">
+        <h3>Service<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/dcmitype/Service</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#dataservice">http://www.w3.org/ns/dcat#DataService</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="agent">
+        <h3>Agent<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/Agent</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A resource that acts or has the power to act.
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/creator">dct:creator</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/dc/terms/publisher">dct:publisher</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/dc/terms/contributor">dct:contributor</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/dc/terms/rightsHolder">dct:rightsHolder</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="agentclass">
+        <h3>Agent Class<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/AgentClass</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A group of agents.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/audience">dct:audience</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/dc/terms/educationLevel">dct:educationLevel</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/dc/terms/mediator">dct:mediator</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="bibliographicresource">
+        <h3>Bibliographic Resource<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/BibliographicResource</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A book, article, or other documentary resource.
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/bibliographicCitation">dct:bibliographicCitation</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="fileformat">
+        <h3>File Format<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/FileFormat</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A digital resource format.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/MediaType">dct:MediaType</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="frequency">
+        <h3>Frequency<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/Frequency</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A rate at which something recurs.
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/accrualPeriodicity">dct:accrualPeriodicity</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="jurisdiction">
+        <h3>Jurisdiction<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/Jurisdiction</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The extent or range of judicial, law enforcement, or other authority.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/LocationPeriodOrJurisdiction">dct:LocationPeriodOrJurisdiction</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="licensedocument">
+        <h3>License Document<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/LicenseDocument</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A legal document giving official permission to do something with a Resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/RightsStatement">dct:RightsStatement</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/license">dct:license</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="linguisticsystem">
+        <h3>Linguistic System<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/LinguisticSystem</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A system of signs, symbols, sounds, gestures, or rules used in communication.
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/language">dct:language</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="location">
+        <h3>Location<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/Location</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A spatial region or named place.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/LocationPeriodOrJurisdiction">dct:LocationPeriodOrJurisdiction</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/spatial">dct:spatial</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="location,period,orjurisdiction">
+        <h3>Location, Period, or Jurisdiction<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/LocationPeriodOrJurisdiction</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A location, period of time, or jurisdiction.
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/Jurisdiction">dct:Jurisdiction</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/dc/terms/PeriodOfTime">dct:PeriodOfTime</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/dc/terms/Location">dct:Location</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/coverage">dct:coverage</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="mediatype1">
+        <h3>Media Type<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/MediaType</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A file format or physical medium.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/MediaTypeOrExtent">dct:MediaTypeOrExtent</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/FileFormat">dct:FileFormat</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/dc/terms/PhysicalMedium">dct:PhysicalMedium</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#mediatype">http://www.w3.org/ns/dcat#mediaType</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="mediatypeorextent">
+        <h3>Media Type or Extent<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/MediaTypeOrExtent</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A media type or extent.
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/MediaType">dct:MediaType</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/dc/terms/SizeOrDuration">dct:SizeOrDuration</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/format">dct:format</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="methodofaccrual">
+        <h3>Method of Accrual<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/MethodOfAccrual</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A method by which resources are added to a collection.
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/accrualMethod">dct:accrualMethod</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="methodofinstruction">
+        <h3>Method of Instruction<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/MethodOfInstruction</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A process that is used to engender knowledge, attitudes, and skills.
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/instructionalMethod">dct:instructionalMethod</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="periodoftime">
+        <h3>Period of Time<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/PeriodOfTime</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An interval of time that is named or defined by its start and end dates.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/LocationPeriodOrJurisdiction">dct:LocationPeriodOrJurisdiction</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/temporal">dct:temporal</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="physicalmedium">
+        <h3>Physical Medium<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/PhysicalMedium</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A physical material or carrier.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/MediaType">dct:MediaType</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/medium">dct:medium</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="physicalresource">
+        <h3>Physical Resource<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/PhysicalResource</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A material thing.
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/medium">dct:medium</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="policy">
+        <h3>Policy<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/Policy</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A plan or course of action by an authority, intended to influence and determine decisions, actions, and other matters.
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/accrualPolicy">dct:accrualPolicy</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="provenancestatement">
+        <h3>Provenance Statement<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/ProvenanceStatement</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A statement of any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation.
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/provenance">dct:provenance</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="rightsstatement">
+        <h3>Rights Statement<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/RightsStatement</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A statement about the intellectual property rights (IPR) held in or over a Resource, a legal document giving official permission to do something with a resource, or a statement about access rights.
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/LicenseDocument">dct:LicenseDocument</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/rights">dct:rights</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/dc/terms/accessRights">dct:accessRights</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="sizeorduration">
+        <h3>Size or Duration<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/SizeOrDuration</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Examples include a number of pages, a specification of length, width, and breadth, or a period in hours, minutes, and seconds.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/MediaTypeOrExtent">dct:MediaTypeOrExtent</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/extent">dct:extent</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="standard">
+        <h3>Standard<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/Standard</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A basis for comparison; a reference point against which other things can be evaluated.
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/conformsTo">dct:conformsTo</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="class">
+        <h3>Class<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/2000/01/rdf-schema#Class</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/AgentClass">dct:AgentClass</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/type">dct:type</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="resource">
+        <h3>Resource<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/2000/01/rdf-schema#Resource</code></td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#url">http://www.w3.org/ns/dcat#downloadURL</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#urldeacceso">http://www.w3.org/ns/dcat#accessURL</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="kind">
+        <h3>Kind<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/2006/vcard/ns#Kind</code></td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#">http://www.w3.org/ns/dcat#contactPoint</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="catlogo">
+        <h3>Catálogo<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#Catalog</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Una raccolta curata di metadati sui dataset
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#dataset1">http://www.w3.org/ns/dcat#Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/hasPart">dct:hasPart</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#cataloguedresource">http://www.w3.org/ns/dcat#Resource</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#taxonomiedethmes">http://www.w3.org/ns/dcat#themeTaxonomy</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#catalog">http://www.w3.org/ns/dcat#catalog</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#record">http://www.w3.org/ns/dcat#record</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#service">http://www.w3.org/ns/dcat#service</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#dataset">http://www.w3.org/ns/dcat#dataset</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#catalog">http://www.w3.org/ns/dcat#catalog</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="datadistributionservice">
+        <h3>Data distribution service<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#DataDistributionService</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A site or end-point that provides access to datasets through distributions of the datasets
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#dataservice">http://www.w3.org/ns/dcat#DataService</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#discoveryservice">http://www.w3.org/ns/dcat#DiscoveryService</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#servesdataset">http://www.w3.org/ns/dcat#servesDataset</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#dataaccessservice">http://www.w3.org/ns/dcat#accessService</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="dataservice">
+        <h3>Data service<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#DataService</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A site or end-point for discovery, access or processing data or related resources.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#cataloguedresource">http://www.w3.org/ns/dcat#Resource</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/dc/dcmitype/Service">dctype:Service</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#serviceend-point">http://www.w3.org/ns/dcat#endpointURL</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#datadistributionservice">http://www.w3.org/ns/dcat#DataDistributionService</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#descriptionofserviceend-point">http://www.w3.org/ns/dcat#endpointDescription</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#serviceend-point">http://www.w3.org/ns/dcat#endpointURL</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#service">http://www.w3.org/ns/dcat#service</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="dataset1">
+        <h3>Dataset<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#Dataset</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Raccolta di dati, pubblicati o curati da un'unica fonte, disponibili per l'accesso o il download in uno o più formati.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#cataloguedresource">http://www.w3.org/ns/dcat#Resource</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#catlogo">http://www.w3.org/ns/dcat#Catalog</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#distribuce">http://www.w3.org/ns/dcat#distribution</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#dataset">http://www.w3.org/ns/dcat#dataset</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#servesdataset">http://www.w3.org/ns/dcat#servesDataset</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="discoveryservice">
+        <h3>Discovery Service<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#DiscoveryService</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A site or end-point that supports data discovery, usually by providing access to catalogs of datasets and data services.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#datadistributionservice">http://www.w3.org/ns/dcat#DataDistributionService</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#servesdataset">http://www.w3.org/ns/dcat#servesDataset</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#catlogo">http://www.w3.org/ns/dcat#Catalog</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="distribution">
+        <h3>Distribution<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#Distribution</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Représente une forme spécifique d'un jeu de données. Caque jeu de données peut être disponible
+					sous différentes formes, celles-ci pouvant représenter différents formats du jeu de données ou différents endpoint. Des exemples de distribution
+					sont des fichirs CSV, des API ou des flux RSS.
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#velikostvbajtech">http://www.w3.org/ns/dcat#byteSize</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#mediatype">http://www.w3.org/ns/dcat#mediaType</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#url">http://www.w3.org/ns/dcat#downloadURL</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#urldeacceso">http://www.w3.org/ns/dcat#accessURL</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#distribuce">http://www.w3.org/ns/dcat#distribution</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="cataloguedresource">
+        <h3>Catalogued resource<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#Resource</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Resource published or curated by a single agent
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#dataset1">http://www.w3.org/ns/dcat#Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#dataservice">http://www.w3.org/ns/dcat#DataService</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="document">
+        <h3>Document<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://xmlns.com/foaf/0.1/Document</code></td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#pginadedestino">http://www.w3.org/ns/dcat#landingPage</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="person">
+        <h3>Person<sup title="class" class="type-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://xmlns.com/foaf/0.1/Person</code></td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="objectproperties">
+    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#accessrights">Access Rights</a></li>
+        <li><a href="#accrualmethod">Accrual Method</a></li>
+        <li><a href="#accrualperiodicity">Accrual Periodicity</a></li>
+        <li><a href="#accrualpolicy">Accrual Policy</a></li>
+        <li><a href="#audience">Audience</a></li>
+        <li><a href="#conformsto">Conforms To</a></li>
+        <li><a href="#contributor1">Contributor</a></li>
+        <li><a href="#coverage1">Coverage</a></li>
+        <li><a href="#creator1">Creator</a></li>
+        <li><a href="#audienceeducationlevel">Audience Education Level</a></li>
+        <li><a href="#extent">Extent</a></li>
+        <li><a href="#format1">Format</a></li>
+        <li><a href="#haspart">Has Part</a></li>
+        <li><a href="#instructionalmethod">Instructional Method</a></li>
+        <li><a href="#language1">Language</a></li>
+        <li><a href="#license">License</a></li>
+        <li><a href="#mediator">Mediator</a></li>
+        <li><a href="#medium">Medium</a></li>
+        <li><a href="#provenance">Provenance</a></li>
+        <li><a href="#publisher1">Publisher</a></li>
+        <li><a href="#relation1">Relation</a></li>
+        <li><a href="#rights1">Rights</a></li>
+        <li><a href="#rightsholder">Rights Holder</a></li>
+        <li><a href="#spatialcoverage">Spatial Coverage</a></li>
+        <li><a href="#temporalcoverage">Temporal Coverage</a></li>
+        <li><a href="#type1">Type</a></li>
+        <li><a href="#member">member</a></li>
+        <li><a href="#dataaccessservice">data access service</a></li>
+        <li><a href="#urldeacceso">URL de acceso</a></li>
+        <li><a href="#catalog">catalog</a></li>
+        <li><a href="#">窓口</a></li>
+        <li><a href="#dataset">dataset</a></li>
+        <li><a href="#distribuce">distribuce</a></li>
+        <li><a href="#url">URL μεταφόρτωσης</a></li>
+        <li><a href="#descriptionofserviceend-point">description of service end-point</a></li>
+        <li><a href="#serviceend-point">service end-point</a></li>
+        <li><a href="#pginadedestino">página de destino</a></li>
+        <li><a href="#mediatype">media type</a></li>
+        <li><a href="#record">καταγραφή</a></li>
+        <li><a href="#servesdataset">serves dataset</a></li>
+        <li><a href="#service">service</a></li>
+        <li><a href="#tema">tema</a></li>
+        <li><a href="#taxonomiedethmes">taxonomie de thèmes</a></li>
+        <li><a href="#page">page</a></li>
+    </ul>
+    <div class="entity property" id="accessrights">
+        <h3>Access Rights<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/accessRights</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Information about who can access the resource or an indication of its security status.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/rights">dc:rights</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/rights">dct:rights</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/RightsStatement">dct:RightsStatement</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="accrualmethod">
+        <h3>Accrual Method<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/accrualMethod</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The method by which items are added to a collection.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/dcmitype/Collection">dctype:Collection</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/MethodOfAccrual">dct:MethodOfAccrual</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="accrualperiodicity">
+        <h3>Accrual Periodicity<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/accrualPeriodicity</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The frequency with which items are added to a collection.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/dcmitype/Collection">dctype:Collection</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/Frequency">dct:Frequency</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="accrualpolicy">
+        <h3>Accrual Policy<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/accrualPolicy</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The policy governing the addition of items to a collection.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/dcmitype/Collection">dctype:Collection</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/Policy">dct:Policy</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="audience">
+        <h3>Audience<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/audience</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A class of entity for whom the resource is intended or useful.
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/AgentClass">dct:AgentClass</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="conformsto">
+        <h3>Conforms To<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/conformsTo</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An established standard to which the described resource conforms.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/relation">dct:relation</a> <sup class="sup-op" title="object property">op</sup>
+                    <a href="http://purl.org/dc/elements/1.1/relation">dc:relation</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/Standard">dct:Standard</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="contributor1">
+        <h3>Contributor<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/contributor</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An entity responsible for making contributions to the resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/contributor">dc:contributor</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/Agent">dct:Agent</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="coverage1">
+        <h3>Coverage<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/coverage</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/coverage">dc:coverage</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/LocationPeriodOrJurisdiction">dct:LocationPeriodOrJurisdiction</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="creator1">
+        <h3>Creator<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/creator</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An entity primarily responsible for making the resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/creator">dc:creator</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/contributor">dct:contributor</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/Agent">dct:Agent</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="audienceeducationlevel">
+        <h3>Audience Education Level<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/educationLevel</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A class of entity, defined in terms of progression through an educational or training context, for which the described resource is intended.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/audience">dct:audience</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/AgentClass">dct:AgentClass</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="extent">
+        <h3>Extent<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/extent</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The size or duration of the resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/format">dc:format</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/format">dct:format</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/SizeOrDuration">dct:SizeOrDuration</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="format1">
+        <h3>Format<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/format</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Examples of dimensions include size and duration. Recommended best practice is to use a controlled vocabulary such as the list of Internet Media Types [MIME].
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/format">dc:format</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/MediaTypeOrExtent">dct:MediaTypeOrExtent</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="haspart">
+        <h3>Has Part<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/hasPart</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A related resource that is included either physically or logically in the described resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    This is the most general predicate for membership of a catalog. Use of a more specific sub-property is recommended when available. 
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/relation">dc:relation</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/relation">dct:relation</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="instructionalmethod">
+        <h3>Instructional Method<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/instructionalMethod</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A process, used to engender knowledge, attitudes and skills, that the described resource is designed to support.
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/MethodOfInstruction">dct:MethodOfInstruction</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="language1">
+        <h3>Language<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/language</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Recommended best practice is to use a controlled vocabulary such as RFC 4646 [RFC4646].
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/language">dc:language</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/LinguisticSystem">dct:LinguisticSystem</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="license">
+        <h3>License<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/license</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A legal document giving official permission to do something with the resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/rights">dc:rights</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/rights">dct:rights</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/LicenseDocument">dct:LicenseDocument</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="mediator">
+        <h3>Mediator<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/mediator</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An entity that mediates access to the resource and for whom the resource is intended or useful.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/audience">dct:audience</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/AgentClass">dct:AgentClass</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="medium">
+        <h3>Medium<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/medium</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The material or physical carrier of the resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/format">dct:format</a> <sup class="sup-op" title="object property">op</sup>
+                    <a href="http://purl.org/dc/elements/1.1/format">dc:format</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/PhysicalResource">dct:PhysicalResource</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/PhysicalMedium">dct:PhysicalMedium</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="provenance">
+        <h3>Provenance<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/provenance</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A statement of any changes in ownership and custody of the resource since its creation that are significant for its authenticity, integrity, and interpretation.
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/ProvenanceStatement">dct:ProvenanceStatement</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="publisher1">
+        <h3>Publisher<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/publisher</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Examples of a Publisher include a person, an organization, or a service.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/publisher">dc:publisher</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/Agent">dct:Agent</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="relation1">
+        <h3>Relation<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/relation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A related resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    dct:relation SHOULD be used where the nature of the relationship between a catalogued item and related resources is not known. A more specific sub-property SHOULD be used if the nature of the relationship of the link is known. The property dcat:distribution SHOULD be used to link from a dcat:Dataset to a representation of the dataset, described as a dcat:Distribution
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/relation">dc:relation</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="rights1">
+        <h3>Rights<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/rights</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/rights">dc:rights</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/RightsStatement">dct:RightsStatement</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="rightsholder">
+        <h3>Rights Holder<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/rightsHolder</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A person or organization owning or managing rights over the resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/Agent">dct:Agent</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="spatialcoverage">
+        <h3>Spatial Coverage<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/spatial</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Spatial characteristics of the resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/coverage">dc:coverage</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/coverage">dct:coverage</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/Location">dct:Location</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="temporalcoverage">
+        <h3>Temporal Coverage<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/temporal</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Temporal characteristics of the resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/coverage">dc:coverage</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/coverage">dct:coverage</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/PeriodOfTime">dct:PeriodOfTime</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="type1">
+        <h3>Type<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/type</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/type">dc:type</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="member">
+        <h3>member<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/2000/01/rdf-schema#member</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="dataaccessservice">
+        <h3>data access service<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#accessService</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A site or end-point that gives access to the distribution of the dataset
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#urldeacceso">http://www.w3.org/ns/dcat#accessURL</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#datadistributionservice">http://www.w3.org/ns/dcat#DataDistributionService</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="urldeacceso">
+        <h3>URL de acceso<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#accessURL</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Puede ser cualquier tipo de URL que de acceso a una distribución del conjunto de datos, e.g., página de destino, descarga,
+					URL feed, punto de acceso SPARQL. Esta propriedad se debe usar cuando su catálogo de datos no tiene información sobre donde está o cuando no se puede descargar.
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    確実にダウンロードでない場合や、ダウンロードかどうかが不明である場合は、downloadURLではなく、accessURLを用いてください。
+ランディング・ページを通じてしか配信にアクセスできない場合（つまり、直接的なダウンロードURLが不明）は、配信におけるaccessURLとしてランディング・ページのリンクをコピーすべきです（SHOULD）。
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#distribution">http://www.w3.org/ns/dcat#Distribution</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="catalog">
+        <h3>catalog<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#catalog</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A catalog whose contents are of interest in the context of this catalog
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#member">rdfs:member</a> <sup class="sup-op" title="object property">op</sup>
+                    <a href="http://purl.org/dc/terms/hasPart">dct:hasPart</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#catlogo">http://www.w3.org/ns/dcat#Catalog</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#catlogo">http://www.w3.org/ns/dcat#Catalog</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="">
+        <h3>窓口<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#contactPoint</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relie un jeu de données à une information de contact utile en utilisant VCard.
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2006/vcard/ns#Kind">v:Kind</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="dataset">
+        <h3>dataset<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#dataset</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Enlaza un catálogo a un conjunto de datos que es parte de ese catálogo
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/hasPart">dct:hasPart</a> <sup class="sup-op" title="object property">op</sup>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#member">rdfs:member</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#catlogo">http://www.w3.org/ns/dcat#Catalog</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#dataset1">http://www.w3.org/ns/dcat#Dataset</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="distribuce">
+        <h3>distribuce<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#distribution</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    データセットを、その利用可能な配信に接続します。
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/relation">dct:relation</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset1">http://www.w3.org/ns/dcat#Dataset</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#distribution">http://www.w3.org/ns/dcat#Distribution</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="url">
+        <h3>URL μεταφόρτωσης<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#downloadURL</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Questo è un link diretto al file scaricabile in un dato formato. E.g. un file CSV o un file RDF. Il formato è descritto dal dct:format e/o dal dcat:mediaType della distribuzione.
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    La valeur est une URL.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#distribution">http://www.w3.org/ns/dcat#Distribution</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="descriptionofserviceend-point">
+        <h3>description of service end-point<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#endpointDescription</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A description of the service end-point, for example an OpenAPI (Swagger) description, an OGC getCapabilities response, a SD Service, an OpenSearch or WSDL document.  
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataservice">http://www.w3.org/ns/dcat#DataService</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="serviceend-point">
+        <h3>service end-point<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#endpointURL</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The URI of the service end-point
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataservice">http://www.w3.org/ns/dcat#DataService</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="pginadedestino">
+        <h3>página de destino<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#landingPage</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Webová stránka, na kterou lze pro získání přístupu ke katalogu, datové sadě, jejím distribucím a/nebo dalším informacím přistoupit webovým prohlížečem.
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    Si la distribution est seulement accessible à travers une page d'atterrissage (exple. pas de connaissance d'URLS de téléchargement direct ), alors
+						le lien de la page d'atterrissage doit être dupliqué comme accessURL sur la distribution.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/page">foaf:page</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/Document">foaf:Document</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="mediatype">
+        <h3>media type<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#mediaType</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The media type of the distribution as defined by IANA
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    This property SHOULD be used when the media type of the distribution is defined in the IANA media types registry https://www.iana.org/assignments/media-types/, otherwise dct:format MAY be used with different values.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/format">dct:format</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#distribution">http://www.w3.org/ns/dcat#Distribution</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/MediaType">dct:MediaType</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="record">
+        <h3>καταγραφή<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#record</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Propojuje katalog a jeho záznamy.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#catlogo">http://www.w3.org/ns/dcat#Catalog</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="servesdataset">
+        <h3>serves dataset<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#servesDataset</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A collection of data that this DataDistributionService can distribute
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#datadistributionservice">http://www.w3.org/ns/dcat#DataDistributionService</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#dataset1">http://www.w3.org/ns/dcat#Dataset</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="service">
+        <h3>service<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#service</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A site or endpoint that is listed in the catalog
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/hasPart">dct:hasPart</a> <sup class="sup-op" title="object property">op</sup>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#member">rdfs:member</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#catlogo">http://www.w3.org/ns/dcat#Catalog</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#dataservice">http://www.w3.org/ns/dcat#DataService</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="tema">
+        <h3>tema<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#theme</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    التصنيف الرئيسي لقائمة البيانات. قائمة البيانات يمكن أن تملك أكثر من تصنيف رئيسي واحد.
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    The set of skos:Concepts used to categorize the resources are organized in
+          a skos:ConceptScheme describing all the categories and their relations in the catalog.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/subject">dct:subject</a> <sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="taxonomiedethmes">
+        <h3>taxonomie de thèmes<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#themeTaxonomy</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    カタログのデータセットを分類するために用いられる知識組織化体系（KOS；knowledge organization system）。
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#catlogo">http://www.w3.org/ns/dcat#Catalog</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#ConceptScheme">skos:ConceptScheme</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="page">
+        <h3>page<sup title="object property" class="type-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://xmlns.com/foaf/0.1/page</code></td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="datatypeproperties">
+    <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#alternativetitle">Alternative Title</a></li>
+        <li><a href="#dateavailable">Date Available</a></li>
+        <li><a href="#bibliographiccitation">Bibliographic Citation</a></li>
+        <li><a href="#datecreated">Date Created</a></li>
+        <li><a href="#date1">Date</a></li>
+        <li><a href="#dateaccepted">Date Accepted</a></li>
+        <li><a href="#datecopyrighted">Date Copyrighted</a></li>
+        <li><a href="#datesubmitted">Date Submitted</a></li>
+        <li><a href="#identifier1">Identifier</a></li>
+        <li><a href="#dateissued">Date Issued</a></li>
+        <li><a href="#datemodified">Date Modified</a></li>
+        <li><a href="#subject1">Subject</a></li>
+        <li><a href="#title1">Title</a></li>
+        <li><a href="#datevalid">Date Valid</a></li>
+        <li><a href="#velikostvbajtech">velikost v bajtech</a></li>
+        <li><a href="#/">キーワード/タグ</a></li>
+    </ul>
+    <div class="entity property" id="alternativetitle">
+        <h3>Alternative Title<sup title="datatype property" class="type-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/alternative</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The distinction between titles and alternative titles is application-specific.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/title">dct:title</a> <sup class="sup-dp" title="datatype property">dp</sup>
+                    <a href="http://purl.org/dc/elements/1.1/title">dc:title</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="dateavailable">
+        <h3>Date Available<sup title="datatype property" class="type-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/available</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Date (often a range) that the resource became or will become available.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/date">dct:date</a> <sup class="sup-dp" title="datatype property">dp</sup>
+                    <a href="http://purl.org/dc/elements/1.1/date">dc:date</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="bibliographiccitation">
+        <h3>Bibliographic Citation<sup title="datatype property" class="type-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/bibliographicCitation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A bibliographic reference for the resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/identifier">dc:identifier</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/identifier">dct:identifier</a> <sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/BibliographicResource">dct:BibliographicResource</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="datecreated">
+        <h3>Date Created<sup title="datatype property" class="type-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/created</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Date of creation of the resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/date">dct:date</a> <sup class="sup-dp" title="datatype property">dp</sup>
+                    <a href="http://purl.org/dc/elements/1.1/date">dc:date</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="date1">
+        <h3>Date<sup title="datatype property" class="type-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/date</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Date may be used to express temporal information at any level of granularity.  Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF].
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/date">dc:date</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="dateaccepted">
+        <h3>Date Accepted<sup title="datatype property" class="type-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/dateAccepted</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Examples of resources to which a Date Accepted may be relevant are a thesis (accepted by a university department) or an article (accepted by a journal).
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/date">dct:date</a> <sup class="sup-dp" title="datatype property">dp</sup>
+                    <a href="http://purl.org/dc/elements/1.1/date">dc:date</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="datecopyrighted">
+        <h3>Date Copyrighted<sup title="datatype property" class="type-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/dateCopyrighted</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Date of copyright.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/date">dct:date</a> <sup class="sup-dp" title="datatype property">dp</sup>
+                    <a href="http://purl.org/dc/elements/1.1/date">dc:date</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="datesubmitted">
+        <h3>Date Submitted<sup title="datatype property" class="type-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/dateSubmitted</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Examples of resources to which a Date Submitted may be relevant are a thesis (submitted to a university department) or an article (submitted to a journal).
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/date">dc:date</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/date">dct:date</a> <sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="identifier1">
+        <h3>Identifier<sup title="datatype property" class="type-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/identifier</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. 
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/identifier">dc:identifier</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="dateissued">
+        <h3>Date Issued<sup title="datatype property" class="type-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/issued</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Date of formal issuance (e.g., publication) of the resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/date">dc:date</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/date">dct:date</a> <sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="datemodified">
+        <h3>Date Modified<sup title="datatype property" class="type-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/modified</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Date on which the resource was changed.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/date">dct:date</a> <sup class="sup-dp" title="datatype property">dp</sup>
+                    <a href="http://purl.org/dc/elements/1.1/date">dc:date</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="subject1">
+        <h3>Subject<sup title="datatype property" class="type-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/subject</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The topic of the resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/subject">dc:subject</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="title1">
+        <h3>Title<sup title="datatype property" class="type-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/title</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A name given to the resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/title">dc:title</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="datevalid">
+        <h3>Date Valid<sup title="datatype property" class="type-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/valid</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Date (often a range) of validity of a resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/date">dct:date</a> <sup class="sup-dp" title="datatype property">dp</sup>
+                    <a href="http://purl.org/dc/elements/1.1/date">dc:date</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="velikostvbajtech">
+        <h3>velikost v bajtech<sup title="datatype property" class="type-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#byteSize</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Το μέγεθος μιας διανομής σε bytes.
+                </td>
+            </tr>
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    Velikost v bajtech může být přibližná, pokud její přesná hodnota není známa. Literál s hodnotou dcat:byteSize by měl mít datový typ xsd:decimal
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#distribution">http://www.w3.org/ns/dcat#Distribution</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="/">
+        <h3>キーワード/タグ<sup title="datatype property" class="type-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/dcat#keyword</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Μία λέξη-κλειδί ή μία ετικέτα που περιγράφει το σύνολο δεδομένων.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/subject">dct:subject</a> <sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="annotationproperties">
+    <h2>Annotation Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#contributor">contributor</a></li>
+        <li><a href="#coverage">coverage</a></li>
+        <li><a href="#creator">creator</a></li>
+        <li><a href="#date">date</a></li>
+        <li><a href="#description">description</a></li>
+        <li><a href="#format">format</a></li>
+        <li><a href="#identifier">identifier</a></li>
+        <li><a href="#language">language</a></li>
+        <li><a href="#publisher">publisher</a></li>
+        <li><a href="#relation">relation</a></li>
+        <li><a href="#rights">rights</a></li>
+        <li><a href="#source">source</a></li>
+        <li><a href="#subject">subject</a></li>
+        <li><a href="#title">title</a></li>
+        <li><a href="#type">type</a></li>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#description1">Description</a></li>
+        <li><a href="#hasformat">Has Format</a></li>
+        <li><a href="#hasversion">Has Version</a></li>
+        <li><a href="#isformatof">Is Format Of</a></li>
+        <li><a href="#ispartof">Is Part Of</a></li>
+        <li><a href="#isreferencedby">Is Referenced By</a></li>
+        <li><a href="#isreplacedby">Is Replaced By</a></li>
+        <li><a href="#isrequiredby">Is Required By</a></li>
+        <li><a href="#isversionof">Is Version Of</a></li>
+        <li><a href="#references">References</a></li>
+        <li><a href="#replaces">Replaces</a></li>
+        <li><a href="#requires">Requires</a></li>
+        <li><a href="#source1">Source</a></li>
+        <li><a href="#tableofcontents">Table Of Contents</a></li>
+        <li><a href="#affiliation">affiliation</a></li>
+        <li><a href="#cardinality">cardinality</a></li>
+        <li><a href="#homepage">homepage</a></li>
+        <li><a href="#name">name</a></li>
+        <li><a href="#seealso">seeAlso</a></li>
+        <li><a href="#workinfohomepage">workInfoHomepage</a></li>
+    </ul>
+    <div class="entity property" id="contributor">
+        <h3>contributor<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/elements/1.1/contributor</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="coverage">
+        <h3>coverage<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/elements/1.1/coverage</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="creator">
+        <h3>creator<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/elements/1.1/creator</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="date">
+        <h3>date<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/elements/1.1/date</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="description">
+        <h3>description<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/elements/1.1/description</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="format">
+        <h3>format<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/elements/1.1/format</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="identifier">
+        <h3>identifier<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/elements/1.1/identifier</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="language">
+        <h3>language<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/elements/1.1/language</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="publisher">
+        <h3>publisher<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/elements/1.1/publisher</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="relation">
+        <h3>relation<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/elements/1.1/relation</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="rights">
+        <h3>rights<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/elements/1.1/rights</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="source">
+        <h3>source<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/elements/1.1/source</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="subject">
+        <h3>subject<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/elements/1.1/subject</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="title">
+        <h3>title<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/elements/1.1/title</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="type">
+        <h3>type<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/elements/1.1/type</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="abstract">
+        <h3>Abstract<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/abstract</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A summary of the resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/description">dct:description</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/elements/1.1/description">dc:description</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="description1">
+        <h3>Description<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/description</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An account of the resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/description">dc:description</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasformat">
+        <h3>Has Format<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/hasFormat</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A related resource that is substantially the same as the pre-existing described resource, but in another format.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/relation">dct:relation</a> <sup class="sup-op" title="object property">op</sup>
+                    <a href="http://purl.org/dc/elements/1.1/relation">dc:relation</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasversion">
+        <h3>Has Version<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/hasVersion</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A related resource that is a version, edition, or adaptation of the described resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/relation">dc:relation</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/relation">dct:relation</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="isformatof">
+        <h3>Is Format Of<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/isFormatOf</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A related resource that is substantially the same as the described resource, but in another format.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/relation">dc:relation</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/relation">dct:relation</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="ispartof">
+        <h3>Is Part Of<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/isPartOf</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A related resource in which the described resource is physically or logically included.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/relation">dc:relation</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/relation">dct:relation</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="isreferencedby">
+        <h3>Is Referenced By<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/isReferencedBy</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A related resource that references, cites, or otherwise points to the described resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/relation">dc:relation</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/relation">dct:relation</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="isreplacedby">
+        <h3>Is Replaced By<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/isReplacedBy</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A related resource that supplants, displaces, or supersedes the described resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/relation">dc:relation</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/relation">dct:relation</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="isrequiredby">
+        <h3>Is Required By<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/isRequiredBy</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A related resource that requires the described resource to support its function, delivery, or coherence.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/relation">dct:relation</a> <sup class="sup-op" title="object property">op</sup>
+                    <a href="http://purl.org/dc/elements/1.1/relation">dc:relation</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="isversionof">
+        <h3>Is Version Of<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/isVersionOf</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A related resource of which the described resource is a version, edition, or adaptation.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/relation">dct:relation</a> <sup class="sup-op" title="object property">op</sup>
+                    <a href="http://purl.org/dc/elements/1.1/relation">dc:relation</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="references">
+        <h3>References<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/references</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A related resource that is referenced, cited, or otherwise pointed to by the described resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/relation">dc:relation</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/relation">dct:relation</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="replaces">
+        <h3>Replaces<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/replaces</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A related resource that is supplanted, displaced, or superseded by the described resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/relation">dc:relation</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/relation">dct:relation</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="requires">
+        <h3>Requires<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/requires</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A related resource that is required by the described resource to support its function, delivery, or coherence.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/relation">dct:relation</a> <sup class="sup-op" title="object property">op</sup>
+                    <a href="http://purl.org/dc/elements/1.1/relation">dc:relation</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="source1">
+        <h3>Source<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/source</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A related resource from which the described resource is derived.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/source">dc:source</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/terms/relation">dct:relation</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="tableofcontents">
+        <h3>Table Of Contents<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://purl.org/dc/terms/tableOfContents</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A list of subunits of the resource.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/description">dct:description</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                    <a href="http://purl.org/dc/elements/1.1/description">dc:description</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="affiliation">
+        <h3>affiliation<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://schema.org/affiliation</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="cardinality">
+        <h3>cardinality<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/2002/07/owl#cardinality</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="homepage">
+        <h3>homepage<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://xmlns.com/foaf/0.1/homepage</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="name">
+        <h3>name<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://xmlns.com/foaf/0.1/name</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="seealso">
+        <h3>seeAlso<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://xmlns.com/foaf/0.1/seeAlso</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="workinfohomepage">
+        <h3>workInfoHomepage<sup title="annotation property" class="type-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://xmlns.com/foaf/0.1/workInfoHomepage</code></td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt><em>default (:)</em></dt>
+        <dd><code>http://www.w3.org/ns/dcat#</code></dd>
+        <dt>dc</dt>
+        <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+        <dt>dct</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>dctype</dt>
+        <dd><code>http://purl.org/dc/dcmitype/</code></dd>
+        <dt>foaf</dt>
+        <dd><code>http://xmlns.com/foaf/0.1/</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>prov</dt>
+        <dd><code>http://www.w3.org/ns/prov#</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>schema</dt>
+        <dd><code>http://schema.org/</code></dd>
+        <dt>sdo</dt>
+        <dd><code>https://schema.org/</code></dd>
+        <dt>skos</dt>
+        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>v</dt>
+        <dd><code>http://www.w3.org/2006/vcard/ns#</code></dd>
+        <dt>xml</dt>
+        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+    <div id="legend">
+    <h2>Legend</h2>
+    <table class="entity">
+        <tr><td><sup class="type-c" title="Classes">c</sup></td><td>Classes</td></tr>
+        <tr><td><sup class="type-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+        <tr><td><sup class="type-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+        <tr><td><sup class="type-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+        <tr><td><sup class="type-p" title="Properties">p</sup></td><td>Properties</td></tr>
+        <tr><td><sup class="type-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+    </table>
+    </div>
+</body>
+</html>
