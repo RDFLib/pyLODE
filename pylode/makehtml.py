@@ -27,6 +27,9 @@ class MakeHtml:
 
     def _expand_graph_for_pylode(self):
         # name
+        for s, o in self.G.subject_objects(predicate=DC.title):
+            self.G.add((s, RDFS.label, o))
+
         for s, o in self.G.subject_objects(predicate=DCTERMS.title):
             self.G.add((s, RDFS.label, o))
 
@@ -34,6 +37,9 @@ class MakeHtml:
             self.G.add((s, RDFS.label, o))
 
         # description
+        for s, o in self.G.subject_objects(predicate=DC.description):
+            self.G.add((s, RDFS.comment, o))
+
         for s, o in self.G.subject_objects(predicate=DCTERMS.description):
             self.G.add((s, RDFS.comment, o))
 
@@ -90,7 +96,7 @@ class MakeHtml:
             else:
                 return None
 
-    def _get_curie_prefix(uself, ri, existing_curies):
+    def _get_curie_prefix(uself, uri, existing_curies):
         ns_count = 0
 
         from curies import CURIES
@@ -198,8 +204,10 @@ class MakeHtml:
                 self.PROPERTIES[prop]['prop_type'] = 'op'
             elif (s, RDF.type, OWL.DatatypeProperty) in self.G:
                 self.PROPERTIES[prop]['prop_type'] = 'dp'
-            else:
+            elif (s, RDF.type, OWL.AnnotationProperty) in self.G:
                 self.PROPERTIES[prop]['prop_type'] = 'ap'
+            else:
+                self.PROPERTIES[prop]['prop_type'] = 'p'
 
             self.PROPERTIES[prop]['title'] = None
             self.PROPERTIES[prop]['description'] = None
@@ -568,6 +576,7 @@ class MakeHtml:
         self.METADATA['has_ops'] = False
         self.METADATA['has_dps'] = False
         self.METADATA['has_aps'] = False
+        self.METADATA['has_ps'] = False
 
         for k, v in self.PROPERTIES.items():
             if v.get('prop_type') == 'op':
@@ -576,6 +585,8 @@ class MakeHtml:
                 self.METADATA['has_dps'] = True
             if v.get('prop_type') == 'ap':
                 self.METADATA['has_aps'] = True
+            if v.get('prop_type') == 'p':
+                self.METADATA['has_ps'] = True
 
         s_str = None
         self.METADATA['imports'] = set()
@@ -584,7 +595,6 @@ class MakeHtml:
         self.METADATA['publishers'] = set()
         for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
             s_str = str(s)  # this is the Ontology's URI
-            print(s_str)
             self.METADATA['uri'] = s_str
 
             for p, o in self.G.predicate_objects(subject=s):
@@ -1006,6 +1016,7 @@ class MakeHtml:
         return template.render(
             uri=property[0],
             fid=property[1].get('fid'),
+            property_type=property[1].get('prop_type'),
             title=property[1].get('title'),
             description=property[1].get('description'),
             scopeNote=property[1].get('scopeNote'),
@@ -1023,19 +1034,23 @@ class MakeHtml:
         op_instances = []
         dp_instances = []
         ap_instances = []
+        p_instances = []
 
         for k, v in self.PROPERTIES.items():
             if v.get('prop_type') == 'op':
                 op_instances.append((v['title'], v['fid'], self._make_property_html((k, v))))
-            if v.get('prop_type') == 'dp':
+            elif v.get('prop_type') == 'dp':
                 dp_instances.append((v['title'], v['fid'], self._make_property_html((k, v))))
-            if v.get('prop_type') == 'ap':
+            elif v.get('prop_type') == 'ap':
                 ap_instances.append((v['title'], v['fid'], self._make_property_html((k, v))))
+            elif v.get('prop_type') == 'p':
+                p_instances.append((v['title'], v['fid'], self._make_property_html((k, v))))
 
         html = template.render(
             op_instances=op_instances,
             dp_instances=dp_instances,
-            ap_instances=ap_instances
+            ap_instances=ap_instances,
+            p_instances=p_instances
         )
 
         return html
@@ -1093,6 +1108,7 @@ class MakeHtml:
             has_ops=self.METADATA.get('has_ops'),
             has_dps=self.METADATA.get('has_dps'),
             has_aps=self.METADATA.get('has_aps'),
+            has_ps=self.METADATA.get('has_ps'),
             has_nis=False
         )
 
@@ -1255,7 +1271,7 @@ class MakeHtml:
 if __name__ == '__main__':
     h = MakeHtml()
     # get the input file
-    i = h.APP_DIR + '/examples/plot.ttl'
+    i = h.APP_DIR + '/examples/rdf.ttl'
     # parse the input file into an in-memory RDF graph
     h.G.parse(i, format='turtle')
 

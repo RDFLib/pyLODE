@@ -1,11 +1,13 @@
 <div class="entity property" id="{{ fid }}">
         <h3>{{ title }}
-            {%- if property_type == 'http://www.w3.org/2002/07/owl#ObjectProperty' -%}
+            {%- if property_type == 'op' -%}
             <sup title="object property" class="type-op">op</sup>
-            {%- elif property_type == 'http://www.w3.org/2002/07/owl#DatatypeProperty' -%}
+            {%- elif property_type == 'dp' -%}
             <sup title="datatype property" class="type-dp">dp</sup>
-            {%- else -%}
+            {%- elif property_type == 'ap' -%}
             <sup title="annotation property" class="type-ap">ap</sup>
+            {%- else -%}
+            <sup title="property" class="type-p">p</sup>
             {%- endif -%}
         </h3>
         <table>
