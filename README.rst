@@ -252,6 +252,6 @@ Contacts
 
 | *Author*:
 | **Nicholas Car**
-| *Senior Experimental Scientist*
-| CSIRO Land & Water, Environmental Informatics Group
-| nicholas.car@csiro.au
+| *Data System Architect*
+| SURROUND Australia Pty Ltd
+| nicholas.car@surround.com

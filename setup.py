@@ -33,7 +33,7 @@ setup(
     version=version,
     description='An OWL ontology documentation tool using Python and templating, based on LODE.',
     author='Nicholas Car',
-    author_email='nick@kurrawong.net',
+    author_email='nicholas.car@surround.com',
     url='https://github.com/rdflib/pyLODE',
     download_url='https://github.com/rdflib/pyLODE/archive/v{:s}.tar.gz'.format(version),
     license='LICENSE',
