@@ -2,7 +2,6 @@ pytest
 argparse
 requests
 rdflib
-owlrl
 jinja2
 markdown
 python-dateutil
