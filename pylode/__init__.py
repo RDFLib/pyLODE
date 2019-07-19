@@ -1,4 +1,4 @@
 from curies import *
 from process import generate_html
 
-__version__ = '0.52'
+__version__ = '0.6'
