@@ -14,14 +14,14 @@ def open_local(paths, mode='r', encoding='utf8'):
     return codecs.open(path, mode, encoding)
 
 
-with open_local(['pylode', '__init__.py'], encoding='latin1') as fp:
+with open_local(['pyLODE', '__init__.py'], encoding='latin1') as fp:
     try:
         version = re.findall(r"^__version__ = '([^']+)'\r?$",
                              fp.read(), re.M)[0]
     except IndexError:
         raise RuntimeError('Unable to determine version.')
 
-with open_local(['README.md']) as readme:
+with open_local(['README.rst'], encoding='utf-8') as readme:
     long_description = readme.read()
 
 with open_local(['requirements.txt']) as req:
@@ -39,7 +39,6 @@ setup(
     license='LICENSE',
     keywords=['Semantic Web', 'OWL', 'ontology', 'template', 'Jinja2', 'documentation'],
     long_description=long_description,
-    long_description_content_type='text/markdown',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Topic :: Utilities',
