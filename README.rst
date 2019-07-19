@@ -20,7 +20,7 @@ using basic Python scripting and Python's `Jinja2
 templating <https://pypi.org/project/Jinja2/>`__.
 
 Differences from LODE
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 
 -  command line access
 
@@ -71,7 +71,7 @@ captures all of their annotations. For each example, there is the
 original RDF file and the corresponding output HTML.
 
 Ontologies online using pyLODE:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -  `Geological Survey of
    Queensland <https://www.business.qld.gov.au/industries/mining-energy-water/resources/geoscience-information/gsq>`__'s
@@ -97,7 +97,7 @@ An online version of it will be available soon too, just as LODE is
 (was) available online.
 
 Command line arguments
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 
 For the command line running of pyLODE, these are the command line
 argument options:
@@ -148,8 +148,7 @@ pyLODE understands the following ontology annotations:
       -  if using the DC form, the range should just be a string, e.g.
          \`dc:publisher "Geoscience Australia" .
       -  if using the DCT form, range should be a ``foaf:Agent`` or
-         ``schema:Person`` Blank Node with the following properties:
-          \*\ ``foaf:name``/``sdo:name``, ``foaf:mbox``/``sdo:email`` or
+         ``schema:Person`` Blank Node with the following properties: ``foaf:name``/``sdo:name``, ``foaf:mbox``/``sdo:email`` or
          ``foaf:homepage``/``schema:identifier`` properties
       -  see the `pylode/examples/ <pylode/examples/>`__ directory for
          examples!
