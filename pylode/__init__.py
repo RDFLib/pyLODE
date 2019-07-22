@@ -1,4 +1,4 @@
 from .curies import *
 from .makehtml import *
 
-__version__ = '0.7'
+__version__ = '0.8'
