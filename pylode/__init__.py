@@ -1,4 +1,4 @@
-from curies import *
-from process import generate_html
+from .curies import *
+from .makehtml import *
 
-__version__ = '0.6'
+__version__ = '0.7'

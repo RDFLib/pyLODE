@@ -1,6 +1,5 @@
 pyLODE
 ======
-
 An OWL ontology documentation tool using Python and templating, based on
 LODE.
 
@@ -21,7 +20,6 @@ templating <https://pypi.org/project/Jinja2/>`__.
 
 Differences from LODE
 ^^^^^^^^^^^^^^^^^^^^^
-
 -  command line access
 
    -  you can use this on your own desktop so you don't need me to
@@ -64,7 +62,6 @@ Differences from LODE
 
 Examples
 --------
-
 pyLODE has been tested with all of the ontologies in
 `pylode/examples/ <pylode/examples/>`__ and we are trying to ensure it
 captures all of their annotations. For each example, there is the
@@ -72,7 +69,6 @@ original RDF file and the corresponding output HTML.
 
 Ontologies online using pyLODE:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 -  `Geological Survey of
    Queensland <https://www.business.qld.gov.au/industries/mining-energy-water/resources/geoscience-information/gsq>`__'s
    **Boreholes Profile** - http://linked.data.gov.au/def/borehole
@@ -87,7 +83,6 @@ preprocessed examples.
 
 Use
 ---
-
 Currently pyLODE presents as a Python & BASH command-line utility,
 `pylode/cli.py <pylode/cli.py>`__ &
 `pylode/bin/pylode <pylode/bin/pylode>`__ respectively. Windows scripts
@@ -98,16 +93,15 @@ An online version of it will be available soon too, just as LODE is
 
 Command line arguments
 ^^^^^^^^^^^^^^^^^^^^^^
-
 For the command line running of pyLODE, these are the command line
 argument options:
 
--  ``-i`` or ``--inputfile``, *required if ``-u`` not used*
+-  ``-i`` or ``--inputfile``, *required if* ``-u`` *not used*
 -  The RDF ontology file you wish to generate HTML for Must be in either
    Turtle, RDF/XML, JSON-LD or N-Triples formats indicated by the file
    type extensions .rdf, .owl, .ttl, .n3, .nt, .json respectively
--  ``-u`` or ``--url``, *required if ``-1`` not used*
--  The RDF ontology you wish to generate HTML for, onlin. Must be an
+-  ``-u`` or ``--url``, *required if* ``-i`` *not used*
+-  The RDF ontology you wish to generate HTML for, online. Must be an
    absolute URL that can be resolved to RDF, preferably via Content
    Negotiation.
 -  ``-c`` or ``--css``, *optional, default 'false'*
@@ -120,7 +114,6 @@ argument options:
 
 Example call
 ^^^^^^^^^^^^
-
 This call to the BASH script in `pylode/bin/ <pylode/bin/>`__ will
 create an HTML document for an ontology called ``placenames.html`` and
 save it with a basic CSS file into
