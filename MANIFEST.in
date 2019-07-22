@@ -1,2 +1,0 @@
-include pylode/templates/*.html
-include pylode/style/pylode.css

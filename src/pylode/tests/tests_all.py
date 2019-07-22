@@ -1,4 +1,4 @@
-import pylode
+from src import pylode
 
 
 def test_make_fragment_id():
