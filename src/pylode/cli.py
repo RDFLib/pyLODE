@@ -30,6 +30,7 @@ RDF_SERIALIZER_MAP = {
     'application/json': 'json-ld',
     'application/ld json': 'json-ld',
     'text/ttl': 'turtle',
+    'text/turtle;charset=UTF-8': 'turtle',
     'text/ntriples': 'nt',
     'text/n-triples': 'nt',
     'text/plain': 'nt',  # text/plain is the old/deprecated mimetype for n-triples
@@ -49,7 +50,7 @@ class RdfGraphError(Exception):
     pass
 
 
-def main():
+def main(args):
     # read the input ontology file into a graph
     parser = argparse.ArgumentParser()
     overarching_group = parser.add_mutually_exclusive_group()
@@ -174,6 +175,6 @@ def main():
     msg = 'Finished. HTML{} file in {}/.'.format(msg_css, publication_dir)
     print(msg)
 
-
 if __name__ == '__main__':
-    main()
+    import sys
+    main(sys.argv[1:])

@@ -1,7 +1,9 @@
-pytest
 argparse
-requests
-rdflib
+falcon
+gunicorn
 jinja2
 markdown
+pytest
 python-dateutil
+rdflib
+requests
