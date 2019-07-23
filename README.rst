@@ -1,3 +1,6 @@
+.. image:: https://badge.fury.io/py/pyLODE.svg
+    :target: https://badge.fury.io/py/pyLODE
+
 pyLODE
 ======
 An OWL ontology documentation tool using Python and templating, based on
@@ -80,6 +83,18 @@ Ontologies online using pyLODE:
 See pairs of RDF & HTML files in the
 `pylode/examples/ <pylode/examples/>`__ directory for other,
 preprocessed examples.
+
+Installation
+--------------
+This tool can be used either as a command line utility (see below) or as a Python module in other Python code.
+
+This tool is available on PyPI, the Python Package Index, at https://pypi.org/project/pyLODE/ and can be installed for use as a Python module via pip:
+
+::
+
+    pip install pylode
+
+For desktop command line use, just clone this repository and either use Python or the provided BASH scrip (see below).
 
 Use
 ---
