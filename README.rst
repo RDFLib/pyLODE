@@ -18,6 +18,9 @@ documented is parsed and inspected using rdflib and HTML is generated
 using basic Python scripting and Python's `Jinja2
 templating <https://pypi.org/project/Jinja2/>`__.
 
+The tool can be run either via command line or as-a-service. The 
+latter is implemented via the popular `Falcon framework <https://falconframework.org/>`__.
+
 Differences from LODE
 ^^^^^^^^^^^^^^^^^^^^^
 -  command line access
@@ -55,7 +58,7 @@ Differences from LODE
 -  **active development**
 
    -  this software is in use and will be improved for the foreseeable
-      future so we will cater fro more and more things
+      future so we will cater for more and more things
    -  recent ontology documentation initiatives such as the `MOD
       Ontology <https://github.com/sifrproject/MOD-Ontology>`__ will be
       handled, if requested
@@ -76,6 +79,7 @@ Ontologies online using pyLODE:
    Profile** - http://linked.data.gov.au/def/placenames
 -  `Epimorphic <https://www.epimorphics.com/>`__'s **Registry Ontology**
    - https://epimorphics.com/public/vocabulary/Registry.html
+- `Semantic Web for Earth and Environmental Terminology <http://sweetontology.net>`__ (SWEET)
 
 See pairs of RDF & HTML files in the
 `pylode/examples/ <pylode/examples/>`__ directory for other,
@@ -85,11 +89,22 @@ Use
 ---
 Currently pyLODE presents as a Python & BASH command-line utility,
 `pylode/cli.py <pylode/cli.py>`__ &
-`pylode/bin/pylode <pylode/bin/pylode>`__ respectively. Windows scripts
-may appear soon. All use the same command line arguments.
+`pylode/bin/pylode <pylode/bin/pylode>`__ respectively as well as
+a server implementation powered by the `Falcon framework <https://falconframework.org/>`__. 
+Windows scripts may appear soon. All use the same command line arguments.
 
 An online version of it will be available soon too, just as LODE is
 (was) available online.
+
+Server arguments
+^^^^^^^^^^^^^^^^
+```
+gunicorn server:api
+```
+Then, in another terminal:
+```
+curl localhost:8000/lode?url=http://sweetontology.net/sweetAll.ttl
+```
 
 Command line arguments
 ^^^^^^^^^^^^^^^^^^^^^^
