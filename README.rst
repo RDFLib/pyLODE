@@ -24,47 +24,6 @@ templating <https://pypi.org/project/Jinja2/>`__.
 The tool can be run either via command line or as-a-service. The 
 latter is implemented via the popular `Falcon framework <https://falconframework.org/>`__.
 
-Differences from LODE
-^^^^^^^^^^^^^^^^^^^^^
--  command line access
-
-   -  you can use this on your own desktop so you don't need me to
-      maintain a live service for use
-
--  use of more modern & simpler HTML
--  catering for a wider range of ontology options such as:
-
-   -  schema.org ``domainIncludes`` & ``rangeIncludes`` for properties
-
--  better Agent linking
-
-   -  ``foaf:Agent`` or ``schema:Person`` objects for creators,
-      contributors & publishers
-   -  you can still use simple string peoperties like
-      ``dc:contributor "Nicholas J. Car"`` too if you really must!
-
-::
-
-    <ontology_x>
-        dct:creator [
-            sdo:name "Nicholas J. Car" ;
-            sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
-        ] ;
-
--  smarter CURIES
-
-   -  pyLODE caches and looks up well-known prefixes to make more/better
-      CURIES
-   -  it tries to be smart with CURIE presentation by CURIE-ising all
-      URIs it finds, rather than printing them
-
--  **active development**
-
-   -  this software is in use and will be improved for the foreseeable
-      future so we will cater for more and more things
-   -  recent ontology documentation initiatives such as the `MOD
-      Ontology <https://github.com/sifrproject/MOD-Ontology>`__ will be
-      handled, if requested
 
 Examples
 --------
@@ -88,6 +47,7 @@ See pairs of RDF & HTML files in the
 `pylode/examples/ <pylode/examples/>`__ directory for other,
 preprocessed examples.
 
+
 Installation
 --------------
 This tool can be used either as a command line utility (see below) or as a Python module in other Python code.
@@ -100,19 +60,22 @@ This tool is available on PyPI, the Python Package Index, at https://pypi.org/pr
 
 For desktop command line use, just clone this repository and either use Python or the provided BASH scrip (see below).
 
+
 Use
 ---
-Currently pyLODE presents as a Python & BASH command-line utility,
+pyLODE presents as a Python & BASH command-line utility,
 `pylode/cli.py <pylode/cli.py>`__ &
 `pylode/bin/pylode <pylode/bin/pylode>`__ respectively as well as
 a server implementation powered by the `Falcon framework <https://falconframework.org/>`__. 
 Windows scripts may appear soon. All use the same command line arguments.
 
-An online version of it will be available soon too, just as LODE is
-(was) available online.
+Online API
+^^^^^^^^^^
+An online API to access pyLODE is now available in test mode at https://kurrawong.net/pylode-online.
 
-Server arguments
-^^^^^^^^^^^^^^^^
+Local server
+^^^^^^^^^^^^^
+You can run pyLODE using your own, local, HTTP server like this:
 ```
 gunicorn server:api
 ```
@@ -121,10 +84,9 @@ Then, in another terminal:
 curl localhost:8000/lode?url=http://sweetontology.net/sweetAll.ttl
 ```
 
-Command line arguments
-^^^^^^^^^^^^^^^^^^^^^^
-For the command line running of pyLODE, these are the command line
-argument options:
+Command line
+^^^^^^^^^^^^^
+These are the command line arguments to run pyLODE as a BASH or Python script:
 
 -  ``-i`` or ``--inputfile``, *required if* ``-u`` *not used*
 -  The RDF ontology file you wish to generate HTML for Must be in either
@@ -153,9 +115,12 @@ save it with a basic CSS file into
 
     $ ./pylode -i ../example/prof.ttl --css true
 
-Annotations
------------
 
+HTML results
+------------
+
+Annotations
+^^^^^^^^^^^
 pyLODE understands the following ontology annotations:
 
 -  **ontology metadata**
@@ -227,9 +192,9 @@ pyLODE understands the following ontology annotations:
 
 To help pyLODE understand more annotations, see **Suggestions** below.
 
-Styling
--------
 
+Styling
+^^^^^^^
 This tool generates HTML that is shamelessly similar to LODE's styling.
 That's because we want things to look familiar and LODE's outputs look
 great.
@@ -241,38 +206,76 @@ files. Prevents documentation breaking over time.
 
 Feel free to extend your styling with your own CSS.
 
-Online use
-----------
 
-Soon (July 2019?) an online, hosted, version of this tool will be
-implemented so you can use it live, online.
+Differences from LODE
+---------------------
+-  command line access
+
+   -  you can use this on your own desktop so you don't need me to
+      maintain a live service for use
+
+-  use of more modern & simpler HTML
+-  catering for a wider range of ontology options such as:
+
+   -  schema.org ``domainIncludes`` & ``rangeIncludes`` for properties
+
+-  better Agent linking
+
+   -  ``foaf:Agent`` or ``schema:Person`` objects for creators,
+      contributors & publishers
+   -  you can still use simple string peoperties like
+      ``dc:contributor "Nicholas J. Car"`` too if you really must!
+
+::
+
+    <ontology_x>
+        dct:creator [
+            sdo:name "Nicholas J. Car" ;
+            sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+        ] ;
+
+-  smarter CURIES
+
+   -  pyLODE caches and looks up well-known prefixes to make more/better
+      CURIES
+   -  it tries to be smart with CURIE presentation by CURIE-ising all
+      URIs it finds, rather than printing them
+
+-  **active development**
+
+   -  this software is in use and will be improved for the foreseeable
+      future so we will cater for more and more things
+   -  recent ontology documentation initiatives such as the `MOD
+      Ontology <https://github.com/sifrproject/MOD-Ontology>`__ will be
+      handled, if requested
+
 
 License
 -------
-
 This code is licensed using the GPL v3 licence. See the `LICENSE
 file <LICENSE>`__ for the deed. Note *Citation* below though for
 attribution.
 
+
 Citation
 --------
-
 If you use pyLODE, please leave the pyLODE logo with a hyperlink back
 here in the top left of published HTML pages.
 
-Suggestions
------------
+
+Collaboration
+-------------
+The maintainers welcome any collaboration.
 
 If you have suggestions, please email the contacts below or leave Issues
-in this repositories `Issue
-tracker <https://github.com/rdflib/pyLODE/issues>`__.
+in this repository's `Issue tracker <https://github.com/rdflib/pyLODE/issues>`__.
 
 But the very best thing you could do is create a Pull Request for us to
 action!
 
+
 Contacts
 --------
-
 | *Author*:
 | **Nicholas Car**
 | *Data System Architect*
