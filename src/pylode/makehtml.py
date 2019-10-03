@@ -570,6 +570,8 @@ class MakeHtml:
         # return y
 
     def _extract_metadata(self):
+        self.METADATA['historyNote'] = None
+
         if len(self.CLASSES.keys()) > 0:
             self.METADATA['has_classes'] = True
 
@@ -607,6 +609,9 @@ class MakeHtml:
                 if p == RDFS.comment:
                     import markdown
                     self.METADATA['description'] = markdown.markdown(str(o))
+
+                if p == SKOS.historyNote:
+                    self.METADATA['historyNote'] = str(o)
 
                 if p == DCTERMS.created:
                     self.METADATA['created'] = dateutil.parser.parse(str(o)).strftime('%Y-%m-%d')
@@ -962,7 +967,7 @@ class MakeHtml:
 
     def _make_agent_link(self, name, url=None, email=None):
         if url is not None and email is not None:
-            agent = '<a href="{0}">{1}</a> (<a href="mailto:{2}">{2}</a>)'.format(url, name, email)
+            agent = '<a href="{0}">{1}</a> (<a href="mailto:{2}">{2}</a>)'.format(url, name, email.replace('mailto:', ''))
         elif url is not None and email is None:
             agent = '<a href="{0}">{1}</a>'.format(url, name)
         elif url is None and email is not None:
@@ -986,19 +991,36 @@ class MakeHtml:
         org_url = None
         org_email = None
         for p, o in self.G.predicate_objects(subject=agent_blank_node):
-            if p == FOAF.homepage or p == self.SDO.identifier or p == self.SDO2.identifier:
+            if p == FOAF.homepage \
+                    or p == self.SDO.identifier \
+                    or p == self.SDO2.identifier:
                 url = str(o)
-            elif p == FOAF.name or p == self.SDO.name or p == self.SDO2.name:
+            elif p == FOAF.name \
+                    or p == self.SDO.name \
+                    or p == self.SDO2.name:
                 name = str(o)
-            elif p == FOAF.mbox or p == self.SDO.email or p == self.SDO2.email:
+            elif p == FOAF.mbox \
+                    or p == self.SDO.email \
+                    or p == self.SDO2.email:
                 email = str(o).split('/')[-1].split('#')[-1]  # remove base URI leaving only email address
-            elif p == self.SDO.memberOf or p == self.SDO2.memberOf:
+            elif p == self.SDO.memberOf \
+                    or p == self.SDO2.memberOf \
+                    or p == self.SDO.affiliation \
+                    or p == self.SDO2.affiliation:
                 for p2, o2 in self.G.predicate_objects(subject=o):
-                    if p2 == FOAF.homepage or p2 == self.SDO.identifier or p2 == self.SDO2.identifier:  # TODO: split homepage form IDs, cater for rdfs:seeOther
+                    if p2 == FOAF.homepage \
+                            or p2 == self.SDO.identifier \
+                            or p2 == self.SDO2.identifier \
+                            or p2 == self.SDO.url \
+                            or p2 == self.SDO2.url:  # TODO: split homepage form IDs, cater for rdfs:seeOther
                         org_url = str(o2)
-                    elif p2 == FOAF.name or p2 == self.SDO.name or p2 == self.SDO2.name:
+                    elif p2 == FOAF.name \
+                            or p2 == self.SDO.name \
+                            or p2 == self.SDO2.name:
                         org_name = str(o2)
-                    elif p == FOAF.mbox or p == self.SDO.email or p == self.SDO2.email:
+                    elif p == FOAF.mbox \
+                            or p == self.SDO.email \
+                            or p == self.SDO2.email:
                         org_email = str(o2).split('/')[-1].split('#')[-1]  # remove base URI leaving only email address
 
         agent = self._make_agent_link(name, url=url, email=email)
@@ -1103,6 +1125,7 @@ class MakeHtml:
             modified=self.METADATA.get('modified'),
             issued=self.METADATA.get('issued'),
             description=self.METADATA.get('description'),
+            historyNote=self.METADATA.get('historyNote'),
             version_info=self.METADATA.get('versionInfo'),
             license=self.METADATA.get('license'),
             rights=self.METADATA.get('rights'),
@@ -1274,7 +1297,7 @@ class MakeHtml:
 if __name__ == '__main__':
     h = MakeHtml()
     # get the input file
-    i = h.APP_DIR + '/examples/void.ttl'
+    i = h.APP_DIR + '/examples/decprov.ttl'
     # parse the input file into an in-memory RDF graph
     h.G.parse(i, format='turtle')
 
