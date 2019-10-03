@@ -1,0 +1,95 @@
+@prefix : <http://linked.data.gov.au/def/ra#> .
+@prefix agr: <http://linked.data.gov.au/def/agr#> .
+@prefix crs: <http://linked.data.gov.au/def/crs#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sdo: <https://schema.org/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@base <http://linked.data.gov.au/def/ra> .
+
+<http://linked.data.gov.au/def/ra> rdf:type owl:Ontology ;
+                                     owl:versionIRI <http://linked.data.gov.au/def/ra> ;
+                                     dct:contributor [ sdo:email <http://linked.data.gov.au/def/information.governance@naa.gov.au> ;
+                                                       sdo:memberOf [ sdo:identifier <http://catalogue.linked.data.gov.au/org/naa>
+                                                                    ] ;
+                                                       sdo:name "National Archives of Australia, Information Governance Section"
+                                                     ] ;
+                                     dct:created "2019-08-05"^^xsd:date ;
+                                     dct:creator [ sdo:email <mailto:nicholas.car@surroundaustralia.com> ;
+                                                   sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+                                                   sdo:affiliation [ 
+                                                                  sdo:identifier <https://surroundaustralia.com> ;
+                                                                  sdo:name "SURROUND Australia Pty Ltd"
+                                                                ] ;
+                                                   sdo:name "Nicholas J. Car"
+                                                 ] ;
+                                     dct:modified "2019-08-06"^^xsd:date ;
+                                     rdfs:comment "This ontology is an [OWL](https://www.w3.org/OWL/) interpretation of elements of the [National Archives of Australia (NAA)](http://naa.gov.au)'s Records Authorty documents and some of their corresponding NAA database elements. It is dependent on the [CRS Ontology](http://linked.data.gov.au/def/crs) for overall context regarding Agency/Record associations and just models the additional RA elements the CRS ontology doesn't."@en ;
+                                     rdfs:label "Records Authority Ontology" ;
+                                     owl:versionInfor "For internal use only" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://linked.data.gov.au/def/ra#requires
+:requires rdf:type owl:ObjectProperty ;
+          rdfs:domain :NumberedSubclass ;
+          rdfs:range :DisposalAction ;
+          rdfs:comment """A Numbered Subclass categorisation of a Record requires a particular Disposal Action assignment (categorisation) for that record."""@en ;
+          rdfs:label "requires" ;
+          skos:scopeNote "Many Numbered Subclasses map to a few Disposal Actions"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://linked.data.gov.au/def/crs#Function
+crs:Function rdf:type owl:Class ;
+             owl:equivalentClass :RaClass ;
+             rdfs:subClassOf skos:Concept ;
+             rdfs:comment "The Commonwealth Record Series Ontology's Function class."@en ;
+             rdfs:label "Function" .
+
+
+###  http://linked.data.gov.au/def/ra#Record
+agr:Record rdf:type owl:Class ;
+          rdfs:comment "The Archiving of Government Records Ontology's Record class."@en ;
+          rdfs:label "Record" .
+
+
+###  http://linked.data.gov.au/def/ra#DisposalAction
+:DisposalAction rdf:type owl:Class ;
+                rdfs:subClassOf skos:Concept ,
+                                prov:Plan ;
+                rdfs:comment "A Disposal Action is an instruction to carry out the disposal (retention or descruction) of a government Record. In addition to being a skos:Concept since it acts as a classifier, a Disposal Action is also a Provenance Ontology Plan meaning it instructs a course of action - how to dispose of a record."@en ;
+                rdfs:label "Disposal Action" .
+
+
+###  http://linked.data.gov.au/def/ra#NumberedSubclass
+:NumberedSubclass rdf:type owl:Class ;
+                  rdfs:subClassOf skos:Concept ;
+                  skos:definition "A numbered subclass is a finer-grained Record categorisation concept than an RA Class within a Records Authority. Numbeed Subclasses are idnetified in Records Authorities with an entry number and relate directly to Disposal Actions."@en ;
+                  rdfs:label "Numbered Subclass" .
+
+
+###  http://linked.data.gov.au/def/ra#RaClass
+:RaClass rdf:type owl:Class ;
+          rdfs:subClassOf skos:Concept ;
+          skos:definition "An RA Class is a categorisation concept for collections of Records within a Records Authority. An RA class is equivalent to the CRS Ontology's Function records categorisation."@en ;
+          rdfs:label "RA Class" .
+
+
+###  http://linked.data.gov.au/def/ra#RecordsAuthority
+:RecordsAuthority rdf:type owl:Class ;
+                          rdfs:subClassOf skos:ConceptScheme , owl:NamedIndividual ;
+                          rdfs:label "Records Authorty" ;
+                          skos:definition """A Records Authority is a document that identifies minimum retention periods for Records and authorises the destruction of Records as required by Section 24 of the Archives Act 1983.
+                          
+                          A Records Authority individual, as represented in this ontology, contains a collection of RA Classes and Numbered Subclasses used to categorise Records in order for them to be assiged Disposal Actions. """@en .

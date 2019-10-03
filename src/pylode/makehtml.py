@@ -1,5 +1,5 @@
 from rdflib import Graph, RDF, RDFS, OWL, Namespace
-from rdflib.namespace import SKOS, DC, DCTERMS, FOAF
+from rdflib.namespace import SKOS, DC, DCTERMS, FOAF, DOAP
 from rdflib.term import URIRef, Literal, BNode
 from os import path
 import requests
@@ -24,6 +24,9 @@ class MakeHtml:
 
         self.SDO2 = Namespace('http://schema.org/')
         self.G.bind('sdo2', self.SDO2)
+
+        self.PROV = Namespace('http://www.w3.org/ns/prov#')
+        self.G.bind('prov', self.PROV)
 
     def _expand_graph_for_pylode(self):
         # name
@@ -570,8 +573,6 @@ class MakeHtml:
         # return y
 
     def _extract_metadata(self):
-        self.METADATA['historyNote'] = None
-
         if len(self.CLASSES.keys()) > 0:
             self.METADATA['has_classes'] = True
 
@@ -678,6 +679,10 @@ class MakeHtml:
                         self.METADATA['publishers'].add(self._make_agent_html(o))
 
                 # TODO: cater for other Agent representations
+
+                if p == self.PROV.wasGeneratedBy:
+                    for o2 in self.G.objects(subject=o, predicate=DOAP.repository):
+                        self.METADATA['repository'] = str(o2)
 
             if self.METADATA.get('title') is None:
                 raise ValueError(
@@ -1129,6 +1134,7 @@ class MakeHtml:
             version_info=self.METADATA.get('versionInfo'),
             license=self.METADATA.get('license'),
             rights=self.METADATA.get('rights'),
+            repository=self.METADATA.get('repository'),
             ont_source=self._make_source_file_link(source_info),
             has_classes=self.METADATA.get('has_classes'),
             has_ops=self.METADATA.get('has_ops'),

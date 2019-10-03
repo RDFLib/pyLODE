@@ -71,12 +71,17 @@
         {%- endif %}
         <dt>Ontology Source</dt>
         <dd>{{ ont_source }}</dd>
+        <dt>Code Repository</dt>
+        <dd><a href="{{ repository }}">{{ repository }}</a></dd>
     </dl>
     {%- if description is not none %}
     <h2>Description</h2>
     <div id="description">
         {{ description }}
     </div>
+    {%- endif %}
+    {%- if historyNote is not none %}
+    <p><strong>History Note:</strong> {{ historyNote }}</p>
     {%- endif %}
 </section>
 <section id="toc">
