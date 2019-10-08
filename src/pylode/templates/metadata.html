@@ -71,8 +71,10 @@
         {%- endif %}
         <dt>Ontology Source</dt>
         <dd>{{ ont_source }}</dd>
+        {%- if repository is not none %}
         <dt>Code Repository</dt>
         <dd><a href="{{ repository }}">{{ repository }}</a></dd>
+        {%- endif %}
     </dl>
     {%- if description is not none %}
     <h2>Description</h2>

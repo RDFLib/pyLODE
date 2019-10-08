@@ -1,0 +1,134 @@
+@prefix : <http://promsns.org/def/decprov#> .
+@prefix do: <http://promsns.org/def/do#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@base <http://promsns.org/def/decprov> .
+
+<http://promsns.org/def/decprov> rdf:type owl:Ontology ;
+                                  owl:versionIRI <http://promsns.org/def/decprov> ;
+                                  owl:imports <http://www.w3.org/ns/prov-o> ;
+                                  dct:created "2017-06-28"^^xsd:date ;
+                                  dct:creator [ sdo:email <mailto:nicholas.car@surroundaustralia.com> ;
+                                                sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+                                                sdo:affiliation [ 
+                                                              sdo:identifier <https://surroundaustralia.com> ;
+                                                              sdo:name "SURROUND Australia Pty Ltd"
+                                                            ] ;
+                                                sdo:name "Nicholas J. Car"
+                                              ] ;
+                                  dct:description """This ontology is a reduced-in-scope version of the [W3C Decisions and Decision-Making Incubator Group](https://www.w3.org/2005/Incubator/decision/)'s Decision Ontology (DO) which can be found at <https://github.com/nicholascar/decision-o>. It has been re-worked to align entirely with the W3C's [PROV ontology](https://www.w3.org/TR/prov-o/) since it is widely recognised that analysing the elements of decisions *post hoc* is an exercise in provenance.
+
+Unlike the original DO, this ontology cannot be used for *normative* scenarios: it is only capable of recording decisions that have already been made (so-called *data-driven* use in the DO). This is because PROV, to which this ontology is completely mapped, does not have a templating system which can indicate what *should* occur in future scenarios.
+
+This ontology introduces only one new element for decision modelling over that which was present in the DO: an Agent which allows agency in decision making to be recorded."""@en ;
+                                  dct:modified "2019-08-20"^^xsd:date ;
+                                  rdfs:comment """This ontology is for modelling decisions and thus the causes for actions or the use or generation of things. It allows for a better understanding of *why* something might have taken place, have been used or produced than the more generic [PROV ontology](https://www.w3.org/TR/prov-o/), on which it is mainly based, does.  
+
+The specialised decision modelling elements of this ontology have been derived from the [W3C Decisions and Decision-Making Incubator Group](https://www.w3.org/2005/Incubator/decision/)'s Decision Ontology (DO) which can be found at <https://github.com/nicholascar/decision-o>. Many DO classes have been aligned with the PROV-O since it is widely recognised that analysing the elements of decisions *post hoc* is an exercise in provenance.
+
+Unlike the original DO, this ontology cannot be used for *normative* scenarios: it is only capable of recording decisions that have already been made (so-called *data-driven* use in the DO). This is because PROV does not have a templating system which can indicate what *should* occur in future scenarios.
+
+This ontology introduces only one new element for decision modelling over that which was present in the DO: an Agent which allows agency in decision making to be recorded."""@en ;
+                                  rdfs:label "Decision Provenance ontology (DecPROV)"^^xsd:string ;
+                                  rdfs:seeAlso "The GitHub repository containing addition documentation: http://github.com/nicholascar/decprov-ont/"@en ;
+                                  owl:priorVersion "1.1"@en ;
+                                  owl:versionInfo "2.0"@en ;
+                                  skos:changeNote "Version 2.0 is a major revision. Gone is the OptionSelection class and thus all notions of encoding decision logic with elements provided for by this ontology, instead the DecisionLogicExpression class is provided to indicate or contain decision logic as external ontology elements or as expressions in microformats. DecisionInputData is also a new class to be used to explicitly identify non decision logic inputs to DecisionMaking events. Also added are the hadAnswer/hadQuestion inverse ObjectProperty pair for relating Questions & their Answers." .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://promsns.org/def/decprov#hadAnswer
+:hadAnswer rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf prov:generated ;
+           owl:inverseOf :hadQuestion ;
+           rdfs:comment "Links a Question to an Answer that a DecisionMaking generated for it."@en ;
+           rdfs:label "had answer" .
+
+
+###  http://promsns.org/def/decprov#hadQuestion
+:hadQuestion rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf prov:wasDerivedFrom ;
+             rdfs:domain do:Answer ;
+             rdfs:range do:Question ;
+             rdfs:comment "Links an Answer to the Question that motivated a DecisionMaking to generate it."@en ;
+             rdfs:label "had question" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://promsns.org/def/decprov#DecisionInputData
+:DecisionInputData rdf:type owl:Class ;
+                   rdfs:subClassOf prov:Entity ;
+                   owl:disjointWith :DecisonLogicExpression ;
+                   rdfs:label "Decision Input Data" ;
+                   skos:definition "A Decision Input Data is an Entity that in input to (prov:used by) a DecisionMaking."@en ;
+                   skos:scopeNote "Do not use this class to represent decision logic: use DecisionLogicExpression for that."@en .
+
+
+###  http://promsns.org/def/decprov#DecisonLogicExpression
+:DecisonLogicExpression rdf:type owl:Class ;
+                        rdfs:subClassOf prov:Plan ;
+                        rdfs:label "Decision Logic Expression" ;
+                        skos:definition "A Decision Logic Expression is a prov:Plan that instructs a course of decision making action."@en ;
+                        skos:scopeNote "Use this class to contain decision logic epxpressions in microformats, such as Decision Modelling Notation's FEEL expressions, or as a container entity to hold collections of semantic objects representing decision logic." .
+
+
+###  http://promsns.org/def/do#Answer
+do:Answer rdf:type owl:Class ;
+          rdfs:subClassOf prov:Entity ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty prov:wasGeneratedBy ;
+                            owl:someValuesFrom do:DecisionMaking
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty prov:wasInfluencedBy ;
+                            owl:someValuesFrom do:Question
+                          ] ;
+          owl:disjointWith do:Question ;
+          rdfs:comment "A recorded answer to a Question"@en ;
+          rdfs:label "Answer"@en .
+
+
+###  http://promsns.org/def/do#DecisionMaking
+do:DecisionMaking rdf:type owl:Class ;
+                  rdfs:subClassOf prov:Activity ;
+                  rdfs:comment "A temporal event in which decision processes are undertaken, such as initiating sub-questions for the question to be answered, consideration of options etc."@en ;
+                  rdfs:label "Decision Making"@en .
+
+
+###  http://promsns.org/def/do#Question
+do:Question rdf:type owl:Class ;
+            rdfs:subClassOf prov:Entity ;
+            rdfs:comment "A recorded question"@en ;
+            rdfs:label "Question"@en .
+
+
+###  http://promsns.org/def/do#Requirement
+do:Requirement rdf:type owl:Class ;
+               rdfs:subClassOf prov:Entity ;
+               rdfs:comment "Requirements require something from an OptionSelection Activity. They indicate their requirement with a set (a class) of objects. They are then satisified by the presense of an onject within that class. Multiple Requirements can be intersected to require very specific OptionSelection outcomes."@en ;
+               rdfs:label "Requirement"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://promsns.org/def/do#DecisionMaker
+do:DecisionMaker rdf:type owl:NamedIndividual ,
+                          prov:Role .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

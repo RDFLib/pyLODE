@@ -1,0 +1,173 @@
+# baseURI: http://linked.data.gov.au/def/geoadminfeatures
+# imports: http://www.opengis.net/ont/geosparql
+
+@prefix geoaf: <http://linked.data.gov.au/def/geoadminfeatures#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix loci: <http://linked.data.gov.au/def/loci#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://linked.data.gov.au/def/geoadminfeatures>
+  a owl:Ontology ;
+  dcterms:created "2019-09-18"^^xsd:date ;
+  dcterms:creator [
+      a sdo:Person ;
+      sdo:affiliation [
+          a sdo:Organization ;
+          sdo:name "SURROUND Australia Pty Ltd" ;
+        ] ;
+      sdo:email <mailto:nicholas.car@surroundaustralia.com> ;
+      sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+      sdo:name "Nicholas J. Car" ;
+    ] ;
+  dcterms:description """This ontology describes classes of geological and administrative feature relevant to the duties of the Geological Survey of Queensland.
+
+As subclasses of the GeoSPARQL Ontology's `Feature` class, this ontology defines `Geological Feature` and `Administrative Feature`. Multiple subclasses of those two main classes are also defined.
+
+Most of the subclasses of `Geological Feature` defined here are not disjoint with other subclasses of it in recognition of the fact that a real-world `Feature` may be classed in multiple ways. `Administrative Feature` subclasses, however, are all disjoint having been defined disjointly by people.
+
+References to and positioning of other Features defined elsewhere are made, such as placing the HY_Features model's `Catchment` and `CatchmentAggregate` classes as subclasses of this ontology's `Basin` class (a subclass of `Geological Feature`). As a result, the classes of object within the LocI project's Geofabric dataset can be related to objects classified using this ontology."""@en ;
+  dcterms:hasVersion 0.5 ;
+  dcterms:modified "2019-10-08"^^xsd:date ;
+  dcterms:publisher [
+      a sdo:Organization ;
+      sdo:name "Geological Survey of Queensland" ;
+    ] ;
+  dcterms:publisher [
+      a sdo:Organization ;
+      sdo:name "Geological Survey of Queensland" ;
+    ] ;
+  dcterms:title "Geological and Administrative Features Ontology"@en ;
+  owl:imports <http://www.opengis.net/ont/geosparql> ;
+  prov:wasGeneratedBy [
+      a doap:Project ;
+      a prov:Activity ;
+      doap:repository <https://github.com/geological-survey-of-queensland/gsq-geoadminfeatures-ont> ;
+    ] ;  
+.
+geoaf:AdministrativeFeature
+  a owl:Class ;
+  rdfs:subClassOf geo:Feature ;
+  owl:disjointWith geoaf:GeologicalFeature ;
+  skos:definition "An Administrative Feature is a geo:Feature that is defined by adminstrative processes such as legislation, regulation, policy or procedure."@en ;
+  skos:prefLabel "Administrative feature" ;
+.
+geoaf:Basin
+  a owl:Class ;
+  rdfs:prefLabel "Basin" ;
+  rdfs:subClassOf geoaf:StructuralFrameworkFeature ;
+  skos:definition "A Basin is a Structural Framework Feature that is or was defined by hydrological processes. Basins are not necissarily any longer related to hydrological processes as they could have been created by hydrological actions long in the past and have been altered by other geological processes since."@en ;
+.
+geoaf:Block
+  a owl:Class ;
+  rdfs:prefLabel "Block" ;
+  rdfs:subClassOf geoaf:AdministrativeFeature ;
+  skos:definition """Blocks are Administrative Features that are defined for the adminstration of mining leases.
+Individual Blocks are defined by the Queensland Department of Natural Resources, Mines and Energy's Geological Survey of Queensland's Permit Administration unit."""@en ;
+  skos:prefLabel "Block" ;
+.
+geoaf:Cranton
+  a owl:Class ;
+  rdfs:prefLabel "Cranton" ;
+  rdfs:subClassOf geoaf:StructuralFrameworkFeature ;
+.
+geoaf:GeologicalFeature
+  a owl:Class ;
+  rdfs:subClassOf geo:Feature ;
+  owl:disjointWith geoaf:AdministrativeFeature ;
+  skos:definition "A Geological Feature is a geospatial Feature that is a result of geological processes."@en ;
+  skos:prefLabel "Geological Feature" ;
+.
+geoaf:GroundwaterBasin
+  a owl:Class ;
+  rdfs:prefLabel "Groundwater Basin" ;
+  rdfs:subClassOf geoaf:Basin ;
+  skos:definition "A Groundwater Basin is a subsurface, three-dimensional, water-storage system contained by porous sediments and/or sedimentary rocks comprising an aquifer or a succession of stacked aquifers that are separated by non-porous and generally impermeable sediments or rocks (termed acquitards or, if completely impermeable, aquicludes). Groundwater Basins have recharge and discharge zones, the latter where water flows back to the surface at springs or into rivers, lakes, etc."@en ;
+.
+geoaf:LithodemicFeature
+  a owl:Class ;
+  rdfs:subClassOf geoaf:GeologicalFeature ;
+  owl:disjointWith geoaf:StratigraphicFeature ;
+  skos:definition "A Lithodemic Feature is a Geological Feature that was not created by sedimentation proceeses." ;
+  skos:prefLabel "Lithodemic Feature" ;
+.
+geoaf:Orogen
+  a owl:Class ;
+  rdfs:prefLabel "Orogen" ;
+  rdfs:subClassOf geoaf:StructuralFrameworkFeature ;
+.
+geoaf:Permit
+  a owl:Class ;
+  rdfs:prefLabel "Permit" ;
+  rdfs:subClassOf geoaf:AdministrativeFeature ;
+  skos:prefLabel "Permit" ;
+.
+geoaf:Province
+  a owl:Class ;
+  rdfs:prefLabel "Province" ;
+  rdfs:subClassOf geoaf:StructuralFrameworkFeature ;
+.
+geoaf:ResourceAccumulationFeature
+  a owl:Class ;
+  rdfs:subClassOf geoaf:GeologicalFeature ;
+  skos:prefLabel "Resource Accumulation Feature" ;
+.
+geoaf:SedimentaryBasin
+  a owl:Class ;
+  rdfs:prefLabel "Sedimentary Basin" ;
+  rdfs:subClassOf geoaf:Basin ;
+  skos:definition """A Sedimentary Basin comprises a three-dimensional region in which sediments accumulate or have accumulated from a range of varying geological/tectonic causes.
+Present-day sedimentary basins include the internal-draining Lake Eyre Basin (central Australia), but, from a geological perspective, primary focus is given to resource-rich, Sedimentary Basins that formed, and were subsequently terminated by a causative event (e.g., tectonic uplift), at varying times in the geological past."""@en ;
+.
+geoaf:StratigraphicFeature
+  a owl:Class ;
+  rdfs:subClassOf geoaf:GeologicalFeature ;
+  owl:disjointWith geoaf:LithodemicFeature ;
+  skos:prefLabel "Stratigraphic Feature" ;
+.
+geoaf:StructuralFrameworkFeature
+  a owl:Class ;
+  rdfs:subClassOf geoaf:GeologicalFeature ;
+  skos:prefLabel "Structural Framework Feature" ;
+.
+geoaf:SubBlock
+  a owl:Class ;
+  rdfs:prefLabel "Sub-Block" ;
+  rdfs:subClassOf geoaf:AdministrativeFeature ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass geoaf:Block ;
+      owl:onProperty geo:sfWithin ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass geoaf:Block ;
+      owl:onProperty geo:sfWithin ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  skos:definition """A Sub-Block is an Adminstrative Feature that is always fully contained within a larger Block.
+Individual Sub-Blocks are defined by the Queensland Department of Natural Resources, Mines and Energy's Geological Survey of Queensland's Permit Administration unit."""@en ;
+  skos:prefLabel "Sub-Block" ;
+.
+geoaf:SubProvince
+  a owl:Class ;
+  rdfs:prefLabel "Sub-Province" ;
+  rdfs:subClassOf geoaf:StructuralFrameworkFeature ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass geoaf:Province ;
+      owl:onProperty geo:sfWithin ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+.
