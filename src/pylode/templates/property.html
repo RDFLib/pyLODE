@@ -1,13 +1,15 @@
 <div class="entity property" id="{{ fid }}">
         <h3>{{ title }}
             {%- if property_type == 'op' -%}
-            <sup title="object property" class="type-op">op</sup>
+            <sup title="object property" class="sup-op">op</sup>
+            {%- elif property_type == 'fp' -%}
+            <sup title="functional property" class="sup-fp">fp</sup>
             {%- elif property_type == 'dp' -%}
-            <sup title="datatype property" class="type-dp">dp</sup>
+            <sup title="datatype property" class="sup-dp">dp</sup>
             {%- elif property_type == 'ap' -%}
-            <sup title="annotation property" class="type-ap">ap</sup>
+            <sup title="annotation property" class="sup-ap">ap</sup>
             {%- else -%}
-            <sup title="property" class="type-p">p</sup>
+            <sup title="property" class="sup-p">p</sup>
             {%- endif -%}
         </h3>
         <table>

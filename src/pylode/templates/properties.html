@@ -11,6 +11,19 @@
     {%- endfor %}
 </section>
 {% endif %}
+{%- if fp_instances|length > 0 %}
+<section id="functionalproperties">
+    <h2>Functional Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        {%- for p in fp_instances %}
+        <li><a href="#{{ p[1] }}">{{ p[0] }}</a></li>
+        {%- endfor %}
+    </ul>
+    {%- for p in fp_instances %}
+    {{ p[2]|safe }}
+    {%- endfor %}
+</section>
+{% endif %}
 {%- if dp_instances|length > 0 %}
 <section id="datatypeproperties">
     <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>

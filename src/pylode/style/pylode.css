@@ -59,26 +59,6 @@ ul.hlist li {
     text-align: left;
 }
 
-.sup-c {
-    color: orange;
-}
-
-.sup-op {
-    color: navy;
-}
-
-.sup-dp {
-    color: green;
-}
-
-.sup-ap {
-    color: maroon;
-}
-
-.sup-ni {
-    color: brown;
-}
-
 section#overview img {
     max-width: 1000px;
 }
@@ -132,37 +112,42 @@ section {
 :visited { color: #609; background: transparent }
 a:active { color: #C00; background: transparent }
 
-.type-c,
-.type-op,
-.type-dp,
-.type-ap,
-.type-p,
-.type-ni {
+.sup-c,
+.sup-op,
+.sup-fp,
+.sup-dp,
+.sup-ap,
+.sup-p,
+.sup-ni {
     cursor:help;
     margin-left: 3px;
 }
 
-.type-c {
+.sup-c {
     color:orange;
 }
 
-.type-op {
+.sup-op {
     color:navy;
 }
 
-.type-dp {
+.sup-fp {
+    color:lightskyblue;
+}
+
+.sup-dp {
     color:green;
 }
 
-.type-ap {
+.sup-ap {
     color:darkred;
 }
 
-.type-p {
+.sup-p {
     color:black;
 }
 
-.type-ni {
+.sup-ni {
     color:brown;
 }
 

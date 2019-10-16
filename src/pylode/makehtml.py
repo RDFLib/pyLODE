@@ -53,6 +53,9 @@ class MakeHtml:
         for s in self.G.subjects(predicate=RDF.type, object=OWL.ObjectProperty):
             self.G.add((s, RDF.type, RDF.Property))
 
+        for s in self.G.subjects(predicate=RDF.type, object=OWL.FunctionalProperty):
+            self.G.add((s, RDF.type, RDF.Property))
+
         for s in self.G.subjects(predicate=RDF.type, object=OWL.DatatypeProperty):
             self.G.add((s, RDF.type, RDF.Property))
 
@@ -205,6 +208,8 @@ class MakeHtml:
             # property type
             if (s, RDF.type, OWL.ObjectProperty) in self.G:
                 self.PROPERTIES[prop]['prop_type'] = 'op'
+            elif (s, RDF.type, OWL.FunctionalProperty) in self.G:
+                self.PROPERTIES[prop]['prop_type'] = 'fp'
             elif (s, RDF.type, OWL.DatatypeProperty) in self.G:
                 self.PROPERTIES[prop]['prop_type'] = 'dp'
             elif (s, RDF.type, OWL.AnnotationProperty) in self.G:
@@ -577,6 +582,7 @@ class MakeHtml:
             self.METADATA['has_classes'] = True
 
         self.METADATA['has_ops'] = False
+        self.METADATA['has_fps'] = False
         self.METADATA['has_dps'] = False
         self.METADATA['has_aps'] = False
         self.METADATA['has_ps'] = False
@@ -584,6 +590,8 @@ class MakeHtml:
         for k, v in self.PROPERTIES.items():
             if v.get('prop_type') == 'op':
                 self.METADATA['has_ops'] = True
+            if v.get('prop_type') == 'fp':
+                self.METADATA['has_fps'] = True
             if v.get('prop_type') == 'dp':
                 self.METADATA['has_dps'] = True
             if v.get('prop_type') == 'ap':
@@ -809,13 +817,15 @@ class MakeHtml:
             html = '<a href="{}">{}</a>'.format(uri, short)
 
         if type == 'c':
-            return html + ' <sup class="sup-c" title="class">c</sup>'
+            return html + '<sup class="sup-c" title="class">c</sup>'
         elif type == 'op':
-            return html + ' <sup class="sup-op" title="object property">op</sup>'
+            return html + '<sup class="sup-op" title="object property">op</sup>'
+        elif type == 'fp':
+            return html + '<sup class="sup-fp" title="functional property">fp</sup>'
         elif type == 'dp':
-            return html + ' <sup class="sup-dp" title="datatype property">dp</sup>'
+            return html + '<sup class="sup-dp" title="datatype property">dp</sup>'
         elif type == 'ap':
-            return html + ' <sup class="sup-ap" title="annotation property">ap</sup>'
+            return html + '<sup class="sup-ap" title="annotation property">ap</sup>'
         else:
             return html
 
@@ -1062,6 +1072,7 @@ class MakeHtml:
         template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
         template = Environment(loader=FileSystemLoader(template_dir)).get_template('properties.html')
         op_instances = []
+        fp_instances = []
         dp_instances = []
         ap_instances = []
         p_instances = []
@@ -1069,6 +1080,8 @@ class MakeHtml:
         for k, v in self.PROPERTIES.items():
             if v.get('prop_type') == 'op':
                 op_instances.append((v['title'], v['fid'], self._make_property_html((k, v))))
+            elif v.get('prop_type') == 'fp':
+                fp_instances.append((v['title'], v['fid'], self._make_property_html((k, v))))
             elif v.get('prop_type') == 'dp':
                 dp_instances.append((v['title'], v['fid'], self._make_property_html((k, v))))
             elif v.get('prop_type') == 'ap':
@@ -1078,6 +1091,7 @@ class MakeHtml:
 
         html = template.render(
             op_instances=op_instances,
+            fp_instances=fp_instances,
             dp_instances=dp_instances,
             ap_instances=ap_instances,
             p_instances=p_instances
@@ -1138,6 +1152,7 @@ class MakeHtml:
             ont_source=self._make_source_file_link(source_info),
             has_classes=self.METADATA.get('has_classes'),
             has_ops=self.METADATA.get('has_ops'),
+            has_fps=self.METADATA.get('has_fps'),
             has_dps=self.METADATA.get('has_dps'),
             has_aps=self.METADATA.get('has_aps'),
             has_ps=self.METADATA.get('has_ps'),
