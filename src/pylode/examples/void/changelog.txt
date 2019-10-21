@@ -1,0 +1,4 @@
+* moved all publisher & creator Agnets from foaf:Agent to sdo:Organisation or sdo:Person
+* made all sdo:Person instnaces sdo:affiliated with their organizations
+* changed predicate dcterms to dct to match properties image
+* change all rdfs:Property to owl:ObjectProperty

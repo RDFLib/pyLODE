@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GeoSPARQL Extensions Ontology</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<h1>GeoSPARQL Extensions Ontology</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>IRI</dt>
+        <dd><code>http://linked.data.gov.au/def/geox</code></dd>
+        <dt>Publisher(s)</dt>
+        <dd>
+            <a href="http://catalogue.linked.data.gov.au/org/csiro">CSIRO</a><br/>
+        </dd>
+        <dt>Creator(s)</dt>
+        <dd>
+            <a href="http://orcid.org/0000-0002-8742-7730">Nicholas J Car</a><br/>
+            <a href="http://orcid.org/0000-0002-3884-3420">Simon J D Cox</a><br/>
+        </dd>
+        <dt>Created</dt>
+        <dd>2019-01-08</dd>
+        <dt>Modified</dt>
+        <dd>2019-10-01</dd>
+        <dt>Version Information</dt>
+        <dd>Alpha version</dd>
+        <dt>Version IRI</dt>
+        <dd><a href="http://linked.data.gov.au/def/geox/1.0">http://linked.data.gov.au/def/geox/1.0</a></dd>
+        <dt>Imports</dt>
+        <dd>
+            <a href="http://www.opengis.net/ont/geosparql#">geo:</a><br/>
+            <a href="http://linked.data.gov.au/def/datatype">http://linked.data.gov.au/def/datatype</a><br/>
+        </dd>
+        <dt>Ontology Source</dt>
+        <dd><a href="geox.ttl">RDF (turtle)</a></dd>
+        <dt>Code Repository</dt>
+        <dd><a href="https://github.com/CSIRO-enviro-informatics/geosparql-ext-ont">https://github.com/CSIRO-enviro-informatics/geosparql-ext-ont</a></dd>
+    </dl>
+    <h2>Description</h2>
+    <div id="description">
+        <p>An extensions ontology adding new properties, axioms and classes to <a href="http://www.opengeospatial.org/standards/geosparql">GeoSPARQL</a>.</p>
+<p>This ontology allows for the representation of additional elements of feature geometry, such as spatial-resolution, length, area and volume. </p>
+    </div>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#objectproperties">Object Properties</a></li>
+        <li><a href="#datatypeproperties">Datatype Properties</a></li>
+        <li><a href="#annotationproperties">Annotation Properties</a></li>
+        <li><a href="#namespaces">Namespaces</a></li>
+    </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+        <img src="https://raw.githubusercontent.com/CSIRO-enviro-informatics/geosparql-ext-ont/master/docs/summary.png" alt="ontology overview image" />
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
+</section>
+<section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#quantity">Quantity</a></li>
+        <li><a href="#quantitykind">QuantityKind</a></li>
+        <li><a href="#resolution">Resolution</a></li>
+        <li><a href="#spatialobject">SpatialObject</a></li>
+        <li><a href="#unit1">Unit</a></li>
+        <li><a href="#objectproperty">objectProperty</a></li>
+    </ul>
+    <div class="entity class" id="resolution">
+        <h3>Resolution<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/geox#Resolution</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An object containing a numeric value and the units it is expressed in to communicate a spatial resolution as a linear measurement
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="http://qudt.org/schema/qudt/unit">qudt:unit</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://qudt.org/schema/qudt/Unit">qudt:Unit</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://qudt.org/schema/qudt/numericValue">qudt:numericValue</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="quantity">
+        <h3>Quantity<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://qudt.org/schema/qudt/Quantity</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="quantitykind">
+        <h3>QuantityKind<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://qudt.org/schema/qudt/QuantityKind</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="unit1">
+        <h3>Unit<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://qudt.org/schema/qudt/Unit</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="spatialobject">
+        <h3>SpatialObject<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.opengis.net/ont/geosparql#SpatialObject</code></td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#haslength">http://linked.data.gov.au/def/geox#hasLength</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#transitivesfoverlap">http://linked.data.gov.au/def/geox#transitiveSfOverlap</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasarea">http://linked.data.gov.au/def/geox#hasArea</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasvolume">http://linked.data.gov.au/def/geox#hasVolume</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#transitivesfoverlap">http://linked.data.gov.au/def/geox#transitiveSfOverlap</a> <sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="objectproperty">
+        <h3>objectProperty<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/2002/07/owl#objectProperty</code></td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="objectproperties">
+    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#area">area</a></li>
+        <li><a href="#hasarea">has area</a></li>
+        <li><a href="#hasareainm2">has area in m2</a></li>
+        <li><a href="#haslength">has length</a></li>
+        <li><a href="#haslengthinm">has length in m</a></li>
+        <li><a href="#hasresolution">has resolution</a></li>
+        <li><a href="#hasspatialresolutioninmetres">has spatial resolution in metres</a></li>
+        <li><a href="#hasvolume">has volume</a></li>
+        <li><a href="#hasvolumeinm3">has volume in m3</a></li>
+        <li><a href="#transitivesfoverlap">transitiveSfOverlap</a></li>
+        <li><a href="#unit">unit</a></li>
+    </ul>
+    <div class="entity property" id="area">
+        <h3>area<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://dbpedia.org/ontology/area</code></td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/ns/sosa/ObservableProperty">sosa:ObservableProperty</a> <sup class="sup-ap" title="annotation property">ap</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://qudt.org/vocab/quantitykind/Area">qk:Area</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasarea">
+        <h3>has area<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/geox#hasArea</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">geo:SpatialObject</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://linked.data.gov.au/def/datatype/QuantitativeMeasure">data:QuantitativeMeasure</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasareainm2">
+        <h3>has area in m2<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/geox#hasAreaM2</code></td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#hasarea">http://linked.data.gov.au/def/geox#hasArea</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="haslength">
+        <h3>has length<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/geox#hasLength</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The length of a spatial object, expressed as a scaled number
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">geo:SpatialObject</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://linked.data.gov.au/def/datatype/QuantitativeMeasure">data:QuantitativeMeasure</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="haslengthinm">
+        <h3>has length in m<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/geox#hasLengthM</code></td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#haslength">http://linked.data.gov.au/def/geox#hasLength</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasresolution">
+        <h3>has resolution<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/geox#hasResolution</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The spatial resolution of the Geometry object, expressed as a linear measurement.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#Geometry">geo:Geometry</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#resolution">http://linked.data.gov.au/def/geox#Resolution</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/datatype/QuantitativeMeasure">data:QuantitativeMeasure</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasspatialresolutioninmetres">
+        <h3>has spatial resolution in metres<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/geox#hasResolutionM</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The spatial resolution of the Geometry object, expressed as a linear distance in metres
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#hasresolution">http://linked.data.gov.au/def/geox#hasResolution</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#Geometry">geo:Geometry</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasvolume">
+        <h3>has volume<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/geox#hasVolume</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">geo:SpatialObject</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://linked.data.gov.au/def/datatype/QuantitativeMeasure">data:QuantitativeMeasure</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasvolumeinm3">
+        <h3>has volume in m3<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/geox#hasVolumeM3</code></td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#hasvolume">http://linked.data.gov.au/def/geox#hasVolume</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="transitivesfoverlap">
+        <h3>transitiveSfOverlap<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/geox#transitiveSfOverlap</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The domain object overlaps (geo:sfOverlaps) the range object by virtue of both objects containing (geo:sfContains) an intermediary object.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#sfOverlaps">geo:sfOverlaps</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">geo:SpatialObject</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">geo:SpatialObject</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="unit">
+        <h3>unit<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://qudt.org/schema/qudt/unit</code></td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="datatypeproperties">
+    <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#numericvalue">numericValue</a></li>
+    </ul>
+    <div class="entity property" id="numericvalue">
+        <h3>numericValue<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://qudt.org/schema/qudt/numericValue</code></td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="annotationproperties">
+    <h2>Annotation Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#preflabel">prefLabel</a></li>
+        <li><a href="#usagenote">usageNote</a></li>
+        <li><a href="#observableproperty">ObservableProperty</a></li>
+    </ul>
+    <div class="entity property" id="preflabel">
+        <h3>prefLabel<sup title="annotation property" class="sup-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/2000/01/rdf-schema#prefLabel</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="usagenote">
+        <h3>usageNote<sup title="annotation property" class="sup-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/2004/02/skos/core#usageNote</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="observableproperty">
+        <h3>ObservableProperty<sup title="annotation property" class="sup-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://www.w3.org/ns/sosa/ObservableProperty</code></td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt><em>default (:)</em></dt>
+        <dd><code>http://linked.data.gov.au/def/geox#</code></dd>
+        <dt>data</dt>
+        <dd><code>http://linked.data.gov.au/def/datatype/</code></dd>
+        <dt>dc</dt>
+        <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+        <dt>dct</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>doap</dt>
+        <dd><code>http://usefulinc.com/ns/doap#</code></dd>
+        <dt>geo</dt>
+        <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>prov</dt>
+        <dd><code>http://www.w3.org/ns/prov#</code></dd>
+        <dt>qk</dt>
+        <dd><code>http://qudt.org/vocab/quantitykind/</code></dd>
+        <dt>qudt</dt>
+        <dd><code>http://qudt.org/schema/qudt/</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>sdo</dt>
+        <dd><code>http://schema.org/</code></dd>
+        <dt>skos</dt>
+        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>sosa</dt>
+        <dd><code>http://www.w3.org/ns/sosa/</code></dd>
+        <dt>xml</dt>
+        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+    <section id="legend">
+        <h2>Legend</h2>
+        <table class="entity">
+            <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+            <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+            <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+            <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+            <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+            <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+        </table>
+    </section>
+</body>
+</html>
