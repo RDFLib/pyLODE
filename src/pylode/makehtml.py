@@ -1112,6 +1112,7 @@ class MakeHtml:
                     description=v['description'],
                     supers=v['supers'],
                     restrictions=v['restrictions'],
+                    scopeNote=v['scopeNote'],
                     subs=v['subs'],
                     in_domain_of=v['in_domain_of'],
                     in_domain_includes_of=v['in_domain_includes_of'],

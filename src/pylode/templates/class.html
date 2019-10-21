@@ -13,6 +13,14 @@
                 </td>
             </tr>
             {%- endif %}
+            {%- if scopeNote is not none %}
+            <tr>
+                <th>Usage Note</th>
+                <td>
+                    {{ scopeNote }}
+                </td>
+            </tr>
+            {%- endif %}
             {%- if supers|length > 0 %}
             <tr>
                 <th>Super-classes</th>
