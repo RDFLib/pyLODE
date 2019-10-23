@@ -657,9 +657,9 @@ class MakeHtml:
                         self.METADATA['creators'].add(str(o))
 
                 if p == DCTERMS.creator:
-                    if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
+                    if type(o) == Literal:
                         self.METADATA['creators'].add(str(o))
-                    else:  # Blank Node
+                    else:  # Blank Node or URI
                         self.METADATA['creators'].add(self._make_agent_html(o))
 
                 if p == DC.contributor:
@@ -669,9 +669,9 @@ class MakeHtml:
                         self.METADATA['contributors'].add(str(o))
 
                 if p == DCTERMS.contributor:
-                    if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
+                    if type(o) == Literal:
                         self.METADATA['contributors'].add(str(o))
-                    else:  # Blank Node
+                    else:  # Blank Node or URI
                         self.METADATA['contributors'].add(self._make_agent_html(o))
 
                 if p == DC.publisher:
@@ -681,9 +681,9 @@ class MakeHtml:
                         self.METADATA['publishers'].add(str(o))
 
                 if p == DCTERMS.publisher:
-                    if type(o) == Literal or type(o) == URIRef:  # just treat a URI as a string
+                    if type(o) == Literal:
                         self.METADATA['publishers'].add(str(o))
-                    else:  # Blank Node
+                    else:  # Blank Node or URI
                         self.METADATA['publishers'].add(self._make_agent_html(o))
 
                 # TODO: cater for other Agent representations
@@ -986,7 +986,7 @@ class MakeHtml:
         elif url is not None and email is None:
             agent = '<a href="{0}">{1}</a>'.format(url, name)
         elif url is None and email is not None:
-            agent = '<a href="mailto:{0}">{1}</a>'.format(email.split('/')[-1], name)
+            agent = '<a href="{0}">{1}</a>'.format(email.split('/')[-1], name)
         elif url is not None:
             agent = '<a href="{}">{}</a>'.format(url, name)
         else:
@@ -994,8 +994,7 @@ class MakeHtml:
 
         return agent
 
-    def _make_agent_html(self, agent_blank_node):
-        agent = None
+    def _make_agent_html(self, agent_node):
         # we understand foaf:name, foaf:homepage & sdo:name & sdo:identifier & sdo:email (as a URI)
         # TODO: cater for other Agent representations
 
@@ -1005,7 +1004,7 @@ class MakeHtml:
         org_name = None
         org_url = None
         org_email = None
-        for p, o in self.G.predicate_objects(subject=agent_blank_node):
+        for p, o in self.G.predicate_objects(subject=agent_node):
             if p == FOAF.homepage \
                     or p == self.SDO.identifier \
                     or p == self.SDO2.identifier:
