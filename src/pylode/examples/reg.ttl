@@ -26,7 +26,6 @@
     owl:versionInfo "0.4";
     # For documentation tools
     dct:description "Core ontology for linked data registry services. Based on ISO19135 but heavily modified to suit Linked Data representations and applications."@en;
-    dct:description <https://github.com/ukgovld/registry-core/wiki/images/registry-diagram.png> ;
     .
 
 # -- Registers ------------------------------------------------------

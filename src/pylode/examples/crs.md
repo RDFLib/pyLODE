@@ -1,5 +1,5 @@
-<div id="pylode">
 # Commonwealth Record Series Ontology
+<sub>metadata by [pyLODE](http://github.com/rdflib/pyLODE)</sub>
 ## Metadata
 * **IRI**
   * `http://linked.data.gov.au/def/crs`
@@ -8,23 +8,23 @@
 * **Creators(s)**
   * <a href="http://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a> (<a href="mailto:nicholas.car@csiro.au">nicholas.car@csiro.au</a>) of <a href="http://catalogue.linked.data.gov.au/org/csiro">CSIRO</a>
 * **Contributor(s)**
-  * <a href="https://orcid.org/0000-0002-3884-3420">Simon J.D. Cox</a> (<a href="mailto:simon.cox@csiro.au">simon.cox@csiro.au</a>) of <a href="http://catalogue.linked.data.gov.au/org/csiro">CSIRO</a>
-  * Marco Wallenius
   * David Hearder
+  * Marco Wallenius
+  * <a href="https://orcid.org/0000-0002-3884-3420">Simon J.D. Cox</a> (<a href="mailto:simon.cox@csiro.au">simon.cox@csiro.au</a>) of <a href="http://catalogue.linked.data.gov.au/org/csiro">CSIRO</a>
 * **Created**
-  * created
+  * 2018-09-10
 * **Modified**
-  * modified
+  * 2019-05-31
 * **Version Information**
-  * version_info
+  * Beta version
 * **Version IRI**
-  * version_uri
+  * <a href="http://linked.data.gov.au/def/crs#">http://linked.data.gov.au/def/crs#</a>
 * **Imports**
   * <a href="http://www.w3.org/ns/org#">org:</a>
   * <a href="http://www.w3.org/2006/time">http://www.w3.org/2006/time</a>
   * <a href="http://purl.org/dc/elements/1.1/">dc:</a>
 * **Ontology Source**
-  * ont_source
+  * <a href="crs.ttl">RDF (turtle)</a>
 ### Description
 <div id="description">
 <p>This ontology is an <a href="https://www.w3.org/OWL/">OWL</a> interpretation of the Commonwealth Record Series (CRS) system's data model that is maintained by the <a href="http://naa.gov.au">National Archives of Australia</a>.</p>
@@ -32,11 +32,11 @@
 <p>It also refers to components in other Australian government ontologies, particularly <a href="http://reference.data.gov.au/def/ont/agrif">AGRIF</a> - Australian government Functions &amp; Records</p>
 
 ## Table of Contents
-[Classes](#classes)
-[Object Properties](#objectproperties)
-[Datatype Properties](#datatypeproperties)
-[Annotation Properties](#annotationproperties)
-[Namespaces](#namespaces)
+* [Classes](#classes)
+* [Object Properties](#objectproperties)
+* [Datatype Properties](#datatypeproperties)
+* [Annotation Properties](#annotationproperties)
+* [Namespaces](#namespaces)  
 
 
 ## Overview
@@ -44,18 +44,13 @@
 **Figure 1:** Ontology overview  
 
 
-<section id="legend">
-    <h2>Legend</h2>
-    <table class="entity">
-        <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
-        <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
-        <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
-        <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
-        <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
-        <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
-        <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
-    </table>
-</section>
 
 
-made by **[pyLODE](http://github.com/rdflib/pyLODE)**
+## Legend
+* Classes: c
+* Object Properties :op
+* Functional Properties: fp
+* Data Properties: dp
+* Annotation Properties: dp
+* Properties: p
+* Named Individuals: ni

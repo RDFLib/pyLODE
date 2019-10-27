@@ -97,13 +97,20 @@ def main(args):
              'the name of the input file or last segment of RDF URI will be used, + .html.'
     )
 
+    parser.add_argument(
+        '-f', '--outputformat',
+        help='The output format of the documentation. HTML is working fully, markdown is in test mode only.',
+        choices=['html', 'markdown'],
+        default='html'
+    )
+
     args = parser.parse_args()
 
     if args.listprofiles:
         print('list profiles')
         exit()
     elif args.inputfile or args.url:
-        # args are present so getting RDF from input file / uri into an rdflid Graph
+        # args are present so getting RDF from input file or uri into an rdflid Graph
         if args.inputfile:
             if not args.inputfile.name.endswith(tuple(RDF_FILE_EXTENSIONS)):
                 parser.error(
@@ -117,6 +124,7 @@ def main(args):
                 data = args.inputfile.read()
                 g = rdflib.Graph().parse(data=data, format=fmt)
                 source_info = (args.inputfile.name, fmt)
+                publication_dir = path.dirname(args.inputfile.name)
         elif args.url:
             r = requests.get(
                 args.url,
@@ -139,6 +147,7 @@ def main(args):
 
             g = rdflib.Graph().parse(data=r.text, format=fmt)
             source_info = (args.url, fmt)
+            publication_dir = path.join(path.dirname(path.realpath(__file__)), 'output_files')
         else:
             # we have neither an input file or a URI supplied
             parser.error('Either an inputfile or a url is required to access the ontology\'s RDF')
@@ -150,7 +159,6 @@ def main(args):
 
     # set up output directories and resources
     main_dir = path.dirname(path.realpath(__file__))
-    publication_dir = path.join(main_dir, 'output_files')
     style_dir = path.join(main_dir, 'style')
     os.makedirs(publication_dir, exist_ok=True)
 
@@ -162,18 +170,27 @@ def main(args):
 
     output_filename = os.path.basename(args.outputfile) if args.outputfile else 'doc.html'
 
-    if not output_filename.endswith('.html'):
-        output_filename += '.html'
+    if args.outputformat == 'html':
+        if not output_filename.endswith('.html'):
+            output_filename += '.html'
+    elif args.outputformat == 'markdown':
+        if not output_filename.endswith('.md'):
+            output_filename += '.md'
 
-    h = MakeHtml()
+    h = MakeHtml(args.outputformat)
     h.G = g
 
     # generate the HTML doc
     with open(path.join(publication_dir, output_filename), 'w') as f:
-        f.write(h.generate_html(source_info))
+        f.write(h.document(source_info))
 
-    msg = 'Finished. HTML{} file in {}/.'.format(msg_css, publication_dir)
+    if args.outputformat == 'html':
+        msg_template = 'Finished. HTML{} file in {}/.'
+    else:
+        msg_template = 'Finished. Markdown{} file in {}/.'
+    msg = msg_template.format(msg_css, publication_dir)
     print(msg)
+
 
 if __name__ == '__main__':
     import sys

@@ -48,20 +48,20 @@
 <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
-        <li><a href="#Delegated">Delegated</a></li>
-        <li><a href="#DelegatedRegister">Delegated Register</a></li>
-        <li><a href="#EntityReference">Entity Reference</a></li>
-        <li><a href="#FederatedRegister">Federated Register</a></li>
-        <li><a href="#NamespaceForward">Namespace Forward</a></li>
-        <li><a href="#Register">Register</a></li>
-        <li><a href="#RegisterItem">RegisterItem</a></li>
-        <li><a href="#SPARQLASKquery">SPARQL ASK query</a></li>
-        <li><a href="#SPARQLCONSTRUCTquery">SPARQL CONSTRUCT query</a></li>
-        <li><a href="#SPARQLSELECTquery">SPARQL SELECT query</a></li>
-        <li><a href="#SPARQLquery">SPARQL query</a></li>
-        <li><a href="#Status">Status</a></li>
+        <li><a href="#delegated">Delegated</a></li>
+        <li><a href="#delegatedregister">Delegated Register</a></li>
+        <li><a href="#entityreference">Entity Reference</a></li>
+        <li><a href="#federatedregister">Federated Register</a></li>
+        <li><a href="#namespaceforward">Namespace Forward</a></li>
+        <li><a href="#register1">Register</a></li>
+        <li><a href="#registeritem">RegisterItem</a></li>
+        <li><a href="#sparqlaskquery">SPARQL ASK query</a></li>
+        <li><a href="#sparqlconstructquery">SPARQL CONSTRUCT query</a></li>
+        <li><a href="#sparqlselectquery">SPARQL SELECT query</a></li>
+        <li><a href="#sparqlquery">SPARQL query</a></li>
+        <li><a href="#status1">Status</a></li>
     </ul>
-    <div class="entity class" id="Delegated">
+    <div class="entity class" id="delegated">
         <h3>Delegated<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -77,26 +77,26 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#delegationtarget">reg:delegationTarget</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#delegationtarget">reg:delegationTarget</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#NamespaceForward">reg:NamespaceForward</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#FederatedRegister">reg:FederatedRegister</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#DelegatedRegister">reg:DelegatedRegister</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#namespaceforward">reg:NamespaceForward</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#delegatedregister">reg:DelegatedRegister</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#federatedregister">reg:FederatedRegister</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#delegationtarget">reg:delegationTarget</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#delegationtarget">reg:delegationTarget</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="DelegatedRegister">
+    <div class="entity class" id="delegatedregister">
         <h3>Delegated Register<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -112,29 +112,29 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Delegated">reg:Delegated</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Register">reg:Register</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#delegated">reg:Delegated</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#enumerationobject">reg:enumerationObject</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="#enumerationsubject">reg:enumerationSubject</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="#enumerationpredicate">reg:enumerationPredicate</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#enumerationsubject">reg:enumerationSubject</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#enumerationpredicate">reg:enumerationPredicate</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#enumerationobject">reg:enumerationObject</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#enumerationobject">reg:enumerationObject</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#enumerationsubject">reg:enumerationSubject</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#enumerationpredicate">reg:enumerationPredicate</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#enumerationpredicate">reg:enumerationPredicate</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#enumerationsubject">reg:enumerationSubject</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#enumerationobject">reg:enumerationObject</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="EntityReference">
+    <div class="entity class" id="entityreference">
         <h3>Entity Reference<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -150,29 +150,29 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#entityversion">reg:entityVersion</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="#sourcegraph">reg:sourceGraph</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="#entity">reg:entity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#entityversion">reg:entityVersion</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#sourcegraph">reg:sourceGraph</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#entity">reg:entity</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#entityversion">reg:entityVersion</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sourcegraph">reg:sourceGraph</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#entity">reg:entity</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#entityversion">reg:entityVersion</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sourcegraph">reg:sourceGraph</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#entity">reg:entity</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#definition">reg:definition</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#alias">reg:alias</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#definition">reg:definition</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#alias">reg:alias</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="FederatedRegister">
+    <div class="entity class" id="federatedregister">
         <h3>Federated Register<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -188,13 +188,13 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Delegated">reg:Delegated</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Register">reg:Register</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#delegated">reg:Delegated</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="NamespaceForward">
+    <div class="entity class" id="namespaceforward">
         <h3>Namespace Forward<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -210,24 +210,24 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Delegated">reg:Delegated</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#delegated">reg:Delegated</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#forwardingcode">reg:forwardingCode</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#forwardingcode">reg:forwardingCode</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#forwardingcode">reg:forwardingCode</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#forwardingcode">reg:forwardingCode</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="Register">
+    <div class="entity class" id="register1">
         <h3>Register<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -243,60 +243,60 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://rdfs.org/ns/void#Dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/linked-data/version#VersionedThing">version:VersionedThing</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/ldp#Container">ldp:Container</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://rdfs.org/ns/void#Dataset">void:Dataset</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/version#VersionedThing">version:VersionedThing</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/ldp#Container">ldp:Container</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#manager">reg:manager</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://purl.org/dc/terms/license">dct:license</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://rdfs.org/ns/void#uriLookupEndpoint">void:uriLookupEndpoint</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="#governancepolicy">reg:governancePolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="#validationquery">reg:validationQuery</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
-                    <a href="#operatinglanguage">reg:operatingLanguage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
                     <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">max</span> 1<br/>
-                    <a href="#containeditemclass">reg:containedItemClass</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://rdfs.org/ns/void#uriSpace">void:uriSpace</a> <span class="cardinality">max</span> 1<br/>
+                    <a href="#validationquery">reg:validationQuery</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="#governancepolicy">reg:governancePolicy</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/dc/terms/description">dct:description</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
                     <a href="http://rdfs.org/ns/void#openSearchDescription">void:openSearchDescription</a> <span class="cardinality">min</span> 0<br/>
                     <a href="http://rdfs.org/ns/void#exampleResource">void:exampleResource</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://purl.org/dc/terms/description">dct:description</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="#owner">reg:owner</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/license">dct:license</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="#containeditemclass">reg:containedItemClass</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="#owner">reg:owner</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://rdfs.org/ns/void#uriSpace">void:uriSpace</a> <span class="cardinality">max</span> 1<br/>
+                    <a href="#operatinglanguage">reg:operatingLanguage</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://rdfs.org/ns/void#uriLookupEndpoint">void:uriLookupEndpoint</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="#manager">reg:manager</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#DelegatedRegister">reg:DelegatedRegister</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#FederatedRegister">reg:FederatedRegister</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#delegatedregister">reg:DelegatedRegister</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#federatedregister">reg:FederatedRegister</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#containeditemclass">reg:containedItemClass</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#operatinglanguage">reg:operatingLanguage</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#manager">reg:manager</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#release">reg:release</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#governancepolicy">reg:governancePolicy</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#owner">reg:owner</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#subregister">reg:subregister</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#validationquery">reg:validationQuery</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#manager">reg:manager</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#owner">reg:owner</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#containeditemclass">reg:containedItemClass</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#validationquery">reg:validationQuery</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#release">reg:release</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#governancepolicy">reg:governancePolicy</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#operatinglanguage">reg:operatingLanguage</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#subregister">reg:subregister</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#register">reg:register</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#subregister">reg:subregister</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#subregister">reg:subregister</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#register">reg:register</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="RegisterItem">
+    <div class="entity class" id="registeritem">
         <h3>RegisterItem<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -312,57 +312,57 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://purl.org/linked-data/version#VersionedThing">version:VersionedThing</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/version#VersionedThing">version:VersionedThing</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="#alias">reg:alias</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="#itemclass">reg:itemClass</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
                     <a href="http://purl.org/dc/terms/dateSubmitted">dct:dateSubmitted</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="#category">reg:category</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
                     <a href="http://purl.org/dc/terms/dateAccepted">dct:dateAccepted</a> <span class="cardinality">max</span> 1<br/>
-                    <a href="http://purl.org/dc/terms/description">dct:description</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="#notation">reg:notation</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="http://purl.org/linked-data/registry#hasView">reg:hasView</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="#status">reg:status</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
-                    <a href="#itemclass">reg:itemClass</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
-                    <a href="#submitter">reg:submitter</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">max</span> 1<br/>
-                    <a href="#predecessor">reg:predecessor</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
-                    <a href="#definition">reg:definition</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#notation">reg:notation</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#category">reg:category</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="#representationof">reg:representationOf</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
                     <a href="http://purl.org/dc/terms/license">dct:license</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="#representationof">reg:representationOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="#alias">reg:alias</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">max</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/description">dct:description</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="#definition">reg:definition</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#submitter">reg:submitter</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#status">reg:status</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://purl.org/linked-data/registry#hasView">reg:hasView</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="#predecessor">reg:predecessor</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#annotation">reg:annotation</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#status">reg:status</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#submitter">reg:submitter</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#category">reg:category</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#definition">reg:definition</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#notation">reg:notation</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#predecessor">reg:predecessor</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#register">reg:register</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#representationof">reg:representationOf</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#successor">reg:successor</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#alias">reg:alias</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#itemclass">reg:itemClass</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#definition">reg:definition</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#notation">reg:notation</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#annotation">reg:annotation</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#representationof">reg:representationOf</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#successor">reg:successor</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#submitter">reg:submitter</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#itemclass">reg:itemClass</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#predecessor">reg:predecessor</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#status">reg:status</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#register">reg:register</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#alias">reg:alias</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#category">reg:category</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#predecessor">reg:predecessor</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#successor">reg:successor</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#predecessor">reg:predecessor</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#successor">reg:successor</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="SPARQLASKquery">
+    <div class="entity class" id="sparqlaskquery">
         <h3>SPARQL ASK query<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -378,12 +378,12 @@
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#validationquery">reg:validationQuery</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#validationquery">reg:validationQuery</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="SPARQLCONSTRUCTquery">
+    <div class="entity class" id="sparqlconstructquery">
         <h3>SPARQL CONSTRUCT query<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -398,7 +398,7 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="SPARQLquery">
+    <div class="entity class" id="sparqlquery">
         <h3>SPARQL query<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -414,12 +414,12 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#query">reg:query</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#query">reg:query</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="SPARQLSELECTquery">
+    <div class="entity class" id="sparqlselectquery">
         <h3>SPARQL SELECT query<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -434,7 +434,7 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="Status">
+    <div class="entity class" id="status1">
         <h3>Status<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -450,21 +450,21 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#priorState">reg:priorState</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#nextstate">reg:nextState</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#presentation">reg:presentation</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#priorstate">reg:priorState</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#presentation">reg:presentation</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#nextstate">reg:nextState</a> <sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#status">reg:status</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#status">reg:status</a> <sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -518,13 +518,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#RegisterItem">reg:RegisterItem</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#EntityReference">reg:EntityReference</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#entityreference">reg:EntityReference</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -545,7 +545,7 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#RegisterItem">reg:RegisterItem</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -566,13 +566,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#RegisterItem">reg:RegisterItem</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -593,13 +593,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Register">reg:Register</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -620,13 +620,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#RegisterItem">reg:RegisterItem</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#EntityReference">reg:EntityReference</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#entityreference">reg:EntityReference</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -647,13 +647,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Delegated">reg:Delegated</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#delegated">reg:Delegated</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -674,13 +674,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#EntityReference">reg:EntityReference</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#entityreference">reg:EntityReference</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -701,13 +701,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#EntityReference">reg:EntityReference</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#entityreference">reg:EntityReference</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -728,13 +728,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#DelegatedRegister">reg:DelegatedRegister</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#delegatedregister">reg:DelegatedRegister</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -755,13 +755,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#DelegatedRegister">reg:DelegatedRegister</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#delegatedregister">reg:DelegatedRegister</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -782,13 +782,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#DelegatedRegister">reg:DelegatedRegister</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#delegatedregister">reg:DelegatedRegister</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -809,13 +809,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Register">reg:Register</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -836,13 +836,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://www.w3.org/ns/ldp#Container">ldp:Container</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/ns/ldp#Container">ldp:Container</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">rdf:Property</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">rdf:Property</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -863,13 +863,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#RegisterItem">reg:RegisterItem</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -890,13 +890,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Register">reg:Register</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -917,13 +917,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Register">reg:Register</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -950,13 +950,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Register">reg:Register</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -977,13 +977,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#RegisterItem">reg:RegisterItem</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#RegisterItem">reg:RegisterItem</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1004,13 +1004,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#RegisterItem">reg:RegisterItem</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Register">reg:Register</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1031,13 +1031,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Register">reg:Register</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#Collection">prov:Collection</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/ns/prov#Collection">prov:Collection</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1058,7 +1058,7 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#RegisterItem">reg:RegisterItem</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1079,13 +1079,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://rdfs.org/ns/void#Linkset">void:Linkset</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://rdfs.org/ns/void#Linkset">void:Linkset</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://rdfs.org/ns/void#Dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://rdfs.org/ns/void#Dataset">void:Dataset</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1106,13 +1106,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#EntityReference">reg:EntityReference</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#entityreference">reg:EntityReference</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/ns/sparql-service-description#Graph">ssd:Graph</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/ns/sparql-service-description#Graph">ssd:Graph</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1133,13 +1133,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#RegisterItem">reg:RegisterItem</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Status">reg:Status</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#status1">reg:Status</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1166,13 +1166,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#RegisterItem">reg:RegisterItem</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1193,13 +1193,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Register">reg:Register</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Register">reg:Register</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1220,13 +1220,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#RegisterItem">reg:RegisterItem</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#RegisterItem">reg:RegisterItem</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1247,13 +1247,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Register">reg:Register</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#register1">reg:Register</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SPARQLASKquery">reg:SPARQLAskQuery</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#sparqlaskquery">reg:SPARQLAskQuery</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1267,7 +1267,7 @@
         <li><a href="#nextstate">next state</a></li>
         <li><a href="#notation">notation</a></li>
         <li><a href="#presentation">presentation</a></li>
-        <li><a href="#priorState">next state</a></li>
+        <li><a href="#priorstate">next state</a></li>
         <li><a href="#query">query</a></li>
         <li><a href="#tag">tag</a></li>
     </ul>
@@ -1287,13 +1287,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#NamespaceForward">reg:NamespaceForward</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#namespaceforward">reg:NamespaceForward</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2001/XMLSchema#int">xsd:int</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2001/XMLSchema#int">xsd:int</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1314,13 +1314,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Status">reg:Status</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#status1">reg:Status</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1341,13 +1341,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#RegisterItem">reg:RegisterItem</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#registeritem">reg:RegisterItem</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1368,18 +1368,18 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Status">reg:Status</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#status1">reg:Status</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="priorState">
+    <div class="entity property" id="priorstate">
         <h3>next state<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
@@ -1395,13 +1395,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Status">reg:Status</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#status1">reg:Status</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1422,7 +1422,7 @@
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1443,19 +1443,18 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#Collection">prov:Collection</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/ns/prov#Collection">prov:Collection</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
 </section>
-
 <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
@@ -1479,6 +1478,10 @@
         <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
         <dt>reg</dt>
         <dd><code>http://purl.org/linked-data/registry#</code></dd>
+        <dt>sdo</dt>
+        <dd><code>https://schema.org/</code></dd>
+        <dt>sdo2</dt>
+        <dd><code>http://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
         <dt>ssd</dt>
@@ -1495,17 +1498,16 @@
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>
 </section>
-<section id="legend">
+    <div id="legend">
     <h2>Legend</h2>
     <table class="entity">
         <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
         <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
-        <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
         <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
         <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
         <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
         <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
     </table>
-</section>
+    </div>
 </body>
 </html>

@@ -19,8 +19,8 @@
         </dd>
         <dt>Creator(s)</dt>
         <dd>
-            <a href="mailto:john.mckellar@dnrme.qld.gov.au">John McKellar</a> of <a href="http://linked.data.gov.au/org/gsq">Geological Survey of Queensland</a><br/>
             <a href="http://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a> (<a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a>) of <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a><br/>
+            <a href="mailto:john.mckellar@dnrme.qld.gov.au">John McKellar</a> of <a href="http://linked.data.gov.au/org/gsq">Geological Survey of Queensland</a><br/>
         </dd>
         <dt>Contributors(s)</dt>
         <dd>
@@ -57,7 +57,9 @@
 <section id="overview">
     <h2>Overview</h2>
     <div class="figure">
-        <div style="width:500px; height:500px; background-color: black;">&nbsp;</div>
+        <a href="images/overview.svg">
+            <img src="images/overview.svg" alt="overview image" />
+        </a>
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div>
 </section>
@@ -66,10 +68,10 @@
     <ul class="hlist">
         <li><a href="#administrativefeature">Administrative feature</a></li>
         <li><a href="#block">Block</a></li>
+        <li><a href="#georesourceaccumulationfeature">GeoResource Accumulation Feature</a></li>
         <li><a href="#geologicalfeature">Geological Feature</a></li>
         <li><a href="#lithodemicfeature">Lithodemic Feature</a></li>
         <li><a href="#permit">Permit</a></li>
-        <li><a href="#resourceaccumulationfeature">Resource Accumulation Feature</a></li>
         <li><a href="#stratigraphicfeature">Stratigraphic Feature</a></li>
         <li><a href="#sub-block">Sub-Block</a></li>
         <li><a href="#techtonicandstructuralframeworkfeature">Techtonic And Structural Framework Feature</a></li>
@@ -96,9 +98,9 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#sub-block">geoaf:SubBlock</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#permit">geoaf:Permit</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#block">geoaf:Block</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#permit">geoaf:Permit</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#sub-block">geoaf:SubBlock</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -113,14 +115,34 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Blocks are Administrative Features that are defined for the adminstration of mining leases.
-Individual Blocks are defined by the Queensland Department of Natural Resources, Mines and Energy's Geological Survey of Queensland's Permit Administration unit.
+                    A Block is an administrative division of the State of Queensland that is used for tenure management. A Block is defined as five minutes of latitude by five minutes of longitude. Blocks are grouped by 1:1,000,000 map sheet areas, the names of which provide the containing Blocks with a four letter prefix (e.g. Clermont 1:1,000,000 provides CLER). Each sheet area contains 3456 Blocks, with the Blocks numbered between 1 and 3456 inclusive. A Block is divided into 25 Sub-Blocks.
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
                     <a href="#administrativefeature">geoaf:AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="georesourceaccumulationfeature">
+        <h3>GeoResource Accumulation Feature<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/geoadminfeatures#GeoResourceAccumulationFeature</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Georesource accumulations are naturally occurring masses, volumes or concentrations of geological materials that have existing or potential economic value. These resources may include, but are not limited to, minerals (including coal), hydrocarbons, quarry resources and groundwater.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#geologicalfeature">geoaf:GeologicalFeature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -147,10 +169,10 @@ Individual Blocks are defined by the Queensland Department of Natural Resources,
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#resourceaccumulationfeature">geoaf:ResourceAccumulationFeature</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#techtonicandstructuralframeworkfeature">geoaf:TechtonicAndStructuralFrameworkFeature</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#lithodemicfeature">geoaf:LithodemicFeature</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#stratigraphicfeature">geoaf:StratigraphicFeature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#techtonicandstructuralframeworkfeature">geoaf:TechtonicAndStructuralFrameworkFeature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#georesourceaccumulationfeature">geoaf:GeoResourceAccumulationFeature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -184,24 +206,15 @@ Individual Blocks are defined by the Queensland Department of Natural Resources,
                 <td><code>http://linked.data.gov.au/def/geoadminfeatures#Permit</code></td>
             </tr>
             <tr>
+                <th>Description</th>
+                <td>
+                    Permits are a license granted over a spatial region within the State of Queensland. Permits govern the activities which can be conducted upon them. Activities include exploration, development, and extraction of a specific commodity or commodities.
+                </td>
+            </tr>
+            <tr>
                 <th>Super-classes</th>
                 <td>
                     <a href="#administrativefeature">geoaf:AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="resourceaccumulationfeature">
-        <h3>Resource Accumulation Feature<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/geoadminfeatures#ResourceAccumulationFeature</code></td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#geologicalfeature">geoaf:GeologicalFeature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -212,6 +225,12 @@ Individual Blocks are defined by the Queensland Department of Natural Resources,
             <tr>
                 <th>IRI</th>
                 <td><code>http://linked.data.gov.au/def/geoadminfeatures#StratigraphicFeature</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Stratigraphic Features embrace Stratigraphic Units, which are units of rock and/or sediment that conform to the Law of Superposition (e.g. lithostratigraphic units, biostratigraphic units, chronostratigraphic units), and Stratigraphic Events which reflect physical, chemical and biological events that left identifiable, widespread, if not worldwide, traces or markers in the sedimentary or extrusive igneous record (ICS; Kumpulainen, R.A., 2016).
+                </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
@@ -231,8 +250,7 @@ Individual Blocks are defined by the Queensland Department of Natural Resources,
             <tr>
                 <th>Description</th>
                 <td>
-                    A Sub-Block is an Adminstrative Feature that is always fully contained within a larger Block.
-Individual Sub-Blocks are defined by the Queensland Department of Natural Resources, Mines and Energy's Geological Survey of Queensland's Permit Administration unit.
+                    A Sub-Block is an administrative sub-division of a Block. Each Block is divided into 25 Sub-Blocks. A Sub-Block is defined as one minute of latitude by one minute of longitude. The Sub-Blocks are prefixed with their corresponding Block name and are labelled from A to Z, excluding I. Labels are allocated from left to right, top to bottom, starting from the northwest corner.
                 </td>
             </tr>
             <tr>
@@ -258,6 +276,12 @@ Individual Sub-Blocks are defined by the Queensland Department of Natural Resour
                 <td><code>http://linked.data.gov.au/def/geoadminfeatures#TechtonicAndStructuralFrameworkFeature</code></td>
             </tr>
             <tr>
+                <th>Description</th>
+                <td>
+                    A Tectonic and Structural Framework Feature is a Tectonic, Tectonostratigraphic or Structural element. Tectonic Elements include cratons, orogens, provinces and sedimentary basins; Tectonostratigraphic Elements include nappes and klippen; and Structural Elements include synclines, anticlines, faults and half-grabens.
+                </td>
+            </tr>
+            <tr>
                 <th>Super-classes</th>
                 <td>
                     <a href="#geologicalfeature">geoaf:GeologicalFeature</a><sup class="sup-c" title="class">c</sup><br/>
@@ -271,7 +295,7 @@ Individual Sub-Blocks are defined by the Queensland Department of Natural Resour
     <dl>
         <dt><em>default (:)</em></dt>
         <dd><code>http://linked.data.gov.au/def/geoadminfeatures#</code></dd>
-        <dt>dct</dt>
+        <dt>dcterms</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
         <dt>doap</dt>
         <dd><code>http://usefulinc.com/ns/doap#</code></dd>
