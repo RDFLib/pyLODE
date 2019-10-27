@@ -70,7 +70,6 @@
 
 {%- if description is not none %}
 ### Description
-<div id="description">
 {{ description }}
 {%- endif %}
 {%- if historyNote is not none %}
@@ -79,29 +78,29 @@
 
 ## Table of Contents
 {%- if has_classes %}
-* [Classes](#classes)  
+1. [Classes](#classes)  
 {%- endif %}
 {%- if has_ops %}
-* [Object Properties](#objectproperties)  
+1. [Object Properties](#objectproperties)  
 {%- endif %}
 {%- if has_fps %}
-* [Functional Properties](#functionalproperties)  
+1. [Functional Properties](#functionalproperties)  
 {%- endif %}
 {%- if has_dps %}
-* [Datatype Properties](#datatypeproperties)  
+1. [Datatype Properties](#datatypeproperties)  
 {%- endif %}
 {%- if has_aps %}
-* [Annotation Properties](#annotationproperties)  
+1. [Annotation Properties](#annotationproperties)  
 {%- endif %}
 {%- if has_ps %}
-* [Properties](#properties)  
+1. [Properties](#properties)  
 {%- endif %}
 {%- if has_nis %}
-* [Named Individuals](#namedindividuals)  
+1. [Named Individuals](#namedindividuals)  
 {%- endif %}
-* [Namespaces](#namespaces)  
+1. [Namespaces](#namespaces)  
 
 
 ## Overview
-<img style="width:500px; height:500px; background-color: black;" /><br />
+
 **Figure 1:** Ontology overview  
