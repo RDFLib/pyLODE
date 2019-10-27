@@ -29,7 +29,7 @@
 
 
 ## Overview
-<img src="classes.png" style="width:45%" alt="classes" /><br />
+<img src="classes.png" style="width:400px" alt="classes" /><br />
 **Figure 1:** VOID classes in a hierarchy  
 <img src="properties.png" style="width:45%" alt="properties" /><br />
 **Figure 2:** VOID properties in a hierarchy 
