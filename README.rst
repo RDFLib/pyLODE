@@ -113,20 +113,13 @@ Command line
 These are the command line arguments to run pyLODE as a BASH or Python script:
 
 -  ``-i`` or ``--inputfile``, *required if* ``-u`` *not used*
-    -  The RDF ontology file you wish to generate HTML for Must be in either
-   Turtle, RDF/XML, JSON-LD or N-Triples formats indicated by the file
-   type extensions .rdf, .owl, .ttl, .n3, .nt, .json respectively
+    -  The RDF ontology file you wish to generate HTML for Must be in either Turtle, RDF/XML, JSON-LD or N-Triples formats indicated by the file type extensions .rdf, .owl, .ttl, .n3, .nt, .json respectively
 -  ``-u`` or ``--url``, *required if* ``-i`` *not used*
-    -  The RDF ontology you wish to generate HTML for, online. Must be an
-   absolute URL that can be resolved to RDF, preferably via Content
-   Negotiation.
+    -  The RDF ontology you wish to generate HTML for, online. Must be an absolute URL that can be resolved to RDF, preferably via Content Negotiation.
 -  ``-c`` or ``--css``, *optional, default 'false'*
-    -  Whether (true) or not (false) to copy the default CSS file to the
-   output directory.
+    -  Whether (true) or not (false) to copy the default CSS file to the output directory.
 -  ``-o`` or ``--outputfile``, *optional*
-    -  A name you wish to assign to the output file. Will be postfixed with
-   .html or .md. If not specified, the name of the input file or last segment
-   of RDF URI will be used, + .html/.md.
+    -  A name you wish to assign to the output file. Will be postfixed with .html or .md. If not specified, the name of the input file or last segment of RDF URI will be used, + .html/.md.
 -  ``-f`` or ``--outputformat``, *optional, default 'html'*
     - The output format of the documentation. 'html' or 'markdown' accepted.
 
@@ -150,72 +143,70 @@ Annotations
 pyLODE understands the following ontology annotations:
 
 -  **ontology metadata**
-
-   -  *imports* - ``owl:imports``
-   -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title``
-   -  *version URI* - ``owl:versionIRI`` as a URI
-   -  *version info* - ``owl:versionInfo`` as a string
-   -  *publishers*, *creators*, *contributors*
-
-      -  either the DC versions of properties (``dc:publisher`` etc.) or
-         the DCT versions (``dct:publisher`` etc.)
-      -  if using the DC form, the range should just be a string, e.g.
-         \`dc:publisher "Geoscience Australia" .
-      -  if using the DCT form, range should be a ``foaf:Agent`` or
-         ``schema:Person`` Blank Node with the following properties: ``foaf:name``/``sdo:name``, ``foaf:mbox``/``sdo:email`` or
-         ``foaf:homepage``/``schema:identifier`` properties
-      -  see the `pylode/examples/ <pylode/examples/>`__ directory for
-         examples!
-
-   -  *created*, modified, issued - ``dct:created`` etc., all as
-      ``xsd:date`` or ``xsd:dateTime`` datatype properties
-   -  *description* - ``rdf:comment`` or ``skos:definition`` or
-      ``dct:description``
-   -  *license* - ``dct:license`` as a URI
-   -  *rights* - ``dct:rights`` as a string
-
+    -  *imports* - ``owl:imports``
+    -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title`` or ``dc:title``
+    -  *description* - ``rdfs:comment`` or ``skos:definition`` or ``dct:description`` or ``dc:description``
+        - Markdown is supported
+    -  *historyNote* - ``skos:historyNote``
+        - Markdown is supported
+    -  *version URI* - ``owl:versionIRI`` as a URI
+    -  *version info* - ``owl:versionInfo`` as a string
+        - *preferred namespace prefix* - ``vann:preferredNamespacePrefix`` as a token
+        - *preferred namespace URI* - ``vann:preferredNamespaceUri`` as a URI
+    -  **agents**: *publishers*, *creators*, *contributors*
+        - see **Agent Formatting** below for details
+        - see the `pylode/examples/ <pylode/examples/>`__ directory for examples!
+    -  **dates**: *created*, *modified*, *issued* - ``dct:created`` etc., all as ``xsd:date`` or ``xsd:dateTime`` datatype properties
+    -  **rights**: *license* - ``dct:license`` as a URI & *rights* - ``dct:rights`` as a string
 -  **classes**
-
-   -  per ``rdfs:Class`` or ``owl:Class``
-   -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title``
-   -  *description* - ``rdf:comment`` or ``skos:definition`` or
-      ``dct:description`` as a string or using
-      `Markdown <https://daringfireball.net/projects/markdown/>`__ or
-      HTML
-   -  *usage note* - a ``skos:scopeNote`` string
-   -  *super classes* - by declaring a class to be ``owl:subClassOf``
-      something
-   -  *sub classes* - pyLODE will work these out itself
-   -  *restrictions* - by declaring a class to be ``owl:subClassOf`` of
-      an ``owl:Restriction`` with any of the normal cardinality or
-      property existence etc. restrictions
-   -  *in domain/range of* - pyLODE will auto-calculate these
-
+    -  per ``rdfs:Class`` or ``owl:Class``
+    -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title``
+    -  *description* - ``rdf:comment`` or ``skos:definition`` or ``dct:description`` as a string or usingc`Markdown <https://daringfireball.net/projects/markdown/>`__ or HTML
+    -  *usage note* - a ``skos:scopeNote`` string
+    -  *super classes* - by declaring a class to be ``owl:subClassOf`` something
+    -  *sub classes* - pyLODE will work these out itself
+    -  *restrictions* - by declaring a class to be ``owl:subClassOf`` of an ``owl:Restriction`` with any of the normal cardinality or property existence etc. restrictions
+    -  *in domain/range of* - pyLODE will auto-calculate these
 -  **properties**
-
-   -  per ``owl:ObjectProperty``, ``owl:DatatypeProperty`` or
-      ``owl:AnnotationProperty``
-   -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title``
-   -  *description* - ``rdf:comment`` or ``skos:definition`` or
-      ``dct:description``
-   -  *usage note* - a ``skos:scopeNote`` string
-   -  *super properties* - by declaring a class to be
-      ``owl:subPropertyOf`` something
-   -  *sub properties* - pyLODE will work these out itself
-   -  *domains* - ``rdfs:domain`` or ``schema:domainIncludes``
-   -  *ranges* - ``rdfs:range`` or ``schema:rangeIncludes``
-
+    -  per ``owl:ObjectProperty``, ``owl:DatatypeProperty`` or ``owl:AnnotationProperty``
+    -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title``
+    -  *description* - ``rdf:comment`` or ``skos:definition`` or ``dct:description``
+    -  *usage note* - a ``skos:scopeNote`` string
+    -  *super properties* - by declaring a class to be ``owl:subPropertyOf`` something
+    -  *sub properties* - pyLODE will work these out itself
+    -  *domains* - ``rdfs:domain`` or ``schema:domainIncludes``
+    -  *ranges* - ``rdfs:range`` or ``schema:rangeIncludes``
 -  **namespaces**
-
-   -  pyLODE will honour any namespace prefixes you set and look up
-      others in `http://prefix.cc <http://prefix.cc/>`__
-   -  it will either read your ontology's default/base URI in
-      annotations or guess it using a number of methods
-
+    -  pyLODE will honour any namespace prefixes you set and look up others in `http://prefix.cc <http://prefix.cc/>`__
+    -  it will either read your ontology's default/base URI in annotations or guess it using a number of methods
 -  **named individuals**
+    -  *coming!*
 
-   -  *coming!*
+Agent Formatting
+&&&&&&&&&&&&&&&&&
+-  Use either the DC versions of properties (``dc:publisher`` etc.) or the DCT versions (``dct:publisher`` etc.)
+-  if using the DC form, the range should just be a string, e.g. ``dc:publisher "Geoscience Australia" .`` or ``dc:creator "Nicholas J. Car" .``
+-  if using the DCT form, the range should be a ``foaf:Agent`` or ``schema:Person`` Blank Node or URI (if details are given elsewhere in the ontology) with the following properties:
+    - ``foaf:name``/``sdo:name``
+    - ``foaf:mbox``/``sdo:email``
+    - ``foaf:homepage``/``schema:identifier`` / ``sdo:url``
+- Affiliation of people to organisation can be made if schem.aorg is used using ``sdo:member`` or ``sdo:affiliation`` (latter preferred)
+    - e.g.
 
+::
+
+    <ontology_x>
+        dct:creator [
+            sdo:name "Nicholas J. Car" ;
+            sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+            sdo:affiliation [
+                sdo:name "SURROUND Australia Pty Ltd" ;
+                sdo:url <https://surroundaustralia.com> ;
+            ] ;
+        ] ;
+
+Additions
+&&&&&&&&&&&&&&&&&
 To help pyLODE understand more annotations, see **Suggestions** below.
 
 
@@ -223,7 +214,7 @@ Styling
 ^^^^^^^
 This tool generates HTML that is shamelessly similar to LODE's styling.
 That's because we want things to look familiar and LODE's outputs look
-great.
+great. The Markdown's pretty vanilla.
 
 Also, pyLODE generates and uses only static HTML + CSS, no JavaScript,
 live loading Google Fonts etc. This is to ensure that all you nned for
@@ -306,4 +297,4 @@ Contacts
 | **Nicholas Car**
 | *Data System Architect*
 | SURROUND Australia Pty Ltd
-| nicholas.car@surround.com
+| nicholas.car@surroundaustralia.com
