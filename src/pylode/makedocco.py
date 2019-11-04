@@ -8,7 +8,7 @@ import dateutil.parser
 from jinja2 import Environment, FileSystemLoader
 
 
-class MakeHtml:
+class MakeDocco:
     def __init__(self, outputformat='html'):
         if outputformat not in ['html', 'markdown']:
             self.outputformat = 'html'
@@ -110,7 +110,7 @@ class MakeHtml:
     def _get_curie_prefix(uself, uri, existing_curies):
         ns_count = 0
 
-        from curies import CURIES
+        from .curies import CURIES
 
         # TODO: replace this with a once-per run update CURIES function
         def get_curie_online(uri):
@@ -138,7 +138,7 @@ class MakeHtml:
             # strip off trailing hash or slash and return last path segment
             c = uri.rstrip('#/').split('/')[-1]
 
-            # prevent CURIE collision = return nsX (x int) if we already have this one
+            # prevent CURIE collision = return nsX (X int) if we already have this one
             if c in existing_curies:
                 ns_count += 1
                 return 'ns' + str(ns_count)
@@ -155,7 +155,7 @@ class MakeHtml:
         if c is not None:
             return c
 
-        # can't fund CURIE online so make up one
+        # can't find CURIE online so make up one
         c = get_curie_from_namespace(uri, existing_curies, ns_count)
         return c if c is not None else ''
 
@@ -205,7 +205,10 @@ class MakeHtml:
 
         # invert the key/values in instances
         for k, v in sorted(ns.items(), key=lambda x: x[1]):
-            self.NAMESPACES[v] = k
+            if v == '':  # can't use empty dict keys in Python
+                self.NAMESPACES[':'] = k
+            else:
+                self.NAMESPACES[v] = k
 
     def _extract_properties(self):
         for prop in self.PROPERTIES.keys():
@@ -977,12 +980,11 @@ class MakeHtml:
     def _get_curie(self, uri):
         n = self._get_namespace_from_uri(str(uri))
         for k, v in self.NAMESPACES.items():
-            if v == n:
-                return '{}:{}'.format(k, self._get_uri_id(uri))
-
-            # try finding a match after removing / or # before giving up
-            if v.strip('/#') == n:
-                return '{}:{}'.format(k, self._get_uri_id(uri))
+            if v == n or v.strip('/#') == n:
+                if k == ':':
+                    return '{}'.format(self._get_uri_id(uri))
+                else:
+                    return '{}:{}'.format(k, self._get_uri_id(uri))
 
         # if no match, return the original URI
         return uri
@@ -1474,7 +1476,7 @@ class MakeHtml:
 
 
 if __name__ == '__main__':
-    h = MakeHtml()
+    h = MakeDocco()
     # get the input file
     i = h.APP_DIR + '/examples/decprov.ttl'
     # parse the input file into an in-memory RDF graph

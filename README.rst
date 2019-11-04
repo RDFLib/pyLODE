@@ -15,25 +15,49 @@ and it's (`online version <www.essepuntato.it/lode>`__) is not always
 online.
 
 This tool is a complete re-implementation of LODE's functionality using
-Python and Pythons RDF manipulation module,
+Python and Python's RDF manipulation module,
 `rdflib <https://pypi.org/project/rdflib/>`__. An ontology to be
-documented is parsed and inspected using rdflib and HTML is generated
+documented is parsed and inspected using rdflib and HTML or Markdown is generated
 using basic Python scripting and Python's `Jinja2
 templating <https://pypi.org/project/Jinja2/>`__.
 
-The tool can be run either via command line or as-a-service. The 
-latter is implemented via the popular `Falcon framework <https://falconframework.org/>`__.
+The tool can be run as in these ways:
+
+- Python command line
+    - cli.py in the main folder
+- BASH command line
+    - bin/ directory, uses cli.py
+- as-a-service locally
+    - via the popular `Falcon framework <https://falconframework.org/>`__.
+    - see server.py in the main folder
+- as-a-service online
+    - hosted at https://kurrawong.net/pylode-online
 
 
 Examples
 --------
-pyLODE has been tested with all of the ontologies in
-`pylode/examples/ <pylode/examples/>`__ and we are trying to ensure it
+pyLODE has been tested with all of the 30+ ontologies in
+`src/pylode/examples/ <src/pylode/examples/>`__ and we are trying to ensure it
 captures all of their annotations. For each example, there is the
-original RDF file and the corresponding output HTML.
+original RDF file and the corresponding output, either HTML, Markdown or both.
+
+For example, `Epimorphic's <https://www.epimorphics.com/>`__'s **Registry Ontology** is:
+
+- **reg.ttl** - source file
+- **reg.html** - HTML output
+    - see this `rendered online by GitHack <https://raw.githack.com/RDFLib/pyLODE/master/src/pylode/examples/reg.html>`__
+    - see `the point-of-truth rendered online <https://epimorphics.com/public/vocabulary/Registry.html>`__
+- **reg.md** - Markdown output
+    - see this `rendered online by GitHub <https://github.com/RDFLib/pyLODE/blob/master/src/pylode/examples/reg.md>`__
+
 
 Ontologies online using pyLODE:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- `Australia's Department of Finance's <https://www.finance.gov.au>`__'s **AGRIF ontology** - http://linked.data.gov.au/def/agrif
+    - see the `Markdown version <https://github.com/AGLDWG/agrif-ont/blob/master/agrif.md>`__
+- `National Archives of Australia <http://www.naa.gov.au>`__'s **Commonwealth Records Series ontology** - http://linked.data.gov.au/def/crs
+    - see the `Markdown version <https://github.com/RDFLib/pyLODE/blob/master/src/pylode/examples/crs.md>`__
+- `CSIRO's <https://www.csiro.au>`__'s **LocI ontology** - http://linked.data.gov.au/def/loci
 -  `Geological Survey of
    Queensland <https://www.business.qld.gov.au/industries/mining-energy-water/resources/geoscience-information/gsq>`__'s
    **Boreholes Profile** - http://linked.data.gov.au/def/borehole
@@ -89,20 +113,22 @@ Command line
 These are the command line arguments to run pyLODE as a BASH or Python script:
 
 -  ``-i`` or ``--inputfile``, *required if* ``-u`` *not used*
--  The RDF ontology file you wish to generate HTML for Must be in either
+    -  The RDF ontology file you wish to generate HTML for Must be in either
    Turtle, RDF/XML, JSON-LD or N-Triples formats indicated by the file
    type extensions .rdf, .owl, .ttl, .n3, .nt, .json respectively
 -  ``-u`` or ``--url``, *required if* ``-i`` *not used*
--  The RDF ontology you wish to generate HTML for, online. Must be an
+    -  The RDF ontology you wish to generate HTML for, online. Must be an
    absolute URL that can be resolved to RDF, preferably via Content
    Negotiation.
 -  ``-c`` or ``--css``, *optional, default 'false'*
--  Whether (true) or not (false) to copy the default CSS file to the
+    -  Whether (true) or not (false) to copy the default CSS file to the
    output directory.
 -  ``-o`` or ``--outputfile``, *optional*
--  A name you wish to assign to the output file. Will be postfixed with
-   .html. If not specified, the name of the input file or last segment
-   of RDF URI will be used, + .html.
+    -  A name you wish to assign to the output file. Will be postfixed with
+   .html or .md. If not specified, the name of the input file or last segment
+   of RDF URI will be used, + .html/.md.
+-  ``-f`` or ``--outputformat``, *optional, default 'html'*
+    - The output format of the documentation. 'html' or 'markdown' accepted.
 
 Example call
 ^^^^^^^^^^^^

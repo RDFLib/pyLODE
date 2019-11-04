@@ -1,4 +1,4 @@
 from .curies import *
-from .makehtml import *
+from .makedocco import *
 
 __version__ = '1.2'

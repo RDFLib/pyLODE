@@ -4,7 +4,7 @@ from os import path
 import shutil
 import requests
 import rdflib
-from makehtml import MakeHtml
+from makedocco import MakeDocco
 
 
 # used to know what RDF file types rdflib can handle
@@ -99,7 +99,7 @@ def main(args):
 
     parser.add_argument(
         '-f', '--outputformat',
-        help='The output format of the documentation. HTML is working fully, markdown is in test mode only.',
+        help='The output format of the documentation.',
         choices=['html', 'markdown'],
         default='html'
     )
@@ -177,7 +177,7 @@ def main(args):
         if not output_filename.endswith('.md'):
             output_filename += '.md'
 
-    h = MakeHtml(args.outputformat)
+    h = MakeDocco(args.outputformat)
     h.G = g
 
     # generate the HTML doc

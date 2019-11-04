@@ -1,6 +1,7 @@
 import falcon
 import subprocess
 
+
 class DocResource:
     def on_get(self, req, resp):
         """Handles GET requests"""
@@ -10,6 +11,7 @@ class DocResource:
             subprocess.call(cmd, shell=True)
             resp.set_header('Powered-By', 'Falcon')
             resp.status = falcon.HTTP_200
+
 
 api = falcon.API()
 api.add_route('/lode', DocResource())
