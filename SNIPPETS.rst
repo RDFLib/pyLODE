@@ -32,6 +32,8 @@ A simple literal value for an agent.
 
 Object type
 ~~~~~~~~~~~
+.. image:: img/contributor-object.png
+    :align: center
 
 * ``<ONTOLOGY_URI> dct:creator [...] .``
    * the range value is a Blank Node or a URI of type:
@@ -125,12 +127,16 @@ Additional Resources
 
 Ontology Source
 ~~~~~~~~~~~~~~~
+.. image:: img/source.png
+    :align: center
+
 This is generated automatically
 
 Code Repositories
 ~~~~~~~~~~~~~~~~~
 
 .. image:: img/code-repository.png
+    :align: center
 
 
 Code repositories that house an ontology can be indicated using the `Description of a Project <https://github.com/ewilderj/doap>`__ like this:
