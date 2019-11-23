@@ -199,6 +199,7 @@ Agent Formatting
         dct:creator [
             sdo:name "Nicholas J. Car" ;
             sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+            schema:email <mailto:nicholas.car@surroundaustralia.com> ;
             sdo:affiliation [
                 sdo:name "SURROUND Australia Pty Ltd" ;
                 sdo:url <https://surroundaustralia.com> ;
