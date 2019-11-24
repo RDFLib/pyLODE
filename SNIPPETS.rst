@@ -1,7 +1,6 @@
-.. role:: raw-html(raw)
-   :format: html
+.. raw:: html
 
-:raw-html:`<style>.figure-eg {border: solid 1px black;}</style>`
+    <style> .figure-eg {border: solid 1px black;} </style>
 
 
 pyLODE Snippets
