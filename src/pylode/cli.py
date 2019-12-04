@@ -100,7 +100,7 @@ def main(args):
     parser.add_argument(
         '-f', '--outputformat',
         help='The output format of the documentation.',
-        choices=['html', 'markdown'],
+        choices=['html', 'md'],
         default='html'
     )
 
@@ -173,7 +173,7 @@ def main(args):
     if args.outputformat == 'html':
         if not output_filename.endswith('.html'):
             output_filename += '.html'
-    elif args.outputformat == 'markdown':
+    elif args.outputformat == 'md':
         if not output_filename.endswith('.md'):
             output_filename += '.md'
 

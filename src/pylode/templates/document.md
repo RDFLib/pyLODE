@@ -1,7 +1,7 @@
-{{ metadata_md|safe }}
-{{ classes_md|safe }}
-{{ properties_md|safe }}
-{{ namespaces_md|safe }}
+{{ metadata|safe }}
+{{ classes|safe }}
+{{ properties|safe }}
+{{ namespaces|safe }}
 
 ## Legend
 * Classes: c

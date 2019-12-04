@@ -49,22 +49,22 @@
 </section>
 <section id="overview">
     <h2>Overview</h2>
-    <div class="figure" style="margin-bottom:10px;">
-        <a href="decprov.svg"><img style="width:65%;" src="decprov.svg" alt="DecPROV diagrammatic overview" /></a>
-        <div class="caption"><strong>Figure 1:</strong> Diagrammatic overview of this ontology</div>
+    <div class="figure">
+        <div style="width:500px; height:500px; background-color: black;">&nbsp;</div>
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div>
 </section>
 <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
-        <li><a href="#answer">Answer</a></li>
-        <li><a href="#decisioninputdata">Decision Input Data</a></li>
-        <li><a href="#decisionlogicexpression">Decision Logic Expression</a></li>
-        <li><a href="#decisionmaking">Decision Making</a></li>
-        <li><a href="#question">Question</a></li>
-        <li><a href="#requirement">Requirement</a></li>
+        <li><a href="#Answer">Answer</a></li>
+        <li><a href="#DecisionInputData">Decision Input Data</a></li>
+        <li><a href="#DecisionLogicExpression">Decision Logic Expression</a></li>
+        <li><a href="#DecisionMaking">Decision Making</a></li>
+        <li><a href="#Question">Question</a></li>
+        <li><a href="#Requirement">Requirement</a></li>
     </ul>
-    <div class="entity class" id="decisioninputdata">
+    <div class="entity class" id="DecisionInputData">
         <h3>Decision Input Data<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -78,14 +78,20 @@
                 </td>
             </tr>
             <tr>
+                <th>Usage Note</th>
+                <td>
+                    Do not use this class to represent decision logic: use DecisionLogicExpression for that.
+                </td>
+            </tr>
+            <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="decisionlogicexpression">
+    <div class="entity class" id="DecisionLogicExpression">
         <h3>Decision Logic Expression<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -99,14 +105,20 @@
                 </td>
             </tr>
             <tr>
+                <th>Usage Note</th>
+                <td>
+                    Use this class to contain decision logic epxpressions in microformats, such as Decision Modelling Notation's FEEL expressions, or as a container entity to hold collections of semantic objects representing decision logic.
+                </td>
+            </tr>
+            <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#Plan">prov:Plan</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/prov#Plan">prov:Plan</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="answer">
+    <div class="entity class" id="Answer">
         <h3>Answer<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -122,25 +134,25 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#wasGeneratedBy">prov:wasGeneratedBy</a> <span class="cardinality">some</span> <a href="http://promsns.org/def/do#DecisionMaking">do:DecisionMaking</a> <sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/prov#wasInfluencedBy">prov:wasInfluencedBy</a> <span class="cardinality">some</span> <a href="http://promsns.org/def/do#Question">do:Question</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/prov#wasGeneratedBy">prov:wasGeneratedBy</a> <span class="cardinality">some</span> <a href="http://promsns.org/def/do#DecisionMaking">do:DecisionMaking</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/prov#wasInfluencedBy">prov:wasInfluencedBy</a> <span class="cardinality">some</span> <a href="http://promsns.org/def/do#Question">do:Question</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#hadquestion">http://promsns.org/def/decprov#hadQuestion</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hadquestion">hadQuestion</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="decisionmaking">
+    <div class="entity class" id="DecisionMaking">
         <h3>Decision Making<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -156,12 +168,12 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="question">
+    <div class="entity class" id="Question">
         <h3>Question<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -177,18 +189,18 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#hadquestion">http://promsns.org/def/decprov#hadQuestion</a> <sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hadquestion">hadQuestion</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="requirement">
+    <div class="entity class" id="Requirement">
         <h3>Requirement<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -204,7 +216,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -259,22 +271,25 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://promsns.org/def/do#Answer">do:Answer</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="http://promsns.org/def/do#Answer">do:Answer</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://promsns.org/def/do#Question">do:Question</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="http://promsns.org/def/do#Question">do:Question</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
 </section>
+
 <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
         <dt><em>default (:)</em></dt>
+        <dd><code>http://promsns.org/def/decprov#</code></dd>
+        <dt>:</dt>
         <dd><code>http://promsns.org/def/decprov#</code></dd>
         <dt>dct</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
@@ -300,16 +315,17 @@
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>
 </section>
-    <section id="legend">
-        <h2>Legend</h2>
-        <table class="entity">
-            <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
-            <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
-            <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
-            <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
-            <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
-            <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
-        </table>
-    </section>
+<section id="legend">
+    <h2>Legend</h2>
+    <table class="entity">
+        <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+        <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+        <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+        <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+        <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+        <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+        <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+    </table>
+</section>
 </body>
 </html>

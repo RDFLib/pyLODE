@@ -10,7 +10,7 @@ from jinja2 import Environment, FileSystemLoader
 
 class MakeDocco:
     def __init__(self, outputformat='html'):
-        if outputformat not in ['html', 'markdown']:
+        if outputformat not in ['html', 'md']:
             self.outputformat = 'html'
         else:
             self.outputformat = outputformat
@@ -796,26 +796,6 @@ class MakeDocco:
         if self.NAMESPACES.get('') is not None:
             del(self.NAMESPACES[''])
 
-    def _make_namespaces_html(self):
-        template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-        namespaces_template = Environment(loader=FileSystemLoader(template_dir)).get_template('namespaces.html')
-        namespaces_html = namespaces_template.render(
-            namespaces=self.NAMESPACES,
-            default_namespace=self.METADATA['default_namespace']
-        )
-
-        return namespaces_html
-
-    def _make_namespaces_md(self):
-        template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-        namespaces_template = Environment(loader=FileSystemLoader(template_dir)).get_template('namespaces.md')
-        namespaces_md = namespaces_template.render(
-            namespaces=self.NAMESPACES,
-            default_namespace=self.METADATA['default_namespace']
-        )
-
-        return namespaces_md
-
     def _make_uri_html(self, uri, type=None):
         # set display to CURIE
         short = self._get_curie(uri)
@@ -919,7 +899,7 @@ class MakeDocco:
                             collection_type = self._get_curie(str(r.col_type))
                             collection_members.append(str(r.col_member))
 
-                        cls = self._make_collection_class_html2(collection_type, collection_members)
+                        cls = self._make_collection_class_html(collection_type, collection_members)
                     else:
                         cls = self._make_uri_html(str(o2), type='c')
                 elif p2 in [
@@ -1065,9 +1045,14 @@ class MakeDocco:
     def _make_source_file_link(self, source_info):
         return '<a href="{}">RDF ({})</a>'.format(source_info[0].split('/')[-1], source_info[1])
 
-    def _make_property_html(self, property):
+    def _make_property(self, property, outputformat='html'):
+        if outputformat == 'md':
+            template_file_ext = 'md'
+        else:
+            template_file_ext = 'html'
+
         template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-        template = Environment(loader=FileSystemLoader(template_dir)).get_template('property.html')
+        template = Environment(loader=FileSystemLoader(template_dir)).get_template('property.' + template_file_ext)
 
         return template.render(
             uri=property[0],
@@ -1084,47 +1069,33 @@ class MakeDocco:
             rangeIncludes=property[1]['rangeIncludes'],
         )
 
-    def _make_property_md(self, property):
+    def _make_properties(self, outputformat='html'):
+        if outputformat == 'md':
+            template_file_ext = 'md'
+        else:
+            template_file_ext = 'html'
+
         template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-        template = Environment(loader=FileSystemLoader(template_dir)).get_template('property.md')
+        template = Environment(loader=FileSystemLoader(template_dir)).get_template('properties.' + template_file_ext)
+        op_instances = []
+        fp_instances = []
+        dp_instances = []
+        ap_instances = []
+        p_instances = []
+
+        for k, v in self.PROPERTIES.items():
+            if v.get('prop_type') == 'op':
+                op_instances.append((v['title'], v['fid'], self._make_property((k, v), outputformat=outputformat)))
+            elif v.get('prop_type') == 'fp':
+                fp_instances.append((v['title'], v['fid'], self._make_property((k, v), outputformat=outputformat)))
+            elif v.get('prop_type') == 'dp':
+                dp_instances.append((v['title'], v['fid'], self._make_property((k, v), outputformat=outputformat)))
+            elif v.get('prop_type') == 'ap':
+                ap_instances.append((v['title'], v['fid'], self._make_property((k, v), outputformat=outputformat)))
+            elif v.get('prop_type') == 'p':
+                p_instances.append((v['title'], v['fid'], self._make_property((k, v), outputformat=outputformat)))
 
         return template.render(
-            uri=property[0],
-            fid=property[1].get('fid'),
-            property_type=property[1].get('prop_type'),
-            title=property[1].get('title'),
-            description=property[1].get('description'),
-            scopeNote=property[1].get('scopeNote'),
-            supers=property[1].get('supers'),
-            subs=property[1].get('subs'),
-            domains=property[1]['domains'],
-            domainIncludes=property[1]['domainIncludes'],
-            ranges=property[1]['ranges'],
-            rangeIncludes=property[1]['rangeIncludes'],
-        )
-
-    def _make_properties_html(self):
-        template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-        template = Environment(loader=FileSystemLoader(template_dir)).get_template('properties.html')
-        op_instances = []
-        fp_instances = []
-        dp_instances = []
-        ap_instances = []
-        p_instances = []
-
-        for k, v in self.PROPERTIES.items():
-            if v.get('prop_type') == 'op':
-                op_instances.append((v['title'], v['fid'], self._make_property_html((k, v))))
-            elif v.get('prop_type') == 'fp':
-                fp_instances.append((v['title'], v['fid'], self._make_property_html((k, v))))
-            elif v.get('prop_type') == 'dp':
-                dp_instances.append((v['title'], v['fid'], self._make_property_html((k, v))))
-            elif v.get('prop_type') == 'ap':
-                ap_instances.append((v['title'], v['fid'], self._make_property_html((k, v))))
-            elif v.get('prop_type') == 'p':
-                p_instances.append((v['title'], v['fid'], self._make_property_html((k, v))))
-
-        html = template.render(
             op_instances=op_instances,
             fp_instances=fp_instances,
             dp_instances=dp_instances,
@@ -1132,45 +1103,17 @@ class MakeDocco:
             p_instances=p_instances
         )
 
-        return html
+    def _make_classes(self, outputformat='html'):
+        if outputformat == 'md':
+            template_file_ext = 'md'
+        else:
+            template_file_ext = 'html'
 
-    def _make_properties_md(self):
         template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-        template = Environment(loader=FileSystemLoader(template_dir)).get_template('properties.md')
-        op_instances = []
-        fp_instances = []
-        dp_instances = []
-        ap_instances = []
-        p_instances = []
-
-        for k, v in self.PROPERTIES.items():
-            if v.get('prop_type') == 'op':
-                op_instances.append((v['title'], v['fid'], self._make_property_md((k, v))))
-            elif v.get('prop_type') == 'fp':
-                fp_instances.append((v['title'], v['fid'], self._make_property_md((k, v))))
-            elif v.get('prop_type') == 'dp':
-                dp_instances.append((v['title'], v['fid'], self._make_property_md((k, v))))
-            elif v.get('prop_type') == 'ap':
-                ap_instances.append((v['title'], v['fid'], self._make_property_md((k, v))))
-            elif v.get('prop_type') == 'p':
-                p_instances.append((v['title'], v['fid'], self._make_property_md((k, v))))
-
-        md = template.render(
-            op_instances=op_instances,
-            fp_instances=fp_instances,
-            dp_instances=dp_instances,
-            ap_instances=ap_instances,
-            p_instances=p_instances
-        )
-
-        return md
-
-    def _make_classes_html(self):
-        template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-        class_template = Environment(loader=FileSystemLoader(template_dir)).get_template('class.html')
-        class_htmls = []
+        class_template = Environment(loader=FileSystemLoader(template_dir)).get_template('class.' + template_file_ext)
+        classes_list = []
         for k, v in self.CLASSES.items():
-            class_htmls.append(
+            classes_list.append(
                 class_template.render(
                     uri=k,
                     fid=v['fid'],
@@ -1187,50 +1130,35 @@ class MakeDocco:
                 )
             )
 
-        classes_template = Environment(loader=FileSystemLoader(template_dir)).get_template('classes.html')
+        classes_template = Environment(loader=FileSystemLoader(template_dir)).get_template('classes.' + template_file_ext)
         fids = sorted([(v.get('fid'), v.get('title')) for k, v in self.CLASSES.items()], key=lambda tup: tup[1])
-        classes_html = classes_template.render(
+        return classes_template.render(
             fids=fids,
-            classes=class_htmls,
+            classes=classes_list,
         )
 
-        return classes_html
+    def _make_namespaces(self, outputformat='html'):
+        if outputformat == 'md':
+            template_file_ext = 'md'
+        else:
+            template_file_ext = 'html'
 
-    def _make_classes_md(self):
         template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-        class_template = Environment(loader=FileSystemLoader(template_dir)).get_template('class.md')
-        class_md = []
-        for k, v in self.CLASSES.items():
-            class_md.append(
-                class_template.render(
-                    uri=k,
-                    fid=v['fid'],
-                    title=v['title'],
-                    description=v['description'],
-                    supers=v['supers'],
-                    restrictions=v['restrictions'],
-                    scopeNote=v['scopeNote'],
-                    subs=v['subs'],
-                    in_domain_of=v['in_domain_of'],
-                    in_domain_includes_of=v['in_domain_includes_of'],
-                    in_range_of=v['in_range_of'],
-                    in_range_includes_of=v['in_range_includes_of']
-                )
-            )
-
-        classes_template = Environment(loader=FileSystemLoader(template_dir)).get_template('classes.md')
-        fids = sorted([(v.get('fid'), v.get('title')) for k, v in self.CLASSES.items()], key=lambda tup: tup[1])
-        classes_md = classes_template.render(
-            fids=fids,
-            classes=class_md,
+        namespaces_template = Environment(loader=FileSystemLoader(template_dir)).get_template('namespaces.' + template_file_ext)
+        return namespaces_template.render(
+            namespaces=self.NAMESPACES,
+            default_namespace=self.METADATA['default_namespace']
         )
 
-        return classes_md
+    def _make_metadata(self, source_info, outputformat='html'):
+        if outputformat == 'md':
+            template_file_ext = 'md'
+        else:
+            template_file_ext = 'html'
 
-    def _make_metadata_html(self, source_info):
         template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-        template = Environment(loader=FileSystemLoader(template_dir)).get_template('metadata.html')
-        html = template.render(
+        template = Environment(loader=FileSystemLoader(template_dir)).get_template('metadata.' + template_file_ext)
+        return template.render(
             imports=self.METADATA['imports'],
             title=self.METADATA.get('title'),
             uri=self.METADATA.get('uri'),
@@ -1257,67 +1185,22 @@ class MakeDocco:
             has_nis=False
         )
 
-        return html
+    def _make_document(self, title, metadata, classes, properties, default_namespace, namespaces, outputformat='html'):
+        if outputformat == 'md':
+            template_file_ext = 'md'
+        else:
+            template_file_ext = 'html'
 
-    def _make_metadata_md(self, source_info):
         template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-        template = Environment(loader=FileSystemLoader(template_dir)).get_template('metadata.md')
-        md = template.render(
-            imports=self.METADATA['imports'],
-            title=self.METADATA.get('title'),
-            uri=self.METADATA.get('uri'),
-            version_uri=self.METADATA.get('versionIRI'),
-            publishers=self.METADATA['publishers'],
-            creators=self.METADATA['creators'],
-            contributors=self.METADATA['contributors'],
-            created=self.METADATA.get('created'),  # TODO: auto-detect format
-            modified=self.METADATA.get('modified'),
-            issued=self.METADATA.get('issued'),
-            description=self.METADATA.get('description'),
-            historyNote=self.METADATA.get('historyNote'),
-            version_info=self.METADATA.get('versionInfo'),
-            license=self.METADATA.get('license'),
-            rights=self.METADATA.get('rights'),
-            repository=self.METADATA.get('repository'),
-            ont_source=self._make_source_file_link(source_info),
-            has_classes=self.METADATA.get('has_classes'),
-            has_ops=self.METADATA.get('has_ops'),
-            has_fps=self.METADATA.get('has_fps'),
-            has_dps=self.METADATA.get('has_dps'),
-            has_aps=self.METADATA.get('has_aps'),
-            has_ps=self.METADATA.get('has_ps'),
-            has_nis=False
-        )
-
-        return md
-
-    def _make_document_html(self, title, metadata_html, classes_html, properties_html, default_namespace, namespaces_html):
-        template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-        document_template = Environment(loader=FileSystemLoader(template_dir)).get_template('document.html')
-        html = document_template.render(
+        document_template = Environment(loader=FileSystemLoader(template_dir)).get_template('document.' + template_file_ext)
+        return document_template.render(
             title=title,
-            metadata_html=metadata_html,
-            classes_html=classes_html,
-            properties_html=properties_html,
+            metadata=metadata,
+            classes=classes,
+            properties=properties,
             default_namespace=default_namespace,
-            namespaces_html=namespaces_html
+            namespaces=namespaces
         )
-
-        return html
-
-    def _make_document_md(self, title, metadata_md, classes_md, properties_md, default_namespace, namespaces_md):
-        template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
-        document_template = Environment(loader=FileSystemLoader(template_dir)).get_template('document.md')
-        html = document_template.render(
-            title=title,
-            metadata_md=metadata_md,
-            classes_md=classes_md,
-            properties_md=properties_md,
-            default_namespace=default_namespace,
-            namespaces_md=namespaces_md
-        )
-
-        return html
 
     def document(self, source_info):
         # add some extra triples to the graph for easier querying
@@ -1443,36 +1326,20 @@ class MakeDocco:
                 html.append(self._make_uri_html(p, type=prop_type))
             self.CLASSES[uri]['in_range_includes_of'] = html
 
-        if self.outputformat == 'markdown':
-            properties_md = self._make_properties_md()
-            classes_md = self._make_classes_md()
+        metadata = self._make_metadata(source_info, outputformat=self.outputformat)
+        classes = self._make_classes(outputformat=self.outputformat)
+        properties = self._make_properties(outputformat=self.outputformat)
+        namespaces = self._make_namespaces(outputformat=self.outputformat)
 
-            namespaces_md = self._make_namespaces_md()
-            metadata_md = self._make_metadata_md(source_info)
-
-            return self._make_document_md(
-                self.METADATA['title'],
-                metadata_md,
-                classes_md,
-                properties_md,
-                self.METADATA['default_namespace'],
-                namespaces_md
-            )
-        else:
-            properties_html = self._make_properties_html()
-            classes_html = self._make_classes_html()
-
-            namespaces_html = self._make_namespaces_html()
-            metadata_html = self._make_metadata_html(source_info)
-
-            return self._make_document_html(
-                self.METADATA['title'],
-                metadata_html,
-                classes_html,
-                properties_html,
-                self.METADATA['default_namespace'],
-                namespaces_html
-            )
+        return self._make_document(
+            self.METADATA['title'],
+            metadata,
+            classes,
+            properties,
+            self.METADATA['default_namespace'],
+            namespaces,
+            outputformat=self.outputformat
+        )
 
 
 if __name__ == '__main__':

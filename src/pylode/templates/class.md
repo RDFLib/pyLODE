@@ -11,10 +11,10 @@ Usage Note | {{ scopeNote }}
 {%- if supers|length > 0 %}
 Super-classes | {%- for super in supers %}{{ super }}<br />{%- endfor %}
 {%- endif %}
-{%- if supers|length > 0 %}
+{%- if restrictions|length > 0 %}
 Restrictions | {%- for restriction in restrictions %}{{ restriction }}<br />{%- endfor %}
 {%- endif %}
-{%- if supers|length > 0 %}
+{%- if subs|length > 0 %}
 Sub-classes | {%- for sub in subs %}{{ sub }}<br />{%- endfor %}
 {%- endif %}
 {%- if in_domain_of|length > 0 %}
