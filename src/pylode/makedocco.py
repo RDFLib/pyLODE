@@ -1,5 +1,5 @@
 from rdflib import Graph, RDF, RDFS, OWL, Namespace
-from rdflib.namespace import SKOS, DC, DCTERMS, FOAF, DOAP
+from rdflib.namespace import SKOS, DC, DCTERMS, FOAF, DOAP, XSD
 from rdflib.term import URIRef, Literal, BNode
 from os import path
 import requests
@@ -1150,6 +1150,75 @@ class MakeDocco:
             default_namespace=self.METADATA['default_namespace']
         )
 
+    def _make_schemaorg_metadata(self):
+        uri = URIRef(self.METADATA.get('uri'))
+        name = Literal(self.METADATA.get('title'))
+        publishers = ''
+        creators = ''
+        dateCreated = Literal(self.METADATA.get('created'), datatype=XSD.date)
+        dateModified = Literal(self.METADATA.get('modified'), datatype=XSD.date)
+        description = Literal(self.METADATA.get('description'))
+        if self.METADATA.get('license') is not None:
+            license = URIRef(self.METADATA.get('license'))
+        rights = Literal(self.METADATA.get('rights'))
+        copyrightHolder = ''
+        copyrightYear = Literal(self.METADATA.get('created').split('-')[0], datatype=XSD.int)
+        if self.METADATA.get('repository') is not None:
+            repository = URIRef(self.METADATA.get('repository'))
+
+        '''
+        @prefix sdo: <https://schema.org/> .
+        @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+        
+        <http://linked.data.gov.au/def/crs> a sdo:DigitalDocument ;
+            sdo:name "CRS Ontology" ;
+            sdo:publisher <http://catalogue.linked.data.gov.au/org/naa> ;
+            sdo:creator [
+                sdo:name "Nicholas J. Car" ;
+                sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+                sdo:email <nicholas.car@csiro.au> ;
+                sdo:memberOf [
+                    sdo:name "CSIRO" ;
+                    sdo:identifier <http://catalogue.linked.data.gov.au/org/csiro> ;
+                ] ;
+            ] ;
+            sdo:dateCreated "2018-09-10"^^xsd:date ;
+            sdo:dateModified "2019-05-31"^^xsd:date ;
+            sdo:license <https://creativecommons.org/licenses/by/4.0/> ;
+        
+            sdo:copyrightHolder <http://catalogue.linked.data.gov.au/org/naa> ;
+            sdo:copyrightYear "2019"^^xsd:gYear ;
+            sdo:encodingFormat <https://w3id.org/mediatype/text/html> ;
+        .
+        
+        <http://catalogue.linked.data.gov.au/org/naa>
+            a sdo:Organization ;
+            sdo:name "National Archives of Australia" ;
+            sdo:identifier <http://catalogue.linked.data.gov.au/org/naa> ;
+        .        
+        '''
+        g = Graph()
+        SDO = Namespace('https://schema.org/')
+        g.bind('sdo', SDO)
+        g.bind('xsd', XSD)
+
+        g.add((uri, RDF.type, SDO.DigitalDocument))
+        g.add((uri, SDO.name, name))
+        # g.add((uri, SDO.publishers, SDO.DigitalDocument))
+        # g.add((uri, SDO.creators, SDO.DigitalDocument))
+        g.add((uri, SDO.dateCreated, dateCreated))
+        g.add((uri, SDO.dateModified, dateModified))
+        g.add((uri, SDO.description, description))
+        if self.METADATA.get('license') is not None:
+            g.add((uri, SDO.license, license))
+        g.add((uri, SDO.rights, rights))
+        # g.add((uri, SDO.copyrightHolder, copyrightHolder))
+        g.add((uri, SDO.copyrightYear, copyrightYear))
+        if self.METADATA.get('repository') is not None:
+            g.add((uri, SDO.codeRepository, repository))
+
+        return g.serialize(format='json-ld').decode('utf-8')
+
     def _make_metadata(self, source_info, outputformat='html'):
         if outputformat == 'md':
             template_file_ext = 'md'
@@ -1194,6 +1263,7 @@ class MakeDocco:
         template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
         document_template = Environment(loader=FileSystemLoader(template_dir)).get_template('document.' + template_file_ext)
         return document_template.render(
+            schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML template
             title=title,
             metadata=metadata,
             classes=classes,
