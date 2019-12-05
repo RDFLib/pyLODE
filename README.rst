@@ -211,6 +211,29 @@ Additions
 To help pyLODE understand more annotations, see **Suggestions** below.
 
 
+schema.org
+&&&&&&&&&&&
+When an HTML document is generated, i.e. not Markdown or other format,
+`schema.org <https://schema.org>`__ metadata is added to the HTML
+header in the form of properties of a ``DigitalDocument`` subject.
+The schema.org properties catered for are:
+
+- ``name``
+- ``dateCreated``
+- ``dateModified``
+- ``description``
+- ``license``
+- ``copyrightYear``
+- ``repository``
+
+Not yet handled, but will be soon, are:
+
+- ``publisher``
+- ``creator``
+- ``copyrightHolder``
+
+Please suggest any more required schema.org annotations!
+
 Styling
 ^^^^^^^
 This tool generates HTML that is shamelessly similar to LODE's styling.
