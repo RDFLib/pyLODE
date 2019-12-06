@@ -1,0 +1,1249 @@
+@prefix : <http://ontology.eil.utoronto.ca/ISO21972/iso21972> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix geo: <http://www.geonames.org/> .
+@prefix gis: <http://http://www.opengis.net/ont/geosparql#> .
+@prefix i72: <http://ontology.eil.utoronto.ca/ISO21972/iso21972#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sch: <http://schema.org/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@base <http://ontology.eil.utoronto.ca/ISO21972/iso21972> .
+
+<http://ontology.eil.utoronto.ca/ISO21972/iso21972> rdf:type owl:Ontology ;
+                                                     owl:imports <http://www.w3.org/2006/time#2016> ;
+                                                     cc:license "http://creativecommons.org/licenses/by/3.0/"@en ;
+                                                     dc:creator "Created by Mark S. Fox (msf@eil.utoronto.ca)."@en ;
+                                                     dc:description """Draft version of the ISO 21972 Ontology.
+
+Includes a subset of the GCI Foundation ontology by:
+
+Fox, M.S. (2015) “The Role of Ontologies in Publishing and Analyzing City Indicators”, Computers, Environment and Urban Systems, Vol. 54, pp. 266-279.
+
+Includes a subset of the OM ontology by:
+
+Rijgersberg, H., Wigham, M., and Top, J.L., (2011), “How Semantics can Improve Engineering Processes: A Case of Units of Measure and Quantities”, Advanced Engineering Informatics, Vol. 25, pp. 276-287.
+
+and the GovStat ontology by:
+
+Pattuelli, M.C., (2003), “The GovStat Ontology: Technical Report”. The GovStat Project, Integration Design Laboratory, School of Information and Library Science, University of North Carolina at Chapel Hill, http://ils.unc.edu/govstat/papers/govstatontology.doc."""@en ;
+                                                     dc:title "ISO21972 Information technology — Upper level ontology for smart city indicators"@en ;
+                                                     vann:preferredNamespacePrefix "i72" ;
+                                                     vann:preferredNamespaceUri "http://ontology.eil.utoronto.ca/ISO21972/iso21972#" ;
+                                                     owl:versionInfo "0.1 8 November 2019"@en ;
+                                                     adms:relatedDocumentation "ISO21972" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://creativecommons.org/ns#license
+cc:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2001/XMLSchema#pattern
+xsd:pattern rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/adms#relatedDocumentation
+adms:relatedDocumentation rdf:type owl:AnnotationProperty .
+
+
+###  http://www.wurvoc.org/vocabularies/om-1.8/alternative_label
+<http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#base
+i72:base rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+         rdf:type owl:FunctionalProperty ;
+         rdfs:domain i72:Unit_exponentiation ;
+         rdfs:range i72:Unit_of_measure ;
+         rdfs:label "base"@en ;
+         <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has base"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#base_quantity
+i72:base_quantity rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+                  rdfs:domain i72:System_of_units ;
+                  rdfs:range i72:Quantity ;
+                  rdfs:label "base quantity"@en ;
+                  <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has base quantity"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#base_unit
+i72:base_unit rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+              rdfs:domain i72:System_of_units ;
+              rdfs:range i72:Unit_of_measure ;
+              rdfs:label "base unit"@en ;
+              <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has base unit"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#cardinality_of
+i72:cardinality_of rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf i72:description_of ;
+                   rdfs:domain i72:Cardinality ;
+                   rdfs:range i72:Population .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#defined_by
+i72:defined_by rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf i72:iso21972ObjectProperty .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#definition
+i72:definition rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf i72:iso21972ObjectProperty .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#denominator
+i72:denominator rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+                rdfs:domain i72:Unit_division ;
+                rdfs:range i72:Unit_of_measure ;
+                rdfs:label "denominatot"@en ;
+                <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has denominatot"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#derived_quantity
+i72:derived_quantity rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+                     rdfs:domain i72:System_of_units ;
+                     rdfs:range i72:Quantity ;
+                     rdfs:label "derived quantity"@en ;
+                     <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has derived quantity"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#description_of
+i72:description_of rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+                   owl:inverseOf i72:is_described_by .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#distinct_count_of
+i72:distinct_count_of rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf i72:description_of .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#element
+i72:element rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf i72:iso21972ObjectProperty .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#for_city
+i72:for_city rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf i72:iso21972ObjectProperty .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#for_time_interval
+i72:for_time_interval rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf i72:iso21972ObjectProperty .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#has_characteristic
+i72:has_characteristic rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+                       owl:inverseOf i72:is_characteristic_of .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#is_an_estimate_of
+i72:is_an_estimate_of rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+                      rdfs:domain i72:Statistic ;
+                      rdfs:range i72:Parameter .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#is_characteristic_of
+i72:is_characteristic_of rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+                         rdfs:domain i72:Variable ;
+                         rdfs:range i72:Observation .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#is_composed_of
+i72:is_composed_of rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+                   owl:inverseOf i72:member_of ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( i72:Population
+                                               i72:Sample
+                                             )
+                               ] ;
+                   rdfs:range i72:Observation .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#is_described_by
+i72:is_described_by rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( i72:Population
+                                                i72:Sample
+                                              )
+                                ] ;
+                    rdfs:range [ rdf:type owl:Class ;
+                                 owl:unionOf ( i72:Parameter
+                                               i72:Statistic
+                                             )
+                               ] .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#is_part_of
+i72:is_part_of rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+               rdfs:domain i72:Sample ;
+               rdfs:range i72:Population .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#iso21972ObjectProperty
+i72:iso21972ObjectProperty rdf:type owl:ObjectProperty .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#located_in
+i72:located_in rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf i72:iso21972ObjectProperty .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#mean_of
+i72:mean_of rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf i72:description_of ;
+            rdfs:domain i72:Mean ;
+            rdfs:range i72:Population .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#measurement_scale
+i72:measurement_scale rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+                      rdfs:domain [ rdf:type owl:Class ;
+                                    owl:unionOf ( i72:Application_area
+                                                  i72:Point
+                                                  i72:Quantity
+                                                )
+                                  ] ;
+                      rdfs:range i72:Measurement_scale ;
+                      rdfs:label "measurement scale"@en ;
+                      <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has measurement scale"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#member_of
+i72:member_of rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf i72:iso21972ObjectProperty .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#numerator
+i72:numerator rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+              rdfs:domain i72:Unit_division ;
+              rdfs:range i72:Unit_of_measure ;
+              rdfs:label "numerator"@en ;
+              <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has numerator"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#parameter_of_var
+i72:parameter_of_var rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+                     rdfs:domain i72:Parameter ;
+                     rdfs:range i72:Variable .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#phenomenon
+i72:phenomenon rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+               rdf:type owl:FunctionalProperty ;
+               rdfs:domain i72:Quantity ;
+               rdfs:label "phenomenon"@en ;
+               <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has phenomenon"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#prefix
+i72:prefix rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+           rdf:type owl:FunctionalProperty ;
+           rdfs:domain i72:Unit_multiple_or_submultiple ;
+           rdfs:range i72:Prefix ;
+           rdfs:label "prefix"@en ;
+           <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has prefix"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#singular_unit
+i72:singular_unit rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+                  rdf:type owl:FunctionalProperty ;
+                  rdfs:domain i72:Unit_multiple_or_submultiple ;
+                  rdfs:range i72:Singular_unit ;
+                  rdfs:label "singular unit"@en ;
+                  <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has singular unit"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#std_of
+i72:std_of rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf i72:description_of ;
+           rdfs:domain i72:Standard_deviation ;
+           rdfs:range i72:Population .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#sum_of
+i72:sum_of rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf i72:description_of ;
+           rdfs:domain i72:Sum ;
+           rdfs:range i72:Population .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#term_1
+i72:term_1 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+           rdf:type owl:FunctionalProperty ;
+           rdfs:domain i72:Unit_multiplication ;
+           rdfs:range i72:Unit_of_measure ;
+           rdfs:label "term 1"@en ;
+           <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has term 1"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#term_2
+i72:term_2 rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+           rdf:type owl:FunctionalProperty ;
+           rdfs:domain i72:Unit_multiplication ;
+           rdfs:range i72:Unit_of_measure ;
+           rdfs:label "term 2"@en ;
+           <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has term 2"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#unit_of_measure
+i72:unit_of_measure rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( i72:Application_area
+                                                i72:Cardinal_scale
+                                                i72:Quantity
+                                              )
+                                ] ;
+                    rdfs:range i72:Unit_of_measure ;
+                    rdfs:comment "For quantity classes this property indicates a commonly-used unit." ;
+                    rdfs:label "unit of measure"@en ;
+                    <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has unit of measure"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#value
+i72:value rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf i72:iso21972ObjectProperty ;
+          rdfs:domain i72:Quantity ;
+          rdfs:range i72:Measure ;
+          rdfs:label "value"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#zero_element
+i72:zero_element rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf i72:iso21972ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#exponent
+i72:exponent rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain i72:Unit_exponentiation ;
+             rdfs:range xsd:integer ;
+             rdfs:label "exponent"@en ;
+             <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has exponent"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#factor
+i72:factor rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain i72:Prefix ;
+           rdfs:range xsd:decimal ;
+           rdfs:label "factor"@en ;
+           <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has factor"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#has_Name
+i72:has_Name rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#numerical_value
+i72:numerical_value rdf:type owl:DatatypeProperty ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( i72:Measure
+                                                i72:Point
+                                              )
+                                ] ;
+                    rdfs:range xsd:decimal ;
+                    rdfs:label "numerical value"@en ;
+                    <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has numerical value"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#rank
+i72:rank rdf:type owl:DatatypeProperty ,
+                  owl:FunctionalProperty ;
+         rdfs:domain i72:Ordered_measurement_scale_category ;
+         rdfs:range xsd:integer ;
+         rdfs:label "rank"@en ;
+         <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "has rank"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#symbol
+i72:symbol rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://http://www.opengis.net/ont/geosparql#Polygon
+gis:Polygon rdf:type owl:Class .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Application_area
+i72:Application_area rdf:type owl:Class ;
+                     rdfs:subClassOf i72:ISO21972Thing .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Binary_prefix
+i72:Binary_prefix rdf:type owl:Class ;
+                  rdfs:subClassOf i72:ISO21972Thing .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Cardinal_scale
+i72:Cardinal_scale rdf:type owl:Class ;
+                   rdfs:subClassOf i72:Measurement_scale ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty i72:element ;
+                                     owl:allValuesFrom i72:Fixed_point
+                                   ] ;
+                   rdfs:label "cardinal scale"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Cardinality
+i72:Cardinality rdf:type owl:Class ;
+                rdfs:subClassOf i72:Parameter ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty i72:cardinality_of ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass i72:Population
+                                ] ;
+                rdfs:comment """Cardinality of the Population.
+Note that there is no property that links Cardinality to a Variable."""@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Cardinality_scale
+i72:Cardinality_scale rdf:type owl:Class ;
+                      rdfs:subClassOf i72:Ratio_scale ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty i72:zero_element ;
+                                        owl:hasValue i72:fixed_zero_cardinality
+                                      ] .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Cardinality_unit
+i72:Cardinality_unit rdf:type owl:Class ;
+                     rdfs:subClassOf i72:Singular_unit ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty [ owl:inverseOf i72:unit_of_measure
+                                                      ] ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onClass i72:Cardinality_scale
+                                     ] .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#City
+i72:City rdf:type owl:Class ;
+         rdfs:subClassOf i72:ISO21972Thing ,
+                         sch:City .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Compound_unit
+i72:Compound_unit rdf:type owl:Class ;
+                  rdfs:subClassOf i72:Unit_of_measure ;
+                  rdfs:label "compound unit"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Dimension
+i72:Dimension rdf:type owl:Class ;
+              rdfs:subClassOf i72:ISO21972Thing .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Distinct_count
+i72:Distinct_count rdf:type owl:Class ;
+                   rdfs:subClassOf i72:Parameter ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty i72:distinct_count_of ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass i72:Population
+                                   ] ;
+                   rdfs:comment """Distinct_count class that is a Parameter that represents
+         the number of distinct values of a property of the members of a
+         Population"""@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Feature
+i72:Feature rdf:type owl:Class ;
+            rdfs:subClassOf gis:Polygon ,
+                            i72:ISO21972Thing ,
+                            <http://www.w3.org/2003/01/geo/wgs84_pos#Feature> .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Fixed_point
+i72:Fixed_point rdf:type owl:Class ;
+                rdfs:subClassOf i72:Point ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty i72:definition ;
+                                  owl:allValuesFrom [ rdf:type owl:Class ;
+                                                      owl:unionOf ( i72:Fixed_point
+                                                                    i72:Measure
+                                                                    i72:Quantity
+                                                                  )
+                                                    ]
+                                ] ;
+                rdfs:label "fixed point"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Fixed_zero_point
+i72:Fixed_zero_point rdf:type owl:Class ;
+                     rdfs:subClassOf i72:Fixed_point ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty i72:numerical_value ;
+                                       owl:hasValue "0"
+                                     ] ;
+                     rdfs:label "fixed zero point"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#ISO21972Thing
+i72:ISO21972Thing rdf:type owl:Class .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Indicator
+i72:Indicator rdf:type owl:Class ;
+              rdfs:subClassOf i72:ISO21972Thing ,
+                              i72:Quantity ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty i72:for_city ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass i72:City
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty i72:for_time_interval ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass time:DateTimeInterval
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty i72:unit_of_measure ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass i72:Unit_of_measure
+                              ] ;
+              dc:description "An indicator is a quantity that is a ratio of a numerator and denominator that are also quantities. It has a city and time period associated with it. The numerator and denominator quantities can have different units of measure. One example of a unit of measure is the size of a population. A population_cardinality_unit is defined to be an individual of a Cardinality_unit that is a subclass of a Singular_unit."@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Interval_scale
+i72:Interval_scale rdf:type owl:Class ;
+                   rdfs:subClassOf i72:Cardinal_scale ;
+                   rdfs:label "interval scale"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Mean
+i72:Mean rdf:type owl:Class ;
+         rdfs:subClassOf i72:Parameter ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty i72:mean_of ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass i72:Population
+                         ] ;
+         owl:disjointWith i72:Standard_deviation ;
+         rdfs:comment "Mean represents the mean value of a property all members of the Population have and is specified by the parameter_of_var property."@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Measure
+i72:Measure rdf:type owl:Class ;
+            rdfs:subClassOf i72:ISO21972Thing ;
+            rdfs:comment "A measure combines a number to a unit of measure or an interval or ratio scale. For example, \"3 m\" is a measure."@en ;
+            rdfs:label "measure"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Measurement_scale
+i72:Measurement_scale rdf:type owl:Class ;
+                      rdfs:subClassOf i72:ISO21972Thing ;
+                      owl:disjointUnionOf ( i72:Interval_scale
+                                            i72:Nominal_scale
+                                            i72:Ordinal_scale
+                                            i72:Ratio_scale
+                                          ) ;
+                      rdfs:comment "Measurement scales are concepts used for the expression of quantities. Four types of measurement scales are: nominal scales, ordinal scales, interval scales and ratio scales. The latter two scales are also called cardinal scales. An example of a scale is the Celsius scale, a temperature scale."@en ;
+                      rdfs:label "measurement scale"@en ;
+                      <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "scale"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Measurement_scale_category
+i72:Measurement_scale_category rdf:type owl:Class ;
+                               rdfs:subClassOf i72:ISO21972Thing .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Monetary_unit
+i72:Monetary_unit rdf:type owl:Class ;
+                  rdfs:subClassOf i72:ISO21972Thing ,
+                                  i72:Singular_unit .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Nominal_scale
+i72:Nominal_scale rdf:type owl:Class ;
+                  rdfs:subClassOf i72:Measurement_scale ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty i72:element ;
+                                    owl:allValuesFrom i72:Measurement_scale_category
+                                  ] ;
+                  rdfs:label "nominal scale"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Observation
+i72:Observation rdf:type owl:Class ;
+                rdfs:subClassOf i72:ISO21972Thing ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty i72:member_of ;
+                                  owl:allValuesFrom i72:Population
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty i72:has_characteristic ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass i72:Variable
+                                ] ;
+                rdfs:label "Observation"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Ordered_measurement_scale_category
+i72:Ordered_measurement_scale_category rdf:type owl:Class ;
+                                       rdfs:subClassOf i72:ISO21972Thing .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Ordinal_scale
+i72:Ordinal_scale rdf:type owl:Class ;
+                  rdfs:subClassOf i72:Measurement_scale ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty i72:element ;
+                                    owl:allValuesFrom i72:Ordered_measurement_scale_category
+                                  ] ;
+                  rdfs:label "ordinal scale"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Parameter
+i72:Parameter rdf:type owl:Class ;
+              rdfs:subClassOf i72:ISO21972Thing ,
+                              i72:Quantity ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty i72:parameter_of_var ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass i72:Variable
+                              ] ;
+              rdfs:comment "Parameter is the Class of all  measures that can be made of a Population, both statistical, e.g., Mean, Starndard_devation, and others, e.g., Cardinality, Sum."@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Phenomenon
+i72:Phenomenon rdf:type owl:Class ;
+               rdfs:subClassOf i72:ISO21972Thing ;
+               rdfs:comment "A phenomenon is the qualitative object (e.g., food, star, molecule) that has quantifiable (standardized) aspects (e.g, length, mass, time)."@en ;
+               rdfs:label "phenomenon"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Point
+i72:Point rdf:type owl:Class ;
+          rdfs:subClassOf i72:ISO21972Thing ;
+          rdfs:comment "A point is an element of an interval scale or a ratio scale, for example, 273.16 on the Kelvin scale indicates the triple point of water thermodynamic temperature."@en ;
+          rdfs:label "point"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Population
+i72:Population rdf:type owl:Class ;
+               rdfs:subClassOf i72:ISO21972Thing ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty i72:defined_by ;
+                                 owl:allValuesFrom owl:Thing
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty i72:for_time_interval ;
+                                 owl:allValuesFrom time:DateTimeInterval
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty i72:is_composed_of ;
+                                 owl:allValuesFrom owl:Thing
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty i72:is_described_by ;
+                                 owl:allValuesFrom i72:Parameter
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty i72:definition ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass i72:Feature
+                               ] ;
+               dc:description """The core class is the Population to be measured. A Population is linked to a parameter (e.g., mean, standard deviation, cardinality) by the is_described_by property, and the parameter is a sub class of Parameter. Depending on the subclass of Parameter, there is a reverse link back to the Population.
+  
+parameter links back to the using cardinality_of. parameter links back using the   property. parameter links back using the mean_of property."""@en ;
+               rdfs:label "Population"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Prefix
+i72:Prefix rdf:type owl:Class ;
+           rdfs:subClassOf i72:ISO21972Thing ;
+           owl:disjointUnionOf ( i72:Binary_prefix
+                                 i72:SI_prefix
+                               ) ;
+           rdfs:comment "A prefix is a name that precedes a basic unit of measure to indicate a decimal multiple or fraction of the unit. Each prefix has a unique symbol that is prepended to the unit symbol. For example, an electric current of 0.000 000 001 ampere is written by using the SI-prefix nano as 1 nanoampere or 1 nA."@en ;
+           rdfs:label "prefix"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Quantity
+i72:Quantity rdf:type owl:Class ;
+             rdfs:subClassOf i72:ISO21972Thing ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty i72:unit_of_measure ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass i72:Unit_of_measure
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty i72:value ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass i72:Measure
+                             ] ;
+             rdfs:comment "A quantity is a representation of a quantifiable (standardized) aspect (such as length, mass, and time) of a phenomenon (e.g., a star, food, or a molecule). Quantities are classified according to similarity in (implicit) metrological aspect, e.g. the length of my speedboat and the length of my racing car are classified as length."@en ;
+             rdfs:label "quantity"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#RatioIndicator
+i72:RatioIndicator rdf:type owl:Class ;
+                   rdfs:subClassOf i72:Indicator ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty i72:denominator ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass i72:Quantity
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty i72:numerator ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass i72:Quantity
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty i72:unit_of_measure ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass i72:Unit_division
+                                   ] .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Ratio_scale
+i72:Ratio_scale rdf:type owl:Class ;
+                rdfs:subClassOf i72:Cardinal_scale ;
+                rdfs:label "ratio scale"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#SI_prefix
+i72:SI_prefix rdf:type owl:Class ;
+              rdfs:subClassOf i72:Prefix ;
+              rdfs:label "SI prefix"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Sample
+i72:Sample rdf:type owl:Class ;
+           rdfs:subClassOf i72:ISO21972Thing ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty i72:is_composed_of ;
+                             owl:allValuesFrom i72:Observation
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty i72:is_described_by ;
+                             owl:allValuesFrom i72:Statistic
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty i72:is_part_of ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass i72:Population
+                           ] .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Sample_cardinality
+i72:Sample_cardinality rdf:type owl:Class ;
+                       rdfs:subClassOf i72:Statistic .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Sample_mean
+i72:Sample_mean rdf:type owl:Class ;
+                rdfs:subClassOf i72:Statistic ;
+                owl:disjointWith i72:Sample_standard_deviation .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Sample_standard_deviation
+i72:Sample_standard_deviation rdf:type owl:Class ;
+                              rdfs:subClassOf i72:Statistic .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Sample_sum
+i72:Sample_sum rdf:type owl:Class ;
+               rdfs:subClassOf i72:Statistic .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Singular_unit
+i72:Singular_unit rdf:type owl:Class ;
+                  rdfs:subClassOf i72:ISO21972Thing .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Standard_deviation
+i72:Standard_deviation rdf:type owl:Class ;
+                       rdfs:subClassOf i72:Parameter ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty i72:std_of ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass i72:Population
+                                       ] .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Statistic
+i72:Statistic rdf:type owl:Class ;
+              rdfs:subClassOf i72:ISO21972Thing ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty i72:is_an_estimate_of ;
+                                owl:allValuesFrom i72:Parameter
+                              ] .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Sum
+i72:Sum rdf:type owl:Class ;
+        rdfs:subClassOf i72:Parameter ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty i72:sum_of ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass i72:Population
+                        ] ;
+        rdfs:comment "Sum defines the sum over a variable possessed by members of the Population." .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#System_of_units
+i72:System_of_units rdf:type owl:Class ;
+                    rdfs:subClassOf i72:ISO21972Thing .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Unit_division
+i72:Unit_division rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                               owl:onProperty i72:denominator ;
+                                                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                             ]
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty i72:numerator ;
+                                                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf i72:Compound_unit ;
+                  rdfs:label "unit division"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Unit_exponentiation
+i72:Unit_exponentiation rdf:type owl:Class ;
+                        owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty i72:base ;
+                                                                     owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty i72:exponent ;
+                                                                     owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ] ;
+                        rdfs:subClassOf i72:Compound_unit ;
+                        rdfs:label "unit exponentiation"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Unit_multiple_or_submultiple
+i72:Unit_multiple_or_submultiple rdf:type owl:Class ;
+                                 rdfs:subClassOf i72:Unit_of_measure ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty i72:definition ;
+                                                   owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                       owl:unionOf ( i72:Measure
+                                                                                     i72:Quantity
+                                                                                     i72:Unit_of_measure
+                                                                                   )
+                                                                     ]
+                                                 ] ;
+                                 rdfs:label "unit multiple or submultiple"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Unit_multiplication
+i72:Unit_multiplication rdf:type owl:Class ;
+                        owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty i72:term_1 ;
+                                                                     owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty i72:term_2 ;
+                                                                     owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ] ;
+                        rdfs:subClassOf i72:Compound_unit ;
+                        rdfs:label "unit multiplication"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Unit_of_measure
+i72:Unit_of_measure rdf:type owl:Class ;
+                    rdfs:subClassOf i72:ISO21972Thing ;
+                    owl:disjointUnionOf ( i72:Singular_unit
+                                          i72:Unit_division
+                                          i72:Unit_exponentiation
+                                          i72:Unit_multiple_or_submultiple
+                                          i72:Unit_multiplication
+                                        ) ;
+                    rdfs:comment "A unit of measure is a definite magnitude of a quantity, defined and adopted by convention and/or by law. It is used as a standard for measurement of the same quantity, where any other value of the quantity can be expressed as a simple multiple of the unit of measure. For example, length is a quantity; the metre is a unit of length that represents a definite predetermined length. When we say 10 metre (or 10 m), we actually mean 10 times the definite predetermined length called \"metre\"."@en ;
+                    rdfs:label "unit of measure"@en ;
+                    <http://www.wurvoc.org/vocabularies/om-1.8/alternative_label> "unit"@en ,
+                                                                                  "unit of measurement"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Variable
+i72:Variable rdf:type owl:Class ;
+             rdfs:subClassOf i72:ISO21972Thing ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty i72:is_characteristic_of ;
+                               owl:allValuesFrom i72:Observation
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty i72:has_Name ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:string
+                             ] ;
+             rdfs:comment "The property that is being measured in the population.  Since Protege is not Full DL, cannot make the property a subclass of Variable, so have to specify it as a string name using has_Name."@en ;
+             rdfs:label "Variable"@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#Vectorial_or_tensorial_character
+i72:Vectorial_or_tensorial_character rdf:type owl:Class ;
+                                     rdfs:subClassOf i72:ISO21972Thing .
+
+
+###  http://schema.org/City
+sch:City rdf:type owl:Class .
+
+
+###  http://www.w3.org/2002/07/owl#DataTypeProperty
+owl:DataTypeProperty rdf:type owl:Class .
+
+
+###  http://www.w3.org/2002/07/owl#ObjectProperty
+owl:ObjectProperty rdf:type owl:Class .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#Feature
+<http://www.w3.org/2003/01/geo/wgs84_pos#Feature> rdf:type owl:Class .
+
+
+###  http://www.w3.org/2006/time#DateTimeInterval
+time:DateTimeInterval rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#cubic_metre
+i72:cubic_metre rdf:type owl:NamedIndividual ,
+                         i72:Unit_exponentiation ;
+                i72:base i72:metre ;
+                i72:exponent 3 .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#decibel
+i72:decibel rdf:type owl:NamedIndividual ,
+                     i72:Singular_unit .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#fixed_zero_cardinality
+i72:fixed_zero_cardinality rdf:type owl:NamedIndividual ,
+                                    i72:Point ;
+                           i72:numerical_value 0 .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#giga
+i72:giga rdf:type owl:NamedIndividual ,
+                  i72:SI_prefix ;
+         i72:factor 1000000000 .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#gigapc
+i72:gigapc rdf:type owl:NamedIndividual ,
+                    i72:Unit_multiple_or_submultiple ;
+           i72:prefix i72:giga ;
+           i72:singular_unit i72:population_cardinality_unit ;
+           i72:symbol "gigapc" .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#gram
+i72:gram rdf:type owl:NamedIndividual ,
+                  i72:Singular_unit .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#hecto_kilo
+i72:hecto_kilo rdf:type owl:NamedIndividual ,
+                        i72:SI_prefix ;
+               i72:factor 100000 .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#hecto_kilo_pc
+i72:hecto_kilo_pc rdf:type owl:NamedIndividual ,
+                           i72:Unit_multiple_or_submultiple ;
+                  i72:prefix i72:hecto_kilo ;
+                  i72:singular_unit i72:population_cardinality_unit ;
+                  i72:symbol "hecto_kilo_pc" .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#hour
+i72:hour rdf:type owl:NamedIndividual ,
+                  i72:Singular_unit .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#hour_per_interruption
+i72:hour_per_interruption rdf:type owl:NamedIndividual ,
+                                   i72:Unit_division ;
+                          i72:denominator i72:interruption ;
+                          i72:numerator i72:hour .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#interruption
+i72:interruption rdf:type owl:NamedIndividual ,
+                          i72:Singular_unit .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#interruption_per_year
+i72:interruption_per_year rdf:type owl:NamedIndividual ,
+                                   i72:Unit_division ;
+                          i72:denominator i72:year ;
+                          i72:numerator i72:interruption .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#kilo
+i72:kilo rdf:type owl:NamedIndividual ,
+                  i72:SI_prefix ;
+         i72:factor 1000 .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#kilopc
+i72:kilopc rdf:type owl:NamedIndividual ,
+                    i72:Unit_multiple_or_submultiple ;
+           i72:singular_unit i72:population_cardinality_unit ;
+           i72:symbol "kilopc" .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#kilowatt
+i72:kilowatt rdf:type owl:NamedIndividual ,
+                      i72:Unit_multiple_or_submultiple ;
+             i72:prefix i72:kilo ;
+             i72:singular_unit i72:watt ;
+             i72:symbol "kwh" .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#kilowatt_hour
+i72:kilowatt_hour rdf:type owl:NamedIndividual ,
+                           i72:Unit_division ;
+                  i72:denominator i72:hour ;
+                  i72:numerator i72:kilowatt .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#kwh_per_pc
+i72:kwh_per_pc rdf:type owl:NamedIndividual ,
+                        i72:Unit_division ;
+               i72:denominator i72:square_metre ;
+               i72:numerator i72:population_cardinality_unit ;
+               i72:symbol "kwh_per_pc" .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#kwh_per_square_metre
+i72:kwh_per_square_metre rdf:type owl:NamedIndividual ,
+                                  i72:Unit_division ;
+                         i72:denominator i72:square_metre ;
+                         i72:numerator i72:kilowatt_hour ;
+                         i72:symbol "kwh_per_m2" .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#kwh_per_year
+i72:kwh_per_year rdf:type owl:NamedIndividual ,
+                          i72:Unit_division ;
+                 i72:denominator i72:year ;
+                 i72:numerator i72:kilowatt ;
+                 i72:symbol "kwh_per_year" .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#mega
+i72:mega rdf:type owl:NamedIndividual ,
+                  i72:SI_prefix ;
+         i72:factor 1000000 .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#megapc
+i72:megapc rdf:type owl:NamedIndividual ,
+                    i72:Unit_multiple_or_submultiple ;
+           i72:prefix i72:mega ;
+           i72:singular_unit i72:population_cardinality_unit ;
+           i72:symbol "megapc" .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#metre
+i72:metre rdf:type owl:NamedIndividual ,
+                   i72:Singular_unit ;
+          i72:symbol "m2" .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#micro
+i72:micro rdf:type owl:NamedIndividual ,
+                   i72:SI_prefix ;
+          i72:factor 0.000001 .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#microgram
+i72:microgram rdf:type owl:NamedIndividual ,
+                       i72:Unit_multiple_or_submultiple ;
+              i72:prefix i72:micro ;
+              i72:singular_unit i72:gram .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#microgram_per_cubic_metre
+i72:microgram_per_cubic_metre rdf:type owl:NamedIndividual ,
+                                       i72:Unit_division ;
+                              i72:denominator i72:cubic_metre ;
+                              i72:numerator i72:microgram .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#minute-time
+i72:minute-time rdf:type owl:NamedIndividual ,
+                         i72:Singular_unit .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#minute-time_per_occurence
+i72:minute-time_per_occurence rdf:type owl:NamedIndividual ,
+                                       i72:Unit_division ;
+                              i72:denominator i72:occurrence ;
+                              i72:numerator i72:minute-time .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#occurence_per_hecto_kilo_pc
+i72:occurence_per_hecto_kilo_pc rdf:type owl:NamedIndividual ,
+                                         i72:Unit_division ;
+                                i72:denominator i72:hecto_kilo_pc ;
+                                i72:numerator i72:occurrence .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#occurrence
+i72:occurrence rdf:type owl:NamedIndividual ,
+                        i72:Singular_unit .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#pc_per_hecto_kilo_pc
+i72:pc_per_hecto_kilo_pc rdf:type owl:NamedIndividual ,
+                                  i72:Unit_division ;
+                         i72:denominator i72:hecto_kilo_pc ;
+                         i72:numerator i72:population_cardinality_unit .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#population_cardinality_unit
+i72:population_cardinality_unit rdf:type owl:NamedIndividual ,
+                                         i72:Cardinality_unit ;
+                                i72:symbol "pc" ;
+                                dc:description "population_cardinality_unit is depicted to be an instance of Cardinality_unit, which is the unit of measure for the cardinality of a set defined by a Population (defined in the next clause), and is associated with the symbol “pc”. For example, 1100pc represents a population cardinality (or size) of 1100. This document takes advantage of prefix notations to scale the numbers by defining units of measures: kilopc, megapc and gigapc, which are multiples of population_cardinality_unit. 1.1 kilopc represents 1100 pc."@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#population_ratio_unit
+i72:population_ratio_unit rdf:type owl:NamedIndividual ,
+                                   i72:Unit_division ;
+                          i72:denominator i72:population_cardinality_unit ;
+                          i72:numerator i72:population_cardinality_unit ;
+                          dc:description """population_ratio_unit is defined to be an instance of Unit_division. It has two properties:
+• whose range is restricted to being a population_cardinality_unit;
+• whose range is restricted to being a population_cardinality_unit.
+
+In other words, a population ratio is the ratio of two population cardinalities (i.e., number of members/elements in each population)"""@en .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#square_metre
+i72:square_metre rdf:type owl:NamedIndividual ,
+                          i72:Unit_exponentiation ;
+                 i72:base i72:metre ;
+                 i72:exponent 2 .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#watt
+i72:watt rdf:type owl:NamedIndividual ,
+                  i72:Singular_unit .
+
+
+###  http://ontology.eil.utoronto.ca/ISO21972/iso21972#year
+i72:year rdf:type owl:NamedIndividual ,
+                  i72:Singular_unit .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( i72:Application_area
+                i72:Dimension
+                i72:Measure
+                i72:Measurement_scale
+                i72:Measurement_scale_category
+                i72:Phenomenon
+                i72:Point
+                i72:Prefix
+                i72:Quantity
+                i72:System_of_units
+                i72:Unit_of_measure
+                i72:Vectorial_or_tensorial_character
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( i72:Observation
+                i72:Parameter
+                i72:Population
+                i72:Sample
+                i72:Statistic
+                i72:Variable
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

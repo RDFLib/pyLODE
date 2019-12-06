@@ -1155,14 +1155,19 @@ class MakeDocco:
         name = Literal(self.METADATA.get('title'))
         publishers = ''
         creators = ''
-        dateCreated = Literal(self.METADATA.get('created'), datatype=XSD.date)
-        dateModified = Literal(self.METADATA.get('modified'), datatype=XSD.date)
-        description = Literal(self.METADATA.get('description'))
+        if self.METADATA.get('created') is not None:
+            dateCreated = Literal(self.METADATA.get('created'), datatype=XSD.date)
+        if self.METADATA.get('modified') is not None:
+            dateModified = Literal(self.METADATA.get('modified'), datatype=XSD.date)
+        if self.METADATA.get('description') is not None:
+            description = Literal(self.METADATA.get('description'))
         if self.METADATA.get('license') is not None:
             license = URIRef(self.METADATA.get('license'))
-        rights = Literal(self.METADATA.get('rights'))
+        if self.METADATA.get('rights') is not None:
+            rights = Literal(self.METADATA.get('rights'))
         copyrightHolder = ''
-        copyrightYear = Literal(self.METADATA.get('created').split('-')[0], datatype=XSD.int)
+        if self.METADATA.get('created') is not None:
+            copyrightYear = Literal(self.METADATA.get('created').split('-')[0], datatype=XSD.int)
         if self.METADATA.get('repository') is not None:
             repository = URIRef(self.METADATA.get('repository'))
 
@@ -1202,18 +1207,23 @@ class MakeDocco:
         g.bind('sdo', SDO)
         g.bind('xsd', XSD)
 
-        g.add((uri, RDF.type, SDO.DigitalDocument))
+        g.add((uri, RDF.type, SDO.DefinedTermSet))
         g.add((uri, SDO.name, name))
         # g.add((uri, SDO.publishers, SDO.DigitalDocument))
         # g.add((uri, SDO.creators, SDO.DigitalDocument))
-        g.add((uri, SDO.dateCreated, dateCreated))
-        g.add((uri, SDO.dateModified, dateModified))
-        g.add((uri, SDO.description, description))
+        if self.METADATA.get('dateCreated') is not None:
+            g.add((uri, SDO.dateCreated, dateCreated))
+        if self.METADATA.get('dateModified') is not None:
+            g.add((uri, SDO.dateModified, dateModified))
+        if self.METADATA.get('description') is not None:
+            g.add((uri, SDO.description, description))
         if self.METADATA.get('license') is not None:
             g.add((uri, SDO.license, license))
-        g.add((uri, SDO.rights, rights))
+        if self.METADATA.get('rights') is not None:
+            g.add((uri, SDO.rights, rights))
         # g.add((uri, SDO.copyrightHolder, copyrightHolder))
-        g.add((uri, SDO.copyrightYear, copyrightYear))
+        if self.METADATA.get('copyrightYear') is not None:
+            g.add((uri, SDO.copyrightYear, copyrightYear))
         if self.METADATA.get('repository') is not None:
             g.add((uri, SDO.codeRepository, repository))
 

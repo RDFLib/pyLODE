@@ -1,13 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Geological and Administrative Features Ontology</title>
+    <title>Geological Administrative Features Ontology</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="application/ld+json">
+      [
+  {
+    "@id": "http://linked.data.gov.au/def/geoadminfeatures",
+    "@type": [
+      "https://schema.org/DigitalDocument"
+    ],
+    "https://schema.org/codeRepository": [
+      {
+        "@id": "https://github.com/geological-survey-of-queensland/geological-admininstrative-features-ont"
+      }
+    ],
+    "https://schema.org/copyrightYear": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#int",
+        "@value": "2019"
+      }
+    ],
+    "https://schema.org/dateCreated": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2019-12-04"
+      }
+    ],
+    "https://schema.org/dateModified": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2019-12-04"
+      }
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "<p>This ontology describes classes of geospatial feature relevant to the administrative duties of the Geological Survey of Queensland.</p>\n<p>As subclasses of the GeoSPARQL Ontology's <code>Feature</code> class, this ontology defines an <code>Administrative Feature</code>. Multiple subclasses of this class are then defined, some with class interrelations.</p>\n<p>This ontology is part of the Geological Survey of Queensland's set of <em>component</em> ontologies that together provide definitions for all of GSQ's data. Of particular importance for this ontology is GSQ's Geological Features Profile of SWEET which defined multiple classes of geological feature. It is yet to be published.</p>"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Geological Administrative Features Ontology"
+      }
+    ],
+    "https://schema.org/rights": [
+      {
+        "@value": "None"
+      }
+    ]
+  }
+]
+    </script>
 </head>
 <body>
 <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
-<h1>Geological and Administrative Features Ontology</h1>
+<img src="https://github.com/geological-survey-of-queensland/gsq-geoadminfeatures-ont/raw/master/style/gsq.jpg" alt="GSQ Logo">
+<h1>Geological Administrative Features Ontology</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
@@ -15,21 +64,17 @@
         <dd><code>http://linked.data.gov.au/def/geoadminfeatures</code></dd>
         <dt>Publisher(s)</dt>
         <dd>
-            <a href="http://linked.data.gov.au/org/gsq">Geological Survey of Queensland</a><br/>
+            None<br/>
         </dd>
         <dt>Creator(s)</dt>
         <dd>
+            <a href="mailto:geological_info@dnrme.qld.gov.au">GSQ Informatics Staff</a><br/>
             <a href="http://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a> (<a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a>) of <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a><br/>
-            <a href="mailto:john.mckellar@dnrme.qld.gov.au">John McKellar</a> of <a href="http://linked.data.gov.au/org/gsq">Geological Survey of Queensland</a><br/>
-        </dd>
-        <dt>Contributors(s)</dt>
-        <dd>
-            <a href="mailto:andrew.isles@dnrme.qld.gov.au">Andrew Isles</a> of <a href="http://linked.data.gov.au/org/gsq">Geological Survey of Queensland</a><br/>
         </dd>
         <dt>Created</dt>
-        <dd>2019-09-18</dd>
+        <dd>2019-12-04</dd>
         <dt>Modified</dt>
-        <dd>2019-10-08</dd>
+        <dd>2019-12-04</dd>
         <dt>Imports</dt>
         <dd>
             <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a><br/>
@@ -37,14 +82,13 @@
         <dt>Ontology Source</dt>
         <dd><a href="geoadminfeatures.ttl">RDF (turtle)</a></dd>
         <dt>Code Repository</dt>
-        <dd><a href="https://github.com/geological-survey-of-queensland/gsq-geoadminfeatures-ont">https://github.com/geological-survey-of-queensland/gsq-geoadminfeatures-ont</a></dd>
+        <dd><a href="https://github.com/geological-survey-of-queensland/geological-admininstrative-features-ont">https://github.com/geological-survey-of-queensland/geological-admininstrative-features-ont</a></dd>
     </dl>
     <h2>Description</h2>
     <div id="description">
-        <p>This ontology describes classes of geological and administrative feature relevant to the duties of the Geological Survey of Queensland.</p>
-<p>As subclasses of the GeoSPARQL Ontology's <code>Feature</code> class, this ontology defines <code>Geological Feature</code> and <code>Administrative Feature</code>. Multiple subclasses of those two main classes are also defined.</p>
-<p>Most of the subclasses of <code>Geological Feature</code> defined here are not disjoint with other subclasses of it in recognition of the fact that a real-world <code>Feature</code> may be classed in multiple ways. <code>Administrative Feature</code> subclasses, however, are all disjoint having been defined disjointly by people.</p>
-<p>References to and positioning of other Features defined elsewhere are made, such as placing the HY_Features model's <code>Catchment</code> and <code>CatchmentAggregate</code> classes as subclasses of this ontology's <code>Basin</code> class (a subclass of <code>Geological Feature</code>). As a result, the classes of object within the LocI project's Geofabric dataset can be related to objects classified using this ontology.</p>
+        <p>This ontology describes classes of geospatial feature relevant to the administrative duties of the Geological Survey of Queensland.</p>
+<p>As subclasses of the GeoSPARQL Ontology's <code>Feature</code> class, this ontology defines an <code>Administrative Feature</code>. Multiple subclasses of this class are then defined, some with class interrelations.</p>
+<p>This ontology is part of the Geological Survey of Queensland's set of <em>component</em> ontologies that together provide definitions for all of GSQ's data. Of particular importance for this ontology is GSQ's Geological Features Profile of SWEET which defined multiple classes of geological feature. It is yet to be published.</p>
     </div>
 </section>
 <section id="toc">
@@ -52,31 +96,25 @@
     <ol>
         <li><a href="#classes">Classes</a></li>
         <li><a href="#namespaces">Namespaces</a></li>
+        <li><a href="#legend">Legend</a></li>
     </ol>
 </section>
 <section id="overview">
     <h2>Overview</h2>
     <div class="figure">
-        <a href="images/overview.svg">
-            <img src="images/overview.svg" alt="overview image" />
-        </a>
+        <div style="width:500px; height:500px; background-color: black;">&nbsp;</div>
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div>
 </section>
 <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
-        <li><a href="#administrativefeature">Administrative feature</a></li>
-        <li><a href="#block">Block</a></li>
-        <li><a href="#georesourceaccumulationfeature">GeoResource Accumulation Feature</a></li>
-        <li><a href="#geologicalfeature">Geological Feature</a></li>
-        <li><a href="#lithodemicfeature">Lithodemic Feature</a></li>
-        <li><a href="#permit">Permit</a></li>
-        <li><a href="#stratigraphicfeature">Stratigraphic Feature</a></li>
-        <li><a href="#sub-block">Sub-Block</a></li>
-        <li><a href="#techtonicandstructuralframeworkfeature">Techtonic And Structural Framework Feature</a></li>
+        <li><a href="#Administrativefeature">Administrative feature</a></li>
+        <li><a href="#Block">Block</a></li>
+        <li><a href="#Permit">Permit</a></li>
+        <li><a href="#Sub-Block">Sub-Block</a></li>
     </ul>
-    <div class="entity class" id="administrativefeature">
+    <div class="entity class" id="Administrativefeature">
         <h3>Administrative feature<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -98,14 +136,14 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#block">geoaf:Block</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#permit">geoaf:Permit</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#sub-block">geoaf:SubBlock</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Sub-Block">geoaf:SubBlock</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Permit">geoaf:Permit</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Block">geoaf:Block</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="block">
+    <div class="entity class" id="Block">
         <h3>Block<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -121,84 +159,12 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#administrativefeature">geoaf:AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Administrativefeature">geoaf:AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="georesourceaccumulationfeature">
-        <h3>GeoResource Accumulation Feature<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/geoadminfeatures#GeoResourceAccumulationFeature</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    Georesource accumulations are naturally occurring masses, volumes or concentrations of geological materials that have existing or potential economic value. These resources may include, but are not limited to, minerals (including coal), hydrocarbons, quarry resources and groundwater.
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#geologicalfeature">geoaf:GeologicalFeature</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="geologicalfeature">
-        <h3>Geological Feature<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/geoadminfeatures#GeologicalFeature</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    A Geological Feature is a geospatial Feature that is a result of geological processes.
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="#lithodemicfeature">geoaf:LithodemicFeature</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#stratigraphicfeature">geoaf:StratigraphicFeature</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#techtonicandstructuralframeworkfeature">geoaf:TechtonicAndStructuralFrameworkFeature</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#georesourceaccumulationfeature">geoaf:GeoResourceAccumulationFeature</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="lithodemicfeature">
-        <h3>Lithodemic Feature<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/geoadminfeatures#LithodemicFeature</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    A Lithodemic Feature is a Geological Feature that was not created by sedimentation proceeses.
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#geologicalfeature">geoaf:GeologicalFeature</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="permit">
+    <div class="entity class" id="Permit">
         <h3>Permit<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -214,33 +180,12 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#administrativefeature">geoaf:AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Administrativefeature">geoaf:AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="stratigraphicfeature">
-        <h3>Stratigraphic Feature<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/geoadminfeatures#StratigraphicFeature</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    Stratigraphic Features embrace Stratigraphic Units, which are units of rock and/or sediment that conform to the Law of Superposition (e.g. lithostratigraphic units, biostratigraphic units, chronostratigraphic units), and Stratigraphic Events which reflect physical, chemical and biological events that left identifiable, widespread, if not worldwide, traces or markers in the sedimentary or extrusive igneous record (ICS; Kumpulainen, R.A., 2016).
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#geologicalfeature">geoaf:GeologicalFeature</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="sub-block">
+    <div class="entity class" id="Sub-Block">
         <h3>Sub-Block<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -256,35 +201,13 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#administrativefeature">geoaf:AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Administrativefeature">geoaf:AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#block">geoaf:Block</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#block">geoaf:Block</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="techtonicandstructuralframeworkfeature">
-        <h3>Techtonic And Structural Framework Feature<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/geoadminfeatures#TechtonicAndStructuralFrameworkFeature</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    A Tectonic and Structural Framework Feature is a Tectonic, Tectonostratigraphic or Structural element. Tectonic Elements include cratons, orogens, provinces and sedimentary basins; Tectonostratigraphic Elements include nappes and klippen; and Structural Elements include synclines, anticlines, faults and half-grabens.
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#geologicalfeature">geoaf:GeologicalFeature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#Block">geoaf:Block</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -295,7 +218,7 @@
     <dl>
         <dt><em>default (:)</em></dt>
         <dd><code>http://linked.data.gov.au/def/geoadminfeatures#</code></dd>
-        <dt>dcterms</dt>
+        <dt>dct</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
         <dt>doap</dt>
         <dd><code>http://usefulinc.com/ns/doap#</code></dd>
@@ -313,8 +236,6 @@
         <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
         <dt>rdfs</dt>
         <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
-        <dt>schema</dt>
-        <dd><code>http://schema.org/</code></dd>
         <dt>sdo</dt>
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
