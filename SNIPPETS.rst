@@ -1,8 +1,3 @@
-.. raw:: html
-
-    <style> .figure-eg {border: solid 1px black;} </style>
-
-
 pyLODE Snippets
 ===============
 Small snippets of RDF and corresponding HTML to indicate good ontology documentation.
@@ -40,6 +35,8 @@ Object type
 .. figure:: img/contributor-object.png
     :align: center
     :figclass: figure-eg
+
+.....
 
 * ``<ONTOLOGY_URI> dct:creator [...] .``
    * the range value is a Blank Node or a URI of type:
@@ -137,6 +134,8 @@ Ontology Source
     :align: center
     :figclass: figure-eg
 
+.....
+
 This is generated automatically
 
 Code Repositories
@@ -146,6 +145,7 @@ Code Repositories
     :align: center
     :figclass: figure-eg
 
+.....
 
 Code repositories that house an ontology can be indicated using the `Description of a Project <https://github.com/ewilderj/doap>`__ like this:
 
