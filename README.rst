@@ -6,6 +6,23 @@ pyLODE
 An OWL ontology documentation tool using Python and templating, based on
 LODE.
 
+
+Contents
+--------
+1. `Quick Intro`_
+2. Examples_
+3. Installation_
+4. Use_
+5. `What pyLODE understands`_
+6. `Differences from LODE`_
+7. License_
+8. Citation_
+9. Collaboration_
+10. Contacts_
+
+
+Quick Intro
+------------------
 The Live OWL Documentation Environment tool
 (`LODE <https://github.com/essepuntato/LODE>`__) is a well-known (in
 Semantic Web circles) Java & XSLT-based tool used to generate
@@ -135,8 +152,8 @@ save it with a basic CSS file into
     $ ./pylode -i ../example/prof.ttl --css true
 
 
-HTML results
-------------
+What pyLODE understands
+------------------------
 
 Annotations
 ^^^^^^^^^^^
