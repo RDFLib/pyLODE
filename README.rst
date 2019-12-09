@@ -138,7 +138,7 @@ These are the command line arguments to run pyLODE as a BASH or Python script:
 -  ``-o`` or ``--outputfile``, *optional*
     -  A name you wish to assign to the output file. Will be postfixed with .html or .md. If not specified, the name of the input file or last segment of RDF URI will be used, + .html/.md.
 -  ``-f`` or ``--outputformat``, *optional, default 'html'*
-    - The output format of the documentation. 'html' or 'markdown' accepted.
+    - The output format of the documentation. 'html' or 'md' accepted.
 
 Example call
 ^^^^^^^^^^^^
