@@ -1267,7 +1267,7 @@ class MakeDocco:
             has_nis=False
         )
 
-    def _make_document(self, title, metadata, classes, properties, default_namespace, namespaces, outputformat='html'):
+    def _make_document(self, title, metadata, classes, properties, default_namespace, namespaces, outputformat='html', exclude_css=False):
         if outputformat == 'md':
             template_file_ext = 'md'
         else:
@@ -1275,6 +1275,13 @@ class MakeDocco:
 
         template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
         document_template = Environment(loader=FileSystemLoader(template_dir)).get_template('document.' + template_file_ext)
+
+        css = None
+        if outputformat == 'html':
+            if not exclude_css:
+                pylode_css = path.join(path.dirname(path.realpath(__file__)), 'style', 'pylode.css')
+                css = open(pylode_css).read()
+
         return document_template.render(
             schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML template
             title=title,
@@ -1282,10 +1289,11 @@ class MakeDocco:
             classes=classes,
             properties=properties,
             default_namespace=default_namespace,
-            namespaces=namespaces
+            namespaces=namespaces,
+            css=css
         )
 
-    def document(self, source_info):
+    def document(self, source_info, exclude_css=False):
         # add some extra triples to the graph for easier querying
         self._expand_graph_for_pylode()
         # get the IDs (URIs) of all properties -> self.PROPERTIES
@@ -1421,7 +1429,8 @@ class MakeDocco:
             properties,
             self.METADATA['default_namespace'],
             namespaces,
-            outputformat=self.outputformat
+            outputformat=self.outputformat,
+            exclude_css=exclude_css
         )
 
 

@@ -85,6 +85,13 @@ def main(args):
     )
 
     parser.add_argument(
+        '-xc', '--excludecss',
+        help='Whether (true) or not (false) to exclude the standard pyLODE CSS content from an HTML file output.',
+        choices=['true', 'false'],
+        default='false'
+    )
+
+    parser.add_argument(
         '-p', '--profile',
         help='A profile - a specified information model - for an ontology. You can indicate this via the profile\'s URI'
              'or via the profile\'s token. The list of profiles, URIs and tokens, that this application supports can be'
@@ -168,6 +175,13 @@ def main(args):
         shutil.copyfile(path.join(style_dir, 'pylode.css'), path.join(publication_dir, 'style.css'))
         msg_css = ' and CSS'
 
+    if args.excludecss == 'true':
+        exclude_css = True
+    else:
+        exclude_css = False
+
+    print(exclude_css)
+
     output_filename = os.path.basename(args.outputfile) if args.outputfile else 'doc.html'
 
     if args.outputformat == 'html':
@@ -182,7 +196,7 @@ def main(args):
 
     # generate the HTML doc
     with open(path.join(publication_dir, output_filename), 'w') as f:
-        f.write(h.document(source_info))
+        f.write(h.document(source_info, exclude_css=exclude_css))
 
     if args.outputformat == 'html':
         msg_template = 'Finished. HTML{} file in {}/.'
