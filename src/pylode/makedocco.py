@@ -700,6 +700,9 @@ class MakeDocco:
                     for o2 in self.G.objects(subject=o, predicate=DOAP.repository):
                         self.METADATA['repository'] = str(o2)
 
+                if p == self.SDO.codeRepository:
+                    self.METADATA['repository'] = str(o)
+
             if self.METADATA.get('title') is None:
                 raise ValueError(
                     'Your ontology does not indicate any form of label or title. '
