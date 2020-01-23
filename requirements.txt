@@ -6,4 +6,5 @@ markdown
 pytest
 python-dateutil
 rdflib
+rdflib-jsonld 
 requests

@@ -4,14 +4,14 @@ Small snippets of RDF and corresponding HTML to indicate good ontology documenta
 
 Agents
 ------
-There are 2 ways to associate agents - *authors*, *creators*, *publishers* etc. - with ontologies using pyLODE for good documentation results: datatype & object type.
+Agents, individual persons or organisations, should be associated with ontologies to indicate *authors*, *creators*, *publishers* etc. There are 2 ways to do this that pyLODE understands: datatype & object type.
 
-Datatype
-~~~~~~~~
-A simple literal value for an agent.
+Datatype - not preferred
+~~~~~~~~~~~~~~~~~~~~~~~~
+A simple literal value for an agent that a human can read but not a machine can't understand:
 
 * ``<ONTOLOGY_URI> dc:creator "AGENT NAME" .``
-   * the range value is a string literal
+   * the range value is a string literal, either string typed (``^^xsd:string``) or language typed (``@en`` or ``@de``)
    * the following `Dublin Core Elements 1.1 <https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#section-3>`__ properties may be used: 
       * ``dc:contributor``
       * ``dc:creator``
@@ -30,8 +30,10 @@ A simple literal value for an agent.
     <ontology_x>
         dc:creator "Nicholas J. Car" ;
 
-Object type
-~~~~~~~~~~~
+Object type - preferred
+~~~~~~~~~~~~~~~~~~~~~~~
+An RDF object is used for the agent and can contain multiple details. A Blank Node or a URI can be used. Best case, a persistent agent URI!
+
 .. figure:: img/contributor-object.png
     :align: center
     :figclass: figure-eg
@@ -39,6 +41,10 @@ Object type
 .....
 
 * ``<ONTOLOGY_URI> dct:creator [...] .``
+
+or
+
+* ``<ONTOLOGY_URI> dct:creator <SOME_URI> .``
    * the range value is a Blank Node or a URI of type:
       * ``schema:Person``
       * ``schema:Organization``
@@ -46,10 +52,10 @@ Object type
       * ``foaf:Organization``
    * the properties of the Blank Node or the URI are as below
    * the following `Dublin Core Terms <https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#section-2>`__ properties may be used:
-      * ``dc:contributor``
+      * ``dct:contributor``
       * ``dct:creator``
       * ``dct:publisher``
-      * ``dc:rightsHolder``
+      * ``dct:rightsHolder``
    * the following `schema.org <https://schema.org>`__ properties may be used:
       * ``schema:author``
       * ``schema:contributor``
@@ -61,7 +67,7 @@ Object type
    * the following `FOAF <http://xmlns.com/foaf/spec/>`__ properties may be used:
       * ``foaf:maker``
 
-e.g.:
+e.g. (Blank Node):
 
 ::
 
@@ -71,7 +77,7 @@ e.g.:
             ...
         ] ;
 
-or
+or (URI):
 
 ::
 
@@ -84,12 +90,13 @@ or
         ...
 
 
-Object type agent properties
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Agent properties
+^^^^^^^^^^^^^^^^
 
 * ``foaf:name`` / ``schema:name``
 * ``foaf:mbox`` / ``schema:email``
-* ``foaf:homepage`` / ``schema:identifier`` / ``schema:url``
+* ``foaf:homepage`` / ``schema:url``
+* ``schema:identifier``
 
 
 e.g.:
@@ -125,21 +132,22 @@ e.g.:
         ] ;
 
 
-Additional Resources
---------------------
+Provenance
+----------
 
 Ontology Source
 ~~~~~~~~~~~~~~~
+The ontology's HTMY representation linking back to the RDF: generated automatically
+
 .. figure:: img/source.png
     :align: center
     :figclass: figure-eg
 
 .....
 
-This is generated automatically
-
 Code Repositories
 ~~~~~~~~~~~~~~~~~
+Indicating to readers where the 'live' version of the ontology is managed:
 
 .. figure:: img/code-repository.png
     :align: center
@@ -147,7 +155,17 @@ Code Repositories
 
 .....
 
-Code repositories that house an ontology can be indicated using the `Description of a Project <https://github.com/ewilderj/doap>`__ like this:
+Code repositories that house an ontology can be indicated either using `schema.org's codeRepository property <https://schema.org/codeRepository>`__ or a combination of the `Description of a Project <https://github.com/ewilderj/doap>`__ and PROV:
+
+::
+
+    @prefix schema: <https://schema.org/> .
+
+    <ONTOLOGY_URI>
+        schema:codeRepository <REPO_URI> ;
+        ...
+
+or
 
 ::
 
