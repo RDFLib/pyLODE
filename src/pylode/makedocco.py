@@ -6,7 +6,10 @@ import requests
 import collections
 import dateutil.parser
 from jinja2 import Environment, FileSystemLoader
-
+from rdflib import plugin
+from rdflib.plugin import register, Serializer
+from rdflib_jsonld import serializer
+register('json-ld', Serializer, 'rdflib_jsonld.serializer', 'JsonLDSerializer')
 
 class MakeDocco:
     def __init__(self, outputformat='html'):
