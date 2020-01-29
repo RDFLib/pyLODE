@@ -9,7 +9,7 @@ a = Analysis(['cli.py'],
              pathex=['.'],
              binaries=[],
              datas=[
-                       ('templates/*.html','templates'),
+                       ('templates/*.*','templates'),
                        ('style/*.css','style')
                     ],
              hiddenimports=['rdflib.plugins',
