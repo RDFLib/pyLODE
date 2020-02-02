@@ -91,7 +91,7 @@ preprocessed examples.
 
 Installation
 --------------
-This tool can be used either as a command line utility (see below) or as a Python module in other Python code.
+This tool can be used either as a command line utility (Linux, Mac or Windows, see below) or as a Python module in other Python code. It can also be used via an online API.
 
 This tool is available on PyPI, the Python Package Index, at https://pypi.org/project/pyLODE/ and can be installed for use as a Python module via pip:
 
@@ -127,7 +127,7 @@ curl localhost:8000/lode?url=http://sweetontology.net/sweetAll.ttl
 
 Command line
 ^^^^^^^^^^^^^
-These are the command line arguments to run pyLODE as a BASH or Python script:
+These are the command line arguments to run pyLODE as a BASH or Python script on Linux, Mac etc. or via the Windows executable:
 
 -  ``-i`` or ``--inputfile``, *required if* ``-u`` *not used*
     -  The RDF ontology file you wish to generate HTML for Must be in either Turtle, RDF/XML, JSON-LD or N-Triples formats indicated by the file type extensions .rdf, .owl, .ttl, .n3, .nt, .json respectively
@@ -150,6 +150,10 @@ save it with a basic CSS file into
 ::
 
     $ ./pylode -i ../example/prof.ttl --css true
+
+Windows
+^^^^^^^
+`Pyinstaller <https://www.pyinstaller.org/>`__ can be `used <https://pyinstaller.readthedocs.io/en/stable/usage.html>`__ to create an executable for Windows that has the same characteristics as the Linux/Mac CLI program. The necissary ``.spec`` file is already included in ``pylode-cli.spec``.
 
 
 What pyLODE understands
