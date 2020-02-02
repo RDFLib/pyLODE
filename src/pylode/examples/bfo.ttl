@@ -2076,7 +2076,8 @@ obo:bfo.owl a owl:Ontology ;
     owl:versionIRI <http://purl.obolibrary.org/obo/bfo/2014-05-03/bfo.owl> ;
     foaf:homepage <http://code.google.com/p/bfo/>,
         <http://ifomis.org/bfo> ;
-    foaf:mbox <mailto:bfo-owl-devel@googlegroups.com> .
+    foaf:mbox <mailto:bfo-owl-devel@googlegroups.com> ;
+    rdfs:label "Basic Formal Ontology version 2" .
 
 obo:IAO_0000602 a owl:AnnotationProperty ;
     rdfs:label "has associated axiom(fol)"@en ;
