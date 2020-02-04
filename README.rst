@@ -161,7 +161,7 @@ The necessary ``.spec`` file is already included in ``pylode-cli.spec``.
 The ``pylode-cli.spec`` PyInstaller spec file creates a ``.exe`` for the 
 pyLODE Command Line utility. See above for the pyLODE command line util usage instructions.
 
-See `the PyInstaller installation guide <https://pyinstaller.readthedocs.io/en/stable/installation.html#installing-in-windows>`
+See `the PyInstaller installation guide <https://pyinstaller.readthedocs.io/en/stable/installation.html#installing-in-windows>`__
 for info on how to install PyInstaller for Windows.
 
 Once you have pyinstaller, use pyinstaller to generate the ``pyLODE.exe`` CLI file like so:
