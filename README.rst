@@ -153,7 +153,28 @@ save it with a basic CSS file into
 
 Windows
 ^^^^^^^
-`Pyinstaller <https://www.pyinstaller.org/>`__ can be `used <https://pyinstaller.readthedocs.io/en/stable/usage.html>`__ to create an executable for Windows that has the same characteristics as the Linux/Mac CLI program. The necissary ``.spec`` file is already included in ``pylode-cli.spec``.
+`Pyinstaller <https://www.pyinstaller.org/>`__ can be 
+`used <https://pyinstaller.readthedocs.io/en/stable/usage.html>`__ to create an 
+executable for Windows that has the same characteristics as the Linux/Mac 
+CLI program. 
+The necessary ``.spec`` file is already included in ``pylode-cli.spec``.
+The ``pylode-cli.spec`` PyInstaller spec file creates a ``.exe`` for the 
+pyLODE Command Line utility. See above for the pyLODE command line util usage instructions.
+
+See `the PyInstaller installation guide <https://pyinstaller.readthedocs.io/en/stable/installation.html#installing-in-windows>`
+for info on how to install PyInstaller for Windows.
+
+Once you have pyinstaller, use pyinstaller to generate the ``pyLODE.exe`` CLI file like so:
+
+::
+
+    $ cd src/pylode
+    $ pyinstaller pylode-cli.spec
+
+This will output ``pylode.exe`` in the ``dist`` directory in ``src/pylode``.
+
+You can now run the pyLODE Command Line utility via ``pylode.exe``. 
+See above for the pyLODE command line util usage instructions.
 
 
 What pyLODE understands
