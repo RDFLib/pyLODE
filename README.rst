@@ -283,7 +283,7 @@ That's because we want things to look familiar and LODE's outputs look
 great. The Markdown's pretty vanilla.
 
 Also, pyLODE generates and uses only static HTML + CSS, no JavaScript,
-live loading Google Fonts etc. This is to ensure that all you nned for
+live loading Google Fonts etc. This is to ensure that all you need for
 nice display is within a couple of static, easy to use and maintain,
 files. Prevents documentation breaking over time.
 
