@@ -28,7 +28,7 @@ The Live OWL Documentation Environment tool
 Semantic Web circles) Java & XSLT-based tool used to generate
 human-readable HTML documents for OWL and RDF ontologies. That tool is
 now a bit dated (old-style HTML, use of older technologies like XSLT)
-and it's (`online version <www.essepuntato.it/lode>`__) is not always
+and it's (`online version <https://www.essepuntato.it/lode>`__) is not always
 online.
 
 This tool is a complete re-implementation of LODE's functionality using
