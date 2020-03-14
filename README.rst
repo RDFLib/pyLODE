@@ -28,7 +28,7 @@ The Live OWL Documentation Environment tool
 Semantic Web circles) Java & XSLT-based tool used to generate
 human-readable HTML documents for OWL and RDF ontologies. That tool is
 now a bit dated (old-style HTML, use of older technologies like XSLT)
-and it's (`online version <www.essepuntato.it/lode>`__) is not always
+and it's (`online version <https://www.essepuntato.it/lode>`__) is not always
 online.
 
 This tool is a complete re-implementation of LODE's functionality using
@@ -287,7 +287,7 @@ That's because we want things to look familiar and LODE's outputs look
 great. The Markdown's pretty vanilla.
 
 Also, pyLODE generates and uses only static HTML + CSS, no JavaScript,
-live loading Google Fonts etc. This is to ensure that all you nned for
+live loading Google Fonts etc. This is to ensure that all you need for
 nice display is within a couple of static, easy to use and maintain,
 files. Prevents documentation breaking over time.
 
