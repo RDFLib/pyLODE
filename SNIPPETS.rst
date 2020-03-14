@@ -2,6 +2,12 @@ pyLODE Snippets
 ===============
 Small snippets of RDF and corresponding HTML to indicate good ontology documentation.
 
+Contents
+--------
+1. Agents_
+2. Provenance_
+
+
 Agents
 ------
 Agents, individual persons or organisations, should be associated with ontologies to indicate *authors*, *creators*, *publishers* etc. There are 2 ways to do this that pyLODE understands: datatype & object type.
@@ -137,7 +143,7 @@ Provenance
 
 Ontology Source
 ~~~~~~~~~~~~~~~
-The ontology's HTMY representation linking back to the RDF: generated automatically
+The ontology's HTML representation linking back to the RDF: generated automatically
 
 .. figure:: img/source.png
     :align: center

@@ -8,6 +8,9 @@ Description | {{ description }}
 {%- if scopeNote is not none %}
 Usage Note | {{ scopeNote }}
 {%- endif %}
+{%- if example is not none %}
+Example | {{ example }}
+{%- endif %}
 {%- if supers|length > 0 %}
 Super-classes | {%- for super in supers %}{{ super }}<br />{%- endfor %}
 {%- endif %}

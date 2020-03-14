@@ -21,6 +21,14 @@
                 </td>
             </tr>
             {%- endif %}
+            {%- if example is not none %}
+            <tr>
+                <th>Example</th>
+                <td>
+                    {{ example }}
+                </td>
+            </tr>
+            {%- endif %}
             {%- if supers|length > 0 %}
             <tr>
                 <th>Super-classes</th>

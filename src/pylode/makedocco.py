@@ -232,6 +232,7 @@ class MakeDocco:
             self.PROPERTIES[prop]["title"] = None
             self.PROPERTIES[prop]["description"] = None
             self.PROPERTIES[prop]["scopeNote"] = None
+            self.PROPERTIES[prop]["example"] = None
             self.PROPERTIES[prop]["isDefinedBy"] = None
 
             for p, o in self.G.predicate_objects(subject=s):
@@ -243,6 +244,11 @@ class MakeDocco:
 
                 if p == SKOS.scopeNote:
                     self.PROPERTIES[prop]["scopeNote"] = str(o)
+
+                if p == SKOS.example:
+
+                    self.PROPERTIES[prop]["example"] = \
+                        '<pre>' + str(o).replace("\t", "    ").replace("\n", "<br />") + '</pre>'
 
                 if p == RDFS.isDefinedBy:
                     self.PROPERTIES[prop]["isDefinedBy"] = str(o)
@@ -468,6 +474,7 @@ class MakeDocco:
             self.CLASSES[cls]["title"] = None
             self.CLASSES[cls]["description"] = None
             self.CLASSES[cls]["scopeNote"] = None
+            self.CLASSES[cls]["example"] = None
             self.CLASSES[cls]["isDefinedBy"] = None
 
             for p, o in self.G.predicate_objects(subject=s):
@@ -479,6 +486,9 @@ class MakeDocco:
 
                 if p == SKOS.scopeNote:
                     self.CLASSES[cls]["scopeNote"] = str(o)
+
+                if p == SKOS.example:
+                    self.CLASSES[cls]["example"] = str(o)
 
                 if p == RDFS.isDefinedBy:
                     self.CLASSES[cls]["isDefinedBy"] = str(o)
@@ -1149,6 +1159,7 @@ class MakeDocco:
             title=property[1].get("title"),
             description=property[1].get("description"),
             scopeNote=property[1].get("scopeNote"),
+            example=property[1].get("example"),
             supers=property[1].get("supers"),
             subs=property[1].get("subs"),
             domains=property[1]["domains"],
@@ -1244,6 +1255,7 @@ class MakeDocco:
                     supers=v["supers"],
                     restrictions=v["restrictions"],
                     scopeNote=v["scopeNote"],
+                    example=v["example"],
                     subs=v["subs"],
                     in_domain_of=v["in_domain_of"],
                     in_domain_includes_of=v["in_domain_includes_of"],
