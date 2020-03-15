@@ -182,7 +182,7 @@ What pyLODE understands
 
 Annotations
 ^^^^^^^^^^^
-pyLODE understands the following ontology annotations:
+pyLODE understands the following ontology constructs:
 
 -  **ontology metadata**
     -  *imports* - ``owl:imports``
@@ -218,6 +218,8 @@ pyLODE understands the following ontology annotations:
     -  *example* - a ``skos:example`` string containing RDF
     -  *super properties* - by declaring a class to be ``owl:subPropertyOf`` something
     -  *sub properties* - pyLODE will work these out itself
+    -  *equivalent properties* - by declaring a class to be ``owl:equivalentProperty`` something
+    -  *inverse of* - by declaring a class to be ``owl:inverseOf`` something
     -  *domains* - ``rdfs:domain`` or ``schema:domainIncludes``
     -  *ranges* - ``rdfs:range`` or ``schema:rangeIncludes``
 -  **namespaces**

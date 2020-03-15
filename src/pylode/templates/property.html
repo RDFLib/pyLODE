@@ -51,6 +51,26 @@
                 </td>
             </tr>
             {%- endif %}
+            {%- if equivs|length > 0 %}
+            <tr>
+                <th>Equivalent properties</th>
+                <td>
+                    {%- for equiv in equivs %}
+                    {{ equiv }}
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if invs|length > 0 %}
+            <tr>
+                <th>Inverse properties</th>
+                <td>
+                    {%- for inv in invs %}
+                    {{ inv }}
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
             {%- if domains|length > 0 or domainIncludes|length > 0 %}
             <tr>
                 <th>Domain(s)</th>

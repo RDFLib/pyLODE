@@ -246,9 +246,8 @@ class MakeDocco:
                     self.PROPERTIES[prop]["scopeNote"] = str(o)
 
                 if p == SKOS.example:
-
                     self.PROPERTIES[prop]["example"] = \
-                        '<pre>' + str(o).replace("\t", "    ").replace("\n", "<br />") + '</pre>'
+                        '<pre>' + str(o).replace("<", "&lt;").replace("\t", "    ").replace("\n", "<br />") + '</pre>'
 
                 if p == RDFS.isDefinedBy:
                     self.PROPERTIES[prop]["isDefinedBy"] = str(o)
@@ -276,7 +275,19 @@ class MakeDocco:
                     subs.append(str(o))
             self.PROPERTIES[prop]["subs"] = subs
 
-            # TODO: cater for equvalentProperty
+            # equivalent properties
+            equivs = []
+            for o in self.G.objects(subject=s, predicate=OWL.equivalentProperty):
+                if type(o) != BNode:
+                    equivs.append(str(o))
+            self.PROPERTIES[prop]["equivs"] = equivs
+
+            # inverse properties
+            invs = []
+            for o in self.G.objects(subject=s, predicate=OWL.inverseOf):
+                if type(o) != BNode:
+                    invs.append(str(o))
+            self.PROPERTIES[prop]["invs"] = invs
 
             # domains
             domains = []
@@ -1162,6 +1173,8 @@ class MakeDocco:
             example=property[1].get("example"),
             supers=property[1].get("supers"),
             subs=property[1].get("subs"),
+            equivs=property[1].get("equivs"),
+            invs=property[1].get("invs"),
             domains=property[1]["domains"],
             domainIncludes=property[1]["domainIncludes"],
             ranges=property[1]["ranges"],
@@ -1486,6 +1499,26 @@ class MakeDocco:
                 )
                 html.append(self._make_uri_html(p, type=prop_type))
             self.PROPERTIES[uri]["subs"] = html
+
+            html = []
+            for p in prop["equivs"]:
+                prop_type = (
+                    self.PROPERTIES.get(p).get("prop_type")
+                    if self.PROPERTIES.get(p)
+                    else None
+                )
+                html.append(self._make_uri_html(p, type=prop_type))
+            self.PROPERTIES[uri]["equivs"] = html
+
+            html = []
+            for p in prop["invs"]:
+                prop_type = (
+                    self.PROPERTIES.get(p).get("prop_type")
+                    if self.PROPERTIES.get(p)
+                    else None
+                )
+                html.append(self._make_uri_html(p, type=prop_type))
+            self.PROPERTIES[uri]["invs"] = html
 
             html = []
             for d in prop["domains"]:
