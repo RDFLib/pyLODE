@@ -69,8 +69,12 @@
         <dt>License</dt>
         <dd>{{ license }}</dd>
         {%- endif %}
-        <dt>Ontology Source</dt>
-        <dd>{{ ont_source }}</dd>
+        {%- if source is not none %}
+        <dt>Source</dt>
+        <dd>{{ source }}</dd>
+        {%- endif %}
+        <dt>Ontology RDF</dt>
+        <dd>{{ ont_rdf }}</dd>
         {%- if repository is not none %}
         <dt>Code Repository</dt>
         <dd><a href="{{ repository }}">{{ repository }}</a></dd>

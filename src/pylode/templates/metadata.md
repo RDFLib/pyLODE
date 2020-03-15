@@ -63,8 +63,12 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * **License**
   * {{ license }}
 {%- endif %}
-* **Ontology Source**
-  * {{ ont_source }}
+{%- if source is not none %}
+* **Source**
+  * {{ source }}
+{%- endif %}
+* **Ontology RDF**
+  * {{ ont_rdf }}
 {%- if repository is not none %}
 * **Code Repository**
   * <{{ repository }}>

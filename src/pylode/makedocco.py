@@ -697,6 +697,12 @@ class MakeDocco:
                         "%Y-%m-%d"
                     )
 
+                if p == DCTERMS.source:
+                    if str(o).startswith('http'):
+                        self.METADATA["source"] = '<a href="{0}">{0}</a>'.format(str(o))
+                    else:
+                        self.METADATA["source"] = str(o)
+
                 if p == OWL.versionIRI:
                     self.METADATA["versionIRI"] = '<a href="{0}">{0}</a>'.format(str(o))
 
@@ -1403,13 +1409,14 @@ class MakeDocco:
             created=self.METADATA.get("created"),  # TODO: auto-detect format
             modified=self.METADATA.get("modified"),
             issued=self.METADATA.get("issued"),
+            source=self.METADATA.get("source"),
             description=self.METADATA.get("description"),
             historyNote=self.METADATA.get("historyNote"),
             version_info=self.METADATA.get("versionInfo"),
             license=self.METADATA.get("license"),
             rights=self.METADATA.get("rights"),
             repository=self.METADATA.get("repository"),
-            ont_source=self._make_source_file_link(source_info),
+            ont_rdf=self._make_source_file_link(source_info),
             has_classes=self.METADATA.get("has_classes"),
             has_ops=self.METADATA.get("has_ops"),
             has_fps=self.METADATA.get("has_fps"),

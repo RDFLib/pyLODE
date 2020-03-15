@@ -201,6 +201,7 @@ pyLODE understands the following ontology constructs:
     -  **dates**: *created*, *modified*, *issued* - ``dct:created`` etc., all as ``xsd:date`` or ``xsd:dateTime`` datatype properties
     -  **rights**: *license* - ``dct:license`` as a URI & *rights* - ``dct:rights`` as a string
     -  *code respository* - ``schema:codeRepository`` as a URI
+    -  *source* - ``dcterms:source`` as a URI or text
 -  **classes**
     -  per ``rdfs:Class`` or ``owl:Class``
     -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title``
