@@ -200,6 +200,7 @@ pyLODE understands the following ontology constructs:
         - see the `pylode/examples/ <pylode/examples/>`__ directory for examples!
     -  **dates**: *created*, *modified*, *issued* - ``dct:created`` etc., all as ``xsd:date`` or ``xsd:dateTime`` datatype properties
     -  **rights**: *license* - ``dct:license`` as a URI & *rights* - ``dct:rights`` as a string
+    -  *code respository* - ``schema:codeRepository`` as a URI
 -  **classes**
     -  per ``rdfs:Class`` or ``owl:Class``
     -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title``
