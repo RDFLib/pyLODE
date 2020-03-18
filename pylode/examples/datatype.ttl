@@ -1,0 +1,256 @@
+# baseURI: http://linked.data.gov.au/def/datatype
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://topbraid.org/schema/
+# imports: http://usefulinc.com/ns/doap
+# imports: http://www.w3.org/ns/prov-o#
+
+@prefix data: <http://linked.data.gov.au/def/datatype/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://linked.data.gov.au/def/datatype>
+  a owl:Ontology ;
+  dct:created "2019-03-25"^^xsd:date ;
+  dct:creator [
+      a sdo:Person ;
+      sdo:affiliation [
+          a sdo:Organization ;
+          sdo:identifier <http://catalogue.linked.data.gov.au/def/csiro> ;
+          sdo:identifier <https://ror.org/03qn8fb07> ;
+          sdo:mainEntityOfPage <https://www.csiro.au/> ;
+          sdo:name "CSIRO" ;
+        ] ;
+      sdo:email "simon.cox@csiro.au" ;
+      sdo:identifier <https://orcid.org/0000-0002-3884-3420> ;
+      sdo:mainEntityOfPage <https://people.csiro.au/C/S/simon-cox> ;
+      sdo:name "Simon J.D.Cox" ;
+    ] ;
+  dct:description """A set of classes representing data-types. 
+These may be used for observation results, or for the range of specific properties in other applications where scaled numbers, ranges, percents etc are required. """ ;
+  dct:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+  dct:modified "2019-10-03"^^xsd:date ;
+  rdfs:label "Datatypes" ;
+  owl:imports <http://purl.org/dc/elements/1.1/> ;
+  owl:imports <http://topbraid.org/schema/> ;
+  owl:imports <http://usefulinc.com/ns/doap> ;
+  owl:imports <http://www.w3.org/ns/prov-o#> ;
+  skos:historyNote """Originally developed for use as the value of an observation result (sosa:hasResult) in the context of the TERN-plot ontology. 
+
+However, objects from these classes may appear in many contexts. """ ;
+  prov:wasGeneratedBy [
+      a doap:Project ;
+      a prov:Activity ;
+      doap:repository <https://github.com/AGLDWG/datatype-ont> ;
+    ] ;
+.
+data:Boolean
+  a owl:Class ;
+  rdfs:label "Boolean" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom xsd:boolean ;
+      owl:onProperty data:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty data:value ;
+    ] ;
+  skos:definition "Class to encapsulate a true-or-false value" ;
+.
+data:Concept
+  a owl:Class ;
+  rdfs:label "Concept" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom skos:Concept ;
+      owl:onProperty rdf:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty data:vocabulary ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty rdf:value ;
+    ] ;
+  skos:definition "Class to encapsulate a classifier, usually a values from a controlled vocabulary" ;
+.
+data:Count
+  a owl:Class ;
+  rdfs:label "Count" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom xsd:integer ;
+      owl:onProperty data:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty data:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty data:uncertainty ;
+    ] ;
+  skos:definition "Class to encapsulate an integer value" ;
+.
+data:Percent
+  a owl:Class ;
+  rdfs:label "Percent" ;
+  rdfs:subClassOf data:QuantitativeMeasure ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:hasValue <http://qudt.org/vocab/unit/PERCENT> ;
+      owl:onProperty data:unit ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty data:uncertainty ;
+    ] ;
+  skos:definition "Class to encapsulate a quantitative measure expressed as a percent value" ;
+.
+data:PercentRange
+  a owl:Class ;
+  rdfs:label "Percent range" ;
+  rdfs:subClassOf data:QuantitativeRange ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:hasValue <http://qudt.org/vocab/unit/PERCENT> ;
+      owl:onProperty data:unit ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty data:uncertainty ;
+    ] ;
+  skos:definition "Class to encapsulate a quantitative range expressed as in percent values" ;
+.
+data:QuantitativeMeasure
+  a owl:Class ;
+  rdfs:label "Quantitative Measure" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom xsd:decimal ;
+      owl:onProperty data:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty data:unit ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty data:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty data:uncertainty ;
+    ] ;
+  skos:definition "Class to encapsulate a quantitative measure value" ;
+.
+data:QuantitativeRange
+  a owl:Class ;
+  rdfs:label "Quantitative Range" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty data:max ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty data:min ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty data:unit ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty data:uncertainty ;
+    ] ;
+  skos:definition "Class to encapsulate a quantitative range " ;
+.
+data:Text
+  a owl:Class ;
+  rdfs:label "Text" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom xsd:string ;
+      owl:onProperty data:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty data:value ;
+    ] ;
+  skos:definition "Class to encapsulate a textual value" ;
+.
+data:max
+  a owl:DatatypeProperty ;
+  rdfs:label "data maximum" ;
+  rdfs:range xsd:decimal ;
+  rdfs:subPropertyOf rdf:value ;
+  skos:definition "Maximum value of a range" ;
+.
+data:min
+  a owl:DatatypeProperty ;
+  rdfs:label "data minimum" ;
+  rdfs:range xsd:decimal ;
+  rdfs:subPropertyOf rdf:value ;
+  skos:definition "Minimum value of range" ;
+.
+data:standard
+  a owl:ObjectProperty ;
+  rdfs:label "data standard" ;
+  skos:definition "Measurement standard, scale, uom, reference system, controlled vocabulary, taxonomy etc" ;
+.
+data:uncertainty
+  a owl:DatatypeProperty ;
+  rdfs:label "data uncertainty" ;
+  rdfs:range xsd:decimal ;
+  rdfs:subPropertyOf rdf:value ;
+  skos:definition "Uncertainty for a quantitative value" ;
+.
+data:unit
+  a owl:ObjectProperty ;
+  rdfs:label "unit of measure" ;
+  rdfs:subPropertyOf data:standard ;
+  skos:definition "Measurement scale " ;
+.
+data:value
+  a owl:DatatypeProperty ;
+  rdfs:label "data value" ;
+  rdfs:subPropertyOf rdf:value ;
+  skos:definition "simple value (a literal)" ;
+.
+data:vocabulary
+  a owl:ObjectProperty ;
+  rdfs:label "vocabulary" ;
+  rdfs:range [
+      a owl:Class ;
+      owl:unionOf (
+          skos:ConceptScheme
+          skos:Collection
+          owl:Ontology
+        ) ;
+    ] ;
+  rdfs:subPropertyOf data:standard ;
+  skos:definition "controlled vocabulary, taxonomy etc " ;
+.

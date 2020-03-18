@@ -1,0 +1,75 @@
+@prefix geoaf: <http://linked.data.gov.au/def/geoadminfeatures#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix loci: <http://linked.data.gov.au/def/loci#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://linked.data.gov.au/def/geoadminfeatures> .
+
+
+<http://linked.data.gov.au/def/geoadminfeatures> rdf:type owl:Ontology ;
+                                                  owl:imports <http://www.opengis.net/ont/geosparql> ;
+                                                  dct:creator [ rdf:type sdo:Person ;
+                                                                    sdo:affiliation [ rdf:type sdo:Organization ;
+                                                                                      sdo:identifier <https://surroundaustralia.com> ;
+                                                                                      sdo:name "SURROUND Australia Pty Ltd"
+                                                                                    ] ;
+                                                                    sdo:email <mailto:nicholas.car@surroundaustralia.com> ;
+                                                                    sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+                                                                    sdo:name "Nicholas J. Car"
+                                                                  ] ,
+                                                                  [ rdf:type sdo:Organization ;
+                                                                    sdo:parentOrganization <http://linked.data.gov.au/org/gsq> ;
+                                                                    sdo:email <mailto:geological_info@dnrme.qld.gov.au> ;
+                                                                    sdo:name "GSQ Informatics Staff"
+                                                                  ] ;
+                                                                  dct:created "2019-12-04"^^xsd:date ;
+                                                  dct:description """This ontology describes classes of geospatial feature relevant to the administrative duties of the Geological Survey of Queensland.
+
+As subclasses of the GeoSPARQL Ontology's `Feature` class, this ontology defines an `Administrative Feature`. Multiple subclasses of this class are then defined, some with class interrelations.
+
+This ontology is part of the Geological Survey of Queensland's set of *component* ontologies that together provide definitions for all of GSQ's data. Of particular importance for this ontology is GSQ's Geological Features Profile of SWEET which defined multiple classes of geological feature. It is yet to be published."""@en ;
+                                                  dct:hasVersion 0.5 ;
+                                                  dct:modified "2019-12-04"^^xsd:date ;
+                                                  dct:publisher <http://linked.data.gov.au/org/gsq> ;
+                                                  dct:title "Geological Administrative Features Ontology"@en ;
+                                                  prov:wasGeneratedBy [ rdf:type doap:Project ,
+                                                                                 prov:Activity ;
+                                                                        doap:repository <https://github.com/geological-survey-of-queensland/geological-admininstrative-features-ont>
+                                                                      ] .
+
+###  http://linked.data.gov.au/def/geoadminfeatures#AdministrativeFeature
+geoaf:AdministrativeFeature rdf:type owl:Class ;
+                            rdfs:subClassOf geo:Feature ;
+                            owl:disjointWith geoaf:GeologicalFeature ;
+                            skos:definition "An Administrative Feature is a geo:Feature that is defined by adminstrative processes such as legislation, regulation, policy or procedure."@en ;
+                            skos:prefLabel "Administrative feature" .
+
+###  http://linked.data.gov.au/def/geoadminfeatures#Block
+geoaf:Block rdf:type owl:Class ;
+            rdfs:subClassOf geoaf:AdministrativeFeature ;
+            skos:definition "A Block is an administrative division of the State of Queensland that is used for tenure management. A Block is defined as five minutes of latitude by five minutes of longitude. Blocks are grouped by 1:1,000,000 map sheet areas, the names of which provide the containing Blocks with a four letter prefix (e.g. Clermont 1:1,000,000 provides CLER). Each sheet area contains 3456 Blocks, with the Blocks numbered between 1 and 3456 inclusive. A Block is divided into 25 Sub-Blocks."@en ;
+            skos:prefLabel "Block" .
+
+###  http://linked.data.gov.au/def/geoadminfeatures#Permit
+geoaf:Permit rdf:type owl:Class ;
+             rdfs:subClassOf geoaf:AdministrativeFeature ;
+             skos:definition "Permits are a license granted over a spatial region within the State of Queensland. Permits govern the activities which can be conducted upon them. Activities include exploration, development, and extraction of a specific commodity or commodities."@en ;
+             skos:prefLabel "Permit" .
+
+###  http://linked.data.gov.au/def/geoadminfeatures#SubBlock
+geoaf:SubBlock rdf:type owl:Class ;
+               rdfs:subClassOf geoaf:AdministrativeFeature ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty geo:sfWithin ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass geoaf:Block
+                               ] ;
+               skos:definition "A Sub-Block is an administrative sub-division of a Block. Each Block is divided into 25 Sub-Blocks. A Sub-Block is defined as one minute of latitude by one minute of longitude. The Sub-Blocks are prefixed with their corresponding Block name and are labelled from A to Z, excluding I. Labels are allocated from left to right, top to bottom, starting from the northwest corner."@en ;
+               skos:prefLabel "Sub-Block" .

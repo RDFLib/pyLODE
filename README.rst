@@ -91,7 +91,11 @@ preprocessed examples.
 
 Installation
 --------------
-This tool can be used either as a command line utility (Linux, Mac or Windows, see below) or as a Python module in other Python code. It can also be used via an online API.
+This tool can be used either as a command line utility (Linux, Mac or Windows, see below) or as a Python module in other Python code. It can also be used via an online API. This repo contains executable files for Mac & Windows (soon Linux!) that you can use without any installation too.
+
+Python
+^^^^^^
+Do this to use pyLODE as a Python command line program.
 
 This tool is available on PyPI, the Python Package Index, at https://pypi.org/project/pyLODE/ and can be installed for use as a Python module via pip:
 
@@ -99,34 +103,25 @@ This tool is available on PyPI, the Python Package Index, at https://pypi.org/pr
 
     pip install pylode
 
-For desktop command line use, just clone this repository and either use Python or the provided BASH scrip (see below).
+For desktop command line use, just clone this repository and either use ``cli.py`` as per the command line instructions below or use makedocco.py as a Python script directly.
 
 
 Use
 ---
-pyLODE presents as a Python & BASH command-line utility,
-`pylode/cli.py <pylode/cli.py>`__ &
-`pylode/bin/pylode <pylode/bin/pylode>`__ respectively as well as
-a server implementation powered by the `Falcon framework <https://falconframework.org/>`__. 
-Windows scripts may appear soon. All use the same command line arguments.
+pyLODE presents natively as a Python command-line utility,
+`pylode/cli.py <pylode/cli.py>`__ and there are also a BASH, Windows & Mac OS options available for command line use:
 
-Online API
-^^^^^^^^^^
-An online API to access pyLODE is now available in test mode at https://kurrawong.net/pylode-online.
+* `pylode/bin/pylode.sh <pylode/bin/pylode.sh>`__ - BASH script
+* Linux executable coming soon!
+* `pylode/bin/pylode.app <pylode/bin/pylode.app>`__ - MAC OS command line executable script
+* `pylode/bin/pylode.exe <pylode/bin/pylode.exe>`__ - Windows command line executable
 
-Local server
-^^^^^^^^^^^^^
-You can run pyLODE using your own, local, HTTP server like this:
-```
-gunicorn server:api
-```
-Then, in another terminal:
-```
-curl localhost:8000/lode?url=http://sweetontology.net/sweetAll.ttl
-```
+Additionally, there is a `Falcon framework <https://falconframework.org/>`__ local HTTP server option.
 
-Command line
-^^^^^^^^^^^^^
+All use the same command line arguments.
+
+Command line arguments
+^^^^^^^^^^^^^^^^^^^^^^
 These are the command line arguments to run pyLODE as a BASH or Python script on Linux, Mac etc. or via the Windows executable:
 
 -  ``-i`` or ``--inputfile``, *required if* ``-u`` *not used*
@@ -151,8 +146,23 @@ save it with a basic CSS file into
 
     $ ./pylode -i ../example/prof.ttl --css true
 
-Windows
-^^^^^^^
+Online API
+^^^^^^^^^^
+An online API to access pyLODE is now available in test mode at https://kurrawong.net/pylode-online.
+
+Local server - Falcon
+^^^^^^^^^^^^^^^^^^^^^
+You can run pyLODE using your own, local, HTTP server like this:
+```
+gunicorn server:api
+```
+Then, in another terminal:
+```
+curl localhost:8000/lode?url=http://sweetontology.net/sweetAll.ttl
+```
+
+Windows - create EXE from source
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 `Pyinstaller <https://www.pyinstaller.org/>`__ can be 
 `used <https://pyinstaller.readthedocs.io/en/stable/usage.html>`__ to create an 
 executable for Windows that has the same characteristics as the Linux/Mac 
@@ -176,6 +186,9 @@ This will output ``pylode.exe`` in the ``dist`` directory in ``src/pylode``.
 You can now run the pyLODE Command Line utility via ``pylode.exe``. 
 See above for the pyLODE command line util usage instructions.
 
+Mac OS - create APP from source
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+As per instructions for PyInstaller use on Windows, just do it on a Mac!
 
 What pyLODE understands
 ------------------------

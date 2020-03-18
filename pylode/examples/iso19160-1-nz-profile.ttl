@@ -1,0 +1,126 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sdo: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix iso19160-1: <http://linked.data.gov.au/def/iso19160-1-address#> .
+@prefix : <http://linked.data.gov.au/def/iso19160-1-address-nz-profile#> .
+
+<http://linked.data.gov.au/def/iso19160-1-address-nz-profile> a owl:Ontology , prof:Profile ;
+      prof:isProfileOf <http://linked.data.gov.au/def/iso19160-1-address> ;
+      owl:versionIRI <http://linked.data.gov.au/def/iso19160-1-address-nz-profile/1.1> ;
+      owl:imports <http://linked.data.gov.au/def/iso19160-1-address> ;
+      dct:created "2017-12-02"^^xsd:date ;
+      dct:creator [ 
+        a sdo:Person ;
+        sdo:affiliation [
+          a sdo:Organization ;
+          sdo:url <https://www.curtin.edu.au/> ;
+          sdo:name "Curtin University" ;      
+        ] ;
+        sdo:email <mailto:tristan.reed@curtin.edu.au> ;
+        sdo:name "Tristan W. Reed"
+      ] ; 
+      dct:contributor [ 
+        a sdo:Person ;
+        sdo:affiliation [
+          a sdo:Organization ;
+          sdo:url <https://surroundaustralia.com> ;
+          sdo:name "SURROUND Australia Pty Ltd" ;      
+        ] ;
+        sdo:email <mailto:nicholas.car@surroundaustralia.com> ;
+        sdo:identifier <https://orcid.org/0000-0002-8742-7730> ;
+        sdo:name "Nicholas J. Car"
+      ] ; 
+      dct:publisher [
+        a sdo:Organization ;
+        sdo:identifier <http://linked.data.gov.au/org/agldwg> ;
+        sdo:name "Australian Government Linked Data Working Group" ;
+      ] ;
+      dc:source "Address: Conceptual Model for New Zealand The New Zealand Profile of ISO 19160-1:2015 Addressing – Part 1: Conceptual Model"@en ;
+      dct:source <http://standards.iso.org/iso/19160/-1/NZ%20Profile%20Specification%2020151203.pdf> ;
+      dct:title "ISO19160-1:2015 Address ontology - NZ Profile" ;
+      dct:description """This ontology is an OWL ontology version of the New Zealand Profile of ISO 19160-1:2015 Addressing."""@en ;
+      dct:modified "2017-10-24"^^xsd:date ;
+      prov:wasGeneratedBy [ 
+        a doap:Project , prov:Activity ;
+        doap:repository <https://github.com/AGLDWG/iso19160-1-address-ont>
+      ] ;
+.      
+
+#################################################################
+#    Classes
+#################################################################
+
+:AddressAlias a owl:Class ;
+               rdfs:subClassOf iso19160-1:AddressAlias ,
+                              [ a owl:Restriction ;
+                                owl:onProperty iso19160-1:AddressAlias.lifecycleStage ;
+                                owl:allValuesFrom iso19160-1:AddressLifecycleStage
+                              ] ,
+                              [ a owl:Restriction ;
+                                owl:onProperty iso19160-1:AddressAlias.lifespan ;
+                                owl:allValuesFrom iso19160-1:Lifespan
+                              ] ;
+               rdfs:label "Address Alias"@en ;
+               rdfs:comment "ISO 19160 Address Alias class with the additional restrictions of requiring Address Alias lifecycle stage properties to have Address Lifecycle Stage class object and Address Alias lifespan to have Lifespan class objects as their range values."@en ;
+               <http://def.isotc211.org/iso19150/-2/2012/base#constraint> "Too many dates in Lifecycle for this purpose?"^^xsd:string .
+
+
+:AddressComponent a owl:Class ;
+                  rdfs:subClassOf iso19160-1:AddressComponent ,
+                                    [ a owl:Restriction ;
+                                      owl:onProperty iso19160-1:Address.lifespan ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ,
+                                    [ a owl:Restriction ;
+                                      owl:onProperty iso19160-1:Address.provenance ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ,
+                                    [ a owl:Restriction ;
+                                      owl:onProperty iso19160-1:AddressComponent.lifecycleStage ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ,
+                                    [ a owl:Restriction ;
+                                      owl:onProperty iso19160-1:AddressComponentValue.locale ;
+                                      owl:cardinality "0"^^xsd:nonNegativeInteger
+                                    ] ;
+                  rdfs:label "Address Component"@en ;
+                  rdfs:comment "ISO 19160 Address Component class with the additional restrictions of requiring one and only one Address lifespan, Address provenance, Address Component lifecycle stage and an Address Component Value locale  properties"@en ;
+                  <http://def.isotc211.org/iso19150/-2/2012/base#constraint> "Lifecycle (Lifespan) and Provenance elements are mandatory."^^xsd:string , "Locale elements not used."^^xsd:string .
+
+:AddressableObject a owl:Class ;
+                    rdfs:subClassOf iso19160-1:AddressableObject ,
+                                     [ a owl:Restriction ;
+                                       owl:onProperty iso19160-1:Address.lifespan ;
+                                       owl:cardinality "1"^^xsd:nonNegativeInteger
+                                     ] ,
+                                     [ a owl:Restriction ;
+                                       owl:onProperty iso19160-1:Address.position ;
+                                       owl:cardinality "0"^^xsd:nonNegativeInteger
+                                     ] ,
+                                     [ a owl:Restriction ;
+                                       owl:onProperty iso19160-1:AddressComponent.lifecycleStage ;
+                                       owl:cardinality "1"^^xsd:nonNegativeInteger
+                                     ] ;
+                     rdfs:label "Addressable Object"@en ;
+                     rdfs:comment "ISO 19160 Addressable Object class with the additional restrictions of requiring one and only one Address Component lifespan, Address Component position and an Address Component lifecycle stage properties."@en ;
+                     <http://def.isotc211.org/iso19150/-2/2012/base#constraint> "AddressableObject.position <<codelist>> is not yet identified in the NZ Profile."^^xsd:string , "Lifecycle elements are mandatory in the NZ Profile."^^xsd:string .
+
+:AddressedPeriod a owl:Class ;
+                 rdfs:subClassOf iso19160-1:AddressedPeriod ,
+                                 [ a owl:Restriction ;
+                                   owl:onProperty iso19160-1:Address.provenance ;
+                                   owl:allValuesFrom iso19160-1:AddressProvenance
+                                 ] ,
+                                 [ a owl:Restriction ;
+                                   owl:onProperty iso19160-1:Address.provenance ;
+                                   owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                 ] ;
+                rdfs:label "Address Period"@en ;
+                rdfs:comment "ISO 19160 Addressed Period class with the additional restriction of requiring at most one Address provenance properties."@en .

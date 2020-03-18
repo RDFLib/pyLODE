@@ -1,0 +1,2745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ISO19160-1:2015 Address ontology</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<h1>ISO19160-1:2015 Address ontology</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>IRI</dt>
+        <dd><code>http://linked.data.gov.au/def/iso19160-1-address</code></dd>
+        <dt>Publisher(s)</dt>
+        <dd>
+            <a href="http://linked.data.gov.au/org/agldwg">Australian Government Linked Data Working Group</a><br/>
+        </dd>
+        <dt>Creator(s)</dt>
+        <dd>
+            ISO TC211, Group for Ontology Management<br/>
+        </dd>
+        <dt>Contributors(s)</dt>
+        <dd>
+            <a href="https://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a> (<a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a>) of <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a><br/>
+        </dd>
+        <dt>Created</dt>
+        <dd>2017-11-27</dd>
+        <dt>Modified</dt>
+        <dd>2019-10-24</dd>
+        <dt>Version Information</dt>
+        <dd>Updates to the ontology documentation; changed URIs from reference.data.gov.au to linked.data.gov.au</dd>
+        <dt>Version IRI</dt>
+        <dd><a href="http://linked.data.gov.au/def/iso19160-1-address/1.2">http://linked.data.gov.au/def/iso19160-1-address/1.2</a></dd>
+        <dt>Imports</dt>
+        <dd>
+            <a href="http://def.isotc211.org/iso19160/-1/2015/ExternalClasses">http://def.isotc211.org/iso19160/-1/2015/ExternalClasses</a><br/>
+            <a href="http://def.isotc211.org/iso19150/-2/2012/base">http://def.isotc211.org/iso19150/-2/2012/base</a><br/>
+            <a href="http://def.isotc211.org/iso19160/-1/2015/Profile_Minimal">http://def.isotc211.org/iso19160/-1/2015/Profile_Minimal</a><br/>
+        </dd>
+        <dt>Ontology Source</dt>
+        <dd><a href="iso19160-1.ttl">RDF (turtle)</a></dd>
+        <dt>Code Repository</dt>
+        <dd><a href="https://github.com/AGLDWG/iso19160-1-address-ont">https://github.com/AGLDWG/iso19160-1-address-ont</a></dd>
+    </dl>
+    <h2>Description</h2>
+    <div id="description">
+        <p>This ontology is a version of the ISO TC211, Group for Ontology Management (GOM)'s OWL ontology interpretation of the ISO19160-1:2015 "Addressing -- Part 1: Conceptual model" standard (see https://www.iso.org/standard/61710.html) taken from that ontology's source code, published at https://github.com/ISO-TC211/GOM/tree/master/isotc211_GOM_harmonizedOntology/19160-1/2015.</p>
+<p>This version uses different URIs for the ontology so that they can be made to resolve through the Australian Government Linked Data Working Groups redirect services where the original ontology's URIs do not resolve.</p>
+<p>This ontology also has had the code lists removed thus preserving the data model but not the vocabularies. The code lists are published separately at http://linked.data.gov.au/def/iso19160-1-address/codelist.</p>
+<p>Additionally, this version adds some metadata, such as this explanation, some further annotation properties to better display elements of the ontology and includes a human-readable (HTML) version of the ontology generated from the RDF version.</p>
+<p>As the GOM's version of the ontology evolves, we will keep this version up-to-date as we intend to only publish an easier-to-access version of their ontology here, not to profile it.</p>
+    </div>
+    <p><strong>History Note:</strong> This version of the ISO 19160-1 standard presented as an OWL ontology was mostly taken from the original OWL interpretation prepared by the ISO TC211, Group for Ontology Management</p>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#objectproperties">Object Properties</a></li>
+        <li><a href="#datatypeproperties">Datatype Properties</a></li>
+        <li><a href="#namespaces">Namespaces</a></li>
+    </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+        <div style="width:500px; height:500px; background-color: black;">&nbsp;</div>
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
+</section>
+<section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#Address">Address</a></li>
+        <li><a href="#AddressAlias">Address Alias</a></li>
+        <li><a href="#AddressAliasType">Address Alias Type</a></li>
+        <li><a href="#AddressClass">Address Class</a></li>
+        <li><a href="#AddressClassSpecification">Address Class Specification</a></li>
+        <li><a href="#AddressComponent">Address Component</a></li>
+        <li><a href="#AddressComponentType">Address Component Type</a></li>
+        <li><a href="#AddressComponentValue">Address Component Value</a></li>
+        <li><a href="#AddressComponentValueType">Address Component Value Type</a></li>
+        <li><a href="#AddressLifecycleStage">Address Lifecycle Stage</a></li>
+        <li><a href="#AddressPosition">Address Position</a></li>
+        <li><a href="#AddressPositionType">Address Position Type</a></li>
+        <li><a href="#AddressProvenance">Address Provenance</a></li>
+        <li><a href="#AddressSpecification">Address Specification</a></li>
+        <li><a href="#AddressStatus">Address Status</a></li>
+        <li><a href="#AddressTypology">Address Typology</a></li>
+        <li><a href="#AddressableObject">Addressable Object</a></li>
+        <li><a href="#AddressableObjectLifecycleStage">Addressable Object Lifecycle Stage</a></li>
+        <li><a href="#AddressableObjectType">Addressable Object Type</a></li>
+        <li><a href="#AddressedPeriod">Addressed Period</a></li>
+        <li><a href="#Lifespan">Lifespan</a></li>
+        <li><a href="#ReferenceObject">Reference Object</a></li>
+        <li><a href="#ReferenceObjectType">Reference Object Type</a></li>
+    </ul>
+    <div class="entity class" id="Address">
+        <h3>Address<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Structured information that allows the unambiguous determination of an object for purposes of identification and location.
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#position">http://linked.data.gov.au/def/iso19160-1-address#Address.position</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressPosition">http://linked.data.gov.au/def/iso19160-1-address#AddressPosition</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#addresscomponent">http://linked.data.gov.au/def/iso19160-1-address#Address.addressComponent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="#lifespan">http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#locale">http://linked.data.gov.au/def/iso19160-1-address#Address.locale</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#lifecyclestage">http://linked.data.gov.au/def/iso19160-1-address#Address.lifecycleStage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressLifecycleStage">http://linked.data.gov.au/def/iso19160-1-address#AddressLifecycleStage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#provenance">http://linked.data.gov.au/def/iso19160-1-address#Address.provenance</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressProvenance">http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#status">http://linked.data.gov.au/def/iso19160-1-address#Address.status</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#provenance">http://linked.data.gov.au/def/iso19160-1-address#Address.provenance</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#parentaddress">http://linked.data.gov.au/def/iso19160-1-address#Address.parentAddress</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#class">http://linked.data.gov.au/def/iso19160-1-address#Address.class</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#class">http://linked.data.gov.au/def/iso19160-1-address#Address.class</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressClass">http://linked.data.gov.au/def/iso19160-1-address#AddressClass</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#theaddressedperiod">http://linked.data.gov.au/def/iso19160-1-address#Address.theAddressedPeriod</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressedPeriod">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#childaddress">http://linked.data.gov.au/def/iso19160-1-address#Address.childAddress</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#status">http://linked.data.gov.au/def/iso19160-1-address#Address.status</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressStatus">http://linked.data.gov.au/def/iso19160-1-address#AddressStatus</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#locale">http://linked.data.gov.au/def/iso19160-1-address#Address.locale</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19135/-1/2015/ExtendedModel#RE_Locale">iso19135-1_1058:RE_Locale</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#lifespan">http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Lifespan">http://linked.data.gov.au/def/iso19160-1-address#Lifespan</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#employee">http://linked.data.gov.au/def/iso19160-1-address#Address.employee</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#Employee">iso19160-1_1124:Employee</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#parentaddress">http://linked.data.gov.au/def/iso19160-1-address#Address.parentAddress</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#preferencelevel">http://linked.data.gov.au/def/iso19160-1-address#Address.preferenceLevel</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#client">http://linked.data.gov.au/def/iso19160-1-address#Address.client</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#Client">iso19160-1_1124:Client</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#preferencelevel">http://linked.data.gov.au/def/iso19160-1-address#Address.preferenceLevel</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#specification">http://linked.data.gov.au/def/iso19160-1-address#Address.specification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressSpecification">http://linked.data.gov.au/def/iso19160-1-address#AddressSpecification</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#id">http://linked.data.gov.au/def/iso19160-1-address#Address.id</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#lifecyclestage">http://linked.data.gov.au/def/iso19160-1-address#Address.lifecycleStage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#Address.business_headOffice">http://linked.data.gov.au/def/iso19160-1-address#Address.business_headOffice</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#BusinessRegister">iso19160-1_1124:BusinessRegister</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#addresscomponent">http://linked.data.gov.au/def/iso19160-1-address#Address.addressComponent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#business">http://linked.data.gov.au/def/iso19160-1-address#Address.business_branch</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#BusinessRegister">iso19160-1_1124:BusinessRegister</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#id">http://linked.data.gov.au/def/iso19160-1-address#Address.id</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid">iso19152_1252:Oid</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#theaddressalias">http://linked.data.gov.au/def/iso19160-1-address#Address.theAddressAlias</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressAlias">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#client">http://linked.data.gov.au/def/iso19160-1-address#Address.client</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#theaddressedperiod">http://linked.data.gov.au/def/iso19160-1-address#Address.theAddressedPeriod</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#business">http://linked.data.gov.au/def/iso19160-1-address#Address.business_branch</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#lifecyclestage">http://linked.data.gov.au/def/iso19160-1-address#Address.lifecycleStage</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#employee">http://linked.data.gov.au/def/iso19160-1-address#Address.employee</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#class">http://linked.data.gov.au/def/iso19160-1-address#Address.class</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#id">http://linked.data.gov.au/def/iso19160-1-address#Address.id</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#locale">http://linked.data.gov.au/def/iso19160-1-address#Address.locale</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#provenance">http://linked.data.gov.au/def/iso19160-1-address#Address.provenance</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#specification">http://linked.data.gov.au/def/iso19160-1-address#Address.specification</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#childaddress">http://linked.data.gov.au/def/iso19160-1-address#Address.childAddress</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#position">http://linked.data.gov.au/def/iso19160-1-address#Address.position</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#Address.business_headOffice">http://linked.data.gov.au/def/iso19160-1-address#Address.business_headOffice</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#theaddressalias">http://linked.data.gov.au/def/iso19160-1-address#Address.theAddressAlias</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#status">http://linked.data.gov.au/def/iso19160-1-address#Address.status</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#lifespan">http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#preferencelevel">http://linked.data.gov.au/def/iso19160-1-address#Address.preferenceLevel</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#addresscomponent">http://linked.data.gov.au/def/iso19160-1-address#Address.addressComponent</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#parentaddress">http://linked.data.gov.au/def/iso19160-1-address#Address.parentAddress</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#aliasaddress">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.aliasAddress</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#childaddress">http://linked.data.gov.au/def/iso19160-1-address#Address.childAddress</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressedPeriod.address">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.address</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#parentaddress">http://linked.data.gov.au/def/iso19160-1-address#Address.parentAddress</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#address">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.address</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressAlias">
+        <h3>Address Alias<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressAlias</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Information about an address alias.
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#aliasaddress">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.aliasAddress</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#aliasaddress">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.aliasAddress</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#address">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.address</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#type">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.type</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressAliasType">http://linked.data.gov.au/def/iso19160-1-address#AddressAliasType</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#address">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.address</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#type">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.type</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#aliasaddress">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.aliasAddress</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#type">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.type</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#address">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.address</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#theaddressalias">http://linked.data.gov.au/def/iso19160-1-address#Address.theAddressAlias</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressAliasType">
+        <h3>Address Alias Type<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressAliasType</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#type">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.type</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressClass">
+        <h3>Address Class<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressClass</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#AddressClassSpecification.class">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification.class</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#class">http://linked.data.gov.au/def/iso19160-1-address#Address.class</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressClassSpecification">
+        <h3>Address Class Specification<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Information about the address class.
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#component">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification.component</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressComponentType">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentType</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressClassSpecification.class">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification.class</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressClass">http://linked.data.gov.au/def/iso19160-1-address#AddressClass</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressClassSpecification.class">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification.class</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#typology">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification.typology</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressTypology">http://linked.data.gov.au/def/iso19160-1-address#AddressTypology</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#typology">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification.typology</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#component">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification.component</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#AddressClassSpecification.class">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification.class</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#typology">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification.typology</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#component">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification.component</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#classspecification">http://linked.data.gov.au/def/iso19160-1-address#AddressSpecification.classSpecification</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressComponent">
+        <h3>Address Component<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Constituent part of an address.
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#scopecomponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.scopeComponent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#AddressComponent.lifecycleStage">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#valueinformation">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.valueInformation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="#AddressComponent.id">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.id</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#AddressComponent.locale">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.locale</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#AddressComponent.id">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.id</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid">iso19152_1252:Oid</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressComponent.provenance">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.provenance</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressProvenance">http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressComponent.lifespan">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifespan</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#AddressComponent.locale">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.locale</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19135/-1/2015/ExtendedModel#RE_Locale">iso19135-1_1058:RE_Locale</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressComponent.lifecycleStage">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressLifecycleStage">http://linked.data.gov.au/def/iso19160-1-address#AddressLifecycleStage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressComponent.provenance">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.provenance</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#AddressComponent.type">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.type</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressComponentType">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentType</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#valueinformation">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.valueInformation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressComponentValue">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#valuecomponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.valueComponent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#scopecomponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.scopeComponent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressComponent.lifespan">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifespan</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Lifespan">http://linked.data.gov.au/def/iso19160-1-address#Lifespan</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#referenceobject">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.referenceObject</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#ReferenceObject">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressComponent.type">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.type</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#AddressComponent.lifecycleStage">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#valuecomponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.valueComponent</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressComponent.id">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.id</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#scopecomponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.scopeComponent</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressComponent.locale">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.locale</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressComponent.provenance">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.provenance</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#valueinformation">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.valueInformation</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#referenceobject">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.referenceObject</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressComponent.type">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.type</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressComponent.lifespan">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifespan</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#scopecomponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.scopeComponent</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#valuecomponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.valueComponent</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#addresscomponent">http://linked.data.gov.au/def/iso19160-1-address#Address.addressComponent</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ReferenceObject.addressComponent">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.addressComponent</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressComponentType">
+        <h3>Address Component Type<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponentType</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#AddressComponent.type">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.type</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#component">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification.component</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressComponentValue">
+        <h3>Address Component Value<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Information about the value of an address component.
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#AddressComponentValue.type">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.type</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#AddressComponentValue.locale">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.locale</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#value">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.value</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#AddressComponentValue.type">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.type</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressComponentValueType">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValueType</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#value">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.value</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19103/2015/AnyType#Any">iso19103_300:Any</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressComponentValue.preferenceLevel">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.preferenceLevel</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#AddressComponentValue.preferenceLevel">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.preferenceLevel</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressComponentValue.locale">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.locale</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19135/2005/ProceduresForItemRegistration#RE_Locale">iso19135_1055:RE_Locale</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#AddressComponentValue.locale">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.locale</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressComponentValue.type">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.type</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#value">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.value</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressComponentValue.preferenceLevel">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.preferenceLevel</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#valueinformation">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.valueInformation</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressComponentValueType">
+        <h3>Address Component Value Type<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValueType</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#AddressComponentValue.type">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.type</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressLifecycleStage">
+        <h3>Address Lifecycle Stage<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressLifecycleStage</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#AddressComponent.lifecycleStage">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#lifecyclestage">http://linked.data.gov.au/def/iso19160-1-address#Address.lifecycleStage</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressPosition">
+        <h3>Address Position<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressPosition</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Information about the representative position of an address.
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#geometry">http://linked.data.gov.au/def/iso19160-1-address#AddressPosition.geometry</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19107/2003/GeometryRoot#GM_Object">iso19107_401:GM_Object</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressPosition.type">http://linked.data.gov.au/def/iso19160-1-address#AddressPosition.type</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressPositionType">http://linked.data.gov.au/def/iso19160-1-address#AddressPositionType</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressPosition.type">http://linked.data.gov.au/def/iso19160-1-address#AddressPosition.type</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#geometry">http://linked.data.gov.au/def/iso19160-1-address#AddressPosition.geometry</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#AddressPosition.type">http://linked.data.gov.au/def/iso19160-1-address#AddressPosition.type</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#geometry">http://linked.data.gov.au/def/iso19160-1-address#AddressPosition.geometry</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#AddressableObject.position">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.position</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#position">http://linked.data.gov.au/def/iso19160-1-address#Address.position</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressPositionType">
+        <h3>Address Position Type<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressPositionType</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#AddressPosition.type">http://linked.data.gov.au/def/iso19160-1-address#AddressPosition.type</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressProvenance">
+        <h3>Address Provenance<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Provenance information, e.g. the source or origin of the record, changes to the record, and organisations or individuals that have had custody of the record since its creation.
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#owner">http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance.owner</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#owner">http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance.owner</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19115/-1/2014/CitationAndResponsiblePartyInformation#CI_Organisation">iso19115-1_1505:CI_Organisation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#authority">http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance.authority</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#authority">http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance.authority</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19115/-1/2014/CitationAndResponsiblePartyInformation#CI_Organisation">iso19115-1_1505:CI_Organisation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#lineage">http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance.lineage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19115/-1/2014/LineageInformation#LI_Lineage">iso19115-1_1508:LI_Lineage</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#owner">http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance.owner</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#lineage">http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance.lineage</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#authority">http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance.authority</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#AddressComponent.provenance">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.provenance</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#provenance">http://linked.data.gov.au/def/iso19160-1-address#Address.provenance</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressSpecification">
+        <h3>Address Specification<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressSpecification</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A reference to a specification and description of a set of address class specifications, which  specify the typology and the set of valid component types for the class.
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#addressspecificationcitation">http://linked.data.gov.au/def/iso19160-1-address#AddressSpecification.addressSpecificationCitation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#classspecification">http://linked.data.gov.au/def/iso19160-1-address#AddressSpecification.classSpecification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressClassSpecification">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#addressspecificationcitation">http://linked.data.gov.au/def/iso19160-1-address#AddressSpecification.addressSpecificationCitation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19115/-1/2014/CitationAndResponsiblePartyInformation#CI_Citation">iso19115-1_1505:CI_Citation</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#addressspecificationcitation">http://linked.data.gov.au/def/iso19160-1-address#AddressSpecification.addressSpecificationCitation</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#classspecification">http://linked.data.gov.au/def/iso19160-1-address#AddressSpecification.classSpecification</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#specification">http://linked.data.gov.au/def/iso19160-1-address#Address.specification</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressStatus">
+        <h3>Address Status<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressStatus</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#status">http://linked.data.gov.au/def/iso19160-1-address#Address.status</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressTypology">
+        <h3>Address Typology<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressTypology</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#typology">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification.typology</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressableObject">
+        <h3>Addressable Object<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressableObject</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An object that may be assigned an address.
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#AddressableObject.type">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.type</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#AddressableObject.id">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.id</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#parentaddressableobject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.parentAddressableObject</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressableObject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressableObject.lifecycleStage">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.lifecycleStage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressableObjectLifecycleStage">http://linked.data.gov.au/def/iso19160-1-address#AddressableObjectLifecycleStage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressableObject.theAddressedPeriod">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.theAddressedPeriod</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressedPeriod">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#childaddressableobject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.childAddressableObject</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressableObject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressableObject.lifespan">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.lifespan</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Lifespan">http://linked.data.gov.au/def/iso19160-1-address#Lifespan</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#parentaddressableobject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.parentAddressableObject</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#AddressableObject.position">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.position</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressPosition">http://linked.data.gov.au/def/iso19160-1-address#AddressPosition</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressableObject.type">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.type</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressableObjectType">http://linked.data.gov.au/def/iso19160-1-address#AddressableObjectType</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AddressableObject.position">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.position</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#AddressableObject.lifecycleStage">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.lifecycleStage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#AddressableObject.lifespan">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.lifespan</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#AddressableObject.id">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.id</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid">iso19152_1252:Oid</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#parentaddressableobject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.parentAddressableObject</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressableObject.position">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.position</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressableObject.lifespan">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.lifespan</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressableObject.id">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.id</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressableObject.lifecycleStage">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.lifecycleStage</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#childaddressableobject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.childAddressableObject</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressableObject.theAddressedPeriod">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.theAddressedPeriod</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressableObject.type">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.type</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#parentaddressableobject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.parentAddressableObject</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#addressedobject">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.addressedObject</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#childaddressableobject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.childAddressableObject</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressableObjectLifecycleStage">
+        <h3>Addressable Object Lifecycle Stage<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressableObjectLifecycleStage</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#AddressableObject.lifecycleStage">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.lifecycleStage</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressableObjectType">
+        <h3>Addressable Object Type<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressableObjectType</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#AddressableObject.type">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.type</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AddressedPeriod">
+        <h3>Addressed Period<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The period during which the address as associated with the addressed object.
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#addressedfrom">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.addressedFrom</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#addressedto">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.addressedTo</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#addressedfrom">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.addressedFrom</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#addressedobject">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.addressedObject</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressableObject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#addressedto">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.addressedTo</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#AddressedPeriod.address">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.address</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#addressedobject">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.addressedObject</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#AddressedPeriod.address">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.address</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#addressedobject">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.addressedObject</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressedPeriod.address">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.address</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#addressedfrom">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.addressedFrom</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#addressedto">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.addressedTo</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#theaddressedperiod">http://linked.data.gov.au/def/iso19160-1-address#Address.theAddressedPeriod</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressableObject.theAddressedPeriod">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.theAddressedPeriod</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Lifespan">
+        <h3>Lifespan<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Lifespan</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Information to describe the lifespan of an address, adress component or addressable object.
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#openrecord">http://linked.data.gov.au/def/iso19160-1-address#Lifespan.openRecord</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#validto">http://linked.data.gov.au/def/iso19160-1-address#Lifespan.validTo</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#validto">http://linked.data.gov.au/def/iso19160-1-address#Lifespan.validTo</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#validfrom">http://linked.data.gov.au/def/iso19160-1-address#Lifespan.validFrom</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#version">http://linked.data.gov.au/def/iso19160-1-address#Lifespan.version</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#version">http://linked.data.gov.au/def/iso19160-1-address#Lifespan.version</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#openrecord">http://linked.data.gov.au/def/iso19160-1-address#Lifespan.openRecord</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#closerecord">http://linked.data.gov.au/def/iso19160-1-address#Lifespan.closeRecord</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#validfrom">http://linked.data.gov.au/def/iso19160-1-address#Lifespan.validFrom</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#closerecord">http://linked.data.gov.au/def/iso19160-1-address#Lifespan.closeRecord</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#validto">http://linked.data.gov.au/def/iso19160-1-address#Lifespan.validTo</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#validfrom">http://linked.data.gov.au/def/iso19160-1-address#Lifespan.validFrom</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#openrecord">http://linked.data.gov.au/def/iso19160-1-address#Lifespan.openRecord</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#closerecord">http://linked.data.gov.au/def/iso19160-1-address#Lifespan.closeRecord</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#version">http://linked.data.gov.au/def/iso19160-1-address#Lifespan.version</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#AddressComponent.lifespan">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifespan</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#AddressableObject.lifespan">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.lifespan</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#lifespan">http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ReferenceObject">
+        <h3>Reference Object<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The object to which the address component value may refer.
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#ReferenceObject.type">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.type</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#ReferenceObjectType">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObjectType</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ReferenceObject.id">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.id</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#ReferenceObject.addressComponent">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.addressComponent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ReferenceObject.type">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.type</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#ReferenceObject.geometry">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.geometry</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19107/2003/GeometryRoot#GM_Object">iso19107_401:GM_Object</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ReferenceObject.id">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.id</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid">iso19152_1252:Oid</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ReferenceObject.geometry">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.geometry</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#ReferenceObject.addressComponent">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.addressComponent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#ReferenceObject.addressComponent">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.addressComponent</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ReferenceObject.id">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.id</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ReferenceObject.geometry">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.geometry</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ReferenceObject.type">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.type</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#referenceobject">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.referenceObject</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ReferenceObjectType">
+        <h3>Reference Object Type<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#ReferenceObjectType</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#ReferenceObject.type">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.type</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="objectproperties">
+    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#addresscomponent">address component</a></li>
+        <li><a href="#business">business</a></li>
+        <li><a href="#Address.business_headOffice">business</a></li>
+        <li><a href="#childaddress">child address</a></li>
+        <li><a href="#class">class</a></li>
+        <li><a href="#client">client</a></li>
+        <li><a href="#employee">employee</a></li>
+        <li><a href="#id">id</a></li>
+        <li><a href="#lifecyclestage">lifecycle stage</a></li>
+        <li><a href="#lifespan">lifespan</a></li>
+        <li><a href="#locale">locale</a></li>
+        <li><a href="#parentaddress">parent address</a></li>
+        <li><a href="#position">position</a></li>
+        <li><a href="#provenance">provenance</a></li>
+        <li><a href="#specification">specification</a></li>
+        <li><a href="#status">status</a></li>
+        <li><a href="#theaddressalias">the address alias</a></li>
+        <li><a href="#theaddressedperiod">the addressed period</a></li>
+        <li><a href="#address">address</a></li>
+        <li><a href="#aliasaddress">alias address</a></li>
+        <li><a href="#type">type</a></li>
+        <li><a href="#AddressClassSpecification.class">class</a></li>
+        <li><a href="#component">component</a></li>
+        <li><a href="#typology">typology</a></li>
+        <li><a href="#AddressComponent.id">id</a></li>
+        <li><a href="#AddressComponent.lifecycleStage">lifecycle stage</a></li>
+        <li><a href="#AddressComponent.lifespan">lifespan</a></li>
+        <li><a href="#AddressComponent.locale">locale</a></li>
+        <li><a href="#AddressComponent.provenance">provenance</a></li>
+        <li><a href="#referenceobject">reference object</a></li>
+        <li><a href="#scopecomponent">scope component</a></li>
+        <li><a href="#AddressComponent.type">type</a></li>
+        <li><a href="#valuecomponent">value component</a></li>
+        <li><a href="#valueinformation">value information</a></li>
+        <li><a href="#AddressComponentValue.locale">locale</a></li>
+        <li><a href="#AddressComponentValue.type">type</a></li>
+        <li><a href="#value">value</a></li>
+        <li><a href="#geometry">geometry</a></li>
+        <li><a href="#AddressPosition.type">type</a></li>
+        <li><a href="#authority">authority</a></li>
+        <li><a href="#lineage">lineage</a></li>
+        <li><a href="#owner">owner</a></li>
+        <li><a href="#addressspecificationcitation">address specification citation</a></li>
+        <li><a href="#classspecification">class specification</a></li>
+        <li><a href="#childaddressableobject">child addressable object</a></li>
+        <li><a href="#AddressableObject.id">id</a></li>
+        <li><a href="#AddressableObject.lifecycleStage">lifecycle stage</a></li>
+        <li><a href="#AddressableObject.lifespan">lifespan</a></li>
+        <li><a href="#parentaddressableobject">parent addressable object</a></li>
+        <li><a href="#AddressableObject.position">position</a></li>
+        <li><a href="#AddressableObject.theAddressedPeriod">the addressed period</a></li>
+        <li><a href="#AddressableObject.type">type</a></li>
+        <li><a href="#AddressedPeriod.address">address</a></li>
+        <li><a href="#addressedobject">addressed object</a></li>
+        <li><a href="#ReferenceObject.addressComponent">address component</a></li>
+        <li><a href="#ReferenceObject.geometry">geometry</a></li>
+        <li><a href="#ReferenceObject.id">id</a></li>
+        <li><a href="#ReferenceObject.type">type</a></li>
+    </ul>
+    <div class="entity property" id="addresscomponent">
+        <h3>address component<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.addressComponent</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="business">
+        <h3>business<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.business_branch</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#BusinessRegister">iso19160-1_1124:BusinessRegister</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="Address.business_headOffice">
+        <h3>business<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.business_headOffice</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#BusinessRegister">iso19160-1_1124:BusinessRegister</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="childaddress">
+        <h3>child address<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.childAddress</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="class">
+        <h3>class<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.class</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Code that specifies the address class to which the address belongs.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressClass">http://linked.data.gov.au/def/iso19160-1-address#AddressClass</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="client">
+        <h3>client<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.client</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#Client">iso19160-1_1124:Client</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="employee">
+        <h3>employee<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.employee</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#Employee">iso19160-1_1124:Employee</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="id">
+        <h3>id<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.id</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Unique character string that identifies the address.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid">iso19152_1252:Oid</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="lifecyclestage">
+        <h3>lifecycle stage<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.lifecycleStage</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Code that specifies the phase an address has reached in its lifecycle.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressLifecycleStage">http://linked.data.gov.au/def/iso19160-1-address#AddressLifecycleStage</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="lifespan">
+        <h3>lifespan<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Information about the period over which an address exists
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#Lifespan">http://linked.data.gov.au/def/iso19160-1-address#Lifespan</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="locale">
+        <h3>locale<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.locale</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A set or parameters that specify the cultural and linguistic environment.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19135/-1/2015/ExtendedModel#RE_Locale">iso19135-1_1058:RE_Locale</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="parentaddress">
+        <h3>parent address<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.parentAddress</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="position">
+        <h3>position<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.position</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Geometry (coordinates) that represents the address location.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressPosition">http://linked.data.gov.au/def/iso19160-1-address#AddressPosition</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="provenance">
+        <h3>provenance<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.provenance</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Information about the source or origin of the address, such as the authority who assigned the address, the owner of the address data instance, and lineage of the address.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressProvenance">http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="specification">
+        <h3>specification<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.specification</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressSpecification">http://linked.data.gov.au/def/iso19160-1-address#AddressSpecification</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="status">
+        <h3>status<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.status</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Code that specifies the nature of the address assignment.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressStatus">http://linked.data.gov.au/def/iso19160-1-address#AddressStatus</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="theaddressalias">
+        <h3>the address alias<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.theAddressAlias</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressAlias">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="theaddressedperiod">
+        <h3>the addressed period<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.theAddressedPeriod</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressedPeriod">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="address">
+        <h3>address<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.address</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressAlias">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="aliasaddress">
+        <h3>alias address<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.aliasAddress</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressAlias">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="type">
+        <h3>type<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.type</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Code that specifies which justification for an alias applies to the address at the destination end of the association. The default value is unspecifiedAlias.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressAlias">http://linked.data.gov.au/def/iso19160-1-address#AddressAlias</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressAliasType">http://linked.data.gov.au/def/iso19160-1-address#AddressAliasType</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressClassSpecification.class">
+        <h3>class<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification.class</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Code that specifies the address class to which the address belongs.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressClassSpecification">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressClass">http://linked.data.gov.au/def/iso19160-1-address#AddressClass</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="component">
+        <h3>component<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification.component</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The set of one or more address component types that may be considered together in various combinations to constitute an address of this class.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressClassSpecification">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressComponentType">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentType</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="typology">
+        <h3>typology<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification.typology</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Code that specifies the type of address class.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressClassSpecification">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressTypology">http://linked.data.gov.au/def/iso19160-1-address#AddressTypology</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressComponent.id">
+        <h3>id<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.id</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Unique character string that identifies the address component.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid">iso19152_1252:Oid</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressComponent.lifecycleStage">
+        <h3>lifecycle stage<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Code that specifies the phase an address component has reached in its lifecycle.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressLifecycleStage">http://linked.data.gov.au/def/iso19160-1-address#AddressLifecycleStage</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressComponent.lifespan">
+        <h3>lifespan<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifespan</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Information about the period over which an address component exists.
+
+NOTE See Annex D for lifecycle examples of an address component.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#Lifespan">http://linked.data.gov.au/def/iso19160-1-address#Lifespan</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressComponent.locale">
+        <h3>locale<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.locale</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A set of parameters that specify the cultural and linguistic environment.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19135/-1/2015/ExtendedModel#RE_Locale">iso19135-1_1058:RE_Locale</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressComponent.provenance">
+        <h3>provenance<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.provenance</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Information about the source or origin of the address component, such as the authority who assigned the address component value, the owner of the address component data instance, and the lineage of the address component.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressProvenance">http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="referenceobject">
+        <h3>reference object<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.referenceObject</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#ReferenceObject">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="scopecomponent">
+        <h3>scope component<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.scopeComponent</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressComponent.type">
+        <h3>type<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.type</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Code that specifies the kind of address component.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressComponentType">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentType</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="valuecomponent">
+        <h3>value component<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.valueComponent</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="valueinformation">
+        <h3>value information<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.valueInformation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Value of and information about one or more address component values.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressComponentValue">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressComponentValue.locale">
+        <h3>locale<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.locale</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A set of parameters that specify the cultural and linguistic environment.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressComponentValue">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19135/2005/ProceduresForItemRegistration#RE_Locale">iso19135_1055:RE_Locale</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressComponentValue.type">
+        <h3>type<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.type</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Code that specifies the kind of value, i.e. whether it is a variation of the default address component value, and if so, what the variation is.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressComponentValue">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressComponentValueType">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValueType</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="value">
+        <h3>value<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.value</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    One or more instances of the value of the address component.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressComponentValue">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19103/2015/AnyType#Any">iso19103_300:Any</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="geometry">
+        <h3>geometry<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressPosition.geometry</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Geometry (coordinates) representing the address position.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressPosition">http://linked.data.gov.au/def/iso19160-1-address#AddressPosition</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19107/2003/GeometryRoot#GM_Object">iso19107_401:GM_Object</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressPosition.type">
+        <h3>type<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressPosition.type</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Code that specifies how the geometry shall be interpreted.
+
+EXAMPLES centroid, streetFront, approximated
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressPosition">http://linked.data.gov.au/def/iso19160-1-address#AddressPosition</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressPositionType">http://linked.data.gov.au/def/iso19160-1-address#AddressPositionType</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="authority">
+        <h3>authority<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance.authority</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The body that assigns the address or address component value.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressProvenance">http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19115/-1/2014/CitationAndResponsiblePartyInformation#CI_Organisation">iso19115-1_1505:CI_Organisation</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="lineage">
+        <h3>lineage<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance.lineage</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Provenance, source(s) and production process(es) used in producing an address or address component.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressProvenance">http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19115/-1/2014/LineageInformation#LI_Lineage">iso19115-1_1508:LI_Lineage</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="owner">
+        <h3>owner<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance.owner</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Organization that maintains the data.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressProvenance">http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19115/-1/2014/CitationAndResponsiblePartyInformation#CI_Organisation">iso19115-1_1505:CI_Organisation</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="addressspecificationcitation">
+        <h3>address specification citation<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressSpecification.addressSpecificationCitation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Reference to a specification or document that contains a definition of the address classes.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressSpecification">http://linked.data.gov.au/def/iso19160-1-address#AddressSpecification</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19115/-1/2014/CitationAndResponsiblePartyInformation#CI_Citation">iso19115-1_1505:CI_Citation</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="classspecification">
+        <h3>class specification<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressSpecification.classSpecification</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Information about one or more address classes, such as typology and valid component types.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressSpecification">http://linked.data.gov.au/def/iso19160-1-address#AddressSpecification</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressClassSpecification">http://linked.data.gov.au/def/iso19160-1-address#AddressClassSpecification</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="childaddressableobject">
+        <h3>child addressable object<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.childAddressableObject</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressableObject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressableObject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressableObject.id">
+        <h3>id<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.id</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Unique character string that identifies the addressable object.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressableObject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid">iso19152_1252:Oid</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressableObject.lifecycleStage">
+        <h3>lifecycle stage<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.lifecycleStage</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Code that specifies the phase an addressable object has reached in its lifecycle.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressableObject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressableObjectLifecycleStage">http://linked.data.gov.au/def/iso19160-1-address#AddressableObjectLifecycleStage</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressableObject.lifespan">
+        <h3>lifespan<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.lifespan</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Information about the period over which an addressable object exists.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressableObject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#Lifespan">http://linked.data.gov.au/def/iso19160-1-address#Lifespan</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="parentaddressableobject">
+        <h3>parent addressable object<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.parentAddressableObject</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressableObject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressableObject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressableObject.position">
+        <h3>position<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.position</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Geometry (coordinates) representing the addressable object.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressableObject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressPosition">http://linked.data.gov.au/def/iso19160-1-address#AddressPosition</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressableObject.theAddressedPeriod">
+        <h3>the addressed period<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.theAddressedPeriod</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressableObject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressedPeriod">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressableObject.type">
+        <h3>type<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressableObject.type</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Code that specifies the kind of object to which an address may be assigned.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressableObject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressableObjectType">http://linked.data.gov.au/def/iso19160-1-address#AddressableObjectType</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressedPeriod.address">
+        <h3>address<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.address</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressedPeriod">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="addressedobject">
+        <h3>addressed object<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.addressedObject</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressedPeriod">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressableObject">http://linked.data.gov.au/def/iso19160-1-address#AddressableObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="ReferenceObject.addressComponent">
+        <h3>address component<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.addressComponent</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#ReferenceObject">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#AddressComponent">http://linked.data.gov.au/def/iso19160-1-address#AddressComponent</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="ReferenceObject.geometry">
+        <h3>geometry<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.geometry</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Geometry (coordinates) representing the reference object.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#ReferenceObject">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19107/2003/GeometryRoot#GM_Object">iso19107_401:GM_Object</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="ReferenceObject.id">
+        <h3>id<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.id</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Unique character string that identifies the reference object.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#ReferenceObject">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://def.isotc211.org/iso19152/2012/SpecialClasses#Oid">iso19152_1252:Oid</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="ReferenceObject.type">
+        <h3>type<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject.type</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Code that specifies the kind of reference object.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#ReferenceObject">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#ReferenceObjectType">http://linked.data.gov.au/def/iso19160-1-address#ReferenceObjectType</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="datatypeproperties">
+    <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#preferencelevel">preference level</a></li>
+        <li><a href="#AddressComponentValue.preferenceLevel">preference level</a></li>
+        <li><a href="#addressedfrom">addressed from</a></li>
+        <li><a href="#addressedto">addressed to</a></li>
+        <li><a href="#closerecord">close record</a></li>
+        <li><a href="#openrecord">open record</a></li>
+        <li><a href="#validfrom">valid from</a></li>
+        <li><a href="#validto">valid to</a></li>
+        <li><a href="#version">version</a></li>
+    </ul>
+    <div class="entity property" id="preferencelevel">
+        <h3>preference level<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Address.preferenceLevel</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Indicates the ranking of the address in a set of address aliases. 1 indicates highest ranking.
+
+EXAMPLE 1 A building on a street corner could be referenced by two addresses. One of them could have its preferenceLevel set to 1.
+
+EXAMPLE 2 In Switzerland, addresses containing German and French names, e.g. Biel (German) and Bienne (French), are different addresses with the same preference level.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Address">http://linked.data.gov.au/def/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="AddressComponentValue.preferenceLevel">
+        <h3>preference level<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.preferenceLevel</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Indicates the ranking of the address component in a set of alternatives. 1 indicates highest ranking.
+
+EXAMPLE 1 A building on a street corner could be referenced by two addresses, each with a different component value for the thoroughfare name address component. For one of them the preferenceLevel could be set to 1.
+
+EXAMPLE 2 In Switzerland, Biel (German) and Bienne (French) are different address components with the same preference level.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressComponentValue">http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="addressedfrom">
+        <h3>addressed from<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.addressedFrom</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Date and time from which the addressed object is unambiguously determined by the address.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressedPeriod">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="addressedto">
+        <h3>addressed to<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod.addressedTo</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Date and time when the addressed object ceased to be unambiguously determined by the address.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#AddressedPeriod">http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="closerecord">
+        <h3>close record<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Lifespan.closeRecord</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Specifies the date and time at which this version of the data object was superseded by another version or retired in the dataset.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Lifespan">http://linked.data.gov.au/def/iso19160-1-address#Lifespan</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="openrecord">
+        <h3>open record<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Lifespan.openRecord</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Specifies the date and time at which this version of the data object was inserted into the dataset.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Lifespan">http://linked.data.gov.au/def/iso19160-1-address#Lifespan</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="validfrom">
+        <h3>valid from<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Lifespan.validFrom</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Date and time from which the object is valid in the physical world.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Lifespan">http://linked.data.gov.au/def/iso19160-1-address#Lifespan</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="validto">
+        <h3>valid to<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Lifespan.validTo</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Date and time when this object ceased to be valid in the physical world.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Lifespan">http://linked.data.gov.au/def/iso19160-1-address#Lifespan</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="version">
+        <h3>version<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address#Lifespan.version</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Unique identifier of this variant of the address record.
+
+NOTE The version is incremented with any change to the data object.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Lifespan">http://linked.data.gov.au/def/iso19160-1-address#Lifespan</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt><em>default (:)</em></dt>
+        <dd><code>http://linked.data.gov.au/def/iso19160-1-address#</code></dd>
+        <dt>dc</dt>
+        <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+        <dt>dct</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>doap</dt>
+        <dd><code>http://usefulinc.com/ns/doap#</code></dd>
+        <dt>iso19103_300</dt>
+        <dd><code>http://def.isotc211.org/iso19103/2015/AnyType#</code></dd>
+        <dt>iso19107_401</dt>
+        <dd><code>http://def.isotc211.org/iso19107/2003/GeometryRoot#</code></dd>
+        <dt>iso19115-1_1505</dt>
+        <dd><code>http://def.isotc211.org/iso19115/-1/2014/CitationAndResponsiblePartyInformation#</code></dd>
+        <dt>iso19115-1_1508</dt>
+        <dd><code>http://def.isotc211.org/iso19115/-1/2014/LineageInformation#</code></dd>
+        <dt>iso19135-1_1058</dt>
+        <dd><code>http://def.isotc211.org/iso19135/-1/2015/ExtendedModel#</code></dd>
+        <dt>iso19135_1055</dt>
+        <dd><code>http://def.isotc211.org/iso19135/2005/ProceduresForItemRegistration#</code></dd>
+        <dt>iso19150-2</dt>
+        <dd><code>http://def.isotc211.org/iso19150/-2/2012/base#</code></dd>
+        <dt>iso19152_1252</dt>
+        <dd><code>http://def.isotc211.org/iso19152/2012/SpecialClasses#</code></dd>
+        <dt>iso19160-1_1124</dt>
+        <dd><code>http://def.isotc211.org/iso19160/-1/2015/ExternalClasses#</code></dd>
+        <dt>iso19160-1_1128</dt>
+        <dd><code>http://def.isotc211.org/iso19160/-1/2015/Profile_Minimal#</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>prov</dt>
+        <dd><code>http://www.w3.org/ns/prov#</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>sdo</dt>
+        <dd><code>https://schema.org/</code></dd>
+        <dt>skos</dt>
+        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>xml</dt>
+        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+<section id="legend">
+    <h2>Legend</h2>
+    <table class="entity">
+        <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+        <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+        <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+        <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+        <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+        <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+        <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+    </table>
+</section>
+</body>
+</html>

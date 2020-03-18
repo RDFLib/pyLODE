@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Alternates View Profile Schema</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+  <h1>Alternates View Profile Schema</h1>
+  <section id="metadata">
+      <h2 style="display:none;">Metadata</h2>
+      <dl>
+          <dt>IRI</dt>
+          <dd><code>http://data.surroundaustralia.com/def/alternates</code></dd>
+          <dt>Creator(s)</dt>
+          <dd>
+              <a href="https://orcid.org/0000-0002-7878-2693">Rob Atkinson</a> (<a href="mailto:rob.atkinson@surroundaustralia.com">rob.atkinson@surroundaustralia.com</a>) of <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a><br/>
+              <a href="https://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a> (<a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a>) of <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a><br/>
+          </dd>
+          <dt>Created</dt>
+          <dd>2019-10-21</dd>
+          <dt>Modified</dt>
+          <dd>2019-10-21</dd>
+          <dt>Imports</dt>
+          <dd>
+              <a href="http://purl.org/dc/terms/">dct:</a><br/>
+              <a href="http://www.w3.org/2004/02/skos/core#">skos:</a><br/>
+          </dd>
+          <dt>License</dt>
+          <dd><a href="http://creativecommons.org/licenses/by/4.0">http://creativecommons.org/licenses/by/4.0</a></dd>
+          <dt>Ontology Source</dt>
+          <dd><a href="alternates.ttl">RDF (turtle)</a></dd>
+          <dt>Code Repository</dt>
+          <dd><a href="https://github.com/nicholascar/alternates-view-profile">https://github.com/nicholascar/alternates-view-profile</a></dd>
+      </dl>
+      <h2>Description</h2>
+      <div id="description">
+          <p>An ontology that is a profile of Dublin Core Terms that constrains several of its classes and properties for use and adds a class of its own, all to describe representations of resources. The 'View' and 'Format' classes are based on the Epimorphics' implementation of a Linked Data API (ELDA).</p>
+      </div>
+  </section>
+  <section id="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+          <li><a href="#classes">Classes</a></li>
+          <li><a href="#objectproperties">Object Properties</a></li>
+          <li><a href="#properties">Properties</a></li>
+          <li><a href="#namespaces">Namespaces</a></li>
+      </ol>
+  </section>
+  <section id="classes">
+      <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+      <ul class="hlist">
+          <li><a href="#mediatype">Media Type</a></li>
+          <li><a href="#view">View</a></li>
+      </ul>
+      <div class="entity class" id="view">
+          <h3>View<sup title="class" class="sup-c">c</sup></h3>
+          <table>
+              <tr>
+                  <th>IRI</th>
+                  <td><code>http://data.surroundaustralia.com/def/alternates#View</code></td>
+              </tr>
+              <tr>
+                  <th>Description</th>
+                  <td>
+                      A set of properties to show for a resource.
+                  </td>
+              </tr>
+              <tr>
+                  <th>Usage Note</th>
+                  <td>
+                      Use this class to represent a 'view' that of representations of a resource conform to.
+                  </td>
+              </tr>
+          </table>
+      </div>
+      <div class="entity class" id="mediatype">
+          <h3>Media Type<sup title="class" class="sup-c">c</sup></h3>
+          <table>
+              <tr>
+                  <th>IRI</th>
+                  <td><code>http://purl.org/dc/terms/MediaType</code></td>
+              </tr>
+              <tr>
+                  <th>Description</th>
+                  <td>
+                      A file format or physical medium.
+                  </td>
+              </tr>
+              <tr>
+                  <th>Usage Note</th>
+                  <td>
+                      Use this class to represent instances of Media Types as listed by IANA as the target values for dct:format.
+                  </td>
+              </tr>
+              <tr>
+                  <th>In range of</th>
+                  <td>
+                      <a href="http://purl.org/dc/terms/format">dct:format</a><br/>
+                  </td>
+              </tr>
+          </table>
+      </div>
+  </section>
+  <section id="objectproperties">
+      <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+      <ul class="hlist">
+          <li><a href="#hasdefaultformat">has default format</a></li>
+          <li><a href="#hasdefaultview">has default view</a></li>
+          <li><a href="#hasView">view</a></li>
+      </ul>
+      <div class="entity property" id="hasdefaultformat">
+          <h3>has default format<sup title="object property" class="sup-op">op</sup></h3>
+          <table>
+              <tr>
+                  <th>IRI</th>
+                  <td><code>http://data.surroundaustralia.com/def/alternates#hasDefaultFormat</code></td>
+              </tr>
+              <tr>
+                  <th>Description</th>
+                  <td>
+                      The Format returned of a Resource's representation if no specific Format request is made.
+                  </td>
+              </tr>
+              <tr>
+                  <th>Super-properties</th>
+                  <td>
+                      <a href="http://purl.org/dc/terms/format">dct:format</a>
+                  </td>
+              </tr>
+          </table>
+      </div>
+      <div class="entity property" id="hasdefaultview">
+          <h3>has default view<sup title="object property" class="sup-op">op</sup></h3>
+          <table>
+              <tr>
+                  <th>IRI</th>
+                  <td><code>http://data.surroundaustralia.com/def/alternates#hasDefaultView</code></td>
+              </tr>
+              <tr>
+                  <th>Description</th>
+                  <td>
+                      The View returned to which a Resource's representation conforms if no specific View request is made.
+                  </td>
+              </tr>
+              <tr>
+                  <th>Super-properties</th>
+                  <td>
+                      <a href="#hasView">has view</a><sup class="sup-op" title="object property">op</sup>
+                  </td>
+              </tr>
+          </table>
+      </div>
+      <div class="entity property" id="hasView">
+          <h3>view<sup title="object property" class="sup-op">op</sup></h3>
+          <table>
+              <tr>
+                  <th>IRI</th>
+                  <td><code>http://data.surroundaustralia.com/def/alternates#hasView</code></td>
+              </tr>
+              <tr>
+                  <th>Description</th>
+                  <td>
+                      A resource' representation has a View
+                  </td>
+              </tr>
+              <tr>
+                  <th>Range(s)</th>
+                  <td>
+                      <a href="#view">View</a><sup class="sup-c" title="class">c</sup>
+                  </td>
+              </tr>
+          </table>
+      </div>
+  </section>
+  <section id="properties">
+      <h2>Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+      <ul class="hlist">
+          <li><a href="#format">format</a></li>
+      </ul>
+      <div class="entity property" id="format">
+          <h3>format<sup title="property" class="sup-p">p</sup></h3>
+          <table>
+              <tr>
+                  <th>IRI</th>
+                  <td><code>http://purl.org/dc/terms/format</code></td>
+              </tr>
+              <tr>
+                  <th>Description</th>
+                  <td>
+                      The file format, physical medium, or dimensions of the resource.
+                  </td>
+              </tr>
+              <tr>
+                  <th>Usage Note</th>
+                  <td>
+                      Use this property to indicate a dct:MediaType
+                  </td>
+              </tr>
+              <tr>
+                  <th>Range(s)</th>
+                  <td>
+                      <a href="http://purl.org/dc/terms/MediaType">dct:MediaType</a><sup class="sup-c" title="class">c</sup>
+                  </td>
+              </tr>
+          </table>
+      </div>
+  </section>
+  <section id="namespaces">
+      <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+      <dl>
+          <dt><em>default (:)</em></dt>
+          <dd><code>http://data.surroundaustralia.com/def/alternates#</code></dd>
+          <dt>dct</dt>
+          <dd><code>http://purl.org/dc/terms/</code></dd>
+          <dt>doap</dt>
+          <dd><code>http://usefulinc.com/ns/doap#</code></dd>
+          <dt>owl</dt>
+          <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+          <dt>prov</dt>
+          <dd><code>http://www.w3.org/ns/prov#</code></dd>
+          <dt>rdf</dt>
+          <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+          <dt>rdfs</dt>
+          <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+          <dt>sdo</dt>
+          <dd><code>https://schema.org/</code></dd>
+          <dt>skos</dt>
+          <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+          <dt>xml</dt>
+          <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
+          <dt>xsd</dt>
+          <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+      </dl>
+  </section>
+  <section id="legend">
+        <h2>Legend</h2>
+        <table class="entity">
+            <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+            <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+            <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+            <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+            <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+            <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+            <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+        </table>
+    </section>
+</body>
+</html>

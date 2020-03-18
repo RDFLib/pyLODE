@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Geological Administrative Features Ontology</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="application/ld+json">
+      [
+  {
+    "@id": "http://linked.data.gov.au/def/geoadminfeatures",
+    "@type": [
+      "https://schema.org/DigitalDocument"
+    ],
+    "https://schema.org/codeRepository": [
+      {
+        "@id": "https://github.com/geological-survey-of-queensland/geological-admininstrative-features-ont"
+      }
+    ],
+    "https://schema.org/copyrightYear": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#int",
+        "@value": "2019"
+      }
+    ],
+    "https://schema.org/dateCreated": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2019-12-04"
+      }
+    ],
+    "https://schema.org/dateModified": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2019-12-04"
+      }
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "<p>This ontology describes classes of geospatial feature relevant to the administrative duties of the Geological Survey of Queensland.</p>\n<p>As subclasses of the GeoSPARQL Ontology's <code>Feature</code> class, this ontology defines an <code>Administrative Feature</code>. Multiple subclasses of this class are then defined, some with class interrelations.</p>\n<p>This ontology is part of the Geological Survey of Queensland's set of <em>component</em> ontologies that together provide definitions for all of GSQ's data. Of particular importance for this ontology is GSQ's Geological Features Profile of SWEET which defined multiple classes of geological feature. It is yet to be published.</p>"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Geological Administrative Features Ontology"
+      }
+    ],
+    "https://schema.org/rights": [
+      {
+        "@value": "None"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+<body>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<img src="https://github.com/geological-survey-of-queensland/gsq-geoadminfeatures-ont/raw/master/style/gsq.jpg" alt="GSQ Logo">
+<h1>Geological Administrative Features Ontology</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>IRI</dt>
+        <dd><code>http://linked.data.gov.au/def/geoadminfeatures</code></dd>
+        <dt>Publisher(s)</dt>
+        <dd>
+            None<br/>
+        </dd>
+        <dt>Creator(s)</dt>
+        <dd>
+            <a href="mailto:geological_info@dnrme.qld.gov.au">GSQ Informatics Staff</a><br/>
+            <a href="http://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a> (<a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a>) of <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a><br/>
+        </dd>
+        <dt>Created</dt>
+        <dd>2019-12-04</dd>
+        <dt>Modified</dt>
+        <dd>2019-12-04</dd>
+        <dt>Imports</dt>
+        <dd>
+            <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a><br/>
+        </dd>
+        <dt>Ontology Source</dt>
+        <dd><a href="geoadminfeatures.ttl">RDF (turtle)</a></dd>
+        <dt>Code Repository</dt>
+        <dd><a href="https://github.com/geological-survey-of-queensland/geological-admininstrative-features-ont">https://github.com/geological-survey-of-queensland/geological-admininstrative-features-ont</a></dd>
+    </dl>
+    <h2>Description</h2>
+    <div id="description">
+        <p>This ontology describes classes of geospatial feature relevant to the administrative duties of the Geological Survey of Queensland.</p>
+<p>As subclasses of the GeoSPARQL Ontology's <code>Feature</code> class, this ontology defines an <code>Administrative Feature</code>. Multiple subclasses of this class are then defined, some with class interrelations.</p>
+<p>This ontology is part of the Geological Survey of Queensland's set of <em>component</em> ontologies that together provide definitions for all of GSQ's data. Of particular importance for this ontology is GSQ's Geological Features Profile of SWEET which defined multiple classes of geological feature. It is yet to be published.</p>
+    </div>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#namespaces">Namespaces</a></li>
+        <li><a href="#legend">Legend</a></li>
+    </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+        <div style="width:500px; height:500px; background-color: black;">&nbsp;</div>
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
+</section>
+<section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#Administrativefeature">Administrative feature</a></li>
+        <li><a href="#Block">Block</a></li>
+        <li><a href="#Permit">Permit</a></li>
+        <li><a href="#Sub-Block">Sub-Block</a></li>
+    </ul>
+    <div class="entity class" id="Administrativefeature">
+        <h3>Administrative feature<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/geoadminfeatures#AdministrativeFeature</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An Administrative Feature is a geo:Feature that is defined by adminstrative processes such as legislation, regulation, policy or procedure.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#Sub-Block">geoaf:SubBlock</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Permit">geoaf:Permit</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Block">geoaf:Block</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Block">
+        <h3>Block<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/geoadminfeatures#Block</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A Block is an administrative division of the State of Queensland that is used for tenure management. A Block is defined as five minutes of latitude by five minutes of longitude. Blocks are grouped by 1:1,000,000 map sheet areas, the names of which provide the containing Blocks with a four letter prefix (e.g. Clermont 1:1,000,000 provides CLER). Each sheet area contains 3456 Blocks, with the Blocks numbered between 1 and 3456 inclusive. A Block is divided into 25 Sub-Blocks.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#Administrativefeature">geoaf:AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Permit">
+        <h3>Permit<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/geoadminfeatures#Permit</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Permits are a license granted over a spatial region within the State of Queensland. Permits govern the activities which can be conducted upon them. Activities include exploration, development, and extraction of a specific commodity or commodities.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#Administrativefeature">geoaf:AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Sub-Block">
+        <h3>Sub-Block<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/geoadminfeatures#SubBlock</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A Sub-Block is an administrative sub-division of a Block. Each Block is divided into 25 Sub-Blocks. A Sub-Block is defined as one minute of latitude by one minute of longitude. The Sub-Blocks are prefixed with their corresponding Block name and are labelled from A to Z, excluding I. Labels are allocated from left to right, top to bottom, starting from the northwest corner.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#Administrativefeature">geoaf:AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#Block">geoaf:Block</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt><em>default (:)</em></dt>
+        <dd><code>http://linked.data.gov.au/def/geoadminfeatures#</code></dd>
+        <dt>dct</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>doap</dt>
+        <dd><code>http://usefulinc.com/ns/doap#</code></dd>
+        <dt>geo</dt>
+        <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
+        <dt>geoaf</dt>
+        <dd><code>http://linked.data.gov.au/def/geoadminfeatures#</code></dd>
+        <dt>loci</dt>
+        <dd><code>http://linked.data.gov.au/def/loci#</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>prov</dt>
+        <dd><code>http://www.w3.org/ns/prov#</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>sdo</dt>
+        <dd><code>https://schema.org/</code></dd>
+        <dt>skos</dt>
+        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>xml</dt>
+        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+<section id="legend">
+    <h2>Legend</h2>
+    <table class="entity">
+        <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+        <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+        <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+        <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+        <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+        <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+        <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+    </table>
+</section>
+</body>
+</html>

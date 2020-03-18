@@ -1,0 +1,435 @@
+@base <http://linked.data.gov.au/def/ont/iso19160-1-address/Address/code/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<AddressAliasTypeCollection> a skos:Collection ;
+    skos:member <AddressAliasType/classAlias>,
+        <AddressAliasType/colloquialAlias>,
+        <AddressAliasType/lifecycleAlias>,
+        <AddressAliasType/localeAlias>,
+        <AddressAliasType/unspecifiedAlias> ;
+    skos:prefLabel "Address Alias Type - Collection" .
+
+<AddressClass> a skos:ConceptScheme ;
+    skos:prefLabel "AddressClass - ConceptScheme" .
+
+<AddressClassCollection> a skos:Collection ;
+    skos:prefLabel "Address Class - Collection" .
+
+<AddressCodelist> a owl:Ontology , skos:ConceptScheme ;
+    rdfs:label "ISO19160-1:2015 Address Codelist"@en ;
+    dct:contributor [ 
+      a sdo:Person ;
+      sdo:affiliation [
+        a sdo:Organization ;
+        sdo:url <https://surroundaustralia.com> ;
+        sdo:name "SURROUND Australia Pty Ltd" ;      
+      ] ;
+      sdo:email <mailto:nicholas.car@surroundaustralia.com> ;
+      sdo:identifier <https://orcid.org/0000-0002-8742-7730> ;
+      sdo:name "Nicholas J. Car"
+    ] ;  
+    dct:creator [
+      a sdo:Organization ;
+      sdo:name "ISO TC211, Group for Ontology Management" ;
+      sdo:url <https://def.isotc211.org/> ;
+    ] ;
+    dct:created "2017-12-01"^^xsd:date ;
+    dct:description "A SKOS vocabulary version of the ISO19160-1:2015 standard's codelists. In addition to SKOS vocabulary formulation, each specialised ConceptSceme's members are typed according to an OWL class."@en ;
+    rdfs:comment "A SKOS vocabulary version of the ISO19160-1:2015 standard's codelists. In addition to SKOS vocabulary formulation, each specialised ConceptSceme's members are typed according to an OWL class."@en ;
+    dct:issued "2017-12-01" ;
+    dct:modified "2019-10-24"^^xsd:date ;
+    dct:publisher [
+      a sdo:Organization ;
+      sdo:identifier <http://linked.data.gov.au/org/agldwg> ;
+      sdo:name "Australian Government Linked Data Working Group" ;
+    ] ;
+    dct:title "ISO19160-1 Address Codelist"@en ;
+    owl:versionInfo "v1.1" ;
+    skos:hasTopConcept
+        <AddressAliasType/classAlias>,
+        <AddressAliasType/colloquialAlias>,
+        <AddressAliasType/lifecycleAlias>,
+        <AddressAliasType/localeAlias>,
+        <AddressAliasType/unspecifiedAlias>,
+        <AddressComponentType/addressedObjectIdentifier>,
+        <AddressComponentType/administrativeAreaName>,
+        <AddressComponentType/countryCode>,
+        <AddressComponentType/countryName>,
+        <AddressComponentType/localityName>,
+        <AddressComponentType/postOfficeName>,
+        <AddressComponentType/postcode>,
+        <AddressComponentType/thoroughfareName>,
+        <AddressComponentValueType/abbreviatedAlternative>,
+        <AddressComponentValueType/colloquialAlternative>,
+        <AddressComponentValueType/defaultValue>,
+        <AddressComponentValueType/lifecycleAlternative>,
+        <AddressComponentValueType/localeAlternative>,
+        <AddressLifecycleStage/current>,
+        <AddressLifecycleStage/proposed>,
+        <AddressLifecycleStage/rejected>,
+        <AddressLifecycleStage/reserved>,
+        <AddressLifecycleStage/retired>,
+        <AddressLifecycleStage/unknown>,
+        <AddressStatus/official>,
+        <AddressStatus/unknown>,
+        <AddressStatus/unofficial>,
+        <AddressTypology/area>,
+        <AddressTypology/service>,
+        <AddressTypology/thoroughfare>,
+        <AddressableObjectLifecycleStage/approved>,
+        <AddressableObjectLifecycleStage/ceasedToExist>,
+        <AddressableObjectLifecycleStage/exists>,
+        <AddressableObjectLifecycleStage/proposed>,
+        <AddressableObjectLifecycleStage/underConstruction>,
+        <AddressableObjectLifecycleStage/unknown> .
+
+<AddressComponentTypeCollection> a skos:Collection ;
+    skos:member
+        <AddressComponentType/addressedObjectIdentifier>,
+        <AddressComponentType/administrativeAreaName>,
+        <AddressComponentType/countryCode>,
+        <AddressComponentType/countryName>,
+        <AddressComponentType/localityName>,
+        <AddressComponentType/postOfficeName>,
+        <AddressComponentType/postcode>,
+        <AddressComponentType/thoroughfareName> ;
+    skos:prefLabel "Address Component Type - Collection" .
+
+<AddressComponentValueTypeCollection> a skos:Collection ;
+    skos:member
+        <AddressComponentValueType/abbreviatedAlternative>,
+        <AddressComponentValueType/colloquialAlternative>,
+        <AddressComponentValueType/defaultValue>,
+        <AddressComponentValueType/lifecycleAlternative>,
+        <AddressComponentValueType/localeAlternative> ;
+    skos:prefLabel "Address Component Value Type - Collection" .
+
+<AddressLifecycleStageCollection> a skos:Collection ;
+    skos:member
+        <AddressLifecycleStage/current>,
+        <AddressLifecycleStage/proposed>,
+        <AddressLifecycleStage/rejected>,
+        <AddressLifecycleStage/reserved>,
+        <AddressLifecycleStage/retired>,
+        <AddressLifecycleStage/unknown> ;
+    skos:prefLabel "AddressLifecycleStage - Collection" .
+
+<AddressPositionType> a skos:ConceptScheme ;
+    skos:prefLabel "Address Position Type - ConceptScheme" .
+
+<AddressPositionTypeCollection> a skos:Collection ;
+    skos:prefLabel "Address Position Type - Collection" .
+
+<AddressStatusCollection> a skos:Collection ;
+    skos:member <AddressStatus/official>,
+        <AddressStatus/unknown>,
+        <AddressStatus/unofficial> ;
+    skos:prefLabel "Address Status - Collection" .
+
+<AddressTypologyCollection> a skos:Collection ;
+    skos:member <AddressTypology/area>,
+        <AddressTypology/service>,
+        <AddressTypology/thoroughfare> ;
+    skos:prefLabel "Address Typology - Collection" .
+
+<AddressableObjectLifecycleStageCollection> a skos:Collection ;
+    skos:member <AddressableObjectLifecycleStage/approved>,
+        <AddressableObjectLifecycleStage/ceasedToExist>,
+        <AddressableObjectLifecycleStage/exists>,
+        <AddressableObjectLifecycleStage/proposed>,
+        <AddressableObjectLifecycleStage/underConstruction>,
+        <AddressableObjectLifecycleStage/unknown> ;
+    skos:prefLabel "Addressable Object Lifecycle Stage - Collection" .
+
+<AddressableObjectType> a skos:ConceptScheme ;
+    skos:prefLabel "Addressable Object Type - ConceptScheme" .
+
+<AddressableObjectTypeCollection> a skos:Collection ;
+    skos:prefLabel "Addressable Object Type - Collection" .
+
+<ReferenceObjectType> a skos:ConceptScheme ;
+    skos:prefLabel "Reference Object Type - ConceptScheme" .
+
+<ReferenceObjectTypeCollection> a skos:Collection ;
+    skos:prefLabel "Reference Object Type - Collection" .
+
+<AddressAliasType/classAlias> a <AddressAliasType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The address alias is from a different address class." ;
+		rdfs:comment "The address alias is from a different address class." ;
+    skos:inScheme <AddressAliasType> ;
+    skos:prefLabel "Class Alias" .
+
+<AddressAliasType/colloquialAlias> a <AddressAliasType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The address alias is a colloquial version of the address." ;
+		rdfs:comment "The address alias is a colloquial version of the address." ;
+    skos:inScheme <AddressAliasType> ;
+    skos:prefLabel "Colloquial Alias" .
+
+<AddressAliasType/lifecycleAlias> a <AddressAliasType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The address alias has a different lifecycle stage." ;
+		rdfs:comment "The address alias has a different lifecycle stage." ;
+    skos:inScheme <AddressAliasType> ;
+    skos:prefLabel "Lifecycle Alias" .
+
+<AddressAliasType/localeAlias> a <AddressAliasType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The address alias is in a different locale." ;
+		rdfs:comment "The address alias is in a different locale." ;
+    skos:inScheme <AddressAliasType> ;
+    skos:prefLabel "Locale Alias" .
+
+<AddressAliasType/unspecifiedAlias> a <AddressAliasType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The type of address alias is not specified." ;
+		rdfs:comment "The type of address alias is not specified." ;
+    skos:inScheme <AddressAliasType> ;
+    skos:prefLabel "Unspecified Alias" .
+
+<AddressComponentType/addressedObjectIdentifier> a <AddressComponentType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "Identifier of the addressed object, e.g. building name or address number." ;
+		rdfs:comment "Identifier of the addressed object, e.g. building name or address number." ;
+    skos:inScheme <AddressComponentType> ;
+    skos:prefLabel "Addressed ObjectIdentifier" .
+
+<AddressComponentType/administrativeAreaName> a <AddressComponentType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "Name of an administrative area." ;
+		rdfs:comment "Name of an administrative area." ;
+    skos:inScheme <AddressComponentType> ;
+    skos:prefLabel "Administrative Area Name" .
+
+<AddressComponentType/countryCode> a <AddressComponentType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "ISO 3166-1 code for the country, territory or area of geopolitical interest." ;
+		rdfs:comment "ISO 3166-1 code for the country, territory or area of geopolitical interest." ;
+    skos:inScheme <AddressComponentType> ;
+    skos:prefLabel "Country Code" .
+
+<AddressComponentType/countryName> a <AddressComponentType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "Name of a country." ;
+		rdfs:comment "Name of a country." ;
+    skos:inScheme <AddressComponentType> ;
+    skos:prefLabel "Country Name" .
+
+<AddressComponentType/localityName> a <AddressComponentType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "Name of a locality." ;
+		rdfs:comment "Name of a locality." ;
+    skos:inScheme <AddressComponentType> ;
+    skos:prefLabel "Locality Name" .
+
+<AddressComponentType/postOfficeName> a <AddressComponentType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "Name of a post office." ;
+		rdfs:comment "Name of a post office." ;
+    skos:inScheme <AddressComponentType> ;
+    skos:prefLabel "Post Office Name" .
+
+<AddressComponentType/postcode> a <AddressComponentType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "Code used for the sorting of mail [SOURCE: UPU S42:2006]." ;
+		rdfs:comment "Code used for the sorting of mail [SOURCE: UPU S42:2006]." ;
+    skos:inScheme <AddressComponentType> ;
+    skos:prefLabel "Postcode" .
+
+<AddressComponentType/thoroughfareName> a <AddressComponentType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "Name of a thoroughfare." ;
+		rdfs:comment "Name of a thoroughfare." ;
+    skos:inScheme <AddressComponentType> ;
+    skos:prefLabel "Thoroughfare Name" .
+
+<AddressComponentValueType/abbreviatedAlternative> a <AddressComponentValueType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The alternative component value is an abbreviation." ;
+		rdfs:comment "The alternative component value is an abbreviation." ;
+    skos:inScheme <AddressComponentValueType> ;
+    skos:prefLabel "Abbreviated Alternative" .
+
+<AddressComponentValueType/colloquialAlternative> a <AddressComponentValueType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The alternative component value is a colloquial alternative for the component value." ;
+		rdfs:comment "The alternative component value is a colloquial alternative for the component value." ;
+    skos:inScheme <AddressComponentValueType> ;
+    skos:prefLabel "Colloquial Alternative" .
+
+<AddressComponentValueType/defaultValue> a <AddressComponentValueType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The default component value (i.e. the one that is not an alternative)." ;
+		rdfs:comment "The default component value (i.e. the one that is not an alternative)." ;
+    skos:inScheme <AddressComponentValueType> ;
+    skos:prefLabel "Default Value" .
+
+<AddressComponentValueType/lifecycleAlternative> a <AddressComponentValueType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The alternative component value was used in a different lifecycle stage." ;
+		rdfs:comment "The alternative component value was used in a different lifecycle stage." ;
+    skos:inScheme <AddressComponentValueType> ;
+    skos:prefLabel "Lifecycle Alternative" .
+
+<AddressComponentValueType/localeAlternative> a <AddressComponentValueType>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The alternative component value is in a different locale." ;
+		rdfs:comment "The alternative component value is in a different locale." ;
+    skos:inScheme <AddressComponentValueType> ;
+    skos:prefLabel "Locale Alternative" .
+
+<AddressLifecycleStage/current> a <AddressLifecycleStage>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The address or address component is currently in use." ;
+		rdfs:comment "The address or address component is currently in use." ;
+    skos:inScheme <AddressLifecycleStage> ;
+    skos:prefLabel "current" .
+
+<AddressLifecycleStage/proposed> a <AddressLifecycleStage>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The address or address component has been proposed, i.e. the relevant authority has initiated approval procedures for the use of the address or address component." ;
+		rdfs:comment "The address or address component has been proposed, i.e. the relevant authority has initiated approval procedures for the use of the address or address component." ;
+    skos:inScheme <AddressLifecycleStage> ;
+    skos:prefLabel "proposed" .
+
+<AddressLifecycleStage/rejected> a <AddressLifecycleStage>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The address or address component was proposed but rejected." ;
+		rdfs:comment "The address or address component was proposed but rejected." ;
+    skos:inScheme <AddressLifecycleStage> ;
+    skos:prefLabel "rejected" .
+
+<AddressLifecycleStage/reserved> a <AddressLifecycleStage>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The address or address component has been reserved for future use." ;
+		rdfs:comment "The address or address component has been reserved for future use." ;
+    skos:inScheme <AddressLifecycleStage> ;
+    skos:prefLabel "reserved" .
+
+<AddressLifecycleStage/retired> a <AddressLifecycleStage>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The address or address component was in use at some stage, but not anymore." ;
+		rdfs:comment "The address or address component was in use at some stage, but not anymore." ;
+    skos:inScheme <AddressLifecycleStage> ;
+    skos:prefLabel "retired" .
+
+<AddressLifecycleStage/unknown> a <AddressLifecycleStage>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The lifecycle stage of the address or address component is unknown." ;
+		rdfs:comment "The lifecycle stage of the address or address component is unknown." ;
+    skos:inScheme <AddressLifecycleStage> ;
+    skos:prefLabel "unknown" .
+
+<AddressStatus/official> a <AddressStatus>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "An official addressing authority assigned the address." ;
+		rdfs:comment "An official addressing authority assigned the address." ;
+    skos:inScheme <AddressStatus> ;
+    skos:prefLabel "official" .
+
+<AddressStatus/unknown> a <AddressStatus>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The status of the address is unknown." ;
+		rdfs:comment "The status of the address is unknown." ;
+    skos:inScheme <AddressStatus> ;
+    skos:prefLabel "unknown" .
+
+<AddressStatus/unofficial> a <AddressStatus>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The address was not assigned by an official addressing authority." ;
+		rdfs:comment "The address was not assigned by an official addressing authority." ;
+    skos:inScheme <AddressStatus> ;
+    skos:prefLabel "unofficial" .
+
+<AddressTypology/area> a <AddressTypology>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The address class is based on a division of land or water into demarcated areas, such as neighbourhoods or precincts or cadastral features." ;
+		rdfs:comment "The address class is based on a division of land or water into demarcated areas, such as neighbourhoods or precincts or cadastral features." ;
+    skos:inScheme <AddressTypology> ;
+    skos:prefLabel "area" .
+
+<AddressTypology/service> a <AddressTypology>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The address class is based on delivery or collection services, such as a group of post boxes at the same location or poste restante." ;
+		rdfs:comment "The address class is based on delivery or collection services, such as a group of post boxes at the same location or poste restante." ;
+    skos:inScheme <AddressTypology> ;
+    skos:prefLabel "service" .
+
+<AddressTypology/thoroughfare> a <AddressTypology>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The address class is based on navigable access features, such as streets or canals." ;
+		rdfs:comment "The address class is based on navigable access features, such as streets or canals." ;
+    skos:inScheme <AddressTypology> ;
+    skos:prefLabel "thoroughfare" .
+
+<AddressableObjectLifecycleStage/approved> a <AddressableObjectLifecycleStage>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The establishment or construction of the addressable object has been approved, i.e. the relevant authority has given approval for the establishment or construction of the addressable object." ;
+		rdfs:comment "The establishment or construction of the addressable object has been approved, i.e. the relevant authority has given approval for the establishment or construction of the addressable object." ;
+    skos:inScheme <AddressableObjectLifecycleStage> ;
+    skos:prefLabel "approved" .
+
+<AddressableObjectLifecycleStage/ceasedToExist> a <AddressableObjectLifecycleStage>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The addressable object does not exist anymore (e.g. it has been demolished)." ;
+		rdfs:comment "The addressable object does not exist anymore (e.g. it has been demolished)." ;
+    skos:inScheme <AddressableObjectLifecycleStage> ;
+    skos:prefLabel "ceasedToExist" .
+
+<AddressableObjectLifecycleStage/exists> a <AddressableObjectLifecycleStage>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The addressable object exists." ;
+		rdfs:comment "The addressable object exists." ;
+    skos:inScheme <AddressableObjectLifecycleStage> ;
+    skos:prefLabel "exists" .
+
+<AddressableObjectLifecycleStage/proposed> a <AddressableObjectLifecycleStage>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The establishment or construction of the addressable object has been proposed, i.e. the relevant authority has initiated approval procedures." ;
+		rdfs:comment "The establishment or construction of the addressable object has been proposed, i.e. the relevant authority has initiated approval procedures." ;
+    skos:inScheme <AddressableObjectLifecycleStage> ;
+    skos:prefLabel "proposed" .
+
+<AddressableObjectLifecycleStage/underConstruction> a <AddressableObjectLifecycleStage>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The establishment or construction of the addressable object is in progress." ;
+		rdfs:comment "The establishment or construction of the addressable object is in progress." ;
+    skos:inScheme <AddressableObjectLifecycleStage> ;
+    skos:prefLabel "underConstruction" .
+
+<AddressableObjectLifecycleStage/unknown> a <AddressableObjectLifecycleStage>,
+        skos:Concept , owl:NamedIndividual ;
+    skos:definition "The lifecycle stage of the addressable object is unknown." ;
+		rdfs:comment "The lifecycle stage of the addressable object is unknown." ;
+    skos:inScheme <AddressableObjectLifecycleStage> ;
+    skos:prefLabel "unknown" .
+
+<AddressStatus> a skos:ConceptScheme ;
+    skos:prefLabel "AddressStatus - ConceptScheme" .
+
+<AddressTypology> a skos:ConceptScheme ;
+    skos:prefLabel "Address Typology - ConceptScheme" .
+
+<AddressAliasType> a skos:ConceptScheme ;
+    skos:prefLabel "Address Alias Type - ConceptScheme" .
+
+<AddressComponentValueType> a skos:ConceptScheme ;
+    skos:prefLabel "Address Component Value Type - ConceptScheme" .
+
+<AddressLifecycleStage> a skos:ConceptScheme ;
+    skos:prefLabel "Address Lifecycle Stage - ConceptScheme" .
+
+<AddressableObjectLifecycleStage> a skos:ConceptScheme ;
+    skos:prefLabel "Addressable Object Lifecycle Stage - ConceptScheme" .
+
+<AddressComponentType> a skos:ConceptScheme ;
+    skos:prefLabel "Address ComponentType - ConceptScheme" .

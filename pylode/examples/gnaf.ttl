@@ -1,0 +1,575 @@
+@prefix : <http://linked.data.gov.au/def/gnaf#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix sf: <http://www.opengis.net/ont/sf#> .
+@prefix asgs: <http://linked.data.gov.au/def/asgs#> .
+@base <http://linked.data.gov.au/def/gnaf> .
+
+<http://linked.data.gov.au/def/gnaf> rdf:type owl:Ontology ;
+                              owl:versionIRI <http://linked.data.gov.au/def/gnaf/1.2> ;
+                              owl:imports <http://www.opengis.net/ont/geosparql> ,
+                                          <http://www.w3.org/ns/prov-o> ;
+                              rdfs:label "GNAF ontology"^^xsd:string ;
+                              dct:modified "2019-06-07"^^xsd:date ;
+                              owl:versionInfo "1.2"^^xsd:string ;
+                              dct:contributor [
+                                sdo:name "Joseph Abhayaratna" ;
+                                sdo:email <joseph.abhayaratna@psma.com.au> ;
+                              ] ;
+                              dct:created "2017-12-23"^^xsd:date ;
+                              dct:creator [
+                                sdo:name "Nicholas Car" ;
+                                sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+                                sdo:email <nicholas.car@csiro.au> ;
+                              ] ;
+                              dct:publisher [
+                                sdo:name "PSMA Australia" ;
+                                sdo:identifier <http://catalogue.linked.data.gov.au/org/psma> ;
+                              ] ;
+                              dct:source "https://www.psma.com.au/sites/default/files/g-naf_product_description.pdf" ;
+                              dct:description """An ontology for the content of the PSMA Geocoded National Address File (G-NAF).
+
+  The G-NAF is Australia’s authoritative, geocoded address file. It contains more than 13 million Australian physical address records. The records include geocodes which are latitude and longitude map coordinates with coordinate reference system details and other information necissary to prcicely locate addresses on the earth's surface.
+
+  The G-NAF does not contain any names or personal information.
+
+  The base content of the G-NAF is available freely online at <https://data.gov.au/dataset/geocoded-national-address-file-g-naf> and also via a Linked Data API that uses this ontology at <http://gnafld.net>.
+
+  This ontology draws heavily from the OWL ontology version of the ISO19160-1:2015 \"Addressing -- Part 1: Conceptual model\" standard (see <https://www.iso.org/standard/61710.html>) which has been created by the ISO TC211, Group for Ontology Management (GOM) and published online by the Australian Government Linked Data Working Group at <http://reference.data.gov.au/def/ont/iso19160-1-address>."""@en ;
+                              skos:changeNote """Version 1.2 has these changes: hasState & hasLocality made sub properties of geo:sfWithin, GeocodedPoint removed and replaces with just sf:Point. New-style ontology documentation with Agent objects for publisher etc. used too.""" .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://linked.data.gov.au/def/gnaf#aliasOf
+:aliasOf rdf:type owl:ObjectProperty ;
+         owl:inverseOf :hasAlias ;
+         rdfs:label "alias of"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#gnafType
+:gnafType rdf:type owl:ObjectProperty ;
+          rdfs:comment "A property to allow for GNAF-specific soft typing of various GNAF classes using code list terms published in the GNAF product guide, for example Locality class instances being soft typed according to the Locality Types list which includes *Alias Only*, *District*, *Gazeted* etc."@en ;
+          rdfs:label "GNAF type"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasAddressPrimary
+:hasAddressPrimary rdf:type owl:ObjectProperty ;
+                   owl:inverseOf :hasAddressSecondary .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasAddressSecondary
+:hasAddressSecondary rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Address ;
+                     rdfs:range :Address ;
+                     rdfs:label "has Address Secondary"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasAddressSite
+:hasAddressSite rdf:type owl:ObjectProperty ;
+                rdfs:domain :Address ;
+                rdfs:range :AddressSite ;
+                rdfs:label "has Address Site"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasAlias
+:hasAlias rdf:type owl:ObjectProperty ;
+          rdfs:domain :Alias ;
+          rdfs:range :Address ,
+                     :Locality ,
+                     :Street ;
+          rdfs:label "has Alias"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasGeocode
+:hasGeocode rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf geo:hasGeometry ;
+            rdfs:domain :Address ;
+            rdfs:range sf:Point ;
+            rdfs:label "has Geocode"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasGeocodeReliability
+:hasGeocodeReliability rdf:type owl:ObjectProperty ;
+                       rdfs:label "has Geocode Reliability"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasGnafConfidence
+:hasGnafConfidence rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Address ;
+                   rdfs:range :GnafConfidence ;
+                   rdfs:label "has GNAF confidence"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasLocality
+:hasLocality rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf geo:sfWithin ;
+             rdfs:domain :StreetLocality ;
+             rdfs:range :Locality ;
+             rdfs:label "has Locality"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasMeshBlock
+:hasMeshBlock rdf:type owl:ObjectProperty ;
+              rdfs:domain :MeshBlockMatch ;
+              rdfs:range asgs:MeshBlock ;
+              rdfs:label "has Mesh Block"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasMeshBlockMatch
+:hasMeshBlockMatch rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Address ;
+                   rdfs:range :MeshBlockMatch ;
+                   rdfs:label "has Mesh Block match"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasNeighbour
+:hasNeighbour rdf:type owl:ObjectProperty ;
+              rdfs:domain :Locality ;
+              rdfs:range :Locality ;
+              rdfs:label "has neighbour"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasNumber
+:hasNumber rdf:type owl:ObjectProperty ;
+           rdfs:domain :Address ;
+           rdfs:range :Number ;
+           rdfs:label "has Number"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasState
+:hasState rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf geo:sfWithin ;
+          rdfs:range asgs:StateOrTerritory ;
+          rdfs:label "has State"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasStreetConfirmation
+:hasStreetConfirmation rdf:type owl:ObjectProperty ;
+                       rdfs:domain :Street ;
+                       rdfs:range :StreetConfirmation ;
+                       rdfs:label "has Street Confirmation"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasStreetLocality
+:hasStreetLocality rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf geo:sfWithin ;
+                   rdfs:domain :Address ;
+                   rdfs:range :StreetLocality ;
+                   rdfs:label "has Street Locality"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasStreetSuffix
+:hasStreetSuffix rdf:type owl:ObjectProperty ;
+                 rdfs:domain :StreetLocality ;
+                 rdfs:range :StreetSuffix ;
+                 rdfs:label "has Street Suffix"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://linked.data.gov.au/def/gnaf#hasBuildingName
+:hasBuildingName rdf:type owl:DatatypeProperty ;
+                 rdfs:label "has building name"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasDateCreated
+:hasDateCreated rdf:type owl:DatatypeProperty ;
+                rdfs:label "has date created"@en ;
+                rdfs:range xsd:dateTime .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasDateLastModified
+:hasDateLastModified rdf:type owl:DatatypeProperty ;
+                     rdfs:comment "This is the same as dct:modified."@en ;
+                     rdfs:label "has date last modified"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasDateRetired
+:hasDateRetired rdf:type owl:DatatypeProperty ;
+                rdfs:label "has date retired"@en ;
+                rdfs:range xsd:dateTime .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasDescription
+:hasDescription rdf:type owl:DatatypeProperty ;
+                rdfs:label "has description"@en ;
+                rdfs:range xsd:string .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasLegalParcelId
+:hasLegalParcelId rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "has legal parcel ID"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasName
+:hasName rdf:type owl:DatatypeProperty ;
+         rdfs:label "has name"@en ;
+         rdfs:range xsd:string .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasPostcode
+:hasPostcode rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:int ;
+             rdfs:label "has postcode"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasPrefix
+:hasPrefix rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Number ;
+           rdfs:range xsd:string ;
+           rdfs:label "has prefix"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasPrimaryPostcode
+:hasPrimaryPostcode rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Locality ;
+                    rdfs:range xsd:int ;
+                    rdfs:label "has primary postcode"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasSuffix
+:hasSuffix rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Number ;
+           rdfs:range xsd:string ;
+           rdfs:label "has suffix"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#isPrivateStreet
+:isPrivateStreet rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:boolean ;
+                 rdfs:label "has private street"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dbpedia.org/ontology/Location
+dbo:Location rdf:type owl:Class .
+
+
+###  http://linked.data.gov.au/def/gnaf#Address
+:Address rdf:type owl:Class ;
+         rdfs:subClassOf dbo:Location ,
+                         :GnafEntity ,
+                         <http://reference.data.gov.au/def/ont/iso19160-1-address#Address> ,
+                         geo:Feature ,
+                         prov:Location ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasAlias ;
+                           owl:someValuesFrom :Alias
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasMeshBlockMatch ;
+                           owl:someValuesFrom :MeshBlockMatch
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasNumber ;
+                           owl:someValuesFrom :Number
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty geo:hasGeometry ;
+                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass sf:Point
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasAddressSite ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :AddressSite
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasGnafConfidence ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :GnafConfidence
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasLocality ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Locality
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasStreetLocality ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :StreetLocality
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasDateLastModified ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:dateTime
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasBuildingName ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:string
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPostcode ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:string
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty dct:description ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:string
+                         ] ;
+         rdfs:label "Address"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#AddressSite
+:AddressSite rdf:type owl:Class ;
+             rdfs:subClassOf :GnafEntity ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasName ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:string
+                             ] ;
+             rdfs:label "Address Site"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#Alias
+:Alias rdf:type owl:Class ;
+       rdfs:subClassOf :GnafEntity ;
+       rdfs:label "Alias"^^xsd:string .
+
+
+###  http://linked.data.gov.au/def/gnaf#GnafEntity
+:GnafEntity rdf:type owl:Class ;
+            rdfs:subClassOf prov:Entity ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasDateCreated ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange xsd:dateTime
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasDateRetired ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange xsd:dateTime
+                            ] ;
+            rdfs:comment "Entities (things) that are present as records in the GNAF database. Every GNAF Entity has a data created, date last modified (can be the same) and may have a data retired. These dates indicate the creation, modification & retirement of the representation of the Entity in the GNAF database, not the real-world Entity."@en ;
+            rdfs:label "GNAF Entity"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#Locality
+:Locality rdf:type owl:Class ;
+          rdfs:subClassOf dbo:Location ,
+                          :GnafEntity ,
+                          geo:Feature ,
+                          prov:Location ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasAlias ;
+                            owl:someValuesFrom :Alias
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasNeighbour ;
+                            owl:someValuesFrom :Locality
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty geo:hasGeometry ;
+                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass sf:Point
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasName ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPrimaryPostcode ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:int
+                          ] ;
+          rdfs:label "Locality"^^xsd:string .
+
+###  http://linked.data.gov.au/def/gnaf#MeshBlockMatch
+:MeshBlockMatch rdf:type owl:Class ;
+                rdfs:subClassOf :GnafEntity ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasMeshBlock ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass asgs:MeshBlock
+                                ] ;
+                rdfs:label "Mesh Block Match"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#Number
+:Number rdf:type owl:Class ;
+        rdfs:subClassOf prov:Entity ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasPrefix ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasSuffix ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:string
+                        ] ;
+        rdfs:label "Number"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#Street
+:Street rdf:type owl:Class ;
+        rdfs:subClassOf dbo:Location ,
+                        :GnafEntity ,
+                        geo:Feature ,
+                        prov:Location ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasAlias ;
+                          owl:someValuesFrom :Alias
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasStreetSuffix ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :StreetSuffix
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasName ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:string
+                        ] ;
+        rdfs:label "Street"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#StreetLocality
+:StreetLocality rdf:type owl:Class ;
+                rdfs:subClassOf :Street ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty geo:hasGeometry ;
+                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass sf:Point
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasGnafConfidence ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :GnafConfidence
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasLocality ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Locality
+                                ] ;
+                rdfs:label "Street Locality"^^xsd:string .
+
+
+###  http://linked.data.gov.au/def/gnaf#MB2011
+:MB2011 rdf:type owl:Class ;
+    rdfs:subClassOf asgs:MeshBlock ;
+    dct:contributor <http://orcid.org/0000-0002-8742-7730> ;
+    dct:source "G-NAF Data Product Description, November 2017"^^xsd:string ;
+    rdfs:isDefinedBy <http://linked.data.gov.au/def/gnaf> ;
+    rdfs:comment "A Mesh Block from the 2011 census"@en ;
+    rdfs:label "2011 Mesh Block"@en .
+
+
+###  http://linked.data.gov.au/def/gnaf#MB2016
+:MB2016 rdf:type owl:Class ;
+    rdfs:subClassOf asgs:MeshBlock ;
+    dct:contributor <http://orcid.org/0000-0002-8742-7730> ;
+    dct:source "G-NAF Data Product Description, November 2017"^^xsd:string ;
+    rdfs:isDefinedBy <http://linked.data.gov.au/def/gnaf> ;
+    rdfs:comment "A Mesh Block from the 2016 census"@en ;
+    rdfs:label "2016 Mesh Block"@en .
+
+
+###  http://reference.data.gov.au/def/ont/iso19160-1-address#Address
+<http://reference.data.gov.au/def/ont/iso19160-1-address#Address> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf prov:Entity ;
+                                                                  rdfs:label "ISO19160-1 Address"@en .
+
+
+###  http://www.opengis.net/ont/geosparql#Geometry
+geo:Geometry rdfs:subClassOf :GnafEntity ,
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :hasGeocodeReliability ;
+                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                  owl:onClass :GeocodeReliability
+                                                                ] .
+
+
+###  http://www.w3.org/ns/prov#Collection
+prov:Collection rdfs:subClassOf prov:Collection .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://linked.data.gov.au/def/gnaf#hasDateCreated
+:hasDateCreated rdf:type owl:NamedIndividual ;
+                owl:sameAs prov:wasGeneratedAtTime .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasDateRetired
+:hasDateRetired rdf:type owl:NamedIndividual ;
+                owl:sameAs prov:wasInvalidatedAtTime .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasDescription
+:hasDescription rdf:type owl:NamedIndividual ;
+                owl:sameAs dct:description .
+
+
+###  http://linked.data.gov.au/def/gnaf#hasName
+:hasName rdf:type owl:NamedIndividual ;
+         owl:sameAs dct:title .
+
+
+###  http://purl.org/dc/terms/description
+dct:description rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/title
+dct:title rdf:type owl:NamedIndividual .
+
+
+###  http://www.w3.org/ns/prov#wasGeneratedAtTime
+prov:wasGeneratedAtTime rdf:type owl:NamedIndividual .
+
+
+###  http://www.w3.org/ns/prov#wasInvalidatedAtTime
+prov:wasInvalidatedAtTime rdf:type owl:NamedIndividual .
+
+
+[ owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+] .
+
+[ owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+ ] .
+
+#################################################################
+#    Annotations
+#################################################################
+
+:hasDateCreated rdfs:label "has date created"@en ;
+                 rdfs:comment "This is the same as prov:wasGeneratedAtTime."@en .
+
+
+:hasDateRetired rdfs:label "has date retired"@en ;
+                rdfs:comment "This is the same as prov:wasInvalidatedAtTime."@en .
+
+
+:hasDescription rdfs:comment "This is the same as dct:description."@en ;
+                rdfs:label "has description"@en .
+
+
+:hasName rdfs:label "has name"@en ;
+         rdfs:comment "This is the same as dct:title."@en .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

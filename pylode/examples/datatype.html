@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Datatypes</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<h1>Datatypes</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>IRI</dt>
+        <dd><code>http://linked.data.gov.au/def/datatype</code></dd>
+        <dt>Creator(s)</dt>
+        <dd>
+            <a href="https://orcid.org/0000-0002-3884-3420">Simon J.D.Cox</a> (<a href="mailto:simon.cox@csiro.au">simon.cox@csiro.au</a>) of <a href="https://ror.org/03qn8fb07">CSIRO</a><br/>
+        </dd>
+        <dt>Created</dt>
+        <dd>2019-03-25</dd>
+        <dt>Modified</dt>
+        <dd>2019-10-03</dd>
+        <dt>Imports</dt>
+        <dd>
+            <a href="http://purl.org/dc/elements/1.1/">http://purl.org/dc/elements/1.1/</a><br/>
+            <a href="http://topbraid.org/schema/">http://topbraid.org/schema/</a><br/>
+            <a href="http://www.w3.org/ns/prov-o#">http://www.w3.org/ns/prov-o#</a><br/>
+            <a href="http://usefulinc.com/ns/doap">http://usefulinc.com/ns/doap</a><br/>
+        </dd>
+        <dt>License</dt>
+        <dd><a href="http://creativecommons.org/publicdomain/zero/1.0/">http://creativecommons.org/publicdomain/zero/1.0/</a></dd>
+        <dt>Ontology Source</dt>
+        <dd><a href="datatype.ttl">RDF (turtle)</a></dd>
+        <dt>Code Repository</dt>
+        <dd><a href="https://github.com/AGLDWG/datatype-ont">https://github.com/AGLDWG/datatype-ont</a></dd>
+    </dl>
+    <h2>Description</h2>
+    <div id="description">
+        <p>A set of classes representing data-types. 
+These may be used for observation results, or for the range of specific properties in other applications where scaled numbers, ranges, percents etc are required. </p>
+    </div>
+    <p><strong>History Note:</strong> Originally developed for use as the value of an observation result (sosa:hasResult) in the context of the TERN-plot ontology. 
+
+However, objects from these classes may appear in many contexts. </p>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#objectproperties">Object Properties</a></li>
+        <li><a href="#datatypeproperties">Datatype Properties</a></li>
+        <li><a href="#namespaces">Namespaces</a></li>
+    </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+        <img src="https://raw.githubusercontent.com/AGLDWG/datatype-ont/master/images/types.png" style="width:80%;" alt="overview image" />
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
+</section>
+<section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#boolean">Boolean</a></li>
+        <li><a href="#concept">Concept</a></li>
+        <li><a href="#count">Count</a></li>
+        <li><a href="#percent">Percent</a></li>
+        <li><a href="#percentrange">Percent range</a></li>
+        <li><a href="#quantitativemeasure">Quantitative Measure</a></li>
+        <li><a href="#quantitativerange">Quantitative Range</a></li>
+        <li><a href="#text">Text</a></li>
+    </ul>
+    <div class="entity class" id="boolean">
+        <h3>Boolean<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/datatype/Boolean</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Class to encapsulate a true-or-false value
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#datavalue">data:value</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#datavalue">data:value</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="concept">
+        <h3>Concept<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/datatype/Concept</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Class to encapsulate a classifier, usually a values from a controlled vocabulary
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#value">rdf:value</a> <span class="cardinality">only</span> <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#value">rdf:value</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#vocabulary">data:vocabulary</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="count">
+        <h3>Count<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/datatype/Count</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Class to encapsulate an integer value
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#datavalue">data:value</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#datavalue">data:value</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#datauncertainty">data:uncertainty</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="percent">
+        <h3>Percent<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/datatype/Percent</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Class to encapsulate a quantitative measure expressed as a percent value
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#quantitativemeasure">data:QuantitativeMeasure</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#unitofmeasure">data:unit</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">value</span> <a href="http://qudt.org/vocab/unit/PERCENT">http://qudt.org/vocab/unit/PERCENT</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#datauncertainty">data:uncertainty</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="percentrange">
+        <h3>Percent range<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/datatype/PercentRange</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Class to encapsulate a quantitative range expressed as in percent values
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#quantitativerange">data:QuantitativeRange</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#datauncertainty">data:uncertainty</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#unitofmeasure">data:unit</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">value</span> <a href="http://qudt.org/vocab/unit/PERCENT">http://qudt.org/vocab/unit/PERCENT</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="quantitativemeasure">
+        <h3>Quantitative Measure<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/datatype/QuantitativeMeasure</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Class to encapsulate a quantitative measure value
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#unitofmeasure">data:unit</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#datavalue">data:value</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a> <sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#datavalue">data:value</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#datauncertainty">data:uncertainty</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#percent">data:Percent</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="quantitativerange">
+        <h3>Quantitative Range<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/datatype/QuantitativeRange</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Class to encapsulate a quantitative range 
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#unitofmeasure">data:unit</a> <sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#datauncertainty">data:uncertainty</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#datamaximum">data:max</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#dataminimum">data:min</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#percentrange">data:PercentRange</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="text">
+        <h3>Text<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/datatype/Text</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Class to encapsulate a textual value
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#datavalue">data:value</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#datavalue">data:value</a> <sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="objectproperties">
+    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#datastandard">data standard</a></li>
+        <li><a href="#unitofmeasure">unit of measure</a></li>
+        <li><a href="#vocabulary">vocabulary</a></li>
+    </ul>
+    <div class="entity property" id="datastandard">
+        <h3>data standard<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/datatype/standard</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Measurement standard, scale, uom, reference system, controlled vocabulary, taxonomy etc
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="unitofmeasure">
+        <h3>unit of measure<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/datatype/unit</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Measurement scale 
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#datastandard">data:standard</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="vocabulary">
+        <h3>vocabulary<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/datatype/vocabulary</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    controlled vocabulary, taxonomy etc 
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#datastandard">data:standard</a> <sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#ConceptScheme">skos:ConceptScheme</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2004/02/skos/core#Collection">skos:Collection</a> <sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2002/07/owl#Ontology">owl:Ontology</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="datatypeproperties">
+    <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#datamaximum">data maximum</a></li>
+        <li><a href="#dataminimum">data minimum</a></li>
+        <li><a href="#datauncertainty">data uncertainty</a></li>
+        <li><a href="#datavalue">data value</a></li>
+    </ul>
+    <div class="entity property" id="datamaximum">
+        <h3>data maximum<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/datatype/max</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Maximum value of a range
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#value">rdf:value</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="dataminimum">
+        <h3>data minimum<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/datatype/min</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Minimum value of range
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#value">rdf:value</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="datauncertainty">
+        <h3>data uncertainty<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/datatype/uncertainty</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Uncertainty for a quantitative value
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#value">rdf:value</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a> <sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="datavalue">
+        <h3>data value<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/datatype/value</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    simple value (a literal)
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#value">rdf:value</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt><em>default (:)</em></dt>
+        <dd><code>http://linked.data.gov.au/def/datatype/</code></dd>
+        <dt>data</dt>
+        <dd><code>http://linked.data.gov.au/def/datatype/</code></dd>
+        <dt>dct</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>doap</dt>
+        <dd><code>http://usefulinc.com/ns/doap#</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>prov</dt>
+        <dd><code>http://www.w3.org/ns/prov#</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>sdo</dt>
+        <dd><code>http://schema.org/</code></dd>
+        <dt>skos</dt>
+        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>xml</dt>
+        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+    <section id="legend">
+        <h2>Legend</h2>
+        <table class="entity">
+            <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+            <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+            <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+            <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+            <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+            <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+        </table>
+    </section>
+</body>
+</html>

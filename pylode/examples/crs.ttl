@@ -1,0 +1,531 @@
+# baseURI: http://linked.data.gov.au/def/crs
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://www.w3.org/2006/time
+# imports: http://www.w3.org/ns/org#
+# prefix: crs
+
+@prefix agrif: <http://linked.data.gov.au/def/agrif#> .
+@prefix auorg: <http://linked.data.gov.au/def/auorg/> .
+@prefix crs: <http://linked.data.gov.au/def/crs#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <http://www.w3.org/2006/time> .
+@prefix agift: <http://linked.data.gov.au/def/agift#> .
+
+<http://linked.data.gov.au/def/crs>
+  a owl:NamedIndividual ;
+  a owl:Ontology ;
+  dc:contributor "David Hearder" ;
+  dc:contributor "Marco Wallenius" ;
+  dct:publisher [
+    sdo:name "National Archives of Australia" ;
+    sdo:identifier <http://catalogue.linked.data.gov.au/org/naa> ;
+    rdfs:seeOther <http://www.naa.gov.au> ;
+  ] ;
+  dct:contributor [
+    sdo:name "Simon J.D. Cox" ;
+    sdo:identifier <https://orcid.org/0000-0002-3884-3420> ;
+    sdo:email <simon.cox@csiro.au> ;
+    sdo:memberOf [
+      sdo:name "CSIRO" ;
+      sdo:identifier <http://catalogue.linked.data.gov.au/org/csiro> ;
+    ] ;
+  ] ;
+  dct:created "2018-09-10"^^xsd:date ;
+  dct:creator [
+    sdo:name "Nicholas J. Car" ;
+    sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+    sdo:email <nicholas.car@csiro.au> ;
+    sdo:memberOf [
+      sdo:name "CSIRO" ;
+      sdo:identifier <http://catalogue.linked.data.gov.au/org/csiro> ;
+    ] ;
+  ] ;
+  dct:modified "2019-05-31"^^xsd:date ;
+  rdfs:comment """This ontology is an [OWL](https://www.w3.org/OWL/) interpretation of the Commonwealth Record Series (CRS) system's data model that is maintained by the [National Archives of Australia](http://naa.gov.au).
+
+This ontology specialises classes and properties from the [Organization Ontology](https://www.w3.org/TR/vocab-org/) and other well-known ontologies such as [Dublin Core](http://dublincore.org/schemas/rdfs/) & [PROV](https://www.w3.org/TR/prov-o/) to describe CRS things in specific terms but also in relation to well-known generic terms.
+
+It also refers to components in other Australian government ontologies, particularly [AGRIF](http://reference.data.gov.au/def/ont/agrif) - Australian government Functions & Records"""@en ;
+  rdfs:label "Commonwealth Record Series Ontology" ;
+  rdfs:seeAlso "The GitHub repository containing addition documentation: http://github.com/CSIRO-enviro-informatics/crs-ont/" ;
+  owl:imports dc: , time: , org: ;
+  owl:versionIRI crs: ;
+  owl:versionInfo "Beta version" ;
+.
+crs:AdministrativeArrangementOrder
+  a owl:Class ;
+  rdfs:comment "Administrative Arrangements Orders (AAOs) formally allocate executive responsibility among ministers. They set out which matters and legislation are administered by which department or portfolio. AAOs are re-issued or amended to take into account changes in the structure of government. The information hosted here is for historical purposes only"@en ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "Administrative Arrangement Order" ;
+.
+crs:Affiliation
+  a owl:Class ;
+  rdfs:comment """Affiliations are temporal associations between CRS Agents that indicate both the Agent-Agent relation and a Role.
+
+For example John Howard was Associated with the House of Representatitves where he played the Role of Member of Parliament (among others).
+Associations may be temporal, for example John Howard was Associated with the Department of Prime Minister & Cabinet where he played the Role of Prime Minister from 1996-2007."""@en ;
+  rdfs:label "Affiliation" ;
+  rdfs:subClassOf crs:Relationship ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "2"^^xsd:nonNegativeInteger ;
+      owl:onProperty crs:hasAgent ;
+    ] ;
+.
+crs:Agent
+  a owl:Class ;
+  rdfs:label "Agent" ;
+  rdfs:subClassOf <http://www.w3.org/ns/prov#Agent> ;
+  owl:equivalentClass [
+      a owl:Class ;
+      owl:unionOf (
+          crs:CommonwealthAgency
+          crs:CommonwealthOrganisation
+          crs:CommonwealthPerson
+        ) ;
+    ] ;
+.
+crs:AssistantMinister
+  a owl:Class ;
+  rdfs:label "Assistant Minister" ;
+  owl:equivalentClass crs:ParliamentarySecretary ;
+.
+crs:Authority
+  a owl:Class ;
+  rdfs:comment "An authority or rule that define the functions and activities of a Government Entity"@en ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "Authority" ;
+.
+crs:CommonwealthAgency
+  a owl:Class ;
+  rdf:comment "Government departments, statutory authorities etc. The Archives registers agencies with a CA (Commonwealth Agency) number"@en ;
+  rdfs:label "Commonwealth Agency" ;
+  rdfs:subClassOf crs:Agent ;
+  rdfs:subClassOf org:Organization ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom crs:CommonwealthOrganisation ;
+      owl:onProperty crs:isPartOf ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom [
+          a owl:Class ;
+          owl:unionOf (
+              crs:Function
+              crs:Relationship
+            ) ;
+        ] ;
+      owl:onProperty crs:performs ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass crs:Series ;
+      owl:onProperty crs:created ;
+    ] ;
+.
+crs:CommonwealthOrganisation
+  a owl:Class ;
+  rdfs:comment "A whole government, learned society, church or company. The Archives registers organisations with a CO (Commonwealth Organisation) number"@en ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "Commonwealth Organisation" ;
+  rdfs:subClassOf crs:Agent ;
+  rdfs:subClassOf org:Organization ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom crs:CommonwealthAgency ;
+      owl:onProperty crs:hasPart ;
+    ] ;
+.
+crs:CommonwealthPerson
+  a owl:Class ;
+  rdfs:comment "Depositors of personal records collections. These persons have had a close association with the Commonwealth, such as Prime Ministers, senior public servants and the Governors-General. The Archives registers persons with a CP (Commonwealth Persons) number"@en ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "Commonwealth Person" ;
+  rdfs:subClassOf sdo:Person ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+      owl:onClass crs:Series ;
+      owl:onProperty crs:created ;
+    ] ;
+.
+crs:DeputyPrimeMinister
+  a owl:Class ;
+  rdfs:comment "The Deputy Prime Minister of Australia is the second-most senior officer in the Government of Australia. The office of Deputy Prime Minister was officially created as a ministerial portfolio in 1968, although the title had been used informally for many years previously. The Deputy Prime Minister is appointed by the Governor-General on the advice of the Prime Minister"@en ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "Deputy Prime Minister" ;
+  rdfs:subClassOf crs:MinisterOfState ;
+.
+crs:Function
+  a owl:Class ;
+  rdfs:comment "A major function normally undertaken by an agency in its operations" ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "Government Function" ;
+  rdfs:subClassOf
+    agift:Function ,
+    [
+      a owl:Restriction ;
+      owl:allValuesFrom [
+          a owl:Class ;
+          owl:unionOf (
+              crs:CommonwealthAgency
+              crs:Relationship
+            ) ;
+        ] ;
+      owl:onProperty crs:isPerformedBy ;
+    ] ;
+.
+crs:Item
+  a owl:Class ;
+  rdfs:comment """Individual records in any format, such as files, volumes, maps, photographs or sound recordings. Items are identified by the number or symbol that the agency used when it created the item.
+
+Items in the CRS are AGIFT Records."""@en ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "Item" ;
+  rdfs:subClassOf agrif:Record ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom crs:Series ;
+      owl:onProperty crs:isPartOf ;
+    ] ;
+.
+crs:Member
+  a owl:Class ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "Member" ;
+.
+crs:Minister
+  a owl:Class ;
+  rdfs: "A minister is a politician who heads a government department"@en ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "Minister" ;
+  rdfs:subClassOf crs:CommonwealthPerson ;
+.
+crs:MinisterOfState
+  a owl:Class ;
+  rdfs:label "Minister of State" ;
+  rdfs:subClassOf crs:Minister ;
+.
+crs:ParliamentarySecretary
+  a owl:Class ;
+  rdf:comment "In Australia, parliamentary secretaries are appointed in the federal government and most state governments. At the federal level, the Ministers of State Act 1952 provides for the Prime Minister to appoint a member from either house of Parliament to be a parliamentary secretary to a minister. The Act also provides that, for constitutional purposes, parliamentary secretaries are to be appointed as ministers of state, which enables them to be paid a salary. In practice, parliamentary secretaries are the third level of ministerial positions, after cabinet ministers (who are members of the Cabinet of Australia) and other ministers"@en ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "Parliamentary Secretary" ;
+  rdfs:subClassOf crs:CommonwealthPerson ;
+.
+crs:PrimeMinister
+  a owl:Class ;
+  rdfs:comment "The Prime Minister of Australia is the head of government of Australia. The individual who holds the office is the most senior Minister of State, the leader of the Federal Cabinet. The Prime Minister also has the responsibility of administering the Department of the Prime Minister and Cabinet, and is the chair of the National Security Committee and the Council of Australian Governments"@en ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "Prime Minister" ;
+  rdfs:subClassOf crs:MinisterOfState ;
+.
+crs:Relationship
+  a owl:Class ;
+  rdfs:comment "Relationships are general associations between entities, agents and activities that allow a role, timing and other properties to be attached to a relationship."@en ;
+  rdfs:label "Relationship" ;
+.
+crs:Role
+  a owl:Class ;
+  rdfs:comment "The role played by one CRS Agent when associated with another via an Assotiation"@en ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "Role" ;
+  rdfs:subClassOf skos:Concept ;
+.
+crs:Series
+  a owl:Class ;
+  rdfs:comment "A group of records created or accumulated by the same agency or person. A series can be a single item or many items. The Archives identifies series with a series number"@en ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "Series" ;
+  rdfs:subClassOf
+    dct:Collection ,
+    [
+      a owl:Restriction ;
+      owl:allValuesFrom crs:Item ;
+      owl:onProperty crs:hasPart ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom [
+          a owl:Class ;
+          owl:unionOf (
+              crs:CommonwealthAgency
+              crs:CommonwealthPerson
+            ) ;
+        ] ;
+      owl:onProperty crs:creator ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty crs:creator ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty crs:hasPart ;
+    ] ;
+.
+crs:affiliatedWith
+  a owl:ObjectProperty ;
+  rdfs:comment "An Agent (Commonwealth Person, Agency, Organisation) is affiliated with another Agent"@en ;
+  rdfs:domain crs:Agent ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "Affiliated with" ;
+  rdfs:range [
+      a owl:Class ;
+      owl:unionOf (
+          crs:Affiliation
+          crs:Agent
+        ) ;
+    ] ;
+.
+crs:controlNumber
+  a owl:DatatypeProperty ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "control number" ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf org:identifier ;
+.
+crs:created
+  a owl:ObjectProperty ;
+  rdfs:domain crs:Agent ;
+  rdfs:label "created" ;
+  rdfs:subPropertyOf dct:created ;
+.
+crs:creator
+  a owl:ObjectProperty ;
+  rdfs:label "creator" ;
+  rdfs:range crs:Agent ;
+  rdfs:subPropertyOf dct:creator ;
+.
+crs:forFunction
+  a owl:ObjectProperty ;
+  rdfs:domain crs:Relationship ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "for Function" ;
+  rdfs:range crs:Function ;
+  rdfs:subPropertyOf dct:relation ;
+.
+crs:hasAgent
+  a owl:ObjectProperty ;
+  rdfs:comment "Whan an Association object indicates an association between two Agents, this property is used to indicate the Agent the assocition is to, e.g. Agent_1 -> associatedWith -> Association_X, Association_X -> hasAgent -> Agent_2"@en ;
+  rdfs:domain crs:Relationship ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "has agent" ;
+  rdfs:range crs:Agent ;
+  rdfs:subPropertyOf dct:relation ;
+.
+crs:hasPart
+  a owl:ObjectProperty ;
+  rdfs:label "has part" ;
+  rdfs:subPropertyOf dct:hasPart ;
+  owl:inverseOf crs:isPartOf ;
+.
+crs:hasRole
+  a owl:ObjectProperty ;
+  rdfs:comment "A character or part performed especially in a particular operation or process"@en ;
+  rdfs:domain crs:Relationship ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "has role" ;
+  rdfs:range crs:Role ;
+.
+crs:isPartOf
+  a owl:ObjectProperty ;
+  rdfs:label "is part of" ;
+  rdfs:subPropertyOf dct:isPartOf ;
+  owl:inverseOf crs:hasPart ;
+.
+crs:isPerformedBy
+  a owl:ObjectProperty ;
+  rdfs:domain crs:Function ;
+  rdfs:label "is performed by" ;
+  rdfs:range [
+      a owl:Class ;
+      owl:unionOf (
+          crs:CommonwealthAgency
+          crs:Relationship
+        ) ;
+    ] ;
+.
+crs:mandatedBy
+  a owl:ObjectProperty ;
+  rdfs:comment "mandate: A command or an authorization given by a political electorate to its representative"@en ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "mandated by" ;
+  rdfs:range crs:Authority ;
+.
+crs:performs
+  a owl:ObjectProperty ;
+  rdfs:domain crs:CommonwealthAgency ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "performs" ;
+  rdfs:range [
+      a owl:Class ;
+      owl:unionOf (
+          crs:Function
+          crs:Relationship
+        ) ;
+    ] ;
+  owl:inverseOf crs:isPerformedBy ;
+.
+crs:previousAgency
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "previous agency" ;
+  rdfs:subPropertyOf org:linkedTo ;
+  owl:inverseOf crs:subsequentAgency ;
+  owl:propertyChainAxiom (
+      org:resultedFrom
+      org:originalOrganization
+    ) ;
+.
+crs:relatedDuring
+  a owl:ObjectProperty ;
+  rdfs:domain crs:Relationship ;
+  rdfs:label "related during" ;
+  rdfs:range <http://www.w3.org/2006/time#Interval> ;
+  rdfs:subPropertyOf dct:temporal ;
+.
+crs:relatedTo
+  a owl:ObjectProperty ;
+  rdfs:comment "An Entity is related to another Entity"@en ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "related to" ;
+  rdfs:range [
+      a owl:Class ;
+      owl:unionOf (
+          crs:Relationship
+          owl:Thing
+        ) ;
+    ] ;
+.
+crs:subordinateAgency
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "subordinate agency" ;
+  rdfs:subPropertyOf org:hasSubOrganization ;
+  rdfs:subPropertyOf org:linkedTo ;
+  owl:inverseOf crs:superiorAgency ;
+.
+crs:subsequentAgency
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "subsequent agency" ;
+  rdfs:subPropertyOf org:linkedTo ;
+.
+crs:superiorAgency
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://linked.data.gov.au/def/crs> ;
+  rdfs:label "superior agency" ;
+  rdfs:subPropertyOf org:linkedTo ;
+  rdfs:subPropertyOf org:subOrganizationOf ;
+.
+<http://orcid.org/0000-0002-8742-7730>
+  a owl:NamedIndividual ;
+  rdfs:label "Nicholas J. Car" ;
+.
+dct:creator
+  a owl:ObjectProperty ;
+  rdfs:label "creator" ;
+  skos:altLabel "was created by" ;
+.
+rdf:comment
+  a owl:AnnotationProperty ;
+.
+rdfs:
+  a owl:AnnotationProperty ;
+.
+skos:altLabel
+  a owl:AnnotationProperty ;
+.
+<http://www.w3.org/2006/time#Interval>
+  a owl:Class ;
+.
+org:Membership
+  a owl:Class ;
+  rdfs:subClassOf crs:Relationship ;
+.
+org:Organization
+  a owl:Class ;
+.
+org:hasMember
+  a owl:ObjectProperty ;
+  rdfs:domain org:Organization ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/org> ;
+  rdfs:label "has member" ;
+  rdfs:range crs:Agent ;
+  rdfs:subPropertyOf crs:affiliatedWith ;
+  owl:inverseOf org:member ;
+.
+org:hasSubOrganization
+  a owl:ObjectProperty ;
+  rdfs:domain org:Organization ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/org> ;
+  rdfs:label "has sub organization" ;
+  rdfs:range org:Organization ;
+  owl:inverseOf org:subOrganizationOf ;
+.
+org:identifier
+  a owl:DatatypeProperty ;
+.
+org:linkedTo
+  a owl:ObjectProperty ;
+  rdfs:domain org:Organization ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/org> ;
+  rdfs:label "linked to" ;
+  rdfs:range org:Organization ;
+  skos:altLabel "related organization" ;
+.
+org:member
+  a owl:ObjectProperty ;
+.
+org:memberDuring
+  a owl:ObjectProperty ;
+  rdfs:comment "Property to indicate the interval for which the membership is/was valid"@en ;
+  rdfs:domain org:Organization ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/org> ;
+  rdfs:label "member during" ;
+  rdfs:range <http://www.w3.org/2006/time#Interval> ;
+  rdfs:subPropertyOf dct:temporal ;
+.
+org:memberOf
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/org> ;
+  rdfs:label "member of" ;
+  rdfs:range org:Organization ;
+  rdfs:subPropertyOf crs:affiliatedWith ;
+.
+org:originalOrganization
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/org> ;
+  rdfs:label "original organization" ;
+.
+org:resultedFrom
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/org> ;
+  rdfs:label "resulted from" ;
+.
+org:subOrganizationOf
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/org> ;
+  rdfs:label "sub organization of" ;
+.
+<http://www.w3.org/ns/prov#Agent>
+  a owl:Class ;
+.
+sdo:Person
+  a owl:Class ;
+  rdfs:subClassOf crs:Agent ;
+.

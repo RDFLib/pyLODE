@@ -1,0 +1,778 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+doap:ArchRepository a rdfs:Class,
+        owl:Class ;
+    rdfs:label "ÃšloÅ¾iÅ¡tÄ› GNU Arch"@cs,
+        "GNU Arch repository"@de,
+        "GNU Arch repository"@en,
+        "Repositorio GNU Arch"@es,
+        "DÃ©pÃ´t GNU Arch"@fr,
+        "RepositÃ³rio GNU Arch"@pt ;
+    rdfs:comment "ÃšloÅ¾iÅ¡tÄ› zdrojovÃ½ch kÃ³dÅ¯ GNU Arch."@cs,
+        "GNU Arch Quellcode-Versionierungssystem."@de,
+        "GNU Arch source code repository."@en,
+        "Repositorio GNU Arch del cÃ³digo fuente."@es,
+        "DÃ©pÃ´t GNU Arch du code source."@fr,
+        "RepositÃ³rio GNU Arch do cÃ³digo fonte."@pt ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:subClassOf doap:Repository .
+
+doap:BKRepository a rdfs:Class,
+        owl:Class ;
+    rdfs:label "ÃšloÅ¾iÅ¡tÄ› BitKeeper"@cs,
+        "BitKeeper Repository"@de,
+        "BitKeeper Repository"@en,
+        "Repositorio BitKeeper"@es,
+        "DÃ©pÃ´t BitKeeper"@fr,
+        "RepositÃ³rio Bitkeeper"@pt ;
+    rdfs:comment "ÃšloÅ¾iÅ¡tÄ› zdrojovÃ½ch kÃ³dÅ¯ BitKeeper."@cs,
+        "BitKeeper Quellcode-Versionierungssystem."@de,
+        "BitKeeper source code repository."@en,
+        "Repositorio BitKeeper del cÃ³digo fuente."@es,
+        "DÃ©pÃ´t BitKeeper du code source."@fr,
+        "RepositÃ³rio BitKeeper do cÃ³digo fonte."@pt ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:subClassOf doap:Repository .
+
+doap:BazaarBranch a rdfs:Class ;
+    rdfs:label "Bazaar Branch"@en,
+        "RamificaÃ§Ã£o Bazaar"@pt ;
+    rdfs:comment "Bazaar source code branch."@en,
+        "CÃ³digo fonte da ramificaÃ§Ã£o Bazaar."@pt ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:subClassOf doap:Repository .
+
+doap:CVSRepository a rdfs:Class,
+        owl:Class ;
+    rdfs:label "ÃšloÅ¾iÅ¡tÄ› CVS"@cs,
+        "CVS Repository"@de,
+        "CVS Repository"@en,
+        "Repositorio CVS"@es,
+        "DÃ©pÃ´t CVS"@fr,
+        "RepositÃ³rio CVS"@pt ;
+    rdfs:comment "ÃšloÅ¾iÅ¡tÄ› zdrojovÃ½ch kÃ³dÅ¯ CVS."@cs,
+        "CVS Quellcode-Versionierungssystem."@de,
+        "CVS source code repository."@en,
+        "Repositorio CVS del cÃ³digo fuente."@es,
+        "DÃ©pÃ´t CVS du code source."@fr,
+        "RepositÃ³rio CVS do cÃ³digo fonte."@pt ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:subClassOf doap:Repository .
+
+doap:DarcsRepository a rdfs:Class ;
+    rdfs:label "darcs Repository"@en,
+        "Repositorio darcs"@es,
+        "DÃ©pÃ´t darcs"@fr,
+        "RepositÃ³rio darcs"@pt ;
+    rdfs:comment "darcs source code repository."@en,
+        "Repositorio darcs del cÃ³digo fuente."@es,
+        "DÃ©pÃ´t darcs du code source."@fr,
+        "RepositÃ³rio darcs do cÃ³digo fonte."@pt ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:subClassOf doap:Repository .
+
+doap:GitBranch a rdfs:Class ;
+    rdfs:label "Git Branch"@en,
+        "RamificaÃ§Ã£o Git"@pt ;
+    rdfs:comment "Git source code branch."@en,
+        "CÃ³digo fonte da ramificaÃ§Ã£o Git."@pt ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:subClassOf doap:Repository .
+
+doap:GitRepository a rdfs:Class ;
+    rdfs:label "ÃšloÅ¾iÅ¡tÄ› Git"@cs,
+        "Git Repository"@de,
+        "Git Repository"@en,
+        "Repositorio Git"@es,
+        "DÃ©pÃ´t Git"@fr,
+        "RepositÃ³rio Git"@pt ;
+    rdfs:comment "ÃšloÅ¾iÅ¡tÄ› zdrojovÃ½ch kÃ³dÅ¯ Git."@cs,
+        "Git Quellcode-Versionierungssystem."@de,
+        "Git source code repository."@en,
+        "Repositorio Git del cÃ³digo fuente."@es,
+        "DÃ©pÃ´t Git du code source."@fr,
+        "RepositÃ³rio Git do cÃ³digo fonte."@pt ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:subClassOf doap:Repository .
+
+doap:HgRepository a rdfs:Class ;
+    rdfs:label "Mercurial Repository"@en,
+        "RepositÃ³rio Mercurial"@pt ;
+    rdfs:comment "Mercurial source code repository."@en,
+        "RepositÃ³rio Mercurial do cÃ³digo fonte."@pt ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:subClassOf doap:Repository .
+
+doap:Project a rdfs:Class ;
+    rdfs:label "Projekt"@cs,
+        "Projekt"@de,
+        "Project"@en,
+        "Proyecto"@es,
+        "Projet"@fr,
+        "Projeto"@pt ;
+    rdfs:comment "Projekt."@cs,
+        "Ein Projekt."@de,
+        "A project."@en,
+        "Un proyecto."@es,
+        "Un projet."@fr,
+        "Projeto."@pt ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:subClassOf foaf:Project,
+        <http://xmlns.com/wordnet/1.6/Project> .
+
+doap:Repository a rdfs:Class ;
+    rdfs:label "ÃšloÅ¾iÅ¡tÄ›"@cs,
+        "Repository"@de,
+        "Repository"@en,
+        "Repositorio"@es,
+        "DÃ©pÃ´t"@fr,
+        "RepositÃ³rio"@pt ;
+    rdfs:comment "ÃšloÅ¾iÅ¡tÄ› zdrojovÃ½ch kÃ³dÅ¯."@cs,
+        "Quellcode-Versionierungssystem."@de,
+        "Source code repository."@en,
+        "Repositorio del cÃ³digo fuente."@es,
+        "DÃ©pÃ´t du code source."@fr,
+        "RepositÃ³rio do cÃ³digo fonte."@pt ;
+    rdfs:isDefinedBy doap: .
+
+doap:SVNRepository a rdfs:Class ;
+    rdfs:label "ÃšloÅ¾iÅ¡tÄ› Subversion"@cs,
+        "Subversion Repository"@de,
+        "Subversion Repository"@en,
+        "Repositorio Subversion"@es,
+        "DÃ©pÃ´t Subversion"@fr,
+        "RepositÃ³rio Subversion"@pt ;
+    rdfs:comment "ÃšloÅ¾iÅ¡tÄ› zdrojovÃ½ch kÃ³dÅ¯ Subversion."@cs,
+        "Subversion Quellcode-Versionierungssystem."@de,
+        "Subversion source code repository."@en,
+        "Repositorio Subversion del cÃ³digo fuente."@es,
+        "DÃ©pÃ´t Subversion du code source."@fr,
+        "RepositÃ³rio Subversion do cÃ³digo fonte."@pt ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:subClassOf doap:Repository .
+
+doap:Specification a rdfs:Class ;
+    rdfs:label "Specification"@en,
+        "EspecificaÃ§Ã£o"@pt ;
+    rdfs:comment "A specification of a system's aspects, technical or otherwise."@en,
+        "A especificaÃ§Ã£o de aspetos, tÃ©cnicas ou outros do sistema."@pt ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:subClassOf rdfs:Resource .
+
+doap:Version a rdfs:Class ;
+    rdfs:label "Verze"@cs,
+        "Version"@de,
+        "Version"@en,
+        "VersiÃ³n"@es,
+        "Version"@fr,
+        "VersÃ£o"@pt ;
+    rdfs:comment "Informace o uvolnÄ›nÃ© verzi projektu."@cs,
+        "Versionsinformation eines Projekt Releases."@de,
+        "Version information of a project release."@en,
+        "InformaciÃ³n sobre la versiÃ³n de un release del proyecto."@es,
+        "DÃ©tails sur une version d'une release d'un projet."@fr,
+        "InformaÃ§Ã£o sobre a versÃ£o do projeto lanÃ§ado."@pt ;
+    rdfs:isDefinedBy doap: .
+
+doap:anon-root a rdf:Property ;
+    rdfs:label "anonymnÃ­ koÅ™en"@cs,
+        "Anonymes Root"@de,
+        "anonymous root"@en,
+        "raÃ­z anÃ³nima"@es,
+        "racine anonyme"@fr,
+        "raÃ­z anÃ³nima"@pt ;
+    rdfs:comment "ÃšloÅ¾iÅ¡tÄ› pro anonymnÃ­ pÅ™Ã­stup."@cs,
+        "Repository fÃ¼r anonymen Zugriff"@de,
+        "Repository for anonymous access."@en,
+        "Repositorio para acceso anÃ³nimo."@es,
+        "DÃ©pÃ´t pour accÃ¨s anonyme."@fr,
+        "RepositÃ³rio para acesso anÃ³nimo."@pt ;
+    rdfs:domain doap:Repository ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range rdfs:Literal .
+
+doap:audience a rdf:Property ;
+    rdfs:label "audience"@en,
+        "audiÃªncia"@pt ;
+    rdfs:comment "Description of target user base"@en,
+        "DescriÃ§Ã£o do utilizador base alvo"@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range rdfs:Literal .
+
+doap:blog a rdf:Property ;
+    rdfs:label "blog"@en,
+        "blog"@pt ;
+    rdfs:comment "URI of a blog related to a project"@en,
+        "URI de um blog relacionado com um projeto"@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range <http://rdfs.org/sioc/types#Weblog>,
+        rdfs:Resource .
+
+doap:browse a rdf:Property ;
+    rdfs:label "prohlÃ­Å¾eÄ"@cs,
+        "browse"@de,
+        "browse"@en,
+        "navegar"@es,
+        "visualiser"@fr,
+        "navegar"@pt ;
+    rdfs:comment "WebovÃ© rozhranÃ­ pro prohlÃ­Å¾enÃ­ ÃºloÅ¾iÅ¡tÄ›."@cs,
+        "Web-Browser Interface fÃ¼r das Repository."@de,
+        "Web browser interface to repository."@en,
+        "Interface web del repositorio."@es,
+        "Interface web au dÃ©pÃ´t."@fr,
+        "Interface web do repositÃ³rio."@pt ;
+    rdfs:domain doap:Repository ;
+    rdfs:isDefinedBy doap: .
+
+doap:bug-database a rdf:Property ;
+    rdfs:label "databÃ¡ze chyb"@cs,
+        "Fehlerdatenbank"@de,
+        "bug database"@en,
+        "base de datos de bugs"@es,
+        "suivi des bugs"@fr,
+        "base de dados de bugs"@pt ;
+    rdfs:comment "SprÃ¡va chyb projektu."@cs,
+        "Fehlerdatenbank eines Projektes."@de,
+        "Bug tracker for a project."@en,
+        "Bug tracker para un proyecto."@es,
+        "Suivi des bugs pour un projet."@fr,
+        "Bug tracker para um projeto."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: .
+
+doap:category a rdf:Property ;
+    rdfs:label "kategorie"@cs,
+        "Kategorie"@de,
+        "category"@en,
+        "categorÃ­a"@es,
+        "catÃ©gorie"@fr,
+        "categoria"@pt ;
+    rdfs:comment "Kategorie projektu."@cs,
+        "Eine Kategorie eines Projektes."@de,
+        "A category of project."@en,
+        "Una categorÃ­a de proyecto."@es,
+        "Une catÃ©gorie de projet."@fr,
+        "Uma categorÃ­a de projeto."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: .
+
+doap:created a rdf:Property ;
+    rdfs:label "vytvoÅ™eno"@cs,
+        "erstellt"@de,
+        "created"@en,
+        "creado"@es,
+        "crÃ©Ã©"@fr,
+        "criado"@pt ;
+    rdfs:comment "Datum, kdy bylo nÄ›co vytvoÅ™eno ve formÃ¡tu RRRR-MM-DD, napÅ™. 2004-04-05"@cs,
+        "Erstellungsdatum von Irgendwas, angegeben im YYYY-MM-DD Format, z.B. 2004-04-05."@de,
+        "Date when something was created, in YYYY-MM-DD form. e.g. 2004-04-05"@en,
+        "Fecha en la que algo fue creado, en formato AAAA-MM-DD. e.g. 2004-04-05"@es,
+        "Date Ã  laquelle a Ã©tÃ© crÃ©Ã© quelque chose, au format AAAA-MM-JJ (par ex. 2004-04-05)"@fr,
+        "Data em que algo foi criado, no formato AAAA-MM-DD. e.g. 2004-04-05"@pt ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range rdfs:Literal .
+
+doap:description a rdf:Property ;
+    rdfs:label "popis"@cs,
+        "Beschreibung"@de,
+        "description"@en,
+        "descripciÃ³n"@es,
+        "description"@fr,
+        "descriÃ§Ã£o"@pt ;
+    rdfs:comment "ÄŒistÄ› textovÃ½, 2 aÅ¾ 4 vÄ›ty dlouhÃ½ popis projektu."@cs,
+        "Beschreibung eines Projekts als einfacher Text mit der LÃ¤nge von 2 bis 4 SÃ¤tzen."@de,
+        "Plain text description of a project, of 2-4 sentences in length."@en,
+        "DescripciÃ³n en texto plano de un proyecto, de 2 a 4 enunciados de longitud."@es,
+        "Texte descriptif d'un projet, long de 2 Ã  4 phrases."@fr,
+        "DescriÃ§Ã£o de um projeto em texto apenas, com 2 a 4 frases de comprimento."@pt ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range rdfs:Literal .
+
+doap:developer a rdf:Property ;
+    rdfs:label "vÃ½vojÃ¡Å™"@cs,
+        "Entwickler"@de,
+        "developer"@en,
+        "desarrollador"@es,
+        "dÃ©veloppeur"@fr,
+        "programador"@pt ;
+    rdfs:comment "VÃ½vojÃ¡Å™ softwaru projektu."@cs,
+        "Software-Entwickler fÃ¼r eine Projekt."@de,
+        "Developer of software for the project."@en,
+        "Desarrollador de software para el proyecto."@es,
+        "DÃ©veloppeur pour le projet."@fr,
+        "Programador de software para o projeto."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range foaf:Person .
+
+doap:developer-forum a rdf:Property ;
+    rdfs:label "developer forum"@en ;
+    rdfs:comment "A forum or community for developers of this project."@en ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range <http://rdfs.org/sioc/ns#Container> .
+
+doap:documenter a rdf:Property ;
+    rdfs:label "dokumentarista"@cs,
+        "Dokumentator"@de,
+        "documenter"@en,
+        "escritor de ayuda"@es,
+        "rÃ©dacteur de l'aide"@fr,
+        "documentador"@pt ;
+    rdfs:comment "Spoluautor dokumentace projektu."@cs,
+        "Mitarbeiter an der Dokumentation eines Projektes."@de,
+        "Contributor of documentation to the project."@en,
+        "Proveedor de documentaciÃ³n para el proyecto."@es,
+        "Collaborateur Ã  la documentation du projet."@fr,
+        "Contribuidor para a documentaÃ§Ã£o do projeto."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range foaf:Person .
+
+doap:download-mirror a rdf:Property ;
+    rdfs:label "zrcadlo strÃ¡nky pro staÅ¾enÃ­"@cs,
+        "Spiegel der Seite zum Herunterladen"@de,
+        "download mirror"@en,
+        "mirror de descarga"@es,
+        "miroir pour le tÃ©lÃ©chargement"@fr,
+        "mirror para download"@pt ;
+    rdfs:comment "Zrcadlo strÃ¡nky pro staÅ¾enÃ­ softwaru."@cs,
+        "Spiegel der Seite von die Projekt-Software heruntergeladen werden kann."@de,
+        "Mirror of software download web page."@en,
+        "Mirror de la pÃ¡gina web de descarga."@es,
+        "Miroir de la page de tÃ©lÃ©chargement du programme."@fr,
+        "Mirror da pÃ¡gina web para fazer download."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: .
+
+doap:download-page a rdf:Property ;
+    rdfs:label "strÃ¡nka pro staÅ¾enÃ­"@cs,
+        "Seite zum Herunterladen"@de,
+        "download page"@en,
+        "pÃ¡gina de descarga"@es,
+        "page de tÃ©lÃ©chargement"@fr,
+        "pÃ¡gina para download"@pt ;
+    rdfs:comment "WebovÃ¡ strÃ¡nka, na kterÃ© lze stÃ¡hnout projektovÃ½ software."@cs,
+        "Web-Seite von der die Projekt-Software heruntergeladen werden kann."@de,
+        "Web page from which the project software can be downloaded."@en,
+        "PÃ¡gina web de la cuÃ¡l se puede bajar el software."@es,
+        "Page web Ã  partir de laquelle on peut tÃ©lÃ©charger le programme."@fr,
+        "PÃ¡gina web da qual o projeto de software pode ser descarregado."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: .
+
+doap:file-release a rdf:Property ;
+    rdfs:label "soubor revize"@cs,
+        "file-release"@en,
+        "publicaÃ§Ã£o do ficheiro"@pt ;
+    rdfs:comment "URI adresa staÅ¾enÃ­ asociovanÃ© s revizÃ­."@cs,
+        "URI of download associated with this release."@en,
+        "URI para download associado com a publicaÃ§Ã£o."@pt ;
+    rdfs:domain doap:Version ;
+    rdfs:isDefinedBy doap: .
+
+doap:helper a rdf:Property ;
+    rdfs:label "spoluautor"@cs,
+        "Helfer"@de,
+        "helper"@en,
+        "colaborador"@es,
+        "collaborateur"@fr,
+        "colaborador"@pt ;
+    rdfs:comment "Spoluautor projektu."@cs,
+        "Projekt-Mitarbeiter."@de,
+        "Project contributor."@en,
+        "Colaborador del proyecto."@es,
+        "Collaborateur au projet."@fr,
+        "Ajudante ou colaborador do projeto."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range foaf:Person .
+
+doap:homepage a rdf:Property,
+        owl:InverseFunctionalProperty ;
+    rdfs:label "domovskÃ¡ strÃ¡nka"@cs,
+        "Homepage"@de,
+        "homepage"@en,
+        "pÃ¡gina web"@es,
+        "page web"@fr,
+        "pÃ¡gina web"@pt ;
+    rdfs:comment "URL adresa domovskÃ© strÃ¡nky projektu asociovanÃ© s prÃ¡vÄ› jednÃ­m projektem."@cs,"""URL der Projekt-Homepage,
+		verbunden mit genau einem Projekt."""@de,"""URL of a project's homepage,
+		associated with exactly one project."""@en,"""El URL de la pÃ¡gina de un proyecto,
+		asociada con exactamente un proyecto."""@es,"""L'URL de la page web d'un projet,
+		associÃ©e avec un unique projet."""@fr,"""O URL da pÃ¡gina de um projeto,
+		asociada com exactamente um projeto."""@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:subPropertyOf foaf:homepage .
+
+doap:implements a rdf:Property ;
+    rdfs:label "Implements specification"@en,
+        "EspecificaÃ§Ãµes para implementaÃ§Ã£o"@pt ;
+    rdfs:comment "A specification that a project implements. Could be a standard, API or legally defined level of conformance."@en,
+        "Uma especificaÃ§Ã£o que um projeto implementa. Pode ser uma padrÃ£o, API ou um nÃ­vel de conformidade definida legalmente."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range doap:Specification .
+
+doap:language a rdf:Property ;
+    rdfs:label "language"@en,
+        "idioma"@pt ;
+    rdfs:comment "ISO language code a project has been translated into"@en,
+        "CÃ³digo de idioma ISO do projeto para o qual foi traduzido"@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range rdfs:Literal .
+
+doap:license a rdf:Property ;
+    rdfs:label "licence"@cs,
+        "Lizenz"@de,
+        "license"@en,
+        "licencia"@es,
+        "licence"@fr,
+        "licenÃ§a"@pt ;
+    rdfs:comment "URI adresa RDF popisu licence, pod kterou je software distribuovÃ¡n."@cs,
+        "Die URI einer RDF-Beschreibung einer Lizenz unter der die Software herausgegeben wird. z.B. eine SPDX Referenz"@de,
+        "The URI of an RDF description of the license the software is distributed under. E.g. a SPDX reference"@en,
+        "El URI de una descripciÃ³n RDF de la licencia bajo la cuÃ¡l se distribuye el software."@es,
+        "L'URI d'une description RDF de la licence sous laquelle le programme est distribuÃ©."@fr,
+        "O URI de uma descriÃ§Ã£o RDF da licenÃ§a do software sob a qual Ã© distribuÃ­da. Ex.: referÃªncia SPDX"@pt ;
+    rdfs:isDefinedBy doap: .
+
+doap:location a rdf:Property ;
+    rdfs:label "umÃ­stÄ›nÃ­ ÃºloÅ¾iÅ¡tÄ›"@cs,
+        "Repository Lokation"@de,
+        "repository location"@en,
+        "lugar del respositorio"@es,
+        "emplacement du dÃ©pÃ´t"@fr,
+        "localizaÃ§Ã£o do respositÃ³rio"@pt ;
+    rdfs:comment "UmÃ­stÄ›nÃ­ ÃºloÅ¾iÅ¡tÄ›."@cs,
+        "Lokation eines Repositorys."@de,
+        "Location of a repository."@en,
+        "lugar de un repositorio."@es,
+        "Emplacement d'un dÃ©pÃ´t."@fr,
+        "LocalizaÃ§Ã£o de um repositÃ³rio."@pt ;
+    rdfs:domain doap:Repository ;
+    rdfs:isDefinedBy doap: .
+
+doap:mailing-list a rdf:Property ;
+    rdfs:label "eâ€“mailovÃ¡ diskuse"@cs,
+        "Mailing Liste"@de,
+        "mailing list"@en,
+        "lista de correo"@es,
+        "liste de diffusion"@fr,
+        "lista de distribuiÃ§Ã£o de e-mail"@pt ;
+    rdfs:comment "DomovskÃ¡ strÃ¡nka nebo eâ€“mailovÃ¡ adresa eâ€“mailovÃ© diskuse."@cs,
+        "Homepage der Mailing Liste oder E-Mail Adresse."@de,
+        "Mailing list home page or email address."@en,
+        "PÃ¡gina web de la lista de correo o direcciÃ³n de correo."@es,
+        "Page web de la liste de diffusion, ou adresse de courriel."@fr,
+        "PÃ¡gina web da lista de distribuiÃ§Ã£o de e-mail ou dos endereÃ§os."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range <http://rdfs.org/sioc/types#MailingList> .
+
+doap:maintainer a rdf:Property ;
+    rdfs:label "sprÃ¡vce"@cs,
+        "Projektverantwortlicher"@de,
+        "maintainer"@en,
+        "desarrollador principal"@es,
+        "dÃ©veloppeur principal"@fr,
+        "programador principal"@pt ;
+    rdfs:comment "SprÃ¡vce projektu, vedoucÃ­ projektu."@cs,
+        "Hauptentwickler eines Projektes, der Projektleiter"@de,
+        "Maintainer of a project, a project leader."@en,
+        "Desarrollador principal de un proyecto, un lÃ­der de proyecto."@es,
+        "DÃ©veloppeur principal d'un projet, un meneur du projet."@fr,
+        "Programador principal de um projeto, um lÃ­der de projeto."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range foaf:Person .
+
+doap:module a rdf:Property ;
+    rdfs:label "modul"@cs,
+        "Modul"@de,
+        "module"@en,
+        "mÃ³dulo"@es,
+        "module"@fr,
+        "mÃ³dulo"@pt ;
+    rdfs:comment "JmÃ©no modulu v CVS, BitKeeper nebo Arch ÃºloÅ¾iÅ¡ti."@cs,
+        "Modul-Name eines Subversion, CVS, BitKeeper oder Arch Repositorys."@de,
+        "Module name of a Subversion, CVS, BitKeeper or Arch repository."@en,
+        "Nombre del mÃ³dulo de un repositorio Subversion, CVS, BitKeeper o Arch."@es,
+        "Nom du module d'un dÃ©pÃ´t Subversion, CVS, BitKeeper ou Arch."@fr,
+        "Nome do mÃ³dulo de um repositÃ³rio Subversion, CVS, BitKeeper ou Arch."@pt ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( doap:CVSRepository doap:ArchRepository doap:BKRepository ) ] ;
+    rdfs:isDefinedBy doap: .
+
+doap:name a rdf:Property ;
+    rdfs:label "jmÃ©no"@cs,
+        "Name"@de,
+        "name"@en,
+        "nombre"@es,
+        "nom"@fr,
+        "nome"@pt ;
+    rdfs:comment "JmÃ©no nÄ›Äeho."@cs,
+        "Der Name von Irgendwas"@de,
+        "A name of something."@en,
+        "El nombre de algo."@es,
+        "Le nom de quelque chose."@fr,
+        "O nome de alguma coisa."@pt ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf rdfs:label .
+
+doap:old-homepage a rdf:Property,
+        owl:InverseFunctionalProperty ;
+    rdfs:label "starÃ¡ domovskÃ¡ strÃ¡nka"@cs,
+        "Alte Homepage"@de,
+        "old homepage"@en,
+        "pÃ¡gina web antigua"@es,
+        "ancienne page web"@fr,
+        "pÃ¡gina web antiga"@pt ;
+    rdfs:comment "URL adresa pÅ™edeÅ¡lÃ© domovskÃ© strÃ¡nky projektu asociovanÃ© s prÃ¡vÄ› jednÃ­m projektem."@cs,"""URL der letzten Projekt-Homepage,
+		verbunden mit genau einem Projekt."""@de,"""URL of a project's past homepage,
+		associated with exactly one project."""@en,"""El URL de la antigua pÃ¡gina de un proyecto,
+		asociada con exactamente un proyecto."""@es,"""L'URL d'une ancienne page web d'un
+		projet, associÃ©e avec un unique projet."""@fr,"""O URL antigo da pÃ¡gina de um projeto,
+		associada com exactamente um projeto."""@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:subPropertyOf foaf:homepage .
+
+doap:os a rdf:Property ;
+    rdfs:label "operaÄnÃ­ systÃ©m"@cs,
+        "Betriebssystem"@de,
+        "operating system"@en,
+        "sistema operativo"@es,
+        "systÃ¨me d'exploitation"@fr,
+        "sistema operativo"@pt ;
+    rdfs:comment "OperaÄnÃ­ systÃ©m, na jehoÅ¾ pouÅ¾itÃ­ je projekt limitovÃ¡n. Vynechejte tuto vlastnost, pokud je projekt nezÃ¡vislÃ½ na operaÄnÃ­m systÃ©mu."@cs,
+        "Betriebssystem auf dem das Projekt eingesetzt werden kann. Diese Eigenschaft kann ausgelassen werden, wenn das Projekt nicht BS-spezifisch ist."@de,
+        "Operating system that a project is limited to.  Omit this property if the project is not OS-specific."@en,
+        "Sistema operativo a que o projeto estÃ¡ limitado. Omita esta propriedade se o projeto nÃ£o Ã© condicionado pelo SO usado."@en,"""Sistema opertivo al cuÃ¡l estÃ¡ limitado el proyecto.  Omita esta propiedad si el proyecto no es especÃ­fico
+		de un sistema opertaivo en particular."""@es,"""SystÃ¨me d'exploitation auquel est limitÃ© le projet. Omettez cette propriÃ©tÃ© si le
+		projet n'est pas limitÃ© Ã  un systÃ¨me d'exploitation."""@fr ;
+    rdfs:domain doap:Project,
+        doap:Version ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range rdfs:Literal .
+
+doap:platform a rdf:Property ;
+    rdfs:label "platform"@en,
+        "plataforma"@pt ;
+    rdfs:comment "Indicator of software platform (non-OS specific), e.g. Java, Firefox, ECMA CLR"@en,
+        "Indicador da plataforma do software (nÃ£o especÃ­fico a nenhum SO), ex.: Java, Firefox, ECMA CLR"@pt ;
+    rdfs:domain doap:Project,
+        doap:Version ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range rdfs:Literal .
+
+doap:programming-language a rdf:Property ;
+    rdfs:label "programovacÃ­ jazyk"@cs,
+        "Programmiersprache"@de,
+        "programming language"@en,
+        "lenguaje de programaciÃ³n"@es,
+        "langage de programmation"@fr,
+        "linguagem de programaÃ§Ã£o"@pt ;
+    rdfs:comment "ProgramovacÃ­ jazyk, ve kterÃ©m je projekt implementovÃ¡n nebo pro kterÃ½ je zamÃ½Å¡len k pouÅ¾itÃ­."@cs,
+        "Programmiersprache in der ein Projekt implementiert ist oder intendiert wird zu benutzen."@de,
+        "Programming language a project is implemented in or intended for use with."@en,
+        "Lenguaje de programaciÃ³n en el que un proyecto es implementado o con el cuÃ¡l pretende usarse."@es,"""Langage de programmation avec lequel un projet est implÃ©mentÃ©,
+		ou avec lequel il est prÃ©vu de l'utiliser."""@fr,
+        "Linguagem de programaÃ§Ã£o que o projeto usa ou Ã© para ser utilizada."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range rdfs:Literal .
+
+doap:release a rdf:Property ;
+    rdfs:label "release"@cs,
+        "Release"@de,
+        "release"@en,
+        "release"@es,
+        "release"@fr,
+        "publicaÃ§Ã£o"@pt ;
+    rdfs:comment "Relase (verze) projektu."@cs,
+        "Ein Release (Version) eines Projekts."@de,
+        "A project release."@en,
+        "Un release (versiÃ³n) de un proyecto."@es,
+        "Une release (rÃ©vision) d'un projet."@fr,
+        "A publicaÃ§Ã£o de um projeto."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range doap:Version .
+
+doap:revision a rdf:Property ;
+    rdfs:label "verze"@cs,
+        "Version"@de,
+        "revision"@en,
+        "versiÃ³n"@es,
+        "rÃ©vision"@fr,
+        "revisÃ£o"@pt ;
+    rdfs:comment "IdentifikÃ¡tor zpÅ™Ã­stupnÄ›nÃ© revize softwaru."@cs,
+        "Versionsidentifikator eines Software-Releases."@de,
+        "Revision identifier of a software release."@en,
+        "Indentificador de la versiÃ³n de un release de software."@es,
+        "Identifiant de rÃ©vision d'une release du programme."@fr,
+        "Identificador do lanÃ§amento da revisÃ£o do software."@pt ;
+    rdfs:domain doap:Version ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range rdfs:Literal .
+
+doap:screenshots a rdf:Property ;
+    rdfs:label "snÃ­mek obrazovky"@cs,
+        "Screenshots"@de,
+        "screenshots"@en,
+        "capturas de pantalla"@es,
+        "captures d'Ã©cran"@fr,
+        "capturas de ecrÃ£s"@pt ;
+    rdfs:comment "WebovÃ¡ strÃ¡nka projektu se snÃ­mky obrazovky."@cs,
+        "Web-Seite mit Screenshots eines Projektes."@de,
+        "Web page with screenshots of project."@en,
+        "PÃ¡gina web con capturas de pantalla del proyecto."@es,
+        "Page web avec des captures d'Ã©cran du projet."@fr,
+        "PÃ¡gina web com as capturas de ecrÃ£n do projeto."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: .
+
+doap:service-endpoint a rdf:Property ;
+    rdfs:label "service endpoint"@en ;
+    rdfs:comment "The URI of a web service endpoint where software as a service may be accessed"@en ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range rdfs:Resource .
+
+doap:shortdesc a rdf:Property ;
+    rdfs:label "krÃ¡tkÃ½ popis"@cs,
+        "Kurzbeschreibung"@de,
+        "short description"@en,
+        "descripciÃ³n corta"@es,
+        "description courte"@fr,
+        "descriÃ§Ã£o curta"@pt ;
+    rdfs:comment "KrÃ¡tkÃ½ (8 nebo 9 slov) ÄistÄ› textovÃ½ popis projektu."@cs,
+        "Kurzbeschreibung (8 oder 9 WÃ¶rter) eines Projects als einfacher Text."@de,
+        "Short (8 or 9 words) plain text description of a project."@en,
+        "DescripciÃ³n corta (8 o 9 palabras) en texto plano de un proyecto."@es,
+        "Texte descriptif concis (8 ou 9 mots) d'un projet."@fr,
+        "DescriÃ§Ã£o curta (com 8 ou 9 palavras) de um projeto em texto apenas."@pt ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range rdfs:Literal .
+
+doap:support-forum a rdf:Property ;
+    rdfs:label "supporting forum"@en ;
+    rdfs:comment "A forum or community that supports this project."@en ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range <http://rdfs.org/sioc/ns#Container> .
+
+doap:tester a rdf:Property ;
+    rdfs:label "tester"@cs,
+        "Tester"@de,
+        "tester"@en,
+        "tester"@es,
+        "testeur"@fr,
+        "controlador"@pt ;
+    rdfs:comment "Tester nebo jinÃ½ spoluautor kontrolujÃ­cÃ­ kvalitu."@cs,
+        "Ein Tester oder anderer Mitarbeiter der QualitÃ¤tskontrolle."@de,
+        "A tester or other quality control contributor."@en,
+        "Un tester u otro proveedor de control de calidad."@es,
+        "Un testeur ou un collaborateur au contrÃ´le qualitÃ©."@fr,
+        "Um controlador ou outro contribuidor para o controlo de qualidade."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range foaf:Person .
+
+doap:translator a rdf:Property ;
+    rdfs:label "pÅ™ekladatel"@cs,
+        "Ãœbersetzer"@de,
+        "translator"@en,
+        "traductor"@es,
+        "traducteur"@fr,
+        "tradutor"@pt ;
+    rdfs:comment "Spoluautor pÅ™ekladu projektu."@cs,
+        "Mitarbeiter an den Ãœbersetzungen eines Projektes."@de,
+        "Contributor of translations to the project."@en,
+        "Proveedor de traducciones al proyecto."@es,
+        "Collaborateur Ã  la traduction du projet."@fr,
+        "Contribuidor das traduÃ§Ãµes para o projeto."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range foaf:Person .
+
+doap:vendor a rdf:Property ;
+    rdfs:label "vendor"@en ;
+    rdfs:comment "Vendor organization: commercial, free or otherwise"@en ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range foaf:Organization .
+
+doap:wiki a rdf:Property ;
+    rdfs:label "wiki"@cs,
+        "Wiki"@de,
+        "wiki"@en,
+        "wiki"@es,
+        "wiki"@fr,
+        "wiki"@pt ;
+    rdfs:comment "URL adresa wiki projektu pro spoleÄnÃ© diskuse."@cs,
+        "Wiki-URL fÃ¼r die kollaborative Dikussion eines Projektes."@de,
+        "URL of Wiki for collaborative discussion of project."@en,
+        "URL del Wiki para discusiÃ³n colaborativa del proyecto."@es,
+        "L'URL du Wiki pour la discussion collaborative sur le projet."@fr,
+        "URL da Wiki para discussÃ£o em grupo do projeto."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range <http://rdfs.org/sioc/types#Wiki> .
+
+doap:repository a rdf:Property ;
+    rdfs:label "ÃºloÅ¾iÅ¡tÄ›"@cs,
+        "Repository"@de,
+        "repository"@en,
+        "repositorio"@es,
+        "dÃ©pÃ´t"@fr,
+        "repositÃ³rio"@pt ;
+    rdfs:comment "ÃšloÅ¾iÅ¡tÄ› zdrojovÃ½ch kÃ³dÅ¯."@cs,
+        "Quellcode-Versionierungssystem."@de,
+        "Source code repository."@en,
+        "Repositorio del cÃ³digo fuente."@es,
+        "DÃ©pÃ´t du code source."@fr,
+        "RepositÃ³rio do cÃ³digo fonte."@pt ;
+    rdfs:domain doap:Project ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range doap:Repository ;
+    owl:inverseOf doap:repositoryOf .
+
+doap:repositoryOf a rdf:Property ;
+    rdfs:label "repository of"@en ;
+    rdfs:comment "The project that uses a repository."@en ;
+    rdfs:domain doap:Repository ;
+    rdfs:isDefinedBy doap: ;
+    rdfs:range doap:Project ;
+    owl:inverseOf doap:repository .
+
+doap: a owl:Ontology ;
+    dc:creator "Edd Wilder-James" ;
+    dc:description "The Description of a Project (DOAP) vocabulary, described using W3C RDF Schema and the Web Ontology Language.",
+        "SlovnÃ­k Description of a Project (DOAP, Popis projektu), popsanÃ½ pouÅ¾itÃ­m W3C RDF Schema a Web Ontology Language."@cs,
+        "Das Vokabular \"Description of a Project (DOAP)\", beschrieben durch W3C RDF Schema and the Web Ontology Language."@de,"""El vocabulario Description of a Project (DOAP, DescripciÃ³n de un Proyecto), descrito usando RDF Schema de W3C
+		y Web Ontology Language."""@es,"""Le vocabulaire Description Of A Project (DOAP, Description D'Un Projet),
+		dÃ©crit en utilisant RDF Schema du W3C et OWL."""@fr,
+        "VocabulÃ¡rio de descriÃ§Ã£o de um Projeto (DOAP - Description of a Project), descrito no esquema (schema) W3C RDF e na Web Ontology Language."@pt ;
+    dc:format "application/rdf+xml" ;
+    dc:rights "Copyright Â© 2004-2018 Edd Dumbill, Edd Wilder-James" ;
+    dc:title "Description of a Project (DOAP) vocabulary" ;
+    owl:imports foaf:index.rdf ;
+    foaf:maker [ a foaf:Person ;
+            foaf:mbox <mailto:edd@usefulinc.com> ;
+            foaf:name "Edd Wilder-James" ] .
+

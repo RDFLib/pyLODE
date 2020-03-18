@@ -1,0 +1,563 @@
+# baseURI: http://linked.data.gov.au/def/plot/
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://www.w3.org/ns/ssn/ext
+# prefix: plot
+
+@prefix : <http://linked.data.gov.au/def/plot/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix op: <http://www.tern.org.au/cv/op/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix plot: <http://linked.data.gov.au/def/plot/> .
+@prefix plot-x: <http://linked.data.gov.au/def/plot/x/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix ssn-ext: <http://www.w3.org/ns/ssn/ext/> .
+@prefix w3cgeo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+plot:
+  a owl:Ontology ;
+  dcterms:created "2019-03-25"^^xsd:date ;
+  dcterms:creator [
+      a sdo:Person ;
+      sdo:email "simon.cox@csiro.au" ;
+      sdo:identifier <https://orcid.org/0000-0002-3884-3420> ;
+      sdo:memberOf [
+          a sdo:Organization ;
+          sdo:identifier <http://catalogue.linked.data.gov.au/def/csiro> ;
+          sdo:name "CSIRO" ;
+        ] ;
+      sdo:name "Simon J.D.Cox" ;
+    ] ;
+  dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+  dcterms:modified "2019-06-11"^^xsd:date ;
+  rdfs:comment """This vocabulary provides a set of classes to support capture of plot- and site-based ecological survey data. It is primary related to vegetation surveys, following the methdologies outlined in the Australian Soil and Land Survey Field Handbook.
+
+PLOT is technically an extension to the W3C SSN/SOSA vocabulary, and also uses elements from the SSN-EXT ontology.""" ;
+  rdfs:label "The PLOT ontology" ;
+  rdfs:seeAlso <https://www.publish.csiro.au/book/5230/> ;
+  rdfs:seeAlso <https://www.w3.org/TR/vocab-ssn-ext/> ;
+  rdfs:seeAlso <https://www.w3.org/ns/ssn/> ;
+  owl:imports <http://purl.org/dc/elements/1.1/> ;
+  owl:imports ssn:ext ;
+.
+plot:Location
+  a owl:Class ;
+  rdfs:label "Location" ;
+  rdfs:subClassOf dcterms:Location ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty plot:mapScale ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty plot:mapsheetName ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty plot:mapsheetNumber ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty locn:geometry ;
+      owl:someValuesFrom w3cgeo:Point ;
+    ] ;
+.
+plot:OrganismOccurence
+  a owl:Class ;
+  rdfs:comment """1. sub-class of Sample because observations of an organism occurrence are primarily interesting if they represents a commuity or assemblage
+2. sub-class of SpatialObject because it is bound to a specified location
+3. sub-class of TemporalEntity because it is bound to a specified time""" ;
+  rdfs:label "Organism Occurrence " ;
+  rdfs:subClassOf geosparql:SpatialObject ;
+  rdfs:subClassOf <http://www.w3.org/2006/time#TemporalEntity> ;
+  rdfs:subClassOf sosa:Sample ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      rdfs:comment "An organism-occurrence is a sample of a community or assemblage" ;
+      owl:onProperty sosa:isSampleOf ;
+      owl:someValuesFrom plot-x:EcologicalCommunity ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom w3cgeo:Point ;
+      owl:onProperty geosparql:defaultGeometry ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty geosparql:defaultGeometry ;
+    ] ;
+  owl:equivalentClass <http://rs.tdwg.org/dwc/terms/Occurrence> ;
+.
+plot:Site
+  a rdfs:Class ;
+  rdfs:comment """Location where observations may be made
+May be a plot, quadrat, transect, trap etc""" ;
+  rdfs:comment "hasGeometry is expected to use WKT, may be a polygon or curve" ;
+  rdfs:comment "ownership is associated with the parent survey" ;
+  rdfs:comment "rights and conditions are associated with the parnet survey" ;
+  rdfs:label "Site or location" ;
+  rdfs:subClassOf geosparql:SpatialObject ;
+  rdfs:subClassOf sosa:Sample ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      rdfs:comment "A Site is established to sample some biome, bioregion, ecosystem, etc." ;
+      owl:onProperty sosa:isSampleOf ;
+      owl:someValuesFrom [
+          a owl:Class ;
+          owl:unionOf (
+              plot-x:EnvironmentalSystem
+              plot-x:EnvironmentalZone
+            ) ;
+        ] ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      rdfs:comment """A site is established in the context of a site-visit, which is in turn part of a survey.
+Different visits might create sites in the same place with different identifiers""" ;
+      owl:allValuesFrom plot:SiteVisit ;
+      owl:onProperty sosa:isResultOf ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      rdfs:comment "A site may be part of a bigger site -e.g. points within a plot" ;
+      owl:allValuesFrom plot:Site ;
+      owl:onProperty dcterms:hasPart ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      rdfs:comment "A site may be part of a bigger site -e.g. points within a plot" ;
+      owl:allValuesFrom plot:Site ;
+      owl:onProperty dcterms:isPartOf ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom plot:Location ;
+      owl:onProperty locn:location ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom prov:Activity ;
+      owl:onProperty prov:wasGeneratedBy ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty dcterms:created ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty plot:siteDescription ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty dcterms:relation ;
+      owl:someValuesFrom plot:Site ;
+    ] ;
+.
+plot:SiteStratum
+  a owl:Class ;
+  rdfs:comment "Structural element covering a recognisable height range in vegetation ecosystem occurring at an observation site" ;
+  rdfs:label "Vegetation stratum" ;
+  rdfs:subClassOf sosa:Sample ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom plot:Site ;
+      owl:onProperty sosa:isSampleOf ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty plot:stratum ;
+    ] ;
+.
+plot:SiteStratumTaxon
+  a owl:Class ;
+  rdfs:comment "Community of a single taxon in an identified stratum in a vegetation ecosystem occurring at an observation site" ;
+  rdfs:label "Single taxon community" ;
+  rdfs:subClassOf sosa:Sample ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      rdfs:comment "While the value of the SiteStratumTaxon/taxon property might be fixed a-priori, the taxon-classification is typically the result of an observation whose feature-of-interest is an individual of the SiteStratumTaxon class. " ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty plot:taxon ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      rdfs:comment "relation to the Site for which this SiteStratumTaxon represents the community of a single taxon within a single stratum" ;
+      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass plot:Site ;
+      owl:onProperty sosa:isSampleOf ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      rdfs:comment "relation to the SiteStratum for which this SiteStratumTaxon represents the community of a single taxon" ;
+      owl:onProperty sosa:isSampleOf ;
+      owl:someValuesFrom plot:SiteStratum ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      rdfs:comment "relation to the SiteTaxon for which this SiteStratumTaxon represents the community within a single stratum" ;
+      owl:onProperty sosa:isSampleOf ;
+      owl:someValuesFrom plot:SiteTaxon ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty plot:stratum ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty sosa:isFeatureOfInterestOf ;
+    ] ;
+.
+plot:SiteTaxon
+  a owl:Class ;
+  rdfs:comment "Community of a single taxon in vegetation ecosystem occurring at an observation site" ;
+  rdfs:comment "Data corresponding to an individual of this class would usually be derived from observations relating to a set of SiteStratumTaxon at the same site on the same taxon" ;
+  rdfs:label "Single taxon community" ;
+  rdfs:subClassOf sosa:Sample ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom plot:Site ;
+      owl:onProperty sosa:isSampleOf ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty plot:taxon ;
+    ] ;
+.
+plot:SiteVisit
+  a owl:Class ;
+  rdfs:label "Visit to a site" ;
+  rdfs:subClassOf prov:Activity ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      rdfs:comment "link from site-visit to survey of which it is a part" ;
+      owl:onProperty plot:wasSubActivityOf ;
+      owl:someValuesFrom plot-x:Survey ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      rdfs:comment "link to the visited site" ;
+      owl:allValuesFrom plot:Site ;
+      owl:onProperty sosa:hasFeatureOfInterest ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty plot:hadSubActivity ;
+      owl:someValuesFrom [
+          a owl:Class ;
+          owl:unionOf (
+              sosa:Sampling
+              sosa:Observation
+              ssn-ext:ObservationCollection
+            ) ;
+        ] ;
+    ] ;
+.
+plot:Stratum
+  a owl:Class ;
+  rdfs:label "Vegetation strata classification " ;
+  rdfs:subClassOf skos:Concept ;
+.
+plot:hadSubActivity
+  a owl:ObjectProperty ;
+  rdfs:comment "To allow links between observations or site-visits and projects, programs and initiatives, between observations and site-visits, etc" ;
+  rdfs:domain prov:Activity ;
+  rdfs:label "pointer to child activity" ;
+  rdfs:range prov:Activity ;
+.
+plot:mapScale
+  a owl:ObjectProperty ;
+  rdfs:label "Map scale" ;
+.
+plot:mapsheetName
+  a owl:DatatypeProperty ;
+  rdfs:label "Mapsheet" ;
+  rdfs:range xsd:string ;
+.
+plot:mapsheetNumber
+  a owl:DatatypeProperty ;
+  rdfs:label "Mapsheet" ;
+  rdfs:range xsd:string ;
+.
+plot:siteDescription
+  a owl:ObjectProperty ;
+  rdfs:domain plot:Site ;
+  rdfs:range ssn-ext:ObservationCollection ;
+  rdfs:subPropertyOf sosa:isFeatureOfInterestOf ;
+.
+plot:stratum
+  a owl:ObjectProperty ;
+  rdfs:label "stratum classification" ;
+  rdfs:range skos:Concept ;
+  rdfs:subPropertyOf dcterms:type ;
+.
+plot:taxon
+  a owl:ObjectProperty ;
+  rdfs:label "taxon classification" ;
+  rdfs:range skos:Concept ;
+  rdfs:subPropertyOf dcterms:type ;
+.
+plot:wasSubActivityOf
+  a owl:ObjectProperty ;
+  rdfs:label "pointer to parent activity" ;
+  rdfs:subPropertyOf prov:wasInformedBy ;
+  owl:inverseOf plot:hadSubActivity ;
+.
+plot-x:Assemblage
+  a owl:Class ;
+  rdfs:label "Organism assemblage" ;
+  rdfs:subClassOf plot-x:EcologicalCommunity ;
+.
+plot-x:EcologicalCommunity
+  a owl:Class ;
+  rdfs:label "Ecological Community" ;
+  rdfs:subClassOf plot-x:EnvironmentalSystem ;
+  skos:closeMatch <http://purl.obolibrary.org/obo/PCO_0000002> ;
+.
+plot-x:EnvironmentalContinuant
+  a owl:Class ;
+  rdfs:comment "Union of environmental system, environmental zone, and ecological community?" ;
+  rdfs:label "Environmental continuant" ;
+  rdfs:subClassOf sosa:FeatureOfInterest ;
+  skos:closeMatch <http://purl.obolibrary.org/obo/ENVO_01000408> ;
+.
+plot-x:EnvironmentalSystem
+  a owl:Class ;
+  rdfs:label "Environmental region defined primarily by its function and membership" ;
+  rdfs:subClassOf plot-x:EnvironmentalContinuant ;
+  rdfs:subClassOf owl:Thing ;
+.
+plot-x:EnvironmentalZone
+  a owl:Class ;
+  rdfs:label "Environmental region defined primarily by its location and extent" ;
+  rdfs:subClassOf plot-x:EnvironmentalContinuant ;
+  rdfs:subClassOf owl:Thing ;
+.
+plot-x:FluxTower
+  a rdfs:Class ;
+  a owl:Class ;
+  rdfs:label "Flux tower" ;
+  rdfs:subClassOf sosa:Platform ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty locn:location ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass sosa:Sensor ;
+      owl:onProperty sosa:hosts ;
+    ] ;
+.
+plot-x:Observation
+  a rdfs:Class ;
+  a owl:Class ;
+  rdfs:label "Ecology Observation" ;
+  rdfs:subClassOf sosa:Observation ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom [
+          a owl:Class ;
+          owl:unionOf (
+              plot:Site
+              plot:OrganismOccurence
+            ) ;
+        ] ;
+      owl:onProperty sosa:hasFeatureOfInterest ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom [
+          a owl:Class ;
+          owl:unionOf (
+              plot-x:EnvironmentalContinuant
+              plot:OrganismOccurence
+            ) ;
+        ] ;
+      owl:onProperty ssn-ext:hasUltimateFeatureOfInterest ;
+    ] ;
+.
+plot-x:StudyLocation
+  a rdfs:Class ;
+  rdfs:label "Location of study" ;
+  rdfs:subClassOf prov:Entity ;
+.
+plot-x:StudyLocationVisit
+  a owl:Class ;
+  rdfs:label "Visit to a study location" ;
+  rdfs:subClassOf prov:Activity ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty prov:used ;
+      owl:someValuesFrom plot-x:StudyLocation ;
+    ] ;
+.
+plot-x:Survey
+  a owl:Class ;
+  rdfs:comment """Survey is composed of a set of Observations and ObservationCollections, which may have a site as its feature-of-interest
+In this context the value of feature-of-interest is expected to be the value of the chain   (ssn-ext:hasMember)+/sosa:hasFeatureOfInterest""" ;
+  rdfs:label "Survey" ;
+  rdfs:subClassOf prov:Activity ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      rdfs:comment "aka spatialScope? - to associate a jurisdiction or IBRA or other named thing with the Survey" ;
+      owl:allValuesFrom skos:Concept ;
+      owl:onProperty locn:location ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      rdfs:comment "link to organization instead of plot:Dataset class?" ;
+      owl:onProperty prov:wasAssociatedWith ;
+      owl:someValuesFrom prov:Organization ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty dcterms:title ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty <http://purl.org/dc/elements/1.1/creator> ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass plot:Site ;
+      owl:onProperty sosa:hasFeatureOfInterest ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass <http://www.w3.org/ns/odrl/2/Permission> ;
+      owl:onProperty dcterms:accessRights ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass <http://www.w3.org/ns/odrl/2/Policy> ;
+      owl:onProperty dcterms:license ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  skos:editorialNote "Do we also need Survey to be classified by: - data theme?" ;
+  skos:editorialNote "Do we need an association between Survey and SiteVisit?" ;
+.
+plot-x:TaxonAssignment
+  a rdfs:Class ;
+  a owl:Class ;
+  rdfs:label "Taxon assignment observation" ;
+  rdfs:subClassOf sosa:Observation ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:hasValue <http://www.tern.org.au/cv/op/Taxon-identity> ;
+      owl:onProperty sosa:observedProperty ;
+    ] ;
+.
+plot-x:floristics
+  a owl:ObjectProperty ;
+  rdfs:domain plot:Site ;
+  rdfs:label "Site floristics classification" ;
+  rdfs:range skos:Concept ;
+  rdfs:subPropertyOf dcterms:type ;
+.
+plot-x:hasResultQuality
+  a owl:ObjectProperty ;
+  rdfs:comment "this property allows an indication of the quality of the data to be provided at the level of either an individual observation or a thematic group. This is commonly done by some kind of description of the method, protocol, sensor, observer, etc. " ;
+  rdfs:domain [
+      a owl:Class ;
+      owl:unionOf (
+          sosa:Observation
+          ssn-ext:ObservationCollection
+        ) ;
+    ] ;
+  rdfs:label "Quality of individual or related observation results" ;
+.
+plot-x:isLocationOf
+  a owl:ObjectProperty ;
+  rdfs:comment "Links an individual location description to the resource (e.g. a plot:Site) that it relates to" ;
+  rdfs:domain plot:Location ;
+  rdfs:label "describes the location of" ;
+  owl:inverseOf locn:location ;
+.
+plot-x:observer
+  a owl:ObjectProperty ;
+  rdfs:label "Observer" ;
+  rdfs:subPropertyOf prov:wasAssociatedWith ;
+  rdfs:subPropertyOf sosa:madeBySensor ;
+.
+plot-x:sampleLevel
+  a owl:ObjectProperty ;
+  rdfs:domain plot:Site ;
+  rdfs:label "sample level classification" ;
+  rdfs:range skos:Concept ;
+  rdfs:subPropertyOf dcterms:type ;
+.
+plot-x:sampleType
+  a owl:ObjectProperty ;
+  rdfs:comment "The site's plot shape description, e.g. square, circle, etc." ;
+  rdfs:domain plot:Site ;
+  rdfs:label "sample type classification" ;
+  rdfs:range skos:Concept ;
+  rdfs:subPropertyOf dcterms:type ;
+.
+plot-x:sampler
+  a owl:ObjectProperty ;
+  rdfs:label "Sampler" ;
+  rdfs:subPropertyOf prov:wasAssociatedWith ;
+  rdfs:subPropertyOf sosa:madeBySampler ;
+.
+plot-x:visitor
+  a owl:ObjectProperty ;
+  rdfs:label "Site visitor" ;
+  rdfs:subPropertyOf prov:wasAssociatedWith ;
+.
+w3cgeo:Point
+  rdfs:subClassOf sosa:Result ;
+.
+locn:Geometry
+  owl:equivalentClass [
+      a owl:Class ;
+      owl:unionOf (
+          geosparql:Geometry
+          w3cgeo:Point
+        ) ;
+    ] ;
+.
+locn:geometry
+  rdfs:subPropertyOf sosa:hasResult ;
+.
+ssn-ext:hasMember
+  rdfs:subPropertyOf plot:hadSubActivity ;
+.
+ssn-ext:isMemberOf
+  a owl:ObjectProperty ;
+  rdfs:comment "indicates a collection of which the context resource is a member" ;
+  rdfs:domain [
+      a owl:Class ;
+      owl:unionOf (
+          sosa:Observation
+          ssn-ext:ObservationCollection
+        ) ;
+    ] ;
+  rdfs:label "is member of" ;
+  rdfs:range ssn-ext:ObservationCollection ;
+  rdfs:subPropertyOf plot:wasSubActivityOf ;
+  owl:inverseOf ssn-ext:hasMember ;
+.

@@ -1,0 +1,106 @@
+@prefix : <http://data.surroundaustralia.com/def/alternates#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://data.surroundaustralia.com/def/alternates> .
+
+<http://data.surroundaustralia.com/def/alternates> 
+  a owl:Ontology ;
+  owl:imports dct: , skos: ;
+  dct:description "An ontology that is a profile of Dublin Core Terms that constrains several of its classes and properties for use and adds a class of its own, all to describe representations of resources. The 'View' and 'Format' classes are based on the Epimorphics' implementation of a Linked Data API (ELDA)." ;
+  dct:created "2019-10-21"^^xsd:date ;
+  dct:creator [ 
+    a sdo:Person ;
+    sdo:affiliation <https://surroundaustralia.com> ;
+    sdo:email "nicholas.car@surroundaustralia.com" ;
+    sdo:identifier <https://orcid.org/0000-0002-8742-7730> ;
+    sdo:name "Nicholas J. Car"
+  ] ,
+  [ a sdo:Person ;
+    sdo:affiliation <https://surroundaustralia.com> ;
+    sdo:email "rob.atkinson@surroundaustralia.com" ;
+    sdo:identifier <https://orcid.org/0000-0002-7878-2693> ;
+    sdo:name "Rob Atkinson"
+  ] ;
+  dct:license <http://creativecommons.org/licenses/by/4.0> ;
+  dct:modified "2019-10-21"^^xsd:date ;
+  dct:title "Alternates View Profile Schema" ;
+  prov:wasGeneratedBy [ 
+    a doap:Project , prov:Activity ;
+    doap:repository <https://github.com/nicholascar/alternates-view-profile>
+  ] .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://data.surroundaustralia.com/def/alternates#hasDefaultFormat
+:hasDefaultFormat 
+  a owl:ObjectProperty ;
+  rdfs:subPropertyOf dct:format ;
+  skos:definition "The Format returned of a Resource's representation if no specific Format request is made."@en ;
+  skos:prefLabel "has default format" .
+
+
+###  http://data.surroundaustralia.com/def/alternates#hasDefaultView
+:hasDefaultView 
+  a owl:ObjectProperty ;
+  rdfs:subPropertyOf :hasView ;
+  skos:definition "The View returned to which a Resource's representation conforms if no specific View request is made."@en ;
+  skos:prefLabel "has default view" .
+
+
+###  http://data.surroundaustralia.com/def/alternates#hasView
+:hasView 
+  a owl:ObjectProperty ;
+  skos:definition "A resource' representation has a View"@en ;
+  skos:prefLabel "view" .
+
+
+###  http://purl.org/dc/terms/format
+dct:format    
+    a rdf:Property ;    
+    skos:definition "The file format, physical medium, or dimensions of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    skos:prefLabel "Format"@en ;
+    rdfs:range dct:MediaType ;
+    skos:scopeNote "Use this property to indicate a dct:MediaType"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://data.surroundaustralia.com/def/alternates#View
+:View 
+  a owl:Class ;
+  skos:definition "A set of properties to show for a resource."@en ;
+  skos:scopeNote "Use this class to represent a 'view' that of representations of a resource conform to."@en ;
+  skos:prefLabel "View" .
+
+dct:MediaType
+    a rdfs:Class ;
+    skos:definition "A file format or physical medium."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    skos:prefLabel "Media Type"@en ;
+    skos:scopeNote "Use this class to represent instances of Media Types as listed by IANA as the target values for dct:format."@en .  
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://surroundaustralia.com
+<https://surroundaustralia.com> 
+  a owl:NamedIndividual ,
+  sdo:Organization ;
+  sdo:identifier <https://surroundaustralia.com> ;
+  sdo:name "SURROUND Australia Pty Ltd" .

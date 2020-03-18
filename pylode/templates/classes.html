@@ -1,0 +1,11 @@
+<section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        {%- for fid in fids %}
+        <li><a href="#{{ fid[0] }}">{{ fid[1] }}</a></li>
+        {%- endfor %}
+    </ul>
+    {%- for class in classes %}
+    {{ class|safe }}
+    {%- endfor %}
+</section>

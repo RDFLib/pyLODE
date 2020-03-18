@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ISO19160-1:2015 Address ontology - NZ Profile</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<h1>ISO19160-1:2015 Address ontology - NZ Profile</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>IRI</dt>
+        <dd><code>http://linked.data.gov.au/def/iso19160-1-address-nz-profile</code></dd>
+        <dt>Publisher(s)</dt>
+        <dd>
+            <a href="http://linked.data.gov.au/org/agldwg">Australian Government Linked Data Working Group</a><br/>
+        </dd>
+        <dt>Creator(s)</dt>
+        <dd>
+            <a href="mailto:tristan.reed@curtin.edu.au">Tristan W. Reed</a> of <a href="https://www.curtin.edu.au/">Curtin University</a><br/>
+        </dd>
+        <dt>Contributors(s)</dt>
+        <dd>
+            <a href="https://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a> (<a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a>) of <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a><br/>
+        </dd>
+        <dt>Created</dt>
+        <dd>2017-12-02</dd>
+        <dt>Modified</dt>
+        <dd>2017-10-24</dd>
+        <dt>Version IRI</dt>
+        <dd><a href="http://linked.data.gov.au/def/iso19160-1-address-nz-profile/1.1">http://linked.data.gov.au/def/iso19160-1-address-nz-profile/1.1</a></dd>
+        <dt>Imports</dt>
+        <dd>
+            <a href="http://linked.data.gov.au/def/iso19160-1-address">http://linked.data.gov.au/def/iso19160-1-address</a><br/>
+        </dd>
+        <dt>Ontology Source</dt>
+        <dd><a href="iso19160-1-nz-profile.ttl">RDF (turtle)</a></dd>
+        <dt>Code Repository</dt>
+        <dd><a href="https://github.com/AGLDWG/iso19160-1-address-ont">https://github.com/AGLDWG/iso19160-1-address-ont</a></dd>
+    </dl>
+    <h2>Description</h2>
+    <div id="description">
+        <p>This ontology is an OWL ontology version of the New Zealand Profile of ISO 19160-1:2015 Addressing.</p>
+    </div>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#namespaces">Namespaces</a></li>
+    </ol>
+</section>
+<section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#addressalias">Address Alias</a></li>
+        <li><a href="#addresscomponent">Address Component</a></li>
+        <li><a href="#addressperiod">Address Period</a></li>
+        <li><a href="#addressableobject">Addressable Object</a></li>
+    </ul>
+    <div class="entity class" id="addressalias">
+        <h3>Address Alias<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address-nz-profile#AddressAlias</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    ISO 19160 Address Alias class with the additional restrictions of requiring Address Alias lifecycle stage properties to have Address Lifecycle Stage class object and Address Alias lifespan to have Lifespan class objects as their range values.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressAlias">iso19160-1:AddressAlias</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.lifecycleStage">iso19160-1:AddressAlias.lifecycleStage</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressLifecycleStage">iso19160-1:AddressLifecycleStage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.lifespan">iso19160-1:AddressAlias.lifespan</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/iso19160-1-address#Lifespan">iso19160-1:Lifespan</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="addresscomponent">
+        <h3>Address Component<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address-nz-profile#AddressComponent</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    ISO 19160 Address Component class with the additional restrictions of requiring one and only one Address lifespan, Address provenance, Address Component lifecycle stage and an Address Component Value locale  properties
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressComponent">iso19160-1:AddressComponent</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan">iso19160-1:Address.lifespan</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.provenance">iso19160-1:Address.provenance</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.locale">iso19160-1:AddressComponentValue.locale</a> <span class="cardinality">exactly</span> 0<br/>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage">iso19160-1:AddressComponent.lifecycleStage</a> <span class="cardinality">exactly</span> 1<br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="addressableobject">
+        <h3>Addressable Object<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address-nz-profile#AddressableObject</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    ISO 19160 Addressable Object class with the additional restrictions of requiring one and only one Address Component lifespan, Address Component position and an Address Component lifecycle stage properties.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressableObject">iso19160-1:AddressableObject</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan">iso19160-1:Address.lifespan</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage">iso19160-1:AddressComponent.lifecycleStage</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.position">iso19160-1:Address.position</a> <span class="cardinality">exactly</span> 0<br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="addressperiod">
+        <h3>Address Period<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/iso19160-1-address-nz-profile#AddressedPeriod</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    ISO 19160 Addressed Period class with the additional restriction of requiring at most one Address provenance properties.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod">iso19160-1:AddressedPeriod</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.provenance">iso19160-1:Address.provenance</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance">iso19160-1:AddressProvenance</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.provenance">iso19160-1:Address.provenance</a> <span class="cardinality">max</span> 1<br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt><em>default (:)</em></dt>
+        <dd><code>http://linked.data.gov.au/def/iso19160-1-address-nz-profile#</code></dd>
+        <dt>dc</dt>
+        <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+        <dt>dct</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>doap</dt>
+        <dd><code>http://usefulinc.com/ns/doap#</code></dd>
+        <dt>iso19160-1</dt>
+        <dd><code>http://linked.data.gov.au/def/iso19160-1-address#</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>prof</dt>
+        <dd><code>http://www.w3.org/ns/dx/prof/</code></dd>
+        <dt>prov</dt>
+        <dd><code>http://www.w3.org/ns/prov#</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>sdo</dt>
+        <dd><code>https://schema.org/</code></dd>
+        <dt>xml</dt>
+        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+<section id="legend">
+    <h2>Legend</h2>
+    <table class="entity">
+        <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+        <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+        <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+        <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+        <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+        <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+        <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+    </table>
+</section>
+</body>
+</html>

@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vocabulary of Interlinked Datasets (VoID)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<h1>Vocabulary of Interlinked Datasets (VoID)</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>IRI</dt>
+        <dd><code>http://vocab.deri.ie/void</code></dd>
+        <dt>Publisher(s)</dt>
+        <dd>
+            <a href="http://vocab.deri.ie/void#Digital%20Enterprise%20Research%20Institute%2C%20NUI%20Galway">Digital Enterprise Research Institute, NUI Galway</a><br/>
+        </dd>
+        <dt>Creator(s)</dt>
+        <dd>
+            <a href="mailto:mailto:richard.cyganiak@deri.org">Richard Cyganiak</a> of <a href="http://www.deri.ie/">Digital Enterprise Research Institute, NUI Galway</a><br/>
+            <a href="mailto:mailto:michael.hausenblas@deri.org">Michael Hausenblas</a> of <a href="http://linkeddata.deri.ie/">LiDRC</a><br/>
+            <a href="mailto:mailto:Keith.Alexander@talis.com">Keith Alexander</a> of <a href="http://www.talis.com/">Talis</a><br/>
+            <a href="mailto:mailto:jun.zhao@zoo.ox.ac.uk">Jun Zhao</a> of <a href="http://www.zoo.ox.ac.uk/">Department of Zoology, University of Oxford</a><br/>
+        </dd>
+        <dt>Created</dt>
+        <dd>2010-01-26</dd>
+        <dt>Modified</dt>
+        <dd>2011-03-06</dd>
+        <dt>Ontology Source</dt>
+        <dd><a href="void.ttl">RDF (turtle)</a></dd>
+    </dl>
+    <h2>Description</h2>
+    <div id="description">
+        <p>The Vocabulary of Interlinked Datasets (VoID) is an RDF Schema vocabulary for expressing metadata about RDF datasets. It is intended as a bridge between the publishers and users of RDF data, with applications ranging from data discovery to cataloging and archiving of datasets. This document provides a formal definition of the new RDF classes and properties introduced for VoID. It is a companion to the main specification document for VoID, <em><a href="http://www.w3.org/TR/void/">Describing Linked Datasets with the VoID Vocabulary</a></em>.</p>
+    </div>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#objectproperties">Object Properties</a></li>
+        <li><a href="#functionalproperties">Functional Properties</a></li>
+        <li><a href="#datatypeproperties">Datatype Properties</a></li>
+        <li><a href="#namespaces">Namespaces</a></li>
+    </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure" style="float:left;">
+      <img src="classes.png" style="width:75%" alt="classes" />
+      <div class="caption"><strong>Figure 1:</strong> VOID classes in a hierarchy</div>
+    </div>
+      <div class="figure" style="float:right;">
+      <img src="properties.png" style="width:75%" alt="classes" />
+      <div class="caption"><strong>Figure 2:</strong> VOID properties in a hierarchy</div>
+    </div>
+    <div style="clear:both;"></div>
+</section>
+<section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#dataset">dataset</a></li>
+        <li><a href="#datasetdescription">dataset description</a></li>
+        <li><a href="#linkset">linkset</a></li>
+        <li><a href="#technicalfeature">technical feature</a></li>
+    </ul>
+    <div class="entity class" id="dataset">
+        <h3>dataset<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#Dataset</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A set of RDF triples that are published, maintained or aggregated by a single provider.
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#linkset">void:Linkset</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#opensearchdescription">void:openSearchDescription</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#datadump">void:dataDump</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rootresource">void:rootResource</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#numberofproperties">void:properties</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#urispace">void:uriSpace</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#classpartition">void:classPartition</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#numberoftriples">void:triples</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#vocabulary">void:vocabulary</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#feature">void:feature</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#exampleresourceofdataset">void:exampleResource</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://rdfs.org/ns/void#uriRegexPattern">void:uriRegexPattern</a><br/>
+                    <a href="#distinctobjects">void:distinctObjects</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#propertypartition">void:propertyPartition</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#property">void:property</a><sup class="sup-fp" title="functional property">fp</sup><br/>
+                    <a href="#hasasparqlendpointat">void:sparqlEndpoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#class">void:class</a><sup class="sup-fp" title="functional property">fp</sup><br/>
+                    <a href="#numberofentities">void:entities</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#classes">void:classes</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#hassubset">void:subset</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#numberofdocuments">void:documents</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#distinctsubjects">void:distinctSubjects</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#hasanurilook-upendpointat">void:uriLookupEndpoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#classpartition">void:classPartition</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hassubset">void:subset</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#target">void:target</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#objectstarget">void:objectsTarget</a><sup class="sup-fp" title="functional property">fp</sup><br/>
+                    <a href="#propertypartition">void:propertyPartition</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#subjectstarget">void:subjectsTarget</a><sup class="sup-fp" title="functional property">fp</sup><br/>
+                    <a href="#indataset">void:inDataset</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="datasetdescription">
+        <h3>dataset description<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#DatasetDescription</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A web resource whose foaf:primaryTopic or foaf:topics include void:Datasets.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/Document">foaf:Document</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="linkset">
+        <h3>linkset<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#Linkset</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A collection of RDF links between two void:Datasets.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#target">void:target</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#objectstarget">void:objectsTarget</a><sup class="sup-fp" title="functional property">fp</sup><br/>
+                    <a href="#alinkpredicate">void:linkPredicate</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#subjectstarget">void:subjectsTarget</a><sup class="sup-fp" title="functional property">fp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="technicalfeature">
+        <h3>technical feature<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#TechnicalFeature</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A technical feature of a void:Dataset, such as a supported RDF serialization format.
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#feature">void:feature</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="objectproperties">
+    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#classpartition">class partition</a></li>
+        <li><a href="#datadump">Data Dump</a></li>
+        <li><a href="#exampleresourceofdataset">example resource of dataset</a></li>
+        <li><a href="#feature">feature</a></li>
+        <li><a href="#indataset">in dataset</a></li>
+        <li><a href="#alinkpredicate">a link predicate</a></li>
+        <li><a href="#opensearchdescription">open search description</a></li>
+        <li><a href="#propertypartition">property partition</a></li>
+        <li><a href="#rootresource">root resource</a></li>
+        <li><a href="#hasasparqlendpointat">has a SPARQL endpoint at</a></li>
+        <li><a href="#hassubset">has subset</a></li>
+        <li><a href="#target">Target</a></li>
+        <li><a href="#hasanurilook-upendpointat">has an URI look-up endpoint at</a></li>
+        <li><a href="#vocabulary">vocabulary</a></li>
+    </ul>
+    <div class="entity property" id="classpartition">
+        <h3>class partition<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#classPartition</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A subset of a void:Dataset that contains only the entities of a certain rdfs:Class.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#hassubset">void:subset</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="datadump">
+        <h3>Data Dump<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#dataDump</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An RDF dump, partial or complete, of a void:Dataset.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="exampleresourceofdataset">
+        <h3>example resource of dataset<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#exampleResource</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="feature">
+        <h3>feature<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#feature</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#technicalfeature">void:TechnicalFeature</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="indataset">
+        <h3>in dataset<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#inDataset</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Points to the void:Dataset that a document is a part of.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/Document">foaf:Document</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="alinkpredicate">
+        <h3>a link predicate<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#linkPredicate</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#linkset">void:Linkset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">rdf:Property</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="opensearchdescription">
+        <h3>open search description<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#openSearchDescription</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An OpenSearch description document for a free-text search service over a void:Dataset.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/Document">foaf:Document</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="propertypartition">
+        <h3>property partition<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#propertyPartition</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A subset of a void:Dataset that contains only the triples of a certain rdf:Property.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#hassubset">void:subset</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="rootresource">
+        <h3>root resource<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#rootResource</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A top concept or entry point for a void:Dataset that is structured in a tree-like fashion. All resources in a dataset can be reached by following links from its root resources in a small number of steps.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasasparqlendpointat">
+        <h3>has a SPARQL endpoint at<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#sparqlEndpoint</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hassubset">
+        <h3>has subset<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#subset</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="target">
+        <h3>Target<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#target</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    One of the two datasets linked by the Linkset.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#linkset">void:Linkset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasanurilook-upendpointat">
+        <h3>has an URI look-up endpoint at<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#uriLookupEndpoint</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Defines a simple URI look-up protocol for accessing a dataset.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="vocabulary">
+        <h3>vocabulary<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#vocabulary</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A vocabulary that is used in the dataset.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="functionalproperties">
+    <h2>Functional Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#class">class</a></li>
+        <li><a href="#objectstarget">Objects Target</a></li>
+        <li><a href="#property">property</a></li>
+        <li><a href="#subjectstarget">Subjects Target</a></li>
+    </ul>
+    <div class="entity property" id="class">
+        <h3>class<sup title="functional property" class="sup-fp">fp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#class</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The rdfs:Class that is the rdf:type of all entities in a class-based partition.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="objectstarget">
+        <h3>Objects Target<sup title="functional property" class="sup-fp">fp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#objectsTarget</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The dataset describing the objects of the triples contained in the Linkset.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#target">void:target</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#linkset">void:Linkset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="property">
+        <h3>property<sup title="functional property" class="sup-fp">fp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#property</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The rdf:Property that is the predicate of all triples in a property-based partition.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">rdf:Property</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="subjectstarget">
+        <h3>Subjects Target<sup title="functional property" class="sup-fp">fp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#subjectsTarget</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The dataset describing the subjects of triples contained in the Linkset.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#target">void:target</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#linkset">void:Linkset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="datatypeproperties">
+    <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#classes">classes</a></li>
+        <li><a href="#distinctobjects">distinct objects</a></li>
+        <li><a href="#distinctsubjects">distinct subjects</a></li>
+        <li><a href="#numberofdocuments">number of documents</a></li>
+        <li><a href="#numberofentities">number of entities</a></li>
+        <li><a href="#numberofproperties">number of properties</a></li>
+        <li><a href="#numberoftriples">number of triples</a></li>
+        <li><a href="#urispace">URI space</a></li>
+    </ul>
+    <div class="entity property" id="classes">
+        <h3>classes<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#classes</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The total number of distinct classes in a void:Dataset. In other words, the number of distinct resources occuring as objects of rdf:type triples in the dataset.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="distinctobjects">
+        <h3>distinct objects<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#distinctObjects</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The total number of distinct objects in a void:Dataset. In other words, the number of distinct resources that occur in the object position of triples in the dataset. Literals are included in this count.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="distinctsubjects">
+        <h3>distinct subjects<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#distinctSubjects</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The total number of distinct subjects in a void:Dataset. In other words, the number of distinct resources that occur in the subject position of triples in the dataset.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="numberofdocuments">
+        <h3>number of documents<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#documents</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The total number of documents, for datasets that are published as a set of individual documents, such as RDF/XML documents or RDFa-annotated web pages. Non-RDF documents, such as web pages in HTML or images, are usually not included in this count. This property is intended for datasets where the total number of triples or entities is hard to determine. void:triples or void:entities should be preferred where practical.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="numberofentities">
+        <h3>number of entities<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#entities</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The total number of entities that are described in a void:Dataset.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="numberofproperties">
+        <h3>number of properties<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#properties</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The total number of distinct properties in a void:Dataset. In other words, the number of distinct resources that occur in the predicate position of triples in the dataset.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="numberoftriples">
+        <h3>number of triples<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#triples</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The total number of triples contained in a void:Dataset.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="urispace">
+        <h3>URI space<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://rdfs.org/ns/void#uriSpace</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A URI that is a common string prefix of all the entity URIs in a void:Dataset.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt><em>default (:)</em></dt>
+        <dd><code>http://rdfs.org/ns/void#</code></dd>
+        <dt>adms</dt>
+        <dd><code>http://www.w3.org/ns/adms#</code></dd>
+        <dt>dc</dt>
+        <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+        <dt>dct</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>foaf</dt>
+        <dd><code>http://xmlns.com/foaf/0.1/</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>sdo</dt>
+        <dd><code>https://schema.org/</code></dd>
+        <dt>vann</dt>
+        <dd><code>http://purl.org/vocab/vann/</code></dd>
+        <dt>void</dt>
+        <dd><code>http://rdfs.org/ns/void#</code></dd>
+        <dt>xml</dt>
+        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+    <section id="legend">
+        <h2>Legend</h2>
+        <table class="entity">
+            <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+            <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+            <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+            <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+            <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+            <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+            <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+        </table>
+    </section>
+</body>
+</html>
