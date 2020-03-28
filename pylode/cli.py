@@ -5,6 +5,7 @@ import shutil
 import requests
 import rdflib
 from makedocco import MakeDocco
+from profiles import OWL, SKOS
 
 
 # used to know what RDF file types rdflib can handle
@@ -44,7 +45,6 @@ class RdfGraphError(Exception):
 
 
 def main(args):
-    # read the input ontology file into a graph
     parser = argparse.ArgumentParser()
     overarching_group = parser.add_mutually_exclusive_group()
     inputs_group = overarching_group.add_mutually_exclusive_group()
@@ -115,7 +115,12 @@ def main(args):
     args = parser.parse_args()
 
     if args.listprofiles:
-        print("list profiles - sorry, not implemented yet!")
+        profiles = {
+            "owl": OWL.uri,
+            "skos": SKOS.uri
+        }
+        for k, v in profiles.items():
+            print("{}: {}".format(k, v))
         exit()
     elif args.inputfile or args.url:
         # args are present so getting RDF from input file or uri into an rdflid Graph
