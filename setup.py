@@ -13,8 +13,7 @@ def open_local(paths, mode='r', encoding='utf8'):
     )
     return codecs.open(path, mode, encoding)
 
-
-with open_local(['src', 'pyLODE', '__init__.py'], encoding='latin1') as fp:
+with open_local(['pylode', '__init__.py'], encoding='latin1') as fp:
     try:
         version = re.findall(r"^__version__ = '([^']+)'\r?$",
                              fp.read(), re.M)[0]
@@ -30,7 +29,7 @@ with open_local(['requirements.txt']) as req:
 setup(
     name='pyLODE',
     packages=['pylode'],
-    package_dir={'pylode': 'src/pylode'},
+    package_dir={'pylode': 'pylode'},
     package_data={'pylode': ['templates/*.html']},
     version=version,
     description='An OWL ontology documentation tool using Python and templating, based on LODE.',
