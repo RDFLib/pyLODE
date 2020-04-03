@@ -9,12 +9,15 @@ from jinja2 import Environment, FileSystemLoader
 from rdflib import plugin
 from rdflib.plugin import register, Serializer
 from rdflib_jsonld import serializer
+from profiles import OWL_PROFILE, SKOS_PROFILE
 
 register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
 
 class MakeDocco:
-    def __init__(self, outputformat="html"):
+    def __init__(self, outputformat="html", profile="owl"):
+        self.profile_selected = profile
+
         if outputformat not in ["html", "md"]:
             self.outputformat = "html"
         else:
@@ -37,6 +40,25 @@ class MakeDocco:
 
         self.PROV = Namespace("http://www.w3.org/ns/prov#")
         self.G.bind("prov", self.PROV)
+
+    @classmethod
+    def list_profiles(cls):
+        return {
+            "owl": OWL_PROFILE.uri,
+            # "skos": SKOS_PROFILE.uri
+        }
+
+    @classmethod
+    def is_supported_profile(cls, profile_key):
+        supported_keys = []
+        for k, v in MakeDocco.list_profiles().items():
+            supported_keys.append(k)
+            supported_keys.append(v)
+
+        if profile_key in supported_keys:
+            return True
+        else:
+            return False
 
     def _expand_graph_for_pylode(self):
         # name
@@ -1319,7 +1341,7 @@ class MakeDocco:
         if self.METADATA.get("description") is not None:
             description = Literal(self.METADATA.get("description"))
         if self.METADATA.get("license") is not None:
-            license = URIRef(self.METADATA.get("license"))
+            license = URIRef(self.METADATA.get("license").split('>')[1].split('<')[0])
         if self.METADATA.get("rights") is not None:
             rights = Literal(self.METADATA.get("rights"))
         copyright_holder = ""
@@ -1376,7 +1398,7 @@ class MakeDocco:
             g.add((uri, SDO.dateModified, date_modified))
         if self.METADATA.get("description") is not None:
             g.add((uri, SDO.description, description))
-        if self.METADATA.get("license") is not None:
+        if license is not None:
             g.add((uri, SDO.license, license))
         if self.METADATA.get("rights") is not None:
             g.add((uri, SDO.rights, rights))
@@ -1649,20 +1671,3 @@ class MakeDocco:
             outputformat=self.outputformat,
             exclude_css=exclude_css,
         )
-
-
-if __name__ == "__main__":
-    h = MakeDocco()
-    # get the input file
-    i = h.APP_DIR + "/examples/decprov.ttl"
-    # parse the input file into an in-memory RDF graph
-    h.G.parse(i, format="turtle")
-
-    # prepare source_info to allow for link to source file in HTML
-    source_info = (i, "turtle")
-    # generate the HTML doc
-    html = h.document(source_info)
-
-    # write HTML to file
-    with open(i.replace("ttl", "html"), "w") as f:
-        f.write(html)

@@ -1,6 +1,5 @@
 @prefix : <http://linked.data.gov.au/def/agrif#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix doap: <http://usefulinc.com/ns/doap#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -9,21 +8,22 @@
 @prefix sdo: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@base <http://linked.data.gov.au/def/agrif> .
+
 
 <http://linked.data.gov.au/def/agrif> rdf:type owl:Ontology ;
-                                      owl:versionIRI <http://linked.data.gov.au/def/agrif/0.7> ;
-                                      owl:versionInfo "0.7"@en ;
-                                      dct:contributor [
+                                      owl:versionIRI <http://linked.data.gov.au/def/agrif/0.71> ;
+                                      owl:versionInfo "0.71"@en ;
+                                      dcterms:contributor [
                                         sdo:name "Nicholas Car"@en ;
                                         sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+                                        sdo:email <mailto:nicholas.car@surroundaustralia.com> ;
+                                        sdo:affiliation <https://surroundaustralia.com> ;
                                       ] ;
                                       vann:preferredNamespaceUri "http://linked.data.gov.au/def/agrif#"^^xsd:string ;
-                                      dct:creator [
+                                      dcterms:creator [
                                         sdo:name "Armin Haller"@en ;
-                                        sdo:email <armin.haller@anu.edu.au> ;
+                                        sdo:email <mailto:armin.haller@anu.edu.au> ;
                                         sdo:identifier <https://orcid.org/0000-0003-3425-0780> ;
                                         sdo:affiliation <http://linked.data.gov.au/org/anu> ;
                                       ] ,
@@ -37,13 +37,14 @@
                                       ] ;
                                       rdfs:label "The Australian Government Records Interoperability Framework (AGRIF) ontology"@en ;
                                       rdfs:comment "The Australian Government Records Interoperability Framework (AGRIF, ‘the Framework’) is a system of related semantic ontologies that describe the structure, functions, and activities of the Australian Government, providing sufficient context for the effective use – including but not limited to management – of Australian Government information assets. It complies with the World Wide Web Consortium’s Web Ontology Language (OWL2) Recommendation and makes reference to other Recommendations and existing domain ontologies for archival and preservation processes."@en ;
-                                      owl:priorVersion "0.6"@en ;
+                                      owl:priorVersion "0.7"@en ;
                                       vann:preferredNamespacePrefix "agrif"@en ;
-                                      dct:publisher <http://linked.data.gov.au/org/finance> ;
+                                      dcterms:publisher <http://linked.data.gov.au/org/finance> ;
                                       rdfs:seeAlso <https://github.com/agldwg/agrif-ont> ;
-                                      dct:modified "2019-11-04"@en ;
-                                      dct:rights "(c) Commonwealth of Australia (Department of Finance) 2017"@en ;
-                                      dct:created "2016-12-06"^^xsd:date ;
+                                      dcterms:modified "2020-04-03"@en ;
+                                      dcterms:rights "(c) Commonwealth of Australia (Department of Finance) 2017"@en ;
+                                      dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                      dcterms:created "2016-12-06"^^xsd:date ;
                                       prov:wasGeneratedBy [
                                           a doap:Project ;
                                           a prov:Activity ;
@@ -60,12 +61,16 @@
                                         sdo:url <https://www.finance.gov.au> ;
                                         sdo:identifier <http://linked.data.gov.au/org/finance> .
 
+<https://surroundaustralia.com> a sdo:Organization ;
+                                        sdo:name "SURROUND Australia Pty Ltd";
+                                        sdo:url <https://surroundaustralia.com> .
+
 #################################################################
 #    Annotation properties
 #################################################################
 
 ###  http://purl.org/dc/elements/1.1/source
-dc:source rdf:type owl:AnnotationProperty .
+dcterms:source rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#example
@@ -97,7 +102,7 @@ skos:example rdf:type owl:AnnotationProperty .
 
 ###  http://linked.data.gov.au/def/agrif#associatedRole
 :associatedRole rdf:type owl:ObjectProperty ;
-                dc:source "https://www.w3.org/TR/prov-o/#hadRole" ;
+                dcterms:source "https://www.w3.org/TR/prov-o/#hadRole" ;
                 rdfs:comment "An associated Role is a qualified association between a Role and an Activity or Event defined by an Association."@en ;
                 rdfs:label "associated Role"@en .
 
@@ -111,14 +116,14 @@ skos:example rdf:type owl:AnnotationProperty .
 ###  http://linked.data.gov.au/def/agrif#hasActivity
 :hasActivity rdf:type owl:ObjectProperty ;
              owl:inverseOf :usedRecord ;
-             dc:source "https://www.w3.org/TR/prov-o/#p_activity" ;
+             dcterms:source "https://www.w3.org/TR/prov-o/#p_activity" ;
              rdfs:comment "A relation between a Record and an Activity that acts upon the Record."@en ;
              rdfs:label "has Activity"@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#hasAgent
 :hasAgent rdf:type owl:ObjectProperty ;
-          dc:source "https://www.w3.org/TR/prov-o/#p_agent" ;
+          dcterms:source "https://www.w3.org/TR/prov-o/#p_agent" ;
           rdfs:comment "A qualified relation between an Agent and a Change Event defined through an Association."@en ;
           rdfs:label "has Agent"@en .
 
@@ -326,7 +331,7 @@ skos:example rdf:type owl:AnnotationProperty .
 
 ###  http://linked.data.gov.au/def/agrif#wasAssociatedWith
 :wasAssociatedWith rdf:type owl:ObjectProperty ;
-                   dc:source "https://www.w3.org/TR/prov-o/#wasAssociatedWith" ;
+                   dcterms:source "https://www.w3.org/TR/prov-o/#wasAssociatedWith" ;
                    rdfs:comment "A relation that assigns responsibility of an Agent for an Activity or Change Event."@en ;
                    rdfs:label "was Associated With"@en .
 
@@ -338,7 +343,7 @@ skos:example rdf:type owl:AnnotationProperty .
 ###  http://linked.data.gov.au/def/agrif#checksum
 :checksum rdf:type owl:DatatypeProperty ;
           rdfs:range xsd:float ;
-          dc:source "A checksum is a small-sized datum derived from a block of digital data representing a Record for the purpose of detecting errors during the transfer or storage of a Record."@en .
+          dcterms:source "A checksum is a small-sized datum derived from a block of digital data representing a Record for the purpose of detecting errors during the transfer or storage of a Record."@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#disposalClassNumber
@@ -350,7 +355,7 @@ skos:example rdf:type owl:AnnotationProperty .
 ###  http://linked.data.gov.au/def/agrif#endedAtTime
 :endedAtTime rdf:type owl:DatatypeProperty ;
              rdfs:range xsd:dateTime ;
-             dc:source "https://www.w3.org/TR/prov-o/#endedAtTime" ;
+             dcterms:source "https://www.w3.org/TR/prov-o/#endedAtTime" ;
              rdfs:comment "The time at which an Activity ended."@en .
 
 
@@ -366,7 +371,7 @@ skos:example rdf:type owl:AnnotationProperty .
 
 ###  http://linked.data.gov.au/def/agrif#format
 :format rdf:type owl:DatatypeProperty ;
-        dc:source "http://purl.org/dc/elements/1.1/format" ;
+        dcterms:source "http://purl.org/dc/elements/1.1/format" ;
         rdfs:comment "The file format, physical medium, or dimensions of the resource."@en .
 
 
@@ -460,7 +465,7 @@ skos:example rdf:type owl:AnnotationProperty .
                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onDataRange xsd:dateTime
                           ] ;
-          dc:source "https://www.w3.org/TR/prov-o/#Activity" ;
+          dcterms:source "https://www.w3.org/TR/prov-o/#Activity" ;
           rdfs:comment "An Activity is something that occurs over a period of time on a Record."@en ;
           rdfs:label "Activity"@en .
 
@@ -486,7 +491,7 @@ skos:example rdf:type owl:AnnotationProperty .
                          owl:onProperty :positionIn ;
                          owl:someValuesFrom :Organisation
                        ] ;
-       dc:source "https://www.w3.org/TR/prov-o/#Agent" ;
+       dcterms:source "https://www.w3.org/TR/prov-o/#Agent" ;
        rdfs:comment "An Agent is a corporate entity, organisational element or system, or individual responsible for the performance of some Activity or Event, including those on Records."@en ;
        rdfs:label "Agent"@en .
 
@@ -531,7 +536,7 @@ skos:example rdf:type owl:AnnotationProperty .
                                owl:onProperty :hasAgent ;
                                owl:allValuesFrom :Agent
                              ] ;
-             dc:source "https://www.w3.org/TR/prov-o/#Association" ;
+             dcterms:source "https://www.w3.org/TR/prov-o/#Association" ;
              rdfs:comment "An Association is a qualified assignment of responsibility to an Agent in an Activity or Event, indicating that the Agent had a Role in the Activity."@en ;
              rdfs:label "Association"@en .
 
@@ -721,7 +726,7 @@ skos:example rdf:type owl:AnnotationProperty .
                          owl:onProperty :triggeredBy ;
                          owl:allValuesFrom :Trigger
                        ] ;
-       dc:source "https://www.w3.org/TR/prov-o/#InstantaneousEvent" ;
+       dcterms:source "https://www.w3.org/TR/prov-o/#InstantaneousEvent" ;
        rdfs:comment "An Event denotes an instantaneous transition in the world."@en ;
        rdfs:label "Event"@en .
 
@@ -829,7 +834,7 @@ skos:example rdf:type owl:AnnotationProperty .
                                 owl:onProperty :associatedFunction ;
                                 owl:someValuesFrom :Function
                               ] ;
-              dc:source "https://www.w3.org/TR/prov-o/#Organization" ;
+              dcterms:source "https://www.w3.org/TR/prov-o/#Organization" ;
               rdfs:comment "An Organisation is a type of Agent that denotes a social or legal institution such as a government agency, a corporation, society, etc."@en ;
               rdfs:label "Organisation"@en .
 
@@ -847,7 +852,7 @@ skos:example rdf:type owl:AnnotationProperty .
 
 ###  http://linked.data.gov.au/def/agrif#Permission
 :Permission rdf:type owl:Class ;
-            dc:source "Australian Government Recordkeeping Metadata Standard"@en ;
+            dcterms:source "Australian Government Recordkeeping Metadata Standard"@en ;
             rdfs:comment "A Permission denotes the Security Clearance of an Agent that determines its access and use rights to Records."@en ;
             rdfs:label "Permission"@en .
 
@@ -855,7 +860,7 @@ skos:example rdf:type owl:AnnotationProperty .
 ###  http://linked.data.gov.au/def/agrif#Person
 :Person rdf:type owl:Class ;
         rdfs:subClassOf :Agent ;
-        dc:source "https://www.w3.org/TR/prov-o/#Person" ;
+        dcterms:source "https://www.w3.org/TR/prov-o/#Person" ;
         rdfs:comment "A Person is an Agent that denotes a human."@en ;
         rdfs:label "Person"@en .
 
@@ -881,7 +886,7 @@ skos:example rdf:type owl:AnnotationProperty .
 
 ###  http://linked.data.gov.au/def/agrif#Policy
 :Policy rdf:type owl:Class ;
-        dc:source "http://purl.org/dc/terms/Policy" ;
+        dcterms:source "http://purl.org/dc/terms/Policy" ;
         rdfs:comment "A Policy is a deliberate system of principles to guide decisions and achieve rational outcomes."@en ;
         rdfs:label "Policy"@en .
 
@@ -995,7 +1000,7 @@ skos:example rdf:type owl:AnnotationProperty .
                                           owl:onProperty :hasDisposalClass ;
                                           owl:allValuesFrom :DisposalClass
                                         ] ;
-                        dc:source "Australian Government Recordkeeping Metadata Standard"@en ;
+                        dcterms:source "Australian Government Recordkeeping Metadata Standard"@en ;
                         rdfs:comment "A Records Authority Disposal Class Policy is a Policy that identifies the specific disposal class that authorises the retention or destruction of a Record."@en ;
                         rdfs:label "Records Authority Disposal Class Policy"@en .
 
@@ -1022,7 +1027,7 @@ skos:example rdf:type owl:AnnotationProperty .
                         owl:onProperty :hasPermission ;
                         owl:someValuesFrom :Permission
                       ] ;
-      dc:source "https://www.w3.org/TR/prov-o/#Role" ;
+      dcterms:source "https://www.w3.org/TR/prov-o/#Role" ;
       rdfs:comment "A Role is the function of an entity or agent with respect to an Activity or Event, in the context of a usage, generation, invalidation, association, start, and end."@en ;
       rdfs:label "Role"@en .
 
@@ -1030,7 +1035,7 @@ skos:example rdf:type owl:AnnotationProperty .
 ###  http://linked.data.gov.au/def/agrif#SecurityClassification
 :SecurityClassification rdf:type owl:Class ;
                         rdfs:subClassOf :AccessControl ;
-                        dc:source "Australian Government Recordkeeping Metadata Standard"@en ;
+                        dcterms:source "Australian Government Recordkeeping Metadata Standard"@en ;
                         rdfs:comment "A Security Classification denotes the security status of a Record that an Agent needs to possess to access the Record."@en ;
                         rdfs:label "Security Classification"@en .
 
@@ -1154,17 +1159,6 @@ skos:example rdf:type owl:AnnotationProperty .
 #    Individuals
 #################################################################
 
-###  http://linked.data.gov.au
-<http://linked.data.gov.au> rdf:type owl:NamedIndividual .
-
-
-###  http://orcid.org/0000-0002-8742-7730
-<http://orcid.org/0000-0002-8742-7730> rdf:type owl:NamedIndividual .
-
-
-###  http://linked.data.gov.au/def/agrif
-<http://linked.data.gov.au/def/agrif> rdf:type owl:NamedIndividual .
-
 
 ###  http://linked.data.gov.au/def/agrif#Active
 :Active rdf:type owl:NamedIndividual ,
@@ -1246,10 +1240,6 @@ skos:example rdf:type owl:AnnotationProperty .
 :Unclassified rdf:type owl:NamedIndividual ,
                        :SecurityClassification ;
               rdfs:label "Unclassified"@en .
-
-
-###  https://creativecommons.org/licenses/by/4.0/
-<https://creativecommons.org/licenses/by/4.0/> rdf:type owl:NamedIndividual .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

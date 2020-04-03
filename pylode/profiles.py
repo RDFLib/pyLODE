@@ -61,7 +61,19 @@ RDF_MEDIA_TYPES = ['text/turtle', 'application/rdf+xml', 'application/ld+json', 
 
 HTML_MEDIA_TYPE = "text/html"
 
-SKOS = Profile(
+OWL_PROFILE = Profile(
+    "https://www.w3.org/TR/owl2-rdf-based-semantics/",
+    "Web Ontology Language (OWL)",
+    "The OWL 2 Web Ontology Language, informally OWL 2, is an ontology language for the Semantic Web with formally "
+    "defined meaning. OWL 2 ontologies provide classes, properties, individuals, and data values and are stored as "
+    "Semantic Web documents.",
+    [HTML_MEDIA_TYPE, "text/markdown"],
+    HTML_MEDIA_TYPE,
+    languages=["en"],
+    default_language="en"
+)
+
+SKOS_PROFILE = Profile(
     "https://www.w3.org/TR/skos-reference/",
     "Simple Knowledge Organization System (SKOS)",
     "A common data model for sharing and linking knowledge organization systems, such as thesauri, taxonomies, "
@@ -73,14 +85,3 @@ SKOS = Profile(
     is_profile_of=["https://www.w3.org/TR/owl2-rdf-based-semantics/"]
 )
 
-OWL = Profile(
-    "https://www.w3.org/TR/owl2-rdf-based-semantics/",
-    "Web Ontology Language (OWL)",
-    "The OWL 2 Web Ontology Language, informally OWL 2, is an ontology language for the Semantic Web with formally "
-    "defined meaning. OWL 2 ontologies provide classes, properties, individuals, and data values and are stored as "
-    "Semantic Web documents.",
-    [HTML_MEDIA_TYPE, "text/markdown"],
-    HTML_MEDIA_TYPE,
-    languages=["en"],
-    default_language="en"
-)
