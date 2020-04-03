@@ -3,6 +3,7 @@
 This file defines a Profile class that describes the representation of input ontologies that pyLODE can express and it
 lists the specific Profiles that pyLODE supports.
 """
+from enum import Enum
 
 
 class Profile:
@@ -56,6 +57,9 @@ class Profile:
         self.default_language = default_language
         self.is_profile_of = is_profile_of
 
+    def __str__(self):
+        return self.uri
+
 
 RDF_MEDIA_TYPES = ['text/turtle', 'application/rdf+xml', 'application/ld+json', 'text/n3', 'application/n-triples']
 
@@ -85,3 +89,25 @@ SKOS_PROFILE = Profile(
     is_profile_of=["https://www.w3.org/TR/owl2-rdf-based-semantics/"]
 )
 
+MOD_PROFILE = Profile(
+    "http://www.isibang.ac.in/ns/mod#MetadataForOntologyDescriptionAndPublication",
+    "Metadata for Ontology Description and Publication (MOD)",
+    "To describe the vocabularies, e.g., ontology, classification, metadata, etc.",
+    RDF_MEDIA_TYPES + [HTML_MEDIA_TYPE, "text/markdown"],
+    HTML_MEDIA_TYPE,
+    languages=["en"],
+    default_language="en",
+    is_profile_of=["https://www.w3.org/TR/owl2-rdf-based-semantics/", "http://purl.org/dc/terms/"]
+)
+
+
+PROFILES = {
+    "owl": OWL_PROFILE,
+    # "skos": SKOS_PROFILE,
+    # "mod": MOD_PROFILE
+}
+
+
+if __name__ == "__main__":
+    for k, v in PROFILES.items():
+        print(k)

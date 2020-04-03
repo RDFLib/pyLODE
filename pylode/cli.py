@@ -116,8 +116,7 @@ def main(args):
     args = parser.parse_args()
 
     if args.listprofiles:
-        for k, v in MakeDocco.list_profiles().items():
-            print("{}: {}".format(k, v))
+        print(MakeDocco.list_profiles())
         exit()
     elif args.inputfile or args.url:
         # args are present so getting RDF from input file or uri into an rdflid Graph

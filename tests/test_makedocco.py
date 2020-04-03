@@ -33,7 +33,7 @@ def test__expand_graph_for_pylode():
 
     # should add a single rdfs:label for the single dcterms:title
     # and a rdf:Property for the owl:ObjectProperty
-    m._expand_graph_for_pylode()
+    m._expand_graph_for_owl()
 
     assert len(m.G) == 9, "Error loading ontology after expansion. Should have 9 triples, got {}".format(len(g))
 

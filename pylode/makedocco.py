@@ -9,7 +9,7 @@ from jinja2 import Environment, FileSystemLoader
 from rdflib import plugin
 from rdflib.plugin import register, Serializer
 from rdflib_jsonld import serializer
-from profiles import OWL_PROFILE, SKOS_PROFILE
+from profiles import PROFILES
 
 register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
@@ -43,10 +43,11 @@ class MakeDocco:
 
     @classmethod
     def list_profiles(cls):
-        return {
-            "owl": OWL_PROFILE.uri,
-            # "skos": SKOS_PROFILE.uri
-        }
+        s = ""
+        for k, v in PROFILES.items():
+            s += "{}: {}\n".format(k, v)
+
+        return s
 
     @classmethod
     def is_supported_profile(cls, profile_key):
@@ -60,7 +61,7 @@ class MakeDocco:
         else:
             return False
 
-    def _expand_graph_for_pylode(self):
+    def _expand_graph_for_owl(self):
         # name
         for s, o in self.G.subject_objects(predicate=DC.title):
             self.G.add((s, RDFS.label, o))
@@ -101,6 +102,47 @@ class MakeDocco:
         # owl:Restrictions from Blank Nodes
         for s in self.G.subjects(predicate=OWL.onProperty):
             self.G.add((s, RDF.type, OWL.Restriction))
+
+    def _expand_graph_for_skos(self):
+        # name
+        for s, o in self.G.subject_objects(predicate=DC.title):
+            self.G.add((s, RDFS.label, o))
+
+        for s, o in self.G.subject_objects(predicate=DCTERMS.title):
+            self.G.add((s, RDFS.label, o))
+
+        for s, o in self.G.subject_objects(predicate=SKOS.prefLabel):
+            self.G.add((s, RDFS.label, o))
+
+        # description
+        for s, o in self.G.subject_objects(predicate=DC.description):
+            self.G.add((s, RDFS.comment, o))
+
+        for s, o in self.G.subject_objects(predicate=DCTERMS.description):
+            self.G.add((s, RDFS.comment, o))
+
+        for s, o in self.G.subject_objects(predicate=SKOS.definition):
+            self.G.add((s, RDFS.comment, o))
+
+        # classes as Concepts types
+        for s in self.G.subjects(predicate=RDF.type, object=RDFS.Class):
+            self.G.add((s, RDF.type, SKOS.Concept))
+
+        for s in self.G.subjects(predicate=RDF.type, object=OWL.Class):
+            self.G.add((s, RDF.type, SKOS.Concept))
+
+        # SKOS Concept Hierarchy from Class subsumption
+        for s, o in self.G.subject_objects(predicate=RDFS.subClassOf):
+            self.G.add((s, SKOS.narrower, o))
+            self.G.add((o, SKOS.broader, s))
+
+        for s, o in self.G.subject_objects(predicate=OWL.equivalentClass):
+            self.G.add((s, SKOS.exactMatch, o))
+            self.G.add((o, SKOS.exactMatch, s))
+
+        # the ontology is now a ConceptScheme
+        for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
+            self.G.add((s, RDF.type, SKOS.ConceptScheme))
 
     def _extract_properties_uris(self):
         properties = []
@@ -1489,8 +1531,12 @@ class MakeDocco:
         )
 
     def document(self, source_info, exclude_css=False):
-        # add some extra triples to the graph for easier querying
-        self._expand_graph_for_pylode()
+        # build the triples needed for profiles of things
+        if self.profile_selected == "skos":
+            self._expand_graph_for_skos()
+        else:
+            self._expand_graph_for_owl()
+
         # get the IDs (URIs) of all properties -> self.PROPERTIES
         self._extract_properties_uris()
         # get the IDs (URIs) of all classes -> CLASSES
