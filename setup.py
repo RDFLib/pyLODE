@@ -29,7 +29,7 @@ setup(
     name='pyLODE',
     packages=['pylode'],
     package_dir={'pylode': 'pylode'},
-    package_data={'pylode': ['templates/*.html', 'style/*.css']},
+    package_data={'pylode': ['templates/*.html', 'templates/*.md', 'style/*.css']},
     version=version,
     description='An OWL ontology documentation tool using Python and templating, based on LODE.',
     author='Nicholas Car',
