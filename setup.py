@@ -5,7 +5,6 @@ import re
 import os
 from setuptools import setup
 
-
 def open_local(paths, mode='r', encoding='utf8'):
     path = os.path.join(
         os.path.abspath(os.path.dirname(__file__)),
@@ -13,8 +12,7 @@ def open_local(paths, mode='r', encoding='utf8'):
     )
     return codecs.open(path, mode, encoding)
 
-
-with open_local(['src', 'pyLODE', '__init__.py'], encoding='latin1') as fp:
+with open_local(['pylode', '__init__.py'], encoding='latin1') as fp:
     try:
         version = re.findall(r"^__version__ = '([^']+)'\r?$",
                              fp.read(), re.M)[0]
@@ -30,8 +28,8 @@ with open_local(['requirements.txt']) as req:
 setup(
     name='pyLODE',
     packages=['pylode'],
-    package_dir={'pylode': 'src/pylode'},
-    package_data={'pylode': ['templates/*.html']},
+    package_dir={'pylode': 'pylode'},
+    package_data={'pylode': ['templates/*.html', 'templates/*.md', 'style/*.css']},
     version=version,
     description='An OWL ontology documentation tool using Python and templating, based on LODE.',
     author='Nicholas Car',
@@ -41,6 +39,11 @@ setup(
     license='LICENSE',
     keywords=['Semantic Web', 'OWL', 'ontology', 'template', 'Jinja2', 'documentation'],
     long_description=long_description,
+    entry_points={
+        'console_scripts': [
+            'pylode = pylode.cli:main',
+        ]
+    },
     classifiers=[
         'Development Status :: 4 - Beta',
         'Topic :: Utilities',

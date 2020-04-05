@@ -4,8 +4,7 @@ from os import path
 import shutil
 import requests
 import rdflib
-from makedocco import MakeDocco
-
+from pylode.makedocco import MakeDocco
 
 # used to know what RDF file types rdflib can handle
 RDF_FILE_EXTENSIONS = [".rdf", ".owl", ".ttl", ".n3", ".nt", ".json"]
@@ -43,7 +42,7 @@ class RdfGraphError(Exception):
     pass
 
 
-def main(args):
+def main(args=None):
     # read the input ontology file into a graph
     parser = argparse.ArgumentParser()
     overarching_group = parser.add_mutually_exclusive_group()
