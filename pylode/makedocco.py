@@ -51,15 +51,12 @@ class MakeDocco:
 
     @classmethod
     def is_supported_profile(cls, profile_key):
-        supported_keys = []
-        for k, v in MakeDocco.list_profiles().items():
-            supported_keys.append(k)
-            supported_keys.append(v)
+        is_supported = False
+        for k, v in PROFILES.items():
+            if profile_key == k or profile_key == v.uri:
+                is_supported = True
 
-        if profile_key in supported_keys:
-            return True
-        else:
-            return False
+        return is_supported
 
     def _expand_graph_for_owl(self):
         # name
@@ -700,7 +697,7 @@ class MakeDocco:
         #
         # return y
 
-    def _extract_metadata(self):
+    def _extract_metadata_for_owl(self):
         if len(self.CLASSES.keys()) > 0:
             self.METADATA["has_classes"] = True
 
@@ -856,6 +853,26 @@ class MakeDocco:
                 "Your RDF file does not define an ontology. "
                 "It must contains a declaration such as <...> rdf:type owl:Ontology ."
             )
+
+    def _extract_concept_scheme_for_skos(self):
+        """Extracts standard SKOS ConceptScheme metadata
+
+        Will interpret an owl:Ontology as a skos:ConceptScheme if run against an OWL document
+        """
+
+        pass
+
+    def _extract_concepts_for_skos(self):
+        """Extracts standard SKOS Concepts and their metadata
+
+        Will interpret an owl:Class and rdfs:Class instances as skos:Concepts if run against an OWL document
+        """
+
+        pass
+
+    def _extract_collections_for_skos(self):
+        """Extracts standard SKOS Collection metadata"""
+        pass
 
     def _make_title_from_uri(self, uri):
         # can't tolerate any URI faults so return None if anything is wrong
@@ -1537,183 +1554,189 @@ class MakeDocco:
         else:
             self._expand_graph_for_owl()
 
-        # get the IDs (URIs) of all properties -> self.PROPERTIES
-        self._extract_properties_uris()
-        # get the IDs (URIs) of all classes -> CLASSES
-        self._extract_classes_uris()
-        # get all the namespaces using several methods
-        self._extract_namespaces()
-        # get all the properties' details
-        self._extract_properties()
-        # get all the classes' details
-        self._extract_classes()
-        # get the ontology's metadata
-        self._extract_metadata()
-        # get the default namespace
-        self._get_default_namespace()
-        # create fragment URIs for default namespace classes & properties
-        # for each CURIE, if it's in the default namespace, i.e. this ontology, use its fragment URI
+        if self.profile_selected == "skos":
+            # self._extract_concept_scheme_for_skos()
+            # self._extract_concepts_for_skos()
+            # self._extract_collections_for_skos()
+            pass
+        else:
+            # get the IDs (URIs) of all properties -> self.PROPERTIES
+            self._extract_properties_uris()
+            # get the IDs (URIs) of all classes -> CLASSES
+            self._extract_classes_uris()
+            # get all the namespaces using several methods
+            self._extract_namespaces()
+            # get all the properties' details
+            self._extract_properties()
+            # get all the classes' details
+            self._extract_classes()
+            # get the ontology's metadata
+            self._extract_metadata_for_owl()
+            # get the default namespace
+            self._get_default_namespace()
+            # create fragment URIs for default namespace classes & properties
+            # for each CURIE, if it's in the default namespace, i.e. this ontology, use its fragment URI
 
-        for uri, prop in self.PROPERTIES.items():
-            html = []
-            for p in prop["supers"]:
-                prop_type = (
-                    self.PROPERTIES.get(p).get("prop_type")
-                    if self.PROPERTIES.get(p)
-                    else None
-                )
-                html.append(self._make_uri_html(p, type=prop_type))
-            self.PROPERTIES[uri]["supers"] = html
+            for uri, prop in self.PROPERTIES.items():
+                html = []
+                for p in prop["supers"]:
+                    prop_type = (
+                        self.PROPERTIES.get(p).get("prop_type")
+                        if self.PROPERTIES.get(p)
+                        else None
+                    )
+                    html.append(self._make_uri_html(p, type=prop_type))
+                self.PROPERTIES[uri]["supers"] = html
 
-            html = []
-            for p in prop["subs"]:
-                prop_type = (
-                    self.PROPERTIES.get(p).get("prop_type")
-                    if self.PROPERTIES.get(p)
-                    else None
-                )
-                html.append(self._make_uri_html(p, type=prop_type))
-            self.PROPERTIES[uri]["subs"] = html
+                html = []
+                for p in prop["subs"]:
+                    prop_type = (
+                        self.PROPERTIES.get(p).get("prop_type")
+                        if self.PROPERTIES.get(p)
+                        else None
+                    )
+                    html.append(self._make_uri_html(p, type=prop_type))
+                self.PROPERTIES[uri]["subs"] = html
 
-            html = []
-            for p in prop["equivs"]:
-                prop_type = (
-                    self.PROPERTIES.get(p).get("prop_type")
-                    if self.PROPERTIES.get(p)
-                    else None
-                )
-                html.append(self._make_uri_html(p, type=prop_type))
-            self.PROPERTIES[uri]["equivs"] = html
+                html = []
+                for p in prop["equivs"]:
+                    prop_type = (
+                        self.PROPERTIES.get(p).get("prop_type")
+                        if self.PROPERTIES.get(p)
+                        else None
+                    )
+                    html.append(self._make_uri_html(p, type=prop_type))
+                self.PROPERTIES[uri]["equivs"] = html
 
-            html = []
-            for p in prop["invs"]:
-                prop_type = (
-                    self.PROPERTIES.get(p).get("prop_type")
-                    if self.PROPERTIES.get(p)
-                    else None
-                )
-                html.append(self._make_uri_html(p, type=prop_type))
-            self.PROPERTIES[uri]["invs"] = html
+                html = []
+                for p in prop["invs"]:
+                    prop_type = (
+                        self.PROPERTIES.get(p).get("prop_type")
+                        if self.PROPERTIES.get(p)
+                        else None
+                    )
+                    html.append(self._make_uri_html(p, type=prop_type))
+                self.PROPERTIES[uri]["invs"] = html
 
-            html = []
-            for d in prop["domains"]:
-                if type(d) == tuple:
-                    html.append(self._make_collection_class_html(d[0], d[1]))
-                else:
-                    html.append(self._make_uri_html(d, type="c"))
-            self.PROPERTIES[uri]["domains"] = html
+                html = []
+                for d in prop["domains"]:
+                    if type(d) == tuple:
+                        html.append(self._make_collection_class_html(d[0], d[1]))
+                    else:
+                        html.append(self._make_uri_html(d, type="c"))
+                self.PROPERTIES[uri]["domains"] = html
 
-            html = []
-            for d in prop["domainIncludes"]:
-                if type(d) == tuple:
-                    for m in d[1]:
-                        html.append(self._make_uri_html(m, type="c"))
-                else:
-                    html.append(self._make_uri_html(d, type="c"))
-            self.PROPERTIES[uri]["domainIncludes"] = html
+                html = []
+                for d in prop["domainIncludes"]:
+                    if type(d) == tuple:
+                        for m in d[1]:
+                            html.append(self._make_uri_html(m, type="c"))
+                    else:
+                        html.append(self._make_uri_html(d, type="c"))
+                self.PROPERTIES[uri]["domainIncludes"] = html
 
-            html = []
-            for d in prop["ranges"]:
-                if type(d) == tuple:
-                    for m in d[1]:
-                        html.append(self._make_uri_html(m, type="c"))
-                else:
-                    html.append(self._make_uri_html(d, type="c"))
-            self.PROPERTIES[uri]["ranges"] = html
+                html = []
+                for d in prop["ranges"]:
+                    if type(d) == tuple:
+                        for m in d[1]:
+                            html.append(self._make_uri_html(m, type="c"))
+                    else:
+                        html.append(self._make_uri_html(d, type="c"))
+                self.PROPERTIES[uri]["ranges"] = html
 
-            html = []
-            for d in prop["rangeIncludes"]:
-                if type(d) == tuple:
-                    for m in d[1]:
-                        html.append(self._make_uri_html(m, type="c"))
-                else:
-                    html.append(self._make_uri_html(d, type="c"))
-            self.PROPERTIES[uri]["rangeIncludes"] = html
+                html = []
+                for d in prop["rangeIncludes"]:
+                    if type(d) == tuple:
+                        for m in d[1]:
+                            html.append(self._make_uri_html(m, type="c"))
+                    else:
+                        html.append(self._make_uri_html(d, type="c"))
+                self.PROPERTIES[uri]["rangeIncludes"] = html
 
-        for uri, cls in self.CLASSES.items():
-            html = []
-            for d in cls["equivalents"]:
-                if type(d) == tuple:
-                    for m in d[1]:
-                        html.append(self._make_uri_html(m, type="c"))
-                else:
-                    html.append(self._make_uri_html(d, type="c"))
-            self.CLASSES[uri]["equivalents"] = html
+            for uri, cls in self.CLASSES.items():
+                html = []
+                for d in cls["equivalents"]:
+                    if type(d) == tuple:
+                        for m in d[1]:
+                            html.append(self._make_uri_html(m, type="c"))
+                    else:
+                        html.append(self._make_uri_html(d, type="c"))
+                self.CLASSES[uri]["equivalents"] = html
 
-            html = []
-            for d in cls["supers"]:
-                if type(d) == tuple:
-                    html.append(self._make_collection_class_html(d[0], d[1]))
-                else:
-                    html.append(self._make_uri_html(d, type="c"))
-            self.CLASSES[uri]["supers"] = html
+                html = []
+                for d in cls["supers"]:
+                    if type(d) == tuple:
+                        html.append(self._make_collection_class_html(d[0], d[1]))
+                    else:
+                        html.append(self._make_uri_html(d, type="c"))
+                self.CLASSES[uri]["supers"] = html
 
-            html = []
-            for d in cls["restrictions"]:
-                html.append(self._make_restriction_html(uri, d))
-            self.CLASSES[uri]["restrictions"] = html
+                html = []
+                for d in cls["restrictions"]:
+                    html.append(self._make_restriction_html(uri, d))
+                self.CLASSES[uri]["restrictions"] = html
 
-            html = []
-            for d in cls["subs"]:
-                if type(d) == tuple:
-                    for m in d[1]:
-                        html.append(self._make_uri_html(m, type="c"))
-                else:
-                    html.append(self._make_uri_html(d, type="c"))
-            self.CLASSES[uri]["subs"] = html
+                html = []
+                for d in cls["subs"]:
+                    if type(d) == tuple:
+                        for m in d[1]:
+                            html.append(self._make_uri_html(m, type="c"))
+                    else:
+                        html.append(self._make_uri_html(d, type="c"))
+                self.CLASSES[uri]["subs"] = html
 
-            html = []
-            for p in cls["in_domain_of"]:
-                prop_type = (
-                    self.PROPERTIES.get(p).get("prop_type")
-                    if self.PROPERTIES.get(p)
-                    else None
-                )
-                html.append(self._make_uri_html(p, type=prop_type))
-            self.CLASSES[uri]["in_domain_of"] = html
+                html = []
+                for p in cls["in_domain_of"]:
+                    prop_type = (
+                        self.PROPERTIES.get(p).get("prop_type")
+                        if self.PROPERTIES.get(p)
+                        else None
+                    )
+                    html.append(self._make_uri_html(p, type=prop_type))
+                self.CLASSES[uri]["in_domain_of"] = html
 
-            html = []
-            for p in cls["in_domain_includes_of"]:
-                prop_type = (
-                    self.PROPERTIES.get(p).get("prop_type")
-                    if self.PROPERTIES.get(p)
-                    else None
-                )
-                html.append(self._make_uri_html(p, type=prop_type))
-            self.CLASSES[uri]["in_domain_includes_of"] = html
+                html = []
+                for p in cls["in_domain_includes_of"]:
+                    prop_type = (
+                        self.PROPERTIES.get(p).get("prop_type")
+                        if self.PROPERTIES.get(p)
+                        else None
+                    )
+                    html.append(self._make_uri_html(p, type=prop_type))
+                self.CLASSES[uri]["in_domain_includes_of"] = html
 
-            html = []
-            for p in cls["in_range_of"]:
-                prop_type = (
-                    self.PROPERTIES.get(p).get("prop_type")
-                    if self.PROPERTIES.get(p)
-                    else None
-                )
-                html.append(self._make_uri_html(p, type=prop_type))
-            self.CLASSES[uri]["in_range_of"] = html
+                html = []
+                for p in cls["in_range_of"]:
+                    prop_type = (
+                        self.PROPERTIES.get(p).get("prop_type")
+                        if self.PROPERTIES.get(p)
+                        else None
+                    )
+                    html.append(self._make_uri_html(p, type=prop_type))
+                self.CLASSES[uri]["in_range_of"] = html
 
-            html = []
-            for p in cls["in_range_includes_of"]:
-                prop_type = (
-                    self.PROPERTIES.get(p).get("prop_type")
-                    if self.PROPERTIES.get(p)
-                    else None
-                )
-                html.append(self._make_uri_html(p, type=prop_type))
-            self.CLASSES[uri]["in_range_includes_of"] = html
+                html = []
+                for p in cls["in_range_includes_of"]:
+                    prop_type = (
+                        self.PROPERTIES.get(p).get("prop_type")
+                        if self.PROPERTIES.get(p)
+                        else None
+                    )
+                    html.append(self._make_uri_html(p, type=prop_type))
+                self.CLASSES[uri]["in_range_includes_of"] = html
 
-        metadata = self._make_metadata(source_info, outputformat=self.outputformat)
-        classes = self._make_classes(outputformat=self.outputformat)
-        properties = self._make_properties(outputformat=self.outputformat)
-        namespaces = self._make_namespaces(outputformat=self.outputformat)
+            metadata = self._make_metadata(source_info, outputformat=self.outputformat)
+            classes = self._make_classes(outputformat=self.outputformat)
+            properties = self._make_properties(outputformat=self.outputformat)
+            namespaces = self._make_namespaces(outputformat=self.outputformat)
 
-        return self._make_document(
-            self.METADATA["title"],
-            metadata,
-            classes,
-            properties,
-            self.METADATA["default_namespace"],
-            namespaces,
-            outputformat=self.outputformat,
-            exclude_css=exclude_css,
-        )
+            return self._make_document(
+                self.METADATA["title"],
+                metadata,
+                classes,
+                properties,
+                self.METADATA["default_namespace"],
+                namespaces,
+                outputformat=self.outputformat,
+                exclude_css=exclude_css,
+            )
