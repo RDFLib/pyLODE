@@ -1,5 +1,5 @@
 []({{ fid }})
-### {{ title }} <sup>{{ property_type }}</sup>
+### {{ title }}
 Property | Value
 --- | ---
 IRI | `{{ uri }}`
