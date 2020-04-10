@@ -5,6 +5,22 @@
                 <th>IRI</th>
                 <td><code>{{ uri }}</code></td>
             </tr>
+            {%- if is_defined_by is not none %}
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    {{ is_defined_by }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if source is not none %}
+            <tr>
+                <th>Source</th>
+                <td>
+                    {{ source }}
+                </td>
+            </tr>
+            {%- endif %}
             {%- if description is not none %}
             <tr>
                 <th>Description</th>

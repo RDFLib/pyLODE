@@ -234,6 +234,7 @@ class MakeDocco:
             self.PROPERTIES[prop]["scopeNote"] = None
             self.PROPERTIES[prop]["example"] = None
             self.PROPERTIES[prop]["isDefinedBy"] = None
+            self.PROPERTIES[prop]["source"] = None
 
             for p, o in self.G.predicate_objects(subject=s):
                 if p == RDFS.label:
@@ -251,6 +252,12 @@ class MakeDocco:
 
                 if p == RDFS.isDefinedBy:
                     self.PROPERTIES[prop]["isDefinedBy"] = str(o)
+
+                if p == DCTERMS.source or p == DC.source:
+                    if str(o).startswith('http'):
+                        self.PROPERTIES[prop]["source"] = '<a href="{0}">{0}</a>'.format(str(o))
+                    else:
+                        self.PROPERTIES[prop]["source"] = str(o)
 
             # patch title from URI if we haven't got one
             if self.PROPERTIES[prop]["title"] is None:
@@ -487,6 +494,7 @@ class MakeDocco:
             self.CLASSES[cls]["scopeNote"] = None
             self.CLASSES[cls]["example"] = None
             self.CLASSES[cls]["isDefinedBy"] = None
+            self.CLASSES[cls]["source"] = None
 
             for p, o in self.G.predicate_objects(subject=s):
                 if p == RDFS.label:
@@ -503,6 +511,12 @@ class MakeDocco:
 
                 if p == RDFS.isDefinedBy:
                     self.CLASSES[cls]["isDefinedBy"] = str(o)
+
+                if p == DCTERMS.source or p == DC.source:
+                    if str(o).startswith('http'):
+                        self.CLASSES[cls]["source"] = '<a href="{0}">{0}</a>'.format(str(o))
+                    else:
+                        self.CLASSES[cls]["source"] = str(o)
 
             # patch title from URI if we haven;t got one
             if self.CLASSES[cls]["title"] is None:
@@ -1177,6 +1191,8 @@ class MakeDocco:
             description=property[1].get("description"),
             scopeNote=property[1].get("scopeNote"),
             example=property[1].get("example"),
+            is_defined_by=property[1].get("isDefinedBy"),
+            source=property[1].get("source"),
             supers=property[1].get("supers"),
             subs=property[1].get("subs"),
             equivs=property[1].get("equivs"),
@@ -1265,6 +1281,7 @@ class MakeDocco:
         ).get_template("class." + template_file_ext)
         classes_list = []
         for k, v in self.CLASSES.items():
+            print(v["source"])
             classes_list.append(
                 class_template.render(
                     uri=k,
@@ -1275,6 +1292,8 @@ class MakeDocco:
                     restrictions=v["restrictions"],
                     scopeNote=v["scopeNote"],
                     example=v["example"],
+                    is_defined_by=v["isDefinedBy"],
+                    source=v["source"],
                     subs=v["subs"],
                     in_domain_of=v["in_domain_of"],
                     in_domain_includes_of=v["in_domain_includes_of"],
