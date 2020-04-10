@@ -1,6 +1,7 @@
 {{ metadata|safe }}
 {{ classes|safe }}
 {{ properties|safe }}
+{{ named_individuals|safe }}
 {{ namespaces|safe }}
 
 ## Legend

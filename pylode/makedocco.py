@@ -1,5 +1,5 @@
 from rdflib import Graph, RDF, RDFS, OWL, Namespace
-from rdflib.namespace import SKOS, DC, DCTERMS, FOAF, DOAP, XSD
+from rdflib.namespace import SKOS, DC, DCTERMS, FOAF, DOAP, SDO, XSD
 from rdflib.term import URIRef, Literal, BNode
 from os import path
 import requests
@@ -27,6 +27,7 @@ class MakeDocco:
         self.APP_DIR = path.dirname(path.realpath(__file__))
         self.CLASSES = collections.OrderedDict()
         self.PROPERTIES = collections.OrderedDict()
+        self.NAMED_INDIVIDUALS = collections.OrderedDict()
         self.NAMESPACES = collections.OrderedDict()
         self.FIDS = {}
         self.METADATA = {}
@@ -58,109 +59,9 @@ class MakeDocco:
 
         return is_supported
 
-    def _expand_graph_for_owl(self):
-        # name
-        for s, o in self.G.subject_objects(predicate=DC.title):
-            self.G.add((s, RDFS.label, o))
-
-        for s, o in self.G.subject_objects(predicate=DCTERMS.title):
-            self.G.add((s, RDFS.label, o))
-
-        for s, o in self.G.subject_objects(predicate=SKOS.prefLabel):
-            self.G.add((s, RDFS.label, o))
-
-        # description
-        for s, o in self.G.subject_objects(predicate=DC.description):
-            self.G.add((s, RDFS.comment, o))
-
-        for s, o in self.G.subject_objects(predicate=DCTERMS.description):
-            self.G.add((s, RDFS.comment, o))
-
-        for s, o in self.G.subject_objects(predicate=SKOS.definition):
-            self.G.add((s, RDFS.comment, o))
-
-        # property types
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.ObjectProperty):
-            self.G.add((s, RDF.type, RDF.Property))
-
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.FunctionalProperty):
-            self.G.add((s, RDF.type, RDF.Property))
-
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.DatatypeProperty):
-            self.G.add((s, RDF.type, RDF.Property))
-
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.AnnotationProperty):
-            self.G.add((s, RDF.type, RDF.Property))
-
-        # class types
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.Class):
-            self.G.add((s, RDF.type, RDFS.Class))
-
-        # owl:Restrictions from Blank Nodes
-        for s in self.G.subjects(predicate=OWL.onProperty):
-            self.G.add((s, RDF.type, OWL.Restriction))
-
-    def _expand_graph_for_skos(self):
-        # name
-        for s, o in self.G.subject_objects(predicate=DC.title):
-            self.G.add((s, SKOS.prefLabel, o))
-
-        for s, o in self.G.subject_objects(predicate=RDFS.label):
-            self.G.add((s, SKOS.prefLabel, o))
-
-        for s, o in self.G.subject_objects(predicate=DCTERMS.title):
-            self.G.add((s, SKOS.prefLabel, o))
-
-        # description
-        for s, o in self.G.subject_objects(predicate=DC.description):
-            self.G.add((s, RDFS.comment, o))
-
-        for s, o in self.G.subject_objects(predicate=DCTERMS.description):
-            self.G.add((s, RDFS.comment, o))
-
-        for s, o in self.G.subject_objects(predicate=SKOS.definition):
-            self.G.add((s, RDFS.comment, o))
-
-        # classes as Concepts types
-        for s in self.G.subjects(predicate=RDF.type, object=RDFS.Class):
-            self.G.add((s, RDF.type, SKOS.Concept))
-
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.Class):
-            self.G.add((s, RDF.type, SKOS.Concept))
-
-        # SKOS Concept Hierarchy from Class subsumption
-        for s, o in self.G.subject_objects(predicate=RDFS.subClassOf):
-            self.G.add((s, SKOS.narrower, o))
-            self.G.add((o, SKOS.broader, s))
-
-        for s, o in self.G.subject_objects(predicate=OWL.equivalentClass):
-            self.G.add((s, SKOS.exactMatch, o))
-            self.G.add((o, SKOS.exactMatch, s))
-
-        # the ontology is now a ConceptScheme
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
-            self.G.add((s, RDF.type, SKOS.ConceptScheme))
-
-    def _extract_properties_uris(self):
-        properties = []
-        for s in self.G.subjects(predicate=RDF.type, object=RDF.Property):
-            properties.append(str(s))
-
-        for p in sorted(properties):
-            self.PROPERTIES[p] = {}
-
-    def _extract_classes_uris(self):
-        classes = []
-        for s in self.G.subjects(predicate=RDF.type, object=RDFS.Class):
-            # ignore blank nodes for things like [ owl:unionOf ( ... ) ]
-            if type(s) == BNode:
-                pass
-            else:
-                classes.append(str(s))
-
-        for p in sorted(classes):
-            self.CLASSES[p] = {}
-
+    #
+    #   Item utilities
+    #
     def _get_namespace_from_uri(self, uri):
         # split on hash
         segments = uri.split("#")
@@ -275,9 +176,292 @@ class MakeDocco:
             else:
                 self.NAMESPACES[v] = k
 
+    def _make_title_from_uri(self, uri):
+        # can't tolerate any URI faults so return None if anything is wrong
+
+        # URIs with no path segments or ending in slash
+        segments = uri.split("/")
+        if len(segments[-1]) < 1:
+            return None
+
+        # URIs with only a domain - no path segments
+        if len(segments) < 4:
+            return None
+
+        # URIs ending in hash
+        if segments[-1].endswith("#"):
+            return None
+
+        return (
+            segments[-1].split("#")[-1]
+            if segments[-1].split("#")[-1] != ""
+            else segments[-1].split("#")[-2]
+        )
+
+    # makes the fragment ID for a class, property, Named Individual (any entity) based on URI or name
+    def _make_fid(self, title, uri):
+        # does this URI already have a fid?
+        existing_fid = self.FIDS.get(uri)
+        if existing_fid is not None:
+            return existing_fid
+
+        # no, so make one
+        def _remove_non_ascii_chars(s):
+            return "".join(j for j in s if ord(j) < 128)
+
+        # try creating an ID from label
+        # lowercase, remove spaces, escape all non-ASCII chars
+        if title is not None:
+            fid = _remove_non_ascii_chars(title.replace(" ", ""))
+
+            # do not return fid if it's already in use
+            if fid not in self.FIDS.values():
+                self.FIDS[uri] = fid
+                return fid
+
+        # this fid is already present so generate a new one from the URI instead
+
+        # split URI for last slash segment
+        segments = uri.split("/")
+        # return None for empty string - URI ends in slash
+        if len(segments[-1]) < 1:
+            return None
+
+        # return None for domains, i.e. ['http:', '', '{domain}'] - no path segments
+        if len(segments) < 4:
+            return None
+
+        # split out hash URIs
+        # remove any training hashes
+        if segments[-1].endswith("#"):
+            return None
+
+        fid = (
+            segments[-1].split("#")[-1]
+            if segments[-1].split("#")[-1] != ""
+            else segments[-1].split("#")[-2]
+        )
+        # fid = fid.lower()
+
+        # do not return fid if it's already in use
+        if fid not in self.FIDS.values():
+            self.FIDS[uri] = fid
+            return fid
+        else:
+            # since it's in use but we've exhausted generation options, just add 1 to existing fid name
+            self.FIDS[uri] = fid + "1"
+            return fid + "1"  # yeah yeah, there could be more than one but unlikely
+
+    def _get_default_namespace(self):
+        self.METADATA["default_namespace"] = None
+
+        # if this ontology declares a preferred URI, use that
+        if self.METADATA.get("preferredNamespaceUri"):
+            self.METADATA["default_namespace"] = self.METADATA.get(
+                "preferredNamespaceUri"
+            )
+
+        # if not, try the URI of the ontology compared to all prefixes
+        for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
+            ont_uri = str(s)
+        for k, v in self.NAMESPACES.items():
+            # i.e. the ontology URI is the same as the default namespace + / or #
+            if v == ont_uri + "/" or v == ont_uri + "#":
+                self.METADATA["default_namespace"] = v
+
+        if self.NAMESPACES.get("") is not None:
+            del self.NAMESPACES[""]
+
+    def _get_curie(self, uri):
+        n = self._get_namespace_from_uri(str(uri))
+        for k, v in self.NAMESPACES.items():
+            if v == n or v.strip("/#") == n:
+                if k == ":":
+                    return "{}".format(self._get_uri_id(uri))
+                else:
+                    return "{}:{}".format(k, self._get_uri_id(uri))
+
+        # if no match, return the original URI
+        return uri
+
+    def _get_uri_id(self, uri):
+        # split on hash
+        segments = uri.split("#")
+        if len(segments) == 2:
+            return segments[1]
+        else:
+            return uri.split("/")[-1]  # could return None if URI ends in /
+
+    def _make_agent_link(self, name, url=None, email=None):
+        if url is not None and email is not None:
+            agent = '<a href="{0}">{1}</a> (<a href="mailto:{2}">{2}</a>)'.format(
+                url, name, email.replace("mailto:", "")
+            )
+        elif url is not None and email is None:
+            agent = '<a href="{0}">{1}</a>'.format(url, name)
+        elif url is None and email is not None:
+            agent = '<a href="{0}">{1}</a>'.format(email.split("/")[-1], name)
+        elif url is not None:
+            agent = '<a href="{}">{}</a>'.format(url, name)
+        else:
+            agent = name
+
+        return agent
+
+    def _make_source_file_link(self, source_info):
+        return '<a href="{}">RDF ({})</a>'.format(
+            source_info[0].split("/")[-1], source_info[1]
+        )
+
+    #
+    #   All profiles
+    #
+    def _make_namespaces(self, outputformat="html"):
+        if outputformat == "md":
+            template_file_ext = "md"
+        else:
+            template_file_ext = "html"
+
+        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
+        namespaces_template = Environment(
+            loader=FileSystemLoader(template_dir)
+        ).get_template("namespaces." + template_file_ext)
+        return namespaces_template.render(
+            namespaces=self.NAMESPACES,
+            default_namespace=self.METADATA["default_namespace"],
+        )
+
+    def _make_schemaorg_metadata(self):
+        uri = URIRef(self.METADATA.get("uri"))
+        name = Literal(self.METADATA.get("title"))
+        publishers = ""
+        creators = ""
+        if self.METADATA.get("created") is not None:
+            date_created = Literal(self.METADATA.get("created"), datatype=XSD.date)
+        if self.METADATA.get("modified") is not None:
+            date_modified = Literal(self.METADATA.get("modified"), datatype=XSD.date)
+        if self.METADATA.get("description") is not None:
+            description = Literal(self.METADATA.get("description"))
+        if self.METADATA.get("license") is not None:
+            license = URIRef(self.METADATA.get("license").split('>')[1].split('<')[0])
+        else:
+            license = None
+        if self.METADATA.get("rights") is not None:
+            rights = Literal(self.METADATA.get("rights"))
+        copyright_holder = ""
+        if self.METADATA.get("created") is not None:
+            copyright_year = Literal(
+                self.METADATA.get("created").split("-")[0], datatype=XSD.int
+            )
+        if self.METADATA.get("repository") is not None:
+            repository = URIRef(self.METADATA.get("repository"))
+
+        """
+        @prefix sdo: <https://schema.org/> .
+        @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+        <http://linked.data.gov.au/def/crs> a sdo:DigitalDocument ;
+            sdo:name "CRS Ontology" ;
+            sdo:publisher <http://catalogue.linked.data.gov.au/org/naa> ;
+            sdo:creator [
+                sdo:name "Nicholas J. Car" ;
+                sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+                sdo:email <nicholas.car@csiro.au> ;
+                sdo:memberOf [
+                    sdo:name "CSIRO" ;
+                    sdo:identifier <http://catalogue.linked.data.gov.au/org/csiro> ;
+                ] ;
+            ] ;
+            sdo:date_created "2018-09-10"^^xsd:date ;
+            sdo:date_modified "2019-05-31"^^xsd:date ;
+            sdo:license <https://creativecommons.org/licenses/by/4.0/> ;
+
+            sdo:copyrightHolder <http://catalogue.linked.data.gov.au/org/naa> ;
+            sdo:copyright_year "2019"^^xsd:gYear ;
+            sdo:encodingFormat <https://w3id.org/mediatype/text/html> ;
+        .
+
+        <http://catalogue.linked.data.gov.au/org/naa>
+            a sdo:Organization ;
+            sdo:name "National Archives of Australia" ;
+            sdo:identifier <http://catalogue.linked.data.gov.au/org/naa> ;
+        .        
+        """
+        g = Graph()
+        SDO = Namespace("https://schema.org/")
+        g.bind("sdo", SDO)
+        g.bind("xsd", XSD)
+
+        g.add((uri, RDF.type, SDO.DefinedTermSet))
+        g.add((uri, SDO.name, name))
+        # g.add((uri, SDO.publishers, SDO.DigitalDocument))
+        # g.add((uri, SDO.creators, SDO.DigitalDocument))
+        if self.METADATA.get("date_created") is not None:
+            g.add((uri, SDO.dateCreated, date_created))
+        if self.METADATA.get("date_modified") is not None:
+            g.add((uri, SDO.dateModified, date_modified))
+        if self.METADATA.get("description") is not None:
+            g.add((uri, SDO.description, description))
+        if license is not None:
+            g.add((uri, SDO.license, license))
+        if self.METADATA.get("rights") is not None:
+            g.add((uri, SDO.rights, rights))
+        # g.add((uri, SDO.copyrightHolder, copyrightHolder))
+        if self.METADATA.get("copyright_year") is not None:
+            g.add((uri, SDO.copyrightYear, copyright_year))
+        if self.METADATA.get("repository") is not None:
+            g.add((uri, SDO.codeRepository, repository))
+
+        return g.serialize(format="json-ld").decode("utf-8")
+
     #
     #   OWL
     #
+    def _expand_graph_for_owl(self):
+        # name
+        for s, o in self.G.subject_objects(predicate=DC.title):
+            self.G.add((s, RDFS.label, o))
+
+        for s, o in self.G.subject_objects(predicate=DCTERMS.title):
+            self.G.add((s, RDFS.label, o))
+
+        for s, o in self.G.subject_objects(predicate=SKOS.prefLabel):
+            self.G.add((s, RDFS.label, o))
+
+        for s, o in self.G.subject_objects(predicate=SDO.name):
+            self.G.add((s, RDFS.label, o))
+
+        # description
+        for s, o in self.G.subject_objects(predicate=DC.description):
+            self.G.add((s, RDFS.comment, o))
+
+        for s, o in self.G.subject_objects(predicate=DCTERMS.description):
+            self.G.add((s, RDFS.comment, o))
+
+        for s, o in self.G.subject_objects(predicate=SKOS.definition):
+            self.G.add((s, RDFS.comment, o))
+
+        # property types
+        for s in self.G.subjects(predicate=RDF.type, object=OWL.ObjectProperty):
+            self.G.add((s, RDF.type, RDF.Property))
+
+        for s in self.G.subjects(predicate=RDF.type, object=OWL.FunctionalProperty):
+            self.G.add((s, RDF.type, RDF.Property))
+
+        for s in self.G.subjects(predicate=RDF.type, object=OWL.DatatypeProperty):
+            self.G.add((s, RDF.type, RDF.Property))
+
+        for s in self.G.subjects(predicate=RDF.type, object=OWL.AnnotationProperty):
+            self.G.add((s, RDF.type, RDF.Property))
+
+        # class types
+        for s in self.G.subjects(predicate=RDF.type, object=OWL.Class):
+            self.G.add((s, RDF.type, RDFS.Class))
+
+        # owl:Restrictions from Blank Nodes
+        for s in self.G.subjects(predicate=OWL.onProperty):
+            self.G.add((s, RDF.type, OWL.Restriction))
+
     def _extract_metadata_for_owl(self):
         if len(self.CLASSES.keys()) > 0:
             self.METADATA["has_classes"] = True
@@ -287,6 +471,9 @@ class MakeDocco:
         self.METADATA["has_dps"] = False
         self.METADATA["has_aps"] = False
         self.METADATA["has_ps"] = False
+
+        if len(self.NAMED_INDIVIDUALS.keys()) > 0:
+            self.METADATA["has_nis"] = True
 
         for k, v in self.PROPERTIES.items():
             if v.get("prop_type") == "op":
@@ -341,7 +528,7 @@ class MakeDocco:
 
                 if p == DCTERMS.source:
                     if str(o).startswith('http'):
-                        self.METADATA["source"] = '<a href="{0}">{0}</a>'.format(str(o))
+                        self.METADATA["source"] = self._make_uri_html(o)  # '<a href="{0}">{0}</a>'.format(str(o))
                     else:
                         self.METADATA["source"] = str(o)
 
@@ -435,6 +622,18 @@ class MakeDocco:
                 "It must contains a declaration such as <...> rdf:type owl:Ontology ."
             )
 
+    def _extract_classes_uris(self):
+        classes = []
+        for s in self.G.subjects(predicate=RDF.type, object=RDFS.Class):
+            # ignore blank nodes for things like [ owl:unionOf ( ... ) ]
+            if type(s) == BNode:
+                pass
+            else:
+                classes.append(str(s))
+
+        for p in sorted(classes):
+            self.CLASSES[p] = {}
+
     def _extract_classes(self):
         for cls in self.CLASSES.keys():
             s = URIRef(cls)
@@ -467,11 +666,11 @@ class MakeDocco:
 
                 if p == DCTERMS.source or p == DC.source:
                     if str(o).startswith('http'):
-                        self.CLASSES[cls]["source"] = '<a href="{0}">{0}</a>'.format(str(o))
+                        self.CLASSES[cls]["source"] = self._make_uri_html(o)  # '<a href="{0}">{0}</a>'.format(str(o))
                     else:
                         self.CLASSES[cls]["source"] = str(o)
 
-            # patch title from URI if we haven;t got one
+            # patch title from URI if we haven't got one
             if self.CLASSES[cls]["title"] is None:
                 self.CLASSES[cls]["title"] = self._make_title_from_uri(cls)
 
@@ -603,6 +802,14 @@ class MakeDocco:
         #
         # return y
 
+    def _extract_properties_uris(self):
+        properties = []
+        for s in self.G.subjects(predicate=RDF.type, object=RDF.Property):
+            properties.append(str(s))
+
+        for p in sorted(properties):
+            self.PROPERTIES[p] = {}
+
     def _extract_properties(self):
         for prop in self.PROPERTIES.keys():
             s = URIRef(prop)
@@ -644,7 +851,7 @@ class MakeDocco:
 
                 if p == DCTERMS.source or p == DC.source:
                     if str(o).startswith('http'):
-                        self.PROPERTIES[prop]["source"] = '<a href="{0}">{0}</a>'.format(str(o))
+                        self.PROPERTIES[prop]["source"] = self._make_uri_html(o)  # '<a href="{0}">{0}</a>'.format(str(o))
                     else:
                         self.PROPERTIES[prop]["source"] = str(o)
 
@@ -871,9 +1078,347 @@ class MakeDocco:
         #
         # return y
 
+    def _extract_named_individuals_uris(self):
+        named_individuals = []
+        for s in self.G.subjects(predicate=RDF.type, object=OWL.NamedIndividual):
+            named_individuals.append(str(s))
+
+        for ni in sorted(named_individuals):
+            self.NAMED_INDIVIDUALS[ni] = {}
+
+    def _extract_named_individuals(self):
+        for ni in self.NAMED_INDIVIDUALS.keys():
+            if ni.startswith("http"):
+                s = URIRef(ni)
+            else:
+                s = BNode(ni)
+            # create Python dict for each NI
+            self.NAMED_INDIVIDUALS[ni] = {}
+
+            # basic NI properties
+            self.NAMED_INDIVIDUALS[ni]["classes"] = set()
+            self.NAMED_INDIVIDUALS[ni]["title"] = None
+            self.NAMED_INDIVIDUALS[ni]["description"] = None
+            self.NAMED_INDIVIDUALS[ni]["isDefinedBy"] = None
+            self.NAMED_INDIVIDUALS[ni]["source"] = None
+            self.NAMED_INDIVIDUALS[ni]["seeAlso"] = None
+            self.NAMED_INDIVIDUALS[ni]["sameAs"] = None
+
+            for p, o in self.G.predicate_objects(subject=s):
+                # list all the other classes of this NI
+                if p == RDF.type:
+                    if o != OWL.NamedIndividual:
+                        self.NAMED_INDIVIDUALS[ni]["classes"].add(self._make_uri_html(o))
+
+                if p == RDFS.label:
+                    self.NAMED_INDIVIDUALS[ni]["title"] = str(o)
+
+                if p == RDFS.comment:
+                    self.NAMED_INDIVIDUALS[ni]["description"] = str(o)
+
+                if p == RDFS.isDefinedBy:
+                    self.NAMED_INDIVIDUALS[ni]["isDefinedBy"] = str(o)
+
+                if p == DCTERMS.source or p == DC.source:
+                    if str(o).startswith('http'):
+                        self.NAMED_INDIVIDUALS[ni]["source"] = self._make_uri_html(o)  # '<a href="{0}">{0}</a>'.format(str(o))
+                    else:
+                        self.NAMED_INDIVIDUALS[ni]["source"] = str(o)
+
+                if p == RDFS.seeAlso:
+                    self.NAMED_INDIVIDUALS[ni]["seeAlso"] = self._make_uri_html(o)
+
+                if p == OWL.sameAs:
+                    self.NAMED_INDIVIDUALS[ni]["sameAs"] = self._make_uri_html(o)
+
+            # patch title from URI if we haven't got one
+            if self.NAMED_INDIVIDUALS[ni].get("title") is None:
+                self.NAMED_INDIVIDUALS[ni]["title"] = self._make_title_from_uri(ni)
+
+            # make fid
+            self.NAMED_INDIVIDUALS[ni]["fid"] = self._make_fid(self.NAMED_INDIVIDUALS[ni]["title"], ni)
+
+    def _make_metadata(self, source_info, outputformat="html"):
+        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
+        template = Environment(loader=FileSystemLoader(template_dir)).get_template(
+            "owl_metadata." + outputformat
+        )
+        return template.render(
+            imports=self.METADATA["imports"],
+            title=self.METADATA.get("title"),
+            uri=self.METADATA.get("uri"),
+            version_uri=self.METADATA.get("versionIRI"),
+            publishers=self.METADATA["publishers"],
+            creators=self.METADATA["creators"],
+            contributors=self.METADATA["contributors"],
+            created=self.METADATA.get("created"),  # TODO: auto-detect format
+            modified=self.METADATA.get("modified"),
+            issued=self.METADATA.get("issued"),
+            source=self.METADATA.get("source"),
+            description=self.METADATA.get("description"),
+            historyNote=self.METADATA.get("historyNote"),
+            version_info=self.METADATA.get("versionInfo"),
+            license=self.METADATA.get("license"),
+            rights=self.METADATA.get("rights"),
+            repository=self.METADATA.get("repository"),
+            ont_rdf=self._make_source_file_link(source_info),
+            has_classes=self.METADATA.get("has_classes"),
+            has_ops=self.METADATA.get("has_ops"),
+            has_fps=self.METADATA.get("has_fps"),
+            has_dps=self.METADATA.get("has_dps"),
+            has_aps=self.METADATA.get("has_aps"),
+            has_ps=self.METADATA.get("has_ps"),
+            has_nis=self.METADATA.get("has_nis"),
+        )
+
+    def _make_classes(self, outputformat="html"):
+        # make all Classes
+        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
+        class_template = Environment(
+            loader=FileSystemLoader(template_dir)
+        ).get_template("owl_class." + outputformat)
+        classes_list = []
+        for k, v in self.CLASSES.items():
+            classes_list.append(
+                class_template.render(
+                    uri=k,
+                    fid=v["fid"],
+                    title=v["title"],
+                    description=v["description"],
+                    supers=v["supers"],
+                    restrictions=v["restrictions"],
+                    scopeNote=v["scopeNote"],
+                    example=v["example"],
+                    is_defined_by=v["isDefinedBy"],
+                    source=v["source"],
+                    subs=v["subs"],
+                    in_domain_of=v["in_domain_of"],
+                    in_domain_includes_of=v["in_domain_includes_of"],
+                    in_range_of=v["in_range_of"],
+                    in_range_includes_of=v["in_range_includes_of"],
+                )
+            )
+
+        # make the template for all Classes
+        classes_template = Environment(
+            loader=FileSystemLoader(template_dir)
+        ).get_template("owl_classes." + outputformat)
+        # add in Class index
+        fids = sorted(
+            [(v.get("fid"), v.get("title")) for k, v in self.CLASSES.items()],
+            key=lambda tup: tup[1],
+        )
+        return classes_template.render(fids=fids, classes=classes_list, )
+
+    def _make_property(self, property, outputformat="html"):
+        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
+        template = Environment(loader=FileSystemLoader(template_dir)).get_template(
+            "owl_property." + outputformat
+        )
+
+        return template.render(
+            uri=property[0],
+            fid=property[1].get("fid"),
+            property_type=property[1].get("prop_type"),
+            title=property[1].get("title"),
+            description=property[1].get("description"),
+            scopeNote=property[1].get("scopeNote"),
+            example=property[1].get("example"),
+            is_defined_by=property[1].get("isDefinedBy"),
+            source=property[1].get("source"),
+            supers=property[1].get("supers"),
+            subs=property[1].get("subs"),
+            equivs=property[1].get("equivs"),
+            invs=property[1].get("invs"),
+            domains=property[1]["domains"],
+            domainIncludes=property[1]["domainIncludes"],
+            ranges=property[1]["ranges"],
+            rangeIncludes=property[1]["rangeIncludes"],
+        )
+
+    def _make_properties(self, outputformat="html"):
+        # make all properties, grouped by OWL type
+        op_instances = []
+        fp_instances = []
+        dp_instances = []
+        ap_instances = []
+        p_instances = []
+
+        for k, v in self.PROPERTIES.items():
+            if v.get("prop_type") == "op":
+                op_instances.append(
+                    (
+                        v["title"],
+                        v["fid"],
+                        self._make_property((k, v), outputformat=outputformat),
+                    )
+                )
+            elif v.get("prop_type") == "fp":
+                fp_instances.append(
+                    (
+                        v["title"],
+                        v["fid"],
+                        self._make_property((k, v), outputformat=outputformat),
+                    )
+                )
+            elif v.get("prop_type") == "dp":
+                dp_instances.append(
+                    (
+                        v["title"],
+                        v["fid"],
+                        self._make_property((k, v), outputformat=outputformat),
+                    )
+                )
+            elif v.get("prop_type") == "ap":
+                ap_instances.append(
+                    (
+                        v["title"],
+                        v["fid"],
+                        self._make_property((k, v), outputformat=outputformat),
+                    )
+                )
+            elif v.get("prop_type") == "p":
+                p_instances.append(
+                    (
+                        v["title"],
+                        v["fid"],
+                        self._make_property((k, v), outputformat=outputformat),
+                    )
+                )
+
+        # make the template for all properties
+        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
+        template = Environment(loader=FileSystemLoader(template_dir)).get_template(
+            "owl_properties." + outputformat
+        )
+
+        return template.render(
+            op_instances=op_instances,
+            fp_instances=fp_instances,
+            dp_instances=dp_instances,
+            ap_instances=ap_instances,
+            p_instances=p_instances,
+        )
+
+    def _make_named_individual(self, named_individual, outputformat="html"):
+        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
+        template = Environment(loader=FileSystemLoader(template_dir)).get_template(
+            "owl_named_individual." + outputformat
+        )
+
+        return template.render(
+            uri=named_individual[0],
+            fid=named_individual[1].get("fid"),
+            classes=named_individual[1].get("classes"),
+            title=named_individual[1].get("title"),
+            description=named_individual[1].get("description"),
+            is_defined_by=named_individual[1].get("isDefinedBy"),
+            source=named_individual[1].get("source"),
+            see_also=named_individual[1].get("seeAlso"),
+            same_as=named_individual[1].get("sameAs")
+        )
+
+    def _make_named_individuals(self, outputformat="html"):
+        # make all NIs
+        named_individuals_list = []
+        for k, v in self.NAMED_INDIVIDUALS.items():
+            named_individuals_list.append(
+                self._make_named_individual((k, v), outputformat=outputformat)
+            )
+
+        # make the template for all NIs
+        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
+        template = Environment(loader=FileSystemLoader(template_dir)).get_template(
+            "owl_named_individuals." + outputformat
+        )
+        # add in NIs index
+        fids = sorted(
+            [(v.get("fid"), v.get("title")) for k, v in self.NAMED_INDIVIDUALS.items()],
+            key=lambda tup: tup[1],
+        )
+        return template.render(fids=fids, named_individuals=named_individuals_list)
+
+    def _make_document_owl(
+        self,
+        title,
+        metadata,
+        classes,
+        properties,
+        named_individuals,
+        default_namespace,
+        namespaces,
+        outputformat="html",
+        exclude_css=False,
+    ):
+        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
+        document_template = Environment(
+            loader=FileSystemLoader(template_dir)
+        ).get_template("owl_document." + outputformat)
+
+        css = None
+        if outputformat == "html":
+            if not exclude_css:
+                pylode_css = path.join(
+                    path.dirname(path.realpath(__file__)), "style", "pylode.css"
+                )
+                css = open(pylode_css).read()
+
+        return document_template.render(
+            schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML templates
+            title=title,
+            metadata=metadata,
+            classes=classes,
+            properties=properties,
+            named_individuals=named_individuals,
+            default_namespace=default_namespace,
+            namespaces=namespaces,
+            css=css,
+        )
+
     #
     #   SKOS
     #
+    def _expand_graph_for_skos(self):
+        # name
+        for s, o in self.G.subject_objects(predicate=DC.title):
+            self.G.add((s, SKOS.prefLabel, o))
+
+        for s, o in self.G.subject_objects(predicate=RDFS.label):
+            self.G.add((s, SKOS.prefLabel, o))
+
+        for s, o in self.G.subject_objects(predicate=DCTERMS.title):
+            self.G.add((s, SKOS.prefLabel, o))
+
+        # description
+        for s, o in self.G.subject_objects(predicate=DC.description):
+            self.G.add((s, RDFS.comment, o))
+
+        for s, o in self.G.subject_objects(predicate=DCTERMS.description):
+            self.G.add((s, RDFS.comment, o))
+
+        for s, o in self.G.subject_objects(predicate=SKOS.definition):
+            self.G.add((s, RDFS.comment, o))
+
+        # classes as Concepts types
+        for s in self.G.subjects(predicate=RDF.type, object=RDFS.Class):
+            self.G.add((s, RDF.type, SKOS.Concept))
+
+        for s in self.G.subjects(predicate=RDF.type, object=OWL.Class):
+            self.G.add((s, RDF.type, SKOS.Concept))
+
+        # SKOS Concept Hierarchy from Class subsumption
+        for s, o in self.G.subject_objects(predicate=RDFS.subClassOf):
+            self.G.add((s, SKOS.narrower, o))
+            self.G.add((o, SKOS.broader, s))
+
+        for s, o in self.G.subject_objects(predicate=OWL.equivalentClass):
+            self.G.add((s, SKOS.exactMatch, o))
+            self.G.add((o, SKOS.exactMatch, s))
+
+        # the ontology is now a ConceptScheme
+        for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
+            self.G.add((s, RDF.type, SKOS.ConceptScheme))
+
     def _extract_concept_scheme_for_skos(self):
         """Extracts standard SKOS ConceptScheme metadata
 
@@ -909,102 +1454,6 @@ class MakeDocco:
             for p, o in self.G.predicate_objects(subject=s):
                 print(p, o)
 
-    def _make_title_from_uri(self, uri):
-        # can't tolerate any URI faults so return None if anything is wrong
-
-        # URIs with no path segments or ending in slash
-        segments = uri.split("/")
-        if len(segments[-1]) < 1:
-            return None
-
-        # URIs with only a domain - no path segments
-        if len(segments) < 4:
-            return None
-
-        # URIs ending in hash
-        if segments[-1].endswith("#"):
-            return None
-
-        return (
-            segments[-1].split("#")[-1]
-            if segments[-1].split("#")[-1] != ""
-            else segments[-1].split("#")[-2]
-        )
-
-    # makes the fragment ID for a class, property, Named Individual (any entity) based on URI or name
-    def _make_fid(self, title, uri):
-        # does this URI already have a fid?
-        existing_fid = self.FIDS.get(uri)
-        if existing_fid is not None:
-            return existing_fid
-
-        # no, so make one
-        def _remove_non_ascii_chars(s):
-            return "".join(j for j in s if ord(j) < 128)
-
-        # try creating an ID from label
-        # lowercase, remove spaces, escape all non-ASCII chars
-        if title is not None:
-            fid = _remove_non_ascii_chars(title.replace(" ", ""))
-
-            # do not return fid if it's already in use
-            if fid not in self.FIDS.values():
-                self.FIDS[uri] = fid
-                return fid
-
-        # this fid is already present so generate a new one from the URI instead
-
-        # split URI for last slash segment
-        segments = uri.split("/")
-        # return None for empty string - URI ends in slash
-        if len(segments[-1]) < 1:
-            return None
-
-        # return None for domains, i.e. ['http:', '', '{domain}'] - no path segments
-        if len(segments) < 4:
-            return None
-
-        # split out hash URIs
-        # remove any training hashes
-        if segments[-1].endswith("#"):
-            return None
-
-        fid = (
-            segments[-1].split("#")[-1]
-            if segments[-1].split("#")[-1] != ""
-            else segments[-1].split("#")[-2]
-        )
-        # fid = fid.lower()
-
-        # do not return fid if it's already in use
-        if fid not in self.FIDS.values():
-            self.FIDS[uri] = fid
-            return fid
-        else:
-            # since it's in use but we've exhausted generation options, just add 1 to existing fid name
-            self.FIDS[uri] = fid + "1"
-            return fid + "1"  # yeah yeah, there could be more than one but unlikely
-
-    def _get_default_namespace(self):
-        self.METADATA["default_namespace"] = None
-
-        # if this ontology declares a preferred URI, use that
-        if self.METADATA.get("preferredNamespaceUri"):
-            self.METADATA["default_namespace"] = self.METADATA.get(
-                "preferredNamespaceUri"
-            )
-
-        # if not, try the URI of the ontology compared to all prefixes
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
-            ont_uri = str(s)
-        for k, v in self.NAMESPACES.items():
-            # i.e. the ontology URI is the same as the default namespace + / or #
-            if v == ont_uri + "/" or v == ont_uri + "#":
-                self.METADATA["default_namespace"] = v
-
-        if self.NAMESPACES.get("") is not None:
-            del self.NAMESPACES[""]
-
     def _make_uri_html(self, uri, type=None):
         # set display to CURIE
         short = self._get_curie(uri)
@@ -1033,6 +1482,8 @@ class MakeDocco:
             return html + '<sup class="sup-dp" title="datatype property">dp</sup>'
         elif type == "ap":
             return html + '<sup class="sup-ap" title="annotation property">ap</sup>'
+        elif type == "ni":
+            return html + '<sup class="sup-ni" title="named individual">ni</sup>'
         else:
             return html
 
@@ -1180,42 +1631,6 @@ class MakeDocco:
 
         return restriction
 
-    def _get_curie(self, uri):
-        n = self._get_namespace_from_uri(str(uri))
-        for k, v in self.NAMESPACES.items():
-            if v == n or v.strip("/#") == n:
-                if k == ":":
-                    return "{}".format(self._get_uri_id(uri))
-                else:
-                    return "{}:{}".format(k, self._get_uri_id(uri))
-
-        # if no match, return the original URI
-        return uri
-
-    def _get_uri_id(self, uri):
-        # split on hash
-        segments = uri.split("#")
-        if len(segments) == 2:
-            return segments[1]
-        else:
-            return uri.split("/")[-1]  # could return None if URI ends in /
-
-    def _make_agent_link(self, name, url=None, email=None):
-        if url is not None and email is not None:
-            agent = '<a href="{0}">{1}</a> (<a href="mailto:{2}">{2}</a>)'.format(
-                url, name, email.replace("mailto:", "")
-            )
-        elif url is not None and email is None:
-            agent = '<a href="{0}">{1}</a>'.format(url, name)
-        elif url is None and email is not None:
-            agent = '<a href="{0}">{1}</a>'.format(email.split("/")[-1], name)
-        elif url is not None:
-            agent = '<a href="{}">{}</a>'.format(url, name)
-        else:
-            agent = name
-
-        return agent
-
     def _make_agent_html(self, agent_node):
         # we understand foaf:name, foaf:homepage & sdo:name & sdo:identifier & sdo:email (as a URI)
         # TODO: cater for other Agent representations
@@ -1252,7 +1667,7 @@ class MakeDocco:
                         or p2 == self.SDO2.identifier
                         or p2 == self.SDO.url
                         or p2 == self.SDO2.url
-                    ):  # TODO: split homepage form IDs, cater for rdfs:seeOther
+                    ):  # TODO: split homepage form IDs, cater for rdfs:seeAlso
                         org_url = str(o2)
                     elif p2 == FOAF.name or p2 == self.SDO.name or p2 == self.SDO2.name:
                         org_name = str(o2)
@@ -1269,271 +1684,6 @@ class MakeDocco:
 
         return agent
 
-    def _make_source_file_link(self, source_info):
-        return '<a href="{}">RDF ({})</a>'.format(
-            source_info[0].split("/")[-1], source_info[1]
-        )
-
-    def _make_property(self, property, outputformat="html"):
-        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
-        template = Environment(loader=FileSystemLoader(template_dir)).get_template(
-            "property." + outputformat
-        )
-
-        return template.render(
-            uri=property[0],
-            fid=property[1].get("fid"),
-            property_type=property[1].get("prop_type"),
-            title=property[1].get("title"),
-            description=property[1].get("description"),
-            scopeNote=property[1].get("scopeNote"),
-            example=property[1].get("example"),
-            is_defined_by=property[1].get("isDefinedBy"),
-            source=property[1].get("source"),
-            supers=property[1].get("supers"),
-            subs=property[1].get("subs"),
-            equivs=property[1].get("equivs"),
-            invs=property[1].get("invs"),
-            domains=property[1]["domains"],
-            domainIncludes=property[1]["domainIncludes"],
-            ranges=property[1]["ranges"],
-            rangeIncludes=property[1]["rangeIncludes"],
-        )
-
-    def _make_properties(self, outputformat="html"):
-        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
-        template = Environment(loader=FileSystemLoader(template_dir)).get_template(
-            "properties." + outputformat
-        )
-        op_instances = []
-        fp_instances = []
-        dp_instances = []
-        ap_instances = []
-        p_instances = []
-
-        for k, v in self.PROPERTIES.items():
-            if v.get("prop_type") == "op":
-                op_instances.append(
-                    (
-                        v["title"],
-                        v["fid"],
-                        self._make_property((k, v), outputformat=outputformat),
-                    )
-                )
-            elif v.get("prop_type") == "fp":
-                fp_instances.append(
-                    (
-                        v["title"],
-                        v["fid"],
-                        self._make_property((k, v), outputformat=outputformat),
-                    )
-                )
-            elif v.get("prop_type") == "dp":
-                dp_instances.append(
-                    (
-                        v["title"],
-                        v["fid"],
-                        self._make_property((k, v), outputformat=outputformat),
-                    )
-                )
-            elif v.get("prop_type") == "ap":
-                ap_instances.append(
-                    (
-                        v["title"],
-                        v["fid"],
-                        self._make_property((k, v), outputformat=outputformat),
-                    )
-                )
-            elif v.get("prop_type") == "p":
-                p_instances.append(
-                    (
-                        v["title"],
-                        v["fid"],
-                        self._make_property((k, v), outputformat=outputformat),
-                    )
-                )
-
-        return template.render(
-            op_instances=op_instances,
-            fp_instances=fp_instances,
-            dp_instances=dp_instances,
-            ap_instances=ap_instances,
-            p_instances=p_instances,
-        )
-
-    def _make_classes(self, outputformat="html"):
-        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
-        class_template = Environment(
-            loader=FileSystemLoader(template_dir)
-        ).get_template("class." + outputformat)
-        classes_list = []
-        for k, v in self.CLASSES.items():
-            print(v["source"])
-            classes_list.append(
-                class_template.render(
-                    uri=k,
-                    fid=v["fid"],
-                    title=v["title"],
-                    description=v["description"],
-                    supers=v["supers"],
-                    restrictions=v["restrictions"],
-                    scopeNote=v["scopeNote"],
-                    example=v["example"],
-                    is_defined_by=v["isDefinedBy"],
-                    source=v["source"],
-                    subs=v["subs"],
-                    in_domain_of=v["in_domain_of"],
-                    in_domain_includes_of=v["in_domain_includes_of"],
-                    in_range_of=v["in_range_of"],
-                    in_range_includes_of=v["in_range_includes_of"],
-                )
-            )
-
-        classes_template = Environment(
-            loader=FileSystemLoader(template_dir)
-        ).get_template("classes." + outputformat)
-        fids = sorted(
-            [(v.get("fid"), v.get("title")) for k, v in self.CLASSES.items()],
-            key=lambda tup: tup[1],
-        )
-        return classes_template.render(fids=fids, classes=classes_list,)
-
-    def _make_namespaces(self, outputformat="html"):
-        if outputformat == "md":
-            template_file_ext = "md"
-        else:
-            template_file_ext = "html"
-
-        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
-        namespaces_template = Environment(
-            loader=FileSystemLoader(template_dir)
-        ).get_template("namespaces." + template_file_ext)
-        return namespaces_template.render(
-            namespaces=self.NAMESPACES,
-            default_namespace=self.METADATA["default_namespace"],
-        )
-
-    def _make_schemaorg_metadata(self):
-        uri = URIRef(self.METADATA.get("uri"))
-        name = Literal(self.METADATA.get("title"))
-        publishers = ""
-        creators = ""
-        if self.METADATA.get("created") is not None:
-            date_created = Literal(self.METADATA.get("created"), datatype=XSD.date)
-        if self.METADATA.get("modified") is not None:
-            date_modified = Literal(self.METADATA.get("modified"), datatype=XSD.date)
-        if self.METADATA.get("description") is not None:
-            description = Literal(self.METADATA.get("description"))
-        if self.METADATA.get("license") is not None:
-            license = URIRef(self.METADATA.get("license").split('>')[1].split('<')[0])
-        else:
-            license = None
-        if self.METADATA.get("rights") is not None:
-            rights = Literal(self.METADATA.get("rights"))
-        copyright_holder = ""
-        if self.METADATA.get("created") is not None:
-            copyright_year = Literal(
-                self.METADATA.get("created").split("-")[0], datatype=XSD.int
-            )
-        if self.METADATA.get("repository") is not None:
-            repository = URIRef(self.METADATA.get("repository"))
-
-        """
-        @prefix sdo: <https://schema.org/> .
-        @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-        
-        <http://linked.data.gov.au/def/crs> a sdo:DigitalDocument ;
-            sdo:name "CRS Ontology" ;
-            sdo:publisher <http://catalogue.linked.data.gov.au/org/naa> ;
-            sdo:creator [
-                sdo:name "Nicholas J. Car" ;
-                sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
-                sdo:email <nicholas.car@csiro.au> ;
-                sdo:memberOf [
-                    sdo:name "CSIRO" ;
-                    sdo:identifier <http://catalogue.linked.data.gov.au/org/csiro> ;
-                ] ;
-            ] ;
-            sdo:date_created "2018-09-10"^^xsd:date ;
-            sdo:date_modified "2019-05-31"^^xsd:date ;
-            sdo:license <https://creativecommons.org/licenses/by/4.0/> ;
-        
-            sdo:copyrightHolder <http://catalogue.linked.data.gov.au/org/naa> ;
-            sdo:copyright_year "2019"^^xsd:gYear ;
-            sdo:encodingFormat <https://w3id.org/mediatype/text/html> ;
-        .
-        
-        <http://catalogue.linked.data.gov.au/org/naa>
-            a sdo:Organization ;
-            sdo:name "National Archives of Australia" ;
-            sdo:identifier <http://catalogue.linked.data.gov.au/org/naa> ;
-        .        
-        """
-        g = Graph()
-        SDO = Namespace("https://schema.org/")
-        g.bind("sdo", SDO)
-        g.bind("xsd", XSD)
-
-        g.add((uri, RDF.type, SDO.DefinedTermSet))
-        g.add((uri, SDO.name, name))
-        # g.add((uri, SDO.publishers, SDO.DigitalDocument))
-        # g.add((uri, SDO.creators, SDO.DigitalDocument))
-        if self.METADATA.get("date_created") is not None:
-            g.add((uri, SDO.dateCreated, date_created))
-        if self.METADATA.get("date_modified") is not None:
-            g.add((uri, SDO.dateModified, date_modified))
-        if self.METADATA.get("description") is not None:
-            g.add((uri, SDO.description, description))
-        if license is not None:
-            g.add((uri, SDO.license, license))
-        if self.METADATA.get("rights") is not None:
-            g.add((uri, SDO.rights, rights))
-        # g.add((uri, SDO.copyrightHolder, copyrightHolder))
-        if self.METADATA.get("copyright_year") is not None:
-            g.add((uri, SDO.copyrightYear, copyright_year))
-        if self.METADATA.get("repository") is not None:
-            g.add((uri, SDO.codeRepository, repository))
-
-        return g.serialize(format="json-ld").decode("utf-8")
-
-    def _make_metadata(self, source_info, outputformat="html"):
-        if outputformat == "md":
-            template_file_ext = "md"
-        else:
-            template_file_ext = "html"
-
-        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
-        template = Environment(loader=FileSystemLoader(template_dir)).get_template(
-            "metadata." + template_file_ext
-        )
-        return template.render(
-            imports=self.METADATA["imports"],
-            title=self.METADATA.get("title"),
-            uri=self.METADATA.get("uri"),
-            version_uri=self.METADATA.get("versionIRI"),
-            publishers=self.METADATA["publishers"],
-            creators=self.METADATA["creators"],
-            contributors=self.METADATA["contributors"],
-            created=self.METADATA.get("created"),  # TODO: auto-detect format
-            modified=self.METADATA.get("modified"),
-            issued=self.METADATA.get("issued"),
-            source=self.METADATA.get("source"),
-            description=self.METADATA.get("description"),
-            historyNote=self.METADATA.get("historyNote"),
-            version_info=self.METADATA.get("versionInfo"),
-            license=self.METADATA.get("license"),
-            rights=self.METADATA.get("rights"),
-            repository=self.METADATA.get("repository"),
-            ont_rdf=self._make_source_file_link(source_info),
-            has_classes=self.METADATA.get("has_classes"),
-            has_ops=self.METADATA.get("has_ops"),
-            has_fps=self.METADATA.get("has_fps"),
-            has_dps=self.METADATA.get("has_dps"),
-            has_aps=self.METADATA.get("has_aps"),
-            has_ps=self.METADATA.get("has_ps"),
-            has_nis=False,
-        )
-
     def _make_skos_concept_scheme(self):
         pass
 
@@ -1542,41 +1692,6 @@ class MakeDocco:
 
     def _make_skos_concepts(self):
         pass
-
-    def _make_document(
-        self,
-        title,
-        metadata,
-        classes,
-        properties,
-        default_namespace,
-        namespaces,
-        outputformat="html",
-        exclude_css=False,
-    ):
-        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
-        document_template = Environment(
-            loader=FileSystemLoader(template_dir)
-        ).get_template("document." + outputformat)
-
-        css = None
-        if outputformat == "html":
-            if not exclude_css:
-                pylode_css = path.join(
-                    path.dirname(path.realpath(__file__)), "style", "pylode.css"
-                )
-                css = open(pylode_css).read()
-
-        return document_template.render(
-            schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML template
-            title=title,
-            metadata=metadata,
-            classes=classes,
-            properties=properties,
-            default_namespace=default_namespace,
-            namespaces=namespaces,
-            css=css,
-        )
 
     def _make_document_skos(
             self,
@@ -1636,12 +1751,16 @@ class MakeDocco:
             self._extract_properties_uris()
             # get the IDs (URIs) of all classes -> CLASSES
             self._extract_classes_uris()
+            # get the IDs (URIs) of all Named Individuals -> NAMED_INDIVIDUALS
+            self._extract_named_individuals_uris()
             # get all the namespaces using several methods
             self._extract_namespaces()
             # get all the properties' details
             self._extract_properties()
             # get all the classes' details
             self._extract_classes()
+            # get all the Named Individuals' details
+            self._extract_named_individuals()
             # get the ontology's metadata
             self._extract_metadata_for_owl()
             # get the default namespace
@@ -1649,6 +1768,7 @@ class MakeDocco:
             # create fragment URIs for default namespace classes & properties
             # for each CURIE, if it's in the default namespace, i.e. this ontology, use its fragment URI
 
+            # crosslinking properties
             for uri, prop in self.PROPERTIES.items():
                 html = []
                 for p in prop["supers"]:
@@ -1725,6 +1845,7 @@ class MakeDocco:
                         html.append(self._make_uri_html(d, type="c"))
                 self.PROPERTIES[uri]["rangeIncludes"] = html
 
+            # crosslinking classes
             for uri, cls in self.CLASSES.items():
                 html = []
                 for d in cls["equivalents"]:
@@ -1801,11 +1922,12 @@ class MakeDocco:
                 "metadata": self._make_metadata(source_info, outputformat=self.outputformat),
                 "classes": self._make_classes(outputformat=self.outputformat),
                 "properties": self._make_properties(outputformat=self.outputformat),
+                "named_individuals": self._make_named_individuals(outputformat=self.outputformat),
                 "default_namespace": self.METADATA["default_namespace"],
                 "namespaces": self._make_namespaces(outputformat=self.outputformat)
             }
 
-        return self._make_document(
+        return self._make_document_owl(
             self.METADATA["title"],
             **elements,
             outputformat=self.outputformat,
