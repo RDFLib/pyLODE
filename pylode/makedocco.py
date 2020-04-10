@@ -275,6 +275,334 @@ class MakeDocco:
             else:
                 self.NAMESPACES[v] = k
 
+    #
+    #   OWL
+    #
+    def _extract_metadata_for_owl(self):
+        if len(self.CLASSES.keys()) > 0:
+            self.METADATA["has_classes"] = True
+
+        self.METADATA["has_ops"] = False
+        self.METADATA["has_fps"] = False
+        self.METADATA["has_dps"] = False
+        self.METADATA["has_aps"] = False
+        self.METADATA["has_ps"] = False
+
+        for k, v in self.PROPERTIES.items():
+            if v.get("prop_type") == "op":
+                self.METADATA["has_ops"] = True
+            if v.get("prop_type") == "fp":
+                self.METADATA["has_fps"] = True
+            if v.get("prop_type") == "dp":
+                self.METADATA["has_dps"] = True
+            if v.get("prop_type") == "ap":
+                self.METADATA["has_aps"] = True
+            if v.get("prop_type") == "p":
+                self.METADATA["has_ps"] = True
+
+        s_str = None
+        self.METADATA["imports"] = set()
+        self.METADATA["creators"] = set()
+        self.METADATA["contributors"] = set()
+        self.METADATA["publishers"] = set()
+        for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
+            s_str = str(s)  # this is the Ontology's URI
+            self.METADATA["uri"] = s_str
+
+            for p, o in self.G.predicate_objects(subject=s):
+                if p == OWL.imports:
+                    self.METADATA["imports"].add(self._make_uri_html(o))
+
+                if p == RDFS.label:
+                    self.METADATA["title"] = str(o)
+
+                if p == RDFS.comment:
+                    import markdown
+
+                    self.METADATA["description"] = markdown.markdown(str(o))
+
+                if p == SKOS.historyNote:
+                    self.METADATA["historyNote"] = str(o)
+
+                if p == DCTERMS.created:
+                    self.METADATA["created"] = dateutil.parser.parse(str(o)).strftime(
+                        "%Y-%m-%d"
+                    )
+
+                if p == DCTERMS.modified:
+                    self.METADATA["modified"] = dateutil.parser.parse(str(o)).strftime(
+                        "%Y-%m-%d"
+                    )
+
+                if p == DCTERMS.issued:
+                    self.METADATA["issued"] = dateutil.parser.parse(str(o)).strftime(
+                        "%Y-%m-%d"
+                    )
+
+                if p == DCTERMS.source:
+                    if str(o).startswith('http'):
+                        self.METADATA["source"] = '<a href="{0}">{0}</a>'.format(str(o))
+                    else:
+                        self.METADATA["source"] = str(o)
+
+                if p == OWL.versionIRI:
+                    self.METADATA["versionIRI"] = '<a href="{0}">{0}</a>'.format(str(o))
+
+                if p == OWL.versionInfo:
+                    self.METADATA["versionInfo"] = str(o)
+
+                if p == URIRef("http://purl.org/vocab/vann/preferredNamespacePrefix"):
+                    self.METADATA["preferredNamespacePrefix"] = str(o)
+
+                if p == URIRef("http://purl.org/vocab/vann/preferredNamespaceUri"):
+                    self.METADATA["preferredNamespaceUri"] = str(o)
+
+                if p == DCTERMS.license:
+                    self.METADATA["license"] = (
+                        '<a href="{0}">{0}</a>'.format(str(o))
+                        if str(o).startswith("http")
+                        else str(o)
+                    )
+
+                if p == DCTERMS.rights:
+                    self.METADATA["rights"] = (
+                        str(o)
+                        .replace("Copyright", "&copy;")
+                        .replace("copyright", "&copy;")
+                    )
+
+                # Agents
+                if p == DC.creator:
+                    if type(o) == URIRef:
+                        self.METADATA["creators"].add(
+                            '<a href="{0}">{0}</a>'.format(str(o))
+                        )
+                    else:
+                        self.METADATA["creators"].add(str(o))
+
+                if p == DCTERMS.creator:
+                    if type(o) == Literal:
+                        self.METADATA["creators"].add(str(o))
+                    else:  # Blank Node or URI
+                        self.METADATA["creators"].add(self._make_agent_html(o))
+
+                if p == DC.contributor:
+                    if type(o) == URIRef:
+                        self.METADATA["contributors"].add(
+                            '<a href="{0}">{0}</a>'.format(str(o))
+                        )
+                    else:
+                        self.METADATA["contributors"].add(str(o))
+
+                if p == DCTERMS.contributor:
+                    if type(o) == Literal:
+                        self.METADATA["contributors"].add(str(o))
+                    else:  # Blank Node or URI
+                        self.METADATA["contributors"].add(self._make_agent_html(o))
+
+                if p == DC.publisher:
+                    if type(o) == URIRef:
+                        self.METADATA["publishers"].add(
+                            '<a href="{0}">{0}</a>'.format(str(o))
+                        )
+                    else:
+                        self.METADATA["publishers"].add(str(o))
+
+                if p == DCTERMS.publisher:
+                    if type(o) == Literal:
+                        self.METADATA["publishers"].add(str(o))
+                    else:  # Blank Node or URI
+                        self.METADATA["publishers"].add(self._make_agent_html(o))
+
+                # TODO: cater for other Agent representations
+
+                if p == self.PROV.wasGeneratedBy:
+                    for o2 in self.G.objects(subject=o, predicate=DOAP.repository):
+                        self.METADATA["repository"] = str(o2)
+
+                if p == self.SDO.codeRepository:
+                    self.METADATA["repository"] = str(o)
+
+            if self.METADATA.get("title") is None:
+                raise ValueError(
+                    "Your ontology does not indicate any form of label or title. "
+                    "You must declare one of the following for your ontology: rdfs:label, dct:title, skos:prefLabel"
+                )
+
+        if s_str is None:
+            raise Exception(
+                "Your RDF file does not define an ontology. "
+                "It must contains a declaration such as <...> rdf:type owl:Ontology ."
+            )
+
+    def _extract_classes(self):
+        for cls in self.CLASSES.keys():
+            s = URIRef(cls)
+            # create Python dict for each class
+            self.CLASSES[cls] = {}
+
+            # basic class properties
+            self.CLASSES[cls]["title"] = None
+            self.CLASSES[cls]["description"] = None
+            self.CLASSES[cls]["scopeNote"] = None
+            self.CLASSES[cls]["example"] = None
+            self.CLASSES[cls]["isDefinedBy"] = None
+            self.CLASSES[cls]["source"] = None
+
+            for p, o in self.G.predicate_objects(subject=s):
+                if p == RDFS.label:
+                    self.CLASSES[cls]["title"] = str(o)
+
+                if p == RDFS.comment:
+                    self.CLASSES[cls]["description"] = str(o)
+
+                if p == SKOS.scopeNote:
+                    self.CLASSES[cls]["scopeNote"] = str(o)
+
+                if p == SKOS.example:
+                    self.CLASSES[cls]["example"] = str(o)
+
+                if p == RDFS.isDefinedBy:
+                    self.CLASSES[cls]["isDefinedBy"] = str(o)
+
+                if p == DCTERMS.source or p == DC.source:
+                    if str(o).startswith('http'):
+                        self.CLASSES[cls]["source"] = '<a href="{0}">{0}</a>'.format(str(o))
+                    else:
+                        self.CLASSES[cls]["source"] = str(o)
+
+            # patch title from URI if we haven;t got one
+            if self.CLASSES[cls]["title"] is None:
+                self.CLASSES[cls]["title"] = self._make_title_from_uri(cls)
+
+            # make fid
+            self.CLASSES[cls]["fid"] = self._make_fid(self.CLASSES[cls]["title"], cls)
+
+            # equivalent classes
+            equivalent_classes = []
+            for o in self.G.objects(subject=s, predicate=OWL.equivalentClass):
+                if type(o) != BNode:
+                    equivalent_classes.append(
+                        self._get_curie(str(o))
+                    )  # ranges that are just classes
+                else:
+                    # equivalent classes collections (unionOf | intersectionOf
+                    q = """
+                        PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+
+                        SELECT ?col_type ?col_member
+                        WHERE {{
+                            <{}> owl:equivalentClass ?eq .  
+                            ?eq owl:unionOf|owl:intersectionOf ?collection .
+                            ?eq ?col_type ?collection . 
+                            ?collection rdf:rest*/rdf:first ?col_member .              
+                        }} 
+                    """.format(
+                        s
+                    )
+                    collection_type = None
+                    collection_members = []
+                    for r in self.G.query(q):
+                        collection_type = self._get_curie(str(r.col_type))
+                        collection_members.append(self._get_curie(str(r.col_member)))
+                    equivalent_classes.append((collection_type, collection_members))
+            self.CLASSES[cls]["equivalents"] = equivalent_classes
+
+            # super classes
+            supers = []
+            restrictions = []
+            for o in self.G.objects(subject=s, predicate=RDFS.subClassOf):
+                if (o, RDF.type, OWL.Restriction) not in self.G:
+                    if type(o) != BNode:
+                        supers.append(str(o))  # supers that are just classes
+                    else:
+                        # super collections (unionOf | intersectionOf
+                        q = """
+                            PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+                            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+
+                            SELECT ?col_type ?col_member
+                            WHERE {{
+                                <{}> rdfs:subClassOf ?sup .  
+                                ?sup owl:unionOf|owl:intersectionOf ?collection .
+                                ?sup ?col_type ?collection . 
+                                ?collection rdf:rest*/rdf:first ?col_member .              
+                            }} 
+                        """.format(
+                            s
+                        )
+                        collection_type = None
+                        collection_members = []
+                        for r in self.G.query(q):
+                            collection_type = self._get_curie(str(r.col_type))
+                            collection_members.append(str(r.col_member))
+                        supers.append((collection_type, collection_members))
+                else:
+                    restrictions.append(o)
+
+            self.CLASSES[cls]["supers"] = supers
+            self.CLASSES[cls]["restrictions"] = restrictions
+
+            # sub classes
+            subs = []
+            for o in self.G.subjects(predicate=RDFS.subClassOf, object=s):
+                if type(o) != BNode:
+                    subs.append(str(o))
+                else:
+                    # sub classes collections (unionOf | intersectionOf
+                    q = """
+                        PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+
+                        SELECT ?col_type ?col_member
+                        WHERE {{
+                            ?sub rdfs:subClassOf <{}> . 
+                            ?sub owl:unionOf|owl:intersectionOf ?collection .
+                            ?sub ?col_type ?collection . 
+                            ?collection rdf:rest*/rdf:first ?col_member .              
+                        }} 
+                    """.format(
+                        s
+                    )
+                    collection_type = None
+                    collection_members = []
+                    for r in self.G.query(q):
+                        collection_type = self._get_curie(str(r.col_type))
+                        collection_members.append(self._get_curie(str(r.col_member)))
+                    subs.append((collection_type, collection_members))
+            self.CLASSES[cls]["subs"] = subs
+
+            in_domain_of = []
+            for o in self.G.subjects(predicate=RDFS.domain, object=s):
+                in_domain_of.append(str(o))
+            self.CLASSES[cls]["in_domain_of"] = in_domain_of
+
+            in_domain_includes_of = []
+            for o in self.G.subjects(predicate=self.SDO.domainIncludes, object=s):
+                in_domain_includes_of.append(str(o))
+            self.CLASSES[cls]["in_domain_includes_of"] = in_domain_includes_of
+
+            in_range_of = []
+            for o in self.G.subjects(predicate=RDFS.range, object=s):
+                in_range_of.append(str(o))
+            self.CLASSES[cls]["in_range_of"] = in_range_of
+
+            in_range_includes_of = []
+            for o in self.G.subjects(predicate=self.SDO.rangeIncludes, object=s):
+                in_range_includes_of.append(str(o))
+            self.CLASSES[cls]["in_range_includes_of"] = in_range_includes_of
+
+            # TODO: cater for Named Individuals of this class - "has members"
+
+        # # sort properties by title
+        # x = sorted([(k, v) for k, v in classes.items()], key=lambda tup: tup[1]['title'])
+        # y = collections.OrderedDict()
+        # for n in x:
+        #     y[n[0]] = n[1]
+        #
+        # return y
+
     def _extract_properties(self):
         for prop in self.PROPERTIES.keys():
             s = URIRef(prop)
@@ -543,331 +871,9 @@ class MakeDocco:
         #
         # return y
 
-    def _extract_classes(self):
-        for cls in self.CLASSES.keys():
-            s = URIRef(cls)
-            # create Python dict for each class
-            self.CLASSES[cls] = {}
-
-            # basic class properties
-            self.CLASSES[cls]["title"] = None
-            self.CLASSES[cls]["description"] = None
-            self.CLASSES[cls]["scopeNote"] = None
-            self.CLASSES[cls]["example"] = None
-            self.CLASSES[cls]["isDefinedBy"] = None
-            self.CLASSES[cls]["source"] = None
-
-            for p, o in self.G.predicate_objects(subject=s):
-                if p == RDFS.label:
-                    self.CLASSES[cls]["title"] = str(o)
-
-                if p == RDFS.comment:
-                    self.CLASSES[cls]["description"] = str(o)
-
-                if p == SKOS.scopeNote:
-                    self.CLASSES[cls]["scopeNote"] = str(o)
-
-                if p == SKOS.example:
-                    self.CLASSES[cls]["example"] = str(o)
-
-                if p == RDFS.isDefinedBy:
-                    self.CLASSES[cls]["isDefinedBy"] = str(o)
-
-                if p == DCTERMS.source or p == DC.source:
-                    if str(o).startswith('http'):
-                        self.CLASSES[cls]["source"] = '<a href="{0}">{0}</a>'.format(str(o))
-                    else:
-                        self.CLASSES[cls]["source"] = str(o)
-
-            # patch title from URI if we haven;t got one
-            if self.CLASSES[cls]["title"] is None:
-                self.CLASSES[cls]["title"] = self._make_title_from_uri(cls)
-
-            # make fid
-            self.CLASSES[cls]["fid"] = self._make_fid(self.CLASSES[cls]["title"], cls)
-
-            # equivalent classes
-            equivalent_classes = []
-            for o in self.G.objects(subject=s, predicate=OWL.equivalentClass):
-                if type(o) != BNode:
-                    equivalent_classes.append(
-                        self._get_curie(str(o))
-                    )  # ranges that are just classes
-                else:
-                    # equivalent classes collections (unionOf | intersectionOf
-                    q = """
-                        PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
-    
-                        SELECT ?col_type ?col_member
-                        WHERE {{
-                            <{}> owl:equivalentClass ?eq .  
-                            ?eq owl:unionOf|owl:intersectionOf ?collection .
-                            ?eq ?col_type ?collection . 
-                            ?collection rdf:rest*/rdf:first ?col_member .              
-                        }} 
-                    """.format(
-                        s
-                    )
-                    collection_type = None
-                    collection_members = []
-                    for r in self.G.query(q):
-                        collection_type = self._get_curie(str(r.col_type))
-                        collection_members.append(self._get_curie(str(r.col_member)))
-                    equivalent_classes.append((collection_type, collection_members))
-            self.CLASSES[cls]["equivalents"] = equivalent_classes
-
-            # super classes
-            supers = []
-            restrictions = []
-            for o in self.G.objects(subject=s, predicate=RDFS.subClassOf):
-                if (o, RDF.type, OWL.Restriction) not in self.G:
-                    if type(o) != BNode:
-                        supers.append(str(o))  # supers that are just classes
-                    else:
-                        # super collections (unionOf | intersectionOf
-                        q = """
-                            PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
-        
-                            SELECT ?col_type ?col_member
-                            WHERE {{
-                                <{}> rdfs:subClassOf ?sup .  
-                                ?sup owl:unionOf|owl:intersectionOf ?collection .
-                                ?sup ?col_type ?collection . 
-                                ?collection rdf:rest*/rdf:first ?col_member .              
-                            }} 
-                        """.format(
-                            s
-                        )
-                        collection_type = None
-                        collection_members = []
-                        for r in self.G.query(q):
-                            collection_type = self._get_curie(str(r.col_type))
-                            collection_members.append(str(r.col_member))
-                        supers.append((collection_type, collection_members))
-                else:
-                    restrictions.append(o)
-
-            self.CLASSES[cls]["supers"] = supers
-            self.CLASSES[cls]["restrictions"] = restrictions
-
-            # sub classes
-            subs = []
-            for o in self.G.subjects(predicate=RDFS.subClassOf, object=s):
-                if type(o) != BNode:
-                    subs.append(str(o))
-                else:
-                    # sub classes collections (unionOf | intersectionOf
-                    q = """
-                        PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
-    
-                        SELECT ?col_type ?col_member
-                        WHERE {{
-                            ?sub rdfs:subClassOf <{}> . 
-                            ?sub owl:unionOf|owl:intersectionOf ?collection .
-                            ?sub ?col_type ?collection . 
-                            ?collection rdf:rest*/rdf:first ?col_member .              
-                        }} 
-                    """.format(
-                        s
-                    )
-                    collection_type = None
-                    collection_members = []
-                    for r in self.G.query(q):
-                        collection_type = self._get_curie(str(r.col_type))
-                        collection_members.append(self._get_curie(str(r.col_member)))
-                    subs.append((collection_type, collection_members))
-            self.CLASSES[cls]["subs"] = subs
-
-            in_domain_of = []
-            for o in self.G.subjects(predicate=RDFS.domain, object=s):
-                in_domain_of.append(str(o))
-            self.CLASSES[cls]["in_domain_of"] = in_domain_of
-
-            in_domain_includes_of = []
-            for o in self.G.subjects(predicate=self.SDO.domainIncludes, object=s):
-                in_domain_includes_of.append(str(o))
-            self.CLASSES[cls]["in_domain_includes_of"] = in_domain_includes_of
-
-            in_range_of = []
-            for o in self.G.subjects(predicate=RDFS.range, object=s):
-                in_range_of.append(str(o))
-            self.CLASSES[cls]["in_range_of"] = in_range_of
-
-            in_range_includes_of = []
-            for o in self.G.subjects(predicate=self.SDO.rangeIncludes, object=s):
-                in_range_includes_of.append(str(o))
-            self.CLASSES[cls]["in_range_includes_of"] = in_range_includes_of
-
-            # TODO: cater for Named Individuals of this class - "has members"
-
-        # # sort properties by title
-        # x = sorted([(k, v) for k, v in classes.items()], key=lambda tup: tup[1]['title'])
-        # y = collections.OrderedDict()
-        # for n in x:
-        #     y[n[0]] = n[1]
-        #
-        # return y
-
-    def _extract_metadata_for_owl(self):
-        if len(self.CLASSES.keys()) > 0:
-            self.METADATA["has_classes"] = True
-
-        self.METADATA["has_ops"] = False
-        self.METADATA["has_fps"] = False
-        self.METADATA["has_dps"] = False
-        self.METADATA["has_aps"] = False
-        self.METADATA["has_ps"] = False
-
-        for k, v in self.PROPERTIES.items():
-            if v.get("prop_type") == "op":
-                self.METADATA["has_ops"] = True
-            if v.get("prop_type") == "fp":
-                self.METADATA["has_fps"] = True
-            if v.get("prop_type") == "dp":
-                self.METADATA["has_dps"] = True
-            if v.get("prop_type") == "ap":
-                self.METADATA["has_aps"] = True
-            if v.get("prop_type") == "p":
-                self.METADATA["has_ps"] = True
-
-        s_str = None
-        self.METADATA["imports"] = set()
-        self.METADATA["creators"] = set()
-        self.METADATA["contributors"] = set()
-        self.METADATA["publishers"] = set()
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
-            s_str = str(s)  # this is the Ontology's URI
-            self.METADATA["uri"] = s_str
-
-            for p, o in self.G.predicate_objects(subject=s):
-                if p == OWL.imports:
-                    self.METADATA["imports"].add(self._make_uri_html(o))
-
-                if p == RDFS.label:
-                    self.METADATA["title"] = str(o)
-
-                if p == RDFS.comment:
-                    import markdown
-
-                    self.METADATA["description"] = markdown.markdown(str(o))
-
-                if p == SKOS.historyNote:
-                    self.METADATA["historyNote"] = str(o)
-
-                if p == DCTERMS.created:
-                    self.METADATA["created"] = dateutil.parser.parse(str(o)).strftime(
-                        "%Y-%m-%d"
-                    )
-
-                if p == DCTERMS.modified:
-                    self.METADATA["modified"] = dateutil.parser.parse(str(o)).strftime(
-                        "%Y-%m-%d"
-                    )
-
-                if p == DCTERMS.issued:
-                    self.METADATA["issued"] = dateutil.parser.parse(str(o)).strftime(
-                        "%Y-%m-%d"
-                    )
-
-                if p == DCTERMS.source:
-                    if str(o).startswith('http'):
-                        self.METADATA["source"] = '<a href="{0}">{0}</a>'.format(str(o))
-                    else:
-                        self.METADATA["source"] = str(o)
-
-                if p == OWL.versionIRI:
-                    self.METADATA["versionIRI"] = '<a href="{0}">{0}</a>'.format(str(o))
-
-                if p == OWL.versionInfo:
-                    self.METADATA["versionInfo"] = str(o)
-
-                if p == URIRef("http://purl.org/vocab/vann/preferredNamespacePrefix"):
-                    self.METADATA["preferredNamespacePrefix"] = str(o)
-
-                if p == URIRef("http://purl.org/vocab/vann/preferredNamespaceUri"):
-                    self.METADATA["preferredNamespaceUri"] = str(o)
-
-                if p == DCTERMS.license:
-                    self.METADATA["license"] = (
-                        '<a href="{0}">{0}</a>'.format(str(o))
-                        if str(o).startswith("http")
-                        else str(o)
-                    )
-
-                if p == DCTERMS.rights:
-                    self.METADATA["rights"] = (
-                        str(o)
-                        .replace("Copyright", "&copy;")
-                        .replace("copyright", "&copy;")
-                    )
-
-                # Agents
-                if p == DC.creator:
-                    if type(o) == URIRef:
-                        self.METADATA["creators"].add(
-                            '<a href="{0}">{0}</a>'.format(str(o))
-                        )
-                    else:
-                        self.METADATA["creators"].add(str(o))
-
-                if p == DCTERMS.creator:
-                    if type(o) == Literal:
-                        self.METADATA["creators"].add(str(o))
-                    else:  # Blank Node or URI
-                        self.METADATA["creators"].add(self._make_agent_html(o))
-
-                if p == DC.contributor:
-                    if type(o) == URIRef:
-                        self.METADATA["contributors"].add(
-                            '<a href="{0}">{0}</a>'.format(str(o))
-                        )
-                    else:
-                        self.METADATA["contributors"].add(str(o))
-
-                if p == DCTERMS.contributor:
-                    if type(o) == Literal:
-                        self.METADATA["contributors"].add(str(o))
-                    else:  # Blank Node or URI
-                        self.METADATA["contributors"].add(self._make_agent_html(o))
-
-                if p == DC.publisher:
-                    if type(o) == URIRef:
-                        self.METADATA["publishers"].add(
-                            '<a href="{0}">{0}</a>'.format(str(o))
-                        )
-                    else:
-                        self.METADATA["publishers"].add(str(o))
-
-                if p == DCTERMS.publisher:
-                    if type(o) == Literal:
-                        self.METADATA["publishers"].add(str(o))
-                    else:  # Blank Node or URI
-                        self.METADATA["publishers"].add(self._make_agent_html(o))
-
-                # TODO: cater for other Agent representations
-
-                if p == self.PROV.wasGeneratedBy:
-                    for o2 in self.G.objects(subject=o, predicate=DOAP.repository):
-                        self.METADATA["repository"] = str(o2)
-
-                if p == self.SDO.codeRepository:
-                    self.METADATA["repository"] = str(o)
-
-            if self.METADATA.get("title") is None:
-                raise ValueError(
-                    "Your ontology does not indicate any form of label or title. "
-                    "You must declare one of the following for your ontology: rdfs:label, dct:title, skos:prefLabel"
-                )
-
-        if s_str is None:
-            raise Exception(
-                "Your RDF file does not define an ontology. "
-                "It must contains a declaration such as <...> rdf:type owl:Ontology ."
-            )
-
+    #
+    #   SKOS
+    #
     def _extract_concept_scheme_for_skos(self):
         """Extracts standard SKOS ConceptScheme metadata
 
