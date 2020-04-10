@@ -4,7 +4,7 @@ from os import path
 import shutil
 import requests
 import rdflib
-from pylode.makedocco import MakeDocco
+from makedocco import MakeDocco
 from profiles import OWL_PROFILE, SKOS_PROFILE
 
 

@@ -103,13 +103,13 @@ class MakeDocco:
     def _expand_graph_for_skos(self):
         # name
         for s, o in self.G.subject_objects(predicate=DC.title):
-            self.G.add((s, RDFS.label, o))
+            self.G.add((s, SKOS.prefLabel, o))
+
+        for s, o in self.G.subject_objects(predicate=RDFS.label):
+            self.G.add((s, SKOS.prefLabel, o))
 
         for s, o in self.G.subject_objects(predicate=DCTERMS.title):
-            self.G.add((s, RDFS.label, o))
-
-        for s, o in self.G.subject_objects(predicate=SKOS.prefLabel):
-            self.G.add((s, RDFS.label, o))
+            self.G.add((s, SKOS.prefLabel, o))
 
         # description
         for s, o in self.G.subject_objects(predicate=DC.description):
@@ -859,20 +859,35 @@ class MakeDocco:
 
         Will interpret an owl:Ontology as a skos:ConceptScheme if run against an OWL document
         """
+        for s in self.G.subjects(predicate=RDF.type, object=SKOS.ConceptScheme):
+            for p, o in self.G.predicate_objects(subject=s):
+                if p == SKOS.prefLabel:
+                    self.METADATA["title"] = str(o)
 
-        pass
+        if self.METADATA.get("title") is None:
+            raise ValueError(
+                "Your taxonomy's ConceptScheme does not indicate any form of title. "
+                "You must declare one of the following for it: rdfs:label, dct:title, skos:prefLabel"
+            )
 
     def _extract_concepts_for_skos(self):
         """Extracts standard SKOS Concepts and their metadata
 
         Will interpret an owl:Class and rdfs:Class instances as skos:Concepts if run against an OWL document
         """
-
-        pass
+        for s in self.G.subjects(predicate=RDF.type, object=SKOS.Concept):
+            for p, o in self.G.predicate_objects(subject=s):
+                print(p, o)
 
     def _extract_collections_for_skos(self):
         """Extracts standard SKOS Collection metadata"""
-        pass
+        for s in self.G.subjects(predicate=RDF.type, object=SKOS.Collection):
+            for p, o in self.G.predicate_objects(subject=s):
+                print(p, o)
+
+        for s in self.G.subjects(predicate=RDF.type, object=SKOS.OrderedCollection):
+            for p, o in self.G.predicate_objects(subject=s):
+                print(p, o)
 
     def _make_title_from_uri(self, uri):
         # can't tolerate any URI faults so return None if anything is wrong
@@ -1240,14 +1255,9 @@ class MakeDocco:
         )
 
     def _make_property(self, property, outputformat="html"):
-        if outputformat == "md":
-            template_file_ext = "md"
-        else:
-            template_file_ext = "html"
-
         template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
         template = Environment(loader=FileSystemLoader(template_dir)).get_template(
-            "property." + template_file_ext
+            "property." + outputformat
         )
 
         return template.render(
@@ -1269,14 +1279,9 @@ class MakeDocco:
         )
 
     def _make_properties(self, outputformat="html"):
-        if outputformat == "md":
-            template_file_ext = "md"
-        else:
-            template_file_ext = "html"
-
         template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
         template = Environment(loader=FileSystemLoader(template_dir)).get_template(
-            "properties." + template_file_ext
+            "properties." + outputformat
         )
         op_instances = []
         fp_instances = []
@@ -1335,15 +1340,10 @@ class MakeDocco:
         )
 
     def _make_classes(self, outputformat="html"):
-        if outputformat == "md":
-            template_file_ext = "md"
-        else:
-            template_file_ext = "html"
-
         template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
         class_template = Environment(
             loader=FileSystemLoader(template_dir)
-        ).get_template("class." + template_file_ext)
+        ).get_template("class." + outputformat)
         classes_list = []
         for k, v in self.CLASSES.items():
             classes_list.append(
@@ -1366,7 +1366,7 @@ class MakeDocco:
 
         classes_template = Environment(
             loader=FileSystemLoader(template_dir)
-        ).get_template("classes." + template_file_ext)
+        ).get_template("classes." + outputformat)
         fids = sorted(
             [(v.get("fid"), v.get("title")) for k, v in self.CLASSES.items()],
             key=lambda tup: tup[1],
@@ -1401,6 +1401,8 @@ class MakeDocco:
             description = Literal(self.METADATA.get("description"))
         if self.METADATA.get("license") is not None:
             license = URIRef(self.METADATA.get("license").split('>')[1].split('<')[0])
+        else:
+            license = None
         if self.METADATA.get("rights") is not None:
             rights = Literal(self.METADATA.get("rights"))
         copyright_holder = ""
@@ -1507,6 +1509,15 @@ class MakeDocco:
             has_nis=False,
         )
 
+    def _make_skos_concept_scheme(self):
+        pass
+
+    def _make_skos_collections(self):
+        pass
+
+    def _make_skos_concepts(self):
+        pass
+
     def _make_document(
         self,
         title,
@@ -1518,15 +1529,10 @@ class MakeDocco:
         outputformat="html",
         exclude_css=False,
     ):
-        if outputformat == "md":
-            template_file_ext = "md"
-        else:
-            template_file_ext = "html"
-
         template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
         document_template = Environment(
             loader=FileSystemLoader(template_dir)
-        ).get_template("document." + template_file_ext)
+        ).get_template("document." + outputformat)
 
         css = None
         if outputformat == "html":
@@ -1547,19 +1553,60 @@ class MakeDocco:
             css=css,
         )
 
-    def document(self, source_info, exclude_css=False):
-        # build the triples needed for profiles of things
-        if self.profile_selected == "skos":
-            self._expand_graph_for_skos()
+    def _make_document_skos(
+            self,
+            title,
+            concept_scheme,
+            collections,
+            concepts,
+            outputformat="html",
+            exclude_css=False,
+    ):
+        if outputformat == "md":
+            template_file_ext = "md"
         else:
-            self._expand_graph_for_owl()
+            template_file_ext = "html"
 
+        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
+        document_template = Environment(
+            loader=FileSystemLoader(template_dir)
+        ).get_template("skos_taxonomy." + template_file_ext)
+
+        css = None
+        if outputformat == "html":
+            if not exclude_css:
+                pylode_css = path.join(
+                    path.dirname(path.realpath(__file__)), "style", "pylode.css"
+                )
+                css = open(pylode_css).read()
+
+        return document_template.render(
+            schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML template
+            title=title,
+            concept_scheme=concept_scheme,
+            collections=collections,
+            concepts=concepts,
+            css=css
+        )
+
+    def document(self, source_info, exclude_css=False):
         if self.profile_selected == "skos":
-            # self._extract_concept_scheme_for_skos()
-            # self._extract_concepts_for_skos()
-            # self._extract_collections_for_skos()
-            pass
+            # expand the graph using pre-defined rules to make querying easier (poor man's inference)
+            self._expand_graph_for_skos()
+            # extract all the SKOS things
+            self._extract_concept_scheme_for_skos()
+            self._extract_concepts_for_skos()
+            self._extract_collections_for_skos()
+
+            # generate the HTML or MD elements
+            elements = {
+                "concept_scheme": self._make_skos_concept_scheme(),
+                "collections": self._make_skos_collections(),
+                "concepts": self._make_skos_concepts(),
+            }
         else:
+            # expand the graph using pre-defined rules to make querying easier (poor man's inference)
+            self._expand_graph_for_owl()
             # get the IDs (URIs) of all properties -> self.PROPERTIES
             self._extract_properties_uris()
             # get the IDs (URIs) of all classes -> CLASSES
@@ -1725,18 +1772,17 @@ class MakeDocco:
                     html.append(self._make_uri_html(p, type=prop_type))
                 self.CLASSES[uri]["in_range_includes_of"] = html
 
-            metadata = self._make_metadata(source_info, outputformat=self.outputformat)
-            classes = self._make_classes(outputformat=self.outputformat)
-            properties = self._make_properties(outputformat=self.outputformat)
-            namespaces = self._make_namespaces(outputformat=self.outputformat)
+            elements = {
+                "metadata": self._make_metadata(source_info, outputformat=self.outputformat),
+                "classes": self._make_classes(outputformat=self.outputformat),
+                "properties": self._make_properties(outputformat=self.outputformat),
+                "default_namespace": self.METADATA["default_namespace"],
+                "namespaces": self._make_namespaces(outputformat=self.outputformat)
+            }
 
-            return self._make_document(
-                self.METADATA["title"],
-                metadata,
-                classes,
-                properties,
-                self.METADATA["default_namespace"],
-                namespaces,
-                outputformat=self.outputformat,
-                exclude_css=exclude_css,
-            )
+        return self._make_document(
+            self.METADATA["title"],
+            **elements,
+            outputformat=self.outputformat,
+            exclude_css=exclude_css,
+        )

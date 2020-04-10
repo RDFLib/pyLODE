@@ -103,7 +103,7 @@ MOD_PROFILE = Profile(
 
 PROFILES = {
     "owl": OWL_PROFILE,
-    # "skos": SKOS_PROFILE,
+    "skos": SKOS_PROFILE,
     # "mod": MOD_PROFILE
 }
 
