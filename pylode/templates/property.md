@@ -3,6 +3,12 @@
 Property | Value
 --- | ---
 IRI | `{{ uri }}`
+{%- if is_defined_by is not none %}
+Is Defined By | {{ is_defined_by }}
+{%- endif %}
+{%- if source is not none %}
+Source | {{ source }}
+{%- endif %}
 {%- if description is not none %}
 Description | {{ description }}
 {%- endif %}
