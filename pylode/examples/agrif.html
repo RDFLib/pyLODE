@@ -216,8 +216,8 @@ code {
         <dt>Creator(s)</dt>
         <dd>
             <a href="https://orcid.org/0000-0003-3425-0780">Armin Haller</a> (<a href="mailto:armin.haller@anu.edu.au">armin.haller@anu.edu.au</a>) of <a href="https://www.anu.edu.au">Australian National University</a><br/>
-            John Machin of <a href="http://linked.data.gov.au/org/finance">Department of Finance</a><br/>
-            Katherine Stuart of <a href="http://linked.data.gov.au/org/finance">Department of Finance</a><br/>
+            Katherine Stuart of <a href="https://www.finance.gov.au">Department of Finance</a><br/>
+            John Machin of <a href="https://www.finance.gov.au">Department of Finance</a><br/>
         </dd>
         <dt>Contributors(s)</dt>
         <dd>
@@ -251,6 +251,7 @@ code {
         <li><a href="#objectproperties">Object Properties</a></li>
         <li><a href="#datatypeproperties">Datatype Properties</a></li>
         <li><a href="#annotationproperties">Annotation Properties</a></li>
+        <li><a href="#namedindividuals">Named Individuals</a></li>
         <li><a href="#namespaces">Namespaces</a></li>
         <li><a href="#legend">Legend</a></li>
     </ol>
@@ -339,6 +340,12 @@ code {
             <tr>
                 <th>IRI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#AGIFTFunction</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    https://data.naa.gov.au/def/agift/
+                </td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -438,6 +445,12 @@ code {
                 <td><code>http://linked.data.gov.au/def/agrif#Activity</code></td>
             </tr>
             <tr>
+                <th>Source</th>
+                <td>
+                    <a href="https://www.w3.org/TR/prov-o/#Activity">https://www.w3.org/TR/prov-o/#Activity</a>
+                </td>
+            </tr>
+            <tr>
                 <th>Description</th>
                 <td>
                     An Activity is something that occurs over a period of time on a Record.
@@ -446,23 +459,23 @@ code {
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="#guidingPolicy">guidingPolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#endedAtTime">endedAtTime</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#wasAssociatedWith">wasAssociatedWith</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasLocation">hasLocation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SpatialLocation">SpatialLocation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#usedRecord">usedRecord</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#guidingPolicy">guidingPolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#endedAtTime">endedAtTime</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="#wasAssociatedWith">wasAssociatedWith</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#requiresSecurityClassification">requiresSecurityClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SecurityClassification">SecurityClassification</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#ShareActivity">ShareActivity</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#AccessActivity">AccessActivity</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#MaintainActivity">MaintainActivity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AccessActivity">AccessActivity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ShareActivity">ShareActivity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -496,6 +509,12 @@ code {
                 <td><code>http://linked.data.gov.au/def/agrif#Agent</code></td>
             </tr>
             <tr>
+                <th>Source</th>
+                <td>
+                    <a href="https://www.w3.org/TR/prov-o/#Agent">https://www.w3.org/TR/prov-o/#Agent</a>
+                </td>
+            </tr>
+            <tr>
                 <th>Description</th>
                 <td>
                     An Agent is a corporate entity, organisational element or system, or individual responsible for the performance of some Activity or Event, including those on Records.
@@ -504,16 +523,16 @@ code {
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasPermission">hasPermission</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Permission">Permission</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#positionIn">positionIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Organisation">Organisation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasPermission">hasPermission</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Permission">Permission</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#actsAs">actsAs</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Organisation">Organisation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Person">Person</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Organisation">Organisation</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -534,19 +553,19 @@ code {
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasQuality">hasQuality</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#PreservationQuality">PreservationQuality</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#isChangedBy">isChangedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Event">Event</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#storedIn">storedIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#ControlledVocabulary">ControlledVocabulary</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#requiresControl">hasControl</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Control">Control</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#relatedTo">relatedTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasQuality">hasQuality</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#PreservationQuality">PreservationQuality</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasLocation">hasLocation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SpatialLocation">SpatialLocation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#relatedTo">relatedTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#requiresControl">hasControl</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Control">Control</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#storedIn">storedIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#ControlledVocabulary">ControlledVocabulary</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#PhysicalArtefact">PhysicalArtefact</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#DigitalArtefact">DigitalArtefact</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#PhysicalArtefact">PhysicalArtefact</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -559,6 +578,12 @@ code {
                 <td><code>http://linked.data.gov.au/def/agrif#Association</code></td>
             </tr>
             <tr>
+                <th>Source</th>
+                <td>
+                    <a href="https://www.w3.org/TR/prov-o/#Association">https://www.w3.org/TR/prov-o/#Association</a>
+                </td>
+            </tr>
+            <tr>
                 <th>Description</th>
                 <td>
                     An Association is a qualified assignment of responsibility to an Agent in an Activity or Event, indicating that the Agent had a Role in the Activity.
@@ -567,8 +592,8 @@ code {
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasAgent">hasAgent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#associatedRole">associatedRole</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasAgent">hasAgent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -686,11 +711,11 @@ code {
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#DecisionEvent">DecisionEvent</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#SentencingEvent">SentencingEvent</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#DisposalEvent">DisposalEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#AuditEvent">AuditEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#SentencingEvent">SentencingEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#ReplaceEvent">ReplaceEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#DecisionEvent">DecisionEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#DisposalEvent">DisposalEvent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -738,9 +763,9 @@ code {
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#JurisdictionalCoverage">JurisdictionalCoverage</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#SpatialCoverage">SpatialCoverage</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#TemporalCoverage">TemporalCoverage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#SpatialCoverage">SpatialCoverage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#JurisdictionalCoverage">JurisdictionalCoverage</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -879,10 +904,10 @@ code {
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="#filesize">filesize</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#long">xsd:long</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#filename">filename</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#storedIn">storedIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#InformationSystem">InformationSystem</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#format">format</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#filename">filename</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#filesize">filesize</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#long">xsd:long</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -993,6 +1018,12 @@ code {
                 <td><code>http://linked.data.gov.au/def/agrif#Event</code></td>
             </tr>
             <tr>
+                <th>Source</th>
+                <td>
+                    <a href="https://www.w3.org/TR/prov-o/#InstantaneousEvent">https://www.w3.org/TR/prov-o/#InstantaneousEvent</a>
+                </td>
+            </tr>
+            <tr>
                 <th>Description</th>
                 <td>
                     An Event denotes an instantaneous transition in the world.
@@ -1001,19 +1032,19 @@ code {
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#triggeredBy">triggeredBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Trigger">Trigger</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#guidingPolicy">guidingPolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#wasAssociatedWith">wasAssociatedWith</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#guidingPolicy">guidingPolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#triggeredBy">triggeredBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Trigger">Trigger</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#CreationEvent">CreationEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#ControlEvent">ControlEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#CreationEvent">CreationEvent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1104,8 +1135,8 @@ code {
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#PhysicalHoldingSpace">PhysicalHoldingSpace</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#DigitalHoldingSpace">DigitalHoldingSpace</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#PhysicalHoldingSpace">PhysicalHoldingSpace</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1186,8 +1217,8 @@ code {
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#ControlledVocabulary">ControlledVocabulary</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Series">Series</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ControlledVocabulary">ControlledVocabulary</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1290,6 +1321,12 @@ code {
                 <td><code>http://linked.data.gov.au/def/agrif#Organisation</code></td>
             </tr>
             <tr>
+                <th>Source</th>
+                <td>
+                    <a href="https://www.w3.org/TR/prov-o/#Organization">https://www.w3.org/TR/prov-o/#Organization</a>
+                </td>
+            </tr>
+            <tr>
                 <th>Description</th>
                 <td>
                     An Organisation is a type of Agent that denotes a social or legal institution such as a government agency, a corporation, society, etc.
@@ -1350,6 +1387,12 @@ code {
                 <td><code>http://linked.data.gov.au/def/agrif#Permission</code></td>
             </tr>
             <tr>
+                <th>Source</th>
+                <td>
+                    Australian Government Recordkeeping Metadata Standard
+                </td>
+            </tr>
+            <tr>
                 <th>Description</th>
                 <td>
                     A Permission denotes the Security Clearance of an Agent that determines its access and use rights to Records.
@@ -1363,6 +1406,12 @@ code {
             <tr>
                 <th>IRI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Person</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                    <a href="https://www.w3.org/TR/prov-o/#Person">https://www.w3.org/TR/prov-o/#Person</a>
+                </td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -1440,6 +1489,12 @@ code {
                 <td><code>http://linked.data.gov.au/def/agrif#Policy</code></td>
             </tr>
             <tr>
+                <th>Source</th>
+                <td>
+                    <a href="http://purl.org/dc/terms/Policy">dcterms:Policy</a>
+                </td>
+            </tr>
+            <tr>
                 <th>Description</th>
                 <td>
                     A Policy is a deliberate system of principles to guide decisions and achieve rational outcomes.
@@ -1448,11 +1503,11 @@ code {
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#RecordsAuthorityDisposalClassPolicy">RecordsAuthorityPolicy</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#RecordStorageStandard">RecordStorageStandard</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#DigitalPreservationPolicy">DigitalPreservationPolicy</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#RecordsAuthorityDisposalClassPolicy">RecordsAuthorityPolicy</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#InformationManagementPolicy">InformationManagementPolicy</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#MinimumMetadataSetPolicy">MinimumMetadataSetPolicy</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#DigitalPreservationPolicy">DigitalPreservationPolicy</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1515,22 +1570,22 @@ code {
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasCoverage">hasCoverage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Coverage">Coverage</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#recordOf">recordOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasSeries">hasSeries</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Series">Series</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#checksum">checksum</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="#hasActivity">hasActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Activity">Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasClassifier">hasClassifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Classifier">Classifier</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#isChangedBy">isChangedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#CreationEvent">CreationEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#relatedTo">relatedTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#requiresControl">hasControl</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Control">Control</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#isChangedBy">isChangedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#CreationEvent">CreationEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasCoverage">hasCoverage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Coverage">Coverage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#checksum">checksum</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasDisposalClass">hasDisposalClass</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#DisposalClass">DisposalClass</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasClassifier">hasClassifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Classifier">Classifier</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#recordOf">recordOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#isChangedBy">isChangedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Event">Event</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#requiresSecurityClassification">requiresSecurityClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SecurityClassification">SecurityClassification</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#replaces">replaces</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#isChangedBy">isChangedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Event">Event</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasDisposalClass">hasDisposalClass</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#DisposalClass">DisposalClass</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#relatedTo">relatedTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasActivity">hasActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Activity">Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasSeries">hasSeries</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Series">Series</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1583,6 +1638,12 @@ code {
             <tr>
                 <th>IRI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#RecordsAuthorityPolicy</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                    Australian Government Recordkeeping Metadata Standard
+                </td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -1646,6 +1707,12 @@ code {
                 <td><code>http://linked.data.gov.au/def/agrif#Role</code></td>
             </tr>
             <tr>
+                <th>Source</th>
+                <td>
+                    <a href="https://www.w3.org/TR/prov-o/#Role">https://www.w3.org/TR/prov-o/#Role</a>
+                </td>
+            </tr>
+            <tr>
                 <th>Description</th>
                 <td>
                     A Role is the function of an entity or agent with respect to an Activity or Event, in the context of a usage, generation, invalidation, association, start, and end.
@@ -1660,10 +1727,10 @@ code {
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#User">User</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Creator">Creator</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#BusinessOwner">BusinessOwner</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Administrator">Administrator</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Creator">Creator</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#User">User</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#BusinessOwner">BusinessOwner</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1674,6 +1741,12 @@ code {
             <tr>
                 <th>IRI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#SecurityClassification</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                    Australian Government Recordkeeping Metadata Standard
+                </td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -1897,10 +1970,10 @@ code {
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#transferredFrom">transferredFrom</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#BusinessOwner">BusinessOwner</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasManifest">hasManifest</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Manifest">Manifest</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#transferredFrom">transferredFrom</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#transferredTo">transferredTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasManifest">hasManifest</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Manifest">Manifest</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#transferredFrom">transferredFrom</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#BusinessOwner">BusinessOwner</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#transferredFrom">transferredFrom</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#transferredTo">transferredTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#BusinessOwner">BusinessOwner</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -2082,6 +2155,12 @@ code {
                 <td><code>http://linked.data.gov.au/def/agrif#associatedRole</code></td>
             </tr>
             <tr>
+                <th>Source</th>
+                <td>
+                    <a href="https://www.w3.org/TR/prov-o/#hadRole">https://www.w3.org/TR/prov-o/#hadRole</a>
+                </td>
+            </tr>
+            <tr>
                 <th>Description</th>
                 <td>
                     An associated Role is a qualified association between a Role and an Activity or Event defined by an Association.
@@ -2112,6 +2191,12 @@ code {
                 <td><code>http://linked.data.gov.au/def/agrif#hasActivity</code></td>
             </tr>
             <tr>
+                <th>Source</th>
+                <td>
+                    <a href="https://www.w3.org/TR/prov-o/#p_activity">https://www.w3.org/TR/prov-o/#p_activity</a>
+                </td>
+            </tr>
+            <tr>
                 <th>Description</th>
                 <td>
                     A relation between a Record and an Activity that acts upon the Record.
@@ -2131,6 +2216,12 @@ code {
             <tr>
                 <th>IRI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasAgent</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                    <a href="https://www.w3.org/TR/prov-o/#p_agent">https://www.w3.org/TR/prov-o/#p_agent</a>
+                </td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -2670,6 +2761,12 @@ code {
                 <td><code>http://linked.data.gov.au/def/agrif#wasAssociatedWith</code></td>
             </tr>
             <tr>
+                <th>Source</th>
+                <td>
+                    <a href="https://www.w3.org/TR/prov-o/#wasAssociatedWith">https://www.w3.org/TR/prov-o/#wasAssociatedWith</a>
+                </td>
+            </tr>
+            <tr>
                 <th>Description</th>
                 <td>
                     A relation that assigns responsibility of an Agent for an Activity or Change Event.
@@ -2696,6 +2793,12 @@ code {
             <tr>
                 <th>IRI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#checksum</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                    A checksum is a small-sized datum derived from a block of digital data representing a Record for the purpose of detecting errors during the transfer or storage of a Record.
+                </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
@@ -2732,6 +2835,12 @@ code {
             <tr>
                 <th>IRI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#endedAtTime</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                    <a href="https://www.w3.org/TR/prov-o/#endedAtTime">https://www.w3.org/TR/prov-o/#endedAtTime</a>
+                </td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -2783,6 +2892,12 @@ code {
             <tr>
                 <th>IRI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#format</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                    <a href="http://purl.org/dc/elements/1.1/format">http://purl.org/dc/elements/1.1/format</a>
+                </td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -2837,6 +2952,298 @@ code {
                 <th>IRI</th>
                 <td><code>http://www.w3.org/2004/02/skos/core#example</code></td>
             </tr>
+        </table>
+    </div>
+</section>
+
+
+<section id="namedindividuals">
+    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#Active">Active</a></li>
+        <li><a href="#Approved">Approved</a></li>
+        <li><a href="#AwaitingDisposal">AwaitingDisposal</a></li>
+        <li><a href="#Completed">Completed</a></li>
+        <li><a href="#Confidential">Confidential</a></li>
+        <li><a href="#Disapproved">Disapproved</a></li>
+        <li><a href="#Disposed">Disposed</a></li>
+        <li><a href="#HighlyProtected">Highly Protected</a></li>
+        <li><a href="#Protected">Protected</a></li>
+        <li><a href="#Redundant">Redundant</a></li>
+        <li><a href="#RetainAsNationalArchives">RetainAsNationalArchives</a></li>
+        <li><a href="#Secret">Secret</a></li>
+        <li><a href="#TopSecret(NV)">Top Secret (NV)</a></li>
+        <li><a href="#TopSecret(PV)">Top Secret (PV)</a></li>
+        <li><a href="#Unclassified">Unclassified</a></li>
+    </ul>
+    <div class="entity named_individual" id="Active">
+        <h3>Active<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td>
+                  <code>
+                      http://linked.data.gov.au/def/agrif#Active
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Classes(s)</dt>
+            <dd>
+                <a href="http://linked.data.gov.au/def/agrif#Status">Status</a><br/>
+            </dd>
+        </table>
+    </div>
+    <div class="entity named_individual" id="Approved">
+        <h3>Approved<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td>
+                  <code>
+                      http://linked.data.gov.au/def/agrif#Approved
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Classes(s)</dt>
+            <dd>
+                <a href="http://linked.data.gov.au/def/agrif#DecisionStatus">DecisionStatus</a><br/>
+            </dd>
+        </table>
+    </div>
+    <div class="entity named_individual" id="AwaitingDisposal">
+        <h3>AwaitingDisposal<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td>
+                  <code>
+                      http://linked.data.gov.au/def/agrif#AwaitingDisposal
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Classes(s)</dt>
+            <dd>
+                <a href="http://linked.data.gov.au/def/agrif#Status">Status</a><br/>
+            </dd>
+        </table>
+    </div>
+    <div class="entity named_individual" id="Completed">
+        <h3>Completed<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td>
+                  <code>
+                      http://linked.data.gov.au/def/agrif#Completed
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Classes(s)</dt>
+            <dd>
+                <a href="http://linked.data.gov.au/def/agrif#Status">Status</a><br/>
+            </dd>
+        </table>
+    </div>
+    <div class="entity named_individual" id="Confidential">
+        <h3>Confidential<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td>
+                  <code>
+                      http://linked.data.gov.au/def/agrif#Confidential
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Classes(s)</dt>
+            <dd>
+                <a href="http://linked.data.gov.au/def/agrif#SecurityClassification">SecurityClassification</a><br/>
+            </dd>
+        </table>
+    </div>
+    <div class="entity named_individual" id="Disapproved">
+        <h3>Disapproved<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td>
+                  <code>
+                      http://linked.data.gov.au/def/agrif#Disapproved
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Classes(s)</dt>
+            <dd>
+                <a href="http://linked.data.gov.au/def/agrif#DecisionStatus">DecisionStatus</a><br/>
+            </dd>
+        </table>
+    </div>
+    <div class="entity named_individual" id="Disposed">
+        <h3>Disposed<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td>
+                  <code>
+                      http://linked.data.gov.au/def/agrif#Disposed
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Classes(s)</dt>
+            <dd>
+                <a href="http://linked.data.gov.au/def/agrif#Status">Status</a><br/>
+            </dd>
+        </table>
+    </div>
+    <div class="entity named_individual" id="HighlyProtected">
+        <h3>Highly Protected<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td>
+                  <code>
+                      http://linked.data.gov.au/def/agrif#HighlyProtected
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Classes(s)</dt>
+            <dd>
+                <a href="http://linked.data.gov.au/def/agrif#SecurityClassification">SecurityClassification</a><br/>
+            </dd>
+        </table>
+    </div>
+    <div class="entity named_individual" id="Protected">
+        <h3>Protected<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td>
+                  <code>
+                      http://linked.data.gov.au/def/agrif#Protected
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Classes(s)</dt>
+            <dd>
+                <a href="http://linked.data.gov.au/def/agrif#SecurityClassification">SecurityClassification</a><br/>
+            </dd>
+        </table>
+    </div>
+    <div class="entity named_individual" id="Redundant">
+        <h3>Redundant<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td>
+                  <code>
+                      http://linked.data.gov.au/def/agrif#Redundant
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Classes(s)</dt>
+            <dd>
+                <a href="http://linked.data.gov.au/def/agrif#Status">Status</a><br/>
+            </dd>
+        </table>
+    </div>
+    <div class="entity named_individual" id="RetainAsNationalArchives">
+        <h3>RetainAsNationalArchives<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td>
+                  <code>
+                      http://linked.data.gov.au/def/agrif#RetainAsNationalArchives
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Classes(s)</dt>
+            <dd>
+                <a href="http://linked.data.gov.au/def/agrif#DisposalClass">DisposalClass</a><br/>
+            </dd>
+        </table>
+    </div>
+    <div class="entity named_individual" id="Secret">
+        <h3>Secret<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td>
+                  <code>
+                      http://linked.data.gov.au/def/agrif#Secret
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Classes(s)</dt>
+            <dd>
+                <a href="http://linked.data.gov.au/def/agrif#SecurityClassification">SecurityClassification</a><br/>
+            </dd>
+        </table>
+    </div>
+    <div class="entity named_individual" id="TopSecret(NV)">
+        <h3>Top Secret (NV)<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td>
+                  <code>
+                      http://linked.data.gov.au/def/agrif#TopSecretNV
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Classes(s)</dt>
+            <dd>
+                <a href="http://linked.data.gov.au/def/agrif#SecurityClassification">SecurityClassification</a><br/>
+            </dd>
+        </table>
+    </div>
+    <div class="entity named_individual" id="TopSecret(PV)">
+        <h3>Top Secret (PV)<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td>
+                  <code>
+                      http://linked.data.gov.au/def/agrif#TopSecretPV
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Classes(s)</dt>
+            <dd>
+                <a href="http://linked.data.gov.au/def/agrif#SecurityClassification">SecurityClassification</a><br/>
+            </dd>
+        </table>
+    </div>
+    <div class="entity named_individual" id="Unclassified">
+        <h3>Unclassified<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td>
+                  <code>
+                      http://linked.data.gov.au/def/agrif#Unclassified
+                  
+                  </code>
+                </td>
+            </tr>
+            <dt>Classes(s)</dt>
+            <dd>
+                <a href="http://linked.data.gov.au/def/agrif#SecurityClassification">SecurityClassification</a><br/>
+            </dd>
         </table>
     </div>
 </section>
