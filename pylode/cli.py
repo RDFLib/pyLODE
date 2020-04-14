@@ -4,7 +4,9 @@ from os import path
 import shutil
 import requests
 import rdflib
-from pylode.makedocco import MakeDocco
+from makedocco import MakeDocco
+from profiles import OWL_PROFILE, SKOS_PROFILE
+
 
 # used to know what RDF file types rdflib can handle
 RDF_FILE_EXTENSIONS = [".rdf", ".owl", ".ttl", ".n3", ".nt", ".json"]
@@ -73,6 +75,15 @@ def main(args=None):
     )
 
     parser.add_argument(
+        "-p",
+        "--profile",
+        help="A profile - a specified information model - for an ontology. You can indicate this via the profile's URI"
+        "or its token. The list of profiles - URIs and their corresponding tokens - supported by pyLODE, can be "
+        "found by running the program with the flag -lp or --listprofiles.",
+        default="owl",
+    )
+
+    parser.add_argument(
         "-c",
         "--css",
         help="Whether (true) or not (false) to copy the default CSS file to the output directory.",
@@ -86,14 +97,6 @@ def main(args=None):
         help="Whether (true) or not (false) to exclude the standard pyLODE CSS content from an HTML file output.",
         choices=["true", "false"],
         default="false",
-    )
-
-    parser.add_argument(
-        "-p",
-        "--profile",
-        help="A profile - a specified information model - for an ontology. You can indicate this via the profile's URI"
-        "or via the profile's token. The list of profiles, URIs and tokens, that this application supports can be"
-        "found by running the program with the flag -lp or --listprofiles only.",
     )
 
     parser.add_argument(
@@ -114,7 +117,7 @@ def main(args=None):
     args = parser.parse_args()
 
     if args.listprofiles:
-        print("list profiles - sorry, not implemented yet!")
+        print(MakeDocco.list_profiles())
         exit()
     elif args.inputfile or args.url:
         # args are present so getting RDF from input file or uri into an rdflid Graph
@@ -168,6 +171,11 @@ def main(args=None):
             parser.error(
                 "Either an inputfile or a url is required to access the ontology's RDF"
             )
+
+        if args.profile:
+            if not MakeDocco.is_supported_profile(args.profile):
+                parser.error("The profile you requested, '{}', is not supported. "
+                             "Please choose from those given by List Profiles (-lp)")
     else:
         parser.error("An ontology source (-i/--inputfile or -u/--url) is required")
 
@@ -197,26 +205,30 @@ def main(args=None):
         os.path.basename(args.outputfile) if args.outputfile else "doc.html"
     )
 
+    output_format = "HTML"
     if args.outputformat == "html":
         if not output_filename.endswith(".html"):
             output_filename += ".html"
     elif args.outputformat == "md":
         if not output_filename.endswith(".md"):
             output_filename += ".md"
+        output_format = "Markdown"
 
-    h = MakeDocco(args.outputformat)
+    h = MakeDocco(args.outputformat, profile=args.profile)
     h.G = g
 
     # generate the HTML doc
     with open(path.join(publication_dir, output_filename), "w") as f:
         f.write(h.document(source_info, exclude_css=exclude_css))
 
-    if args.outputformat == "html":
-        msg_template = "Finished. HTML{} file in {}/."
-    else:
-        msg_template = "Finished. Markdown{} file in {}/."
-    msg = msg_template.format(msg_css, publication_dir)
-    print(msg)
+    # print message for user
+    print(
+        "Finished. {} profile documentation in {} format created in file in {}".format(
+            args.profile,
+            output_format,
+            path.join(publication_dir, output_filename)
+        )
+    )
 
 
 if __name__ == "__main__":

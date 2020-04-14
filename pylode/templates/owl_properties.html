@@ -1,0 +1,65 @@
+{%- if op_instances|length > 0 %}
+<section id="objectproperties">
+    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        {%- for p in op_instances %}
+        <li><a href="#{{ p[1] }}">{{ p[0] }}</a></li>
+        {%- endfor %}
+    </ul>
+    {%- for p in op_instances %}
+    {{ p[2]|safe }}
+    {%- endfor %}
+</section>
+{% endif %}
+{%- if fp_instances|length > 0 %}
+<section id="functionalproperties">
+    <h2>Functional Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        {%- for p in fp_instances %}
+        <li><a href="#{{ p[1] }}">{{ p[0] }}</a></li>
+        {%- endfor %}
+    </ul>
+    {%- for p in fp_instances %}
+    {{ p[2]|safe }}
+    {%- endfor %}
+</section>
+{% endif %}
+{%- if dp_instances|length > 0 %}
+<section id="datatypeproperties">
+    <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        {%- for p in dp_instances %}
+        <li><a href="#{{ p[1] }}">{{ p[0] }}</a></li>
+        {%- endfor %}
+    </ul>
+    {%- for p in dp_instances %}
+    {{ p[2]|safe }}
+    {%- endfor %}
+</section>
+{% endif %}
+{%- if ap_instances|length > 0 %}
+<section id="annotationproperties">
+    <h2>Annotation Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        {%- for p in ap_instances %}
+        <li><a href="#{{ p[1] }}">{{ p[0] }}</a></li>
+        {%- endfor %}
+    </ul>
+    {%- for p in ap_instances %}
+    {{ p[2]|safe }}
+    {%- endfor %}
+</section>
+{% endif %}
+{%- if p_instances|length > 0 %}
+<section id="properties">
+    <h2>Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        {%- for p in p_instances %}
+        <li><a href="#{{ p[1] }}">{{ p[0] }}</a></li>
+        {%- endfor %}
+    </ul>
+    {%- for p in   p_instances %}
+    {{ p[2]|safe }}
+    {%- endfor %}
+</section>
+{% endif %}

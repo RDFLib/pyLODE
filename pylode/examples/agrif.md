@@ -1,25 +1,28 @@
 # The Australian Government Records Interoperability Framework (AGRIF) ontology
-<sub>metadata by [pyLODE](http://github.com/rdflib/pyLODE)</sub>
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
+
+
 ## Metadata
 * **IRI**
   * `http://linked.data.gov.au/def/agrif`
 * **Publisher(s)**
   * <a href="http://linked.data.gov.au/org/finance">Department of Finance</a>
 * **Creators(s)**
-  * John Machin of <a href="http://linked.data.gov.au/org/finance">Department of Finance</a>
-  * <a href="https://orcid.org/0000-0003-3425-0780">Armin Haller</a> (<a href="mailto:armin.haller@anu.edu.au">armin.haller@anu.edu.au</a>) of <a href="http://linked.data.gov.au/org/anu">Australian National University</a>
   * Katherine Stuart of <a href="http://linked.data.gov.au/org/finance">Department of Finance</a>
+  * <a href="https://orcid.org/0000-0003-3425-0780">Armin Haller</a> (<a href="mailto:armin.haller@anu.edu.au">armin.haller@anu.edu.au</a>) of <a href="https://www.anu.edu.au">Australian National University</a>
+  * John Machin of <a href="http://linked.data.gov.au/org/finance">Department of Finance</a>
 * **Contributor(s)**
-  * <a href="http://orcid.org/0000-0002-8742-7730">Nicholas Car</a>
+  * <a href="http://orcid.org/0000-0002-8742-7730">Nicholas Car</a> (<a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a>) of <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a>
 * **Created**
   * 2016-12-06
 * **Modified**
-  * 2019-11-04
+  * 2020-04-03
 * **Version Information**
-  * 0.7
-* **Rights**
+  * 0.71
+* **License &amp; Rights**
+  * <a href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a>
   * (c) Commonwealth of Australia (Department of Finance) 2017
-* **Ontology Source**
+* **Ontology RDF**
   * <a href="agrif.ttl">RDF (turtle)</a>
 * **Code Repository**
   * <https://github.com/AGLDWG/agrif-ont>
@@ -31,6 +34,7 @@
 1. [Object Properties](#objectproperties)
 1. [Datatype Properties](#datatypeproperties)
 1. [Annotation Properties](#annotationproperties)
+1. [Named Individuals](#namedindividuals)
 1. [Namespaces](#namespaces)  
 
 
@@ -109,25 +113,22 @@
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#AGIFTFunction`
+Is Defined By | https://data.naa.gov.au/def/agift/
 Description | An AGIFT Function is a Function that classifies a Record according to the Australian Governments' Interactive Functions Thesaurus.
 Super-classes |<a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Access Activity <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#AccessActivity`
 Description | An Access Activity is an Activity where a Record is accessed by an Agent over a period of time.
 Super-classes |<a href="#Activity">Activity</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |<a href="#accessedBy">accessedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br /><a href="#triggers">triggers</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#AccessTrigger">AccessTrigger</a><sup class="sup-c" title="class">c</sup><br />
-Sub-classes |
+Restrictions |<a href="#triggers">triggers</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#AccessTrigger">AccessTrigger</a><sup class="sup-c" title="class">c</sup><br /><a href="#accessedBy">accessedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br />
 ### Access Control <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#AccessControl`
 Description | Access Control is the selective restriction of access to a Record or Artefact.
 Super-classes |<a href="#Control">Control</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
 Sub-classes |<a href="#SecurityClassification">SecurityClassification</a><sup class="sup-c" title="class">c</sup><br />
 ### Access Trigger <sup>c</sup>
 Property | Value
@@ -135,62 +136,66 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#AccessTrigger`
 Description | An Access Trigger is a Trigger that can be initiated when a Record is accessed.
 Super-classes |<a href="#Trigger">Trigger</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Activity <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Activity`
+Source | <a href="https://www.w3.org/TR/prov-o/#Activity">https://www.w3.org/TR/prov-o/#Activity</a>
 Description | An Activity is something that occurs over a period of time on a Record.
+Restrictions |<a href="#requiresSecurityClassification">requiresSecurityClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SecurityClassification">SecurityClassification</a><sup class="sup-c" title="class">c</sup><br /><a href="#wasAssociatedWith">wasAssociatedWith</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br /><a href="#hasLocation">hasLocation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SpatialLocation">SpatialLocation</a><sup class="sup-c" title="class">c</sup><br /><a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br /><a href="#endedAtTime">endedAtTime</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br /><a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br /><a href="#usedRecord">usedRecord</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br /><a href="#guidingPolicy">guidingPolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br /><a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br />
+Sub-classes |<a href="#MaintainActivity">MaintainActivity</a><sup class="sup-c" title="class">c</sup><br /><a href="#AccessActivity">AccessActivity</a><sup class="sup-c" title="class">c</sup><br /><a href="#ShareActivity">ShareActivity</a><sup class="sup-c" title="class">c</sup><br />
 ### Administrator <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Administrator`
 Description | An Administrator is a Role that has overall responsibility for the administration and functions of an Information System, but not necessarily for the information stored within.
 Super-classes |<a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Agent <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Agent`
+Source | <a href="https://www.w3.org/TR/prov-o/#Agent">https://www.w3.org/TR/prov-o/#Agent</a>
 Description | An Agent is a corporate entity, organisational element or system, or individual responsible for the performance of some Activity or Event, including those on Records.
+Restrictions |<a href="#positionIn">positionIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Organisation">Organisation</a><sup class="sup-c" title="class">c</sup><br /><a href="#hasPermission">hasPermission</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Permission">Permission</a><sup class="sup-c" title="class">c</sup><br /><a href="#actsAs">actsAs</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br />
+Sub-classes |<a href="#Person">Person</a><sup class="sup-c" title="class">c</sup><br /><a href="#Organisation">Organisation</a><sup class="sup-c" title="class">c</sup><br />
 ### Artefact <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Artefact`
 Description | An Artefact is an object that is made by a Person and that is to be preserved.
+Restrictions |<a href="#storedIn">storedIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#ControlledVocabulary">ControlledVocabulary</a><sup class="sup-c" title="class">c</sup><br /><a href="#relatedTo">relatedTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup><br /><a href="#hasQuality">hasQuality</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#PreservationQuality">PreservationQuality</a><sup class="sup-c" title="class">c</sup><br /><a href="#isChangedBy">isChangedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Event">Event</a><sup class="sup-c" title="class">c</sup><br /><a href="#hasLocation">hasLocation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SpatialLocation">SpatialLocation</a><sup class="sup-c" title="class">c</sup><br /><a href="#requiresControl">hasControl</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Control">Control</a><sup class="sup-c" title="class">c</sup><br />
+Sub-classes |<a href="#DigitalArtefact">DigitalArtefact</a><sup class="sup-c" title="class">c</sup><br /><a href="#PhysicalArtefact">PhysicalArtefact</a><sup class="sup-c" title="class">c</sup><br />
 ### Association <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Association`
+Source | <a href="https://www.w3.org/TR/prov-o/#Association">https://www.w3.org/TR/prov-o/#Association</a>
 Description | An Association is a qualified assignment of responsibility to an Agent in an Activity or Event, indicating that the Agent had a Role in the Activity.
+Restrictions |<a href="#hasAgent">hasAgent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br /><a href="#associatedRole">associatedRole</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br />
 ### Audit Event <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#AuditEvent`
 Description | An Audit Event is the systematic examination of a Record to ascertain how and where the Record is stored, who created it, or manages it, who uses it and how much longer the Record is required to be maintained.
 Super-classes |<a href="#ControlEvent">ControlEvent</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Business Owner <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#BusinessOwner`
 Description | A Business Owner is the Role that has the managerial control of a Function.
 Super-classes |<a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Classifier <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Classifier`
 Description | A Classifier is a machine-generated and applied category that a set of Records belong to.
+Restrictions |<a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br />
 ### Control <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Control`
 Description | A Control is a security or access measure that safeguards or restricts access to an asset.
+Sub-classes |<a href="#AccessControl">AccessControl</a><sup class="sup-c" title="class">c</sup><br /><a href="#SecurityControl">SecurityControl</a><sup class="sup-c" title="class">c</sup><br />
 ### Control Event <sup>c</sup>
 Property | Value
 --- | ---
@@ -206,28 +211,24 @@ IRI | `http://linked.data.gov.au/def/agrif#ControlledVocabulary`
 Description | A Controlled Vocabulary is an Intellectual Control System that provides a way to organize Records that facilitates a later discovery of a Record.
 Super-classes |<a href="#IntellectualControlSystem">IntellectualControlSystem</a><sup class="sup-c" title="class">c</sup><br />
 Restrictions |<a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br />
-Sub-classes |
 ### Coverage <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Coverage`
 Description | A Coverage denotes the jurisdictional applicability, or the temporal and/or spatial extent to which a Record is observed.
+Sub-classes |<a href="#SpatialCoverage">SpatialCoverage</a><sup class="sup-c" title="class">c</sup><br /><a href="#TemporalCoverage">TemporalCoverage</a><sup class="sup-c" title="class">c</sup><br /><a href="#JurisdictionalCoverage">JurisdictionalCoverage</a><sup class="sup-c" title="class">c</sup><br />
 ### Creation Event <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#CreationEvent`
 Description | A Creation Event is a Change Event that results in the creation of a Record.
 Super-classes |<a href="#Event">Event</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Creator <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Creator`
 Description | A Creator is the Agent that has created a Record or Artefact.
 Super-classes |<a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Decision Event <sup>c</sup>
 Property | Value
 --- | ---
@@ -235,47 +236,37 @@ IRI | `http://linked.data.gov.au/def/agrif#DecisionEvent`
 Description | A Decision Event changes the Decision Status on the Control of a Record.
 Super-classes |<a href="#ControlEvent">ControlEvent</a><sup class="sup-c" title="class">c</sup><br />
 Restrictions |<a href="#hasPrerequisiteDecisionEvent">hasPrerequisiteDecisionEvent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#DecisionEvent">DecisionEvent</a><sup class="sup-c" title="class">c</sup><br /><a href="#hasDecisionStatus">hasDecisionStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#DecisionStatus">DecisionStatus</a><sup class="sup-c" title="class">c</sup><br />
-Sub-classes |
 ### Decision Status <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#DecisionStatus`
 Description | A Decision Status is a Status that indicates the approval or disapproval of a Decision Event.
 Super-classes |<a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Destroy Event <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#DestroyEvent`
 Description | A Destroy Event is a Disposal Event that results in the regular authorised permanent desctruction of a Record that is no longer required for business purposes.
 Super-classes |<a href="#DisposalEvent">DisposalEvent</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Digital Artefact <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#DigitalArtefact`
 Description | A Digital Artefact is an Artefact that is of a digital nature and stored in an Information System.
 Super-classes |<a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |<a href="#filesize">filesize</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#long">xsd:long</a><sup class="sup-c" title="class">c</sup><br /><a href="#filename">filename</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br /><a href="#storedIn">storedIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#InformationSystem">InformationSystem</a><sup class="sup-c" title="class">c</sup><br /><a href="#format">format</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br />
-Sub-classes |
+Restrictions |<a href="#storedIn">storedIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#InformationSystem">InformationSystem</a><sup class="sup-c" title="class">c</sup><br /><a href="#filesize">filesize</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#long">xsd:long</a><sup class="sup-c" title="class">c</sup><br /><a href="#format">format</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br /><a href="#filename">filename</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br />
 ### Digital Holding Space <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#DigitalHoldingSpace`
 Description | A Digital Holding Space is a space that is used or reserved for the storage of a Digital Artefact on a storage medium or virtual storage space.
 Super-classes |<a href="#HoldingSpace">HoldingSpace</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Digital Preservation Policy <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#DigitalPreservationPolicy`
 Description | The Digital Preservation Policy defines the process of active management by which the National Archives ensures that a digital object will be accessible in the future.
 Super-classes |<a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Disposal Class <sup>c</sup>
 Property | Value
 --- | ---
@@ -283,20 +274,21 @@ IRI | `http://linked.data.gov.au/def/agrif#DisposalClass`
 Description | A Disposal Class is a Policy that defines the sentencing requirements of an item.
 Super-classes |<a href="#RecordsAuthorityDisposalClassPolicy">RecordsAuthorityPolicy</a><sup class="sup-c" title="class">c</sup><br />
 Restrictions |<a href="#disposalClassNumber">disposalClassNumber</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br />
-Sub-classes |
 ### Disposal Event <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#DisposalEvent`
 Description | A Disposal Event is an Event that results in the regular authorised destruction or change of custody of a Record that is no longer required for business purposes.
 Super-classes |<a href="#ControlEvent">ControlEvent</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |<a href="#TransferEvent">TransferEvent</a><sup class="sup-c" title="class">c</sup><br /><a href="#FreezeEvent">FreezeEvent</a><sup class="sup-c" title="class">c</sup><br /><a href="#DestroyEvent">DestroyEvent</a><sup class="sup-c" title="class">c</sup><br />
+Sub-classes |<a href="#TransferEvent">TransferEvent</a><sup class="sup-c" title="class">c</sup><br /><a href="#DestroyEvent">DestroyEvent</a><sup class="sup-c" title="class">c</sup><br /><a href="#FreezeEvent">FreezeEvent</a><sup class="sup-c" title="class">c</sup><br />
 ### Event <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Event`
+Source | <a href="https://www.w3.org/TR/prov-o/#InstantaneousEvent">https://www.w3.org/TR/prov-o/#InstantaneousEvent</a>
 Description | An Event denotes an instantaneous transition in the world.
+Restrictions |<a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br /><a href="#triggeredBy">triggeredBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Trigger">Trigger</a><sup class="sup-c" title="class">c</sup><br /><a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br /><a href="#wasAssociatedWith">wasAssociatedWith</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br /><a href="#guidingPolicy">guidingPolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br /><a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br />
+Sub-classes |<a href="#ControlEvent">ControlEvent</a><sup class="sup-c" title="class">c</sup><br /><a href="#CreationEvent">CreationEvent</a><sup class="sup-c" title="class">c</sup><br />
 ### Form Factor <sup>c</sup>
 Property | Value
 --- | ---
@@ -308,21 +300,20 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#FreezeEvent`
 Description | A Freeze Event is a Disposal Event that leads to a records disposal freeze or retention notice in support of compliance requirements or an identified need to suspend the Archives' records destruction permissions.
 Super-classes |<a href="#DisposalEvent">DisposalEvent</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Function <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Function`
-Description | A Function reflects the responsibilities of an Organisation that can be delegated through official channels. [Commonwealth Records Series Manual]
+Description | A Function is a process that is performed routinely to carry out a part of the mandate of an Australian Government Agency.
+Restrictions |<a href="#guidingPolicy">guidingPolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br />
+Sub-classes |<a href="#AGIFTFunction">AGIFTFunction</a><sup class="sup-c" title="class">c</sup><br /><a href="#RecordsAuthorityFunction">RecordsAuthorityFunction</a><sup class="sup-c" title="class">c</sup><br />
 ### Holding Space <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#HoldingSpace`
 Description | A Holding Space is a space that is used or reserved for the storage of an Artefact.
 Super-classes |<a href="#SpatialLocation">SpatialLocation</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |<a href="#PhysicalHoldingSpace">PhysicalHoldingSpace</a><sup class="sup-c" title="class">c</sup><br /><a href="#DigitalHoldingSpace">DigitalHoldingSpace</a><sup class="sup-c" title="class">c</sup><br />
+Sub-classes |<a href="#DigitalHoldingSpace">DigitalHoldingSpace</a><sup class="sup-c" title="class">c</sup><br /><a href="#PhysicalHoldingSpace">PhysicalHoldingSpace</a><sup class="sup-c" title="class">c</sup><br />
 ### Information Management Policy <sup>c</sup>
 Property | Value
 --- | ---
@@ -330,12 +321,12 @@ IRI | `http://linked.data.gov.au/def/agrif#InformationManagementPolicy`
 Description | An Information Management Policy is a Policy that helps to align information management practices to fulfill the requirements of an information governance framework. An Information Management Policy provides direction and guidance to staff for creating, capturing and managing information to satisfy business, legal and stakeholder requirements, and assigns responsibilities across the agency.
 Super-classes |<a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br />
 Restrictions |<a href="#hasDisposalClass">hasDisposalClass</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#DisposalClass">DisposalClass</a><sup class="sup-c" title="class">c</sup><br />
-Sub-classes |
 ### Information System <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#InformationSystem`
 Description | An Information System is an organized system for the collection, organization, storage and communication of information, typically Digital Artefacts or Records.
+Sub-classes |<a href="#IntellectualControlSystem">IntellectualControlSystem</a><sup class="sup-c" title="class">c</sup><br />
 ### Intellectual Control System <sup>c</sup>
 Property | Value
 --- | ---
@@ -350,8 +341,6 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#JurisdictionalCoverage`
 Description | A Jurisdictional Coverage denotes the jurisdictional applicability of the Record.
 Super-classes |<a href="#Coverage">Coverage</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Maintain Activity <sup>c</sup>
 Property | Value
 --- | ---
@@ -359,24 +348,23 @@ IRI | `http://linked.data.gov.au/def/agrif#MaintainActivity`
 Description | A Maintain Activity is an Activity to maintain a Record over a period of time due to a BusinessFunction or Policy.
 Super-classes |<a href="#Activity">Activity</a><sup class="sup-c" title="class">c</sup><br />
 Restrictions |<a href="#hasQuality">hasQuality</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#PreservationQuality">PreservationQuality</a><sup class="sup-c" title="class">c</sup><br />
-Sub-classes |
 ### Manifest <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Manifest`
 Description | A Manifest describes the files involved in the transfer of a Record from an Agency to the National Archives, including details such as the filesize, the destination hierarchy and the file's metadata.
+Restrictions |<a href="#checksum">checksum</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br />
 ### Minimum Metadata Set Policy <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#MinimumMetadataSetPolicy`
 Description | The Minimum Metadata Set Policy is a Policy that has been developed by the National Archives of Australia to identify metadata properties essential for agency management of information as well as those needed for records which will be transferred to the Archives. It supports the Digital Continuity 2020 principles of interoperable systems and processes and is a practical application of the Australian Government Recordkeeping Metadata Standard 2.2 (AGRkMS) to support metadata implementation and information use in agencies.
 Super-classes |<a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Organisation <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Organisation`
+Source | <a href="https://www.w3.org/TR/prov-o/#Organization">https://www.w3.org/TR/prov-o/#Organization</a>
 Description | An Organisation is a type of Agent that denotes a social or legal institution such as a government agency, a corporation, society, etc.
 Super-classes |<a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br />
 Restrictions |<a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br />
@@ -388,79 +376,75 @@ IRI | `http://linked.data.gov.au/def/agrif#OrganisationalUnit`
 Description | An Organisational Unit is a division of labour typically organised around a business function that form part of the Organisation.
 Super-classes |<a href="#Organisation">Organisation</a><sup class="sup-c" title="class">c</sup><br />
 Restrictions |<a href="#partOf">partOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Organisation">Organisation</a><sup class="sup-c" title="class">c</sup><br />
-Sub-classes |
 ### Permission <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Permission`
+Source | Australian Government Recordkeeping Metadata Standard
 Description | A Permission denotes the Security Clearance of an Agent that determines its access and use rights to Records.
 ### Person <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Person`
+Source | <a href="https://www.w3.org/TR/prov-o/#Person">https://www.w3.org/TR/prov-o/#Person</a>
 Description | A Person is an Agent that denotes a human.
 Super-classes |<a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Physical Artefact <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#PhysicalArtefact`
 Description | A Physical Artefact is an Artefact that is of physical nature.
+Example | An example of a Phyiscal Artefact in the context of record keeping is information printed or written on paper.
 Super-classes |<a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup><br />
 Restrictions |<a href="#hasFormFactor">hasFormFactor</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#FormFactor">FormFactor</a><sup class="sup-c" title="class">c</sup><br />
-Sub-classes |
 ### Physical Holding Space <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#PhysicalHoldingSpace`
 Description | A Physical Holding Space is a Spatial Location that is used or reserved for the storage of a Physical Artefact.
 Super-classes |<a href="#HoldingSpace">HoldingSpace</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Policy <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Policy`
+Source | <a href="http://purl.org/dc/terms/Policy">dcterms:Policy</a>
 Description | A Policy is a deliberate system of principles to guide decisions and achieve rational outcomes.
+Sub-classes |<a href="#InformationManagementPolicy">InformationManagementPolicy</a><sup class="sup-c" title="class">c</sup><br /><a href="#MinimumMetadataSetPolicy">MinimumMetadataSetPolicy</a><sup class="sup-c" title="class">c</sup><br /><a href="#RecordStorageStandard">RecordStorageStandard</a><sup class="sup-c" title="class">c</sup><br /><a href="#RecordsAuthorityDisposalClassPolicy">RecordsAuthorityPolicy</a><sup class="sup-c" title="class">c</sup><br /><a href="#DigitalPreservationPolicy">DigitalPreservationPolicy</a><sup class="sup-c" title="class">c</sup><br />
 ### Preservation Quality <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#PreservationQuality`
 Description | A Preservation Quality describes a Quality of an Artefact that supports or threatens the long term preservation of the information that is to be preserved.
 Super-classes |<a href="#Quality">Quality</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Quality <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Quality`
 Description | A Quality is an attribute that is intrinsically associated with an entity.
+Sub-classes |<a href="#PreservationQuality">PreservationQuality</a><sup class="sup-c" title="class">c</sup><br />
 ### Record <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Record`
 Description | A Record is information in any format created, received and maintained as evidence by an Organisation or Person, in pursuance of legal obligations or in the transaction of business. A Record may comprise a Digital or Physical Artefact.
+Restrictions |<a href="#hasCoverage">hasCoverage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Coverage">Coverage</a><sup class="sup-c" title="class">c</sup><br /><a href="#requiresSecurityClassification">requiresSecurityClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SecurityClassification">SecurityClassification</a><sup class="sup-c" title="class">c</sup><br /><a href="#hasClassifier">hasClassifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Classifier">Classifier</a><sup class="sup-c" title="class">c</sup><br /><a href="#requiresControl">hasControl</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Control">Control</a><sup class="sup-c" title="class">c</sup><br /><a href="#checksum">checksum</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br /><a href="#replaces">replaces</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br /><a href="#hasSeries">hasSeries</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Series">Series</a><sup class="sup-c" title="class">c</sup><br /><a href="#isChangedBy">isChangedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Event">Event</a><sup class="sup-c" title="class">c</sup><br /><a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br /><a href="#isChangedBy">isChangedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#CreationEvent">CreationEvent</a><sup class="sup-c" title="class">c</sup><br /><a href="#relatedTo">relatedTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br /><a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br /><a href="#recordOf">recordOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup><br /><a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br /><a href="#hasActivity">hasActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Activity">Activity</a><sup class="sup-c" title="class">c</sup><br /><a href="#hasDisposalClass">hasDisposalClass</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#DisposalClass">DisposalClass</a><sup class="sup-c" title="class">c</sup><br />
 ### Record Storage Standard <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#RecordStorageStandard`
 Description | The Standard for the storage of non-digital archival Records is designed to set out the requirements for the safe storage and preservation of non-digital records in the Archives’ custody; to ensure all non-digital records are protected, secure and accessible for as long as they are required to meet business and accountability needs and community expectations; and to ensure all non-digital records are stored in the most cost-effective manner possible.
 Super-classes |<a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Records Authority Function <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#RecordsAuthorityFunction`
 Description | A Records Authority Function is a Function that is assigned by the National Archives to classify Agency business.
 Super-classes |<a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Records Authority Disposal Class Policy <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#RecordsAuthorityPolicy`
+Source | Australian Government Recordkeeping Metadata Standard
 Description | A Records Authority Disposal Class Policy is a Policy that identifies the specific disposal class that authorises the retention or destruction of a Record.
 Super-classes |<a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br />
 Restrictions |<a href="#hasDisposalClass">hasDisposalClass</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#DisposalClass">DisposalClass</a><sup class="sup-c" title="class">c</sup><br />
@@ -472,36 +456,33 @@ IRI | `http://linked.data.gov.au/def/agrif#ReplaceEvent`
 Description | A Replace Event is an Event that results in the replacement of a Record with a new version. Edits to a Record constitute a Replace Event.
 Super-classes |<a href="#ControlEvent">ControlEvent</a><sup class="sup-c" title="class">c</sup><br />
 Restrictions |<a href="#hasVersionHistory">hasVersionHistory</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#VersionHistory">VersionHistory</a><sup class="sup-c" title="class">c</sup><br /><a href="#replacedBy">replacedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br />
-Sub-classes |
 ### Role <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Role`
+Source | <a href="https://www.w3.org/TR/prov-o/#Role">https://www.w3.org/TR/prov-o/#Role</a>
 Description | A Role is the function of an entity or agent with respect to an Activity or Event, in the context of a usage, generation, invalidation, association, start, and end.
+Restrictions |<a href="#hasPermission">hasPermission</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Permission">Permission</a><sup class="sup-c" title="class">c</sup><br />
+Sub-classes |<a href="#BusinessOwner">BusinessOwner</a><sup class="sup-c" title="class">c</sup><br /><a href="#User">User</a><sup class="sup-c" title="class">c</sup><br /><a href="#Administrator">Administrator</a><sup class="sup-c" title="class">c</sup><br /><a href="#Creator">Creator</a><sup class="sup-c" title="class">c</sup><br />
 ### Security Classification <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#SecurityClassification`
+Source | Australian Government Recordkeeping Metadata Standard
 Description | A Security Classification denotes the security status of a Record that an Agent needs to possess to access the Record.
 Super-classes |<a href="#AccessControl">AccessControl</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Security Control <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#SecurityControl`
 Description | A Security Control is a safeguard or countermeasures to avoid, detect, counteract, or minimize security risks to a Record or Artefact.
 Super-classes |<a href="#Control">Control</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Sentencing Event <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#SentencingEvent`
 Description | A Sentencing Event is an Event that classifies an Agencies Record to a specific class of a Records Authority Policy. This helps determine the Records value and how it should be managed throughout its lifecycle.
 Super-classes |<a href="#ControlEvent">ControlEvent</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Series <sup>c</sup>
 Property | Value
 --- | ---
@@ -509,7 +490,6 @@ IRI | `http://linked.data.gov.au/def/agrif#Series`
 Description | A Series is an identifier for an item, and when combined with a control symbol gives an item its intellectual context.
 Super-classes |<a href="#IntellectualControlSystem">IntellectualControlSystem</a><sup class="sup-c" title="class">c</sup><br />
 Restrictions |<a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br />
-Sub-classes |
 ### Share Activity <sup>c</sup>
 Property | Value
 --- | ---
@@ -517,54 +497,51 @@ IRI | `http://linked.data.gov.au/def/agrif#ShareActivity`
 Description | A Share Activity is an Activity where the custodianship of a Record is transferred to or shared with Agents over a period of time.
 Super-classes |<a href="#Activity">Activity</a><sup class="sup-c" title="class">c</sup><br />
 Restrictions |<a href="#sharedWith">sharedWith</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br />
-Sub-classes |
 ### Spatial Coverage <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#SpatialCoverage`
 Description | A Spatial Coverage denotes the spatial extent to which a Record is observed.
 Super-classes |<a href="#Coverage">Coverage</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Spatial Location <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#SpatialLocation`
 Description | A Spatial Location describes where a something (e.g. a Record, Collection or Artefact) is physically located, using geospatial coordinates such as latitude and longitude.
+Sub-classes |<a href="#HoldingSpace">HoldingSpace</a><sup class="sup-c" title="class">c</sup><br />
 ### Status <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Status`
 Description | A Status indicates an Activities current state.
+Sub-classes |<a href="#DecisionStatus">DecisionStatus</a><sup class="sup-c" title="class">c</sup><br />
 ### Temporal Coverage <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#TemporalCoverage`
 Description | A Temporal Coverage denotes the temporal extent to which a Record is observed.
 Super-classes |<a href="#Coverage">Coverage</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Transfer Event <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#TransferEvent`
 Description | A Transfer Event is a Disposal Event that results in a change of custody.
+Example | An example of a Transfer Event is the transfer of a Record from an Agency to the National Archives. Section 27 of the Archives Act 1983 requires Australian government agencies to transfer Records to the Archives within 15 years of their creation.
 Super-classes |<a href="#DisposalEvent">DisposalEvent</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |<a href="#transferredTo">transferredTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#BusinessOwner">BusinessOwner</a><sup class="sup-c" title="class">c</sup><br /><a href="#transferredFrom">transferredFrom</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br /><a href="#transferredTo">transferredTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br /><a href="#transferredFrom">transferredFrom</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#BusinessOwner">BusinessOwner</a><sup class="sup-c" title="class">c</sup><br /><a href="#hasManifest">hasManifest</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Manifest">Manifest</a><sup class="sup-c" title="class">c</sup><br />
-Sub-classes |
+Restrictions |<a href="#transferredFrom">transferredFrom</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#BusinessOwner">BusinessOwner</a><sup class="sup-c" title="class">c</sup><br /><a href="#transferredFrom">transferredFrom</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br /><a href="#transferredTo">transferredTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#BusinessOwner">BusinessOwner</a><sup class="sup-c" title="class">c</sup><br /><a href="#transferredTo">transferredTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br /><a href="#hasManifest">hasManifest</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Manifest">Manifest</a><sup class="sup-c" title="class">c</sup><br />
 ### Trigger <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Trigger`
 Description | A Trigger is an entity that initiated an Activity or Event.
+Restrictions |<a href="#notifies">notifies</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br />
+Sub-classes |<a href="#AccessTrigger">AccessTrigger</a><sup class="sup-c" title="class">c</sup><br />
 ### User <sup>c</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#User`
 Description | A User is an Agent that uses a Record.
 Super-classes |<a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br />
-Restrictions |
-Sub-classes |
 ### Version History <sup>c</sup>
 Property | Value
 --- | ---
@@ -640,6 +617,7 @@ Description | A relation that associates a Function to an Entity, Event or Activ
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#associatedRole`
+Source | <a href="https://www.w3.org/TR/prov-o/#hadRole">https://www.w3.org/TR/prov-o/#hadRole</a>
 Description | An associated Role is a qualified association between a Role and an Activity or Event defined by an Association.
 [](guidingPolicy)
 ### guiding Policy <sup>op</sup>
@@ -652,12 +630,14 @@ Description | A relation that defines a Policy that is guiding an Activity or Ch
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#hasActivity`
+Source | <a href="https://www.w3.org/TR/prov-o/#p_activity">https://www.w3.org/TR/prov-o/#p_activity</a>
 Description | A relation between a Record and an Activity that acts upon the Record.
 [](hasAgent)
 ### has Agent <sup>op</sup>
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#hasAgent`
+Source | <a href="https://www.w3.org/TR/prov-o/#p_agent">https://www.w3.org/TR/prov-o/#p_agent</a>
 Description | A qualified relation between an Agent and a Change Event defined through an Association.
 [](hasClassifier)
 ### has Classifier <sup>op</sup>
@@ -861,6 +841,7 @@ Description | A relation between an Activity and a Record the Activity uses.
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#wasAssociatedWith`
+Source | <a href="https://www.w3.org/TR/prov-o/#wasAssociatedWith">https://www.w3.org/TR/prov-o/#wasAssociatedWith</a>
 Description | A relation that assigns responsibility of an Agent for an Activity or Change Event.
 
 ## Datatype Properties
@@ -876,6 +857,7 @@ Description | A relation that assigns responsibility of an Agent for an Activity
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#checksum`
+Source | A checksum is a small-sized datum derived from a block of digital data representing a Record for the purpose of detecting errors during the transfer or storage of a Record.
 Range(s) |<a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a><sup class="sup-c" title="class">c</sup><br />
 [](disposalClassNumber)
 ### disposalClassNumber <sup>dp</sup>
@@ -889,6 +871,7 @@ Range(s) |<a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#endedAtTime`
+Source | <a href="https://www.w3.org/TR/prov-o/#endedAtTime">https://www.w3.org/TR/prov-o/#endedAtTime</a>
 Description | The time at which an Activity ended.
 Range(s) |<a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a><sup class="sup-c" title="class">c</sup><br />
 [](filename)
@@ -908,6 +891,7 @@ Description | File size is a measure of how much data a computer file contains o
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#format`
+Source | <a href="http://purl.org/dc/elements/1.1/format">http://purl.org/dc/elements/1.1/format</a>
 Description | The file format, physical medium, or dimensions of the resource.
 [](seriesNumber)
 ### seriesNumber <sup>dp</sup>
@@ -924,21 +908,125 @@ Range(s) |<a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup
 ### source <sup>ap</sup>
 Property | Value
 --- | ---
-IRI | `http://purl.org/dc/elements/1.1/source`
+IRI | `http://purl.org/dc/terms/source`
 [](example)
 ### example <sup>ap</sup>
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/2004/02/skos/core#example`
 
+## Named Individuals
+[Active](#Active),
+[Approved](#Approved),
+[AwaitingDisposal](#AwaitingDisposal),
+[Completed](#Completed),
+[Confidential](#Confidential),
+[Disapproved](#Disapproved),
+[Disposed](#Disposed),
+[Highly Protected](#HighlyProtected),
+[Protected](#Protected),
+[Redundant](#Redundant),
+[RetainAsNationalArchives](#RetainAsNationalArchives),
+[Secret](#Secret),
+[Top Secret (NV)](#TopSecret(NV)),
+[Top Secret (PV)](#TopSecret(PV)),
+[Unclassified](#Unclassified),
+### Active <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `http://linked.data.gov.au/def/agrif#Active`
+* **Contributor(s)**
+  * <a href="http://linked.data.gov.au/def/agrif#Status">Status</a>
+### Approved <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `http://linked.data.gov.au/def/agrif#Approved`
+* **Contributor(s)**
+  * <a href="http://linked.data.gov.au/def/agrif#DecisionStatus">DecisionStatus</a>
+### AwaitingDisposal <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `http://linked.data.gov.au/def/agrif#AwaitingDisposal`
+* **Contributor(s)**
+  * <a href="http://linked.data.gov.au/def/agrif#Status">Status</a>
+### Completed <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `http://linked.data.gov.au/def/agrif#Completed`
+* **Contributor(s)**
+  * <a href="http://linked.data.gov.au/def/agrif#Status">Status</a>
+### Confidential <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `http://linked.data.gov.au/def/agrif#Confidential`
+* **Contributor(s)**
+  * <a href="http://linked.data.gov.au/def/agrif#SecurityClassification">SecurityClassification</a>
+### Disapproved <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `http://linked.data.gov.au/def/agrif#Disapproved`
+* **Contributor(s)**
+  * <a href="http://linked.data.gov.au/def/agrif#DecisionStatus">DecisionStatus</a>
+### Disposed <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `http://linked.data.gov.au/def/agrif#Disposed`
+* **Contributor(s)**
+  * <a href="http://linked.data.gov.au/def/agrif#Status">Status</a>
+### Highly Protected <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `http://linked.data.gov.au/def/agrif#HighlyProtected`
+* **Contributor(s)**
+  * <a href="http://linked.data.gov.au/def/agrif#SecurityClassification">SecurityClassification</a>
+### Protected <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `http://linked.data.gov.au/def/agrif#Protected`
+* **Contributor(s)**
+  * <a href="http://linked.data.gov.au/def/agrif#SecurityClassification">SecurityClassification</a>
+### Redundant <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `http://linked.data.gov.au/def/agrif#Redundant`
+* **Contributor(s)**
+  * <a href="http://linked.data.gov.au/def/agrif#Status">Status</a>
+### RetainAsNationalArchives <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `http://linked.data.gov.au/def/agrif#RetainAsNationalArchives`
+* **Contributor(s)**
+  * <a href="http://linked.data.gov.au/def/agrif#DisposalClass">DisposalClass</a>
+### Secret <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `http://linked.data.gov.au/def/agrif#Secret`
+* **Contributor(s)**
+  * <a href="http://linked.data.gov.au/def/agrif#SecurityClassification">SecurityClassification</a>
+### Top Secret (NV) <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `http://linked.data.gov.au/def/agrif#TopSecretNV`
+* **Contributor(s)**
+  * <a href="http://linked.data.gov.au/def/agrif#SecurityClassification">SecurityClassification</a>
+### Top Secret (PV) <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `http://linked.data.gov.au/def/agrif#TopSecretPV`
+* **Contributor(s)**
+  * <a href="http://linked.data.gov.au/def/agrif#SecurityClassification">SecurityClassification</a>
+### Unclassified <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `http://linked.data.gov.au/def/agrif#Unclassified`
+* **Contributor(s)**
+  * <a href="http://linked.data.gov.au/def/agrif#SecurityClassification">SecurityClassification</a>
 ## Namespaces
 * **default (:)**
   * `http://linked.data.gov.au/def/agrif#`
 * **:**
   * `http://linked.data.gov.au/def/agrif#`
-* **dc**
-  * `http://purl.org/dc/elements/1.1/`
-* **dct**
+* **dcterms**
   * `http://purl.org/dc/terms/`
 * **doap**
   * `http://usefulinc.com/ns/doap#`
