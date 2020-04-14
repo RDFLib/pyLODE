@@ -5,7 +5,7 @@
 
 ## Legend
 * Classes: c
-* Object Properties :op
+* Object Properties: op
 * Functional Properties: fp
 * Data Properties: dp
 * Annotation Properties: dp

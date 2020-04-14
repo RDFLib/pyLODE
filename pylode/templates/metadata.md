@@ -49,7 +49,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 {%- endif %}
 * **Imports**
 {%- for import in imports %}
-  * {{ import }}  
+  * {{ import }}
 {%- endfor %}
 {%- endif %}
 {%- if rights is not none and license is not none %}
@@ -84,29 +84,29 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 
 ## Table of Contents
 {%- if has_classes %}
-1. [Classes](#classes)  
+1. [Classes](#Classes)
 {%- endif %}
 {%- if has_ops %}
-1. [Object Properties](#objectproperties)  
+1. [Object Properties](#Object-Properties)
 {%- endif %}
 {%- if has_fps %}
-1. [Functional Properties](#functionalproperties)  
+1. [Functional Properties](#Functional-Properties)
 {%- endif %}
 {%- if has_dps %}
-1. [Datatype Properties](#datatypeproperties)  
+1. [Datatype Properties](#Datatype-Properties)
 {%- endif %}
 {%- if has_aps %}
-1. [Annotation Properties](#annotationproperties)  
+1. [Annotation Properties](#Annotation-Properties)
 {%- endif %}
 {%- if has_ps %}
-1. [Properties](#properties)  
+1. [Properties](#Properties)
 {%- endif %}
 {%- if has_nis %}
-1. [Named Individuals](#namedindividuals)  
+1. [Named Individuals](#Named-individuals)
 {%- endif %}
-1. [Namespaces](#namespaces)  
+1. [Namespaces](#Namespaces)
 
 
 ## Overview
 
-**Figure 1:** Ontology overview  
+**Figure 1:** Ontology overview
