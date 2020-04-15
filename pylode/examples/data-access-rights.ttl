@@ -1,0 +1,69 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix da: <http://linked.data.gov.au/def/data-access-rights/> .
+
+<http://linked.data.gov.au/def/data-access-rights> a owl:Ontology , skos:ConceptScheme ;
+    skos:prefLabel "Data Access Rights"@en ;
+    skos:definition "Data access rights control how users and systems access a data resource."@en ;
+    skos:historyNote "This vocabulary is taken from the COAR Controlled Vocabularies Interest Group (http://vocabularies.coar-repositories.org/documentation/access_rights/) but is redelivered as that vocabulary isn't well presented online."@en ;
+    dct:source <http://vocabularies.coar-repositories.org/documentation/access_rights/> ;
+    dct:creator <http://linked.data.gov.au/org/gsq> ;
+    dct:created "2019-04-03"^^xsd:date ;
+    dct:modified "2019-09-10"^^xsd:date ;
+    dct:publisher <http://linked.data.gov.au/org/gsq> ;
+.
+
+<http://linked.data.gov.au/org/gsq>
+    a sdo:Organization ;
+    sdo:name "Geological Survey of Queensland" ;
+.
+
+da:embargoed a skos:Concept ;
+    skos:broader da:restricted ;
+    skos:prefLabel "Embargoed access"@en ;
+    skos:definition "Embargoed access refers to a resource accessible as metadata only until released for open access on a specified date."@en ;
+    skos:inScheme <http://linked.data.gov.au/def/data-access-rights> .
+
+da:metadata-only a skos:Concept ;
+    skos:broader da:restricted ;
+    skos:prefLabel "Metadata only access"@en ;
+    skos:definition "Metadata only access refers to a resource in which access is limited to metadata only. Access to the resource requires granting of access rights."@en ;
+    skos:inScheme <http://linked.data.gov.au/def/data-access-rights> .
+
+da:open a skos:Concept ;
+    skos:prefLabel "Open access"@en ;
+    skos:altLabel "Open file"@en ;
+    skos:definition "Open access refers to a resource that is immediately and permanently online, and free for all on the Web, without financial and technical barriers."@en ;
+    skos:inScheme <http://linked.data.gov.au/def/data-access-rights> ;
+    skos:topConceptOf <http://linked.data.gov.au/def/data-access-rights> .
+
+da:restricted a skos:Concept ;
+    skos:prefLabel "Restricted access"@en ;
+    skos:definition "Restricted access refers to a resource that is stored in a system but is not freely accessible. Access is limited to specific personnel or user groups."@en ;
+    skos:inScheme <http://linked.data.gov.au/def/data-access-rights> ;
+    skos:topConceptOf <http://linked.data.gov.au/def/data-access-rights> .
+
+da:protected a skos:Concept ;
+    skos:broader da:restricted ;
+    skos:prefLabel "Protected access"@en ;
+    skos:definition "Protected access refers to a resource that is stored in a system but is not freely accessible due to specific legal or policy decisions, such as active legal proceedings or ministerial discretion. Access is limited to specific personnel or user groups. "@en ;
+    skos:inScheme <http://linked.data.gov.au/def/data-access-rights> .
+
+da:open-access-rights a skos:Collection ;
+    skos:prefLabel "Open data access rights"@en ;
+    skos:definition "Data that is non-sensitive, freely available, easily discovered and accessed, and published in ways and with licences that allow easy reuse."@en ;
+    skos:member da:open .
+
+da:closed-access-rights a skos:Collection ;
+    skos:prefLabel "Closed data access rights"@en ;
+    skos:definition "Selective restriction of access to data that is OFFICIAL (low or negligible confidentiality impact), SENSITIVE (moderate confidentiality impact) or PROTECTED (high confidentiality impact)."@en ;
+    skos:member da:embargoed,
+        da:metadata-only,
+        da:protected,
+        da:restricted .

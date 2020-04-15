@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The Australian Government Records Interoperability Framework (AGRIF) ontology</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <style>
+        #pylode {
+            position: fixed;
+            top: 80px;
+            left: -60px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 5px 0 5px 0;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 3px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 { font: italic 100% sans-serif }
+        h6 { font: small-caps 100% sans-serif }
+
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: justify;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-cp,
+        .sup-cl {
+            cursor:help;
+            margin-left: 3px;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-cp {
+            color:orange;
+        }
+
+        .sup-cl {
+            color:darkred;
+        }
+
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+    </style>
+    
+    <script type="application/ld+json">
+      [
+  {
+    "@id": "http://linked.data.gov.au/def/agrif",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/license": [
+      {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "The Australian Government Records Interoperability Framework (AGRIF) ontology"
+      }
+    ],
+    "https://schema.org/rights": [
+      {
+        "@value": "(c) Commonwealth of Australia (Department of Finance) 2019"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+<body>
+  <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+  <h1>The Australian Government Records Interoperability Framework (AGRIF) ontology</h1>
+<h3><em>A taxonomy</em></h3>
+  <section id="conceptscheme">
+      <h2 style="display:none;">Concept Scheme</h2>
+      <dl>
+          <dt>IRI</dt>
+          <dd><code>http://linked.data.gov.au/def/agrif</code></dd>
+          <dt>Publisher(s)</dt>
+          <dd>
+              Department of Finance<br/>
+          </dd>
+          <dt>Creator(s)</dt>
+          <dd>
+              <a href="http://orcid.org/0000-0003-3425-0780">Armin Haller</a> (<a href="mailto:armin.haller@anu.edu.au">armin.haller@anu.edu.au</a>) of <a href="https://www.anu.edu.au">Australian National University</a><br/>
+              John Machin of <a href="https://www.finance.gov.au">Department of Finance</a><br/>
+              Katherine Stuart of <a href="https://www.finance.gov.au">Department of Finance</a><br/>
+          </dd>
+          <dt>Contributors(s)</dt>
+          <dd>
+              Kerry Taylor<br/>
+              <a href="http://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a> (<a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a>)<br/>
+              Sergio José Rodríguez Méndez<br/>
+              Pouya Ghiasnezhad Omran<br/>
+          </dd>
+          <dt>Created</dt>
+          <dd>2016-12-06</dd>
+          <dt>Modified</dt>
+          <dd>2019-10-21</dd>
+          <dt>Version Information</dt>
+          <dd>0.9</dd>
+          <dt>License &amp; Rights</dt>
+          <dd>
+              <a href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a><br />
+              (c) Commonwealth of Australia (Department of Finance) 2019
+          </dd>
+          <dt>Ontology RDF</dt>
+          <dd><a href="agrif.ttl">RDF (turtle)</a></dd>
+      </dl>
+  </section>
+  <section id="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+          <li><a href="#concepts">Concepts</a></li>
+          <li><a href="#namespaces">Namespaces</a></li>
+          <li><a href="#legend">Legend</a></li>
+      </ol>
+  </section>
+  <section id="concepts">
+    <h2>Concepts <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hierarchy">
+<li><a href="#control">Control</a>
+<ul><li><a href="#accesscontrol">Access Control</a>
+<ul><li><a href="#securityclassification">Security Classification</a></li></ul></li></ul>
+<ul><li><a href="#securitycontrol">Security Control</a></li></ul></li><li><a href="#coverage">Coverage</a>
+<ul><li><a href="#jurisdictionalcoverage">Jurisdictional Coverage</a></li></ul>
+<ul><li><a href="#spatialcoverage">Spatial Coverage</a></li></ul>
+<ul><li><a href="#temporalcoverage">Temporal Coverage</a></li></ul></li><li><a href="#formfactor">Form Factor</a></li><li><a href="#informationsystem">Information System</a>
+<ul><li><a href="#intellectualcontrolsystem">Intellectual Control System</a>
+<ul><li><a href="#controlledvocabulary">Controlled Vocabulary</a></li></ul>
+<ul><li><a href="#series">Series</a></li></ul></li></ul></li><li><a href="#securityclearance">Security Clearance</a></li><li><a href="#policy">Policy</a>
+<ul><li><a href="#digitalpreservationpolicy">Digital Preservation Policy</a></li></ul>
+<ul><li><a href="#informationmanagementpolicy">Information Management Policy</a></li></ul>
+<ul><li><a href="#minimummetadatasetpolicy">Minimum Metadata Set Policy</a></li></ul>
+<ul><li><a href="#recordstoragestandard">Record Storage Standard</a></li></ul>
+<ul><li><a href="#recordsauthoritydisposalclasspolicy">Records Authority Disposal Class Policy</a>
+<ul><li><a href="#disposalclass">Disposal Class</a></li></ul></li></ul></li><li><a href="#quality">Quality</a>
+<ul><li><a href="#preservationquality">Preservation Quality</a></li></ul></li><li><a href="#spatiallocation">Spatial Location</a>
+<ul><li><a href="#holdingspace">Holding Space</a>
+<ul><li><a href="#digitalholdingspace">Digital Holding Space</a></li></ul>
+<ul><li><a href="#physicalholdingspace">Physical Holding Space</a></li></ul></li></ul></li><li><a href="#status">Status</a>
+<ul><li><a href="#decisionstatus">Decision Status</a></li></ul></li><li><a href="#versionhistory">Version History</a></li><li><a href="ub1bL849C45">ub1bL849C45</a></li>
+</ul>
+    <div class="entity concept" id="agiftfunction">
+        <h3>AGIFT Function<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#AGIFTFunction</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#function">Function</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="accessactivity">
+        <h3>Access Activity<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#AccessActivity</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#activity">Activity</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="accesscontrol">
+        <h3>Access Control<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#AccessControl</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#control">Control</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#securityclassification">Security Classification</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="accesstrigger">
+        <h3>Access Trigger<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#AccessTrigger</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#trigger">Trigger</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="activity">
+        <h3>Activity<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Activity</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                  <a href="https://www.w3.org/TR/prov-o/#Activity">https://www.w3.org/TR/prov-o/#Activity</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#accessactivity">Access Activity</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#shareactivity">Share Activity</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#maintainactivity">Maintain Activity</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="administrator">
+        <h3>Administrator<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Administrator</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#role">Role</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="agent">
+        <h3>Agent<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Agent</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                  <a href="https://www.w3.org/TR/prov-o/#Agent">https://www.w3.org/TR/prov-o/#Agent</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#organisation">Organisation</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#person">Person</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="artefact">
+        <h3>Artefact<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Artefact</code></td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#physicalartefact">Physical Artefact</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#digitalartefact">Digital Artefact</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="artefactchangeevent">
+        <h3>Artefact Change Event<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#ArtefactChangeEvent</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#event">Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#artefactsendevent">Artefact Send Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="artefactcontrolevent">
+        <h3>Artefact Control Event<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#ArtefactControlEvent</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#event">Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#artefactshareevent">Artefact Share Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#artefactpublishevent">Artefact Publish Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="artefactpublishevent">
+        <h3>Artefact Publish Event<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#ArtefactPublishEvent</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#artefactcontrolevent">Artefact Control Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="artefactsendevent">
+        <h3>Artefact Send Event<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#ArtefactSendEvent</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#artefactchangeevent">Artefact Change Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="artefactshareevent">
+        <h3>Artefact Share Event<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#ArtefactShareEvent</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#artefactcontrolevent">Artefact Control Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="association">
+        <h3>Association<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Association</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                  <a href="https://www.w3.org/TR/prov-o/#Association">https://www.w3.org/TR/prov-o/#Association</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="businessowner">
+        <h3>Business Owner<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#BusinessOwner</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#role">Role</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="classifier">
+        <h3>Classifier<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Classifier</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="collection">
+        <h3>Collection<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Collection</code></td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#logicalcollection">Logical Collection</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#physicalcollection">Physical Collection</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="control">
+        <h3>Control<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Control</code></td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#accesscontrol">Access Control</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#securitycontrol">Security Control</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="controlledvocabulary">
+        <h3>Controlled Vocabulary<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#ControlledVocabulary</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#intellectualcontrolsystem">Intellectual Control System</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="coverage">
+        <h3>Coverage<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Coverage</code></td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#jurisdictionalcoverage">Jurisdictional Coverage</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#temporalcoverage">Temporal Coverage</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#spatialcoverage">Spatial Coverage</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="recordcreationevent">
+        <h3>Record Creation Event<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#CreationEvent</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#event">Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="creator">
+        <h3>Creator<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Creator</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#role">Role</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="decisionstatus">
+        <h3>Decision Status<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#DecisionStatus</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#status">Status</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="digitalartefact">
+        <h3>Digital Artefact<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#DigitalArtefact</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#artefact">Artefact</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="digitalholdingspace">
+        <h3>Digital Holding Space<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#DigitalHoldingSpace</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#holdingspace">Holding Space</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="digitalpreservationpolicy">
+        <h3>Digital Preservation Policy<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#DigitalPreservationPolicy</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#policy">Policy</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="disposalclass">
+        <h3>Disposal Class<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#DisposalClass</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#recordsauthoritydisposalclasspolicy">Records Authority Disposal Class Policy</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="event">
+        <h3>Event<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Event</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                  <a href="https://www.w3.org/TR/prov-o/#InstantaneousEvent">https://www.w3.org/TR/prov-o/#InstantaneousEvent</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#artefactchangeevent">Artefact Change Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#artefactcontrolevent">Artefact Control Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#recordcontrolevent">Record Control Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#recordcreationevent">Record Creation Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="formfactor">
+        <h3>Form Factor<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#FormFactor</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="function">
+        <h3>Function<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Function</code></td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#recordsauthorityfunction">Records Authority Function</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#agiftfunction">AGIFT Function</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="holdingspace">
+        <h3>Holding Space<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#HoldingSpace</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#spatiallocation">Spatial Location</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#physicalholdingspace">Physical Holding Space</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#digitalholdingspace">Digital Holding Space</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="informationmanagementpolicy">
+        <h3>Information Management Policy<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#InformationManagementPolicy</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#policy">Policy</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="informationsystem">
+        <h3>Information System<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#InformationSystem</code></td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#intellectualcontrolsystem">Intellectual Control System</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="intellectualcontrolsystem">
+        <h3>Intellectual Control System<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#IntellectualControlSystem</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#informationsystem">Information System</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#controlledvocabulary">Controlled Vocabulary</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#series">Series</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="jurisdictionalcoverage">
+        <h3>Jurisdictional Coverage<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#JurisdictionalCoverage</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#coverage">Coverage</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="logicalcollection">
+        <h3>Logical Collection<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#LogicalCollection</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#collection">Collection</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="maintainactivity">
+        <h3>Maintain Activity<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#MaintainActivity</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#activity">Activity</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="manifest">
+        <h3>Manifest<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Manifest</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="minimummetadatasetpolicy">
+        <h3>Minimum Metadata Set Policy<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#MinimumMetadataSetPolicy</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#policy">Policy</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="organisation">
+        <h3>Organisation<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Organisation</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                  <a href="https://www.w3.org/TR/prov-o/#Organization">https://www.w3.org/TR/prov-o/#Organization</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#agent">Agent</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#organisationalunit">Organisational Unit</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="organisationalunit">
+        <h3>Organisational Unit<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#OrganisationalUnit</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#organisation">Organisation</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="securityclearance">
+        <h3>Security Clearance<sup title="Concept" class="sup-cp">cp</sup></h3>
+            <h4>
+              Security Clearance (en)
+              , 
+              Permission (en)
+              
+            </h4>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Permission</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                  <a href="Australian Government Recordkeeping Metadata Standard">Australian Government Recordkeeping Metadata Standard</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="person">
+        <h3>Person<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Person</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                  <a href="https://www.w3.org/TR/prov-o/#Person">https://www.w3.org/TR/prov-o/#Person</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#agent">Agent</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="physicalartefact">
+        <h3>Physical Artefact<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#PhysicalArtefact</code></td>
+            </tr>
+            <tr>
+                <th>Example</th>
+                <td>
+                    An example of a Phyiscal Artefact in the context of record keeping is information printed or written on paper.<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#artefact">Artefact</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="physicalcollection">
+        <h3>Physical Collection<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#PhysicalCollection</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#collection">Collection</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="physicalholdingspace">
+        <h3>Physical Holding Space<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#PhysicalHoldingSpace</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#holdingspace">Holding Space</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="policy">
+        <h3>Policy<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Policy</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                  <a href="http://purl.org/dc/terms/Policy">http://purl.org/dc/terms/Policy</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#minimummetadatasetpolicy">Minimum Metadata Set Policy</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#digitalpreservationpolicy">Digital Preservation Policy</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#recordsauthoritydisposalclasspolicy">Records Authority Disposal Class Policy</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#informationmanagementpolicy">Information Management Policy</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#recordstoragestandard">Record Storage Standard</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="preservationquality">
+        <h3>Preservation Quality<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#PreservationQuality</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#quality">Quality</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="quality">
+        <h3>Quality<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Quality</code></td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#preservationquality">Preservation Quality</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="record">
+        <h3>Record<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Record</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="recordauditevent">
+        <h3>Record Audit Event<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#RecordAuditEvent</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#recordcontrolevent">Record Control Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="recordcontrolevent">
+        <h3>Record Control Event<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#RecordControlEvent</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#event">Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#recordauditevent">Record Audit Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#recordsentencingevent">Record Sentencing Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#recordreplacementevent">Record Replacement Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#recorddisposalevent">Record Disposal Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#recorddecisionevent">Record Decision Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="recorddecisionevent">
+        <h3>Record Decision Event<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#RecordDecisionEvent</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#recordcontrolevent">Record Control Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="recorddestructionevent">
+        <h3>Record Destruction Event<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#RecordDestructionEvent</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#recorddisposalevent">Record Disposal Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="recorddisposalevent">
+        <h3>Record Disposal Event<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#RecordDisposalEvent</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#recordcontrolevent">Record Control Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#recorddestructionevent">Record Destruction Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#recordtransferevent">Record Transfer Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#recordfreezeevent">Record Freeze Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="recordfreezeevent">
+        <h3>Record Freeze Event<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#RecordFreezeEvent</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#recorddisposalevent">Record Disposal Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="recordreplacementevent">
+        <h3>Record Replacement Event<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#RecordReplacementEvent</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#recordcontrolevent">Record Control Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="recordsentencingevent">
+        <h3>Record Sentencing Event<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#RecordSentencingEvent</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#recordcontrolevent">Record Control Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="recordstoragestandard">
+        <h3>Record Storage Standard<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#RecordStorageStandard</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#policy">Policy</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="recordtransferevent">
+        <h3>Record Transfer Event<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#RecordTransferEvent</code></td>
+            </tr>
+            <tr>
+                <th>Example</th>
+                <td>
+                    An example of a Record Transfer Event is the transfer of a Record from an Agency to the National Archives. Section 27 of the Archives Act 1983 requires Australian government agencies to transfer Records to the Archives within 15 years of their creation.<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#recorddisposalevent">Record Disposal Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="recordsauthorityfunction">
+        <h3>Records Authority Function<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#RecordsAuthorityFunction</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#function">Function</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="recordsauthoritydisposalclasspolicy">
+        <h3>Records Authority Disposal Class Policy<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#RecordsAuthorityPolicy</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                  <a href="Australian Government Recordkeeping Metadata Standard">Australian Government Recordkeeping Metadata Standard</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#policy">Policy</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#disposalclass">Disposal Class</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="role">
+        <h3>Role<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Role</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                  <a href="https://www.w3.org/TR/prov-o/#Role">https://www.w3.org/TR/prov-o/#Role</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#administrator">Administrator</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#user">User</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#creator">Creator</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#businessowner">Business Owner</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="securityclassification">
+        <h3>Security Classification<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#SecurityClassification</code></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>
+                  <a href="Australian Government Recordkeeping Metadata Standard">Australian Government Recordkeeping Metadata Standard</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#accesscontrol">Access Control</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="securitycontrol">
+        <h3>Security Control<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#SecurityControl</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#control">Control</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="series">
+        <h3>Series<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Series</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#intellectualcontrolsystem">Intellectual Control System</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="shareactivity">
+        <h3>Share Activity<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#ShareActivity</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#activity">Activity</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="spatialcoverage">
+        <h3>Spatial Coverage<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#SpatialCoverage</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#coverage">Coverage</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="spatiallocation">
+        <h3>Spatial Location<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#SpatialLocation</code></td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#holdingspace">Holding Space</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="status">
+        <h3>Status<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Status</code></td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#decisionstatus">Decision Status</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="temporalcoverage">
+        <h3>Temporal Coverage<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#TemporalCoverage</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#coverage">Coverage</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="trigger">
+        <h3>Trigger<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#Trigger</code></td>
+            </tr>
+            <tr>
+                <th>Narrower Concepts</th>
+                <td>
+                    <a href="#accesstrigger">Access Trigger</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="user">
+        <h3>User<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#User</code></td>
+            </tr>
+            <tr>
+                <th>Broader Concepts</th>
+                <td>
+                    <a href="#role">Role</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="versionhistory">
+        <h3>Version History<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://linked.data.gov.au/def/agrif#VersionHistory</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity concept" id="None">
+        <h3>None<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>ub1bL849C45</code></td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+  <section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt><em>default (:)</em></dt>
+        <dd><code>http://linked.data.gov.au/def/agrif#</code></dd>
+        <dt>:</dt>
+        <dd><code>http://linked.data.gov.au/def/agrif#</code></dd>
+        <dt>dcterms</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>prov</dt>
+        <dd><code>http://www.w3.org/ns/prov#</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>sdo</dt>
+        <dd><code>https://schema.org/</code></dd>
+        <dt>sdo2</dt>
+        <dd><code>http://schema.org/</code></dd>
+        <dt>skos</dt>
+        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>vann</dt>
+        <dd><code>http://purl.org/vocab/vann/</code></dd>
+        <dt>xml</dt>
+        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+
+  <section id="legend">
+    <h2>Legend</h2>
+    <table class="entity">
+      <tr><td><sup class="sup-cl" title="Collections">cl</sup></td><td>Collections</td></tr>
+      <tr><td><sup class="sup-cp" title="Concepts">cp</sup></td><td>Concepts</td></tr>
+    </table>
+  </section>
+</body>
+</html>

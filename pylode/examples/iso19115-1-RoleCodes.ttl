@@ -1,0 +1,169 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix isorole: <http://linked.data.gov.au/def/iso19115-1/RoleCode/> .
+
+<http://linked.data.gov.au/def/iso19115-1/RoleCode> a owl:Ontology , skos:ConceptScheme ;
+    dct:created "2019-09-18"^^xsd:date ;
+    dct:creator [
+        a sdo:Organization ;
+        sdo:name "International Organization for Standardization" ;
+    ] ;
+    dct:modified "2020-01-10"^^xsd:date ;
+    dct:publisher <http://linked.data.gov.au/org/gsq> ;
+    skos:definition """A SKOS version of the ISO 19115-1 CI_RoleCode Codelist.\r
+    These roles are the roles of parties (Agents) with respect to datasets (Entities). They are taken from the international standard ISO19115-1:2014 Geographic information - Metadata - Part 1: Fundamentals.\r
+    From ISO19115-1:2014, Table B.16.1 - Responsible party information on page 91 lists properties of the CI_Responsibility class which is 'information about the party and their role'. The 'role' property, indicating a value from the CI_RoleCode codelist - the source of this vocabulary - is described as the 'function performed by the responsible party'."""@en ;
+    dct:source <https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml> ;
+    skos:hasTopConcept isorole:author,
+        isorole:coAuthor,
+        isorole:collaborator,
+        isorole:contributor,
+        isorole:custodian,
+        isorole:distributor,
+        isorole:editor,
+        isorole:funder,
+        isorole:mediator,
+        isorole:originator,
+        isorole:owner,
+        isorole:pointOfContact,
+        isorole:principalInvestigator,
+        isorole:processor,
+        isorole:publisher,
+        isorole:resourceProvider,
+        isorole:rightsHolder,
+        isorole:sponsor,
+        isorole:stakeholder,
+        isorole:user ;
+    skos:prefLabel "ISO19115-1 CI_RoleCode Codelist"@en .
+
+<http://linked.data.gov.au/org/gsq>
+    a sdo:Organization ;
+    sdo:name "Geological Survey of Queensland" ;
+.
+
+isorole:author a skos:Concept ;
+    skos:definition "Party who authored the resource"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Author"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:coAuthor a skos:Concept ;
+    skos:definition "Party who jointly authors the resource"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Co-author"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:collaborator a skos:Concept ;
+    skos:definition "Party who assists with the generation of the resource other than the principal investigator"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Collaborator"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:contributor a skos:Concept ;
+    skos:definition "Party contributing to the resource"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Contributor"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:custodian a skos:Concept ;
+    skos:definition "Party that accepts accountability and responsibility for the resource and ensures appropriate care and maintenance of the resource"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Custodian"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:distributor a skos:Concept ;
+    skos:definition "Party who distributes the resource"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Distributor"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:editor a skos:Concept ;
+    skos:definition "Party who reviewed or modified the resource to improve the content"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Editor"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:funder a skos:Concept ;
+    skos:definition "Party providing monetary support for the resource"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Funder"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:mediator a skos:Concept ;
+    skos:definition "A class of entity that mediates access to the resource and for whom the resource is intended or useful"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Mediator"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:originator a skos:Concept ;
+    skos:definition "Party who created the resource"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Originator"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:owner a skos:Concept ;
+    skos:definition "Party that owns the resource"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Owner"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:pointOfContact a skos:Concept ;
+    skos:definition "Party who can be contacted for acquiring knowledge about or acquisition of the resource"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Point Of Contact"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:principalInvestigator a skos:Concept ;
+    skos:definition "Key party responsible for gathering information and conducting research"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Principal Investigator"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:processor a skos:Concept ;
+    skos:definition "Party who has processed the data in a manner such that the resource has been modified"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Processor"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:publisher a skos:Concept ;
+    skos:definition "Party who published the resource"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Publisher"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:resourceProvider a skos:Concept ;
+    skos:definition "Party that supplies the resource"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Resource Provider"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:rightsHolder a skos:Concept ;
+    skos:definition "Party owning or managing rights over the resource"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Rights Holder"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:sponsor a skos:Concept ;
+    skos:definition "Party who speaks for the resource"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Sponsor"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:stakeholder a skos:Concept ;
+    skos:definition "Party who has an interest in the resource or the use of the resource"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "Stakeholder"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .
+
+isorole:user a skos:Concept ;
+    skos:definition "Party who uses the resource"@en ;
+    skos:inScheme <http://linked.data.gov.au/def/iso19115-1/RoleCode> ;
+    skos:prefLabel "User"@en ;
+    skos:topConceptOf <http://linked.data.gov.au/def/iso19115-1/RoleCode> .

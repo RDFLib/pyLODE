@@ -1460,7 +1460,11 @@ class MakeDocco:
 
             # top concepts
             # if the class is declared here and has no subClassOf
-            for s2 in self.G.subjects(predicate=RDF.type, object=SKOS.Concept):
+            for s2 in self.G.subjects(predicate=RDF.type, object=RDFS.Class):
+                if (s2, RDFS.subClassOf, None) not in self.G:
+                    self.G.add((s2, SKOS.topConceptOf, s))
+
+            for s2 in self.G.subjects(predicate=RDF.type, object=OWL.Class):
                 if (s2, RDFS.subClassOf, None) not in self.G:
                     self.G.add((s2, SKOS.topConceptOf, s))
 
@@ -1628,38 +1632,44 @@ class MakeDocco:
             s = URIRef(c)  # for use in Graph() loops
 
             self.COLLECTIONS[c]["fid"] = None
+            self.COLLECTIONS[c]["default_prefLabel"] = None
             self.COLLECTIONS[c]["prefLabels"] = set()
-            self.COLLECTIONS[c]["altLabels"] = []
-            self.COLLECTIONS[c]["definitions"] = []
-            self.COLLECTIONS[c]["scopeNotes"] = []
+            self.COLLECTIONS[c]["altLabels"] = set()
+            self.COLLECTIONS[c]["definitions"] = set()
+            self.COLLECTIONS[c]["scopeNotes"] = set()
             self.COLLECTIONS[c]["source"] = None
-
-            self.COLLECTIONS[c]["members"] = []
+            self.COLLECTIONS[c]["members"] = set()
 
             for p, o in self.G.predicate_objects(subject=s):
                 if p == SKOS.prefLabel:
-                    self.COLLECTIONS[c]["prefLabels"].add((o.value, 'en'))  # TODO: add in language
+                    self.COLLECTIONS[c]["prefLabels"].add((str(o), o.language))  # TODO: add in language
+                    if o.language == self.default_language:
+                        self.COLLECTIONS[c]["default_prefLabel"] = str(o)
 
                 elif p == SKOS.altLabel:
-                    self.COLLECTIONS[c]["altLabels"].append(str(o))  # TODO: add in language
+                    self.COLLECTIONS[c]["altLabels"].add(str(o))  # TODO: add in language
 
                 elif p == SKOS.definition:
-                    self.COLLECTIONS[c]["definitions"].append(str(o))  # TODO: add in language
+                    self.COLLECTIONS[c]["definitions"].add(str(o))  # TODO: add in language
 
                 elif p == SKOS.scopeNote:
-                    self.COLLECTIONS[c]["scopeNotes"].append(str(o))  # TODO: add in language
+                    self.COLLECTIONS[c]["scopeNotes"].add(str(o))  # TODO: add in language
 
                 elif p == DCTERMS.source:
                     self.COLLECTIONS[c]["source"] = str(o)
 
                 elif p == SKOS.topConceptOf:
-                    self.COLLECTIONS[c]["topConceptOfs"].append(str(o))
+                    self.COLLECTIONS[c]["topConceptOfs"].add(str(o))
 
                 elif p == SKOS.member:
-                    self.COLLECTIONS[c]["members"].append(self._make_uri_html(str(o), type="cp"))
+                    self.COLLECTIONS[c]["members"].add(str(o))
                     # TODO: handle members that are other Collections, not Concepts
 
+            # listify the sets
             self.COLLECTIONS[c]["prefLabels"] = list(self.COLLECTIONS[c]["prefLabels"])
+            self.COLLECTIONS[c]["altLabels"] = list(self.COLLECTIONS[c]["altLabels"])
+            self.COLLECTIONS[c]["definitions"] = list(self.COLLECTIONS[c]["definitions"])
+            self.COLLECTIONS[c]["scopeNotes"] = list(self.COLLECTIONS[c]["scopeNotes"])
             self.COLLECTIONS[c]["members"] = list(self.COLLECTIONS[c]["members"])
 
             # make fid
@@ -1704,9 +1714,9 @@ class MakeDocco:
 
             for p, o in self.G.predicate_objects(subject=s):
                 if p == SKOS.prefLabel:
-                    self.CONCEPTS[c]["prefLabels"].add((o.value, o.language))  # TODO: add in language
+                    self.CONCEPTS[c]["prefLabels"].add((str(o), o.language))  # TODO: add in language
                     if o.language == self.default_language:
-                        self.CONCEPTS[c]["default_prefLabel"] = o.value
+                        self.CONCEPTS[c]["default_prefLabel"] = str(o)
 
                 elif p == SKOS.altLabel:
                     self.CONCEPTS[c]["altLabels"].add(str(o))  # TODO: add in language
@@ -2055,155 +2065,13 @@ class MakeDocco:
         for k, v in self.COLLECTIONS.items():
             collections.append(
                 (
-                    list(v["prefLabels"])[0][0],
+                    v["default_prefLabel"],
                     v["fid"],
                     self._make_skos_collection((k, v), outputformat=outputformat),
                 )
             )
 
         return self._load_template("skos_collections." + outputformat).render(collections=collections)
-
-    # def _make_concept_hierarchy(self):
-    #     # same as parent query, only:
-    #     #   running against rdflib in-memory graph, not SPARQL endpoint
-    #     #   a single graph, not a multi-graph (since it's an RDF/XML or Turtle file)
-    #     """
-    #     Function to draw concept hierarchy for vocabulary
-    #     """
-    #
-    #     def build_hierarchy(bindings_list, broader_concept=None, level=0):
-    #         """
-    #         Recursive helper function to build hierarchy list from a bindings list
-    #         Returns list of tuples: (<level>, <concept>, <concept_preflabel>, <broader_concept>)
-    #         """
-    #         level += 1  # Start with level 1 for top concepts
-    #         hierarchy = []
-    #
-    #         narrower_list = sorted(
-    #             [
-    #                 binding_dict
-    #                 for binding_dict in bindings_list
-    #                 if
-    #                 # Top concept
-    #                 (
-    #                     (broader_concept is None)
-    #                     and (binding_dict.get("broader_concept") is None)
-    #                 )
-    #                 or
-    #                 # Narrower concept
-    #                 (
-    #                     (binding_dict.get("broader_concept") is not None)
-    #                     and (binding_dict["broader_concept"] == broader_concept)
-    #                 )
-    #             ],
-    #             key=lambda binding_dict: binding_dict["concept_preflabel"],
-    #         )
-    #
-    #         for binding_dict in narrower_list:
-    #             concept = binding_dict["concept"]
-    #             hierarchy += [
-    #                 (
-    #                     level,
-    #                     concept,
-    #                     binding_dict["concept_preflabel"],
-    #                     binding_dict["broader_concept"]
-    #                     if binding_dict.get("broader_concept")
-    #                     else None,
-    #                 )
-    #             ] + build_hierarchy(bindings_list, concept, level)
-    #
-    #         return hierarchy
-    #
-    #     q = """
-    #         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-    #         PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-    #         PREFIX dct: <http://purl.org/dc/terms/>
-    #         SELECT DISTINCT ?concept ?concept_preflabel ?broader_concept
-    #         WHERE {{
-    #             {{ ?concept skos:inScheme ?cs . }}
-    #             UNION
-    #             {{ ?concept skos:topConceptOf ?cs . }}
-    #             UNION
-    #             {{ ?cs skos:hasTopConcept ?concept . }}
-    #             ?concept skos:prefLabel ?concept_preflabel .
-    #             OPTIONAL {{ ?concept skos:broader ?broader_concept .
-    #                 ?broader_concept skos:inScheme ?cs .
-    #                 }}
-    #             FILTER(lang(?concept_preflabel) = "{language}" || lang(?concept_preflabel) = "")
-    #         }}
-    #         ORDER BY ?concept_preflabel""".format(
-    #         language='en'
-    #     )
-    #
-    #     bindings_list = []
-    #     for r in self.G.query(q):
-    #         bindings_list.append(
-    #             {
-    #                 # ?concept ?concept_preflabel ?broader_concept
-    #                 "concept": r[0],
-    #                 "concept_preflabel": r[1],
-    #                 "broader_concept": r[2],
-    #             }
-    #         )
-    #
-    #     assert bindings_list is not None, "FILE concept hierarchy query failed"
-    #
-    #     hierarchy = build_hierarchy(bindings_list)
-    #
-    #     return self._draw_concept_hierarchy(hierarchy)
-    #
-    # def _draw_concept_hierarchy(self, hierarchy):
-    #     tab = "\t"
-    #     previous_length = 1
-    #
-    #     text = ""
-    #     tracked_items = []
-    #     for item in hierarchy:
-    #         mult = None
-    #
-    #         if item[0] > previous_length + 2:  # SPARQL query error on length value
-    #             for tracked_item in tracked_items:
-    #                 if tracked_item["name"] == item[3]:
-    #                     mult = tracked_item["indent"] + 1
-    #
-    #         if mult is None:
-    #             found = False
-    #             for tracked_item in tracked_items:
-    #                 if tracked_item["name"] == item[3]:
-    #                     found = True
-    #             if not found:
-    #                 mult = 0
-    #
-    #         if mult is None:  # else: # everything is normal
-    #             mult = item[0] - 1
-    #
-    #         uri = item[1]
-    #
-    #         t = tab * mult + "* [" + item[2] + "](" + uri + ")\n"
-    #         text += t
-    #         previous_length = mult
-    #         tracked_items.append({"name": item[1], "indent": mult})
-    #
-    #     return markdown.markdown(text)
-    #
-    # def render_concept_tree(html_doc):
-    #     soup = BeautifulSoup(html_doc, "html.parser")
-    #
-    #     # concept_hierarchy = soup.find(id='concept-hierarchy')
-    #
-    #     uls = soup.find_all("ul")
-    #
-    #     for i, ul in enumerate(uls):
-    #         # Don't add HTML class nested to the first 'ul' found.
-    #         if not i == 0:
-    #             ul["class"] = "nested"
-    #             if ul.parent.name == "li":
-    #                 temp = BeautifulSoup(str(ul.parent.a.extract()), "html.parser")
-    #                 ul.parent.insert(
-    #                     0, BeautifulSoup('<span class="caret">', "html.parser")
-    #                 )
-    #                 ul.parent.span.insert(0, temp)
-    #     return soup
 
     def _make_concept_hierarchy(self, outputformat="html"):
         # render concept
@@ -2508,7 +2376,7 @@ class MakeDocco:
 
 
 if __name__ == "__main__":
-    m = MakeDocco(input_data_file="examples/agrif.ttl")
+    m = MakeDocco(input_data_file="examples/data-access-rights.ttl", profile="skos")
 
-    with open("examples/agrif.html", "w") as f:
+    with open("examples/data-access-rights.skos.html", "w") as f:
         f.write(m.document())
