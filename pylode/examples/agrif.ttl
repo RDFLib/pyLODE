@@ -1,69 +1,65 @@
 @prefix : <http://linked.data.gov.au/def/agrif#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sdo: <https://schema.org/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://linked.data.gov.au/def/agrif> .
 
 <http://linked.data.gov.au/def/agrif> rdf:type owl:Ontology ;
-                                      owl:versionIRI <http://linked.data.gov.au/def/agrif/0.71> ;
-                                      owl:versionInfo "0.71"@en ;
-                                      dcterms:contributor [
-                                        sdo:name "Nicholas Car"@en ;
-                                        sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
-                                        sdo:email <mailto:nicholas.car@surroundaustralia.com> ;
-                                        sdo:affiliation <https://surroundaustralia.com> ;
-                                      ] ;
-                                      vann:preferredNamespaceUri "http://linked.data.gov.au/def/agrif#"^^xsd:string ;
-                                      dcterms:creator [
-                                        sdo:name "Armin Haller"@en ;
-                                        sdo:email <mailto:armin.haller@anu.edu.au> ;
-                                        sdo:identifier <https://orcid.org/0000-0003-3425-0780> ;
-                                        sdo:affiliation <http://linked.data.gov.au/org/anu> ;
-                                      ] ,
-                                      [
-                                        sdo:name "John Machin"@en ;
-                                        sdo:affiliation <http://linked.data.gov.au/org/finance> ;
-                                      ] ,
-                                      [
-                                        sdo:name "Katherine Stuart" ;
-                                        sdo:affiliation <http://linked.data.gov.au/org/finance> ;
-                                      ] ;
-                                      rdfs:label "The Australian Government Records Interoperability Framework (AGRIF) ontology"@en ;
-                                      rdfs:comment "The Australian Government Records Interoperability Framework (AGRIF, ‘the Framework’) is a system of related semantic ontologies that describe the structure, functions, and activities of the Australian Government, providing sufficient context for the effective use – including but not limited to management – of Australian Government information assets. It complies with the World Wide Web Consortium’s Web Ontology Language (OWL2) Recommendation and makes reference to other Recommendations and existing domain ontologies for archival and preservation processes."@en ;
-                                      owl:priorVersion "0.7"@en ;
-                                      vann:preferredNamespacePrefix "agrif"@en ;
-                                      dcterms:publisher <http://linked.data.gov.au/org/finance> ;
-                                      rdfs:seeAlso <https://github.com/agldwg/agrif-ont> ;
-                                      dcterms:modified "2020-04-03"@en ;
-                                      dcterms:rights "(c) Commonwealth of Australia (Department of Finance) 2017"@en ;
-                                      dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-                                      dcterms:created "2016-12-06"^^xsd:date ;
-                                      prov:wasGeneratedBy [
-                                          a doap:Project ;
-                                          a prov:Activity ;
-                                          doap:repository <https://github.com/AGLDWG/agrif-ont> ;
-                                      ] .
+                                       owl:versionIRI <http://linked.data.gov.au/def/agrif/0.9> ;
+                                       dcterms:modified "2019-10-21"@en ;
+                                       dcterms:contributor "Pouya Ghiasnezhad Omran"@en ,
+                                                           "Sergio José Rodríguez Méndez"@en ,
+                                                           "Kerry Taylor"@en ,
+                                                          [
+                                                            sdo:name "Nicholas J. Car"@en ;
+                                                            sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+                                                            sdo:email <mailto:nicholas.car@surroundaustralia.com> ;
+                                                            sdo:affiliation <https://surroundaustralia.com> ;
+                                                          ] ;
+                                       dcterms:creator [
+                                                          sdo:name "Katherine Stuart"@en ;
+                                                          sdo:affiliation <http://linked.data.gov.au/org/finance> ;
+                                                       ] ,
+                                                       [
+                                                          sdo:name "Armin Haller"@en ;
+                                                          sdo:identifier <http://orcid.org/0000-0003-3425-0780> ;
+                                                          sdo:email <mailto:armin.haller@anu.edu.au> ;
+                                                          sdo:affiliation <https://www.anu.edu.au> ;
+                                                       ] ,
+                                                       [
+                                                          sdo:name "John Machin"@en ;
+                                                          sdo:affiliation <http://linked.data.gov.au/org/finance> ;
+                                                       ] ;
+                                       owl:priorVersion "0.8"@en ;
+                                       rdfs:label "The Australian Government Records Interoperability Framework (AGRIF) ontology"@en ;
+                                       owl:versionInfo "0.9"@en ;
+                                       rdfs:comment "The Australian Government Records Interoperability Framework (AGRIF, ‘the Framework’) is a system of related semantic ontologies that describe the structure, functions, and activities of the Australian Government, providing sufficient context for the effective use – including but not limited to management – of Australian Government information assets. It complies with the World Wide Web Consortium’s Web Ontology Language (OWL2) Recommendation and makes reference to other Recommendations and existing domain ontologies for archival and preservation processes."@en ;
+                                       dcterms:publisher <http://linked.data.gov.au/org/finance> ;
+                                       vann:preferredNamespaceUri "http://linked.data.gov.au/def/agrif#"^^xsd:string ;
+                                       vann:preferredNamespacePrefix "agrif"@en ;
+                                       dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                       dcterms:rights "(c) Commonwealth of Australia (Department of Finance) 2019"@en ;
+                                       rdfs:seeAlso <https://github.com/agldwg/agrif-ont> ;
+                                       dcterms:created "2016-12-06"^^xsd:date .
 
-<http://linked.data.gov.au/org/anu>     a sdo:Organization ;
-                                        sdo:name "Australian National University";
-                                        sdo:url <https://www.anu.edu.au> ;
-                                        sdo:identifier <http://linked.data.gov.au/org/anu> .
+<https://www.anu.edu.au>
+  a sdo:Organization ;
+  sdo:name "Australian National University" ;
+  sdo:url <https://www.anu.edu.au> ;
+.
 
-<http://linked.data.gov.au/org/finance> a sdo:Organization ;
-                                        sdo:name "Department of Finance";
-                                        sdo:url <https://www.finance.gov.au> ;
-                                        sdo:identifier <http://linked.data.gov.au/org/finance> .
-
-<https://surroundaustralia.com> a sdo:Organization ;
-                                        sdo:name "SURROUND Australia Pty Ltd";
-                                        sdo:url <https://surroundaustralia.com> .
+<http://linked.data.gov.au/org/finance>
+  a sdo:Organization ;
+  sdo:name "Department of Finance" ;
+  sdo:url <https://www.finance.gov.au> ;
+.
 
 #################################################################
 #    Annotation properties
@@ -73,8 +69,20 @@
 dcterms:source rdf:type owl:AnnotationProperty .
 
 
+###  http://purl.org/dc/terms/contributor
+dcterms:contributor rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.w3.org/2004/02/skos/core#example
 skos:example rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/identifier
+sdo:identifier rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/name
+sdo:name rdf:type owl:AnnotationProperty .
 
 
 #################################################################
@@ -94,6 +102,13 @@ skos:example rdf:type owl:AnnotationProperty .
         rdfs:label "acts As"@en .
 
 
+###  http://linked.data.gov.au/def/agrif#affects
+:affects rdf:type owl:ObjectProperty ;
+         owl:inverseOf :isAffectedBy ;
+         rdfs:comment "A relation between an Event and an Artefact or a Record."@en ;
+         rdfs:label "affects"@en .
+
+
 ###  http://linked.data.gov.au/def/agrif#associatedFunction
 :associatedFunction rdf:type owl:ObjectProperty ;
                     rdfs:comment "A relation that associates a Function to an Entity, Event or Activity."@en ;
@@ -102,7 +117,7 @@ skos:example rdf:type owl:AnnotationProperty .
 
 ###  http://linked.data.gov.au/def/agrif#associatedRole
 :associatedRole rdf:type owl:ObjectProperty ;
-                dcterms:source "https://www.w3.org/TR/prov-o/#hadRole" ;
+                dcterms:source  <https://www.w3.org/TR/prov-o/#hadRole> ; ;
                 rdfs:comment "An associated Role is a qualified association between a Role and an Activity or Event defined by an Association."@en ;
                 rdfs:label "associated Role"@en .
 
@@ -116,14 +131,14 @@ skos:example rdf:type owl:AnnotationProperty .
 ###  http://linked.data.gov.au/def/agrif#hasActivity
 :hasActivity rdf:type owl:ObjectProperty ;
              owl:inverseOf :usedRecord ;
-             dcterms:source "https://www.w3.org/TR/prov-o/#p_activity" ;
+             dcterms:source  <https://www.w3.org/TR/prov-o/#p_activity> ;
              rdfs:comment "A relation between a Record and an Activity that acts upon the Record."@en ;
              rdfs:label "has Activity"@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#hasAgent
 :hasAgent rdf:type owl:ObjectProperty ;
-          dcterms:source "https://www.w3.org/TR/prov-o/#p_agent" ;
+          dcterms:source  <https://www.w3.org/TR/prov-o/#p_agent> ;
           rdfs:comment "A qualified relation between an Agent and a Change Event defined through an Association."@en ;
           rdfs:label "has Agent"@en .
 
@@ -177,10 +192,18 @@ skos:example rdf:type owl:AnnotationProperty .
              rdfs:label "has Manifest"@en .
 
 
+###  http://linked.data.gov.au/def/agrif#hasNextVersion
+:hasNextVersion rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :relatedTo ;
+                owl:inverseOf :hasPreviousVersion ;
+                rdfs:comment "A relation that indicates that an Artefact has a newer version."@en ;
+                rdfs:label "has Next Version"@en .
+
+
 ###  http://linked.data.gov.au/def/agrif#hasPart
 :hasPart rdf:type owl:ObjectProperty ;
          owl:inverseOf :partOf ;
-         rdfs:comment "A relation that defines part-whole relations amongst Organisational Units."@en ;
+         rdfs:comment "A relation that defines part-whole relations."@en ;
          rdfs:label "has Part"@en .
 
 
@@ -192,8 +215,17 @@ skos:example rdf:type owl:AnnotationProperty .
 
 ###  http://linked.data.gov.au/def/agrif#hasPrerequisiteDecisionEvent
 :hasPrerequisiteDecisionEvent rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf :priorEvent ;
                               rdfs:comment "A relation between a Decision Event and a prerequisite Decision Event, indicating a Decision chain in a Chain of Command."@en ;
-                              rdfs:label "has Prerequisite Decision Event"@en .
+                              rdfs:label "prerequisite Decision Event"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#hasPreviousVersion
+:hasPreviousVersion rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :relatedTo ;
+                    rdf:type owl:TransitiveProperty ;
+                    rdfs:comment "A relation that indicates that an Artefact has an older version."@en ;
+                    rdfs:label "has Previous Version"@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#hasQuality
@@ -209,10 +241,24 @@ skos:example rdf:type owl:AnnotationProperty .
            rdfs:label "has Series"@en .
 
 
+###  http://linked.data.gov.au/def/agrif#hasSourceAgent
+:hasSourceAgent rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :wasAssociatedWith ;
+                rdfs:comment "A relation that denotes the source Agent of a Record or an Artefact in an Event or Activity."@en ;
+                rdfs:label "has Source Agent"@en .
+
+
 ###  http://linked.data.gov.au/def/agrif#hasStatus
 :hasStatus rdf:type owl:ObjectProperty ;
            rdfs:comment "A relation between an Activity and a Status that indicates its current state."@en ;
            rdfs:label "has Status"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#hasTargetAgent
+:hasTargetAgent rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :wasAssociatedWith ;
+                rdfs:comment "A relation that denotes the target Agent of a Record or an Artefact in an Event or Activity."@en ;
+                rdfs:label "has Target Agent"@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#hasVersionHistory
@@ -221,11 +267,51 @@ skos:example rdf:type owl:AnnotationProperty .
                    rdfs:label "has Version History"@en .
 
 
+###  http://linked.data.gov.au/def/agrif#isAffectedBy
+:isAffectedBy rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:comment "A relation between an Artefact or a Record and an Event."@en ;
+              rdfs:label "is Affected By"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#isAttachedTo
+:isAttachedTo rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :relatedTo ;
+              rdfs:comment "A relation that indicates that an Artefact is logically or physically attached to another Artefact."@en ;
+              rdfs:label "is Attached To"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#isBasedOn
+:isBasedOn rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :relatedTo ;
+           rdfs:comment "A relation that indicates that an Artefact is in part or as a whole based on another Artefact."@en ;
+           rdfs:label "is Based On"@en .
+
+
 ###  http://linked.data.gov.au/def/agrif#isChangedBy
 :isChangedBy rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf owl:topObjectProperty ;
-             rdfs:comment "A relation between an Artefact or a Record and a Change Event."@en ;
+             rdfs:comment "A relation that denotes the Information System that has been used to change an Artefact."@en ;
              rdfs:label "is Changed By"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#isDuplicateOf
+:isDuplicateOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :relatedTo ;
+               rdfs:comment "A relation that indicates that an Artefact is an exact copy of another Artefact, i.e. the content is exactly the same, but its Record may be different."@en ;
+               rdfs:label "is Duplicate Of"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#isMentionedIn
+:isMentionedIn rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :relatedTo ;
+               rdfs:comment "A relation that indicates that an Artefact is mentioned in another Artefact. An example of such a relation is a citation of a document in another document."@en ;
+               rdfs:label "is Mentioned In"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#isPartOf
+:isPartOf rdf:type owl:ObjectProperty ;
+          rdfs:comment "A Collection in which the described Artefact is physically or logically included."@en ;
+          rdfs:label "is Part Of"@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#notifies
@@ -237,7 +323,7 @@ skos:example rdf:type owl:AnnotationProperty .
 ###  http://linked.data.gov.au/def/agrif#partOf
 :partOf rdf:type owl:ObjectProperty ,
                  owl:TransitiveProperty ;
-        rdfs:comment "A relation that defines part-whole relations amongst Organisational Units."@en ;
+        rdfs:comment "A relation that defines part-whole relations."@en ;
         rdfs:label "part Of"@en .
 
 
@@ -245,6 +331,12 @@ skos:example rdf:type owl:AnnotationProperty .
 :positionIn rdf:type owl:ObjectProperty ;
             rdfs:comment "A relation that defines the position an Agent occupies in an Organisation or Organisational Unit."@en ;
             rdfs:label "position In"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#priorEvent
+:priorEvent rdf:type owl:ObjectProperty ;
+            rdfs:comment "A relation indicating some causal link between an Event and a previously happening Event."@en ;
+            rdfs:label "prior Event"@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#qualifiedAssociation
@@ -313,7 +405,8 @@ skos:example rdf:type owl:AnnotationProperty .
 
 ###  http://linked.data.gov.au/def/agrif#triggeredBy
 :triggeredBy rdf:type owl:ObjectProperty ;
-             rdfs:comment "A relation that indicates that a Change Event has been initiated by a Trigger."@en ;
+             owl:inverseOf :triggers ;
+             rdfs:comment "A relation that indicates that an Event has been initiated by a Trigger."@en ;
              rdfs:label "triggered By"@en .
 
 
@@ -331,8 +424,8 @@ skos:example rdf:type owl:AnnotationProperty .
 
 ###  http://linked.data.gov.au/def/agrif#wasAssociatedWith
 :wasAssociatedWith rdf:type owl:ObjectProperty ;
-                   dcterms:source "https://www.w3.org/TR/prov-o/#wasAssociatedWith" ;
-                   rdfs:comment "A relation that assigns responsibility of an Agent for an Activity or Change Event."@en ;
+                   dcterms:source  <https://www.w3.org/TR/prov-o/#wasAssociatedWith> ;
+                   rdfs:comment "A relation that assigns responsibility of an Agent with an Activity or Event."@en ;
                    rdfs:label "was Associated With"@en .
 
 
@@ -343,7 +436,7 @@ skos:example rdf:type owl:AnnotationProperty .
 ###  http://linked.data.gov.au/def/agrif#checksum
 :checksum rdf:type owl:DatatypeProperty ;
           rdfs:range xsd:float ;
-          dcterms:source "A checksum is a small-sized datum derived from a block of digital data representing a Record for the purpose of detecting errors during the transfer or storage of a Record."@en .
+          rdfs:comment "A checksum is a small-sized datum derived from a block of digital data representing a Record for the purpose of detecting errors during the transfer or storage of a Record."@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#disposalClassNumber
@@ -355,7 +448,7 @@ skos:example rdf:type owl:AnnotationProperty .
 ###  http://linked.data.gov.au/def/agrif#endedAtTime
 :endedAtTime rdf:type owl:DatatypeProperty ;
              rdfs:range xsd:dateTime ;
-             dcterms:source "https://www.w3.org/TR/prov-o/#endedAtTime" ;
+             dcterms:source  <https://www.w3.org/TR/prov-o/#endedAtTime> ;
              rdfs:comment "The time at which an Activity ended."@en .
 
 
@@ -371,7 +464,7 @@ skos:example rdf:type owl:AnnotationProperty .
 
 ###  http://linked.data.gov.au/def/agrif#format
 :format rdf:type owl:DatatypeProperty ;
-        dcterms:source "http://purl.org/dc/elements/1.1/format" ;
+        dcterms:source  <http://purl.org/dc/elements/1.1/format> ;
         rdfs:comment "The file format, physical medium, or dimensions of the resource."@en .
 
 
@@ -381,13 +474,22 @@ skos:example rdf:type owl:AnnotationProperty .
               rdfs:comment "A seriesNumber is a numerical identifier for a Series."@en .
 
 
+###  http://linked.data.gov.au/def/agrif#softwareAssignedID
+:softwareAssignedID rdf:type owl:DatatypeProperty ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "A softwareAssignedID is an identifier given to an Artefact by an Information System."@en .
+
+
+###  http://linked.data.gov.au/def/agrif#startedAtTime
+:startedAtTime rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:dateTime ;
+               dcterms:source  <https://www.w3.org/TR/prov-o/#startedAtTime> ;
+               rdfs:comment "The time at which and Activity started"@en .
+
+
 #################################################################
 #    Classes
 #################################################################
-
-###  http://purl.org/dc/dcam/VocabularyEncodingScheme
-<http://purl.org/dc/dcam/VocabularyEncodingScheme> rdf:type owl:Class .
-
 
 ###  http://linked.data.gov.au/def/agrif#AGIFTFunction
 :AGIFTFunction rdf:type owl:Class ;
@@ -406,7 +508,7 @@ skos:example rdf:type owl:AnnotationProperty .
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :triggers ;
-                                  owl:someValuesFrom :AccessTrigger
+                                  owl:allValuesFrom :AccessTrigger
                                 ] ;
                 rdfs:comment "An Access Activity is an Activity where a Record is accessed by an Agent over a period of time."@en ;
                 rdfs:label "Access Activity"@en .
@@ -464,8 +566,13 @@ skos:example rdf:type owl:AnnotationProperty .
                             owl:onProperty :endedAtTime ;
                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onDataRange xsd:dateTime
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :startedAtTime ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:dateTime
                           ] ;
-          dcterms:source "https://www.w3.org/TR/prov-o/#Activity" ;
+          dcterms:source  <https://www.w3.org/TR/prov-o/#Activity> ;
           rdfs:comment "An Activity is something that occurs over a period of time on a Record."@en ;
           rdfs:label "Activity"@en .
 
@@ -491,7 +598,7 @@ skos:example rdf:type owl:AnnotationProperty .
                          owl:onProperty :positionIn ;
                          owl:someValuesFrom :Organisation
                        ] ;
-       dcterms:source "https://www.w3.org/TR/prov-o/#Agent" ;
+       dcterms:source  <https://www.w3.org/TR/prov-o/#Agent> ;
        rdfs:comment "An Agent is a corporate entity, organisational element or system, or individual responsible for the performance of some Activity or Event, including those on Records."@en ;
        rdfs:label "Agent"@en .
 
@@ -499,31 +606,103 @@ skos:example rdf:type owl:AnnotationProperty .
 ###  http://linked.data.gov.au/def/agrif#Artefact
 :Artefact rdf:type owl:Class ;
           rdfs:subClassOf [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasControl ;
-                            owl:someValuesFrom :Control
-                          ] ,
-                          [ rdf:type owl:Restriction ;
                             owl:onProperty :hasQuality ;
                             owl:someValuesFrom :PreservationQuality
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :isChangedBy ;
+                            owl:onProperty :isAffectedBy ;
                             owl:someValuesFrom :Event
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :relatedTo ;
-                            owl:someValuesFrom :Artefact
+                            owl:onProperty :isChangedBy ;
+                            owl:someValuesFrom :InformationSystem
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :storedIn ;
-                            owl:someValuesFrom :ControlledVocabulary
+                            owl:someValuesFrom :IntellectualControlSystem
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :hasLocation ;
                             owl:allValuesFrom :SpatialLocation
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :relatedTo ;
+                            owl:allValuesFrom :Artefact
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :requiresSecurityClassification ;
+                            owl:allValuesFrom :SecurityClassification
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :softwareAssignedID ;
+                            owl:someValuesFrom xsd:string
                           ] ;
           rdfs:comment "An Artefact is an object that is made by a Person and that is to be preserved."@en ;
           rdfs:label "Artefact"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#ArtefactChangeEvent
+:ArtefactChangeEvent rdf:type owl:Class ;
+                     rdfs:subClassOf :Event ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :affects ;
+                                       owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :Artefact
+                                     ] ;
+                     rdfs:comment "An Artefact Change Event is an Event that results in a new version of an Artefact."@en ;
+                     rdfs:label "Artefact Change Event"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#ArtefactControlEvent
+:ArtefactControlEvent rdf:type owl:Class ;
+                      rdfs:subClassOf :Event ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasControl ;
+                                        owl:allValuesFrom :Control
+                                      ] ;
+                      rdfs:comment "An Artefact Control Event is an Event that requires a particular level of access to an Artefact."@en ;
+                      rdfs:label "Artefact Control Event"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#ArtefactPublishEvent
+:ArtefactPublishEvent rdf:type owl:Class ;
+                      rdfs:subClassOf :ArtefactControlEvent ;
+                      rdfs:comment "An Artefact Publish Event is an Event that gives indiscriminate access to an Artefact to a set of Agents."@en ;
+                      rdfs:label "Artefact Publish Event"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#ArtefactSendEvent
+:ArtefactSendEvent rdf:type owl:Class ;
+                   rdfs:subClassOf :ArtefactChangeEvent ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasTargetAgent ;
+                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass :Agent
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasSourceAgent ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass :Agent
+                                   ] ;
+                   rdfs:comment "An Artefact Send Event is an Event that results in a new version or a set of new versions of an Artefact at a target Agent or a set of target Agents."@en ;
+                   rdfs:label "Artefact Send Event"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#ArtefactShareEvent
+:ArtefactShareEvent rdf:type owl:Class ;
+                    rdfs:subClassOf :ArtefactControlEvent ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasTargetAgent ;
+                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Agent
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasSourceAgent ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Agent
+                                    ] ;
+                    rdfs:comment "An Artefact Share Event is an Event that gives access to an Artefact to an Agent or a defined set of Agents."@en ;
+                    rdfs:label "Artefact Share Event"@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#Association
@@ -536,16 +715,9 @@ skos:example rdf:type owl:AnnotationProperty .
                                owl:onProperty :hasAgent ;
                                owl:allValuesFrom :Agent
                              ] ;
-             dcterms:source "https://www.w3.org/TR/prov-o/#Association" ;
+             dcterms:source  <https://www.w3.org/TR/prov-o/#Association> ;
              rdfs:comment "An Association is a qualified assignment of responsibility to an Agent in an Activity or Event, indicating that the Agent had a Role in the Activity."@en ;
              rdfs:label "Association"@en .
-
-
-###  http://linked.data.gov.au/def/agrif#AuditEvent
-:AuditEvent rdf:type owl:Class ;
-            rdfs:subClassOf :ControlEvent ;
-            rdfs:comment "An Audit Event is the systematic examination of a Record to ascertain how and where the Record is stored, who created it, or manages it, who uses it and how much longer the Record is required to be maintained."@en ;
-            rdfs:label "Audit Event"@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#BusinessOwner
@@ -565,21 +737,20 @@ skos:example rdf:type owl:AnnotationProperty .
             rdfs:label "Classifier"@en .
 
 
+###  http://linked.data.gov.au/def/agrif#Collection
+:Collection rdf:type owl:Class ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasPart ;
+                              owl:someValuesFrom :Artefact
+                            ] ;
+            rdfs:comment "A Collection is an aggregation of Artefact items."@en ;
+            rdfs:label "Collection"@en .
+
+
 ###  http://linked.data.gov.au/def/agrif#Control
 :Control rdf:type owl:Class ;
          rdfs:comment "A Control is a security or access measure that safeguards or restricts access to an asset."@en ;
          rdfs:label "Control"@en .
-
-
-###  http://linked.data.gov.au/def/agrif#ControlEvent
-:ControlEvent rdf:type owl:Class ;
-              rdfs:subClassOf :Event ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasControl ;
-                                owl:someValuesFrom :Control
-                              ] ;
-              rdfs:comment "A Control Event is an Event that requires a particular level of access to the Record."@en ;
-              rdfs:label "Control Event"@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#ControlledVocabulary
@@ -587,8 +758,7 @@ skos:example rdf:type owl:AnnotationProperty .
                       rdfs:subClassOf :IntellectualControlSystem ,
                                       [ rdf:type owl:Restriction ;
                                         owl:onProperty :associatedFunction ;
-                                        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                        owl:onClass :Function
+                                        owl:allValuesFrom :Function
                                       ] ;
                       rdfs:comment "A Controlled Vocabulary is an Intellectual Control System that provides a way to organize Records that facilitates a later discovery of a Record."@en ;
                       rdfs:label "Controlled Vocabulary"@en ;
@@ -604,8 +774,8 @@ skos:example rdf:type owl:AnnotationProperty .
 ###  http://linked.data.gov.au/def/agrif#CreationEvent
 :CreationEvent rdf:type owl:Class ;
                rdfs:subClassOf :Event ;
-               rdfs:comment "A Creation Event is a Change Event that results in the creation of a Record."@en ;
-               rdfs:label "Creation Event"@en .
+               rdfs:comment "A Record Creation Event is an Event that results in the creation of a Record."@en ;
+               rdfs:label "Record Creation Event"@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#Creator
@@ -615,33 +785,11 @@ skos:example rdf:type owl:AnnotationProperty .
          rdfs:label "Creator"@en .
 
 
-###  http://linked.data.gov.au/def/agrif#DecisionEvent
-:DecisionEvent rdf:type owl:Class ;
-               rdfs:subClassOf :ControlEvent ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :hasDecisionStatus ;
-                                 owl:someValuesFrom :DecisionStatus
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :hasPrerequisiteDecisionEvent ;
-                                 owl:someValuesFrom :DecisionEvent
-                               ] ;
-               rdfs:comment "A Decision Event changes the Decision Status on the Control of a Record."@en ;
-               rdfs:label "Decision Event"@en .
-
-
 ###  http://linked.data.gov.au/def/agrif#DecisionStatus
 :DecisionStatus rdf:type owl:Class ;
                 rdfs:subClassOf :Status ;
                 rdfs:comment "A Decision Status is a Status that indicates the approval or disapproval of a Decision Event."@en ;
                 rdfs:label "Decision Status"@en .
-
-
-###  http://linked.data.gov.au/def/agrif#DestroyEvent
-:DestroyEvent rdf:type owl:Class ;
-              rdfs:subClassOf :DisposalEvent ;
-              rdfs:comment "A Destroy Event is a Disposal Event that results in the regular authorised permanent desctruction of a Record that is no longer required for business purposes."@en ;
-              rdfs:label "Destroy Event"@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#DigitalArtefact
@@ -693,16 +841,17 @@ skos:example rdf:type owl:AnnotationProperty .
                rdfs:label "Disposal Class"@en .
 
 
-###  http://linked.data.gov.au/def/agrif#DisposalEvent
-:DisposalEvent rdf:type owl:Class ;
-               rdfs:subClassOf :ControlEvent ;
-               rdfs:comment "A Disposal Event is an Event that results in the regular authorised destruction or change of custody of a Record that is no longer required for business purposes."@en ;
-               rdfs:label "Disposal Event"@en .
-
-
 ###  http://linked.data.gov.au/def/agrif#Event
 :Event rdf:type owl:Class ;
        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :affects ;
+                         owl:someValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :Artefact
+                                                            :Record
+                                                          )
+                                            ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :qualifiedAssociation ;
                          owl:someValuesFrom :Association
                        ] ,
@@ -723,10 +872,14 @@ skos:example rdf:type owl:AnnotationProperty .
                          owl:allValuesFrom :Status
                        ] ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :priorEvent ;
+                         owl:allValuesFrom :Event
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :triggeredBy ;
                          owl:allValuesFrom :Trigger
                        ] ;
-       dcterms:source "https://www.w3.org/TR/prov-o/#InstantaneousEvent" ;
+       dcterms:source  <https://www.w3.org/TR/prov-o/#InstantaneousEvent> ;
        rdfs:comment "An Event denotes an instantaneous transition in the world."@en ;
        rdfs:label "Event"@en .
 
@@ -735,13 +888,6 @@ skos:example rdf:type owl:AnnotationProperty .
 :FormFactor rdf:type owl:Class ;
             rdfs:comment "A Form Factor defines and prescribes the size, shape, and other physical specifications of a Physical Artefact that is stored."@en ;
             rdfs:label "Form Factor"@en .
-
-
-###  http://linked.data.gov.au/def/agrif#FreezeEvent
-:FreezeEvent rdf:type owl:Class ;
-             rdfs:subClassOf :DisposalEvent ;
-             rdfs:comment "A Freeze Event is a Disposal Event that leads to a records disposal freeze or retention notice in support of compliance requirements or an identified need to suspend the Archives' records destruction permissions."@en ;
-             rdfs:label "Freeze Event"@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#Function
@@ -798,6 +944,13 @@ skos:example rdf:type owl:AnnotationProperty .
                         rdfs:seeAlso "http://purl.org/dc/terms/Jurisdiction" .
 
 
+###  http://linked.data.gov.au/def/agrif#LogicalCollection
+:LogicalCollection rdf:type owl:Class ;
+                   rdfs:subClassOf :Collection ;
+                   rdfs:comment "A Logical Collection is an aggregation of Artefact items that are stored within one physical file."@en ;
+                   rdfs:label "Logical Collection"@en .
+
+
 ###  http://linked.data.gov.au/def/agrif#MaintainActivity
 :MaintainActivity rdf:type owl:Class ;
                   rdfs:subClassOf :Activity ,
@@ -834,7 +987,7 @@ skos:example rdf:type owl:AnnotationProperty .
                                 owl:onProperty :associatedFunction ;
                                 owl:someValuesFrom :Function
                               ] ;
-              dcterms:source "https://www.w3.org/TR/prov-o/#Organization" ;
+              dcterms:source  <https://www.w3.org/TR/prov-o/#Organization> ;
               rdfs:comment "An Organisation is a type of Agent that denotes a social or legal institution such as a government agency, a corporation, society, etc."@en ;
               rdfs:label "Organisation"@en .
 
@@ -844,7 +997,7 @@ skos:example rdf:type owl:AnnotationProperty .
                     rdfs:subClassOf :Organisation ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :partOf ;
-                                      owl:someValuesFrom :Organisation
+                                      owl:allValuesFrom :Organisation
                                     ] ;
                     rdfs:comment "An Organisational Unit is a division of labour typically organised around a business function that form part of the Organisation."@en ;
                     rdfs:label "Organisational Unit"@en .
@@ -853,14 +1006,15 @@ skos:example rdf:type owl:AnnotationProperty .
 ###  http://linked.data.gov.au/def/agrif#Permission
 :Permission rdf:type owl:Class ;
             dcterms:source "Australian Government Recordkeeping Metadata Standard"@en ;
-            rdfs:comment "A Permission denotes the Security Clearance of an Agent that determines its access and use rights to Records."@en ;
-            rdfs:label "Permission"@en .
+            rdfs:comment "A Permission denotes the Security Clearance of an Agent that determines its access and use rights."@en ;
+            rdfs:label "Permission"@en ,
+                       "Security Clearance"@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#Person
 :Person rdf:type owl:Class ;
         rdfs:subClassOf :Agent ;
-        dcterms:source "https://www.w3.org/TR/prov-o/#Person" ;
+        dcterms:source  <https://www.w3.org/TR/prov-o/#Person> ;
         rdfs:comment "A Person is an Agent that denotes a human."@en ;
         rdfs:label "Person"@en .
 
@@ -870,11 +1024,18 @@ skos:example rdf:type owl:AnnotationProperty .
                   rdfs:subClassOf :Artefact ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :hasFormFactor ;
-                                    owl:someValuesFrom :FormFactor
+                                    owl:allValuesFrom :FormFactor
                                   ] ;
                   rdfs:comment "A Physical Artefact is an Artefact that is of physical nature."@en ;
                   rdfs:label "Physical Artefact"@en ;
                   skos:example "An example of a Phyiscal Artefact in the context of record keeping is information printed or written on paper."@en .
+
+
+###  http://linked.data.gov.au/def/agrif#PhysicalCollection
+:PhysicalCollection rdf:type owl:Class ;
+                    rdfs:subClassOf :Collection ;
+                    rdfs:comment "A Physical Collection is an aggregation of Artefact items that are stored in separate physical files."@en ;
+                    rdfs:label "Physical Collection"@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#PhysicalHoldingSpace
@@ -886,7 +1047,7 @@ skos:example rdf:type owl:AnnotationProperty .
 
 ###  http://linked.data.gov.au/def/agrif#Policy
 :Policy rdf:type owl:Class ;
-        dcterms:source "http://purl.org/dc/terms/Policy" ;
+        dcterms:source  <http://purl.org/dc/terms/Policy> ;
         rdfs:comment "A Policy is a deliberate system of principles to guide decisions and achieve rational outcomes."@en ;
         rdfs:label "Policy"@en .
 
@@ -911,20 +1072,16 @@ skos:example rdf:type owl:AnnotationProperty .
                           owl:someValuesFrom :Classifier
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasControl ;
-                          owl:someValuesFrom :Control
-                        ] ,
-                        [ rdf:type owl:Restriction ;
                           owl:onProperty :qualifiedAssociation ;
                           owl:someValuesFrom :Association
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :relatedTo ;
-                          owl:someValuesFrom :Record
-                        ] ,
-                        [ rdf:type owl:Restriction ;
                           owl:onProperty :hasActivity ;
                           owl:allValuesFrom :Activity
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasControl ;
+                          owl:allValuesFrom :Control
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :hasCoverage ;
@@ -939,8 +1096,12 @@ skos:example rdf:type owl:AnnotationProperty .
                           owl:allValuesFrom :Status
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :isChangedBy ;
+                          owl:onProperty :isAffectedBy ;
                           owl:allValuesFrom :Event
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :relatedTo ;
+                          owl:allValuesFrom :Record
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :replaces ;
@@ -966,7 +1127,7 @@ skos:example rdf:type owl:AnnotationProperty .
                           owl:onClass :DisposalClass
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :isChangedBy ;
+                          owl:onProperty :isAffectedBy ;
                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                           owl:onClass :CreationEvent
                         ] ,
@@ -979,11 +1140,108 @@ skos:example rdf:type owl:AnnotationProperty .
         rdfs:label "Record"@en .
 
 
+###  http://linked.data.gov.au/def/agrif#RecordAuditEvent
+:RecordAuditEvent rdf:type owl:Class ;
+                  rdfs:subClassOf :RecordControlEvent ;
+                  rdfs:comment "An Record Audit Event is the systematic examination of a Record to ascertain how and where the Record is stored, who created it, or manages it, who uses it and how much longer the Record is required to be maintained."@en ;
+                  rdfs:label "Record Audit Event"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#RecordControlEvent
+:RecordControlEvent rdf:type owl:Class ;
+                    rdfs:subClassOf :Event ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasControl ;
+                                      owl:allValuesFrom :Control
+                                    ] ;
+                    rdfs:comment "A Record Control Event is an Event that requires a particular level of access to the Record."@en ;
+                    rdfs:label "Record Control Event"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#RecordDecisionEvent
+:RecordDecisionEvent rdf:type owl:Class ;
+                     rdfs:subClassOf :RecordControlEvent ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasDecisionStatus ;
+                                       owl:allValuesFrom :DecisionStatus
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasPrerequisiteDecisionEvent ;
+                                       owl:allValuesFrom :RecordDecisionEvent
+                                     ] ;
+                     rdfs:comment "A Record Decision Event changes the Decision Status on the Control of a Record."@en ;
+                     rdfs:label "Record Decision Event"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#RecordDestructionEvent
+:RecordDestructionEvent rdf:type owl:Class ;
+                        rdfs:subClassOf :RecordDisposalEvent ;
+                        rdfs:comment "A Record Destruction Event is a Disposal Event that results in the regular authorised permanent desctruction of a Record that is no longer required for business purposes."@en ;
+                        rdfs:label "Record Destruction Event"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#RecordDisposalEvent
+:RecordDisposalEvent rdf:type owl:Class ;
+                     rdfs:subClassOf :RecordControlEvent ;
+                     rdfs:comment "A Record Disposal Event is an Event that results in the regular authorised destruction or change of custody of a Record that is no longer required for business purposes."@en ;
+                     rdfs:label "Record Disposal Event"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#RecordFreezeEvent
+:RecordFreezeEvent rdf:type owl:Class ;
+                   rdfs:subClassOf :RecordDisposalEvent ;
+                   rdfs:comment "A Record Freeze Event is a Disposal Event that leads to a records disposal freeze or retention notice in support of compliance requirements or an identified need to suspend the Archives' records destruction permissions."@en ;
+                   rdfs:label "Record Freeze Event"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#RecordReplacementEvent
+:RecordReplacementEvent rdf:type owl:Class ;
+                        rdfs:subClassOf :RecordControlEvent ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :hasVersionHistory ;
+                                          owl:allValuesFrom :VersionHistory
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :replacedBy ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass :Record
+                                        ] ;
+                        rdfs:comment "A Record Replacement Event is an Event that results in the replacement of a Record with a new version. Edits to a Record constitute a Replace Event."@en ;
+                        rdfs:label "Record Replacement Event"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#RecordSentencingEvent
+:RecordSentencingEvent rdf:type owl:Class ;
+                       rdfs:subClassOf :RecordControlEvent ;
+                       rdfs:comment "A Record Sentencing Event is an Event that classifies an Agencies Record to a specific class of a Records Authority Disposal Class Policy. This helps determine the Records value and how it should be managed throughout its lifecycle."@en ;
+                       rdfs:label "Record Sentencing Event"@en .
+
+
 ###  http://linked.data.gov.au/def/agrif#RecordStorageStandard
 :RecordStorageStandard rdf:type owl:Class ;
                        rdfs:subClassOf :Policy ;
                        rdfs:comment "The Standard for the storage of non-digital archival Records is designed to set out the requirements for the safe storage and preservation of non-digital records in the Archives’ custody; to ensure all non-digital records are protected, secure and accessible for as long as they are required to meet business and accountability needs and community expectations; and to ensure all non-digital records are stored in the most cost-effective manner possible."@en ;
                        rdfs:label "Record Storage Standard"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#RecordTransferEvent
+:RecordTransferEvent rdf:type owl:Class ;
+                     rdfs:subClassOf :RecordDisposalEvent ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :transferredFrom ;
+                                       owl:someValuesFrom :Role
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :transferredTo ;
+                                       owl:someValuesFrom :Role
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasManifest ;
+                                       owl:allValuesFrom :Manifest
+                                     ] ;
+                     rdfs:comment "A Transfer Event is a Disposal Event that results in a change of custody."@en ;
+                     rdfs:label "Record Transfer Event"@en ;
+                     skos:example "An example of a Record Transfer Event is the transfer of a Record from an Agency to the National Archives. Section 27 of the Archives Act 1983 requires Australian government agencies to transfer Records to the Archives within 15 years of their creation."@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#RecordsAuthorityFunction
@@ -998,27 +1256,12 @@ skos:example rdf:type owl:AnnotationProperty .
                         rdfs:subClassOf :Policy ,
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty :hasDisposalClass ;
-                                          owl:allValuesFrom :DisposalClass
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass :DisposalClass
                                         ] ;
                         dcterms:source "Australian Government Recordkeeping Metadata Standard"@en ;
                         rdfs:comment "A Records Authority Disposal Class Policy is a Policy that identifies the specific disposal class that authorises the retention or destruction of a Record."@en ;
                         rdfs:label "Records Authority Disposal Class Policy"@en .
-
-
-###  http://linked.data.gov.au/def/agrif#ReplaceEvent
-:ReplaceEvent rdf:type owl:Class ;
-              rdfs:subClassOf :ControlEvent ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasVersionHistory ;
-                                owl:someValuesFrom :VersionHistory
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :replacedBy ;
-                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                owl:onClass :Record
-                              ] ;
-              rdfs:comment "A Replace Event is an Event that results in the replacement of a Record with a new version. Edits to a Record constitute a Replace Event."@en ;
-              rdfs:label "Replace Event"@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#Role
@@ -1027,7 +1270,7 @@ skos:example rdf:type owl:AnnotationProperty .
                         owl:onProperty :hasPermission ;
                         owl:someValuesFrom :Permission
                       ] ;
-      dcterms:source "https://www.w3.org/TR/prov-o/#Role" ;
+      dcterms:source  <https://www.w3.org/TR/prov-o/#Role> ;
       rdfs:comment "A Role is the function of an entity or agent with respect to an Activity or Event, in the context of a usage, generation, invalidation, association, start, and end."@en ;
       rdfs:label "Role"@en .
 
@@ -1045,13 +1288,6 @@ skos:example rdf:type owl:AnnotationProperty .
                  rdfs:subClassOf :Control ;
                  rdfs:comment "A Security Control is a safeguard or countermeasures to avoid, detect, counteract, or minimize security risks to a Record or Artefact."@en ;
                  rdfs:label "Security Control"@en .
-
-
-###  http://linked.data.gov.au/def/agrif#SentencingEvent
-:SentencingEvent rdf:type owl:Class ;
-                 rdfs:subClassOf :ControlEvent ;
-                 rdfs:comment "A Sentencing Event is an Event that classifies an Agencies Record to a specific class of a Records Authority Policy. This helps determine the Records value and how it should be managed throughout its lifecycle."@en ;
-                 rdfs:label "Sentencing Event"@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#Series
@@ -1102,34 +1338,6 @@ skos:example rdf:type owl:AnnotationProperty .
                   rdfs:comment "A Temporal Coverage denotes the temporal extent to which a Record is observed."@en ;
                   rdfs:label "Temporal Coverage"@en ;
                   rdfs:seeAlso "http://purl.org/dc/terms/temporal" .
-
-
-###  http://linked.data.gov.au/def/agrif#TransferEvent
-:TransferEvent rdf:type owl:Class ;
-               rdfs:subClassOf :DisposalEvent ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :hasManifest ;
-                                 owl:someValuesFrom :Manifest
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :transferredFrom ;
-                                 owl:someValuesFrom :BusinessOwner
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :transferredFrom ;
-                                 owl:someValuesFrom :Role
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :transferredTo ;
-                                 owl:someValuesFrom :BusinessOwner
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :transferredTo ;
-                                 owl:someValuesFrom :Role
-                               ] ;
-               rdfs:comment "A Transfer Event is a Disposal Event that results in a change of custody."@en ;
-               rdfs:label "Transfer Event"@en ;
-               skos:example "An example of a Transfer Event is the transfer of a Record from an Agency to the National Archives. Section 27 of the Archives Act 1983 requires Australian government agencies to transfer Records to the Archives within 15 years of their creation."@en .
 
 
 ###  http://linked.data.gov.au/def/agrif#Trigger

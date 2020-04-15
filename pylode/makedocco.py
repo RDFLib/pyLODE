@@ -1,5 +1,5 @@
-from rdflib import Graph, RDF, RDFS, OWL, Namespace
-from rdflib.namespace import SKOS, DC, DCTERMS, FOAF, DOAP, SDO, XSD
+from rdflib import Graph, RDF, RDFS, OWL, Namespace, util
+from rdflib.namespace import SKOS, DC, DCTERMS, FOAF, DOAP, PROV, SDO, XSD
 from rdflib.term import URIRef, Literal, BNode
 from os import path
 import requests
@@ -10,37 +10,117 @@ from rdflib import plugin
 from rdflib.plugin import register, Serializer
 from rdflib_jsonld import serializer
 from profiles import PROFILES
+import markdown
 
 register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
+RDF_FILE_EXTENSIONS = [".rdf", ".owl", ".ttl", ".n3", ".nt", ".json"]
+
+RDF_SERIALIZER_MAP = {
+    "text/turtle": "turtle",
+    "text/n3": "n3",
+    "application/n-triples": "nt",
+    "application/ld+json": "json-ld",
+    "application/rdf+xml": "xml",
+    # Some common but incorrect mimetypes
+    "application/rdf": "xml",
+    "application/rdf xml": "xml",
+    "application/json": "json-ld",
+    "application/ld json": "json-ld",
+    "text/ttl": "turtle",
+    "text/turtle;charset=UTF-8": "turtle",
+    "text/ntriples": "nt",
+    "text/n-triples": "nt",
+    "text/plain": "nt",  # text/plain is the old/deprecated mimetype for n-triples
+}
+
 
 class MakeDocco:
-    def __init__(self, outputformat="html", profile="owl"):
+    def __init__(self, input_data_file=None, input_uri=None, outputformat="html", profile="owl"):
         self.profile_selected = profile
+        self.default_language = "en"
 
         if outputformat not in ["html", "md"]:
             self.outputformat = "html"
         else:
             self.outputformat = outputformat
 
+        if profile not in PROFILES.keys():
+            self.profile_selected = "owl"
+        else:
+            self.profile_selected = profile
+
         # shared variables
-        self.APP_DIR = path.dirname(path.realpath(__file__))
-        self.CLASSES = collections.OrderedDict()
-        self.PROPERTIES = collections.OrderedDict()
-        self.NAMED_INDIVIDUALS = collections.OrderedDict()
+        if input_data_file is not None:
+            self._parse_input_data_file(input_data_file)
+        elif input_uri is not None:
+            self._parse_input_uri(input_uri)
+        else:
+            raise Exception("You must supply either an input file or a URI for your ontology's RDF")
+
         self.NAMESPACES = collections.OrderedDict()
         self.FIDS = {}
         self.METADATA = {}
-
-        self.G = Graph()
-        self.SDO = Namespace("https://schema.org/")
-        self.G.bind("sdo", self.SDO)
-
+        self.G.bind("sdo", SDO)
         self.SDO2 = Namespace("http://schema.org/")
         self.G.bind("sdo2", self.SDO2)
+        self.G.bind("prov", PROV)
 
-        self.PROV = Namespace("http://www.w3.org/ns/prov#")
-        self.G.bind("prov", self.PROV)
+        if self.profile_selected == "owl":
+            self.CLASSES = collections.OrderedDict()
+            self.PROPERTIES = collections.OrderedDict()
+            self.NAMED_INDIVIDUALS = collections.OrderedDict()
+        elif self.profile_selected == "skos":
+            self.CONCEPTS = collections.OrderedDict()
+            self.COLLECTIONS = collections.OrderedDict()
+
+    def _parse_input_data_file(self, input_data_file):
+        if not input_data_file.endswith(tuple(RDF_FILE_EXTENSIONS)):
+            raise Exception(
+                "If supplying an input RDF file, it must end with one of the following file type extensions: {}."
+                    .format(
+                        ", ".join(RDF_FILE_EXTENSIONS)
+                    )
+                )
+        else:
+            fmt = (
+                "json-ld"
+                if input_data_file.endswith(".json") or input_data_file.endswith(".jsonld")
+                else util.guess_format(input_data_file)
+            )
+            with open(input_data_file, 'r') as f:
+                data = f.read()
+            self.G = Graph().parse(data=data, format=fmt)
+            self.source_info = (input_data_file, fmt)
+            self.publication_dir = path.dirname(input_data_file)
+
+    def _parse_input_uri(self, uri):
+        r = requests.get(
+            uri, headers={"Accept": ", ".join(RDF_SERIALIZER_MAP.keys())}
+        )
+        # get RDF format from Media Type
+        media_type = r.headers.get("Content-Type").split(";")[0]  # splitting off any ;charset=...
+        if RDF_SERIALIZER_MAP.get(media_type):
+            fmt = RDF_SERIALIZER_MAP.get(media_type)
+        else:
+            fmt = (
+                "json-ld"
+                if media_type == "application/ld+json"
+                   or media_type == "application/json"
+                else None
+            )
+
+        if fmt is None:
+            raise Exception(
+                "Could not parse the supplied URI. The RDF format could not be determined from Media Type "
+                "({} was given) or from a file extension".format(media_type)
+            )
+
+        self.G = Graph().parse(data=r.text, format=fmt)
+        self.source_info = (uri, fmt)
+        self.publication_dir = path.join(
+            path.dirname(path.realpath(__file__)), "output_files"
+        )
 
     @classmethod
     def list_profiles(cls):
@@ -62,6 +142,11 @@ class MakeDocco:
     #
     #   Item utilities
     #
+    def _load_template(self, template_file):
+        return Environment(
+            loader=FileSystemLoader(path.join(path.dirname(path.realpath(__file__)), "templates"))
+        ).get_template(template_file)
+
     def _get_namespace_from_uri(self, uri):
         # split on hash
         segments = uri.split("#")
@@ -141,12 +226,12 @@ class MakeDocco:
         # get other namespaces by extracting base URIs from all URIs
         for s, p, o in self.G:
             # exclude certain annotation URIs
-            # and individuals (self.SDO.identifier)
+            # and individuals (SDO.identifier)
             # exclude known annoying URIs (ORCID)
             if (
                 p == OWL.versionIRI
                 or p == OWL.imports
-                or p == self.SDO.identifier
+                or p == SDO.identifier
                 or self.SDO2.identifier
                 or str(o).startswith("https://orcid")
             ):
@@ -207,7 +292,7 @@ class MakeDocco:
 
         # no, so make one
         def _remove_non_ascii_chars(s):
-            return "".join(j for j in s if ord(j) < 128)
+            return "".join(j for j in s if ord(j) < 128).replace("&", "").lower()
 
         # try creating an ID from label
         # lowercase, remove spaces, escape all non-ASCII chars
@@ -264,6 +349,10 @@ class MakeDocco:
         # if not, try the URI of the ontology compared to all prefixes
         for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
             ont_uri = str(s)
+
+        for s in self.G.subjects(predicate=RDF.type, object=SKOS.ConceptScheme):
+            ont_uri = str(s)
+
         for k, v in self.NAMESPACES.items():
             # i.e. the ontology URI is the same as the default namespace + / or #
             if v == ont_uri + "/" or v == ont_uri + "#":
@@ -317,16 +406,7 @@ class MakeDocco:
     #   All profiles
     #
     def _make_namespaces(self, outputformat="html"):
-        if outputformat == "md":
-            template_file_ext = "md"
-        else:
-            template_file_ext = "html"
-
-        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
-        namespaces_template = Environment(
-            loader=FileSystemLoader(template_dir)
-        ).get_template("namespaces." + template_file_ext)
-        return namespaces_template.render(
+        return self._load_template("namespaces." + outputformat).render(
             namespaces=self.NAMESPACES,
             default_namespace=self.METADATA["default_namespace"],
         )
@@ -603,11 +683,11 @@ class MakeDocco:
 
                 # TODO: cater for other Agent representations
 
-                if p == self.PROV.wasGeneratedBy:
+                if p == PROV.wasGeneratedBy:
                     for o2 in self.G.objects(subject=o, predicate=DOAP.repository):
                         self.METADATA["repository"] = str(o2)
 
-                if p == self.SDO.codeRepository:
+                if p == SDO.codeRepository:
                     self.METADATA["repository"] = str(o)
 
             if self.METADATA.get("title") is None:
@@ -778,7 +858,7 @@ class MakeDocco:
             self.CLASSES[cls]["in_domain_of"] = in_domain_of
 
             in_domain_includes_of = []
-            for o in self.G.subjects(predicate=self.SDO.domainIncludes, object=s):
+            for o in self.G.subjects(predicate=SDO.domainIncludes, object=s):
                 in_domain_includes_of.append(str(o))
             self.CLASSES[cls]["in_domain_includes_of"] = in_domain_includes_of
 
@@ -788,7 +868,7 @@ class MakeDocco:
             self.CLASSES[cls]["in_range_of"] = in_range_of
 
             in_range_includes_of = []
-            for o in self.G.subjects(predicate=self.SDO.rangeIncludes, object=s):
+            for o in self.G.subjects(predicate=SDO.rangeIncludes, object=s):
                 in_range_includes_of.append(str(o))
             self.CLASSES[cls]["in_range_includes_of"] = in_range_includes_of
 
@@ -872,25 +952,19 @@ class MakeDocco:
             self.PROPERTIES[prop]["supers"] = supers
 
             # sub properties
-            subs = []
             for o in self.G.subjects(predicate=RDFS.subPropertyOf, object=s):
                 if type(o) != BNode:
-                    subs.append(str(o))
-            self.PROPERTIES[prop]["subs"] = subs
+                    self.PROPERTIES[prop]["subs"].append(str(o))
 
             # equivalent properties
-            equivs = []
             for o in self.G.objects(subject=s, predicate=OWL.equivalentProperty):
                 if type(o) != BNode:
-                    equivs.append(str(o))
-            self.PROPERTIES[prop]["equivs"] = equivs
+                    self.PROPERTIES[prop]["equivs"].append(str(o))
 
             # inverse properties
-            invs = []
             for o in self.G.objects(subject=s, predicate=OWL.inverseOf):
                 if type(o) != BNode:
-                    invs.append(str(o))
-            self.PROPERTIES[prop]["invs"] = invs
+                    self.PROPERTIES[prop]["invs"].append(str(o))
 
             # domains
             domains = []
@@ -923,7 +997,7 @@ class MakeDocco:
 
             # domainIncludes
             domain_includes = []
-            for o in self.G.objects(subject=s, predicate=self.SDO.domainIncludes):
+            for o in self.G.objects(subject=s, predicate=SDO.domainIncludes):
                 if type(o) != BNode:
                     domain_includes.append(
                         str(o)
@@ -1013,7 +1087,7 @@ class MakeDocco:
 
             # rangeIncludes
             range_includes = []
-            for o in self.G.objects(subject=s, predicate=self.SDO.rangeIncludes):
+            for o in self.G.objects(subject=s, predicate=SDO.rangeIncludes):
                 if type(o) != BNode:
                     range_includes.append(str(o))  # rangeIncludes that are just classes
                 else:
@@ -1139,11 +1213,7 @@ class MakeDocco:
             self.NAMED_INDIVIDUALS[ni]["fid"] = self._make_fid(self.NAMED_INDIVIDUALS[ni]["title"], ni)
 
     def _make_metadata(self, source_info, outputformat="html"):
-        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
-        template = Environment(loader=FileSystemLoader(template_dir)).get_template(
-            "owl_metadata." + outputformat
-        )
-        return template.render(
+        return self._load_template("owl_metadata." + outputformat).render(
             imports=self.METADATA["imports"],
             title=self.METADATA.get("title"),
             uri=self.METADATA.get("uri"),
@@ -1173,10 +1243,7 @@ class MakeDocco:
 
     def _make_classes(self, outputformat="html"):
         # make all Classes
-        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
-        class_template = Environment(
-            loader=FileSystemLoader(template_dir)
-        ).get_template("owl_class." + outputformat)
+        class_template = self._load_template("owl_class." + outputformat)
         classes_list = []
         for k, v in self.CLASSES.items():
             classes_list.append(
@@ -1200,9 +1267,7 @@ class MakeDocco:
             )
 
         # make the template for all Classes
-        classes_template = Environment(
-            loader=FileSystemLoader(template_dir)
-        ).get_template("owl_classes." + outputformat)
+        classes_template = self._load_template("owl_classes." + outputformat)
         # add in Class index
         fids = sorted(
             [(v.get("fid"), v.get("title")) for k, v in self.CLASSES.items()],
@@ -1211,12 +1276,7 @@ class MakeDocco:
         return classes_template.render(fids=fids, classes=classes_list, )
 
     def _make_property(self, property, outputformat="html"):
-        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
-        template = Environment(loader=FileSystemLoader(template_dir)).get_template(
-            "owl_property." + outputformat
-        )
-
-        return template.render(
+        return self._load_template("owl_property." + outputformat).render(
             uri=property[0],
             fid=property[1].get("fid"),
             property_type=property[1].get("prop_type"),
@@ -1287,12 +1347,7 @@ class MakeDocco:
                 )
 
         # make the template for all properties
-        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
-        template = Environment(loader=FileSystemLoader(template_dir)).get_template(
-            "owl_properties." + outputformat
-        )
-
-        return template.render(
+        return self._load_template("owl_properties." + outputformat).render(
             op_instances=op_instances,
             fp_instances=fp_instances,
             dp_instances=dp_instances,
@@ -1301,12 +1356,7 @@ class MakeDocco:
         )
 
     def _make_named_individual(self, named_individual, outputformat="html"):
-        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
-        template = Environment(loader=FileSystemLoader(template_dir)).get_template(
-            "owl_named_individual." + outputformat
-        )
-
-        return template.render(
+        return self._load_template("owl_named_individual." + outputformat).render(
             uri=named_individual[0],
             fid=named_individual[1].get("fid"),
             classes=named_individual[1].get("classes"),
@@ -1326,17 +1376,15 @@ class MakeDocco:
                 self._make_named_individual((k, v), outputformat=outputformat)
             )
 
-        # make the template for all NIs
-        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
-        template = Environment(loader=FileSystemLoader(template_dir)).get_template(
-            "owl_named_individuals." + outputformat
-        )
         # add in NIs index
         fids = sorted(
             [(v.get("fid"), v.get("title")) for k, v in self.NAMED_INDIVIDUALS.items()],
             key=lambda tup: tup[1],
         )
-        return template.render(fids=fids, named_individuals=named_individuals_list)
+        return self._load_template("owl_named_individuals." + outputformat).render(
+            fids=fids,
+            named_individuals=named_individuals_list
+        )
 
     def _make_document_owl(
         self,
@@ -1350,11 +1398,6 @@ class MakeDocco:
         outputformat="html",
         exclude_css=False,
     ):
-        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
-        document_template = Environment(
-            loader=FileSystemLoader(template_dir)
-        ).get_template("owl_document." + outputformat)
-
         css = None
         if outputformat == "html":
             if not exclude_css:
@@ -1363,7 +1406,7 @@ class MakeDocco:
                 )
                 css = open(pylode_css).read()
 
-        return document_template.render(
+        return self._load_template("owl_document." + outputformat).render(
             schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML templates
             title=title,
             metadata=metadata,
@@ -1419,15 +1462,141 @@ class MakeDocco:
         for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
             self.G.add((s, RDF.type, SKOS.ConceptScheme))
 
+        # SKOS -> SKOS
+        # broader / narrower buildout
+        for s, o in self.G.subject_objects(predicate=SKOS.broader):
+            self.G.add((o, SKOS.narrower, s))
+
+        for s, o in self.G.subject_objects(predicate=SKOS.narrower):
+            self.G.add((o, SKOS.broader, s))
+
+        for s, o in self.G.subject_objects(predicate=SKOS.topConceptOf):
+            self.G.add((o, SKOS.hasTopConcept, s))
+
+        for s, o in self.G.subject_objects(predicate=SKOS.hasTopConcept):
+            self.G.add((o, SKOS.topConceptOf, s))
+
     def _extract_concept_scheme_for_skos(self):
         """Extracts standard SKOS ConceptScheme metadata
 
         Will interpret an owl:Ontology as a skos:ConceptScheme if run against an OWL document
         """
+
+        self.METADATA["creators"] = set()
+        self.METADATA["contributors"] = set()
+        self.METADATA["publishers"] = set()
         for s in self.G.subjects(predicate=RDF.type, object=SKOS.ConceptScheme):
+            self.METADATA["uri"] = str(s)
             for p, o in self.G.predicate_objects(subject=s):
                 if p == SKOS.prefLabel:
                     self.METADATA["title"] = str(o)
+
+                if p == SKOS.definition:
+                    import markdown
+
+                    self.METADATA["description"] = markdown.markdown(str(o))
+
+                if p == SKOS.historyNote:
+                    self.METADATA["historyNote"] = str(o)
+
+                if p == DCTERMS.created:
+                    self.METADATA["created"] = dateutil.parser.parse(str(o)).strftime(
+                        "%Y-%m-%d"
+                    )
+
+                if p == DCTERMS.modified:
+                    self.METADATA["modified"] = dateutil.parser.parse(str(o)).strftime(
+                        "%Y-%m-%d"
+                    )
+
+                if p == DCTERMS.issued:
+                    self.METADATA["issued"] = dateutil.parser.parse(str(o)).strftime(
+                        "%Y-%m-%d"
+                    )
+
+                if p == DCTERMS.source:
+                    if str(o).startswith('http'):
+                        self.METADATA["source"] = self._make_uri_html(o)  # '<a href="{0}">{0}</a>'.format(str(o))
+                    else:
+                        self.METADATA["source"] = str(o)
+
+                if p == OWL.versionIRI:
+                    self.METADATA["versionIRI"] = '<a href="{0}">{0}</a>'.format(str(o))
+
+                if p == OWL.versionInfo:
+                    self.METADATA["versionInfo"] = str(o)
+
+                if p == URIRef("http://purl.org/vocab/vann/preferredNamespacePrefix"):
+                    self.METADATA["preferredNamespacePrefix"] = str(o)
+
+                if p == URIRef("http://purl.org/vocab/vann/preferredNamespaceUri"):
+                    self.METADATA["preferredNamespaceUri"] = str(o)
+
+                if p == DCTERMS.license:
+                    self.METADATA["license"] = (
+                        '<a href="{0}">{0}</a>'.format(str(o))
+                        if str(o).startswith("http")
+                        else str(o)
+                    )
+
+                if p == DCTERMS.rights:
+                    self.METADATA["rights"] = (
+                        str(o)
+                            .replace("Copyright", "&copy;")
+                            .replace("copyright", "&copy;")
+                    )
+
+                # Agents
+                if p == DC.creator:
+                    if type(o) == URIRef:
+                        self.METADATA["creators"].add(
+                            '<a href="{0}">{0}</a>'.format(str(o))
+                        )
+                    else:
+                        self.METADATA["creators"].add(str(o))
+
+                if p == DCTERMS.creator:
+                    if type(o) == Literal:
+                        self.METADATA["creators"].add(str(o))
+                    else:  # Blank Node or URI
+                        self.METADATA["creators"].add(self._make_agent_html(o))
+
+                if p == DC.contributor:
+                    if type(o) == URIRef:
+                        self.METADATA["contributors"].add(
+                            '<a href="{0}">{0}</a>'.format(str(o))
+                        )
+                    else:
+                        self.METADATA["contributors"].add(str(o))
+
+                if p == DCTERMS.contributor:
+                    if type(o) == Literal:
+                        self.METADATA["contributors"].add(str(o))
+                    else:  # Blank Node or URI
+                        self.METADATA["contributors"].add(self._make_agent_html(o))
+
+                if p == DC.publisher:
+                    if type(o) == URIRef:
+                        self.METADATA["publishers"].add(
+                            '<a href="{0}">{0}</a>'.format(str(o))
+                        )
+                    else:
+                        self.METADATA["publishers"].add(str(o))
+
+                if p == DCTERMS.publisher:
+                    if type(o) == Literal:
+                        self.METADATA["publishers"].add(str(o))
+                    else:  # Blank Node or URI
+                        self.METADATA["publishers"].add(self._make_agent_html(o))
+
+                # TODO: cater for other Agent representations
+
+                if p == PROV.wasGeneratedBy:
+                    for o2 in self.G.objects(subject=o, predicate=DOAP.repository):
+                        self.METADATA["repository"] = str(o2)
+
+                if p == SDO.codeRepository:
+                    self.METADATA["repository"] = str(o)
 
         if self.METADATA.get("title") is None:
             raise ValueError(
@@ -1435,24 +1604,167 @@ class MakeDocco:
                 "You must declare one of the following for it: rdfs:label, dct:title, skos:prefLabel"
             )
 
+        if len(self.COLLECTIONS.keys()) > 0:
+            self.METADATA["has_collections"] = True
+
+        if len(self.CONCEPTS.keys()) > 0:
+            self.METADATA["has_concepts"] = True
+
+    def _extract_collections_for_skos(self):
+        """Extracts standard SKOS Collection metadata"""
+        collections = []
+        # TODO: handle OrderedCollections
+        for s in self.G.subjects(predicate=RDF.type, object=SKOS.Collection):
+            collections.append(str(s))
+
+        # keeping the OrderedDict ordered
+        for c in sorted(collections):
+            self.COLLECTIONS[c] = {}
+
+        # fill in each Collection's details from the graph
+        for c in self.COLLECTIONS.keys():
+            s = URIRef(c)  # for use in Graph() loops
+
+            self.COLLECTIONS[c]["fid"] = None
+            self.COLLECTIONS[c]["prefLabels"] = set()
+            self.COLLECTIONS[c]["altLabels"] = []
+            self.COLLECTIONS[c]["definitions"] = []
+            self.COLLECTIONS[c]["scopeNotes"] = []
+            self.COLLECTIONS[c]["source"] = None
+
+            self.COLLECTIONS[c]["members"] = []
+
+            for p, o in self.G.predicate_objects(subject=s):
+                if p == SKOS.prefLabel:
+                    self.COLLECTIONS[c]["prefLabels"].add((o.value, 'en'))  # TODO: add in language
+
+                elif p == SKOS.altLabel:
+                    self.COLLECTIONS[c]["altLabels"].append(str(o))  # TODO: add in language
+
+                elif p == SKOS.definition:
+                    self.COLLECTIONS[c]["definitions"].append(str(o))  # TODO: add in language
+
+                elif p == SKOS.scopeNote:
+                    self.COLLECTIONS[c]["scopeNotes"].append(str(o))  # TODO: add in language
+
+                elif p == DCTERMS.source:
+                    self.COLLECTIONS[c]["source"] = str(o)
+
+                elif p == SKOS.topConceptOf:
+                    self.COLLECTIONS[c]["topConceptOfs"].append(str(o))
+
+                elif p == SKOS.member:
+                    self.COLLECTIONS[c]["members"].append(self._make_uri_html(str(o), type="cp"))
+                    # TODO: handle members that are other Collections, not Concepts
+
+            self.COLLECTIONS[c]["prefLabels"] = list(self.COLLECTIONS[c]["prefLabels"])
+            self.COLLECTIONS[c]["members"] = list(self.COLLECTIONS[c]["members"])
+
+            # make fid
+            # TODO: update to use default language label, not [0]
+            self.COLLECTIONS[c]["fid"] = self._make_fid(
+                self.COLLECTIONS[c]["prefLabels"][0][0], c
+            )
+
     def _extract_concepts_for_skos(self):
         """Extracts standard SKOS Concepts and their metadata
 
         Will interpret an owl:Class and rdfs:Class instances as skos:Concepts if run against an OWL document
         """
+        concepts = []
         for s in self.G.subjects(predicate=RDF.type, object=SKOS.Concept):
-            for p, o in self.G.predicate_objects(subject=s):
-                print(p, o)
+            concepts.append(str(s))
 
-    def _extract_collections_for_skos(self):
-        """Extracts standard SKOS Collection metadata"""
-        for s in self.G.subjects(predicate=RDF.type, object=SKOS.Collection):
-            for p, o in self.G.predicate_objects(subject=s):
-                print(p, o)
+        # keeping the OrderedDict ordered
+        for c in sorted(concepts):
+            self.CONCEPTS[c] = {}
 
-        for s in self.G.subjects(predicate=RDF.type, object=SKOS.OrderedCollection):
+        # fill in each Concept's details from the graph
+        for c in self.CONCEPTS.keys():
+            s = URIRef(c)  # for use in Graph() loops
+
+            self.CONCEPTS[c]["fid"] = None
+            self.CONCEPTS[c]["prefLabels"] = set()
+            self.CONCEPTS[c]["default_prefLabel"] = None
+            self.CONCEPTS[c]["altLabels"] = set()
+            self.CONCEPTS[c]["definitions"] = set()
+            self.CONCEPTS[c]["scopeNotes"] = set()
+            self.CONCEPTS[c]["examples"] = set()
+            self.CONCEPTS[c]["inSchemes"] = set()
+            self.CONCEPTS[c]["topConceptOfs"] = set()
+            self.CONCEPTS[c]["source"] = None
+            self.CONCEPTS[c]["broaders"] = set()
+            self.CONCEPTS[c]["narrowers"] = set()
+            self.CONCEPTS[c]["exactMatches"] = set()
+            self.CONCEPTS[c]["closeMatches"] = set()
+            self.CONCEPTS[c]["broadMatches"] = set()
+            self.CONCEPTS[c]["narrowMatches"] = set()
+
             for p, o in self.G.predicate_objects(subject=s):
-                print(p, o)
+                if p == SKOS.prefLabel:
+                    self.CONCEPTS[c]["prefLabels"].add((o.value, o.language))  # TODO: add in language
+                    if o.language == self.default_language:
+                        self.CONCEPTS[c]["default_prefLabel"] = o.value
+
+                elif p == SKOS.altLabel:
+                    self.CONCEPTS[c]["altLabels"].add(str(o))  # TODO: add in language
+
+                elif p == SKOS.definition:
+                    self.CONCEPTS[c]["definitions"].add(str(o))  # TODO: add in language
+
+                elif p == SKOS.scopeNote:
+                    self.CONCEPTS[c]["scopeNotes"].add(str(o))  # TODO: add in language
+
+                elif p == SKOS.example:
+                    self.CONCEPTS[c]["examples"].add(str(o))  # TODO: add in language
+
+                elif p == SKOS.inScheme:
+                    self.CONCEPTS[c]["inSchemes"].add(str(o))
+
+                elif p == DCTERMS.source:
+                    self.CONCEPTS[c]["source"] = str(o)
+
+                elif p == SKOS.topConceptOf:
+                    self.CONCEPTS[c]["topConceptOfs"].add(str(o))
+
+                elif p == SKOS.broader:
+                    self.CONCEPTS[c]["broaders"].add(str(o))
+
+                elif p == SKOS.narrower:
+                    self.CONCEPTS[c]["narrowers"].add(str(o))
+
+                elif p == SKOS.exactMatch:
+                    self.CONCEPTS[c]["exactMatches"].add(str(o))
+
+                elif p == SKOS.closeMatch:
+                    self.CONCEPTS[c]["closeMatches"].add(str(o))
+
+                elif p == SKOS.broadMatch:
+                    self.CONCEPTS[c]["broadMatches"].add(str(o))
+
+                elif p == SKOS.narrowMatch:
+                    self.CONCEPTS[c]["narrowMatches"].add(str(o))
+
+            # listify the sets
+            self.CONCEPTS[c]["prefLabels"] = list(self.CONCEPTS[c]["prefLabels"])
+            self.CONCEPTS[c]["altLabels"] = list(self.CONCEPTS[c]["altLabels"])
+            self.CONCEPTS[c]["definitions"] = list(self.CONCEPTS[c]["definitions"])
+            self.CONCEPTS[c]["scopeNotes"] = list(self.CONCEPTS[c]["scopeNotes"])
+            self.CONCEPTS[c]["examples"] = list(self.CONCEPTS[c]["examples"])
+            self.CONCEPTS[c]["inSchemes"] = list(self.CONCEPTS[c]["inSchemes"])
+            self.CONCEPTS[c]["topConceptOfs"] = list(self.CONCEPTS[c]["topConceptOfs"])
+            self.CONCEPTS[c]["broaders"] = list(self.CONCEPTS[c]["broaders"])
+            self.CONCEPTS[c]["narrowers"] = list(self.CONCEPTS[c]["narrowers"])
+            self.CONCEPTS[c]["exactMatches"] = list(self.CONCEPTS[c]["exactMatches"])
+            self.CONCEPTS[c]["closeMatches"] = list(self.CONCEPTS[c]["closeMatches"])
+            self.CONCEPTS[c]["broadMatches"] = list(self.CONCEPTS[c]["broadMatches"])
+            self.CONCEPTS[c]["narrowMatches"] = list(self.CONCEPTS[c]["narrowMatches"])
+
+            # make fid
+            # TODO: update to use default language label, not [0]
+            self.CONCEPTS[c]["fid"] = self._make_fid(
+                self.CONCEPTS[c]["prefLabels"][0][0], c
+            )
 
     def _make_uri_html(self, uri, type=None):
         # set display to CURIE
@@ -1463,15 +1775,26 @@ class MakeDocco:
         #   use the given URI
         uri_base = self._get_namespace_from_uri(uri)
         if uri_base == self.METADATA.get("default_namespace"):
-            if self.PROPERTIES.get(uri):
-                html = '<a href="#{}">{}</a>'.format(self.PROPERTIES[uri]["fid"], short)
-            elif self.CLASSES.get(uri):
-                html = '<a href="#{}">{}</a>'.format(self.CLASSES[uri]["fid"], short)
+            if self.profile_selected == "owl":
+                if self.PROPERTIES.get(uri):
+                    html = '<a href="#{}">{}</a>'.format(self.PROPERTIES[uri]["fid"], short)
+                elif self.CLASSES.get(uri):
+                    html = '<a href="#{}">{}</a>'.format(self.CLASSES[uri]["fid"], short)
+                else:
+                    html = '<a href="{}">{}</a>'.format(uri, short)
+            elif self.profile_selected == "skos":
+                if self.CONCEPTS.get(uri):
+                    html = '<a href="#{}">{}</a>'.format(self.CONCEPTS[uri]["fid"], self.CONCEPTS[uri]["default_prefLabel"])
+                elif self.COLLECTIONS.get(uri):
+                    html = '<a href="#{}">{}</a>'.format(self.COLLECTIONS[uri]["fid"], short)
+                else:
+                    html = '<a href="{}">{}</a>'.format(uri, short)
             else:
                 html = '<a href="{}">{}</a>'.format(uri, short)
         else:
             html = '<a href="{}">{}</a>'.format(uri, short)
 
+        # OWL
         if type == "c":
             return html + '<sup class="sup-c" title="class">c</sup>'
         elif type == "op":
@@ -1484,6 +1807,12 @@ class MakeDocco:
             return html + '<sup class="sup-ap" title="annotation property">ap</sup>'
         elif type == "ni":
             return html + '<sup class="sup-ni" title="named individual">ni</sup>'
+        # SKOS
+        elif type == "cp":
+            return html + '<sup class="sup-cp" title="concept">cp</sup>'
+        elif type == "cl":
+            return html + '<sup class="sup-cl" title="collection">cl</sup>'
+        # None
         else:
             return html
 
@@ -1644,34 +1973,34 @@ class MakeDocco:
         for p, o in self.G.predicate_objects(subject=agent_node):
             if (
                 p == FOAF.homepage
-                or p == self.SDO.identifier
+                or p == SDO.identifier
                 or p == self.SDO2.identifier
             ):
                 url = str(o)
-            elif p == FOAF.name or p == self.SDO.name or p == self.SDO2.name:
+            elif p == FOAF.name or p == SDO.name or p == self.SDO2.name:
                 name = str(o)
-            elif p == FOAF.mbox or p == self.SDO.email or p == self.SDO2.email:
+            elif p == FOAF.mbox or p == SDO.email or p == self.SDO2.email:
                 email = (
                     str(o).split("/")[-1].split("#")[-1]
                 )  # remove base URI leaving only email address
             elif (
-                p == self.SDO.memberOf
+                p == SDO.memberOf
                 or p == self.SDO2.memberOf
-                or p == self.SDO.affiliation
+                or p == SDO.affiliation
                 or p == self.SDO2.affiliation
             ):
                 for p2, o2 in self.G.predicate_objects(subject=o):
                     if (
                         p2 == FOAF.homepage
-                        or p2 == self.SDO.identifier
+                        or p2 == SDO.identifier
                         or p2 == self.SDO2.identifier
-                        or p2 == self.SDO.url
+                        or p2 == SDO.url
                         or p2 == self.SDO2.url
                     ):  # TODO: split homepage form IDs, cater for rdfs:seeAlso
                         org_url = str(o2)
-                    elif p2 == FOAF.name or p2 == self.SDO.name or p2 == self.SDO2.name:
+                    elif p2 == FOAF.name or p2 == SDO.name or p2 == self.SDO2.name:
                         org_name = str(o2)
-                    elif p == FOAF.mbox or p == self.SDO.email or p == self.SDO2.email:
+                    elif p == FOAF.mbox or p == SDO.email or p == self.SDO2.email:
                         org_email = (
                             str(o2).split("/")[-1].split("#")[-1]
                         )  # remove base URI leaving only email address
@@ -1684,34 +2013,268 @@ class MakeDocco:
 
         return agent
 
-    def _make_skos_concept_scheme(self):
-        pass
+    def _make_skos_concept_scheme(self, source_info, outputformat="html"):
+        return self._load_template("skos_concept_scheme." + outputformat).render(
+            title=self.METADATA.get("title"),
+            uri=self.METADATA.get("uri"),
+            version_uri=self.METADATA.get("versionIRI"),
+            publishers=self.METADATA["publishers"],
+            creators=self.METADATA["creators"],
+            contributors=self.METADATA["contributors"],
+            created=self.METADATA.get("created"),
+            modified=self.METADATA.get("modified"),
+            issued=self.METADATA.get("issued"),
+            source=self.METADATA.get("source"),
+            description=self.METADATA.get("description"),
+            historyNote=self.METADATA.get("historyNote"),
+            version_info=self.METADATA.get("versionInfo"),
+            license=self.METADATA.get("license"),
+            rights=self.METADATA.get("rights"),
+            repository=self.METADATA.get("repository"),
+            ont_rdf=self._make_source_file_link(source_info),
+            has_collections=True if len(self.COLLECTIONS) > 0 else False,
+            has_concepts=True if len(self.CONCEPTS) > 0 else False,
+        )
 
-    def _make_skos_collections(self):
-        pass
+    def _make_skos_collection(self, collection, outputformat="html"):
+        return self._load_template("skos_collection." + outputformat).render(
+            uri=collection[0],
+            fid=collection[1].get("fid"),
+            prefLabels=collection[1].get("prefLabels"),
+            altLabels=collection[1].get("altLabels"),
+            definitions=collection[1].get("definitions"),
+            scopeNotes=collection[1].get("scopeNotes"),
+            source=collection[1].get("source"),
+            members=[self._make_uri_html(x, type="cp") for x in collection[1].get("members")],
+        )
 
-    def _make_skos_concepts(self):
-        pass
+    def _make_skos_collections(self, outputformat="html"):
+        collections = []
+        for k, v in self.COLLECTIONS.items():
+            collections.append(
+                (
+                    list(v["prefLabels"])[0][0],
+                    v["fid"],
+                    self._make_skos_collection((k, v), outputformat=outputformat),
+                )
+            )
+
+        return self._load_template("skos_collections." + outputformat).render(collections=collections)
+
+    # def _make_concept_hierarchy(self):
+    #     # same as parent query, only:
+    #     #   running against rdflib in-memory graph, not SPARQL endpoint
+    #     #   a single graph, not a multi-graph (since it's an RDF/XML or Turtle file)
+    #     """
+    #     Function to draw concept hierarchy for vocabulary
+    #     """
+    #
+    #     def build_hierarchy(bindings_list, broader_concept=None, level=0):
+    #         """
+    #         Recursive helper function to build hierarchy list from a bindings list
+    #         Returns list of tuples: (<level>, <concept>, <concept_preflabel>, <broader_concept>)
+    #         """
+    #         level += 1  # Start with level 1 for top concepts
+    #         hierarchy = []
+    #
+    #         narrower_list = sorted(
+    #             [
+    #                 binding_dict
+    #                 for binding_dict in bindings_list
+    #                 if
+    #                 # Top concept
+    #                 (
+    #                     (broader_concept is None)
+    #                     and (binding_dict.get("broader_concept") is None)
+    #                 )
+    #                 or
+    #                 # Narrower concept
+    #                 (
+    #                     (binding_dict.get("broader_concept") is not None)
+    #                     and (binding_dict["broader_concept"] == broader_concept)
+    #                 )
+    #             ],
+    #             key=lambda binding_dict: binding_dict["concept_preflabel"],
+    #         )
+    #
+    #         for binding_dict in narrower_list:
+    #             concept = binding_dict["concept"]
+    #             hierarchy += [
+    #                 (
+    #                     level,
+    #                     concept,
+    #                     binding_dict["concept_preflabel"],
+    #                     binding_dict["broader_concept"]
+    #                     if binding_dict.get("broader_concept")
+    #                     else None,
+    #                 )
+    #             ] + build_hierarchy(bindings_list, concept, level)
+    #
+    #         return hierarchy
+    #
+    #     q = """
+    #         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    #         PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    #         PREFIX dct: <http://purl.org/dc/terms/>
+    #         SELECT DISTINCT ?concept ?concept_preflabel ?broader_concept
+    #         WHERE {{
+    #             {{ ?concept skos:inScheme ?cs . }}
+    #             UNION
+    #             {{ ?concept skos:topConceptOf ?cs . }}
+    #             UNION
+    #             {{ ?cs skos:hasTopConcept ?concept . }}
+    #             ?concept skos:prefLabel ?concept_preflabel .
+    #             OPTIONAL {{ ?concept skos:broader ?broader_concept .
+    #                 ?broader_concept skos:inScheme ?cs .
+    #                 }}
+    #             FILTER(lang(?concept_preflabel) = "{language}" || lang(?concept_preflabel) = "")
+    #         }}
+    #         ORDER BY ?concept_preflabel""".format(
+    #         language='en'
+    #     )
+    #
+    #     bindings_list = []
+    #     for r in self.G.query(q):
+    #         bindings_list.append(
+    #             {
+    #                 # ?concept ?concept_preflabel ?broader_concept
+    #                 "concept": r[0],
+    #                 "concept_preflabel": r[1],
+    #                 "broader_concept": r[2],
+    #             }
+    #         )
+    #
+    #     assert bindings_list is not None, "FILE concept hierarchy query failed"
+    #
+    #     hierarchy = build_hierarchy(bindings_list)
+    #
+    #     return self._draw_concept_hierarchy(hierarchy)
+    #
+    # def _draw_concept_hierarchy(self, hierarchy):
+    #     tab = "\t"
+    #     previous_length = 1
+    #
+    #     text = ""
+    #     tracked_items = []
+    #     for item in hierarchy:
+    #         mult = None
+    #
+    #         if item[0] > previous_length + 2:  # SPARQL query error on length value
+    #             for tracked_item in tracked_items:
+    #                 if tracked_item["name"] == item[3]:
+    #                     mult = tracked_item["indent"] + 1
+    #
+    #         if mult is None:
+    #             found = False
+    #             for tracked_item in tracked_items:
+    #                 if tracked_item["name"] == item[3]:
+    #                     found = True
+    #             if not found:
+    #                 mult = 0
+    #
+    #         if mult is None:  # else: # everything is normal
+    #             mult = item[0] - 1
+    #
+    #         uri = item[1]
+    #
+    #         t = tab * mult + "* [" + item[2] + "](" + uri + ")\n"
+    #         text += t
+    #         previous_length = mult
+    #         tracked_items.append({"name": item[1], "indent": mult})
+    #
+    #     return markdown.markdown(text)
+    #
+    # def render_concept_tree(html_doc):
+    #     soup = BeautifulSoup(html_doc, "html.parser")
+    #
+    #     # concept_hierarchy = soup.find(id='concept-hierarchy')
+    #
+    #     uls = soup.find_all("ul")
+    #
+    #     for i, ul in enumerate(uls):
+    #         # Don't add HTML class nested to the first 'ul' found.
+    #         if not i == 0:
+    #             ul["class"] = "nested"
+    #             if ul.parent.name == "li":
+    #                 temp = BeautifulSoup(str(ul.parent.a.extract()), "html.parser")
+    #                 ul.parent.insert(
+    #                     0, BeautifulSoup('<span class="caret">', "html.parser")
+    #                 )
+    #                 ul.parent.span.insert(0, temp)
+    #     return soup
+
+    def _make_concept_hierarchy(self, outputformat="html"):
+        # render concept
+        def _render(c, children, level=0):
+            if outputformat == "md":
+                md = level*"\t" + "* [{}]({})".format(self.CONCEPTS.get(c).get("default_prefLabel"), c)
+                if len(children) > 0:
+                    for ch in sorted(children):
+                        md += "\n" + _render(ch, self.CONCEPTS.get(ch).get("narrowers"), level=level + 1)
+                return md
+            else:  # HTML
+                html = "<li>{}".format(self._make_uri_html(c))
+                if len(children) > 0:
+                    for ch in sorted(children):
+                        html += "\n<ul>" + _render(ch, self.CONCEPTS.get(ch).get("narrowers"), level=level + 1) + "</ul>"
+                html += "</li>"
+                return html
+
+        # start with a topConcept
+        tcs = []
+        for s, o in self.G.subject_objects(predicate=SKOS.hasTopConcept):
+            tcs.append(str(o))
+
+        txt = ""
+        for tc in sorted(tcs):
+            txt += _render(tc, self.CONCEPTS.get(tc).get("narrowers"), 0)
+
+        return "<ul class=\"hierarchy\">\n" + txt + "\n</ul>"
+
+    def _make_skos_concept(self, concept, outputformat="html"):
+        return self._load_template("skos_concept." + outputformat).render(
+            uri=concept[0],
+            fid=concept[1].get("fid"),
+            default_prefLabel=concept[1].get("default_prefLabel"),
+            prefLabels=concept[1].get("prefLabels"),
+            altLabels=concept[1].get("altLabels"),
+            definitions=concept[1].get("definitions"),
+            scopeNotes=concept[1].get("scopeNotes"),
+            examples=concept[1].get("examples"),
+            source=concept[1].get("source"),
+            broaders=[self._make_uri_html(x, type="cp") for x in concept[1].get("broaders")],
+            narrowers=[self._make_uri_html(x, type="cp") for x in concept[1].get("narrowers")],
+            exactMatches=[self._make_uri_html(x, type="cp") for x in concept[1].get("exactMatches")],
+            closeMatches=[self._make_uri_html(x, type="cp") for x in concept[1].get("closeMatches")],
+            broadMatches=[self._make_uri_html(x, type="cp") for x in concept[1].get("broadMatches")],
+            narrowMatches=[self._make_uri_html(x, type="cp") for x in concept[1].get("narrowMatches")],
+        )
+
+    def _make_skos_concepts(self, outputformat="html"):
+        # TODO: make Concept hierarchy (URIs)
+
+        # TODO: list all Concepts, alphabetically by prefLabel
+        concepts = []
+        for k, v in self.CONCEPTS.items():
+            concepts.append(
+                (
+                    v["default_prefLabel"],
+                    v["fid"],
+                    self._make_skos_concept((k, v), outputformat=outputformat),
+                )
+            )
+
+        return self._load_template("skos_concepts." + outputformat).render(
+            concept_hierarchy=self._make_concept_hierarchy(),
+            concepts=concepts
+        )
 
     def _make_document_skos(
             self,
             title,
-            concept_scheme,
-            collections,
-            concepts,
             outputformat="html",
             exclude_css=False,
     ):
-        if outputformat == "md":
-            template_file_ext = "md"
-        else:
-            template_file_ext = "html"
-
-        template_dir = path.join(path.dirname(path.realpath(__file__)), "templates")
-        document_template = Environment(
-            loader=FileSystemLoader(template_dir)
-        ).get_template("skos_taxonomy." + template_file_ext)
-
         css = None
         if outputformat == "html":
             if not exclude_css:
@@ -1720,41 +2283,50 @@ class MakeDocco:
                 )
                 css = open(pylode_css).read()
 
-        return document_template.render(
+        return self._load_template("skos_taxonomy." + outputformat).render(
             schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML template
             title=title,
-            concept_scheme=concept_scheme,
-            collections=collections,
-            concepts=concepts,
+            concept_scheme=self._make_skos_concept_scheme(self.source_info, outputformat=outputformat),
+            has_collections=True if len(self.COLLECTIONS) > 0 else False,
+            collections=self._make_skos_collections(outputformat=outputformat),
+            has_concepts=True if len(self.CONCEPTS) > 0 else False,
+            concepts=self._make_skos_concepts(outputformat=outputformat),
+            namespaces=self._make_namespaces(outputformat=outputformat),
             css=css
         )
 
-    def document(self, source_info, exclude_css=False):
+    def document(self, exclude_css=False):
         if self.profile_selected == "skos":
             # expand the graph using pre-defined rules to make querying easier (poor man's inference)
             self._expand_graph_for_skos()
+            # get all the namespaces using several methods
+            self._extract_namespaces()
+            # get the default namespace
+            self._get_default_namespace()
             # extract all the SKOS things
-            self._extract_concept_scheme_for_skos()
-            self._extract_concepts_for_skos()
             self._extract_collections_for_skos()
+            self._extract_concepts_for_skos()
+            self._make_concept_hierarchy()
+            self._extract_concept_scheme_for_skos()
 
-            # generate the HTML or MD elements
-            elements = {
-                "concept_scheme": self._make_skos_concept_scheme(),
-                "collections": self._make_skos_collections(),
-                "concepts": self._make_skos_concepts(),
-            }
+            return self._make_document_skos(
+                self.METADATA["title"],
+                outputformat=self.outputformat,
+                exclude_css=exclude_css,
+            )
         else:
             # expand the graph using pre-defined rules to make querying easier (poor man's inference)
             self._expand_graph_for_owl()
+            # get all the namespaces using several methods
+            self._extract_namespaces()
+            # get the default namespace
+            self._get_default_namespace()
             # get the IDs (URIs) of all properties -> self.PROPERTIES
             self._extract_properties_uris()
             # get the IDs (URIs) of all classes -> CLASSES
             self._extract_classes_uris()
             # get the IDs (URIs) of all Named Individuals -> NAMED_INDIVIDUALS
             self._extract_named_individuals_uris()
-            # get all the namespaces using several methods
-            self._extract_namespaces()
             # get all the properties' details
             self._extract_properties()
             # get all the classes' details
@@ -1763,8 +2335,6 @@ class MakeDocco:
             self._extract_named_individuals()
             # get the ontology's metadata
             self._extract_metadata_for_owl()
-            # get the default namespace
-            self._get_default_namespace()
             # create fragment URIs for default namespace classes & properties
             # for each CURIE, if it's in the default namespace, i.e. this ontology, use its fragment URI
 
@@ -1919,7 +2489,7 @@ class MakeDocco:
                 self.CLASSES[uri]["in_range_includes_of"] = html
 
             elements = {
-                "metadata": self._make_metadata(source_info, outputformat=self.outputformat),
+                "metadata": self._make_metadata(self.source_info, outputformat=self.outputformat),
                 "classes": self._make_classes(outputformat=self.outputformat),
                 "properties": self._make_properties(outputformat=self.outputformat),
                 "named_individuals": self._make_named_individuals(outputformat=self.outputformat),
@@ -1927,9 +2497,16 @@ class MakeDocco:
                 "namespaces": self._make_namespaces(outputformat=self.outputformat)
             }
 
-        return self._make_document_owl(
-            self.METADATA["title"],
-            **elements,
-            outputformat=self.outputformat,
-            exclude_css=exclude_css,
-        )
+            return self._make_document_owl(
+                self.METADATA["title"],
+                **elements,
+                outputformat=self.outputformat,
+                exclude_css=exclude_css,
+            )
+
+
+if __name__ == "__main__":
+    m = MakeDocco(input_data_file="examples/earth-science-data-category.ttl", profile="skos")
+
+    with open("examples/earth-science-data-category.skos.html", "w") as f:
+        f.write(m.document())

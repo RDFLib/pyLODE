@@ -1,0 +1,9 @@
+<section id="concepts">
+    <h2>Concepts <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    {%- if concept_hierarchy is not none %}
+    {{ concept_hierarchy|safe }}
+    {%- endif %}
+    {%- for concept in concepts %}
+    {{ concept[2]|safe }}
+    {%- endfor %}
+</section>

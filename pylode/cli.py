@@ -122,54 +122,13 @@ def main(args=None):
     elif args.inputfile or args.url:
         # args are present so getting RDF from input file or uri into an rdflid Graph
         if args.inputfile:
-            if not args.inputfile.name.endswith(tuple(RDF_FILE_EXTENSIONS)):
-                parser.error(
-                    "If supplying an input RDF file, it must end with one of the following file type extensions: {}.".format(
-                        ", ".join(RDF_FILE_EXTENSIONS)
-                    )
-                )
-            else:
-                fmt = (
-                    "json-ld"
-                    if args.inputfile.name.endswith(".json")
-                    or args.inputfile.name.endswith(".jsonld")
-                    else rdflib.util.guess_format(args.inputfile.name)
-                )
-                data = args.inputfile.read()
-                g = rdflib.Graph().parse(data=data, format=fmt)
-                source_info = (args.inputfile.name, fmt)
-                publication_dir = path.dirname(args.inputfile.name)
+            h = MakeDocco(input_data_file=args.inputfile, outputformat=args.outputformat, profile=args.profile)
         elif args.url:
-            r = requests.get(
-                args.url, headers={"Accept": ", ".join(RDF_SERIALIZER_MAP.keys())}
-            )
-            # get RDF format from Media Type
-            media_type = r.headers.get("Content-Type")
-            if RDF_SERIALIZER_MAP.get(media_type):
-                fmt = RDF_SERIALIZER_MAP.get(media_type)
-            else:
-                fmt = (
-                    "json-ld"
-                    if media_type == "application/ld+json"
-                    or media_type == "application/json"
-                    else None
-                )
-
-            if fmt is None:
-                parser.error(
-                    "Could not parse the supplied URI. The RDF format could not be determined from Media Type "
-                    "({} was given) or from a file extension".format(media_type)
-                )
-
-            g = rdflib.Graph().parse(data=r.text, format=fmt)
-            source_info = (args.url, fmt)
-            publication_dir = path.join(
-                path.dirname(path.realpath(__file__)), "output_files"
-            )
+            h = MakeDocco(input_uri=args.url, outputformat=args.outputformat, profile=args.profile)
         else:
             # we have neither an input file or a URI supplied
             parser.error(
-                "Either an inputfile or a url is required to access the ontology's RDF"
+                "Either an input file or a url is required to access the ontology's RDF"
             )
 
         if args.profile:
@@ -184,15 +143,15 @@ def main(args=None):
     # set up output directories and resources
     main_dir = path.dirname(path.realpath(__file__))
     style_dir = path.join(main_dir, "style")
-    if publication_dir == "":
-        publication_dir = "."
-    os.makedirs(publication_dir, exist_ok=True)
+    if h.publication_dir == "":
+        h.publication_dir = "."
+    os.makedirs(h.publication_dir, exist_ok=True)
 
     # include CSS
     msg_css = ""
     if args.css == "true":
         shutil.copyfile(
-            path.join(style_dir, "pylode.css"), path.join(publication_dir, "style.css")
+            path.join(style_dir, "pylode.css"), path.join(h.publication_dir, "style.css")
         )
         msg_css = " and CSS"
 
@@ -215,18 +174,17 @@ def main(args=None):
         output_format = "Markdown"
 
     h = MakeDocco(args.outputformat, profile=args.profile)
-    h.G = g
 
     # generate the HTML doc
-    with open(path.join(publication_dir, output_filename), "w") as f:
-        f.write(h.document(source_info, exclude_css=exclude_css))
+    with open(path.join(h.publication_dir, output_filename), "w") as f:
+        f.write(h.document(exclude_css=exclude_css))
 
     # print message for user
     print(
         "Finished. {} profile documentation in {} format created in file in {}".format(
             args.profile,
             output_format,
-            path.join(publication_dir, output_filename)
+            path.join(h.publication_dir, output_filename)
         )
     )
 

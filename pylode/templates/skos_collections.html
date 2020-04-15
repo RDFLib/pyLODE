@@ -1,0 +1,11 @@
+<section id="collections">
+    <h2>Collections <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        {%- for collection in collections %}
+        <li><a href="#{{ collection[1] }}">{{ collection[0] }}</a></li>
+        {%- endfor %}
+    </ul>
+    {%- for collection in collections %}
+    {{ collection[2]|safe }}
+    {%- endfor %}
+</section>

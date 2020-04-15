@@ -1,0 +1,80 @@
+{% macro render_concept_hierarchy(hierarchy) %}
+<style>
+ul {
+  list-style-type: none;
+  font-weight: bold;
+}
+
+.active {
+    list-style-type: none;
+}
+
+.caret {
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+  margin-left: -20px;
+  font-weight: bold;
+}
+
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.caret-down::before {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Safari */'
+  transform: rotate(90deg);
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+</style>
+
+    {% if hierarchy %}
+        <h5 class="display-inline">Concept Hierarchy</h5> <span class="tree-action" id="tree-toggler">expand all</span>
+        {{ h.render_concept_tree(hierarchy)|safe }}
+    {% endif %}
+
+    <script>
+        var toggler = document.getElementsByClassName("caret");
+        var i;
+
+        for (i = 0; i < toggler.length; i++) {
+          toggler[i].addEventListener("click", function() {
+            this.parentElement.querySelector(".nested").classList.toggle("active");
+            this.classList.toggle("caret-down");
+          });
+        }
+
+        var toggler = document.getElementById("tree-toggler");
+
+        toggler.addEventListener("click", function() {
+            var caret = document.getElementsByClassName("caret");
+
+            if(toggler.innerHTML === "expand all") {
+                toggler.innerHTML = "collapse all";
+                for(var i = 0; i < caret.length; i++) {
+                    caret[i].classList.add('caret-down');
+                    caret[i].nextSibling.classList.add('active');
+                }
+            } else {
+                toggler.innerHTML = "expand all";
+                for(var i = 0; i < caret.length; i++) {
+                    caret[i].classList.remove('caret-down');
+                    caret[i].nextSibling.classList.remove('active');
+                }
+            }
+        })
+    </script>
+{% endmacro %}
