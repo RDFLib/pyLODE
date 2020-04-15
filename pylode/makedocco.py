@@ -36,7 +36,7 @@ RDF_SERIALIZER_MAP = {
 
 
 class MakeDocco:
-    def __init__(self, input_data_file=None, input_uri=None, outputformat="html", profile="owl"):
+    def __init__(self, input_data_file=None, input_uri=None, outputformat="html", profile="owlp"):
         self.profile_selected = profile
         self.default_language = "en"
 
@@ -46,7 +46,7 @@ class MakeDocco:
             self.outputformat = outputformat
 
         if profile not in PROFILES.keys():
-            self.profile_selected = "owl"
+            self.profile_selected = "owlp"
         else:
             self.profile_selected = profile
 
@@ -66,11 +66,11 @@ class MakeDocco:
         self.G.bind("sdo2", self.SDO2)
         self.G.bind("prov", PROV)
 
-        if self.profile_selected == "owl":
+        if self.profile_selected == "owlp":
             self.CLASSES = collections.OrderedDict()
             self.PROPERTIES = collections.OrderedDict()
             self.NAMED_INDIVIDUALS = collections.OrderedDict()
-        elif self.profile_selected == "skos":
+        elif self.profile_selected == "skosp":
             self.CONCEPTS = collections.OrderedDict()
             self.COLLECTIONS = collections.OrderedDict()
 
@@ -1482,140 +1482,6 @@ class MakeDocco:
         for s, o in self.G.subject_objects(predicate=SKOS.hasTopConcept):
             self.G.add((o, SKOS.topConceptOf, s))
 
-    def _extract_concept_scheme_for_skos(self):
-        """Extracts standard SKOS ConceptScheme metadata
-
-        Will interpret an owl:Ontology as a skos:ConceptScheme if run against an OWL document
-        """
-
-        self.METADATA["creators"] = set()
-        self.METADATA["contributors"] = set()
-        self.METADATA["publishers"] = set()
-        for s in self.G.subjects(predicate=RDF.type, object=SKOS.ConceptScheme):
-            self.METADATA["uri"] = str(s)
-            for p, o in self.G.predicate_objects(subject=s):
-                if p == SKOS.prefLabel:
-                    self.METADATA["title"] = str(o)
-
-                if p == SKOS.definition:
-                    import markdown
-
-                    self.METADATA["description"] = markdown.markdown(str(o))
-
-                if p == SKOS.historyNote:
-                    self.METADATA["historyNote"] = str(o)
-
-                if p == DCTERMS.created:
-                    self.METADATA["created"] = dateutil.parser.parse(str(o)).strftime(
-                        "%Y-%m-%d"
-                    )
-
-                if p == DCTERMS.modified:
-                    self.METADATA["modified"] = dateutil.parser.parse(str(o)).strftime(
-                        "%Y-%m-%d"
-                    )
-
-                if p == DCTERMS.issued:
-                    self.METADATA["issued"] = dateutil.parser.parse(str(o)).strftime(
-                        "%Y-%m-%d"
-                    )
-
-                if p == DCTERMS.source:
-                    if str(o).startswith('http'):
-                        self.METADATA["source"] = self._make_uri_html(o)  # '<a href="{0}">{0}</a>'.format(str(o))
-                    else:
-                        self.METADATA["source"] = str(o)
-
-                if p == OWL.versionIRI:
-                    self.METADATA["versionIRI"] = '<a href="{0}">{0}</a>'.format(str(o))
-
-                if p == OWL.versionInfo:
-                    self.METADATA["versionInfo"] = str(o)
-
-                if p == URIRef("http://purl.org/vocab/vann/preferredNamespacePrefix"):
-                    self.METADATA["preferredNamespacePrefix"] = str(o)
-
-                if p == URIRef("http://purl.org/vocab/vann/preferredNamespaceUri"):
-                    self.METADATA["preferredNamespaceUri"] = str(o)
-
-                if p == DCTERMS.license:
-                    self.METADATA["license"] = (
-                        '<a href="{0}">{0}</a>'.format(str(o))
-                        if str(o).startswith("http")
-                        else str(o)
-                    )
-
-                if p == DCTERMS.rights:
-                    self.METADATA["rights"] = (
-                        str(o)
-                            .replace("Copyright", "&copy;")
-                            .replace("copyright", "&copy;")
-                    )
-
-                # Agents
-                if p == DC.creator:
-                    if type(o) == URIRef:
-                        self.METADATA["creators"].add(
-                            '<a href="{0}">{0}</a>'.format(str(o))
-                        )
-                    else:
-                        self.METADATA["creators"].add(str(o))
-
-                if p == DCTERMS.creator:
-                    if type(o) == Literal:
-                        self.METADATA["creators"].add(str(o))
-                    else:  # Blank Node or URI
-                        self.METADATA["creators"].add(self._make_agent_html(o))
-
-                if p == DC.contributor:
-                    if type(o) == URIRef:
-                        self.METADATA["contributors"].add(
-                            '<a href="{0}">{0}</a>'.format(str(o))
-                        )
-                    else:
-                        self.METADATA["contributors"].add(str(o))
-
-                if p == DCTERMS.contributor:
-                    if type(o) == Literal:
-                        self.METADATA["contributors"].add(str(o))
-                    else:  # Blank Node or URI
-                        self.METADATA["contributors"].add(self._make_agent_html(o))
-
-                if p == DC.publisher:
-                    if type(o) == URIRef:
-                        self.METADATA["publishers"].add(
-                            '<a href="{0}">{0}</a>'.format(str(o))
-                        )
-                    else:
-                        self.METADATA["publishers"].add(str(o))
-
-                if p == DCTERMS.publisher:
-                    if type(o) == Literal:
-                        self.METADATA["publishers"].add(str(o))
-                    else:  # Blank Node or URI
-                        self.METADATA["publishers"].add(self._make_agent_html(o))
-
-                # TODO: cater for other Agent representations
-
-                if p == PROV.wasGeneratedBy:
-                    for o2 in self.G.objects(subject=o, predicate=DOAP.repository):
-                        self.METADATA["repository"] = str(o2)
-
-                if p == SDO.codeRepository:
-                    self.METADATA["repository"] = str(o)
-
-        if self.METADATA.get("title") is None:
-            raise ValueError(
-                "Your taxonomy's ConceptScheme does not indicate any form of title. "
-                "You must declare one of the following for it: rdfs:label, dct:title, skos:prefLabel"
-            )
-
-        if len(self.COLLECTIONS.keys()) > 0:
-            self.METADATA["has_collections"] = True
-
-        if len(self.CONCEPTS.keys()) > 0:
-            self.METADATA["has_concepts"] = True
-
     def _extract_collections_for_skos(self):
         """Extracts standard SKOS Collection metadata"""
         collections = []
@@ -1778,6 +1644,140 @@ class MakeDocco:
                 self.CONCEPTS[c]["default_prefLabel"], c
             )
 
+    def _extract_concept_scheme_for_skos(self):
+        """Extracts standard SKOS ConceptScheme metadata
+
+        Will interpret an owl:Ontology as a skos:ConceptScheme if run against an OWL document
+        """
+
+        self.METADATA["creators"] = set()
+        self.METADATA["contributors"] = set()
+        self.METADATA["publishers"] = set()
+        for s in self.G.subjects(predicate=RDF.type, object=SKOS.ConceptScheme):
+            self.METADATA["uri"] = str(s)
+            for p, o in self.G.predicate_objects(subject=s):
+                if p == SKOS.prefLabel:
+                    self.METADATA["title"] = str(o)
+
+                if p == SKOS.definition:
+                    import markdown
+
+                    self.METADATA["description"] = markdown.markdown(str(o))
+
+                if p == SKOS.historyNote:
+                    self.METADATA["historyNote"] = str(o)
+
+                if p == DCTERMS.created:
+                    self.METADATA["created"] = dateutil.parser.parse(str(o)).strftime(
+                        "%Y-%m-%d"
+                    )
+
+                if p == DCTERMS.modified:
+                    self.METADATA["modified"] = dateutil.parser.parse(str(o)).strftime(
+                        "%Y-%m-%d"
+                    )
+
+                if p == DCTERMS.issued:
+                    self.METADATA["issued"] = dateutil.parser.parse(str(o)).strftime(
+                        "%Y-%m-%d"
+                    )
+
+                if p == DCTERMS.source:
+                    if str(o).startswith('http'):
+                        self.METADATA["source"] = self._make_uri_html(o)  # '<a href="{0}">{0}</a>'.format(str(o))
+                    else:
+                        self.METADATA["source"] = str(o)
+
+                if p == OWL.versionIRI:
+                    self.METADATA["versionIRI"] = '<a href="{0}">{0}</a>'.format(str(o))
+
+                if p == OWL.versionInfo:
+                    self.METADATA["versionInfo"] = str(o)
+
+                if p == URIRef("http://purl.org/vocab/vann/preferredNamespacePrefix"):
+                    self.METADATA["preferredNamespacePrefix"] = str(o)
+
+                if p == URIRef("http://purl.org/vocab/vann/preferredNamespaceUri"):
+                    self.METADATA["preferredNamespaceUri"] = str(o)
+
+                if p == DCTERMS.license:
+                    self.METADATA["license"] = (
+                        '<a href="{0}">{0}</a>'.format(str(o))
+                        if str(o).startswith("http")
+                        else str(o)
+                    )
+
+                if p == DCTERMS.rights:
+                    self.METADATA["rights"] = (
+                        str(o)
+                            .replace("Copyright", "&copy;")
+                            .replace("copyright", "&copy;")
+                    )
+
+                # Agents
+                if p == DC.creator:
+                    if type(o) == URIRef:
+                        self.METADATA["creators"].add(
+                            '<a href="{0}">{0}</a>'.format(str(o))
+                        )
+                    else:
+                        self.METADATA["creators"].add(str(o))
+
+                if p == DCTERMS.creator:
+                    if type(o) == Literal:
+                        self.METADATA["creators"].add(str(o))
+                    else:  # Blank Node or URI
+                        self.METADATA["creators"].add(self._make_agent_html(o))
+
+                if p == DC.contributor:
+                    if type(o) == URIRef:
+                        self.METADATA["contributors"].add(
+                            '<a href="{0}">{0}</a>'.format(str(o))
+                        )
+                    else:
+                        self.METADATA["contributors"].add(str(o))
+
+                if p == DCTERMS.contributor:
+                    if type(o) == Literal:
+                        self.METADATA["contributors"].add(str(o))
+                    else:  # Blank Node or URI
+                        self.METADATA["contributors"].add(self._make_agent_html(o))
+
+                if p == DC.publisher:
+                    if type(o) == URIRef:
+                        self.METADATA["publishers"].add(
+                            '<a href="{0}">{0}</a>'.format(str(o))
+                        )
+                    else:
+                        self.METADATA["publishers"].add(str(o))
+
+                if p == DCTERMS.publisher:
+                    if type(o) == Literal:
+                        self.METADATA["publishers"].add(str(o))
+                    else:  # Blank Node or URI
+                        self.METADATA["publishers"].add(self._make_agent_html(o))
+
+                # TODO: cater for other Agent representations
+
+                if p == PROV.wasGeneratedBy:
+                    for o2 in self.G.objects(subject=o, predicate=DOAP.repository):
+                        self.METADATA["repository"] = str(o2)
+
+                if p == SDO.codeRepository:
+                    self.METADATA["repository"] = str(o)
+
+        if self.METADATA.get("title") is None:
+            raise ValueError(
+                "Your taxonomy's ConceptScheme does not indicate any form of title. "
+                "You must declare one of the following for it: rdfs:label, dct:title, skos:prefLabel"
+            )
+
+        if len(self.COLLECTIONS.keys()) > 0:
+            self.METADATA["has_collections"] = True
+
+        if len(self.CONCEPTS.keys()) > 0:
+            self.METADATA["has_concepts"] = True
+
     def _make_uri_html(self, uri, type=None):
         # set display to CURIE
         short = self._get_curie(uri)
@@ -1787,14 +1787,14 @@ class MakeDocco:
         #   use the given URI
         uri_base = self._get_namespace_from_uri(uri)
         if uri_base == self.METADATA.get("default_namespace"):
-            if self.profile_selected == "owl":
+            if self.profile_selected == "owlp":
                 if self.PROPERTIES.get(uri):
                     html = '<a href="#{}">{}</a>'.format(self.PROPERTIES[uri]["fid"], short)
                 elif self.CLASSES.get(uri):
                     html = '<a href="#{}">{}</a>'.format(self.CLASSES[uri]["fid"], short)
                 else:
                     html = '<a href="{}">{}</a>'.format(uri, short)
-            elif self.profile_selected == "skos":
+            elif self.profile_selected == "skosp":
                 if self.CONCEPTS.get(uri):
                     html = '<a href="#{}">{}</a>'.format(self.CONCEPTS[uri]["fid"], self.CONCEPTS[uri]["default_prefLabel"])
                 elif self.COLLECTIONS.get(uri):
@@ -2166,7 +2166,7 @@ class MakeDocco:
         )
 
     def document(self, exclude_css=False):
-        if self.profile_selected == "skos":
+        if self.profile_selected == "skosp":
             # expand the graph using pre-defined rules to make querying easier (poor man's inference)
             self._expand_graph_for_skos()
             # get all the namespaces using several methods
@@ -2376,7 +2376,9 @@ class MakeDocco:
 
 
 if __name__ == "__main__":
-    m = MakeDocco(input_data_file="examples/data-access-rights.ttl", profile="skos")
+    m = MakeDocco(input_data_file="examples/data-access-rights.ttl", profile="skosp")
 
-    with open("examples/data-access-rights.skos.html", "w") as f:
-        f.write(m.document())
+    # with open("examples/data-access-rights.skos.html", "w") as f:
+    #     f.write(m.document())
+
+    print(m.list_profiles())

@@ -14,11 +14,12 @@ Contents
 3. Installation_
 4. Use_
 5. `What pyLODE understands`_
-6. `Differences from LODE`_
-7. License_
-8. Citation_
-9. Collaboration_
-10. Contacts_
+6. `Profiles`_
+7. `Differences from LODE`_
+8. License_
+9. Citation_
+10. Collaboration_
+11. Contacts_
 
 
 Quick Intro
@@ -135,6 +136,10 @@ These are the command line arguments to run pyLODE as a BASH or Python script on
     -  A name you wish to assign to the output file. Will be postfixed with .html or .md. If not specified, the name of the input file or last segment of RDF URI will be used, + .html/.md.
 -  ``-f`` or ``--outputformat``, *optional, default 'html'*
     - The output format of the documentation. 'html' or 'md' accepted.
+-  ``-p`` or ``--profile``, *optional, default 'owl'*
+    - The profile (specification) for ontology documentation used. This has been "owl" (for OWL Ontology) only until the recent introduction of "skos" (according to the `Simple Knowledge Organization System (SKOS) <https://www.w3.org/TR/skos-reference/>`__). See ``-lp`` for all profiles supported.
+-  ``-lp`` or ``--listprofiles``, *optional, no arguments*
+    - Lists all the profiles (specifications) for ontology documentation supported by pyLODE
 
 Example call
 ^^^^^^^^^^^^
@@ -310,6 +315,65 @@ nice display is within a couple of static, easy to use and maintain,
 files. Prevents documentation breaking over time.
 
 Feel free to extend your styling with your own CSS.
+
+
+Profiles
+--------
+pyLODE can document ontologies and other taxonomies according to different *profiles* which are specifications. The
+basic, default, profile is pyLODE's OWL Profile, which means documentation is generated according to OWL properties
+and classes and the various annotation properties listed here in the `What pyLODE understands`_ section.
+
+pyLODE can tell you what profiles it supports: just run ``~$ pylode -lp`` ("list profiles") or, if calling from Python:
+
+::
+
+    m = MakeDocco(input_data_file="examples/data-access-rights.ttl", profile="skos")
+    print(m.list_profiles())
+
+
+Supported Profiles
+^^^^^^^^^^^^^^^^^^
+Currently pyLODE supports its OWL profile, as described above, and a profile of SKOS. For full details of what the
+profiles include, see the profiles' definitions at:
+
+========= ==========================================
+**Token** **URI**
+========= ==========================================
+owlp      `<https://w3id.org/profile/pylode-owl>`_
+skosp     `<https://w3id.org/profile/pylode-skos>`_
+========= ==========================================
+
+
+Transformation by Profile
+^^^^^^^^^^^^^^^^^^^^^^^^^
+You can, of course, document an OWL ontology using the *owlp* profile or a SKOS taxonomy using the *skosp* profile
+however, you can also document an OWL ontology using the *skosp* profile! This is because SKOS is conceptually a subset
+of OWL - whatever you can express in SKOS you can express in OWL.
+
+pyLODE performs an OWL > SKOS transformation on OWL ontologies to produce a taxonomy document. The following
+conversions are made:
+
+- ``owl:Ontology`` > ``skos:ConceptScheme``
+    - and all the ontology metadata is used with the ConceptScheme
+- ``owl:Class`` > ``skos:Concept``
+    - and other class annotation properties used with Concept
+- ``owl:subClassOf`` > ``skos:broader``
+
+To see the full list of transformations, see the function ``_expand_graph_for_skos()`` in *makedocco.py*.
+
+Examples of a small taxonomies documented using the *skosp* profile are:
+
+- `Data Access Rights <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/data-access-rights.skos.html>`_
+- `ISO 19115-1's RoleCodes <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/iso19115-1-RoleCodes.skos.html>`_
+
+An example of a large one:
+
+- `Earth Science Data Category <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/earth-science-data-category.skos.html>`_
+
+An example of a *skosp*-documented OWL ontology and the corresponding *owlp* original is AGRIF:
+
+- `AGRIF as skosp <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/agrif.skos.html>`_
+- `AGRIF as owlp <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/agrif.html>`_
 
 
 Differences from LODE

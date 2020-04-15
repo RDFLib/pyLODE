@@ -65,7 +65,7 @@ RDF_MEDIA_TYPES = ['text/turtle', 'application/rdf+xml', 'application/ld+json', 
 
 HTML_MEDIA_TYPE = "text/html"
 
-OWL_PROFILE = Profile(
+OWL = Profile(
     "https://www.w3.org/TR/owl2-rdf-based-semantics/",
     "Web Ontology Language (OWL)",
     "The OWL 2 Web Ontology Language, informally OWL 2, is an ontology language for the Semantic Web with formally "
@@ -77,7 +77,19 @@ OWL_PROFILE = Profile(
     default_language="en"
 )
 
-SKOS_PROFILE = Profile(
+PYLODE_OWL_PROFILE = Profile(
+    "https://w3id.org/profile/pylode-owl",
+    "pyLODE's Profile of OWL",
+    "OWL Classes and Properties as well as additional SKOS, Dublin Core Terms, schema.org and similar annotation"
+    "properties to be used to document ontologies.",
+    [HTML_MEDIA_TYPE, "text/markdown"],
+    HTML_MEDIA_TYPE,
+    languages=["en"],
+    default_language="en",
+    is_profile_of=["https://www.w3.org/TR/owl2-rdf-based-semantics/"]
+)
+
+SKOS = Profile(
     "https://www.w3.org/TR/skos-reference/",
     "Simple Knowledge Organization System (SKOS)",
     "A common data model for sharing and linking knowledge organization systems, such as thesauri, taxonomies, "
@@ -87,6 +99,18 @@ SKOS_PROFILE = Profile(
     languages=["en"],
     default_language="en",
     is_profile_of=["https://www.w3.org/TR/owl2-rdf-based-semantics/"]
+)
+
+PYLODE_SKOS_PROFILE = Profile(
+    "https://w3id.org/profile/pylode-skos",
+    "pyLODE's Profile of SKOS",
+    "SKOS ConceptSchemes, Collections & Concepts as well as additional Dublin Core Terms, schema.org and similar "
+    "annotation properties to be used to document ontologies.",
+    RDF_MEDIA_TYPES + [HTML_MEDIA_TYPE, "text/markdown"],
+    HTML_MEDIA_TYPE,
+    languages=["en"],
+    default_language="en",
+    is_profile_of=["https://www.w3.org/TR/skos-reference/"]
 )
 
 MOD_PROFILE = Profile(
@@ -101,10 +125,11 @@ MOD_PROFILE = Profile(
 )
 
 
+# currently only the pyLODE profiles of OLW & SKOS are supported
 PROFILES = {
-    "owl": OWL_PROFILE,
-    "skos": SKOS_PROFILE,
-    # "mod": MOD_PROFILE
+    "owlp": PYLODE_OWL_PROFILE,
+    "skosp": PYLODE_SKOS_PROFILE,
+    # "modp": MOD_PROFILE
 }
 
 
