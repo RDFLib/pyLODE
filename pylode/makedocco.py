@@ -405,8 +405,8 @@ class MakeDocco:
     #
     #   All profiles
     #
-    def _make_namespaces(self, outputformat="html"):
-        return self._load_template("namespaces." + outputformat).render(
+    def _make_namespaces(self):
+        return self._load_template("namespaces." + self.outputformat).render(
             namespaces=self.NAMESPACES,
             default_namespace=self.METADATA["default_namespace"],
         )
@@ -1206,8 +1206,8 @@ class MakeDocco:
             # make fid
             self.NAMED_INDIVIDUALS[ni]["fid"] = self._make_fid(self.NAMED_INDIVIDUALS[ni]["title"], ni)
 
-    def _make_metadata(self, source_info, outputformat="html"):
-        return self._load_template("owl_metadata." + outputformat).render(
+    def _make_metadata(self, source_info):
+        return self._load_template("owl_metadata." + self.outputformat).render(
             imports=self.METADATA["imports"],
             title=self.METADATA.get("title"),
             uri=self.METADATA.get("uri"),
@@ -1235,9 +1235,9 @@ class MakeDocco:
             has_nis=self.METADATA.get("has_nis"),
         )
 
-    def _make_classes(self, outputformat="html"):
+    def _make_classes(self):
         # make all Classes
-        class_template = self._load_template("owl_class." + outputformat)
+        class_template = self._load_template("owl_class." + self.outputformat)
         classes_list = []
         for k, v in self.CLASSES.items():
             classes_list.append(
@@ -1261,7 +1261,7 @@ class MakeDocco:
             )
 
         # make the template for all Classes
-        classes_template = self._load_template("owl_classes." + outputformat)
+        classes_template = self._load_template("owl_classes." + self.outputformat)
         # add in Class index
         fids = sorted(
             [(v.get("fid"), v.get("title")) for k, v in self.CLASSES.items()],
@@ -1269,8 +1269,8 @@ class MakeDocco:
         )
         return classes_template.render(fids=fids, classes=classes_list, )
 
-    def _make_property(self, property, outputformat="html"):
-        return self._load_template("owl_property." + outputformat).render(
+    def _make_property(self, property):
+        return self._load_template("owl_property." + self.outputformat).render(
             uri=property[0],
             fid=property[1].get("fid"),
             property_type=property[1].get("prop_type"),
@@ -1290,7 +1290,7 @@ class MakeDocco:
             rangeIncludes=property[1]["rangeIncludes"],
         )
 
-    def _make_properties(self, outputformat="html"):
+    def _make_properties(self):
         # make all properties, grouped by OWL type
         op_instances = []
         fp_instances = []
@@ -1304,7 +1304,7 @@ class MakeDocco:
                     (
                         v["title"],
                         v["fid"],
-                        self._make_property((k, v), outputformat=outputformat),
+                        self._make_property((k, v)),
                     )
                 )
             elif v.get("prop_type") == "fp":
@@ -1312,7 +1312,7 @@ class MakeDocco:
                     (
                         v["title"],
                         v["fid"],
-                        self._make_property((k, v), outputformat=outputformat),
+                        self._make_property((k, v)),
                     )
                 )
             elif v.get("prop_type") == "dp":
@@ -1320,7 +1320,7 @@ class MakeDocco:
                     (
                         v["title"],
                         v["fid"],
-                        self._make_property((k, v), outputformat=outputformat),
+                        self._make_property((k, v)),
                     )
                 )
             elif v.get("prop_type") == "ap":
@@ -1328,7 +1328,7 @@ class MakeDocco:
                     (
                         v["title"],
                         v["fid"],
-                        self._make_property((k, v), outputformat=outputformat),
+                        self._make_property((k, v)),
                     )
                 )
             elif v.get("prop_type") == "p":
@@ -1336,12 +1336,12 @@ class MakeDocco:
                     (
                         v["title"],
                         v["fid"],
-                        self._make_property((k, v), outputformat=outputformat),
+                        self._make_property((k, v)),
                     )
                 )
 
         # make the template for all properties
-        return self._load_template("owl_properties." + outputformat).render(
+        return self._load_template("owl_properties." + self.outputformat).render(
             op_instances=op_instances,
             fp_instances=fp_instances,
             dp_instances=dp_instances,
@@ -1349,8 +1349,8 @@ class MakeDocco:
             p_instances=p_instances,
         )
 
-    def _make_named_individual(self, named_individual, outputformat="html"):
-        return self._load_template("owl_named_individual." + outputformat).render(
+    def _make_named_individual(self, named_individual):
+        return self._load_template("owl_named_individual." + self.outputformat).render(
             uri=named_individual[0],
             fid=named_individual[1].get("fid"),
             classes=named_individual[1].get("classes"),
@@ -1362,12 +1362,12 @@ class MakeDocco:
             same_as=named_individual[1].get("sameAs")
         )
 
-    def _make_named_individuals(self, outputformat="html"):
+    def _make_named_individuals(self):
         # make all NIs
         named_individuals_list = []
         for k, v in self.NAMED_INDIVIDUALS.items():
             named_individuals_list.append(
-                self._make_named_individual((k, v), outputformat=outputformat)
+                self._make_named_individual((k, v))
             )
 
         # add in NIs index
@@ -1375,7 +1375,7 @@ class MakeDocco:
             [(v.get("fid"), v.get("title")) for k, v in self.NAMED_INDIVIDUALS.items()],
             key=lambda tup: tup[1],
         )
-        return self._load_template("owl_named_individuals." + outputformat).render(
+        return self._load_template("owl_named_individuals." + self.outputformat).render(
             fids=fids,
             named_individuals=named_individuals_list
         )
@@ -1389,7 +1389,6 @@ class MakeDocco:
         named_individuals,
         default_namespace,
         namespaces,
-        outputformat="html",
         exclude_css=False,
     ):
         css = None
@@ -1400,7 +1399,7 @@ class MakeDocco:
                 )
                 css = open(pylode_css).read()
 
-        return self._load_template("owl_document." + outputformat).render(
+        return self._load_template("owl_document." + self.outputformat).render(
             schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML templates
             title=title,
             metadata=metadata,
@@ -1786,47 +1785,59 @@ class MakeDocco:
         # else
         #   use the given URI
         uri_base = self._get_namespace_from_uri(uri)
+        link = None
         if uri_base == self.METADATA.get("default_namespace"):
             if self.profile_selected == "owlp":
                 if self.PROPERTIES.get(uri):
-                    html = '<a href="#{}">{}</a>'.format(self.PROPERTIES[uri]["fid"], short)
+                    link = "[{}]({})".format(short, self.PROPERTIES[uri]["fid"]) \
+                        if self.outputformat == "md" \
+                        else '<a href="#{}">{}</a>'.format(self.PROPERTIES[uri]["fid"], short)
                 elif self.CLASSES.get(uri):
-                    html = '<a href="#{}">{}</a>'.format(self.CLASSES[uri]["fid"], short)
+                    link = "[{}]({})".format(short, self.CLASSES[uri]["fid"]) \
+                        if self.outputformat == "md" \
+                        else '<a href="#{}">{}</a>'.format(self.CLASSES[uri]["fid"], short)
                 else:
-                    html = '<a href="{}">{}</a>'.format(uri, short)
+                    link = "[{}]({})".format(short, uri) \
+                        if self.outputformat == "md" \
+                        else '<a href="{}">{}</a>'.format(uri, short)
             elif self.profile_selected == "skosp":
                 if self.CONCEPTS.get(uri):
-                    html = '<a href="#{}">{}</a>'.format(self.CONCEPTS[uri]["fid"], self.CONCEPTS[uri]["default_prefLabel"])
+                    link = "[{}]({})".format(self.CONCEPTS[uri]["default_prefLabel"], self.CONCEPTS[uri]["fid"]) \
+                        if self.outputformat == "md" \
+                        else '<a href="#{}">{}</a>'.format(self.CONCEPTS[uri]["fid"], self.CONCEPTS[uri]["default_prefLabel"])
                 elif self.COLLECTIONS.get(uri):
-                    html = '<a href="#{}">{}</a>'.format(self.COLLECTIONS[uri]["fid"], short)
-                else:
-                    html = '<a href="{}">{}</a>'.format(uri, short)
-            else:
-                html = '<a href="{}">{}</a>'.format(uri, short)
-        else:
-            html = '<a href="{}">{}</a>'.format(uri, short)
+                    link = "[{}]({})".format(self.COLLECTIONS[uri]["default_prefLabel"], self.COLLECTIONS[uri]["fid"]) \
+                        if self.outputformat == "md" \
+                        else '<a href="#{}">{}</a>'.format(self.COLLECTIONS[uri]["fid"], self.COLLECTIONS[uri]["default_prefLabel"])
+
+        if link is None:
+            link = "[{}]({})".format(short, uri) \
+                if self.outputformat == "md" \
+                else '<a href="{}">{}</a>'.format(uri, short)
 
         # OWL
         if type == "c":
-            return html + '<sup class="sup-c" title="class">c</sup>'
+            suffix = '<sup class="sup-c" title="class">c</sup>'
         elif type == "op":
-            return html + '<sup class="sup-op" title="object property">op</sup>'
+            suffix = '<sup class="sup-op" title="object property">op</sup>'
         elif type == "fp":
-            return html + '<sup class="sup-fp" title="functional property">fp</sup>'
+            suffix = '<sup class="sup-fp" title="functional property">fp</sup>'
         elif type == "dp":
-            return html + '<sup class="sup-dp" title="datatype property">dp</sup>'
+            suffix = '<sup class="sup-dp" title="datatype property">dp</sup>'
         elif type == "ap":
-            return html + '<sup class="sup-ap" title="annotation property">ap</sup>'
+            suffix = '<sup class="sup-ap" title="annotation property">ap</sup>'
         elif type == "ni":
-            return html + '<sup class="sup-ni" title="named individual">ni</sup>'
+            suffix = '<sup class="sup-ni" title="named individual">ni</sup>'
         # SKOS
         elif type == "cp":
-            return html + '<sup class="sup-cp" title="concept">cp</sup>'
+            suffix = '<sup class="sup-cp" title="concept">cp</sup>'
         elif type == "cl":
-            return html + '<sup class="sup-cl" title="collection">cl</sup>'
+            suffix = '<sup class="sup-cl" title="collection">cl</sup>'
         # None
         else:
-            return html
+            suffix = ''
+
+        return link + suffix
 
     def _make_collection_class_html(self, col_type, col_members):
         if col_type == "owl:unionOf":
@@ -2025,8 +2036,8 @@ class MakeDocco:
 
         return agent
 
-    def _make_skos_concept_scheme(self, source_info, outputformat="html"):
-        return self._load_template("skos_concept_scheme." + outputformat).render(
+    def _make_skos_concept_scheme(self, source_info):
+        return self._load_template("skos_concept_scheme." + self.outputformat).render(
             title=self.METADATA.get("title"),
             uri=self.METADATA.get("uri"),
             version_uri=self.METADATA.get("versionIRI"),
@@ -2048,8 +2059,8 @@ class MakeDocco:
             has_concepts=True if len(self.CONCEPTS) > 0 else False,
         )
 
-    def _make_skos_collection(self, collection, outputformat="html"):
-        return self._load_template("skos_collection." + outputformat).render(
+    def _make_skos_collection(self, collection):
+        return self._load_template("skos_collection." + self.outputformat).render(
             uri=collection[0],
             fid=collection[1].get("fid"),
             prefLabels=collection[1].get("prefLabels"),
@@ -2060,23 +2071,23 @@ class MakeDocco:
             members=[self._make_uri_html(x, type="cp") for x in collection[1].get("members")],
         )
 
-    def _make_skos_collections(self, outputformat="html"):
+    def _make_skos_collections(self):
         collections = []
         for k, v in self.COLLECTIONS.items():
             collections.append(
                 (
                     v["default_prefLabel"],
                     v["fid"],
-                    self._make_skos_collection((k, v), outputformat=outputformat),
+                    self._make_skos_collection((k, v)),
                 )
             )
 
-        return self._load_template("skos_collections." + outputformat).render(collections=collections)
+        return self._load_template("skos_collections." + self.outputformat).render(collections=collections)
 
-    def _make_concept_hierarchy(self, outputformat="html"):
+    def _make_concept_hierarchy(self):
         # render concept
         def _render(c, children, level=0):
-            if outputformat == "md":
+            if self.outputformat == "md":
                 md = level*"\t" + "* [{}]({})".format(self.CONCEPTS.get(c).get("default_prefLabel"), c)
                 if len(children) > 0:
                     for ch in sorted(children):
@@ -2101,8 +2112,8 @@ class MakeDocco:
 
         return "<ul class=\"hierarchy\">\n" + txt + "\n</ul>"
 
-    def _make_skos_concept(self, concept, outputformat="html"):
-        return self._load_template("skos_concept." + outputformat).render(
+    def _make_skos_concept(self, concept):
+        return self._load_template("skos_concept." + self.outputformat).render(
             uri=concept[0],
             fid=concept[1].get("fid"),
             default_prefLabel=concept[1].get("default_prefLabel"),
@@ -2120,7 +2131,7 @@ class MakeDocco:
             narrowMatches=[self._make_uri_html(x, type="cp") for x in concept[1].get("narrowMatches")],
         )
 
-    def _make_skos_concepts(self, outputformat="html"):
+    def _make_skos_concepts(self):
         # TODO: make Concept hierarchy (URIs)
 
         # TODO: list all Concepts, alphabetically by prefLabel
@@ -2130,11 +2141,11 @@ class MakeDocco:
                 (
                     v["default_prefLabel"],
                     v["fid"],
-                    self._make_skos_concept((k, v), outputformat=outputformat),
+                    self._make_skos_concept((k, v)),
                 )
             )
 
-        return self._load_template("skos_concepts." + outputformat).render(
+        return self._load_template("skos_concepts." + self.outputformat).render(
             concept_hierarchy=self._make_concept_hierarchy(),
             concepts=concepts
         )
@@ -2142,26 +2153,25 @@ class MakeDocco:
     def _make_document_skos(
             self,
             title,
-            outputformat="html",
             exclude_css=False,
     ):
         css = None
-        if outputformat == "html":
+        if self.outputformat == "html":
             if not exclude_css:
                 pylode_css = path.join(
                     path.dirname(path.realpath(__file__)), "style", "pylode.css"
                 )
                 css = open(pylode_css).read()
 
-        return self._load_template("skos_taxonomy." + outputformat).render(
+        return self._load_template("skos_taxonomy." + self.outputformat).render(
             schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML template
             title=title,
-            concept_scheme=self._make_skos_concept_scheme(self.source_info, outputformat=outputformat),
+            concept_scheme=self._make_skos_concept_scheme(self.source_info),
             has_collections=True if len(self.COLLECTIONS) > 0 else False,
-            collections=self._make_skos_collections(outputformat=outputformat),
+            collections=self._make_skos_collections(),
             has_concepts=True if len(self.CONCEPTS) > 0 else False,
-            concepts=self._make_skos_concepts(outputformat=outputformat),
-            namespaces=self._make_namespaces(outputformat=outputformat),
+            concepts=self._make_skos_concepts(),
+            namespaces=self._make_namespaces(),
             css=css
         )
 
@@ -2181,7 +2191,6 @@ class MakeDocco:
 
             return self._make_document_skos(
                 self.METADATA["title"],
-                outputformat=self.outputformat,
                 exclude_css=exclude_css,
             )
         else:
@@ -2359,26 +2368,24 @@ class MakeDocco:
                 self.CLASSES[uri]["in_range_includes_of"] = html
 
             elements = {
-                "metadata": self._make_metadata(self.source_info, outputformat=self.outputformat),
-                "classes": self._make_classes(outputformat=self.outputformat),
-                "properties": self._make_properties(outputformat=self.outputformat),
-                "named_individuals": self._make_named_individuals(outputformat=self.outputformat),
+                "metadata": self._make_metadata(self.source_info),
+                "classes": self._make_classes(),
+                "properties": self._make_properties(),
+                "named_individuals": self._make_named_individuals(),
                 "default_namespace": self.METADATA["default_namespace"],
-                "namespaces": self._make_namespaces(outputformat=self.outputformat)
+                "namespaces": self._make_namespaces()
             }
 
             return self._make_document_owl(
                 self.METADATA["title"],
                 **elements,
-                outputformat=self.outputformat,
                 exclude_css=exclude_css,
             )
 
 
 if __name__ == "__main__":
-    m = MakeDocco(input_data_file="examples/data-access-rights.ttl", profile="skosp")
+    m = MakeDocco(input_data_file="examples/data-access-rights.ttl", profile="skosp", outputformat="md")
 
-    # with open("examples/data-access-rights.skos.html", "w") as f:
-    #     f.write(m.document())
+    with open("examples/data-access-rights.skos.md", "w") as f:
+        f.write(m.document())
 
-    print(m.list_profiles())

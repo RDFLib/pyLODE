@@ -1,6 +1,7 @@
 # {{ title }}
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
+### A taxonomy
 
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 
 ## Metadata
 * **IRI**
@@ -65,7 +66,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 {%- endif %}
 {%- if source is not none %}
 * **Source**
-  * {{ source }}
+  * {{ source }}  
 {%- endif %}
 * **Ontology RDF**
   * {{ ont_rdf }}
@@ -83,26 +84,11 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 {%- endif %}
 
 ## Table of Contents
-{%- if has_classes %}
-1. [Classes](#classes)
+{%- if has_collections %}
+1. [Collections](#collections)
 {%- endif %}
-{%- if has_ops %}
-1. [Object Properties](#objectproperties)
-{%- endif %}
-{%- if has_fps %}
-1. [Functional Properties](#functionalproperties)
-{%- endif %}
-{%- if has_dps %}
-1. [Datatype Properties](#datatypeproperties)
-{%- endif %}
-{%- if has_aps %}
-1. [Annotation Properties](#annotationproperties)
-{%- endif %}
-{%- if has_ps %}
-1. [Properties](#properties)
-{%- endif %}
-{%- if has_nis %}
-1. [Named Individuals](#namedindividuals)
+{%- if has_concepts %}
+1. [Object Concepts](#concepts)
 {%- endif %}
 1. [Namespaces](#namespaces)
 1. [Legend](#legend)
