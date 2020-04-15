@@ -75,7 +75,7 @@ class MakeDocco:
             self.COLLECTIONS = collections.OrderedDict()
 
     def _parse_input_data_file(self, input_data_file):
-        if not input_data_file.endswith(tuple(RDF_FILE_EXTENSIONS)):
+        if not str(input_data_file).endswith(tuple(RDF_FILE_EXTENSIONS)):
             raise Exception(
                 "If supplying an input RDF file, it must end with one of the following file type extensions: {}."
                     .format(
@@ -1442,6 +1442,7 @@ class MakeDocco:
         for s, o in self.G.subject_objects(predicate=SKOS.definition):
             self.G.add((s, RDFS.comment, o))
 
+        # OWL -> SKOS
         # classes as Concepts types
         for s in self.G.subjects(predicate=RDF.type, object=RDFS.Class):
             self.G.add((s, RDF.type, SKOS.Concept))
@@ -1451,8 +1452,9 @@ class MakeDocco:
 
         # SKOS Concept Hierarchy from Class subsumption
         for s, o in self.G.subject_objects(predicate=RDFS.subClassOf):
-            self.G.add((s, SKOS.narrower, o))
-            self.G.add((o, SKOS.broader, s))
+            if type(o) != BNode:  # stops restrictions being seen as broader/narrower
+                self.G.add((s, SKOS.broader, o))
+                self.G.add((o, SKOS.narrower, s))
 
         for s, o in self.G.subject_objects(predicate=OWL.equivalentClass):
             self.G.add((s, SKOS.exactMatch, o))
@@ -1461,6 +1463,12 @@ class MakeDocco:
         # the ontology is now a ConceptScheme
         for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
             self.G.add((s, RDF.type, SKOS.ConceptScheme))
+
+            # top concepts
+            # if the class is declared here and has no subClassOf
+            for s2 in self.G.subjects(predicate=RDF.type, object=SKOS.Concept):
+                if (s2, RDFS.subClassOf, None) not in self.G:
+                    self.G.add((s2, SKOS.topConceptOf, s))
 
         # SKOS -> SKOS
         # broader / narrower buildout
@@ -1763,7 +1771,7 @@ class MakeDocco:
             # make fid
             # TODO: update to use default language label, not [0]
             self.CONCEPTS[c]["fid"] = self._make_fid(
-                self.CONCEPTS[c]["prefLabels"][0][0], c
+                self.CONCEPTS[c]["default_prefLabel"], c
             )
 
     def _make_uri_html(self, uri, type=None):
@@ -2506,7 +2514,7 @@ class MakeDocco:
 
 
 if __name__ == "__main__":
-    m = MakeDocco(input_data_file="examples/earth-science-data-category.ttl", profile="skos")
+    m = MakeDocco(input_data_file="examples/agrif.ttl", profile="skos")
 
-    with open("examples/earth-science-data-category.skos.html", "w") as f:
+    with open("examples/agrif.skos.html", "w") as f:
         f.write(m.document())

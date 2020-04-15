@@ -122,9 +122,9 @@ def main(args=None):
     elif args.inputfile or args.url:
         # args are present so getting RDF from input file or uri into an rdflid Graph
         if args.inputfile:
-            h = MakeDocco(input_data_file=args.inputfile, outputformat=args.outputformat, profile=args.profile)
+            h = MakeDocco(input_data_file=args.inputfile.name, outputformat=args.outputformat, profile=args.profile)
         elif args.url:
-            h = MakeDocco(input_uri=args.url, outputformat=args.outputformat, profile=args.profile)
+            h = MakeDocco(input_uri=args.url.name, outputformat=args.outputformat, profile=args.profile)
         else:
             # we have neither an input file or a URI supplied
             parser.error(
@@ -172,8 +172,6 @@ def main(args=None):
         if not output_filename.endswith(".md"):
             output_filename += ".md"
         output_format = "Markdown"
-
-    h = MakeDocco(args.outputformat, profile=args.profile)
 
     # generate the HTML doc
     with open(path.join(h.publication_dir, output_filename), "w") as f:
