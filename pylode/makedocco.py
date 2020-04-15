@@ -911,6 +911,14 @@ class MakeDocco:
             self.PROPERTIES[prop]["example"] = None
             self.PROPERTIES[prop]["isDefinedBy"] = None
             self.PROPERTIES[prop]["source"] = None
+            self.PROPERTIES[prop]["supers"] = []
+            self.PROPERTIES[prop]["subs"] = []
+            self.PROPERTIES[prop]["equivs"] = []
+            self.PROPERTIES[prop]["invs"] = []
+            self.PROPERTIES[prop]["domains"] = []
+            self.PROPERTIES[prop]["domainIncludes"] = []
+            self.PROPERTIES[prop]["ranges"] = []
+            self.PROPERTIES[prop]["rangeIncludes"] = []
 
             for p, o in self.G.predicate_objects(subject=s):
                 if p == RDFS.label:
@@ -945,11 +953,9 @@ class MakeDocco:
             )
 
             # super properties
-            supers = []
             for o in self.G.objects(subject=s, predicate=RDFS.subPropertyOf):
                 if type(o) != BNode:
-                    supers.append(str(o))  # self._make_uri_html
-            self.PROPERTIES[prop]["supers"] = supers
+                    self.PROPERTIES[prop]["supers"].append(str(o))  # self._make_uri_html
 
             # sub properties
             for o in self.G.subjects(predicate=RDFS.subPropertyOf, object=s):
@@ -967,10 +973,9 @@ class MakeDocco:
                     self.PROPERTIES[prop]["invs"].append(str(o))
 
             # domains
-            domains = []
             for o in self.G.objects(subject=s, predicate=RDFS.domain):
                 if type(o) != BNode:
-                    domains.append(str(o))  # domains that are just classes
+                    self.PROPERTIES[prop]["domains"].append(str(o))  # domains that are just classes
                 else:
                     # domain collections (unionOf | intersectionOf
                     q = """
@@ -992,14 +997,12 @@ class MakeDocco:
                     for r in self.G.query(q):
                         collection_type = self._get_curie(str(r.col_type))
                         collection_members.append(str(r.col_member))
-                    domains.append((collection_type, collection_members))
-            self.PROPERTIES[prop]["domains"] = domains
+                    self.PROPERTIES[prop]["domains"].append((collection_type, collection_members))
 
             # domainIncludes
-            domain_includes = []
             for o in self.G.objects(subject=s, predicate=SDO.domainIncludes):
                 if type(o) != BNode:
-                    domain_includes.append(
+                    self.PROPERTIES[prop]["domainIncludes"].append(
                         str(o)
                     )  # domainIncludes that are just classes
                 else:
@@ -1023,13 +1026,11 @@ class MakeDocco:
                     for r in self.G.query(q):
                         collection_type = self._get_curie(str(r.col_type))
                         collection_members.append(str(r.col_member))
-                    domain_includes.append((collection_type, collection_members))
-            self.PROPERTIES[prop]["domainIncludes"] = domain_includes
+                    self.PROPERTIES[prop]["domainIncludes"].append((collection_type, collection_members))
 
-            domain_includes = []
             for o in self.G.objects(subject=s, predicate=self.SDO2.domainIncludes):
                 if type(o) != BNode:
-                    domain_includes.append(
+                    self.PROPERTIES[prop]["domainIncludes"].append(
                         str(o)
                     )  # domainIncludes that are just classes
                 else:
@@ -1053,14 +1054,12 @@ class MakeDocco:
                     for r in self.G.query(q):
                         collection_type = self._get_curie(str(r.col_type))
                         collection_members.append(str(r.col_member))
-                    domain_includes.append((collection_type, collection_members))
-            self.PROPERTIES[prop]["domainIncludes"] = domain_includes
+                    self.PROPERTIES[prop]["domainIncludes"].append((collection_type, collection_members))
 
             # ranges
-            ranges = []
             for o in self.G.objects(subject=s, predicate=RDFS.range):
                 if type(o) != BNode:
-                    ranges.append(str(o))  # ranges that are just classes
+                    self.PROPERTIES[prop]["ranges"].append(str(o))  # ranges that are just classes
                 else:
                     # range collections (unionOf | intersectionOf
                     q = """
@@ -1082,14 +1081,12 @@ class MakeDocco:
                     for r in self.G.query(q):
                         collection_type = self._get_curie(str(r.col_type))
                         collection_members.append(str(r.col_member))
-                    ranges.append((collection_type, collection_members))
-            self.PROPERTIES[prop]["ranges"] = ranges
+                    self.PROPERTIES[prop]["ranges"].append((collection_type, collection_members))
 
             # rangeIncludes
-            range_includes = []
             for o in self.G.objects(subject=s, predicate=SDO.rangeIncludes):
                 if type(o) != BNode:
-                    range_includes.append(str(o))  # rangeIncludes that are just classes
+                    self.PROPERTIES[prop]["rangeIncludes"].append(str(o))  # rangeIncludes that are just classes
                 else:
                     # rangeIncludes collections (unionOf | intersectionOf
                     q = """
@@ -1111,13 +1108,11 @@ class MakeDocco:
                     for r in self.G.query(q):
                         collection_type = self._get_curie(str(r.col_type))
                         collection_members.append(str(r.col_member))
-                    range_includes.append((collection_type, collection_members))
-            self.PROPERTIES[prop]["rangeIncludes"] = range_includes
+                    self.PROPERTIES[prop]["rangeIncludes"].append((collection_type, collection_members))
 
-            range_includes = []
             for o in self.G.objects(subject=s, predicate=self.SDO2.rangeIncludes):
                 if type(o) != BNode:
-                    range_includes.append(str(o))  # rangeIncludes that are just classes
+                    self.PROPERTIES[prop]["rangeIncludes"].append(str(o))  # rangeIncludes that are just classes
                 else:
                     # rangeIncludes collections (unionOf | intersectionOf
                     q = """
@@ -1139,8 +1134,7 @@ class MakeDocco:
                     for r in self.G.query(q):
                         collection_type = self._get_curie(str(r.col_type))
                         collection_members.append(str(r.col_member))
-                    range_includes.append((collection_type, collection_members))
-            self.PROPERTIES[prop]["rangeIncludes"] = range_includes
+                    self.PROPERTIES[prop]["rangeIncludes"].append((collection_type, collection_members))
 
             # TODO: cater for sub property chains
 
@@ -2514,7 +2508,7 @@ class MakeDocco:
 
 
 if __name__ == "__main__":
-    m = MakeDocco(input_data_file="examples/agrif.ttl", profile="skos")
+    m = MakeDocco(input_data_file="examples/agrif.ttl")
 
-    with open("examples/agrif.skos.html", "w") as f:
+    with open("examples/agrif.html", "w") as f:
         f.write(m.document())
