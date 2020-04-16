@@ -3,5 +3,5 @@
 {{ concept_hierarchy|safe }}
 {%- endif %}
 {%- for concept in concepts %}
-{{ concept|safe }}
+{{ concept[2]|safe }}
 {%- endfor %}

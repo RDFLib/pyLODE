@@ -1,0 +1,567 @@
+import collections
+from os import path
+from rdflib import URIRef, BNode, Literal
+from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
+import dateutil.parser
+from docprofile import DocProfile
+
+
+class Skosp(DocProfile):
+    def __init__(self, g, source_info, outputformat="html", exclude_css=False, default_language="en"):
+        super().__init__(g, source_info, outputformat=outputformat, exclude_css=exclude_css, default_language=default_language)
+        self.CONCEPTS = collections.OrderedDict()
+        self.COLLECTIONS = collections.OrderedDict()
+
+    def _expand_graph(self):
+        # name
+        for s, o in self.G.subject_objects(predicate=DC.title):
+            self.G.add((s, SKOS.prefLabel, o))
+
+        for s, o in self.G.subject_objects(predicate=RDFS.label):
+            self.G.add((s, SKOS.prefLabel, o))
+
+        for s, o in self.G.subject_objects(predicate=DCTERMS.title):
+            self.G.add((s, SKOS.prefLabel, o))
+
+        # description
+        for s, o in self.G.subject_objects(predicate=DC.description):
+            self.G.add((s, RDFS.comment, o))
+
+        for s, o in self.G.subject_objects(predicate=DCTERMS.description):
+            self.G.add((s, RDFS.comment, o))
+
+        for s, o in self.G.subject_objects(predicate=SKOS.definition):
+            self.G.add((s, RDFS.comment, o))
+
+        # OWL -> SKOS
+        # classes as Concepts types
+        for s in self.G.subjects(predicate=RDF.type, object=RDFS.Class):
+            self.G.add((s, RDF.type, SKOS.Concept))
+
+        for s in self.G.subjects(predicate=RDF.type, object=OWL.Class):
+            self.G.add((s, RDF.type, SKOS.Concept))
+
+        # SKOS Concept Hierarchy from Class subsumption
+        for s, o in self.G.subject_objects(predicate=RDFS.subClassOf):
+            if type(o) != BNode:  # stops restrictions being seen as broader/narrower
+                self.G.add((s, SKOS.broader, o))
+                self.G.add((o, SKOS.narrower, s))
+
+        for s, o in self.G.subject_objects(predicate=OWL.equivalentClass):
+            self.G.add((s, SKOS.exactMatch, o))
+            self.G.add((o, SKOS.exactMatch, s))
+
+        # the ontology is now a ConceptScheme
+        for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
+            self.G.add((s, RDF.type, SKOS.ConceptScheme))
+
+            # top concepts
+            # if the class is declared here and has no subClassOf
+            for s2 in self.G.subjects(predicate=RDF.type, object=RDFS.Class):
+                if (s2, RDFS.subClassOf, None) not in self.G:
+                    self.G.add((s2, SKOS.topConceptOf, s))
+
+            for s2 in self.G.subjects(predicate=RDF.type, object=OWL.Class):
+                if (s2, RDFS.subClassOf, None) not in self.G:
+                    self.G.add((s2, SKOS.topConceptOf, s))
+
+        # SKOS -> SKOS
+        # broader / narrower buildout
+        for s, o in self.G.subject_objects(predicate=SKOS.broader):
+            self.G.add((o, SKOS.narrower, s))
+
+        for s, o in self.G.subject_objects(predicate=SKOS.narrower):
+            self.G.add((o, SKOS.broader, s))
+
+        for s, o in self.G.subject_objects(predicate=SKOS.topConceptOf):
+            self.G.add((o, SKOS.hasTopConcept, s))
+
+        for s, o in self.G.subject_objects(predicate=SKOS.hasTopConcept):
+            self.G.add((o, SKOS.topConceptOf, s))
+
+    def _make_uri_html(self, uri, type=None):
+        # set display to CURIE
+        short = self._get_curie(uri)
+        # if the URI base is within the default namespace of this ontology
+        #   use the fragment URI
+        # else
+        #   use the given URI
+        uri_base = self._get_namespace_from_uri(uri)
+        link = None
+        if uri_base == self.METADATA.get("default_namespace"):
+            if self.CONCEPTS.get(uri):
+                link = "[{}]({})".format(self.CONCEPTS[uri]["default_prefLabel"], self.CONCEPTS[uri]["fid"]) \
+                    if self.outputformat == "md" \
+                    else '<a href="#{}">{}</a>'.format(self.CONCEPTS[uri]["fid"], self.CONCEPTS[uri]["default_prefLabel"])
+            elif self.COLLECTIONS.get(uri):
+                    link = "[{}]({})".format(self.COLLECTIONS[uri]["default_prefLabel"], self.COLLECTIONS[uri]["fid"]) \
+                        if self.outputformat == "md" \
+                        else '<a href="#{}">{}</a>'.format(self.COLLECTIONS[uri]["fid"], self.COLLECTIONS[uri]["default_prefLabel"])
+
+        if link is None:
+            link = "[{}]({})".format(short, uri) \
+                if self.outputformat == "md" \
+                else '<a href="{}">{}</a>'.format(uri, short)
+
+        if type == "cp":
+            suffix = '<sup class="sup-cp" title="concept">cp</sup>'
+        elif type == "cl":
+            suffix = '<sup class="sup-cl" title="collection">cl</sup>'
+        # None
+        else:
+            suffix = ''
+
+        return link + suffix
+
+    def _extract_collections(self):
+        """Extracts standard SKOS Collection metadata"""
+        collections = []
+        # TODO: handle OrderedCollections
+        for s in self.G.subjects(predicate=RDF.type, object=SKOS.Collection):
+            collections.append(str(s))
+
+        # keeping the OrderedDict ordered
+        for c in sorted(collections):
+            self.COLLECTIONS[c] = {}
+
+        # fill in each Collection's details from the graph
+        for c in self.COLLECTIONS.keys():
+            s = URIRef(c)  # for use in Graph() loops
+
+            self.COLLECTIONS[c]["fid"] = None
+            self.COLLECTIONS[c]["default_prefLabel"] = None
+            self.COLLECTIONS[c]["prefLabels"] = set()
+            self.COLLECTIONS[c]["altLabels"] = set()
+            self.COLLECTIONS[c]["definitions"] = set()
+            self.COLLECTIONS[c]["scopeNotes"] = set()
+            self.COLLECTIONS[c]["source"] = None
+            self.COLLECTIONS[c]["members"] = set()
+
+            for p, o in self.G.predicate_objects(subject=s):
+                if p == SKOS.prefLabel:
+                    self.COLLECTIONS[c]["prefLabels"].add((str(o), o.language))  # TODO: add in language
+                    if o.language == self.default_language:
+                        self.COLLECTIONS[c]["default_prefLabel"] = str(o)
+
+                elif p == SKOS.altLabel:
+                    self.COLLECTIONS[c]["altLabels"].add(str(o))  # TODO: add in language
+
+                elif p == SKOS.definition:
+                    self.COLLECTIONS[c]["definitions"].add(str(o))  # TODO: add in language
+
+                elif p == SKOS.scopeNote:
+                    self.COLLECTIONS[c]["scopeNotes"].add(str(o))  # TODO: add in language
+
+                elif p == DCTERMS.source:
+                    self.COLLECTIONS[c]["source"] = str(o)
+
+                elif p == SKOS.topConceptOf:
+                    self.COLLECTIONS[c]["topConceptOfs"].add(str(o))
+
+                elif p == SKOS.member:
+                    self.COLLECTIONS[c]["members"].add(str(o))
+                    # TODO: handle members that are other Collections, not Concepts
+
+            # listify the sets
+            self.COLLECTIONS[c]["prefLabels"] = list(self.COLLECTIONS[c]["prefLabels"])
+            self.COLLECTIONS[c]["altLabels"] = list(self.COLLECTIONS[c]["altLabels"])
+            self.COLLECTIONS[c]["definitions"] = list(self.COLLECTIONS[c]["definitions"])
+            self.COLLECTIONS[c]["scopeNotes"] = list(self.COLLECTIONS[c]["scopeNotes"])
+            self.COLLECTIONS[c]["members"] = list(self.COLLECTIONS[c]["members"])
+
+            # make fid
+            # TODO: update to use default language label, not [0]
+            self.COLLECTIONS[c]["fid"] = self._make_fid(
+                self.COLLECTIONS[c]["prefLabels"][0][0], c
+            )
+
+    def _extract_concepts(self):
+        """Extracts standard SKOS Concepts and their metadata
+
+        Will interpret an owl:Class and rdfs:Class instances as skos:Concepts if run against an OWL document
+        """
+        concepts = []
+        for s in self.G.subjects(predicate=RDF.type, object=SKOS.Concept):
+            concepts.append(str(s))
+
+        # keeping the OrderedDict ordered
+        for c in sorted(concepts):
+            self.CONCEPTS[c] = {}
+
+        # fill in each Concept's details from the graph
+        for c in self.CONCEPTS.keys():
+            s = URIRef(c)  # for use in Graph() loops
+
+            self.CONCEPTS[c]["fid"] = None
+            self.CONCEPTS[c]["prefLabels"] = set()
+            self.CONCEPTS[c]["default_prefLabel"] = None
+            self.CONCEPTS[c]["altLabels"] = set()
+            self.CONCEPTS[c]["definitions"] = set()
+            self.CONCEPTS[c]["scopeNotes"] = set()
+            self.CONCEPTS[c]["examples"] = set()
+            self.CONCEPTS[c]["inSchemes"] = set()
+            self.CONCEPTS[c]["topConceptOfs"] = set()
+            self.CONCEPTS[c]["source"] = None
+            self.CONCEPTS[c]["broaders"] = set()
+            self.CONCEPTS[c]["narrowers"] = set()
+            self.CONCEPTS[c]["exactMatches"] = set()
+            self.CONCEPTS[c]["closeMatches"] = set()
+            self.CONCEPTS[c]["broadMatches"] = set()
+            self.CONCEPTS[c]["narrowMatches"] = set()
+
+            for p, o in self.G.predicate_objects(subject=s):
+                if p == SKOS.prefLabel:
+                    self.CONCEPTS[c]["prefLabels"].add((str(o), o.language))  # TODO: add in language
+                    if o.language == self.default_language:
+                        self.CONCEPTS[c]["default_prefLabel"] = str(o)
+
+                elif p == SKOS.altLabel:
+                    self.CONCEPTS[c]["altLabels"].add(str(o))  # TODO: add in language
+
+                elif p == SKOS.definition:
+                    self.CONCEPTS[c]["definitions"].add(str(o))  # TODO: add in language
+
+                elif p == SKOS.scopeNote:
+                    self.CONCEPTS[c]["scopeNotes"].add(str(o))  # TODO: add in language
+
+                elif p == SKOS.example:
+                    self.CONCEPTS[c]["examples"].add(str(o))  # TODO: add in language
+
+                elif p == SKOS.inScheme:
+                    self.CONCEPTS[c]["inSchemes"].add(str(o))
+
+                elif p == DCTERMS.source:
+                    self.CONCEPTS[c]["source"] = str(o)
+
+                elif p == SKOS.topConceptOf:
+                    self.CONCEPTS[c]["topConceptOfs"].add(str(o))
+
+                elif p == SKOS.broader:
+                    self.CONCEPTS[c]["broaders"].add(str(o))
+
+                elif p == SKOS.narrower:
+                    self.CONCEPTS[c]["narrowers"].add(str(o))
+
+                elif p == SKOS.exactMatch:
+                    self.CONCEPTS[c]["exactMatches"].add(str(o))
+
+                elif p == SKOS.closeMatch:
+                    self.CONCEPTS[c]["closeMatches"].add(str(o))
+
+                elif p == SKOS.broadMatch:
+                    self.CONCEPTS[c]["broadMatches"].add(str(o))
+
+                elif p == SKOS.narrowMatch:
+                    self.CONCEPTS[c]["narrowMatches"].add(str(o))
+
+            # listify the sets
+            self.CONCEPTS[c]["prefLabels"] = list(self.CONCEPTS[c]["prefLabels"])
+            self.CONCEPTS[c]["altLabels"] = list(self.CONCEPTS[c]["altLabels"])
+            self.CONCEPTS[c]["definitions"] = list(self.CONCEPTS[c]["definitions"])
+            self.CONCEPTS[c]["scopeNotes"] = list(self.CONCEPTS[c]["scopeNotes"])
+            self.CONCEPTS[c]["examples"] = list(self.CONCEPTS[c]["examples"])
+            self.CONCEPTS[c]["inSchemes"] = list(self.CONCEPTS[c]["inSchemes"])
+            self.CONCEPTS[c]["topConceptOfs"] = list(self.CONCEPTS[c]["topConceptOfs"])
+            self.CONCEPTS[c]["broaders"] = list(self.CONCEPTS[c]["broaders"])
+            self.CONCEPTS[c]["narrowers"] = list(self.CONCEPTS[c]["narrowers"])
+            self.CONCEPTS[c]["exactMatches"] = list(self.CONCEPTS[c]["exactMatches"])
+            self.CONCEPTS[c]["closeMatches"] = list(self.CONCEPTS[c]["closeMatches"])
+            self.CONCEPTS[c]["broadMatches"] = list(self.CONCEPTS[c]["broadMatches"])
+            self.CONCEPTS[c]["narrowMatches"] = list(self.CONCEPTS[c]["narrowMatches"])
+
+            # make fid
+            # TODO: update to use default language label, not [0]
+            self.CONCEPTS[c]["fid"] = self._make_fid(
+                self.CONCEPTS[c]["default_prefLabel"], c
+            )
+
+    def _extract_concept_scheme(self):
+        """Extracts standard SKOS ConceptScheme metadata
+
+        Will interpret an owl:Ontology as a skos:ConceptScheme if run against an OWL document
+        """
+
+        self.METADATA["creators"] = set()
+        self.METADATA["contributors"] = set()
+        self.METADATA["publishers"] = set()
+        for s in self.G.subjects(predicate=RDF.type, object=SKOS.ConceptScheme):
+            self.METADATA["uri"] = str(s)
+            for p, o in self.G.predicate_objects(subject=s):
+                if p == SKOS.prefLabel:
+                    self.METADATA["title"] = str(o)
+
+                if p == SKOS.definition:
+                    import markdown
+
+                    self.METADATA["description"] = markdown.markdown(str(o))
+
+                if p == SKOS.historyNote:
+                    self.METADATA["historyNote"] = str(o)
+
+                if p == DCTERMS.created:
+                    self.METADATA["created"] = dateutil.parser.parse(str(o)).strftime(
+                        "%Y-%m-%d"
+                    )
+
+                if p == DCTERMS.modified:
+                    self.METADATA["modified"] = dateutil.parser.parse(str(o)).strftime(
+                        "%Y-%m-%d"
+                    )
+
+                if p == DCTERMS.issued:
+                    self.METADATA["issued"] = dateutil.parser.parse(str(o)).strftime(
+                        "%Y-%m-%d"
+                    )
+
+                if p == DCTERMS.source:
+                    if str(o).startswith('http'):
+                        self.METADATA["source"] = self._make_uri_html(o)  # '<a href="{0}">{0}</a>'.format(str(o))
+                    else:
+                        self.METADATA["source"] = str(o)
+
+                if p == OWL.versionIRI:
+                    self.METADATA["versionIRI"] = '<a href="{0}">{0}</a>'.format(str(o))
+
+                if p == OWL.versionInfo:
+                    self.METADATA["versionInfo"] = str(o)
+
+                if p == URIRef("http://purl.org/vocab/vann/preferredNamespacePrefix"):
+                    self.METADATA["preferredNamespacePrefix"] = str(o)
+
+                if p == URIRef("http://purl.org/vocab/vann/preferredNamespaceUri"):
+                    self.METADATA["preferredNamespaceUri"] = str(o)
+
+                if p == DCTERMS.license:
+                    self.METADATA["license"] = (
+                        '<a href="{0}">{0}</a>'.format(str(o))
+                        if str(o).startswith("http")
+                        else str(o)
+                    )
+
+                if p == DCTERMS.rights:
+                    self.METADATA["rights"] = (
+                        str(o)
+                            .replace("Copyright", "&copy;")
+                            .replace("copyright", "&copy;")
+                    )
+
+                # Agents
+                if p == DC.creator:
+                    if type(o) == URIRef:
+                        self.METADATA["creators"].add(
+                            '<a href="{0}">{0}</a>'.format(str(o))
+                        )
+                    else:
+                        self.METADATA["creators"].add(str(o))
+
+                if p == DCTERMS.creator:
+                    if type(o) == Literal:
+                        self.METADATA["creators"].add(str(o))
+                    else:  # Blank Node or URI
+                        self.METADATA["creators"].add(self._make_agent_html(o))
+
+                if p == DC.contributor:
+                    if type(o) == URIRef:
+                        self.METADATA["contributors"].add(
+                            '<a href="{0}">{0}</a>'.format(str(o))
+                        )
+                    else:
+                        self.METADATA["contributors"].add(str(o))
+
+                if p == DCTERMS.contributor:
+                    if type(o) == Literal:
+                        self.METADATA["contributors"].add(str(o))
+                    else:  # Blank Node or URI
+                        self.METADATA["contributors"].add(self._make_agent_html(o))
+
+                if p == DC.publisher:
+                    if type(o) == URIRef:
+                        self.METADATA["publishers"].add(
+                            '<a href="{0}">{0}</a>'.format(str(o))
+                        )
+                    else:
+                        self.METADATA["publishers"].add(str(o))
+
+                if p == DCTERMS.publisher:
+                    if type(o) == Literal:
+                        self.METADATA["publishers"].add(str(o))
+                    else:  # Blank Node or URI
+                        self.METADATA["publishers"].add(self._make_agent_html(o))
+
+                # TODO: cater for other Agent representations
+
+                if p == PROV.wasGeneratedBy:
+                    for o2 in self.G.objects(subject=o, predicate=DOAP.repository):
+                        self.METADATA["repository"] = str(o2)
+
+                if p == SDO.codeRepository:
+                    self.METADATA["repository"] = str(o)
+
+        if self.METADATA.get("title") is None:
+            raise ValueError(
+                "Your taxonomy's ConceptScheme does not indicate any form of title. "
+                "You must declare one of the following for it: rdfs:label, dct:title, skos:prefLabel"
+            )
+
+        if len(self.COLLECTIONS.keys()) > 0:
+            self.METADATA["has_collections"] = True
+
+        if len(self.CONCEPTS.keys()) > 0:
+            self.METADATA["has_concepts"] = True
+
+    def _make_skos_concept_scheme(self, source_info):
+        return self._load_template("skos_concept_scheme." + self.outputformat).render(
+            title=self.METADATA.get("title"),
+            uri=self.METADATA.get("uri"),
+            version_uri=self.METADATA.get("versionIRI"),
+            publishers=self.METADATA["publishers"],
+            creators=self.METADATA["creators"],
+            contributors=self.METADATA["contributors"],
+            created=self.METADATA.get("created"),
+            modified=self.METADATA.get("modified"),
+            issued=self.METADATA.get("issued"),
+            source=self.METADATA.get("source"),
+            description=self.METADATA.get("description"),
+            historyNote=self.METADATA.get("historyNote"),
+            version_info=self.METADATA.get("versionInfo"),
+            license=self.METADATA.get("license"),
+            rights=self.METADATA.get("rights"),
+            repository=self.METADATA.get("repository"),
+            ont_rdf=self._make_source_file_link(source_info),
+            has_collections=True if len(self.COLLECTIONS) > 0 else False,
+            has_concepts=True if len(self.CONCEPTS) > 0 else False,
+        )
+
+    def _make_skos_collection(self, collection):
+        return self._load_template("skos_collection." + self.outputformat).render(
+            uri=collection[0],
+            fid=collection[1].get("fid"),
+            default_prefLabel=collection[1].get("default_prefLabel"),
+            prefLabels=collection[1].get("prefLabels"),
+            altLabels=collection[1].get("altLabels"),
+            definitions=collection[1].get("definitions"),
+            scopeNotes=collection[1].get("scopeNotes"),
+            source=collection[1].get("source"),
+            members=[self._make_uri_html(x, type="cp") for x in collection[1].get("members")],
+        )
+
+    def _make_skos_collections(self):
+        collections = []
+        for k, v in self.COLLECTIONS.items():
+            collections.append(
+                (
+                    v["default_prefLabel"],
+                    v["fid"],
+                    self._make_skos_collection((k, v)),
+                )
+            )
+
+        return self._load_template("skos_collections." + self.outputformat).render(collections=collections)
+
+    def _make_concept_hierarchy(self):
+        of = self.outputformat
+        # render concept
+        def _render(c, children, of, level=0):
+            if of == "md":
+                md = level*"\t" + "* [{}]({})\n".format(self.CONCEPTS.get(c).get("default_prefLabel"), c)
+                if len(children) > 0:
+                    for ch in sorted(children):
+                        md += _render(ch, self.CONCEPTS.get(ch).get("narrowers"), of, level=level + 1)
+                return md
+            else:  # HTML
+                html = "<li>{}".format(self._make_uri_html(c))
+                if len(children) > 0:
+                    for ch in sorted(children):
+                        html += "\n<ul>" + \
+                                _render(ch, self.CONCEPTS.get(ch).get("narrowers"), of, level=level + 1) + \
+                                "</ul>"
+                html += "</li>"
+                return html
+
+        # start with a topConcept
+        tcs = []
+        for s, o in self.G.subject_objects(predicate=SKOS.hasTopConcept):
+            tcs.append(str(o))
+
+        txt = ""
+        for tc in sorted(tcs):
+            txt += _render(tc, self.CONCEPTS.get(tc).get("narrowers"), self.outputformat, 0)
+
+        if self.outputformat == "md":
+            return txt
+        else:
+            return "<ul class=\"hierarchy\">\n" + txt + "\n</ul>"
+
+    def _make_skos_concept(self, concept):
+        return self._load_template("skos_concept." + self.outputformat).render(
+            uri=concept[0],
+            fid=concept[1].get("fid"),
+            default_prefLabel=concept[1].get("default_prefLabel"),
+            prefLabels=concept[1].get("prefLabels"),
+            altLabels=concept[1].get("altLabels"),
+            definitions=concept[1].get("definitions"),
+            scopeNotes=concept[1].get("scopeNotes"),
+            examples=concept[1].get("examples"),
+            source=concept[1].get("source"),
+            broaders=[self._make_uri_html(x, type="cp") for x in concept[1].get("broaders")],
+            narrowers=[self._make_uri_html(x, type="cp") for x in concept[1].get("narrowers")],
+            exactMatches=[self._make_uri_html(x, type="cp") for x in concept[1].get("exactMatches")],
+            closeMatches=[self._make_uri_html(x, type="cp") for x in concept[1].get("closeMatches")],
+            broadMatches=[self._make_uri_html(x, type="cp") for x in concept[1].get("broadMatches")],
+            narrowMatches=[self._make_uri_html(x, type="cp") for x in concept[1].get("narrowMatches")],
+        )
+
+    def _make_skos_concepts(self):
+        # TODO: make Concept hierarchy (URIs)
+
+        # TODO: list all Concepts, alphabetically by prefLabel
+        concepts = []
+        for k, v in self.CONCEPTS.items():
+            concepts.append(
+                (
+                    v["default_prefLabel"],
+                    v["fid"],
+                    self._make_skos_concept((k, v)),
+                )
+            )
+
+        return self._load_template("skos_concepts." + self.outputformat).render(
+            concept_hierarchy=self._make_concept_hierarchy(),
+            concepts=concepts
+        )
+
+    def _make_document(self):
+        css = None
+        if self.outputformat == "html":
+            if not self.exclude_css:
+                pylode_css = path.join(
+                    path.dirname(path.realpath(__file__)), "style", "pylode.css"
+                )
+                css = open(pylode_css).read()
+
+        return self._load_template("skos_taxonomy." + self.outputformat).render(
+            schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML template
+            title=self.METADATA["title"],
+            concept_scheme=self._make_skos_concept_scheme(self.source_info),
+            has_collections=True if len(self.COLLECTIONS) > 0 else False,
+            collections=self._make_skos_collections(),
+            has_concepts=True if len(self.CONCEPTS) > 0 else False,
+            concepts=self._make_skos_concepts(),
+            namespaces=self._make_namespaces(),
+            css=css
+        )
+
+    def generate_document(self):
+        # expand the graph using pre-defined rules to make querying easier (poor man's inference)
+        self._expand_graph()
+        # get all the namespaces using several methods
+        self._extract_namespaces()
+        # get the default namespace
+        self._get_default_namespace()
+        # extract all the SKOS things
+        self._extract_collections()
+        self._extract_concepts()
+        self._make_concept_hierarchy()
+        self._extract_concept_scheme()
+
+        return self._make_document()

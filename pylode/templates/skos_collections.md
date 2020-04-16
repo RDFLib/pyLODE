@@ -1,7 +1,7 @@
 ## Collections
 {%- for collection in collections %}
-[{{ collection[1] }}](#{{ collection[0] }}), 
+* [{{ collection[0] }}](#{{ collection[1] }})   
 {%- endfor %}
 {%- for collection in collections %}
-{{ collection|safe }}
+{{ collection[2]|safe }}
 {%- endfor %}

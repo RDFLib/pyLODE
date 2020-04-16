@@ -79,8 +79,9 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 ### Description
 {{ description }}
 {%- endif %}
-{%- if historyNote is not none %}
-* **History Note:** {{ historyNote }}
+{% if historyNote is not none %}
+**History Note**  
+{{ historyNote }}
 {%- endif %}
 
 ## Table of Contents

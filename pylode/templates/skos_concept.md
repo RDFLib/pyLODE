@@ -3,7 +3,7 @@ Property | Value
 --- | ---
 IRI | `{{ uri }}`
 {%- if prefLabels|length > 0 %}
-Preferred Labels | {%- for prefLabel in prefLabels %}{{ prefLabels }}<br />{%- endfor %}
+Preferred Labels | {%- for prefLabel in prefLabels %}{{ prefLabel[0] }} ({{ prefLabel[1] }})<br />{%- endfor %}
 {%- endif %}
 {%- if altLabels|length > 0 %}
 Alternate Labels | {%- for altLabel in altLabels %}{{ altLabel }}<br />{%- endfor %}
@@ -24,7 +24,7 @@ Source | {{ source }}
 Broader Concepts | {%- for broader in broaders %}{{ broader }}<br />{%- endfor %}
 {%- endif %}
 {%- if narrowers|length > 0 %}
-Narrower Concepts | {%- for narrower in narrowers %}{{ broader }}<br />{%- endfor %}
+Narrower Concepts | {%- for narrower in narrowers %}{{ narrower }}<br />{%- endfor %}
 {%- endif %}
 {%- if exactMatches|length > 0 %}
 Exact Matches | {%- for exactMatch in exactMatches %}{{ exactMatch }}<br />{%- endfor %}

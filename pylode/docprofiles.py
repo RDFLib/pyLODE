@@ -3,7 +3,6 @@
 This file defines a Profile class that describes the representation of input ontologies that pyLODE can express and it
 lists the specific Profiles that pyLODE supports.
 """
-from enum import Enum
 
 
 class Profile:
