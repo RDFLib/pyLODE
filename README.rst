@@ -4,7 +4,7 @@
     :target: https://badge.fury.io/py/pyLODE
 
 pyLODE
-======
+******
 An OWL ontology documentation tool using Python and templating, based on
 LODE.
 
@@ -13,7 +13,7 @@ practice* by only producing good results for well documented inputs! pyLODe defi
 in sections below, such as `Profiles`_ & `What pyLODE understands`_.
 
 Contents
---------
+========
 1. `Quick Intro`_
 2. Examples_
 3. Installation_
@@ -21,7 +21,7 @@ Contents
 5. `What pyLODE understands`_
 6. `Profiles`_
 7. `Differences from LODE`_
-8. `Development roadmap`_
+8. `Releases roadmap`_
 9. License_
 10. Citation_
 11. Collaboration_
@@ -29,7 +29,7 @@ Contents
 
 
 Quick Intro
-------------------
+===========
 The Live OWL Documentation Environment tool
 (`LODE <https://github.com/essepuntato/LODE>`__) is a well-known (in
 Semantic Web circles) Java & XSLT-based tool used to generate
@@ -59,7 +59,7 @@ The tool can be run as in these ways:
 
 
 Examples
---------
+========
 pyLODE has been tested with all of the 30+ ontologies in
 `src/pylode/examples/ <src/pylode/examples/>`__ and we are trying to ensure it
 captures all of their annotations. For each example, there is the
@@ -76,7 +76,7 @@ For example, `Epimorphic's <https://www.epimorphics.com/>`__'s **Registry Ontolo
 
 
 Ontologies online using pyLODE:
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------
 
 - `Australia's Department of Finance's <https://www.finance.gov.au>`__'s **AGRIF ontology** - http://linked.data.gov.au/def/agrif
     - see the `Markdown version <https://github.com/AGLDWG/agrif-ont/blob/master/agrif.md>`__
@@ -98,11 +98,11 @@ preprocessed examples.
 
 
 Installation
---------------
+============
 This tool can be used either as a command line utility (Linux, Mac or Windows, see below) or as a Python module in other Python code. It can also be used via an online API. This repo contains executable files for Mac & Windows (soon Linux!) that you can use without any installation too.
 
 Python
-^^^^^^
+------
 Do this to use pyLODE as a Python command line program.
 
 This tool is available on PyPI, the Python Package Index, at https://pypi.org/project/pyLODE/ and can be installed for use as a Python module via pip:
@@ -115,7 +115,7 @@ For desktop command line use, just clone this repository and either use ``cli.py
 
 
 Use
----
+===
 pyLODE presents natively as a Python command-line utility,
 `pylode/cli.py <pylode/cli.py>`__ and there are also a BASH, Windows & Mac OS options available for command line use:
 
@@ -129,7 +129,7 @@ Additionally, there is a `Falcon framework <https://falconframework.org/>`__ loc
 All use the same command line arguments.
 
 Command line arguments
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 These are the command line arguments to run pyLODE as a BASH or Python script on Linux, Mac etc. or via the Windows executable:
 
 -  ``-i`` or ``--inputfile``, *required if* ``-u`` *not used*
@@ -148,7 +148,7 @@ These are the command line arguments to run pyLODE as a BASH or Python script on
     - Lists all the profiles (specifications) for ontology documentation supported by pyLODE
 
 Example call
-^^^^^^^^^^^^
+------------
 This call to the BASH script in `pylode/bin/ <pylode/bin/>`__ will
 create an HTML document for an ontology called ``placenames.html`` and
 save it with a basic CSS file into
@@ -159,11 +159,11 @@ save it with a basic CSS file into
     $ ./pylode -i ../example/prof.ttl --css true
 
 Online API
-^^^^^^^^^^
+----------
 An online API to access pyLODE is now available in test mode at https://kurrawong.net/pylode-online.
 
 Local server - Falcon
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 You can run pyLODE using your own, local, HTTP server like this:
 ```
 gunicorn server:api
@@ -174,7 +174,7 @@ curl localhost:8000/lode?url=http://sweetontology.net/sweetAll.ttl
 ```
 
 Windows - create EXE from source
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------
 `Pyinstaller <https://www.pyinstaller.org/>`__ can be 
 `used <https://pyinstaller.readthedocs.io/en/stable/usage.html>`__ to create an 
 executable for Windows that has the same characteristics as the Linux/Mac 
@@ -199,14 +199,14 @@ You can now run the pyLODE Command Line utility via ``pylode.exe``.
 See above for the pyLODE command line util usage instructions.
 
 Mac OS - create APP from source
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------
 As per instructions for PyInstaller use on Windows, just do it on a Mac!
 
 What pyLODE understands
-------------------------
+=======================
 
 Annotations
-^^^^^^^^^^^
+-----------
 pyLODE understands the following ontology constructs:
 
 -  **ontology metadata**
@@ -310,7 +310,7 @@ See `SNIPPETS <SNIPPETS.rst>`__ for detailed examples on what pyLODE knows about
 Please suggest any more required schema.org annotations!
 
 Styling
-^^^^^^^
+-------
 This tool generates HTML that is shamelessly similar to LODE's styling.
 That's because we want things to look familiar and LODE's outputs look
 great. The Markdown's pretty vanilla.
@@ -324,7 +324,7 @@ Feel free to extend your styling with your own CSS.
 
 
 Profiles
---------
+========
 pyLODE can document ontologies and other taxonomies according to different *profiles* which are specifications. The
 basic, default, profile is pyLODE's OWL Profile, which means documentation is generated according to OWL properties
 and classes and the various annotation properties listed here in the `What pyLODE understands`_ section.
@@ -338,7 +338,7 @@ pyLODE can tell you what profiles it supports: just run ``~$ pylode -lp`` ("list
 
 
 Supported Profiles
-^^^^^^^^^^^^^^^^^^
+------------------
 Currently pyLODE supports its OWL profile, as described above, and a profile of SKOS. For full details of what the
 profiles include, see the profiles' definitions at:
 
@@ -351,7 +351,7 @@ skosp     `<https://w3id.org/profile/pylode-skos>`_
 
 
 Transformation by Profile
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 You can, of course, document an OWL ontology using the *owlp* profile or a SKOS taxonomy using the *skosp* profile
 however, you can also document an OWL ontology using the *skosp* profile! This is because SKOS is conceptually a subset
 of OWL - whatever you can express in SKOS you can express in OWL.
@@ -383,7 +383,7 @@ An example of a *skosp*-documented OWL ontology and the corresponding *owlp* ori
 
 
 Differences from LODE
----------------------
+=====================
 -  command line access
 
    -  you can use this on your own desktop so you don't need me to
@@ -425,8 +425,8 @@ Differences from LODE
       handled, if requested
 
 
-Development roadmap
--------------------
+Releases Roadmap
+================
 pyLODE is under continual and constant development. The current developers have a roadmap for enhancements in mind,
 which is given here, however, since this is an open source project, new developers may join the pyLODE dev community
 and change/add development priorities.
@@ -442,53 +442,54 @@ The current release, as of April 2020, is 2.0.
    1.0, 15 Dec 2019, "Initial working release"
 
 Version notes
-^^^^^^^^^^^^^
+-------------
 
-3.0 - *pending release*
-~~~~~~~~~~~~~~~~~~~~~~~
+3.0
+---
 Expected to handle:
+
 - pre-documentation graph shape testing using SHACL
     - you will be able to see what pyLODE-recommended annotation and design patterns your inputs do/don't handle
 - "modp", a documentation profile based on the `MOD Ontology <https://github.com/sifrproject/MOD-Ontology>`_
 
 2.0
-~~~
+---
 - handles Named Individuals in OWL ontologies
 - implements "owlp" & "skosp" documentation profiles for OWL, SKOS and OWL-as-SKOS results
 
 1.0
-~~~
+---
 Initial pyLODE release. Generated HTML documentation for OWL ontologies, missed quite a few expected ontology elements,
 such as Named Individuals.
 
 License
--------
+=======
 This code is licensed using the GPL v3 licence. See the `LICENSE
-file <LICENSE>`__ for the deed. Note *Citation* below though for
+file <LICENSE>`_ for the deed. Note *Citation* below though for
 attribution.
 
 
 Citation
---------
+========
 If you use pyLODE, please leave the pyLODE logo with a hyperlink back
 here in the top left of published HTML pages.
 
 
 Collaboration
--------------
+=============
 The maintainers welcome any collaboration.
 
 If you have suggestions, please email the contacts below or leave Issues
-in this repository's `Issue tracker <https://github.com/rdflib/pyLODE/issues>`__.
+in this repository's `Issue tracker <https://github.com/rdflib/pyLODE/issues>`_.
 
 But the very best thing you could do is create a Pull Request for us to
 action!
 
 
 Contacts
---------
+========
 | *Author*:
 | **Nicholas Car**
 | *Data System Architect*
-| SURROUND Australia Pty Ltd
+| `SURROUND Australia Pty Ltd <https://surroundaustralia.com>`_
 | nicholas.car@surroundaustralia.com
