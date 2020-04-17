@@ -1,3 +1,5 @@
+.. image:: img/logo-pyLODE.png
+
 .. image:: https://badge.fury.io/py/pyLODE.svg
     :target: https://badge.fury.io/py/pyLODE
 
@@ -6,6 +8,9 @@ pyLODE
 An OWL ontology documentation tool using Python and templating, based on
 LODE.
 
+In addition to making human-readable forms of ontologies/taxonomies, pyLODE encourages ontology annotation *best
+practice* by only producing good results for well documented inputs! pyLODe defines what it considers w'well documented'
+in sections below, such as `Profiles`_ & `What pyLODE understands`_.
 
 Contents
 --------
@@ -16,10 +21,11 @@ Contents
 5. `What pyLODE understands`_
 6. `Profiles`_
 7. `Differences from LODE`_
-8. License_
-9. Citation_
-10. Collaboration_
-11. Contacts_
+8. `Development roadmap`_
+9. License_
+10. Citation_
+11. Collaboration_
+12. Contacts_
 
 
 Quick Intro
@@ -418,6 +424,42 @@ Differences from LODE
       Ontology <https://github.com/sifrproject/MOD-Ontology>`__ will be
       handled, if requested
 
+
+Development roadmap
+-------------------
+pyLODE is under continual and constant development. The current developers have a roadmap for enhancements in mind,
+which is given here, however, since this is an open source project, new developers may join the pyLODE dev community
+and change/add development priorities.
+
+The current release, as of April 2020, is 2.0.
+
+.. csv-table:: pyLODE Releases
+   :header: "Version", "Date", "Description"
+   :widths: 15, 10, 30
+
+   3.0, *June 2020*, "Will include pre-testing inputs with SHACL"
+   2.0, 18 Apr 2020, "Includes multiple profiles - OWP & SKOSP"
+   1.0, 15 Dec 2019, "Initial working release"
+
+Version notes
+^^^^^^^^^^^^^
+
+3.0 - *pending release*
+~~~~~~~~~~~~~~~~~~~~~~~
+Expected to handle:
+- pre-documentation graph shape testing using SHACL
+    - you will be able to see what pyLODE-recommended annotation and design patterns your inputs do/don't handle
+- "modp", a documentation profile based on the `MOD Ontology <https://github.com/sifrproject/MOD-Ontology>`_
+
+2.0
+~~~
+- handles Named Individuals in OWL ontologies
+- implements "owlp" & "skosp" documentation profiles for OWL, SKOS and OWL-as-SKOS results
+
+1.0
+~~~
+Initial pyLODE release. Generated HTML documentation for OWL ontologies, missed quite a few expected ontology elements,
+such as Named Individuals.
 
 License
 -------
