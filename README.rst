@@ -364,6 +364,7 @@ conversions are made:
 - ``owl:Class`` > ``skos:Concept``
     - and other class annotation properties used with Concept
 - ``owl:subClassOf`` > ``skos:broader``
+   - and the inverses, ``skos:narrower``
 
 To see the full list of transformations, see the function ``_expand_graph_for_skos()`` in *makedocco.py*.
 
@@ -433,7 +434,7 @@ and change/add development priorities.
 
 The current release, as of April 2020, is 2.0.
 
-.. csv-table:: pyLODE Releases
+.. csv-table:: **pyLODE Releas Schedule**
    :header: "Version", "Date", "Description"
    :widths: 15, 10, 30
 
@@ -441,12 +442,12 @@ The current release, as of April 2020, is 2.0.
    2.0, 18 Apr 2020, "Includes multiple profiles - OWP & SKOSP"
    1.0, 15 Dec 2019, "Initial working release"
 
-Version notes
+Release notes
 -------------
 
 3.0
 ---
-Expected to handle:
+Expected to handle
 
 - pre-documentation graph shape testing using SHACL
     - you will be able to see what pyLODE-recommended annotation and design patterns your inputs do/don't handle
