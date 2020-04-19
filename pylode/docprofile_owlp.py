@@ -1,6 +1,7 @@
 import collections
 from os import path
 import dateutil.parser
+from itertools import chain
 from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
 from docprofile import DocProfile
@@ -206,39 +207,30 @@ class Owlp(DocProfile):
 
     def _expand_graph(self):
         # name
-        for s, o in self.G.subject_objects(predicate=DC.title):
-            self.G.add((s, RDFS.label, o))
-
-        for s, o in self.G.subject_objects(predicate=DCTERMS.title):
-            self.G.add((s, RDFS.label, o))
-
-        for s, o in self.G.subject_objects(predicate=SKOS.prefLabel):
-            self.G.add((s, RDFS.label, o))
-
-        for s, o in self.G.subject_objects(predicate=SDO.name):
-            self.G.add((s, RDFS.label, o))
+        for s, o in chain(
+                self.G.subject_objects(predicate=DC.title),
+                self.G.subject_objects(predicate=RDFS.label),
+                self.G.subject_objects(predicate=DCTERMS.title),
+                self.G.subject_objects(predicate=SDO.name)
+        ):
+            self.G.add((s, SKOS.prefLabel, o))
 
         # description
-        for s, o in self.G.subject_objects(predicate=DC.description):
-            self.G.add((s, RDFS.comment, o))
-
-        for s, o in self.G.subject_objects(predicate=DCTERMS.description):
-            self.G.add((s, RDFS.comment, o))
-
-        for s, o in self.G.subject_objects(predicate=SKOS.definition):
+        for s, o in chain(
+                self.G.subject_objects(predicate=DC.description),
+                self.G.subject_objects(predicate=DCTERMS.description),
+                self.G.subject_objects(predicate=SKOS.definition),
+                self.G.subject_objects(predicate=SDO.description)
+        ):
             self.G.add((s, RDFS.comment, o))
 
         # property types
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.ObjectProperty):
-            self.G.add((s, RDF.type, RDF.Property))
-
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.FunctionalProperty):
-            self.G.add((s, RDF.type, RDF.Property))
-
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.DatatypeProperty):
-            self.G.add((s, RDF.type, RDF.Property))
-
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.AnnotationProperty):
+        for s in chain(
+                self.G.subjects(predicate=RDF.type, object=OWL.ObjectProperty),
+                self.G.subjects(predicate=RDF.type, object=OWL.FunctionalProperty),
+                self.G.subjects(predicate=RDF.type, object=OWL.DatatypeProperty),
+                self.G.subjects(predicate=RDF.type, object=OWL.AnnotationProperty)
+        ):
             self.G.add((s, RDF.type, RDF.Property))
 
         # class types

@@ -3,6 +3,7 @@ from os import path
 from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
 import dateutil.parser
+from itertools import chain
 from docprofile import DocProfile
 
 
@@ -14,31 +15,28 @@ class Skosp(DocProfile):
 
     def _expand_graph(self):
         # name
-        for s, o in self.G.subject_objects(predicate=DC.title):
-            self.G.add((s, SKOS.prefLabel, o))
-
-        for s, o in self.G.subject_objects(predicate=RDFS.label):
-            self.G.add((s, SKOS.prefLabel, o))
-
-        for s, o in self.G.subject_objects(predicate=DCTERMS.title):
+        for s, o in chain(
+                self.G.subject_objects(predicate=DC.title),
+                self.G.subject_objects(predicate=RDFS.label),
+                self.G.subject_objects(predicate=DCTERMS.title)
+        ):
             self.G.add((s, SKOS.prefLabel, o))
 
         # description
-        for s, o in self.G.subject_objects(predicate=DC.description):
-            self.G.add((s, RDFS.comment, o))
-
-        for s, o in self.G.subject_objects(predicate=DCTERMS.description):
-            self.G.add((s, RDFS.comment, o))
-
-        for s, o in self.G.subject_objects(predicate=SKOS.definition):
-            self.G.add((s, RDFS.comment, o))
+        for s, o in chain(
+                self.G.subject_objects(predicate=DC.description),
+                self.G.subject_objects(predicate=DCTERMS.description),
+                self.G.subject_objects(predicate=RDFS.comment),
+                self.G.subject_objects(predicate=SDO.description)
+        ):
+            self.G.add((s, SKOS.definition, o))
 
         # OWL -> SKOS
         # classes as Concepts types
-        for s in self.G.subjects(predicate=RDF.type, object=RDFS.Class):
-            self.G.add((s, RDF.type, SKOS.Concept))
-
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.Class):
+        for s in chain(
+                self.G.subjects(predicate=RDF.type, object=RDFS.Class),
+                self.G.subjects(predicate=RDF.type, object=OWL.Class)
+        ):
             self.G.add((s, RDF.type, SKOS.Concept))
 
         # SKOS Concept Hierarchy from Class subsumption

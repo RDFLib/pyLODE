@@ -223,9 +223,9 @@ class DocProfile:
         if existing_fid is not None:
             return existing_fid
 
-        # no, so make one
+        # if we get here, there is no fid, so make one
         def _remove_non_ascii_chars(s):
-            return "".join(j for j in s if ord(j) < 128).replace("&", "").lower()
+            return "".join(j for j in s if ord(j) < 128).replace("&", "")
 
         # try creating an ID from label
         # lowercase, remove spaces, escape all non-ASCII chars
