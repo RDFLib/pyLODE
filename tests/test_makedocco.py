@@ -37,8 +37,6 @@ def test__expand_graph_for_pylode():
 
     assert len(m.G) == 9, "Error loading ontology after expansion. Should have 9 triples, got {}".format(len(g))
 
-    print(m.G.serialize(format="turtle").decode('utf-8'))
-
 
 if __name__ == '__main__':
     test__expand_graph_for_pylode()

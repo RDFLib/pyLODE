@@ -2,14 +2,15 @@ import collections
 from os import path
 from rdflib import Graph, URIRef, Literal, Namespace
 from rdflib.namespace import FOAF, OWL, RDF, SDO, SKOS, XSD
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, BaseLoader
 
 
 class DocProfile:
-    def __init__(self, g, source_info, outputformat="html", exclude_css=False, default_language="en"):
+    def __init__(self, g, source_info, outputformat="html", exclude_css=False, default_language="en", get_curies_online=False):
         self.outputformat = outputformat
         self.exclude_css = exclude_css
         self.default_language = default_language
+        self.get_curies_online = get_curies_online
         self.default_namespace = None
         self.G = g
         self.source_info = source_info
@@ -174,8 +175,9 @@ class DocProfile:
         # for the de-duplicated URIs, if the uri_base is not in namespaces, get CURIE and add it
         for uri_base in uri_bases:
             if ns.get(uri_base) is None:
-                uri_prefix = self._get_curie_prefix(uri_base, [x for x in ns.values()])
-                ns[uri_base] = uri_prefix
+                if self.get_curies_online:
+                    uri_prefix = self._get_curie_prefix(uri_base, [x for x in ns.values()])
+                    ns[uri_base] = uri_prefix
 
         # invert the key/values in instances
         for k, v in sorted(ns.items(), key=lambda x: x[1]):
@@ -351,21 +353,19 @@ class DocProfile:
 
         return g.serialize(format="json-ld").decode("utf-8")
 
-    def _make_agent_link(self, name, url=None, email=None):
-        if url is not None and email is not None:
-            agent = '<a href="{0}">{1}</a> (<a href="mailto:{2}">{2}</a>)'.format(
-                url, name, email.replace("mailto:", "")
-            )
-        elif url is not None and email is None:
-            agent = '<a href="{0}">{1}</a>'.format(url, name)
-        elif url is None and email is not None:
-            agent = '<a href="{0}">{1}</a>'.format(email.split("/")[-1], name)
-        elif url is not None:
-            agent = '<a href="{}">{}</a>'.format(url, name)
-        else:
-            agent = name
+    def _make_agent_link(self, name, url=None, email=None, affiliation=None):
+        orcid = None
+        if url is not None:
+            if "orcid.org" in url:
+                orcid = self._load_template("orcid.html").render()
 
-        return agent
+        return self._load_template("agent.html").render(
+            url=url,
+            name=name,
+            orcid=orcid,
+            email=email.replace("mailto:", "") if email is not None else None,
+            affiliation=affiliation
+        )
 
     def _make_agent_html(self, agent_node):
         # we understand foaf:name, foaf:homepage & sdo:name & sdo:identifier & sdo:email (as a URI)
@@ -378,34 +378,24 @@ class DocProfile:
         org_url = None
         org_email = None
         for p, o in self.G.predicate_objects(subject=agent_node):
-            if (
-                p == FOAF.homepage
-                or p == SDO.identifier
-            ):
+            if p in [FOAF.homepage, SDO.identifier]:
                 url = str(o)
-            elif p == FOAF.name or p == SDO.name:
+            elif p in [FOAF.name, SDO.name]:
                 name = str(o)
-            elif p == FOAF.mbox or p == SDO.email:
-                email = (
-                    str(o).split("/")[-1].split("#")[-1]
-                )  # remove base URI leaving only email address
-            elif (
-                p == SDO.memberOf
-                or p == SDO.affiliation
-            ):
+            elif p in [FOAF.mbox, SDO.email]:
+                email = str(o).split("/")[-1].split("#")[-1]  # remove base URI leaving only email address
+            elif p in [SDO.memberOf, SDO.affiliation]:
                 for p2, o2 in self.G.predicate_objects(subject=o):
-                    if (
-                        p2 == FOAF.homepage
-                        or p2 == SDO.identifier
-                        or p2 == SDO.url
-                    ):  # TODO: split homepage form IDs, cater for rdfs:seeAlso
+                    if p2 in [FOAF.homepage, SDO.identifier, SDO.url]:  # TODO: split homepage form IDs, cater for rdfs:seeAlso
                         org_url = str(o2)
-                    elif p2 == FOAF.name or p2 == SDO.name:
+                    elif p2 in [FOAF.name, SDO.name]:
                         org_name = str(o2)
-                    elif p == FOAF.mbox or p == SDO.email:
-                        org_email = (
-                            str(o2).split("/")[-1].split("#")[-1]
-                        )  # remove base URI leaving only email address
+                    elif p in [FOAF.mbox, SDO.email]:
+                        org_email = str(o2).split("/")[-1].split("#")[-1]  # remove base URI leaving only email address
+
+            # use the URI of the Agent for its URL if no FOAF.homepage or SDO.identifier has been set
+            if url is None and type(agent_node) == URIRef:
+                url = str(agent_node)
 
         agent = self._make_agent_link(name, url=url, email=email)
 

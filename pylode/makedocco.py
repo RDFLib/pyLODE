@@ -4,6 +4,7 @@ import requests
 from rdflib.plugin import register, Serializer
 from rdflib_jsonld import serializer
 from docprofiles import PROFILES
+from docprofile import DocProfile
 from docprofile_owlp import Owlp
 from docprofile_skosp import Skosp
 
@@ -32,7 +33,7 @@ RDF_SERIALIZER_MAP = {
 
 
 class MakeDocco:
-    def __init__(self, input_data_file=None, input_uri=None, outputformat="html", exclude_css=False, profile="owlp"):
+    def __init__(self, input_data_file=None, input_uri=None, outputformat="html", exclude_css=False, get_curies_online=False, profile="owlp"):
         self.profile_selected = profile
 
         if outputformat not in ["html", "md"]:
@@ -41,6 +42,7 @@ class MakeDocco:
             self.outputformat = outputformat
 
         self.exclude_css = exclude_css
+        self.get_curies_online = get_curies_online
 
         if profile not in PROFILES.keys():
             self.profile_selected = "owlp"
@@ -120,18 +122,39 @@ class MakeDocco:
 
         return is_supported
 
-    def document(self, exclude_css=False):
+    def document(self, destination=None):
         if self.profile_selected == "skosp":
-            p = Skosp(self.G, self.source_info, outputformat=self.outputformat, exclude_css=self.exclude_css, default_language="en")
-            return p.generate_document()
+            p = Skosp(
+                self.G,
+                self.source_info,
+                outputformat=self.outputformat,
+                exclude_css=self.exclude_css,
+                default_language="en",
+                get_curies_online=self.get_curies_online
+            )
         else:
-            p = Owlp(self.G, self.source_info, outputformat=self.outputformat, exclude_css=self.exclude_css, default_language="en")
+            p = Owlp(
+                self.G,
+                self.source_info,
+                outputformat=self.outputformat,
+                exclude_css=self.exclude_css,
+                default_language="en",
+                get_curies_online=self.get_curies_online
+            )
+
+        if destination is not None:
+            try:
+                with open(destination, "w") as f:
+                    f.write(m.document())
+            except Exception as e:
+                print(e)
+                raise Exception("The file you specified as 'destination' could not be written to.")
+
+        else:
             return p.generate_document()
 
 
 if __name__ == "__main__":
-    m = MakeDocco(input_data_file="examples/asgs.ttl", profile="skosp", outputformat="md")
+    m = MakeDocco(input_data_file="examples/agrif.ttl", profile="owlp", outputformat="html")
 
-    with open("examples/asgs.skos.md", "w") as f:
-        f.write(m.document())
-
+    m.document(destination="examples/agrif.html")
