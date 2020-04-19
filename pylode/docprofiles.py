@@ -131,7 +131,3 @@ PROFILES = {
     # "modp": MOD_PROFILE
 }
 
-
-if __name__ == "__main__":
-    for k, v in PROFILES.items():
-        print(k)

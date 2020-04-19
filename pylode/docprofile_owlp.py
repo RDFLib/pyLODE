@@ -7,8 +7,8 @@ from docprofile import DocProfile
 
 
 class Owlp(DocProfile):
-    def __init__(self, g, source_info, outputformat="html", exclude_css=False, default_language="en"):
-        super().__init__(g, source_info, outputformat=outputformat, exclude_css=exclude_css, default_language=default_language)
+    def __init__(self, g, source_info, outputformat="html", exclude_css=False, default_language="en", get_curies_online=False):
+        super().__init__(g, source_info, outputformat=outputformat, exclude_css=exclude_css, get_curies_online=False, default_language=default_language)
         self.G.bind("prov", PROV)
         self.CLASSES = collections.OrderedDict()
         self.PROPERTIES = collections.OrderedDict()
@@ -298,24 +298,16 @@ class Owlp(DocProfile):
                 if p == SKOS.historyNote:
                     self.METADATA["historyNote"] = str(o)
 
-                if p == DCTERMS.created:
-                    self.METADATA["created"] = dateutil.parser.parse(str(o)).strftime(
-                        "%Y-%m-%d"
-                    )
-
-                if p == DCTERMS.modified:
-                    self.METADATA["modified"] = dateutil.parser.parse(str(o)).strftime(
-                        "%Y-%m-%d"
-                    )
-
-                if p == DCTERMS.issued:
-                    self.METADATA["issued"] = dateutil.parser.parse(str(o)).strftime(
+                # dates
+                if p in [DCTERMS.created, DCTERMS.modified, DCTERMS.issued]:
+                    date_type = p.split("/")[-1]
+                    self.METADATA[date_type] = dateutil.parser.parse(str(o)).strftime(
                         "%Y-%m-%d"
                     )
 
                 if p == DCTERMS.source:
                     if str(o).startswith('http'):
-                        self.METADATA["source"] = self._make_uri_html(o)  # '<a href="{0}">{0}</a>'.format(str(o))
+                        self.METADATA["source"] = self._make_uri_html(o)
                     else:
                         self.METADATA["source"] = str(o)
 
@@ -344,49 +336,12 @@ class Owlp(DocProfile):
                     )
 
                 # Agents
-                if p == DC.creator:
-                    if type(o) == URIRef:
-                        self.METADATA["creators"].add(
-                            '<a href="{0}">{0}</a>'.format(str(o))
-                        )
-                    else:
-                        self.METADATA["creators"].add(str(o))
-
-                if p == DCTERMS.creator:
+                if p in [DC.creator, DCTERMS.creator, DC.contributor, DCTERMS.contributor, DC.publisher, DCTERMS.publisher]:
+                    agent_type = p.split("/")[-1] + "s"
                     if type(o) == Literal:
-                        self.METADATA["creators"].add(str(o))
+                        self.METADATA[agent_type].add(str(o))
                     else:  # Blank Node or URI
-                        self.METADATA["creators"].add(self._make_agent_html(o))
-
-                if p == DC.contributor:
-                    if type(o) == URIRef:
-                        self.METADATA["contributors"].add(
-                            '<a href="{0}">{0}</a>'.format(str(o))
-                        )
-                    else:
-                        self.METADATA["contributors"].add(str(o))
-
-                if p == DCTERMS.contributor:
-                    if type(o) == Literal:
-                        self.METADATA["contributors"].add(str(o))
-                    else:  # Blank Node or URI
-                        self.METADATA["contributors"].add(self._make_agent_html(o))
-
-                if p == DC.publisher:
-                    if type(o) == URIRef:
-                        self.METADATA["publishers"].add(
-                            '<a href="{0}">{0}</a>'.format(str(o))
-                        )
-                    else:
-                        self.METADATA["publishers"].add(str(o))
-
-                if p == DCTERMS.publisher:
-                    if type(o) == Literal:
-                        self.METADATA["publishers"].add(str(o))
-                    else:  # Blank Node or URI
-                        self.METADATA["publishers"].add(self._make_agent_html(o))
-
-                # TODO: cater for other Agent representations
+                        self.METADATA[agent_type].add(self._make_agent_html(o))
 
                 if p == PROV.wasGeneratedBy:
                     for o2 in self.G.objects(subject=o, predicate=DOAP.repository):
@@ -1041,8 +996,6 @@ class Owlp(DocProfile):
                     path.dirname(path.realpath(__file__)), "style", "pylode.css"
                 )
                 css = open(pylode_css).read()
-
-        print(self.CLASSES)
 
         return self._load_template("owl_document." + self.outputformat).render(
             schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML templates

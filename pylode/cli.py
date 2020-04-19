@@ -5,7 +5,7 @@ import shutil
 import requests
 import rdflib
 from makedocco import MakeDocco
-from profiles import OWL_PROFILE, SKOS_PROFILE
+from docprofiles import PYLODE_OWL_PROFILE, PYLODE_SKOS_PROFILE
 
 
 # used to know what RDF file types rdflib can handle
@@ -18,7 +18,7 @@ RDF_SERIALIZER_MAP = {
     "application/n-triples": "nt",
     "application/ld+json": "json-ld",
     "application/rdf+xml": "xml",
-    # Some common but incorrect mimetypes
+    # Some common but incorrect Media Types
     "application/rdf": "xml",
     "application/rdf xml": "xml",
     "application/json": "json-ld",
@@ -80,7 +80,7 @@ def main(args=None):
         help="A profile - a specified information model - for an ontology. You can indicate this via the profile's URI"
         "or its token. The list of profiles - URIs and their corresponding tokens - supported by pyLODE, can be "
         "found by running the program with the flag -lp or --listprofiles.",
-        default="owl",
+        default="owlp",
     )
 
     parser.add_argument(
@@ -95,6 +95,14 @@ def main(args=None):
         "-xc",
         "--excludecss",
         help="Whether (true) or not (false) to exclude the standard pyLODE CSS content from an HTML file output.",
+        choices=["true", "false"],
+        default="false",
+    )
+
+    parser.add_argument(
+        "-q",
+        "--getcuriesonline",
+        help="Whether (true) or not (false) to look up CURIEs for unknown namespaces using http://prefix.cc.",
         choices=["true", "false"],
         default="false",
     )
@@ -120,9 +128,13 @@ def main(args=None):
         print(MakeDocco.list_profiles())
         exit()
     elif args.inputfile or args.url:
-        # args are present so getting RDF from input file or uri into an rdflid Graph
+        # args are present so getting RDF from input file or uri into an rdflib Graph
         if args.inputfile:
-            h = MakeDocco(input_data_file=args.inputfile.name, outputformat=args.outputformat, profile=args.profile)
+            h = MakeDocco(
+                input_data_file=args.inputfile.name,
+                outputformat=args.outputformat,
+                profile=args.profile
+            )
         elif args.url:
             h = MakeDocco(input_uri=args.url.name, outputformat=args.outputformat, profile=args.profile)
         else:
@@ -175,7 +187,7 @@ def main(args=None):
 
     # generate the HTML doc
     with open(path.join(h.publication_dir, output_filename), "w") as f:
-        f.write(h.document(exclude_css=exclude_css))
+        f.write(h.document())
 
     # print message for user
     print(
