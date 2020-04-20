@@ -4,4 +4,4 @@ from .docprofiles import *
 from .docprofile_owlp import Owlp
 from .docprofile_skosp import Skosp
 
-__version__ = '2.0'
+__version__ = '2.1'
