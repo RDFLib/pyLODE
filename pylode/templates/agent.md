@@ -1,6 +1,6 @@
-{%- if url is not none %}
+{%- if url is not none -%}
     [{{name}}]({{url}})
-{%- else %}
+{%- else -%}
     {{name}}
 {%- endif %}
 {%- if orcid %}

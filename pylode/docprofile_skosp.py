@@ -340,7 +340,7 @@ class Skosp(DocProfile):
                         self.METADATA["source"] = str(o)
 
                 if p == OWL.versionIRI:
-                    self.METADATA["versionIRI"] = '<a href="{0}">{0}</a>'.format(str(o))
+                    self.METADATA["versionIRI"] = self._make_uri_html(o)
 
                 if p == OWL.versionInfo:
                     self.METADATA["versionInfo"] = str(o)
@@ -353,7 +353,7 @@ class Skosp(DocProfile):
 
                 if p == DCTERMS.license:
                     self.METADATA["license"] = (
-                        '<a href="{0}">{0}</a>'.format(str(o))
+                        self._make_uri_html(o)
                         if str(o).startswith("http")
                         else str(o)
                     )
@@ -377,10 +377,10 @@ class Skosp(DocProfile):
 
                 if p == PROV.wasGeneratedBy:
                     for o2 in self.G.objects(subject=o, predicate=DOAP.repository):
-                        self.METADATA["repository"] = str(o2)
+                        self.METADATA["repository"] = self._make_uri_html(o2)
 
                 if p == SDO.codeRepository:
-                    self.METADATA["repository"] = str(o)
+                    self.METADATA["repository"] = self._make_uri_html(o)
 
         if self.METADATA.get("title") is None:
             raise ValueError(

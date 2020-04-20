@@ -282,7 +282,7 @@ class DocProfile:
         if self.METADATA.get("description") is not None:
             description = Literal(self.METADATA.get("description"))
         if self.METADATA.get("license") is not None:
-            license = URIRef(self.METADATA.get("license").split('>')[1].split('<')[0])
+            license = URIRef(self.METADATA.get("license").split('(')[0].strip('[]'))
         else:
             license = None
         if self.METADATA.get("rights") is not None:
@@ -420,9 +420,14 @@ class DocProfile:
         return agent
 
     def _make_source_file_link(self, source_info):
-        return '<a href="{}">RDF ({})</a>'.format(
-            source_info[0].split("/")[-1], source_info[1]
-        )
+        if self.outputformat == "md":
+            return 'RDF ([{}]({}))'.format(
+                source_info[0].split("/")[-1], source_info[1]
+            )
+        else:
+            return '<a href="{}">RDF ({})</a>'.format(
+                source_info[0].split("/")[-1], source_info[1]
+            )
 
     def generate_document(self):
         if self.ouputformat == "md":
