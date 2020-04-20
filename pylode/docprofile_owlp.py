@@ -111,9 +111,14 @@ class Owlp(DocProfile):
                     elif p2 in [OWL.cardinality, OWL.qualifiedCardinality]:
                         card = "exactly"
 
-                    card = '<span class="cardinality">{}</span> {}'.format(
-                        card, str(o2)
-                    )
+                    if self.outputformat == "md":
+                        card = '**{}** {}'.format(
+                            card, str(o2)
+                        )
+                    else:
+                        card = '<span class="cardinality">{}</span> {}'.format(
+                            card, str(o2)
+                        )
                 elif p2 in [OWL.allValuesFrom, OWL.someValuesFrom]:
                     if p2 == OWL.allValuesFrom:
                         card = "only"
@@ -148,11 +153,20 @@ class Owlp(DocProfile):
                         )
                     else:
                         c = self._make_uri_html(str(o2), type="c")
-                    card = '<span class="cardinality">{}</span> {}'.format(card, c)
+
+                    if self.outputformat == "md":
+                        card = '**{}** {}'.format(card, c)
+                    else:
+                        card = '<span class="cardinality">{}</span> {}'.format(card, c)
                 elif p2 == OWL.hasValue:
-                    card = '<span class="cardinality">value</span> {}'.format(
-                        self._make_uri_html(str(o2), type="c")
-                    )
+                    if self.outputformat == "md":
+                        card = '**value** {}'.format(
+                            self._make_uri_html(str(o2), type="c")
+                        )
+                    else:
+                        card = '<span class="cardinality">value</span> {}'.format(
+                            self._make_uri_html(str(o2), type="c")
+                        )
 
         restriction = prop + " " + card if card is not None else prop
         restriction = restriction + " " + cls if cls is not None else restriction
@@ -187,19 +201,36 @@ class Owlp(DocProfile):
                 if self.outputformat == "md" \
                 else '<a href="{}">{}</a>'.format(uri, short)
 
-        # OWL
         if type == "c":
-            suffix = '<sup class="sup-c" title="class">c</sup>'
+            if self.outputformat == "md":
+                suffix = ' (c)'
+            else:
+                suffix = '<sup class="sup-c" title="class">c</sup>'
         elif type == "op":
-            suffix = '<sup class="sup-op" title="object property">op</sup>'
+            if self.outputformat == "md":
+                suffix = ' (op)'
+            else:
+                suffix = '<sup class="sup-op" title="object property">op</sup>'
         elif type == "fp":
-            suffix = '<sup class="sup-fp" title="functional property">fp</sup>'
+            if self.outputformat == "md":
+                suffix = ' (fp)'
+            else:
+                suffix = '<sup class="sup-fp" title="functional property">fp</sup>'
         elif type == "dp":
-            suffix = '<sup class="sup-dp" title="datatype property">dp</sup>'
+            if self.outputformat == "md":
+                suffix = ' (dp)'
+            else:
+                suffix = '<sup class="sup-dp" title="datatype property">dp</sup>'
         elif type == "ap":
-            suffix = '<sup class="sup-ap" title="annotation property">ap</sup>'
+            if self.outputformat == "md":
+                suffix = ' (ap)'
+            else:
+                suffix = '<sup class="sup-ap" title="annotation property">ap</sup>'
         elif type == "ni":
-            suffix = '<sup class="sup-ni" title="named individual">ni</sup>'
+            if self.outputformat == "md":
+                suffix = ' (ni)'
+            else:
+                suffix = '<sup class="sup-ni" title="named individual">ni</sup>'
         else:
             suffix = ''
 

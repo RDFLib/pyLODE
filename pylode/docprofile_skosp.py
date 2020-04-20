@@ -132,9 +132,15 @@ class Skosp(DocProfile):
                 else '<a href="{}">{}</a>'.format(uri, short)
 
         if type == "cp":
-            suffix = '<sup class="sup-cp" title="concept">cp</sup>'
+            if self.outputformat == "md":
+                suffix = ' (cp)'
+            else:
+                suffix = '<sup class="sup-cp" title="concept">cp</sup>'
         elif type == "cl":
-            suffix = '<sup class="sup-cl" title="collection">cl</sup>'
+            if self.outputformat == "md":
+                suffix = ' (cl)'
+            else:
+                suffix = '<sup class="sup-cl" title="collection">cl</sup>'
         # None
         else:
             suffix = ''
