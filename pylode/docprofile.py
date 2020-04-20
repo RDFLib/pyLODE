@@ -354,18 +354,32 @@ class DocProfile:
         return g.serialize(format="json-ld").decode("utf-8")
 
     def _make_agent_link(self, name, url=None, email=None, affiliation=None):
-        orcid = None
-        if url is not None:
-            if "orcid.org" in url:
-                orcid = self._load_template("orcid.html").render()
+        if self.outputformat == "md":
+            orcid = None
+            if url is not None:
+                if "orcid.org" in url:
+                    orcid = self._load_template("orcid.md").render()
 
-        return self._load_template("agent.html").render(
-            url=url,
-            name=name,
-            orcid=orcid,
-            email=email.replace("mailto:", "") if email is not None else None,
-            affiliation=affiliation
-        )
+            return self._load_template("agent.md").render(
+                url=url,
+                name=name,
+                orcid=orcid,
+                email=email.replace("mailto:", "") if email is not None else None,
+                affiliation=affiliation
+            )
+        else:  # self.outputformat == "html":
+            orcid = None
+            if url is not None:
+                if "orcid.org" in url:
+                    orcid = self._load_template("orcid.html").render()
+
+            return self._load_template("agent.html").render(
+                url=url,
+                name=name,
+                orcid=orcid,
+                email=email.replace("mailto:", "") if email is not None else None,
+                affiliation=affiliation
+            )
 
     def _make_agent_html(self, agent_node):
         # we understand foaf:name, foaf:homepage & sdo:name & sdo:identifier & sdo:email (as a URI)
