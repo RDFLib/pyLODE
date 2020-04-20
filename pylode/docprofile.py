@@ -49,6 +49,9 @@ class DocProfile:
         else:
             return uri.split("/")[-1]  # could return None if URI ends in /
 
+    def _make_formatted_uri(self):
+        """Abstract method"""
+
     def _get_curie(self, uri):
         n = self._get_namespace_from_uri(str(uri))
         for k, v in self.NAMESPACES.items():

@@ -4,7 +4,7 @@ from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
 import dateutil.parser
 from itertools import chain
-from docprofile import DocProfile
+from pylode.docprofile import DocProfile
 
 
 class Skosp(DocProfile):
@@ -107,7 +107,7 @@ class Skosp(DocProfile):
             self.G.remove((s, SDO.publisher, o))
             self.G.add((s, DCTERMS.publisher, o))
 
-    def _make_uri_html(self, uri, type=None):
+    def _make_formatted_uri(self, uri, type=None):
         # set display to CURIE
         short = self._get_curie(uri)
         # if the URI base is within the default namespace of this ontology
@@ -341,12 +341,12 @@ class Skosp(DocProfile):
 
                 if p == DCTERMS.source:
                     if str(o).startswith('http'):
-                        self.METADATA["source"] = self._make_uri_html(o)  # '<a href="{0}">{0}</a>'.format(str(o))
+                        self.METADATA["source"] = self._make_formatted_uri(o)  # '<a href="{0}">{0}</a>'.format(str(o))
                     else:
                         self.METADATA["source"] = str(o)
 
                 if p == OWL.versionIRI:
-                    self.METADATA["versionIRI"] = self._make_uri_html(o)
+                    self.METADATA["versionIRI"] = self._make_formatted_uri(o)
 
                 if p == OWL.versionInfo:
                     self.METADATA["versionInfo"] = str(o)
@@ -359,7 +359,7 @@ class Skosp(DocProfile):
 
                 if p == DCTERMS.license:
                     self.METADATA["license"] = (
-                        self._make_uri_html(o)
+                        self._make_formatted_uri(o)
                         if str(o).startswith("http")
                         else str(o)
                     )
@@ -383,10 +383,10 @@ class Skosp(DocProfile):
 
                 if p == PROV.wasGeneratedBy:
                     for o2 in self.G.objects(subject=o, predicate=DOAP.repository):
-                        self.METADATA["repository"] = self._make_uri_html(o2)
+                        self.METADATA["repository"] = self._make_formatted_uri(o2)
 
                 if p == SDO.codeRepository:
-                    self.METADATA["repository"] = self._make_uri_html(o)
+                    self.METADATA["repository"] = self._make_formatted_uri(o)
 
         if self.METADATA.get("title") is None:
             raise ValueError(
@@ -433,7 +433,7 @@ class Skosp(DocProfile):
             definitions=collection[1].get("definitions"),
             scopeNotes=collection[1].get("scopeNotes"),
             source=collection[1].get("source"),
-            members=[self._make_uri_html(x, type="cp") for x in collection[1].get("members")],
+            members=[self._make_formatted_uri(x, type="cp") for x in collection[1].get("members")],
         )
 
     def _make_skos_collections(self):
@@ -460,7 +460,7 @@ class Skosp(DocProfile):
                         md += _render(ch, self.CONCEPTS.get(ch).get("narrowers"), of, level=level + 1)
                 return md
             else:  # HTML
-                html = "<li>{}".format(self._make_uri_html(c))
+                html = "<li>{}".format(self._make_formatted_uri(c))
                 if len(children) > 0:
                     for ch in sorted(children):
                         html += "\n<ul>" + \
@@ -494,12 +494,12 @@ class Skosp(DocProfile):
             scopeNotes=concept[1].get("scopeNotes"),
             examples=concept[1].get("examples"),
             source=concept[1].get("source"),
-            broaders=[self._make_uri_html(x, type="cp") for x in concept[1].get("broaders")],
-            narrowers=[self._make_uri_html(x, type="cp") for x in concept[1].get("narrowers")],
-            exactMatches=[self._make_uri_html(x, type="cp") for x in concept[1].get("exactMatches")],
-            closeMatches=[self._make_uri_html(x, type="cp") for x in concept[1].get("closeMatches")],
-            broadMatches=[self._make_uri_html(x, type="cp") for x in concept[1].get("broadMatches")],
-            narrowMatches=[self._make_uri_html(x, type="cp") for x in concept[1].get("narrowMatches")],
+            broaders=[self._make_formatted_uri(x, type="cp") for x in concept[1].get("broaders")],
+            narrowers=[self._make_formatted_uri(x, type="cp") for x in concept[1].get("narrowers")],
+            exactMatches=[self._make_formatted_uri(x, type="cp") for x in concept[1].get("exactMatches")],
+            closeMatches=[self._make_formatted_uri(x, type="cp") for x in concept[1].get("closeMatches")],
+            broadMatches=[self._make_formatted_uri(x, type="cp") for x in concept[1].get("broadMatches")],
+            narrowMatches=[self._make_formatted_uri(x, type="cp") for x in concept[1].get("narrowMatches")],
         )
 
     def _make_skos_concepts(self):

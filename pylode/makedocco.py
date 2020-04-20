@@ -3,10 +3,10 @@ from os import path
 import requests
 from rdflib.plugin import register, Serializer
 from rdflib_jsonld import serializer
-from docprofiles import PROFILES
-from docprofile import DocProfile
-from docprofile_owlp import Owlp
-from docprofile_skosp import Skosp
+from pylode.docprofiles import PROFILES
+from pylode.docprofile import DocProfile
+from pylode.docprofile_owlp import Owlp
+from pylode.docprofile_skosp import Skosp
 
 
 register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
@@ -33,7 +33,24 @@ RDF_SERIALIZER_MAP = {
 
 
 class MakeDocco:
-    def __init__(self, input_data_file=None, input_uri=None, outputformat="html", exclude_css=False, get_curies_online=False, profile="owlp"):
+    def __init__(self, input_data_file=None, input_uri=None, data=None, outputformat="html", exclude_css=False, get_curies_online=False, profile="owlp"):
+        """This class receives all of the variables needed to specify how to make documentation from an input RDF source
+
+        :param input_data_file: An RDF file
+        :type input_data_file: path (string)
+        :param input_uri: A URI resolving to RDF data
+        :type input_uri: A URI (string)
+        :param data: RDF data
+        :type data: Python varaible (string)
+        :param outputformat: The desired output format form the list of supported formats (currently either "html" (default) or "md" for Markdown
+        :type outputformat: string (one of "html" or "md")
+        :param exclude_css: Whether (True, default) or not (False) to include styling CSS within HTML outputs (as oposed to producing a separate style.css file)
+        :type exclude_css: boolean
+        :param get_curies_online: Whether (True) or not (False, default) to search prefix.cc online for additional URI prefixes
+        :type get_curies_online: boolean
+        :param profile: When document profile, from a supported set, to use. Currently supported is "owlp" (profile of OWL) or "skosp" (profile of SKOS). See `list_profiles()` for full list of profiles.
+        :type profile: string (one of "owlp" or "skosp")
+        """
         self.profile_selected = profile
 
         if outputformat not in ["html", "md"]:
@@ -54,6 +71,8 @@ class MakeDocco:
             self._parse_input_data_file(input_data_file)
         elif input_uri is not None:
             self._parse_input_uri(input_uri)
+        elif data is not None:
+            self._parse_data()
         else:
             raise Exception("You must supply either an input file or a URI for your ontology's RDF")
 
@@ -105,6 +124,11 @@ class MakeDocco:
             path.dirname(path.realpath(__file__)), "output_files"
         )
 
+    def _parse_data(self, data):
+        self.G = Graph().parse(data=data, format="turtle")
+        self.source_info = ("input.ttl", "turtle")
+        self.publication_dir = path.dirname(path.realpath(__file__))
+
     @classmethod
     def list_profiles(cls):
         s = ""
@@ -145,7 +169,7 @@ class MakeDocco:
         if destination is not None:
             try:
                 with open(destination, "w") as f:
-                    f.write(m.document())
+                    f.write(p.generate_document())
             except Exception as e:
                 print(e)
                 raise Exception("The file you specified as 'destination' could not be written to.")

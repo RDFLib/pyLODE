@@ -2,9 +2,10 @@ import collections
 from os import path
 import dateutil.parser
 from itertools import chain
+import markdown
 from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
-from docprofile import DocProfile
+from pylode.docprofile import DocProfile
 
 
 class Owlp(DocProfile):
@@ -24,7 +25,7 @@ class Owlp(DocProfile):
             j = " ? "
         # others...
         return "({})".format(
-            j.join([self._make_uri_html(x, type="c") for x in col_members])
+            j.join([self._make_formatted_uri(x, type="c") for x in col_members])
         )
 
     def _make_restriction_html(self, subject, restriction_bn):
@@ -39,7 +40,7 @@ class Owlp(DocProfile):
                     t = None
                     if str(o2) in self.PROPERTIES.keys():
                         t = self.PROPERTIES[str(o2)]["prop_type"]
-                    prop = self._make_uri_html(str(o2), t)
+                    prop = self._make_formatted_uri(str(o2), t)
                 elif p2 == OWL.onClass:
                     """
                     domains = []
@@ -95,7 +96,7 @@ class Owlp(DocProfile):
                             collection_type, collection_members
                         )
                     else:
-                        cls = self._make_uri_html(str(o2), type="c")
+                        cls = self._make_formatted_uri(str(o2), type="c")
                 elif p2 in [
                     OWL.cardinality,
                     OWL.qualifiedCardinality,
@@ -152,7 +153,7 @@ class Owlp(DocProfile):
                             collection_type, collection_members
                         )
                     else:
-                        c = self._make_uri_html(str(o2), type="c")
+                        c = self._make_formatted_uri(str(o2), type="c")
 
                     if self.outputformat == "md":
                         card = '**{}** {}'.format(card, c)
@@ -161,11 +162,11 @@ class Owlp(DocProfile):
                 elif p2 == OWL.hasValue:
                     if self.outputformat == "md":
                         card = '**value** {}'.format(
-                            self._make_uri_html(str(o2), type="c")
+                            self._make_formatted_uri(str(o2), type="c")
                         )
                     else:
                         card = '<span class="cardinality">value</span> {}'.format(
-                            self._make_uri_html(str(o2), type="c")
+                            self._make_formatted_uri(str(o2), type="c")
                         )
 
         restriction = prop + " " + card if card is not None else prop
@@ -173,7 +174,7 @@ class Owlp(DocProfile):
 
         return restriction
 
-    def _make_uri_html(self, uri, type=None):
+    def _make_formatted_uri(self, uri, type=None):
         # set display to CURIE
         short = self._get_curie(uri)
         # if the URI base is within the default namespace of this ontology
@@ -341,14 +342,12 @@ class Owlp(DocProfile):
 
             for p, o in self.G.predicate_objects(subject=s):
                 if p == OWL.imports:
-                    self.METADATA["imports"].add(self._make_uri_html(o))
+                    self.METADATA["imports"].add(self._make_formatted_uri(o))
 
                 if p == DCTERMS.title:
                     self.METADATA["title"] = str(o)
 
                 if p == DCTERMS.description:
-                    import markdown
-
                     self.METADATA["description"] = markdown.markdown(str(o))
 
                 if p == SKOS.historyNote:
@@ -363,12 +362,12 @@ class Owlp(DocProfile):
 
                 if p == DCTERMS.source:
                     if str(o).startswith('http'):
-                        self.METADATA["source"] = self._make_uri_html(o)
+                        self.METADATA["source"] = self._make_formatted_uri(o)
                     else:
                         self.METADATA["source"] = str(o)
 
                 if p == OWL.versionIRI:
-                    self.METADATA["versionIRI"] = self._make_uri_html(o)
+                    self.METADATA["versionIRI"] = self._make_formatted_uri(o)
 
                 if p == OWL.versionInfo:
                     self.METADATA["versionInfo"] = str(o)
@@ -381,7 +380,7 @@ class Owlp(DocProfile):
 
                 if p == DCTERMS.license:
                     self.METADATA["license"] = (
-                        self._make_uri_html(o)
+                        self._make_formatted_uri(o)
                         if str(o).startswith("http")
                         else str(o)
                     )
@@ -403,10 +402,10 @@ class Owlp(DocProfile):
 
                 if p == PROV.wasGeneratedBy:
                     for o2 in self.G.objects(subject=o, predicate=DOAP.repository):
-                        self.METADATA["repository"] = self._make_uri_html(o2)
+                        self.METADATA["repository"] = self._make_formatted_uri(o2)
 
                 if p == SDO.codeRepository:
-                    self.METADATA["repository"] = self._make_uri_html(o)
+                    self.METADATA["repository"] = self._make_formatted_uri(o)
 
             if self.METADATA.get("title") is None:
                 raise ValueError(
@@ -447,11 +446,13 @@ class Owlp(DocProfile):
             self.CLASSES[cls]["source"] = None
 
             for p, o in self.G.predicate_objects(subject=s):
-                if p == RDFS.label:
+                if p == DCTERMS.title:
                     self.CLASSES[cls]["title"] = str(o)
 
-                if p == RDFS.comment:
-                    self.CLASSES[cls]["description"] = str(o)
+                if p == DCTERMS.description:
+                    print(o)
+                    print(markdown.markdown(str(o)))
+                    self.CLASSES[cls]["description"] = markdown.markdown(str(o))
 
                 if p == SKOS.scopeNote:
                     self.CLASSES[cls]["scopeNote"] = str(o)
@@ -464,7 +465,7 @@ class Owlp(DocProfile):
 
                 if p == DCTERMS.source or p == DC.source:
                     if str(o).startswith('http'):
-                        self.CLASSES[cls]["source"] = self._make_uri_html(o)  # '<a href="{0}">{0}</a>'.format(str(o))
+                        self.CLASSES[cls]["source"] = self._make_formatted_uri(o)  # '<a href="{0}">{0}</a>'.format(str(o))
                     else:
                         self.CLASSES[cls]["source"] = str(o)
 
@@ -657,7 +658,7 @@ class Owlp(DocProfile):
 
                 if p == DCTERMS.source or p == DC.source:
                     if str(o).startswith('http'):
-                        self.PROPERTIES[prop]["source"] = self._make_uri_html(
+                        self.PROPERTIES[prop]["source"] = self._make_formatted_uri(
                             o)  # '<a href="{0}">{0}</a>'.format(str(o))
                     else:
                         self.PROPERTIES[prop]["source"] = str(o)
@@ -841,7 +842,7 @@ class Owlp(DocProfile):
                 # list all the other classes of this NI
                 if p == RDF.type:
                     if o != OWL.NamedIndividual:
-                        self.NAMED_INDIVIDUALS[ni]["classes"].add(self._make_uri_html(o))
+                        self.NAMED_INDIVIDUALS[ni]["classes"].add(self._make_formatted_uri(o))
 
                 if p == RDFS.label:
                     self.NAMED_INDIVIDUALS[ni]["title"] = str(o)
@@ -854,16 +855,16 @@ class Owlp(DocProfile):
 
                 if p == DCTERMS.source or p == DC.source:
                     if str(o).startswith('http'):
-                        self.NAMED_INDIVIDUALS[ni]["source"] = self._make_uri_html(
+                        self.NAMED_INDIVIDUALS[ni]["source"] = self._make_formatted_uri(
                             o)  # '<a href="{0}">{0}</a>'.format(str(o))
                     else:
                         self.NAMED_INDIVIDUALS[ni]["source"] = str(o)
 
                 if p == RDFS.seeAlso:
-                    self.NAMED_INDIVIDUALS[ni]["seeAlso"] = self._make_uri_html(o)
+                    self.NAMED_INDIVIDUALS[ni]["seeAlso"] = self._make_formatted_uri(o)
 
                 if p == OWL.sameAs:
-                    self.NAMED_INDIVIDUALS[ni]["sameAs"] = self._make_uri_html(o)
+                    self.NAMED_INDIVIDUALS[ni]["sameAs"] = self._make_formatted_uri(o)
 
             # patch title from URI if we haven't got one
             if self.NAMED_INDIVIDUALS[ni].get("title") is None:
@@ -1100,7 +1101,7 @@ class Owlp(DocProfile):
                     if self.PROPERTIES.get(p)
                     else None
                 )
-                html.append(self._make_uri_html(p, type=prop_type))
+                html.append(self._make_formatted_uri(p, type=prop_type))
             self.PROPERTIES[uri]["supers"] = html
 
             html = []
@@ -1110,7 +1111,7 @@ class Owlp(DocProfile):
                     if self.PROPERTIES.get(p)
                     else None
                 )
-                html.append(self._make_uri_html(p, type=prop_type))
+                html.append(self._make_formatted_uri(p, type=prop_type))
             self.PROPERTIES[uri]["subs"] = html
 
             html = []
@@ -1120,7 +1121,7 @@ class Owlp(DocProfile):
                     if self.PROPERTIES.get(p)
                     else None
                 )
-                html.append(self._make_uri_html(p, type=prop_type))
+                html.append(self._make_formatted_uri(p, type=prop_type))
             self.PROPERTIES[uri]["equivs"] = html
 
             html = []
@@ -1130,7 +1131,7 @@ class Owlp(DocProfile):
                     if self.PROPERTIES.get(p)
                     else None
                 )
-                html.append(self._make_uri_html(p, type=prop_type))
+                html.append(self._make_formatted_uri(p, type=prop_type))
             self.PROPERTIES[uri]["invs"] = html
 
             html = []
@@ -1138,34 +1139,34 @@ class Owlp(DocProfile):
                 if type(d) == tuple:
                     html.append(self._make_collection_class_html(d[0], d[1]))
                 else:
-                    html.append(self._make_uri_html(d, type="c"))
+                    html.append(self._make_formatted_uri(d, type="c"))
             self.PROPERTIES[uri]["domains"] = html
 
             html = []
             for d in prop["domainIncludes"]:
                 if type(d) == tuple:
                     for m in d[1]:
-                        html.append(self._make_uri_html(m, type="c"))
+                        html.append(self._make_formatted_uri(m, type="c"))
                 else:
-                    html.append(self._make_uri_html(d, type="c"))
+                    html.append(self._make_formatted_uri(d, type="c"))
             self.PROPERTIES[uri]["domainIncludes"] = html
 
             html = []
             for d in prop["ranges"]:
                 if type(d) == tuple:
                     for m in d[1]:
-                        html.append(self._make_uri_html(m, type="c"))
+                        html.append(self._make_formatted_uri(m, type="c"))
                 else:
-                    html.append(self._make_uri_html(d, type="c"))
+                    html.append(self._make_formatted_uri(d, type="c"))
             self.PROPERTIES[uri]["ranges"] = html
 
             html = []
             for d in prop["rangeIncludes"]:
                 if type(d) == tuple:
                     for m in d[1]:
-                        html.append(self._make_uri_html(m, type="c"))
+                        html.append(self._make_formatted_uri(m, type="c"))
                 else:
-                    html.append(self._make_uri_html(d, type="c"))
+                    html.append(self._make_formatted_uri(d, type="c"))
             self.PROPERTIES[uri]["rangeIncludes"] = html
 
         # crosslinking classes
@@ -1174,9 +1175,9 @@ class Owlp(DocProfile):
             for d in cls["equivalents"]:
                 if type(d) == tuple:
                     for m in d[1]:
-                        html.append(self._make_uri_html(m, type="c"))
+                        html.append(self._make_formatted_uri(m, type="c"))
                 else:
-                    html.append(self._make_uri_html(d, type="c"))
+                    html.append(self._make_formatted_uri(d, type="c"))
             self.CLASSES[uri]["equivalents"] = html
 
             html = []
@@ -1184,7 +1185,7 @@ class Owlp(DocProfile):
                 if type(d) == tuple:
                     html.append(self._make_collection_class_html(d[0], d[1]))
                 else:
-                    html.append(self._make_uri_html(d, type="c"))
+                    html.append(self._make_formatted_uri(d, type="c"))
             self.CLASSES[uri]["supers"] = html
 
             html = []
@@ -1196,9 +1197,9 @@ class Owlp(DocProfile):
             for d in cls["subs"]:
                 if type(d) == tuple:
                     for m in d[1]:
-                        html.append(self._make_uri_html(m, type="c"))
+                        html.append(self._make_formatted_uri(m, type="c"))
                 else:
-                    html.append(self._make_uri_html(d, type="c"))
+                    html.append(self._make_formatted_uri(d, type="c"))
             self.CLASSES[uri]["subs"] = html
 
             html = []
@@ -1208,7 +1209,7 @@ class Owlp(DocProfile):
                     if self.PROPERTIES.get(p)
                     else None
                 )
-                html.append(self._make_uri_html(p, type=prop_type))
+                html.append(self._make_formatted_uri(p, type=prop_type))
             self.CLASSES[uri]["in_domain_of"] = html
 
             html = []
@@ -1218,7 +1219,7 @@ class Owlp(DocProfile):
                     if self.PROPERTIES.get(p)
                     else None
                 )
-                html.append(self._make_uri_html(p, type=prop_type))
+                html.append(self._make_formatted_uri(p, type=prop_type))
             self.CLASSES[uri]["in_domain_includes_of"] = html
 
             html = []
@@ -1228,7 +1229,7 @@ class Owlp(DocProfile):
                     if self.PROPERTIES.get(p)
                     else None
                 )
-                html.append(self._make_uri_html(p, type=prop_type))
+                html.append(self._make_formatted_uri(p, type=prop_type))
             self.CLASSES[uri]["in_range_of"] = html
 
             html = []
@@ -1238,7 +1239,7 @@ class Owlp(DocProfile):
                     if self.PROPERTIES.get(p)
                     else None
                 )
-                html.append(self._make_uri_html(p, type=prop_type))
+                html.append(self._make_formatted_uri(p, type=prop_type))
             self.CLASSES[uri]["in_range_includes_of"] = html
 
         return self._make_document()
