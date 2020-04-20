@@ -60,19 +60,23 @@ The tool can be run as in these ways:
 
 Examples
 ========
-pyLODE has been tested with all of the 30+ ontologies in
-`src/pylode/examples/ <src/pylode/examples/>`__ and we are trying to ensure it
-captures all of their annotations. For each example, there is the
-original RDF file and the corresponding output, either HTML, Markdown or both.
+pyLODE has been tested with all of the 30+ ontologies in `pylode/examples/ <pylode/examples/>`_ and we are trying to
+ensure it captures all of their annotations. For each example, there is the original RDF file and the corresponding
+output, in HTML & Markdown.
 
 For example, `Epimorphic's <https://www.epimorphics.com/>`__'s **Registry Ontology** is:
 
-- **reg.ttl** - source file
-- **reg.html** - HTML output
-    - see this `rendered online by GitHack <https://raw.githack.com/RDFLib/pyLODE/master/src/pylode/examples/reg.html>`__
-    - see `the point-of-truth rendered online <https://epimorphics.com/public/vocabulary/Registry.html>`__
-- **reg.md** - Markdown output
-    - see this `rendered online by GitHub <https://github.com/RDFLib/pyLODE/blob/master/src/pylode/examples/reg.md>`__
+- **agrif.ttl** - source file
+- **agrif.html** - HTML output
+    - see this `rendered online by GitHack <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/agrif.html>`__
+    - see `the point-of-truth rendered online <https://linked.data.gov.au/def/agrif>`__
+- **agrif.md** - Markdown output
+    - see this `rendered online by GitHub <https://github.com/RDFLib/pyLODE/blob/master/pylode/examples/agrif.md>`__
+- **agrif.skos.html** - HTMl output, "skosp" profile
+    - see this `rendered online by GitHack <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/agrif.skosp.html>`__
+
+You can build all of the example outputs locally by running `pylode/examples/_make_examples.py <pylode/examples/_make_examples.py>`_
+which also serves as a good demonstration of calling pyLODE from a Python file.
 
 
 Ontologies online using pyLODE:
@@ -100,6 +104,8 @@ preprocessed examples.
 Installation
 ============
 This tool can be used either as a command line utility (Linux, Mac or Windows, see below) or as a Python module in other Python code. It can also be used via an online API. This repo contains executable files for Mac & Windows (soon Linux!) that you can use without any installation too.
+
+The most import dependency to get correct when using this as a Python script of a command line program is the package ``rdflib`` which must be v5.0.0 or greater (see requirements.txt).
 
 Python
 ------

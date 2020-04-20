@@ -5,7 +5,7 @@ from itertools import chain
 import markdown
 from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
-from pylode.docprofile import DocProfile
+from docprofile import DocProfile
 
 
 class Owlp(DocProfile):
@@ -450,8 +450,6 @@ class Owlp(DocProfile):
                     self.CLASSES[cls]["title"] = str(o)
 
                 if p == DCTERMS.description:
-                    print(o)
-                    print(markdown.markdown(str(o)))
                     self.CLASSES[cls]["description"] = markdown.markdown(str(o))
 
                 if p == SKOS.scopeNote:

@@ -4,7 +4,7 @@ from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
 import dateutil.parser
 from itertools import chain
-from pylode.docprofile import DocProfile
+from docprofile import DocProfile
 
 
 class Skosp(DocProfile):

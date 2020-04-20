@@ -285,7 +285,10 @@ class DocProfile:
         if self.METADATA.get("description") is not None:
             description = Literal(self.METADATA.get("description"))
         if self.METADATA.get("license") is not None:
-            license = URIRef(self.METADATA.get("license").split('(')[0].strip('[]'))
+            if self.outputformat == "md":
+                license = URIRef(self.METADATA.get("license").split('(')[0].strip('[]'))
+            else:
+                license = URIRef(self.METADATA.get("license").split('"')[1])
         else:
             license = None
         if self.METADATA.get("rights") is not None:
@@ -296,7 +299,10 @@ class DocProfile:
                 self.METADATA.get("created").split("-")[0], datatype=XSD.int
             )
         if self.METADATA.get("repository") is not None:
-            repository = URIRef(self.METADATA.get("repository"))
+            if self.outputformat == "md":
+                repository = URIRef(self.METADATA.get("repository").split('(')[0].strip('[]'))
+            else:
+                repository = URIRef(self.METADATA.get("repository").split('"')[1])
 
         """
         @prefix sdo: <https://schema.org/> .

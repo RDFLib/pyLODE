@@ -1,12 +1,15 @@
+import sys
+sys.path.append("..")
+
 from rdflib import Graph, util
 from os import path
 import requests
 from rdflib.plugin import register, Serializer
 from rdflib_jsonld import serializer
-from pylode.docprofiles import PROFILES
-from pylode.docprofile import DocProfile
-from pylode.docprofile_owlp import Owlp
-from pylode.docprofile_skosp import Skosp
+from docprofiles import PROFILES
+from docprofile import DocProfile
+from docprofile_owlp import Owlp
+from docprofile_skosp import Skosp
 
 
 register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")

@@ -1,4 +1,4 @@
-from pylode.makedocco import MakeDocco
+from makedocco import MakeDocco
 
 
 h = MakeDocco(profile='skos')

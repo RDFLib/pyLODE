@@ -110,8 +110,9 @@ def main(args=None):
     parser.add_argument(
         "-o",
         "--outputfile",
-        help="A name you wish to assign to the output file. Will be postfixed with .html. If not specified, "
-        "the name of the input file or last segment of RDF URI will be used, + .html.",
+        help="A name you wish to assign to the output file. Will be postfixed with .html/.md if not already added. If "
+             "no output file is given, output will be printed to screen",
+        default=None
     )
 
     parser.add_argument(
@@ -172,31 +173,31 @@ def main(args=None):
     else:
         exclude_css = False
 
-    output_filename = (
-        os.path.basename(args.outputfile) if args.outputfile else "doc.html"
-    )
-
-    output_format = "HTML"
-    if args.outputformat == "html":
-        if not output_filename.endswith(".html"):
-            output_filename += ".html"
-    elif args.outputformat == "md":
-        if not output_filename.endswith(".md"):
-            output_filename += ".md"
-        output_format = "Markdown"
-
-    # generate the HTML doc
-    with open(path.join(h.publication_dir, output_filename), "w") as f:
-        f.write(h.document())
-
-    # print message for user
-    print(
-        "Finished. {} profile documentation in {} format created in file in {}".format(
-            args.profile,
-            output_format,
-            path.join(h.publication_dir, output_filename)
+    if args.outputfile is not None:
+        output_file_name = (
+            args.outputfile if args.outputfile else "doc.html"
         )
-    )
+
+        output_format = "HTML"
+        if args.outputformat == "html":
+            if not output_file_name.endswith(".html"):
+                output_file_name += ".html"
+        elif args.outputformat == "md":
+            if not output_file_name.endswith(".md"):
+                output_file_name += ".md"
+            output_format = "Markdown"
+
+        # generate the HTML doc
+        h.document(destination=output_file_name)
+
+        print(
+            "Finished. {} documentation in {}".format(
+                args.profile,
+                output_file_name,
+            )
+        )
+    else:
+        print(h.document())
 
 
 if __name__ == "__main__":
