@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Description of a Project (DOAP) vocabulary</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <style>
+        #pylode {
+            position: fixed;
+            top: 80px;
+            left: -60px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 5px 0 5px 0;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 3px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 { font: italic 100% sans-serif }
+        h6 { font: small-caps 100% sans-serif }
+
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: justify;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-cp,
+        .sup-cl {
+            cursor:help;
+            margin-left: 3px;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-cp {
+            color:orange;
+        }
+
+        .sup-cl {
+            color:darkred;
+        }
+
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+    </style>
+    
+    <script type="application/ld+json">
+      [
+  {
+    "@id": "http://usefulinc.com/ns/doap#",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "<p>The Description of a Project (DOAP) vocabulary, described using W3C RDF Schema and the Web Ontology Language.</p>"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Description of a Project (DOAP) vocabulary"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+<body>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<h1>Description of a Project (DOAP) vocabulary</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>IRI</dt>
+        <dd><code>http://usefulinc.com/ns/doap#</code></dd>
+        <dt>Creator(s)</dt>
+        <dd>
+            Edd Wilder-James<br/>
+        </dd>
+        <dt>Imports</dt>
+        <dd>
+            <a href="http://xmlns.com/foaf/0.1/index.rdf">foaf:index.rdf</a><br/>
+        </dd>
+        <dt>Ontology RDF</dt>
+        <dd><a href="doap.ttl">RDF (turtle)</a></dd>
+    </dl>
+    <h2>Description</h2>
+    <div id="description">
+        <p>The Description of a Project (DOAP) vocabulary, described using W3C RDF Schema and the Web Ontology Language.</p>
+    </div>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#properties">Properties</a></li>
+        <li><a href="#namespaces">Namespaces</a></li>
+        <li><a href="#legend">Legend</a></li>
+    </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+        <div style="width:500px; height:50px; background-color: black;">&nbsp;</div>
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
+</section>
+<section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#BazaarBranch">Bazaar Branch</a></li>
+        <li><a href="#DptCVS">DÃ©pÃ´t CVS</a></li>
+        <li><a href="#DptGNUArch">DÃ©pÃ´t GNU Arch</a></li>
+        <li><a href="#Especificao">EspecificaÃ§Ã£o</a></li>
+        <li><a href="#GitBranch">Git Branch</a></li>
+        <li><a href="#Projet">Projet</a></li>
+        <li><a href="#RepositorioGit">Repositorio Git</a></li>
+        <li><a href="#Repositoriodarcs">Repositorio darcs</a></li>
+        <li><a href="#Repository">Repository</a></li>
+        <li><a href="#RepositrioMercurial">RepositÃ³rio Mercurial</a></li>
+        <li><a href="#SubversionRepository">Subversion Repository</a></li>
+        <li><a href="#Verze">Verze</a></li>
+        <li><a href="#loitBitKeeper">ÃšloÅ¾iÅ¡tÄ› BitKeeper</a></li>
+    </ul>
+    <div class="entity class" id="DptGNUArch">
+        <h3>DÃ©pÃ´t GNU Arch<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#ArchRepository</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>DÃ©pÃ´t GNU Arch du code source.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Repository">doap:Repository</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="loitBitKeeper">
+        <h3>ÃšloÅ¾iÅ¡tÄ› BitKeeper<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#BKRepository</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Repositorio BitKeeper del cÃ³digo fuente.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Repository">doap:Repository</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="BazaarBranch">
+        <h3>Bazaar Branch<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#BazaarBranch</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>CÃ³digo fonte da ramificaÃ§Ã£o Bazaar.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Repository">doap:Repository</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DptCVS">
+        <h3>DÃ©pÃ´t CVS<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#CVSRepository</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>DÃ©pÃ´t CVS du code source.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Repository">doap:Repository</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Repositoriodarcs">
+        <h3>Repositorio darcs<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#DarcsRepository</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Repositorio darcs del cÃ³digo fuente.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Repository">doap:Repository</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="GitBranch">
+        <h3>Git Branch<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#GitBranch</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Git source code branch.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Repository">doap:Repository</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RepositorioGit">
+        <h3>Repositorio Git<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#GitRepository</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>ÃšloÅ¾iÅ¡tÄ› zdrojovÃ½ch kÃ³dÅ¯ Git.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Repository">doap:Repository</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RepositrioMercurial">
+        <h3>RepositÃ³rio Mercurial<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#HgRepository</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>RepositÃ³rio Mercurial do cÃ³digo fonte.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Repository">doap:Repository</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Projet">
+        <h3>Projet<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#Project</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Un projet.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://xmlns.com/wordnet/1.6/Project">http://xmlns.com/wordnet/1.6/Project</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/Project">foaf:Project</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#language">doap:language</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#implements">doap:implements</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#release">doap:release</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#platform">doap:platform</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#blog">doap:blog</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#old-homepage">doap:old-homepage</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#homepage">doap:homepage</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#developer">doap:developer</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#audience">doap:audience</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#programming-language">doap:programming-language</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#screenshots">doap:screenshots</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#repository">doap:repository</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#documenter">doap:documenter</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#support-forum">doap:support-forum</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#download-page">doap:download-page</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#bug-database">doap:bug-database</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#translator">doap:translator</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#maintainer">doap:maintainer</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#service-endpoint">doap:service-endpoint</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#wiki">doap:wiki</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#category">doap:category</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#helper">doap:helper</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#mailing-list">doap:mailing-list</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#vendor">doap:vendor</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#tester">doap:tester</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#developer-forum">doap:developer-forum</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#os">doap:os</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#download-mirror">doap:download-mirror</a><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#repositoryOf">doap:repositoryOf</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Repository">
+        <h3>Repository<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#Repository</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>DÃ©pÃ´t du code source.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#ArchRepository">doap:ArchRepository</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://usefulinc.com/ns/doap#CVSRepository">doap:CVSRepository</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://usefulinc.com/ns/doap#GitRepository">doap:GitRepository</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://usefulinc.com/ns/doap#SVNRepository">doap:SVNRepository</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://usefulinc.com/ns/doap#BazaarBranch">doap:BazaarBranch</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://usefulinc.com/ns/doap#BKRepository">doap:BKRepository</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://usefulinc.com/ns/doap#GitBranch">doap:GitBranch</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://usefulinc.com/ns/doap#HgRepository">doap:HgRepository</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://usefulinc.com/ns/doap#DarcsRepository">doap:DarcsRepository</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#anon-root">doap:anon-root</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#browse">doap:browse</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#repositoryOf">doap:repositoryOf</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#location">doap:location</a><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#repository">doap:repository</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="SubversionRepository">
+        <h3>Subversion Repository<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#SVNRepository</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>ÃšloÅ¾iÅ¡tÄ› zdrojovÃ½ch kÃ³dÅ¯ Subversion.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Repository">doap:Repository</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Especificao">
+        <h3>EspecificaÃ§Ã£o<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#Specification</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>A specification of a system's aspects, technical or otherwise.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#implements">doap:implements</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Verze">
+        <h3>Verze<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#Version</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>InformaÃ§Ã£o sobre a versÃ£o do projeto lanÃ§ado.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#os">doap:os</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#file-release">doap:file-release</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#revision">doap:revision</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#platform">doap:platform</a><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#release">doap:release</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="properties">
+    <h2>Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#anonymousroot">anonymous root</a></li>
+        <li><a href="#audience">audience</a></li>
+        <li><a href="#blog">blog</a></li>
+        <li><a href="#prohle">prohlÃ­Å¾eÄ</a></li>
+        <li><a href="#basededadosdebugs">base de dados de bugs</a></li>
+        <li><a href="#Kategorie">Kategorie</a></li>
+        <li><a href="#creado">creado</a></li>
+        <li><a href="#description">description</a></li>
+        <li><a href="#dveloppeur">dÃ©veloppeur</a></li>
+        <li><a href="#developerforum">developer forum</a></li>
+        <li><a href="#Dokumentator">Dokumentator</a></li>
+        <li><a href="#mirrordedescarga">mirror de descarga</a></li>
+        <li><a href="#pagedetlchargement">page de tÃ©lÃ©chargement</a></li>
+        <li><a href="#publicaodoficheiro">publicaÃ§Ã£o do ficheiro</a></li>
+        <li><a href="#colaborador">colaborador</a></li>
+        <li><a href="#domovskstrnka">domovskÃ¡ strÃ¡nka</a></li>
+        <li><a href="#Implementsspecification">Implements specification</a></li>
+        <li><a href="#language">language</a></li>
+        <li><a href="#licence">licence</a></li>
+        <li><a href="#umstnloit">umÃ­stÄ›nÃ­ ÃºloÅ¾iÅ¡tÄ›</a></li>
+        <li><a href="#listedediffusion">liste de diffusion</a></li>
+        <li><a href="#programadorprincipal">programador principal</a></li>
+        <li><a href="#module">module</a></li>
+        <li><a href="#Name">Name</a></li>
+        <li><a href="#pginawebantigua">pÃ¡gina web antigua</a></li>
+        <li><a href="#sistemaoperativo">sistema operativo</a></li>
+        <li><a href="#plataforma">plataforma</a></li>
+        <li><a href="#Programmiersprache">Programmiersprache</a></li>
+        <li><a href="#Release">Release</a></li>
+        <li><a href="#repositorio">repositorio</a></li>
+        <li><a href="#repositoryof">repository of</a></li>
+        <li><a href="#verze">verze</a></li>
+        <li><a href="#snmekobrazovky">snÃ­mek obrazovky</a></li>
+        <li><a href="#serviceendpoint">service endpoint</a></li>
+        <li><a href="#descripcincorta">descripciÃ³n corta</a></li>
+        <li><a href="#supportingforum">supporting forum</a></li>
+        <li><a href="#tester">tester</a></li>
+        <li><a href="#traducteur">traducteur</a></li>
+        <li><a href="#vendor">vendor</a></li>
+        <li><a href="#wiki">wiki</a></li>
+    </ul>
+    <div class="entity property" id="anonymousroot">
+        <h3>anonymous root<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#anon-root</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Repository for anonymous access.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Repository">doap:Repository</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="audience">
+        <h3>audience<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#audience</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    DescriÃ§Ã£o do utilizador base alvo
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="blog">
+        <h3>blog<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#blog</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    URI de um blog relacionado com um projeto
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://rdfs.org/sioc/types#Weblog">http://rdfs.org/sioc/types#Weblog</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="prohle">
+        <h3>prohlÃ­Å¾eÄ<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#browse</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Web-Browser Interface fÃ¼r das Repository.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Repository">doap:Repository</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="basededadosdebugs">
+        <h3>base de dados de bugs<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#bug-database</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Bug tracker para un proyecto.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="Kategorie">
+        <h3>Kategorie<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#category</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A category of project.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="creado">
+        <h3>creado<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#created</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Date Ã  laquelle a Ã©tÃ© crÃ©Ã© quelque chose, au format AAAA-MM-JJ (par ex. 2004-04-05)
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="description">
+        <h3>description<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#description</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    DescripciÃ³n en texto plano de un proyecto, de 2 a 4 enunciados de longitud.
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="dveloppeur">
+        <h3>dÃ©veloppeur<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#developer</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Software-Entwickler fÃ¼r eine Projekt.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="developerforum">
+        <h3>developer forum<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#developer-forum</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A forum or community for developers of this project.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://rdfs.org/sioc/ns#Container">http://rdfs.org/sioc/ns#Container</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="Dokumentator">
+        <h3>Dokumentator<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#documenter</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Mitarbeiter an der Dokumentation eines Projektes.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="mirrordedescarga">
+        <h3>mirror de descarga<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#download-mirror</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Mirror of software download web page.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="pagedetlchargement">
+        <h3>page de tÃ©lÃ©chargement<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#download-page</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    PÃ¡gina web da qual o projeto de software pode ser descarregado.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="publicaodoficheiro">
+        <h3>publicaÃ§Ã£o do ficheiro<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#file-release</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    URI adresa staÅ¾enÃ­ asociovanÃ© s revizÃ­.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Version">doap:Version</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="colaborador">
+        <h3>colaborador<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#helper</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Ajudante ou colaborador do projeto.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="domovskstrnka">
+        <h3>domovskÃ¡ strÃ¡nka<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#homepage</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    URL der Projekt-Homepage,
+		verbunden mit genau einem Projekt.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/homepage">foaf:homepage</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="Implementsspecification">
+        <h3>Implements specification<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#implements</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Uma especificaÃ§Ã£o que um projeto implementa. Pode ser uma padrÃ£o, API ou um nÃ­vel de conformidade definida legalmente.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Specification">doap:Specification</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="language">
+        <h3>language<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#language</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    CÃ³digo de idioma ISO do projeto para o qual foi traduzido
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="licence">
+        <h3>licence<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#license</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Die URI einer RDF-Beschreibung einer Lizenz unter der die Software herausgegeben wird. z.B. eine SPDX Referenz
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="umstnloit">
+        <h3>umÃ­stÄ›nÃ­ ÃºloÅ¾iÅ¡tÄ›<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#location</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Emplacement d'un dÃ©pÃ´t.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Repository">doap:Repository</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="listedediffusion">
+        <h3>liste de diffusion<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#mailing-list</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Homepage der Mailing Liste oder E-Mail Adresse.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://rdfs.org/sioc/types#MailingList">http://rdfs.org/sioc/types#MailingList</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="programadorprincipal">
+        <h3>programador principal<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#maintainer</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Maintainer of a project, a project leader.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="module">
+        <h3>module<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#module</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Nome do mÃ³dulo de um repositÃ³rio Subversion, CVS, BitKeeper ou Arch.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    (<a href="http://usefulinc.com/ns/doap#CVSRepository">doap:CVSRepository</a><sup class="sup-c" title="class">c</sup> or <a href="http://usefulinc.com/ns/doap#ArchRepository">doap:ArchRepository</a><sup class="sup-c" title="class">c</sup> or <a href="http://usefulinc.com/ns/doap#BKRepository">doap:BKRepository</a><sup class="sup-c" title="class">c</sup>)
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="Name">
+        <h3>Name<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#name</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Le nom de quelque chose.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="pginawebantigua">
+        <h3>pÃ¡gina web antigua<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#old-homepage</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    URL of a project's past homepage,
+		associated with exactly one project.
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/homepage">foaf:homepage</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="sistemaoperativo">
+        <h3>sistema operativo<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#os</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Sistema operativo a que o projeto estÃ¡ limitado. Omita esta propriedade se o projeto nÃ£o Ã© condicionado pelo SO usado.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Version">doap:Version</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="plataforma">
+        <h3>plataforma<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#platform</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Indicator of software platform (non-OS specific), e.g. Java, Firefox, ECMA CLR
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://usefulinc.com/ns/doap#Version">doap:Version</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="Programmiersprache">
+        <h3>Programmiersprache<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#programming-language</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Langage de programmation avec lequel un projet est implÃ©mentÃ©,
+		ou avec lequel il est prÃ©vu de l'utiliser.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="Release">
+        <h3>Release<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#release</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Ein Release (Version) eines Projekts.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Version">doap:Version</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="repositorio">
+        <h3>repositorio<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#repository</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Repositorio del cÃ³digo fuente.
+                </td>
+            </tr>
+            <tr>
+                <th>Inverse properties</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#repositoryOf">doap:repositoryOf</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Repository">doap:Repository</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="repositoryof">
+        <h3>repository of<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#repositoryOf</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The project that uses a repository.
+                </td>
+            </tr>
+            <tr>
+                <th>Inverse properties</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#repository">doap:repository</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Repository">doap:Repository</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="verze">
+        <h3>verze<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#revision</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Revision identifier of a software release.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Version">doap:Version</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="snmekobrazovky">
+        <h3>snÃ­mek obrazovky<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#screenshots</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    PÃ¡gina web con capturas de pantalla del proyecto.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="serviceendpoint">
+        <h3>service endpoint<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#service-endpoint</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The URI of a web service endpoint where software as a service may be accessed
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="descripcincorta">
+        <h3>descripciÃ³n corta<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#shortdesc</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Texte descriptif concis (8 ou 9 mots) d'un projet.
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="supportingforum">
+        <h3>supporting forum<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#support-forum</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A forum or community that supports this project.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://rdfs.org/sioc/ns#Container">http://rdfs.org/sioc/ns#Container</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="tester">
+        <h3>tester<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#tester</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A tester or other quality control contributor.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="traducteur">
+        <h3>traducteur<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#translator</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Contribuidor das traduÃ§Ãµes para o projeto.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="vendor">
+        <h3>vendor<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#vendor</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Vendor organization: commercial, free or otherwise
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://xmlns.com/foaf/0.1/Organization">foaf:Organization</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="wiki">
+        <h3>wiki<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>http://usefulinc.com/ns/doap#wiki</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://usefulinc.com/ns/doap#
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Wiki-URL fÃ¼r die kollaborative Dikussion eines Projektes.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://rdfs.org/sioc/types#Wiki">http://rdfs.org/sioc/types#Wiki</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+
+<section id="namedindividuals">
+    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+    </ul>
+</section>
+
+<section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt>dc</dt>
+        <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+        <dt>doap</dt>
+        <dd><code>http://usefulinc.com/ns/doap#</code></dd>
+        <dt>foaf</dt>
+        <dd><code>http://xmlns.com/foaf/0.1/</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>prov</dt>
+        <dd><code>http://www.w3.org/ns/prov#</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>sdo</dt>
+        <dd><code>https://schema.org/</code></dd>
+        <dt>skos</dt>
+        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>vs</dt>
+        <dd><code>http://www.w3.org/2003/06/sw-vocab-status/ns#</code></dd>
+        <dt>xml</dt>
+        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+<section id="legend">
+    <h2>Legend</h2>
+    <table class="entity">
+        <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+        <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+        <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+        <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+        <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+        <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+        <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+    </table>
+</section>
+</body>
+</html>
