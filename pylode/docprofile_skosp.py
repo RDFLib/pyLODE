@@ -16,66 +16,96 @@ class Skosp(DocProfile):
     def _expand_graph(self):
         # name
         for s, o in chain(
-                self.G.subject_objects(predicate=DC.title),
-                self.G.subject_objects(predicate=RDFS.label),
-                self.G.subject_objects(predicate=DCTERMS.title)
+                self.G.subject_objects(DC.title),
+                self.G.subject_objects(RDFS.label),
+                self.G.subject_objects(DCTERMS.title)
         ):
             self.G.add((s, SKOS.prefLabel, o))
 
         # description
         for s, o in chain(
-                self.G.subject_objects(predicate=DC.description),
-                self.G.subject_objects(predicate=DCTERMS.description),
-                self.G.subject_objects(predicate=RDFS.comment),
-                self.G.subject_objects(predicate=SDO.description)
+                self.G.subject_objects(DC.description),
+                self.G.subject_objects(DCTERMS.description),
+                self.G.subject_objects(RDFS.comment),
+                self.G.subject_objects(SDO.description)
         ):
             self.G.add((s, SKOS.definition, o))
 
         # OWL -> SKOS
         # classes as Concepts types
         for s in chain(
-                self.G.subjects(predicate=RDF.type, object=RDFS.Class),
-                self.G.subjects(predicate=RDF.type, object=OWL.Class)
+                self.G.subjects(RDF.type, RDFS.Class),
+                self.G.subjects(RDF.type, OWL.Class)
         ):
             self.G.add((s, RDF.type, SKOS.Concept))
 
         # SKOS Concept Hierarchy from Class subsumption
-        for s, o in self.G.subject_objects(predicate=RDFS.subClassOf):
+        for s, o in self.G.subject_objects(RDFS.subClassOf):
             if type(o) != BNode:  # stops restrictions being seen as broader/narrower
                 self.G.add((s, SKOS.broader, o))
                 self.G.add((o, SKOS.narrower, s))
 
-        for s, o in self.G.subject_objects(predicate=OWL.equivalentClass):
+        for s, o in self.G.subject_objects(OWL.equivalentClass):
             self.G.add((s, SKOS.exactMatch, o))
             self.G.add((o, SKOS.exactMatch, s))
 
         # the ontology is now a ConceptScheme
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
+        for s in self.G.subjects(RDF.type, OWL.Ontology):
             self.G.add((s, RDF.type, SKOS.ConceptScheme))
 
             # top concepts
             # if the class is declared here and has no subClassOf
-            for s2 in self.G.subjects(predicate=RDF.type, object=RDFS.Class):
+            for s2 in self.G.subjects(RDF.type, RDFS.Class):
                 if (s2, RDFS.subClassOf, None) not in self.G:
                     self.G.add((s2, SKOS.topConceptOf, s))
 
-            for s2 in self.G.subjects(predicate=RDF.type, object=OWL.Class):
+            for s2 in self.G.subjects(RDF.type, OWL.Class):
                 if (s2, RDFS.subClassOf, None) not in self.G:
                     self.G.add((s2, SKOS.topConceptOf, s))
 
         # SKOS -> SKOS
         # broader / narrower buildout
-        for s, o in self.G.subject_objects(predicate=SKOS.broader):
+        for s, o in self.G.subject_objects(SKOS.broader):
             self.G.add((o, SKOS.narrower, s))
 
-        for s, o in self.G.subject_objects(predicate=SKOS.narrower):
+        for s, o in self.G.subject_objects(SKOS.narrower):
             self.G.add((o, SKOS.broader, s))
 
-        for s, o in self.G.subject_objects(predicate=SKOS.topConceptOf):
+        for s, o in self.G.subject_objects(SKOS.topConceptOf):
             self.G.add((o, SKOS.hasTopConcept, s))
 
-        for s, o in self.G.subject_objects(predicate=SKOS.hasTopConcept):
+        for s, o in self.G.subject_objects(SKOS.hasTopConcept):
             self.G.add((o, SKOS.topConceptOf, s))
+
+        # Agents
+        # creator
+        for s, o in chain(
+                self.G.subject_objects(DC.creator),
+                self.G.subject_objects(SDO.creator),
+                self.G.subject_objects(SDO.author)  # conflate SDO.author with DCTERMS.creator
+        ):
+            self.G.remove((s, DC.creator, o))
+            self.G.remove((s, SDO.creator, o))
+            self.G.remove((s, SDO.author, o))
+            self.G.add((s, DCTERMS.creator, o))
+
+        # contributor
+        for s, o in chain(
+                self.G.subject_objects(DC.contributor),
+                self.G.subject_objects(SDO.contributor)
+        ):
+            self.G.remove((s, DC.contributor, o))
+            self.G.remove((s, SDO.contributor, o))
+            self.G.add((s, DCTERMS.contributor, o))
+
+        # publisher
+        for s, o in chain(
+                self.G.subject_objects(DC.publisher),
+                self.G.subject_objects(SDO.publisher)
+        ):
+            self.G.remove((s, DC.publisher, o))
+            self.G.remove((s, SDO.publisher, o))
+            self.G.add((s, DCTERMS.publisher, o))
 
     def _make_uri_html(self, uri, type=None):
         # set display to CURIE

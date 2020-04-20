@@ -208,38 +208,68 @@ class Owlp(DocProfile):
     def _expand_graph(self):
         # name
         for s, o in chain(
-                self.G.subject_objects(predicate=DC.title),
-                self.G.subject_objects(predicate=RDFS.label),
-                self.G.subject_objects(predicate=DCTERMS.title),
-                self.G.subject_objects(predicate=SDO.name)
+                self.G.subject_objects(DC.title),
+                self.G.subject_objects(RDFS.label),
+                self.G.subject_objects(SKOS.prefLabel),
+                self.G.subject_objects(SDO.name)
         ):
-            self.G.add((s, SKOS.prefLabel, o))
+            self.G.add((s, DCTERMS.title, o))
 
         # description
         for s, o in chain(
-                self.G.subject_objects(predicate=DC.description),
-                self.G.subject_objects(predicate=DCTERMS.description),
-                self.G.subject_objects(predicate=SKOS.definition),
-                self.G.subject_objects(predicate=SDO.description)
+                self.G.subject_objects(DC.description),
+                self.G.subject_objects(RDFS.comment),
+                self.G.subject_objects(SKOS.definition),
+                self.G.subject_objects(SDO.description)
         ):
-            self.G.add((s, RDFS.comment, o))
+            self.G.add((s, DCTERMS.description, o))
 
         # property types
         for s in chain(
-                self.G.subjects(predicate=RDF.type, object=OWL.ObjectProperty),
-                self.G.subjects(predicate=RDF.type, object=OWL.FunctionalProperty),
-                self.G.subjects(predicate=RDF.type, object=OWL.DatatypeProperty),
-                self.G.subjects(predicate=RDF.type, object=OWL.AnnotationProperty)
+                self.G.subjects(RDF.type, OWL.ObjectProperty),
+                self.G.subjects(RDF.type, OWL.FunctionalProperty),
+                self.G.subjects(RDF.type, OWL.DatatypeProperty),
+                self.G.subjects(RDF.type, OWL.AnnotationProperty)
         ):
             self.G.add((s, RDF.type, RDF.Property))
 
         # class types
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.Class):
+        for s in self.G.subjects(RDF.type, OWL.Class):
             self.G.add((s, RDF.type, RDFS.Class))
 
         # owl:Restrictions from Blank Nodes
-        for s in self.G.subjects(predicate=OWL.onProperty):
+        for s in self.G.subjects(OWL.onProperty):
             self.G.add((s, RDF.type, OWL.Restriction))
+
+        # Agents
+        # creator
+        for s, o in chain(
+                self.G.subject_objects(DC.creator),
+                self.G.subject_objects(SDO.creator),
+                self.G.subject_objects(SDO.author)  # conflate SDO.author with DCTERMS.creator
+        ):
+            self.G.remove((s, DC.creator, o))
+            self.G.remove((s, SDO.creator, o))
+            self.G.remove((s, SDO.author, o))
+            self.G.add((s, DCTERMS.creator, o))
+
+        # contributor
+        for s, o in chain(
+                self.G.subject_objects(DC.contributor),
+                self.G.subject_objects(SDO.contributor)
+        ):
+            self.G.remove((s, DC.contributor, o))
+            self.G.remove((s, SDO.contributor, o))
+            self.G.add((s, DCTERMS.contributor, o))
+
+        # publisher
+        for s, o in chain(
+                self.G.subject_objects(DC.publisher),
+                self.G.subject_objects(SDO.publisher)
+        ):
+            self.G.remove((s, DC.publisher, o))
+            self.G.remove((s, SDO.publisher, o))
+            self.G.add((s, DCTERMS.publisher, o))
 
     def _extract_metadata(self):
         if len(self.CLASSES.keys()) > 0:
@@ -271,6 +301,9 @@ class Owlp(DocProfile):
         self.METADATA["creators"] = set()
         self.METADATA["contributors"] = set()
         self.METADATA["publishers"] = set()
+        self.METADATA["editors"] = set()
+        self.METADATA["funders"] = set()
+        self.METADATA["translators"] = set()
         for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
             s_str = str(s)  # this is the Ontology's URI
             self.METADATA["uri"] = s_str
@@ -279,10 +312,10 @@ class Owlp(DocProfile):
                 if p == OWL.imports:
                     self.METADATA["imports"].add(self._make_uri_html(o))
 
-                if p == RDFS.label:
+                if p == DCTERMS.title:
                     self.METADATA["title"] = str(o)
 
-                if p == RDFS.comment:
+                if p == DCTERMS.description:
                     import markdown
 
                     self.METADATA["description"] = markdown.markdown(str(o))
@@ -328,7 +361,9 @@ class Owlp(DocProfile):
                     )
 
                 # Agents
-                if p in [DC.creator, DCTERMS.creator, DC.contributor, DCTERMS.contributor, DC.publisher, DCTERMS.publisher]:
+                if p in [
+                    DCTERMS.creator, DCTERMS.contributor, DCTERMS.publisher, SDO.editor, SDO.funder, SDO.translator
+                ]:
                     agent_type = p.split("/")[-1] + "s"
                     if type(o) == Literal:
                         self.METADATA[agent_type].add(str(o))

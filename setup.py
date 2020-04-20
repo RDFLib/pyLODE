@@ -5,12 +5,14 @@ import re
 import os
 from setuptools import setup
 
+
 def open_local(paths, mode='r', encoding='utf8'):
     path = os.path.join(
         os.path.abspath(os.path.dirname(__file__)),
         *paths
     )
     return codecs.open(path, mode, encoding)
+
 
 with open_local(['pylode', '__init__.py'], encoding='latin1') as fp:
     try:
