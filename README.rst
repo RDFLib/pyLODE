@@ -149,7 +149,7 @@ These are the command line arguments to run pyLODE as a BASH or Python script on
 -  ``-f`` or ``--outputformat``, *optional, default 'html'*
     - The output format of the documentation. 'html' or 'md' accepted.
 -  ``-p`` or ``--profile``, *optional, default 'owl'*
-    - The profile (specification) for ontology documentation used. This has been "owl" (for OWL Ontology) only until the recent introduction of "skos" (according to the `Simple Knowledge Organization System (SKOS) <https://www.w3.org/TR/skos-reference/>`__). See ``-lp`` for all profiles supported.
+    - The profile (specification) for ontology documentation used. This has been "owl" (for OWL Ontology) only until the recent introduction of "skosp" (according to the `Simple Knowledge Organization System (SKOS) <https://www.w3.org/TR/skos-reference/>`__). See ``-lp`` for all profiles supported.
 -  ``-lp`` or ``--listprofiles``, *optional, no arguments*
     - Lists all the profiles (specifications) for ontology documentation supported by pyLODE
 
@@ -339,7 +339,7 @@ pyLODE can tell you what profiles it supports: just run ``~$ pylode -lp`` ("list
 
 ::
 
-    m = MakeDocco(input_data_file="examples/data-access-rights.ttl", profile="skos")
+    m = MakeDocco(input_data_file="examples/data-access-rights.ttl", profile="skosp")
     print(m.list_profiles())
 
 
