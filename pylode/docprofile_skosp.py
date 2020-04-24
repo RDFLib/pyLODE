@@ -288,6 +288,12 @@ class Skosp(DocProfile):
                 elif p == SKOS.narrowMatch:
                     self.CONCEPTS[c]["narrowMatches"].add(str(o))
 
+            # patch title from URI if we haven't got one
+            if len(self.CONCEPTS[c]["prefLabels"]) < 1:
+                pl = self._make_title_from_uri(c)
+                self.CONCEPTS[c]["prefLabels"].add((pl, 'en'))
+                self.CONCEPTS[c]["default_prefLabel"] = pl
+
             # listify the sets
             self.CONCEPTS[c]["prefLabels"] = list(self.CONCEPTS[c]["prefLabels"])
             self.CONCEPTS[c]["altLabels"] = list(self.CONCEPTS[c]["altLabels"])
