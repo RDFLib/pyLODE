@@ -1036,10 +1036,11 @@ class Owlp(DocProfile):
             )
 
         # add in NIs index
-        fids = sorted(
-            [(v.get("fid"), v.get("title")) for k, v in self.NAMED_INDIVIDUALS.items()],
-            key=lambda tup: tup[1],
-        )
+        fids = []
+        for k, v in self.NAMED_INDIVIDUALS.items():
+            if v.get("fid") is not None:  # ensure BNodes not added
+                fids.append((v.get("fid"), v.get("title")))
+        fids = sorted(fids, key=lambda tup: tup[1])
         return self._load_template("owl_named_individuals." + self.outputformat).render(
             fids=fids,
             named_individuals=named_individuals_list

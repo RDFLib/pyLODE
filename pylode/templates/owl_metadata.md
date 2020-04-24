@@ -71,7 +71,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
   * {{ ont_rdf }}
 {%- if repository is not none %}
 * **Code Repository**
-  * <{{ repository }}>
+  * {{ repository }}
 {%- endif %}
 
 {%- if description is not none %}
