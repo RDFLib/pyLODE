@@ -351,7 +351,7 @@ class Owlp(DocProfile):
                     self.METADATA["description"] = markdown.markdown(str(o))
 
                 if p == SKOS.historyNote:
-                    self.METADATA["historyNote"] = str(o)
+                    self.METADATA["historyNote"] = markdown.markdown(str(o))
 
                 # dates
                 if p in [DCTERMS.created, DCTERMS.modified, DCTERMS.issued]:

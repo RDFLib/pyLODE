@@ -4,6 +4,7 @@ from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
 import dateutil.parser
 from itertools import chain
+import markdown
 from docprofile import DocProfile
 
 
@@ -331,12 +332,10 @@ class Skosp(DocProfile):
                     self.METADATA["title"] = str(o)
 
                 if p == SKOS.definition:
-                    import markdown
-
                     self.METADATA["description"] = markdown.markdown(str(o))
 
                 if p == SKOS.historyNote:
-                    self.METADATA["historyNote"] = str(o)
+                    self.METADATA["historyNote"] = markdown.markdown(str(o))
 
                 # dates
                 if p in [DCTERMS.created, DCTERMS.modified, DCTERMS.issued]:
