@@ -172,7 +172,7 @@ Local server - Falcon
 ---------------------
 You can run pyLODE using your own, local, HTTP server like this:
 ::
-        cd pylode && gunicorn --chdir /home/cor-admin1/pyLODE/pylode server:api
+        cd pylode && gunicorn --chdir /path/to/pyLODE/pylode server:api
 
 Then, in another terminal:
 ::
