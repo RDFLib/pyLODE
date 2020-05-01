@@ -7,8 +7,8 @@ class DocResource:
         """Handles GET requests"""
         url = req.get_param("url")
         if url is not None:
-            cmd = "cd ./bin && ./pylode -u {url} -c true".format(url=url)
-            subprocess.call(cmd, shell=True)
+            cmd = "cd ./bin && ./pylode.sh -u {url} -c true".format(url=url)
+            resp.body = subprocess.check_output(cmd, shell=True)
             resp.set_header("Powered-By", "Falcon")
             resp.status = falcon.HTTP_200
 

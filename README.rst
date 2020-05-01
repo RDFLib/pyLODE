@@ -171,13 +171,12 @@ An online API to access pyLODE is now available in test mode at https://kurrawon
 Local server - Falcon
 ---------------------
 You can run pyLODE using your own, local, HTTP server like this:
-```
-gunicorn server:api
-```
+::
+        cd pylode && gunicorn --chdir /home/cor-admin1/pyLODE/pylode server:api
+
 Then, in another terminal:
-```
-curl localhost:8000/lode?url=http://sweetontology.net/sweetAll.ttl
-```
+::
+        curl localhost:8000/lode?url=http://sweetontology.net/sweetAll.ttl
 
 Windows - create EXE from source
 --------------------------------
