@@ -132,12 +132,12 @@ def main(args=None):
         # args are present so getting RDF from input file or uri into an rdflib Graph
         if args.inputfile:
             h = MakeDocco(
-                input_data_file=args.inputfile.name,
+                input_data_file=args.inputfile,
                 outputformat=args.outputformat,
                 profile=args.profile
             )
         elif args.url:
-            h = MakeDocco(input_uri=args.url.name, outputformat=args.outputformat, profile=args.profile)
+            h = MakeDocco(input_uri=args.url, outputformat=args.outputformat, profile=args.profile)
         else:
             # we have neither an input file or a URI supplied
             parser.error(
