@@ -1,4 +1,4 @@
-.. image:: img/logo-pyLODE.png
+.. image:: img/pyLODE-250.png
 
 .. image:: https://badge.fury.io/py/pyLODE.svg
     :target: https://badge.fury.io/py/pyLODE
