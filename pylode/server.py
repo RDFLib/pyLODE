@@ -10,7 +10,7 @@ class DocResource:
             cmd = "cd ./bin && ./pylode.sh -u {url} -c true".format(url=url)
             resp.body = subprocess.check_output(cmd, shell=True)
             resp.set_header("Powered-By", "Falcon")
-            resp.set_header("content-type",	"text/html")
+            resp.set_header("content-type", "text/html")
             resp.status = falcon.HTTP_200
 
 
