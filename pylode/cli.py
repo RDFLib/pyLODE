@@ -2,11 +2,9 @@ import argparse
 import os
 from os import path
 import shutil
-import requests
-import rdflib
+import sys
+sys.path.insert(0, "..")
 from makedocco import MakeDocco
-from docprofiles import PYLODE_OWL_PROFILE, PYLODE_SKOS_PROFILE
-
 
 # used to know what RDF file types rdflib can handle
 RDF_FILE_EXTENSIONS = [".rdf", ".owl", ".ttl", ".n3", ".nt", ".json"]

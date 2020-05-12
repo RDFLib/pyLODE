@@ -80,7 +80,8 @@ class MakeDocco:
             raise Exception("You must supply either an input file or a URI for your ontology's RDF")
 
     def _parse_input_data_file(self, input_data_file):
-        if not str(input_data_file).endswith(tuple(RDF_FILE_EXTENSIONS)):
+        file_name = str(input_data_file.name)
+        if not file_name.endswith(tuple(RDF_FILE_EXTENSIONS)):
             raise Exception(
                 "If supplying an input RDF file, it must end with one of the following file type extensions: {}."
                     .format(
@@ -90,14 +91,14 @@ class MakeDocco:
         else:
             fmt = (
                 "json-ld"
-                if input_data_file.endswith(".json") or input_data_file.endswith(".jsonld")
-                else util.guess_format(input_data_file)
+                if file_name.endswith(".json") or file_name.endswith(".jsonld")
+                else util.guess_format(file_name)
             )
-            with open(input_data_file, 'r') as f:
-                data = f.read()
-            self.G = Graph().parse(data=data, format=fmt)
-            self.source_info = (input_data_file, fmt)
-            self.publication_dir = path.dirname(input_data_file)
+            # with open(input_data_file, 'r') as f:
+            #     data = f.read()
+            self.G = Graph().parse(file_name, format=fmt)
+            self.source_info = (file_name, fmt)
+            self.publication_dir = path.dirname(file_name)
 
     def _parse_input_uri(self, uri):
         r = requests.get(
