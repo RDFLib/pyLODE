@@ -162,7 +162,7 @@ save it with a basic CSS file into
 
 ::
 
-    $ ./pylode -i ../example/prof.ttl --css true
+    ./pylode -i ../example/prof.ttl --css true
 
 Online API
 ----------
@@ -171,12 +171,16 @@ An online API to access pyLODE is now available in test mode at https://kurrawon
 Local server - Falcon
 ---------------------
 You can run pyLODE using your own, local, HTTP server like this:
+
 ::
-        cd pylode && gunicorn --chdir /path/to/pyLODE/pylode server:api
+
+    cd pylode && gunicorn --chdir /path/to/pyLODE/pylode server:api
 
 Then, in another terminal:
+
 ::
-        curl localhost:8000/lode?url=http://sweetontology.net/sweetAll.ttl
+
+    curl localhost:8000/lode?url=http://sweetontology.net/sweetAll.ttl
 
 Windows - create EXE from source
 --------------------------------
@@ -195,8 +199,8 @@ Once you have pyinstaller, use pyinstaller to generate the ``pyLODE.exe`` CLI fi
 
 ::
 
-    $ cd src/pylode
-    $ pyinstaller pylode-cli.spec
+    cd src/pylode
+    pyinstaller pylode-cli.spec
 
 This will output ``pylode.exe`` in the ``dist`` directory in ``src/pylode``.
 

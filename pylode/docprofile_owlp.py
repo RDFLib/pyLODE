@@ -408,10 +408,11 @@ class Owlp(DocProfile):
                     self.METADATA["repository"] = self._make_formatted_uri(o)
 
             if self.METADATA.get("title") is None:
-                raise ValueError(
-                    "Your ontology does not indicate any form of label or title. "
-                    "You must declare one of the following for your ontology: rdfs:label, dct:title, skos:prefLabel"
-                )
+                self.METADATA["title"] = "{no title found}"
+                # raise ValueError(
+                #     "Your ontology does not indicate any form of label or title. "
+                #     "You must declare one of the following for your ontology: rdfs:label, dct:title, skos:prefLabel"
+                # )
 
         if s_str is None:
             raise Exception(
