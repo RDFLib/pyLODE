@@ -874,13 +874,13 @@ class Owlp(DocProfile):
 
     def _make_metadata(self):
         return self._load_template("owl_metadata." + self.outputformat).render(
-            imports=self.METADATA["imports"],
+            imports=sorted(self.METADATA["imports"]),
             title=self.METADATA.get("title"),
             uri=self.METADATA.get("uri"),
             version_uri=self.METADATA.get("versionIRI"),
-            publishers=self.METADATA["publishers"],
-            creators=self.METADATA["creators"],
-            contributors=self.METADATA["contributors"],
+            publishers=sorted(self.METADATA["publishers"]),
+            creators=sorted(self.METADATA["creators"]),
+            contributors=sorted(self.METADATA["contributors"]),
             created=self.METADATA.get("created"),  # TODO: auto-detect format
             modified=self.METADATA.get("modified"),
             issued=self.METADATA.get("issued"),
