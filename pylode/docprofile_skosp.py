@@ -489,15 +489,36 @@ class Skosp(DocProfile):
             return "<ul class=\"hierarchy\">\n" + txt + "\n</ul>"
 
     def _make_skos_concept(self, concept):
+        # handling Markdown formatting within a table
+        if self.outputformat == "md":
+            if len(concept[1].get("definitions")) > 0:
+                defs = [d.replace("\n", " ") for d in concept[1].get("definitions")]
+            else:
+                defs = None
+            if len(concept[1].get("examples")) > 0:
+                egs = [eg.strip().replace("\t", "    ") for eg in concept[1].get("examples")]
+                egs2 = []
+                for ee in egs:
+                    ee2 = ""
+                    for line in ee.split("\n"):
+                        ee2 += "`" + line + "`<br />"
+                    egs2.append(ee2)
+                egs = egs2
+            else:
+                egs = None
+        else:
+            defs = concept[1].get("definitions")
+            egs = concept[1].get("examples")
+
         return self._load_template("skos_concept." + self.outputformat).render(
             uri=concept[0],
             fid=concept[1].get("fid"),
             default_prefLabel=concept[1].get("default_prefLabel"),
             prefLabels=concept[1].get("prefLabels"),
             altLabels=concept[1].get("altLabels"),
-            definitions=concept[1].get("definitions"),
+            definitions=defs,
             scopeNotes=concept[1].get("scopeNotes"),
-            examples=concept[1].get("examples"),
+            examples=egs,
             source=concept[1].get("source"),
             broaders=[self._make_formatted_uri(x, type="cp") for x in concept[1].get("broaders")],
             narrowers=[self._make_formatted_uri(x, type="cp") for x in concept[1].get("narrowers")],

@@ -649,8 +649,7 @@ class Owlp(DocProfile):
                     self.PROPERTIES[prop]["scopeNote"] = str(o)
 
                 if p == SKOS.example:
-                    self.PROPERTIES[prop]["example"] = \
-                        '<pre>' + str(o).replace("<", "&lt;").replace("\t", "    ").replace("\n", "<br />") + '</pre>'
+                    self.PROPERTIES[prop]["example"] = str(o)
 
                 if p == RDFS.isDefinedBy:
                     self.PROPERTIES[prop]["isDefinedBy"] = str(o)
@@ -906,16 +905,31 @@ class Owlp(DocProfile):
         class_template = self._load_template("owl_class." + self.outputformat)
         classes_list = []
         for k, v in self.CLASSES.items():
+            # handling Markdown formatting within a table
+            if self.outputformat == "md":
+                desc = v["description"].replace("\n", " ") if v.get("description") is not None else None
+                if v.get("example") is not None:
+                    eg = v["example"].strip().replace("\t", "    ").split("\n")
+                    eg2 = ""
+                    for line in eg:
+                        eg2 += "`" + line + "`<br />"
+                    eg = eg2
+                else:
+                    eg = None
+            else:
+                desc = v["description"]
+                eg = v["example"]
+
             classes_list.append(
                 class_template.render(
                     uri=k,
                     fid=v["fid"],
                     title=v["title"],
-                    description=v["description"],
+                    description=desc,
                     supers=v["supers"],
                     restrictions=v["restrictions"],
                     scopeNote=v["scopeNote"],
-                    example=v["example"],
+                    example=eg,
                     is_defined_by=v["isDefinedBy"],
                     source=v["source"],
                     subs=v["subs"],
@@ -936,14 +950,30 @@ class Owlp(DocProfile):
         return classes_template.render(fids=fids, classes=classes_list, )
 
     def _make_property(self, property):
+        # handling Markdown formatting within a table
+        if self.outputformat == "md":
+            desc = property[1].get("description").replace("\n", " ") \
+                if property[1].get("description") is not None else None
+            if property[1].get("example") is not None:
+                eg = property[1].get("example").strip().replace("\t", "    ").split("\n")
+                eg2 = ""
+                for line in eg:
+                    eg2 += "`" + line + "`<br />"
+                eg = eg2
+            else:
+                eg = None
+        else:
+            desc = property[1].get("description")
+            eg = property[1].get("example")
+
         return self._load_template("owl_property." + self.outputformat).render(
             uri=property[0],
             fid=property[1].get("fid"),
             property_type=property[1].get("prop_type"),
             title=property[1].get("title"),
-            description=property[1].get("description"),
+            description=desc,
             scopeNote=property[1].get("scopeNote"),
-            example=property[1].get("example"),
+            example=eg,
             is_defined_by=property[1].get("isDefinedBy"),
             source=property[1].get("source"),
             supers=property[1].get("supers"),
