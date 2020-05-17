@@ -872,7 +872,7 @@ class Owlp(DocProfile):
             # make fid
             self.NAMED_INDIVIDUALS[ni]["fid"] = self._make_fid(self.NAMED_INDIVIDUALS[ni]["title"], ni)
 
-    def _make_metadata(self, source_info):
+    def _make_metadata(self):
         return self._load_template("owl_metadata." + self.outputformat).render(
             imports=self.METADATA["imports"],
             title=self.METADATA.get("title"),
@@ -891,7 +891,7 @@ class Owlp(DocProfile):
             license=self.METADATA.get("license"),
             rights=self.METADATA.get("rights"),
             repository=self.METADATA.get("repository"),
-            ont_rdf=self._make_source_file_link(source_info),
+            ont_rdf=self._make_source_file_link(),
             has_classes=self.METADATA.get("has_classes"),
             has_ops=self.METADATA.get("has_ops"),
             has_fps=self.METADATA.get("has_fps"),
@@ -1059,7 +1059,7 @@ class Owlp(DocProfile):
         return self._load_template("owl_document." + self.outputformat).render(
             schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML templates
             title=self.METADATA["title"],
-            metadata=self._make_metadata(self.source_info),
+            metadata=self._make_metadata(),
             classes=self._make_classes(),
             properties=self._make_properties(),
             named_individuals=self._make_named_individuals(),

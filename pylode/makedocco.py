@@ -5,9 +5,7 @@ from rdflib import Graph, util
 from os import path
 import requests
 from rdflib.plugin import register, Serializer
-from rdflib_jsonld import serializer
 from docprofiles import PROFILES
-from docprofile import DocProfile
 from docprofile_owlp import Owlp
 from docprofile_skosp import Skosp
 
@@ -112,7 +110,7 @@ class MakeDocco:
             fmt = (
                 "json-ld"
                 if media_type == "application/ld+json"
-                   or media_type == "application/json"
+                or media_type == "application/json"
                 else None
             )
 

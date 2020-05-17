@@ -405,7 +405,7 @@ class Skosp(DocProfile):
         if len(self.CONCEPTS.keys()) > 0:
             self.METADATA["has_concepts"] = True
 
-    def _make_skos_concept_scheme(self, source_info):
+    def _make_skos_concept_scheme(self):
         return self._load_template("skos_concept_scheme." + self.outputformat).render(
             title=self.METADATA.get("title"),
             uri=self.METADATA.get("uri"),
@@ -423,7 +423,7 @@ class Skosp(DocProfile):
             license=self.METADATA.get("license"),
             rights=self.METADATA.get("rights"),
             repository=self.METADATA.get("repository"),
-            ont_rdf=self._make_source_file_link(source_info),
+            ont_rdf=self._make_source_file_link(),
             has_collections=True if len(self.COLLECTIONS) > 0 else False,
             has_concepts=True if len(self.CONCEPTS) > 0 else False,
         )
@@ -538,7 +538,7 @@ class Skosp(DocProfile):
         return self._load_template("skos_taxonomy." + self.outputformat).render(
             schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML template
             title=self.METADATA["title"],
-            concept_scheme=self._make_skos_concept_scheme(self.source_info),
+            concept_scheme=self._make_skos_concept_scheme(),
             has_collections=True if len(self.COLLECTIONS) > 0 else False,
             collections=self._make_skos_collections(),
             has_concepts=True if len(self.CONCEPTS) > 0 else False,

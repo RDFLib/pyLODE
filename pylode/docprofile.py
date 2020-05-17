@@ -428,14 +428,20 @@ class DocProfile:
 
         return agent
 
-    def _make_source_file_link(self, source_info):
+    def _make_source_file_link(self):
+        # if the source is a URI, use that
+        # if it's a file path, only use the file name
+        if self.source_info[0].startswith("http"):
+            uri_of_rdf = self.source_info[0]
+        else:
+            uri_of_rdf = self.source_info[0].split("/")[-1]
         if self.outputformat == "md":
             return 'RDF ([{}]({}))'.format(
-                source_info[0].split("/")[-1], source_info[1]
+                uri_of_rdf, self.source_info[1]
             )
         else:
             return '<a href="{}">RDF ({})</a>'.format(
-                source_info[0].split("/")[-1], source_info[1]
+                uri_of_rdf, self.source_info[1]
             )
 
     def generate_document(self):
