@@ -14,7 +14,7 @@ def open_local(paths, mode='r', encoding='utf8'):
     return codecs.open(path, mode, encoding)
 
 
-with open_local(['pylode', '__init__.py'], encoding='latin1') as fp:
+with open_local(['pylode', 'docprofile.py'], encoding='latin1') as fp:
     try:
         version = re.findall(r"^__version__ = '([^']+)'\r?$",
                              fp.read(), re.M)[0]
