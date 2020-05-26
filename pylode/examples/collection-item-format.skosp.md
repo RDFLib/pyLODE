@@ -22,7 +22,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 <p>The format of an item within a collection describes its physical presence at the highest level.</p>
 
 **History Note**  
-This vocabulary has been developed by referencing publicly available information from select libraries and archives about their FORMAT cataloguing terms.
+<p>This vocabulary has been developed by referencing publicly available information from select libraries and archives about their FORMAT cataloguing terms.</p>
 
 ## Table of Contents
 1. [Collections](#collections)
@@ -44,7 +44,7 @@ IRI | `http://linked.data.gov.au/def/collection-item-format/national-film-and-so
 Preferred Labels |National Film and Sound Archive's Formats (en)<br />
 Alternate Labels |N (F)<br />
 Source | https://www.nfsa.gov.au/
-Members |[Disk](Disk) (cp)<br />[Digital](Digital) (cp)<br />[Documentation](Documentation) (cp)<br />[Tape](Tape) (cp)<br />[Disc](Disc) (cp)<br />[Film](Film) (cp)<br />[Object](Object) (cp)<br />
+Members |[Digital](Digital) (cp)<br />[Object](Object) (cp)<br />[Film](Film) (cp)<br />[Tape](Tape) (cp)<br />[Documentation](Documentation) (cp)<br />[Disc](Disc) (cp)<br />[Disk](Disk) (cp)<br />
 
 ### State Library New South Wales' Formats
 Property | Value
@@ -53,7 +53,7 @@ IRI | `http://linked.data.gov.au/def/collection-item-format/state-library-new-so
 Preferred Labels |State Library New South Wales' Formats (en)<br />
 Alternate Labels |S (L)<br />
 Source | https://www.sl.nsw.gov.au/
-Members |[Newspaper](Newspaper) (cp)<br />[Manuscript](Manuscript) (cp)<br />[cif:eresource](http://linked.data.gov.au/def/collection-item-format/eresource) (cp)<br />[Map](Map) (cp)<br />[Book](Book) (cp)<br />[Object-SLNSW](Object-SLNSW) (cp)<br />[Journal & magazine](Journalmagazine) (cp)<br />[Picture](Picture) (cp)<br />[Audio](Audio) (cp)<br />[Video & film](Videofilm) (cp)<br />
+Members |[Book](Book) (cp)<br />[Map](Map) (cp)<br />[Video & film](Videofilm) (cp)<br />[cif:eresource](http://linked.data.gov.au/def/collection-item-format/eresource) (cp)<br />[Audio](Audio) (cp)<br />[Object-SLNSW](Object-SLNSW) (cp)<br />[Journal & magazine](Journalmagazine) (cp)<br />[Picture](Picture) (cp)<br />[Manuscript](Manuscript) (cp)<br />[Newspaper](Newspaper) (cp)<br />
 
 ## Classes
 * [Audio](http://linked.data.gov.au/def/collection-item-format/audio)
@@ -100,9 +100,9 @@ Source | https://dictionary.cambridge.org/dictionary/english/book
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/collection-item-format/digital`
-Preferred Labels |Mamati (mi)<br />Digital (en)<br />Cyfrowy (pl)<br />
+Preferred Labels |Digital (en)<br />Mamati (mi)<br />Cyfrowy (pl)<br />
 Alternate Labels |Digital Storage<br />
-Narrower Concepts |[Disk](Disk) (cp)<br />[Digital Versatile Disc](DigitalVersatileDisc) (cp)<br />[Eresources](Eresources) (cp)<br />
+Narrower Concepts |[Eresources](Eresources) (cp)<br />[Digital Versatile Disc](DigitalVersatileDisc) (cp)<br />[Disk](Disk) (cp)<br />
 ### Disc
 Property | Value
 --- | ---
@@ -114,7 +114,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/collection-item-format/disk`
 Preferred Labels |Disk (en)<br />
-Alternate Labels |Hard Drive<br />HDD<br />
+Alternate Labels |HDD<br />Hard Drive<br />
 Source | https://www.iasa-web.org/cataloguing-rules/appendix-d-glossary
 Broader Concepts |[Digital](Digital) (cp)<br />
 ### Documentation
@@ -123,7 +123,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/collection-item-format/documentation`
 Preferred Labels |Documentation (en)<br />
 Source | http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes
-Narrower Concepts |[Newspaper](Newspaper) (cp)<br />[Picture](Picture) (cp)<br />[Manuscript](Manuscript) (cp)<br />[Map](Map) (cp)<br />
+Narrower Concepts |[Manuscript](Manuscript) (cp)<br />[Map](Map) (cp)<br />[Picture](Picture) (cp)<br />[Newspaper](Newspaper) (cp)<br />
 ### Digital Versatile Disc
 Property | Value
 --- | ---

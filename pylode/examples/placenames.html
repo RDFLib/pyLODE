@@ -208,7 +208,7 @@
     </script>
 </head>
 <body>
-<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE"><span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a></div>
 <h1>Place Names Profile</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
@@ -266,16 +266,15 @@
     <div id="description">
         <p>This is an ontology that profiles several other ontologies. It describes Place Names that are used in the Place Names Gazetteer of Australia. Place Names are names given to natural and artificial geospatial features, such as administrative areas, political regions, mountain ranges, rivers, bays etc. Place Names are assigned and managed by multiple Jurisdictions around Australia and may have varying status: official, historical etc. This ontology provides a meta model to bring Place Name data together in one Semantic Web data collection.</p>
     </div>
-    <p><strong>History Note:</strong> This version of this ontology, 2, covers the same conceptual territory of the original ontology (see placenames-original.ttl) but is aligned with:
-
-    * GeoSPARQL ontology - Features & Geometries
-    * ISA Programme Location Core Vocabulary (locn) - Location class
-    * ASGS Ontology - ASGS Features
-    * GNAF Ontology - Addresses
-    * schema.org - Agent subclasses and some Place Name annotations
-    * Time Ontology in OWL - for temporal extents
-
-The first version of this Place Names ontology is archived online at https://github.com/GeoscienceAustralia/Place-Names.</p>
+    <p><strong>History Note:</strong> <p>This version of this ontology, 2, covers the same conceptual territory of the original ontology (see placenames-original.ttl) but is aligned with:</p>
+<pre><code>* GeoSPARQL ontology - Features &amp; Geometries
+* ISA Programme Location Core Vocabulary (locn) - Location class
+* ASGS Ontology - ASGS Features
+* GNAF Ontology - Addresses
+* schema.org - Agent subclasses and some Place Name annotations
+* Time Ontology in OWL - for temporal extents
+</code></pre>
+<p>The first version of this Place Names ontology is archived online at https://github.com/GeoscienceAustralia/Place-Names.</p></p>
 </section>
 <section id="toc">
     <h2>Table of Contents</h2>
@@ -292,7 +291,7 @@ The first version of this Place Names ontology is archived online at https://git
 <section id="overview">
     <h2>Overview</h2>
     <div class="figure">
-        <div style="width:500px; height:50px; background-color: black;">&nbsp;</div>
+        <div style="width:500px; height:50px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;">Pictures say 1,000 words</div>
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div>
 </section>
@@ -520,20 +519,20 @@ The first version of this Place Names ontology is archived online at https://git
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#pronunciation">hasPronunciation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://www.w3.org/ns/adms#identifier">adms:identifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="https://www.w3.org/ns/adms#Identifier">adms:Identifier</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#register">register</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Gazetteer">Gazetteer</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#wasnamedby">wasNamedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Jurisdiction">Jurisdiction</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/linked-data/registry#status">reg:status</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.org/linked-data/registry#Status">reg:Status</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#register">register</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Gazetteer">Gazetteer</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://www.w3.org/ns/adms#identifier">adms:identifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="https://www.w3.org/ns/adms#Identifier">adms:Identifier</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#pronunciation">hasPronunciation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#wasnamedby">wasNamedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Jurisdiction">Jurisdiction</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#wasnamedby">wasNamedBy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasplacenamingauthority">hasPlaceNamingAuthority</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasplacenameformality">hasPlaceNameFormality</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#pronunciation">hasPronunciation</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasplacenamingauthority">hasPlaceNamingAuthority</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#wasnamedby">wasNamedBy</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -713,10 +712,10 @@ The first version of this Place Names ontology is archived online at https://git
             <tr>
                 <th>Sub-classes</th>
                 <td>
+                    <a href="http://linked.data.gov.au/def/gnaf#Address">gnaf:Address</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/asgs#Feature">asgs:Feature</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#ContractedCatchment">ContractedCatchment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Place">Place</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/asgs#Feature">asgs:Feature</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/gnaf#Address">gnaf:Address</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -768,9 +767,9 @@ The first version of this Place Names ontology is archived online at https://git
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#PlaceNameFormality">PlaceNameFormality</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#PlaceType">PlaceType</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/linked-data/registry#Status">reg:Status</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#PlaceType">PlaceType</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#PlaceNameFormality">PlaceNameFormality</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>

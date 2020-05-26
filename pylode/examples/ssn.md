@@ -58,41 +58,41 @@ Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/sosa/Actuation`
 Is Defined By | http://www.w3.org/ns/sosa/
-Restrictions |[sosa:hasResult](http://www.w3.org/ns/sosa/hasResult) **min** 1<br />[sosa:actsOnProperty](http://www.w3.org/ns/sosa/actsOnProperty) **min** 1<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **only** [sosa:FeatureOfInterest](http://www.w3.org/ns/sosa/FeatureOfInterest) (c)<br />[sosa:usedProcedure](http://www.w3.org/ns/sosa/usedProcedure) **only** [sosa:Procedure](http://www.w3.org/ns/sosa/Procedure) (c)<br />[sosa:hasResult](http://www.w3.org/ns/sosa/hasResult) **only** [sosa:Result](http://www.w3.org/ns/sosa/Result) (c)<br />[sosa:resultTime](http://www.w3.org/ns/sosa/resultTime) **exactly** 1<br />[sosa:madeByActuator](http://www.w3.org/ns/sosa/madeByActuator) **exactly** 1<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **exactly** 1<br />[sosa:actsOnProperty](http://www.w3.org/ns/sosa/actsOnProperty) **only** [sosa:ActuatableProperty](http://www.w3.org/ns/sosa/ActuatableProperty) (c)<br />[sosa:madeByActuator](http://www.w3.org/ns/sosa/madeByActuator) **only** [sosa:Actuator](http://www.w3.org/ns/sosa/Actuator) (c)<br />
+Restrictions |[sosa:madeByActuator](http://www.w3.org/ns/sosa/madeByActuator) **only** [sosa:Actuator](http://www.w3.org/ns/sosa/Actuator) (c)<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **only** [sosa:FeatureOfInterest](http://www.w3.org/ns/sosa/FeatureOfInterest) (c)<br />[sosa:hasResult](http://www.w3.org/ns/sosa/hasResult) **min** 1<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **exactly** 1<br />[sosa:actsOnProperty](http://www.w3.org/ns/sosa/actsOnProperty) **only** [sosa:ActuatableProperty](http://www.w3.org/ns/sosa/ActuatableProperty) (c)<br />[sosa:usedProcedure](http://www.w3.org/ns/sosa/usedProcedure) **only** [sosa:Procedure](http://www.w3.org/ns/sosa/Procedure) (c)<br />[sosa:hasResult](http://www.w3.org/ns/sosa/hasResult) **only** [sosa:Result](http://www.w3.org/ns/sosa/Result) (c)<br />[sosa:actsOnProperty](http://www.w3.org/ns/sosa/actsOnProperty) **min** 1<br />[sosa:resultTime](http://www.w3.org/ns/sosa/resultTime) **exactly** 1<br />[sosa:madeByActuator](http://www.w3.org/ns/sosa/madeByActuator) **exactly** 1<br />
 ### Observation
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/sosa/Observation`
 Is Defined By | http://www.w3.org/ns/sosa/
-Restrictions |[sosa:phenomenonTime](http://www.w3.org/ns/sosa/phenomenonTime) **exactly** 1<br />[sosa:hasResult](http://www.w3.org/ns/sosa/hasResult) **only** [sosa:Result](http://www.w3.org/ns/sosa/Result) (c)<br />[sosa:madeBySensor](http://www.w3.org/ns/sosa/madeBySensor) **only** [sosa:Sensor](http://www.w3.org/ns/sosa/Sensor) (c)<br />[sosa:hasResult](http://www.w3.org/ns/sosa/hasResult) **min** 1<br />[sosa:observedProperty](http://www.w3.org/ns/sosa/observedProperty) **only** [sosa:ObservableProperty](http://www.w3.org/ns/sosa/ObservableProperty) (c)<br />[sosa:madeBySensor](http://www.w3.org/ns/sosa/madeBySensor) **exactly** 1<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **only** [sosa:FeatureOfInterest](http://www.w3.org/ns/sosa/FeatureOfInterest) (c)<br />[sosa:usedProcedure](http://www.w3.org/ns/sosa/usedProcedure) **only** [sosa:Procedure](http://www.w3.org/ns/sosa/Procedure) (c)<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **exactly** 1<br />[ssn:wasOriginatedBy](http://www.w3.org/ns/ssn/wasOriginatedBy) (op) **exactly** 1<br />[ssn:wasOriginatedBy](http://www.w3.org/ns/ssn/wasOriginatedBy) (op) **only** [ssn:Stimulus](http://www.w3.org/ns/ssn/Stimulus) (c)<br />[sosa:observedProperty](http://www.w3.org/ns/sosa/observedProperty) **exactly** 1<br />[sosa:resultTime](http://www.w3.org/ns/sosa/resultTime) **exactly** 1<br />
+Restrictions |[sosa:observedProperty](http://www.w3.org/ns/sosa/observedProperty) **exactly** 1<br />[sosa:hasResult](http://www.w3.org/ns/sosa/hasResult) **only** [sosa:Result](http://www.w3.org/ns/sosa/Result) (c)<br />[sosa:madeBySensor](http://www.w3.org/ns/sosa/madeBySensor) **only** [sosa:Sensor](http://www.w3.org/ns/sosa/Sensor) (c)<br />[sosa:usedProcedure](http://www.w3.org/ns/sosa/usedProcedure) **only** [sosa:Procedure](http://www.w3.org/ns/sosa/Procedure) (c)<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **exactly** 1<br />[sosa:observedProperty](http://www.w3.org/ns/sosa/observedProperty) **only** [sosa:ObservableProperty](http://www.w3.org/ns/sosa/ObservableProperty) (c)<br />[sosa:resultTime](http://www.w3.org/ns/sosa/resultTime) **exactly** 1<br />[ssn:wasOriginatedBy](http://www.w3.org/ns/ssn/wasOriginatedBy) (op) **exactly** 1<br />[sosa:phenomenonTime](http://www.w3.org/ns/sosa/phenomenonTime) **exactly** 1<br />[sosa:madeBySensor](http://www.w3.org/ns/sosa/madeBySensor) **exactly** 1<br />[ssn:wasOriginatedBy](http://www.w3.org/ns/ssn/wasOriginatedBy) (op) **only** [ssn:Stimulus](http://www.w3.org/ns/ssn/Stimulus) (c)<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **only** [sosa:FeatureOfInterest](http://www.w3.org/ns/sosa/FeatureOfInterest) (c)<br />[sosa:hasResult](http://www.w3.org/ns/sosa/hasResult) **min** 1<br />
 ### Sampling
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/sosa/Sampling`
 Is Defined By | http://www.w3.org/ns/sosa/
-Restrictions |[sosa:hasResult](http://www.w3.org/ns/sosa/hasResult) **min** 1<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **only** [sosa:FeatureOfInterest](http://www.w3.org/ns/sosa/FeatureOfInterest) (c)<br />[sosa:madeBySampler](http://www.w3.org/ns/sosa/madeBySampler) **only** [sosa:Sampler](http://www.w3.org/ns/sosa/Sampler) (c)<br />[sosa:resultTime](http://www.w3.org/ns/sosa/resultTime) **exactly** 1<br />[sosa:hasResult](http://www.w3.org/ns/sosa/hasResult) **only** [sosa:Sample](http://www.w3.org/ns/sosa/Sample) (c)<br />[sosa:usedProcedure](http://www.w3.org/ns/sosa/usedProcedure) **only** [sosa:Procedure](http://www.w3.org/ns/sosa/Procedure) (c)<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **exactly** 1<br />[sosa:madeBySampler](http://www.w3.org/ns/sosa/madeBySampler) **exactly** 1<br />
+Restrictions |[sosa:madeBySampler](http://www.w3.org/ns/sosa/madeBySampler) **exactly** 1<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **only** [sosa:FeatureOfInterest](http://www.w3.org/ns/sosa/FeatureOfInterest) (c)<br />[sosa:hasResult](http://www.w3.org/ns/sosa/hasResult) **only** [sosa:Sample](http://www.w3.org/ns/sosa/Sample) (c)<br />[sosa:madeBySampler](http://www.w3.org/ns/sosa/madeBySampler) **only** [sosa:Sampler](http://www.w3.org/ns/sosa/Sampler) (c)<br />[sosa:usedProcedure](http://www.w3.org/ns/sosa/usedProcedure) **only** [sosa:Procedure](http://www.w3.org/ns/sosa/Procedure) (c)<br />[sosa:resultTime](http://www.w3.org/ns/sosa/resultTime) **exactly** 1<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **exactly** 1<br />[sosa:hasResult](http://www.w3.org/ns/sosa/hasResult) **min** 1<br />
 ### Deployment
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/ssn/Deployment`
 Is Defined By | http://www.w3.org/ns/ssn/
 Description | <p>Describes the Deployment of one or more Systems for a particular purpose. Deployment may be done on a Platform.</p>
-Example | For example, a temperature Sensor deployed on a wall, or a whole network of Sensors deployed for an Observation campaign.
-Restrictions |[ssn:deployedOnPlatform](http://www.w3.org/ns/ssn/deployedOnPlatform) (op) **only** [sosa:Platform](http://www.w3.org/ns/sosa/Platform) (c)<br />[ssn:deployedSystem](http://www.w3.org/ns/ssn/deployedSystem) (op) **only** [ssn:System](http://www.w3.org/ns/ssn/System) (c)<br />[ssn:forProperty](http://www.w3.org/ns/ssn/forProperty) (op) **only** [ssn:Property](http://www.w3.org/ns/ssn/Property) (c)<br />
+Example | `For example, a temperature Sensor deployed on a wall, or a whole network of Sensors deployed for an Observation campaign.`<br />
+Restrictions |[ssn:deployedOnPlatform](http://www.w3.org/ns/ssn/deployedOnPlatform) (op) **only** [sosa:Platform](http://www.w3.org/ns/sosa/Platform) (c)<br />[ssn:forProperty](http://www.w3.org/ns/ssn/forProperty) (op) **only** [ssn:Property](http://www.w3.org/ns/ssn/Property) (c)<br />[ssn:deployedSystem](http://www.w3.org/ns/ssn/deployedSystem) (op) **only** [ssn:System](http://www.w3.org/ns/ssn/System) (c)<br />
 ### Input
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/ssn/Input`
 Is Defined By | http://www.w3.org/ns/ssn/
 Description | <p>Any information that is provided to a Procedure for its use.</p>
-Restrictions |[ub66bL144C60](ub66bL144C60) **only** [sosa:Procedure](http://www.w3.org/ns/sosa/Procedure) (c)<br />[ub66bL143C60](ub66bL143C60) **min** 1<br />
+Restrictions |[ub70bL143C60](ub70bL143C60) **min** 1<br />[ub70bL144C60](ub70bL144C60) **only** [sosa:Procedure](http://www.w3.org/ns/sosa/Procedure) (c)<br />
 ### Output
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/ssn/Output`
 Is Defined By | http://www.w3.org/ns/ssn/
 Description | <p>Any information that is reported from a Procedure.</p>
-Restrictions |[ub66bL157C60](ub66bL157C60) **min** 1<br />[ub66bL158C60](ub66bL158C60) **only** [sosa:Procedure](http://www.w3.org/ns/sosa/Procedure) (c)<br />
+Restrictions |[ub70bL158C60](ub70bL158C60) **only** [sosa:Procedure](http://www.w3.org/ns/sosa/Procedure) (c)<br />[ub70bL157C60](ub70bL157C60) **min** 1<br />
 ### Property
 Property | Value
 --- | ---
@@ -100,22 +100,22 @@ IRI | `http://www.w3.org/ns/ssn/Property`
 Is Defined By | http://www.w3.org/ns/ssn/
 Description | <p>A quality of an entity. An aspect of an entity that is intrinsic to and cannot exist without the entity.</p>
 Restrictions |[ssn:isPropertyOf](http://www.w3.org/ns/ssn/isPropertyOf) (op) **only** [sosa:FeatureOfInterest](http://www.w3.org/ns/sosa/FeatureOfInterest) (c)<br />
-Sub-classes |[sosa:ActuatableProperty](http://www.w3.org/ns/sosa/ActuatableProperty) (c)<br />[sosa:ObservableProperty](http://www.w3.org/ns/sosa/ObservableProperty) (c)<br />
+Sub-classes |[sosa:ObservableProperty](http://www.w3.org/ns/sosa/ObservableProperty) (c)<br />[sosa:ActuatableProperty](http://www.w3.org/ns/sosa/ActuatableProperty) (c)<br />
 ### Stimulus
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/ssn/Stimulus`
 Is Defined By | http://www.w3.org/ns/ssn/
 Description | <p>An event in the real world that 'triggers' the Sensor. The properties associated to the Stimulus may be different to the eventual observed ObservableProperty. It is the event, not the object, that triggers the Sensor.</p>
-Restrictions |[ssn:isProxyFor](http://www.w3.org/ns/ssn/isProxyFor) (op) **only** [sosa:ObservableProperty](http://www.w3.org/ns/sosa/ObservableProperty) (c)<br />[ub66bL299C56](ub66bL299C56) **only** [sosa:Sensor](http://www.w3.org/ns/sosa/Sensor) (c)<br />[ub66bL298C56](ub66bL298C56) **only** [sosa:Observation](http://www.w3.org/ns/sosa/Observation) (c)<br />
+Restrictions |[ssn:isProxyFor](http://www.w3.org/ns/ssn/isProxyFor) (op) **only** [sosa:ObservableProperty](http://www.w3.org/ns/sosa/ObservableProperty) (c)<br />[ub70bL298C56](ub70bL298C56) **only** [sosa:Observation](http://www.w3.org/ns/sosa/Observation) (c)<br />[ub70bL299C56](ub70bL299C56) **only** [sosa:Sensor](http://www.w3.org/ns/sosa/Sensor) (c)<br />
 ### System
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/ssn/System`
 Is Defined By | http://www.w3.org/ns/ssn/
 Description | <p>System is a unit of abstraction for pieces of infrastructure that implement Procedures. A System may have components, its subsystems, which are other systems.</p>
-Restrictions |[ssn:implements](http://www.w3.org/ns/ssn/implements) (op) **only** [sosa:Procedure](http://www.w3.org/ns/sosa/Procedure) (c)<br />[ssn:hasDeployment](http://www.w3.org/ns/ssn/hasDeployment) (op) **only** [ssn:Deployment](http://www.w3.org/ns/ssn/Deployment) (c)<br />[sosa:isHostedBy](http://www.w3.org/ns/sosa/isHostedBy) **only** [sosa:Platform](http://www.w3.org/ns/sosa/Platform) (c)<br />[ub66bL354C56](ub66bL354C56) **only** [ssn:System](http://www.w3.org/ns/ssn/System) (c)<br />[ssn:hasSubSystem](http://www.w3.org/ns/ssn/hasSubSystem) (op) **only** [ssn:System](http://www.w3.org/ns/ssn/System) (c)<br />
-Sub-classes |[sosa:Sampler](http://www.w3.org/ns/sosa/Sampler) (c)<br />[sosa:Actuator](http://www.w3.org/ns/sosa/Actuator) (c)<br />[sosa:Sensor](http://www.w3.org/ns/sosa/Sensor) (c)<br />
+Restrictions |[ssn:implements](http://www.w3.org/ns/ssn/implements) (op) **only** [sosa:Procedure](http://www.w3.org/ns/sosa/Procedure) (c)<br />[ssn:hasSubSystem](http://www.w3.org/ns/ssn/hasSubSystem) (op) **only** [ssn:System](http://www.w3.org/ns/ssn/System) (c)<br />[ub70bL354C56](ub70bL354C56) **only** [ssn:System](http://www.w3.org/ns/ssn/System) (c)<br />[sosa:isHostedBy](http://www.w3.org/ns/sosa/isHostedBy) **only** [sosa:Platform](http://www.w3.org/ns/sosa/Platform) (c)<br />[ssn:hasDeployment](http://www.w3.org/ns/ssn/hasDeployment) (op) **only** [ssn:Deployment](http://www.w3.org/ns/ssn/Deployment) (c)<br />
+Sub-classes |[sosa:Sampler](http://www.w3.org/ns/sosa/Sampler) (c)<br />[sosa:Sensor](http://www.w3.org/ns/sosa/Sensor) (c)<br />[sosa:Actuator](http://www.w3.org/ns/sosa/Actuator) (c)<br />
 ### Agent
 Property | Value
 --- | ---
@@ -165,7 +165,7 @@ Property | Value
 IRI | `http://www.w3.org/ns/ssn/forProperty`
 Is Defined By | http://www.w3.org/ns/ssn/
 Description | A relation between some aspect of an entity and a Property.
-Example | <pre>For example, from a Sensor to the properties it can observe; from an Actuator to the properties it can act on; from a Deployment to the properties it was installed to observe or act on; from a SystemCapability to the Property the capability is described for.</pre>
+Example | ````For example, from a Sensor to the properties it can observe; from an Actuator to the properties it can act on; from a Deployment to the properties it was installed to observe or act on; from a SystemCapability to the Property the capability is described for.`<br />```
 [](hasdeployment)
 ### has deployment
 Property | Value
@@ -208,7 +208,7 @@ Property | Value
 IRI | `http://www.w3.org/ns/ssn/implementedBy`
 Is Defined By | http://www.w3.org/ns/ssn/
 Description | Relation between a Procedure (an algorithm, procedure or method) and an entity that implements that Procedure in some executable way.
-Example | <pre>For example, the relationship between a scientific measuring Procedure and a sensor that senses via that Procedure.</pre>
+Example | ````For example, the relationship between a scientific measuring Procedure and a sensor that senses via that Procedure.`<br />```
 [](implements)
 ### implements
 Property | Value
@@ -216,7 +216,7 @@ Property | Value
 IRI | `http://www.w3.org/ns/ssn/implements`
 Is Defined By | http://www.w3.org/ns/ssn/
 Description | Relation between an entity that implements a Procedure in some executable way and the Procedure (an algorithm, procedure or method).
-Example | <pre>For example, the relationship between a sensor and the scientific measuring Procedure via which it senses.</pre>
+Example | ````For example, the relationship between a sensor and the scientific measuring Procedure via which it senses.`<br />```
 [](indeployment)
 ### in deployment
 Property | Value
@@ -224,7 +224,7 @@ Property | Value
 IRI | `http://www.w3.org/ns/ssn/inDeployment`
 Is Defined By | http://www.w3.org/ns/ssn/
 Description | Relation between a Platform and a Deployment, meaning that the deployedSystems of the Deployment are hosted on the Platform.
-Example | <pre>For example, a relation between a buoy and a deployment of several Sensors.</pre>
+Example | ````For example, a relation between a buoy and a deployment of several Sensors.`<br />```
 [](ispropertyof)
 ### is property of
 Property | Value
@@ -239,7 +239,7 @@ Property | Value
 IRI | `http://www.w3.org/ns/ssn/isProxyFor`
 Is Defined By | http://www.w3.org/ns/ssn/
 Description | A relation from a Stimulus to the Property that the Stimulus is serving as a proxy for.
-Example | <pre>For example, the expansion of quicksilver is a stimulus that serves as a proxy for some temperature property. An increase or decrease in the velocity of spinning cups on a wind sensor is serving as a proxy for the wind speed.</pre>
+Example | ````For example, the expansion of quicksilver is a stimulus that serves as a proxy for some temperature property. An increase or decrease in the velocity of spinning cups on a wind sensor is serving as a proxy for the wind speed.`<br />```
 [](wasoriginatedby)
 ### was originated by
 Property | Value

@@ -322,13 +322,13 @@
 ex:FA3
   rdf:type proj:FundingAssociation ;
   rdfs:label "Level crossing removal project phase 1 funding arrangement" ;
-  rdfs:seeAlso <http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/> ;
+  rdfs:seeAlso &lt;http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/&gt; ;
   proj:fundsProvided [
     rdf:type proj:SumOfMoney ;
     proj:moneyAmount "524000000"^^xsd:decimal ;
-    proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+    proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
   ] ;
-  prov:agent <http://www.vic.gov.au/> ;
+  prov:agent &lt;http://www.vic.gov.au/&gt; ;
  .
 
                     </pre>
@@ -343,9 +343,9 @@ ex:FA3
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#hadRole">prov:hadRole</a> <span class="cardinality">value</span> <a href="http://linked.data.gov.au/def/project/Funder">proji:Funder</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://linked.data.gov.au/def/project#fundsProvided">proj:fundsProvided</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
                     <a href="http://www.w3.org/ns/prov#agent">prov:agent</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/prov#hadRole">prov:hadRole</a> <span class="cardinality">value</span> <a href="http://linked.data.gov.au/def/project/Funder">proji:Funder</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -391,10 +391,10 @@ proj:hadBudgetTotal [
   rdf:type proj:SumOfMoney ;
   rdfs:label "Level crossing removal phase 1 budget" ;
   proj:moneyAmount "524000000"^^xsd:decimal ;
-  proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+  proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
 ] ;
 proj:hadLeader ex:johnholland-kbr ;
-proj:hadSponsor <http://levelcrossings.vic.gov.au/about/about-the-authority> ;
+proj:hadSponsor &lt;http://levelcrossings.vic.gov.au/about/about-the-authority&gt; ;
 proj:hadSubActivity ex:BentleighLevelCrossingRemoval ;
 proj:hadSubActivity ex:BurkeRoadLevelCrossingRemoval ;
 proj:hadSubActivity ex:McKinnonRoadLevelCrossingRemoval ;
@@ -402,18 +402,18 @@ proj:hadSubActivity ex:NorthRoadLevelCrossingRemoval ;
 proj:wasFundedThrough [
   rdf:type proj:FundingAssociation ;
   rdfs:label "Level crossing removal project phase 1 funding arrangement" ;
-  rdfs:seeAlso <http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/> ;
+  rdfs:seeAlso &lt;http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/&gt; ;
   proj:fundsProvided [
     rdf:type proj:SumOfMoney ;
     proj:moneyAmount "524000000"^^xsd:decimal ;
-    proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+    proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
   ] ;
-  prov:agent <http://www.vic.gov.au/> ;
+  prov:agent &lt;http://www.vic.gov.au/&gt; ;
 ] ;
 rdfs:label "Victoria level-crossing removal - phase 1" ;
 proj:plannedEnd "2017-03-31"^^xsd:date ;
 proj:plannedStart "2015-10-01"^^xsd:date ;
-prov:atLocation <https://dbpedia.org/resource/Melbourne> ;
+prov:atLocation &lt;https://dbpedia.org/resource/Melbourne&gt; ;
 prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
 prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
 .
@@ -430,12 +430,12 @@ prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#hadBudgetTotal">proj:hadBudgetTotal</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://linked.data.gov.au/def/project#plannedEnd">proj:plannedEnd</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://linked.data.gov.au/def/project#hadLeader">proj:hadLeader</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://linked.data.gov.au/def/project#plannedStart">proj:plannedStart</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://linked.data.gov.au/def/project#hadPlan">proj:hadPlan</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/project#plannedEnd">proj:plannedEnd</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://linked.data.gov.au/def/project#hadSponsor">proj:hadSponsor</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/project#hadLeader">proj:hadLeader</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/project#hadBudgetTotal">proj:hadBudgetTotal</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/project#plannedStart">proj:plannedStart</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
@@ -447,11 +447,11 @@ prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#hadBudgetTotal">proj:hadBudgetTotal</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://linked.data.gov.au/def/project#wasFundedThrough">proj:wasFundedThrough</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://linked.data.gov.au/def/project#hadPlan">proj:hadPlan</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://linked.data.gov.au/def/project#hadSponsor">proj:hadSponsor</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://linked.data.gov.au/def/project#hadAreaOfInterest">proj:hadAreaOfInterest</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#hadSponsor">proj:hadSponsor</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#hadBudgetTotal">proj:hadBudgetTotal</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#hadPlan">proj:hadPlan</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#wasFundedThrough">proj:wasFundedThrough</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://linked.data.gov.au/def/project#hadObjective">proj:hadObjective</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
@@ -486,30 +486,30 @@ rdfs:label "Improved management of feral animals in remote tropical Australia" ;
 proj:budgetTotal [
   rdf:type proj:SumOfMoney ;
   proj:moneyAmount 0 ;
-  proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+  proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
 ] ;
-proj:hadFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050202> ;
-proj:hadPrincipalInvestigator <http://orcid.org/0000-0002-5823-7364> ;
-proj:hadSponsor <http://dbpedia.org/resource/Commonwealth_Scientific_and_Industrial_Research_Organisation> ;
+proj:hadFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050202&gt; ;
+proj:hadPrincipalInvestigator &lt;http://orcid.org/0000-0002-5823-7364&gt; ;
+proj:hadSponsor &lt;http://dbpedia.org/resource/Commonwealth_Scientific_and_Industrial_Research_Organisation&gt; ;
 proj:hadSubActivity ex:Aerial ;
-proj:wasSubActivityOf <http://www.environment.gov.au/science/nesp> ;
+proj:wasSubActivityOf &lt;http://www.environment.gov.au/science/nesp&gt; ;
 rdfs:label "Improved management of feral animals in remote tropical Australia" ;
 proj:hadObjective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
 proj:plannedEnd "2022-12-31"^^xsd:date ;
 proj:plannedStart "2012-12-31"^^xsd:date ;
-proj:projectParticipant <mailto:peter.brenton@csiro.au> ;
+proj:projectParticipant &lt;mailto:peter.brenton@csiro.au&gt; ;
 proj:hadPlan ex:FCY-project-plan ;
 proj:wasFundedThrough [
   rdf:type proj:FundingAssociation ;
   proj:fundsProvided [
     rdf:type proj:SumOfMoney ;
     proj:moneyAmount 0 ;
-    proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+    proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
   ] ;
-  prov:agent <http://dbpedia.org/resource/Government_of_Australia> ;
+  prov:agent &lt;http://dbpedia.org/resource/Government_of_Australia&gt; ;
 ] ;
-prov:atLocation <http://dbpedia.org/resource/Archer_River,_Queensland> ;
-prov:generated <https://doi.org/10.1071/WF15133> ;
+prov:atLocation &lt;http://dbpedia.org/resource/Archer_River,_Queensland&gt; ;
+prov:generated &lt;https://doi.org/10.1071/WF15133&gt; ;
 prov:startedAtTime "2012-12-31T00:00:00"^^xsd:dateTime ;
 .
 
@@ -558,7 +558,7 @@ prov:startedAtTime "2012-12-31T00:00:00"^^xsd:dateTime ;
 ex:SM4
     rdf:type proj:SumOfMoney ;
     proj:moneyAmount "524000000"^^xsd:decimal ;
-    proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+    proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
  .
 
                     </pre>
@@ -573,22 +573,22 @@ ex:SM4
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#moneyAmount">proj:moneyAmount</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://linked.data.gov.au/def/project#moneyCurrency">proj:moneyCurrency</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/project#moneyAmount">proj:moneyAmount</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#moneyCurrency">proj:moneyCurrency</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://linked.data.gov.au/def/project#moneyAmount">proj:moneyAmount</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#moneyCurrency">proj:moneyCurrency</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#hadBudgetTotal">proj:hadBudgetTotal</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://linked.data.gov.au/def/project#fundsProvided">proj:fundsProvided</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#hadBudgetTotal">proj:hadBudgetTotal</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>

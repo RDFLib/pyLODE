@@ -71,7 +71,7 @@ IRI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | <p>The class of RDF statements.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
-In domain of |[rdf:predicate](http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate)<br />[rdf:subject](http://www.w3.org/1999/02/22-rdf-syntax-ns#subject)<br />[rdf:object](http://www.w3.org/1999/02/22-rdf-syntax-ns#object)<br />
+In domain of |[rdf:subject](http://www.w3.org/1999/02/22-rdf-syntax-ns#subject)<br />[rdf:object](http://www.w3.org/1999/02/22-rdf-syntax-ns#object)<br />[rdf:predicate](http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate)<br />
 
 ## Properties
 [first](#first),

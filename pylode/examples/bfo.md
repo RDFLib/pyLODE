@@ -6,31 +6,31 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * **IRI**
   * `http://purl.obolibrary.org/obo/bfo.owl`
 * **Contributor(s)**
-  * Randall Dipert
-  * Fabian Neuhaus
-  * Janna Hastings
-  * Bill Duncan
-  * Jonathan Bona
-  * Pierre Grenon
-  * Thomas Bittner
-  * Jie Zheng
-  * James A. Overton
-  * Mathias Brochhausen
-  * Ludger Jansen
-  * Bjoern Peters
-  * Leonard Jacuzzo
-  * Robert Rovetto
-  * Barry Smith
   * Alan Ruttenberg
-  * Larry Hunter
   * Albert Goldfain
-  * Mark Ressler
-  * Mauricio Almeida
-  * David Osumi-Sutherland
-  * Stefan Schulz
-  * Ron Rudnicki
-  * Melanie Courtot
+  * Barry Smith
+  * Bill Duncan
+  * Bjoern Peters
   * Chris Mungall
+  * David Osumi-Sutherland
+  * Fabian Neuhaus
+  * James A. Overton
+  * Janna Hastings
+  * Jie Zheng
+  * Jonathan Bona
+  * Larry Hunter
+  * Leonard Jacuzzo
+  * Ludger Jansen
+  * Mark Ressler
+  * Mathias Brochhausen
+  * Mauricio Almeida
+  * Melanie Courtot
+  * Pierre Grenon
+  * Randall Dipert
+  * Robert Rovetto
+  * Ron Rudnicki
+  * Stefan Schulz
+  * Thomas Bittner
   * Werner Ceusters
 * **Ontology RDF**
   * RDF ([bfo.ttl](turtle))
@@ -90,7 +90,7 @@ Property | Value
 IRI | `http://purl.obolibrary.org/obo/BFO_0000001`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Restrictions |[obo:BFO_0000108](http://purl.obolibrary.org/obo/BFO_0000108) (op) **some** [obo:BFO_0000008](http://purl.obolibrary.org/obo/BFO_0000008) (c)<br />
-Sub-classes |[obo:BFO_0000003](http://purl.obolibrary.org/obo/BFO_0000003) (c)<br />[obo:BFO_0000002](http://purl.obolibrary.org/obo/BFO_0000002) (c)<br />
+Sub-classes |[obo:BFO_0000002](http://purl.obolibrary.org/obo/BFO_0000002) (c)<br />[obo:BFO_0000003](http://purl.obolibrary.org/obo/BFO_0000003) (c)<br />
 In domain of |[obo:BFO_0000108](http://purl.obolibrary.org/obo/BFO_0000108) (op)<br />
 In range of |[obo:BFO_0000157](http://purl.obolibrary.org/obo/BFO_0000157) (op)<br />
 ### continuant
@@ -99,48 +99,48 @@ Property | Value
 IRI | `http://purl.obolibrary.org/obo/BFO_0000002`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000001](http://purl.obolibrary.org/obo/BFO_0000001) (c)<br />
-Sub-classes |[obo:BFO_0000020](http://purl.obolibrary.org/obo/BFO_0000020) (c)<br />[obo:BFO_0000031](http://purl.obolibrary.org/obo/BFO_0000031) (c)<br />[obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c)<br />
-In domain of |[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op)<br />[obo:BFO_0000174](http://purl.obolibrary.org/obo/BFO_0000174) (op)<br />[obo:BFO_0000115](http://purl.obolibrary.org/obo/BFO_0000115) (op)<br />[obo:BFO_0000129](http://purl.obolibrary.org/obo/BFO_0000129) (op)<br />[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op)<br />[obo:BFO_0000175](http://purl.obolibrary.org/obo/BFO_0000175) (op)<br />[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op)<br />[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op)<br />
-In range of |[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op)<br />[obo:BFO_0000174](http://purl.obolibrary.org/obo/BFO_0000174) (op)<br />[obo:BFO_0000115](http://purl.obolibrary.org/obo/BFO_0000115) (op)<br />[obo:BFO_0000175](http://purl.obolibrary.org/obo/BFO_0000175) (op)<br />[obo:BFO_0000129](http://purl.obolibrary.org/obo/BFO_0000129) (op)<br />[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op)<br />[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op)<br />[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op)<br />
+Sub-classes |[obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c)<br />[obo:BFO_0000031](http://purl.obolibrary.org/obo/BFO_0000031) (c)<br />[obo:BFO_0000020](http://purl.obolibrary.org/obo/BFO_0000020) (c)<br />
+In domain of |[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op)<br />[obo:BFO_0000174](http://purl.obolibrary.org/obo/BFO_0000174) (op)<br />[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op)<br />[obo:BFO_0000115](http://purl.obolibrary.org/obo/BFO_0000115) (op)<br />[obo:BFO_0000175](http://purl.obolibrary.org/obo/BFO_0000175) (op)<br />[obo:BFO_0000129](http://purl.obolibrary.org/obo/BFO_0000129) (op)<br />[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op)<br />[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op)<br />
+In range of |[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op)<br />[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op)<br />[obo:BFO_0000129](http://purl.obolibrary.org/obo/BFO_0000129) (op)<br />[obo:BFO_0000115](http://purl.obolibrary.org/obo/BFO_0000115) (op)<br />[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op)<br />[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op)<br />[obo:BFO_0000175](http://purl.obolibrary.org/obo/BFO_0000175) (op)<br />[obo:BFO_0000174](http://purl.obolibrary.org/obo/BFO_0000174) (op)<br />
 ### occurrent
 Property | Value
 --- | ---
 IRI | `http://purl.obolibrary.org/obo/BFO_0000003`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000001](http://purl.obolibrary.org/obo/BFO_0000001) (c)<br />
-Sub-classes |[obo:BFO_0000035](http://purl.obolibrary.org/obo/BFO_0000035) (c)<br />[obo:BFO_0000008](http://purl.obolibrary.org/obo/BFO_0000008) (c)<br />[obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c)<br />[obo:BFO_0000011](http://purl.obolibrary.org/obo/BFO_0000011) (c)<br />
-In domain of |[obo:BFO_0000132](http://purl.obolibrary.org/obo/BFO_0000132) (op)<br />[obo:BFO_0000121](http://purl.obolibrary.org/obo/BFO_0000121) (op)<br />[obo:BFO_0000136](http://purl.obolibrary.org/obo/BFO_0000136) (op)<br />[obo:BFO_0000139](http://purl.obolibrary.org/obo/BFO_0000139) (op)<br />[obo:BFO_0000181](http://purl.obolibrary.org/obo/BFO_0000181) (op)<br />[obo:BFO_0000138](http://purl.obolibrary.org/obo/BFO_0000138) (op)<br />[obo:BFO_0000118](http://purl.obolibrary.org/obo/BFO_0000118) (op)<br />[obo:BFO_0000155](http://purl.obolibrary.org/obo/BFO_0000155) (op)<br />[obo:BFO_0000117](http://purl.obolibrary.org/obo/BFO_0000117) (op)<br />[obo:BFO_0000130](http://purl.obolibrary.org/obo/BFO_0000130) (op)<br />
-In range of |[obo:BFO_0000121](http://purl.obolibrary.org/obo/BFO_0000121) (op)<br />[obo:BFO_0000132](http://purl.obolibrary.org/obo/BFO_0000132) (op)<br />[obo:BFO_0000136](http://purl.obolibrary.org/obo/BFO_0000136) (op)<br />[obo:BFO_0000138](http://purl.obolibrary.org/obo/BFO_0000138) (op)<br />[obo:BFO_0000118](http://purl.obolibrary.org/obo/BFO_0000118) (op)<br />[obo:BFO_0000181](http://purl.obolibrary.org/obo/BFO_0000181) (op)<br />[obo:BFO_0000139](http://purl.obolibrary.org/obo/BFO_0000139) (op)<br />[obo:BFO_0000156](http://purl.obolibrary.org/obo/BFO_0000156) (op)<br />[obo:BFO_0000126](http://purl.obolibrary.org/obo/BFO_0000126) (op)<br />[obo:BFO_0000117](http://purl.obolibrary.org/obo/BFO_0000117) (op)<br />
+Sub-classes |[obo:BFO_0000011](http://purl.obolibrary.org/obo/BFO_0000011) (c)<br />[obo:BFO_0000035](http://purl.obolibrary.org/obo/BFO_0000035) (c)<br />[obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c)<br />[obo:BFO_0000008](http://purl.obolibrary.org/obo/BFO_0000008) (c)<br />
+In domain of |[obo:BFO_0000181](http://purl.obolibrary.org/obo/BFO_0000181) (op)<br />[obo:BFO_0000132](http://purl.obolibrary.org/obo/BFO_0000132) (op)<br />[obo:BFO_0000139](http://purl.obolibrary.org/obo/BFO_0000139) (op)<br />[obo:BFO_0000118](http://purl.obolibrary.org/obo/BFO_0000118) (op)<br />[obo:BFO_0000136](http://purl.obolibrary.org/obo/BFO_0000136) (op)<br />[obo:BFO_0000130](http://purl.obolibrary.org/obo/BFO_0000130) (op)<br />[obo:BFO_0000117](http://purl.obolibrary.org/obo/BFO_0000117) (op)<br />[obo:BFO_0000155](http://purl.obolibrary.org/obo/BFO_0000155) (op)<br />[obo:BFO_0000121](http://purl.obolibrary.org/obo/BFO_0000121) (op)<br />[obo:BFO_0000138](http://purl.obolibrary.org/obo/BFO_0000138) (op)<br />
+In range of |[obo:BFO_0000121](http://purl.obolibrary.org/obo/BFO_0000121) (op)<br />[obo:BFO_0000126](http://purl.obolibrary.org/obo/BFO_0000126) (op)<br />[obo:BFO_0000138](http://purl.obolibrary.org/obo/BFO_0000138) (op)<br />[obo:BFO_0000118](http://purl.obolibrary.org/obo/BFO_0000118) (op)<br />[obo:BFO_0000139](http://purl.obolibrary.org/obo/BFO_0000139) (op)<br />[obo:BFO_0000156](http://purl.obolibrary.org/obo/BFO_0000156) (op)<br />[obo:BFO_0000136](http://purl.obolibrary.org/obo/BFO_0000136) (op)<br />[obo:BFO_0000117](http://purl.obolibrary.org/obo/BFO_0000117) (op)<br />[obo:BFO_0000181](http://purl.obolibrary.org/obo/BFO_0000181) (op)<br />[obo:BFO_0000132](http://purl.obolibrary.org/obo/BFO_0000132) (op)<br />
 ### independent continuant
 Property | Value
 --- | ---
 IRI | `http://purl.obolibrary.org/obo/BFO_0000004`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000002](http://purl.obolibrary.org/obo/BFO_0000002) (c)<br />
-Restrictions |[obo:BFO_0000169](http://purl.obolibrary.org/obo/BFO_0000169) (op) **only** [owl:Nothing](http://www.w3.org/2002/07/owl#Nothing) (c)<br />[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op) **only** ()<br />[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op) **only** ()<br />[obo:BFO_0000083](http://purl.obolibrary.org/obo/BFO_0000083) (op) **some** [obo:BFO_0000006](http://purl.obolibrary.org/obo/BFO_0000006) (c)<br />
-Sub-classes |[obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c)<br />[obo:BFO_0000141](http://purl.obolibrary.org/obo/BFO_0000141) (c)<br />
-In domain of |[obo:BFO_0000124](http://purl.obolibrary.org/obo/BFO_0000124) (op)<br />[obo:BFO_0000083](http://purl.obolibrary.org/obo/BFO_0000083) (op)<br />[obo:BFO_0000171](http://purl.obolibrary.org/obo/BFO_0000171) (op)<br />
-In range of |[obo:BFO_0000124](http://purl.obolibrary.org/obo/BFO_0000124) (op)<br />[obo:BFO_0000171](http://purl.obolibrary.org/obo/BFO_0000171) (op)<br />[obo:BFO_0000123](http://purl.obolibrary.org/obo/BFO_0000123) (op)<br />
+Restrictions |[obo:BFO_0000169](http://purl.obolibrary.org/obo/BFO_0000169) (op) **only** [owl:Nothing](http://www.w3.org/2002/07/owl#Nothing) (c)<br />[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op) **only** ()<br />[obo:BFO_0000083](http://purl.obolibrary.org/obo/BFO_0000083) (op) **some** [obo:BFO_0000006](http://purl.obolibrary.org/obo/BFO_0000006) (c)<br />[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op) **only** ()<br />
+Sub-classes |[obo:BFO_0000141](http://purl.obolibrary.org/obo/BFO_0000141) (c)<br />[obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c)<br />
+In domain of |[obo:BFO_0000083](http://purl.obolibrary.org/obo/BFO_0000083) (op)<br />[obo:BFO_0000171](http://purl.obolibrary.org/obo/BFO_0000171) (op)<br />[obo:BFO_0000124](http://purl.obolibrary.org/obo/BFO_0000124) (op)<br />
+In range of |[obo:BFO_0000123](http://purl.obolibrary.org/obo/BFO_0000123) (op)<br />[obo:BFO_0000124](http://purl.obolibrary.org/obo/BFO_0000124) (op)<br />[obo:BFO_0000171](http://purl.obolibrary.org/obo/BFO_0000171) (op)<br />
 ### spatial region
 Property | Value
 --- | ---
 IRI | `http://purl.obolibrary.org/obo/BFO_0000006`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000141](http://purl.obolibrary.org/obo/BFO_0000141) (c)<br />
-Restrictions |[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op) **only** [obo:BFO_0000006](http://purl.obolibrary.org/obo/BFO_0000006) (c)<br />[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op) **only** [obo:BFO_0000006](http://purl.obolibrary.org/obo/BFO_0000006) (c)<br />[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op) **only** [obo:BFO_0000006](http://purl.obolibrary.org/obo/BFO_0000006) (c)<br />[obo:BFO_0000123](http://purl.obolibrary.org/obo/BFO_0000123) (op)<br />[obo:BFO_0000083](http://purl.obolibrary.org/obo/BFO_0000083) (op)<br />[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op) **only** [obo:BFO_0000006](http://purl.obolibrary.org/obo/BFO_0000006) (c)<br />
-Sub-classes |[obo:BFO_0000028](http://purl.obolibrary.org/obo/BFO_0000028) (c)<br />[obo:BFO_0000009](http://purl.obolibrary.org/obo/BFO_0000009) (c)<br />[obo:BFO_0000018](http://purl.obolibrary.org/obo/BFO_0000018) (c)<br />[obo:BFO_0000026](http://purl.obolibrary.org/obo/BFO_0000026) (c)<br />
+Restrictions |[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op) **only** [obo:BFO_0000006](http://purl.obolibrary.org/obo/BFO_0000006) (c)<br />[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op) **only** [obo:BFO_0000006](http://purl.obolibrary.org/obo/BFO_0000006) (c)<br />[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op) **only** [obo:BFO_0000006](http://purl.obolibrary.org/obo/BFO_0000006) (c)<br />[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op) **only** [obo:BFO_0000006](http://purl.obolibrary.org/obo/BFO_0000006) (c)<br />[obo:BFO_0000083](http://purl.obolibrary.org/obo/BFO_0000083) (op)<br />[obo:BFO_0000123](http://purl.obolibrary.org/obo/BFO_0000123) (op)<br />
+Sub-classes |[obo:BFO_0000009](http://purl.obolibrary.org/obo/BFO_0000009) (c)<br />[obo:BFO_0000026](http://purl.obolibrary.org/obo/BFO_0000026) (c)<br />[obo:BFO_0000028](http://purl.obolibrary.org/obo/BFO_0000028) (c)<br />[obo:BFO_0000018](http://purl.obolibrary.org/obo/BFO_0000018) (c)<br />
 In domain of |[obo:BFO_0000152](http://purl.obolibrary.org/obo/BFO_0000152) (op)<br />[obo:BFO_0000123](http://purl.obolibrary.org/obo/BFO_0000123) (op)<br />
-In range of |[obo:BFO_0000083](http://purl.obolibrary.org/obo/BFO_0000083) (op)<br />[obo:BFO_0000151](http://purl.obolibrary.org/obo/BFO_0000151) (op)<br />
+In range of |[obo:BFO_0000151](http://purl.obolibrary.org/obo/BFO_0000151) (op)<br />[obo:BFO_0000083](http://purl.obolibrary.org/obo/BFO_0000083) (op)<br />
 ### temporal region
 Property | Value
 --- | ---
 IRI | `http://purl.obolibrary.org/obo/BFO_0000008`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000003](http://purl.obolibrary.org/obo/BFO_0000003) (c)<br />
-Restrictions |[obo:BFO_0000156](http://purl.obolibrary.org/obo/BFO_0000156) (op)<br />[obo:BFO_0000117](http://purl.obolibrary.org/obo/BFO_0000117) (op) **only** [obo:BFO_0000008](http://purl.obolibrary.org/obo/BFO_0000008) (c)<br />[obo:BFO_0000155](http://purl.obolibrary.org/obo/BFO_0000155) (op)<br />[obo:BFO_0000132](http://purl.obolibrary.org/obo/BFO_0000132) (op) **only** [obo:BFO_0000008](http://purl.obolibrary.org/obo/BFO_0000008) (c)<br />
+Restrictions |[obo:BFO_0000156](http://purl.obolibrary.org/obo/BFO_0000156) (op)<br />[obo:BFO_0000155](http://purl.obolibrary.org/obo/BFO_0000155) (op)<br />[obo:BFO_0000117](http://purl.obolibrary.org/obo/BFO_0000117) (op) **only** [obo:BFO_0000008](http://purl.obolibrary.org/obo/BFO_0000008) (c)<br />[obo:BFO_0000132](http://purl.obolibrary.org/obo/BFO_0000132) (op) **only** [obo:BFO_0000008](http://purl.obolibrary.org/obo/BFO_0000008) (c)<br />
 Sub-classes |[obo:BFO_0000148](http://purl.obolibrary.org/obo/BFO_0000148) (c)<br />[obo:BFO_0000038](http://purl.obolibrary.org/obo/BFO_0000038) (c)<br />
-In domain of |[obo:BFO_0000154](http://purl.obolibrary.org/obo/BFO_0000154) (op)<br />[obo:BFO_0000157](http://purl.obolibrary.org/obo/BFO_0000157) (op)<br />[obo:BFO_0000156](http://purl.obolibrary.org/obo/BFO_0000156) (op)<br />
-In range of |[obo:BFO_0000108](http://purl.obolibrary.org/obo/BFO_0000108) (op)<br />[obo:BFO_0000153](http://purl.obolibrary.org/obo/BFO_0000153) (op)<br />[obo:BFO_0000155](http://purl.obolibrary.org/obo/BFO_0000155) (op)<br />
+In domain of |[obo:BFO_0000156](http://purl.obolibrary.org/obo/BFO_0000156) (op)<br />[obo:BFO_0000154](http://purl.obolibrary.org/obo/BFO_0000154) (op)<br />[obo:BFO_0000157](http://purl.obolibrary.org/obo/BFO_0000157) (op)<br />
+In range of |[obo:BFO_0000155](http://purl.obolibrary.org/obo/BFO_0000155) (op)<br />[obo:BFO_0000108](http://purl.obolibrary.org/obo/BFO_0000108) (op)<br />[obo:BFO_0000153](http://purl.obolibrary.org/obo/BFO_0000153) (op)<br />
 ### two-dimensional spatial region
 Property | Value
 --- | ---
@@ -154,29 +154,29 @@ Property | Value
 IRI | `http://purl.obolibrary.org/obo/BFO_0000011`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000003](http://purl.obolibrary.org/obo/BFO_0000003) (c)<br />
-Restrictions |[obo:BFO_0000153](http://purl.obolibrary.org/obo/BFO_0000153) (op) **some** [obo:BFO_0000008](http://purl.obolibrary.org/obo/BFO_0000008) (c)<br />[obo:BFO_0000130](http://purl.obolibrary.org/obo/BFO_0000130) (op)<br />[obo:BFO_0000117](http://purl.obolibrary.org/obo/BFO_0000117) (op) **only** [obo:BFO_0000011](http://purl.obolibrary.org/obo/BFO_0000011) (c)<br />[obo:BFO_0000126](http://purl.obolibrary.org/obo/BFO_0000126) (op)<br />[obo:BFO_0000151](http://purl.obolibrary.org/obo/BFO_0000151) (op) **some** [obo:BFO_0000006](http://purl.obolibrary.org/obo/BFO_0000006) (c)<br />[obo:BFO_0000132](http://purl.obolibrary.org/obo/BFO_0000132) (op) **only** [obo:BFO_0000011](http://purl.obolibrary.org/obo/BFO_0000011) (c)<br />
+Restrictions |[obo:BFO_0000117](http://purl.obolibrary.org/obo/BFO_0000117) (op) **only** [obo:BFO_0000011](http://purl.obolibrary.org/obo/BFO_0000011) (c)<br />[obo:BFO_0000132](http://purl.obolibrary.org/obo/BFO_0000132) (op) **only** [obo:BFO_0000011](http://purl.obolibrary.org/obo/BFO_0000011) (c)<br />[obo:BFO_0000126](http://purl.obolibrary.org/obo/BFO_0000126) (op)<br />[obo:BFO_0000153](http://purl.obolibrary.org/obo/BFO_0000153) (op) **some** [obo:BFO_0000008](http://purl.obolibrary.org/obo/BFO_0000008) (c)<br />[obo:BFO_0000151](http://purl.obolibrary.org/obo/BFO_0000151) (op) **some** [obo:BFO_0000006](http://purl.obolibrary.org/obo/BFO_0000006) (c)<br />[obo:BFO_0000130](http://purl.obolibrary.org/obo/BFO_0000130) (op)<br />
 In domain of |[obo:BFO_0000126](http://purl.obolibrary.org/obo/BFO_0000126) (op)<br />[obo:BFO_0000151](http://purl.obolibrary.org/obo/BFO_0000151) (op)<br />[obo:BFO_0000153](http://purl.obolibrary.org/obo/BFO_0000153) (op)<br />
-In range of |[obo:BFO_0000154](http://purl.obolibrary.org/obo/BFO_0000154) (op)<br />[obo:BFO_0000130](http://purl.obolibrary.org/obo/BFO_0000130) (op)<br />[obo:BFO_0000152](http://purl.obolibrary.org/obo/BFO_0000152) (op)<br />
+In range of |[obo:BFO_0000152](http://purl.obolibrary.org/obo/BFO_0000152) (op)<br />[obo:BFO_0000154](http://purl.obolibrary.org/obo/BFO_0000154) (op)<br />[obo:BFO_0000130](http://purl.obolibrary.org/obo/BFO_0000130) (op)<br />
 ### process
 Property | Value
 --- | ---
 IRI | `http://purl.obolibrary.org/obo/BFO_0000015`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000003](http://purl.obolibrary.org/obo/BFO_0000003) (c)<br />
-Restrictions |[obo:BFO_0000132](http://purl.obolibrary.org/obo/BFO_0000132) (op) **only** [obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c)<br />[obo:BFO_0000117](http://purl.obolibrary.org/obo/BFO_0000117) (op) **only** ([obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c) or [obo:BFO_0000035](http://purl.obolibrary.org/obo/BFO_0000035) (c))<br />[obo:BFO_0000169](http://purl.obolibrary.org/obo/BFO_0000169) (op) **some** [obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c)<br />
+Restrictions |[obo:BFO_0000169](http://purl.obolibrary.org/obo/BFO_0000169) (op) **some** [obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c)<br />[obo:BFO_0000117](http://purl.obolibrary.org/obo/BFO_0000117) (op) **only** ([obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c) or [obo:BFO_0000035](http://purl.obolibrary.org/obo/BFO_0000035) (c))<br />[obo:BFO_0000132](http://purl.obolibrary.org/obo/BFO_0000132) (op) **only** [obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c)<br />
 Sub-classes |[obo:BFO_0000144](http://purl.obolibrary.org/obo/BFO_0000144) (c)<br />[obo:BFO_0000182](http://purl.obolibrary.org/obo/BFO_0000182) (c)<br />
-In domain of |[obo:BFO_0000055](http://purl.obolibrary.org/obo/BFO_0000055) (op)<br />[obo:BFO_0000184](http://purl.obolibrary.org/obo/BFO_0000184) (op)<br />[obo:BFO_0000119](http://purl.obolibrary.org/obo/BFO_0000119) (op)<br />[obo:BFO_0000057](http://purl.obolibrary.org/obo/BFO_0000057) (op)<br />[obo:BFO_0000167](http://purl.obolibrary.org/obo/BFO_0000167) (op)<br />
-In range of |[obo:BFO_0000185](http://purl.obolibrary.org/obo/BFO_0000185) (op)<br />[obo:BFO_0000133](http://purl.obolibrary.org/obo/BFO_0000133) (op)<br />[obo:BFO_0000056](http://purl.obolibrary.org/obo/BFO_0000056) (op)<br />[obo:BFO_0000054](http://purl.obolibrary.org/obo/BFO_0000054) (op)<br />
+In domain of |[obo:BFO_0000055](http://purl.obolibrary.org/obo/BFO_0000055) (op)<br />[obo:BFO_0000119](http://purl.obolibrary.org/obo/BFO_0000119) (op)<br />[obo:BFO_0000184](http://purl.obolibrary.org/obo/BFO_0000184) (op)<br />[obo:BFO_0000167](http://purl.obolibrary.org/obo/BFO_0000167) (op)<br />[obo:BFO_0000057](http://purl.obolibrary.org/obo/BFO_0000057) (op)<br />
+In range of |[obo:BFO_0000133](http://purl.obolibrary.org/obo/BFO_0000133) (op)<br />[obo:BFO_0000054](http://purl.obolibrary.org/obo/BFO_0000054) (op)<br />[obo:BFO_0000056](http://purl.obolibrary.org/obo/BFO_0000056) (op)<br />[obo:BFO_0000185](http://purl.obolibrary.org/obo/BFO_0000185) (op)<br />
 ### disposition
 Property | Value
 --- | ---
 IRI | `http://purl.obolibrary.org/obo/BFO_0000016`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000017](http://purl.obolibrary.org/obo/BFO_0000017) (c)<br />
-Restrictions |[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op) **only** ()<br />[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op) **only** ()<br />
+Restrictions |[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op) **only** ()<br />[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op) **only** ()<br />
 Sub-classes |[obo:BFO_0000034](http://purl.obolibrary.org/obo/BFO_0000034) (c)<br />
-In domain of |[obo:BFO_0000107](http://purl.obolibrary.org/obo/BFO_0000107) (op)<br />[obo:BFO_0000113](http://purl.obolibrary.org/obo/BFO_0000113) (op)<br />
-In range of |[obo:BFO_0000162](http://purl.obolibrary.org/obo/BFO_0000162) (op)<br />[obo:BFO_0000112](http://purl.obolibrary.org/obo/BFO_0000112) (op)<br />[obo:BFO_0000163](http://purl.obolibrary.org/obo/BFO_0000163) (op)<br />[obo:BFO_0000127](http://purl.obolibrary.org/obo/BFO_0000127) (op)<br />
+In domain of |[obo:BFO_0000113](http://purl.obolibrary.org/obo/BFO_0000113) (op)<br />[obo:BFO_0000107](http://purl.obolibrary.org/obo/BFO_0000107) (op)<br />
+In range of |[obo:BFO_0000162](http://purl.obolibrary.org/obo/BFO_0000162) (op)<br />[obo:BFO_0000112](http://purl.obolibrary.org/obo/BFO_0000112) (op)<br />[obo:BFO_0000127](http://purl.obolibrary.org/obo/BFO_0000127) (op)<br />[obo:BFO_0000163](http://purl.obolibrary.org/obo/BFO_0000163) (op)<br />
 ### realizable entity
 Property | Value
 --- | ---
@@ -184,7 +184,7 @@ IRI | `http://purl.obolibrary.org/obo/BFO_0000017`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000020](http://purl.obolibrary.org/obo/BFO_0000020) (c)<br />
 Restrictions |[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op) **only** ()<br />[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op) **only** ()<br />
-Sub-classes |[obo:BFO_0000023](http://purl.obolibrary.org/obo/BFO_0000023) (c)<br />[obo:BFO_0000016](http://purl.obolibrary.org/obo/BFO_0000016) (c)<br />
+Sub-classes |[obo:BFO_0000016](http://purl.obolibrary.org/obo/BFO_0000016) (c)<br />[obo:BFO_0000023](http://purl.obolibrary.org/obo/BFO_0000023) (c)<br />
 In domain of |[obo:BFO_0000054](http://purl.obolibrary.org/obo/BFO_0000054) (op)<br />
 In range of |[obo:BFO_0000055](http://purl.obolibrary.org/obo/BFO_0000055) (op)<br />
 ### zero-dimensional spatial region
@@ -193,7 +193,7 @@ Property | Value
 IRI | `http://purl.obolibrary.org/obo/BFO_0000018`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000006](http://purl.obolibrary.org/obo/BFO_0000006) (c)<br />
-Restrictions |[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op) **only** ()<br />[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op) **only** ()<br />
+Restrictions |[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op) **only** ()<br />[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op) **only** ()<br />
 ### quality
 Property | Value
 --- | ---
@@ -210,10 +210,10 @@ Property | Value
 IRI | `http://purl.obolibrary.org/obo/BFO_0000020`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000002](http://purl.obolibrary.org/obo/BFO_0000002) (c)<br />
-Restrictions |[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op) **only** ([obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c) and [ub8bL2217C58](ub8bL2217C58) (c))<br />[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op) **only** ([obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c) and [ub8bL2217C58](ub8bL2217C58) (c))<br />[obo:BFO_0000052](http://purl.obolibrary.org/obo/BFO_0000052) (op) **some** ([obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c) and [ub8bL2217C58](ub8bL2217C58) (c))<br />
-Sub-classes |[obo:BFO_0000019](http://purl.obolibrary.org/obo/BFO_0000019) (c)<br />[obo:BFO_0000017](http://purl.obolibrary.org/obo/BFO_0000017) (c)<br />
+Restrictions |[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op) **only** ([obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c) and [ub10bL2217C58](ub10bL2217C58) (c))<br />[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op) **only** ([obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c) and [ub10bL2217C58](ub10bL2217C58) (c))<br />[obo:BFO_0000052](http://purl.obolibrary.org/obo/BFO_0000052) (op) **some** ([obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c) and [ub10bL2217C58](ub10bL2217C58) (c))<br />
+Sub-classes |[obo:BFO_0000017](http://purl.obolibrary.org/obo/BFO_0000017) (c)<br />[obo:BFO_0000019](http://purl.obolibrary.org/obo/BFO_0000019) (c)<br />
 In domain of |[obo:BFO_0000052](http://purl.obolibrary.org/obo/BFO_0000052) (op)<br />[obo:BFO_0000059](http://purl.obolibrary.org/obo/BFO_0000059) (op)<br />
-In range of |[obo:BFO_0000053](http://purl.obolibrary.org/obo/BFO_0000053) (op)<br />[obo:BFO_0000058](http://purl.obolibrary.org/obo/BFO_0000058) (op)<br />[obo:BFO_0000158](http://purl.obolibrary.org/obo/BFO_0000158) (op)<br />
+In range of |[obo:BFO_0000158](http://purl.obolibrary.org/obo/BFO_0000158) (op)<br />[obo:BFO_0000053](http://purl.obolibrary.org/obo/BFO_0000053) (op)<br />[obo:BFO_0000058](http://purl.obolibrary.org/obo/BFO_0000058) (op)<br />
 ### role
 Property | Value
 --- | ---
@@ -266,9 +266,9 @@ Property | Value
 IRI | `http://purl.obolibrary.org/obo/BFO_0000031`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000002](http://purl.obolibrary.org/obo/BFO_0000002) (c)<br />
-Restrictions |[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op) **only** ()<br />[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op) **only** ()<br />[obo:BFO_0000058](http://purl.obolibrary.org/obo/BFO_0000058) (op) **some** [obo:BFO_0000020](http://purl.obolibrary.org/obo/BFO_0000020) (c)<br />
-In domain of |[obo:BFO_0000058](http://purl.obolibrary.org/obo/BFO_0000058) (op)<br />[obo:BFO_0000084](http://purl.obolibrary.org/obo/BFO_0000084) (op)<br />
-In range of |[obo:BFO_0000059](http://purl.obolibrary.org/obo/BFO_0000059) (op)<br />[obo:BFO_0000101](http://purl.obolibrary.org/obo/BFO_0000101) (op)<br />
+Restrictions |[obo:BFO_0000058](http://purl.obolibrary.org/obo/BFO_0000058) (op) **some** [obo:BFO_0000020](http://purl.obolibrary.org/obo/BFO_0000020) (c)<br />[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op) **only** ()<br />[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op) **only** ()<br />
+In domain of |[obo:BFO_0000084](http://purl.obolibrary.org/obo/BFO_0000084) (op)<br />[obo:BFO_0000058](http://purl.obolibrary.org/obo/BFO_0000058) (op)<br />
+In range of |[obo:BFO_0000101](http://purl.obolibrary.org/obo/BFO_0000101) (op)<br />[obo:BFO_0000059](http://purl.obolibrary.org/obo/BFO_0000059) (op)<br />
 ### function
 Property | Value
 --- | ---
@@ -283,7 +283,7 @@ Property | Value
 IRI | `http://purl.obolibrary.org/obo/BFO_0000035`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000003](http://purl.obolibrary.org/obo/BFO_0000003) (c)<br />
-Restrictions |[obo:BFO_0000130](http://purl.obolibrary.org/obo/BFO_0000130) (op) **only** ([obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c) and [obo:BFO_0000035](http://purl.obolibrary.org/obo/BFO_0000035) (c) and [obo:BFO_0000011](http://purl.obolibrary.org/obo/BFO_0000011) (c) and [ub8bL1760C58](ub8bL1760C58) (c))<br />[obo:BFO_0000108](http://purl.obolibrary.org/obo/BFO_0000108) (op) **only** [obo:BFO_0000148](http://purl.obolibrary.org/obo/BFO_0000148) (c)<br />[obo:BFO_0000117](http://purl.obolibrary.org/obo/BFO_0000117) (op) **only** [obo:BFO_0000035](http://purl.obolibrary.org/obo/BFO_0000035) (c)<br />[obo:BFO_0000132](http://purl.obolibrary.org/obo/BFO_0000132) (op) **only** ([obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c) and [obo:BFO_0000035](http://purl.obolibrary.org/obo/BFO_0000035) (c) and [obo:BFO_0000011](http://purl.obolibrary.org/obo/BFO_0000011) (c) and [ub8bL1760C58](ub8bL1760C58) (c))<br />
+Restrictions |[obo:BFO_0000130](http://purl.obolibrary.org/obo/BFO_0000130) (op) **only** ([obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c) and [obo:BFO_0000035](http://purl.obolibrary.org/obo/BFO_0000035) (c) and [obo:BFO_0000011](http://purl.obolibrary.org/obo/BFO_0000011) (c) and [ub10bL1760C58](ub10bL1760C58) (c))<br />[obo:BFO_0000117](http://purl.obolibrary.org/obo/BFO_0000117) (op) **only** [obo:BFO_0000035](http://purl.obolibrary.org/obo/BFO_0000035) (c)<br />[obo:BFO_0000132](http://purl.obolibrary.org/obo/BFO_0000132) (op) **only** ([obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c) and [obo:BFO_0000035](http://purl.obolibrary.org/obo/BFO_0000035) (c) and [obo:BFO_0000011](http://purl.obolibrary.org/obo/BFO_0000011) (c) and [ub10bL1760C58](ub10bL1760C58) (c))<br />[obo:BFO_0000108](http://purl.obolibrary.org/obo/BFO_0000108) (op) **only** [obo:BFO_0000148](http://purl.obolibrary.org/obo/BFO_0000148) (c)<br />
 ### one-dimensional temporal region
 Property | Value
 --- | ---
@@ -296,26 +296,26 @@ Property | Value
 IRI | `http://purl.obolibrary.org/obo/BFO_0000040`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c)<br />
-Restrictions |[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op) **only** ([obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c) or [obo:BFO_0000141](http://purl.obolibrary.org/obo/BFO_0000141) (c) or [obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c) or [obo:BFO_0000141](http://purl.obolibrary.org/obo/BFO_0000141) (c))<br />[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op) **only** ([obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c) or [obo:BFO_0000141](http://purl.obolibrary.org/obo/BFO_0000141) (c) or [obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c) or [obo:BFO_0000141](http://purl.obolibrary.org/obo/BFO_0000141) (c))<br />[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op) **only** [obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c)<br />[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op) **only** [obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c)<br />[obo:BFO_0000083](http://purl.obolibrary.org/obo/BFO_0000083) (op) **only** [obo:BFO_0000028](http://purl.obolibrary.org/obo/BFO_0000028) (c)<br />
+Restrictions |[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op) **only** [obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c)<br />[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op) **only** ([obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c) or [obo:BFO_0000141](http://purl.obolibrary.org/obo/BFO_0000141) (c) or [obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c) or [obo:BFO_0000141](http://purl.obolibrary.org/obo/BFO_0000141) (c))<br />[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op) **only** ([obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c) or [obo:BFO_0000141](http://purl.obolibrary.org/obo/BFO_0000141) (c) or [obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c) or [obo:BFO_0000141](http://purl.obolibrary.org/obo/BFO_0000141) (c))<br />[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op) **only** [obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c)<br />[obo:BFO_0000083](http://purl.obolibrary.org/obo/BFO_0000083) (op) **only** [obo:BFO_0000028](http://purl.obolibrary.org/obo/BFO_0000028) (c)<br />
 Sub-classes |[obo:BFO_0000030](http://purl.obolibrary.org/obo/BFO_0000030) (c)<br />[obo:BFO_0000024](http://purl.obolibrary.org/obo/BFO_0000024) (c)<br />[obo:BFO_0000027](http://purl.obolibrary.org/obo/BFO_0000027) (c)<br />
-In domain of |[obo:BFO_0000185](http://purl.obolibrary.org/obo/BFO_0000185) (op)<br />[obo:BFO_0000127](http://purl.obolibrary.org/obo/BFO_0000127) (op)<br />[obo:BFO_0000163](http://purl.obolibrary.org/obo/BFO_0000163) (op)<br />
-In range of |[obo:BFO_0000113](http://purl.obolibrary.org/obo/BFO_0000113) (op)<br />[obo:BFO_0000184](http://purl.obolibrary.org/obo/BFO_0000184) (op)<br />
+In domain of |[obo:BFO_0000163](http://purl.obolibrary.org/obo/BFO_0000163) (op)<br />[obo:BFO_0000127](http://purl.obolibrary.org/obo/BFO_0000127) (op)<br />[obo:BFO_0000185](http://purl.obolibrary.org/obo/BFO_0000185) (op)<br />
+In range of |[obo:BFO_0000184](http://purl.obolibrary.org/obo/BFO_0000184) (op)<br />[obo:BFO_0000113](http://purl.obolibrary.org/obo/BFO_0000113) (op)<br />
 ### continuant fiat boundary
 Property | Value
 --- | ---
 IRI | `http://purl.obolibrary.org/obo/BFO_0000140`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000141](http://purl.obolibrary.org/obo/BFO_0000141) (c)<br />
-Restrictions |[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op) **only** [obo:BFO_0000140](http://purl.obolibrary.org/obo/BFO_0000140) (c)<br />[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op) **only** [obo:BFO_0000140](http://purl.obolibrary.org/obo/BFO_0000140) (c)<br />[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op) **only** ([obo:BFO_0000009](http://purl.obolibrary.org/obo/BFO_0000009) (c) or [obo:BFO_0000018](http://purl.obolibrary.org/obo/BFO_0000018) (c) or [obo:BFO_0000026](http://purl.obolibrary.org/obo/BFO_0000026) (c))<br />[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op) **only** ([obo:BFO_0000009](http://purl.obolibrary.org/obo/BFO_0000009) (c) or [obo:BFO_0000018](http://purl.obolibrary.org/obo/BFO_0000018) (c) or [obo:BFO_0000026](http://purl.obolibrary.org/obo/BFO_0000026) (c))<br />[obo:BFO_0000083](http://purl.obolibrary.org/obo/BFO_0000083) (op) **only** ([obo:BFO_0000009](http://purl.obolibrary.org/obo/BFO_0000009) (c) or [obo:BFO_0000018](http://purl.obolibrary.org/obo/BFO_0000018) (c) or [obo:BFO_0000026](http://purl.obolibrary.org/obo/BFO_0000026) (c))<br />
-Sub-classes |[obo:BFO_0000147](http://purl.obolibrary.org/obo/BFO_0000147) (c)<br />[obo:BFO_0000142](http://purl.obolibrary.org/obo/BFO_0000142) (c)<br />[obo:BFO_0000146](http://purl.obolibrary.org/obo/BFO_0000146) (c)<br />
+Restrictions |[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op) **only** [obo:BFO_0000140](http://purl.obolibrary.org/obo/BFO_0000140) (c)<br />[obo:BFO_0000176](http://purl.obolibrary.org/obo/BFO_0000176) (op) **only** ([obo:BFO_0000009](http://purl.obolibrary.org/obo/BFO_0000009) (c) or [obo:BFO_0000018](http://purl.obolibrary.org/obo/BFO_0000018) (c) or [obo:BFO_0000026](http://purl.obolibrary.org/obo/BFO_0000026) (c))<br />[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op) **only** [obo:BFO_0000140](http://purl.obolibrary.org/obo/BFO_0000140) (c)<br />[obo:BFO_0000186](http://purl.obolibrary.org/obo/BFO_0000186) (op) **only** ([obo:BFO_0000009](http://purl.obolibrary.org/obo/BFO_0000009) (c) or [obo:BFO_0000018](http://purl.obolibrary.org/obo/BFO_0000018) (c) or [obo:BFO_0000026](http://purl.obolibrary.org/obo/BFO_0000026) (c))<br />[obo:BFO_0000083](http://purl.obolibrary.org/obo/BFO_0000083) (op) **only** ([obo:BFO_0000009](http://purl.obolibrary.org/obo/BFO_0000009) (c) or [obo:BFO_0000018](http://purl.obolibrary.org/obo/BFO_0000018) (c) or [obo:BFO_0000026](http://purl.obolibrary.org/obo/BFO_0000026) (c))<br />
+Sub-classes |[obo:BFO_0000146](http://purl.obolibrary.org/obo/BFO_0000146) (c)<br />[obo:BFO_0000147](http://purl.obolibrary.org/obo/BFO_0000147) (c)<br />[obo:BFO_0000142](http://purl.obolibrary.org/obo/BFO_0000142) (c)<br />
 ### immaterial entity
 Property | Value
 --- | ---
 IRI | `http://purl.obolibrary.org/obo/BFO_0000141`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c)<br />
-Restrictions |[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op) **only** [obo:BFO_0000141](http://purl.obolibrary.org/obo/BFO_0000141) (c)<br />[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op) **only** [obo:BFO_0000141](http://purl.obolibrary.org/obo/BFO_0000141) (c)<br />[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op) **only** ()<br />[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op) **only** ()<br />
-Sub-classes |[obo:BFO_0000029](http://purl.obolibrary.org/obo/BFO_0000029) (c)<br />[obo:BFO_0000006](http://purl.obolibrary.org/obo/BFO_0000006) (c)<br />[obo:BFO_0000140](http://purl.obolibrary.org/obo/BFO_0000140) (c)<br />
+Restrictions |[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op) **only** ()<br />[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op) **only** [obo:BFO_0000141](http://purl.obolibrary.org/obo/BFO_0000141) (c)<br />[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op) **only** ()<br />[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op) **only** [obo:BFO_0000141](http://purl.obolibrary.org/obo/BFO_0000141) (c)<br />
+Sub-classes |[obo:BFO_0000006](http://purl.obolibrary.org/obo/BFO_0000006) (c)<br />[obo:BFO_0000140](http://purl.obolibrary.org/obo/BFO_0000140) (c)<br />[obo:BFO_0000029](http://purl.obolibrary.org/obo/BFO_0000029) (c)<br />
 ### one-dimensional continuant fiat boundary
 Property | Value
 --- | ---
@@ -350,7 +350,7 @@ Property | Value
 IRI | `http://purl.obolibrary.org/obo/BFO_0000147`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000140](http://purl.obolibrary.org/obo/BFO_0000140) (c)<br />
-Restrictions |[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op) **only** ()<br />[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op) **only** ()<br />
+Restrictions |[obo:BFO_0000178](http://purl.obolibrary.org/obo/BFO_0000178) (op) **only** ()<br />[obo:BFO_0000187](http://purl.obolibrary.org/obo/BFO_0000187) (op) **only** ()<br />
 ### zero-dimensional temporal region
 Property | Value
 --- | ---
@@ -364,7 +364,7 @@ Property | Value
 IRI | `http://purl.obolibrary.org/obo/BFO_0000182`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-classes |[obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c)<br />
-Restrictions |[obo:BFO_0000184](http://purl.obolibrary.org/obo/BFO_0000184) (op) **some** [obo:BFO_0000002](http://purl.obolibrary.org/obo/BFO_0000002) (c)<br />[obo:BFO_0000132](http://purl.obolibrary.org/obo/BFO_0000132) (op) **only** ()<br />
+Restrictions |[obo:BFO_0000132](http://purl.obolibrary.org/obo/BFO_0000132) (op) **only** ()<br />[obo:BFO_0000184](http://purl.obolibrary.org/obo/BFO_0000184) (op) **some** [obo:BFO_0000002](http://purl.obolibrary.org/obo/BFO_0000002) (c)<br />
 
 ## Object Properties
 [inheres in at all times](#inheresinatalltimes),
@@ -453,7 +453,7 @@ IRI | `http://purl.obolibrary.org/obo/BFO_0000052`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-properties |[obo:BFO_0000070](http://purl.obolibrary.org/obo/BFO_0000070) (op)<br />
 Domain(s) |[obo:BFO_0000020](http://purl.obolibrary.org/obo/BFO_0000020) (c)<br />
-Range(s) |[obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c)<br />[ub8bL1733C50](ub8bL1733C50) (c)<br />
+Range(s) |[obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c)<br />[ub10bL1733C50](ub10bL1733C50) (c)<br />
 [](bearerofatsometime)
 ### bearer of at some time
 Property | Value
@@ -461,7 +461,7 @@ Property | Value
 IRI | `http://purl.obolibrary.org/obo/BFO_0000053`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-properties |[obo:BFO_0000125](http://purl.obolibrary.org/obo/BFO_0000125) (op)<br />
-Domain(s) |([obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c) and [ub8bL1301C50](ub8bL1301C50) (c))<br />
+Domain(s) |([obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c) and [ub10bL1301C50](ub10bL1301C50) (c))<br />
 Range(s) |[obo:BFO_0000020](http://purl.obolibrary.org/obo/BFO_0000020) (c)<br />
 [](realizedin)
 ### realized in
@@ -485,7 +485,7 @@ Property | Value
 --- | ---
 IRI | `http://purl.obolibrary.org/obo/BFO_0000056`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
-Domain(s) |([obo:BFO_0000002](http://purl.obolibrary.org/obo/BFO_0000002) (c) and [ub8bL350C50](ub8bL350C50) (c))<br />
+Domain(s) |([obo:BFO_0000002](http://purl.obolibrary.org/obo/BFO_0000002) (c) and [ub10bL350C50](ub10bL350C50) (c))<br />
 Range(s) |[obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c)<br />
 [](hasparticipantatsometime)
 ### has participant at some time
@@ -494,7 +494,7 @@ Property | Value
 IRI | `http://purl.obolibrary.org/obo/BFO_0000057`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Domain(s) |[obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c)<br />
-Range(s) |[obo:BFO_0000002](http://purl.obolibrary.org/obo/BFO_0000002) (c)<br />[ub8bL1490C50](ub8bL1490C50) (c)<br />
+Range(s) |[obo:BFO_0000002](http://purl.obolibrary.org/obo/BFO_0000002) (c)<br />[ub10bL1490C50](ub10bL1490C50) (c)<br />
 [](concretizedbyatsometime)
 ### concretized by at some time
 Property | Value
@@ -580,7 +580,7 @@ Property | Value
 IRI | `http://purl.obolibrary.org/obo/BFO_0000084`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Domain(s) |[obo:BFO_0000031](http://purl.obolibrary.org/obo/BFO_0000031) (c)<br />
-Range(s) |[obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c)<br />[ub8bL605C50](ub8bL605C50) (c)<br />
+Range(s) |[obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c)<br />[ub10bL605C50](ub10bL605C50) (c)<br />
 [](hasfunctionatsometime)
 ### has function at some time
 Property | Value
@@ -611,7 +611,7 @@ Property | Value
 --- | ---
 IRI | `http://purl.obolibrary.org/obo/BFO_0000101`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
-Domain(s) |([obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c) and [ub8bL387C50](ub8bL387C50) (c))<br />
+Domain(s) |([obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c) and [ub10bL387C50](ub10bL387C50) (c))<br />
 Range(s) |[obo:BFO_0000031](http://purl.obolibrary.org/obo/BFO_0000031) (c)<br />
 [](dispositionofatalltimes)
 ### disposition of at all times
@@ -642,7 +642,7 @@ Property | Value
 --- | ---
 IRI | `http://purl.obolibrary.org/obo/BFO_0000111`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
-Super-properties |[obo:BFO_0000174](http://purl.obolibrary.org/obo/BFO_0000174) (op)<br />[obo:BFO_0000110](http://purl.obolibrary.org/obo/BFO_0000110) (op)<br />
+Super-properties |[obo:BFO_0000110](http://purl.obolibrary.org/obo/BFO_0000110) (op)<br />[obo:BFO_0000174](http://purl.obolibrary.org/obo/BFO_0000174) (op)<br />
 [](hasdispositionatsometime)
 ### has disposition at some time
 Property | Value
@@ -724,7 +724,7 @@ Property | Value
 --- | ---
 IRI | `http://purl.obolibrary.org/obo/BFO_0000125`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
-Domain(s) |([obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c) or [obo:BFO_0000020](http://purl.obolibrary.org/obo/BFO_0000020) (c) or [ub8bL1053C59](ub8bL1053C59) (c))<br />
+Domain(s) |([obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c) or [obo:BFO_0000020](http://purl.obolibrary.org/obo/BFO_0000020) (c) or [ub10bL1053C59](ub10bL1053C59) (c))<br />
 Range(s) |[obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c)<br />[obo:BFO_0000020](http://purl.obolibrary.org/obo/BFO_0000020) (c)<br />
 [](hasspatiotemporaloccupant)
 ### has spatiotemporal occupant
@@ -876,7 +876,7 @@ Property | Value
 IRI | `http://purl.obolibrary.org/obo/BFO_0000158`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-properties |[obo:BFO_0000168](http://purl.obolibrary.org/obo/BFO_0000168) (op)<br />
-Domain(s) |([obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c) and [ub8bL1416C50](ub8bL1416C50) (c))<br />
+Domain(s) |([obo:BFO_0000004](http://purl.obolibrary.org/obo/BFO_0000004) (c) and [ub10bL1416C50](ub10bL1416C50) (c))<br />
 Range(s) |[obo:BFO_0000020](http://purl.obolibrary.org/obo/BFO_0000020) (c)<br />
 [](hasqualityatalltimes)
 ### has quality at all times
@@ -948,7 +948,7 @@ IRI | `http://purl.obolibrary.org/obo/BFO_0000167`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Super-properties |[obo:BFO_0000057](http://purl.obolibrary.org/obo/BFO_0000057) (op)<br />
 Domain(s) |[obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c)<br />
-Range(s) |[obo:BFO_0000002](http://purl.obolibrary.org/obo/BFO_0000002) (c)<br />[ub8bL1251C50](ub8bL1251C50) (c)<br />
+Range(s) |[obo:BFO_0000002](http://purl.obolibrary.org/obo/BFO_0000002) (c)<br />[ub10bL1251C50](ub10bL1251C50) (c)<br />
 [](hasspecificdependentatalltimes)
 ### has specific dependent at all times
 Property | Value
@@ -963,7 +963,7 @@ Property | Value
 IRI | `http://purl.obolibrary.org/obo/BFO_0000169`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
 Domain(s) |([obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c) or [obo:BFO_0000020](http://purl.obolibrary.org/obo/BFO_0000020) (c))<br />
-Range(s) |[obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c)<br />[obo:BFO_0000020](http://purl.obolibrary.org/obo/BFO_0000020) (c)<br />[ub8bL1712C59](ub8bL1712C59) (c)<br />
+Range(s) |[obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c)<br />[obo:BFO_0000020](http://purl.obolibrary.org/obo/BFO_0000020) (c)<br />[ub10bL1712C59](ub10bL1712C59) (c)<br />
 [](haslocationatalltimes)
 ### has location at all times
 Property | Value
@@ -985,14 +985,14 @@ Property | Value
 --- | ---
 IRI | `http://purl.obolibrary.org/obo/BFO_0000172`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
-Super-properties |[obo:BFO_0000110](http://purl.obolibrary.org/obo/BFO_0000110) (op)<br />[obo:BFO_0000115](http://purl.obolibrary.org/obo/BFO_0000115) (op)<br />[obo:BFO_0000111](http://purl.obolibrary.org/obo/BFO_0000111) (op)<br />
+Super-properties |[obo:BFO_0000111](http://purl.obolibrary.org/obo/BFO_0000111) (op)<br />[obo:BFO_0000115](http://purl.obolibrary.org/obo/BFO_0000115) (op)<br />[obo:BFO_0000110](http://purl.obolibrary.org/obo/BFO_0000110) (op)<br />
 [](memberpartofatalltimes)
 ### member part of at all times
 Property | Value
 --- | ---
 IRI | `http://purl.obolibrary.org/obo/BFO_0000173`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
-Super-properties |[obo:BFO_0000177](http://purl.obolibrary.org/obo/BFO_0000177) (op)<br />[obo:BFO_0000129](http://purl.obolibrary.org/obo/BFO_0000129) (op)<br />[obo:BFO_0000137](http://purl.obolibrary.org/obo/BFO_0000137) (op)<br />
+Super-properties |[obo:BFO_0000129](http://purl.obolibrary.org/obo/BFO_0000129) (op)<br />[obo:BFO_0000177](http://purl.obolibrary.org/obo/BFO_0000177) (op)<br />[obo:BFO_0000137](http://purl.obolibrary.org/obo/BFO_0000137) (op)<br />
 [](haspropercontinuantpartatsometime)
 ### has proper continuant part at some time
 Property | Value
@@ -1040,7 +1040,7 @@ Property | Value
 --- | ---
 IRI | `http://purl.obolibrary.org/obo/BFO_0000181`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
-Super-properties |[obo:BFO_0000118](http://purl.obolibrary.org/obo/BFO_0000118) (op)<br />[obo:BFO_0000121](http://purl.obolibrary.org/obo/BFO_0000121) (op)<br />
+Super-properties |[obo:BFO_0000121](http://purl.obolibrary.org/obo/BFO_0000121) (op)<br />[obo:BFO_0000118](http://purl.obolibrary.org/obo/BFO_0000118) (op)<br />
 Domain(s) |[obo:BFO_0000003](http://purl.obolibrary.org/obo/BFO_0000003) (c)<br />
 Range(s) |[obo:BFO_0000003](http://purl.obolibrary.org/obo/BFO_0000003) (c)<br />
 [](historyof)
@@ -1049,7 +1049,7 @@ Property | Value
 --- | ---
 IRI | `http://purl.obolibrary.org/obo/BFO_0000184`
 Is Defined By | http://purl.obolibrary.org/obo/bfo.owl
-Super-properties |[obo:BFO_0000066](http://purl.obolibrary.org/obo/BFO_0000066) (op)<br />[obo:BFO_0000070](http://purl.obolibrary.org/obo/BFO_0000070) (op)<br />
+Super-properties |[obo:BFO_0000070](http://purl.obolibrary.org/obo/BFO_0000070) (op)<br />[obo:BFO_0000066](http://purl.obolibrary.org/obo/BFO_0000066) (op)<br />
 Domain(s) |[obo:BFO_0000015](http://purl.obolibrary.org/obo/BFO_0000015) (c)<br />
 Range(s) |[obo:BFO_0000040](http://purl.obolibrary.org/obo/BFO_0000040) (c)<br />
 [](hashistory)

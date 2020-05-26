@@ -208,7 +208,7 @@
     </script>
 </head>
 <body>
-<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE"><span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a></div>
 <h1>GeoSPARQL Extensions Ontology</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
@@ -221,8 +221,8 @@
         </dd>
         <dt>Creator(s)</dt>
         <dd>
-            <a href='https://orcid.org/0000-0002-8742-7730'>Nicholas J Car, Surround Australia</a><br/>
             <a href='https://orcid.org/0000-0002-3884-3420'>Simon J D Cox, CSIRO</a><br/>
+            <a href='https://orcid.org/0000-0002-8742-7730'>Nicholas J Car, Surround Australia</a><br/>
         </dd>
         <dt>Created</dt>
         <dd>2019-01-08</dd>
@@ -240,7 +240,7 @@
         <dt>Ontology RDF</dt>
         <dd><a href="geox.ttl">RDF (turtle)</a></dd>
         <dt>Code Repository</dt>
-        <dd><a href="<a href="https://github.com/CSIRO-enviro-informatics/geosparql-ext-ont">https://github.com/CSIRO-enviro-informatics/geosparql-ext-ont</a>"><a href="https://github.com/CSIRO-enviro-informatics/geosparql-ext-ont">https://github.com/CSIRO-enviro-informatics/geosparql-ext-ont</a></a></dd>
+        <dd><a href="https://github.com/CSIRO-enviro-informatics/geosparql-ext-ont">https://github.com/CSIRO-enviro-informatics/geosparql-ext-ont</a></dd>
     </dl>
     <h2>Description</h2>
     <div id="description">
@@ -259,7 +259,7 @@
 <section id="overview">
     <h2>Overview</h2>
     <div class="figure">
-        <div style="width:500px; height:50px; background-color: black;">&nbsp;</div>
+        <div style="width:500px; height:50px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;">Pictures say 1,000 words</div>
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div>
 </section>
@@ -303,8 +303,8 @@
                 <th>In range of</th>
                 <td>
                     <a href="#hasarea">geox:hasArea</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasvolume">geox:hasVolume</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#haslength">geox:hasLength</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasvolume">geox:hasVolume</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -334,7 +334,15 @@
             <tr>
                 <th>Example</th>
                 <td>
-                    <pre>my:plot456<br />  :hasArea [<br />    data:uncertainty 0.5 ;<br />    data:unit &lt;http://qudt.org/vocab/unit/M2> ;<br />    data:value 63.9 ;<br />  ] ;<br />.</pre>
+                    <pre>
+                      my:plot456
+  :hasArea [
+    data:uncertainty 0.5 ;
+    data:unit <http://qudt.org/vocab/unit/M2> ;
+    data:value 63.9 ;
+  ] ;
+.
+                    </pre>
                 </td>
             </tr>
             <tr>
@@ -361,7 +369,13 @@
             <tr>
                 <th>Example</th>
                 <td>
-                    <pre>my:plot456<br />  :hasAreaM2 [<br />    data:value 63.9 ;<br />  ] ;<br />.</pre>
+                    <pre>
+                      my:plot456
+  :hasAreaM2 [
+    data:value 63.9 ;
+  ] ;
+.
+                    </pre>
                 </td>
             </tr>
             <tr>
@@ -382,7 +396,15 @@
             <tr>
                 <th>Example</th>
                 <td>
-                    <pre>my:road456<br />  :hasLength [<br />    data:uncertainty 5.0 ;<br />    data:unit &lt;http://qudt.org/vocab/unit/M> ;<br />    data:value 234.0 ;<br />  ] ;<br />.</pre>
+                    <pre>
+                      my:road456
+  :hasLength [
+    data:uncertainty 5.0 ;
+    data:unit <http://qudt.org/vocab/unit/M> ;
+    data:value 234.0 ;
+  ] ;
+.
+                    </pre>
                 </td>
             </tr>
             <tr>
@@ -409,7 +431,13 @@
             <tr>
                 <th>Example</th>
                 <td>
-                    <pre>my:road456<br />  :hasLengthM [<br />    data:value 234.0 ;<br />  ] ;<br />.</pre>
+                    <pre>
+                      my:road456
+  :hasLengthM [
+    data:value 234.0 ;
+  ] ;
+.
+                    </pre>
                 </td>
             </tr>
             <tr>
@@ -430,7 +458,14 @@
             <tr>
                 <th>Example</th>
                 <td>
-                    <pre>my:image456<br />  :hasResolution [<br />    data:unit &lt;http://qudt.org/vocab/unit/M> ;<br />    data:value 30.0 ;<br />  ] ;<br />.</pre>
+                    <pre>
+                      my:image456
+  :hasResolution [
+    data:unit <http://qudt.org/vocab/unit/M> ;
+    data:value 30.0 ;
+  ] ;
+.
+                    </pre>
                 </td>
             </tr>
             <tr>
@@ -457,7 +492,13 @@
             <tr>
                 <th>Example</th>
                 <td>
-                    <pre>my:image456<br />  :hasResolutionM [<br />    data:value 30.0 ;<br />  ] ;<br />.</pre>
+                    <pre>
+                      my:image456
+  :hasResolutionM [
+    data:value 30.0 ;
+  ] ;
+.
+                    </pre>
                 </td>
             </tr>
             <tr>
@@ -484,7 +525,14 @@
             <tr>
                 <th>Example</th>
                 <td>
-                    <pre>my:swimmingPool99<br />  :hasVolume [<br />    data:unit &lt;http://qudt.org/vocab/unit/M3> ;<br />    data:value 3050.0 ;<br />  ] ;<br />.</pre>
+                    <pre>
+                      my:swimmingPool99
+  :hasVolume [
+    data:unit <http://qudt.org/vocab/unit/M3> ;
+    data:value 3050.0 ;
+  ] ;
+.
+                    </pre>
                 </td>
             </tr>
             <tr>
@@ -511,7 +559,13 @@
             <tr>
                 <th>Example</th>
                 <td>
-                    <pre>my:swimmingPool99<br />  :hasVolumeM3 [<br />    data:value 3050.0 ;<br />  ] ;<br />.</pre>
+                    <pre>
+                      my:swimmingPool99
+  :hasVolumeM3 [
+    data:value 3050.0 ;
+  ] ;
+.
+                    </pre>
                 </td>
             </tr>
             <tr>

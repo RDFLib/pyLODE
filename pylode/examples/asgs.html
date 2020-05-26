@@ -213,7 +213,7 @@
     </script>
 </head>
 <body>
-<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE"><span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a></div>
 <h1>ASGS Ontology</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
@@ -314,7 +314,7 @@
         <dt>Ontology RDF</dt>
         <dd><a href="asgs.ttl">RDF (turtle)</a></dd>
         <dt>Code Repository</dt>
-        <dd><a href="<a href="https://github.com/AGLDWG/asgs-ont/">https://github.com/AGLDWG/asgs-ont/</a>"><a href="https://github.com/AGLDWG/asgs-ont/">https://github.com/AGLDWG/asgs-ont/</a></a></dd>
+        <dd><a href="https://github.com/AGLDWG/asgs-ont/">https://github.com/AGLDWG/asgs-ont/</a></dd>
     </dl>
     <h2>Description</h2>
     <div id="description">
@@ -372,7 +372,7 @@
 <section id="overview">
     <h2>Overview</h2>
     <div class="figure">
-        <div style="width:500px; height:50px; background-color: black;">&nbsp;</div>
+        <div style="width:500px; height:50px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;">Pictures say 1,000 words</div>
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div>
 </section>
@@ -490,7 +490,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Australia (AUS) represents the geographic extent of Australia. This is set out in section 2B of the Acts Interpretation Act 1901 which currently defines Australia or the Commonwealth as meaning:Ã¢â‚¬ËœÃ¢â‚¬Â¦the Commonwealth of Australia and when used in a geographical sense includes Norfolk Island the Territory of Christmas Island and the Territory of Cocos (Keeling) Islands but does not include any other external TerritoryÃ¢â‚¬â„¢.Prior to 2016 Norfolk Island was not included in the ASGS. However in line with Australian Government announced reforms to the governance of Norfolk Island and its inclusion into the definition of Geographic Australia the Territory of Norfolk Island was included in the 2016 ASGS. An additional code (Outside Australia) has also been added to represent areas not covered by Geographical Australia</p>
+                    <p>Australia (AUS) represents the geographic extent of Australia. This is set out in section 2B of the Acts Interpretation Act 1901 which currently defines Australia or the Commonwealth as meaning:â€˜â€¦the Commonwealth of Australia and when used in a geographical sense includes Norfolk Island the Territory of Christmas Island and the Territory of Cocos (Keeling) Islands but does not include any other external Territoryâ€™.Prior to 2016 Norfolk Island was not included in the ASGS. However in line with Australian Government announced reforms to the governance of Norfolk Island and its inclusion into the definition of Geographic Australia the Territory of Norfolk Island was included in the 2016 ASGS. An additional code (Outside Australia) has also been added to represent areas not covered by Geographical Australia</p>
                 </td>
             </tr>
             <tr>
@@ -529,8 +529,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#StatisticalAreaLevel2">asgs:StatisticalAreaLevel2</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#sfContains">geo:sfContains</a> <span class="cardinality">min</span> 1 <a href="#MeshBlock">asgs:MeshBlock</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#StatisticalAreaLevel2">asgs:StatisticalAreaLevel2</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -569,31 +569,31 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#DestinationZone">asgs:DestinationZone</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#StatisticalAreaLevel1">asgs:StatisticalAreaLevel1</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#LocalGovernmentArea">asgs:LocalGovernmentArea</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#UrbanCentreAndLocality">asgs:UrbanCentreAndLocality</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#StateElectoralDivision">asgs:StateElectoralDivision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Postalarea">asgs:PostalArea</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Country">asgs:Country</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#StatisticalAreaLevel2">asgs:StatisticalAreaLevel2</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#CommonwealthElectoralDivision">asgs:CommonwealthElectoralDivision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#RemotenessArea">asgs:RemotenessArea</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#SignificantUrbanArea">asgs:SignificantUrbanArea</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#SectionofStateRange">asgs:SectionOfStateRange</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#IndigenousRegion">asgs:IndigenousRegion</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#IndigenousLocation">asgs:IndigenousLocation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#SectionofState">asgs:SectionOfState</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#TourismRegion">asgs:TourismRegion</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#MeshBlock">asgs:MeshBlock</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#StatisticalAreaLevel4">asgs:StatisticalAreaLevel4</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#NaturalResourceManagementRegion">asgs:NaturalResourceManagementRegion</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#StateSuburb">asgs:StateSuburb</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#GreaterCapitalCityStatisticalArea">asgs:GreaterCapitalCityStatisticalArea</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#StateOrTerritory">asgs:StateOrTerritory</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#AustralianDrainageDivision">asgs:AustralianDrainageDivision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#StatisticalAreaLevel3">asgs:StatisticalAreaLevel3</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#IndigenousArea">asgs:IndigenousArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#StatisticalAreaLevel3">asgs:StatisticalAreaLevel3</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#GreaterCapitalCityStatisticalArea">asgs:GreaterCapitalCityStatisticalArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#IndigenousRegion">asgs:IndigenousRegion</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#StatisticalAreaLevel2">asgs:StatisticalAreaLevel2</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#TourismRegion">asgs:TourismRegion</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Country">asgs:Country</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#NaturalResourceManagementRegion">asgs:NaturalResourceManagementRegion</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#StateElectoralDivision">asgs:StateElectoralDivision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#StatisticalAreaLevel4">asgs:StatisticalAreaLevel4</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#SignificantUrbanArea">asgs:SignificantUrbanArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#StatisticalAreaLevel1">asgs:StatisticalAreaLevel1</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#SectionofState">asgs:SectionOfState</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#RemotenessArea">asgs:RemotenessArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#StateOrTerritory">asgs:StateOrTerritory</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#IndigenousLocation">asgs:IndigenousLocation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#UrbanCentreAndLocality">asgs:UrbanCentreAndLocality</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#LocalGovernmentArea">asgs:LocalGovernmentArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AustralianDrainageDivision">asgs:AustralianDrainageDivision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#SectionofStateRange">asgs:SectionOfStateRange</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#MeshBlock">asgs:MeshBlock</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#CommonwealthElectoralDivision">asgs:CommonwealthElectoralDivision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Postalarea">asgs:PostalArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#DestinationZone">asgs:DestinationZone</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -746,7 +746,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Local Government Areas (LGAs) are an ABS approximation of gazetted local government boundaries as defined by each State and Territory Local Government Department. LGAs cover incorporated areas of Australia. Incorporated areas are legally designated parts of a State or Territory over which incorporated local governing bodies have responsibility. The major areas of Australia not administered by incorporated bodies are the northern parts of South Australia and all of the Australian Capital Territory and the Other Territories. These regions are identified as Ã¢â‚¬ËœUnincorporatedÃ¢â‚¬â„¢ in the Australian Statistical Geography Standard (ASGS) LGA structure. A small number of LGA boundaries and names change each year and the ABS LGAs are updated on an annual basis to reflect these changes. LGAs are approximated using whole Mesh Blocks (MBs). In aggregation LGAs cover Australia without gaps or overlaps. The LGAs are Non ABS Structures within the ASGS. These are mostly administrative areas which are not defined or maintained by the ABS but for which the ABS is committed to providing a range of statistics.</p>
+                    <p>Local Government Areas (LGAs) are an ABS approximation of gazetted local government boundaries as defined by each State and Territory Local Government Department. LGAs cover incorporated areas of Australia. Incorporated areas are legally designated parts of a State or Territory over which incorporated local governing bodies have responsibility. The major areas of Australia not administered by incorporated bodies are the northern parts of South Australia and all of the Australian Capital Territory and the Other Territories. These regions are identified as â€˜Unincorporatedâ€™ in the Australian Statistical Geography Standard (ASGS) LGA structure. A small number of LGA boundaries and names change each year and the ABS LGAs are updated on an annual basis to reflect these changes. LGAs are approximated using whole Mesh Blocks (MBs). In aggregation LGAs cover Australia without gaps or overlaps. The LGAs are Non ABS Structures within the ASGS. These are mostly administrative areas which are not defined or maintained by the ABS but for which the ABS is committed to providing a range of statistics.</p>
                 </td>
             </tr>
             <tr>
@@ -758,8 +758,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#StateOrTerritory">asgs:StateOrTerritory</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#sfContains">geo:sfContains</a> <span class="cardinality">min</span> 1 <a href="#MeshBlock">asgs:MeshBlock</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#StateOrTerritory">asgs:StateOrTerritory</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1040,8 +1040,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#StateOrTerritory">asgs:StateOrTerritory</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#sfContains">geo:sfContains</a> <span class="cardinality">min</span> 1 <a href="#StatisticalAreaLevel1">asgs:StatisticalAreaLevel1</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#StateOrTerritory">asgs:StateOrTerritory</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1141,10 +1141,10 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">max</span> 1 <a href="#RemotenessArea">asgs:RemotenessArea</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">max</span> 1 <a href="#IndigenousLocation">asgs:IndigenousLocation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#StatisticalAreaLevel2">asgs:StatisticalAreaLevel2</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">max</span> 1 <a href="#UrbanCentreAndLocality">asgs:UrbanCentreAndLocality</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">max</span> 1 <a href="#IndigenousLocation">asgs:IndigenousLocation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">max</span> 1 <a href="#RemotenessArea">asgs:RemotenessArea</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1177,8 +1177,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">max</span> 1 <a href="#SignificantUrbanArea">asgs:SignificantUrbanArea</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#StatisticalAreaLevel3">asgs:StatisticalAreaLevel3</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">max</span> 1 <a href="#SignificantUrbanArea">asgs:SignificantUrbanArea</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1244,8 +1244,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#StateOrTerritory">asgs:StateOrTerritory</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">max</span> 1 <a href="#GreaterCapitalCityStatisticalArea">asgs:GreaterCapitalCityStatisticalArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#StateOrTerritory">asgs:StateOrTerritory</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>

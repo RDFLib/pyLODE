@@ -22,7 +22,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 <p>Data access rights control how users and systems access a data resource.</p>
 
 **History Note**  
-This vocabulary is taken from the COAR Controlled Vocabularies Interest Group (http://vocabularies.coar-repositories.org/documentation/access_rights/) but is redelivered as that vocabulary isn't well presented online.
+<p>This vocabulary is taken from the COAR Controlled Vocabularies Interest Group (http://vocabularies.coar-repositories.org/documentation/access_rights/) but is redelivered as that vocabulary isn't well presented online.</p>
 
 ## Table of Contents
 1. [Collections](#collections)
@@ -42,7 +42,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/data-access-rights/closed-access-rights`
 Preferred Labels |Closed data access rights (en)<br />
-Members |[Protected access](Protectedaccess) (cp)<br />[Metadata only access](Metadataonlyaccess) (cp)<br />[Restricted access](Restrictedaccess) (cp)<br />[Embargoed access](Embargoedaccess) (cp)<br />
+Members |[Embargoed access](Embargoedaccess) (cp)<br />[Protected access](Protectedaccess) (cp)<br />[Restricted access](Restrictedaccess) (cp)<br />[Metadata only access](Metadataonlyaccess) (cp)<br />
 
 ### Open data access rights
 Property | Value
@@ -87,7 +87,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/data-access-rights/restricted`
 Preferred Labels |Restricted access (en)<br />
-Narrower Concepts |[Metadata only access](Metadataonlyaccess) (cp)<br />[Embargoed access](Embargoedaccess) (cp)<br />[Protected access](Protectedaccess) (cp)<br />
+Narrower Concepts |[Metadata only access](Metadataonlyaccess) (cp)<br />[Protected access](Protectedaccess) (cp)<br />[Embargoed access](Embargoedaccess) (cp)<br />
 
 ## Namespaces
 * **default (:)**

@@ -213,7 +213,7 @@
     </script>
 </head>
 <body>
-<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE"><span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a></div>
 <h1>Datatypes</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
@@ -233,24 +233,23 @@
         <dd>
             <a href="http://purl.org/dc/elements/1.1/">http://purl.org/dc/elements/1.1/</a><br/>
             <a href="http://topbraid.org/schema/">http://topbraid.org/schema/</a><br/>
-            <a href="http://www.w3.org/ns/prov-o#">http://www.w3.org/ns/prov-o#</a><br/>
             <a href="http://usefulinc.com/ns/doap">http://usefulinc.com/ns/doap</a><br/>
+            <a href="http://www.w3.org/ns/prov-o#">http://www.w3.org/ns/prov-o#</a><br/>
         </dd>
         <dt>License</dt>
         <dd><a href="http://creativecommons.org/publicdomain/zero/1.0/">http://creativecommons.org/publicdomain/zero/1.0/</a></dd>
         <dt>Ontology RDF</dt>
         <dd><a href="datatype.ttl">RDF (turtle)</a></dd>
         <dt>Code Repository</dt>
-        <dd><a href="<a href="https://github.com/AGLDWG/datatype-ont">https://github.com/AGLDWG/datatype-ont</a>"><a href="https://github.com/AGLDWG/datatype-ont">https://github.com/AGLDWG/datatype-ont</a></a></dd>
+        <dd><a href="https://github.com/AGLDWG/datatype-ont">https://github.com/AGLDWG/datatype-ont</a></dd>
     </dl>
     <h2>Description</h2>
     <div id="description">
         <p>A set of classes representing data-types. 
 These may be used for observation results, or for the range of specific properties in other applications where scaled numbers, ranges, percents etc are required. </p>
     </div>
-    <p><strong>History Note:</strong> Originally developed for use as the value of an observation result (sosa:hasResult) in the context of the TERN-plot ontology. 
-
-However, objects from these classes may appear in many contexts. </p>
+    <p><strong>History Note:</strong> <p>Originally developed for use as the value of an observation result (sosa:hasResult) in the context of the TERN-plot ontology. </p>
+<p>However, objects from these classes may appear in many contexts. </p></p>
 </section>
 <section id="toc">
     <h2>Table of Contents</h2>
@@ -265,7 +264,7 @@ However, objects from these classes may appear in many contexts. </p>
 <section id="overview">
     <h2>Overview</h2>
     <div class="figure">
-        <div style="width:500px; height:50px; background-color: black;">&nbsp;</div>
+        <div style="width:500px; height:50px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;">Pictures say 1,000 words</div>
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div>
 </section>
@@ -297,8 +296,8 @@ However, objects from these classes may appear in many contexts. </p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
         </table>
@@ -319,9 +318,9 @@ However, objects from these classes may appear in many contexts. </p>
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="#vocabulary">data:vocabulary</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#value">rdf:value</a> <span class="cardinality">only</span> <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#value">rdf:value</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="#vocabulary">data:vocabulary</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
         </table>
@@ -342,9 +341,9 @@ However, objects from these classes may appear in many contexts. </p>
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="#datauncertainty">data:uncertainty</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
                     <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
         </table>
@@ -421,10 +420,10 @@ However, objects from these classes may appear in many contexts. </p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#datauncertainty">data:uncertainty</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="#unitofmeasure">data:unit</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#datauncertainty">data:uncertainty</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
                 </td>
             </tr>
             <tr>
@@ -451,10 +450,10 @@ However, objects from these classes may appear in many contexts. </p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#unitofmeasure">data:unit</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="#datauncertainty">data:uncertainty</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
                     <a href="#datamaximum">data:max</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#unitofmeasure">data:unit</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="#dataminimum">data:min</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#datauncertainty">data:uncertainty</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
                 </td>
             </tr>
             <tr>

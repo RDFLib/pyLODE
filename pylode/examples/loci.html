@@ -213,7 +213,7 @@
     </script>
 </head>
 <body>
-<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE"><span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a></div>
 <h1>LOC-I Ontology</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
@@ -262,9 +262,9 @@
         <dt>Imports</dt>
         <dd>
             <a href="http://purl.org/linked-data/registry">http://purl.org/linked-data/registry</a><br/>
+            <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">rdf:</a><br/>
             <a href="http://www.w3.org/2002/07/owl#">owl:</a><br/>
             <a href="http://www.w3.org/ns/dcat#">dcat:</a><br/>
-            <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">rdf:</a><br/>
         </dd>
         <dt>License &amp; Rights</dt>
         <dd>
@@ -295,7 +295,7 @@
 <section id="overview">
     <h2>Overview</h2>
     <div class="figure">
-        <div style="width:500px; height:50px; background-color: black;">&nbsp;</div>
+        <div style="width:500px; height:50px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;">Pictures say 1,000 words</div>
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div>
 </section>
@@ -353,11 +353,11 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="http://purl.org/dc/terms/issued">dct:issued</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://www.w3.org/ns/dcat#contactPoint">dcat:contactPoint</a> <span class="cardinality">min</span> 1<br/>
                     <a href="http://purl.org/dc/terms/title">dct:title</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://purl.org/dc/terms/publisher">dct:publisher</a> <span class="cardinality">exactly</span> 1 <a href="http://xmlns.com/foaf/0.1/Organization">http://xmlns.com/foaf/0.1/Organization</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://purl.org/dc/terms/issued">dct:issued</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/publisher">dct:publisher</a> <span class="cardinality">exactly</span> 1 <a href="http://xmlns.com/foaf/0.1/Organization">http://xmlns.com/foaf/0.1/Organization</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -391,8 +391,8 @@
                 <th>Restrictions</th>
                 <td>
                     <a href="#hadgenerationmethod">hadGenerationMethod</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/ns/prov#Plan">prov:Plan</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a> <span class="cardinality">exactly</span> 1 <a href="#LOCIFeature">Feature</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/linked-data/registryregister">http://purl.org/linked-data/registryregister</a> <span class="cardinality">exactly</span> 1 <a href="#LOCILinkset">Linkset</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a> <span class="cardinality">exactly</span> 1 <a href="#LOCIFeature">Feature</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">rdf:subject</a> <span class="cardinality">exactly</span> 1 <a href="#LOCIFeature">Feature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>

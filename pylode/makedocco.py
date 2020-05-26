@@ -78,7 +78,11 @@ class MakeDocco:
             raise Exception("You must supply either an input file or a URI for your ontology's RDF")
 
     def _parse_input_data_file(self, input_data_file):
-        file_name = str(input_data_file.name)
+        if hasattr(input_data_file, "name"):
+            file_name = str(input_data_file.name)
+        elif input_data_file is not None:
+            file_name = str(input_data_file)
+
         if not file_name.endswith(tuple(RDF_FILE_EXTENSIONS)):
             raise Exception(
                 "If supplying an input RDF file, it must end with one of the following file type extensions: {}."

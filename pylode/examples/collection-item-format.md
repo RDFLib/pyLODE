@@ -19,7 +19,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
   * RDF ([collection-item-format.ttl](turtle))
 ### Description
 <p>The format of an item within a collection describes its physical presence at the highest level.</p>
-* **History Note:** This vocabulary has been developed by referencing publicly available information from select libraries and archives about their FORMAT cataloguing terms.
+* **History Note:** <p>This vocabulary has been developed by referencing publicly available information from select libraries and archives about their FORMAT cataloguing terms.</p>
 
 ## Table of Contents
 1. [Namespaces](#namespaces)

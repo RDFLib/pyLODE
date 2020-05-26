@@ -12,7 +12,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * **Ontology RDF**
   * RDF ([doap.ttl](turtle))
 ### Description
-<p>The Description of a Project (DOAP) vocabulary, described using W3C RDF Schema and the Web Ontology Language.</p>
+<p>SlovnÃ­k Description of a Project (DOAP, Popis projektu), popsanÃ½ pouÅ¾itÃ­m W3C RDF Schema a Web Ontology Language.</p>
 
 ## Table of Contents
 1. [Classes](#classes)
@@ -26,31 +26,31 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 **Figure 1:** Ontology overview
 ## Classes
 [Bazaar Branch](#BazaarBranch),
-[EspecificaÃ§Ã£o](#Especificao),
-[GNU Arch repository](#GNUArchrepository),
+[CVS Repository](#CVSRepository),
+[DÃ©pÃ´t darcs](#Dptdarcs),
 [Git Branch](#GitBranch),
-[Projekt](#Projekt),
+[Git Repository](#GitRepository),
+[Proyecto](#Proyecto),
 [Repositorio](#Repositorio),
-[Repositorio Git](#RepositorioGit),
+[Repositorio BitKeeper](#RepositorioBitKeeper),
 [Repositorio Subversion](#RepositorioSubversion),
-[Repositorio darcs](#Repositoriodarcs),
-[RepositÃ³rio Bitkeeper](#RepositrioBitkeeper),
-[RepositÃ³rio CVS](#RepositrioCVS),
+[RepositÃ³rio GNU Arch](#RepositrioGNUArch),
 [RepositÃ³rio Mercurial](#RepositrioMercurial),
+[Specification](#Specification),
 [VersiÃ³n](#Versin),
-### GNU Arch repository
+### RepositÃ³rio GNU Arch
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#ArchRepository`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | <p>Repositorio GNU Arch del cÃ³digo fuente.</p>
+Description | <p>RepositÃ³rio GNU Arch do cÃ³digo fonte.</p>
 Super-classes |[doap:Repository](http://usefulinc.com/ns/doap#Repository) (c)<br />
-### RepositÃ³rio Bitkeeper
+### Repositorio BitKeeper
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#BKRepository`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | <p>Repositorio BitKeeper del cÃ³digo fuente.</p>
+Description | <p>RepositÃ³rio BitKeeper do cÃ³digo fonte.</p>
 Super-classes |[doap:Repository](http://usefulinc.com/ns/doap#Repository) (c)<br />
 ### Bazaar Branch
 Property | Value
@@ -59,72 +59,72 @@ IRI | `http://usefulinc.com/ns/doap#BazaarBranch`
 Is Defined By | http://usefulinc.com/ns/doap#
 Description | <p>CÃ³digo fonte da ramificaÃ§Ã£o Bazaar.</p>
 Super-classes |[doap:Repository](http://usefulinc.com/ns/doap#Repository) (c)<br />
-### RepositÃ³rio CVS
+### CVS Repository
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#CVSRepository`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | <p>RepositÃ³rio CVS do cÃ³digo fonte.</p>
+Description | <p>CVS source code repository.</p>
 Super-classes |[doap:Repository](http://usefulinc.com/ns/doap#Repository) (c)<br />
-### Repositorio darcs
+### DÃ©pÃ´t darcs
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#DarcsRepository`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | <p>DÃ©pÃ´t darcs du code source.</p>
+Description | <p>darcs source code repository.</p>
 Super-classes |[doap:Repository](http://usefulinc.com/ns/doap#Repository) (c)<br />
 ### Git Branch
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#GitBranch`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | <p>Git source code branch.</p>
+Description | <p>CÃ³digo fonte da ramificaÃ§Ã£o Git.</p>
 Super-classes |[doap:Repository](http://usefulinc.com/ns/doap#Repository) (c)<br />
-### Repositorio Git
+### Git Repository
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#GitRepository`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | <p>DÃ©pÃ´t Git du code source.</p>
+Description | <p>RepositÃ³rio Git do cÃ³digo fonte.</p>
 Super-classes |[doap:Repository](http://usefulinc.com/ns/doap#Repository) (c)<br />
 ### RepositÃ³rio Mercurial
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#HgRepository`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | <p>Mercurial source code repository.</p>
+Description | <p>RepositÃ³rio Mercurial do cÃ³digo fonte.</p>
 Super-classes |[doap:Repository](http://usefulinc.com/ns/doap#Repository) (c)<br />
-### Projekt
+### Proyecto
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#Project`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | <p>Un proyecto.</p>
-Super-classes |[http://xmlns.com/wordnet/1.6/Project](http://xmlns.com/wordnet/1.6/Project) (c)<br />[foaf:Project](http://xmlns.com/foaf/0.1/Project) (c)<br />
-In domain of |[doap:service-endpoint](http://usefulinc.com/ns/doap#service-endpoint)<br />[doap:download-mirror](http://usefulinc.com/ns/doap#download-mirror)<br />[doap:developer-forum](http://usefulinc.com/ns/doap#developer-forum)<br />[doap:developer](http://usefulinc.com/ns/doap#developer)<br />[doap:tester](http://usefulinc.com/ns/doap#tester)<br />[doap:language](http://usefulinc.com/ns/doap#language)<br />[doap:implements](http://usefulinc.com/ns/doap#implements)<br />[doap:maintainer](http://usefulinc.com/ns/doap#maintainer)<br />[doap:screenshots](http://usefulinc.com/ns/doap#screenshots)<br />[doap:wiki](http://usefulinc.com/ns/doap#wiki)<br />[doap:repository](http://usefulinc.com/ns/doap#repository)<br />[doap:helper](http://usefulinc.com/ns/doap#helper)<br />[doap:translator](http://usefulinc.com/ns/doap#translator)<br />[doap:mailing-list](http://usefulinc.com/ns/doap#mailing-list)<br />[doap:bug-database](http://usefulinc.com/ns/doap#bug-database)<br />[doap:vendor](http://usefulinc.com/ns/doap#vendor)<br />[doap:audience](http://usefulinc.com/ns/doap#audience)<br />[doap:programming-language](http://usefulinc.com/ns/doap#programming-language)<br />[doap:blog](http://usefulinc.com/ns/doap#blog)<br />[doap:homepage](http://usefulinc.com/ns/doap#homepage)<br />[doap:platform](http://usefulinc.com/ns/doap#platform)<br />[doap:download-page](http://usefulinc.com/ns/doap#download-page)<br />[doap:release](http://usefulinc.com/ns/doap#release)<br />[doap:documenter](http://usefulinc.com/ns/doap#documenter)<br />[doap:category](http://usefulinc.com/ns/doap#category)<br />[doap:old-homepage](http://usefulinc.com/ns/doap#old-homepage)<br />[doap:os](http://usefulinc.com/ns/doap#os)<br />[doap:support-forum](http://usefulinc.com/ns/doap#support-forum)<br />
+Description | <p>Un projet.</p>
+Super-classes |[foaf:Project](http://xmlns.com/foaf/0.1/Project) (c)<br />[http://xmlns.com/wordnet/1.6/Project](http://xmlns.com/wordnet/1.6/Project) (c)<br />
+In domain of |[doap:maintainer](http://usefulinc.com/ns/doap#maintainer)<br />[doap:documenter](http://usefulinc.com/ns/doap#documenter)<br />[doap:bug-database](http://usefulinc.com/ns/doap#bug-database)<br />[doap:developer-forum](http://usefulinc.com/ns/doap#developer-forum)<br />[doap:platform](http://usefulinc.com/ns/doap#platform)<br />[doap:vendor](http://usefulinc.com/ns/doap#vendor)<br />[doap:download-mirror](http://usefulinc.com/ns/doap#download-mirror)<br />[doap:old-homepage](http://usefulinc.com/ns/doap#old-homepage)<br />[doap:implements](http://usefulinc.com/ns/doap#implements)<br />[doap:release](http://usefulinc.com/ns/doap#release)<br />[doap:programming-language](http://usefulinc.com/ns/doap#programming-language)<br />[doap:category](http://usefulinc.com/ns/doap#category)<br />[doap:audience](http://usefulinc.com/ns/doap#audience)<br />[doap:os](http://usefulinc.com/ns/doap#os)<br />[doap:translator](http://usefulinc.com/ns/doap#translator)<br />[doap:mailing-list](http://usefulinc.com/ns/doap#mailing-list)<br />[doap:service-endpoint](http://usefulinc.com/ns/doap#service-endpoint)<br />[doap:download-page](http://usefulinc.com/ns/doap#download-page)<br />[doap:tester](http://usefulinc.com/ns/doap#tester)<br />[doap:blog](http://usefulinc.com/ns/doap#blog)<br />[doap:language](http://usefulinc.com/ns/doap#language)<br />[doap:helper](http://usefulinc.com/ns/doap#helper)<br />[doap:screenshots](http://usefulinc.com/ns/doap#screenshots)<br />[doap:wiki](http://usefulinc.com/ns/doap#wiki)<br />[doap:repository](http://usefulinc.com/ns/doap#repository)<br />[doap:support-forum](http://usefulinc.com/ns/doap#support-forum)<br />[doap:developer](http://usefulinc.com/ns/doap#developer)<br />[doap:homepage](http://usefulinc.com/ns/doap#homepage)<br />
 In range of |[doap:repositoryOf](http://usefulinc.com/ns/doap#repositoryOf)<br />
 ### Repositorio
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#Repository`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | <p>Quellcode-Versionierungssystem.</p>
-Sub-classes |[doap:BKRepository](http://usefulinc.com/ns/doap#BKRepository) (c)<br />[doap:BazaarBranch](http://usefulinc.com/ns/doap#BazaarBranch) (c)<br />[doap:HgRepository](http://usefulinc.com/ns/doap#HgRepository) (c)<br />[doap:DarcsRepository](http://usefulinc.com/ns/doap#DarcsRepository) (c)<br />[doap:ArchRepository](http://usefulinc.com/ns/doap#ArchRepository) (c)<br />[doap:GitBranch](http://usefulinc.com/ns/doap#GitBranch) (c)<br />[doap:SVNRepository](http://usefulinc.com/ns/doap#SVNRepository) (c)<br />[doap:CVSRepository](http://usefulinc.com/ns/doap#CVSRepository) (c)<br />[doap:GitRepository](http://usefulinc.com/ns/doap#GitRepository) (c)<br />
-In domain of |[doap:repositoryOf](http://usefulinc.com/ns/doap#repositoryOf)<br />[doap:location](http://usefulinc.com/ns/doap#location)<br />[doap:browse](http://usefulinc.com/ns/doap#browse)<br />[doap:anon-root](http://usefulinc.com/ns/doap#anon-root)<br />
+Description | <p>Repositorio del cÃ³digo fuente.</p>
+Sub-classes |[doap:BKRepository](http://usefulinc.com/ns/doap#BKRepository) (c)<br />[doap:SVNRepository](http://usefulinc.com/ns/doap#SVNRepository) (c)<br />[doap:BazaarBranch](http://usefulinc.com/ns/doap#BazaarBranch) (c)<br />[doap:DarcsRepository](http://usefulinc.com/ns/doap#DarcsRepository) (c)<br />[doap:GitRepository](http://usefulinc.com/ns/doap#GitRepository) (c)<br />[doap:ArchRepository](http://usefulinc.com/ns/doap#ArchRepository) (c)<br />[doap:HgRepository](http://usefulinc.com/ns/doap#HgRepository) (c)<br />[doap:CVSRepository](http://usefulinc.com/ns/doap#CVSRepository) (c)<br />[doap:GitBranch](http://usefulinc.com/ns/doap#GitBranch) (c)<br />
+In domain of |[doap:browse](http://usefulinc.com/ns/doap#browse)<br />[doap:location](http://usefulinc.com/ns/doap#location)<br />[doap:repositoryOf](http://usefulinc.com/ns/doap#repositoryOf)<br />[doap:anon-root](http://usefulinc.com/ns/doap#anon-root)<br />
 In range of |[doap:repository](http://usefulinc.com/ns/doap#repository)<br />
 ### Repositorio Subversion
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#SVNRepository`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | <p>ÃšloÅ¾iÅ¡tÄ› zdrojovÃ½ch kÃ³dÅ¯ Subversion.</p>
+Description | <p>Subversion source code repository.</p>
 Super-classes |[doap:Repository](http://usefulinc.com/ns/doap#Repository) (c)<br />
-### EspecificaÃ§Ã£o
+### Specification
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#Specification`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | <p>A especificaÃ§Ã£o de aspetos, tÃ©cnicas ou outros do sistema.</p>
+Description | <p>A specification of a system's aspects, technical or otherwise.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
 In range of |[doap:implements](http://usefulinc.com/ns/doap#implements)<br />
 ### VersiÃ³n
@@ -132,67 +132,67 @@ Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#Version`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | <p>Version information of a project release.</p>
+Description | <p>InformaÃ§Ã£o sobre a versÃ£o do projeto lanÃ§ado.</p>
 In domain of |[doap:platform](http://usefulinc.com/ns/doap#platform)<br />[doap:os](http://usefulinc.com/ns/doap#os)<br />[doap:revision](http://usefulinc.com/ns/doap#revision)<br />[doap:file-release](http://usefulinc.com/ns/doap#file-release)<br />
 In range of |[doap:release](http://usefulinc.com/ns/doap#release)<br />
 
 ## Properties
 [raÃ­z anÃ³nima](#razannima),
-[audience](#audience),
+[audiÃªncia](#audincia),
 [blog](#blog),
-[browse](#browse),
-[suivi des bugs](#suividesbugs),
-[categorÃ­a](#categora),
-[criado](#criado),
-[description](#description),
-[developer](#developer),
+[visualiser](#visualiser),
+[base de dados de bugs](#basededadosdebugs),
+[category](#category),
+[created](#created),
+[descripciÃ³n](#descripcin),
+[desarrollador](#desarrollador),
 [developer forum](#developerforum),
-[Dokumentator](#Dokumentator),
-[mirror de descarga](#mirrordedescarga),
-[Seite zum Herunterladen](#SeitezumHerunterladen),
-[file-release](#file-release),
-[colaborador](#colaborador),
-[domovskÃ¡ strÃ¡nka](#domovskstrnka),
+[rÃ©dacteur de l'aide](#rdacteurdel'aide),
+[mirror para download](#mirrorparadownload),
+[strÃ¡nka pro staÅ¾enÃ­](#strnkaprostaen),
+[publicaÃ§Ã£o do ficheiro](#publicaodoficheiro),
+[Helfer](#Helfer),
+[homepage](#homepage),
 [EspecificaÃ§Ãµes para implementaÃ§Ã£o](#Especificaesparaimplementao),
 [idioma](#idioma),
-[Lizenz](#Lizenz),
-[umÃ­stÄ›nÃ­ ÃºloÅ¾iÅ¡tÄ›](#umstnloit),
+[licenÃ§a](#licena),
+[localizaÃ§Ã£o do respositÃ³rio](#localizaodorespositrio),
 [liste de diffusion](#listedediffusion),
-[maintainer](#maintainer),
-[module](#module),
-[nom](#nom),
-[Alte Homepage](#AlteHomepage),
-[systÃ¨me d'exploitation](#systmed'exploitation),
-[plataforma](#plataforma),
-[linguagem de programaÃ§Ã£o](#linguagemdeprogramao),
+[Projektverantwortlicher](#Projektverantwortlicher),
+[modul](#modul),
+[nombre](#nombre),
+[pÃ¡gina web antigua](#pginawebantigua),
+[operaÄnÃ­ systÃ©m](#operansystm),
+[platform](#platform),
+[programovacÃ­ jazyk](#programovacjazyk),
 [release](#release),
 [ÃºloÅ¾iÅ¡tÄ›](#loit),
 [repository of](#repositoryof),
-[verze](#verze),
+[versiÃ³n](#versin),
 [screenshots](#screenshots),
 [service endpoint](#serviceendpoint),
-[description courte](#descriptioncourte),
+[descripciÃ³n corta](#descripcincorta),
 [supporting forum](#supportingforum),
 [Tester](#Tester),
-[tradutor](#tradutor),
+[translator](#translator),
 [vendor](#vendor),
-[Wiki](#Wiki),
+[wiki](#wiki),
 [](razannima)
 ### raÃ­z anÃ³nima
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#anon-root`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | ÃšloÅ¾iÅ¡tÄ› pro anonymnÃ­ pÅ™Ã­stup.
+Description | Repositorio para acceso anÃ³nimo.
 Domain(s) |[doap:Repository](http://usefulinc.com/ns/doap#Repository) (c)<br />
 Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
-[](audience)
-### audience
+[](audincia)
+### audiÃªncia
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#audience`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Description of target user base
+Description | DescriÃ§Ã£o do utilizador base alvo
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
 [](blog)
@@ -203,54 +203,54 @@ IRI | `http://usefulinc.com/ns/doap#blog`
 Is Defined By | http://usefulinc.com/ns/doap#
 Description | URI of a blog related to a project
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
-Range(s) |[http://rdfs.org/sioc/types#Weblog](http://rdfs.org/sioc/types#Weblog) (c)<br />[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
-[](browse)
-### browse
+Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />[http://rdfs.org/sioc/types#Weblog](http://rdfs.org/sioc/types#Weblog) (c)<br />
+[](visualiser)
+### visualiser
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#browse`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Interface web del repositorio.
+Description | Web browser interface to repository.
 Domain(s) |[doap:Repository](http://usefulinc.com/ns/doap#Repository) (c)<br />
-[](suividesbugs)
-### suivi des bugs
+[](basededadosdebugs)
+### base de dados de bugs
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#bug-database`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Suivi des bugs pour un projet.
+Description | Bug tracker para un proyecto.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
-[](categora)
-### categorÃ­a
+[](category)
+### category
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#category`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Kategorie projektu.
+Description | A category of project.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
-[](criado)
-### criado
+[](created)
+### created
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#created`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Erstellungsdatum von Irgendwas, angegeben im YYYY-MM-DD Format, z.B. 2004-04-05.
+Description | Fecha en la que algo fue creado, en formato AAAA-MM-DD. e.g. 2004-04-05
 Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
-[](description)
-### description
+[](descripcin)
+### descripciÃ³n
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#description`
 Is Defined By | http://usefulinc.com/ns/doap#
 Description | DescriÃ§Ã£o de um projeto em texto apenas, com 2 a 4 frases de comprimento.
 Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
-[](developer)
-### developer
+[](desarrollador)
+### desarrollador
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#developer`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Developer of software for the project.
+Description | DÃ©veloppeur pour le projet.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[foaf:Person](http://xmlns.com/foaf/0.1/Person) (c)<br />
 [](developerforum)
@@ -262,56 +262,55 @@ Is Defined By | http://usefulinc.com/ns/doap#
 Description | A forum or community for developers of this project.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[http://rdfs.org/sioc/ns#Container](http://rdfs.org/sioc/ns#Container) (c)<br />
-[](Dokumentator)
-### Dokumentator
+[](rdacteurdel'aide)
+### rÃ©dacteur de l'aide
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#documenter`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Contributor of documentation to the project.
+Description | Collaborateur Ã  la documentation du projet.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[foaf:Person](http://xmlns.com/foaf/0.1/Person) (c)<br />
-[](mirrordedescarga)
-### mirror de descarga
+[](mirrorparadownload)
+### mirror para download
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#download-mirror`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Mirror of software download web page.
+Description | Spiegel der Seite von die Projekt-Software heruntergeladen werden kann.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
-[](SeitezumHerunterladen)
-### Seite zum Herunterladen
+[](strnkaprostaen)
+### strÃ¡nka pro staÅ¾enÃ­
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#download-page`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Web-Seite von der die Projekt-Software heruntergeladen werden kann.
+Description | Web page from which the project software can be downloaded.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
-[](file-release)
-### file-release
+[](publicaodoficheiro)
+### publicaÃ§Ã£o do ficheiro
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#file-release`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | URI adresa staÅ¾enÃ­ asociovanÃ© s revizÃ­.
+Description | URI of download associated with this release.
 Domain(s) |[doap:Version](http://usefulinc.com/ns/doap#Version) (c)<br />
-[](colaborador)
-### colaborador
+[](Helfer)
+### Helfer
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#helper`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Spoluautor projektu.
+Description | Colaborador del proyecto.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[foaf:Person](http://xmlns.com/foaf/0.1/Person) (c)<br />
-[](domovskstrnka)
-### domovskÃ¡ strÃ¡nka
+[](homepage)
+### homepage
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#homepage`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | O URL da pÃ¡gina de um projeto,
-		asociada com exactamente um projeto.
+Description | O URL da pÃ¡gina de um projeto, 		asociada com exactamente um projeto.
 Super-properties |[foaf:homepage](http://xmlns.com/foaf/0.1/homepage)<br />
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 [](Especificaesparaimplementao)
@@ -320,7 +319,7 @@ Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#implements`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | A specification that a project implements. Could be a standard, API or legally defined level of conformance.
+Description | Uma especificaÃ§Ã£o que um projeto implementa. Pode ser uma padrÃ£o, API ou um nÃ­vel de conformidade definida legalmente.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[doap:Specification](http://usefulinc.com/ns/doap#Specification) (c)<br />
 [](idioma)
@@ -329,23 +328,23 @@ Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#language`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | CÃ³digo de idioma ISO do projeto para o qual foi traduzido
+Description | ISO language code a project has been translated into
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
-[](Lizenz)
-### Lizenz
+[](licena)
+### licenÃ§a
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#license`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | URI adresa RDF popisu licence, pod kterou je software distribuovÃ¡n.
-[](umstnloit)
-### umÃ­stÄ›nÃ­ ÃºloÅ¾iÅ¡tÄ›
+Description | El URI de una descripciÃ³n RDF de la licencia bajo la cuÃ¡l se distribuye el software.
+[](localizaodorespositrio)
+### localizaÃ§Ã£o do respositÃ³rio
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#location`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Emplacement d'un dÃ©pÃ´t.
+Description | lugar de un repositorio.
 Domain(s) |[doap:Repository](http://usefulinc.com/ns/doap#Repository) (c)<br />
 [](listedediffusion)
 ### liste de diffusion
@@ -353,57 +352,55 @@ Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#mailing-list`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Page web de la liste de diffusion, ou adresse de courriel.
+Description | PÃ¡gina web de la lista de correo o direcciÃ³n de correo.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[http://rdfs.org/sioc/types#MailingList](http://rdfs.org/sioc/types#MailingList) (c)<br />
-[](maintainer)
-### maintainer
+[](Projektverantwortlicher)
+### Projektverantwortlicher
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#maintainer`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Hauptentwickler eines Projektes, der Projektleiter
+Description | Maintainer of a project, a project leader.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[foaf:Person](http://xmlns.com/foaf/0.1/Person) (c)<br />
-[](module)
-### module
+[](modul)
+### modul
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#module`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Nome do mÃ³dulo de um repositÃ³rio Subversion, CVS, BitKeeper ou Arch.
+Description | Module name of a Subversion, CVS, BitKeeper or Arch repository.
 Domain(s) |([doap:CVSRepository](http://usefulinc.com/ns/doap#CVSRepository) (c) or [doap:ArchRepository](http://usefulinc.com/ns/doap#ArchRepository) (c) or [doap:BKRepository](http://usefulinc.com/ns/doap#BKRepository) (c))<br />
-[](nom)
-### nom
+[](nombre)
+### nombre
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#name`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | A name of something.
+Description | Der Name von Irgendwas
 Super-properties |[rdfs:label](http://www.w3.org/2000/01/rdf-schema#label)<br />
 Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
-[](AlteHomepage)
-### Alte Homepage
+[](pginawebantigua)
+### pÃ¡gina web antigua
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#old-homepage`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | L'URL d'une ancienne page web d'un
-		projet, associÃ©e avec un unique projet.
+Description | L'URL d'une ancienne page web d'un 		projet, associÃ©e avec un unique projet.
 Super-properties |[foaf:homepage](http://xmlns.com/foaf/0.1/homepage)<br />
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
-[](systmed'exploitation)
-### systÃ¨me d'exploitation
+[](operansystm)
+### operaÄnÃ­ systÃ©m
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#os`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | SystÃ¨me d'exploitation auquel est limitÃ© le projet. Omettez cette propriÃ©tÃ© si le
-		projet n'est pas limitÃ© Ã  un systÃ¨me d'exploitation.
-Domain(s) |[doap:Version](http://usefulinc.com/ns/doap#Version) (c)<br />[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
+Description | Sistema opertivo al cuÃ¡l estÃ¡ limitado el proyecto.  Omita esta propiedad si el proyecto no es especÃ­fico 		de un sistema opertaivo en particular.
+Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />[doap:Version](http://usefulinc.com/ns/doap#Version) (c)<br />
 Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
-[](plataforma)
-### plataforma
+[](platform)
+### platform
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#platform`
@@ -411,14 +408,13 @@ Is Defined By | http://usefulinc.com/ns/doap#
 Description | Indicator of software platform (non-OS specific), e.g. Java, Firefox, ECMA CLR
 Domain(s) |[doap:Version](http://usefulinc.com/ns/doap#Version) (c)<br />[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
-[](linguagemdeprogramao)
-### linguagem de programaÃ§Ã£o
+[](programovacjazyk)
+### programovacÃ­ jazyk
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#programming-language`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Langage de programmation avec lequel un projet est implÃ©mentÃ©,
-		ou avec lequel il est prÃ©vu de l'utiliser.
+Description | Programming language a project is implemented in or intended for use with.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
 [](release)
@@ -427,7 +423,7 @@ Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#release`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Un release (versiÃ³n) de un proyecto.
+Description | Relase (verze) projektu.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[doap:Version](http://usefulinc.com/ns/doap#Version) (c)<br />
 [](loit)
@@ -448,13 +444,13 @@ Is Defined By | http://usefulinc.com/ns/doap#
 Description | The project that uses a repository.
 Domain(s) |[doap:Repository](http://usefulinc.com/ns/doap#Repository) (c)<br />
 Range(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
-[](verze)
-### verze
+[](versin)
+### versiÃ³n
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#revision`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Versionsidentifikator eines Software-Releases.
+Description | Indentificador de la versiÃ³n de un release de software.
 Domain(s) |[doap:Version](http://usefulinc.com/ns/doap#Version) (c)<br />
 Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
 [](screenshots)
@@ -463,7 +459,7 @@ Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#screenshots`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | PÃ¡gina web com as capturas de ecrÃ£n do projeto.
+Description | PÃ¡gina web con capturas de pantalla del proyecto.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 [](serviceendpoint)
 ### service endpoint
@@ -474,13 +470,13 @@ Is Defined By | http://usefulinc.com/ns/doap#
 Description | The URI of a web service endpoint where software as a service may be accessed
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
-[](descriptioncourte)
-### description courte
+[](descripcincorta)
+### descripciÃ³n corta
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#shortdesc`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Texte descriptif concis (8 ou 9 mots) d'un projet.
+Description | Short (8 or 9 words) plain text description of a project.
 Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
 [](supportingforum)
 ### supporting forum
@@ -497,16 +493,16 @@ Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#tester`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | A tester or other quality control contributor.
+Description | Ein Tester oder anderer Mitarbeiter der QualitÃ¤tskontrolle.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[foaf:Person](http://xmlns.com/foaf/0.1/Person) (c)<br />
-[](tradutor)
-### tradutor
+[](translator)
+### translator
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#translator`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | Spoluautor pÅ™ekladu projektu.
+Description | Contributor of translations to the project.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[foaf:Person](http://xmlns.com/foaf/0.1/Person) (c)<br />
 [](vendor)
@@ -518,13 +514,13 @@ Is Defined By | http://usefulinc.com/ns/doap#
 Description | Vendor organization: commercial, free or otherwise
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[foaf:Organization](http://xmlns.com/foaf/0.1/Organization) (c)<br />
-[](Wiki)
-### Wiki
+[](wiki)
+### wiki
 Property | Value
 --- | ---
 IRI | `http://usefulinc.com/ns/doap#wiki`
 Is Defined By | http://usefulinc.com/ns/doap#
-Description | URL da Wiki para discussÃ£o em grupo do projeto.
+Description | URL adresa wiki projektu pro spoleÄnÃ© diskuse.
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[http://rdfs.org/sioc/types#Wiki](http://rdfs.org/sioc/types#Wiki) (c)<br />
 

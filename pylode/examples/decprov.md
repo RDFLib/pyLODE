@@ -65,7 +65,7 @@ Property | Value
 IRI | `http://promsns.org/def/do#Answer`
 Description | <p>A recorded answer to a Question</p>
 Super-classes |[prov:Entity](http://www.w3.org/ns/prov#Entity) (c)<br />
-Restrictions |[prov:wasInfluencedBy](http://www.w3.org/ns/prov#wasInfluencedBy) **some** [do:Question](http://promsns.org/def/do#Question) (c)<br />[prov:wasGeneratedBy](http://www.w3.org/ns/prov#wasGeneratedBy) **some** [do:DecisionMaking](http://promsns.org/def/do#DecisionMaking) (c)<br />
+Restrictions |[prov:wasGeneratedBy](http://www.w3.org/ns/prov#wasGeneratedBy) **some** [do:DecisionMaking](http://promsns.org/def/do#DecisionMaking) (c)<br />[prov:wasInfluencedBy](http://www.w3.org/ns/prov#wasInfluencedBy) **some** [do:Question](http://promsns.org/def/do#Question) (c)<br />
 In domain of |[hadQuestion](hadquestion) (op)<br />
 ### Decision Making
 Property | Value

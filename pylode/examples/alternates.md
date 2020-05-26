@@ -17,14 +17,14 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * **Modified**
   * 2019-10-21
 * **Imports**
-  * [skos:](http://www.w3.org/2004/02/skos/core#)
   * [dct:](http://purl.org/dc/terms/)
+  * [skos:](http://www.w3.org/2004/02/skos/core#)
 * **License**
   * [http://creativecommons.org/licenses/by/4.0](http://creativecommons.org/licenses/by/4.0)
 * **Ontology RDF**
   * RDF ([alternates.ttl](turtle))
 * **Code Repository**
-  * <[https://github.com/nicholascar/alternates-view-profile](https://github.com/nicholascar/alternates-view-profile)>
+  * [https://github.com/nicholascar/alternates-view-profile](https://github.com/nicholascar/alternates-view-profile)
 ### Description
 <p>An ontology that is a profile of Dublin Core Terms that constrains several of its classes and properties for use and adds a class of its own, all to describe representations of resources. The 'View' and 'Format' classes are based on the Epimorphics' implementation of a Linked Data API (ELDA).</p>
 
@@ -92,7 +92,6 @@ Usage Note | Use this property to indicate a dct:MediaType
 Range(s) |[dct:MediaType](http://purl.org/dc/terms/MediaType) (c)<br />
 
 ## Named Individuals
-[None](#None),
 ### None <sup>c</sup>
 Property | Value
 --- | ---

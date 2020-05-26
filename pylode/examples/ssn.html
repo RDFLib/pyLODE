@@ -190,7 +190,7 @@
     ],
     "https://schema.org/description": [
       {
-        "@value": "<p>Please report any errors to the W3C Spatial Data on the Web Working Group via the SDW WG Public List public-sdw-wg@w3.org</p>"
+        "@value": "<p>This ontology describes sensors, actuators and observations, and related concepts. It does not describe domain concepts, time, locations, etc. these are intended to be included from other ontologies via OWL imports.</p>"
       }
     ],
     "https://schema.org/license": [
@@ -213,7 +213,7 @@
     </script>
 </head>
 <body>
-<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE"><span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a></div>
 <h1>Semantic Sensor Network Ontology</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
@@ -247,7 +247,7 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
     </dl>
     <h2>Description</h2>
     <div id="description">
-        <p>Please report any errors to the W3C Spatial Data on the Web Working Group via the SDW WG Public List public-sdw-wg@w3.org</p>
+        <p>This ontology describes sensors, actuators and observations, and related concepts. It does not describe domain concepts, time, locations, etc. these are intended to be included from other ontologies via OWL imports.</p>
     </div>
 </section>
 <section id="toc">
@@ -264,7 +264,7 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
 <section id="overview">
     <h2>Overview</h2>
     <div class="figure">
-        <div style="width:500px; height:50px; background-color: black;">&nbsp;</div>
+        <div style="width:500px; height:50px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;">Pictures say 1,000 words</div>
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div>
 </section>
@@ -308,16 +308,16 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Result">sosa:Result</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/actsOnProperty">sosa:actsOnProperty</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/actsOnProperty">sosa:actsOnProperty</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/ActuatableProperty">sosa:ActuatableProperty</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">sosa:FeatureOfInterest</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/resultTime">sosa:resultTime</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/madeByActuator">sosa:madeByActuator</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://www.w3.org/ns/sosa/madeByActuator">sosa:madeByActuator</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Actuator">sosa:Actuator</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Result">sosa:Result</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">sosa:FeatureOfInterest</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/madeByActuator">sosa:madeByActuator</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/actsOnProperty">sosa:actsOnProperty</a> <span class="cardinality">min</span> 1<br/>
                     <a href="http://www.w3.org/ns/sosa/usedProcedure">sosa:usedProcedure</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/actsOnProperty">sosa:actsOnProperty</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/ActuatableProperty">sosa:ActuatableProperty</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/resultTime">sosa:resultTime</a> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
         </table>
@@ -340,17 +340,17 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
                 <td>
                     <a href="http://www.w3.org/ns/sosa/madeBySensor">sosa:madeBySensor</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Result">sosa:Result</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/phenomenonTime">sosa:phenomenonTime</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://www.w3.org/ns/sosa/madeBySensor">sosa:madeBySensor</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/sosa/usedProcedure">sosa:usedProcedure</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/ssn/wasOriginatedBy">ssn:wasOriginatedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">sosa:FeatureOfInterest</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/ssn/wasOriginatedBy">ssn:wasOriginatedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/ssn/Stimulus">ssn:Stimulus</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/resultTime">sosa:resultTime</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/observedProperty">sosa:observedProperty</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/ObservableProperty">sosa:ObservableProperty</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/observedProperty">sosa:observedProperty</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/resultTime">sosa:resultTime</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">sosa:FeatureOfInterest</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/phenomenonTime">sosa:phenomenonTime</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/observedProperty">sosa:observedProperty</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/ssn/wasOriginatedBy">ssn:wasOriginatedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/ssn/Stimulus">ssn:Stimulus</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/ssn/wasOriginatedBy">ssn:wasOriginatedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/observedProperty">sosa:observedProperty</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/ObservableProperty">sosa:ObservableProperty</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -371,14 +371,14 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/usedProcedure">sosa:usedProcedure</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/sosa/resultTime">sosa:resultTime</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Sample">sosa:Sample</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/sosa/madeBySampler">sosa:madeBySampler</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/madeBySampler">sosa:madeBySampler</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Sampler">sosa:Sampler</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">min</span> 1<br/>
                     <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">sosa:FeatureOfInterest</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/usedProcedure">sosa:usedProcedure</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/madeBySampler">sosa:madeBySampler</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Sampler">sosa:Sampler</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -405,15 +405,17 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
             <tr>
                 <th>Example</th>
                 <td>
-                    For example, a temperature Sensor deployed on a wall, or a whole network of Sensors deployed for an Observation campaign.
+                    <pre>
+                      For example, a temperature Sensor deployed on a wall, or a whole network of Sensors deployed for an Observation campaign.
+                    </pre>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/ssn/forProperty">ssn:forProperty</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/ssn/Property">ssn:Property</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/ssn/deployedOnPlatform">ssn:deployedOnPlatform</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Platform">sosa:Platform</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/ssn/deployedSystem">ssn:deployedSystem</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/ssn/System">ssn:System</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/ssn/deployedOnPlatform">ssn:deployedOnPlatform</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Platform">sosa:Platform</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/ssn/forProperty">ssn:forProperty</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/ssn/Property">ssn:Property</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -440,8 +442,8 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="ub65bL143C60">ub65bL143C60</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="ub65bL144C60">ub65bL144C60</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="ub69bL143C60">ub69bL143C60</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="ub69bL144C60">ub69bL144C60</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -468,8 +470,8 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="ub65bL157C60">ub65bL157C60</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="ub65bL158C60">ub65bL158C60</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="ub69bL158C60">ub69bL158C60</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="ub69bL157C60">ub69bL157C60</a> <span class="cardinality">min</span> 1<br/>
                 </td>
             </tr>
         </table>
@@ -530,9 +532,9 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="ub65bL298C56">ub65bL298C56</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="ub69bL298C56">ub69bL298C56</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="ub69bL299C56">ub69bL299C56</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/ssn/isProxyFor">ssn:isProxyFor</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/ObservableProperty">sosa:ObservableProperty</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="ub65bL299C56">ub65bL299C56</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -559,10 +561,10 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/ssn/hasDeployment">ssn:hasDeployment</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/ssn/Deployment">ssn:Deployment</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/ssn/implements">ssn:implements</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="ub69bL354C56">ub69bL354C56</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/ssn/System">ssn:System</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/ssn/hasSubSystem">ssn:hasSubSystem</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/ssn/System">ssn:System</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="ub65bL354C56">ub65bL354C56</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/ssn/System">ssn:System</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/ssn/implements">ssn:implements</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/ssn/hasDeployment">ssn:hasDeployment</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/ssn/Deployment">ssn:Deployment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/sosa/isHostedBy">sosa:isHostedBy</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Platform">sosa:Platform</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -570,8 +572,8 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
                 <th>Sub-classes</th>
                 <td>
                     <a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/Actuator">sosa:Actuator</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/sosa/Sampler">sosa:Sampler</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/Actuator">sosa:Actuator</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -702,7 +704,9 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
             <tr>
                 <th>Example</th>
                 <td>
-                    <pre>For example, from a Sensor to the properties it can observe; from an Actuator to the properties it can act on; from a Deployment to the properties it was installed to observe or act on; from a SystemCapability to the Property the capability is described for.</pre>
+                    <pre>
+                      For example, from a Sensor to the properties it can observe; from an Actuator to the properties it can act on; from a Deployment to the properties it was installed to observe or act on; from a SystemCapability to the Property the capability is described for.
+                    </pre>
                 </td>
             </tr>
         </table>
@@ -846,7 +850,9 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
             <tr>
                 <th>Example</th>
                 <td>
-                    <pre>For example, the relationship between a scientific measuring Procedure and a sensor that senses via that Procedure.</pre>
+                    <pre>
+                      For example, the relationship between a scientific measuring Procedure and a sensor that senses via that Procedure.
+                    </pre>
                 </td>
             </tr>
             <tr>
@@ -879,7 +885,9 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
             <tr>
                 <th>Example</th>
                 <td>
-                    <pre>For example, the relationship between a sensor and the scientific measuring Procedure via which it senses.</pre>
+                    <pre>
+                      For example, the relationship between a sensor and the scientific measuring Procedure via which it senses.
+                    </pre>
                 </td>
             </tr>
             <tr>
@@ -912,7 +920,9 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
             <tr>
                 <th>Example</th>
                 <td>
-                    <pre>For example, a relation between a buoy and a deployment of several Sensors.</pre>
+                    <pre>
+                      For example, a relation between a buoy and a deployment of several Sensors.
+                    </pre>
                 </td>
             </tr>
             <tr>
@@ -972,7 +982,9 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
             <tr>
                 <th>Example</th>
                 <td>
-                    <pre>For example, the expansion of quicksilver is a stimulus that serves as a proxy for some temperature property. An increase or decrease in the velocity of spinning cups on a wind sensor is serving as a proxy for the wind speed.</pre>
+                    <pre>
+                      For example, the expansion of quicksilver is a stimulus that serves as a proxy for some temperature property. An increase or decrease in the velocity of spinning cups on a wind sensor is serving as a proxy for the wind speed.
+                    </pre>
                 </td>
             </tr>
         </table>

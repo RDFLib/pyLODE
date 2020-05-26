@@ -168,7 +168,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/earth-science-data-category/engineering`
 Preferred Labels |Engineering (en)<br />
-Narrower Concepts |[Environmental Engineering](EnvironmentalEngineering) (cp)<br />[Geomechanics and Resources Geotechnical Engineering](GeomechanicsandResourcesGeotechnicalEngineering) (cp)<br />
+Narrower Concepts |[Geomechanics and Resources Geotechnical Engineering](GeomechanicsandResourcesGeotechnicalEngineering) (cp)<br />[Environmental Engineering](EnvironmentalEngineering) (cp)<br />
 Exact Matches |[es:09](http://purl.org/au-research/vocabulary/anzsrc-for/2008/09) (cp)<br />
 ### Environmental Engineering
 Property | Value
@@ -194,7 +194,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/earth-science-data-category/extraterrestrial-geology`
 Preferred Labels |Extraterrestrial Geology (en)<br />
-Alternate Labels |exogeology<br />astrogeology<br />planetary geology<br />
+Alternate Labels |astrogeology<br />planetary geology<br />exogeology<br />
 Broader Concepts |[Geology](Geology) (cp)<br />
 Exact Matches |[es:040302](http://purl.org/au-research/vocabulary/anzsrc-for/2008/040302) (cp)<br />
 ### Geochemistry
@@ -202,7 +202,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/earth-science-data-category/geochemistry`
 Preferred Labels |Geochemistry (en)<br />
-Narrower Concepts |[Organic Geochemistry](OrganicGeochemistry) (cp)<br />[Extract Geochemistry](ExtractGeochemistry) (cp)<br />[Inorganic Geochemistry](InorganicGeochemistry) (cp)<br />[Isotope Geochemistry](IsotopeGeochemistry) (cp)<br />[Geochemistry Not Elsewhere Classified](GeochemistryNotElsewhereClassified) (cp)<br />
+Narrower Concepts |[Inorganic Geochemistry](InorganicGeochemistry) (cp)<br />[Isotope Geochemistry](IsotopeGeochemistry) (cp)<br />[Extract Geochemistry](ExtractGeochemistry) (cp)<br />[Geochemistry Not Elsewhere Classified](GeochemistryNotElsewhereClassified) (cp)<br />[Organic Geochemistry](OrganicGeochemistry) (cp)<br />
 Exact Matches |[es:0402](http://purl.org/au-research/vocabulary/anzsrc-for/2008/0402) (cp)<br />
 ### Geochemistry Not Elsewhere Classified
 Property | Value
@@ -230,7 +230,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/earth-science-data-category/geology`
 Preferred Labels |Geology (en)<br />
-Narrower Concepts |[Stratigraphy](Stratigraphy) (cp)<br />[Petroleum and Coal Geology](PetroleumandCoalGeology) (cp)<br />[Geomechanics](Geomechanics) (cp)<br />[Palaeontology](Palaeontology) (cp)<br />[Tectonics](Tectonics) (cp)<br />[Marine Geoscience](MarineGeoscience) (cp)<br />[Structural Geology](StructuralGeology) (cp)<br />[Mineralogy and Crystallography](MineralogyandCrystallography) (cp)<br />[Volcanology](Volcanology) (cp)<br />[Geochronology](Geochronology) (cp)<br />[Petrology](Petrology) (cp)<br />[Extraterrestrial Geology](ExtraterrestrialGeology) (cp)<br />[Basin Analysis](BasinAnalysis) (cp)<br />[Geology Not Elsewhere Classified](GeologyNotElsewhereClassified) (cp)<br />[Resource Geology](ResourceGeology) (cp)<br />[Sedimentology](Sedimentology) (cp)<br />
+Narrower Concepts |[Geology Not Elsewhere Classified](GeologyNotElsewhereClassified) (cp)<br />[Extraterrestrial Geology](ExtraterrestrialGeology) (cp)<br />[Petroleum and Coal Geology](PetroleumandCoalGeology) (cp)<br />[Geomechanics](Geomechanics) (cp)<br />[Petrology](Petrology) (cp)<br />[Basin Analysis](BasinAnalysis) (cp)<br />[Stratigraphy](Stratigraphy) (cp)<br />[Sedimentology](Sedimentology) (cp)<br />[Marine Geoscience](MarineGeoscience) (cp)<br />[Structural Geology](StructuralGeology) (cp)<br />[Mineralogy and Crystallography](MineralogyandCrystallography) (cp)<br />[Resource Geology](ResourceGeology) (cp)<br />[Tectonics](Tectonics) (cp)<br />[Palaeontology](Palaeontology) (cp)<br />[Geochronology](Geochronology) (cp)<br />[Volcanology](Volcanology) (cp)<br />
 Exact Matches |[es:0403](http://purl.org/au-research/vocabulary/anzsrc-for/2008/0403) (cp)<br />
 ### Geology Not Elsewhere Classified
 Property | Value
@@ -271,7 +271,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/earth-science-data-category/geophysics`
 Preferred Labels |Geophysics (en)<br />
-Narrower Concepts |[Geophysical Fluid Dynamics](GeophysicalFluidDynamics) (cp)<br />[Petrophysics](Petrophysics) (cp)<br />[Seismology and Seismic Exploration](SeismologyandSeismicExploration) (cp)<br />[Geophysics Not Elsewhere Classified](GeophysicsNotElsewhereClassified) (cp)<br />[Spectral Imaging](SpectralImaging) (cp)<br />[Electrical and Electromagnetic Methods in Geophysics](ElectricalandElectromagneticMethodsinGeophysics) (cp)<br />[Magnetics](Magnetics) (cp)<br />[Gravity](Gravity) (cp)<br />[Geodynamics](Geodynamics) (cp)<br />[Geothermics and Radiometrics](GeothermicsandRadiometrics) (cp)<br />
+Narrower Concepts |[Gravity](Gravity) (cp)<br />[Electrical and Electromagnetic Methods in Geophysics](ElectricalandElectromagneticMethodsinGeophysics) (cp)<br />[Geodynamics](Geodynamics) (cp)<br />[Geothermics and Radiometrics](GeothermicsandRadiometrics) (cp)<br />[Seismology and Seismic Exploration](SeismologyandSeismicExploration) (cp)<br />[Magnetics](Magnetics) (cp)<br />[Petrophysics](Petrophysics) (cp)<br />[Spectral Imaging](SpectralImaging) (cp)<br />[Geophysical Fluid Dynamics](GeophysicalFluidDynamics) (cp)<br />[Geophysics Not Elsewhere Classified](GeophysicsNotElsewhereClassified) (cp)<br />
 Exact Matches |[es:0404](http://purl.org/au-research/vocabulary/anzsrc-for/2008/0404) (cp)<br />
 ### Geophysics Not Elsewhere Classified
 Property | Value
@@ -365,7 +365,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/earth-science-data-category/marine-geoscience`
 Preferred Labels |Marine Geoscience (en)<br />
-Alternate Labels |marine geology<br />geological oceanography<br />
+Alternate Labels |geological oceanography<br />marine geology<br />
 Broader Concepts |[Geology](Geology) (cp)<br />
 Exact Matches |[es:040305](http://purl.org/au-research/vocabulary/anzsrc-for/2008/040305) (cp)<br />
 ### Mineral Occurrences
@@ -420,7 +420,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/earth-science-data-category/palaeontology`
 Preferred Labels |Palaeontology (en)<br />
 Broader Concepts |[Geology](Geology) (cp)<br />
-Narrower Concepts |[Vertebrate Palaeontology](VertebratePalaeontology) (cp)<br />[Palynology](Palynology) (cp)<br />[Palaeobotany](Palaeobotany) (cp)<br />[Invertebrate Palaeontology](InvertebratePalaeontology) (cp)<br />[Ichnology](Ichnology) (cp)<br />
+Narrower Concepts |[Ichnology](Ichnology) (cp)<br />[Invertebrate Palaeontology](InvertebratePalaeontology) (cp)<br />[Palaeobotany](Palaeobotany) (cp)<br />[Palynology](Palynology) (cp)<br />[Vertebrate Palaeontology](VertebratePalaeontology) (cp)<br />
 Exact Matches |[es:040308](http://purl.org/au-research/vocabulary/anzsrc-for/2008/040308) (cp)<br />
 ### Palynology
 Property | Value
@@ -449,7 +449,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/earth-science-data-category/petrology`
 Preferred Labels |Petrology (en)<br />
 Broader Concepts |[Geology](Geology) (cp)<br />
-Narrower Concepts |[Organic Petrology](OrganicPetrology) (cp)<br />[Sedimentary Petrology](SedimentaryPetrology) (cp)<br />[Igneous and Metamorphic Petrology](IgneousandMetamorphicPetrology) (cp)<br />
+Narrower Concepts |[Igneous and Metamorphic Petrology](IgneousandMetamorphicPetrology) (cp)<br />[Organic Petrology](OrganicPetrology) (cp)<br />[Sedimentary Petrology](SedimentaryPetrology) (cp)<br />
 ### Petrophysics
 Property | Value
 --- | ---
@@ -461,7 +461,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/earth-science-data-category/physical-geography`
 Preferred Labels |Physical Geography (en)<br />
-Narrower Concepts |[Geomorphology And Regolith And Landscape Evolution](GeomorphologyAndRegolithAndLandscapeEvolution) (cp)<br />[Surface Processes](SurfaceProcesses) (cp)<br />[Palaeoclimatology](Palaeoclimatology) (cp)<br />[Glaciology](Glaciology) (cp)<br />[Quaternary Environments](QuaternaryEnvironments) (cp)<br />[Natural Hazards](NaturalHazards) (cp)<br />[Hydrogeology](Hydrogeology) (cp)<br />[Surfacewater Hydrology](SurfacewaterHydrology) (cp)<br />[Physical Geography And Environmental Geoscience Not Elsewhere Classified](PhysicalGeographyAndEnvironmentalGeoscienceNotElsewhereClassified) (cp)<br />
+Narrower Concepts |[Quaternary Environments](QuaternaryEnvironments) (cp)<br />[Natural Hazards](NaturalHazards) (cp)<br />[Geomorphology And Regolith And Landscape Evolution](GeomorphologyAndRegolithAndLandscapeEvolution) (cp)<br />[Surface Processes](SurfaceProcesses) (cp)<br />[Glaciology](Glaciology) (cp)<br />[Physical Geography And Environmental Geoscience Not Elsewhere Classified](PhysicalGeographyAndEnvironmentalGeoscienceNotElsewhereClassified) (cp)<br />[Surfacewater Hydrology](SurfacewaterHydrology) (cp)<br />[Palaeoclimatology](Palaeoclimatology) (cp)<br />[Hydrogeology](Hydrogeology) (cp)<br />
 Exact Matches |[es:0406](http://purl.org/au-research/vocabulary/anzsrc-for/2008/0406) (cp)<br />
 ### Physical Geography And Environmental Geoscience Not Elsewhere Classified
 Property | Value
@@ -497,7 +497,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/earth-science-data-category/resource-geology`
 Preferred Labels |Resource Geology (en)<br />
 Broader Concepts |[Geology](Geology) (cp)<br />
-Narrower Concepts |[Hydrocarbon Occurrences](HydrocarbonOccurrences) (cp)<br />[Quarry Resources](QuarryResources) (cp)<br />[Mineral Occurrences](MineralOccurrences) (cp)<br />
+Narrower Concepts |[Mineral Occurrences](MineralOccurrences) (cp)<br />[Hydrocarbon Occurrences](HydrocarbonOccurrences) (cp)<br />[Quarry Resources](QuarryResources) (cp)<br />
 ### Satellite Spectral
 Property | Value
 --- | ---
@@ -538,7 +538,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/earth-science-data-category/spectral-imaging`
 Preferred Labels |Spectral Imaging (en)<br />
 Broader Concepts |[Geophysics](Geophysics) (cp)<br />
-Narrower Concepts |[Airborne Spectral](AirborneSpectral) (cp)<br />[Satellite Spectral](SatelliteSpectral) (cp)<br />[Core Spectral](CoreSpectral) (cp)<br />
+Narrower Concepts |[Core Spectral](CoreSpectral) (cp)<br />[Satellite Spectral](SatelliteSpectral) (cp)<br />[Airborne Spectral](AirborneSpectral) (cp)<br />
 ### Stratigraphy
 Property | Value
 --- | ---

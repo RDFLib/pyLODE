@@ -203,7 +203,7 @@
     </script>
 </head>
 <body>
-<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE"><span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a></div>
 <h1>The OWL 2 Schema vocabulary (OWL 2)</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
@@ -256,7 +256,7 @@
 <section id="overview">
     <h2>Overview</h2>
     <div class="figure">
-        <div style="width:500px; height:50px; background-color: black;">&nbsp;</div>
+        <div style="width:500px; height:50px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;">Pictures say 1,000 words</div>
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div>
 </section>
@@ -519,18 +519,18 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#disjointWith">owl:disjointWith</a><br/>
-                    <a href="#hasKey">owl:hasKey</a><br/>
                     <a href="#complementOf">owl:complementOf</a><br/>
+                    <a href="#hasKey">owl:hasKey</a><br/>
+                    <a href="#disjointWith">owl:disjointWith</a><br/>
                     <a href="#disjointUnionOf">owl:disjointUnionOf</a><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
+                    <a href="#disjointWith">owl:disjointWith</a><br/>
                     <a href="#onClass">owl:onClass</a><br/>
                     <a href="#complementOf">owl:complementOf</a><br/>
-                    <a href="#disjointWith">owl:disjointWith</a><br/>
                 </td>
             </tr>
         </table>
@@ -842,10 +842,10 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#SymmetricProperty">owl:SymmetricProperty</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#ReflexiveProperty">owl:ReflexiveProperty</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#TransitiveProperty">owl:TransitiveProperty</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#IrreflexiveProperty">owl:IrreflexiveProperty</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#SymmetricProperty">owl:SymmetricProperty</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#TransitiveProperty">owl:TransitiveProperty</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ReflexiveProperty">owl:ReflexiveProperty</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#AsymmetricProperty">owl:AsymmetricProperty</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#InverseFunctionalProperty">owl:InverseFunctionalProperty</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
@@ -853,8 +853,8 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#inverseOf">owl:inverseOf</a><br/>
                     <a href="#propertyChainAxiom">owl:propertyChainAxiom</a><br/>
+                    <a href="#inverseOf">owl:inverseOf</a><br/>
                 </td>
             </tr>
             <tr>
@@ -893,21 +893,21 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#backwardCompatibleWith">owl:backwardCompatibleWith</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
-                    <a href="#priorVersion">owl:priorVersion</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
                     <a href="http://www.w3.org/2002/07/owl#imports">owl:imports</a><br/>
-                    <a href="#incompatibleWith">owl:incompatibleWith</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
+                    <a href="#backwardCompatibleWith">owl:backwardCompatibleWith</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
                     <a href="http://www.w3.org/2002/07/owl#versionIRI">owl:versionIRI</a><br/>
+                    <a href="#priorVersion">owl:priorVersion</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
+                    <a href="#incompatibleWith">owl:incompatibleWith</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
                     <a href="#priorVersion">owl:priorVersion</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
-                    <a href="#backwardCompatibleWith">owl:backwardCompatibleWith</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
-                    <a href="http://www.w3.org/2002/07/owl#imports">owl:imports</a><br/>
-                    <a href="#incompatibleWith">owl:incompatibleWith</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
                     <a href="http://www.w3.org/2002/07/owl#versionIRI">owl:versionIRI</a><br/>
+                    <a href="http://www.w3.org/2002/07/owl#imports">owl:imports</a><br/>
+                    <a href="#backwardCompatibleWith">owl:backwardCompatibleWith</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
+                    <a href="#incompatibleWith">owl:incompatibleWith</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
                 </td>
             </tr>
         </table>
@@ -994,20 +994,20 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#onProperties">owl:onProperties</a><br/>
-                    <a href="#minCardinality">owl:minCardinality</a><br/>
-                    <a href="#onDataRange">owl:onDataRange</a><br/>
-                    <a href="#qualifiedCardinality">owl:qualifiedCardinality</a><br/>
-                    <a href="#hasSelf">owl:hasSelf</a><br/>
-                    <a href="#cardinality">owl:cardinality</a><br/>
                     <a href="#someValuesFrom">owl:someValuesFrom</a><br/>
-                    <a href="#maxQualifiedCardinality">owl:maxQualifiedCardinality</a><br/>
-                    <a href="#hasValue">owl:hasValue</a><br/>
-                    <a href="#allValuesFrom">owl:allValuesFrom</a><br/>
+                    <a href="#onDataRange">owl:onDataRange</a><br/>
                     <a href="#minQualifiedCardinality">owl:minQualifiedCardinality</a><br/>
+                    <a href="#hasValue">owl:hasValue</a><br/>
+                    <a href="#minCardinality">owl:minCardinality</a><br/>
                     <a href="#maxCardinality">owl:maxCardinality</a><br/>
-                    <a href="#onClass">owl:onClass</a><br/>
+                    <a href="#hasSelf">owl:hasSelf</a><br/>
+                    <a href="#maxQualifiedCardinality">owl:maxQualifiedCardinality</a><br/>
                     <a href="#onProperty">owl:onProperty</a><br/>
+                    <a href="#cardinality">owl:cardinality</a><br/>
+                    <a href="#allValuesFrom">owl:allValuesFrom</a><br/>
+                    <a href="#onProperties">owl:onProperties</a><br/>
+                    <a href="#onClass">owl:onClass</a><br/>
+                    <a href="#qualifiedCardinality">owl:qualifiedCardinality</a><br/>
                 </td>
             </tr>
         </table>
@@ -1068,23 +1068,23 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#topObjectProperty">owl:topObjectProperty</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#differentFrom">owl:differentFrom</a><br/>
-                    <a href="#bottomObjectProperty">owl:bottomObjectProperty</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#bottomDataProperty">owl:bottomDataProperty</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#topDataProperty">owl:topDataProperty</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#bottomDataProperty">owl:bottomDataProperty</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#topObjectProperty">owl:topObjectProperty</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#bottomObjectProperty">owl:bottomObjectProperty</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#differentFrom">owl:differentFrom</a><br/>
                     <a href="#sameAs">owl:sameAs</a><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#topObjectProperty">owl:topObjectProperty</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#targetIndividual">owl:targetIndividual</a><br/>
                     <a href="#sourceIndividual">owl:sourceIndividual</a><br/>
                     <a href="#sameAs">owl:sameAs</a><br/>
-                    <a href="#differentFrom">owl:differentFrom</a><br/>
-                    <a href="#targetIndividual">owl:targetIndividual</a><br/>
+                    <a href="#topObjectProperty">owl:topObjectProperty</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#bottomObjectProperty">owl:bottomObjectProperty</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#differentFrom">owl:differentFrom</a><br/>
                 </td>
             </tr>
         </table>

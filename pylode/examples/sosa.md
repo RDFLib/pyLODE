@@ -60,92 +60,91 @@ Property | Value
 IRI | `http://www.w3.org/ns/sosa/ActuatableProperty`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | <p>An actuatable quality (property, characteristic) of a FeatureOfInterest.</p>
-Example | A window actuator acts by changing the state between a frame and a window. The ability of the window to be opened and closed is its ActuatableProperty.
+Example | `A window actuator acts by changing the state between a frame and a window. The ability of the window to be opened and closed is its ActuatableProperty.`<br />
 ### Actuation
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/sosa/Actuation`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | <p>An Actuation carries out an (Actuation) Procedure to change the state of the world using an Actuator.</p>
-Example | The activity of automatically closing a window if the temperature in a room drops below 20 degree Celsius. The activity is the Actuation and the device that closes the window is the Actuator. The Procedure is the rule, plan, or specification that defines the conditions that triggers the Actuation, here a drop in temperature. 
+Example | `The activity of automatically closing a window if the temperature in a room drops below 20 degree Celsius. The activity is the Actuation and the device that closes the window is the Actuator. The Procedure is the rule, plan, or specification that defines the conditions that triggers the Actuation, here a drop in temperature.`<br />
 ### Actuator
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/sosa/Actuator`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | <p>A device that is used by, or implements, an (Actuation) Procedure that changes the state of the world.</p>
-Example | A window actuator for automatic window control, i.e., opening or closing the window.
+Example | `A window actuator for automatic window control, i.e., opening or closing the window.`<br />
 ### Feature Of Interest
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/sosa/FeatureOfInterest`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | <p>The thing whose property is being estimated or calculated in the course of an Observation to arrive at a Result or whose property is being manipulated by an Actuator, or which is being sampled or transformed in an act of Sampling.</p>
-Example | When measuring the height of a tree, the height is the observed ObservableProperty, 20m may be the Result of the Observation, and the tree is the FeatureOfInterest. A window is a FeatureOfInterest for an automatic window control Actuator.
+Example | `When measuring the height of a tree, the height is the observed ObservableProperty, 20m may be the Result of the Observation, and the tree is the FeatureOfInterest. A window is a FeatureOfInterest for an automatic window control Actuator.`<br />
 ### Observable Property
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/sosa/ObservableProperty`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | <p>An observable quality (property, characteristic) of a FeatureOfInterest.</p>
-Example | The height of a tree, the depth of a water body, or the temperature of a surface are examples of observable properties, while the value of a classic car is not (directly) observable but asserted.
+Example | `The height of a tree, the depth of a water body, or the temperature of a surface are examples of observable properties, while the value of a classic car is not (directly) observable but asserted.`<br />
 ### Observation
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/sosa/Observation`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | <p>Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest. Links to a Sensor to describe what made the Observation and how; links to an ObservableProperty to describe what the result is an estimate of, and to a FeatureOfInterest to detail what that property was associated with.</p>
-Example | The activity of estimating the intensity of an Earthquake using the Mercalli intensity scale is an Observation as is measuring the moment magnitude, i.e., the energy released by said earthquake.
+Example | `The activity of estimating the intensity of an Earthquake using the Mercalli intensity scale is an Observation as is measuring the moment magnitude, i.e., the energy released by said earthquake.`<br />
 ### Platform
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/sosa/Platform`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | <p>A Platform is an entity that hosts other entities, particularly Sensors, Actuators, Samplers, and other Platforms.</p>
-Example | A post, buoy, vehicle, ship, aircraft, satellite, cell-phone, human or animal may act as platforms for (technical or biological) sensors or actuators.
+Example | `A post, buoy, vehicle, ship, aircraft, satellite, cell-phone, human or animal may act as platforms for (technical or biological) sensors or actuators.`<br />
 ### Procedure
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/sosa/Procedure`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | <p>A workflow, protocol, plan, algorithm, or computational method specifying how to make an Observation, create a Sample, or make a change to the state of the world (via an Actuator). A Procedure is re-usable, and might be involved in many Observations, Samplings, or Actuations. It explains the steps to be carried out to arrive at reproducible results.</p>
-Example | The measured wind speed differs depending on the height of the sensor above the surface, e.g., due to friction. Consequently, procedures for measuring wind speed define a standard height for anemometers above ground, typically 10m for meteorological measures and 2m in Agrometeorology. This definition of height, sensor placement, and so forth are defined by the Procedure.
+Example | `The measured wind speed differs depending on the height of the sensor above the surface, e.g., due to friction. Consequently, procedures for measuring wind speed define a standard height for anemometers above ground, typically 10m for meteorological measures and 2m in Agrometeorology. This definition of height, sensor placement, and so forth are defined by the Procedure.`<br />
 ### Result
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/sosa/Result`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | <p>The Result of an Observation, Actuation, or act of Sampling. To store an observation's simple result value one can use the hasSimpleResult property.</p>
-Example | The value 20 as the height of a certain tree together with the unit, e.g., Meter.
+Example | `The value 20 as the height of a certain tree together with the unit, e.g., Meter.`<br />
 ### Sample
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/sosa/Sample`
 Is Defined By | http://www.w3.org/ns/sosa/
-Description | <p>Samples are artifacts of an observational strategy, and have no significant function outside of their role in the observation process. The characteristics of the samples themselves are of little interest, except perhaps to the manager of a sampling campaign.</p>
-<p>A Sample is intended to sample some FatureOfInterest, so there is an expectation of at least one isSampleOf property. However, in some cases the identity, and even the exact type, of the sampled feature may not be known when observations are made using the sampling features.</p>
-Example | A statistical sample is often designed to be characteristic of an entire population, so that observations can be made regarding the sample that provide a good estimate of the properties of the population.
+Description | <p>Samples are artifacts of an observational strategy, and have no significant function outside of their role in the observation process. The characteristics of the samples themselves are of little interest, except perhaps to the manager of a sampling campaign.</p> <p>A Sample is intended to sample some FatureOfInterest, so there is an expectation of at least one isSampleOf property. However, in some cases the identity, and even the exact type, of the sampled feature may not be known when observations are made using the sampling features.</p>
+Example | `A 'station' is essentially an identifiable locality where a sensor system or Procedure may be deployed and an observation made. In the context of the observation model, it connotes the 'world in the vicinity of the station', so the observed properties relate to the physical medium at the station, and not to any physical artifact such as a mooring, buoy, benchmark, monument, well, etc.`<br />
 ### Sampler
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/sosa/Sampler`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | <p>A device that is used by, or implements, a Sampling Procedure to create or transform one or more samples.</p>
-Example | A ball mill, diamond drill, hammer, hypodermic syringe and needle, image Sensor or a soil auger can all act as sampling devices (i.e., be Samplers). However, sometimes the distinction between the Sampler and the Sensor is not evident, as they are packaged as a unit. A Sampler need not be a physical device.
+Example | `A ball mill, diamond drill, hammer, hypodermic syringe and needle, image Sensor or a soil auger can all act as sampling devices (i.e., be Samplers). However, sometimes the distinction between the Sampler and the Sensor is not evident, as they are packaged as a unit. A Sampler need not be a physical device.`<br />
 ### Sampling
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/sosa/Sampling`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | <p>An act of Sampling carries out a sampling Procedure to create or transform one or more samples.</p>
-Example | Crushing a rock sample in a ball mill.
+Example | `Digging a pit through a soil sequence.`<br />
 ### Sensor
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/sosa/Sensor`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | <p>Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure. Sensors respond to a stimulus, e.g., a change in the environment, or input data composed from the results of prior Observations, and generate a Result. Sensors can be hosted by Platforms.</p>
-Example | Accelerometers, gyroscopes, barometers, magnetometers, and so forth are Sensors that are typically mounted on a modern smart phone (which acts as Platform). Other examples of sensors include the human eyes.
+Example | `Accelerometers, gyroscopes, barometers, magnetometers, and so forth are Sensors that are typically mounted on a modern smart phone (which acts as Platform). Other examples of sensors include the human eyes.`<br />
 ### Agent
 Property | Value
 --- | ---
@@ -180,7 +179,7 @@ Property | Value
 IRI | `http://www.w3.org/ns/sosa/actsOnProperty`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | Relation between an Actuation and the property of a FeatureOfInterest it is acting upon.
-Example | <pre>In the activity (Actuation) of automatically closing a window if the temperature in a room drops below 20 degrees Celsius, the property on which the Actuator acts upon is the state of the window as it changes from being open to being closed. </pre>
+Example | ````In the activity (Actuation) of automatically closing a window if the temperature in a room drops below 20 degrees Celsius, the property on which the Actuator acts upon is the state of the window as it changes from being open to being closed.`<br />```
 [](hasfeatureofinterest)
 ### has feature of interest
 Property | Value
@@ -188,7 +187,7 @@ Property | Value
 IRI | `http://www.w3.org/ns/sosa/hasFeatureOfInterest`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled.
-Example | <pre>For example, in an Observation of the weight of a person, the FeatureOfInterest is the person and the property is its weight.</pre>
+Example | ````For example, in an Observation of the weight of a person, the FeatureOfInterest is the person and the property is its weight.`<br />```
 [](hasresult)
 ### has result
 Property | Value
@@ -217,7 +216,7 @@ Property | Value
 IRI | `http://www.w3.org/ns/sosa/isActedOnBy`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | Relation between an ActuatableProperty of a FeatureOfInterest and an Actuation changing its state.
-Example | <pre>In the activity (Actuation) of automatically closing a window if the temperature in a room drops below 20 degrees Celsius, the property on which the Actuator acts upon is the state of the window as it changes from being open to being closed. </pre>
+Example | ````In the activity (Actuation) of automatically closing a window if the temperature in a room drops below 20 degrees Celsius, the property on which the Actuator acts upon is the state of the window as it changes from being open to being closed.`<br />```
 [](isfeatureofinterestof)
 ### is feature of interest of
 Property | Value
@@ -334,7 +333,7 @@ Property | Value
 IRI | `http://www.w3.org/ns/sosa/hasSimpleResult`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | The simple value of an Observation or Actuation or act of Sampling.
-Example | <pre>For instance, the values 23 or true.</pre>
+Example | ````For instance, the values 23 or true.`<br />```
 [](resulttime)
 ### result time
 Property | Value

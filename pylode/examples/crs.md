@@ -26,9 +26,9 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * **Version IRI**
   * [crs:](http://linked.data.gov.au/def/crs#)
 * **Imports**
-  * [org:](http://www.w3.org/ns/org#)
   * [dc:](http://purl.org/dc/elements/1.1/)
   * [http://www.w3.org/2006/time](http://www.w3.org/2006/time)
+  * [org:](http://www.w3.org/ns/org#)
 * **Ontology RDF**
   * RDF ([crs.ttl](turtle))
 ### Description
@@ -84,9 +84,7 @@ Description | <p>Administrative Arrangements Orders (AAOs) formally allocate exe
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/crs#Affiliation`
-Description | <p>Affiliations are temporal associations between CRS Agents that indicate both the Agent-Agent relation and a Role.</p>
-<p>For example John Howard was Associated with the House of Representatitves where he played the Role of Member of Parliament (among others).
-Associations may be temporal, for example John Howard was Associated with the Department of Prime Minister &amp; Cabinet where he played the Role of Prime Minister from 1996-2007.</p>
+Description | <p>Affiliations are temporal associations between CRS Agents that indicate both the Agent-Agent relation and a Role.</p> <p>For example John Howard was Associated with the House of Representatitves where he played the Role of Member of Parliament (among others). Associations may be temporal, for example John Howard was Associated with the Department of Prime Minister &amp; Cabinet where he played the Role of Prime Minister from 1996-2007.</p>
 Super-classes |[crs:Relationship](Relationship) (c)<br />
 Restrictions |[crs:hasAgent](hasagent) (op) **min** 2<br />
 ### Agent
@@ -94,9 +92,9 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/crs#Agent`
 Super-classes |[prov:Agent](http://www.w3.org/ns/prov#Agent) (c)<br />
-Sub-classes |[crs:CommonwealthOrganisation](CommonwealthOrganisation) (c)<br />[sdo:Person](https://schema.org/Person) (c)<br />[crs:CommonwealthAgency](CommonwealthAgency) (c)<br />
+Sub-classes |[crs:CommonwealthAgency](CommonwealthAgency) (c)<br />[sdo:Person](https://schema.org/Person) (c)<br />[crs:CommonwealthOrganisation](CommonwealthOrganisation) (c)<br />
 In domain of |[crs:created](created) (op)<br />[crs:affiliatedWith](Affiliatedwith) (op)<br />
-In range of |[crs:hasAgent](hasagent) (op)<br />[crs:creator](creator) (op)<br />[org:hasMember](http://www.w3.org/ns/org#hasMember) (op)<br />
+In range of |[crs:hasAgent](hasagent) (op)<br />[org:hasMember](http://www.w3.org/ns/org#hasMember) (op)<br />[crs:creator](creator) (op)<br />
 ### Assistant Minister
 Property | Value
 --- | ---
@@ -113,7 +111,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/crs#CommonwealthAgency`
 Super-classes |[crs:Agent](Agent) (c)<br />[org:Organization](http://www.w3.org/ns/org#Organization) (c)<br />
-Restrictions |[crs:performs](performs) (op) **only** ([crs:Function](GovernmentFunction) (c) or [crs:Relationship](Relationship) (c))<br />[crs:created](created) (op) **min** 1 [crs:Series](Series) (c)<br />[crs:isPartOf](ispartof) (op) **only** [crs:CommonwealthOrganisation](CommonwealthOrganisation) (c)<br />
+Restrictions |[crs:isPartOf](ispartof) (op) **only** [crs:CommonwealthOrganisation](CommonwealthOrganisation) (c)<br />[crs:performs](performs) (op) **only** ([crs:Function](GovernmentFunction) (c) or [crs:Relationship](Relationship) (c))<br />[crs:created](created) (op) **min** 1 [crs:Series](Series) (c)<br />
 In domain of |[crs:performs](performs) (op)<br />
 ### Commonwealth Organisation
 Property | Value
@@ -131,7 +129,7 @@ Is Defined By | http://linked.data.gov.au/def/crs
 Description | <p>Depositors of personal records collections. These persons have had a close association with the Commonwealth, such as Prime Ministers, senior public servants and the Governors-General. The Archives registers persons with a CP (Commonwealth Persons) number</p>
 Super-classes |[sdo:Person](https://schema.org/Person) (c)<br />
 Restrictions |[crs:created](created) (op) **min** 0 [crs:Series](Series) (c)<br />
-Sub-classes |[crs:Minister](Minister) (c)<br />[crs:ParliamentarySecretary](ParliamentarySecretary) (c)<br />
+Sub-classes |[crs:ParliamentarySecretary](ParliamentarySecretary) (c)<br />[crs:Minister](Minister) (c)<br />
 ### Deputy Prime Minister
 Property | Value
 --- | ---
@@ -154,8 +152,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/crs#Item`
 Is Defined By | http://linked.data.gov.au/def/crs
-Description | <p>Individual records in any format, such as files, volumes, maps, photographs or sound recordings. Items are identified by the number or symbol that the agency used when it created the item.</p>
-<p>Items in the CRS are AGIFT Records.</p>
+Description | <p>Individual records in any format, such as files, volumes, maps, photographs or sound recordings. Items are identified by the number or symbol that the agency used when it created the item.</p> <p>Items in the CRS are AGIFT Records.</p>
 Super-classes |[agrif:Record](http://linked.data.gov.au/def/agrif#Record) (c)<br />
 Restrictions |[crs:isPartOf](ispartof) (op) **only** [crs:Series](Series) (c)<br />
 ### Member
@@ -194,8 +191,8 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/crs#Relationship`
 Description | <p>Relationships are general associations between entities, agents and activities that allow a role, timing and other properties to be attached to a relationship.</p>
-Sub-classes |[crs:Affiliation](Affiliation) (c)<br />[org:Membership](http://www.w3.org/ns/org#Membership) (c)<br />
-In domain of |[crs:relatedDuring](relatedduring) (op)<br />[crs:forFunction](forFunction) (op)<br />[crs:hasAgent](hasagent) (op)<br />[crs:hasRole](hasrole) (op)<br />
+Sub-classes |[org:Membership](http://www.w3.org/ns/org#Membership) (c)<br />[crs:Affiliation](Affiliation) (c)<br />
+In domain of |[crs:hasAgent](hasagent) (op)<br />[crs:relatedDuring](relatedduring) (op)<br />[crs:forFunction](forFunction) (op)<br />[crs:hasRole](hasrole) (op)<br />
 ### Role
 Property | Value
 --- | ---
@@ -211,12 +208,12 @@ IRI | `http://linked.data.gov.au/def/crs#Series`
 Is Defined By | http://linked.data.gov.au/def/crs
 Description | <p>A group of records created or accumulated by the same agency or person. A series can be a single item or many items. The Archives identifies series with a series number</p>
 Super-classes |[dct:Collection](http://purl.org/dc/terms/Collection) (c)<br />
-Restrictions |[crs:creator](creator) (op) **min** 1<br />[crs:hasPart](haspart) (op) **only** [crs:Item](Item) (c)<br />[crs:hasPart](haspart) (op) **min** 1<br />[crs:creator](creator) (op) **only** ([crs:CommonwealthAgency](CommonwealthAgency) (c) or [crs:CommonwealthPerson](CommonwealthPerson) (c))<br />
+Restrictions |[crs:creator](creator) (op) **min** 1<br />[crs:creator](creator) (op) **only** ([crs:CommonwealthAgency](CommonwealthAgency) (c) or [crs:CommonwealthPerson](CommonwealthPerson) (c))<br />[crs:hasPart](haspart) (op) **only** [crs:Item](Item) (c)<br />[crs:hasPart](haspart) (op) **min** 1<br />
 ### Interval
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/2006/time#Interval`
-In range of |[crs:relatedDuring](relatedduring) (op)<br />[org:memberDuring](http://www.w3.org/ns/org#memberDuring) (op)<br />
+In range of |[org:memberDuring](http://www.w3.org/ns/org#memberDuring) (op)<br />[crs:relatedDuring](relatedduring) (op)<br />
 ### Membership
 Property | Value
 --- | ---
@@ -227,8 +224,8 @@ Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/org#Organization`
 Sub-classes |[crs:CommonwealthOrganisation](CommonwealthOrganisation) (c)<br />[crs:CommonwealthAgency](CommonwealthAgency) (c)<br />
-In domain of |[org:memberDuring](http://www.w3.org/ns/org#memberDuring) (op)<br />[org:linkedTo](http://www.w3.org/ns/org#linkedTo) (op)<br />[org:hasMember](http://www.w3.org/ns/org#hasMember) (op)<br />[org:hasSubOrganization](http://www.w3.org/ns/org#hasSubOrganization) (op)<br />
-In range of |[org:memberOf](http://www.w3.org/ns/org#memberOf) (op)<br />[org:hasSubOrganization](http://www.w3.org/ns/org#hasSubOrganization) (op)<br />[org:linkedTo](http://www.w3.org/ns/org#linkedTo) (op)<br />
+In domain of |[org:hasMember](http://www.w3.org/ns/org#hasMember) (op)<br />[org:linkedTo](http://www.w3.org/ns/org#linkedTo) (op)<br />[org:hasSubOrganization](http://www.w3.org/ns/org#hasSubOrganization) (op)<br />[org:memberDuring](http://www.w3.org/ns/org#memberDuring) (op)<br />
+In range of |[org:hasSubOrganization](http://www.w3.org/ns/org#hasSubOrganization) (op)<br />[org:linkedTo](http://www.w3.org/ns/org#linkedTo) (op)<br />[org:memberOf](http://www.w3.org/ns/org#memberOf) (op)<br />
 ### Agent
 Property | Value
 --- | ---
@@ -384,7 +381,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/crs#subordinateAgency`
 Is Defined By | http://linked.data.gov.au/def/crs
-Super-properties |[org:linkedTo](http://www.w3.org/ns/org#linkedTo) (op)<br />[org:hasSubOrganization](http://www.w3.org/ns/org#hasSubOrganization) (op)<br />
+Super-properties |[org:hasSubOrganization](http://www.w3.org/ns/org#hasSubOrganization) (op)<br />[org:linkedTo](http://www.w3.org/ns/org#linkedTo) (op)<br />
 [](subsequentagency)
 ### subsequent agency
 Property | Value

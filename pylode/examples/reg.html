@@ -203,7 +203,7 @@
     </script>
 </head>
 <body>
-<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">pyLODE</a></div>
+<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE"><span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a></div>
 <h1>Registry ontology</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
@@ -239,7 +239,7 @@
 <section id="overview">
     <h2>Overview</h2>
     <div class="figure">
-        <div style="width:500px; height:50px; background-color: black;">&nbsp;</div>
+        <div style="width:500px; height:50px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;">Pictures say 1,000 words</div>
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div>
 </section>
@@ -281,9 +281,9 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
+                    <a href="http://purl.org/linked-data/registry#FederatedRegister">reg:FederatedRegister</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/linked-data/registry#NamespaceForward">reg:NamespaceForward</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/linked-data/registry#DelegatedRegister">reg:DelegatedRegister</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#FederatedRegister">reg:FederatedRegister</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -317,17 +317,17 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.org/linked-data/registry#enumerationObject">reg:enumerationObject</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
                     <a href="http://purl.org/linked-data/registry#enumerationPredicate">reg:enumerationPredicate</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
                     <a href="http://purl.org/linked-data/registry#enumerationSubject">reg:enumerationSubject</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="http://purl.org/linked-data/registry#enumerationObject">reg:enumerationObject</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
+                    <a href="http://purl.org/linked-data/registry#enumerationObject">reg:enumerationObject</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.org/linked-data/registry#enumerationSubject">reg:enumerationSubject</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.org/linked-data/registry#enumerationPredicate">reg:enumerationPredicate</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#enumerationObject">reg:enumerationObject</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -356,9 +356,9 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://purl.org/linked-data/registry#entity">reg:entity</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#entityVersion">reg:entityVersion</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.org/linked-data/registry#sourceGraph">reg:sourceGraph</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#entityVersion">reg:entityVersion</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#entity">reg:entity</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -386,8 +386,8 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://purl.org/linked-data/registry#Register">reg:Register</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/linked-data/registry#Delegated">reg:Delegated</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#Register">reg:Register</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -441,55 +441,55 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.w3.org/ns/ldp#Container">ldp:Container</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/linked-data/version#VersionedThing">version:VersionedThing</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://rdfs.org/ns/void#Dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/version#VersionedThing">version:VersionedThing</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/ldp#Container">ldp:Container</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="http://purl.org/linked-data/registry#validationQuery">reg:validationQuery</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://rdfs.org/ns/void#uriSpace">void:uriSpace</a> <span class="cardinality">max</span> 1<br/>
+                    <a href="http://purl.org/linked-data/registry#governancePolicy">reg:governancePolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://rdfs.org/ns/void#openSearchDescription">void:openSearchDescription</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/linked-data/registry#manager">reg:manager</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/linked-data/registry#owner">reg:owner</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://rdfs.org/ns/void#exampleResource">void:exampleResource</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://rdfs.org/ns/void#uriLookupEndpoint">void:uriLookupEndpoint</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/linked-data/registry#operatingLanguage">reg:operatingLanguage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/dc/terms/description">dct:description</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/license">dct:license</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/linked-data/registry#containedItemClass">reg:containedItemClass</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
                     <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">max</span> 1<br/>
-                    <a href="http://purl.org/dc/terms/description">dct:description</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://purl.org/linked-data/registry#validationQuery">reg:validationQuery</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://purl.org/linked-data/registry#manager">reg:manager</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://purl.org/linked-data/registry#containedItemClass">reg:containedItemClass</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://purl.org/dc/terms/license">dct:license</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://rdfs.org/ns/void#exampleResource">void:exampleResource</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://purl.org/linked-data/registry#operatingLanguage">reg:operatingLanguage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://purl.org/linked-data/registry#owner">reg:owner</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://rdfs.org/ns/void#uriLookupEndpoint">void:uriLookupEndpoint</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://rdfs.org/ns/void#uriSpace">void:uriSpace</a> <span class="cardinality">max</span> 1<br/>
-                    <a href="http://rdfs.org/ns/void#openSearchDescription">void:openSearchDescription</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://purl.org/linked-data/registry#governancePolicy">reg:governancePolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://purl.org/linked-data/registry#FederatedRegister">reg:FederatedRegister</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/linked-data/registry#DelegatedRegister">reg:DelegatedRegister</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#FederatedRegister">reg:FederatedRegister</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://purl.org/linked-data/registry#manager">reg:manager</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#operatingLanguage">reg:operatingLanguage</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#containedItemClass">reg:containedItemClass</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.org/linked-data/registry#owner">reg:owner</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#manager">reg:manager</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.org/linked-data/registry#subregister">reg:subregister</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#governancePolicy">reg:governancePolicy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#containedItemClass">reg:containedItemClass</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.org/linked-data/registry#validationQuery">reg:validationQuery</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#operatingLanguage">reg:operatingLanguage</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.org/linked-data/registry#release">reg:release</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#governancePolicy">reg:governancePolicy</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://purl.org/linked-data/registry#subregister">reg:subregister</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.org/linked-data/registry#register">reg:register</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#subregister">reg:subregister</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -516,46 +516,46 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">max</span> 1<br/>
-                    <a href="http://purl.org/linked-data/registry#notation">reg:notation</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="http://purl.org/dc/terms/description">dct:description</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://purl.org/dc/terms/dateSubmitted">dct:dateSubmitted</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://purl.org/dc/terms/dateAccepted">dct:dateAccepted</a> <span class="cardinality">max</span> 1<br/>
-                    <a href="http://purl.org/linked-data/registry#definition">reg:definition</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://purl.org/linked-data/registry#itemClass">reg:itemClass</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://purl.org/linked-data/registry#representationOf">reg:representationOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://purl.org/linked-data/registry#alias">reg:alias</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://purl.org/linked-data/registry#status">reg:status</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://purl.org/linked-data/registry#submitter">reg:submitter</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://purl.org/linked-data/registry#category">reg:category</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://purl.org/linked-data/registry#hasView">reg:hasView</a> <span class="cardinality">min</span> 0<br/>
-                    <a href="http://purl.org/linked-data/registry#predecessor">reg:predecessor</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
                     <a href="http://purl.org/dc/terms/license">dct:license</a> <span class="cardinality">min</span> 0<br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">max</span> 1<br/>
+                    <a href="http://purl.org/linked-data/registry#itemClass">reg:itemClass</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://purl.org/linked-data/registry#category">reg:category</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/dc/terms/description">dct:description</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/linked-data/registry#hasView">reg:hasView</a> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/linked-data/registry#notation">reg:notation</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="http://purl.org/linked-data/registry#submitter">reg:submitter</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/linked-data/registry#alias">reg:alias</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/dc/terms/dateSubmitted">dct:dateSubmitted</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/linked-data/registry#representationOf">reg:representationOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/linked-data/registry#definition">reg:definition</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/linked-data/registry#predecessor">reg:predecessor</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://purl.org/linked-data/registry#status">reg:status</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
+                    <a href="http://purl.org/linked-data/registry#notation">reg:notation</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#register">reg:register</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#status">reg:status</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.org/linked-data/registry#predecessor">reg:predecessor</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.org/linked-data/registry#representationOf">reg:representationOf</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#alias">reg:alias</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#notation">reg:notation</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="http://purl.org/linked-data/registry#category">reg:category</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#successor">reg:successor</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#status">reg:status</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#register">reg:register</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#annotation">reg:annotation</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.org/linked-data/registry#definition">reg:definition</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.org/linked-data/registry#submitter">reg:submitter</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#alias">reg:alias</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.org/linked-data/registry#itemClass">reg:itemClass</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#successor">reg:successor</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#annotation">reg:annotation</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://purl.org/linked-data/registry#predecessor">reg:predecessor</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.org/linked-data/registry#successor">reg:successor</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#predecessor">reg:predecessor</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -655,8 +655,8 @@
                 <th>In domain of</th>
                 <td>
                     <a href="http://purl.org/linked-data/registry#nextState">reg:nextState</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#priorState">reg:priorState</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="http://purl.org/linked-data/registry#presentation">reg:presentation</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#priorState">reg:priorState</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
             <tr>

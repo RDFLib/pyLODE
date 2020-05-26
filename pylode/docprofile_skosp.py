@@ -505,10 +505,13 @@ class Skosp(DocProfile):
                     egs2.append(ee2)
                 egs = egs2
             else:
-                egs = None
+                egs = []
         else:
             defs = concept[1].get("definitions")
-            egs = concept[1].get("examples")
+            if len(concept[1].get("examples")) > 1:
+                egs = [x.replace("<", "&lt;").replace(">", "&gt;") for x in concept[1].get("examples")]
+            else:
+                egs = []
 
         return self._load_template("skos_concept." + self.outputformat).render(
             uri=concept[0],

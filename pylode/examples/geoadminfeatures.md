@@ -22,7 +22,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * **Ontology RDF**
   * RDF ([geoadminfeatures.ttl](turtle))
 * **Code Repository**
-  * <[https://github.com/geological-survey-of-queensland/geological-admininstrative-features-ont](https://github.com/geological-survey-of-queensland/geological-admininstrative-features-ont)>
+  * [https://github.com/geological-survey-of-queensland/geological-admininstrative-features-ont](https://github.com/geological-survey-of-queensland/geological-admininstrative-features-ont)
 ### Description
 <p>This ontology describes classes of geospatial feature relevant to the administrative duties of the Geological Survey of Queensland.</p>
 <p>As subclasses of the GeoSPARQL Ontology's <code>Feature</code> class, this ontology defines an <code>Administrative Feature</code>. Multiple subclasses of this class are then defined, some with class interrelations.</p>
@@ -48,7 +48,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/geoadminfeatures#AdministrativeFeature`
 Description | <p>An Administrative Feature is a geo:Feature that is defined by adminstrative processes such as legislation, regulation, policy or procedure.</p>
 Super-classes |[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
-Sub-classes |[geoaf:Permit](Permit) (c)<br />[geoaf:Block](Block) (c)<br />[geoaf:SubBlock](Sub-Block) (c)<br />
+Sub-classes |[geoaf:Block](Block) (c)<br />[geoaf:Permit](Permit) (c)<br />[geoaf:SubBlock](Sub-Block) (c)<br />
 ### Block
 Property | Value
 --- | ---

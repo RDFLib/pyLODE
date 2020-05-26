@@ -34,36 +34,28 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#Feature`
-Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | <pre><code>  This class represents the top-level feature type. This class is
-  equivalent to GFI_Feature defined in ISO 19156:2011, and it is
-  superclass of all feature types.
-</code></pre>
+Is Defined By | http://www.opengis.net/ont/geosparql
+Description | <pre><code>  This class represents the top-level feature type. This class is   equivalent to GFI_Feature defined in ISO 19156:2011, and it is   superclass of all feature types. </code></pre>
 Super-classes |[SpatialObject](SpatialObject) (c)<br />
 In domain of |[defaultGeometry](defaultGeometry) (op)<br />[hasGeometry](hasGeometry) (op)<br />
 ### Geometry
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#Geometry`
-Is Defined By | http://www.opengis.net/ont/geosparql
-Description | <pre><code>  The class represents the top-level geometry type. This class is
-  equivalent to the UML class GM_Object defined in ISO 19107, and
-  it is superclass of all geometry types.
-</code></pre>
+Is Defined By | http://www.opengis.net/spec/geosparql/1.0
+Description | <pre><code>  The class represents the top-level geometry type. This class is   equivalent to the UML class GM_Object defined in ISO 19107, and   it is superclass of all geometry types. </code></pre>
 Super-classes |[SpatialObject](SpatialObject) (c)<br />
-In domain of |[asGML](asGML) (dp)<br />[asWKT](asWKT) (dp)<br />[coordinateDimension](coordinateDimension) (dp)<br />[hasSerialization](hasserialization) (dp)<br />[isSimple](isSimple) (dp)<br />[spatialDimension](spatialDimension) (dp)<br />[dimension](dimension) (dp)<br />[isEmpty](isEmpty) (dp)<br />
+In domain of |[isSimple](isSimple) (dp)<br />[spatialDimension](spatialDimension) (dp)<br />[dimension](dimension) (dp)<br />[asWKT](asWKT) (dp)<br />[asGML](asGML) (dp)<br />[isEmpty](isEmpty) (dp)<br />[coordinateDimension](coordinateDimension) (dp)<br />[hasSerialization](hasserialization) (dp)<br />
 In range of |[defaultGeometry](defaultGeometry) (op)<br />[hasGeometry](hasGeometry) (op)<br />
 ### SpatialObject
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#SpatialObject`
 Is Defined By | http://www.opengis.net/ont/geosparql
-Description | <pre><code>  The class spatial-object represents everything that can have
-  a spatial representation. It is superclass of feature and geometry.
-</code></pre>
+Description | <pre><code>  The class spatial-object represents everything that can have   a spatial representation. It is superclass of feature and geometry. </code></pre>
 Sub-classes |[Feature](Feature) (c)<br />[Geometry](Geometry) (c)<br />
-In domain of |[ehOverlap](overlap) (op)<br />[ehInside](inside) (op)<br />[rcc8dc](disconnected) (op)<br />[sfEquals](sfEquals) (op)<br />[rcc8tpp](tangentialproperpart) (op)<br />[sfWithin](within) (op)<br />[ehDisjoint](disjoint) (op)<br />[sfCrosses](crosses) (op)<br />[rcc8po](partiallyoverlapping) (op)<br />[ehCovers](covers) (op)<br />[ehMeet](meet) (op)<br />[rcc8tppi](tangentialproperpartinverse) (op)<br />[rcc8ntppi](non-tangentialproperpartinverse) (op)<br />[sfDisjoint](sfDisjoint) (op)<br />[rcc8eq](rcc8eq) (op)<br />[sfTouches](touches) (op)<br />[rcc8ec](externallyconnected) (op)<br />[ehContains](contains) (op)<br />[sfOverlaps](overlaps) (op)<br />[rcc8ntpp](non-tangentialproperpart) (op)<br />[ehEquals](equals) (op)<br />[sfContains](sfContains) (op)<br />[sfIntersects](intersects) (op)<br />[ehCoveredBy](coveredBy) (op)<br />
-In range of |[sfOverlaps](overlaps) (op)<br />[ehContains](contains) (op)<br />[rcc8tpp](tangentialproperpart) (op)<br />[rcc8ec](externallyconnected) (op)<br />[sfTouches](touches) (op)<br />[ehInside](inside) (op)<br />[ehOverlap](overlap) (op)<br />[ehCoveredBy](coveredBy) (op)<br />[sfIntersects](intersects) (op)<br />[ehEquals](equals) (op)<br />[rcc8po](partiallyoverlapping) (op)<br />[sfCrosses](crosses) (op)<br />[rcc8eq](rcc8eq) (op)<br />[ehDisjoint](disjoint) (op)<br />[sfWithin](within) (op)<br />[sfEquals](sfEquals) (op)<br />[rcc8dc](disconnected) (op)<br />[sfDisjoint](sfDisjoint) (op)<br />[rcc8ntppi](non-tangentialproperpartinverse) (op)<br />[rcc8tppi](tangentialproperpartinverse) (op)<br />[ehMeet](meet) (op)<br />[ehCovers](covers) (op)<br />[sfContains](sfContains) (op)<br />[rcc8ntpp](non-tangentialproperpart) (op)<br />
+In domain of |[rcc8dc](disconnected) (op)<br />[rcc8ntppi](non-tangentialproperpartinverse) (op)<br />[rcc8tppi](tangentialproperpartinverse) (op)<br />[ehDisjoint](disjoint) (op)<br />[ehCoveredBy](coveredBy) (op)<br />[sfIntersects](intersects) (op)<br />[ehEquals](equals) (op)<br />[sfCrosses](crosses) (op)<br />[sfOverlaps](overlaps) (op)<br />[sfDisjoint](sfDisjoint) (op)<br />[sfWithin](within) (op)<br />[rcc8po](partiallyoverlapping) (op)<br />[sfTouches](touches) (op)<br />[sfEquals](sfEquals) (op)<br />[ehContains](contains) (op)<br />[ehOverlap](overlap) (op)<br />[rcc8ntpp](non-tangentialproperpart) (op)<br />[ehCovers](covers) (op)<br />[rcc8tpp](tangentialproperpart) (op)<br />[ehInside](inside) (op)<br />[ehMeet](meet) (op)<br />[rcc8ec](externallyconnected) (op)<br />[rcc8eq](rcc8eq) (op)<br />[sfContains](sfContains) (op)<br />
+In range of |[sfEquals](sfEquals) (op)<br />[sfContains](sfContains) (op)<br />[rcc8tpp](tangentialproperpart) (op)<br />[sfIntersects](intersects) (op)<br />[ehMeet](meet) (op)<br />[rcc8ec](externallyconnected) (op)<br />[rcc8eq](rcc8eq) (op)<br />[rcc8tppi](tangentialproperpartinverse) (op)<br />[sfDisjoint](sfDisjoint) (op)<br />[ehEquals](equals) (op)<br />[ehDisjoint](disjoint) (op)<br />[rcc8po](partiallyoverlapping) (op)<br />[rcc8dc](disconnected) (op)<br />[rcc8ntpp](non-tangentialproperpart) (op)<br />[sfWithin](within) (op)<br />[ehCoveredBy](coveredBy) (op)<br />[rcc8ntppi](non-tangentialproperpartinverse) (op)<br />[ehCovers](covers) (op)<br />[sfTouches](touches) (op)<br />[ehOverlap](overlap) (op)<br />[sfCrosses](crosses) (op)<br />[ehInside](inside) (op)<br />[sfOverlaps](overlaps) (op)<br />[ehContains](contains) (op)<br />
 
 ## Object Properties
 [defaultGeometry](#defaultGeometry),
@@ -98,10 +90,7 @@ Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#defaultGeometry`
 Is Defined By | http://www.opengis.net/ont/geosparql
-Description | 
-      The default geometry to be used in spatial calculations.
-      It is Usually the most detailed geometry.
-    
+Description |        The default geometry to be used in spatial calculations.       It is Usually the most detailed geometry.     
 Super-properties |[hasGeometry](hasGeometry) (op)<br />
 Domain(s) |[Feature](Feature) (c)<br />
 Range(s) |[Geometry](Geometry) (c)<br />
@@ -110,11 +99,8 @@ Range(s) |[Geometry](Geometry) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#ehContains`
-Is Defined By | http://www.opengis.net/ont/geosparql
-Description | 
-      Exists if the subject SpatialObject spatially contains the
-      object SpatialObject. DE-9IM: T*TFF*FF*
-    
+Is Defined By | http://www.opengis.net/spec/geosparql/1.0
+Description |        Exists if the subject SpatialObject spatially contains the       object SpatialObject. DE-9IM: T*TFF*FF*     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](coveredBy)
@@ -122,11 +108,8 @@ Range(s) |[SpatialObject](SpatialObject) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#ehCoveredBy`
-Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      Exists if the subject SpatialObject is spatially covered
-      by the object SpatialObject. DE-9IM: TFF*TFT**
-    
+Is Defined By | http://www.opengis.net/ont/geosparql
+Description |        Exists if the subject SpatialObject is spatially covered       by the object SpatialObject. DE-9IM: TFF*TFT**     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](covers)
@@ -134,11 +117,8 @@ Range(s) |[SpatialObject](SpatialObject) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#ehCovers`
-Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      Exists if the subject SpatialObject spatially covers the
-      object SpatialObject. DE-9IM: T*TFT*FF*
-    
+Is Defined By | http://www.opengis.net/ont/geosparql
+Description |        Exists if the subject SpatialObject spatially covers the       object SpatialObject. DE-9IM: T*TFT*FF*     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](disjoint)
@@ -147,10 +127,7 @@ Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#ehDisjoint`
 Is Defined By | http://www.opengis.net/ont/geosparql
-Description | 
-      Exists if the subject SpatialObject is spatially disjoint
-      from the object SpatialObject. DE-9IM: FF*FF****
-    
+Description |        Exists if the subject SpatialObject is spatially disjoint       from the object SpatialObject. DE-9IM: FF*FF****     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](equals)
@@ -159,10 +136,7 @@ Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#ehEquals`
 Is Defined By | http://www.opengis.net/ont/geosparql
-Description | 
-      Exists if the subject SpatialObject spatially equals the
-      object SpatialObject. DE-9IM: TFFFTFFFT
-    
+Description |        Exists if the subject SpatialObject spatially equals the       object SpatialObject. DE-9IM: TFFFTFFFT     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](inside)
@@ -170,11 +144,8 @@ Range(s) |[SpatialObject](SpatialObject) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#ehInside`
-Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      Exists if the subject SpatialObject is spatially inside
-      the object SpatialObject. DE-9IM: TFF*FFT**
-    
+Is Defined By | http://www.opengis.net/ont/geosparql
+Description |        Exists if the subject SpatialObject is spatially inside       the object SpatialObject. DE-9IM: TFF*FFT**     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](meet)
@@ -183,11 +154,7 @@ Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#ehMeet`
 Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      Exists if the subject SpatialObject spatially meets the
-      object SpatialObject.
-      DE-9IM: FT******* ^ F**T***** ^ F***T****
-    
+Description |        Exists if the subject SpatialObject spatially meets the       object SpatialObject.       DE-9IM: FT******* ^ F**T***** ^ F***T****     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](overlap)
@@ -196,10 +163,7 @@ Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#ehOverlap`
 Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      Exists if the subject SpatialObject spatially overlaps the
-      object SpatialObject. DE-9IM: T*T***T**
-    
+Description |        Exists if the subject SpatialObject spatially overlaps the       object SpatialObject. DE-9IM: T*T***T**     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](hasGeometry)
@@ -207,10 +171,8 @@ Range(s) |[SpatialObject](SpatialObject) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#hasGeometry`
-Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      A spatial representation for a given feature.
-    
+Is Defined By | http://www.opengis.net/ont/geosparql
+Description |        A spatial representation for a given feature.     
 Domain(s) |[Feature](Feature) (c)<br />
 Range(s) |[Geometry](Geometry) (c)<br />
 [](disconnected)
@@ -219,10 +181,7 @@ Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#rcc8dc`
 Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      Exists if the subject SpatialObject is spatially disjoint
-      from the object SpatialObject. DE-9IM: FFTFFTTTT
-    
+Description |        Exists if the subject SpatialObject is spatially disjoint       from the object SpatialObject. DE-9IM: FFTFFTTTT     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](externallyconnected)
@@ -230,11 +189,8 @@ Range(s) |[SpatialObject](SpatialObject) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#rcc8ec`
-Is Defined By | http://www.opengis.net/ont/geosparql
-Description | 
-      Exists if the subject SpatialObject spatially meets the
-      object SpatialObject. DE-9IM: FFTFTTTTT
-    
+Is Defined By | http://www.opengis.net/spec/geosparql/1.0
+Description |        Exists if the subject SpatialObject spatially meets the       object SpatialObject. DE-9IM: FFTFTTTTT     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](rcc8eq)
@@ -242,11 +198,8 @@ Range(s) |[SpatialObject](SpatialObject) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#rcc8eq`
-Is Defined By | http://www.opengis.net/ont/geosparql
-Description | 
-      Exists if the subject SpatialObject spatially equals the
-      object SpatialObject. DE-9IM: TFFFTFFFT
-    
+Is Defined By | http://www.opengis.net/spec/geosparql/1.0
+Description |        Exists if the subject SpatialObject spatially equals the       object SpatialObject. DE-9IM: TFFFTFFFT     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](non-tangentialproperpart)
@@ -255,10 +208,7 @@ Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#rcc8ntpp`
 Is Defined By | http://www.opengis.net/ont/geosparql
-Description | 
-      Exists if the subject SpatialObject is spatially inside
-      the object SpatialObject. DE-9IM: TFFTFFTTT
-    
+Description |        Exists if the subject SpatialObject is spatially inside       the object SpatialObject. DE-9IM: TFFTFFTTT     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](non-tangentialproperpartinverse)
@@ -266,11 +216,8 @@ Range(s) |[SpatialObject](SpatialObject) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#rcc8ntppi`
-Is Defined By | http://www.opengis.net/ont/geosparql
-Description | 
-      Exists if the subject SpatialObject spatially contains the
-      object SpatialObject. DE-9IM: TTTFFTFFT
-    
+Is Defined By | http://www.opengis.net/spec/geosparql/1.0
+Description |        Exists if the subject SpatialObject spatially contains the       object SpatialObject. DE-9IM: TTTFFTFFT     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](partiallyoverlapping)
@@ -278,11 +225,8 @@ Range(s) |[SpatialObject](SpatialObject) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#rcc8po`
-Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      Exists if the subject SpatialObject spatially overlaps the
-      object SpatialObject. DE-9IM: TTTTTTTTT
-    
+Is Defined By | http://www.opengis.net/ont/geosparql
+Description |        Exists if the subject SpatialObject spatially overlaps the       object SpatialObject. DE-9IM: TTTTTTTTT     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](tangentialproperpart)
@@ -290,11 +234,8 @@ Range(s) |[SpatialObject](SpatialObject) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#rcc8tpp`
-Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      Exists if the subject SpatialObject is spatially covered
-      by the object SpatialObject. DE-9IM: TFFTTFTTT
-    
+Is Defined By | http://www.opengis.net/ont/geosparql
+Description |        Exists if the subject SpatialObject is spatially covered       by the object SpatialObject. DE-9IM: TFFTTFTTT     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](tangentialproperpartinverse)
@@ -302,11 +243,8 @@ Range(s) |[SpatialObject](SpatialObject) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#rcc8tppi`
-Is Defined By | http://www.opengis.net/ont/geosparql
-Description | 
-      Exists if the subject SpatialObject spatially covers the
-      object SpatialObject. DE-9IM: TTTFTTFFT
-    
+Is Defined By | http://www.opengis.net/spec/geosparql/1.0
+Description |        Exists if the subject SpatialObject spatially covers the       object SpatialObject. DE-9IM: TTTFTTFFT     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](sfContains)
@@ -314,11 +252,8 @@ Range(s) |[SpatialObject](SpatialObject) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#sfContains`
-Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      Exists if the subject SpatialObject spatially contains the
-      object SpatialObject. DE-9IM: T*****FF*
-    
+Is Defined By | http://www.opengis.net/ont/geosparql
+Description |        Exists if the subject SpatialObject spatially contains the       object SpatialObject. DE-9IM: T*****FF*     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](crosses)
@@ -327,10 +262,7 @@ Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#sfCrosses`
 Is Defined By | http://www.opengis.net/ont/geosparql
-Description | 
-      Exists if the subject SpatialObject spatially crosses the
-      object SpatialObject. DE-9IM: T*T******
-    
+Description |        Exists if the subject SpatialObject spatially crosses the       object SpatialObject. DE-9IM: T*T******     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](sfDisjoint)
@@ -339,10 +271,7 @@ Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#sfDisjoint`
 Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      Exists if the subject SpatialObject is spatially disjoint
-      from the object SpatialObject. DE-9IM: FF*FF****
-    
+Description |        Exists if the subject SpatialObject is spatially disjoint       from the object SpatialObject. DE-9IM: FF*FF****     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](sfEquals)
@@ -351,10 +280,7 @@ Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#sfEquals`
 Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      Exists if the subject SpatialObject spatially equals the
-      object SpatialObject. DE-9IM: TFFFTFFFT
-    
+Description |        Exists if the subject SpatialObject spatially equals the       object SpatialObject. DE-9IM: TFFFTFFFT     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](intersects)
@@ -363,11 +289,7 @@ Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#sfIntersects`
 Is Defined By | http://www.opengis.net/ont/geosparql
-Description | 
-      Exists if the subject SpatialObject is not spatially disjoint
-      from the object SpatialObject.
-      DE-9IM: T******** ^ *T******* ^ ***T***** ^ ****T****
-    
+Description |        Exists if the subject SpatialObject is not spatially disjoint       from the object SpatialObject.       DE-9IM: T******** ^ *T******* ^ ***T***** ^ ****T****     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](overlaps)
@@ -375,11 +297,8 @@ Range(s) |[SpatialObject](SpatialObject) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#sfOverlaps`
-Is Defined By | http://www.opengis.net/ont/geosparql
-Description | 
-      Exists if the subject SpatialObject spatially overlaps the
-      object SpatialObject. DE-9IM: T*T***T**
-    
+Is Defined By | http://www.opengis.net/spec/geosparql/1.0
+Description |        Exists if the subject SpatialObject spatially overlaps the       object SpatialObject. DE-9IM: T*T***T**     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](touches)
@@ -387,12 +306,8 @@ Range(s) |[SpatialObject](SpatialObject) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#sfTouches`
-Is Defined By | http://www.opengis.net/ont/geosparql
-Description | 
-      Exists if the subject SpatialObject spatially touches the
-      object SpatialObject.
-      DE-9IM: FT******* ^ F**T***** ^ F***T****
-    
+Is Defined By | http://www.opengis.net/spec/geosparql/1.0
+Description |        Exists if the subject SpatialObject spatially touches the       object SpatialObject.       DE-9IM: FT******* ^ F**T***** ^ F***T****     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 [](within)
@@ -401,10 +316,7 @@ Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#sfWithin`
 Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      Exists if the subject SpatialObject is spatially within the
-      object SpatialObject. DE-9IM: T*F**F***
-    
+Description |        Exists if the subject SpatialObject is spatially within the       object SpatialObject. DE-9IM: T*F**F***     
 Domain(s) |[SpatialObject](SpatialObject) (c)<br />
 Range(s) |[SpatialObject](SpatialObject) (c)<br />
 
@@ -422,10 +334,8 @@ Range(s) |[SpatialObject](SpatialObject) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#asGML`
-Is Defined By | http://www.opengis.net/ont/geosparql
-Description | 
-      The GML serialization of a geometry
-    
+Is Defined By | http://www.opengis.net/spec/geosparql/1.0
+Description |        The GML serialization of a geometry     
 Super-properties |[hasSerialization](hasserialization) (dp)<br />
 Domain(s) |[Geometry](Geometry) (c)<br />
 Range(s) |[gmlLiteral](http://www.opengis.net/ont/geosparql#gmlLiteral) (c)<br />
@@ -434,10 +344,8 @@ Range(s) |[gmlLiteral](http://www.opengis.net/ont/geosparql#gmlLiteral) (c)<br /
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#asWKT`
-Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      The WKT serialization of a geometry
-    
+Is Defined By | http://www.opengis.net/ont/geosparql
+Description |        The WKT serialization of a geometry     
 Super-properties |[hasSerialization](hasserialization) (dp)<br />
 Domain(s) |[Geometry](Geometry) (c)<br />
 Range(s) |[wktLiteral](http://www.opengis.net/ont/geosparql#wktLiteral) (c)<br />
@@ -446,11 +354,8 @@ Range(s) |[wktLiteral](http://www.opengis.net/ont/geosparql#wktLiteral) (c)<br /
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#coordinateDimension`
-Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      The number of measurements or axes needed to describe the position of this
-      geometry in a coordinate system.
-    
+Is Defined By | http://www.opengis.net/ont/geosparql
+Description |        The number of measurements or axes needed to describe the position of this       geometry in a coordinate system.     
 Domain(s) |[Geometry](Geometry) (c)<br />
 Range(s) |[xsd:integer](http://www.w3.org/2001/XMLSchema#integer) (c)<br />
 [](dimension)
@@ -459,12 +364,7 @@ Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#dimension`
 Is Defined By | http://www.opengis.net/ont/geosparql
-Description | 
-      The topological dimension of this geometric object, which
-      must be less than or equal to the coordinate dimension.
-      In non-homogeneous collections, this will return the largest
-      topological dimension of the contained objects.
-    
+Description |        The topological dimension of this geometric object, which       must be less than or equal to the coordinate dimension.       In non-homogeneous collections, this will return the largest       topological dimension of the contained objects.     
 Domain(s) |[Geometry](Geometry) (c)<br />
 Range(s) |[xsd:integer](http://www.w3.org/2001/XMLSchema#integer) (c)<br />
 [](hasserialization)
@@ -472,10 +372,8 @@ Range(s) |[xsd:integer](http://www.w3.org/2001/XMLSchema#integer) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#hasSerialization`
-Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      Connects a geometry object with its text-based serialization.
-    
+Is Defined By | http://www.opengis.net/ont/geosparql
+Description |        Connects a geometry object with its text-based serialization.     
 Domain(s) |[Geometry](Geometry) (c)<br />
 Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
 [](isEmpty)
@@ -483,12 +381,8 @@ Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#isEmpty`
-Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      (true) if this geometric object is the empty Geometry. If
-      true, then this geometric object represents the empty point
-      set for the coordinate space.
-    
+Is Defined By | http://www.opengis.net/ont/geosparql
+Description |        (true) if this geometric object is the empty Geometry. If       true, then this geometric object represents the empty point       set for the coordinate space.     
 Domain(s) |[Geometry](Geometry) (c)<br />
 Range(s) |[xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean) (c)<br />
 [](isSimple)
@@ -497,10 +391,7 @@ Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#isSimple`
 Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      (true) if this geometric object has no anomalous geometric
-      points, such as self intersection or self tangency.
-    
+Description |        (true) if this geometric object has no anomalous geometric       points, such as self intersection or self tangency.     
 Domain(s) |[Geometry](Geometry) (c)<br />
 Range(s) |[xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean) (c)<br />
 [](spatialDimension)
@@ -508,11 +399,8 @@ Range(s) |[xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://www.opengis.net/ont/geosparql#spatialDimension`
-Is Defined By | http://www.opengis.net/spec/geosparql/1.0
-Description | 
-      The number of measurements or axes needed to describe the spatial position of
-      this geometry in a coordinate system.
-    
+Is Defined By | http://www.opengis.net/ont/geosparql
+Description |        The number of measurements or axes needed to describe the spatial position of       this geometry in a coordinate system.     
 Domain(s) |[Geometry](Geometry) (c)<br />
 Range(s) |[xsd:integer](http://www.w3.org/2001/XMLSchema#integer) (c)<br />
 

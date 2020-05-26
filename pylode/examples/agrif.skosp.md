@@ -9,14 +9,14 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * **Publisher(s)**
   * [Department of Finance](http://linked.data.gov.au/org/finance)
 * **Creators(s)**
+  * John Machin of [Department of Finance](https://www.finance.gov.au)
+  * Katherine Stuart of [Department of Finance](https://www.finance.gov.au)
   * [Armin Haller](http://orcid.org/0000-0003-3425-0780)
     [[ORCID]](http://orcid.org/0000-0003-3425-0780)
     (<armin.haller@anu.edu.au></a>) of [Australian National University](https://www.anu.edu.au)
-  * Katherine Stuart of [Department of Finance](https://www.finance.gov.au)
-  * John Machin of [Department of Finance](https://www.finance.gov.au)
 * **Contributor(s)**
-  * Pouya Ghiasnezhad Omran
   * Kerry Taylor
+  * Pouya Ghiasnezhad Omran
   * Sergio José Rodríguez Méndez
   * [Nicholas J. Car](http://orcid.org/0000-0002-8742-7730)
     [[ORCID]](http://orcid.org/0000-0002-8742-7730)
@@ -59,7 +59,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 	* [Intellectual Control System](http://linked.data.gov.au/def/agrif#IntellectualControlSystem)
 		* [Controlled Vocabulary](http://linked.data.gov.au/def/agrif#ControlledVocabulary)
 		* [Series](http://linked.data.gov.au/def/agrif#Series)
-* [Permission](http://linked.data.gov.au/def/agrif#Permission)
+* [Security Clearance](http://linked.data.gov.au/def/agrif#Permission)
 * [Policy](http://linked.data.gov.au/def/agrif#Policy)
 	* [Digital Preservation Policy](http://linked.data.gov.au/def/agrif#DigitalPreservationPolicy)
 	* [Information Management Policy](http://linked.data.gov.au/def/agrif#InformationManagementPolicy)
@@ -76,7 +76,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * [Status](http://linked.data.gov.au/def/agrif#Status)
 	* [Decision Status](http://linked.data.gov.au/def/agrif#DecisionStatus)
 * [Version History](http://linked.data.gov.au/def/agrif#VersionHistory)
-* [None](ub68bL849C45)
+* [None](ub2bL849C45)
 
 ### AGIFT Function
 Property | Value
@@ -109,7 +109,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#Activity`
 Preferred Labels |Activity (en)<br />
 Source | https://www.w3.org/TR/prov-o/#Activity
-Narrower Concepts |[Share Activity](ShareActivity) (cp)<br />[Access Activity](AccessActivity) (cp)<br />[Maintain Activity](MaintainActivity) (cp)<br />
+Narrower Concepts |[Share Activity](ShareActivity) (cp)<br />[Maintain Activity](MaintainActivity) (cp)<br />[Access Activity](AccessActivity) (cp)<br />
 ### Administrator
 Property | Value
 --- | ---
@@ -201,7 +201,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Coverage`
 Preferred Labels |Coverage (en)<br />
-Narrower Concepts |[Spatial Coverage](SpatialCoverage) (cp)<br />[Temporal Coverage](TemporalCoverage) (cp)<br />[Jurisdictional Coverage](JurisdictionalCoverage) (cp)<br />
+Narrower Concepts |[Spatial Coverage](SpatialCoverage) (cp)<br />[Jurisdictional Coverage](JurisdictionalCoverage) (cp)<br />[Temporal Coverage](TemporalCoverage) (cp)<br />
 ### Record Creation Event
 Property | Value
 --- | ---
@@ -261,14 +261,14 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Function`
 Preferred Labels |Function (en)<br />
-Narrower Concepts |[AGIFT Function](AGIFTFunction) (cp)<br />[Records Authority Function](RecordsAuthorityFunction) (cp)<br />
+Narrower Concepts |[Records Authority Function](RecordsAuthorityFunction) (cp)<br />[AGIFT Function](AGIFTFunction) (cp)<br />
 ### Holding Space
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#HoldingSpace`
 Preferred Labels |Holding Space (en)<br />
 Broader Concepts |[Spatial Location](SpatialLocation) (cp)<br />
-Narrower Concepts |[Physical Holding Space](PhysicalHoldingSpace) (cp)<br />[Digital Holding Space](DigitalHoldingSpace) (cp)<br />
+Narrower Concepts |[Digital Holding Space](DigitalHoldingSpace) (cp)<br />[Physical Holding Space](PhysicalHoldingSpace) (cp)<br />
 ### Information Management Policy
 Property | Value
 --- | ---
@@ -331,11 +331,11 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#OrganisationalUnit`
 Preferred Labels |Organisational Unit (en)<br />
 Broader Concepts |[Organisation](Organisation) (cp)<br />
-### Permission
+### Security Clearance
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Permission`
-Preferred Labels |Security Clearance (en)<br />Permission (en)<br />
+Preferred Labels |Permission (en)<br />Security Clearance (en)<br />
 Source | Australian Government Recordkeeping Metadata Standard
 ### Person
 Property | Value
@@ -349,7 +349,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#PhysicalArtefact`
 Preferred Labels |Physical Artefact (en)<br />
-Examples |An example of a Phyiscal Artefact in the context of record keeping is information printed or written on paper.<br />
+Examples |`An example of a Phyiscal Artefact in the context of record keeping is information printed or written on paper.`<br /><br />
 Broader Concepts |[Artefact](Artefact) (cp)<br />
 ### Physical Collection
 Property | Value
@@ -369,7 +369,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#Policy`
 Preferred Labels |Policy (en)<br />
 Source | http://purl.org/dc/terms/Policy
-Narrower Concepts |[Records Authority Disposal Class Policy](RecordsAuthorityDisposalClassPolicy) (cp)<br />[Digital Preservation Policy](DigitalPreservationPolicy) (cp)<br />[Minimum Metadata Set Policy](MinimumMetadataSetPolicy) (cp)<br />[Record Storage Standard](RecordStorageStandard) (cp)<br />[Information Management Policy](InformationManagementPolicy) (cp)<br />
+Narrower Concepts |[Digital Preservation Policy](DigitalPreservationPolicy) (cp)<br />[Minimum Metadata Set Policy](MinimumMetadataSetPolicy) (cp)<br />[Information Management Policy](InformationManagementPolicy) (cp)<br />[Records Authority Disposal Class Policy](RecordsAuthorityDisposalClassPolicy) (cp)<br />[Record Storage Standard](RecordStorageStandard) (cp)<br />
 ### Preservation Quality
 Property | Value
 --- | ---
@@ -399,7 +399,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#RecordControlEvent`
 Preferred Labels |Record Control Event (en)<br />
 Broader Concepts |[Event](Event) (cp)<br />
-Narrower Concepts |[Record Audit Event](RecordAuditEvent) (cp)<br />[Record Disposal Event](RecordDisposalEvent) (cp)<br />[Record Decision Event](RecordDecisionEvent) (cp)<br />[Record Replacement Event](RecordReplacementEvent) (cp)<br />[Record Sentencing Event](RecordSentencingEvent) (cp)<br />
+Narrower Concepts |[Record Sentencing Event](RecordSentencingEvent) (cp)<br />[Record Replacement Event](RecordReplacementEvent) (cp)<br />[Record Decision Event](RecordDecisionEvent) (cp)<br />[Record Audit Event](RecordAuditEvent) (cp)<br />[Record Disposal Event](RecordDisposalEvent) (cp)<br />
 ### Record Decision Event
 Property | Value
 --- | ---
@@ -418,7 +418,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#RecordDisposalEvent`
 Preferred Labels |Record Disposal Event (en)<br />
 Broader Concepts |[Record Control Event](RecordControlEvent) (cp)<br />
-Narrower Concepts |[Record Transfer Event](RecordTransferEvent) (cp)<br />[Record Destruction Event](RecordDestructionEvent) (cp)<br />[Record Freeze Event](RecordFreezeEvent) (cp)<br />
+Narrower Concepts |[Record Freeze Event](RecordFreezeEvent) (cp)<br />[Record Transfer Event](RecordTransferEvent) (cp)<br />[Record Destruction Event](RecordDestructionEvent) (cp)<br />
 ### Record Freeze Event
 Property | Value
 --- | ---
@@ -448,7 +448,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#RecordTransferEvent`
 Preferred Labels |Record Transfer Event (en)<br />
-Examples |An example of a Record Transfer Event is the transfer of a Record from an Agency to the National Archives. Section 27 of the Archives Act 1983 requires Australian government agencies to transfer Records to the Archives within 15 years of their creation.<br />
+Examples |`An example of a Record Transfer Event is the transfer of a Record from an Agency to the National Archives. Section 27 of the Archives Act 1983 requires Australian government agencies to transfer Records to the Archives within 15 years of their creation.`<br /><br />
 Broader Concepts |[Record Disposal Event](RecordDisposalEvent) (cp)<br />
 ### Records Authority Function
 Property | Value
@@ -470,7 +470,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#Role`
 Preferred Labels |Role (en)<br />
 Source | https://www.w3.org/TR/prov-o/#Role
-Narrower Concepts |[Creator](Creator) (cp)<br />[Administrator](Administrator) (cp)<br />[User](User) (cp)<br />[Business Owner](BusinessOwner) (cp)<br />
+Narrower Concepts |[User](User) (cp)<br />[Creator](Creator) (cp)<br />[Business Owner](BusinessOwner) (cp)<br />[Administrator](Administrator) (cp)<br />
 ### Security Classification
 Property | Value
 --- | ---
@@ -540,7 +540,8 @@ Preferred Labels |Version History (en)<br />
 ### None
 Property | Value
 --- | ---
-IRI | `ub68bL849C45`
+IRI | `ub2bL849C45`
+Preferred Labels |None (en)<br />
 
 ## Namespaces
 * **default (:)**

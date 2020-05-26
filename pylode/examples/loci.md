@@ -20,10 +20,10 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * **Version IRI**
   * [http://linked.data.gov.au/def/loci/1.0](http://linked.data.gov.au/def/loci/1.0)
 * **Imports**
+  * [dcat:](http://www.w3.org/ns/dcat#)
   * [http://purl.org/linked-data/registry](http://purl.org/linked-data/registry)
   * [owl:](http://www.w3.org/2002/07/owl#)
   * [rdf:](http://www.w3.org/1999/02/22-rdf-syntax-ns#)
-  * [dcat:](http://www.w3.org/ns/dcat#)
 * **License &amp; Rights**
   * [https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/)
   * &copy; 2019 CSIRO
@@ -64,8 +64,8 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/loci#Dataset`
 Description | <p>A LOCI Dataset is a DCAT and VOID Dataset that has been accepted by the LOCI Registry Manager.</p>
-Super-classes |[dcat:Dataset](http://www.w3.org/ns/dcat#Dataset) (c)<br />[http://rdfs.org/ns/void#Dataset](http://rdfs.org/ns/void#Dataset) (c)<br />
-Restrictions |[dct:issued](http://purl.org/dc/terms/issued) **exactly** 1<br />[dct:publisher](http://purl.org/dc/terms/publisher) **exactly** 1 [http://xmlns.com/foaf/0.1/Organization](http://xmlns.com/foaf/0.1/Organization) (c)<br />[dcat:contactPoint](http://www.w3.org/ns/dcat#contactPoint) **min** 1<br />[dct:title](http://purl.org/dc/terms/title) **exactly** 1<br />[dct:modified](http://purl.org/dc/terms/modified) **exactly** 1<br />
+Super-classes |[http://rdfs.org/ns/void#Dataset](http://rdfs.org/ns/void#Dataset) (c)<br />[dcat:Dataset](http://www.w3.org/ns/dcat#Dataset) (c)<br />
+Restrictions |[dct:publisher](http://purl.org/dc/terms/publisher) **exactly** 1 [http://xmlns.com/foaf/0.1/Organization](http://xmlns.com/foaf/0.1/Organization) (c)<br />[dct:title](http://purl.org/dc/terms/title) **exactly** 1<br />[dcat:contactPoint](http://www.w3.org/ns/dcat#contactPoint) **min** 1<br />[dct:issued](http://purl.org/dc/terms/issued) **exactly** 1<br />[dct:modified](http://purl.org/dc/terms/modified) **exactly** 1<br />
 Sub-classes |[Linkset](LOCILinkset) (c)<br />
 ### LOCI Dataset Linking Statement
 Property | Value
@@ -73,7 +73,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/loci#DatasetLinkingStatement`
 Description | <p>An RDF Statement (Subject, Predicate, Object + additional metadata) that links class instances in one LOCI Dataset with class instances in another</p>
 Super-classes |[rdf:Statement](http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement) (c)<br />
-Restrictions |[rdf:object](http://www.w3.org/1999/02/22-rdf-syntax-ns#object) **exactly** 1 [Feature](LOCIFeature) (c)<br />[http://purl.org/linked-data/registryregister](http://purl.org/linked-data/registryregister) **exactly** 1 [Linkset](LOCILinkset) (c)<br />[rdf:subject](http://www.w3.org/1999/02/22-rdf-syntax-ns#subject) **exactly** 1 [Feature](LOCIFeature) (c)<br />[hadGenerationMethod](hadgenerationmethod) (op) **exactly** 1 [prov:Plan](http://www.w3.org/ns/prov#Plan) (c)<br />
+Restrictions |[hadGenerationMethod](hadgenerationmethod) (op) **exactly** 1 [prov:Plan](http://www.w3.org/ns/prov#Plan) (c)<br />[rdf:object](http://www.w3.org/1999/02/22-rdf-syntax-ns#object) **exactly** 1 [Feature](LOCIFeature) (c)<br />[http://purl.org/linked-data/registryregister](http://purl.org/linked-data/registryregister) **exactly** 1 [Linkset](LOCILinkset) (c)<br />[rdf:subject](http://www.w3.org/1999/02/22-rdf-syntax-ns#subject) **exactly** 1 [Feature](LOCIFeature) (c)<br />
 ### LOCI Feature
 Property | Value
 --- | ---
@@ -84,7 +84,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/loci#Linkset`
 Description | <p>A LOCI Linkset is a specialised form of a VOID Linkset that requires the void:subjectsTarget &amp; void:objectsTarget indicate LOCI Datasets</p>
-Super-classes |[http://rdfs.org/ns/void#Linkset](http://rdfs.org/ns/void#Linkset) (c)<br />[Dataset](LOCIDataset) (c)<br />
+Super-classes |[Dataset](LOCIDataset) (c)<br />[http://rdfs.org/ns/void#Linkset](http://rdfs.org/ns/void#Linkset) (c)<br />
 ### Statement
 Property | Value
 --- | ---
@@ -184,8 +184,8 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/loci#DataPublisher`
 * **Contributor(s)**
-  * [rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class)
   * [owl:Class](http://www.w3.org/2002/07/owl#Class)
+  * [rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class)
 Description | The set of all approved publishers of LOCI data, all of whom are known
 ## Namespaces
 * **default (:)**

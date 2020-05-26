@@ -73,9 +73,7 @@ Super-classes |[skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<b
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/ra#RecordsAuthority`
-Description | <p>A Records Authority is a document that identifies minimum retention periods for Records and authorises the destruction of Records as required by Section 24 of the Archives Act 1983.</p>
-<pre><code>                      A Records Authority individual, as represented in this ontology, contains a collection of RA Classes and Numbered Subclasses used to categorise Records in order for them to be assiged Disposal Actions.
-</code></pre>
+Description | <p>A Records Authority is a document that identifies minimum retention periods for Records and authorises the destruction of Records as required by Section 24 of the Archives Act 1983.</p> <pre><code>                      A Records Authority individual, as represented in this ontology, contains a collection of RA Classes and Numbered Subclasses used to categorise Records in order for them to be assiged Disposal Actions. </code></pre>
 Super-classes |[skos:ConceptScheme](http://www.w3.org/2004/02/skos/core#ConceptScheme) (c)<br />[owl:NamedIndividual](http://www.w3.org/2002/07/owl#NamedIndividual) (c)<br />
 
 ## Object Properties

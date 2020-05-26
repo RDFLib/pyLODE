@@ -58,28 +58,23 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/plot/Location`
 Super-classes |[dcterms:Location](http://purl.org/dc/terms/Location) (c)<br />
-Restrictions |[locn:geometry](http://www.w3.org/ns/locn#geometry) **some** [w3cgeo:Point](http://www.w3.org/2003/01/geo/wgs84_pos#Point) (c)<br />[plot:mapsheetNumber](http://linked.data.gov.au/def/plot/mapsheetNumber) (dp) **max** 1<br />[plot:mapScale](http://linked.data.gov.au/def/plot/mapScale) (op) **max** 1<br />[plot:mapsheetName](http://linked.data.gov.au/def/plot/mapsheetName) (dp) **max** 1<br />
+Restrictions |[plot:mapsheetNumber](http://linked.data.gov.au/def/plot/mapsheetNumber) (dp) **max** 1<br />[locn:geometry](http://www.w3.org/ns/locn#geometry) **some** [w3cgeo:Point](http://www.w3.org/2003/01/geo/wgs84_pos#Point) (c)<br />[plot:mapsheetName](http://linked.data.gov.au/def/plot/mapsheetName) (dp) **max** 1<br />[plot:mapScale](http://linked.data.gov.au/def/plot/mapScale) (op) **max** 1<br />
 In domain of |[plot-x:isLocationOf](http://linked.data.gov.au/def/plot/x/isLocationOf) (op)<br />
 ### Organism Occurrence 
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/plot/OrganismOccurence`
-Description | <ol>
-<li>sub-class of Sample because observations of an organism occurrence are primarily interesting if they represents a commuity or assemblage</li>
-<li>sub-class of SpatialObject because it is bound to a specified location</li>
-<li>sub-class of TemporalEntity because it is bound to a specified time</li>
-</ol>
-Super-classes |[sosa:Sample](http://www.w3.org/ns/sosa/Sample) (c)<br />[http://www.w3.org/2006/time#TemporalEntity](http://www.w3.org/2006/time#TemporalEntity) (c)<br />[geosparql:SpatialObject](http://www.opengis.net/ont/geosparql#SpatialObject) (c)<br />
-Restrictions |[geosparql:defaultGeometry](http://www.opengis.net/ont/geosparql#defaultGeometry) **only** [w3cgeo:Point](http://www.w3.org/2003/01/geo/wgs84_pos#Point) (c)<br />[geosparql:defaultGeometry](http://www.opengis.net/ont/geosparql#defaultGeometry) **exactly** 1<br />[sosa:isSampleOf](http://www.w3.org/ns/sosa/isSampleOf) **some** [plot-x:EcologicalCommunity](http://linked.data.gov.au/def/plot/x/EcologicalCommunity) (c)<br />
+Description | <ol> <li>sub-class of Sample because observations of an organism occurrence are primarily interesting if they represents a commuity or assemblage</li> <li>sub-class of SpatialObject because it is bound to a specified location</li> <li>sub-class of TemporalEntity because it is bound to a specified time</li> </ol>
+Super-classes |[geosparql:SpatialObject](http://www.opengis.net/ont/geosparql#SpatialObject) (c)<br />[http://www.w3.org/2006/time#TemporalEntity](http://www.w3.org/2006/time#TemporalEntity) (c)<br />[sosa:Sample](http://www.w3.org/ns/sosa/Sample) (c)<br />
+Restrictions |[geosparql:defaultGeometry](http://www.opengis.net/ont/geosparql#defaultGeometry) **exactly** 1<br />[geosparql:defaultGeometry](http://www.opengis.net/ont/geosparql#defaultGeometry) **only** [w3cgeo:Point](http://www.w3.org/2003/01/geo/wgs84_pos#Point) (c)<br />[sosa:isSampleOf](http://www.w3.org/ns/sosa/isSampleOf) **some** [plot-x:EcologicalCommunity](http://linked.data.gov.au/def/plot/x/EcologicalCommunity) (c)<br />
 ### Site or location
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/plot/Site`
-Description | <p>Location where observations may be made
-May be a plot, quadrat, transect, trap etc</p>
+Description | <p>ownership is associated with the parent survey</p>
 Super-classes |[geosparql:SpatialObject](http://www.opengis.net/ont/geosparql#SpatialObject) (c)<br />[sosa:Sample](http://www.w3.org/ns/sosa/Sample) (c)<br />
-Restrictions |[sosa:isSampleOf](http://www.w3.org/ns/sosa/isSampleOf) **some** ([plot-x:EnvironmentalSystem](http://linked.data.gov.au/def/plot/x/EnvironmentalSystem) (c) or [plot-x:EnvironmentalZone](http://linked.data.gov.au/def/plot/x/EnvironmentalZone) (c))<br />[sosa:isResultOf](http://www.w3.org/ns/sosa/isResultOf) **only** [plot:SiteVisit](http://linked.data.gov.au/def/plot/SiteVisit) (c)<br />[dcterms:hasPart](http://purl.org/dc/terms/hasPart) **only** [plot:Site](http://linked.data.gov.au/def/plot/Site) (c)<br />[locn:location](http://www.w3.org/ns/locn#location) **only** [plot:Location](http://linked.data.gov.au/def/plot/Location) (c)<br />[plot:siteDescription](http://linked.data.gov.au/def/plot/siteDescription) (op) **min** 1<br />[dcterms:created](http://purl.org/dc/terms/created) **exactly** 1<br />[dcterms:isPartOf](http://purl.org/dc/terms/isPartOf) **only** [plot:Site](http://linked.data.gov.au/def/plot/Site) (c)<br />[prov:wasGeneratedBy](http://www.w3.org/ns/prov#wasGeneratedBy) **only** [prov:Activity](http://www.w3.org/ns/prov#Activity) (c)<br />[dcterms:relation](http://purl.org/dc/terms/relation) **some** [plot:Site](http://linked.data.gov.au/def/plot/Site) (c)<br />
-In domain of |[plot-x:floristics](http://linked.data.gov.au/def/plot/x/floristics) (op)<br />[plot-x:sampleLevel](http://linked.data.gov.au/def/plot/x/sampleLevel) (op)<br />[plot:siteDescription](http://linked.data.gov.au/def/plot/siteDescription) (op)<br />[plot-x:sampleType](http://linked.data.gov.au/def/plot/x/sampleType) (op)<br />
+Restrictions |[dcterms:hasPart](http://purl.org/dc/terms/hasPart) **only** [plot:Site](http://linked.data.gov.au/def/plot/Site) (c)<br />[dcterms:relation](http://purl.org/dc/terms/relation) **some** [plot:Site](http://linked.data.gov.au/def/plot/Site) (c)<br />[dcterms:isPartOf](http://purl.org/dc/terms/isPartOf) **only** [plot:Site](http://linked.data.gov.au/def/plot/Site) (c)<br />[dcterms:created](http://purl.org/dc/terms/created) **exactly** 1<br />[locn:location](http://www.w3.org/ns/locn#location) **only** [plot:Location](http://linked.data.gov.au/def/plot/Location) (c)<br />[prov:wasGeneratedBy](http://www.w3.org/ns/prov#wasGeneratedBy) **only** [prov:Activity](http://www.w3.org/ns/prov#Activity) (c)<br />[sosa:isResultOf](http://www.w3.org/ns/sosa/isResultOf) **only** [plot:SiteVisit](http://linked.data.gov.au/def/plot/SiteVisit) (c)<br />[plot:siteDescription](http://linked.data.gov.au/def/plot/siteDescription) (op) **min** 1<br />[sosa:isSampleOf](http://www.w3.org/ns/sosa/isSampleOf) **some** ([plot-x:EnvironmentalSystem](http://linked.data.gov.au/def/plot/x/EnvironmentalSystem) (c) or [plot-x:EnvironmentalZone](http://linked.data.gov.au/def/plot/x/EnvironmentalZone) (c))<br />
+In domain of |[plot:siteDescription](http://linked.data.gov.au/def/plot/siteDescription) (op)<br />[plot-x:sampleLevel](http://linked.data.gov.au/def/plot/x/sampleLevel) (op)<br />[plot-x:sampleType](http://linked.data.gov.au/def/plot/x/sampleType) (op)<br />[plot-x:floristics](http://linked.data.gov.au/def/plot/x/floristics) (op)<br />
 ### Vegetation stratum
 Property | Value
 --- | ---
@@ -93,7 +88,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/plot/SiteStratumTaxon`
 Description | <p>Community of a single taxon in an identified stratum in a vegetation ecosystem occurring at an observation site</p>
 Super-classes |[sosa:Sample](http://www.w3.org/ns/sosa/Sample) (c)<br />
-Restrictions |[sosa:isSampleOf](http://www.w3.org/ns/sosa/isSampleOf) **some** [plot:SiteTaxon](http://linked.data.gov.au/def/plot/SiteTaxon) (c)<br />[plot:stratum](http://linked.data.gov.au/def/plot/stratum) (op) **exactly** 1<br />[sosa:isFeatureOfInterestOf](http://www.w3.org/ns/sosa/isFeatureOfInterestOf) **min** 1<br />[sosa:isSampleOf](http://www.w3.org/ns/sosa/isSampleOf) **some** [plot:SiteStratum](http://linked.data.gov.au/def/plot/SiteStratum) (c)<br />[sosa:isSampleOf](http://www.w3.org/ns/sosa/isSampleOf) **min** 1 [plot:Site](http://linked.data.gov.au/def/plot/Site) (c)<br />[plot:taxon](http://linked.data.gov.au/def/plot/taxon) (op) **exactly** 1<br />
+Restrictions |[sosa:isSampleOf](http://www.w3.org/ns/sosa/isSampleOf) **min** 1 [plot:Site](http://linked.data.gov.au/def/plot/Site) (c)<br />[sosa:isSampleOf](http://www.w3.org/ns/sosa/isSampleOf) **some** [plot:SiteStratum](http://linked.data.gov.au/def/plot/SiteStratum) (c)<br />[plot:taxon](http://linked.data.gov.au/def/plot/taxon) (op) **exactly** 1<br />[sosa:isSampleOf](http://www.w3.org/ns/sosa/isSampleOf) **some** [plot:SiteTaxon](http://linked.data.gov.au/def/plot/SiteTaxon) (c)<br />[sosa:isFeatureOfInterestOf](http://www.w3.org/ns/sosa/isFeatureOfInterestOf) **min** 1<br />[plot:stratum](http://linked.data.gov.au/def/plot/stratum) (op) **exactly** 1<br />
 ### Single taxon community
 Property | Value
 --- | ---
@@ -106,7 +101,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/plot/SiteVisit`
 Super-classes |[prov:Activity](http://www.w3.org/ns/prov#Activity) (c)<br />
-Restrictions |[plot:hadSubActivity](http://linked.data.gov.au/def/plot/hadSubActivity) (op) **some** ([sosa:Sampling](http://www.w3.org/ns/sosa/Sampling) (c) or [sosa:Observation](http://www.w3.org/ns/sosa/Observation) (c) or [ssn-ext:ObservationCollection](http://www.w3.org/ns/ssn/ext/ObservationCollection) (c))<br />[plot:wasSubActivityOf](http://linked.data.gov.au/def/plot/wasSubActivityOf) (op) **some** [plot-x:Survey](http://linked.data.gov.au/def/plot/x/Survey) (c)<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **only** [plot:Site](http://linked.data.gov.au/def/plot/Site) (c)<br />
+Restrictions |[plot:hadSubActivity](http://linked.data.gov.au/def/plot/hadSubActivity) (op) **some** ([sosa:Sampling](http://www.w3.org/ns/sosa/Sampling) (c) or [sosa:Observation](http://www.w3.org/ns/sosa/Observation) (c) or [ssn-ext:ObservationCollection](http://www.w3.org/ns/ssn/ext/ObservationCollection) (c))<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **only** [plot:Site](http://linked.data.gov.au/def/plot/Site) (c)<br />[plot:wasSubActivityOf](http://linked.data.gov.au/def/plot/wasSubActivityOf) (op) **some** [plot-x:Survey](http://linked.data.gov.au/def/plot/x/Survey) (c)<br />
 ### Vegetation strata classification 
 Property | Value
 --- | ---
@@ -129,18 +124,18 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant`
 Description | <p>Union of environmental system, environmental zone, and ecological community?</p>
 Super-classes |[sosa:FeatureOfInterest](http://www.w3.org/ns/sosa/FeatureOfInterest) (c)<br />
-Sub-classes |[plot-x:EnvironmentalSystem](http://linked.data.gov.au/def/plot/x/EnvironmentalSystem) (c)<br />[plot-x:EnvironmentalZone](http://linked.data.gov.au/def/plot/x/EnvironmentalZone) (c)<br />
+Sub-classes |[plot-x:EnvironmentalZone](http://linked.data.gov.au/def/plot/x/EnvironmentalZone) (c)<br />[plot-x:EnvironmentalSystem](http://linked.data.gov.au/def/plot/x/EnvironmentalSystem) (c)<br />
 ### Environmental region defined primarily by its function and membership
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/plot/x/EnvironmentalSystem`
-Super-classes |[plot-x:EnvironmentalContinuant](http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant) (c)<br />[owl:Thing](http://www.w3.org/2002/07/owl#Thing) (c)<br />
+Super-classes |[owl:Thing](http://www.w3.org/2002/07/owl#Thing) (c)<br />[plot-x:EnvironmentalContinuant](http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant) (c)<br />
 Sub-classes |[plot-x:EcologicalCommunity](http://linked.data.gov.au/def/plot/x/EcologicalCommunity) (c)<br />
 ### Environmental region defined primarily by its location and extent
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/plot/x/EnvironmentalZone`
-Super-classes |[plot-x:EnvironmentalContinuant](http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant) (c)<br />[owl:Thing](http://www.w3.org/2002/07/owl#Thing) (c)<br />
+Super-classes |[owl:Thing](http://www.w3.org/2002/07/owl#Thing) (c)<br />[plot-x:EnvironmentalContinuant](http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant) (c)<br />
 ### Flux tower
 Property | Value
 --- | ---
@@ -152,7 +147,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/plot/x/Observation`
 Super-classes |[sosa:Observation](http://www.w3.org/ns/sosa/Observation) (c)<br />
-Restrictions |[ssn-ext:hasUltimateFeatureOfInterest](http://www.w3.org/ns/ssn/ext/hasUltimateFeatureOfInterest) **only** ([plot:Site](http://linked.data.gov.au/def/plot/Site) (c) or [plot:OrganismOccurence](http://linked.data.gov.au/def/plot/OrganismOccurence) (c) or [plot-x:EnvironmentalContinuant](http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant) (c) or [plot:OrganismOccurence](http://linked.data.gov.au/def/plot/OrganismOccurence) (c))<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **only** ([plot:Site](http://linked.data.gov.au/def/plot/Site) (c) or [plot:OrganismOccurence](http://linked.data.gov.au/def/plot/OrganismOccurence) (c) or [plot-x:EnvironmentalContinuant](http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant) (c) or [plot:OrganismOccurence](http://linked.data.gov.au/def/plot/OrganismOccurence) (c))<br />
+Restrictions |[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **only** ([plot:Site](http://linked.data.gov.au/def/plot/Site) (c) or [plot:OrganismOccurence](http://linked.data.gov.au/def/plot/OrganismOccurence) (c) or [plot-x:EnvironmentalContinuant](http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant) (c) or [plot:OrganismOccurence](http://linked.data.gov.au/def/plot/OrganismOccurence) (c))<br />[ssn-ext:hasUltimateFeatureOfInterest](http://www.w3.org/ns/ssn/ext/hasUltimateFeatureOfInterest) **only** ([plot:Site](http://linked.data.gov.au/def/plot/Site) (c) or [plot:OrganismOccurence](http://linked.data.gov.au/def/plot/OrganismOccurence) (c) or [plot-x:EnvironmentalContinuant](http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant) (c) or [plot:OrganismOccurence](http://linked.data.gov.au/def/plot/OrganismOccurence) (c))<br />
 ### Location of study
 Property | Value
 --- | ---
@@ -168,10 +163,9 @@ Restrictions |[prov:used](http://www.w3.org/ns/prov#used) **some** [plot-x:Study
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/plot/x/Survey`
-Description | <p>Survey is composed of a set of Observations and ObservationCollections, which may have a site as its feature-of-interest
-In this context the value of feature-of-interest is expected to be the value of the chain   (ssn-ext:hasMember)+/sosa:hasFeatureOfInterest</p>
+Description | <p>Survey is composed of a set of Observations and ObservationCollections, which may have a site as its feature-of-interest In this context the value of feature-of-interest is expected to be the value of the chain   (ssn-ext:hasMember)+/sosa:hasFeatureOfInterest</p>
 Super-classes |[prov:Activity](http://www.w3.org/ns/prov#Activity) (c)<br />
-Restrictions |[dcterms:title](http://purl.org/dc/terms/title) **exactly** 1<br />[prov:wasAssociatedWith](http://www.w3.org/ns/prov#wasAssociatedWith) **some** [prov:Organization](http://www.w3.org/ns/prov#Organization) (c)<br />[http://purl.org/dc/elements/1.1/creator](http://purl.org/dc/elements/1.1/creator) **min** 1<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **min** 1 [plot:Site](http://linked.data.gov.au/def/plot/Site) (c)<br />[dcterms:accessRights](http://purl.org/dc/terms/accessRights) **exactly** 1 [http://www.w3.org/ns/odrl/2/Permission](http://www.w3.org/ns/odrl/2/Permission) (c)<br />[locn:location](http://www.w3.org/ns/locn#location) **only** [skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />[dcterms:license](http://purl.org/dc/terms/license) **exactly** 1 [http://www.w3.org/ns/odrl/2/Policy](http://www.w3.org/ns/odrl/2/Policy) (c)<br />
+Restrictions |[dcterms:license](http://purl.org/dc/terms/license) **exactly** 1 [http://www.w3.org/ns/odrl/2/Policy](http://www.w3.org/ns/odrl/2/Policy) (c)<br />[dcterms:accessRights](http://purl.org/dc/terms/accessRights) **exactly** 1 [http://www.w3.org/ns/odrl/2/Permission](http://www.w3.org/ns/odrl/2/Permission) (c)<br />[http://purl.org/dc/elements/1.1/creator](http://purl.org/dc/elements/1.1/creator) **min** 1<br />[prov:wasAssociatedWith](http://www.w3.org/ns/prov#wasAssociatedWith) **some** [prov:Organization](http://www.w3.org/ns/prov#Organization) (c)<br />[sosa:hasFeatureOfInterest](http://www.w3.org/ns/sosa/hasFeatureOfInterest) **min** 1 [plot:Site](http://linked.data.gov.au/def/plot/Site) (c)<br />[locn:location](http://www.w3.org/ns/locn#location) **only** [skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />[dcterms:title](http://purl.org/dc/terms/title) **exactly** 1<br />
 ### Taxon assignment observation
 Property | Value
 --- | ---

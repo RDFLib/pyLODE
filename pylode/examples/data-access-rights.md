@@ -19,7 +19,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
   * RDF ([data-access-rights.ttl](turtle))
 ### Description
 <p>Data access rights control how users and systems access a data resource.</p>
-* **History Note:** This vocabulary is taken from the COAR Controlled Vocabularies Interest Group (http://vocabularies.coar-repositories.org/documentation/access_rights/) but is redelivered as that vocabulary isn't well presented online.
+* **History Note:** <p>This vocabulary is taken from the COAR Controlled Vocabularies Interest Group (http://vocabularies.coar-repositories.org/documentation/access_rights/) but is redelivered as that vocabulary isn't well presented online.</p>
 
 ## Table of Contents
 1. [Namespaces](#namespaces)

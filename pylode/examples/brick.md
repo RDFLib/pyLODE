@@ -654,7 +654,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Air`
 Super-classes |[brick:Gas](Gas) (c)<br />
-Sub-classes |[brick:Mixed_Air](Mixed_Air) (c)<br />[brick:Return_Air](Return_Air) (c)<br />[brick:Exhaust_Air](Exhaust_Air) (c)<br />[brick:Supply_Air](Supply_Air) (c)<br />[brick:Outside_Air](Outside_Air) (c)<br />
+Sub-classes |[brick:Return_Air](Return_Air) (c)<br />[brick:Exhaust_Air](Exhaust_Air) (c)<br />[brick:Outside_Air](Outside_Air) (c)<br />[brick:Supply_Air](Supply_Air) (c)<br />[brick:Mixed_Air](Mixed_Air) (c)<br />
 ### Air_Enthalpy_Sensor
 Property | Value
 --- | ---
@@ -671,20 +671,20 @@ Sub-classes |[brick:Exhaust_Air_Stack_Flow_Dead_Band_Setpoint](Exhaust_Air_Stack
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Air_Flow_Demand_Setpoint`
-Super-classes |[brick:Air_Flow_Setpoint](Air_Flow_Setpoint) (c)<br />[brick:Demand_Setpoint](Demand_Setpoint) (c)<br />
+Super-classes |[brick:Demand_Setpoint](Demand_Setpoint) (c)<br />[brick:Air_Flow_Setpoint](Air_Flow_Setpoint) (c)<br />
 Sub-classes |[brick:Discharge_Air_Flow_Demand_Setpoint](Discharge_Air_Flow_Demand_Setpoint) (c)<br />[brick:Supply_Air_Flow_Demand_Setpoint](Supply_Air_Flow_Demand_Setpoint) (c)<br />
 ### Air_Flow_Sensor
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Air_Flow_Sensor`
 Super-classes |[brick:Flow_Sensor](Flow_Sensor) (c)<br />
-Sub-classes |[brick:Fan_Air_Flow_Sensor](Fan_Air_Flow_Sensor) (c)<br />[brick:Supply_Air_Flow_Sensor](Supply_Air_Flow_Sensor) (c)<br />[brick:Fume_Hood_Air_Flow_Sensor](Fume_Hood_Air_Flow_Sensor) (c)<br />[brick:Return_Air_Flow_Sensor](Return_Air_Flow_Sensor) (c)<br />[brick:Bypass_Air_Flow_Sensor](Bypass_Air_Flow_Sensor) (c)<br />[brick:Discharge_Air_Flow_Sensor](Discharge_Air_Flow_Sensor) (c)<br />[brick:Exhaust_Air_Flow_Sensor](Exhaust_Air_Flow_Sensor) (c)<br />[brick:Outside_Air_Flow_Sensor](Outside_Air_Flow_Sensor) (c)<br />
+Sub-classes |[brick:Bypass_Air_Flow_Sensor](Bypass_Air_Flow_Sensor) (c)<br />[brick:Outside_Air_Flow_Sensor](Outside_Air_Flow_Sensor) (c)<br />[brick:Discharge_Air_Flow_Sensor](Discharge_Air_Flow_Sensor) (c)<br />[brick:Return_Air_Flow_Sensor](Return_Air_Flow_Sensor) (c)<br />[brick:Exhaust_Air_Flow_Sensor](Exhaust_Air_Flow_Sensor) (c)<br />[brick:Fume_Hood_Air_Flow_Sensor](Fume_Hood_Air_Flow_Sensor) (c)<br />[brick:Supply_Air_Flow_Sensor](Supply_Air_Flow_Sensor) (c)<br />[brick:Fan_Air_Flow_Sensor](Fan_Air_Flow_Sensor) (c)<br />
 ### Air_Flow_Setpoint
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Air_Flow_Setpoint`
 Super-classes |[brick:Flow_Setpoint](Flow_Setpoint) (c)<br />
-Sub-classes |[brick:Fan_Air_Flow_Setpoint](Fan_Air_Flow_Setpoint) (c)<br />[brick:Supply_Air_Flow_Setpoint](Supply_Air_Flow_Setpoint) (c)<br />[brick:Outside_Air_Flow_Setpoint](Outside_Air_Flow_Setpoint) (c)<br />[brick:Air_Flow_Demand_Setpoint](Air_Flow_Demand_Setpoint) (c)<br />[brick:Exhaust_Air_Flow_Setpoint](Exhaust_Air_Flow_Setpoint) (c)<br />[brick:Discharge_Air_Flow_Setpoint](Discharge_Air_Flow_Setpoint) (c)<br />
+Sub-classes |[brick:Outside_Air_Flow_Setpoint](Outside_Air_Flow_Setpoint) (c)<br />[brick:Supply_Air_Flow_Setpoint](Supply_Air_Flow_Setpoint) (c)<br />[brick:Fan_Air_Flow_Setpoint](Fan_Air_Flow_Setpoint) (c)<br />[brick:Air_Flow_Demand_Setpoint](Air_Flow_Demand_Setpoint) (c)<br />[brick:Exhaust_Air_Flow_Setpoint](Exhaust_Air_Flow_Setpoint) (c)<br />[brick:Discharge_Air_Flow_Setpoint](Discharge_Air_Flow_Setpoint) (c)<br />
 ### Air_Flow_Setpoint_Limit
 Property | Value
 --- | ---
@@ -696,7 +696,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Air_Grains_Sensor`
 Super-classes |[brick:Sensor](Sensor) (c)<br />
-Sub-classes |[brick:Outside_Air_Grains_Sensor](Outside_Air_Grains_Sensor) (c)<br />[brick:Return_Air_Grains_Sensor](Return_Air_Grains_Sensor) (c)<br />
+Sub-classes |[brick:Return_Air_Grains_Sensor](Return_Air_Grains_Sensor) (c)<br />[brick:Outside_Air_Grains_Sensor](Outside_Air_Grains_Sensor) (c)<br />
 ### Air_Handler_Unit
 Property | Value
 --- | ---
@@ -708,13 +708,13 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Air_Humidity_Sensor`
 Super-classes |[brick:Humidity_Sensor](Humidity_Sensor) (c)<br />
-Sub-classes |[brick:Relative_Humidity_Sensor:](Relative_Humidity_Sensor:) (c)<br />[brick:Outside_Air_Humidity_Sensor:](Outside_Air_Humidity_Sensor:) (c)<br />[brick:Zone_Humidity_Sensor:](Zone_Humidity_Sensor:) (c)<br />[brick:Supply_Air_Humidity_Sensor:](Supply_Air_Humidity_Sensor:) (c)<br />[brick:Return_Air_Humidity_Sensor:](Return_Air_Humidity_Sensor:) (c)<br />[brick:Discharge_Air_Humidity_Sensor:](Discharge_Air_Humidity_Sensor:) (c)<br />[brick:Exhaust_Air_Humidity_Sensor:](Exhaust_Air_Humidity_Sensor:) (c)<br />
+Sub-classes |[brick:Return_Air_Humidity_Sensor:](Return_Air_Humidity_Sensor:) (c)<br />[brick:Outside_Air_Humidity_Sensor:](Outside_Air_Humidity_Sensor:) (c)<br />[brick:Relative_Humidity_Sensor:](Relative_Humidity_Sensor:) (c)<br />[brick:Supply_Air_Humidity_Sensor:](Supply_Air_Humidity_Sensor:) (c)<br />[brick:Discharge_Air_Humidity_Sensor:](Discharge_Air_Humidity_Sensor:) (c)<br />[brick:Exhaust_Air_Humidity_Sensor:](Exhaust_Air_Humidity_Sensor:) (c)<br />[brick:Zone_Humidity_Sensor:](Zone_Humidity_Sensor:) (c)<br />
 ### Air_Quality
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Air_Quality`
 Super-classes |[brick:Quantity](Quantity) (c)<br />
-Sub-classes |[brick:PM25](PM25) (c)<br />[brick:TVOC](TVOC) (c)<br />[brick:PM10](PM10) (c)<br />[brick:CO2](CO2) (c)<br />
+Sub-classes |[brick:PM25](PM25) (c)<br />[brick:PM10](PM10) (c)<br />[brick:TVOC](TVOC) (c)<br />[brick:CO2](CO2) (c)<br />
 ### Air_Static_Pressure_Increase_Decrease_Step_Setpoint
 Property | Value
 --- | ---
@@ -730,13 +730,13 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Air_Temperature_Sensor`
 Super-classes |[brick:Temperature_Sensor](Temperature_Sensor) (c)<br />
-Sub-classes |[brick:Return_Air_Temperature_Sensor](Return_Air_Temperature_Sensor) (c)<br />[brick:Outside_Air_Temperature_Sensor](Outside_Air_Temperature_Sensor) (c)<br />[brick:Zone_Air_Temperature_Sensor](Zone_Air_Temperature_Sensor) (c)<br />[brick:Discharge_Air_Temperature_Sensor](Discharge_Air_Temperature_Sensor) (c)<br />[brick:Mixed_Air_Temperature_Sensor](Mixed_Air_Temperature_Sensor) (c)<br />[brick:Exhaust_Air_Temperature_Sensor](Exhaust_Air_Temperature_Sensor) (c)<br />
+Sub-classes |[brick:Outside_Air_Temperature_Sensor](Outside_Air_Temperature_Sensor) (c)<br />[brick:Mixed_Air_Temperature_Sensor](Mixed_Air_Temperature_Sensor) (c)<br />[brick:Return_Air_Temperature_Sensor](Return_Air_Temperature_Sensor) (c)<br />[brick:Discharge_Air_Temperature_Sensor](Discharge_Air_Temperature_Sensor) (c)<br />[brick:Zone_Air_Temperature_Sensor](Zone_Air_Temperature_Sensor) (c)<br />[brick:Exhaust_Air_Temperature_Sensor](Exhaust_Air_Temperature_Sensor) (c)<br />
 ### Air_Temperature_Setpoint
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Air_Temperature_Setpoint`
 Super-classes |[brick:Temperature_Setpoint](Temperature_Setpoint) (c)<br />
-Sub-classes |[brick:Room_Air_Temperature_Setpoint](Room_Air_Temperature_Setpoint) (c)<br />[brick:Discharge_Air_Temperature_Setpoint](Discharge_Air_Temperature_Setpoint) (c)<br />[brick:Outside_Air_Temperature_Setpoint](Outside_Air_Temperature_Setpoint) (c)<br />[brick:Mixed_Air_Temperature_Setpoint](Mixed_Air_Temperature_Setpoint) (c)<br />
+Sub-classes |[brick:Outside_Air_Temperature_Setpoint](Outside_Air_Temperature_Setpoint) (c)<br />[brick:Discharge_Air_Temperature_Setpoint](Discharge_Air_Temperature_Setpoint) (c)<br />[brick:Room_Air_Temperature_Setpoint](Room_Air_Temperature_Setpoint) (c)<br />[brick:Mixed_Air_Temperature_Setpoint](Mixed_Air_Temperature_Setpoint) (c)<br />
 ### Alternating_Current_Frequency
 Property | Value
 --- | ---
@@ -747,7 +747,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Angle_Sensor`
 Super-classes |[brick:Sensor](Sensor) (c)<br />
-Sub-classes |[brick:Solar_Zenith_Angle_Sensor](Solar_Zenith_Angle_Sensor) (c)<br />[brick:Solar_Azimuth_Angle_Sensor](Solar_Azimuth_Angle_Sensor) (c)<br />
+Sub-classes |[brick:Solar_Azimuth_Angle_Sensor](Solar_Azimuth_Angle_Sensor) (c)<br />[brick:Solar_Zenith_Angle_Sensor](Solar_Zenith_Angle_Sensor) (c)<br />
 ### Apparent_Power
 Property | Value
 --- | ---
@@ -850,7 +850,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#CO2_Sensor`
 Super-classes |[brick:Sensor](Sensor) (c)<br />
-Sub-classes |[brick:Return_Air_CO2_Sensor](Return_Air_CO2_Sensor) (c)<br />[brick:CO2_Differential_Sensor](CO2_Differential_Sensor) (c)<br />[brick:CO2_Level_Sensor](CO2_Level_Sensor) (c)<br />[brick:Outside_Air_CO2_Sensor](Outside_Air_CO2_Sensor) (c)<br />
+Sub-classes |[brick:CO2_Level_Sensor](CO2_Level_Sensor) (c)<br />[brick:CO2_Differential_Sensor](CO2_Differential_Sensor) (c)<br />[brick:Return_Air_CO2_Sensor](Return_Air_CO2_Sensor) (c)<br />[brick:Outside_Air_CO2_Sensor](Outside_Air_CO2_Sensor) (c)<br />
 ### CO2_Setpoint
 Property | Value
 --- | ---
@@ -1126,7 +1126,7 @@ Super-classes |[brick:Supply_Air_Flow_Setpoint](Supply_Air_Flow_Setpoint) (c)<br
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Cooling_Supply_Air_Temperature_Dead_Band_Setpoint`
-Super-classes |[brick:Supply_Air_Temperature_Dead_Band_Setpoint](Supply_Air_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Dead_Band_Setpoint](Dead_Band_Setpoint) (c)<br />
+Super-classes |[brick:Dead_Band_Setpoint](Dead_Band_Setpoint) (c)<br />[brick:Supply_Air_Temperature_Dead_Band_Setpoint](Supply_Air_Temperature_Dead_Band_Setpoint) (c)<br />
 ### Cooling_Supply_Air_Temperature_Integral_Time_Setpoint
 Property | Value
 --- | ---
@@ -1168,7 +1168,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Current_Sensor`
 Super-classes |[brick:Sensor](Sensor) (c)<br />
-Sub-classes |[brick:Motor_Current_Sensor](Motor_Current_Sensor) (c)<br />[brick:Load_Current_Sensor](Load_Current_Sensor) (c)<br />[brick:Photovoltaic_Current_Output_Sensor](Photovoltaic_Current_Output_Sensor) (c)<br />
+Sub-classes |[brick:Load_Current_Sensor](Load_Current_Sensor) (c)<br />[brick:Motor_Current_Sensor](Motor_Current_Sensor) (c)<br />[brick:Photovoltaic_Current_Output_Sensor](Photovoltaic_Current_Output_Sensor) (c)<br />
 ### Current_Total_Harmonic_Distortion
 Property | Value
 --- | ---
@@ -1185,7 +1185,7 @@ Property | Value
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Damper`
 Description | <p>Element inserted into an air-distribution system or element of an air-distribution system permitting modification of the air resistance of the system and consequently changing the airflow rate or shutting off the airflow.</p>
 Super-classes |[brick:HVAC](HVAC) (c)<br />
-Sub-classes |[brick:Return_Damper](Return_Damper) (c)<br />[brick:Outside_Damper](Outside_Damper) (c)<br />[brick:Economizer_Damper](Economizer_Damper) (c)<br />[brick:Exhaust_Damper](Exhaust_Damper) (c)<br />
+Sub-classes |[brick:Economizer_Damper](Economizer_Damper) (c)<br />[brick:Outside_Damper](Outside_Damper) (c)<br />[brick:Return_Damper](Return_Damper) (c)<br />[brick:Exhaust_Damper](Exhaust_Damper) (c)<br />
 ### Damper_Position_Limit
 Property | Value
 --- | ---
@@ -1212,7 +1212,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Dead_Band_Setpoint`
 Super-classes |[brick:Setpoint](Setpoint) (c)<br />
-Sub-classes |[brick:Supply_Air_Temperature_Dead_Band_Setpoint](Supply_Air_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Air_Flow_Dead_Band_Setpoint](Air_Flow_Dead_Band_Setpoint) (c)<br />[brick:Chilled_Water_Differential_Pressure_Dead_Band_Setpoint](Chilled_Water_Differential_Pressure_Dead_Band_Setpoint) (c)<br />[brick:Cooling_Supply_Air_Temperature_Dead_Band_Setpoint](Cooling_Supply_Air_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Supply_Water_Differential_Pressure_Dead_Band_Setpoint](Supply_Water_Differential_Pressure_Dead_Band_Setpoint) (c)<br />[brick:Supply_Water_Temperature_Dead_Band_Setpoint](Supply_Water_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Differential_Pressure_Dead_Band_Setpoint](Differential_Pressure_Dead_Band_Setpoint) (c)<br />[brick:Discharge_Air_Temperature_Dead_Band_Setpoint](Discharge_Air_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Cooling_Discharge_Air_Temperature_Dead_Band_Setpoint](Cooling_Discharge_Air_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Temperature_Dead_Band_Setpoint](Temperature_Dead_Band_Setpoint) (c)<br />[brick:Static_Pressure_Dead_Band_Setpoint](Static_Pressure_Dead_Band_Setpoint) (c)<br />
+Sub-classes |[brick:Supply_Water_Temperature_Dead_Band_Setpoint](Supply_Water_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Cooling_Supply_Air_Temperature_Dead_Band_Setpoint](Cooling_Supply_Air_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Supply_Air_Temperature_Dead_Band_Setpoint](Supply_Air_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Discharge_Air_Temperature_Dead_Band_Setpoint](Discharge_Air_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Chilled_Water_Differential_Pressure_Dead_Band_Setpoint](Chilled_Water_Differential_Pressure_Dead_Band_Setpoint) (c)<br />[brick:Temperature_Dead_Band_Setpoint](Temperature_Dead_Band_Setpoint) (c)<br />[brick:Cooling_Discharge_Air_Temperature_Dead_Band_Setpoint](Cooling_Discharge_Air_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Supply_Water_Differential_Pressure_Dead_Band_Setpoint](Supply_Water_Differential_Pressure_Dead_Band_Setpoint) (c)<br />[brick:Differential_Pressure_Dead_Band_Setpoint](Differential_Pressure_Dead_Band_Setpoint) (c)<br />[brick:Static_Pressure_Dead_Band_Setpoint](Static_Pressure_Dead_Band_Setpoint) (c)<br />[brick:Air_Flow_Dead_Band_Setpoint](Air_Flow_Dead_Band_Setpoint) (c)<br />
 ### Dehumidification_On_Off_Status
 Property | Value
 --- | ---
@@ -1239,7 +1239,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Demand_Setpoint`
 Super-classes |[brick:Setpoint](Setpoint) (c)<br />
-Sub-classes |[brick:Air_Flow_Demand_Setpoint](Air_Flow_Demand_Setpoint) (c)<br />[brick:Cooling_Request_Percent_Setpoint](Cooling_Request_Percent_Setpoint) (c)<br />[brick:Cooling_Demand_Setpoint](Cooling_Demand_Setpoint) (c)<br />[brick:Cooling_Request_Setpoint](Cooling_Request_Setpoint) (c)<br />[brick:Heating_Request_Setpoint](Heating_Request_Setpoint) (c)<br />[brick:Heating_Request_Percent_Setpoint](Heating_Request_Percent_Setpoint) (c)<br />[brick:Preheat_Demand_Setpoint](Preheat_Demand_Setpoint) (c)<br />[brick:Heating_Demand_Setpoint](Heating_Demand_Setpoint) (c)<br />
+Sub-classes |[brick:Heating_Request_Setpoint](Heating_Request_Setpoint) (c)<br />[brick:Heating_Demand_Setpoint](Heating_Demand_Setpoint) (c)<br />[brick:Cooling_Request_Percent_Setpoint](Cooling_Request_Percent_Setpoint) (c)<br />[brick:Preheat_Demand_Setpoint](Preheat_Demand_Setpoint) (c)<br />[brick:Heating_Request_Percent_Setpoint](Heating_Request_Percent_Setpoint) (c)<br />[brick:Air_Flow_Demand_Setpoint](Air_Flow_Demand_Setpoint) (c)<br />[brick:Cooling_Request_Setpoint](Cooling_Request_Setpoint) (c)<br />[brick:Cooling_Demand_Setpoint](Cooling_Demand_Setpoint) (c)<br />
 ### Dew_Point_Setpoint
 Property | Value
 --- | ---
@@ -1255,13 +1255,13 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Dewpoint_Sensor`
 Super-classes |[brick:Sensor](Sensor) (c)<br />
-Sub-classes |[brick:Return_Air_Dewpoint_Sensor](Return_Air_Dewpoint_Sensor) (c)<br />[brick:Outside_Air_Dewpoint_Sensor](Outside_Air_Dewpoint_Sensor) (c)<br />
+Sub-classes |[brick:Outside_Air_Dewpoint_Sensor](Outside_Air_Dewpoint_Sensor) (c)<br />[brick:Return_Air_Dewpoint_Sensor](Return_Air_Dewpoint_Sensor) (c)<br />
 ### Differential_Pressure_Dead_Band_Setpoint
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Differential_Pressure_Dead_Band_Setpoint`
 Super-classes |[brick:Dead_Band_Setpoint](Dead_Band_Setpoint) (c)<br />
-Sub-classes |[brick:Hot_Water_Differential_Pressure_Dead_Band_Setpoint](Hot_Water_Differential_Pressure_Dead_Band_Setpoint) (c)<br />[brick:Chilled_Water_Pump_Differential_Pressure_Dead_Band_Setpoint](Chilled_Water_Pump_Differential_Pressure_Dead_Band_Setpoint) (c)<br />
+Sub-classes |[brick:Chilled_Water_Pump_Differential_Pressure_Dead_Band_Setpoint](Chilled_Water_Pump_Differential_Pressure_Dead_Band_Setpoint) (c)<br />[brick:Hot_Water_Differential_Pressure_Dead_Band_Setpoint](Hot_Water_Differential_Pressure_Dead_Band_Setpoint) (c)<br />
 ### Differential_Pressure_Increase_Decrease_Step_Setpoint
 Property | Value
 --- | ---
@@ -1285,7 +1285,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Differential_Pressure_Load_Shed_Status`
 Super-classes |[brick:Load_Shed_Status](Load_Shed_Status) (c)<br />
-Sub-classes |[brick:Hot_Water_Differential_Pressure_Load_Shed_Reset_Status](Hot_Water_Differential_Pressure_Load_Shed_Reset_Status) (c)<br />[brick:Chilled_Water_Differential_Pressure_Load_Shed_Reset_Status](Chilled_Water_Differential_Pressure_Load_Shed_Reset_Status) (c)<br />[brick:Hot_Water_Discharge_Temperature_Load_Shed_Status](Hot_Water_Discharge_Temperature_Load_Shed_Status) (c)<br />[brick:Chilled_Water_Differential_Pressure_Load_Shed_Status](Chilled_Water_Differential_Pressure_Load_Shed_Status) (c)<br />[brick:Hot_Water_Supply_Temperature_Load_Shed_Status](Hot_Water_Supply_Temperature_Load_Shed_Status) (c)<br />[brick:Hot_Water_Differential_Pressure_Load_Shed_Status](Hot_Water_Differential_Pressure_Load_Shed_Status) (c)<br />
+Sub-classes |[brick:Chilled_Water_Differential_Pressure_Load_Shed_Reset_Status](Chilled_Water_Differential_Pressure_Load_Shed_Reset_Status) (c)<br />[brick:Hot_Water_Differential_Pressure_Load_Shed_Reset_Status](Hot_Water_Differential_Pressure_Load_Shed_Reset_Status) (c)<br />[brick:Hot_Water_Differential_Pressure_Load_Shed_Status](Hot_Water_Differential_Pressure_Load_Shed_Status) (c)<br />[brick:Hot_Water_Discharge_Temperature_Load_Shed_Status](Hot_Water_Discharge_Temperature_Load_Shed_Status) (c)<br />[brick:Chilled_Water_Differential_Pressure_Load_Shed_Status](Chilled_Water_Differential_Pressure_Load_Shed_Status) (c)<br />[brick:Hot_Water_Supply_Temperature_Load_Shed_Status](Hot_Water_Supply_Temperature_Load_Shed_Status) (c)<br />
 ### Differential_Pressure_Proportional_Band
 Property | Value
 --- | ---
@@ -1296,7 +1296,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Differential_Pressure_Sensor`
 Super-classes |[brick:Pressure_Sensor](Pressure_Sensor) (c)<br />
-Sub-classes |[brick:Hot_Water_Differential_Pressure_Sensor](Hot_Water_Differential_Pressure_Sensor) (c)<br />[brick:Heat_Wheel_Differential_Pressure_Sensor](Heat_Wheel_Differential_Pressure_Sensor) (c)<br />[brick:Chilled_Water_Differential_Pressure_Sensor](Chilled_Water_Differential_Pressure_Sensor) (c)<br />[brick:Filter_Differential_Pressure_Sensor](Filter_Differential_Pressure_Sensor) (c)<br />
+Sub-classes |[brick:Heat_Wheel_Differential_Pressure_Sensor](Heat_Wheel_Differential_Pressure_Sensor) (c)<br />[brick:Chilled_Water_Differential_Pressure_Sensor](Chilled_Water_Differential_Pressure_Sensor) (c)<br />[brick:Filter_Differential_Pressure_Sensor](Filter_Differential_Pressure_Sensor) (c)<br />[brick:Hot_Water_Differential_Pressure_Sensor](Hot_Water_Differential_Pressure_Sensor) (c)<br />
 ### Differential_Pressure_Setpoint
 Property | Value
 --- | ---
@@ -1314,13 +1314,13 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Differential_Speed_Sensor`
 Super-classes |[brick:Speed_Sensor](Speed_Sensor) (c)<br />
-Sub-classes |[brick:Return_Fan_Differential_Speed_Sensor](Return_Fan_Differential_Speed_Sensor) (c)<br />[brick:Heat_Wheel_Speed_Sensor](Heat_Wheel_Speed_Sensor) (c)<br />
+Sub-classes |[brick:Heat_Wheel_Speed_Sensor](Heat_Wheel_Speed_Sensor) (c)<br />[brick:Return_Fan_Differential_Speed_Sensor](Return_Fan_Differential_Speed_Sensor) (c)<br />
 ### Differential_Speed_Setpoint
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Differential_Speed_Setpoint`
 Super-classes |[brick:Speed_Setpoint](Speed_Setpoint) (c)<br />
-Sub-classes |[brick:Return_Discharge_Fan_Differential_Speed_Setpoint](Return_Discharge_Fan_Differential_Speed_Setpoint) (c)<br />[brick:Return_Fan_Differential_Speed_Setpoint](Return_Fan_Differential_Speed_Setpoint) (c)<br />[brick:Return_Supply_Fan_Differential_Speed_Setpoint](Return_Supply_Fan_Differential_Speed_Setpoint) (c)<br />
+Sub-classes |[brick:Return_Discharge_Fan_Differential_Speed_Setpoint](Return_Discharge_Fan_Differential_Speed_Setpoint) (c)<br />[brick:Return_Supply_Fan_Differential_Speed_Setpoint](Return_Supply_Fan_Differential_Speed_Setpoint) (c)<br />[brick:Return_Fan_Differential_Speed_Setpoint](Return_Fan_Differential_Speed_Setpoint) (c)<br />
 ### Dimmer
 Property | Value
 --- | ---
@@ -1343,7 +1343,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Direction_Status`
 Super-classes |[brick:Status](Status) (c)<br />
-Sub-classes |[brick:Motor_Direction_Status](Motor_Direction_Status) (c)<br />[brick:Run_Direction_Status](Run_Direction_Status) (c)<br />
+Sub-classes |[brick:Run_Direction_Status](Run_Direction_Status) (c)<br />[brick:Motor_Direction_Status](Motor_Direction_Status) (c)<br />
 ### Disable_Status
 Property | Value
 --- | ---
@@ -1358,7 +1358,7 @@ Super-classes |[brick:Pressure_Status](Pressure_Status) (c)<br />
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Discharge_Air_Flow_Demand_Setpoint`
-Super-classes |[brick:Discharge_Air_Flow_Setpoint](Discharge_Air_Flow_Setpoint) (c)<br />[brick:Air_Flow_Demand_Setpoint](Air_Flow_Demand_Setpoint) (c)<br />
+Super-classes |[brick:Air_Flow_Demand_Setpoint](Air_Flow_Demand_Setpoint) (c)<br />[brick:Discharge_Air_Flow_Setpoint](Discharge_Air_Flow_Setpoint) (c)<br />
 ### Discharge_Air_Flow_Sensor
 Property | Value
 --- | ---
@@ -1370,7 +1370,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Discharge_Air_Flow_Setpoint`
 Super-classes |[brick:Air_Flow_Setpoint](Air_Flow_Setpoint) (c)<br />
-Sub-classes |[brick:Cooling_Discharge_Air_Flow_Setpoint](Cooling_Discharge_Air_Flow_Setpoint) (c)<br />[brick:Discharge_Air_Flow_Demand_Setpoint](Discharge_Air_Flow_Demand_Setpoint) (c)<br />[brick:Heating_Discharge_Air_Flow_Setpoint](Heating_Discharge_Air_Flow_Setpoint) (c)<br />
+Sub-classes |[brick:Cooling_Discharge_Air_Flow_Setpoint](Cooling_Discharge_Air_Flow_Setpoint) (c)<br />[brick:Heating_Discharge_Air_Flow_Setpoint](Heating_Discharge_Air_Flow_Setpoint) (c)<br />[brick:Discharge_Air_Flow_Demand_Setpoint](Discharge_Air_Flow_Demand_Setpoint) (c)<br />
 ### Discharge_Air_Humidity_Sensor:
 Property | Value
 --- | ---
@@ -1406,7 +1406,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Discharge_Air_Temperature_Dead_Band_Setpoint`
 Super-classes |[brick:Dead_Band_Setpoint](Dead_Band_Setpoint) (c)<br />
-Sub-classes |[brick:Heating_Discharge_Air_Temperature_Dead_Band_Setpoint](Heating_Discharge_Air_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Cooling_Discharge_Air_Temperature_Dead_Band_Setpoint](Cooling_Discharge_Air_Temperature_Dead_Band_Setpoint) (c)<br />
+Sub-classes |[brick:Cooling_Discharge_Air_Temperature_Dead_Band_Setpoint](Cooling_Discharge_Air_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Heating_Discharge_Air_Temperature_Dead_Band_Setpoint](Heating_Discharge_Air_Temperature_Dead_Band_Setpoint) (c)<br />
 ### Discharge_Air_Temperature_Heating_Setpoint
 Property | Value
 --- | ---
@@ -1422,7 +1422,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Discharge_Air_Temperature_Sensor`
 Super-classes |[brick:Air_Temperature_Sensor](Air_Temperature_Sensor) (c)<br />
-Sub-classes |[brick:Heat_Wheel_Discharge_Air_Temperature_Sensor](Heat_Wheel_Discharge_Air_Temperature_Sensor) (c)<br />[brick:Preheat_Discharge_Air_Temperature_Sensor](Preheat_Discharge_Air_Temperature_Sensor) (c)<br />[brick:Cooling_Coil_Discharge_Air_Temperature_Sensor](Cooling_Coil_Discharge_Air_Temperature_Sensor) (c)<br />
+Sub-classes |[brick:Heat_Wheel_Discharge_Air_Temperature_Sensor](Heat_Wheel_Discharge_Air_Temperature_Sensor) (c)<br />[brick:Cooling_Coil_Discharge_Air_Temperature_Sensor](Cooling_Coil_Discharge_Air_Temperature_Sensor) (c)<br />[brick:Preheat_Discharge_Air_Temperature_Sensor](Preheat_Discharge_Air_Temperature_Sensor) (c)<br />
 ### Discharge_Air_Temperature_Setpoint
 Property | Value
 --- | ---
@@ -1470,7 +1470,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Duration_Sensor`
 Super-classes |[brick:Sensor](Sensor) (c)<br />
-Sub-classes |[brick:On_Timer_Sensor](On_Timer_Sensor) (c)<br />[brick:Rain_Duration_Sensor](Rain_Duration_Sensor) (c)<br />[brick:Run_Time_Sensor](Run_Time_Sensor) (c)<br />
+Sub-classes |[brick:Rain_Duration_Sensor](Rain_Duration_Sensor) (c)<br />[brick:On_Timer_Sensor](On_Timer_Sensor) (c)<br />[brick:Run_Time_Sensor](Run_Time_Sensor) (c)<br />
 ### EconCycle_On_Off_Status
 Property | Value
 --- | ---
@@ -1492,7 +1492,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Electric_Current`
 Super-classes |[brick:Current](Current) (c)<br />
-Sub-classes |[brick:Alternating_Current_Frequency](Alternating_Current_Frequency) (c)<br />[brick:Current_Angle](Current_Angle) (c)<br />[brick:Current_Magnitude](Current_Magnitude) (c)<br />[brick:Current_Imbalance](Current_Imbalance) (c)<br />[brick:Current_Total_Harmonic_Distortion](Current_Total_Harmonic_Distortion) (c)<br />
+Sub-classes |[brick:Current_Magnitude](Current_Magnitude) (c)<br />[brick:Current_Imbalance](Current_Imbalance) (c)<br />[brick:Current_Angle](Current_Angle) (c)<br />[brick:Current_Total_Harmonic_Distortion](Current_Total_Harmonic_Distortion) (c)<br />[brick:Alternating_Current_Frequency](Alternating_Current_Frequency) (c)<br />
 ### Electric_Energy
 Property | Value
 --- | ---
@@ -1503,13 +1503,13 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Electric_Power`
 Super-classes |[brick:Power](Power) (c)<br />
-Sub-classes |[brick:Reactive_Power](Reactive_Power) (c)<br />[brick:Apparent_Power](Apparent_Power) (c)<br />[brick:Complex_Power](Complex_Power) (c)<br />[brick:Active_Power](Active_Power) (c)<br />
+Sub-classes |[brick:Active_Power](Active_Power) (c)<br />[brick:Reactive_Power](Reactive_Power) (c)<br />[brick:Apparent_Power](Apparent_Power) (c)<br />[brick:Complex_Power](Complex_Power) (c)<br />
 ### Electric_Voltage
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Electric_Voltage`
 Super-classes |[brick:Voltage](Voltage) (c)<br />
-Sub-classes |[brick:Voltage_Magnitude](Voltage_Magnitude) (c)<br />[brick:Voltage_Angle](Voltage_Angle) (c)<br />[brick:Voltage_Imbalance](Voltage_Imbalance) (c)<br />
+Sub-classes |[brick:Voltage_Magnitude](Voltage_Magnitude) (c)<br />[brick:Voltage_Imbalance](Voltage_Imbalance) (c)<br />[brick:Voltage_Angle](Voltage_Angle) (c)<br />
 ### Elevator
 Property | Value
 --- | ---
@@ -1545,7 +1545,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Emergency_Power_Off_Status`
 Super-classes |[brick:Status](Status) (c)<br />
-Sub-classes |[brick:Emergency_Power_Off_System_Enable_Status](Emergency_Power_Off_System_Enable_Status) (c)<br />[brick:Emergency_Power_Off_Enable_Status](Emergency_Power_Off_Enable_Status) (c)<br />[brick:Emergency_Power_Off_Activated_By_High_Temperature_Status](Emergency_Power_Off_Activated_By_High_Temperature_Status) (c)<br />[brick:Emergency_Power_Off_Activated_By_Leak_Detection_System_Status](Emergency_Power_Off_Activated_By_Leak_Detection_System_Status) (c)<br />
+Sub-classes |[brick:Emergency_Power_Off_Activated_By_Leak_Detection_System_Status](Emergency_Power_Off_Activated_By_Leak_Detection_System_Status) (c)<br />[brick:Emergency_Power_Off_Enable_Status](Emergency_Power_Off_Enable_Status) (c)<br />[brick:Emergency_Power_Off_Activated_By_High_Temperature_Status](Emergency_Power_Off_Activated_By_High_Temperature_Status) (c)<br />[brick:Emergency_Power_Off_System_Enable_Status](Emergency_Power_Off_System_Enable_Status) (c)<br />
 ### Emergency_Power_Off_System_Enable_Status
 Property | Value
 --- | ---
@@ -1567,7 +1567,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Energy`
 Super-classes |[brick:Quantity](Quantity) (c)<br />
-Sub-classes |[brick:Electric_Energy](Electric_Energy) (c)<br />[brick:Thermal_Energy](Thermal_Energy) (c)<br />
+Sub-classes |[brick:Thermal_Energy](Thermal_Energy) (c)<br />[brick:Electric_Energy](Electric_Energy) (c)<br />
 ### Energy_Sensor
 Property | Value
 --- | ---
@@ -1594,7 +1594,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Enthalpy`
 Description | <p>(also known as heat content), thermodynamic quantity equal to the sum of the internal energy of a system plus the product of the pressure volume work done on the system. H = E + pv, where H = enthalpy or total heat content, E = internal energy of the system, p = pressure, and v = volume. (Compare to [[specific enthalpy]].)</p>
-Super-classes |[brick:Quantity](Quantity) (c)<br />[brick:Substance](Substance) (c)<br />
+Super-classes |[brick:Substance](Substance) (c)<br />[brick:Quantity](Quantity) (c)<br />
 ### Enthalpy_Sensor
 Property | Value
 --- | ---
@@ -1615,7 +1615,7 @@ Super-classes |[brick:Laboratory](Laboratory) (c)<br />
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Equipment`
-Sub-classes |[brick:Shading_System](Shading_System) (c)<br />[brick:Furniture](Furniture) (c)<br />[brick:Weather](Weather) (c)<br />[brick:Energy_Storage](Energy_Storage) (c)<br />[brick:Fire_Safety_System](Fire_Safety_System) (c)<br />[brick:Meter](Meter) (c)<br />[brick:Solar_Panel](Solar_Panel) (c)<br />[brick:Water_System](Water_System) (c)<br />[brick:PlugStrip](PlugStrip) (c)<br />[brick:Power_System](Power_System) (c)<br />[brick:Heating_Ventilation_Air_Conditioning_System](Heating_Ventilation_Air_Conditioning_System) (c)<br />[brick:Lighting_System](Lighting_System) (c)<br />[brick:Steam_System](Steam_System) (c)<br />[brick:Elevator](Elevator) (c)<br />[brick:HVAC](HVAC) (c)<br />
+Sub-classes |[brick:HVAC](HVAC) (c)<br />[brick:Energy_Storage](Energy_Storage) (c)<br />[brick:Fire_Safety_System](Fire_Safety_System) (c)<br />[brick:Water_System](Water_System) (c)<br />[brick:PlugStrip](PlugStrip) (c)<br />[brick:Shading_System](Shading_System) (c)<br />[brick:Meter](Meter) (c)<br />[brick:Weather](Weather) (c)<br />[brick:Steam_System](Steam_System) (c)<br />[brick:Solar_Panel](Solar_Panel) (c)<br />[brick:Heating_Ventilation_Air_Conditioning_System](Heating_Ventilation_Air_Conditioning_System) (c)<br />[brick:Lighting_System](Lighting_System) (c)<br />[brick:Elevator](Elevator) (c)<br />[brick:Furniture](Furniture) (c)<br />[brick:Power_System](Power_System) (c)<br />
 ### Evaporative_Heat_Exchanger
 Property | Value
 --- | ---
@@ -1690,7 +1690,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Exhaust_Air_Static_Pressure_Sensor:`
 Super-classes |[brick:Static_Pressure_Sensor](Static_Pressure_Sensor) (c)<br />
-Sub-classes |[brick:Average_Exhaust_Air_Static_Pressure_Sensor:](Average_Exhaust_Air_Static_Pressure_Sensor:) (c)<br />[brick:Lowest_Exhaust_Air_Static_Pressure_Sensor:](Lowest_Exhaust_Air_Static_Pressure_Sensor:) (c)<br />
+Sub-classes |[brick:Lowest_Exhaust_Air_Static_Pressure_Sensor:](Lowest_Exhaust_Air_Static_Pressure_Sensor:) (c)<br />[brick:Average_Exhaust_Air_Static_Pressure_Sensor:](Average_Exhaust_Air_Static_Pressure_Sensor:) (c)<br />
 ### Exhaust_Air_Static_Pressure_Setpoint
 Property | Value
 --- | ---
@@ -1722,7 +1722,7 @@ Property | Value
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Fan`
 Description | <p>Any device with two or more blades or vanes attached to a rotating shaft used to produce an airflow for the purpose of comfort, ventilation, exhaust, heating, cooling, or any other gaseous transport.</p>
 Super-classes |[brick:HVAC](HVAC) (c)<br />
-Sub-classes |[brick:Standby_Fan](Standby_Fan) (c)<br />[brick:Supply_Fan](Supply_Fan) (c)<br />[brick:Return_Fan](Return_Fan) (c)<br />[brick:Exhaust_Fan](Exhaust_Fan) (c)<br />[brick:Cooling_Tower_Fan](Cooling_Tower_Fan) (c)<br />
+Sub-classes |[brick:Standby_Fan](Standby_Fan) (c)<br />[brick:Supply_Fan](Supply_Fan) (c)<br />[brick:Exhaust_Fan](Exhaust_Fan) (c)<br />[brick:Cooling_Tower_Fan](Cooling_Tower_Fan) (c)<br />[brick:Return_Fan](Return_Fan) (c)<br />
 ### Fan_Air_Flow_Sensor
 Property | Value
 --- | ---
@@ -1803,7 +1803,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Flow_Sensor`
 Super-classes |[brick:Sensor](Sensor) (c)<br />
-Sub-classes |[brick:Water_Flow_Sensor](Water_Flow_Sensor) (c)<br />[brick:Air_Flow_Sensor](Air_Flow_Sensor) (c)<br />
+Sub-classes |[brick:Air_Flow_Sensor](Air_Flow_Sensor) (c)<br />[brick:Water_Flow_Sensor](Water_Flow_Sensor) (c)<br />
 ### Flow_Setpoint
 Property | Value
 --- | ---
@@ -1892,7 +1892,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#HVAC`
 Super-classes |[brick:Equipment](Equipment) (c)<br />
-Sub-classes |[brick:Fan](Fan) (c)<br />[brick:Condenser](Condenser) (c)<br />[brick:CRAC](CRAC) (c)<br />[brick:Computer_Room_Air_Conditioning](Computer_Room_Air_Conditioning) (c)<br />[brick:Valve](Valve) (c)<br />[brick:Damper](Damper) (c)<br />[brick:VFD](VFD) (c)<br />[brick:Heat_Exchanger](Heat_Exchanger) (c)<br />[brick:Terminal_Unit](Terminal_Unit) (c)<br />[brick:Chiller](Chiller) (c)<br />[brick:Pump](Pump) (c)<br />[brick:Coil](Coil) (c)<br />[brick:Fume_Hood](Fume_Hood) (c)<br />[brick:Air_Handler_Unit](Air_Handler_Unit) (c)<br />[brick:AHU](AHU) (c)<br />[brick:Boiler](Boiler) (c)<br />[brick:Economizer](Economizer) (c)<br />[brick:Space_Heater](Space_Heater) (c)<br />[brick:Thermostat](Thermostat) (c)<br />[brick:Variable_Frequency_Drive](Variable_Frequency_Drive) (c)<br />[brick:Compressor](Compressor) (c)<br />[brick:Filter](Filter) (c)<br />
+Sub-classes |[brick:Coil](Coil) (c)<br />[brick:VFD](VFD) (c)<br />[brick:Terminal_Unit](Terminal_Unit) (c)<br />[brick:Filter](Filter) (c)<br />[brick:Variable_Frequency_Drive](Variable_Frequency_Drive) (c)<br />[brick:Computer_Room_Air_Conditioning](Computer_Room_Air_Conditioning) (c)<br />[brick:Condenser](Condenser) (c)<br />[brick:Boiler](Boiler) (c)<br />[brick:Chiller](Chiller) (c)<br />[brick:Heat_Exchanger](Heat_Exchanger) (c)<br />[brick:Valve](Valve) (c)<br />[brick:Air_Handler_Unit](Air_Handler_Unit) (c)<br />[brick:Fume_Hood](Fume_Hood) (c)<br />[brick:CRAC](CRAC) (c)<br />[brick:Damper](Damper) (c)<br />[brick:Compressor](Compressor) (c)<br />[brick:Pump](Pump) (c)<br />[brick:Space_Heater](Space_Heater) (c)<br />[brick:Economizer](Economizer) (c)<br />[brick:AHU](AHU) (c)<br />[brick:Fan](Fan) (c)<br />[brick:Thermostat](Thermostat) (c)<br />
 ### HVAC_Zone
 Property | Value
 --- | ---
@@ -1918,7 +1918,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Heat_Exchanger`
 Super-classes |[brick:HVAC](HVAC) (c)<br />
-Sub-classes |[brick:Evaporative_Heat_Exchanger](Evaporative_Heat_Exchanger) (c)<br />[brick:Condenser_Heat_Exchanger](Condenser_Heat_Exchanger) (c)<br />
+Sub-classes |[brick:Condenser_Heat_Exchanger](Condenser_Heat_Exchanger) (c)<br />[brick:Evaporative_Heat_Exchanger](Evaporative_Heat_Exchanger) (c)<br />
 ### Heat_Exchanger_Discharge_Water_Temperature_Proportional_Band_Setpoint
 Property | Value
 --- | ---
@@ -2039,7 +2039,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Heating_Valve`
 Super-classes |[brick:Valve](Valve) (c)<br />
-Sub-classes |[brick:Preheat_Hot_Water_Valve](Preheat_Hot_Water_Valve) (c)<br />[brick:Reheat_Valve](Reheat_Valve) (c)<br />[brick:Domestic_Hot_Water_Valve](Domestic_Hot_Water_Valve) (c)<br />
+Sub-classes |[brick:Domestic_Hot_Water_Valve](Domestic_Hot_Water_Valve) (c)<br />[brick:Preheat_Hot_Water_Valve](Preheat_Hot_Water_Valve) (c)<br />[brick:Reheat_Valve](Reheat_Valve) (c)<br />
 ### Heating_Ventilation_Air_Conditioning_System
 Property | Value
 --- | ---
@@ -2157,7 +2157,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Hot_Water_Supply_Temperature_Sensor`
 Super-classes |[brick:Water_Temperature_Sensor](Water_Temperature_Sensor) (c)<br />
-Sub-classes |[brick:Medium_Temperature_Hot_Water_Supply_Temperature_Sensor](Medium_Temperature_Hot_Water_Supply_Temperature_Sensor) (c)<br />[brick:Domestic_Hot_Water_Supply_Temperature_Sensor](Domestic_Hot_Water_Supply_Temperature_Sensor) (c)<br />[brick:High_Temperature_Hot_Water_Supply_Temperature_Sensor](High_Temperature_Hot_Water_Supply_Temperature_Sensor) (c)<br />
+Sub-classes |[brick:Domestic_Hot_Water_Supply_Temperature_Sensor](Domestic_Hot_Water_Supply_Temperature_Sensor) (c)<br />[brick:High_Temperature_Hot_Water_Supply_Temperature_Sensor](High_Temperature_Hot_Water_Supply_Temperature_Sensor) (c)<br />[brick:Medium_Temperature_Hot_Water_Supply_Temperature_Sensor](Medium_Temperature_Hot_Water_Supply_Temperature_Sensor) (c)<br />
 ### Hot_Water_System
 Property | Value
 --- | ---
@@ -2189,7 +2189,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Humidity_Setpoint`
 Super-classes |[brick:Setpoint](Setpoint) (c)<br />
-Sub-classes |[brick:High_Humidity_Alarm_Setpoint](High_Humidity_Alarm_Setpoint) (c)<br />[brick:Low_Humidity_Alarm_Setpoint](Low_Humidity_Alarm_Setpoint) (c)<br />
+Sub-classes |[brick:Low_Humidity_Alarm_Setpoint](Low_Humidity_Alarm_Setpoint) (c)<br />[brick:High_Humidity_Alarm_Setpoint](High_Humidity_Alarm_Setpoint) (c)<br />
 ### Ice
 Property | Value
 --- | ---
@@ -2216,7 +2216,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Increase_Decrease_Step_Setpoint`
 Super-classes |[brick:Setpoint](Setpoint) (c)<br />
-Sub-classes |[brick:Temperature_Increase_Decrease_Step_Setpoint](Temperature_Increase_Decrease_Step_Setpoint) (c)<br />[brick:Static_Pressure_Increase_Decrease_Step_Setpoint](Static_Pressure_Increase_Decrease_Step_Setpoint) (c)<br />[brick:Differential_Pressure_Increase_Decrease_Step_Setpoint](Differential_Pressure_Increase_Decrease_Step_Setpoint) (c)<br />
+Sub-classes |[brick:Temperature_Increase_Decrease_Step_Setpoint](Temperature_Increase_Decrease_Step_Setpoint) (c)<br />[brick:Differential_Pressure_Increase_Decrease_Step_Setpoint](Differential_Pressure_Increase_Decrease_Step_Setpoint) (c)<br />[brick:Static_Pressure_Increase_Decrease_Step_Setpoint](Static_Pressure_Increase_Decrease_Step_Setpoint) (c)<br />
 ### Integral_Gain_Setpoint
 Property | Value
 --- | ---
@@ -2227,13 +2227,13 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Integral_Time_Setpoint`
 Super-classes |[brick:Setpoint](Setpoint) (c)<br />
-Sub-classes |[brick:Cooling_Discharge_Air_Temperature_Integral_Time_Setpoint](Cooling_Discharge_Air_Temperature_Integral_Time_Setpoint) (c)<br />[brick:Cooling_Supply_Air_Temperature_Integral_Time_Setpoint](Cooling_Supply_Air_Temperature_Integral_Time_Setpoint) (c)<br />[brick:Supply_Air_Static_Pressure_Integral_Time_Setpoint](Supply_Air_Static_Pressure_Integral_Time_Setpoint) (c)<br />[brick:Heating_Discharge_Air_Temperature_Integral_Time_Setpoint](Heating_Discharge_Air_Temperature_Integral_Time_Setpoint) (c)<br />[brick:Chilled_Water_Differential_Pressure_Integral_Time_Setpoint](Chilled_Water_Differential_Pressure_Integral_Time_Setpoint) (c)<br />[brick:Exhaust_Air_Flow_Integral_Time_Setpoint](Exhaust_Air_Flow_Integral_Time_Setpoint) (c)<br />[brick:Heating_Supply_Air_Temperature_Integral_Time_Setpoint](Heating_Supply_Air_Temperature_Integral_Time_Setpoint) (c)<br />[brick:Supply_Water_Temperature_Integral_Time_Setpoint](Supply_Water_Temperature_Integral_Time_Setpoint) (c)<br />[brick:Differential_Pressure_Integral_Time](Differential_Pressure_Integral_Time) (c)<br />[brick:Discharge_Air_Static_Pressure_Integral_Time_Setpoint](Discharge_Air_Static_Pressure_Integral_Time_Setpoint) (c)<br />[brick:Differential_Pressure_Integral_Time_Setpoint](Differential_Pressure_Integral_Time_Setpoint) (c)<br />[brick:Static_Pressure_Integral_Time_Setpoint](Static_Pressure_Integral_Time_Setpoint) (c)<br />[brick:Supply_Water_Differential_Pressure_Integral_Time_Setpoint](Supply_Water_Differential_Pressure_Integral_Time_Setpoint) (c)<br />
+Sub-classes |[brick:Differential_Pressure_Integral_Time_Setpoint](Differential_Pressure_Integral_Time_Setpoint) (c)<br />[brick:Discharge_Air_Static_Pressure_Integral_Time_Setpoint](Discharge_Air_Static_Pressure_Integral_Time_Setpoint) (c)<br />[brick:Static_Pressure_Integral_Time_Setpoint](Static_Pressure_Integral_Time_Setpoint) (c)<br />[brick:Cooling_Supply_Air_Temperature_Integral_Time_Setpoint](Cooling_Supply_Air_Temperature_Integral_Time_Setpoint) (c)<br />[brick:Supply_Air_Static_Pressure_Integral_Time_Setpoint](Supply_Air_Static_Pressure_Integral_Time_Setpoint) (c)<br />[brick:Supply_Water_Differential_Pressure_Integral_Time_Setpoint](Supply_Water_Differential_Pressure_Integral_Time_Setpoint) (c)<br />[brick:Exhaust_Air_Flow_Integral_Time_Setpoint](Exhaust_Air_Flow_Integral_Time_Setpoint) (c)<br />[brick:Differential_Pressure_Integral_Time](Differential_Pressure_Integral_Time) (c)<br />[brick:Heating_Supply_Air_Temperature_Integral_Time_Setpoint](Heating_Supply_Air_Temperature_Integral_Time_Setpoint) (c)<br />[brick:Chilled_Water_Differential_Pressure_Integral_Time_Setpoint](Chilled_Water_Differential_Pressure_Integral_Time_Setpoint) (c)<br />[brick:Cooling_Discharge_Air_Temperature_Integral_Time_Setpoint](Cooling_Discharge_Air_Temperature_Integral_Time_Setpoint) (c)<br />[brick:Heating_Discharge_Air_Temperature_Integral_Time_Setpoint](Heating_Discharge_Air_Temperature_Integral_Time_Setpoint) (c)<br />[brick:Supply_Water_Temperature_Integral_Time_Setpoint](Supply_Water_Temperature_Integral_Time_Setpoint) (c)<br />
 ### Interface
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Interface`
 Super-classes |[brick:Lighting_System](Lighting_System) (c)<br />
-Sub-classes |[brick:Touchpanel](Touchpanel) (c)<br />[brick:Switch](Switch) (c)<br />
+Sub-classes |[brick:Switch](Switch) (c)<br />[brick:Touchpanel](Touchpanel) (c)<br />
 ### Irradiance
 Property | Value
 --- | ---
@@ -2250,7 +2250,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Laboratory`
 Super-classes |[brick:Room](Room) (c)<br />
-Sub-classes |[brick:Environment_Box](Environment_Box) (c)<br />[brick:Freezer](Freezer) (c)<br />[brick:Cold_Box](Cold_Box) (c)<br />[brick:Hot_Box](Hot_Box) (c)<br />
+Sub-classes |[brick:Cold_Box](Cold_Box) (c)<br />[brick:Environment_Box](Environment_Box) (c)<br />[brick:Freezer](Freezer) (c)<br />[brick:Hot_Box](Hot_Box) (c)<br />
 ### Last_Fault_Code_Status
 Property | Value
 --- | ---
@@ -2299,13 +2299,13 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Limit`
 Super-classes |[brick:Point](Point) (c)<br />
-Sub-classes |[brick:Static_Pressure_Setpoint_Limit](Static_Pressure_Setpoint_Limit) (c)<br />[brick:Damper_Position_Limit](Damper_Position_Limit) (c)<br />[brick:Max_Limit](Max_Limit) (c)<br />[brick:Speed_Setpoint_Limit](Speed_Setpoint_Limit) (c)<br />[brick:Air_Flow_Setpoint_Limit](Air_Flow_Setpoint_Limit) (c)<br />[brick:Differential_Pressure_Setpoint_Limit](Differential_Pressure_Setpoint_Limit) (c)<br />[brick:Min_Limit](Min_Limit) (c)<br />
+Sub-classes |[brick:Static_Pressure_Setpoint_Limit](Static_Pressure_Setpoint_Limit) (c)<br />[brick:Differential_Pressure_Setpoint_Limit](Differential_Pressure_Setpoint_Limit) (c)<br />[brick:Air_Flow_Setpoint_Limit](Air_Flow_Setpoint_Limit) (c)<br />[brick:Max_Limit](Max_Limit) (c)<br />[brick:Damper_Position_Limit](Damper_Position_Limit) (c)<br />[brick:Min_Limit](Min_Limit) (c)<br />[brick:Speed_Setpoint_Limit](Speed_Setpoint_Limit) (c)<br />
 ### Liquid
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Liquid`
 Super-classes |[brick:Fluid](Fluid) (c)<br />
-Sub-classes |[brick:Water](Water) (c)<br />[brick:Oil](Oil) (c)<br />[brick:Gasoline](Gasoline) (c)<br />
+Sub-classes |[brick:Oil](Oil) (c)<br />[brick:Gasoline](Gasoline) (c)<br />[brick:Water](Water) (c)<br />
 ### Load_Current_Sensor
 Property | Value
 --- | ---
@@ -2322,7 +2322,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Load_Shed_Differential_Pressure_Setpoint`
 Super-classes |[brick:Differential_Pressure_Setpoint](Differential_Pressure_Setpoint) (c)<br />
-Sub-classes |[brick:Medium_Temperature_Hot_Water_Differential_Pressure_Load_Shed_Setpoint](Medium_Temperature_Hot_Water_Differential_Pressure_Load_Shed_Setpoint) (c)<br />[brick:Chilled_Water_Differential_Pressure_Load_Shed_Setpoint](Chilled_Water_Differential_Pressure_Load_Shed_Setpoint) (c)<br />
+Sub-classes |[brick:Chilled_Water_Differential_Pressure_Load_Shed_Setpoint](Chilled_Water_Differential_Pressure_Load_Shed_Setpoint) (c)<br />[brick:Medium_Temperature_Hot_Water_Differential_Pressure_Load_Shed_Setpoint](Medium_Temperature_Hot_Water_Differential_Pressure_Load_Shed_Setpoint) (c)<br />
 ### Load_Shed_Status
 Property | Value
 --- | ---
@@ -2338,7 +2338,7 @@ Super-classes |[brick:On_Off_Status](On_Off_Status) (c)<br />
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Location`
-Sub-classes |[brick:Space](Space) (c)<br />[brick:Floor](Floor) (c)<br />[brick:City](City) (c)<br />[brick:Room](Room) (c)<br />[brick:Basement](Basement) (c)<br />[brick:Roof](Roof) (c)<br />[brick:Wing](Wing) (c)<br />[brick:Building](Building) (c)<br />[brick:Zone](Zone) (c)<br />[brick:Outside](Outside) (c)<br />
+Sub-classes |[brick:Space](Space) (c)<br />[brick:Building](Building) (c)<br />[brick:Roof](Roof) (c)<br />[brick:Basement](Basement) (c)<br />[brick:Wing](Wing) (c)<br />[brick:Zone](Zone) (c)<br />[brick:Room](Room) (c)<br />[brick:Floor](Floor) (c)<br />[brick:City](City) (c)<br />[brick:Outside](Outside) (c)<br />
 In domain of |[brick:isLocationOf](isLocationOf) (op)<br />
 In range of |[brick:hasLocation](hasLocation) (op)<br />
 ### Low_Humidity_Alarm_Setpoint
@@ -2381,7 +2381,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Luminance`
 Super-classes |[brick:Substance](Substance) (c)<br />[brick:Quantity](Quantity) (c)<br />
-Sub-classes |[brick:Luminous_Flux](Luminous_Flux) (c)<br />[brick:Luminous_Intensity](Luminous_Intensity) (c)<br />
+Sub-classes |[brick:Luminous_Intensity](Luminous_Intensity) (c)<br />[brick:Luminous_Flux](Luminous_Flux) (c)<br />
 ### Luminance_Sensor
 Property | Value
 --- | ---
@@ -2418,8 +2418,8 @@ Super-classes |[brick:Status](Status) (c)<br />
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Max_Air_Flow_Setpoint_Limit`
-Super-classes |[brick:Max_Limit](Max_Limit) (c)<br />[brick:Air_Flow_Setpoint_Limit](Air_Flow_Setpoint_Limit) (c)<br />
-Sub-classes |[brick:Max_Cooling_Discharge_Air_Flow_Setpoint_Limit](Max_Cooling_Discharge_Air_Flow_Setpoint_Limit) (c)<br />[brick:Max_Heating_Supply_Air_Flow_Setpoint_Limit](Max_Heating_Supply_Air_Flow_Setpoint_Limit) (c)<br />[brick:Max_Cooling_Supply_Air_Flow_Setpoint_Limit](Max_Cooling_Supply_Air_Flow_Setpoint_Limit) (c)<br />[brick:Max_Heating_Discharge_Air_Flow_Setpoint_Limit](Max_Heating_Discharge_Air_Flow_Setpoint_Limit) (c)<br />
+Super-classes |[brick:Air_Flow_Setpoint_Limit](Air_Flow_Setpoint_Limit) (c)<br />[brick:Max_Limit](Max_Limit) (c)<br />
+Sub-classes |[brick:Max_Cooling_Supply_Air_Flow_Setpoint_Limit](Max_Cooling_Supply_Air_Flow_Setpoint_Limit) (c)<br />[brick:Max_Cooling_Discharge_Air_Flow_Setpoint_Limit](Max_Cooling_Discharge_Air_Flow_Setpoint_Limit) (c)<br />[brick:Max_Heating_Discharge_Air_Flow_Setpoint_Limit](Max_Heating_Discharge_Air_Flow_Setpoint_Limit) (c)<br />[brick:Max_Heating_Supply_Air_Flow_Setpoint_Limit](Max_Heating_Supply_Air_Flow_Setpoint_Limit) (c)<br />
 ### Max_Chilled_Water_Differential_Pressure_Setpoint_Limit
 Property | Value
 --- | ---
@@ -2436,7 +2436,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Max_Cooling_Supply_Air_Flow_Setpoint_Limit`
 Super-classes |[brick:Max_Air_Flow_Setpoint_Limit](Max_Air_Flow_Setpoint_Limit) (c)<br />
-Sub-classes |[brick:Max_Unoccupied_Cooling_Supply_Air_Flow_Setpoint_Limit](Max_Unoccupied_Cooling_Supply_Air_Flow_Setpoint_Limit) (c)<br />[brick:Max_Occupied_Cooling_Supply_Air_Flow_Setpoint_Limit](Max_Occupied_Cooling_Supply_Air_Flow_Setpoint_Limit) (c)<br />
+Sub-classes |[brick:Max_Occupied_Cooling_Supply_Air_Flow_Setpoint_Limit](Max_Occupied_Cooling_Supply_Air_Flow_Setpoint_Limit) (c)<br />[brick:Max_Unoccupied_Cooling_Supply_Air_Flow_Setpoint_Limit](Max_Unoccupied_Cooling_Supply_Air_Flow_Setpoint_Limit) (c)<br />
 ### Max_Damper_Position_Setpoint_Limit
 Property | Value
 --- | ---
@@ -2469,7 +2469,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Max_Limit`
 Super-classes |[brick:Limit](Limit) (c)<br />
-Sub-classes |[brick:Max_Damper_Position_Setpoint_Limit](Max_Damper_Position_Setpoint_Limit) (c)<br />[brick:Max_Air_Flow_Setpoint_Limit](Max_Air_Flow_Setpoint_Limit) (c)<br />[brick:Max_Supply_Air_Static_Pressure_Setpoint_Limit](Max_Supply_Air_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Max_Discharge_Air_Static_Pressure_Setpoint_Limit](Max_Discharge_Air_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Max_Speed_Setpoint_Limit](Max_Speed_Setpoint_Limit) (c)<br />[brick:Max_Hot_Water_Differential_Pressure_Setpoint_Limit](Max_Hot_Water_Differential_Pressure_Setpoint_Limit) (c)<br />[brick:Max_Static_Pressure_Setpoint_Limit](Max_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Max_Chilled_Water_Differential_Pressure_Setpoint_Limit](Max_Chilled_Water_Differential_Pressure_Setpoint_Limit) (c)<br />
+Sub-classes |[brick:Max_Chilled_Water_Differential_Pressure_Setpoint_Limit](Max_Chilled_Water_Differential_Pressure_Setpoint_Limit) (c)<br />[brick:Max_Discharge_Air_Static_Pressure_Setpoint_Limit](Max_Discharge_Air_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Max_Static_Pressure_Setpoint_Limit](Max_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Max_Speed_Setpoint_Limit](Max_Speed_Setpoint_Limit) (c)<br />[brick:Max_Supply_Air_Static_Pressure_Setpoint_Limit](Max_Supply_Air_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Max_Air_Flow_Setpoint_Limit](Max_Air_Flow_Setpoint_Limit) (c)<br />[brick:Max_Hot_Water_Differential_Pressure_Setpoint_Limit](Max_Hot_Water_Differential_Pressure_Setpoint_Limit) (c)<br />[brick:Max_Damper_Position_Setpoint_Limit](Max_Damper_Position_Setpoint_Limit) (c)<br />
 ### Max_Load_Setpoint
 Property | Value
 --- | ---
@@ -2561,7 +2561,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Min_Air_Flow_Setpoint_Limit`
 Super-classes |[brick:Min_Limit](Min_Limit) (c)<br />[brick:Air_Flow_Setpoint_Limit](Air_Flow_Setpoint_Limit) (c)<br />
-Sub-classes |[brick:Min_Cooling_Discharge_Air_Flow_Setpoint_Limit](Min_Cooling_Discharge_Air_Flow_Setpoint_Limit) (c)<br />[brick:Min_Heating_Discharge_Air_Flow_Setpoint_Limit](Min_Heating_Discharge_Air_Flow_Setpoint_Limit) (c)<br />[brick:Min_Cooling_Supply_Air_Flow_Setpoint_Limit](Min_Cooling_Supply_Air_Flow_Setpoint_Limit) (c)<br />[brick:Min_Heating_Supply_Air_Flow_Setpoint_Limit](Min_Heating_Supply_Air_Flow_Setpoint_Limit) (c)<br />[brick:Min_Outside_Air_Flow_Setpoint_Limit](Min_Outside_Air_Flow_Setpoint_Limit) (c)<br />
+Sub-classes |[brick:Min_Heating_Supply_Air_Flow_Setpoint_Limit](Min_Heating_Supply_Air_Flow_Setpoint_Limit) (c)<br />[brick:Min_Cooling_Supply_Air_Flow_Setpoint_Limit](Min_Cooling_Supply_Air_Flow_Setpoint_Limit) (c)<br />[brick:Min_Outside_Air_Flow_Setpoint_Limit](Min_Outside_Air_Flow_Setpoint_Limit) (c)<br />[brick:Min_Heating_Discharge_Air_Flow_Setpoint_Limit](Min_Heating_Discharge_Air_Flow_Setpoint_Limit) (c)<br />[brick:Min_Cooling_Discharge_Air_Flow_Setpoint_Limit](Min_Cooling_Discharge_Air_Flow_Setpoint_Limit) (c)<br />
 ### Min_Chilled_Water_Differential_Pressure_Setpoint_Limit
 Property | Value
 --- | ---
@@ -2578,23 +2578,23 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Min_Cooling_Supply_Air_Flow_Setpoint_Limit`
 Super-classes |[brick:Min_Air_Flow_Setpoint_Limit](Min_Air_Flow_Setpoint_Limit) (c)<br />
-Sub-classes |[brick:Min_Occupied_Cooling_Supply_Air_Flow_Setpoint_Limit](Min_Occupied_Cooling_Supply_Air_Flow_Setpoint_Limit) (c)<br />[brick:Min_Unoccupied_Cooling_Supply_Air_Flow_Setpoint_Limit](Min_Unoccupied_Cooling_Supply_Air_Flow_Setpoint_Limit) (c)<br />
+Sub-classes |[brick:Min_Unoccupied_Cooling_Supply_Air_Flow_Setpoint_Limit](Min_Unoccupied_Cooling_Supply_Air_Flow_Setpoint_Limit) (c)<br />[brick:Min_Occupied_Cooling_Supply_Air_Flow_Setpoint_Limit](Min_Occupied_Cooling_Supply_Air_Flow_Setpoint_Limit) (c)<br />
 ### Min_Damper_Position_Setpoint_Limit
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Min_Damper_Position_Setpoint_Limit`
-Super-classes |[brick:Damper_Position_Limit](Damper_Position_Limit) (c)<br />[brick:Min_Limit](Min_Limit) (c)<br />
+Super-classes |[brick:Min_Limit](Min_Limit) (c)<br />[brick:Damper_Position_Limit](Damper_Position_Limit) (c)<br />
 ### Min_Discharge_Air_Static_Pressure_Setpoint_Limit
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Min_Discharge_Air_Static_Pressure_Setpoint_Limit`
-Super-classes |[brick:Min_Limit](Min_Limit) (c)<br />[brick:Min_Static_Pressure_Setpoint_Limit](Min_Static_Pressure_Setpoint_Limit) (c)<br />
+Super-classes |[brick:Min_Static_Pressure_Setpoint_Limit](Min_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Min_Limit](Min_Limit) (c)<br />
 ### Min_Heating_Discharge_Air_Flow_Setpoint_Limit
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Min_Heating_Discharge_Air_Flow_Setpoint_Limit`
 Super-classes |[brick:Min_Air_Flow_Setpoint_Limit](Min_Air_Flow_Setpoint_Limit) (c)<br />
-Sub-classes |[brick:Min_Occupied_Heating_Discharge_Air_Flow_Setpoint_Limit](Min_Occupied_Heating_Discharge_Air_Flow_Setpoint_Limit) (c)<br />[brick:Min_Unoccupied_Heating_Discharge_Air_Flow_Setpoint_Limit](Min_Unoccupied_Heating_Discharge_Air_Flow_Setpoint_Limit) (c)<br />
+Sub-classes |[brick:Min_Unoccupied_Heating_Discharge_Air_Flow_Setpoint_Limit](Min_Unoccupied_Heating_Discharge_Air_Flow_Setpoint_Limit) (c)<br />[brick:Min_Occupied_Heating_Discharge_Air_Flow_Setpoint_Limit](Min_Occupied_Heating_Discharge_Air_Flow_Setpoint_Limit) (c)<br />
 ### Min_Heating_Supply_Air_Flow_Setpoint_Limit
 Property | Value
 --- | ---
@@ -2611,7 +2611,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Min_Limit`
 Super-classes |[brick:Limit](Limit) (c)<br />
-Sub-classes |[brick:Min_Speed_Setpoint_Limit](Min_Speed_Setpoint_Limit) (c)<br />[brick:Min_Hot_Water_Differential_Pressure_Setpoint_Limit](Min_Hot_Water_Differential_Pressure_Setpoint_Limit) (c)<br />[brick:Min_Discharge_Air_Static_Pressure_Setpoint_Limit](Min_Discharge_Air_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Min_Chilled_Water_Differential_Pressure_Setpoint_Limit](Min_Chilled_Water_Differential_Pressure_Setpoint_Limit) (c)<br />[brick:Min_Air_Flow_Setpoint_Limit](Min_Air_Flow_Setpoint_Limit) (c)<br />[brick:Min_Damper_Position_Setpoint_Limit](Min_Damper_Position_Setpoint_Limit) (c)<br />[brick:Min_Supply_Air_Static_Pressure_Setpoint_Limit](Min_Supply_Air_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Min_Static_Pressure_Setpoint_Limit](Min_Static_Pressure_Setpoint_Limit) (c)<br />
+Sub-classes |[brick:Min_Damper_Position_Setpoint_Limit](Min_Damper_Position_Setpoint_Limit) (c)<br />[brick:Min_Chilled_Water_Differential_Pressure_Setpoint_Limit](Min_Chilled_Water_Differential_Pressure_Setpoint_Limit) (c)<br />[brick:Min_Static_Pressure_Setpoint_Limit](Min_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Min_Air_Flow_Setpoint_Limit](Min_Air_Flow_Setpoint_Limit) (c)<br />[brick:Min_Discharge_Air_Static_Pressure_Setpoint_Limit](Min_Discharge_Air_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Min_Speed_Setpoint_Limit](Min_Speed_Setpoint_Limit) (c)<br />[brick:Min_Supply_Air_Static_Pressure_Setpoint_Limit](Min_Supply_Air_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Min_Hot_Water_Differential_Pressure_Setpoint_Limit](Min_Hot_Water_Differential_Pressure_Setpoint_Limit) (c)<br />
 ### Min_Occupied_Cooling_Discharge_Air_Flow_Setpoint_Limit
 Property | Value
 --- | ---
@@ -2647,12 +2647,12 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Min_Static_Pressure_Setpoint_Limit`
 Super-classes |[brick:Static_Pressure_Setpoint_Limit](Static_Pressure_Setpoint_Limit) (c)<br />[brick:Min_Limit](Min_Limit) (c)<br />
-Sub-classes |[brick:Min_Supply_Air_Static_Pressure_Setpoint_Limit](Min_Supply_Air_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Min_Discharge_Air_Static_Pressure_Setpoint_Limit](Min_Discharge_Air_Static_Pressure_Setpoint_Limit) (c)<br />
+Sub-classes |[brick:Min_Discharge_Air_Static_Pressure_Setpoint_Limit](Min_Discharge_Air_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Min_Supply_Air_Static_Pressure_Setpoint_Limit](Min_Supply_Air_Static_Pressure_Setpoint_Limit) (c)<br />
 ### Min_Supply_Air_Static_Pressure_Setpoint_Limit
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Min_Supply_Air_Static_Pressure_Setpoint_Limit`
-Super-classes |[brick:Min_Static_Pressure_Setpoint_Limit](Min_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Min_Limit](Min_Limit) (c)<br />
+Super-classes |[brick:Min_Limit](Min_Limit) (c)<br />[brick:Min_Static_Pressure_Setpoint_Limit](Min_Static_Pressure_Setpoint_Limit) (c)<br />
 ### Min_Unoccupied_Cooling_Discharge_Air_Flow_Setpoint_Limit
 Property | Value
 --- | ---
@@ -2699,13 +2699,13 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Mode_Setpoint`
 Super-classes |[brick:Setpoint](Setpoint) (c)<br />
-Sub-classes |[brick:Dual_Band_Mode_Setpoint](Dual_Band_Mode_Setpoint) (c)<br />[brick:Occupied_Mode_Setpoint](Occupied_Mode_Setpoint) (c)<br />[brick:Unoccupied_Mode_Setpoint](Unoccupied_Mode_Setpoint) (c)<br />
+Sub-classes |[brick:Occupied_Mode_Setpoint](Occupied_Mode_Setpoint) (c)<br />[brick:Unoccupied_Mode_Setpoint](Unoccupied_Mode_Setpoint) (c)<br />[brick:Dual_Band_Mode_Setpoint](Dual_Band_Mode_Setpoint) (c)<br />
 ### Mode_Status
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Mode_Status`
 Super-classes |[brick:Status](Status) (c)<br />
-Sub-classes |[brick:Operating_Mode_Status](Operating_Mode_Status) (c)<br />[brick:System_Mode_Status](System_Mode_Status) (c)<br />[brick:Occupied_Mode_Status](Occupied_Mode_Status) (c)<br />
+Sub-classes |[brick:System_Mode_Status](System_Mode_Status) (c)<br />[brick:Operating_Mode_Status](Operating_Mode_Status) (c)<br />[brick:Occupied_Mode_Status](Occupied_Mode_Status) (c)<br />
 ### Motion_Sensor
 Property | Value
 --- | ---
@@ -2790,7 +2790,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Occupied_Supply_Air_Flow_Setpoint`
 Super-classes |[brick:Supply_Air_Flow_Setpoint](Supply_Air_Flow_Setpoint) (c)<br />
-Sub-classes |[brick:Occupied_Heating_Supply_Air_Flow_Setpoint](Occupied_Heating_Supply_Air_Flow_Setpoint) (c)<br />[brick:Occupied_Cooling_Supply_Air_Flow_Setpoint](Occupied_Cooling_Supply_Air_Flow_Setpoint) (c)<br />
+Sub-classes |[brick:Occupied_Cooling_Supply_Air_Flow_Setpoint](Occupied_Cooling_Supply_Air_Flow_Setpoint) (c)<br />[brick:Occupied_Heating_Supply_Air_Flow_Setpoint](Occupied_Heating_Supply_Air_Flow_Setpoint) (c)<br />
 ### Off_Status
 Property | Value
 --- | ---
@@ -2807,7 +2807,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#On_Off_Status`
 Super-classes |[brick:Status](Status) (c)<br />
-Sub-classes |[brick:Standby_Glycool_Unit_On_Off_Status](Standby_Glycool_Unit_On_Off_Status) (c)<br />[brick:Cooling_On_Off_Status](Cooling_On_Off_Status) (c)<br />[brick:Remotely_On_Off_Status](Remotely_On_Off_Status) (c)<br />[brick:Heating_On_Off_Status](Heating_On_Off_Status) (c)<br />[brick:EconCycle_On_Off_Status](EconCycle_On_Off_Status) (c)<br />[brick:Standby_Unit_On_Off_Status](Standby_Unit_On_Off_Status) (c)<br />[brick:Humidification_On_Off_Status](Humidification_On_Off_Status) (c)<br />[brick:Locally_On_Off_Status](Locally_On_Off_Status) (c)<br />[brick:Dehumidification_On_Off_Status](Dehumidification_On_Off_Status) (c)<br />
+Sub-classes |[brick:Heating_On_Off_Status](Heating_On_Off_Status) (c)<br />[brick:EconCycle_On_Off_Status](EconCycle_On_Off_Status) (c)<br />[brick:Dehumidification_On_Off_Status](Dehumidification_On_Off_Status) (c)<br />[brick:Humidification_On_Off_Status](Humidification_On_Off_Status) (c)<br />[brick:Standby_Unit_On_Off_Status](Standby_Unit_On_Off_Status) (c)<br />[brick:Remotely_On_Off_Status](Remotely_On_Off_Status) (c)<br />[brick:Standby_Glycool_Unit_On_Off_Status](Standby_Glycool_Unit_On_Off_Status) (c)<br />[brick:Cooling_On_Off_Status](Cooling_On_Off_Status) (c)<br />[brick:Locally_On_Off_Status](Locally_On_Off_Status) (c)<br />
 ### On_Status
 Property | Value
 --- | ---
@@ -2895,7 +2895,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Outside_Air_Lockout_Temperature_Differential_Sensor`
 Super-classes |[brick:Outside_Air_Temperature_Sensor](Outside_Air_Temperature_Sensor) (c)<br />
-Sub-classes |[brick:Low_Outside_Air_Lockout_Temperature_Differential_Sensor](Low_Outside_Air_Lockout_Temperature_Differential_Sensor) (c)<br />[brick:High_Outside_Air_Lockout_Temperature_Differential_Sensor](High_Outside_Air_Lockout_Temperature_Differential_Sensor) (c)<br />
+Sub-classes |[brick:High_Outside_Air_Lockout_Temperature_Differential_Sensor](High_Outside_Air_Lockout_Temperature_Differential_Sensor) (c)<br />[brick:Low_Outside_Air_Lockout_Temperature_Differential_Sensor](Low_Outside_Air_Lockout_Temperature_Differential_Sensor) (c)<br />
 ### Outside_Air_Lockout_Temperature_Setpoint
 Property | Value
 --- | ---
@@ -2912,7 +2912,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Outside_Air_Temperature_Setpoint`
 Super-classes |[brick:Air_Temperature_Setpoint](Air_Temperature_Setpoint) (c)<br />
-Sub-classes |[brick:Outside_Air_Lockout_Temperature_Setpoint](Outside_Air_Lockout_Temperature_Setpoint) (c)<br />[brick:Low_Outside_Air_Temperature_Enable_Setpoint](Low_Outside_Air_Temperature_Enable_Setpoint) (c)<br />[brick:Open_Heating_Valve_Outside_Air_Temperature_Setpoint](Open_Heating_Valve_Outside_Air_Temperature_Setpoint) (c)<br />
+Sub-classes |[brick:Low_Outside_Air_Temperature_Enable_Setpoint](Low_Outside_Air_Temperature_Enable_Setpoint) (c)<br />[brick:Open_Heating_Valve_Outside_Air_Temperature_Setpoint](Open_Heating_Valve_Outside_Air_Temperature_Setpoint) (c)<br />[brick:Outside_Air_Lockout_Temperature_Setpoint](Outside_Air_Lockout_Temperature_Setpoint) (c)<br />
 ### Outside_Damper
 Property | Value
 --- | ---
@@ -2978,15 +2978,15 @@ Super-classes |[brick:Equipment](Equipment) (c)<br />
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Point`
-Sub-classes |[brick:Sensor](Sensor) (c)<br />[brick:Status](Status) (c)<br />[brick:Setpoint](Setpoint) (c)<br />[brick:Limit](Limit) (c)<br />
-In domain of |[brick:measures](measures) (op)<br />[brick:isPointOf](isPointOf) (op)<br />
-In range of |[brick:isMeasuredBy](isMeasuredBy) (op)<br />[brick:hasPoint](hasPoint) (op)<br />
+Sub-classes |[brick:Setpoint](Setpoint) (c)<br />[brick:Sensor](Sensor) (c)<br />[brick:Status](Status) (c)<br />[brick:Limit](Limit) (c)<br />
+In domain of |[brick:isPointOf](isPointOf) (op)<br />[brick:measures](measures) (op)<br />
+In range of |[brick:hasPoint](hasPoint) (op)<br />[brick:isMeasuredBy](isMeasuredBy) (op)<br />
 ### Power
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Power`
 Super-classes |[brick:Quantity](Quantity) (c)<br />
-Sub-classes |[brick:Thermal_Power](Thermal_Power) (c)<br />[brick:Electric_Power](Electric_Power) (c)<br />
+Sub-classes |[brick:Electric_Power](Electric_Power) (c)<br />[brick:Thermal_Power](Thermal_Power) (c)<br />
 ### Power_Factor
 Property | Value
 --- | ---
@@ -3042,31 +3042,31 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Pressure`
 Super-classes |[brick:Quantity](Quantity) (c)<br />
-Sub-classes |[brick:Static_Pressure](Static_Pressure) (c)<br />[brick:Atmospheric_Pressure](Atmospheric_Pressure) (c)<br />
+Sub-classes |[brick:Atmospheric_Pressure](Atmospheric_Pressure) (c)<br />[brick:Static_Pressure](Static_Pressure) (c)<br />
 ### Pressure_Sensor
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Pressure_Sensor`
 Super-classes |[brick:Sensor](Sensor) (c)<br />
-Sub-classes |[brick:Static_Pressure_Sensor](Static_Pressure_Sensor) (c)<br />[brick:Velocity_Pressure_Sensor:](Velocity_Pressure_Sensor:) (c)<br />[brick:Differential_Pressure_Sensor](Differential_Pressure_Sensor) (c)<br />
+Sub-classes |[brick:Velocity_Pressure_Sensor:](Velocity_Pressure_Sensor:) (c)<br />[brick:Static_Pressure_Sensor](Static_Pressure_Sensor) (c)<br />[brick:Differential_Pressure_Sensor](Differential_Pressure_Sensor) (c)<br />
 ### Pressure_Setpoint
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Pressure_Setpoint`
 Super-classes |[brick:Setpoint](Setpoint) (c)<br />
-Sub-classes |[brick:Differential_Pressure_Setpoint](Differential_Pressure_Setpoint) (c)<br />[brick:Velocity_Pressure_Setpoint](Velocity_Pressure_Setpoint) (c)<br />[brick:Static_Pressure_Setpoint](Static_Pressure_Setpoint) (c)<br />
+Sub-classes |[brick:Differential_Pressure_Setpoint](Differential_Pressure_Setpoint) (c)<br />[brick:Static_Pressure_Setpoint](Static_Pressure_Setpoint) (c)<br />[brick:Velocity_Pressure_Setpoint](Velocity_Pressure_Setpoint) (c)<br />
 ### Pressure_Status
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Pressure_Status`
 Super-classes |[brick:Status](Status) (c)<br />
-Sub-classes |[brick:Supply_Air_Duct_Pressure_Status](Supply_Air_Duct_Pressure_Status) (c)<br />[brick:Discharge_Air_Duct_Pressure_Status](Discharge_Air_Duct_Pressure_Status) (c)<br />
+Sub-classes |[brick:Discharge_Air_Duct_Pressure_Status](Discharge_Air_Duct_Pressure_Status) (c)<br />[brick:Supply_Air_Duct_Pressure_Status](Supply_Air_Duct_Pressure_Status) (c)<br />
 ### Proportional_Band_Setpoint
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Proportional_Band_Setpoint`
 Super-classes |[brick:Setpoint](Setpoint) (c)<br />
-Sub-classes |[brick:Heating_Discharge_Air_Temperature_Proportional_Band_Setpoint](Heating_Discharge_Air_Temperature_Proportional_Band_Setpoint) (c)<br />[brick:Discharge_Air_Temperature_Proportional_Band_Setpoint](Discharge_Air_Temperature_Proportional_Band_Setpoint) (c)<br />[brick:Exhaust_Air_Flow_Proportional_Band_Setpoint](Exhaust_Air_Flow_Proportional_Band_Setpoint) (c)<br />[brick:Supply_Water_Differential_Pressure_Proportional_Band_Setpoint](Supply_Water_Differential_Pressure_Proportional_Band_Setpoint) (c)<br />[brick:Heating_Supply_Air_Temperature_Proportional_Band_Setpoint](Heating_Supply_Air_Temperature_Proportional_Band_Setpoint) (c)<br />[brick:Discharge_Air_Static_Pressure_Proportional_Band_Setpoint](Discharge_Air_Static_Pressure_Proportional_Band_Setpoint) (c)<br />[brick:Hot_Water_Differential_Pressure_Proportional_Band_Setpoint](Hot_Water_Differential_Pressure_Proportional_Band_Setpoint) (c)<br />[brick:Cooling_Supply_Air_Temperature_Proportional_Band_Setpoint](Cooling_Supply_Air_Temperature_Proportional_Band_Setpoint) (c)<br />[brick:Static_Pressure_Proportional_Band_Setpoint](Static_Pressure_Proportional_Band_Setpoint) (c)<br />[brick:Supply_Air_Static_Pressure_Proportional_Band_Setpoint](Supply_Air_Static_Pressure_Proportional_Band_Setpoint) (c)<br />[brick:Differential_Pressure_Proportional_Band](Differential_Pressure_Proportional_Band) (c)<br />[brick:Cooling_Discharge_Air_Temperature_Proportional_Band_Setpoint](Cooling_Discharge_Air_Temperature_Proportional_Band_Setpoint) (c)<br />[brick:Supply_Air_Temperature_Proportional_Band_Setpoint](Supply_Air_Temperature_Proportional_Band_Setpoint) (c)<br />[brick:Chilled_Water_Differential_Pressure_Proportional_Band_Setpoint](Chilled_Water_Differential_Pressure_Proportional_Band_Setpoint) (c)<br />[brick:Supply_Water_Temperature_Proportional_Band_Setpoint](Supply_Water_Temperature_Proportional_Band_Setpoint) (c)<br />
+Sub-classes |[brick:Supply_Air_Temperature_Proportional_Band_Setpoint](Supply_Air_Temperature_Proportional_Band_Setpoint) (c)<br />[brick:Heating_Discharge_Air_Temperature_Proportional_Band_Setpoint](Heating_Discharge_Air_Temperature_Proportional_Band_Setpoint) (c)<br />[brick:Discharge_Air_Temperature_Proportional_Band_Setpoint](Discharge_Air_Temperature_Proportional_Band_Setpoint) (c)<br />[brick:Discharge_Air_Static_Pressure_Proportional_Band_Setpoint](Discharge_Air_Static_Pressure_Proportional_Band_Setpoint) (c)<br />[brick:Cooling_Discharge_Air_Temperature_Proportional_Band_Setpoint](Cooling_Discharge_Air_Temperature_Proportional_Band_Setpoint) (c)<br />[brick:Hot_Water_Differential_Pressure_Proportional_Band_Setpoint](Hot_Water_Differential_Pressure_Proportional_Band_Setpoint) (c)<br />[brick:Cooling_Supply_Air_Temperature_Proportional_Band_Setpoint](Cooling_Supply_Air_Temperature_Proportional_Band_Setpoint) (c)<br />[brick:Supply_Air_Static_Pressure_Proportional_Band_Setpoint](Supply_Air_Static_Pressure_Proportional_Band_Setpoint) (c)<br />[brick:Static_Pressure_Proportional_Band_Setpoint](Static_Pressure_Proportional_Band_Setpoint) (c)<br />[brick:Supply_Water_Temperature_Proportional_Band_Setpoint](Supply_Water_Temperature_Proportional_Band_Setpoint) (c)<br />[brick:Differential_Pressure_Proportional_Band](Differential_Pressure_Proportional_Band) (c)<br />[brick:Heating_Supply_Air_Temperature_Proportional_Band_Setpoint](Heating_Supply_Air_Temperature_Proportional_Band_Setpoint) (c)<br />[brick:Exhaust_Air_Flow_Proportional_Band_Setpoint](Exhaust_Air_Flow_Proportional_Band_Setpoint) (c)<br />[brick:Chilled_Water_Differential_Pressure_Proportional_Band_Setpoint](Chilled_Water_Differential_Pressure_Proportional_Band_Setpoint) (c)<br />[brick:Supply_Water_Differential_Pressure_Proportional_Band_Setpoint](Supply_Water_Differential_Pressure_Proportional_Band_Setpoint) (c)<br />
 ### Pump
 Property | Value
 --- | ---
@@ -3084,7 +3084,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Quantity`
 Super-classes |[brick:Quantity](Quantity) (c)<br />
-Sub-classes |[brick:Power](Power) (c)<br />[brick:Pressure](Pressure) (c)<br />[brick:Luminance](Luminance) (c)<br />[brick:Energy](Energy) (c)<br />[brick:Humidity](Humidity) (c)<br />[brick:Cloudage](Cloudage) (c)<br />[brick:Weather_Condition](Weather_Condition) (c)<br />[brick:Conductivity](Conductivity) (c)<br />[brick:Temperature](Temperature) (c)<br />[brick:Illuminance](Illuminance) (c)<br />[brick:Speed](Speed) (c)<br />[brick:Quantity](Quantity) (c)<br />[brick:Enthalpy](Enthalpy) (c)<br />[brick:Grains](Grains) (c)<br />[brick:Power_Factor](Power_Factor) (c)<br />[brick:Dewpoint](Dewpoint) (c)<br />[brick:Voltage](Voltage) (c)<br />[brick:Level](Level) (c)<br />[brick:Flow](Flow) (c)<br />[brick:Frequency](Frequency) (c)<br />[brick:Capacity](Capacity) (c)<br />[brick:Direction](Direction) (c)<br />[brick:Precipitation](Precipitation) (c)<br />[brick:Daytime](Daytime) (c)<br />[brick:Air_Quality](Air_Quality) (c)<br />[brick:Irradiance](Irradiance) (c)<br />[brick:Current](Current) (c)<br />
+Sub-classes |[brick:Pressure](Pressure) (c)<br />[brick:Capacity](Capacity) (c)<br />[brick:Power](Power) (c)<br />[brick:Conductivity](Conductivity) (c)<br />[brick:Speed](Speed) (c)<br />[brick:Illuminance](Illuminance) (c)<br />[brick:Irradiance](Irradiance) (c)<br />[brick:Quantity](Quantity) (c)<br />[brick:Grains](Grains) (c)<br />[brick:Daytime](Daytime) (c)<br />[brick:Current](Current) (c)<br />[brick:Precipitation](Precipitation) (c)<br />[brick:Power_Factor](Power_Factor) (c)<br />[brick:Cloudage](Cloudage) (c)<br />[brick:Energy](Energy) (c)<br />[brick:Level](Level) (c)<br />[brick:Temperature](Temperature) (c)<br />[brick:Humidity](Humidity) (c)<br />[brick:Air_Quality](Air_Quality) (c)<br />[brick:Direction](Direction) (c)<br />[brick:Frequency](Frequency) (c)<br />[brick:Voltage](Voltage) (c)<br />[brick:Luminance](Luminance) (c)<br />[brick:Dewpoint](Dewpoint) (c)<br />[brick:Weather_Condition](Weather_Condition) (c)<br />[brick:Flow](Flow) (c)<br />[brick:Enthalpy](Enthalpy) (c)<br />
 ### Radiant_Temperature
 Property | Value
 --- | ---
@@ -3094,7 +3094,7 @@ Super-classes |[brick:Temperature](Temperature) (c)<br />
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Rain_Duration_Sensor`
-Super-classes |[brick:Rain_Sensor](Rain_Sensor) (c)<br />[brick:Duration_Sensor](Duration_Sensor) (c)<br />
+Super-classes |[brick:Duration_Sensor](Duration_Sensor) (c)<br />[brick:Rain_Sensor](Rain_Sensor) (c)<br />
 ### Rain_Sensor
 Property | Value
 --- | ---
@@ -3229,7 +3229,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Room`
 Super-classes |[brick:Location](Location) (c)<br />
-Sub-classes |[brick:Server_Room](Server_Room) (c)<br />[brick:Laboratory](Laboratory) (c)<br />
+Sub-classes |[brick:Laboratory](Laboratory) (c)<br />[brick:Server_Room](Server_Room) (c)<br />
 ### Room_Air_Temperature_Setpoint
 Property | Value
 --- | ---
@@ -3260,7 +3260,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Sensor`
 Super-classes |[brick:Point](Point) (c)<br />
-Sub-classes |[brick:Water_Level_Sensor](Water_Level_Sensor) (c)<br />[brick:Frequency_Sensor](Frequency_Sensor) (c)<br />[brick:CO2_Sensor](CO2_Sensor) (c)<br />[brick:Energy_Sensor](Energy_Sensor) (c)<br />[brick:Capacity_Sensor](Capacity_Sensor) (c)<br />[brick:Enthalpy_Sensor](Enthalpy_Sensor) (c)<br />[brick:Temperature_Sensor](Temperature_Sensor) (c)<br />[brick:Direction_Sensor](Direction_Sensor) (c)<br />[brick:Dewpoint_Sensor](Dewpoint_Sensor) (c)<br />[brick:Piezoelectric_Sensor](Piezoelectric_Sensor) (c)<br />[brick:Current_Sensor](Current_Sensor) (c)<br />[brick:Duration_Sensor](Duration_Sensor) (c)<br />[brick:Voltage_Sensor](Voltage_Sensor) (c)<br />[brick:Speed_Sensor](Speed_Sensor) (c)<br />[brick:Frost_Sensor](Frost_Sensor) (c)<br />[brick:Rain_Sensor](Rain_Sensor) (c)<br />[brick:Luminance_Sensor](Luminance_Sensor) (c)<br />[brick:Air_Grains_Sensor](Air_Grains_Sensor) (c)<br />[brick:Trace_Heat_Sensor](Trace_Heat_Sensor) (c)<br />[brick:Demand_Sensor](Demand_Sensor) (c)<br />[brick:Angle_Sensor](Angle_Sensor) (c)<br />[brick:Motion_Sensor](Motion_Sensor) (c)<br />[brick:Solar_Radiance_Sensor](Solar_Radiance_Sensor) (c)<br />[brick:Hail_Sensor](Hail_Sensor) (c)<br />[brick:Pressure_Sensor](Pressure_Sensor) (c)<br />[brick:Occupancy_Sensor](Occupancy_Sensor) (c)<br />[brick:Torque_Sensor](Torque_Sensor) (c)<br />[brick:Conductivity_Sensor](Conductivity_Sensor) (c)<br />[brick:Flow_Sensor](Flow_Sensor) (c)<br />[brick:Humidity_Sensor](Humidity_Sensor) (c)<br />[brick:Damper_Position_Sensor](Damper_Position_Sensor) (c)<br />
+Sub-classes |[brick:Frequency_Sensor](Frequency_Sensor) (c)<br />[brick:Current_Sensor](Current_Sensor) (c)<br />[brick:Enthalpy_Sensor](Enthalpy_Sensor) (c)<br />[brick:Direction_Sensor](Direction_Sensor) (c)<br />[brick:Pressure_Sensor](Pressure_Sensor) (c)<br />[brick:Rain_Sensor](Rain_Sensor) (c)<br />[brick:Solar_Radiance_Sensor](Solar_Radiance_Sensor) (c)<br />[brick:Piezoelectric_Sensor](Piezoelectric_Sensor) (c)<br />[brick:Capacity_Sensor](Capacity_Sensor) (c)<br />[brick:Duration_Sensor](Duration_Sensor) (c)<br />[brick:Water_Level_Sensor](Water_Level_Sensor) (c)<br />[brick:Conductivity_Sensor](Conductivity_Sensor) (c)<br />[brick:Voltage_Sensor](Voltage_Sensor) (c)<br />[brick:Trace_Heat_Sensor](Trace_Heat_Sensor) (c)<br />[brick:Humidity_Sensor](Humidity_Sensor) (c)<br />[brick:Speed_Sensor](Speed_Sensor) (c)<br />[brick:Luminance_Sensor](Luminance_Sensor) (c)<br />[brick:Occupancy_Sensor](Occupancy_Sensor) (c)<br />[brick:Angle_Sensor](Angle_Sensor) (c)<br />[brick:Demand_Sensor](Demand_Sensor) (c)<br />[brick:CO2_Sensor](CO2_Sensor) (c)<br />[brick:Motion_Sensor](Motion_Sensor) (c)<br />[brick:Temperature_Sensor](Temperature_Sensor) (c)<br />[brick:Dewpoint_Sensor](Dewpoint_Sensor) (c)<br />[brick:Torque_Sensor](Torque_Sensor) (c)<br />[brick:Hail_Sensor](Hail_Sensor) (c)<br />[brick:Energy_Sensor](Energy_Sensor) (c)<br />[brick:Flow_Sensor](Flow_Sensor) (c)<br />[brick:Damper_Position_Sensor](Damper_Position_Sensor) (c)<br />[brick:Frost_Sensor](Frost_Sensor) (c)<br />[brick:Air_Grains_Sensor](Air_Grains_Sensor) (c)<br />
 ### Server_Room
 Property | Value
 --- | ---
@@ -3271,7 +3271,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Setpoint`
 Super-classes |[brick:Point](Point) (c)<br />
-Sub-classes |[brick:CO2_Setpoint](CO2_Setpoint) (c)<br />[brick:Humidity_Setpoint](Humidity_Setpoint) (c)<br />[brick:Enthalpy_Setpoint](Enthalpy_Setpoint) (c)<br />[brick:Mode_Setpoint](Mode_Setpoint) (c)<br />[brick:Flow_Setpoint](Flow_Setpoint) (c)<br />[brick:Speed_Setpoint](Speed_Setpoint) (c)<br />[brick:Demand_Setpoint](Demand_Setpoint) (c)<br />[brick:Proportional_Band_Setpoint](Proportional_Band_Setpoint) (c)<br />[brick:Temperature_Setpoint](Temperature_Setpoint) (c)<br />[brick:Dead_Band_Setpoint](Dead_Band_Setpoint) (c)<br />[brick:Luminance_Setpoint](Luminance_Setpoint) (c)<br />[brick:Damper_Position_Setpoint](Damper_Position_Setpoint) (c)<br />[brick:Integral_Gain_Setpoint](Integral_Gain_Setpoint) (c)<br />[brick:Reset_Setpoint](Reset_Setpoint) (c)<br />[brick:Load_Setpoint](Load_Setpoint) (c)<br />[brick:Dew_Point_Setpoint](Dew_Point_Setpoint) (c)<br />[brick:Integral_Time_Setpoint](Integral_Time_Setpoint) (c)<br />[brick:Pressure_Setpoint](Pressure_Setpoint) (c)<br />[brick:Increase_Decrease_Step_Setpoint](Increase_Decrease_Step_Setpoint) (c)<br />
+Sub-classes |[brick:CO2_Setpoint](CO2_Setpoint) (c)<br />[brick:Temperature_Setpoint](Temperature_Setpoint) (c)<br />[brick:Integral_Time_Setpoint](Integral_Time_Setpoint) (c)<br />[brick:Dead_Band_Setpoint](Dead_Band_Setpoint) (c)<br />[brick:Reset_Setpoint](Reset_Setpoint) (c)<br />[brick:Integral_Gain_Setpoint](Integral_Gain_Setpoint) (c)<br />[brick:Increase_Decrease_Step_Setpoint](Increase_Decrease_Step_Setpoint) (c)<br />[brick:Damper_Position_Setpoint](Damper_Position_Setpoint) (c)<br />[brick:Mode_Setpoint](Mode_Setpoint) (c)<br />[brick:Luminance_Setpoint](Luminance_Setpoint) (c)<br />[brick:Demand_Setpoint](Demand_Setpoint) (c)<br />[brick:Proportional_Band_Setpoint](Proportional_Band_Setpoint) (c)<br />[brick:Humidity_Setpoint](Humidity_Setpoint) (c)<br />[brick:Speed_Setpoint](Speed_Setpoint) (c)<br />[brick:Dew_Point_Setpoint](Dew_Point_Setpoint) (c)<br />[brick:Enthalpy_Setpoint](Enthalpy_Setpoint) (c)<br />[brick:Pressure_Setpoint](Pressure_Setpoint) (c)<br />[brick:Flow_Setpoint](Flow_Setpoint) (c)<br />[brick:Load_Setpoint](Load_Setpoint) (c)<br />
 ### Shading_System
 Property | Value
 --- | ---
@@ -3307,7 +3307,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Solid`
 Super-classes |[brick:Substance](Substance) (c)<br />
-Sub-classes |[brick:Frost](Frost) (c)<br />[brick:Hail](Hail) (c)<br />[brick:Ice](Ice) (c)<br />
+Sub-classes |[brick:Hail](Hail) (c)<br />[brick:Ice](Ice) (c)<br />[brick:Frost](Frost) (c)<br />
 ### Space
 Property | Value
 --- | ---
@@ -3330,7 +3330,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Speed_Sensor`
 Super-classes |[brick:Sensor](Sensor) (c)<br />
-Sub-classes |[brick:Differential_Speed_Sensor](Differential_Speed_Sensor) (c)<br />[brick:Wind_Speed_Sensor](Wind_Speed_Sensor) (c)<br />[brick:Motor_Speed_Sensor](Motor_Speed_Sensor) (c)<br />
+Sub-classes |[brick:Wind_Speed_Sensor](Wind_Speed_Sensor) (c)<br />[brick:Motor_Speed_Sensor](Motor_Speed_Sensor) (c)<br />[brick:Differential_Speed_Sensor](Differential_Speed_Sensor) (c)<br />
 ### Speed_Setpoint
 Property | Value
 --- | ---
@@ -3373,7 +3373,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Start_Stop_Status`
 Super-classes |[brick:Status](Status) (c)<br />
-Sub-classes |[brick:Pump_Start_Stop_Status](Pump_Start_Stop_Status) (c)<br />[brick:Run_Status](Run_Status) (c)<br />[brick:Fan_Start_Stop_Status](Fan_Start_Stop_Status) (c)<br />[brick:Motor_Start_Stop_Status](Motor_Start_Stop_Status) (c)<br />
+Sub-classes |[brick:Motor_Start_Stop_Status](Motor_Start_Stop_Status) (c)<br />[brick:Fan_Start_Stop_Status](Fan_Start_Stop_Status) (c)<br />[brick:Pump_Start_Stop_Status](Pump_Start_Stop_Status) (c)<br />[brick:Run_Status](Run_Status) (c)<br />
 ### Static_Pressure
 Property | Value
 --- | ---
@@ -3406,25 +3406,25 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Static_Pressure_Sensor`
 Super-classes |[brick:Pressure_Sensor](Pressure_Sensor) (c)<br />
-Sub-classes |[brick:Exhaust_Air_Static_Pressure_Sensor:](Exhaust_Air_Static_Pressure_Sensor:) (c)<br />[brick:Discharge_Air_Static_Pressure_Sensor:](Discharge_Air_Static_Pressure_Sensor:) (c)<br />[brick:Building_Static_Pressure_Sensor:](Building_Static_Pressure_Sensor:) (c)<br />[brick:Supply_Air_Static_Pressure_Sensor:](Supply_Air_Static_Pressure_Sensor:) (c)<br />
+Sub-classes |[brick:Building_Static_Pressure_Sensor:](Building_Static_Pressure_Sensor:) (c)<br />[brick:Discharge_Air_Static_Pressure_Sensor:](Discharge_Air_Static_Pressure_Sensor:) (c)<br />[brick:Exhaust_Air_Static_Pressure_Sensor:](Exhaust_Air_Static_Pressure_Sensor:) (c)<br />[brick:Supply_Air_Static_Pressure_Sensor:](Supply_Air_Static_Pressure_Sensor:) (c)<br />
 ### Static_Pressure_Setpoint
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Static_Pressure_Setpoint`
 Super-classes |[brick:Pressure_Setpoint](Pressure_Setpoint) (c)<br />
-Sub-classes |[brick:High_Static_Pressure_Cutout_Limit_Setpoint](High_Static_Pressure_Cutout_Limit_Setpoint) (c)<br />[brick:Hot_Water_Static_Pressure_Setpoint](Hot_Water_Static_Pressure_Setpoint) (c)<br />[brick:Building_Static_Pressure_Setpoint](Building_Static_Pressure_Setpoint) (c)<br />[brick:Chilled_Water_Static_Pressure_Setpoint](Chilled_Water_Static_Pressure_Setpoint) (c)<br />[brick:Exhaust_Air_Static_Pressure_Setpoint](Exhaust_Air_Static_Pressure_Setpoint) (c)<br />[brick:Supply_Air_Static_Pressure_Setpoint](Supply_Air_Static_Pressure_Setpoint) (c)<br />[brick:Discharge_Air_Static_Pressure_Setpoint](Discharge_Air_Static_Pressure_Setpoint) (c)<br />
+Sub-classes |[brick:High_Static_Pressure_Cutout_Limit_Setpoint](High_Static_Pressure_Cutout_Limit_Setpoint) (c)<br />[brick:Hot_Water_Static_Pressure_Setpoint](Hot_Water_Static_Pressure_Setpoint) (c)<br />[brick:Supply_Air_Static_Pressure_Setpoint](Supply_Air_Static_Pressure_Setpoint) (c)<br />[brick:Discharge_Air_Static_Pressure_Setpoint](Discharge_Air_Static_Pressure_Setpoint) (c)<br />[brick:Exhaust_Air_Static_Pressure_Setpoint](Exhaust_Air_Static_Pressure_Setpoint) (c)<br />[brick:Chilled_Water_Static_Pressure_Setpoint](Chilled_Water_Static_Pressure_Setpoint) (c)<br />[brick:Building_Static_Pressure_Setpoint](Building_Static_Pressure_Setpoint) (c)<br />
 ### Static_Pressure_Setpoint_Limit
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Static_Pressure_Setpoint_Limit`
 Super-classes |[brick:Limit](Limit) (c)<br />
-Sub-classes |[brick:Min_Static_Pressure_Setpoint_Limit](Min_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Max_Static_Pressure_Setpoint_Limit](Max_Static_Pressure_Setpoint_Limit) (c)<br />
+Sub-classes |[brick:Max_Static_Pressure_Setpoint_Limit](Max_Static_Pressure_Setpoint_Limit) (c)<br />[brick:Min_Static_Pressure_Setpoint_Limit](Min_Static_Pressure_Setpoint_Limit) (c)<br />
 ### Status
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Status`
 Super-classes |[brick:Point](Point) (c)<br />
-Sub-classes |[brick:Off_Status](Off_Status) (c)<br />[brick:Occupancy_Status](Occupancy_Status) (c)<br />[brick:On_Off_Status](On_Off_Status) (c)<br />[brick:Fault_Indicator_Status](Fault_Indicator_Status) (c)<br />[brick:Pressure_Status](Pressure_Status) (c)<br />[brick:Load_Shed_Status](Load_Shed_Status) (c)<br />[brick:Overridden_Status](Overridden_Status) (c)<br />[brick:Emergency_Generator_Status](Emergency_Generator_Status) (c)<br />[brick:Emergency_Air_Flow_Status](Emergency_Air_Flow_Status) (c)<br />[brick:Enable_Status](Enable_Status) (c)<br />[brick:Last_Fault_Code_Status](Last_Fault_Code_Status) (c)<br />[brick:Drive_Ready_Status](Drive_Ready_Status) (c)<br />[brick:Emergency_Push_Button_Status](Emergency_Push_Button_Status) (c)<br />[brick:Manual_Auto_Status](Manual_Auto_Status) (c)<br />[brick:Fan_Status](Fan_Status) (c)<br />[brick:Emergency_Power_Off_Status](Emergency_Power_Off_Status) (c)<br />[brick:Hold_Status](Hold_Status) (c)<br />[brick:Disable_Status](Disable_Status) (c)<br />[brick:Start_Stop_Status](Start_Stop_Status) (c)<br />[brick:System_Shutdown_Status](System_Shutdown_Status) (c)<br />[brick:Stages_Status](Stages_Status) (c)<br />[brick:Direction_Status](Direction_Status) (c)<br />[brick:Hand_Auto_Status](Hand_Auto_Status) (c)<br />[brick:Even_Month_Status](Even_Month_Status) (c)<br />[brick:On_Status](On_Status) (c)<br />[brick:Freeze_Status](Freeze_Status) (c)<br />[brick:Lead_Lag_Status](Lead_Lag_Status) (c)<br />[brick:System_Status](System_Status) (c)<br />[brick:Filter_Status](Filter_Status) (c)<br />[brick:Mode_Status](Mode_Status) (c)<br />[brick:Turn_Off_Status](Turn_Off_Status) (c)<br />[brick:Fault_Status](Fault_Status) (c)<br />[brick:Speed_Status](Speed_Status) (c)<br />
+Sub-classes |[brick:On_Off_Status](On_Off_Status) (c)<br />[brick:Hold_Status](Hold_Status) (c)<br />[brick:Emergency_Air_Flow_Status](Emergency_Air_Flow_Status) (c)<br />[brick:Last_Fault_Code_Status](Last_Fault_Code_Status) (c)<br />[brick:Emergency_Generator_Status](Emergency_Generator_Status) (c)<br />[brick:On_Status](On_Status) (c)<br />[brick:Freeze_Status](Freeze_Status) (c)<br />[brick:Turn_Off_Status](Turn_Off_Status) (c)<br />[brick:Occupancy_Status](Occupancy_Status) (c)<br />[brick:Start_Stop_Status](Start_Stop_Status) (c)<br />[brick:Stages_Status](Stages_Status) (c)<br />[brick:Speed_Status](Speed_Status) (c)<br />[brick:Drive_Ready_Status](Drive_Ready_Status) (c)<br />[brick:Fault_Status](Fault_Status) (c)<br />[brick:Emergency_Push_Button_Status](Emergency_Push_Button_Status) (c)<br />[brick:Enable_Status](Enable_Status) (c)<br />[brick:Even_Month_Status](Even_Month_Status) (c)<br />[brick:Off_Status](Off_Status) (c)<br />[brick:Mode_Status](Mode_Status) (c)<br />[brick:Overridden_Status](Overridden_Status) (c)<br />[brick:Disable_Status](Disable_Status) (c)<br />[brick:Hand_Auto_Status](Hand_Auto_Status) (c)<br />[brick:Pressure_Status](Pressure_Status) (c)<br />[brick:Emergency_Power_Off_Status](Emergency_Power_Off_Status) (c)<br />[brick:System_Status](System_Status) (c)<br />[brick:System_Shutdown_Status](System_Shutdown_Status) (c)<br />[brick:Direction_Status](Direction_Status) (c)<br />[brick:Lead_Lag_Status](Lead_Lag_Status) (c)<br />[brick:Manual_Auto_Status](Manual_Auto_Status) (c)<br />[brick:Fault_Indicator_Status](Fault_Indicator_Status) (c)<br />[brick:Load_Shed_Status](Load_Shed_Status) (c)<br />[brick:Filter_Status](Filter_Status) (c)<br />[brick:Fan_Status](Fan_Status) (c)<br />
 ### Steam
 Property | Value
 --- | ---
@@ -3440,9 +3440,9 @@ Super-classes |[brick:Equipment](Equipment) (c)<br />
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Substance`
-Sub-classes |[brick:Solid](Solid) (c)<br />[brick:Luminance](Luminance) (c)<br />[brick:Enthalpy](Enthalpy) (c)<br />[brick:Fluid](Fluid) (c)<br />
+Sub-classes |[brick:Enthalpy](Enthalpy) (c)<br />[brick:Luminance](Luminance) (c)<br />[brick:Solid](Solid) (c)<br />[brick:Fluid](Fluid) (c)<br />
 In domain of |[brick:isMeasuredBy](isMeasuredBy) (op)<br />
-In range of |[brick:measures](measures) (op)<br />[brick:hasOutputSubstance](hasOutputSubstance) (op)<br />[brick:hasInputSubstance](hasInputSubstance) (op)<br />
+In range of |[brick:hasOutputSubstance](hasOutputSubstance) (op)<br />[brick:measures](measures) (op)<br />[brick:hasInputSubstance](hasInputSubstance) (op)<br />
 ### Supply_Air
 Property | Value
 --- | ---
@@ -3458,7 +3458,7 @@ Super-classes |[brick:Pressure_Status](Pressure_Status) (c)<br />
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Supply_Air_Flow_Demand_Setpoint`
-Super-classes |[brick:Air_Flow_Demand_Setpoint](Air_Flow_Demand_Setpoint) (c)<br />[brick:Supply_Air_Flow_Setpoint](Supply_Air_Flow_Setpoint) (c)<br />
+Super-classes |[brick:Supply_Air_Flow_Setpoint](Supply_Air_Flow_Setpoint) (c)<br />[brick:Air_Flow_Demand_Setpoint](Air_Flow_Demand_Setpoint) (c)<br />
 ### Supply_Air_Flow_Sensor
 Property | Value
 --- | ---
@@ -3469,7 +3469,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Supply_Air_Flow_Setpoint`
 Super-classes |[brick:Air_Flow_Setpoint](Air_Flow_Setpoint) (c)<br />
-Sub-classes |[brick:Occupied_Supply_Air_Flow_Setpoint](Occupied_Supply_Air_Flow_Setpoint) (c)<br />[brick:Heating_Supply_Air_Flow_Setpoint](Heating_Supply_Air_Flow_Setpoint) (c)<br />[brick:Cooling_Supply_Air_Flow_Setpoint](Cooling_Supply_Air_Flow_Setpoint) (c)<br />[brick:Supply_Air_Flow_Demand_Setpoint](Supply_Air_Flow_Demand_Setpoint) (c)<br />
+Sub-classes |[brick:Heating_Supply_Air_Flow_Setpoint](Heating_Supply_Air_Flow_Setpoint) (c)<br />[brick:Supply_Air_Flow_Demand_Setpoint](Supply_Air_Flow_Demand_Setpoint) (c)<br />[brick:Occupied_Supply_Air_Flow_Setpoint](Occupied_Supply_Air_Flow_Setpoint) (c)<br />[brick:Cooling_Supply_Air_Flow_Setpoint](Cooling_Supply_Air_Flow_Setpoint) (c)<br />
 ### Supply_Air_Humidity_Sensor:
 Property | Value
 --- | ---
@@ -3500,7 +3500,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Supply_Air_Temperature_Dead_Band_Setpoint`
 Super-classes |[brick:Dead_Band_Setpoint](Dead_Band_Setpoint) (c)<br />
-Sub-classes |[brick:Cooling_Supply_Air_Temperature_Dead_Band_Setpoint](Cooling_Supply_Air_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Heating_Supply_Air_Temperature_Dead_Band_Setpoint](Heating_Supply_Air_Temperature_Dead_Band_Setpoint) (c)<br />
+Sub-classes |[brick:Heating_Supply_Air_Temperature_Dead_Band_Setpoint](Heating_Supply_Air_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Cooling_Supply_Air_Temperature_Dead_Band_Setpoint](Cooling_Supply_Air_Temperature_Dead_Band_Setpoint) (c)<br />
 ### Supply_Air_Temperature_Proportional_Band_Setpoint
 Property | Value
 --- | ---
@@ -3538,13 +3538,13 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Supply_Water_Differential_Pressure_Proportional_Band_Setpoint`
 Super-classes |[brick:Proportional_Band_Setpoint](Proportional_Band_Setpoint) (c)<br />
-Sub-classes |[brick:Thermal_Energy_Storage_Discharge_Water_Differential_Pressure_ProportionalBandSetpoint](Thermal_Energy_Storage_Discharge_Water_Differential_Pressure_ProportionalBandSetpoint) (c)<br />[brick:Thermal_Energy_Storage_Supply_Water_Differential_Pressure_Proportional_BandSetpoint](Thermal_Energy_Storage_Supply_Water_Differential_Pressure_Proportional_BandSetpoint) (c)<br />
+Sub-classes |[brick:Thermal_Energy_Storage_Supply_Water_Differential_Pressure_Proportional_BandSetpoint](Thermal_Energy_Storage_Supply_Water_Differential_Pressure_Proportional_BandSetpoint) (c)<br />[brick:Thermal_Energy_Storage_Discharge_Water_Differential_Pressure_ProportionalBandSetpoint](Thermal_Energy_Storage_Discharge_Water_Differential_Pressure_ProportionalBandSetpoint) (c)<br />
 ### Supply_Water_Flow_Sensor
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Supply_Water_Flow_Sensor`
 Super-classes |[brick:Water_Flow_Sensor](Water_Flow_Sensor) (c)<br />
-Sub-classes |[brick:Chilled_Water_Discharge_Flow_Sensor](Chilled_Water_Discharge_Flow_Sensor) (c)<br />[brick:Chilled_Water_Supply_Flow_Sensor](Chilled_Water_Supply_Flow_Sensor) (c)<br />
+Sub-classes |[brick:Chilled_Water_Supply_Flow_Sensor](Chilled_Water_Supply_Flow_Sensor) (c)<br />[brick:Chilled_Water_Discharge_Flow_Sensor](Chilled_Water_Discharge_Flow_Sensor) (c)<br />
 ### Supply_Water_Temperature_Dead_Band_Setpoint
 Property | Value
 --- | ---
@@ -3561,7 +3561,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Supply_Water_Temperature_Proportional_Band_Setpoint`
 Super-classes |[brick:Proportional_Band_Setpoint](Proportional_Band_Setpoint) (c)<br />
-Sub-classes |[brick:Heat_Exchanger_Discharge_Water_Temperature_Proportional_Band_Setpoint](Heat_Exchanger_Discharge_Water_Temperature_Proportional_Band_Setpoint) (c)<br />[brick:Heat_Exchanger_Supply_Water_Temperature_Proportional_Band_Setpoint](Heat_Exchanger_Supply_Water_Temperature_Proportional_Band_Setpoint) (c)<br />
+Sub-classes |[brick:Heat_Exchanger_Supply_Water_Temperature_Proportional_Band_Setpoint](Heat_Exchanger_Supply_Water_Temperature_Proportional_Band_Setpoint) (c)<br />[brick:Heat_Exchanger_Discharge_Water_Temperature_Proportional_Band_Setpoint](Heat_Exchanger_Discharge_Water_Temperature_Proportional_Band_Setpoint) (c)<br />
 ### Switch
 Property | Value
 --- | ---
@@ -3598,13 +3598,13 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Temperature`
 Super-classes |[brick:Quantity](Quantity) (c)<br />
-Sub-classes |[brick:Wet_Bulb_Temperature](Wet_Bulb_Temperature) (c)<br />[brick:Operative_Temperature](Operative_Temperature) (c)<br />[brick:Radiant_Temperature](Radiant_Temperature) (c)<br />
+Sub-classes |[brick:Wet_Bulb_Temperature](Wet_Bulb_Temperature) (c)<br />[brick:Radiant_Temperature](Radiant_Temperature) (c)<br />[brick:Operative_Temperature](Operative_Temperature) (c)<br />
 ### Temperature_Dead_Band_Setpoint
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Temperature_Dead_Band_Setpoint`
 Super-classes |[brick:Dead_Band_Setpoint](Dead_Band_Setpoint) (c)<br />
-Sub-classes |[brick:Occupied_Cooling_Temperature_Dead_Band_Setpoint](Occupied_Cooling_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Occupied_Heating_Temperature_Dead_Band_Setpoint](Occupied_Heating_Temperature_Dead_Band_Setpoint) (c)<br />
+Sub-classes |[brick:Occupied_Heating_Temperature_Dead_Band_Setpoint](Occupied_Heating_Temperature_Dead_Band_Setpoint) (c)<br />[brick:Occupied_Cooling_Temperature_Dead_Band_Setpoint](Occupied_Cooling_Temperature_Dead_Band_Setpoint) (c)<br />
 ### Temperature_Increase_Decrease_Step_Setpoint
 Property | Value
 --- | ---
@@ -3616,7 +3616,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Temperature_Sensor`
 Super-classes |[brick:Sensor](Sensor) (c)<br />
-Sub-classes |[brick:Water_Temperature_Sensor](Water_Temperature_Sensor) (c)<br />[brick:Air_Temperature_Sensor](Air_Temperature_Sensor) (c)<br />[brick:Zone_Temperature_Sensor](Zone_Temperature_Sensor) (c)<br />
+Sub-classes |[brick:Zone_Temperature_Sensor](Zone_Temperature_Sensor) (c)<br />[brick:Water_Temperature_Sensor](Water_Temperature_Sensor) (c)<br />[brick:Air_Temperature_Sensor](Air_Temperature_Sensor) (c)<br />
 ### Temperature_Setpoint
 Property | Value
 --- | ---
@@ -3697,13 +3697,13 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#VFD`
 Super-classes |[brick:HVAC](HVAC) (c)<br />
-Sub-classes |[brick:Heat_Wheel_VFD](Heat_Wheel_VFD) (c)<br />[brick:Preheat_Valve_VFD](Preheat_Valve_VFD) (c)<br />
+Sub-classes |[brick:Preheat_Valve_VFD](Preheat_Valve_VFD) (c)<br />[brick:Heat_Wheel_VFD](Heat_Wheel_VFD) (c)<br />
 ### Valve
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Valve`
 Super-classes |[brick:HVAC](HVAC) (c)<br />
-Sub-classes |[brick:Water_Valve](Water_Valve) (c)<br />[brick:Isolation_Valve](Isolation_Valve) (c)<br />[brick:Heating_Valve](Heating_Valve) (c)<br />
+Sub-classes |[brick:Heating_Valve](Heating_Valve) (c)<br />[brick:Water_Valve](Water_Valve) (c)<br />[brick:Isolation_Valve](Isolation_Valve) (c)<br />
 ### Variable_Air_Volume_Box
 Property | Value
 --- | ---
@@ -3726,7 +3726,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Velocity_Pressure_Sensor:`
 Super-classes |[brick:Pressure_Sensor](Pressure_Sensor) (c)<br />
-Sub-classes |[brick:Exhaust_Air_Velocity_Pressure_Sensor:](Exhaust_Air_Velocity_Pressure_Sensor:) (c)<br />[brick:Supply_Air_Velocity_Pressure_Sensor:](Supply_Air_Velocity_Pressure_Sensor:) (c)<br />[brick:Discharge_Air_Velocity_Pressure_Sensor:](Discharge_Air_Velocity_Pressure_Sensor:) (c)<br />
+Sub-classes |[brick:Supply_Air_Velocity_Pressure_Sensor:](Supply_Air_Velocity_Pressure_Sensor:) (c)<br />[brick:Exhaust_Air_Velocity_Pressure_Sensor:](Exhaust_Air_Velocity_Pressure_Sensor:) (c)<br />[brick:Discharge_Air_Velocity_Pressure_Sensor:](Discharge_Air_Velocity_Pressure_Sensor:) (c)<br />
 ### Velocity_Pressure_Setpoint
 Property | Value
 --- | ---
@@ -3763,14 +3763,14 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Voltage_Sensor`
 Super-classes |[brick:Sensor](Sensor) (c)<br />
-Sub-classes |[brick:Heat_Wheel_Voltage_Sensor](Heat_Wheel_Voltage_Sensor) (c)<br />[brick:Output_Voltage_Sensor](Output_Voltage_Sensor) (c)<br />[brick:DC_Bus_Voltage_Sensor](DC_Bus_Voltage_Sensor) (c)<br />[brick:Battery_Voltage_Sensor](Battery_Voltage_Sensor) (c)<br />
+Sub-classes |[brick:Battery_Voltage_Sensor](Battery_Voltage_Sensor) (c)<br />[brick:DC_Bus_Voltage_Sensor](DC_Bus_Voltage_Sensor) (c)<br />[brick:Output_Voltage_Sensor](Output_Voltage_Sensor) (c)<br />[brick:Heat_Wheel_Voltage_Sensor](Heat_Wheel_Voltage_Sensor) (c)<br />
 ### Water
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Water`
 Description | <p>transparent, odorless, tasteless liquid; a compound of hydrogen and oxygen (H2O), containing 11.188% hydrogen and 88.812% oxygen by mass; freezing at 32°F (0°C); boiling near 212°F (100°C).</p>
 Super-classes |[brick:Liquid](Liquid) (c)<br />
-Sub-classes |[brick:Domestic_Water](Domestic_Water) (c)<br />[brick:Hot_Water](Hot_Water) (c)<br />[brick:Chilled_Water](Chilled_Water) (c)<br />[brick:Blowdown_Water](Blowdown_Water) (c)<br />[brick:Makeup_Water](Makeup_Water) (c)<br />[brick:Condenser_Water](Condenser_Water) (c)<br />
+Sub-classes |[brick:Blowdown_Water](Blowdown_Water) (c)<br />[brick:Condenser_Water](Condenser_Water) (c)<br />[brick:Hot_Water](Hot_Water) (c)<br />[brick:Domestic_Water](Domestic_Water) (c)<br />[brick:Makeup_Water](Makeup_Water) (c)<br />[brick:Chilled_Water](Chilled_Water) (c)<br />
 ### Water_Flow_Sensor
 Property | Value
 --- | ---
@@ -3788,19 +3788,19 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Water_Pump`
 Super-classes |[brick:Pump](Pump) (c)<br />
-Sub-classes |[brick:Chilled_Water_Pump](Chilled_Water_Pump) (c)<br />[brick:Hot_Water_Pump](Hot_Water_Pump) (c)<br />[brick:Condenser_Water_Pump](Condenser_Water_Pump) (c)<br />
+Sub-classes |[brick:Condenser_Water_Pump](Condenser_Water_Pump) (c)<br />[brick:Hot_Water_Pump](Hot_Water_Pump) (c)<br />[brick:Chilled_Water_Pump](Chilled_Water_Pump) (c)<br />
 ### Water_System
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Water_System`
 Super-classes |[brick:Equipment](Equipment) (c)<br />
-Sub-classes |[brick:Hot_Water_System](Hot_Water_System) (c)<br />[brick:Chilled_Water_System](Chilled_Water_System) (c)<br />
+Sub-classes |[brick:Chilled_Water_System](Chilled_Water_System) (c)<br />[brick:Hot_Water_System](Hot_Water_System) (c)<br />
 ### Water_Temperature_Sensor
 Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Water_Temperature_Sensor`
 Super-classes |[brick:Temperature_Sensor](Temperature_Sensor) (c)<br />
-Sub-classes |[brick:Leaving_Water_Temperature_Sensor](Leaving_Water_Temperature_Sensor) (c)<br />[brick:Return_Water_Temperature_Sensor](Return_Water_Temperature_Sensor) (c)<br />[brick:Entering_Water_Temperature_Sensor](Entering_Water_Temperature_Sensor) (c)<br />[brick:Heat_Exchanger_Supply_Water_Temperature_Sensor](Heat_Exchanger_Supply_Water_Temperature_Sensor) (c)<br />[brick:Hot_Water_Supply_Temperature_Sensor](Hot_Water_Supply_Temperature_Sensor) (c)<br />[brick:Chilled_Water_Temperature_Sensor](Chilled_Water_Temperature_Sensor) (c)<br />
+Sub-classes |[brick:Chilled_Water_Temperature_Sensor](Chilled_Water_Temperature_Sensor) (c)<br />[brick:Return_Water_Temperature_Sensor](Return_Water_Temperature_Sensor) (c)<br />[brick:Entering_Water_Temperature_Sensor](Entering_Water_Temperature_Sensor) (c)<br />[brick:Heat_Exchanger_Supply_Water_Temperature_Sensor](Heat_Exchanger_Supply_Water_Temperature_Sensor) (c)<br />[brick:Leaving_Water_Temperature_Sensor](Leaving_Water_Temperature_Sensor) (c)<br />[brick:Hot_Water_Supply_Temperature_Sensor](Hot_Water_Supply_Temperature_Sensor) (c)<br />
 ### Water_Temperature_Setpoint
 Property | Value
 --- | ---
@@ -3858,7 +3858,7 @@ Property | Value
 --- | ---
 IRI | `https://brickschema.org/schema/1.0.3/Brick#Zone`
 Super-classes |[brick:Location](Location) (c)<br />
-Sub-classes |[brick:Fire_Zone](Fire_Zone) (c)<br />[brick:Lighting_Zone](Lighting_Zone) (c)<br />[brick:HVAC_Zone](HVAC_Zone) (c)<br />
+Sub-classes |[brick:Fire_Zone](Fire_Zone) (c)<br />[brick:HVAC_Zone](HVAC_Zone) (c)<br />[brick:Lighting_Zone](Lighting_Zone) (c)<br />
 ### Zone_Air_Temperature_Sensor
 Property | Value
 --- | ---

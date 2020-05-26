@@ -918,7 +918,7 @@ class Owlp(DocProfile):
                     eg = None
             else:
                 desc = v["description"]
-                eg = v["example"]
+                eg = v["example"].replace("<", "&lt;").replace(">", "&gt;") if v.get("example") is not None else None
 
             classes_list.append(
                 class_template.render(

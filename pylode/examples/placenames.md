@@ -12,8 +12,8 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
     [[ORCID]](http://orcid.org/0000-0002-8742-7730)
     (<nicholas.car@csiro.au></a>) of [CSIRO](http://catalogue.linked.data.gov.au/def/csiro)
 * **Contributor(s)**
-  * Irina Bastrakova
   * Armin Haller
+  * Irina Bastrakova
 * **Created**
   * 2018-08-02
 * **Modified**
@@ -26,16 +26,15 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
   * RDF ([placenames.ttl](turtle))
 ### Description
 <p>This is an ontology that profiles several other ontologies. It describes Place Names that are used in the Place Names Gazetteer of Australia. Place Names are names given to natural and artificial geospatial features, such as administrative areas, political regions, mountain ranges, rivers, bays etc. Place Names are assigned and managed by multiple Jurisdictions around Australia and may have varying status: official, historical etc. This ontology provides a meta model to bring Place Name data together in one Semantic Web data collection.</p>
-* **History Note:** This version of this ontology, 2, covers the same conceptual territory of the original ontology (see placenames-original.ttl) but is aligned with:
-
-    * GeoSPARQL ontology - Features & Geometries
-    * ISA Programme Location Core Vocabulary (locn) - Location class
-    * ASGS Ontology - ASGS Features
-    * GNAF Ontology - Addresses
-    * schema.org - Agent subclasses and some Place Name annotations
-    * Time Ontology in OWL - for temporal extents
-
-The first version of this Place Names ontology is archived online at https://github.com/GeoscienceAustralia/Place-Names.
+* **History Note:** <p>This version of this ontology, 2, covers the same conceptual territory of the original ontology (see placenames-original.ttl) but is aligned with:</p>
+<pre><code>* GeoSPARQL ontology - Features &amp; Geometries
+* ISA Programme Location Core Vocabulary (locn) - Location class
+* ASGS Ontology - ASGS Features
+* GNAF Ontology - Addresses
+* schema.org - Agent subclasses and some Place Name annotations
+* Time Ontology in OWL - for temporal extents
+</code></pre>
+<p>The first version of this Place Names ontology is archived online at https://github.com/GeoscienceAustralia/Place-Names.</p>
 
 ## Table of Contents
 1. [Classes](#classes)
@@ -107,11 +106,10 @@ Restrictions |[reg:containedItemClass](http://purl.org/linked-data/registry#cont
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/placenames/Jurisdiction`
-Description | <p>A Jurisdiction is an Organisation that has authority to make choices within its allocated domain.</p>
-<p>In the context of the Place Names Profile, Jurisdictions may select Place Names for Features within their allocated area - Australian state, local government area etc.</p>
+Description | <p>A Jurisdiction is an Organisation that has authority to make choices within its allocated domain.</p> <p>In the context of the Place Names Profile, Jurisdictions may select Place Names for Features within their allocated area - Australian state, local government area etc.</p>
 Super-classes |[sdo:Organization](https://schema.org/Organization) (c)<br />
 Sub-classes |[asgs:StateOrTerritory](http://linked.data.gov.au/def/asgs#StateOrTerritory) (c)<br />
-In range of |[hasPlaceNamingAuthority](hasplacenamingauthority) (op)<br />[wasNamedBy](wasnamedby) (op)<br />
+In range of |[wasNamedBy](wasnamedby) (op)<br />[hasPlaceNamingAuthority](hasplacenamingauthority) (op)<br />
 ### Place
 Property | Value
 --- | ---
@@ -127,8 +125,8 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/placenames/PlaceName`
 Description | <p>The name of a place, assigned by an official naming authority in the Place Names Gazeteer of Australia.</p>
 Super-classes |[reg:RegisteredItem](http://purl.org/linked-data/registry#RegisteredItem) (c)<br />
-Restrictions |[reg:status](http://purl.org/linked-data/registry#status) (op) **some** [reg:Status](http://purl.org/linked-data/registry#Status) (c)<br />[hasPronunciation](pronunciation) (op) **some** [xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />[adms:identifier](https://www.w3.org/ns/adms#identifier) (op) **some** [adms:Identifier](https://www.w3.org/ns/adms#Identifier) (c)<br />[register](register) (op) **some** [Gazetteer](Gazetteer) (c)<br />[wasNamedBy](wasnamedby) (op) **some** [Jurisdiction](Jurisdiction) (c)<br />
-In domain of |[hasPlaceNamingAuthority](hasplacenamingauthority) (op)<br />[hasPlaceNameFormality](hasplacenameformality) (op)<br />[hasPronunciation](pronunciation) (op)<br />[wasNamedBy](wasnamedby) (op)<br />
+Restrictions |[wasNamedBy](wasnamedby) (op) **some** [Jurisdiction](Jurisdiction) (c)<br />[hasPronunciation](pronunciation) (op) **some** [xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />[reg:status](http://purl.org/linked-data/registry#status) (op) **some** [reg:Status](http://purl.org/linked-data/registry#Status) (c)<br />[register](register) (op) **some** [Gazetteer](Gazetteer) (c)<br />[adms:identifier](https://www.w3.org/ns/adms#identifier) (op) **some** [adms:Identifier](https://www.w3.org/ns/adms#Identifier) (c)<br />
+In domain of |[hasPlaceNameFormality](hasplacenameformality) (op)<br />[hasPronunciation](pronunciation) (op)<br />[wasNamedBy](wasnamedby) (op)<br />[hasPlaceNamingAuthority](hasplacenamingauthority) (op)<br />
 ### Place Name Formality
 Property | Value
 --- | ---
@@ -178,7 +176,7 @@ Property | Value
 IRI | `http://www.opengis.net/ont/geosparql#Feature`
 Description | <p>The GeoSPARQL Ontology's Feature Class</p>
 Restrictions |[hasPlaceName](hasplacename) (op) **some** [PlaceName](PlaceName) (c)<br />
-Sub-classes |[ContractedCatchment](ContractedCatchment) (c)<br />[Place](Place) (c)<br />[gnaf:Address](http://linked.data.gov.au/def/gnaf#Address) (c)<br />[asgs:Feature](http://linked.data.gov.au/def/asgs#Feature) (c)<br />
+Sub-classes |[Place](Place) (c)<br />[gnaf:Address](http://linked.data.gov.au/def/gnaf#Address) (c)<br />[asgs:Feature](http://linked.data.gov.au/def/asgs#Feature) (c)<br />[ContractedCatchment](ContractedCatchment) (c)<br />
 In domain of |[geo:hasGeometry](http://www.opengis.net/ont/geosparql#hasGeometry) (op)<br />[hasPlaceName](hasplacename) (op)<br />
 ### Geometry
 Property | Value
@@ -194,7 +192,7 @@ IRI | `http://www.w3.org/2001/XMLSchema#string`
 Property | Value
 --- | ---
 IRI | `http://www.w3.org/2004/02/skos/core#Concept`
-Sub-classes |[PlaceType](PlaceType) (c)<br />[reg:Status](http://purl.org/linked-data/registry#Status) (c)<br />[PlaceNameFormality](PlaceNameFormality) (c)<br />
+Sub-classes |[reg:Status](http://purl.org/linked-data/registry#Status) (c)<br />[PlaceNameFormality](PlaceNameFormality) (c)<br />[PlaceType](PlaceType) (c)<br />
 ### Temporal Entity
 Property | Value
 --- | ---
@@ -383,8 +381,8 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/placenames/PlaceName`
 * **Contributor(s)**
-  * [rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class)
   * [owl:Class](http://www.w3.org/2002/07/owl#Class)
+  * [rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class)
 Description | The name of a place, assigned by an official naming authority in the Place Names Gazeteer of Australia.
 ## Namespaces
 * **default (:)**

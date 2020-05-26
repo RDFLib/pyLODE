@@ -8,8 +8,8 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * **Publisher(s)**
   * <a href='http://catalogue.linked.data.gov.au/org/csiro'>CSIRO</a>
 * **Creators(s)**
-  * <a href='https://orcid.org/0000-0002-8742-7730'>Nicholas J Car, Surround Australia</a>
   * <a href='https://orcid.org/0000-0002-3884-3420'>Simon J D Cox, CSIRO</a>
+  * <a href='https://orcid.org/0000-0002-8742-7730'>Nicholas J Car, Surround Australia</a>
 * **Created**
   * 2019-01-08
 * **Modified**
@@ -24,7 +24,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * **Ontology RDF**
   * RDF ([geox.ttl](turtle))
 * **Code Repository**
-  * <[https://github.com/CSIRO-enviro-informatics/geosparql-ext-ont](https://github.com/CSIRO-enviro-informatics/geosparql-ext-ont)>
+  * [https://github.com/CSIRO-enviro-informatics/geosparql-ext-ont](https://github.com/CSIRO-enviro-informatics/geosparql-ext-ont)
 ### Description
 <p>An extension to <a href="http://www.opengeospatial.org/standards/geosparql">GeoSPARQL</a> with new features for the representation of additional elements of feature geometry, such as spatial-resolution, length, area and volume. </p>
 
@@ -48,7 +48,7 @@ Description | <p>Spatial quantity computed or defined within a specified coordin
 Super-classes |[data:QuantitativeMeasure](http://linked.data.gov.au/def/datatype/QuantitativeMeasure) (c)<br />
 Restrictions |[geox:inCRS](InCoordinateReferenceSystem) (op) **exactly** 1<br />
 In domain of |[geox:inCRS](InCoordinateReferenceSystem) (op)<br />
-In range of |[geox:hasLength](haslength) (op)<br />[geox:hasVolume](hasvolume) (op)<br />[geox:hasArea](hasarea) (op)<br />
+In range of |[geox:hasVolume](hasvolume) (op)<br />[geox:hasLength](haslength) (op)<br />[geox:hasArea](hasarea) (op)<br />
 
 ## Object Properties
 [has area](#hasarea),
@@ -66,7 +66,7 @@ In range of |[geox:hasLength](haslength) (op)<br />[geox:hasVolume](hasvolume) (
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/geox#hasArea`
-Example | <pre>my:plot456<br />  :hasArea [<br />    data:uncertainty 0.5 ;<br />    data:unit &lt;http://qudt.org/vocab/unit/M2> ;<br />    data:value 63.9 ;<br />  ] ;<br />.</pre>
+Example | ````my:plot456`<br />`  :hasArea [`<br />`    data:uncertainty 0.5 ;`<br />`    data:unit <http://qudt.org/vocab/unit/M2> ;`<br />`    data:value 63.9 ;`<br />`  ] ;`<br />`.`<br />```
 Domain(s) |[geo:SpatialObject](http://www.opengis.net/ont/geosparql#SpatialObject) (c)<br />
 Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
 [](hasareainm2)
@@ -74,14 +74,14 @@ Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/geox#hasAreaM2`
-Example | <pre>my:plot456<br />  :hasAreaM2 [<br />    data:value 63.9 ;<br />  ] ;<br />.</pre>
+Example | ````my:plot456`<br />`  :hasAreaM2 [`<br />`    data:value 63.9 ;`<br />`  ] ;`<br />`.`<br />```
 Super-properties |[geox:hasArea](hasarea) (op)<br />
 [](haslength)
 ### has length
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/geox#hasLength`
-Example | <pre>my:road456<br />  :hasLength [<br />    data:uncertainty 5.0 ;<br />    data:unit &lt;http://qudt.org/vocab/unit/M> ;<br />    data:value 234.0 ;<br />  ] ;<br />.</pre>
+Example | ````my:road456`<br />`  :hasLength [`<br />`    data:uncertainty 5.0 ;`<br />`    data:unit <http://qudt.org/vocab/unit/M> ;`<br />`    data:value 234.0 ;`<br />`  ] ;`<br />`.`<br />```
 Domain(s) |[geo:SpatialObject](http://www.opengis.net/ont/geosparql#SpatialObject) (c)<br />
 Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
 [](haslengthinm)
@@ -89,14 +89,14 @@ Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/geox#hasLengthM`
-Example | <pre>my:road456<br />  :hasLengthM [<br />    data:value 234.0 ;<br />  ] ;<br />.</pre>
+Example | ````my:road456`<br />`  :hasLengthM [`<br />`    data:value 234.0 ;`<br />`  ] ;`<br />`.`<br />```
 Super-properties |[geox:hasLength](haslength) (op)<br />
 [](hasspatialresolution)
 ### has spatial resolution
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/geox#hasResolution`
-Example | <pre>my:image456<br />  :hasResolution [<br />    data:unit &lt;http://qudt.org/vocab/unit/M> ;<br />    data:value 30.0 ;<br />  ] ;<br />.</pre>
+Example | ````my:image456`<br />`  :hasResolution [`<br />`    data:unit <http://qudt.org/vocab/unit/M> ;`<br />`    data:value 30.0 ;`<br />`  ] ;`<br />`.`<br />```
 Domain(s) |[geo:Geometry](http://www.opengis.net/ont/geosparql#Geometry) (c)<br />
 Range(s) |[data:QuantitativeMeasure](http://linked.data.gov.au/def/datatype/QuantitativeMeasure) (c)<br />
 [](hasspatialresolutioninmetres)
@@ -104,7 +104,7 @@ Range(s) |[data:QuantitativeMeasure](http://linked.data.gov.au/def/datatype/Quan
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/geox#hasResolutionM`
-Example | <pre>my:image456<br />  :hasResolutionM [<br />    data:value 30.0 ;<br />  ] ;<br />.</pre>
+Example | ````my:image456`<br />`  :hasResolutionM [`<br />`    data:value 30.0 ;`<br />`  ] ;`<br />`.`<br />```
 Super-properties |[geox:hasResolution](hasspatialresolution) (op)<br />
 Domain(s) |[geo:Geometry](http://www.opengis.net/ont/geosparql#Geometry) (c)<br />
 [](hasvolume)
@@ -112,7 +112,7 @@ Domain(s) |[geo:Geometry](http://www.opengis.net/ont/geosparql#Geometry) (c)<br 
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/geox#hasVolume`
-Example | <pre>my:swimmingPool99<br />  :hasVolume [<br />    data:unit &lt;http://qudt.org/vocab/unit/M3> ;<br />    data:value 3050.0 ;<br />  ] ;<br />.</pre>
+Example | ````my:swimmingPool99`<br />`  :hasVolume [`<br />`    data:unit <http://qudt.org/vocab/unit/M3> ;`<br />`    data:value 3050.0 ;`<br />`  ] ;`<br />`.`<br />```
 Domain(s) |[geo:SpatialObject](http://www.opengis.net/ont/geosparql#SpatialObject) (c)<br />
 Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
 [](hasvolumeinm3)
@@ -120,7 +120,7 @@ Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/geox#hasVolumeM3`
-Example | <pre>my:swimmingPool99<br />  :hasVolumeM3 [<br />    data:value 3050.0 ;<br />  ] ;<br />.</pre>
+Example | ````my:swimmingPool99`<br />`  :hasVolumeM3 [`<br />`    data:value 3050.0 ;`<br />`  ] ;`<br />`.`<br />```
 Super-properties |[geox:hasVolume](hasvolume) (op)<br />
 [](InCoordinateReferenceSystem)
 ### In Coordinate Reference System
