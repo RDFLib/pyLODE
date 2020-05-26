@@ -66,6 +66,13 @@ output, in HTML & Markdown.
 
 For example, `Epimorphic's <https://www.epimorphics.com/>`__'s **Registry Ontology** is:
 
+- **reg.ttl** - source file
+- **reg.html** - HTML output
+    - this is a couple of releases ahead of the `online version <https://epimorphics.com/public/vocabulary/Registry.html>`_
+- **reg.md** - Markdown output
+
+Another, the Australian Government's Records Interoperability Framework (AGRIF) Ontology:
+
 - **agrif.ttl** - source file
 - **agrif.html** - HTML output
     - see this `rendered online by GitHack <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/agrif.html>`__
@@ -85,7 +92,7 @@ Ontologies online using pyLODE:
 - `Australia's Department of Finance's <https://www.finance.gov.au>`__'s **AGRIF ontology** - http://linked.data.gov.au/def/agrif
     - see the `Markdown version <https://github.com/AGLDWG/agrif-ont/blob/master/agrif.md>`__
 - `National Archives of Australia <http://www.naa.gov.au>`__'s **Commonwealth Records Series ontology** - http://linked.data.gov.au/def/crs
-    - see the `Markdown version <https://github.com/RDFLib/pyLODE/blob/master/src/pylode/examples/crs.md>`__
+    - see the `Markdown version <https://github.com/RDFLib/pyLODE/blob/master/pylode/examples/crs.md>`__
 - `CSIRO's <https://www.csiro.au>`__'s **LocI ontology** - http://linked.data.gov.au/def/loci
 -  `Geological Survey of
    Queensland <https://www.business.qld.gov.au/industries/mining-energy-water/resources/geoscience-information/gsq>`__'s
@@ -95,6 +102,7 @@ Ontologies online using pyLODE:
 -  `Epimorphic <https://www.epimorphics.com/>`__'s **Registry Ontology**
    - https://epimorphics.com/public/vocabulary/Registry.html
 - `Semantic Web for Earth and Environmental Terminology <http://sweetontology.net>`__ (SWEET)
+   - a series of ontologies that are live rendered into HTML via pyLODE being called by a Falcon server
 
 See pairs of RDF & HTML files in the
 `pylode/examples/ <pylode/examples/>`__ directory for other,
@@ -105,7 +113,7 @@ Installation
 ============
 This tool can be used either as a command line utility (Linux, Mac or Windows, see below) or as a Python module in other Python code. It can also be used via an online API. This repo contains executable files for Mac & Windows (soon Linux!) that you can use without any installation too.
 
-The most import dependency to get correct when using this as a Python script of a command line program is the package ``rdflib`` which must be v5.0.0 or greater (see requirements.txt).
+The most important dependency to get correct when using this as a Python script of a command line program is the package ``rdflib`` which must be v5.0.0 or greater (see requirements.txt).
 
 Python
 ------
@@ -184,32 +192,32 @@ Then, in another terminal:
 
 Windows - create EXE from source
 --------------------------------
+A Windows binary (.exe file) is included in this repository in the ``pylode/bin/`` folder which has been produced via Pyinstaller. Additionally,
 `Pyinstaller <https://www.pyinstaller.org/>`__ can be 
-`used <https://pyinstaller.readthedocs.io/en/stable/usage.html>`__ to create an 
-executable for Windows that has the same characteristics as the Linux/Mac 
-CLI program. 
-The necessary ``.spec`` file is already included in ``pylode-cli.spec``.
-The ``pylode-cli.spec`` PyInstaller spec file creates a ``.exe`` for the 
-pyLODE Command Line utility. See above for the pyLODE command line util usage instructions.
+`used <https://pyinstaller.readthedocs.io/en/stable/usage.html>`__ to create a new
+executable. These Windows executables have the same characteristics as the Linux/Mac
+CLI program.
+
+Pyinstaller uses a ``.spec`` file to make the binary and that is included in this repository: ``pylode-cli.spec``.
 
 See `the PyInstaller installation guide <https://pyinstaller.readthedocs.io/en/stable/installation.html#installing-in-windows>`__
 for info on how to install PyInstaller for Windows.
 
-Once you have pyinstaller, use pyinstaller to generate the ``pyLODE.exe`` CLI file like so:
+Once you have Pyinstaller, use ``pyinstaller`` to generate the ``pyLODE.exe`` CLI file like so:
 
 ::
 
-    cd src/pylode
+    cd pylode
     pyinstaller pylode-cli.spec
 
-This will output ``pylode.exe`` in the ``dist`` directory in ``src/pylode``.
+This will output ``pylode.exe`` in the ``dist`` directory in ``pylode``. The .exe file in ``bin/`` is just the latest copy of this.
 
 You can now run the pyLODE Command Line utility via ``pylode.exe``. 
 See above for the pyLODE command line util usage instructions.
 
 Mac OS - create APP from source
 -------------------------------
-As per instructions for PyInstaller use on Windows, just do it on a Mac!
+As per instructions for PyInstaller use on Windows, just do it on a Mac! The result is a ``pylode`` file which is renamed ``bin/pylode.app``.
 
 What pyLODE understands
 =======================
@@ -264,59 +272,194 @@ pyLODE understands the following ontology constructs:
 -  **named individuals**
     -  *coming!*
 
-Agent Formatting
-&&&&&&&&&&&&&&&&&
--  Use either the DC versions of properties (``dc:publisher`` etc.) or the DCT versions (``dct:publisher`` etc.)
--  if using the DC form, the range should just be a string, e.g. ``dc:publisher "Geoscience Australia" .`` or ``dc:creator "Nicholas J. Car" .``
--  if using the DCT form, the range should be a ``foaf:Agent`` or ``schema:Person`` Blank Node or URI (if details are given elsewhere in the ontology) with the following properties:
-    - ``foaf:name``/``sdo:name``
-    - ``foaf:mbox``/``sdo:email``
-    - ``foaf:homepage``/``schema:identifier`` / ``sdo:url``
-- Affiliation of people to organisation can be made if schem.aorg is used using ``sdo:member`` or ``sdo:affiliation`` (latter preferred)
-    - e.g.
+
+Agents
+------
+Agents, individual persons or organisations, should be associated with ontologies to indicate *authors*, *creators*, *publishers* etc. There are 2 ways to do this that pyLODE understands: datatype & object type.
+
+Datatype - not preferred
+~~~~~~~~~~~~~~~~~~~~~~~~
+A simple literal value for an agent that a human can read but not a machine can't understand:
+
+* ``<ONTOLOGY_URI> dc:creator "AGENT NAME" .``
+   * the range value is a string literal, either string typed (``^^xsd:string``) or language typed (``@en`` or ``@de``)
+   * the following `Dublin Core Elements 1.1 <https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#section-3>`__ properties may be used:
+      * ``dc:contributor``
+      * ``dc:creator``
+      * ``dc:publisher``
+   * the following `schema.org <https://schema.org>`__ properties may be used:
+      * ``schema:author``
+      * ``schema:contributor``
+      * ``schema:creator``
+      * ``schema:editor``
+      * ``schema:funder``
+      * ``schema:publisher``
+      * ``schema:translator``
+
+::
+
+    <ontology_x>
+        dc:creator "Nicholas J. Car" ;
+
+Object type - preferred
+~~~~~~~~~~~~~~~~~~~~~~~
+An RDF object is used for the agent and can contain multiple details. A Blank Node or a URI can be used. Best case, a persistent agent URI!
+
+.. figure:: img/contributor-object.png
+    :align: center
+    :figclass: figure-eg
+
+.....
+
+* ``<ONTOLOGY_URI> dct:creator [...] .``
+
+or
+
+* ``<ONTOLOGY_URI> dct:creator <SOME_URI> .``
+   * the range value is a Blank Node or a URI of type:
+      * ``schema:Person``
+      * ``schema:Organization``
+      * ``foaf:Person``
+      * ``foaf:Organization``
+   * the properties of the Blank Node or the URI are as below
+   * the following `Dublin Core Terms <https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#section-2>`__ properties may be used:
+      * ``dct:contributor``
+      * ``dct:creator``
+      * ``dct:publisher``
+      * ``dct:rightsHolder``
+   * the following `schema.org <https://schema.org>`__ properties may be used:
+      * ``schema:author``
+      * ``schema:contributor``
+      * ``schema:creator``
+      * ``schema:editor``
+      * ``schema:funder``
+      * ``schema:publisher``
+      * ``schema:translator``
+   * the following `FOAF <http://xmlns.com/foaf/spec/>`__ properties may be used:
+      * ``foaf:maker``
+
+e.g. (Blank Node):
+
+::
+
+    <ontology_x>
+        schema:editor [
+            a schema:Organization ;
+            ...
+        ] ;
+
+or (URI):
+
+::
+
+    <ontology_x>
+        schema:editor <https://orcid.org/0000-0002-8742-7730> ;
+        ...
+
+    <https://orcid.org/0000-0002-8742-7730>
+        a foaf:Person ;
+        ...
+
+
+Agent datatype properties
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* ``foaf:name`` / ``schema:name``
+* ``foaf:mbox`` / ``schema:email``
+* ``foaf:homepage`` / ``schema:url``
+* ``schema:identifier``
+
+
+e.g.:
 
 ::
 
     <ontology_x>
         dct:creator [
-            sdo:name "Nicholas J. Car" ;
-            sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+            schema:name "Nicholas J. Car" ;
+            schema:identifier <http://orcid.org/0000-0002-8742-7730> ;
             schema:email <mailto:nicholas.car@surroundaustralia.com> ;
-            sdo:affiliation [
-                sdo:name "SURROUND Australia Pty Ltd" ;
-                sdo:url <https://surroundaustralia.com> ;
+        ] ;
+
+
+Linking a Person to an Organization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use ``schema:member``, ``schema:affiliation`` (there is no FOAF Person -> Group/Org property):
+
+e.g.:
+
+::
+
+    <ontology_x>
+        dct:creator [
+            schema:name "Nicholas J. Car" ;
+            schema:identifier <http://orcid.org/0000-0002-8742-7730> ;
+            schema:email <mailto:nicholas.car@surroundaustralia.com> ;
+            schema:affiliation [
+                schema:name "SURROUND Australia Pty Ltd" ;
+                schema:url <https://surroundaustralia.com> ;
             ] ;
         ] ;
 
-Additions
-&&&&&&&&&&&&&&&&&
-To help pyLODE understand more annotations, see **Suggestions** below.
 
+Provenance
+----------
 
-schema.org
-&&&&&&&&&&&
-When an HTML document is generated, i.e. not Markdown or other format,
-`schema.org <https://schema.org>`__ metadata is added to the HTML
-header in the form of properties of a ``DigitalDocument`` subject.
-The schema.org properties catered for are:
+Ontology Source
+~~~~~~~~~~~~~~~
+The ontology's HTML representation linking back to the RDF: generated automatically
 
-- ``name``
-- ``dateCreated``
-- ``dateModified``
-- ``description``
-- ``license``
-- ``copyrightYear``
-- ``repository``
+.. figure:: img/source.png
+    :align: center
+    :figclass: figure-eg
 
-Not yet handled, but will be soon, are:
+.....
 
-- ``publisher``
-- ``creator``
-- ``copyrightHolder``
+Code Repositories
+~~~~~~~~~~~~~~~~~
+Indicating to readers where the 'live' version of the ontology is managed:
 
-See `SNIPPETS <SNIPPETS.rst>`__ for detailed examples on what pyLODE knows about Agents Provenance etc.
+.. figure:: img/code-repository.png
+    :align: center
+    :figclass: figure-eg
 
-Please suggest any more required schema.org annotations!
+.....
+
+Code repositories that house an ontology can be indicated either using `schema.org's codeRepository property <https://schema.org/codeRepository>`__ or a combination of the `Description of a Project <https://github.com/ewilderj/doap>`__ and PROV:
+
+::
+
+    @prefix schema: <https://schema.org/> .
+
+    <ONTOLOGY_URI>
+        schema:codeRepository <REPO_URI> ;
+        ...
+
+or
+
+::
+
+    @prefix doap: <http://usefulinc.com/ns/doap#> .
+    @prefix prov: <http://www.w3.org/ns/prov#> .
+
+    <ONTOLOGY_URI>
+        prov:wasGeneratedBy [
+            a doap:Project , prov:Activity ;
+            doap:repository <REPO_URI>
+        ]
+        ...
+
+e.g., for the `ontology version on ISO 19160-1 <http://linked.data.gov.au/def/iso19160-1-address>`__:
+
+::
+
+    <http://linked.data.gov.au/def/iso19160-1-address>
+        prov:wasGeneratedBy [
+            a doap:Project , prov:Activity ;
+            doap:repository <https://github.com/AGLDWG/iso19160-1-address-ont>
+        ] ;
+        ...
 
 Styling
 -------
@@ -441,34 +584,35 @@ pyLODE is under continual and constant development. The current developers have 
 which is given here, however, since this is an open source project, new developers may join the pyLODE dev community
 and change/add development priorities.
 
-The current release, as of April 2020, is 2.0.
+The current release, as of May 2020, is 2.4.
 
-.. csv-table:: **pyLODE Releas Schedule**
+.. csv-table:: **pyLODE Release Schedule**
    :header: "Version", "Date", "Description"
    :widths: 15, 10, 30
 
    3.0, *June 2020*, "Will include pre-testing inputs with SHACL"
+   **2.4**, **27 May 2020**, "Small improvements over 2.0"
    2.0, 18 Apr 2020, "Includes multiple profiles - OWP & SKOSP"
    1.0, 15 Dec 2019, "Initial working release"
 
 Release notes
 -------------
 
-3.0
----
+3.0 - expected
+--------------
 Expected to handle
 
 - pre-documentation graph shape testing using SHACL
     - you will be able to see what pyLODE-recommended annotation and design patterns your inputs do/don't handle
 - "modp", a documentation profile based on the `MOD Ontology <https://github.com/sifrproject/MOD-Ontology>`_
 
-2.0
----
+2.0 - current
+-------------
 - handles Named Individuals in OWL ontologies
 - implements "owlp" & "skosp" documentation profiles for OWL, SKOS and OWL-as-SKOS results
 
-1.0
----
+1.0 - previous
+--------------
 Initial pyLODE release. Generated HTML documentation for OWL ontologies, missed quite a few expected ontology elements,
 such as Named Individuals.
 
