@@ -1,6 +1,6 @@
-# Alternates View Profile Schema
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 
+# Alternates View Profile Schema
 
 ## Metadata
 * **IRI**

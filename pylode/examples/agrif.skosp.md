@@ -1,7 +1,7 @@
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 
+
 # The Australian Government Records Interoperability Framework (AGRIF) ontology
 ### A taxonomy
-
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 
 ## Metadata
 * **IRI**
@@ -76,7 +76,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * [Status](http://linked.data.gov.au/def/agrif#Status)
 	* [Decision Status](http://linked.data.gov.au/def/agrif#DecisionStatus)
 * [Version History](http://linked.data.gov.au/def/agrif#VersionHistory)
-* [None](ub2bL849C45)
+* [None](ub72bL849C45)
 
 ### AGIFT Function
 Property | Value
@@ -109,7 +109,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#Activity`
 Preferred Labels |Activity (en)<br />
 Source | https://www.w3.org/TR/prov-o/#Activity
-Narrower Concepts |[Share Activity](ShareActivity) (cp)<br />[Maintain Activity](MaintainActivity) (cp)<br />[Access Activity](AccessActivity) (cp)<br />
+Narrower Concepts |[Access Activity](AccessActivity) (cp)<br />[Share Activity](ShareActivity) (cp)<br />[Maintain Activity](MaintainActivity) (cp)<br />
 ### Administrator
 Property | Value
 --- | ---
@@ -122,7 +122,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#Agent`
 Preferred Labels |Agent (en)<br />
 Source | https://www.w3.org/TR/prov-o/#Agent
-Narrower Concepts |[Person](Person) (cp)<br />[Organisation](Organisation) (cp)<br />
+Narrower Concepts |[Organisation](Organisation) (cp)<br />[Person](Person) (cp)<br />
 ### Artefact
 Property | Value
 --- | ---
@@ -183,7 +183,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Collection`
 Preferred Labels |Collection (en)<br />
-Narrower Concepts |[Logical Collection](LogicalCollection) (cp)<br />[Physical Collection](PhysicalCollection) (cp)<br />
+Narrower Concepts |[Physical Collection](PhysicalCollection) (cp)<br />[Logical Collection](LogicalCollection) (cp)<br />
 ### Control
 Property | Value
 --- | ---
@@ -201,7 +201,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Coverage`
 Preferred Labels |Coverage (en)<br />
-Narrower Concepts |[Spatial Coverage](SpatialCoverage) (cp)<br />[Jurisdictional Coverage](JurisdictionalCoverage) (cp)<br />[Temporal Coverage](TemporalCoverage) (cp)<br />
+Narrower Concepts |[Temporal Coverage](TemporalCoverage) (cp)<br />[Spatial Coverage](SpatialCoverage) (cp)<br />[Jurisdictional Coverage](JurisdictionalCoverage) (cp)<br />
 ### Record Creation Event
 Property | Value
 --- | ---
@@ -250,7 +250,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#Event`
 Preferred Labels |Event (en)<br />
 Source | https://www.w3.org/TR/prov-o/#InstantaneousEvent
-Narrower Concepts |[Artefact Change Event](ArtefactChangeEvent) (cp)<br />[Record Control Event](RecordControlEvent) (cp)<br />[Artefact Control Event](ArtefactControlEvent) (cp)<br />[Record Creation Event](RecordCreationEvent) (cp)<br />
+Narrower Concepts |[Artefact Change Event](ArtefactChangeEvent) (cp)<br />[Record Control Event](RecordControlEvent) (cp)<br />[Record Creation Event](RecordCreationEvent) (cp)<br />[Artefact Control Event](ArtefactControlEvent) (cp)<br />
 ### Form Factor
 Property | Value
 --- | ---
@@ -268,7 +268,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#HoldingSpace`
 Preferred Labels |Holding Space (en)<br />
 Broader Concepts |[Spatial Location](SpatialLocation) (cp)<br />
-Narrower Concepts |[Digital Holding Space](DigitalHoldingSpace) (cp)<br />[Physical Holding Space](PhysicalHoldingSpace) (cp)<br />
+Narrower Concepts |[Physical Holding Space](PhysicalHoldingSpace) (cp)<br />[Digital Holding Space](DigitalHoldingSpace) (cp)<br />
 ### Information Management Policy
 Property | Value
 --- | ---
@@ -335,7 +335,7 @@ Broader Concepts |[Organisation](Organisation) (cp)<br />
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Permission`
-Preferred Labels |Permission (en)<br />Security Clearance (en)<br />
+Preferred Labels |Security Clearance (en)<br />Permission (en)<br />
 Source | Australian Government Recordkeeping Metadata Standard
 ### Person
 Property | Value
@@ -369,7 +369,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#Policy`
 Preferred Labels |Policy (en)<br />
 Source | http://purl.org/dc/terms/Policy
-Narrower Concepts |[Digital Preservation Policy](DigitalPreservationPolicy) (cp)<br />[Minimum Metadata Set Policy](MinimumMetadataSetPolicy) (cp)<br />[Information Management Policy](InformationManagementPolicy) (cp)<br />[Records Authority Disposal Class Policy](RecordsAuthorityDisposalClassPolicy) (cp)<br />[Record Storage Standard](RecordStorageStandard) (cp)<br />
+Narrower Concepts |[Record Storage Standard](RecordStorageStandard) (cp)<br />[Records Authority Disposal Class Policy](RecordsAuthorityDisposalClassPolicy) (cp)<br />[Digital Preservation Policy](DigitalPreservationPolicy) (cp)<br />[Minimum Metadata Set Policy](MinimumMetadataSetPolicy) (cp)<br />[Information Management Policy](InformationManagementPolicy) (cp)<br />
 ### Preservation Quality
 Property | Value
 --- | ---
@@ -399,7 +399,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#RecordControlEvent`
 Preferred Labels |Record Control Event (en)<br />
 Broader Concepts |[Event](Event) (cp)<br />
-Narrower Concepts |[Record Sentencing Event](RecordSentencingEvent) (cp)<br />[Record Replacement Event](RecordReplacementEvent) (cp)<br />[Record Decision Event](RecordDecisionEvent) (cp)<br />[Record Audit Event](RecordAuditEvent) (cp)<br />[Record Disposal Event](RecordDisposalEvent) (cp)<br />
+Narrower Concepts |[Record Sentencing Event](RecordSentencingEvent) (cp)<br />[Record Replacement Event](RecordReplacementEvent) (cp)<br />[Record Decision Event](RecordDecisionEvent) (cp)<br />[Record Disposal Event](RecordDisposalEvent) (cp)<br />[Record Audit Event](RecordAuditEvent) (cp)<br />
 ### Record Decision Event
 Property | Value
 --- | ---
@@ -418,7 +418,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#RecordDisposalEvent`
 Preferred Labels |Record Disposal Event (en)<br />
 Broader Concepts |[Record Control Event](RecordControlEvent) (cp)<br />
-Narrower Concepts |[Record Freeze Event](RecordFreezeEvent) (cp)<br />[Record Transfer Event](RecordTransferEvent) (cp)<br />[Record Destruction Event](RecordDestructionEvent) (cp)<br />
+Narrower Concepts |[Record Transfer Event](RecordTransferEvent) (cp)<br />[Record Destruction Event](RecordDestructionEvent) (cp)<br />[Record Freeze Event](RecordFreezeEvent) (cp)<br />
 ### Record Freeze Event
 Property | Value
 --- | ---
@@ -470,7 +470,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#Role`
 Preferred Labels |Role (en)<br />
 Source | https://www.w3.org/TR/prov-o/#Role
-Narrower Concepts |[User](User) (cp)<br />[Creator](Creator) (cp)<br />[Business Owner](BusinessOwner) (cp)<br />[Administrator](Administrator) (cp)<br />
+Narrower Concepts |[Administrator](Administrator) (cp)<br />[Creator](Creator) (cp)<br />[User](User) (cp)<br />[Business Owner](BusinessOwner) (cp)<br />
 ### Security Classification
 Property | Value
 --- | ---
@@ -540,7 +540,7 @@ Preferred Labels |Version History (en)<br />
 ### None
 Property | Value
 --- | ---
-IRI | `ub2bL849C45`
+IRI | `ub72bL849C45`
 Preferred Labels |None (en)<br />
 
 ## Namespaces

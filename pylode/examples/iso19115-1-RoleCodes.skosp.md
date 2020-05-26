@@ -1,7 +1,7 @@
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 
+
 # ISO19115-1 CI_RoleCode Codelist
 ### A taxonomy
-
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 
 ## Metadata
 * **IRI**

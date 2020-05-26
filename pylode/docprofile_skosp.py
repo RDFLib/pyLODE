@@ -5,7 +5,7 @@ from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
 import dateutil.parser
 from itertools import chain
 import markdown
-from docprofile import DocProfile
+from docprofile import DocProfile, __version__
 
 
 class Skosp(DocProfile):
@@ -568,7 +568,8 @@ class Skosp(DocProfile):
             has_concepts=True if len(self.CONCEPTS) > 0 else False,
             concepts=self._make_skos_concepts(),
             namespaces=self._make_namespaces(),
-            css=css
+            css=css,
+            pylode_version=__version__
         )
 
     def generate_document(self):

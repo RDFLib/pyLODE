@@ -1,7 +1,7 @@
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 
+
 # Collection item format
 ### A taxonomy
-
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 
 ## Metadata
 * **IRI**
@@ -15,7 +15,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * **Modified**
   * 2020-03-29
 * **Source**
-  * [https://collection.sl.nsw.gov.au/search?offset=0](https://collection.sl.nsw.gov.au/search?offset=0)
+  * [http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes](http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes)
 * **Ontology RDF**
   * RDF ([collection-item-format.ttl](turtle))
 ### Description
@@ -44,7 +44,7 @@ IRI | `http://linked.data.gov.au/def/collection-item-format/national-film-and-so
 Preferred Labels |National Film and Sound Archive's Formats (en)<br />
 Alternate Labels |N (F)<br />
 Source | https://www.nfsa.gov.au/
-Members |[Digital](Digital) (cp)<br />[Object](Object) (cp)<br />[Film](Film) (cp)<br />[Tape](Tape) (cp)<br />[Documentation](Documentation) (cp)<br />[Disc](Disc) (cp)<br />[Disk](Disk) (cp)<br />
+Members |[Tape](Tape) (cp)<br />[Disc](Disc) (cp)<br />[Object](Object) (cp)<br />[Documentation](Documentation) (cp)<br />[Disk](Disk) (cp)<br />[Digital](Digital) (cp)<br />[Film](Film) (cp)<br />
 
 ### State Library New South Wales' Formats
 Property | Value
@@ -53,7 +53,7 @@ IRI | `http://linked.data.gov.au/def/collection-item-format/state-library-new-so
 Preferred Labels |State Library New South Wales' Formats (en)<br />
 Alternate Labels |S (L)<br />
 Source | https://www.sl.nsw.gov.au/
-Members |[Book](Book) (cp)<br />[Map](Map) (cp)<br />[Video & film](Videofilm) (cp)<br />[cif:eresource](http://linked.data.gov.au/def/collection-item-format/eresource) (cp)<br />[Audio](Audio) (cp)<br />[Object-SLNSW](Object-SLNSW) (cp)<br />[Journal & magazine](Journalmagazine) (cp)<br />[Picture](Picture) (cp)<br />[Manuscript](Manuscript) (cp)<br />[Newspaper](Newspaper) (cp)<br />
+Members |[cif:eresource](http://linked.data.gov.au/def/collection-item-format/eresource) (cp)<br />[Object-SLNSW](Object-SLNSW) (cp)<br />[Journal & magazine](Journalmagazine) (cp)<br />[Newspaper](Newspaper) (cp)<br />[Map](Map) (cp)<br />[Audio](Audio) (cp)<br />[Book](Book) (cp)<br />[Video & film](Videofilm) (cp)<br />[Manuscript](Manuscript) (cp)<br />[Picture](Picture) (cp)<br />
 
 ## Classes
 * [Audio](http://linked.data.gov.au/def/collection-item-format/audio)
@@ -100,9 +100,9 @@ Source | https://dictionary.cambridge.org/dictionary/english/book
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/collection-item-format/digital`
-Preferred Labels |Digital (en)<br />Mamati (mi)<br />Cyfrowy (pl)<br />
+Preferred Labels |Mamati (mi)<br />Digital (en)<br />Cyfrowy (pl)<br />
 Alternate Labels |Digital Storage<br />
-Narrower Concepts |[Eresources](Eresources) (cp)<br />[Digital Versatile Disc](DigitalVersatileDisc) (cp)<br />[Disk](Disk) (cp)<br />
+Narrower Concepts |[Eresources](Eresources) (cp)<br />[Disk](Disk) (cp)<br />[Digital Versatile Disc](DigitalVersatileDisc) (cp)<br />
 ### Disc
 Property | Value
 --- | ---
@@ -123,7 +123,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/collection-item-format/documentation`
 Preferred Labels |Documentation (en)<br />
 Source | http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes
-Narrower Concepts |[Manuscript](Manuscript) (cp)<br />[Map](Map) (cp)<br />[Picture](Picture) (cp)<br />[Newspaper](Newspaper) (cp)<br />
+Narrower Concepts |[Map](Map) (cp)<br />[Manuscript](Manuscript) (cp)<br />[Picture](Picture) (cp)<br />[Newspaper](Newspaper) (cp)<br />
 ### Digital Versatile Disc
 Property | Value
 --- | ---

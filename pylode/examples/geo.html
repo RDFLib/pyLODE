@@ -7,7 +7,7 @@
     <style>
         #pylode {
             position: fixed;
-            top: 80px;
+            top: 130px;
             left: -60px;
             font-size: small;
             transform: rotate(-90deg);
@@ -203,8 +203,11 @@
     </script>
 </head>
 <body>
-<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE"><span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a></div>
-<h1>GeoSPARQL Ontology</h1>
+  <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
+    <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
+    <span style="font-size:smaller;">2.4</span>
+  </div>
+  <h1>GeoSPARQL Ontology</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
@@ -242,7 +245,7 @@
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div>
 </section>
-<section id="classes">
+  <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
         <li><a href="#Feature">Feature</a></li>
@@ -296,7 +299,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -317,21 +320,21 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#isEmpty">isEmpty</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#dimension">dimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#asWKT">asWKT</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#isEmpty">isEmpty</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#hasserialization">hasSerialization</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#coordinateDimension">coordinateDimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#isSimple">isSimple</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#spatialDimension">spatialDimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#coordinateDimension">coordinateDimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#asWKT">asWKT</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#asGML">asGML</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#hasserialization">hasSerialization</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#hasGeometry">hasGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#defaultGeometry">defaultGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasGeometry">hasGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -346,7 +349,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -360,66 +363,66 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Feature">Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#tangentialproperpartinverse">rcc8tppi</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfEquals">sfEquals</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#touches">sfTouches</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#equals">ehEquals</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#intersects">sfIntersects</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#non-tangentialproperpart">rcc8ntpp</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#touches">sfTouches</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#externallyconnected">rcc8ec</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfEquals">sfEquals</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#crosses">sfCrosses</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#inside">ehInside</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#coveredBy">ehCoveredBy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#disconnected">rcc8dc</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#tangentialproperpart">rcc8tpp</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#overlaps">sfOverlaps</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#tangentialproperpartinverse">rcc8tppi</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#non-tangentialproperpartinverse">rcc8ntppi</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#overlap">ehOverlap</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#contains">ehContains</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#within">sfWithin</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#equals">ehEquals</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#meet">ehMeet</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#covers">ehCovers</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#externallyconnected">rcc8ec</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#sfContains">sfContains</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#partiallyoverlapping">rcc8po</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#crosses">sfCrosses</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#disconnected">rcc8dc</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfDisjoint">sfDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#overlaps">sfOverlaps</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#inside">ehInside</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#meet">ehMeet</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#rcc8eq">rcc8eq</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#coveredBy">ehCoveredBy</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#tangentialproperpart">rcc8tpp</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#intersects">sfIntersects</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfDisjoint">sfDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#partiallyoverlapping">rcc8po</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#disjoint">ehDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#within">sfWithin</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#covers">ehCovers</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#non-tangentialproperpartinverse">rcc8ntppi</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfContains">sfContains</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfEquals">sfEquals</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#crosses">sfCrosses</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#inside">ehInside</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#covers">ehCovers</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#disconnected">rcc8dc</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#within">sfWithin</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#non-tangentialproperpart">rcc8ntpp</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#partiallyoverlapping">rcc8po</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#meet">ehMeet</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#intersects">sfIntersects</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#contains">ehContains</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#overlap">ehOverlap</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#tangentialproperpartinverse">rcc8tppi</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#rcc8eq">rcc8eq</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#touches">sfTouches</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#coveredBy">ehCoveredBy</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfDisjoint">sfDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#tangentialproperpart">rcc8tpp</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#externallyconnected">rcc8ec</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#disjoint">ehDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#overlaps">sfOverlaps</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#non-tangentialproperpart">rcc8ntpp</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#inside">ehInside</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#intersects">sfIntersects</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#disconnected">rcc8dc</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#covers">ehCovers</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#partiallyoverlapping">rcc8po</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#equals">ehEquals</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#touches">sfTouches</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#disjoint">ehDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfContains">sfContains</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#overlap">ehOverlap</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#overlaps">sfOverlaps</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#within">sfWithin</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#crosses">sfCrosses</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#contains">ehContains</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#meet">ehMeet</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8eq">rcc8eq</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfDisjoint">sfDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfEquals">sfEquals</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#tangentialproperpartinverse">rcc8tppi</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#coveredBy">ehCoveredBy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#non-tangentialproperpartinverse">rcc8ntppi</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -465,7 +468,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -543,7 +546,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -579,7 +582,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -615,7 +618,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -651,7 +654,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -723,7 +726,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -760,7 +763,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -903,7 +906,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -939,7 +942,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -975,7 +978,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -1011,7 +1014,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -1047,7 +1050,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -1083,7 +1086,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -1191,7 +1194,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -1263,7 +1266,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -1300,7 +1303,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -1373,7 +1376,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -1423,7 +1426,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -1464,7 +1467,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -1579,7 +1582,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -1687,7 +1690,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -1899,14 +1902,14 @@
     </div>
 </section>
 
-
-<section id="namedindividuals">
+  
+  <section id="namedindividuals">
     <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
     </ul>
 </section>
-
-<section id="namespaces">
+  
+  <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
         <dt><em>default (:)</em></dt>
@@ -1933,17 +1936,17 @@
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>
 </section>
-<section id="legend">
-    <h2>Legend</h2>
-    <table class="entity">
-        <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
-        <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
-        <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
-        <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
-        <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
-        <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
-        <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
-    </table>
-</section>
+  <section id="legend">
+      <h2>Legend</h2>
+      <table class="entity">
+          <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+          <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+          <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+          <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+          <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+          <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+          <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+      </table>
+  </section>
 </body>
 </html>

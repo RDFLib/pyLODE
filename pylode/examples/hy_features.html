@@ -7,7 +7,7 @@
     <style>
         #pylode {
             position: fixed;
-            top: 80px;
+            top: 130px;
             left: -60px;
             font-size: small;
             transform: rotate(-90deg);
@@ -203,8 +203,11 @@
     </script>
 </head>
 <body>
-<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE"><span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a></div>
-<h1>HY Features Ontology</h1>
+  <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
+    <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
+    <span style="font-size:smaller;">2.4</span>
+  </div>
+  <h1>HY Features Ontology</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
@@ -241,7 +244,7 @@
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div>
 </section>
-<section id="classes">
+  <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
         <li><a href="#HY_CartographicRealization">HY_CartographicRealization</a></li>
@@ -308,13 +311,13 @@
                 <th>Restrictions</th>
                 <td>
                     <a href="#catchmentRealization">hyf:catchmentRealization</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_CatchmentRealization">hyf:HY_CatchmentRealization</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#outflow">hyf:outflow</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_HydroNexus">hyf:HY_HydroNexus</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#upperCatchment">hyf:upperCatchment</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_Catchment">hyf:HY_Catchment</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#lowerCatchment">hyf:lowerCatchment</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_Catchment">hyf:HY_Catchment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#inflow">hyf:inflow</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_HydroNexus">hyf:HY_HydroNexus</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#containingCatchment">hyf:containingCatchment</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_Catchment">hyf:HY_Catchment</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#upperCatchment">hyf:upperCatchment</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_Catchment">hyf:HY_Catchment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#containedCatchment">hyf:containedCatchment</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_Catchment">hyf:HY_Catchment</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#lowerCatchment">hyf:lowerCatchment</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_Catchment">hyf:HY_Catchment</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#outflow">hyf:outflow</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_HydroNexus">hyf:HY_HydroNexus</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#code">hyf:code</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#containingCatchment">hyf:containingCatchment</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_Catchment">hyf:HY_Catchment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#conjointCatchment">hyf:conjointCatchment</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_Catchment">hyf:HY_Catchment</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -322,21 +325,21 @@
                 <th>Sub-classes</th>
                 <td>
                     <a href="#HY_CatchmentAggregate">hyf:HY_CatchmentAggregate</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#HY_InteriorCatchment">hyf:HY_InteriorCatchment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#HY_DendriticCatchment">hyf:HY_DendriticCatchment</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#HY_InteriorCatchment">hyf:HY_InteriorCatchment</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#upperCatchment">hyf:upperCatchment</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#lowerCatchment">hyf:lowerCatchment</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#conjointCatchment">hyf:conjointCatchment</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#containedCatchment">hyf:containedCatchment</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#realizedCatchment">hyf:realizedCatchment</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#receivingCatchment">hyf:receivingCatchment</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#contributingCatchment">hyf:contributingCatchment</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#receivingCatchment">hyf:receivingCatchment</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#upperCatchment">hyf:upperCatchment</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#containingCatchment">hyf:containingCatchment</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#lowerCatchment">hyf:lowerCatchment</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#containedCatchment">hyf:containedCatchment</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#conjointCatchment">hyf:conjointCatchment</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -446,11 +449,11 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#HY_FlowPath">hyf:HY_FlowPath</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#HY_CartographicRealization">hyf:HY_CartographicRealization</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#HY_FlowPath">hyf:HY_FlowPath</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#HY_HydroNetwork">hyf:HY_HydroNetwork</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#HY_CatchmentArea">hyf:HY_CatchmentArea</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#HY_CatchmentDivide">hyf:HY_CatchmentDivide</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#HY_HydroNetwork">hyf:HY_HydroNetwork</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -531,10 +534,10 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#interpolative">hyf:interpolative</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#double">xsd:double</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#accuracyStatement">hyf:accuracyStatement</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#precisionStatement">hyf:precisionStatement</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://shapechange.net/resources/ont/base#Measure">sc:Measure</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#absolute">hyf:absolute</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://shapechange.net/resources/ont/base#Measure">sc:Measure</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#interpolative">hyf:interpolative</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#double">xsd:double</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#precisionStatement">hyf:precisionStatement</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://shapechange.net/resources/ont/base#Measure">sc:Measure</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -567,8 +570,8 @@
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#linearElement">hyf:linearElement</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#flowpath">hyf:flowpath</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#linearElement">hyf:linearElement</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -625,8 +628,8 @@
                     <a href="#preferredBy">hyf:preferredBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/citationResponsibleParty">http://def.seegrid.csiro.au/isotc211/iso19115/2003/citationResponsibleParty</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#HY_HydroFeatureName.name">hyf:HY_HydroFeatureName.name</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#usage">hyf:usage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_NameUsage">hyf:HY_NameUsage</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#namesPart">hyf:namesPart</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#variantSpelling">hyf:variantSpelling</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#namesPart">hyf:namesPart</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -659,17 +662,17 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#referencedPosition">hyf:referencedPosition</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_IndirectPosition">hyf:HY_IndirectPosition</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#hasGeometry">gsp:hasGeometry</a> <span class="cardinality">only</span> <a href="http://www.opengis.net/ont/geosparql#Geometry">gsp:Geometry</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#realizedNexus">hyf:realizedNexus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_HydroNexus">hyf:HY_HydroNexus</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hydroLocationType">hyf:hydroLocationType</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_HydroLocationType">hyf:HY_HydroLocationType</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#realizedNexus">hyf:realizedNexus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_HydroNexus">hyf:HY_HydroNexus</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#referencedPosition">hyf:referencedPosition</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_IndirectPosition">hyf:HY_IndirectPosition</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#nexusRealization">hyf:nexusRealization</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#referenceLocation">hyf:referenceLocation</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#nexusRealization">hyf:nexusRealization</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#locatedReferent">hyf:locatedReferent</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
@@ -755,9 +758,9 @@
             <tr>
                 <th>In range of</th>
                 <td>
+                    <a href="#realizedNexus">hyf:realizedNexus</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#outflow">hyf:outflow</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#inflow">hyf:inflow</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#realizedNexus">hyf:realizedNexus</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -778,11 +781,11 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#locatedReferent">hyf:locatedReferent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#ReferenceLocation">hyf:HY_HydroLocation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#distanceDescription">hyf:distanceDescription</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_DistanceDescription">hyf:HY_DistanceDescription</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#linearElement">hyf:linearElement</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_FlowPath">hyf:HY_FlowPath</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#distanceExpression">hyf:distanceExpression</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_DistanceFromReferent">hyf:HY_DistanceFromReferent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#referenceLocation">hyf:referenceLocation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#ReferenceLocation">hyf:HY_HydroLocation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#locatedReferent">hyf:locatedReferent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#ReferenceLocation">hyf:HY_HydroLocation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#distanceExpression">hyf:distanceExpression</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_DistanceFromReferent">hyf:HY_DistanceFromReferent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#linearElement">hyf:linearElement</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#HY_FlowPath">hyf:HY_FlowPath</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -1448,14 +1451,14 @@
     </div>
 </section>
 
-
-<section id="namedindividuals">
+  
+  <section id="namedindividuals">
     <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
     </ul>
 </section>
-
-<section id="namespaces">
+  
+  <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
         <dt><em>default (:)</em></dt>
@@ -1486,17 +1489,17 @@
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>
 </section>
-<section id="legend">
-    <h2>Legend</h2>
-    <table class="entity">
-        <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
-        <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
-        <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
-        <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
-        <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
-        <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
-        <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
-    </table>
-</section>
+  <section id="legend">
+      <h2>Legend</h2>
+      <table class="entity">
+          <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+          <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+          <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+          <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+          <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+          <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+          <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+      </table>
+  </section>
 </body>
 </html>

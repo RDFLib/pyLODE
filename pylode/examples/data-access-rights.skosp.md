@@ -1,7 +1,7 @@
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 
+
 # Data Access Rights
 ### A taxonomy
-
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 
 ## Metadata
 * **IRI**
@@ -42,7 +42,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/data-access-rights/closed-access-rights`
 Preferred Labels |Closed data access rights (en)<br />
-Members |[Embargoed access](Embargoedaccess) (cp)<br />[Protected access](Protectedaccess) (cp)<br />[Restricted access](Restrictedaccess) (cp)<br />[Metadata only access](Metadataonlyaccess) (cp)<br />
+Members |[Embargoed access](Embargoedaccess) (cp)<br />[Restricted access](Restrictedaccess) (cp)<br />[Protected access](Protectedaccess) (cp)<br />[Metadata only access](Metadataonlyaccess) (cp)<br />
 
 ### Open data access rights
 Property | Value
@@ -87,7 +87,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/data-access-rights/restricted`
 Preferred Labels |Restricted access (en)<br />
-Narrower Concepts |[Metadata only access](Metadataonlyaccess) (cp)<br />[Protected access](Protectedaccess) (cp)<br />[Embargoed access](Embargoedaccess) (cp)<br />
+Narrower Concepts |[Embargoed access](Embargoedaccess) (cp)<br />[Protected access](Protectedaccess) (cp)<br />[Metadata only access](Metadataonlyaccess) (cp)<br />
 
 ## Namespaces
 * **default (:)**

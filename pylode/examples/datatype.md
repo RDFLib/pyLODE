@@ -1,6 +1,6 @@
-# Datatypes
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 
+# Datatypes
 
 ## Metadata
 * **IRI**
@@ -53,26 +53,26 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/datatype/Boolean`
 Description | <p>Class to encapsulate a true-or-false value</p>
-Restrictions |[data:value](datavalue) (dp) **only** [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean) (c)<br />[data:value](datavalue) (dp) **exactly** 1<br />
+Restrictions |[data:value](datavalue) (dp) **exactly** 1<br />[data:value](datavalue) (dp) **only** [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean) (c)<br />
 ### Concept
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/datatype/Concept`
 Description | <p>Class to encapsulate a classifier, usually a values from a controlled vocabulary</p>
-Restrictions |[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value) **exactly** 1<br />[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value) **only** [skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />[data:vocabulary](vocabulary) (op) **exactly** 1<br />
+Restrictions |[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value) **exactly** 1<br />[data:vocabulary](vocabulary) (op) **exactly** 1<br />[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value) **only** [skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />
 ### Count
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/datatype/Count`
 Description | <p>Class to encapsulate an integer value</p>
-Restrictions |[data:value](datavalue) (dp) **exactly** 1<br />[data:uncertainty](datauncertainty) (dp) **max** 1<br />[data:value](datavalue) (dp) **only** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer) (c)<br />
+Restrictions |[data:value](datavalue) (dp) **only** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer) (c)<br />[data:uncertainty](datauncertainty) (dp) **max** 1<br />[data:value](datavalue) (dp) **exactly** 1<br />
 ### Percent
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/datatype/Percent`
 Description | <p>Class to encapsulate a quantitative measure expressed as a percent value</p>
 Super-classes |[data:QuantitativeMeasure](QuantitativeMeasure) (c)<br />
-Restrictions |[data:unit](unitofmeasure) (op) **value** [http://qudt.org/vocab/unit/PERCENT](http://qudt.org/vocab/unit/PERCENT) (c)<br />[data:uncertainty](datauncertainty) (dp) **max** 1<br />
+Restrictions |[data:uncertainty](datauncertainty) (dp) **max** 1<br />[data:unit](unitofmeasure) (op) **value** [http://qudt.org/vocab/unit/PERCENT](http://qudt.org/vocab/unit/PERCENT) (c)<br />
 ### Percent range
 Property | Value
 --- | ---
@@ -85,21 +85,21 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/datatype/QuantitativeMeasure`
 Description | <p>Class to encapsulate a quantitative measure value</p>
-Restrictions |[data:uncertainty](datauncertainty) (dp) **max** 1<br />[data:unit](unitofmeasure) (op) **exactly** 1<br />[data:value](datavalue) (dp) **exactly** 1<br />[data:value](datavalue) (dp) **only** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal) (c)<br />
+Restrictions |[data:value](datavalue) (dp) **exactly** 1<br />[data:value](datavalue) (dp) **only** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal) (c)<br />[data:uncertainty](datauncertainty) (dp) **max** 1<br />[data:unit](unitofmeasure) (op) **exactly** 1<br />
 Sub-classes |[data:Percent](Percent) (c)<br />
 ### Quantitative Range
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/datatype/QuantitativeRange`
 Description | <p>Class to encapsulate a quantitative range </p>
-Restrictions |[data:unit](unitofmeasure) (op) **exactly** 1<br />[data:max](datamaximum) (dp) **exactly** 1<br />[data:min](dataminimum) (dp) **exactly** 1<br />[data:uncertainty](datauncertainty) (dp) **max** 1<br />
+Restrictions |[data:min](dataminimum) (dp) **exactly** 1<br />[data:max](datamaximum) (dp) **exactly** 1<br />[data:uncertainty](datauncertainty) (dp) **max** 1<br />[data:unit](unitofmeasure) (op) **exactly** 1<br />
 Sub-classes |[data:PercentRange](Percentrange) (c)<br />
 ### Text
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/datatype/Text`
 Description | <p>Class to encapsulate a textual value</p>
-Restrictions |[data:value](datavalue) (dp) **exactly** 1<br />[data:value](datavalue) (dp) **only** [xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
+Restrictions |[data:value](datavalue) (dp) **only** [xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />[data:value](datavalue) (dp) **exactly** 1<br />
 
 ## Object Properties
 [data standard](#datastandard),

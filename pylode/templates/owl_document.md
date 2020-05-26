@@ -1,3 +1,5 @@
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) {{ pylode_version }}
+
 {{ metadata|safe }}
 {{ classes|safe }}
 {{ properties|safe }}

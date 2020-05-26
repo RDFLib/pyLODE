@@ -1,6 +1,6 @@
-# {no title found}
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 
+# {no title found}
 
 ## Metadata
 * **IRI**
@@ -88,7 +88,6 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [Minimum Metadata Set Policy](#MinimumMetadataSetPolicy),
 [Organisation](#Organisation),
 [Organisational Unit](#OrganisationalUnit),
-[Permission](#Permission),
 [Person](#Person),
 [Physical Artefact](#PhysicalArtefact),
 [Physical Collection](#PhysicalCollection),
@@ -112,6 +111,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [Records Authority Function](#RecordsAuthorityFunction),
 [Role](#Role),
 [Security Classification](#SecurityClassification),
+[Security Clearance](#SecurityClearance),
 [Security Control](#SecurityControl),
 [Series](#Series),
 [Share Activity](#ShareActivity),
@@ -135,7 +135,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#AccessActivity`
 Description | <p>An Access Activity is an Activity where a Record is accessed by an Agent over a period of time.</p>
 Super-classes |[Activity](Activity) (c)<br />
-Restrictions |[accessedBy](accessedBy) (op) **some** [Agent](Agent) (c)<br />[triggers](triggers) (op) **only** [AccessTrigger](AccessTrigger) (c)<br />
+Restrictions |[triggers](triggers) (op) **only** [AccessTrigger](AccessTrigger) (c)<br />[accessedBy](accessedBy) (op) **some** [Agent](Agent) (c)<br />
 ### Access Control
 Property | Value
 --- | ---
@@ -155,8 +155,8 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#Activity`
 Source | [https://www.w3.org/TR/prov-o/#Activity](https://www.w3.org/TR/prov-o/#Activity)
 Description | <p>An Activity is something that occurs over a period of time on a Record.</p>
-Restrictions |[requiresSecurityClassification](requiresSecurityClassification) (op) **only** [SecurityClassification](SecurityClassification) (c)<br />[associatedFunction](associatedFunction) (op) **only** [Function](Function) (c)<br />[hasStatus](hasStatus) (op) **only** [Status](Status) (c)<br />[usedRecord](usedRecord) (op) **only** [Record](Record) (c)<br />[endedAtTime](endedAtTime) (dp) **max** 1<br />[qualifiedAssociation](qualifiedAssociation) (op) **some** [Association](Association) (c)<br />[startedAtTime](startedAtTime) (dp) **max** 1<br />[hasLocation](hasLocation) (op) **only** [SpatialLocation](SpatialLocation) (c)<br />[wasAssociatedWith](wasAssociatedWith) (op) **some** [Agent](Agent) (c)<br />[guidingPolicy](guidingPolicy) (op) **only** [Policy](Policy) (c)<br />
-Sub-classes |[ShareActivity](ShareActivity) (c)<br />[AccessActivity](AccessActivity) (c)<br />[MaintainActivity](MaintainActivity) (c)<br />
+Restrictions |[guidingPolicy](guidingPolicy) (op) **only** [Policy](Policy) (c)<br />[requiresSecurityClassification](requiresSecurityClassification) (op) **only** [SecurityClassification](SecurityClassification) (c)<br />[associatedFunction](associatedFunction) (op) **only** [Function](Function) (c)<br />[wasAssociatedWith](wasAssociatedWith) (op) **some** [Agent](Agent) (c)<br />[qualifiedAssociation](qualifiedAssociation) (op) **some** [Association](Association) (c)<br />[endedAtTime](endedAtTime) (dp) **max** 1<br />[hasLocation](hasLocation) (op) **only** [SpatialLocation](SpatialLocation) (c)<br />[usedRecord](usedRecord) (op) **only** [Record](Record) (c)<br />[hasStatus](hasStatus) (op) **only** [Status](Status) (c)<br />[startedAtTime](startedAtTime) (dp) **max** 1<br />
+Sub-classes |[AccessActivity](AccessActivity) (c)<br />[ShareActivity](ShareActivity) (c)<br />[MaintainActivity](MaintainActivity) (c)<br />
 ### Administrator
 Property | Value
 --- | ---
@@ -169,14 +169,14 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#Agent`
 Source | [https://www.w3.org/TR/prov-o/#Agent](https://www.w3.org/TR/prov-o/#Agent)
 Description | <p>An Agent is a corporate entity, organisational element or system, or individual responsible for the performance of some Activity or Event, including those on Records.</p>
-Restrictions |[actsAs](actsAs) (op) **some** [Role](Role) (c)<br />[positionIn](positionIn) (op) **some** [Organisation](Organisation) (c)<br />[hasPermission](hasPermission) (op) **some** [Permission](Permission) (c)<br />
-Sub-classes |[Organisation](Organisation) (c)<br />[Person](Person) (c)<br />
+Restrictions |[hasPermission](hasPermission) (op) **some** [Permission](SecurityClearance) (c)<br />[actsAs](actsAs) (op) **some** [Role](Role) (c)<br />[positionIn](positionIn) (op) **some** [Organisation](Organisation) (c)<br />
+Sub-classes |[Person](Person) (c)<br />[Organisation](Organisation) (c)<br />
 ### Artefact
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Artefact`
 Description | <p>An Artefact is an object that is made by a Person and that is to be preserved.</p>
-Restrictions |[hasLocation](hasLocation) (op) **only** [SpatialLocation](SpatialLocation) (c)<br />[softwareAssignedID](softwareAssignedID) (dp) **some** [xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />[isChangedBy](isChangedBy) (op) **some** [InformationSystem](InformationSystem) (c)<br />[relatedTo](relatedTo) (op) **only** [Artefact](Artefact) (c)<br />[isAffectedBy](isAffectedBy) (op) **some** [Event](Event) (c)<br />[storedIn](storedIn) (op) **some** [IntellectualControlSystem](IntellectualControlSystem) (c)<br />[requiresSecurityClassification](requiresSecurityClassification) (op) **only** [SecurityClassification](SecurityClassification) (c)<br />[hasQuality](hasQuality) (op) **some** [PreservationQuality](PreservationQuality) (c)<br />
+Restrictions |[softwareAssignedID](softwareAssignedID) (dp) **some** [xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />[isAffectedBy](isAffectedBy) (op) **some** [Event](Event) (c)<br />[storedIn](storedIn) (op) **some** [IntellectualControlSystem](IntellectualControlSystem) (c)<br />[hasQuality](hasQuality) (op) **some** [PreservationQuality](PreservationQuality) (c)<br />[isChangedBy](isChangedBy) (op) **some** [InformationSystem](InformationSystem) (c)<br />[relatedTo](relatedTo) (op) **only** [Artefact](Artefact) (c)<br />[requiresSecurityClassification](requiresSecurityClassification) (op) **only** [SecurityClassification](SecurityClassification) (c)<br />[hasLocation](hasLocation) (op) **only** [SpatialLocation](SpatialLocation) (c)<br />
 Sub-classes |[DigitalArtefact](DigitalArtefact) (c)<br />[PhysicalArtefact](PhysicalArtefact) (c)<br />
 ### Artefact Change Event
 Property | Value
@@ -193,7 +193,7 @@ IRI | `http://linked.data.gov.au/def/agrif#ArtefactControlEvent`
 Description | <p>An Artefact Control Event is an Event that requires a particular level of access to an Artefact.</p>
 Super-classes |[Event](Event) (c)<br />
 Restrictions |[hasControl](requiresControl) (op) **only** [Control](Control) (c)<br />
-Sub-classes |[ArtefactPublishEvent](ArtefactPublishEvent) (c)<br />[ArtefactShareEvent](ArtefactShareEvent) (c)<br />
+Sub-classes |[ArtefactShareEvent](ArtefactShareEvent) (c)<br />[ArtefactPublishEvent](ArtefactPublishEvent) (c)<br />
 ### Artefact Publish Event
 Property | Value
 --- | ---
@@ -245,7 +245,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Control`
 Description | <p>A Control is a security or access measure that safeguards or restricts access to an asset.</p>
-Sub-classes |[SecurityControl](SecurityControl) (c)<br />[AccessControl](AccessControl) (c)<br />
+Sub-classes |[AccessControl](AccessControl) (c)<br />[SecurityControl](SecurityControl) (c)<br />
 ### Controlled Vocabulary
 Property | Value
 --- | ---
@@ -258,7 +258,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Coverage`
 Description | <p>A Coverage denotes the jurisdictional applicability, or the temporal and/or spatial extent to which a Record is observed.</p>
-Sub-classes |[JurisdictionalCoverage](JurisdictionalCoverage) (c)<br />[SpatialCoverage](SpatialCoverage) (c)<br />[TemporalCoverage](TemporalCoverage) (c)<br />
+Sub-classes |[TemporalCoverage](TemporalCoverage) (c)<br />[JurisdictionalCoverage](JurisdictionalCoverage) (c)<br />[SpatialCoverage](SpatialCoverage) (c)<br />
 ### Record Creation Event
 Property | Value
 --- | ---
@@ -283,7 +283,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#DigitalArtefact`
 Description | <p>A Digital Artefact is an Artefact that is of a digital nature and stored in an Information System.</p>
 Super-classes |[Artefact](Artefact) (c)<br />
-Restrictions |[filename](filename) (dp) **some** [rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />[filesize](filesize) (dp) **some** [xsd:long](http://www.w3.org/2001/XMLSchema#long) (c)<br />[format](format) (dp) **some** [rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />[storedIn](storedIn) (op) **some** [InformationSystem](InformationSystem) (c)<br />
+Restrictions |[filesize](filesize) (dp) **some** [xsd:long](http://www.w3.org/2001/XMLSchema#long) (c)<br />[filename](filename) (dp) **some** [rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />[format](format) (dp) **some** [rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />[storedIn](storedIn) (op) **some** [InformationSystem](InformationSystem) (c)<br />
 ### Digital Holding Space
 Property | Value
 --- | ---
@@ -309,8 +309,8 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#Event`
 Source | [https://www.w3.org/TR/prov-o/#InstantaneousEvent](https://www.w3.org/TR/prov-o/#InstantaneousEvent)
 Description | <p>An Event denotes an instantaneous transition in the world.</p>
-Restrictions |[qualifiedAssociation](qualifiedAssociation) (op) **some** [Association](Association) (c)<br />[guidingPolicy](guidingPolicy) (op) **only** [Policy](Policy) (c)<br />[priorEvent](priorEvent) (op) **only** [Event](Event) (c)<br />[wasAssociatedWith](wasAssociatedWith) (op) **some** [Agent](Agent) (c)<br />[associatedFunction](associatedFunction) (op) **only** [Function](Function) (c)<br />[affects](affects) (op) **some** ([Artefact](Artefact) (c) or [Record](Record) (c))<br />[hasStatus](hasStatus) (op) **only** [Status](Status) (c)<br />[triggeredBy](triggeredBy) (op) **only** [Trigger](Trigger) (c)<br />
-Sub-classes |[ArtefactControlEvent](ArtefactControlEvent) (c)<br />[CreationEvent](RecordCreationEvent) (c)<br />[RecordControlEvent](RecordControlEvent) (c)<br />[ArtefactChangeEvent](ArtefactChangeEvent) (c)<br />
+Restrictions |[triggeredBy](triggeredBy) (op) **only** [Trigger](Trigger) (c)<br />[guidingPolicy](guidingPolicy) (op) **only** [Policy](Policy) (c)<br />[affects](affects) (op) **some** ([Artefact](Artefact) (c) or [Record](Record) (c))<br />[associatedFunction](associatedFunction) (op) **only** [Function](Function) (c)<br />[hasStatus](hasStatus) (op) **only** [Status](Status) (c)<br />[priorEvent](priorEvent) (op) **only** [Event](Event) (c)<br />[qualifiedAssociation](qualifiedAssociation) (op) **some** [Association](Association) (c)<br />[wasAssociatedWith](wasAssociatedWith) (op) **some** [Agent](Agent) (c)<br />
+Sub-classes |[CreationEvent](RecordCreationEvent) (c)<br />[ArtefactChangeEvent](ArtefactChangeEvent) (c)<br />[ArtefactControlEvent](ArtefactControlEvent) (c)<br />[RecordControlEvent](RecordControlEvent) (c)<br />
 ### Form Factor
 Property | Value
 --- | ---
@@ -320,7 +320,7 @@ Description | <p>A Form Factor defines and prescribes the size, shape, and other
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Function`
-Description | <p>A Function is a process that is performed routinely to carry out a part of the mandate of an Australian Government Agency.</p>
+Description | <p>A Function reflects the responsibilities of an Organisation that can be delegated through official channels. [Commonwealth Records Series Manual]</p>
 Restrictions |[guidingPolicy](guidingPolicy) (op) **only** [Policy](Policy) (c)<br />
 Sub-classes |[RecordsAuthorityFunction](RecordsAuthorityFunction) (c)<br />[AGIFTFunction](AGIFTFunction) (c)<br />
 ### Holding Space
@@ -329,7 +329,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#HoldingSpace`
 Description | <p>A Holding Space is a space that is used or reserved for the storage of an Artefact.</p>
 Super-classes |[SpatialLocation](SpatialLocation) (c)<br />
-Sub-classes |[PhysicalHoldingSpace](PhysicalHoldingSpace) (c)<br />[DigitalHoldingSpace](DigitalHoldingSpace) (c)<br />
+Sub-classes |[DigitalHoldingSpace](DigitalHoldingSpace) (c)<br />[PhysicalHoldingSpace](PhysicalHoldingSpace) (c)<br />
 ### Information Management Policy
 Property | Value
 --- | ---
@@ -350,7 +350,7 @@ IRI | `http://linked.data.gov.au/def/agrif#IntellectualControlSystem`
 Description | <p>An Intellectual Control System is a System that enables Agents to locate and manage information.</p>
 Super-classes |[InformationSystem](InformationSystem) (c)<br />
 Restrictions |[guidingPolicy](guidingPolicy) (op) **only** [Policy](Policy) (c)<br />
-Sub-classes |[Series](Series) (c)<br />[ControlledVocabulary](ControlledVocabulary) (c)<br />
+Sub-classes |[ControlledVocabulary](ControlledVocabulary) (c)<br />[Series](Series) (c)<br />
 ### Jurisdictional Coverage
 Property | Value
 --- | ---
@@ -398,7 +398,7 @@ IRI | `http://linked.data.gov.au/def/agrif#OrganisationalUnit`
 Description | <p>An Organisational Unit is a division of labour typically organised around a business function that form part of the Organisation.</p>
 Super-classes |[Organisation](Organisation) (c)<br />
 Restrictions |[partOf](partOf) (op) **only** [Organisation](Organisation) (c)<br />
-### Permission
+### Security Clearance
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Permission`
@@ -437,7 +437,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#Policy`
 Source | [dcterms:Policy](http://purl.org/dc/terms/Policy)
 Description | <p>A Policy is a deliberate system of principles to guide decisions and achieve rational outcomes.</p>
-Sub-classes |[InformationManagementPolicy](InformationManagementPolicy) (c)<br />[RecordStorageStandard](RecordStorageStandard) (c)<br />[DigitalPreservationPolicy](DigitalPreservationPolicy) (c)<br />[MinimumMetadataSetPolicy](MinimumMetadataSetPolicy) (c)<br />[RecordsAuthorityPolicy](RecordsAuthorityDisposalClassPolicy) (c)<br />
+Sub-classes |[RecordStorageStandard](RecordStorageStandard) (c)<br />[MinimumMetadataSetPolicy](MinimumMetadataSetPolicy) (c)<br />[RecordsAuthorityPolicy](RecordsAuthorityDisposalClassPolicy) (c)<br />[DigitalPreservationPolicy](DigitalPreservationPolicy) (c)<br />[InformationManagementPolicy](InformationManagementPolicy) (c)<br />
 ### Preservation Quality
 Property | Value
 --- | ---
@@ -455,7 +455,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#Record`
 Description | <p>A Record is information in any format created, received and maintained as evidence by an Organisation or Person, in pursuance of legal obligations or in the transaction of business. A Record may comprise a Digital or Physical Artefact.</p>
-Restrictions |[hasControl](requiresControl) (op) **only** [Control](Control) (c)<br />[hasActivity](hasActivity) (op) **only** [Activity](Activity) (c)<br />[recordOf](recordOf) (op) **min** 1 [Artefact](Artefact) (c)<br />[requiresSecurityClassification](requiresSecurityClassification) (op) **only** [SecurityClassification](SecurityClassification) (c)<br />[checksum](checksum) (dp) **max** 1<br />[hasStatus](hasStatus) (op) **only** [Status](Status) (c)<br />[hasSeries](hasSeries) (op) **only** [Series](Series) (c)<br />[relatedTo](relatedTo) (op) **only** [Record](Record) (c)<br />[isAffectedBy](isAffectedBy) (op) **only** [Event](Event) (c)<br />[replaces](replaces) (op) **only** [Record](Record) (c)<br />[qualifiedAssociation](qualifiedAssociation) (op) **some** [Association](Association) (c)<br />[hasDisposalClass](hasDisposalClass) (op) **exactly** 1 [DisposalClass](DisposalClass) (c)<br />[associatedFunction](associatedFunction) (op) **min** 1 [Function](Function) (c)<br />[hasCoverage](hasCoverage) (op) **only** [Coverage](Coverage) (c)<br />[isAffectedBy](isAffectedBy) (op) **exactly** 1 [CreationEvent](RecordCreationEvent) (c)<br />[hasClassifier](hasClassifier) (op) **some** [Classifier](Classifier) (c)<br />
+Restrictions |[hasActivity](hasActivity) (op) **only** [Activity](Activity) (c)<br />[hasClassifier](hasClassifier) (op) **some** [Classifier](Classifier) (c)<br />[isAffectedBy](isAffectedBy) (op) **only** [Event](Event) (c)<br />[checksum](checksum) (dp) **max** 1<br />[recordOf](recordOf) (op) **min** 1 [Artefact](Artefact) (c)<br />[hasCoverage](hasCoverage) (op) **only** [Coverage](Coverage) (c)<br />[hasDisposalClass](hasDisposalClass) (op) **exactly** 1 [DisposalClass](DisposalClass) (c)<br />[isAffectedBy](isAffectedBy) (op) **exactly** 1 [CreationEvent](RecordCreationEvent) (c)<br />[hasSeries](hasSeries) (op) **only** [Series](Series) (c)<br />[associatedFunction](associatedFunction) (op) **min** 1 [Function](Function) (c)<br />[qualifiedAssociation](qualifiedAssociation) (op) **some** [Association](Association) (c)<br />[relatedTo](relatedTo) (op) **only** [Record](Record) (c)<br />[hasControl](requiresControl) (op) **only** [Control](Control) (c)<br />[hasStatus](hasStatus) (op) **only** [Status](Status) (c)<br />[requiresSecurityClassification](requiresSecurityClassification) (op) **only** [SecurityClassification](SecurityClassification) (c)<br />[replaces](replaces) (op) **only** [Record](Record) (c)<br />
 ### Record Audit Event
 Property | Value
 --- | ---
@@ -469,14 +469,14 @@ IRI | `http://linked.data.gov.au/def/agrif#RecordControlEvent`
 Description | <p>A Record Control Event is an Event that requires a particular level of access to the Record.</p>
 Super-classes |[Event](Event) (c)<br />
 Restrictions |[hasControl](requiresControl) (op) **only** [Control](Control) (c)<br />
-Sub-classes |[RecordDecisionEvent](RecordDecisionEvent) (c)<br />[RecordAuditEvent](RecordAuditEvent) (c)<br />[RecordReplacementEvent](RecordReplacementEvent) (c)<br />[RecordSentencingEvent](RecordSentencingEvent) (c)<br />[RecordDisposalEvent](RecordDisposalEvent) (c)<br />
+Sub-classes |[RecordDecisionEvent](RecordDecisionEvent) (c)<br />[RecordReplacementEvent](RecordReplacementEvent) (c)<br />[RecordAuditEvent](RecordAuditEvent) (c)<br />[RecordDisposalEvent](RecordDisposalEvent) (c)<br />[RecordSentencingEvent](RecordSentencingEvent) (c)<br />
 ### Record Decision Event
 Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/agrif#RecordDecisionEvent`
 Description | <p>A Record Decision Event changes the Decision Status on the Control of a Record.</p>
 Super-classes |[RecordControlEvent](RecordControlEvent) (c)<br />
-Restrictions |[hasDecisionStatus](hasDecisionStatus) (op) **only** [DecisionStatus](DecisionStatus) (c)<br />[hasPrerequisiteDecisionEvent](prerequisiteDecisionEvent) (op) **only** [RecordDecisionEvent](RecordDecisionEvent) (c)<br />
+Restrictions |[hasPrerequisiteDecisionEvent](prerequisiteDecisionEvent) (op) **only** [RecordDecisionEvent](RecordDecisionEvent) (c)<br />[hasDecisionStatus](hasDecisionStatus) (op) **only** [DecisionStatus](DecisionStatus) (c)<br />
 ### Record Destruction Event
 Property | Value
 --- | ---
@@ -489,7 +489,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#RecordDisposalEvent`
 Description | <p>A Record Disposal Event is an Event that results in the regular authorised destruction or change of custody of a Record that is no longer required for business purposes.</p>
 Super-classes |[RecordControlEvent](RecordControlEvent) (c)<br />
-Sub-classes |[RecordDestructionEvent](RecordDestructionEvent) (c)<br />[RecordTransferEvent](RecordTransferEvent) (c)<br />[RecordFreezeEvent](RecordFreezeEvent) (c)<br />
+Sub-classes |[RecordFreezeEvent](RecordFreezeEvent) (c)<br />[RecordDestructionEvent](RecordDestructionEvent) (c)<br />[RecordTransferEvent](RecordTransferEvent) (c)<br />
 ### Record Freeze Event
 Property | Value
 --- | ---
@@ -502,7 +502,7 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#RecordReplacementEvent`
 Description | <p>A Record Replacement Event is an Event that results in the replacement of a Record with a new version. Edits to a Record constitute a Replace Event.</p>
 Super-classes |[RecordControlEvent](RecordControlEvent) (c)<br />
-Restrictions |[hasVersionHistory](hasVersionHistory) (op) **only** [VersionHistory](VersionHistory) (c)<br />[replacedBy](replacedBy) (op) **exactly** 1 [Record](Record) (c)<br />
+Restrictions |[replacedBy](replacedBy) (op) **exactly** 1 [Record](Record) (c)<br />[hasVersionHistory](hasVersionHistory) (op) **only** [VersionHistory](VersionHistory) (c)<br />
 ### Record Sentencing Event
 Property | Value
 --- | ---
@@ -522,7 +522,7 @@ IRI | `http://linked.data.gov.au/def/agrif#RecordTransferEvent`
 Description | <p>A Transfer Event is a Disposal Event that results in a change of custody.</p>
 Example | `An example of a Record Transfer Event is the transfer of a Record from an Agency to the National Archives. Section 27 of the Archives Act 1983 requires Australian government agencies to transfer Records to the Archives within 15 years of their creation.`<br />
 Super-classes |[RecordDisposalEvent](RecordDisposalEvent) (c)<br />
-Restrictions |[transferredTo](transferredTo) (op) **some** [Role](Role) (c)<br />[transferredFrom](transferredFrom) (op) **some** [Role](Role) (c)<br />[hasManifest](hasManifest) (op) **only** [Manifest](Manifest) (c)<br />
+Restrictions |[hasManifest](hasManifest) (op) **only** [Manifest](Manifest) (c)<br />[transferredTo](transferredTo) (op) **some** [Role](Role) (c)<br />[transferredFrom](transferredFrom) (op) **some** [Role](Role) (c)<br />
 ### Records Authority Function
 Property | Value
 --- | ---
@@ -544,8 +544,8 @@ Property | Value
 IRI | `http://linked.data.gov.au/def/agrif#Role`
 Source | [https://www.w3.org/TR/prov-o/#Role](https://www.w3.org/TR/prov-o/#Role)
 Description | <p>A Role is the function of an entity or agent with respect to an Activity or Event, in the context of a usage, generation, invalidation, association, start, and end.</p>
-Restrictions |[hasPermission](hasPermission) (op) **some** [Permission](Permission) (c)<br />
-Sub-classes |[Administrator](Administrator) (c)<br />[User](User) (c)<br />[Creator](Creator) (c)<br />[BusinessOwner](BusinessOwner) (c)<br />
+Restrictions |[hasPermission](hasPermission) (op) **some** [Permission](SecurityClearance) (c)<br />
+Sub-classes |[BusinessOwner](BusinessOwner) (c)<br />[User](User) (c)<br />[Creator](Creator) (c)<br />[Administrator](Administrator) (c)<br />
 ### Security Classification
 Property | Value
 --- | ---

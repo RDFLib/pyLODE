@@ -1,6 +1,6 @@
-# Data Access Rights
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 
+# Data Access Rights
 
 ## Metadata
 * **IRI**

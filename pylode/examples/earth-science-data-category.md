@@ -1,6 +1,6 @@
-# Earth Science Data Category
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 
+# Earth Science Data Category
 
 ## Metadata
 * **IRI**

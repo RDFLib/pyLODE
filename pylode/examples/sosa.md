@@ -1,6 +1,6 @@
-# Sensor, Observation, Sample, and Actuator (SOSA) Ontology
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 
+# Sensor, Observation, Sample, and Actuator (SOSA) Ontology
 
 ## Metadata
 * **IRI**
@@ -10,7 +10,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * **Created**
   * 2017-04-17
 * **License &amp; Rights**
-  * [http://www.opengeospatial.org/ogc/Software](http://www.opengeospatial.org/ogc/Software)
+  * [http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document](http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document)
   * &copy; 2017 W3C/OGC.
 * **Ontology RDF**
   * RDF ([sosa.ttl](turtle))
@@ -122,7 +122,7 @@ Property | Value
 --- | ---
 IRI | `http://www.w3.org/ns/sosa/Sample`
 Is Defined By | http://www.w3.org/ns/sosa/
-Description | <p>Samples are artifacts of an observational strategy, and have no significant function outside of their role in the observation process. The characteristics of the samples themselves are of little interest, except perhaps to the manager of a sampling campaign.</p> <p>A Sample is intended to sample some FatureOfInterest, so there is an expectation of at least one isSampleOf property. However, in some cases the identity, and even the exact type, of the sampled feature may not be known when observations are made using the sampling features.</p>
+Description | <p>A Sample is the result from an act of Sampling.</p>
 Example | `A 'station' is essentially an identifiable locality where a sensor system or Procedure may be deployed and an observation made. In the context of the observation model, it connotes the 'world in the vicinity of the station', so the observed properties relate to the physical medium at the station, and not to any physical artifact such as a mooring, buoy, benchmark, monument, well, etc.`<br />
 ### Sampler
 Property | Value
@@ -137,7 +137,7 @@ Property | Value
 IRI | `http://www.w3.org/ns/sosa/Sampling`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | <p>An act of Sampling carries out a sampling Procedure to create or transform one or more samples.</p>
-Example | `Digging a pit through a soil sequence.`<br />
+Example | `Drilling an observation well.`<br />
 ### Sensor
 Property | Value
 --- | ---

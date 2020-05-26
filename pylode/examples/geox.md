@@ -1,6 +1,6 @@
-# GeoSPARQL Extensions Ontology
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 
+# GeoSPARQL Extensions Ontology
 
 ## Metadata
 * **IRI**
@@ -48,7 +48,7 @@ Description | <p>Spatial quantity computed or defined within a specified coordin
 Super-classes |[data:QuantitativeMeasure](http://linked.data.gov.au/def/datatype/QuantitativeMeasure) (c)<br />
 Restrictions |[geox:inCRS](InCoordinateReferenceSystem) (op) **exactly** 1<br />
 In domain of |[geox:inCRS](InCoordinateReferenceSystem) (op)<br />
-In range of |[geox:hasVolume](hasvolume) (op)<br />[geox:hasLength](haslength) (op)<br />[geox:hasArea](hasarea) (op)<br />
+In range of |[geox:hasLength](haslength) (op)<br />[geox:hasArea](hasarea) (op)<br />[geox:hasVolume](hasvolume) (op)<br />
 
 ## Object Properties
 [has area](#hasarea),

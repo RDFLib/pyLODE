@@ -1,6 +1,6 @@
-# Records Authority Ontology
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 
+# Records Authority Ontology
 
 ## Metadata
 * **IRI**
@@ -54,7 +54,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/ra#DisposalAction`
 Description | <p>A Disposal Action is an instruction to carry out the disposal (retention or descruction) of a government Record. In addition to being a skos:Concept since it acts as a classifier, a Disposal Action is also a Provenance Ontology Plan meaning it instructs a course of action - how to dispose of a record.</p>
-Super-classes |[prov:Plan](http://www.w3.org/ns/prov#Plan) (c)<br />[skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />
+Super-classes |[skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />[prov:Plan](http://www.w3.org/ns/prov#Plan) (c)<br />
 In range of |[requires](requires) (op)<br />
 ### Numbered Subclass
 Property | Value
@@ -74,7 +74,7 @@ Property | Value
 --- | ---
 IRI | `http://linked.data.gov.au/def/ra#RecordsAuthority`
 Description | <p>A Records Authority is a document that identifies minimum retention periods for Records and authorises the destruction of Records as required by Section 24 of the Archives Act 1983.</p> <pre><code>                      A Records Authority individual, as represented in this ontology, contains a collection of RA Classes and Numbered Subclasses used to categorise Records in order for them to be assiged Disposal Actions. </code></pre>
-Super-classes |[skos:ConceptScheme](http://www.w3.org/2004/02/skos/core#ConceptScheme) (c)<br />[owl:NamedIndividual](http://www.w3.org/2002/07/owl#NamedIndividual) (c)<br />
+Super-classes |[owl:NamedIndividual](http://www.w3.org/2002/07/owl#NamedIndividual) (c)<br />[skos:ConceptScheme](http://www.w3.org/2004/02/skos/core#ConceptScheme) (c)<br />
 
 ## Object Properties
 [requires](#requires),

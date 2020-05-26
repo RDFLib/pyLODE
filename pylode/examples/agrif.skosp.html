@@ -7,7 +7,7 @@
     <style>
         #pylode {
             position: fixed;
-            top: 80px;
+            top: 130px;
             left: -60px;
             font-size: small;
             transform: rotate(-90deg);
@@ -213,7 +213,10 @@
     </script>
 </head>
 <body>
-  <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE"><span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a></div>
+  <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
+    <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
+    <span style="font-size:smaller;">2.4</span>
+  </div>
   <h1>The Australian Government Records Interoperability Framework (AGRIF) ontology</h1>
 <h3><em>A taxonomy</em></h3>
   <section id="conceptscheme">
@@ -334,7 +337,7 @@
 <ul><li><a href="#TemporalCoverage">Temporal Coverage</a></li></ul></li><li><a href="#FormFactor">Form Factor</a></li><li><a href="#InformationSystem">Information System</a>
 <ul><li><a href="#IntellectualControlSystem">Intellectual Control System</a>
 <ul><li><a href="#ControlledVocabulary">Controlled Vocabulary</a></li></ul>
-<ul><li><a href="#Series">Series</a></li></ul></li></ul></li><li><a href="#SecurityClearance">Security Clearance</a></li><li><a href="#Policy">Policy</a>
+<ul><li><a href="#Series">Series</a></li></ul></li></ul></li><li><a href="#Permission">Permission</a></li><li><a href="#Policy">Policy</a>
 <ul><li><a href="#DigitalPreservationPolicy">Digital Preservation Policy</a></li></ul>
 <ul><li><a href="#InformationManagementPolicy">Information Management Policy</a></li></ul>
 <ul><li><a href="#MinimumMetadataSetPolicy">Minimum Metadata Set Policy</a></li></ul>
@@ -345,7 +348,7 @@
 <ul><li><a href="#HoldingSpace">Holding Space</a>
 <ul><li><a href="#DigitalHoldingSpace">Digital Holding Space</a></li></ul>
 <ul><li><a href="#PhysicalHoldingSpace">Physical Holding Space</a></li></ul></li></ul></li><li><a href="#Status">Status</a>
-<ul><li><a href="#DecisionStatus">Decision Status</a></li></ul></li><li><a href="#VersionHistory">Version History</a></li><li><a href="ub1bL849C45">ub1bL849C45</a></li>
+<ul><li><a href="#DecisionStatus">Decision Status</a></li></ul></li><li><a href="#VersionHistory">Version History</a></li><li><a href="ub71bL849C45">ub71bL849C45</a></li>
 </ul>
     <div class="entity concept" id="AGIFTFunction">
         <h3>AGIFT Function<sup title="Concept" class="sup-cp">cp</sup></h3>
@@ -459,9 +462,9 @@
             <tr>
                 <th>Narrower Concepts</th>
                 <td>
+                    <a href="#AccessActivity">Access Activity</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#ShareActivity">Share Activity</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#MaintainActivity">Maintain Activity</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                    <a href="#AccessActivity">Access Activity</a><sup class="sup-cp" title="concept">cp</sup><br/>
                 </td>
             </tr>
         </table>
@@ -509,8 +512,8 @@
             <tr>
                 <th>Narrower Concepts</th>
                 <td>
-                    <a href="#Person">Person</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#Organisation">Organisation</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#Person">Person</a><sup class="sup-cp" title="concept">cp</sup><br/>
                 </td>
             </tr>
         </table>
@@ -728,8 +731,8 @@
             <tr>
                 <th>Narrower Concepts</th>
                 <td>
-                    <a href="#LogicalCollection">Logical Collection</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#PhysicalCollection">Physical Collection</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#LogicalCollection">Logical Collection</a><sup class="sup-cp" title="concept">cp</sup><br/>
                 </td>
             </tr>
         </table>
@@ -793,9 +796,9 @@
             <tr>
                 <th>Narrower Concepts</th>
                 <td>
+                    <a href="#TemporalCoverage">Temporal Coverage</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#SpatialCoverage">Spatial Coverage</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#JurisdictionalCoverage">Jurisdictional Coverage</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                    <a href="#TemporalCoverage">Temporal Coverage</a><sup class="sup-cp" title="concept">cp</sup><br/>
                 </td>
             </tr>
         </table>
@@ -969,10 +972,10 @@
             <tr>
                 <th>Narrower Concepts</th>
                 <td>
-                    <a href="#ArtefactChangeEvent">Artefact Change Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#RecordControlEvent">Record Control Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#ArtefactControlEvent">Artefact Control Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#RecordCreationEvent">Record Creation Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#ArtefactChangeEvent">Artefact Change Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1037,8 +1040,8 @@
             <tr>
                 <th>Narrower Concepts</th>
                 <td>
-                    <a href="#DigitalHoldingSpace">Digital Holding Space</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#PhysicalHoldingSpace">Physical Holding Space</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#DigitalHoldingSpace">Digital Holding Space</a><sup class="sup-cp" title="concept">cp</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1266,12 +1269,12 @@
             </tr>
         </table>
     </div>
-    <div class="entity concept" id="SecurityClearance">
-        <h3>Security Clearance<sup title="Concept" class="sup-cp">cp</sup></h3>
+    <div class="entity concept" id="Permission">
+        <h3>Permission<sup title="Concept" class="sup-cp">cp</sup></h3>
             <h4>
-              Permission (en)
-              , 
               Security Clearance (en)
+              , 
+              Permission (en)
               
             </h4>
         <table>
@@ -1331,12 +1334,6 @@
                 <th>Definition</th>
                 <td>
                     A Physical Artefact is an Artefact that is of physical nature.<br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Example</th>
-                <td>
-                    <pre>An example of a Phyiscal Artefact in the context of record keeping is information printed or written on paper.</pre><br/>
                 </td>
             </tr>
             <tr>
@@ -1411,11 +1408,11 @@
             <tr>
                 <th>Narrower Concepts</th>
                 <td>
+                    <a href="#RecordStorageStandard">Record Storage Standard</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#RecordsAuthorityDisposalClassPolicy">Records Authority Disposal Class Policy</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#DigitalPreservationPolicy">Digital Preservation Policy</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#MinimumMetadataSetPolicy">Minimum Metadata Set Policy</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#InformationManagementPolicy">Information Management Policy</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                    <a href="#RecordsAuthorityDisposalClassPolicy">Records Authority Disposal Class Policy</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                    <a href="#RecordStorageStandard">Record Storage Standard</a><sup class="sup-cp" title="concept">cp</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1523,8 +1520,8 @@
                     <a href="#RecordSentencingEvent">Record Sentencing Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#RecordReplacementEvent">Record Replacement Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#RecordDecisionEvent">Record Decision Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                    <a href="#RecordAuditEvent">Record Audit Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#RecordDisposalEvent">Record Disposal Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#RecordAuditEvent">Record Audit Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1593,9 +1590,9 @@
             <tr>
                 <th>Narrower Concepts</th>
                 <td>
-                    <a href="#RecordFreezeEvent">Record Freeze Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#RecordTransferEvent">Record Transfer Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#RecordDestructionEvent">Record Destruction Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#RecordFreezeEvent">Record Freeze Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1698,12 +1695,6 @@
                 </td>
             </tr>
             <tr>
-                <th>Example</th>
-                <td>
-                    <pre>An example of a Record Transfer Event is the transfer of a Record from an Agency to the National Archives. Section 27 of the Archives Act 1983 requires Australian government agencies to transfer Records to the Archives within 15 years of their creation.</pre><br/>
-                </td>
-            </tr>
-            <tr>
                 <th>Broader Concepts</th>
                 <td>
                     <a href="#RecordDisposalEvent">Record Disposal Event</a><sup class="sup-cp" title="concept">cp</sup><br/>
@@ -1787,10 +1778,10 @@
             <tr>
                 <th>Narrower Concepts</th>
                 <td>
+                    <a href="#Administrator">Administrator</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#Creator">Creator</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#User">User</a><sup class="sup-cp" title="concept">cp</sup><br/>
                     <a href="#BusinessOwner">Business Owner</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                    <a href="#Creator">Creator</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                    <a href="#Administrator">Administrator</a><sup class="sup-cp" title="concept">cp</sup><br/>
                 </td>
             </tr>
         </table>
@@ -2031,7 +2022,7 @@
         <table>
             <tr>
                 <th>IRI</th>
-                <td><code>ub1bL849C45</code></td>
+                <td><code>ub71bL849C45</code></td>
             </tr>
         </table>
     </div>

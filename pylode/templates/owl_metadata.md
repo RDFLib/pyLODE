@@ -1,6 +1,4 @@
 # {{ title }}
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
-
 
 ## Metadata
 * **IRI**

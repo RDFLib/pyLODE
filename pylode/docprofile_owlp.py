@@ -5,7 +5,7 @@ from itertools import chain
 import markdown
 from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
-from docprofile import DocProfile
+from docprofile import DocProfile, __version__
 
 
 class Owlp(DocProfile):
@@ -1096,6 +1096,7 @@ class Owlp(DocProfile):
             default_namespace=self.METADATA["default_namespace"],
             namespaces=self._make_namespaces(),
             css=css,
+            pylode_version=__version__
         )
 
     def generate_document(self):

@@ -7,7 +7,7 @@
     <style>
         #pylode {
             position: fixed;
-            top: 80px;
+            top: 130px;
             left: -60px;
             font-size: small;
             transform: rotate(-90deg);
@@ -190,7 +190,7 @@
     ],
     "https://schema.org/description": [
       {
-        "@value": "<p>Das Vokabular \"Description of a Project (DOAP)\", beschrieben durch W3C RDF Schema and the Web Ontology Language.</p>"
+        "@value": "<p>El vocabulario Description of a Project (DOAP, DescripciÃ³n de un Proyecto), descrito usando RDF Schema de W3C\n        y Web Ontology Language.</p>"
       }
     ],
     "https://schema.org/name": [
@@ -203,8 +203,11 @@
     </script>
 </head>
 <body>
-<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE"><span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a></div>
-<h1>Description of a Project (DOAP) vocabulary</h1>
+  <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
+    <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
+    <span style="font-size:smaller;">2.4</span>
+  </div>
+  <h1>Description of a Project (DOAP) vocabulary</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
@@ -223,7 +226,8 @@
     </dl>
     <h2>Description</h2>
     <div id="description">
-        <p>Das Vokabular "Description of a Project (DOAP)", beschrieben durch W3C RDF Schema and the Web Ontology Language.</p>
+        <p>El vocabulario Description of a Project (DOAP, DescripciÃ³n de un Proyecto), descrito usando RDF Schema de W3C
+        y Web Ontology Language.</p>
     </div>
 </section>
 <section id="toc">
@@ -242,22 +246,22 @@
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div>
 </section>
-<section id="classes">
+  <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
+        <li><a href="#BazaarBranch">Bazaar Branch</a></li>
+        <li><a href="#BitKeeperRepository">BitKeeper Repository</a></li>
         <li><a href="#CVSRepository">CVS Repository</a></li>
         <li><a href="#DptGNUArch">DÃ©pÃ´t GNU Arch</a></li>
-        <li><a href="#Dptdarcs">DÃ©pÃ´t darcs</a></li>
-        <li><a href="#GitBranch">Git Branch</a></li>
+        <li><a href="#Especificao">EspecificaÃ§Ã£o</a></li>
         <li><a href="#Projeto">Projeto</a></li>
-        <li><a href="#RamificaoBazaar">RamificaÃ§Ã£o Bazaar</a></li>
-        <li><a href="#Repositorio">Repositorio</a></li>
-        <li><a href="#RepositorioSubversion">Repositorio Subversion</a></li>
+        <li><a href="#RamificaoGit">RamificaÃ§Ã£o Git</a></li>
+        <li><a href="#RepositorioGit">Repositorio Git</a></li>
+        <li><a href="#Repository1">Repository</a></li>
         <li><a href="#RepositrioMercurial">RepositÃ³rio Mercurial</a></li>
-        <li><a href="#Specification">Specification</a></li>
-        <li><a href="#Version1">Version</a></li>
-        <li><a href="#loitBitKeeper">ÃšloÅ¾iÅ¡tÄ› BitKeeper</a></li>
-        <li><a href="#loitGit">ÃšloÅ¾iÅ¡tÄ› Git</a></li>
+        <li><a href="#RepositrioSubversion">RepositÃ³rio Subversion</a></li>
+        <li><a href="#Repositriodarcs">RepositÃ³rio darcs</a></li>
+        <li><a href="#Version">Version</a></li>
     </ul>
     <div class="entity class" id="DptGNUArch">
         <h3>DÃ©pÃ´t GNU Arch<sup title="class" class="sup-c">c</sup></h3>
@@ -275,7 +279,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>DÃ©pÃ´t GNU Arch du code source.</p>
+                    <p>ÃšloÅ¾iÅ¡tÄ› zdrojovÃ½ch kÃ³dÅ¯ GNU Arch.</p>
                 </td>
             </tr>
             <tr>
@@ -286,8 +290,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="loitBitKeeper">
-        <h3>ÃšloÅ¾iÅ¡tÄ› BitKeeper<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="BitKeeperRepository">
+        <h3>BitKeeper Repository<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -302,7 +306,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>ÃšloÅ¾iÅ¡tÄ› zdrojovÃ½ch kÃ³dÅ¯ BitKeeper.</p>
+                    <p>RepositÃ³rio BitKeeper do cÃ³digo fonte.</p>
                 </td>
             </tr>
             <tr>
@@ -313,8 +317,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="RamificaoBazaar">
-        <h3>RamificaÃ§Ã£o Bazaar<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="BazaarBranch">
+        <h3>Bazaar Branch<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -329,7 +333,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Bazaar source code branch.</p>
+                    <p>CÃ³digo fonte da ramificaÃ§Ã£o Bazaar.</p>
                 </td>
             </tr>
             <tr>
@@ -367,8 +371,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="Dptdarcs">
-        <h3>DÃ©pÃ´t darcs<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="Repositriodarcs">
+        <h3>RepositÃ³rio darcs<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -394,8 +398,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="GitBranch">
-        <h3>Git Branch<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="RamificaoGit">
+        <h3>RamificaÃ§Ã£o Git<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -421,8 +425,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="loitGit">
-        <h3>ÃšloÅ¾iÅ¡tÄ› Git<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="RepositorioGit">
+        <h3>Repositorio Git<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -437,7 +441,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>DÃ©pÃ´t Git du code source.</p>
+                    <p>RepositÃ³rio Git do cÃ³digo fonte.</p>
                 </td>
             </tr>
             <tr>
@@ -464,7 +468,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>RepositÃ³rio Mercurial do cÃ³digo fonte.</p>
+                    <p>Mercurial source code repository.</p>
                 </td>
             </tr>
             <tr>
@@ -491,7 +495,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>A project.</p>
+                    <p>Projekt.</p>
                 </td>
             </tr>
             <tr>
@@ -504,34 +508,34 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://usefulinc.com/ns/doap#wiki">doap:wiki</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#helper">doap:helper</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#support-forum">doap:support-forum</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#developer-forum">doap:developer-forum</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#translator">doap:translator</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#tester">doap:tester</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#repository">doap:repository</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#language">doap:language</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#category">doap:category</a><br/>
                     <a href="http://usefulinc.com/ns/doap#service-endpoint">doap:service-endpoint</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#mailing-list">doap:mailing-list</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#audience">doap:audience</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#bug-database">doap:bug-database</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#developer">doap:developer</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#translator">doap:translator</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#os">doap:os</a><br/>
                     <a href="http://usefulinc.com/ns/doap#homepage">doap:homepage</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#release">doap:release</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#documenter">doap:documenter</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#bug-database">doap:bug-database</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#audience">doap:audience</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#mailing-list">doap:mailing-list</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#category">doap:category</a><br/>
                     <a href="http://usefulinc.com/ns/doap#implements">doap:implements</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#screenshots">doap:screenshots</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#old-homepage">doap:old-homepage</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#vendor">doap:vendor</a><br/>
                     <a href="http://usefulinc.com/ns/doap#maintainer">doap:maintainer</a><br/>
                     <a href="http://usefulinc.com/ns/doap#download-page">doap:download-page</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#os">doap:os</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#old-homepage">doap:old-homepage</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#screenshots">doap:screenshots</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#programming-language">doap:programming-language</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#developer">doap:developer</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#blog">doap:blog</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#support-forum">doap:support-forum</a><br/>
                     <a href="http://usefulinc.com/ns/doap#platform">doap:platform</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#vendor">doap:vendor</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#release">doap:release</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#documenter">doap:documenter</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#language">doap:language</a><br/>
                     <a href="http://usefulinc.com/ns/doap#download-mirror">doap:download-mirror</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#developer-forum">doap:developer-forum</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#tester">doap:tester</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#wiki">doap:wiki</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#programming-language">doap:programming-language</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#helper">doap:helper</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#repository">doap:repository</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#blog">doap:blog</a><br/>
                 </td>
             </tr>
             <tr>
@@ -542,8 +546,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="Repositorio">
-        <h3>Repositorio<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="Repository1">
+        <h3>Repository<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -558,30 +562,30 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>DÃ©pÃ´t du code source.</p>
+                    <p>Quellcode-Versionierungssystem.</p>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://usefulinc.com/ns/doap#GitBranch">doap:GitBranch</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://usefulinc.com/ns/doap#ArchRepository">doap:ArchRepository</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://usefulinc.com/ns/doap#BazaarBranch">doap:BazaarBranch</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://usefulinc.com/ns/doap#SVNRepository">doap:SVNRepository</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://usefulinc.com/ns/doap#DarcsRepository">doap:DarcsRepository</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://usefulinc.com/ns/doap#GitBranch">doap:GitBranch</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://usefulinc.com/ns/doap#BKRepository">doap:BKRepository</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://usefulinc.com/ns/doap#GitRepository">doap:GitRepository</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://usefulinc.com/ns/doap#CVSRepository">doap:CVSRepository</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://usefulinc.com/ns/doap#ArchRepository">doap:ArchRepository</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://usefulinc.com/ns/doap#HgRepository">doap:HgRepository</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://usefulinc.com/ns/doap#SVNRepository">doap:SVNRepository</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://usefulinc.com/ns/doap#BazaarBranch">doap:BazaarBranch</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://usefulinc.com/ns/doap#CVSRepository">doap:CVSRepository</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://usefulinc.com/ns/doap#anon-root">doap:anon-root</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#repositoryOf">doap:repositoryOf</a><br/>
                     <a href="http://usefulinc.com/ns/doap#browse">doap:browse</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#anon-root">doap:anon-root</a><br/>
                     <a href="http://usefulinc.com/ns/doap#location">doap:location</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#repositoryOf">doap:repositoryOf</a><br/>
                 </td>
             </tr>
             <tr>
@@ -592,8 +596,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="RepositorioSubversion">
-        <h3>Repositorio Subversion<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="RepositrioSubversion">
+        <h3>RepositÃ³rio Subversion<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -608,7 +612,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>DÃ©pÃ´t Subversion du code source.</p>
+                    <p>Subversion source code repository.</p>
                 </td>
             </tr>
             <tr>
@@ -619,8 +623,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="Specification">
-        <h3>Specification<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="Especificao">
+        <h3>EspecificaÃ§Ã£o<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -652,7 +656,7 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="Version1">
+    <div class="entity class" id="Version">
         <h3>Version<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
@@ -668,7 +672,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Informace o uvolnÄ›nÃ© verzi projektu.</p>
+                    <p>InformaÃ§Ã£o sobre a versÃ£o do projeto lanÃ§ado.</p>
                 </td>
             </tr>
             <tr>
@@ -676,8 +680,8 @@
                 <td>
                     <a href="http://usefulinc.com/ns/doap#platform">doap:platform</a><br/>
                     <a href="http://usefulinc.com/ns/doap#file-release">doap:file-release</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#os">doap:os</a><br/>
                     <a href="http://usefulinc.com/ns/doap#revision">doap:revision</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#os">doap:os</a><br/>
                 </td>
             </tr>
             <tr>
@@ -693,43 +697,43 @@
     <h2>Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
         <li><a href="#razannima">raÃ­z anÃ³nima</a></li>
-        <li><a href="#audience">audience</a></li>
+        <li><a href="#audincia">audiÃªncia</a></li>
         <li><a href="#blog">blog</a></li>
-        <li><a href="#browse">browse</a></li>
-        <li><a href="#databzechyb">databÃ¡ze chyb</a></li>
-        <li><a href="#category">category</a></li>
-        <li><a href="#created">created</a></li>
-        <li><a href="#description">description</a></li>
-        <li><a href="#developer">developer</a></li>
+        <li><a href="#navegar">navegar</a></li>
+        <li><a href="#bugdatabase">bug database</a></li>
+        <li><a href="#kategorie">kategorie</a></li>
+        <li><a href="#erstellt">erstellt</a></li>
+        <li><a href="#descrio">descriÃ§Ã£o</a></li>
+        <li><a href="#desarrollador">desarrollador</a></li>
         <li><a href="#developerforum">developer forum</a></li>
-        <li><a href="#Dokumentator">Dokumentator</a></li>
-        <li><a href="#mirrorparadownload">mirror para download</a></li>
+        <li><a href="#rdacteurdel'aide">rÃ©dacteur de l'aide</a></li>
+        <li><a href="#mirrordedescarga">mirror de descarga</a></li>
         <li><a href="#pginaparadownload">pÃ¡gina para download</a></li>
-        <li><a href="#file-release">file-release</a></li>
-        <li><a href="#colaborador">colaborador</a></li>
-        <li><a href="#domovskstrnka">domovskÃ¡ strÃ¡nka</a></li>
+        <li><a href="#publicaodoficheiro">publicaÃ§Ã£o do ficheiro</a></li>
+        <li><a href="#collaborateur">collaborateur</a></li>
+        <li><a href="#homepage">homepage</a></li>
         <li><a href="#Especificaesparaimplementao">EspecificaÃ§Ãµes para implementaÃ§Ã£o</a></li>
-        <li><a href="#idioma">idioma</a></li>
-        <li><a href="#Lizenz">Lizenz</a></li>
+        <li><a href="#language">language</a></li>
+        <li><a href="#license">license</a></li>
         <li><a href="#lugardelrespositorio">lugar del respositorio</a></li>
-        <li><a href="#listedediffusion">liste de diffusion</a></li>
-        <li><a href="#dveloppeurprincipal">dÃ©veloppeur principal</a></li>
-        <li><a href="#Modul">Modul</a></li>
-        <li><a href="#jmno">jmÃ©no</a></li>
-        <li><a href="#stardomovskstrnka">starÃ¡ domovskÃ¡ strÃ¡nka</a></li>
+        <li><a href="#listadedistribuiodee-mail">lista de distribuiÃ§Ã£o de e-mail</a></li>
+        <li><a href="#desarrolladorprincipal">desarrollador principal</a></li>
+        <li><a href="#module">module</a></li>
+        <li><a href="#nome">nome</a></li>
+        <li><a href="#pginawebantigua">pÃ¡gina web antigua</a></li>
         <li><a href="#sistemaoperativo">sistema operativo</a></li>
-        <li><a href="#platform">platform</a></li>
-        <li><a href="#linguagemdeprogramao">linguagem de programaÃ§Ã£o</a></li>
+        <li><a href="#plataforma">plataforma</a></li>
+        <li><a href="#programovacjazyk">programovacÃ­ jazyk</a></li>
         <li><a href="#publicao">publicaÃ§Ã£o</a></li>
-        <li><a href="#dpt">dÃ©pÃ´t</a></li>
+        <li><a href="#Repository">Repository</a></li>
         <li><a href="#repositoryof">repository of</a></li>
-        <li><a href="#Version">Version</a></li>
+        <li><a href="#rvision">rÃ©vision</a></li>
         <li><a href="#Screenshots">Screenshots</a></li>
         <li><a href="#serviceendpoint">service endpoint</a></li>
-        <li><a href="#Kurzbeschreibung">Kurzbeschreibung</a></li>
+        <li><a href="#descripcincorta">descripciÃ³n corta</a></li>
         <li><a href="#supportingforum">supporting forum</a></li>
-        <li><a href="#testeur">testeur</a></li>
-        <li><a href="#pekladatel">pÅ™ekladatel</a></li>
+        <li><a href="#tester">tester</a></li>
+        <li><a href="#bersetzer">Ãœbersetzer</a></li>
         <li><a href="#vendor">vendor</a></li>
         <li><a href="#wiki">wiki</a></li>
     </ul>
@@ -749,7 +753,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    DÃ©pÃ´t pour accÃ¨s anonyme.
+                    RepositÃ³rio para acesso anÃ³nimo.
                 </td>
             </tr>
             <tr>
@@ -766,8 +770,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="audience">
-        <h3>audience<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="audincia">
+        <h3>audiÃªncia<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -827,14 +831,14 @@
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://rdfs.org/sioc/types#Weblog">http://rdfs.org/sioc/types#Weblog</a><sup class="sup-c" title="class">c</sup>
                     <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://rdfs.org/sioc/types#Weblog">http://rdfs.org/sioc/types#Weblog</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="browse">
-        <h3>browse<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="navegar">
+        <h3>navegar<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -849,7 +853,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Web browser interface to repository.
+                    Interface web au dÃ©pÃ´t.
                 </td>
             </tr>
             <tr>
@@ -860,8 +864,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="databzechyb">
-        <h3>databÃ¡ze chyb<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="bugdatabase">
+        <h3>bug database<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -887,8 +891,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="category">
-        <h3>category<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="kategorie">
+        <h3>kategorie<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -903,7 +907,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Kategorie projektu.
+                    Uma categorÃ­a de projeto.
                 </td>
             </tr>
             <tr>
@@ -914,8 +918,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="created">
-        <h3>created<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="erstellt">
+        <h3>erstellt<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -930,7 +934,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Fecha en la que algo fue creado, en formato AAAA-MM-DD. e.g. 2004-04-05
+                    Datum, kdy bylo nÄ›co vytvoÅ™eno ve formÃ¡tu RRRR-MM-DD, napÅ™. 2004-04-05
                 </td>
             </tr>
             <tr>
@@ -941,8 +945,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="description">
-        <h3>description<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="descrio">
+        <h3>descriÃ§Ã£o<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -957,7 +961,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    ÄŒistÄ› textovÃ½, 2 aÅ¾ 4 vÄ›ty dlouhÃ½ popis projektu.
+                    Beschreibung eines Projekts als einfacher Text mit der LÃ¤nge von 2 bis 4 SÃ¤tzen.
                 </td>
             </tr>
             <tr>
@@ -968,8 +972,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="developer">
-        <h3>developer<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="desarrollador">
+        <h3>desarrollador<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -984,7 +988,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Software-Entwickler fÃ¼r eine Projekt.
+                    Desarrollador de software para el proyecto.
                 </td>
             </tr>
             <tr>
@@ -1034,8 +1038,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="Dokumentator">
-        <h3>Dokumentator<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="rdacteurdel'aide">
+        <h3>rÃ©dacteur de l'aide<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1050,7 +1054,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Contribuidor para a documentaÃ§Ã£o do projeto.
+                    Spoluautor dokumentace projektu.
                 </td>
             </tr>
             <tr>
@@ -1067,8 +1071,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="mirrorparadownload">
-        <h3>mirror para download<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="mirrordedescarga">
+        <h3>mirror de descarga<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1083,7 +1087,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Zrcadlo strÃ¡nky pro staÅ¾enÃ­ softwaru.
+                    Miroir de la page de tÃ©lÃ©chargement du programme.
                 </td>
             </tr>
             <tr>
@@ -1110,7 +1114,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Web-Seite von der die Projekt-Software heruntergeladen werden kann.
+                    Page web Ã  partir de laquelle on peut tÃ©lÃ©charger le programme.
                 </td>
             </tr>
             <tr>
@@ -1121,8 +1125,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="file-release">
-        <h3>file-release<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="publicaodoficheiro">
+        <h3>publicaÃ§Ã£o do ficheiro<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1137,7 +1141,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    URI adresa staÅ¾enÃ­ asociovanÃ© s revizÃ­.
+                    URI of download associated with this release.
                 </td>
             </tr>
             <tr>
@@ -1148,8 +1152,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="colaborador">
-        <h3>colaborador<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="collaborateur">
+        <h3>collaborateur<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1164,7 +1168,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Collaborateur au projet.
+                    Project contributor.
                 </td>
             </tr>
             <tr>
@@ -1181,8 +1185,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="domovskstrnka">
-        <h3>domovskÃ¡ strÃ¡nka<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="homepage">
+        <h3>homepage<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1197,8 +1201,8 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    El URL de la pÃ¡gina de un proyecto,
-		asociada con exactamente un proyecto.
+                    O URL da pÃ¡gina de um projeto,
+		asociada com exactamente um projeto.
                 </td>
             </tr>
             <tr>
@@ -1248,8 +1252,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="idioma">
-        <h3>idioma<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="language">
+        <h3>language<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1264,7 +1268,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    CÃ³digo de idioma ISO do projeto para o qual foi traduzido
+                    ISO language code a project has been translated into
                 </td>
             </tr>
             <tr>
@@ -1281,8 +1285,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="Lizenz">
-        <h3>Lizenz<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="license">
+        <h3>license<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1318,7 +1322,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    LocalizaÃ§Ã£o de um repositÃ³rio.
+                    Emplacement d'un dÃ©pÃ´t.
                 </td>
             </tr>
             <tr>
@@ -1329,8 +1333,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="listedediffusion">
-        <h3>liste de diffusion<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="listadedistribuiodee-mail">
+        <h3>lista de distribuiÃ§Ã£o de e-mail<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1345,7 +1349,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    DomovskÃ¡ strÃ¡nka nebo eâ€“mailovÃ¡ adresa eâ€“mailovÃ© diskuse.
+                    PÃ¡gina web da lista de distribuiÃ§Ã£o de e-mail ou dos endereÃ§os.
                 </td>
             </tr>
             <tr>
@@ -1362,8 +1366,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="dveloppeurprincipal">
-        <h3>dÃ©veloppeur principal<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="desarrolladorprincipal">
+        <h3>desarrollador principal<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1378,7 +1382,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    DÃ©veloppeur principal d'un projet, un meneur du projet.
+                    Hauptentwickler eines Projektes, der Projektleiter
                 </td>
             </tr>
             <tr>
@@ -1395,8 +1399,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="Modul">
-        <h3>Modul<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="module">
+        <h3>module<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1422,8 +1426,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="jmno">
-        <h3>jmÃ©no<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="nome">
+        <h3>nome<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1438,7 +1442,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    El nombre de algo.
+                    O nome de alguma coisa.
                 </td>
             </tr>
             <tr>
@@ -1455,8 +1459,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="stardomovskstrnka">
-        <h3>starÃ¡ domovskÃ¡ strÃ¡nka<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="pginawebantigua">
+        <h3>pÃ¡gina web antigua<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1505,14 +1509,14 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Operating system that a project is limited to.  Omit this property if the project is not OS-specific.
+                    Betriebssystem auf dem das Projekt eingesetzt werden kann. Diese Eigenschaft kann ausgelassen werden, wenn das Projekt nicht BS-spezifisch ist.
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
                     <a href="http://usefulinc.com/ns/doap#Version">doap:Version</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -1523,8 +1527,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="platform">
-        <h3>platform<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="plataforma">
+        <h3>plataforma<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1539,14 +1543,14 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Indicador da plataforma do software (nÃ£o especÃ­fico a nenhum SO), ex.: Java, Firefox, ECMA CLR
+                    Indicator of software platform (non-OS specific), e.g. Java, Firefox, ECMA CLR
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://usefulinc.com/ns/doap#Version">doap:Version</a><sup class="sup-c" title="class">c</sup>
                     <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://usefulinc.com/ns/doap#Version">doap:Version</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -1557,8 +1561,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="linguagemdeprogramao">
-        <h3>linguagem de programaÃ§Ã£o<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="programovacjazyk">
+        <h3>programovacÃ­ jazyk<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1573,7 +1577,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Programming language a project is implemented in or intended for use with.
+                    ProgramovacÃ­ jazyk, ve kterÃ©m je projekt implementovÃ¡n nebo pro kterÃ½ je zamÃ½Å¡len k pouÅ¾itÃ­.
                 </td>
             </tr>
             <tr>
@@ -1606,7 +1610,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Ein Release (Version) eines Projekts.
+                    Une release (rÃ©vision) d'un projet.
                 </td>
             </tr>
             <tr>
@@ -1623,8 +1627,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="dpt">
-        <h3>dÃ©pÃ´t<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="Repository">
+        <h3>Repository<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1701,8 +1705,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="Version">
-        <h3>Version<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="rvision">
+        <h3>rÃ©vision<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1717,7 +1721,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    IdentifikÃ¡tor zpÅ™Ã­stupnÄ›nÃ© revize softwaru.
+                    Revision identifier of a software release.
                 </td>
             </tr>
             <tr>
@@ -1750,7 +1754,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    WebovÃ¡ strÃ¡nka projektu se snÃ­mky obrazovky.
+                    Web page with screenshots of project.
                 </td>
             </tr>
             <tr>
@@ -1794,8 +1798,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="Kurzbeschreibung">
-        <h3>Kurzbeschreibung<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="descripcincorta">
+        <h3>descripciÃ³n corta<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1810,7 +1814,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Kurzbeschreibung (8 oder 9 WÃ¶rter) eines Projects als einfacher Text.
+                    Short (8 or 9 words) plain text description of a project.
                 </td>
             </tr>
             <tr>
@@ -1854,8 +1858,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="testeur">
-        <h3>testeur<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="tester">
+        <h3>tester<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1870,7 +1874,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Um controlador ou outro contribuidor para o controlo de qualidade.
+                    Un tester u otro proveedor de control de calidad.
                 </td>
             </tr>
             <tr>
@@ -1887,8 +1891,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="pekladatel">
-        <h3>pÅ™ekladatel<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="bersetzer">
+        <h3>Ãœbersetzer<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
@@ -1903,7 +1907,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Proveedor de traducciones al proyecto.
+                    Mitarbeiter an den Ãœbersetzungen eines Projektes.
                 </td>
             </tr>
             <tr>
@@ -1988,14 +1992,14 @@
     </div>
 </section>
 
-
-<section id="namedindividuals">
+  
+  <section id="namedindividuals">
     <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
     </ul>
 </section>
-
-<section id="namespaces">
+  
+  <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
         <dt>dc</dt>
@@ -2024,17 +2028,17 @@
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>
 </section>
-<section id="legend">
-    <h2>Legend</h2>
-    <table class="entity">
-        <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
-        <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
-        <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
-        <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
-        <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
-        <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
-        <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
-    </table>
-</section>
+  <section id="legend">
+      <h2>Legend</h2>
+      <table class="entity">
+          <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+          <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+          <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+          <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+          <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+          <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+          <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+      </table>
+  </section>
 </body>
 </html>

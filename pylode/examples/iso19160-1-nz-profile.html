@@ -7,7 +7,7 @@
     <style>
         #pylode {
             position: fixed;
-            top: 80px;
+            top: 130px;
             left: -60px;
             font-size: small;
             transform: rotate(-90deg);
@@ -208,8 +208,11 @@
     </script>
 </head>
 <body>
-<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE"><span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a></div>
-<h1>ISO19160-1:2015 Address ontology - NZ Profile</h1>
+  <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
+    <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
+    <span style="font-size:smaller;">2.4</span>
+  </div>
+  <h1>ISO19160-1:2015 Address ontology - NZ Profile</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
@@ -290,7 +293,7 @@
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div>
 </section>
-<section id="classes">
+  <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
         <li><a href="#AddressAlias">Address Alias</a></li>
@@ -320,8 +323,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.lifespan">iso19160-1:AddressAlias.lifespan</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/iso19160-1-address#Lifespan">iso19160-1:Lifespan</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.lifecycleStage">iso19160-1:AddressAlias.lifecycleStage</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressLifecycleStage">iso19160-1:AddressLifecycleStage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.lifespan">iso19160-1:AddressAlias.lifespan</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/iso19160-1-address#Lifespan">iso19160-1:Lifespan</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -349,8 +352,8 @@
                 <th>Restrictions</th>
                 <td>
                     <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage">iso19160-1:AddressComponent.lifecycleStage</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.locale">iso19160-1:AddressComponentValue.locale</a> <span class="cardinality">exactly</span> 0<br/>
                     <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.provenance">iso19160-1:Address.provenance</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.locale">iso19160-1:AddressComponentValue.locale</a> <span class="cardinality">exactly</span> 0<br/>
                     <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan">iso19160-1:Address.lifespan</a> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
@@ -378,9 +381,9 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.position">iso19160-1:Address.position</a> <span class="cardinality">exactly</span> 0<br/>
                     <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan">iso19160-1:Address.lifespan</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage">iso19160-1:AddressComponent.lifecycleStage</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.position">iso19160-1:Address.position</a> <span class="cardinality">exactly</span> 0<br/>
                 </td>
             </tr>
         </table>
@@ -414,14 +417,14 @@
         </table>
     </div>
 </section>
-
-<section id="namedindividuals">
+  
+  <section id="namedindividuals">
     <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
     </ul>
 </section>
-
-<section id="namespaces">
+  
+  <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
         <dt><em>default (:)</em></dt>
@@ -456,17 +459,17 @@
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>
 </section>
-<section id="legend">
-    <h2>Legend</h2>
-    <table class="entity">
-        <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
-        <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
-        <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
-        <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
-        <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
-        <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
-        <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
-    </table>
-</section>
+  <section id="legend">
+      <h2>Legend</h2>
+      <table class="entity">
+          <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+          <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+          <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+          <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+          <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+          <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+          <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+      </table>
+  </section>
 </body>
 </html>

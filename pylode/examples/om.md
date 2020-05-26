@@ -1,6 +1,6 @@
-# Ontology of units of Measure (OM)
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 
+# Ontology of units of Measure (OM)
 
 ## Metadata
 * **IRI**
@@ -34,9 +34,9 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [B magnitude](#Bmagnitude),
 [B magnitude at maximum brightness](#Bmagnitudeatmaximumbrightness),
 [B magnitude at minimum brightness](#Bmagnitudeatminimumbrightness),
-[Celsius temperature](#Celsiustemperature),
 [Celsius temperature scale](#Celsiustemperaturescale),
 [Celsius temperature unit](#Celsiustemperatureunit),
+[Celsiustemperatuur](#Celsiustemperatuur),
 [Corynebacterium bovis count (specific)](#Corynebacteriumboviscount(specific)),
 [Corynebacterium bovis count (volumetric)](#Corynebacteriumboviscount(volumetric)),
 [Corynebacterium count (specific)](#Corynebacteriumcount(specific)),
@@ -50,21 +50,21 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [Enterococcus count (volumetric)](#Enterococcuscount(volumetric)),
 [Escherichia coli count (specific)](#Escherichiacolicount(specific)),
 [Escherichia coli count (volumetric)](#Escherichiacolicount(volumetric)),
-[Euler number](#Eulernumber),
 [Euler number unit](#Eulernumberunit),
-[Fahrenheit temperature](#Fahrenheittemperature),
 [Fahrenheit temperature scale](#Fahrenheittemperaturescale),
 [Fahrenheit temperature unit](#Fahrenheittemperatureunit),
+[Fahrenheittemperatuur](#Fahrenheittemperatuur),
 [Fourier number](#Fouriernumber),
 [Fourier number for mass transfer](#Fouriernumberformasstransfer),
 [Fourier number for mass transfer unit](#Fouriernumberformasstransferunit),
 [Fourier number unit](#Fouriernumberunit),
 [Froude number unit](#Froudenumberunit),
+[Grashof number](#Grashofnumber),
 [Grashof number for mass transfer](#Grashofnumberformasstransfer),
 [Grashof number for mass transfer unit](#Grashofnumberformasstransferunit),
 [Grashof number unit](#Grashofnumberunit),
-[Hartmann number](#Hartmannnumber),
 [Hartmann number unit](#Hartmannnumberunit),
+[Hubble constant](#Hubbleconstant),
 [Hubble constant unit](#Hubbleconstantunit),
 [I magnitude](#Imagnitude),
 [Jeans mass](#Jeansmass),
@@ -77,25 +77,22 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [Lewis number unit](#Lewisnumberunit),
 [Listeria monocytogenes count (specific)](#Listeriamonocytogenescount(specific)),
 [Listeria monocytogenes count (volumetric)](#Listeriamonocytogenescount(volumetric)),
-[Mach number](#Machnumber),
 [Mach number unit](#Machnumberunit),
-[Nusselt number](#Nusseltnumber),
+[Machgetal](#Machgetal),
 [Nusselt number for mass transfer](#Nusseltnumberformasstransfer),
 [Nusselt number for mass transfer unit](#Nusseltnumberformasstransferunit),
 [Nusselt number unit](#Nusseltnumberunit),
-[Prandtl number](#Prandtlnumber),
 [Prandtl number unit](#Prandtlnumberunit),
 [Péclet number](#Pcletnumber),
 [Péclet number for mass transfer](#Pcletnumberformasstransfer),
 [Péclet number for mass transfer unit](#Pcletnumberformasstransferunit),
 [Péclet number unit](#Pcletnumberunit),
 [R magnitude](#Rmagnitude),
-[Rankine temperature](#Rankinetemperature),
 [Rankine temperature scale](#Rankinetemperaturescale),
 [Rankine temperature unit](#Rankinetemperatureunit),
+[Rankinetemperatuur](#Rankinetemperatuur),
 [Rayleigh number](#Rayleighnumber),
 [Rayleigh number unit](#Rayleighnumberunit),
-[Reynolds number](#Reynoldsnumber),
 [Reynolds number unit](#Reynoldsnumberunit),
 [Réaumur temperature scale](#Raumurtemperaturescale),
 [Réaumur temperature unit](#Raumurtemperatureunit),
@@ -130,39 +127,32 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [V magnitude](#Vmagnitude),
 [V magnitude at maximum brightness](#Vmagnitudeatmaximumbrightness),
 [V magnitude at minimum brightness](#Vmagnitudeatminimumbrightness),
+[Weber number](#Webernumber),
 [Weber number unit](#Webernumberunit),
 [aantal Botrytis](#aantalBotrytis),
-[aantal Botrytis 0](#aantalBotrytis0),
 [aantal Botrytis 2](#aantalBotrytis2),
+[aantal Botrytis 4](#aantalBotrytis4),
 [aantal bladeren](#aantalbladeren),
-[aantal gevallen bladeren](#aantalgevallenbladeren),
+[aantal blauwverkleurde bloemen](#aantalblauwverkleurdebloemen),
 [aantal gevallen bloemen](#aantalgevallenbloemen),
 [aantal gevallen knoppen](#aantalgevallenknoppen),
 [aantal kleur](#aantalkleur),
 [aantal kleur 1](#aantalkleur1),
-[aantal kleur 2](#aantalkleur2),
 [aantal kleur 3](#aantalkleur3),
 [aantal kleur 4](#aantalkleur4),
-[aantal kleur 5](#aantalkleur5),
 [aantal knoppen](#aantalknoppen),
-[aantal knopstadium](#aantalknopstadium),
-[aantal knopstadium 1](#aantalknopstadium1),
-[aantal knopstadium 3](#aantalknopstadium3),
+[aantal knopstadium 2](#aantalknopstadium2),
 [aantal knopstadium 4](#aantalknopstadium4),
-[aantal knopstadium 5](#aantalknopstadium5),
-[aantal manuele stevigheid](#aantalmanuelestevigheid),
-[aantal manuele stevigheid 0](#aantalmanuelestevigheid0),
 [aantal manuele stevigheid 0.5](#aantalmanuelestevigheid0.5),
-[aantal manuele stevigheid 1.5](#aantalmanuelestevigheid1.5),
-[aantal manuele stevigheid 2.5](#aantalmanuelestevigheid2.5),
-[aantal manuele stevigheid 3](#aantalmanuelestevigheid3),
-[aantal manuele stevigheid 4](#aantalmanuelestevigheid4),
-[aantal rotte bladeren](#aantalrottebladeren),
+[aantal manuele stevigheid 1](#aantalmanuelestevigheid1),
+[aantal manuele stevigheid 2](#aantalmanuelestevigheid2),
+[aantal manuele stevigheid 3.5](#aantalmanuelestevigheid3.5),
+[aantal manuele stevigheid 5](#aantalmanuelestevigheid5),
+[aantal misvormde bloemen](#aantalmisvormdebloemen),
+[aantal misvormde knoppen](#aantalmisvormdeknoppen),
 [aantal rotte bloemen](#aantalrottebloemen),
-[aantal slappe bloemen](#aantalslappebloemen),
-[aantal verdroogde bloemen](#aantalverdroogdebloemen),
-[aantal verdroogde knoppen](#aantalverdroogdeknoppen),
-[aantal vergeelde bladeren](#aantalvergeeldebladeren),
+[aantal slappe bladeren](#aantalslappebladeren),
+[aantal verdroogde bladeren](#aantalverdroogdebladeren),
 [aantal verwelkte bladeren](#aantalverwelktebladeren),
 [aantal verwelkte bloemen](#aantalverwelktebloemen),
 [aberration](#aberration),
@@ -170,26 +160,27 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [aberration in longitude](#aberrationinlongitude),
 [absolute bolometric magnitude](#absolutebolometricmagnitude),
 [absolute magnitude](#absolutemagnitude),
-[absolute temperatuur](#absolutetemperatuur),
 [absorbed dose](#absorbeddose),
 [absorbed dose rate](#absorbeddoserate),
 [absorbed dose rate unit](#absorbeddoserateunit),
 [absorbed dose unit](#absorbeddoseunit),
-[acceleration](#acceleration),
 [acceleration unit](#accelerationunit),
 [acetic acid mass fraction](#aceticacidmassfraction),
 [acidity](#acidity),
-[actie](#actie),
+[acoustic firmness](#acousticfirmness),
+[action](#action),
 [action unit](#actionunit),
 [activity](#activity),
 [activity unit](#activityunit),
 [admittance](#admittance),
-[akoestische stevigheid](#akoestischestevigheid),
+[afstand](#afstand),
 [albedo](#albedo),
 [altitude](#altitude),
 [ambient dose equivalent](#ambientdoseequivalent),
+[amfifiliciteit](#amfifiliciteit),
 [amount of money](#amountofmoney),
 [amount of money unit](#amountofmoneyunit),
+[amount of substance](#amountofsubstance),
 [amount of substance concentration](#amountofsubstanceconcentration),
 [amount of substance concentration unit](#amountofsubstanceconcentrationunit),
 [amount of substance flow](#amountofsubstanceflow),
@@ -198,7 +189,6 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [amount of substance fraction flow](#amountofsubstancefractionflow),
 [amount of substance fraction unit](#amountofsubstancefractionunit),
 [amount of substance unit](#amountofsubstanceunit),
-[amphiphilicity](#amphiphilicity),
 [amplitude](#amplitude),
 [angle](#angle),
 [angle unit](#angleunit),
@@ -214,7 +204,6 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [apparent diameter](#apparentdiameter),
 [apparent distance modulus](#apparentdistancemodulus),
 [application area](#applicationarea),
-[area density](#areadensity),
 [area density rate](#areadensityrate),
 [area density rate unit](#areadensityrateunit),
 [area density unit](#areadensityunit),
@@ -233,21 +222,27 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [brightness temperature](#brightnesstemperature),
 [bud stadium](#budstadium),
 [bud stadium day 0](#budstadiumday0),
-[bud stadium day 7](#budstadiumday7),
+[bud stadium day 4](#budstadiumday4),
 [cap mass](#capmass),
-[capacitance](#capacitance),
 [capacitance unit](#capacitanceunit),
+[capaciteit](#capaciteit),
 [carton mass](#cartonmass),
 [catalytic activity](#catalyticactivity),
 [catalytic activity concentration](#catalyticactivityconcentration),
 [catalytic activity concentration unit](#catalyticactivityconcentrationunit),
 [catalytic activity unit](#catalyticactivityunit),
-[cause end of vase life abscised buds](#causeendofvaselifeabscisedbuds),
+[cause end of vase life Botrytis](#causeendofvaselifeBotrytis),
+[cause end of vase life abscised flowers](#causeendofvaselifeabscisedflowers),
 [cause end of vase life abscised leaves](#causeendofvaselifeabscisedleaves),
+[cause end of vase life blue flowers](#causeendofvaselifeblueflowers),
+[cause end of vase life dry buds](#causeendofvaselifedrybuds),
+[cause end of vase life dry leaves](#causeendofvaselifedryleaves),
+[cause end of vase life malformed buds](#causeendofvaselifemalformedbuds),
 [cause end of vase life nonturgid flowers](#causeendofvaselifenonturgidflowers),
+[cause end of vase life nonturgid leaves](#causeendofvaselifenonturgidleaves),
 [cause end of vase life rotten leaves](#causeendofvaseliferottenleaves),
+[cause end of vase life wilted flowers](#causeendofvaselifewiltedflowers),
 [cause end of vase life yellow leaves](#causeendofvaselifeyellowleaves),
-[circumference](#circumference),
 [co-rotation radius](#co-rotationradius),
 [cold gas mass fraction](#coldgasmassfraction),
 [coliform bacteria count (specific)](#coliformbacteriacount(specific)),
@@ -259,7 +254,6 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [compound unit](#compoundunit),
 [compressiemodulus](#compressiemodulus),
 [compressive stress](#compressivestress),
-[constante van Hubble](#constantevanHubble),
 [constante van Hubble tijdens het huidige epoch](#constantevanHubbletijdenshethuidigeepoch),
 [contact angle](#contactangle),
 [cost](#cost),
@@ -272,10 +266,11 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [curvature constant unit](#curvatureconstantunit),
 [cut-off wavelength](#cut-offwavelength),
 [dark noise](#darknoise),
-[date](#Date),
+[datum](#datum),
 [deceleration parameter](#decelerationparameter),
 [deceleration parameter unit](#decelerationparameterunit),
 [declination](#declination),
+[density](#density),
 [density parameter](#densityparameter),
 [density parameter for baryonic matter](#densityparameterforbaryonicmatter),
 [density parameter for matter](#densityparameterformatter),
@@ -287,33 +282,32 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [detective quantum efficiency](#detectivequantumefficiency),
 [detectivity](#detectivity),
 [detectivity unit](#detectivityunit),
-[diameter](#diameter),
 [diameter (angle)](#diameter(angle)),
+[dikte](#dikte),
 [dimension](#dimension),
 [directional dose equivalent](#directionaldoseequivalent),
 [disodium ethylene diamine tetra acetate mass fraction](#disodiumethylenediaminetetraacetatemassfraction),
-[displacement](#displacement),
 [distance modulus](#distancemodulus),
 [diurnal aberration](#diurnalaberration),
 [dose equivalent](#doseequivalent),
 [dose equivalent unit](#doseequivalentunit),
 [drainage speed](#drainagespeed),
+[druk](#druk),
 [dry body mass](#drybodymass),
 [dry mass](#drymass),
 [dry matter mass fraction](#drymattermassfraction),
-[duration](#duration),
+[duur](#duur),
 [dynamic modulus](#dynamicmodulus),
 [dynamic range](#dynamicrange),
 [dynamic range unit](#dynamicrangeunit),
+[dynamic viscosity](#dynamicviscosity),
 [dynamic viscosity unit](#dynamicviscosityunit),
-[dynamische viscositeit](#dynamischeviscositeit),
 [eccentricity](#eccentricity),
 [ecliptic latitude](#eclipticlatitude),
 [ecliptic longitude](#eclipticlongitude),
 [egg mass fraction](#eggmassfraction),
 [elasticiteitsmodulus](#elasticiteitsmodulus),
 [elasticiteitstensor](#elasticiteitstensor),
-[electric charge](#electriccharge),
 [electric charge density](#electricchargedensity),
 [electric charge density unit](#electricchargedensityunit),
 [electric charge unit](#electricchargeunit),
@@ -321,7 +315,6 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [electric current unit](#electriccurrentunit),
 [electric dipole moment](#electricdipolemoment),
 [electric dipole moment unit](#electricdipolemomentunit),
-[electric field](#electricfield),
 [electric field unit](#electricfieldunit),
 [electric flux density](#electricfluxdensity),
 [electric flux density unit](#electricfluxdensityunit),
@@ -334,16 +327,18 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [electrical resistance unit](#electricalresistanceunit),
 [electrical resistivity](#electricalresistivity),
 [electrical resistivity unit](#electricalresistivityunit),
+[electrisch veld](#electrischveld),
+[electrische lading](#electrischelading),
 [electrische potentiaal](#electrischepotentiaal),
 [electromotive force](#electromotiveforce),
 [electron temperature](#electrontemperature),
 [ellipticity](#ellipticity),
+[energiedichtheid](#energiedichtheid),
 [energy](#energy),
-[energy density](#energydensity),
 [energy density unit](#energydensityunit),
 [energy unit](#energyunit),
 [enthalpie](#enthalpie),
-[entropy](#entropy),
+[entropie](#entropie),
 [entropy unit](#entropyunit),
 [epoch](#epoch),
 [epoch at maximum brightness](#epochatmaximumbrightness),
@@ -359,6 +354,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [extinction in U](#extinctioninU),
 [extinction in V](#extinctioninV),
 [fat mass fraction](#fatmassfraction),
+[firmness (penetrometer) (method 1)](#firmness(penetrometer)(method1)),
 [firmness (penetrometer) (method 2)](#firmness(penetrometer)(method2)),
 [first Cowling number](#firstCowlingnumber),
 [first Cowling number unit](#firstCowlingnumberunit),
@@ -381,28 +377,30 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [gas constant unit](#gasconstantunit),
 [gelatin mass fraction](#gelatinmassfraction),
 [geometrical albedo](#geometricalalbedo),
+[getal van Euler](#getalvanEuler),
 [getal van Froude](#getalvanFroude),
-[getal van Grashof](#getalvanGrashof),
-[getal van Weber](#getalvanWeber),
-[gewicht](#gewicht),
-[golfgetal](#golfgetal),
+[getal van Hartmann](#getalvanHartmann),
+[getal van Nusselt](#getalvanNusselt),
+[getal van Prandtl](#getalvanPrandtl),
+[getal van Reynolds](#getalvanReynolds),
 [golflengte](#golflengte),
 [gram per prefixed litre](#gramperprefixedlitre),
+[gravitational acceleration](#gravitationalacceleration),
 [guar gum mass fraction](#guargummassfraction),
 [half-life](#half-life),
+[heat](#heat),
+[heat capacity](#heatcapacity),
 [heat capacity unit](#heatcapacityunit),
 [heat flow rate](#heatflowrate),
 [heat flux density](#heatfluxdensity),
 [heat transfer coefficient](#heattransfercoefficient),
 [heat transfer coefficient unit](#heattransfercoefficientunit),
 [hoogte](#hoogte),
-[hour angle](#hourangle),
-[hydrofiliciteit](#hydrofiliciteit),
+[hydrophilicity](#hydrophilicity),
 [hydrophobicity](#hydrophobicity),
 [illuminance](#illuminance),
 [illuminance unit](#illuminanceunit),
 [impuls](#impuls),
-[impulse](#impulse),
 [impulsmoment](#impulsmoment),
 [inductance](#inductance),
 [inductance unit](#inductanceunit),
@@ -416,16 +414,22 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [ionization temperature](#ionizationtemperature),
 [irradiance](#irradiance),
 [kerma](#kerma),
-[kinematic viscosity](#kinematicviscosity),
 [kinematic viscosity unit](#kinematicviscosityunit),
+[kinematische viscositeit](#kinematischeviscositeit),
 [kinetic energy](#kineticenergy),
 [kleurindex](#kleurindex),
 [kleuroppervlaktefractie](#kleuroppervlaktefractie),
-[knopstadium dag 4](#knopstadiumdag4),
+[knopstadium dag 7](#knopstadiumdag7),
+[koppel](#koppel),
 [kosmologische constante](#kosmologischeconstante),
 [kracht](#kracht),
+[kwaliteitscijfer](#kwaliteitscijfer),
+[kwaliteitscijfer bladeren](#kwaliteitscijferbladeren),
+[kwaliteitscijfer bloem(en)](#kwaliteitscijferbloem(en)),
+[kwaliteitscijfer total](#kwaliteitscijfertotal),
 [label mass](#labelmass),
 [lactose mass fraction](#lactosemassfraction),
+[length](#length),
 [length unit](#lengthunit),
 [light time](#lighttime),
 [limiting magnitude](#limitingmagnitude),
@@ -461,23 +465,25 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [manuele stevigheid](#manuelestevigheid),
 [mass flow](#massflow),
 [mass flow unit](#massflowunit),
-[mass fraction](#massfraction),
 [mass fraction unit](#massfractionunit),
 [mass unit](#massunit),
+[massa](#massa),
+[massafractie](#massafractie),
 [measure](#measure),
+[mechanische-spanningstensor](#mechanische-spanningstensor),
 [metallicity](#metallicity),
 [metre per prefixed second (time)](#metreperprefixedsecond(time)),
 [metre per prefixed second (time) squared](#metreperprefixedsecond(time)squared),
 [moderated starch mass fraction](#moderatedstarchmassfraction),
-[molaire massa](#molairemassa),
-[molality](#molality),
+[molaire energie](#molaireenergie),
+[molaliteit](#molaliteit),
 [molality unit](#molalityunit),
-[molar energy](#molarenergy),
 [molar energy unit](#molarenergyunit),
 [molar entropy](#molarentropy),
 [molar entropy unit](#molarentropyunit),
 [molar heat capacity](#molarheatcapacity),
 [molar heat capacity unit](#molarheatcapacityunit),
+[molar mass](#molarmass),
 [molar mass unit](#molarmassunit),
 [molar volume](#molarvolume),
 [molar volume unit](#molarvolumeunit),
@@ -492,18 +498,24 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [neck ring mass](#neckringmass),
 [noise equivalent power](#noiseequivalentpower),
 [normaalspanning](#normaalspanning),
-[normaalvervorming](#normaalvervorming),
 [normal albedo](#normalalbedo),
+[normal strain](#normalstrain),
 [normalised detectivity](#normaliseddetectivity),
 [number](#number),
+[number Botrytis 0](#numberBotrytis0),
 [number Botrytis 1](#numberBotrytis1),
 [number Botrytis 3](#numberBotrytis3),
-[number Botrytis 4](#numberBotrytis4),
-[number blue-discolored flowers](#numberblue-discoloredflowers),
-[number bud stadium 2](#numberbudstadium2),
+[number abscised leaves](#numberabscisedleaves),
+[number bud stadium](#numberbudstadium),
+[number bud stadium 1](#numberbudstadium1),
+[number bud stadium 3](#numberbudstadium3),
+[number bud stadium 5](#numberbudstadium5),
+[number color 2](#numbercolor2),
+[number color 5](#numbercolor5),
 [number density](#numberdensity),
 [number density unit](#numberdensityunit),
-[number dry leaves](#numberdryleaves),
+[number dry buds](#numberdrybuds),
+[number dry flowers](#numberdryflowers),
 [number external browning](#numberexternalbrowning),
 [number external browning 1](#numberexternalbrowning1),
 [number external browning 2](#numberexternalbrowning2),
@@ -511,20 +523,21 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [number external browning 4](#numberexternalbrowning4),
 [number external browning 5](#numberexternalbrowning5),
 [number flowers](#numberflowers),
-[number malformed buds](#numbermalformedbuds),
-[number malformed flowers](#numbermalformedflowers),
-[number manual firmness 1](#numbermanualfirmness1),
-[number manual firmness 2](#numbermanualfirmness2),
-[number manual firmness 3.5](#numbermanualfirmness3.5),
+[number manual firmness](#numbermanualfirmness),
+[number manual firmness 0](#numbermanualfirmness0),
+[number manual firmness 1.5](#numbermanualfirmness1.5),
+[number manual firmness 2.5](#numbermanualfirmness2.5),
+[number manual firmness 3](#numbermanualfirmness3),
+[number manual firmness 4](#numbermanualfirmness4),
 [number manual firmness 4.5](#numbermanualfirmness4.5),
-[number manual firmness 5](#numbermanualfirmness5),
-[number nonturgid leaves](#numbernonturgidleaves),
+[number nonturgid flowers](#numbernonturgidflowers),
 [number pulp browning](#numberpulpbrowning),
 [number pulp browning 1](#numberpulpbrowning1),
 [number pulp browning 2](#numberpulpbrowning2),
 [number pulp browning 3](#numberpulpbrowning3),
 [number pulp browning 4](#numberpulpbrowning4),
 [number pulp browning 5](#numberpulpbrowning5),
+[number rotten leaves](#numberrottenleaves),
 [number unit](#numberunit),
 [number vascular browning](#numbervascularbrowning),
 [number vascular browning 1](#numbervascularbrowning1),
@@ -532,20 +545,15 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [number vascular browning 3](#numbervascularbrowning3),
 [number vascular browning 4](#numbervascularbrowning4),
 [number vascular browning 5](#numbervascularbrowning5),
-[oorzaak einde vaasleven Botrytis](#oorzaakeindevaaslevenBotrytis),
-[oorzaak einde vaasleven bladverdroging](#oorzaakeindevaaslevenbladverdroging),
+[number yellow leaves](#numberyellowleaves),
+[omtrek](#omtrek),
 [oorzaak einde vaasleven bladverwelking](#oorzaakeindevaaslevenbladverwelking),
-[oorzaak einde vaasleven blauwe bloemen](#oorzaakeindevaaslevenblauwebloemen),
 [oorzaak einde vaasleven bloemrot](#oorzaakeindevaaslevenbloemrot),
-[oorzaak einde vaasleven bloemval](#oorzaakeindevaaslevenbloemval),
 [oorzaak einde vaasleven bloemverdroging](#oorzaakeindevaaslevenbloemverdroging),
-[oorzaak einde vaasleven bloemverwelking](#oorzaakeindevaaslevenbloemverwelking),
-[oorzaak einde vaasleven knopverdroging](#oorzaakeindevaaslevenknopverdroging),
+[oorzaak einde vaasleven knopval](#oorzaakeindevaaslevenknopval),
 [oorzaak einde vaasleven misvormde bloemen](#oorzaakeindevaaslevenmisvormdebloemen),
-[oorzaak einde vaasleven misvormde knoppen](#oorzaakeindevaaslevenmisvormdeknoppen),
-[oorzaak einde vaasleven slappe bladeren](#oorzaakeindevaaslevenslappebladeren),
+[oppervlaktedichtheid](#oppervlaktedichtheid),
 [oppervlaktefractie](#oppervlaktefractie),
-[oppervlaktespanning](#oppervlaktespanning),
 [organ dose equivalent](#organdoseequivalent),
 [overrun](#overrun),
 [peak wavelength](#peakwavelength),
@@ -553,7 +561,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [percentage unit](#percentageunit),
 [period of variability](#periodofvariability),
 [periode](#periode),
-[permeabiliteit (aardwetenschappen)](#permeabiliteit(aardwetenschappen)),
+[permeability (earth science)](#permeability(earthscience)),
 [permeability (earth science) unit](#permeability(earthscience)unit),
 [permeability of free space](#permeabilityoffreespace),
 [permeability of free space unit](#permeabilityoffreespaceunit),
@@ -571,7 +579,8 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [planetary aberration](#planetaryaberration),
 [point](#point),
 [potassium sorbate mass fraction](#potassiumsorbatemassfraction),
-[potential difference](#potentialdifference),
+[potentiaalverschil](#potentiaalverschil),
+[potentiële energie](#potentileenergie),
 [power density](#powerdensity),
 [power density unit](#powerdensityunit),
 [power unit](#powerunit),
@@ -629,14 +638,9 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [prefixed volt](#prefixedvolt),
 [prefixed watt](#prefixedwatt),
 [prefixed weber](#prefixedweber),
-[pressure](#pressure),
 [pressure unit](#pressureunit),
 [protein mass fraction](#proteinmassfraction),
 [pulp browning](#pulpbrowning),
-[quality mark](#qualitymark),
-[quality mark flower(s)](#qualitymarkflower(s)),
-[quality mark leafs](#qualitymarkleafs),
-[quality mark total](#qualitymarktotal),
 [quantity](#quantity),
 [quantity of dimension one](#quantityofdimensionone),
 [quantity of dimension one unit](#quantityofdimensiononeunit),
@@ -648,6 +652,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [radiant flux](#radiantflux),
 [radiant intensity](#radiantintensity),
 [radiant intensity unit](#radiantintensityunit),
+[radius](#radius),
 [radius (angle)](#radius(angle)),
 [ratio](#ratio),
 [ratio scale](#ratioscale),
@@ -670,16 +675,20 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [scale length](#scalelength),
 [schaalfactor](#schaalfactor),
 [schijnbare magnitude](#schijnbaremagnitude),
-[schuifvervorming](#schuifvervorming),
+[schuifmodulus](#schuifmodulus),
+[schuifspanning](#schuifspanning),
 [secular aberration](#secularaberration),
 [shear loss modulus](#shearlossmodulus),
-[shear modulus](#shearmodulus),
 [shear rate](#shearrate),
 [shear rate unit](#shearrateunit),
 [shear storage modulus](#shearstoragemodulus),
-[shear stress](#shearstress),
+[shear strain](#shearstrain),
 [singular unit](#singularunit),
+[snelheid (scalair)](#snelheid(scalair)),
+[snelheid (vector)](#snelheid(vector)),
+[solid angle](#solidangle),
 [solid angle unit](#solidangleunit),
+[soortelijke warmte](#soortelijkewarmte),
 [soy bean mass fraction](#soybeanmassfraction),
 [specific amylase activity](#specificamylaseactivity),
 [specific catalytic activity](#specificcatalyticactivity),
@@ -689,14 +698,12 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [specific energy unit](#specificenergyunit),
 [specific entropy](#specificentropy),
 [specific entropy unit](#specificentropyunit),
-[specific heat capacity](#specificheatcapacity),
 [specific heat capacity unit](#specificheatcapacityunit),
 [specific protease activity](#specificproteaseactivity),
 [specific viable count unit](#specificviablecountunit),
 [specific volume](#specificvolume),
 [specific volume unit](#specificvolumeunit),
 [spectral response](#spectralresponse),
-[speed](#speed),
 [speed unit](#speedunit),
 [square prefixed metre](#squareprefixedmetre),
 [starch VA40 mass fraction](#starchVA40massfraction),
@@ -704,29 +711,26 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [starch mass fraction](#starchmassfraction),
 [stellar aberration](#stellaraberration),
 [stem end rot](#stemendrot),
-[stem-end-rot-oppervlaktefractie](#stem-end-rot-oppervlaktefractie),
-[stevigheid (penetrometer) (methode 1)](#stevigheid(penetrometer)(methode1)),
+[stem end rot area fraction](#stemendrotareafraction),
 [stick stone](#stickstone),
-[stofhoeveelheid](#stofhoeveelheid),
+[stoot](#stoot),
 [storage modulus](#storagemodulus),
-[straal](#straal),
 [strain tensor](#straintensor),
 [strain unit](#strainunit),
 [straw mass](#strawmass),
 [stress](#stress),
-[stress tensor](#stresstensor),
 [stress unit](#stressunit),
 [sugar mass fraction](#sugarmassfraction),
 [supergalactic latitude](#supergalacticlatitude),
 [supergalactic longitude](#supergalacticlongitude),
+[surface tension](#surfacetension),
 [surface tension unit](#surfacetensionunit),
 [symbol rate](#symbolrate),
 [symbol rate unit](#symbolrateunit),
 [system of units](#systemofunits),
-[temperature rate](#temperaturerate),
 [temperature rate unit](#temperaturerateunit),
 [temperature unit](#temperatureunit),
-[thermal conductivity](#thermalconductivity),
+[temperatuur-rate](#temperatuur-rate),
 [thermal conductivity unit](#thermalconductivityunit),
 [thermal diffusivity](#thermaldiffusivity),
 [thermal diffusivity unit](#thermaldiffusivityunit),
@@ -734,19 +738,21 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [thermal insulance unit](#thermalinsulanceunit),
 [thermal resistance](#thermalresistance),
 [thermal resistance unit](#thermalresistanceunit),
+[thermische geleidbaarheid](#thermischegeleidbaarheid),
+[thermodynamic temperature](#thermodynamictemperature),
 [thermodynamic temperature scale](#thermodynamictemperaturescale),
 [thermodynamic temperature unit](#thermodynamictemperatureunit),
-[thickness](#thickness),
 [thrust](#thrust),
+[time](#time),
 [time constant](#timeconstant),
 [time unit](#timeunit),
 [top mass](#topmass),
 [torque unit](#torqueunit),
-[totaal aantal knoppen](#totaalaantalknoppen),
+[totaal aantal bloemen](#totaalaantalbloemen),
 [total 3D start-end distance](#total3Dstart-enddistance),
 [total density parameter](#totaldensityparameter),
 [total distance travelled](#totaldistancetravelled),
-[total number flowers](#totalnumberflowers),
+[total number buds](#totalnumberbuds),
 [total number leaves](#totalnumberleaves),
 [true distance modulus](#truedistancemodulus),
 [tween mass fraction](#tweenmassfraction),
@@ -756,31 +762,33 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [unit exponentiation](#unitexponentiation),
 [unit multiple](#unitmultiple),
 [unit multiplication](#unitmultiplication),
+[uurhoek](#uurhoek),
 [v magnitude](#vmagnitude),
-[valversnelling](#valversnelling),
+[vaas- plus water- plus bloemmassa](#vaas-pluswater-plusbloemmassa),
 [vascular browning](#vascularbrowning),
 [vase life](#vaselife),
 [vase plus water mass](#vasepluswatermass),
-[vase plus water plus flower mass](#vasepluswaterplusflowermass),
-[velocity](#velocity),
 [vermogen](#vermogen),
+[verplaatsing](#verplaatsing),
+[versnelling](#versnelling),
 [vervorming](#vervorming),
 [viable count (specific)](#viablecount(specific)),
 [viable count (volumetric)](#viablecount(volumetric)),
 [visual albedo](#visualalbedo),
 [volume](#volume),
+[volume fraction](#volumefraction),
 [volume fraction unit](#volumefractionunit),
 [volume strain](#volumestrain),
 [volume unit](#volumeunit),
-[volumefractie](#volumefractie),
 [volumetric flow rate](#volumetricflowrate),
 [volumetric flow rate unit](#volumetricflowrateunit),
 [volumetric heat capacity](#volumetricheatcapacity),
 [volumetric heat capacity unit](#volumetricheatcapacityunit),
 [volumetric viable count unit](#volumetricviablecountunit),
-[warmte](#warmte),
 [water mass fraction](#watermassfraction),
 [wave number unit](#wavenumberunit),
+[wavenumber](#wavenumber),
+[weight](#weight),
 [wetting angle](#wettingangle),
 [whey protein aggregate mass fraction](#wheyproteinaggregatemassfraction),
 [whey protein beads mass fraction](#wheyproteinbeadsmassfraction),
@@ -803,17 +811,9 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 [zoutsterkte](#zoutsterkte),
 [β_narrow magnitude](#_narrowmagnitude),
 [β_wide magnitude](#_widemagnitude),
-[势能](#PotentialEnergy),
-[密度](#Density),
 [工作](#Work),
-[扭矩](#Torque),
-[时间](#Time),
 [温度](#Temperature),
-[热容量](#HeatCapacity),
-[立体角](#SolidAngle),
-[质量](#Mass),
-[距离](#Distance),
-[长度](#Length),
+[直径](#Diameter),
 [面积](#),
 ### aberration
 Property | Value
@@ -821,7 +821,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Aberration`
 Description | <p>The apparent angular displacement of the observed position of a celestial object from its geometric position, caused by the finite velocity of light in combination with the motions of the observer and of the observed object.</p>
 Super-classes |[om:AngularDisplacement](http://opendata.caceres.es/def/ontomunicipio#AngularDisplacement) (c)<br />
-Sub-classes |[om:PlanetaryAberration](http://opendata.caceres.es/def/ontomunicipio#PlanetaryAberration) (c)<br />[om:StellarAberration](http://opendata.caceres.es/def/ontomunicipio#StellarAberration) (c)<br />
+Sub-classes |[om:StellarAberration](http://opendata.caceres.es/def/ontomunicipio#StellarAberration) (c)<br />[om:PlanetaryAberration](http://opendata.caceres.es/def/ontomunicipio#PlanetaryAberration) (c)<br />
 ### aberration in latitude
 Property | Value
 --- | ---
@@ -852,14 +852,14 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#AbsorbedDose`
 Description | <p>Absorbed dose is the energy deposited in a medium by ionizing radiation. It is a derived quantity in the International System of Units. Absorbed dose is energy divided by mass.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:specificEnergyOrAbsorbedDoseOrDoseEquivalent-Dimension](http://opendata.caceres.es/def/ontomunicipio#specificEnergyOrAbsorbedDoseOrDoseEquivalent-Dimension) (c)<br />
-Sub-classes |[om:SpecificEnergyImparted](http://opendata.caceres.es/def/ontomunicipio#SpecificEnergyImparted) (c)<br />[om:Kerma](http://opendata.caceres.es/def/ontomunicipio#Kerma) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:specificEnergyOrAbsorbedDoseOrDoseEquivalent-Dimension](http://opendata.caceres.es/def/ontomunicipio#specificEnergyOrAbsorbedDoseOrDoseEquivalent-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Sub-classes |[om:Kerma](http://opendata.caceres.es/def/ontomunicipio#Kerma) (c)<br />[om:SpecificEnergyImparted](http://opendata.caceres.es/def/ontomunicipio#SpecificEnergyImparted) (c)<br />
 ### absorbed dose rate
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#AbsorbedDoseRate`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:absorbedDoseRate-Dimension](http://opendata.caceres.es/def/ontomunicipio#absorbedDoseRate-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:absorbedDoseRate-Dimension](http://opendata.caceres.es/def/ontomunicipio#absorbedDoseRate-Dimension) (c)<br />
 ### absorbed dose rate unit
 Property | Value
 --- | ---
@@ -870,12 +870,12 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#AbsorbedDoseUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### acceleration
+### versnelling
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Acceleration`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:acceleration-Dmension](http://opendata.caceres.es/def/ontomunicipio#acceleration-Dmension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:acceleration-Dmension](http://opendata.caceres.es/def/ontomunicipio#acceleration-Dmension) (c)<br />
 Sub-classes |[om:GravitationalAcceleration](http://opendata.caceres.es/def/ontomunicipio#GravitationalAcceleration) (c)<br />
 ### acceleration unit
 Property | Value
@@ -893,13 +893,13 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Acidity`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-### akoestische stevigheid
+### acoustic firmness
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#AcousticFirmness`
 Description | <p>Stevigheid gemeten met AWETA (acoustic firmness value). AFS value.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-### actie
+### action
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Action`
@@ -934,13 +934,13 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Albedo`
 Description | <p>Ratio between radiation falling onto an object and the radiation reflected or scattered back. Or the ratio between the illumination and observed brightness.</p>
 Super-classes |[om:QuantityOfDimensionOne](http://opendata.caceres.es/def/ontomunicipio#QuantityOfDimensionOne) (c)<br />
-Sub-classes |[om:BondAlbedo](http://opendata.caceres.es/def/ontomunicipio#BondAlbedo) (c)<br />[om:VisualAlbedo](http://opendata.caceres.es/def/ontomunicipio#VisualAlbedo) (c)<br />[om:NormalAlbedo](http://opendata.caceres.es/def/ontomunicipio#NormalAlbedo) (c)<br />[om:GeometricalAlbedo](http://opendata.caceres.es/def/ontomunicipio#GeometricalAlbedo) (c)<br />
+Sub-classes |[om:VisualAlbedo](http://opendata.caceres.es/def/ontomunicipio#VisualAlbedo) (c)<br />[om:GeometricalAlbedo](http://opendata.caceres.es/def/ontomunicipio#GeometricalAlbedo) (c)<br />[om:NormalAlbedo](http://opendata.caceres.es/def/ontomunicipio#NormalAlbedo) (c)<br />[om:BondAlbedo](http://opendata.caceres.es/def/ontomunicipio#BondAlbedo) (c)<br />
 ### Alfvén number
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#AlfvenNumber`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### Alfvén number unit
 Property | Value
 --- | ---
@@ -969,19 +969,19 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#AmountOfMoneyUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### stofhoeveelheid
+### amount of substance
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstance`
 Description | <p>Amount of substance is the number of elementary entities such as atoms, molecules, electrons, particles, etc. present in a phenomenon. It is a base quantity in the International System of Units.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:amountOfSubstance-Dimension](http://opendata.caceres.es/def/ontomunicipio#amountOfSubstance-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:amountOfSubstance-Dimension](http://opendata.caceres.es/def/ontomunicipio#amountOfSubstance-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### amount of substance concentration
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceConcentration`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:amountOfSubstanceConcentration-Dimension](http://opendata.caceres.es/def/ontomunicipio#amountOfSubstanceConcentration-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:amountOfSubstanceConcentration-Dimension](http://opendata.caceres.es/def/ontomunicipio#amountOfSubstanceConcentration-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### amount of substance concentration unit
 Property | Value
 --- | ---
@@ -1019,7 +1019,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### amphiphilicity
+### amfifiliciteit
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Amphiphilicity`
@@ -1038,7 +1038,7 @@ IRI | `http://opendata.caceres.es/def/ontomunicipio#Angle`
 Description | <p>Angle is the ratio between an arc and its radius.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
 Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
-Sub-classes |[om:RightAscension](http://opendata.caceres.es/def/ontomunicipio#RightAscension) (c)<br />[om:Declination](http://opendata.caceres.es/def/ontomunicipio#Declination) (c)<br />[om:EclipticLatitude](http://opendata.caceres.es/def/ontomunicipio#EclipticLatitude) (c)<br />[om:AngularDisplacement](http://opendata.caceres.es/def/ontomunicipio#AngularDisplacement) (c)<br />[om:HourAngle](http://opendata.caceres.es/def/ontomunicipio#HourAngle) (c)<br />[om:GalacticLongitude](http://opendata.caceres.es/def/ontomunicipio#GalacticLongitude) (c)<br />[om:GalacticLatitude](http://opendata.caceres.es/def/ontomunicipio#GalacticLatitude) (c)<br />[om:Azimuth](http://opendata.caceres.es/def/ontomunicipio#Azimuth) (c)<br />[om:SupergalacticLongitude](http://opendata.caceres.es/def/ontomunicipio#SupergalacticLongitude) (c)<br />[om:Radius-Angle](http://opendata.caceres.es/def/ontomunicipio#Radius-Angle) (c)<br />[om:GalacticCylindricalPolarAngleCoordinate](http://opendata.caceres.es/def/ontomunicipio#GalacticCylindricalPolarAngleCoordinate) (c)<br />[om:EclipticLongitude](http://opendata.caceres.es/def/ontomunicipio#EclipticLongitude) (c)<br />[om:ZenithDistance](http://opendata.caceres.es/def/ontomunicipio#ZenithDistance) (c)<br />[om:Diameter-Angle](http://opendata.caceres.es/def/ontomunicipio#Diameter-Angle) (c)<br />[om:WettingAngle](http://opendata.caceres.es/def/ontomunicipio#WettingAngle) (c)<br />[om:ContactAngle](http://opendata.caceres.es/def/ontomunicipio#ContactAngle) (c)<br />[om:SupergalacticLatitude](http://opendata.caceres.es/def/ontomunicipio#SupergalacticLatitude) (c)<br />[om:Altitude](http://opendata.caceres.es/def/ontomunicipio#Altitude) (c)<br />[om:ApparentDiameter](http://opendata.caceres.es/def/ontomunicipio#ApparentDiameter) (c)<br />
+Sub-classes |[om:SupergalacticLongitude](http://opendata.caceres.es/def/ontomunicipio#SupergalacticLongitude) (c)<br />[om:WettingAngle](http://opendata.caceres.es/def/ontomunicipio#WettingAngle) (c)<br />[om:GalacticLatitude](http://opendata.caceres.es/def/ontomunicipio#GalacticLatitude) (c)<br />[om:HourAngle](http://opendata.caceres.es/def/ontomunicipio#HourAngle) (c)<br />[om:Altitude](http://opendata.caceres.es/def/ontomunicipio#Altitude) (c)<br />[om:Radius-Angle](http://opendata.caceres.es/def/ontomunicipio#Radius-Angle) (c)<br />[om:GalacticCylindricalPolarAngleCoordinate](http://opendata.caceres.es/def/ontomunicipio#GalacticCylindricalPolarAngleCoordinate) (c)<br />[om:GalacticLongitude](http://opendata.caceres.es/def/ontomunicipio#GalacticLongitude) (c)<br />[om:EclipticLatitude](http://opendata.caceres.es/def/ontomunicipio#EclipticLatitude) (c)<br />[om:ContactAngle](http://opendata.caceres.es/def/ontomunicipio#ContactAngle) (c)<br />[om:Diameter-Angle](http://opendata.caceres.es/def/ontomunicipio#Diameter-Angle) (c)<br />[om:EclipticLongitude](http://opendata.caceres.es/def/ontomunicipio#EclipticLongitude) (c)<br />[om:RightAscension](http://opendata.caceres.es/def/ontomunicipio#RightAscension) (c)<br />[om:ZenithDistance](http://opendata.caceres.es/def/ontomunicipio#ZenithDistance) (c)<br />[om:AngularDisplacement](http://opendata.caceres.es/def/ontomunicipio#AngularDisplacement) (c)<br />[om:Declination](http://opendata.caceres.es/def/ontomunicipio#Declination) (c)<br />[om:ApparentDiameter](http://opendata.caceres.es/def/ontomunicipio#ApparentDiameter) (c)<br />[om:SupergalacticLatitude](http://opendata.caceres.es/def/ontomunicipio#SupergalacticLatitude) (c)<br />[om:Azimuth](http://opendata.caceres.es/def/ontomunicipio#Azimuth) (c)<br />
 ### angle unit
 Property | Value
 --- | ---
@@ -1060,7 +1060,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#AngularDisplacement`
 Super-classes |[om:Angle](http://opendata.caceres.es/def/ontomunicipio#Angle) (c)<br />
-Sub-classes |[om:AberrationInLatitude](http://opendata.caceres.es/def/ontomunicipio#AberrationInLatitude) (c)<br />[om:AberrationInLongitude](http://opendata.caceres.es/def/ontomunicipio#AberrationInLongitude) (c)<br />[om:SecularAberration](http://opendata.caceres.es/def/ontomunicipio#SecularAberration) (c)<br />[om:Aberration](http://opendata.caceres.es/def/ontomunicipio#Aberration) (c)<br />[om:AnnualAberration](http://opendata.caceres.es/def/ontomunicipio#AnnualAberration) (c)<br />[om:DiurnalAberration](http://opendata.caceres.es/def/ontomunicipio#DiurnalAberration) (c)<br />
+Sub-classes |[om:AnnualAberration](http://opendata.caceres.es/def/ontomunicipio#AnnualAberration) (c)<br />[om:AberrationInLongitude](http://opendata.caceres.es/def/ontomunicipio#AberrationInLongitude) (c)<br />[om:SecularAberration](http://opendata.caceres.es/def/ontomunicipio#SecularAberration) (c)<br />[om:DiurnalAberration](http://opendata.caceres.es/def/ontomunicipio#DiurnalAberration) (c)<br />[om:AberrationInLatitude](http://opendata.caceres.es/def/ontomunicipio#AberrationInLatitude) (c)<br />[om:Aberration](http://opendata.caceres.es/def/ontomunicipio#Aberration) (c)<br />
 ### impulsmoment
 Property | Value
 --- | ---
@@ -1122,7 +1122,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ApplicationArea`
 Description | <p>An application area groups quantities and units of measure for application areas such as scientific disciplines (e.g., thermodynamics, mechanics).</p>
-In domain of |[om:usesQuantity](http://opendata.caceres.es/def/ontomunicipio#usesQuantity) (op)<br />[om:usesUnit](http://opendata.caceres.es/def/ontomunicipio#usesUnit) (op)<br />
+In domain of |[om:usesUnit](http://opendata.caceres.es/def/ontomunicipio#usesUnit) (op)<br />[om:usesQuantity](http://opendata.caceres.es/def/ontomunicipio#usesQuantity) (op)<br />
 ### 面积
 Property | Value
 --- | ---
@@ -1130,7 +1130,7 @@ IRI | `http://opendata.caceres.es/def/ontomunicipio#Area`
 Description | <p>Area expresses the two-dimensional size of a defined part of a surface, typically a region bounded by a closed curve. It is a derived quantity in the International System of Units. Area is length squared.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
 Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:area-Dimension](http://opendata.caceres.es/def/ontomunicipio#area-Dimension) (c)<br />
-### area density
+### oppervlaktedichtheid
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#AreaDensity`
@@ -1157,7 +1157,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#AreaFraction`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 Sub-classes |[om:StemEndRotAreaFraction](http://opendata.caceres.es/def/ontomunicipio#StemEndRotAreaFraction) (c)<br />[om:ColorAreaFraction](http://opendata.caceres.es/def/ontomunicipio#ColorAreaFraction) (c)<br />[om:Coverage](http://opendata.caceres.es/def/ontomunicipio#Coverage) (c)<br />
 ### area fraction unit
 Property | Value
@@ -1186,7 +1186,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#BMagnitude`
 Description | <p>Johnson B magnitude. The Johnson B band is a standard filter in the blue area. The central wavelength is 440nm and the bandwidth is 100nm.  The filter to be used is the Corning 5030 filter plus the Schott GG13 filter.</p>
 Super-classes |[om:JohnsonMagnitude](http://opendata.caceres.es/def/ontomunicipio#JohnsonMagnitude) (c)<br />
-Sub-classes |[om:BMagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#BMagnitudeAtMaximumBrightness) (c)<br />[om:BMagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#BMagnitudeAtMinimumBrightness) (c)<br />
+Sub-classes |[om:BMagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#BMagnitudeAtMinimumBrightness) (c)<br />[om:BMagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#BMagnitudeAtMaximumBrightness) (c)<br />
 ### B magnitude at maximum brightness
 Property | Value
 --- | ---
@@ -1198,7 +1198,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#BMagnitudeAtMinimumBrightness`
 Description | <p>Johnson B magnitude at minimum brightness (i.e. for a variable star). The Johnson B band is a standard filter in the blue area. The central wavelength is 440nm and the bandwidth is 100nm.  The filter to be used is the Corning 5030 filter plus the Schott GG13 filter.</p>
-Super-classes |[om:MagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#MagnitudeAtMinimumBrightness) (c)<br />[om:BMagnitude](http://opendata.caceres.es/def/ontomunicipio#BMagnitude) (c)<br />
+Super-classes |[om:BMagnitude](http://opendata.caceres.es/def/ontomunicipio#BMagnitude) (c)<br />[om:MagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#MagnitudeAtMinimumBrightness) (c)<br />
 ### β_narrow magnitude
 Property | Value
 --- | ---
@@ -1262,20 +1262,20 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#BudStadium`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Sub-classes |[om:BudStadiumDay7](http://opendata.caceres.es/def/ontomunicipio#BudStadiumDay7) (c)<br />[om:BudStadiumDay0](http://opendata.caceres.es/def/ontomunicipio#BudStadiumDay0) (c)<br />[om:BudStadiumDay4](http://opendata.caceres.es/def/ontomunicipio#BudStadiumDay4) (c)<br />
+Sub-classes |[om:BudStadiumDay0](http://opendata.caceres.es/def/ontomunicipio#BudStadiumDay0) (c)<br />[om:BudStadiumDay7](http://opendata.caceres.es/def/ontomunicipio#BudStadiumDay7) (c)<br />[om:BudStadiumDay4](http://opendata.caceres.es/def/ontomunicipio#BudStadiumDay4) (c)<br />
 ### bud stadium day 0
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#BudStadiumDay0`
 Description | <p>Knopstadium vaasdag 0 (start vaasleven) (code).</p>
 Super-classes |[om:BudStadium](http://opendata.caceres.es/def/ontomunicipio#BudStadium) (c)<br />
-### knopstadium dag 4
+### bud stadium day 4
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#BudStadiumDay4`
 Description | <p>Knopstadium vaasdag 4 (code).</p>
 Super-classes |[om:BudStadium](http://opendata.caceres.es/def/ontomunicipio#BudStadium) (c)<br />
-### bud stadium day 7
+### knopstadium dag 7
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#BudStadiumDay7`
@@ -1292,13 +1292,13 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CapMass`
 Super-classes |[om:Mass](http://opendata.caceres.es/def/ontomunicipio#Mass) (c)<br />
-### capacitance
+### capaciteit
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Capacitance`
 Description | <p>Capacitance is the ability to hold electrical charge. It is a derived quantity in the International System of Units. Capacitance is electric charge divided by electric potential.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:capacitance-Dimension](http://opendata.caceres.es/def/ontomunicipio#capacitance-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:capacitance-Dimension](http://opendata.caceres.es/def/ontomunicipio#capacitance-Dimension) (c)<br />
 ### capacitance unit
 Property | Value
 --- | ---
@@ -1314,13 +1314,13 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CatalyticActivity`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:catalyticActivity-Dimension](http://opendata.caceres.es/def/ontomunicipio#catalyticActivity-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:catalyticActivity-Dimension](http://opendata.caceres.es/def/ontomunicipio#catalyticActivity-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### catalytic activity concentration
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CatalyticActivityConcentration`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:catalyticActivityConcentration-Dimension](http://opendata.caceres.es/def/ontomunicipio#catalyticActivityConcentration-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:catalyticActivityConcentration-Dimension](http://opendata.caceres.es/def/ontomunicipio#catalyticActivityConcentration-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### catalytic activity concentration unit
 Property | Value
 --- | ---
@@ -1331,13 +1331,13 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CatalyticActivityUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### cause end of vase life abscised buds
+### oorzaak einde vaasleven knopval
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeAbscisedBuds`
 Description | <p>Oorzaak einde vaasleven knopval (1/0).</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-### oorzaak einde vaasleven bloemval
+### cause end of vase life abscised flowers
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeAbscisedFlowers`
@@ -1349,19 +1349,19 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeAbscisedLeaves`
 Description | <p>Oorzaak einde vaasleven bladval (1/0).</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-### oorzaak einde vaasleven blauwe bloemen
+### cause end of vase life blue flowers
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeBlueFlowers`
 Description | <p>Oorzaak einde vaasleven blauwe bloemen (1/0).</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-### oorzaak einde vaasleven Botrytis
+### cause end of vase life Botrytis
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeBotrytis`
 Description | <p>Oorzaak einde vaasleven Botrytis (b3 of b4) (1/0).</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-### oorzaak einde vaasleven knopverdroging
+### cause end of vase life dry buds
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeDryBuds`
@@ -1373,13 +1373,13 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeDryFlowers`
 Description | <p>Oorzaak einde vaasleven bloemverdroging (1/0).</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-### oorzaak einde vaasleven bladverdroging
+### cause end of vase life dry leaves
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeDryLeaves`
 Description | <p>Oorzaak einde vaasleven bladverdroging (1/0).</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-### oorzaak einde vaasleven misvormde knoppen
+### cause end of vase life malformed buds
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeMalformedBuds`
@@ -1397,7 +1397,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeNonturgidFlowers`
 Description | <p>Oorzaak einde vaasleven slappe bloemen (1/0).</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-### oorzaak einde vaasleven slappe bladeren
+### cause end of vase life nonturgid leaves
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeNonturgidLeaves`
@@ -1415,7 +1415,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeRottenLeaves`
 Description | <p>Oorzaak einde vaasleven rotte bladeren (1/0).</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-### oorzaak einde vaasleven bloemverwelking
+### cause end of vase life wilted flowers
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeWiltedFlowers`
@@ -1433,7 +1433,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeYellowLeaves`
 Description | <p>Oorzaak einde vaasleven bladvergeling (1/0).</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-### Celsius temperature
+### Celsiustemperatuur
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CelsiusTemperature`
@@ -1449,7 +1449,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CelsiusTemperatureUnit`
 Super-classes |[om:TemperatureUnit](http://opendata.caceres.es/def/ontomunicipio#TemperatureUnit) (c)<br />
-### circumference
+### omtrek
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Circumference`
@@ -1496,7 +1496,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ColumnNumberDensity`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:columnNumberDensity-Dimension](http://opendata.caceres.es/def/ontomunicipio#columnNumberDensity-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:columnNumberDensity-Dimension](http://opendata.caceres.es/def/ontomunicipio#columnNumberDensity-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### column number density unit
 Property | Value
 --- | ---
@@ -1507,7 +1507,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CompoundUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-Sub-classes |[om:UnitExponentiation](http://opendata.caceres.es/def/ontomunicipio#UnitExponentiation) (c)<br />[om:UnitMultiplication](http://opendata.caceres.es/def/ontomunicipio#UnitMultiplication) (c)<br />[om:UnitDivision](http://opendata.caceres.es/def/ontomunicipio#UnitDivision) (c)<br />
+Sub-classes |[om:UnitDivision](http://opendata.caceres.es/def/ontomunicipio#UnitDivision) (c)<br />[om:UnitExponentiation](http://opendata.caceres.es/def/ontomunicipio#UnitExponentiation) (c)<br />[om:UnitMultiplication](http://opendata.caceres.es/def/ontomunicipio#UnitMultiplication) (c)<br />
 ### compressive stress
 Property | Value
 --- | ---
@@ -1582,7 +1582,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#CurvatureConstant`
 Description | <p>The curvature constant k=-1, 0, or 1.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### curvature constant unit
 Property | Value
 --- | ---
@@ -1600,7 +1600,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#DarkNoise`
 Description | <p>Output from a detector when unilluminated - usually as RMS voltage or current (Kitchin, Astrophysical Techniques, IoP, Table 1.1.2).</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-### date
+### datum
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Date`
@@ -1623,13 +1623,13 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Declination`
 Description | <p>The angular distance on the celestial sphere north or south of the celestial equator. It is measured along the hour circle passing through the celestial object. Declination is usually given in combination with right ascension or hour angle.</p>
 Super-classes |[om:Angle](http://opendata.caceres.es/def/ontomunicipio#Angle) (c)<br />
-### 密度
+### density
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Density`
 Description | <p>Density is the concentration of matter. It is a derived quantity in the International System of Units. Density is mass divided by volume.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:density-Dimension](http://opendata.caceres.es/def/ontomunicipio#density-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:density-Dimension](http://opendata.caceres.es/def/ontomunicipio#density-Dimension) (c)<br />
 Sub-classes |[om:CriticalDensity](http://opendata.caceres.es/def/ontomunicipio#CriticalDensity) (c)<br />
 ### density parameter
 Property | Value
@@ -1637,8 +1637,8 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#DensityParameter`
 Description | <p>Ratio of the average density and the critical density.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
-Sub-classes |[om:DensityParameterForMatter](http://opendata.caceres.es/def/ontomunicipio#DensityParameterForMatter) (c)<br />[om:DensityParameterForBaryonicMatter](http://opendata.caceres.es/def/ontomunicipio#DensityParameterForBaryonicMatter) (c)<br />[om:DensityParameterForRadiation](http://opendata.caceres.es/def/ontomunicipio#DensityParameterForRadiation) (c)<br />[om:TotalDensityParameter](http://opendata.caceres.es/def/ontomunicipio#TotalDensityParameter) (c)<br />[om:DensityParameterForVacuum](http://opendata.caceres.es/def/ontomunicipio#DensityParameterForVacuum) (c)<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
+Sub-classes |[om:DensityParameterForRadiation](http://opendata.caceres.es/def/ontomunicipio#DensityParameterForRadiation) (c)<br />[om:DensityParameterForMatter](http://opendata.caceres.es/def/ontomunicipio#DensityParameterForMatter) (c)<br />[om:DensityParameterForVacuum](http://opendata.caceres.es/def/ontomunicipio#DensityParameterForVacuum) (c)<br />[om:DensityParameterForBaryonicMatter](http://opendata.caceres.es/def/ontomunicipio#DensityParameterForBaryonicMatter) (c)<br />[om:TotalDensityParameter](http://opendata.caceres.es/def/ontomunicipio#TotalDensityParameter) (c)<br />
 ### density parameter for baryonic matter
 Property | Value
 --- | ---
@@ -1696,7 +1696,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#DetectivityUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### diameter
+### 直径
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Diameter`
@@ -1711,7 +1711,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Dimension`
 Description | <p>Dimensions are abstract properties of units and quantities neglecting their vectorial or tensorial character and all numerical factors including their sign.</p>
-In domain of |[om:hasSILuminousIntensityDimensionExponent](http://opendata.caceres.es/def/ontomunicipio#hasSILuminousIntensityDimensionExponent) (dp)<br />[om:hasSITimeDimensionExponent](http://opendata.caceres.es/def/ontomunicipio#hasSITimeDimensionExponent) (dp)<br />[om:hasSIAmountOfSubstanceDimensionExponent](http://opendata.caceres.es/def/ontomunicipio#hasSIAmountOfSubstanceDimensionExponent) (dp)<br />[om:hasSIMassDimensionExponent](http://opendata.caceres.es/def/ontomunicipio#hasSIMassDimensionExponent) (dp)<br />[om:hasSIThermodynamicTemperatureDimensionExponent](http://opendata.caceres.es/def/ontomunicipio#hasSIThermodynamicTemperatureDimensionExponent) (dp)<br />[om:hasSIElectricCurrentDimensionExponent](http://opendata.caceres.es/def/ontomunicipio#hasSIElectricCurrentDimensionExponent) (dp)<br />[om:hasSILengthDimensionExponent](http://opendata.caceres.es/def/ontomunicipio#hasSILengthDimensionExponent) (dp)<br />
+In domain of |[om:hasSILengthDimensionExponent](http://opendata.caceres.es/def/ontomunicipio#hasSILengthDimensionExponent) (dp)<br />[om:hasSILuminousIntensityDimensionExponent](http://opendata.caceres.es/def/ontomunicipio#hasSILuminousIntensityDimensionExponent) (dp)<br />[om:hasSIMassDimensionExponent](http://opendata.caceres.es/def/ontomunicipio#hasSIMassDimensionExponent) (dp)<br />[om:hasSIAmountOfSubstanceDimensionExponent](http://opendata.caceres.es/def/ontomunicipio#hasSIAmountOfSubstanceDimensionExponent) (dp)<br />[om:hasSIThermodynamicTemperatureDimensionExponent](http://opendata.caceres.es/def/ontomunicipio#hasSIThermodynamicTemperatureDimensionExponent) (dp)<br />[om:hasSITimeDimensionExponent](http://opendata.caceres.es/def/ontomunicipio#hasSITimeDimensionExponent) (dp)<br />[om:hasSIElectricCurrentDimensionExponent](http://opendata.caceres.es/def/ontomunicipio#hasSIElectricCurrentDimensionExponent) (dp)<br />
 In range of |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op)<br />
 ### directional dose equivalent
 Property | Value
@@ -1724,24 +1724,24 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#DisodiumEthyleneDiamineTetreAcetateMassFraction`
 Description | <p>The fraction of the mass of disodium ethylene diamine tetra acetate in a phenomenon</p>
 Super-classes |[om:MassFraction](http://opendata.caceres.es/def/ontomunicipio#MassFraction) (c)<br />
-### displacement
+### verplaatsing
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Displacement`
 Super-classes |[om:Length](http://opendata.caceres.es/def/ontomunicipio#Length) (c)<br />
-### 距离
+### afstand
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Distance`
 Super-classes |[om:Length](http://opendata.caceres.es/def/ontomunicipio#Length) (c)<br />
-Sub-classes |[om:DistanceModulus](http://opendata.caceres.es/def/ontomunicipio#DistanceModulus) (c)<br />[om:TotalDistanceTravelled](http://opendata.caceres.es/def/ontomunicipio#TotalDistanceTravelled) (c)<br />[om:xyDistanceTravelled](http://opendata.caceres.es/def/ontomunicipio#xyDistanceTravelled) (c)<br />[om:Total3DStartEndDistance](http://opendata.caceres.es/def/ontomunicipio#Total3DStartEndDistance) (c)<br />[om:xy2DStartEndDistance](http://opendata.caceres.es/def/ontomunicipio#xy2DStartEndDistance) (c)<br />
+Sub-classes |[om:Total3DStartEndDistance](http://opendata.caceres.es/def/ontomunicipio#Total3DStartEndDistance) (c)<br />[om:xy2DStartEndDistance](http://opendata.caceres.es/def/ontomunicipio#xy2DStartEndDistance) (c)<br />[om:xyDistanceTravelled](http://opendata.caceres.es/def/ontomunicipio#xyDistanceTravelled) (c)<br />[om:DistanceModulus](http://opendata.caceres.es/def/ontomunicipio#DistanceModulus) (c)<br />[om:TotalDistanceTravelled](http://opendata.caceres.es/def/ontomunicipio#TotalDistanceTravelled) (c)<br />
 ### distance modulus
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#DistanceModulus`
 Description | <p>The difference between the apparent magnitude (m) of an astronomical object, such as a star, and its absolute magnitude (M), used as a distance measurement. Distances can be expressed in distance modulii as $$m-M = 5\log d + 10 = 10-5 log \varpi$$ where (d) is the distance in kiloparsec and (\varpi) is the parallax in milliarcseconds.</p>
 Super-classes |[om:Distance](http://opendata.caceres.es/def/ontomunicipio#Distance) (c)<br />
-Sub-classes |[om:ApparentDistanceModulus](http://opendata.caceres.es/def/ontomunicipio#ApparentDistanceModulus) (c)<br />[om:TrueDistanceModulus](http://opendata.caceres.es/def/ontomunicipio#TrueDistanceModulus) (c)<br />
+Sub-classes |[om:TrueDistanceModulus](http://opendata.caceres.es/def/ontomunicipio#TrueDistanceModulus) (c)<br />[om:ApparentDistanceModulus](http://opendata.caceres.es/def/ontomunicipio#ApparentDistanceModulus) (c)<br />
 ### diurnal aberration
 Property | Value
 --- | ---
@@ -1754,8 +1754,8 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#DoseEquivalent`
 Description | <p>Dose equivalent is a measure of the radiation dose to tissue where an attempt has been made to allow for the different relative biological effects of different types of ionizing radiation.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:specificEnergyOrAbsorbedDoseOrDoseEquivalent-Dimension](http://opendata.caceres.es/def/ontomunicipio#specificEnergyOrAbsorbedDoseOrDoseEquivalent-Dimension) (c)<br />
-Sub-classes |[om:DirectionalDoseEquivalent](http://opendata.caceres.es/def/ontomunicipio#DirectionalDoseEquivalent) (c)<br />[om:AmbientDoseEquivalent](http://opendata.caceres.es/def/ontomunicipio#AmbientDoseEquivalent) (c)<br />[om:PersonalDoseEquivalent](http://opendata.caceres.es/def/ontomunicipio#PersonalDoseEquivalent) (c)<br />[om:OrganDoseEquivalent](http://opendata.caceres.es/def/ontomunicipio#OrganDoseEquivalent) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:specificEnergyOrAbsorbedDoseOrDoseEquivalent-Dimension](http://opendata.caceres.es/def/ontomunicipio#specificEnergyOrAbsorbedDoseOrDoseEquivalent-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Sub-classes |[om:AmbientDoseEquivalent](http://opendata.caceres.es/def/ontomunicipio#AmbientDoseEquivalent) (c)<br />[om:DirectionalDoseEquivalent](http://opendata.caceres.es/def/ontomunicipio#DirectionalDoseEquivalent) (c)<br />[om:PersonalDoseEquivalent](http://opendata.caceres.es/def/ontomunicipio#PersonalDoseEquivalent) (c)<br />[om:OrganDoseEquivalent](http://opendata.caceres.es/def/ontomunicipio#OrganDoseEquivalent) (c)<br />
 ### dose equivalent unit
 Property | Value
 --- | ---
@@ -1783,7 +1783,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#DryMatterMassFraction`
 Description | <p>The fraction of the mass of dry matter in a phenomenon</p>
 Super-classes |[om:MassFraction](http://opendata.caceres.es/def/ontomunicipio#MassFraction) (c)<br />
-### duration
+### duur
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Duration`
@@ -1794,7 +1794,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#DynamicModulus`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
 Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:pressure-Dimension](http://opendata.caceres.es/def/ontomunicipio#pressure-Dimension) (c)<br />
-Sub-classes |[om:ElasticityTensor](http://opendata.caceres.es/def/ontomunicipio#ElasticityTensor) (c)<br />[om:ShearModulus](http://opendata.caceres.es/def/ontomunicipio#ShearModulus) (c)<br />[om:LossModulus](http://opendata.caceres.es/def/ontomunicipio#LossModulus) (c)<br />[om:BulkModulus](http://opendata.caceres.es/def/ontomunicipio#BulkModulus) (c)<br />[om:ModulusOfElasticity](http://opendata.caceres.es/def/ontomunicipio#ModulusOfElasticity) (c)<br />[om:StorageModulus](http://opendata.caceres.es/def/ontomunicipio#StorageModulus) (c)<br />
+Sub-classes |[om:StorageModulus](http://opendata.caceres.es/def/ontomunicipio#StorageModulus) (c)<br />[om:BulkModulus](http://opendata.caceres.es/def/ontomunicipio#BulkModulus) (c)<br />[om:LossModulus](http://opendata.caceres.es/def/ontomunicipio#LossModulus) (c)<br />[om:ModulusOfElasticity](http://opendata.caceres.es/def/ontomunicipio#ModulusOfElasticity) (c)<br />[om:ElasticityTensor](http://opendata.caceres.es/def/ontomunicipio#ElasticityTensor) (c)<br />[om:ShearModulus](http://opendata.caceres.es/def/ontomunicipio#ShearModulus) (c)<br />
 ### dynamic range
 Property | Value
 --- | ---
@@ -1807,13 +1807,13 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#DynamicRangeUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### dynamische viscositeit
+### dynamic viscosity
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#DynamicViscosity`
 Description | <p>Viscosity is the definite resistance to change of form of many materials.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dynamicViscosity-Dimension](http://opendata.caceres.es/def/ontomunicipio#dynamicViscosity-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dynamicViscosity-Dimension](http://opendata.caceres.es/def/ontomunicipio#dynamicViscosity-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### dynamic viscosity unit
 Property | Value
 --- | ---
@@ -1848,13 +1848,13 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ElasticityTensor`
 Super-classes |[om:DynamicModulus](http://opendata.caceres.es/def/ontomunicipio#DynamicModulus) (c)<br />
-### electric charge
+### electrische lading
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ElectricCharge`
 Description | <p>Electric charge is a conserved property of some subatomic particles, which determines their electromagnetic interaction. It is a derived quantity in the International System of Units. Electric charge is electric current times time.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:electricCharge-Dimension](http://opendata.caceres.es/def/ontomunicipio#electricCharge-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:electricCharge-Dimension](http://opendata.caceres.es/def/ontomunicipio#electricCharge-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### electric charge density
 Property | Value
 --- | ---
@@ -1878,7 +1878,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ElectricCurrent`
 Description | <p>Electric current is the flow of electric charge. It is a base quantity in the International System of Units. Electric current is electric charge divided by time.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:electricCurrent-Dimension](http://opendata.caceres.es/def/ontomunicipio#electricCurrent-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:electricCurrent-Dimension](http://opendata.caceres.es/def/ontomunicipio#electricCurrent-Dimension) (c)<br />
 ### electric current unit
 Property | Value
 --- | ---
@@ -1890,19 +1890,19 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ElectricDipoleMoment`
 Description | <p>Electric dipole moment is a measure of the polarity of a system of electric charges.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:electricDipoleMoment-Dimension](http://opendata.caceres.es/def/ontomunicipio#electricDipoleMoment-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:electricDipoleMoment-Dimension](http://opendata.caceres.es/def/ontomunicipio#electricDipoleMoment-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### electric dipole moment unit
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ElectricDipoleMomentUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### electric field
+### electrisch veld
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ElectricField`
 Description | <p>Electric field is a property of the space surrounding an electric charge or in the presence of a time-varying magnetic field which exerts a forceon other electrically charged objects.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:electricField-Dimension](http://opendata.caceres.es/def/ontomunicipio#electricField-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:electricField-Dimension](http://opendata.caceres.es/def/ontomunicipio#electricField-Dimension) (c)<br />
 ### electric field unit
 Property | Value
 --- | ---
@@ -1925,7 +1925,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ElectricPotential`
 Description | <p>Electric potential is the potential energy per unit charge associated with static (time-invariant) electric field.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:electricPotential-Dimension](http://opendata.caceres.es/def/ontomunicipio#electricPotential-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:electricPotential-Dimension](http://opendata.caceres.es/def/ontomunicipio#electricPotential-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 Sub-classes |[om:PotentialDifference](http://opendata.caceres.es/def/ontomunicipio#PotentialDifference) (c)<br />[om:ElectromotiveForce](http://opendata.caceres.es/def/ontomunicipio#ElectromotiveForce) (c)<br />
 ### electric potential unit
 Property | Value
@@ -1972,7 +1972,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ElectricalResistivity`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:electricalResistivity-Dimension](http://opendata.caceres.es/def/ontomunicipio#electricalResistivity-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:electricalResistivity-Dimension](http://opendata.caceres.es/def/ontomunicipio#electricalResistivity-Dimension) (c)<br />
 ### electrical resistivity unit
 Property | Value
 --- | ---
@@ -2003,8 +2003,8 @@ IRI | `http://opendata.caceres.es/def/ontomunicipio#Energy`
 Description | <p>Energy can be defined as the ability to do work. It is a derived quantity in the International System of Units.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
 Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:energy-Dimension](http://opendata.caceres.es/def/ontomunicipio#energy-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
-Sub-classes |[om:PotentialEnergy](http://opendata.caceres.es/def/ontomunicipio#PotentialEnergy) (c)<br />[om:Work](http://opendata.caceres.es/def/ontomunicipio#Work) (c)<br />[om:KineticEnergy](http://opendata.caceres.es/def/ontomunicipio#KineticEnergy) (c)<br />[om:Heat](http://opendata.caceres.es/def/ontomunicipio#Heat) (c)<br />[om:InternalEnergy](http://opendata.caceres.es/def/ontomunicipio#InternalEnergy) (c)<br />[om:RadiantEnergy](http://opendata.caceres.es/def/ontomunicipio#RadiantEnergy) (c)<br />[om:Enthalpy](http://opendata.caceres.es/def/ontomunicipio#Enthalpy) (c)<br />
-### energy density
+Sub-classes |[om:Heat](http://opendata.caceres.es/def/ontomunicipio#Heat) (c)<br />[om:InternalEnergy](http://opendata.caceres.es/def/ontomunicipio#InternalEnergy) (c)<br />[om:PotentialEnergy](http://opendata.caceres.es/def/ontomunicipio#PotentialEnergy) (c)<br />[om:RadiantEnergy](http://opendata.caceres.es/def/ontomunicipio#RadiantEnergy) (c)<br />[om:Work](http://opendata.caceres.es/def/ontomunicipio#Work) (c)<br />[om:KineticEnergy](http://opendata.caceres.es/def/ontomunicipio#KineticEnergy) (c)<br />[om:Enthalpy](http://opendata.caceres.es/def/ontomunicipio#Enthalpy) (c)<br />
+### energiedichtheid
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#EnergyDensity`
@@ -2027,7 +2027,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Enthalpy`
 Description | <p>Enthalpy is the sum of the internal energy of a system plus the product of the pressure-volume work done on the system.</p>
 Super-classes |[om:Energy](http://opendata.caceres.es/def/ontomunicipio#Energy) (c)<br />
-### entropy
+### entropie
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Entropy`
@@ -2051,7 +2051,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#EpochAtMaximumBrightness`
 Description | <p>A moment when the object (i.e. a variable star) was at maximum brightness.</p>
 Super-classes |[om:Epoch](http://opendata.caceres.es/def/ontomunicipio#Epoch) (c)<br />
-### Euler number
+### getal van Euler
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#EulerNumber`
@@ -2103,7 +2103,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ExtinctionAtWaveband`
 Super-classes |[om:Extinction](http://opendata.caceres.es/def/ontomunicipio#Extinction) (c)<br />
-Sub-classes |[om:ExtinctionInV](http://opendata.caceres.es/def/ontomunicipio#ExtinctionInV) (c)<br />[om:ExtinctionInB](http://opendata.caceres.es/def/ontomunicipio#ExtinctionInB) (c)<br />[om:ExtinctionInU](http://opendata.caceres.es/def/ontomunicipio#ExtinctionInU) (c)<br />
+Sub-classes |[om:ExtinctionInB](http://opendata.caceres.es/def/ontomunicipio#ExtinctionInB) (c)<br />[om:ExtinctionInU](http://opendata.caceres.es/def/ontomunicipio#ExtinctionInU) (c)<br />[om:ExtinctionInV](http://opendata.caceres.es/def/ontomunicipio#ExtinctionInV) (c)<br />
 ### extinction at wavelength
 Property | Value
 --- | ---
@@ -2124,7 +2124,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ExtinctionInV`
 Super-classes |[om:ExtinctionAtWaveband](http://opendata.caceres.es/def/ontomunicipio#ExtinctionAtWaveband) (c)<br />
-### Fahrenheit temperature
+### Fahrenheittemperatuur
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#FahrenheitTemperature`
@@ -2146,7 +2146,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#FatMassFraction`
 Description | <p>The fraction of the mass of fat in a phenomenon</p>
 Super-classes |[om:MassFraction](http://opendata.caceres.es/def/ontomunicipio#MassFraction) (c)<br />
-### stevigheid (penetrometer) (methode 1)
+### firmness (penetrometer) (method 1)
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Firmness-Penetrometer-Method1`
@@ -2163,7 +2163,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#FirstCowlingNumber`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
 ### first Cowling number unit
 Property | Value
 --- | ---
@@ -2191,7 +2191,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Fluidity`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:fluidity-Dimension](http://opendata.caceres.es/def/ontomunicipio#fluidity-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:fluidity-Dimension](http://opendata.caceres.es/def/ontomunicipio#fluidity-Dimension) (c)<br />
 ### fluidity unit
 Property | Value
 --- | ---
@@ -2214,8 +2214,8 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Force`
 Description | <p>Force is the extent to which an object with mass can be caused to accelerate. It is a derived quantity in the International System of Units. Force is mass times acceleration.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:force-Dimension](http://opendata.caceres.es/def/ontomunicipio#force-Dimension) (c)<br />
-Sub-classes |[om:Thrust](http://opendata.caceres.es/def/ontomunicipio#Thrust) (c)<br />[om:Weight](http://opendata.caceres.es/def/ontomunicipio#Weight) (c)<br />[om:Friction](http://opendata.caceres.es/def/ontomunicipio#Friction) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:force-Dimension](http://opendata.caceres.es/def/ontomunicipio#force-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Sub-classes |[om:Weight](http://opendata.caceres.es/def/ontomunicipio#Weight) (c)<br />[om:Thrust](http://opendata.caceres.es/def/ontomunicipio#Thrust) (c)<br />[om:Friction](http://opendata.caceres.es/def/ontomunicipio#Friction) (c)<br />
 ### force unit
 Property | Value
 --- | ---
@@ -2233,7 +2233,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#FourierNumberForMassTransfer`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
 ### Fourier number for mass transfer unit
 Property | Value
 --- | ---
@@ -2269,7 +2269,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#FroudeNumber`
 Description | <p>The Froude number is a dimensionless number that compares inertial and gravitational forces. It may be used to quantify the resistance of an object moving through water, and compare objects of different sizes.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
 ### Froude number unit
 Property | Value
 --- | ---
@@ -2303,7 +2303,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#GasConstant`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:molarEntropyOrMolarHeatCapacityOrGasConstant-Dimension](http://opendata.caceres.es/def/ontomunicipio#molarEntropyOrMolarHeatCapacityOrGasConstant-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:molarEntropyOrMolarHeatCapacityOrGasConstant-Dimension](http://opendata.caceres.es/def/ontomunicipio#molarEntropyOrMolarHeatCapacityOrGasConstant-Dimension) (c)<br />
 ### gas constant unit
 Property | Value
 --- | ---
@@ -2326,13 +2326,13 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#GramPerPrefixedLitre`
 Super-classes |[om:UnitDivision](http://opendata.caceres.es/def/ontomunicipio#UnitDivision) (c)<br />
-### getal van Grashof
+### Grashof number
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#GrashofNumber`
 Description | <p>The Grashof number is a dimensionless number that approximates the ratio of buoyancy to viscous force that acts on a fluid.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
 ### Grashof number for mass transfer
 Property | Value
 --- | ---
@@ -2349,7 +2349,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#GrashofNumberUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### valversnelling
+### gravitational acceleration
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#GravitationalAcceleration`
@@ -2365,24 +2365,24 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Half-Life`
 Super-classes |[om:Time](http://opendata.caceres.es/def/ontomunicipio#Time) (c)<br />
-### Hartmann number
+### getal van Hartmann
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#HartmannNumber`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
 ### Hartmann number unit
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#HartmannNumberUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### warmte
+### heat
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Heat`
 Description | <p>Heat is any flow of energy from one body or system to another due to a difference in temperature.</p>
 Super-classes |[om:Energy](http://opendata.caceres.es/def/ontomunicipio#Energy) (c)<br />
-### 热容量
+### heat capacity
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#HeatCapacity`
@@ -2420,13 +2420,13 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Height`
 Super-classes |[om:Length](http://opendata.caceres.es/def/ontomunicipio#Length) (c)<br />
-### hour angle
+### uurhoek
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#HourAngle`
 Description | <p>The angular distance on the celestial sphere measured westward along the celestial equator from the meridian to the hour circle that passes through the celestial object.</p>
 Super-classes |[om:Angle](http://opendata.caceres.es/def/ontomunicipio#Angle) (c)<br />
-### constante van Hubble
+### Hubble constant
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#HubbleConstant`
@@ -2445,7 +2445,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#HubbleConstantUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### hydrofiliciteit
+### hydrophilicity
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Hydrophilicity`
@@ -2473,7 +2473,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#IlluminanceUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### impulse
+### stoot
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Impulse`
@@ -2485,7 +2485,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Inductance`
 Description | <p>Inductance is that property in an electrical circuit where a change in the current flowing through that circuit induces an electromotive force that opposes the change in current.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:inductanceOrPermeance-Electromagnetic-Dimension](http://opendata.caceres.es/def/ontomunicipio#inductanceOrPermeance-Electromagnetic-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:inductanceOrPermeance-Electromagnetic-Dimension](http://opendata.caceres.es/def/ontomunicipio#inductanceOrPermeance-Electromagnetic-Dimension) (c)<br />
 ### inductance unit
 Property | Value
 --- | ---
@@ -2555,13 +2555,13 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#JohnsonMagnitude`
 Description | <p>A magnitude measured in one of Johnson's standard passbands (using a standard filter, i.e. U, B, or V).</p>
 Super-classes |[om:Magnitude](http://opendata.caceres.es/def/ontomunicipio#Magnitude) (c)<br />
-Sub-classes |[om:VMagnitude](http://opendata.caceres.es/def/ontomunicipio#VMagnitude) (c)<br />[om:BMagnitude](http://opendata.caceres.es/def/ontomunicipio#BMagnitude) (c)<br />[om:UMagnitude](http://opendata.caceres.es/def/ontomunicipio#UMagnitude) (c)<br />
+Sub-classes |[om:UMagnitude](http://opendata.caceres.es/def/ontomunicipio#UMagnitude) (c)<br />[om:VMagnitude](http://opendata.caceres.es/def/ontomunicipio#VMagnitude) (c)<br />[om:BMagnitude](http://opendata.caceres.es/def/ontomunicipio#BMagnitude) (c)<br />
 ### kerma
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Kerma`
 Super-classes |[om:AbsorbedDose](http://opendata.caceres.es/def/ontomunicipio#AbsorbedDose) (c)<br />
-### kinematic viscosity
+### kinematische viscositeit
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#KinematicViscosity`
@@ -2585,7 +2585,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#KnudsenNumber`
 Description | <p>The Knudsen number is a dimensionless number defined as the ratio of the molecular mean free path length to a representative physical length scale.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
 ### Knudsen number unit
 Property | Value
 --- | ---
@@ -2603,14 +2603,14 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#LactoseMassFraction`
 Description | <p>The fraction of the mass of lactose in a phenomenon</p>
 Super-classes |[om:MassFraction](http://opendata.caceres.es/def/ontomunicipio#MassFraction) (c)<br />
-### 长度
+### length
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Length`
 Description | <p>Length is the amount of space between two geographical points along a curve. It is a base quantity in the International System of Units and other systems of units. Length is speed times time. The metre, a base unit of length in the International System of Units, is defined in terms of speed of light during a certain time interval.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
 Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:length-Dimension](http://opendata.caceres.es/def/ontomunicipio#length-Dimension) (c)<br />
-Sub-classes |[om:Diameter](http://opendata.caceres.es/def/ontomunicipio#Diameter) (c)<br />[om:Thickness](http://opendata.caceres.es/def/ontomunicipio#Thickness) (c)<br />[om:FontSize](http://opendata.caceres.es/def/ontomunicipio#FontSize) (c)<br />[om:Circumference](http://opendata.caceres.es/def/ontomunicipio#Circumference) (c)<br />[om:yRange](http://opendata.caceres.es/def/ontomunicipio#yRange) (c)<br />[om:Displacement](http://opendata.caceres.es/def/ontomunicipio#Displacement) (c)<br />[om:xRange](http://opendata.caceres.es/def/ontomunicipio#xRange) (c)<br />[om:Depth](http://opendata.caceres.es/def/ontomunicipio#Depth) (c)<br />[om:Distance](http://opendata.caceres.es/def/ontomunicipio#Distance) (c)<br />[om:ScaleHeight](http://opendata.caceres.es/def/ontomunicipio#ScaleHeight) (c)<br />[om:zRange](http://opendata.caceres.es/def/ontomunicipio#zRange) (c)<br />[om:ScaleLength](http://opendata.caceres.es/def/ontomunicipio#ScaleLength) (c)<br />[om:Radius](http://opendata.caceres.es/def/ontomunicipio#Radius) (c)<br />[om:Wavelength](http://opendata.caceres.es/def/ontomunicipio#Wavelength) (c)<br />[om:Breadth](http://opendata.caceres.es/def/ontomunicipio#Breadth) (c)<br />[om:Width](http://opendata.caceres.es/def/ontomunicipio#Width) (c)<br />[om:Height](http://opendata.caceres.es/def/ontomunicipio#Height) (c)<br />
+Sub-classes |[om:Wavelength](http://opendata.caceres.es/def/ontomunicipio#Wavelength) (c)<br />[om:yRange](http://opendata.caceres.es/def/ontomunicipio#yRange) (c)<br />[om:Diameter](http://opendata.caceres.es/def/ontomunicipio#Diameter) (c)<br />[om:Distance](http://opendata.caceres.es/def/ontomunicipio#Distance) (c)<br />[om:Depth](http://opendata.caceres.es/def/ontomunicipio#Depth) (c)<br />[om:FontSize](http://opendata.caceres.es/def/ontomunicipio#FontSize) (c)<br />[om:Breadth](http://opendata.caceres.es/def/ontomunicipio#Breadth) (c)<br />[om:zRange](http://opendata.caceres.es/def/ontomunicipio#zRange) (c)<br />[om:Thickness](http://opendata.caceres.es/def/ontomunicipio#Thickness) (c)<br />[om:Displacement](http://opendata.caceres.es/def/ontomunicipio#Displacement) (c)<br />[om:Height](http://opendata.caceres.es/def/ontomunicipio#Height) (c)<br />[om:ScaleLength](http://opendata.caceres.es/def/ontomunicipio#ScaleLength) (c)<br />[om:Radius](http://opendata.caceres.es/def/ontomunicipio#Radius) (c)<br />[om:xRange](http://opendata.caceres.es/def/ontomunicipio#xRange) (c)<br />[om:Circumference](http://opendata.caceres.es/def/ontomunicipio#Circumference) (c)<br />[om:ScaleHeight](http://opendata.caceres.es/def/ontomunicipio#ScaleHeight) (c)<br />[om:Width](http://opendata.caceres.es/def/ontomunicipio#Width) (c)<br />
 ### length unit
 Property | Value
 --- | ---
@@ -2685,7 +2685,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#LuminousEfficacy`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:luminousEfficacy-Dimension](http://opendata.caceres.es/def/ontomunicipio#luminousEfficacy-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:luminousEfficacy-Dimension](http://opendata.caceres.es/def/ontomunicipio#luminousEfficacy-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### luminous efficacy unit
 Property | Value
 --- | ---
@@ -2696,7 +2696,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#LuminousEnergy`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:luminousEnergy-Dimension](http://opendata.caceres.es/def/ontomunicipio#luminousEnergy-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:luminousEnergy-Dimension](http://opendata.caceres.es/def/ontomunicipio#luminousEnergy-Dimension) (c)<br />
 ### luminous energy unit
 Property | Value
 --- | ---
@@ -2708,7 +2708,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#LuminousFlux`
 Description | <p>Luminous flux is the total visible energy emitted by a source per unit time.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:luminousFlux-Dimension](http://opendata.caceres.es/def/ontomunicipio#luminousFlux-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:luminousFlux-Dimension](http://opendata.caceres.es/def/ontomunicipio#luminousFlux-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### luminous flux unit
 Property | Value
 --- | ---
@@ -2726,13 +2726,13 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#LuminousIntensityUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### Mach number
+### Machgetal
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#MachNumber`
 Description | <p>The Mach number is the speed of an object that moves through air, or any fluid substance, divided by the speed of sound as it is in that substance.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
 ### Mach number unit
 Property | Value
 --- | ---
@@ -2743,7 +2743,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#MagneticField`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:MagneticField-Dimension](http://opendata.caceres.es/def/ontomunicipio#MagneticField-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:MagneticField-Dimension](http://opendata.caceres.es/def/ontomunicipio#MagneticField-Dimension) (c)<br />
 ### magnetic field unit
 Property | Value
 --- | ---
@@ -2801,21 +2801,21 @@ IRI | `http://opendata.caceres.es/def/ontomunicipio#Magnitude`
 Description | <p>Reverse logarithmic measure of the brightness of an object.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
 Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
-Sub-classes |[om:_1040NanometreLockwoodMagnitude](http://opendata.caceres.es/def/ontomunicipio#_1040NanometreLockwoodMagnitude) (c)<br />[om:TychoBroadbandMagnitude](http://opendata.caceres.es/def/ontomunicipio#TychoBroadbandMagnitude) (c)<br />[om:RedMagnitude](http://opendata.caceres.es/def/ontomunicipio#RedMagnitude) (c)<br />[om:ThuanAndGunnMagnitude](http://opendata.caceres.es/def/ontomunicipio#ThuanAndGunnMagnitude) (c)<br />[om:MagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#MagnitudeAtMinimumBrightness) (c)<br />[om:ApparentMagnitude](http://opendata.caceres.es/def/ontomunicipio#ApparentMagnitude) (c)<br />[om:BolometricMagnitude](http://opendata.caceres.es/def/ontomunicipio#BolometricMagnitude) (c)<br />[om:WhiteLightMagnitude](http://opendata.caceres.es/def/ontomunicipio#WhiteLightMagnitude) (c)<br />[om:JohnsonMagnitude](http://opendata.caceres.es/def/ontomunicipio#JohnsonMagnitude) (c)<br />[om:IntegratedMagnitude](http://opendata.caceres.es/def/ontomunicipio#IntegratedMagnitude) (c)<br />[om:CousinsMagnitude](http://opendata.caceres.es/def/ontomunicipio#CousinsMagnitude) (c)<br />[om:AbsoluteMagnitude](http://opendata.caceres.es/def/ontomunicipio#AbsoluteMagnitude) (c)<br />[om:LimitingMagnitude](http://opendata.caceres.es/def/ontomunicipio#LimitingMagnitude) (c)<br />[om:PhotographicMagnitude](http://opendata.caceres.es/def/ontomunicipio#PhotographicMagnitude) (c)<br />[om:StroemgrenMagnitude](http://opendata.caceres.es/def/ontomunicipio#StroemgrenMagnitude) (c)<br />[om:MagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#MagnitudeAtMaximumBrightness) (c)<br />
+Sub-classes |[om:MagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#MagnitudeAtMaximumBrightness) (c)<br />[om:LimitingMagnitude](http://opendata.caceres.es/def/ontomunicipio#LimitingMagnitude) (c)<br />[om:MagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#MagnitudeAtMinimumBrightness) (c)<br />[om:ThuanAndGunnMagnitude](http://opendata.caceres.es/def/ontomunicipio#ThuanAndGunnMagnitude) (c)<br />[om:PhotographicMagnitude](http://opendata.caceres.es/def/ontomunicipio#PhotographicMagnitude) (c)<br />[om:CousinsMagnitude](http://opendata.caceres.es/def/ontomunicipio#CousinsMagnitude) (c)<br />[om:_1040NanometreLockwoodMagnitude](http://opendata.caceres.es/def/ontomunicipio#_1040NanometreLockwoodMagnitude) (c)<br />[om:StroemgrenMagnitude](http://opendata.caceres.es/def/ontomunicipio#StroemgrenMagnitude) (c)<br />[om:ApparentMagnitude](http://opendata.caceres.es/def/ontomunicipio#ApparentMagnitude) (c)<br />[om:IntegratedMagnitude](http://opendata.caceres.es/def/ontomunicipio#IntegratedMagnitude) (c)<br />[om:WhiteLightMagnitude](http://opendata.caceres.es/def/ontomunicipio#WhiteLightMagnitude) (c)<br />[om:TychoBroadbandMagnitude](http://opendata.caceres.es/def/ontomunicipio#TychoBroadbandMagnitude) (c)<br />[om:JohnsonMagnitude](http://opendata.caceres.es/def/ontomunicipio#JohnsonMagnitude) (c)<br />[om:BolometricMagnitude](http://opendata.caceres.es/def/ontomunicipio#BolometricMagnitude) (c)<br />[om:AbsoluteMagnitude](http://opendata.caceres.es/def/ontomunicipio#AbsoluteMagnitude) (c)<br />[om:RedMagnitude](http://opendata.caceres.es/def/ontomunicipio#RedMagnitude) (c)<br />
 ### magnitude at maximum brightness
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#MagnitudeAtMaximumBrightness`
 Description | <p>The magnitude at maximum brightness of a variable star.</p>
 Super-classes |[om:Magnitude](http://opendata.caceres.es/def/ontomunicipio#Magnitude) (c)<br />
-Sub-classes |[om:VMagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#VMagnitudeAtMaximumBrightness) (c)<br />[om:BMagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#BMagnitudeAtMaximumBrightness) (c)<br />[om:WhiteLightMagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#WhiteLightMagnitudeAtMaximumBrightness) (c)<br />[om:PhotographicMagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#PhotographicMagnitudeAtMaximumBrightness) (c)<br />
+Sub-classes |[om:WhiteLightMagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#WhiteLightMagnitudeAtMaximumBrightness) (c)<br />[om:BMagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#BMagnitudeAtMaximumBrightness) (c)<br />[om:PhotographicMagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#PhotographicMagnitudeAtMaximumBrightness) (c)<br />[om:VMagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#VMagnitudeAtMaximumBrightness) (c)<br />
 ### magnitude at minimum brightness
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#MagnitudeAtMinimumBrightness`
 Description | <p>The magnitude at minimum brightness of a variable star.</p>
 Super-classes |[om:Magnitude](http://opendata.caceres.es/def/ontomunicipio#Magnitude) (c)<br />
-Sub-classes |[om:VMagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#VMagnitudeAtMinimumBrightness) (c)<br />[om:PhotographicMagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#PhotographicMagnitudeAtMinimumBrightness) (c)<br />[om:BMagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#BMagnitudeAtMinimumBrightness) (c)<br />[om:WhiteLightMagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#WhiteLightMagnitudeAtMinimumBrightness) (c)<br />
+Sub-classes |[om:BMagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#BMagnitudeAtMinimumBrightness) (c)<br />[om:WhiteLightMagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#WhiteLightMagnitudeAtMinimumBrightness) (c)<br />[om:PhotographicMagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#PhotographicMagnitudeAtMinimumBrightness) (c)<br />[om:VMagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#VMagnitudeAtMinimumBrightness) (c)<br />
 ### magnitude unit
 Property | Value
 --- | ---
@@ -2827,33 +2827,33 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ManualFirmness`
 Description | <p>Firmness manueel: code 0 - 5.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-### 质量
+### massa
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Mass`
 Description | <p>Mass is the amount of matter of a phenomenon. It is a base quantity in the International System of Units. Mass is force divided by acceleration.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
 Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:mass-Dimension](http://opendata.caceres.es/def/ontomunicipio#mass-Dimension) (c)<br />
-Sub-classes |[om:LabelMass](http://opendata.caceres.es/def/ontomunicipio#LabelMass) (c)<br />[om:NeckRingMass](http://opendata.caceres.es/def/ontomunicipio#NeckRingMass) (c)<br />[om:CapMass](http://opendata.caceres.es/def/ontomunicipio#CapMass) (c)<br />[om:VasePlusWaterMass](http://opendata.caceres.es/def/ontomunicipio#VasePlusWaterMass) (c)<br />[om:BodyMass](http://opendata.caceres.es/def/ontomunicipio#BodyMass) (c)<br />[om:AtomicMass](http://opendata.caceres.es/def/ontomunicipio#AtomicMass) (c)<br />[om:TopMass](http://opendata.caceres.es/def/ontomunicipio#TopMass) (c)<br />[om:FlowpackMass](http://opendata.caceres.es/def/ontomunicipio#FlowpackMass) (c)<br />[om:CartonMass](http://opendata.caceres.es/def/ontomunicipio#CartonMass) (c)<br />[om:DryMass](http://opendata.caceres.es/def/ontomunicipio#DryMass) (c)<br />[om:JeansMass](http://opendata.caceres.es/def/ontomunicipio#JeansMass) (c)<br />[om:StrawMass](http://opendata.caceres.es/def/ontomunicipio#StrawMass) (c)<br />[om:VasePlusWaterPlusFlowerMass](http://opendata.caceres.es/def/ontomunicipio#VasePlusWaterPlusFlowerMass) (c)<br />
+Sub-classes |[om:JeansMass](http://opendata.caceres.es/def/ontomunicipio#JeansMass) (c)<br />[om:AtomicMass](http://opendata.caceres.es/def/ontomunicipio#AtomicMass) (c)<br />[om:DryMass](http://opendata.caceres.es/def/ontomunicipio#DryMass) (c)<br />[om:FlowpackMass](http://opendata.caceres.es/def/ontomunicipio#FlowpackMass) (c)<br />[om:BodyMass](http://opendata.caceres.es/def/ontomunicipio#BodyMass) (c)<br />[om:TopMass](http://opendata.caceres.es/def/ontomunicipio#TopMass) (c)<br />[om:CartonMass](http://opendata.caceres.es/def/ontomunicipio#CartonMass) (c)<br />[om:LabelMass](http://opendata.caceres.es/def/ontomunicipio#LabelMass) (c)<br />[om:StrawMass](http://opendata.caceres.es/def/ontomunicipio#StrawMass) (c)<br />[om:VasePlusWaterPlusFlowerMass](http://opendata.caceres.es/def/ontomunicipio#VasePlusWaterPlusFlowerMass) (c)<br />[om:CapMass](http://opendata.caceres.es/def/ontomunicipio#CapMass) (c)<br />[om:VasePlusWaterMass](http://opendata.caceres.es/def/ontomunicipio#VasePlusWaterMass) (c)<br />[om:NeckRingMass](http://opendata.caceres.es/def/ontomunicipio#NeckRingMass) (c)<br />
 ### mass flow
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#MassFlow`
 Description | <p>Mass flow is the movement of substances at equal rates or as a single body.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:massFlow-Dimension](http://opendata.caceres.es/def/ontomunicipio#massFlow-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:massFlow-Dimension](http://opendata.caceres.es/def/ontomunicipio#massFlow-Dimension) (c)<br />
 ### mass flow unit
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#MassFlowUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### mass fraction
+### massafractie
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#MassFraction`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
 Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
-Sub-classes |[om:SugarMassFraction](http://opendata.caceres.es/def/ontomunicipio#SugarMassFraction) (c)<br />[om:StarchMassFraction](http://opendata.caceres.es/def/ontomunicipio#StarchMassFraction) (c)<br />[om:WaterMassFraction](http://opendata.caceres.es/def/ontomunicipio#WaterMassFraction) (c)<br />[om:EggMassFraction](http://opendata.caceres.es/def/ontomunicipio#EggMassFraction) (c)<br />[om:DisodiumEthyleneDiamineTetreAcetateMassFraction](http://opendata.caceres.es/def/ontomunicipio#DisodiumEthyleneDiamineTetreAcetateMassFraction) (c)<br />[om:GuarGumMassFraction](http://opendata.caceres.es/def/ontomunicipio#GuarGumMassFraction) (c)<br />[om:PotassiumSorbateMassFraction](http://opendata.caceres.es/def/ontomunicipio#PotassiumSorbateMassFraction) (c)<br />[om:WheyProteinBeadsMassFraction](http://opendata.caceres.es/def/ontomunicipio#WheyProteinBeadsMassFraction) (c)<br />[om:StarchVA40MassFraction](http://opendata.caceres.es/def/ontomunicipio#StarchVA40MassFraction) (c)<br />[om:AceticAcidMassFraction](http://opendata.caceres.es/def/ontomunicipio#AceticAcidMassFraction) (c)<br />[om:GelatinMassFraction](http://opendata.caceres.es/def/ontomunicipio#GelatinMassFraction) (c)<br />[om:ColdGasMassFraction](http://opendata.caceres.es/def/ontomunicipio#ColdGasMassFraction) (c)<br />[om:TweenMassFraction](http://opendata.caceres.es/def/ontomunicipio#TweenMassFraction) (c)<br />[om:LocustBeanGumMassFraction](http://opendata.caceres.es/def/ontomunicipio#LocustBeanGumMassFraction) (c)<br />[om:DryMatterMassFraction](http://opendata.caceres.es/def/ontomunicipio#DryMatterMassFraction) (c)<br />[om:WheyProteinAggregateMassFraction](http://opendata.caceres.es/def/ontomunicipio#WheyProteinAggregateMassFraction) (c)<br />[om:StarchVA85MassFraction](http://opendata.caceres.es/def/ontomunicipio#StarchVA85MassFraction) (c)<br />[om:SoyBeanMassFraction](http://opendata.caceres.es/def/ontomunicipio#SoyBeanMassFraction) (c)<br />[om:FatMassFraction](http://opendata.caceres.es/def/ontomunicipio#FatMassFraction) (c)<br />[om:ModeratedStarchMassFraction](http://opendata.caceres.es/def/ontomunicipio#ModeratedStarchMassFraction) (c)<br />[om:SaltMassFraction](http://opendata.caceres.es/def/ontomunicipio#SaltMassFraction) (c)<br />[om:LactoseMassFraction](http://opendata.caceres.es/def/ontomunicipio#LactoseMassFraction) (c)<br />[om:WheyProteinMassFraction](http://opendata.caceres.es/def/ontomunicipio#WheyProteinMassFraction) (c)<br />[om:XanthanMassFraction](http://opendata.caceres.es/def/ontomunicipio#XanthanMassFraction) (c)<br />[om:MustardPowderMassFraction](http://opendata.caceres.es/def/ontomunicipio#MustardPowderMassFraction) (c)<br />[om:ProteinMassFraction](http://opendata.caceres.es/def/ontomunicipio#ProteinMassFraction) (c)<br />
+Sub-classes |[om:ColdGasMassFraction](http://opendata.caceres.es/def/ontomunicipio#ColdGasMassFraction) (c)<br />[om:SoyBeanMassFraction](http://opendata.caceres.es/def/ontomunicipio#SoyBeanMassFraction) (c)<br />[om:SaltMassFraction](http://opendata.caceres.es/def/ontomunicipio#SaltMassFraction) (c)<br />[om:WheyProteinMassFraction](http://opendata.caceres.es/def/ontomunicipio#WheyProteinMassFraction) (c)<br />[om:XanthanMassFraction](http://opendata.caceres.es/def/ontomunicipio#XanthanMassFraction) (c)<br />[om:WheyProteinAggregateMassFraction](http://opendata.caceres.es/def/ontomunicipio#WheyProteinAggregateMassFraction) (c)<br />[om:StarchVA40MassFraction](http://opendata.caceres.es/def/ontomunicipio#StarchVA40MassFraction) (c)<br />[om:GelatinMassFraction](http://opendata.caceres.es/def/ontomunicipio#GelatinMassFraction) (c)<br />[om:StarchVA85MassFraction](http://opendata.caceres.es/def/ontomunicipio#StarchVA85MassFraction) (c)<br />[om:ModeratedStarchMassFraction](http://opendata.caceres.es/def/ontomunicipio#ModeratedStarchMassFraction) (c)<br />[om:MustardPowderMassFraction](http://opendata.caceres.es/def/ontomunicipio#MustardPowderMassFraction) (c)<br />[om:ProteinMassFraction](http://opendata.caceres.es/def/ontomunicipio#ProteinMassFraction) (c)<br />[om:StarchMassFraction](http://opendata.caceres.es/def/ontomunicipio#StarchMassFraction) (c)<br />[om:WaterMassFraction](http://opendata.caceres.es/def/ontomunicipio#WaterMassFraction) (c)<br />[om:EggMassFraction](http://opendata.caceres.es/def/ontomunicipio#EggMassFraction) (c)<br />[om:TweenMassFraction](http://opendata.caceres.es/def/ontomunicipio#TweenMassFraction) (c)<br />[om:GuarGumMassFraction](http://opendata.caceres.es/def/ontomunicipio#GuarGumMassFraction) (c)<br />[om:LactoseMassFraction](http://opendata.caceres.es/def/ontomunicipio#LactoseMassFraction) (c)<br />[om:WheyProteinBeadsMassFraction](http://opendata.caceres.es/def/ontomunicipio#WheyProteinBeadsMassFraction) (c)<br />[om:DisodiumEthyleneDiamineTetreAcetateMassFraction](http://opendata.caceres.es/def/ontomunicipio#DisodiumEthyleneDiamineTetreAcetateMassFraction) (c)<br />[om:FatMassFraction](http://opendata.caceres.es/def/ontomunicipio#FatMassFraction) (c)<br />[om:LocustBeanGumMassFraction](http://opendata.caceres.es/def/ontomunicipio#LocustBeanGumMassFraction) (c)<br />[om:AceticAcidMassFraction](http://opendata.caceres.es/def/ontomunicipio#AceticAcidMassFraction) (c)<br />[om:PotassiumSorbateMassFraction](http://opendata.caceres.es/def/ontomunicipio#PotassiumSorbateMassFraction) (c)<br />[om:SugarMassFraction](http://opendata.caceres.es/def/ontomunicipio#SugarMassFraction) (c)<br />[om:DryMatterMassFraction](http://opendata.caceres.es/def/ontomunicipio#DryMatterMassFraction) (c)<br />
 ### mass fraction unit
 Property | Value
 --- | ---
@@ -2896,7 +2896,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ModulusOfElasticity`
 Super-classes |[om:DynamicModulus](http://opendata.caceres.es/def/ontomunicipio#DynamicModulus) (c)<br />
-### molality
+### molaliteit
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Molality`
@@ -2908,7 +2908,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#MolalityUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### molar energy
+### molaire energie
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#MolarEnergy`
@@ -2942,7 +2942,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#MolarHeatCapacityUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### molaire massa
+### molar mass
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#MolarMass`
@@ -2980,7 +2980,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#MomentOfForce`
 Description | <p>Moment of force is the effectiveness of a force to produce rotation about an axis measured by the product of the force and the perpendicular distance from the line of action of the force to the axis.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:energy-Dimension](http://opendata.caceres.es/def/ontomunicipio#energy-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:energy-Dimension](http://opendata.caceres.es/def/ontomunicipio#energy-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### moment of force unit
 Property | Value
 --- | ---
@@ -3033,7 +3033,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NormalAlbedo`
 Description | <p>Ratio between radiation falling vertically onto an object and the radiation radiated back vertically.</p>
 Super-classes |[om:Albedo](http://opendata.caceres.es/def/ontomunicipio#Albedo) (c)<br />
-### normaalvervorming
+### normal strain
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NormalStrain`
@@ -3054,8 +3054,8 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Number`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
-Sub-classes |[om:NumberVascularBrowning](http://opendata.caceres.es/def/ontomunicipio#NumberVascularBrowning) (c)<br />[om:NumberBotrytis](http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis) (c)<br />[om:NumberPulpBrowning](http://opendata.caceres.es/def/ontomunicipio#NumberPulpBrowning) (c)<br />[om:NumberExternalBrowning](http://opendata.caceres.es/def/ontomunicipio#NumberExternalBrowning) (c)<br />[om:NumberBuds](http://opendata.caceres.es/def/ontomunicipio#NumberBuds) (c)<br />[om:NumberBudStadium](http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium) (c)<br />[om:NumberFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberFlowers) (c)<br />[om:NumberColor](http://opendata.caceres.es/def/ontomunicipio#NumberColor) (c)<br />[om:NumberManualFirmness](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness) (c)<br />[om:NumberLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberLeaves) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Sub-classes |[om:NumberColor](http://opendata.caceres.es/def/ontomunicipio#NumberColor) (c)<br />[om:NumberFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberFlowers) (c)<br />[om:NumberBudStadium](http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium) (c)<br />[om:NumberPulpBrowning](http://opendata.caceres.es/def/ontomunicipio#NumberPulpBrowning) (c)<br />[om:NumberVascularBrowning](http://opendata.caceres.es/def/ontomunicipio#NumberVascularBrowning) (c)<br />[om:NumberLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberLeaves) (c)<br />[om:NumberBotrytis](http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis) (c)<br />[om:NumberExternalBrowning](http://opendata.caceres.es/def/ontomunicipio#NumberExternalBrowning) (c)<br />[om:NumberManualFirmness](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness) (c)<br />[om:NumberBuds](http://opendata.caceres.es/def/ontomunicipio#NumberBuds) (c)<br />
 ### aantal gevallen knoppen
 Property | Value
 --- | ---
@@ -3068,13 +3068,13 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberAbscisedFlowers`
 Description | <p>Aantal gevallen bloemen.</p>
 Super-classes |[om:NumberFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberFlowers) (c)<br />
-### aantal gevallen bladeren
+### number abscised leaves
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberAbscisedLeaves`
 Description | <p>Aantal gevallen bladeren.</p>
 Super-classes |[om:NumberLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberLeaves) (c)<br />
-### number blue-discolored flowers
+### aantal blauwverkleurde bloemen
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberBlue-DiscoloredFlowers`
@@ -3085,8 +3085,8 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis`
 Super-classes |[om:Number](http://opendata.caceres.es/def/ontomunicipio#Number) (c)<br />
-Sub-classes |[om:NumberBotrytis3](http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis3) (c)<br />[om:NumberBotrytis0](http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis0) (c)<br />[om:NumberBotrytis4](http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis4) (c)<br />[om:NumberBotrytis2](http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis2) (c)<br />[om:NumberBotrytis1](http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis1) (c)<br />
-### aantal Botrytis 0
+Sub-classes |[om:NumberBotrytis0](http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis0) (c)<br />[om:NumberBotrytis1](http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis1) (c)<br />[om:NumberBotrytis3](http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis3) (c)<br />[om:NumberBotrytis4](http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis4) (c)<br />[om:NumberBotrytis2](http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis2) (c)<br />
+### number Botrytis 0
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis0`
@@ -3110,31 +3110,31 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis3`
 Description | <p>Aantal bloemen met Botrytis 3: één bruin petaal of vlekken op meer petalen.</p>
 Super-classes |[om:NumberBotrytis](http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis) (c)<br />
-### number Botrytis 4
+### aantal Botrytis 4
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis4`
 Description | <p>Aantal bloemen met Botrytis 4: minimaal één bruin petaal en hart aangetast.</p>
 Super-classes |[om:NumberBotrytis](http://opendata.caceres.es/def/ontomunicipio#NumberBotrytis) (c)<br />
-### aantal knopstadium
+### number bud stadium
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium`
 Super-classes |[om:Number](http://opendata.caceres.es/def/ontomunicipio#Number) (c)<br />
-Sub-classes |[om:NumberBudStadium5](http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium5) (c)<br />[om:NumberBudStadium2](http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium2) (c)<br />[om:NumberBudStadium3](http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium3) (c)<br />[om:NumberBudStadium1](http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium1) (c)<br />[om:NumberBudStadium4](http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium4) (c)<br />
-### aantal knopstadium 1
+Sub-classes |[om:NumberBudStadium2](http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium2) (c)<br />[om:NumberBudStadium3](http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium3) (c)<br />[om:NumberBudStadium1](http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium1) (c)<br />[om:NumberBudStadium4](http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium4) (c)<br />[om:NumberBudStadium5](http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium5) (c)<br />
+### number bud stadium 1
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium1`
 Description | <p>Roos aantal in knopstadium 1: spitse knop.</p>
 Super-classes |[om:NumberBudStadium](http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium) (c)<br />
-### number bud stadium 2
+### aantal knopstadium 2
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium2`
 Description | <p>Roos aantal in knopstadium 2: spitse knop.</p>
 Super-classes |[om:NumberBudStadium](http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium) (c)<br />
-### aantal knopstadium 3
+### number bud stadium 3
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium3`
@@ -3146,7 +3146,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium4`
 Description | <p>Roos aantal in knopstadium 4: spitse knop.</p>
 Super-classes |[om:NumberBudStadium](http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium) (c)<br />
-### aantal knopstadium 5
+### number bud stadium 5
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberBudStadium5`
@@ -3157,20 +3157,20 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberBuds`
 Super-classes |[om:Number](http://opendata.caceres.es/def/ontomunicipio#Number) (c)<br />
-Sub-classes |[om:NumberDryBuds](http://opendata.caceres.es/def/ontomunicipio#NumberDryBuds) (c)<br />[om:TotalNumberBuds](http://opendata.caceres.es/def/ontomunicipio#TotalNumberBuds) (c)<br />[om:NumberMalformedBuds](http://opendata.caceres.es/def/ontomunicipio#NumberMalformedBuds) (c)<br />[om:NumberAbscisedBuds](http://opendata.caceres.es/def/ontomunicipio#NumberAbscisedBuds) (c)<br />
+Sub-classes |[om:NumberMalformedBuds](http://opendata.caceres.es/def/ontomunicipio#NumberMalformedBuds) (c)<br />[om:TotalNumberBuds](http://opendata.caceres.es/def/ontomunicipio#TotalNumberBuds) (c)<br />[om:NumberAbscisedBuds](http://opendata.caceres.es/def/ontomunicipio#NumberAbscisedBuds) (c)<br />[om:NumberDryBuds](http://opendata.caceres.es/def/ontomunicipio#NumberDryBuds) (c)<br />
 ### aantal kleur
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberColor`
 Super-classes |[om:Number](http://opendata.caceres.es/def/ontomunicipio#Number) (c)<br />
-Sub-classes |[om:NumberColor4](http://opendata.caceres.es/def/ontomunicipio#NumberColor4) (c)<br />[om:NumberColor5](http://opendata.caceres.es/def/ontomunicipio#NumberColor5) (c)<br />[om:NumberColor1](http://opendata.caceres.es/def/ontomunicipio#NumberColor1) (c)<br />[om:NumberVascularBrowning4](http://opendata.caceres.es/def/ontomunicipio#NumberVascularBrowning4) (c)<br />[om:NumberExternalBrowning2](http://opendata.caceres.es/def/ontomunicipio#NumberExternalBrowning2) (c)<br />[om:NumberColor3](http://opendata.caceres.es/def/ontomunicipio#NumberColor3) (c)<br />[om:NumberVascularBrowning5](http://opendata.caceres.es/def/ontomunicipio#NumberVascularBrowning5) (c)<br />[om:NumberExternalBrowning4](http://opendata.caceres.es/def/ontomunicipio#NumberExternalBrowning4) (c)<br />[om:NumberExternalBrowning1](http://opendata.caceres.es/def/ontomunicipio#NumberExternalBrowning1) (c)<br />[om:NumberExternalBrowning5](http://opendata.caceres.es/def/ontomunicipio#NumberExternalBrowning5) (c)<br />[om:NumberVascularBrowning1](http://opendata.caceres.es/def/ontomunicipio#NumberVascularBrowning1) (c)<br />[om:NumberPulpBrowning3](http://opendata.caceres.es/def/ontomunicipio#NumberPulpBrowning3) (c)<br />[om:NumberPulpBrowning4](http://opendata.caceres.es/def/ontomunicipio#NumberPulpBrowning4) (c)<br />[om:NumberExternalBrowning3](http://opendata.caceres.es/def/ontomunicipio#NumberExternalBrowning3) (c)<br />[om:NumberPulpBrowning2](http://opendata.caceres.es/def/ontomunicipio#NumberPulpBrowning2) (c)<br />[om:NumberVascularBrowning3](http://opendata.caceres.es/def/ontomunicipio#NumberVascularBrowning3) (c)<br />[om:NumberColor2](http://opendata.caceres.es/def/ontomunicipio#NumberColor2) (c)<br />[om:NumberPulpBrowning5](http://opendata.caceres.es/def/ontomunicipio#NumberPulpBrowning5) (c)<br />[om:NumberVascularBrowning2](http://opendata.caceres.es/def/ontomunicipio#NumberVascularBrowning2) (c)<br />[om:NumberPulpBrowning1](http://opendata.caceres.es/def/ontomunicipio#NumberPulpBrowning1) (c)<br />
+Sub-classes |[om:NumberColor4](http://opendata.caceres.es/def/ontomunicipio#NumberColor4) (c)<br />[om:NumberColor5](http://opendata.caceres.es/def/ontomunicipio#NumberColor5) (c)<br />[om:NumberVascularBrowning4](http://opendata.caceres.es/def/ontomunicipio#NumberVascularBrowning4) (c)<br />[om:NumberColor1](http://opendata.caceres.es/def/ontomunicipio#NumberColor1) (c)<br />[om:NumberColor3](http://opendata.caceres.es/def/ontomunicipio#NumberColor3) (c)<br />[om:NumberPulpBrowning3](http://opendata.caceres.es/def/ontomunicipio#NumberPulpBrowning3) (c)<br />[om:NumberPulpBrowning4](http://opendata.caceres.es/def/ontomunicipio#NumberPulpBrowning4) (c)<br />[om:NumberPulpBrowning5](http://opendata.caceres.es/def/ontomunicipio#NumberPulpBrowning5) (c)<br />[om:NumberVascularBrowning5](http://opendata.caceres.es/def/ontomunicipio#NumberVascularBrowning5) (c)<br />[om:NumberExternalBrowning1](http://opendata.caceres.es/def/ontomunicipio#NumberExternalBrowning1) (c)<br />[om:NumberPulpBrowning2](http://opendata.caceres.es/def/ontomunicipio#NumberPulpBrowning2) (c)<br />[om:NumberExternalBrowning3](http://opendata.caceres.es/def/ontomunicipio#NumberExternalBrowning3) (c)<br />[om:NumberVascularBrowning3](http://opendata.caceres.es/def/ontomunicipio#NumberVascularBrowning3) (c)<br />[om:NumberColor2](http://opendata.caceres.es/def/ontomunicipio#NumberColor2) (c)<br />[om:NumberExternalBrowning4](http://opendata.caceres.es/def/ontomunicipio#NumberExternalBrowning4) (c)<br />[om:NumberPulpBrowning1](http://opendata.caceres.es/def/ontomunicipio#NumberPulpBrowning1) (c)<br />[om:NumberVascularBrowning1](http://opendata.caceres.es/def/ontomunicipio#NumberVascularBrowning1) (c)<br />[om:NumberExternalBrowning5](http://opendata.caceres.es/def/ontomunicipio#NumberExternalBrowning5) (c)<br />[om:NumberExternalBrowning2](http://opendata.caceres.es/def/ontomunicipio#NumberExternalBrowning2) (c)<br />[om:NumberVascularBrowning2](http://opendata.caceres.es/def/ontomunicipio#NumberVascularBrowning2) (c)<br />
 ### aantal kleur 1
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberColor1`
 Description | <p>Voorbeeld avocado Hass: code 1 poster (vrijwel) geheel groen.</p>
 Super-classes |[om:NumberColor](http://opendata.caceres.es/def/ontomunicipio#NumberColor) (c)<br />
-### aantal kleur 2
+### number color 2
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberColor2`
@@ -3188,7 +3188,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberColor4`
 Description | <p>Voorbeeld avocado Hass: code 4 poster meer donker dan groen.</p>
 Super-classes |[om:NumberColor](http://opendata.caceres.es/def/ontomunicipio#NumberColor) (c)<br />
-### aantal kleur 5
+### number color 5
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberColor5`
@@ -3199,26 +3199,26 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberDensity`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:numberDensity-Dimension](http://opendata.caceres.es/def/ontomunicipio#numberDensity-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:numberDensity-Dimension](http://opendata.caceres.es/def/ontomunicipio#numberDensity-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 Sub-classes |[om:InitialMassFunction](http://opendata.caceres.es/def/ontomunicipio#InitialMassFunction) (c)<br />[om:LuminosityFunction](http://opendata.caceres.es/def/ontomunicipio#LuminosityFunction) (c)<br />
 ### number density unit
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberDensityUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### aantal verdroogde knoppen
+### number dry buds
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberDryBuds`
 Description | <p>Aantal verdroogde knoppen.</p>
 Super-classes |[om:NumberBuds](http://opendata.caceres.es/def/ontomunicipio#NumberBuds) (c)<br />
-### aantal verdroogde bloemen
+### number dry flowers
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberDryFlowers`
 Description | <p>Aantal verdroogde bloemen.</p>
 Super-classes |[om:NumberFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberFlowers) (c)<br />
-### number dry leaves
+### aantal verdroogde bladeren
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberDryLeaves`
@@ -3264,32 +3264,32 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberFlowers`
 Super-classes |[om:Number](http://opendata.caceres.es/def/ontomunicipio#Number) (c)<br />
-Sub-classes |[om:NumberBlue-DiscoloredFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberBlue-DiscoloredFlowers) (c)<br />[om:NumberWiltedFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberWiltedFlowers) (c)<br />[om:NumberAbscisedFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberAbscisedFlowers) (c)<br />[om:NumberNonturgidFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberNonturgidFlowers) (c)<br />[om:TotalNumberFlowers](http://opendata.caceres.es/def/ontomunicipio#TotalNumberFlowers) (c)<br />[om:NumberMalformedFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberMalformedFlowers) (c)<br />[om:NumberRottenFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberRottenFlowers) (c)<br />[om:NumberDryFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberDryFlowers) (c)<br />
+Sub-classes |[om:NumberMalformedFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberMalformedFlowers) (c)<br />[om:TotalNumberFlowers](http://opendata.caceres.es/def/ontomunicipio#TotalNumberFlowers) (c)<br />[om:NumberDryFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberDryFlowers) (c)<br />[om:NumberNonturgidFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberNonturgidFlowers) (c)<br />[om:NumberAbscisedFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberAbscisedFlowers) (c)<br />[om:NumberBlue-DiscoloredFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberBlue-DiscoloredFlowers) (c)<br />[om:NumberWiltedFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberWiltedFlowers) (c)<br />[om:NumberRottenFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberRottenFlowers) (c)<br />
 ### aantal bladeren
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberLeaves`
 Super-classes |[om:Number](http://opendata.caceres.es/def/ontomunicipio#Number) (c)<br />
-Sub-classes |[om:NumberRottenLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberRottenLeaves) (c)<br />[om:NumberWiltedLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberWiltedLeaves) (c)<br />[om:NumberDryLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberDryLeaves) (c)<br />[om:NumberYellowLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberYellowLeaves) (c)<br />[om:TotalNumberLeaves](http://opendata.caceres.es/def/ontomunicipio#TotalNumberLeaves) (c)<br />[om:NumberNonturgidLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberNonturgidLeaves) (c)<br />[om:NumberAbscisedLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberAbscisedLeaves) (c)<br />
-### number malformed buds
+Sub-classes |[om:NumberAbscisedLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberAbscisedLeaves) (c)<br />[om:NumberRottenLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberRottenLeaves) (c)<br />[om:TotalNumberLeaves](http://opendata.caceres.es/def/ontomunicipio#TotalNumberLeaves) (c)<br />[om:NumberYellowLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberYellowLeaves) (c)<br />[om:NumberWiltedLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberWiltedLeaves) (c)<br />[om:NumberDryLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberDryLeaves) (c)<br />[om:NumberNonturgidLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberNonturgidLeaves) (c)<br />
+### aantal misvormde knoppen
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberMalformedBuds`
 Description | <p>Aantal misvormde knoppen.</p>
 Super-classes |[om:NumberBuds](http://opendata.caceres.es/def/ontomunicipio#NumberBuds) (c)<br />
-### number malformed flowers
+### aantal misvormde bloemen
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberMalformedFlowers`
 Description | <p>Aantal misvormde bloemen.</p>
 Super-classes |[om:NumberFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberFlowers) (c)<br />
-### aantal manuele stevigheid
+### number manual firmness
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness`
 Super-classes |[om:Number](http://opendata.caceres.es/def/ontomunicipio#Number) (c)<br />
-Sub-classes |[om:NumberManualFirmness0.5](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness0.5) (c)<br />[om:NumberManualFirmness1](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness1) (c)<br />[om:NumberManualFirmness4](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness4) (c)<br />[om:NumberManualFirmness3.5](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness3.5) (c)<br />[om:NumberManualFirmness4.5](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness4.5) (c)<br />[om:NumberManualFirmness0](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness0) (c)<br />[om:NumberManualFirmness2.5](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness2.5) (c)<br />[om:NumberManualFirmness5](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness5) (c)<br />[om:NumberManualFirmness1.5](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness1.5) (c)<br />[om:NumberManualFirmness2](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness2) (c)<br />[om:NumberManualFirmness3](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness3) (c)<br />
-### aantal manuele stevigheid 0
+Sub-classes |[om:NumberManualFirmness2](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness2) (c)<br />[om:NumberManualFirmness1](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness1) (c)<br />[om:NumberManualFirmness1.5](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness1.5) (c)<br />[om:NumberManualFirmness3.5](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness3.5) (c)<br />[om:NumberManualFirmness0.5](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness0.5) (c)<br />[om:NumberManualFirmness4.5](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness4.5) (c)<br />[om:NumberManualFirmness5](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness5) (c)<br />[om:NumberManualFirmness4](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness4) (c)<br />[om:NumberManualFirmness3](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness3) (c)<br />[om:NumberManualFirmness0](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness0) (c)<br />[om:NumberManualFirmness2.5](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness2.5) (c)<br />
+### number manual firmness 0
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness0`
@@ -3301,43 +3301,43 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness0.5`
 Description | <p>Firmness manueel: 0.5 = hard.</p>
 Super-classes |[om:NumberManualFirmness](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness) (c)<br />
-### number manual firmness 1
+### aantal manuele stevigheid 1
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness1`
 Description | <p>Firmness manueel: 1 = zeer stevig.</p>
 Super-classes |[om:NumberManualFirmness](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness) (c)<br />
-### aantal manuele stevigheid 1.5
+### number manual firmness 1.5
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness1.5`
 Description | <p>Firmness manueel: 1.5 = stevig.</p>
 Super-classes |[om:NumberManualFirmness](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness) (c)<br />
-### number manual firmness 2
+### aantal manuele stevigheid 2
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness2`
 Description | <p>Firmness manueel: 2 = halfzacht.</p>
 Super-classes |[om:NumberManualFirmness](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness) (c)<br />
-### aantal manuele stevigheid 2.5
+### number manual firmness 2.5
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness2.5`
 Description | <p>Firmness manueel: 2.5 = eetrijp.</p>
 Super-classes |[om:NumberManualFirmness](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness) (c)<br />
-### aantal manuele stevigheid 3
+### number manual firmness 3
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness3`
 Description | <p>Firmness manueel: 3 = zacht.</p>
 Super-classes |[om:NumberManualFirmness](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness) (c)<br />
-### number manual firmness 3.5
+### aantal manuele stevigheid 3.5
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness3.5`
 Description | <p>Firmness manueel: 3.5 = te zacht.</p>
 Super-classes |[om:NumberManualFirmness](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness) (c)<br />
-### aantal manuele stevigheid 4
+### number manual firmness 4
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness4`
@@ -3349,19 +3349,19 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness4.5`
 Description | <p>Firmness manueel: 4.5 = vies.</p>
 Super-classes |[om:NumberManualFirmness](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness) (c)<br />
-### number manual firmness 5
+### aantal manuele stevigheid 5
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness5`
 Description | <p>Firmness manueel: 5 = zeer vies.</p>
 Super-classes |[om:NumberManualFirmness](http://opendata.caceres.es/def/ontomunicipio#NumberManualFirmness) (c)<br />
-### aantal slappe bloemen
+### number nonturgid flowers
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberNonturgidFlowers`
 Description | <p>Aantal slappe bloemen.</p>
 Super-classes |[om:NumberFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberFlowers) (c)<br />
-### number nonturgid leaves
+### aantal slappe bladeren
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberNonturgidLeaves`
@@ -3408,7 +3408,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberRottenFlowers`
 Description | <p>Aantal rotte bloemen.</p>
 Super-classes |[om:NumberFlowers](http://opendata.caceres.es/def/ontomunicipio#NumberFlowers) (c)<br />
-### aantal rotte bladeren
+### number rotten leaves
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberRottenLeaves`
@@ -3466,13 +3466,13 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberWiltedLeaves`
 Description | <p>Aantal verwelkte bladeren.</p>
 Super-classes |[om:NumberLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberLeaves) (c)<br />
-### aantal vergeelde bladeren
+### number yellow leaves
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NumberYellowLeaves`
 Description | <p>Aantal yellow bladeren.</p>
 Super-classes |[om:NumberLeaves](http://opendata.caceres.es/def/ontomunicipio#NumberLeaves) (c)<br />
-### Nusselt number
+### getal van Nusselt
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NusseltNumber`
@@ -3484,7 +3484,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#NusseltNumberForMassTransfer`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### Nusselt number for mass transfer unit
 Property | Value
 --- | ---
@@ -3517,13 +3517,13 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#PecletNumber`
 Description | <p>The Péclet number is a dimensionless number that relates the rate of advection of a flow to its rate of diffusion, often thermal diffusion.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
 ### Péclet number for mass transfer
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#PecletNumberForMassTransfer`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
 ### Péclet number for mass transfer unit
 Property | Value
 --- | ---
@@ -3556,12 +3556,12 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#PeriodOfVariability`
 Description | <p>The duration of one cycle in a (semi) periodical star.</p>
 Super-classes |[om:Time](http://opendata.caceres.es/def/ontomunicipio#Time) (c)<br />
-### permeabiliteit (aardwetenschappen)
+### permeability (earth science)
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Permeability-EarthScience`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:area-Dimension](http://opendata.caceres.es/def/ontomunicipio#area-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:area-Dimension](http://opendata.caceres.es/def/ontomunicipio#area-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### permeability (earth science) unit
 Property | Value
 --- | ---
@@ -3572,7 +3572,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#PermeabilityOfFreeSpace`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:permeabilityOfFreeSpace-Dimension](http://opendata.caceres.es/def/ontomunicipio#permeabilityOfFreeSpace-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:permeabilityOfFreeSpace-Dimension](http://opendata.caceres.es/def/ontomunicipio#permeabilityOfFreeSpace-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### permeability of free space unit
 Property | Value
 --- | ---
@@ -3596,7 +3596,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Permeance-MaterialsScience`
 Description | <p>Permeance is the degree to which a material transmits another substance.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:permeance-MaterialsScience-Dimension](http://opendata.caceres.es/def/ontomunicipio#permeance-MaterialsScience-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:permeance-MaterialsScience-Dimension](http://opendata.caceres.es/def/ontomunicipio#permeance-MaterialsScience-Dimension) (c)<br />
 ### permeance (materials science) unit
 Property | Value
 --- | ---
@@ -3607,7 +3607,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Permittivity`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:permittivity-Dimension](http://opendata.caceres.es/def/ontomunicipio#permittivity-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:permittivity-Dimension](http://opendata.caceres.es/def/ontomunicipio#permittivity-Dimension) (c)<br />
 ### permittivity unit
 Property | Value
 --- | ---
@@ -3629,7 +3629,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#PhotographicMagnitude`
 Super-classes |[om:Magnitude](http://opendata.caceres.es/def/ontomunicipio#Magnitude) (c)<br />
-Sub-classes |[om:PhotographicMagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#PhotographicMagnitudeAtMaximumBrightness) (c)<br />[om:PhotographicMagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#PhotographicMagnitudeAtMinimumBrightness) (c)<br />
+Sub-classes |[om:PhotographicMagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#PhotographicMagnitudeAtMinimumBrightness) (c)<br />[om:PhotographicMagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#PhotographicMagnitudeAtMaximumBrightness) (c)<br />
 ### photographic magnitude at maximum brightness
 Property | Value
 --- | ---
@@ -3639,7 +3639,7 @@ Super-classes |[om:PhotographicMagnitude](http://opendata.caceres.es/def/ontomun
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#PhotographicMagnitudeAtMinimumBrightness`
-Super-classes |[om:MagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#MagnitudeAtMinimumBrightness) (c)<br />[om:PhotographicMagnitude](http://opendata.caceres.es/def/ontomunicipio#PhotographicMagnitude) (c)<br />
+Super-classes |[om:PhotographicMagnitude](http://opendata.caceres.es/def/ontomunicipio#PhotographicMagnitude) (c)<br />[om:MagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#MagnitudeAtMinimumBrightness) (c)<br />
 ### planetary aberration
 Property | Value
 --- | ---
@@ -3659,12 +3659,12 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#PotassiumSorbateMassFraction`
 Description | <p>The fraction of the mass of potassium sorbate in a phenomenon</p>
 Super-classes |[om:MassFraction](http://opendata.caceres.es/def/ontomunicipio#MassFraction) (c)<br />
-### potential difference
+### potentiaalverschil
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#PotentialDifference`
 Super-classes |[om:ElectricPotential](http://opendata.caceres.es/def/ontomunicipio#ElectricPotential) (c)<br />
-### 势能
+### potentiële energie
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#PotentialEnergy`
@@ -3676,14 +3676,14 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Power`
 Description | <p>Power is the time rate at which work is done. It is a derived quantity in the International System of Units. Power is energy divided by time.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:power-Dimension](http://opendata.caceres.es/def/ontomunicipio#power-Dimension) (c)<br />
-Sub-classes |[om:HeatFlowRate](http://opendata.caceres.es/def/ontomunicipio#HeatFlowRate) (c)<br />[om:RadiantFlux](http://opendata.caceres.es/def/ontomunicipio#RadiantFlux) (c)<br />[om:NoiseEquivalentPower](http://opendata.caceres.es/def/ontomunicipio#NoiseEquivalentPower) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:power-Dimension](http://opendata.caceres.es/def/ontomunicipio#power-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Sub-classes |[om:NoiseEquivalentPower](http://opendata.caceres.es/def/ontomunicipio#NoiseEquivalentPower) (c)<br />[om:RadiantFlux](http://opendata.caceres.es/def/ontomunicipio#RadiantFlux) (c)<br />[om:HeatFlowRate](http://opendata.caceres.es/def/ontomunicipio#HeatFlowRate) (c)<br />
 ### power density
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#PowerDensity`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:powerDensity-Dimension](http://opendata.caceres.es/def/ontomunicipio#powerDensity-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:powerDensity-Dimension](http://opendata.caceres.es/def/ontomunicipio#powerDensity-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 Sub-classes |[om:HeatFluxDensity](http://opendata.caceres.es/def/ontomunicipio#HeatFluxDensity) (c)<br />[om:Irradiance](http://opendata.caceres.es/def/ontomunicipio#Irradiance) (c)<br />
 ### power density unit
 Property | Value
@@ -3695,12 +3695,12 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#PowerUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### Prandtl number
+### getal van Prandtl
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#PrandtlNumber`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### Prandtl number unit
 Property | Value
 --- | ---
@@ -3964,7 +3964,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#PrefixedUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
 Restrictions |[om:hasUnit](http://opendata.caceres.es/def/ontomunicipio#hasUnit) (op) **only** [om:SingularUnit](http://opendata.caceres.es/def/ontomunicipio#SingularUnit) (c)<br />
-Sub-classes |[om:PrefixedTonne](http://opendata.caceres.es/def/ontomunicipio#PrefixedTonne) (c)<br />[om:PrefixedBit](http://opendata.caceres.es/def/ontomunicipio#PrefixedBit) (c)<br />[om:PrefixedKelvin](http://opendata.caceres.es/def/ontomunicipio#PrefixedKelvin) (c)<br />[om:PrefixedGray](http://opendata.caceres.es/def/ontomunicipio#PrefixedGray) (c)<br />[om:PrefixedHenry](http://opendata.caceres.es/def/ontomunicipio#PrefixedHenry) (c)<br />[om:PrefixedSteradian](http://opendata.caceres.es/def/ontomunicipio#PrefixedSteradian) (c)<br />[om:PrefixedAre](http://opendata.caceres.es/def/ontomunicipio#PrefixedAre) (c)<br />[om:PrefixedLitre](http://opendata.caceres.es/def/ontomunicipio#PrefixedLitre) (c)<br />[om:PrefixedCoulomb](http://opendata.caceres.es/def/ontomunicipio#PrefixedCoulomb) (c)<br />[om:PrefixedTesla](http://opendata.caceres.es/def/ontomunicipio#PrefixedTesla) (c)<br />[om:PrefixedWeber](http://opendata.caceres.es/def/ontomunicipio#PrefixedWeber) (c)<br />[om:PrefixedVolt](http://opendata.caceres.es/def/ontomunicipio#PrefixedVolt) (c)<br />[om:PrefixedWatt](http://opendata.caceres.es/def/ontomunicipio#PrefixedWatt) (c)<br />[om:PrefixedCandela](http://opendata.caceres.es/def/ontomunicipio#PrefixedCandela) (c)<br />[om:PrefixedRadian](http://opendata.caceres.es/def/ontomunicipio#PrefixedRadian) (c)<br />[om:PrefixedLumen](http://opendata.caceres.es/def/ontomunicipio#PrefixedLumen) (c)<br />[om:PrefixedStokes](http://opendata.caceres.es/def/ontomunicipio#PrefixedStokes) (c)<br />[om:PrefixedOhm](http://opendata.caceres.es/def/ontomunicipio#PrefixedOhm) (c)<br />[om:PrefixedDegreeCelsius](http://opendata.caceres.es/def/ontomunicipio#PrefixedDegreeCelsius) (c)<br />[om:PrefixedAmpere](http://opendata.caceres.es/def/ontomunicipio#PrefixedAmpere) (c)<br />[om:PrefixedPascal](http://opendata.caceres.es/def/ontomunicipio#PrefixedPascal) (c)<br />[om:PrefixedElectronvolt](http://opendata.caceres.es/def/ontomunicipio#PrefixedElectronvolt) (c)<br />[om:PrefixedSievert](http://opendata.caceres.es/def/ontomunicipio#PrefixedSievert) (c)<br />[om:PrefixedSiemens](http://opendata.caceres.es/def/ontomunicipio#PrefixedSiemens) (c)<br />[om:PrefixedJoule](http://opendata.caceres.es/def/ontomunicipio#PrefixedJoule) (c)<br />[om:PrefixedFarad](http://opendata.caceres.es/def/ontomunicipio#PrefixedFarad) (c)<br />[om:PrefixedMetre](http://opendata.caceres.es/def/ontomunicipio#PrefixedMetre) (c)<br />[om:PrefixedMolair](http://opendata.caceres.es/def/ontomunicipio#PrefixedMolair) (c)<br />[om:PrefixedHertz](http://opendata.caceres.es/def/ontomunicipio#PrefixedHertz) (c)<br />[om:PrefixedLux](http://opendata.caceres.es/def/ontomunicipio#PrefixedLux) (c)<br />[om:PrefixedSecond-Time](http://opendata.caceres.es/def/ontomunicipio#PrefixedSecond-Time) (c)<br />[om:PrefixedPoise](http://opendata.caceres.es/def/ontomunicipio#PrefixedPoise) (c)<br />[om:PrefixedBecquerel](http://opendata.caceres.es/def/ontomunicipio#PrefixedBecquerel) (c)<br />[om:PrefixedMole](http://opendata.caceres.es/def/ontomunicipio#PrefixedMole) (c)<br />[om:PrefixedUnifiedAtomicMassUnit](http://opendata.caceres.es/def/ontomunicipio#PrefixedUnifiedAtomicMassUnit) (c)<br />[om:PrefixedCalorie-Mean](http://opendata.caceres.es/def/ontomunicipio#PrefixedCalorie-Mean) (c)<br />[om:PrefixedNewton](http://opendata.caceres.es/def/ontomunicipio#PrefixedNewton) (c)<br />[om:PrefixedGram](http://opendata.caceres.es/def/ontomunicipio#PrefixedGram) (c)<br />[om:PrefixedByte](http://opendata.caceres.es/def/ontomunicipio#PrefixedByte) (c)<br />[om:PrefixedKatal](http://opendata.caceres.es/def/ontomunicipio#PrefixedKatal) (c)<br />
+Sub-classes |[om:PrefixedHertz](http://opendata.caceres.es/def/ontomunicipio#PrefixedHertz) (c)<br />[om:PrefixedGram](http://opendata.caceres.es/def/ontomunicipio#PrefixedGram) (c)<br />[om:PrefixedKatal](http://opendata.caceres.es/def/ontomunicipio#PrefixedKatal) (c)<br />[om:PrefixedElectronvolt](http://opendata.caceres.es/def/ontomunicipio#PrefixedElectronvolt) (c)<br />[om:PrefixedTonne](http://opendata.caceres.es/def/ontomunicipio#PrefixedTonne) (c)<br />[om:PrefixedLumen](http://opendata.caceres.es/def/ontomunicipio#PrefixedLumen) (c)<br />[om:PrefixedGray](http://opendata.caceres.es/def/ontomunicipio#PrefixedGray) (c)<br />[om:PrefixedFarad](http://opendata.caceres.es/def/ontomunicipio#PrefixedFarad) (c)<br />[om:PrefixedWatt](http://opendata.caceres.es/def/ontomunicipio#PrefixedWatt) (c)<br />[om:PrefixedCoulomb](http://opendata.caceres.es/def/ontomunicipio#PrefixedCoulomb) (c)<br />[om:PrefixedSiemens](http://opendata.caceres.es/def/ontomunicipio#PrefixedSiemens) (c)<br />[om:PrefixedStokes](http://opendata.caceres.es/def/ontomunicipio#PrefixedStokes) (c)<br />[om:PrefixedSievert](http://opendata.caceres.es/def/ontomunicipio#PrefixedSievert) (c)<br />[om:PrefixedAmpere](http://opendata.caceres.es/def/ontomunicipio#PrefixedAmpere) (c)<br />[om:PrefixedSteradian](http://opendata.caceres.es/def/ontomunicipio#PrefixedSteradian) (c)<br />[om:PrefixedUnifiedAtomicMassUnit](http://opendata.caceres.es/def/ontomunicipio#PrefixedUnifiedAtomicMassUnit) (c)<br />[om:PrefixedAre](http://opendata.caceres.es/def/ontomunicipio#PrefixedAre) (c)<br />[om:PrefixedWeber](http://opendata.caceres.es/def/ontomunicipio#PrefixedWeber) (c)<br />[om:PrefixedPoise](http://opendata.caceres.es/def/ontomunicipio#PrefixedPoise) (c)<br />[om:PrefixedLitre](http://opendata.caceres.es/def/ontomunicipio#PrefixedLitre) (c)<br />[om:PrefixedBecquerel](http://opendata.caceres.es/def/ontomunicipio#PrefixedBecquerel) (c)<br />[om:PrefixedOhm](http://opendata.caceres.es/def/ontomunicipio#PrefixedOhm) (c)<br />[om:PrefixedTesla](http://opendata.caceres.es/def/ontomunicipio#PrefixedTesla) (c)<br />[om:PrefixedByte](http://opendata.caceres.es/def/ontomunicipio#PrefixedByte) (c)<br />[om:PrefixedLux](http://opendata.caceres.es/def/ontomunicipio#PrefixedLux) (c)<br />[om:PrefixedCalorie-Mean](http://opendata.caceres.es/def/ontomunicipio#PrefixedCalorie-Mean) (c)<br />[om:PrefixedJoule](http://opendata.caceres.es/def/ontomunicipio#PrefixedJoule) (c)<br />[om:PrefixedVolt](http://opendata.caceres.es/def/ontomunicipio#PrefixedVolt) (c)<br />[om:PrefixedNewton](http://opendata.caceres.es/def/ontomunicipio#PrefixedNewton) (c)<br />[om:PrefixedMetre](http://opendata.caceres.es/def/ontomunicipio#PrefixedMetre) (c)<br />[om:PrefixedCandela](http://opendata.caceres.es/def/ontomunicipio#PrefixedCandela) (c)<br />[om:PrefixedSecond-Time](http://opendata.caceres.es/def/ontomunicipio#PrefixedSecond-Time) (c)<br />[om:PrefixedKelvin](http://opendata.caceres.es/def/ontomunicipio#PrefixedKelvin) (c)<br />[om:PrefixedRadian](http://opendata.caceres.es/def/ontomunicipio#PrefixedRadian) (c)<br />[om:PrefixedMolair](http://opendata.caceres.es/def/ontomunicipio#PrefixedMolair) (c)<br />[om:PrefixedPascal](http://opendata.caceres.es/def/ontomunicipio#PrefixedPascal) (c)<br />[om:PrefixedDegreeCelsius](http://opendata.caceres.es/def/ontomunicipio#PrefixedDegreeCelsius) (c)<br />[om:PrefixedBit](http://opendata.caceres.es/def/ontomunicipio#PrefixedBit) (c)<br />[om:PrefixedMole](http://opendata.caceres.es/def/ontomunicipio#PrefixedMole) (c)<br />[om:PrefixedHenry](http://opendata.caceres.es/def/ontomunicipio#PrefixedHenry) (c)<br />
 In domain of |[om:hasPrefix](http://opendata.caceres.es/def/ontomunicipio#hasPrefix) (op)<br />
 ### prefixed volt
 Property | Value
@@ -3981,7 +3981,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#PrefixedWeber`
 Super-classes |[om:PrefixedUnit](http://opendata.caceres.es/def/ontomunicipio#PrefixedUnit) (c)<br />
-### pressure
+### druk
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Pressure`
@@ -4005,23 +4005,23 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#PulpBrowning`
 Description | <p>Voorbeeld avocado Hass: poster (code).</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-### quality mark
+### kwaliteitscijfer
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#QualityMark`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Sub-classes |[om:QualityMarkTotal](http://opendata.caceres.es/def/ontomunicipio#QualityMarkTotal) (c)<br />[om:QualityMarkLeaf](http://opendata.caceres.es/def/ontomunicipio#QualityMarkLeaf) (c)<br />[om:QualityMarkFlower](http://opendata.caceres.es/def/ontomunicipio#QualityMarkFlower) (c)<br />
-### quality mark flower(s)
+Sub-classes |[om:QualityMarkLeaf](http://opendata.caceres.es/def/ontomunicipio#QualityMarkLeaf) (c)<br />[om:QualityMarkFlower](http://opendata.caceres.es/def/ontomunicipio#QualityMarkFlower) (c)<br />[om:QualityMarkTotal](http://opendata.caceres.es/def/ontomunicipio#QualityMarkTotal) (c)<br />
+### kwaliteitscijfer bloem(en)
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#QualityMarkFlower`
 Super-classes |[om:QualityMark](http://opendata.caceres.es/def/ontomunicipio#QualityMark) (c)<br />
-### quality mark leafs
+### kwaliteitscijfer bladeren
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#QualityMarkLeaf`
 Super-classes |[om:QualityMark](http://opendata.caceres.es/def/ontomunicipio#QualityMark) (c)<br />
-### quality mark total
+### kwaliteitscijfer total
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#QualityMarkTotal`
@@ -4031,16 +4031,16 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Quantity`
 Description | <p>A quantity is a representation of a quantifiable (standardised) aspect (such as length, mass, and time) of a phenomenon (e.g., a star, a molecule, or a food product). Quantities are classified according to similarity in their (implicit) metrological aspect, e.g. the length of my table and the length of my chair are both classified as length.</p>
-Sub-classes |[om:Mass](http://opendata.caceres.es/def/ontomunicipio#Mass) (c)<br />[om:MolarVolume](http://opendata.caceres.es/def/ontomunicipio#MolarVolume) (c)<br />[om:SchmidtNumber](http://opendata.caceres.es/def/ontomunicipio#SchmidtNumber) (c)<br />[om:AmountOfSubstanceConcentration](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceConcentration) (c)<br />[om:Magnitude](http://opendata.caceres.es/def/ontomunicipio#Magnitude) (c)<br />[om:AmountOfSubstanceFraction](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceFraction) (c)<br />[om:Responsivity](http://opendata.caceres.es/def/ontomunicipio#Responsivity) (c)<br />[om:CatalyticActivityConcentration](http://opendata.caceres.es/def/ontomunicipio#CatalyticActivityConcentration) (c)<br />[om:MolarHeatCapacity](http://opendata.caceres.es/def/ontomunicipio#MolarHeatCapacity) (c)<br />[om:CauseEndOfVaseLifeNonturgidLeaves](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeNonturgidLeaves) (c)<br />[om:SpecificEnergy](http://opendata.caceres.es/def/ontomunicipio#SpecificEnergy) (c)<br />[om:CauseEndOfVaseLifeBlueFlowers](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeBlueFlowers) (c)<br />[om:CauseEndOfVaseLifeWiltedFlowers](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeWiltedFlowers) (c)<br />[om:Acidity](http://opendata.caceres.es/def/ontomunicipio#Acidity) (c)<br />[om:Energy](http://opendata.caceres.es/def/ontomunicipio#Energy) (c)<br />[om:Acceleration](http://opendata.caceres.es/def/ontomunicipio#Acceleration) (c)<br />[om:StrouhalNumber](http://opendata.caceres.es/def/ontomunicipio#StrouhalNumber) (c)<br />[om:Capacitance](http://opendata.caceres.es/def/ontomunicipio#Capacitance) (c)<br />[om:PulpBrowning](http://opendata.caceres.es/def/ontomunicipio#PulpBrowning) (c)<br />[om:CosmologicalConstant](http://opendata.caceres.es/def/ontomunicipio#CosmologicalConstant) (c)<br />[om:DarkNoise](http://opendata.caceres.es/def/ontomunicipio#DarkNoise) (c)<br />[om:ReynoldsNumber](http://opendata.caceres.es/def/ontomunicipio#ReynoldsNumber) (c)<br />[om:MomentOfInertia](http://opendata.caceres.es/def/ontomunicipio#MomentOfInertia) (c)<br />[om:SpecificEntropy](http://opendata.caceres.es/def/ontomunicipio#SpecificEntropy) (c)<br />[om:MachNumber](http://opendata.caceres.es/def/ontomunicipio#MachNumber) (c)<br />[om:DynamicModulus](http://opendata.caceres.es/def/ontomunicipio#DynamicModulus) (c)<br />[om:Admittance](http://opendata.caceres.es/def/ontomunicipio#Admittance) (c)<br />[om:SaltStrength](http://opendata.caceres.es/def/ontomunicipio#SaltStrength) (c)<br />[om:WeberNumber](http://opendata.caceres.es/def/ontomunicipio#WeberNumber) (c)<br />[om:RadiantIntensity](http://opendata.caceres.es/def/ontomunicipio#RadiantIntensity) (c)<br />[om:StickStone](http://opendata.caceres.es/def/ontomunicipio#StickStone) (c)<br />[om:Permeance-Electromagnetic](http://opendata.caceres.es/def/ontomunicipio#Permeance-Electromagnetic) (c)<br />[om:AbsorbedDose](http://opendata.caceres.es/def/ontomunicipio#AbsorbedDose) (c)<br />[om:LuminousEnergy](http://opendata.caceres.es/def/ontomunicipio#LuminousEnergy) (c)<br />[om:ElectricField](http://opendata.caceres.es/def/ontomunicipio#ElectricField) (c)<br />[om:RelativeHumidity](http://opendata.caceres.es/def/ontomunicipio#RelativeHumidity) (c)<br />[om:AbsorbedDoseRate](http://opendata.caceres.es/def/ontomunicipio#AbsorbedDoseRate) (c)<br />[om:FirstCowlingNumber](http://opendata.caceres.es/def/ontomunicipio#FirstCowlingNumber) (c)<br />[om:CauseEndOfVaseLifeDryLeaves](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeDryLeaves) (c)<br />[om:CowlingNumber](http://opendata.caceres.es/def/ontomunicipio#CowlingNumber) (c)<br />[om:Lipophilicity](http://opendata.caceres.es/def/ontomunicipio#Lipophilicity) (c)<br />[om:ColumnNumberDensity](http://opendata.caceres.es/def/ontomunicipio#ColumnNumberDensity) (c)<br />[om:ElectricPotential](http://opendata.caceres.es/def/ontomunicipio#ElectricPotential) (c)<br />[om:ElectricDipoleMoment](http://opendata.caceres.es/def/ontomunicipio#ElectricDipoleMoment) (c)<br />[om:Number](http://opendata.caceres.es/def/ontomunicipio#Number) (c)<br />[om:Impulse](http://opendata.caceres.es/def/ontomunicipio#Impulse) (c)<br />[om:CauseEndOfVaseLifeAbscisedBuds](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeAbscisedBuds) (c)<br />[om:AlfvenNumber](http://opendata.caceres.es/def/ontomunicipio#AlfvenNumber) (c)<br />[om:KinematicViscosity](http://opendata.caceres.es/def/ontomunicipio#KinematicViscosity) (c)<br />[om:GasConstant](http://opendata.caceres.es/def/ontomunicipio#GasConstant) (c)<br />[om:AmountOfSubstanceFractionFlow](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceFractionFlow) (c)<br />[om:MolarMass](http://opendata.caceres.es/def/ontomunicipio#MolarMass) (c)<br />[om:SpecificVolume](http://opendata.caceres.es/def/ontomunicipio#SpecificVolume) (c)<br />[om:Molality](http://opendata.caceres.es/def/ontomunicipio#Molality) (c)<br />[om:Amphiphilicity](http://opendata.caceres.es/def/ontomunicipio#Amphiphilicity) (c)<br />[om:Momentum](http://opendata.caceres.es/def/ontomunicipio#Momentum) (c)<br />[om:Activity](http://opendata.caceres.es/def/ontomunicipio#Activity) (c)<br />[om:Ratio](http://opendata.caceres.es/def/ontomunicipio#Ratio) (c)<br />[om:Permeability-EarthScience](http://opendata.caceres.es/def/ontomunicipio#Permeability-EarthScience) (c)<br />[om:MagneticReynoldsNumber](http://opendata.caceres.es/def/ontomunicipio#MagneticReynoldsNumber) (c)<br />[om:StantonNumberForMassTransfer](http://opendata.caceres.es/def/ontomunicipio#StantonNumberForMassTransfer) (c)<br />[om:ElectricalConductance](http://opendata.caceres.es/def/ontomunicipio#ElectricalConductance) (c)<br />[om:GrashofNumberForMassTransfer](http://opendata.caceres.es/def/ontomunicipio#GrashofNumberForMassTransfer) (c)<br />[om:CauseEndOfVaseLifeRottenLeaves](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeRottenLeaves) (c)<br />[om:Power](http://opendata.caceres.es/def/ontomunicipio#Power) (c)<br />[om:SpectralResponse](http://opendata.caceres.es/def/ontomunicipio#SpectralResponse) (c)<br />[om:VascularBrowning](http://opendata.caceres.es/def/ontomunicipio#VascularBrowning) (c)<br />[om:Reddening](http://opendata.caceres.es/def/ontomunicipio#Reddening) (c)<br />[om:CauseEndOfVaseLifeBotrytis](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeBotrytis) (c)<br />[om:Length](http://opendata.caceres.es/def/ontomunicipio#Length) (c)<br />[om:ElectricChargeDensity](http://opendata.caceres.es/def/ontomunicipio#ElectricChargeDensity) (c)<br />[om:ThermalInsulance](http://opendata.caceres.es/def/ontomunicipio#ThermalInsulance) (c)<br />[om:PermeabilityOfFreeSpace](http://opendata.caceres.es/def/ontomunicipio#PermeabilityOfFreeSpace) (c)<br />[om:MomentOfForce](http://opendata.caceres.es/def/ontomunicipio#MomentOfForce) (c)<br />[om:DoseEquivalent](http://opendata.caceres.es/def/ontomunicipio#DoseEquivalent) (c)<br />[om:Time](http://opendata.caceres.es/def/ontomunicipio#Time) (c)<br />[om:HubbleConstant](http://opendata.caceres.es/def/ontomunicipio#HubbleConstant) (c)<br />[om:Force](http://opendata.caceres.es/def/ontomunicipio#Force) (c)<br />[om:GrashofNumber](http://opendata.caceres.es/def/ontomunicipio#GrashofNumber) (c)<br />[om:EnergyDensity](http://opendata.caceres.es/def/ontomunicipio#EnergyDensity) (c)<br />[om:TemperatureRate](http://opendata.caceres.es/def/ontomunicipio#TemperatureRate) (c)<br />[om:Luminance](http://opendata.caceres.es/def/ontomunicipio#Luminance) (c)<br />[om:Speed](http://opendata.caceres.es/def/ontomunicipio#Speed) (c)<br />[om:MagneticFlux](http://opendata.caceres.es/def/ontomunicipio#MagneticFlux) (c)<br />[om:NusseltNumber](http://opendata.caceres.es/def/ontomunicipio#NusseltNumber) (c)<br />[om:DensityParameter](http://opendata.caceres.es/def/ontomunicipio#DensityParameter) (c)<br />[om:SpecificViableCount](http://opendata.caceres.es/def/ontomunicipio#SpecificViableCount) (c)<br />[om:Pressure](http://opendata.caceres.es/def/ontomunicipio#Pressure) (c)<br />[om:StantonNumber](http://opendata.caceres.es/def/ontomunicipio#StantonNumber) (c)<br />[om:BolometricCorrection](http://opendata.caceres.es/def/ontomunicipio#BolometricCorrection) (c)<br />[om:AreaDensity](http://opendata.caceres.es/def/ontomunicipio#AreaDensity) (c)<br />[om:VolumetricHeatCapacity](http://opendata.caceres.es/def/ontomunicipio#VolumetricHeatCapacity) (c)<br />[om:AreaFraction](http://opendata.caceres.es/def/ontomunicipio#AreaFraction) (c)<br />[om:ElectricCharge](http://opendata.caceres.es/def/ontomunicipio#ElectricCharge) (c)<br />[om:Hydrophobicity](http://opendata.caceres.es/def/ontomunicipio#Hydrophobicity) (c)<br />[om:Wavenumber](http://opendata.caceres.es/def/ontomunicipio#Wavenumber) (c)<br />[om:MagnetomotiveForce](http://opendata.caceres.es/def/ontomunicipio#MagnetomotiveForce) (c)<br />[om:MassFlow](http://opendata.caceres.es/def/ontomunicipio#MassFlow) (c)<br />[om:MassFraction](http://opendata.caceres.es/def/ontomunicipio#MassFraction) (c)<br />[om:Permeance-MaterialsScience](http://opendata.caceres.es/def/ontomunicipio#Permeance-MaterialsScience) (c)<br />[om:Torque](http://opendata.caceres.es/def/ontomunicipio#Torque) (c)<br />[om:QuantityOfDimensionOne](http://opendata.caceres.es/def/ontomunicipio#QuantityOfDimensionOne) (c)<br />[om:CauseEndOfVaseLifeMalformedBuds](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeMalformedBuds) (c)<br />[om:ShearRate](http://opendata.caceres.es/def/ontomunicipio#ShearRate) (c)<br />[om:StemEndRot](http://opendata.caceres.es/def/ontomunicipio#StemEndRot) (c)<br />[om:Area](http://opendata.caceres.es/def/ontomunicipio#Area) (c)<br />[om:Hydrophilicity](http://opendata.caceres.es/def/ontomunicipio#Hydrophilicity) (c)<br />[om:SurfaceTension](http://opendata.caceres.es/def/ontomunicipio#SurfaceTension) (c)<br />[om:ThermalDiffusivity](http://opendata.caceres.es/def/ontomunicipio#ThermalDiffusivity) (c)<br />[om:CauseEndOfVaseLifeNonturgidFlowers](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeNonturgidFlowers) (c)<br />[om:BudStadium](http://opendata.caceres.es/def/ontomunicipio#BudStadium) (c)<br />[om:CatalyticActivity](http://opendata.caceres.es/def/ontomunicipio#CatalyticActivity) (c)<br />[om:EulerNumber](http://opendata.caceres.es/def/ontomunicipio#EulerNumber) (c)<br />[om:FroudeNumber](http://opendata.caceres.es/def/ontomunicipio#FroudeNumber) (c)<br />[om:MagneticFluxDensity](http://opendata.caceres.es/def/ontomunicipio#MagneticFluxDensity) (c)<br />[om:Fluidity](http://opendata.caceres.es/def/ontomunicipio#Fluidity) (c)<br />[om:HeatTransferCoefficient](http://opendata.caceres.es/def/ontomunicipio#HeatTransferCoefficient) (c)<br />[om:VolumetricViableCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricViableCount) (c)<br />[om:HeatCapacity](http://opendata.caceres.es/def/ontomunicipio#HeatCapacity) (c)<br />[om:Extinction](http://opendata.caceres.es/def/ontomunicipio#Extinction) (c)<br />[om:Firmness-Penetrometer-Method2](http://opendata.caceres.es/def/ontomunicipio#Firmness-Penetrometer-Method2) (c)<br />[om:ElectricalResistance](http://opendata.caceres.es/def/ontomunicipio#ElectricalResistance) (c)<br />[om:ElectricalResistivity](http://opendata.caceres.es/def/ontomunicipio#ElectricalResistivity) (c)<br />[om:AngularAcceleration](http://opendata.caceres.es/def/ontomunicipio#AngularAcceleration) (c)<br />[om:ThermalConductivity](http://opendata.caceres.es/def/ontomunicipio#ThermalConductivity) (c)<br />[om:SymbolRate](http://opendata.caceres.es/def/ontomunicipio#SymbolRate) (c)<br />[om:MolarEntropy](http://opendata.caceres.es/def/ontomunicipio#MolarEntropy) (c)<br />[om:CauseEndOfVaseLifeAbscisedFlowers](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeAbscisedFlowers) (c)<br />[om:FourierNumberForMassTransfer](http://opendata.caceres.es/def/ontomunicipio#FourierNumberForMassTransfer) (c)<br />[om:Reluctance](http://opendata.caceres.es/def/ontomunicipio#Reluctance) (c)<br />[om:ExposureToXAndGammaRays](http://opendata.caceres.es/def/ontomunicipio#ExposureToXAndGammaRays) (c)<br />[om:AmountOfSubstanceFlow](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceFlow) (c)<br />[om:ThermalResistance](http://opendata.caceres.es/def/ontomunicipio#ThermalResistance) (c)<br />[om:LuminousFlux](http://opendata.caceres.es/def/ontomunicipio#LuminousFlux) (c)<br />[om:PrandtlNumber](http://opendata.caceres.es/def/ontomunicipio#PrandtlNumber) (c)<br />[om:FourierNumber](http://opendata.caceres.es/def/ontomunicipio#FourierNumber) (c)<br />[om:CurvatureConstant](http://opendata.caceres.es/def/ontomunicipio#CurvatureConstant) (c)<br />[om:AreaDensityRate](http://opendata.caceres.es/def/ontomunicipio#AreaDensityRate) (c)<br />[om:AngularSpeed](http://opendata.caceres.es/def/ontomunicipio#AngularSpeed) (c)<br />[om:ExternalBrowning](http://opendata.caceres.es/def/ontomunicipio#ExternalBrowning) (c)<br />[om:AmountOfMoney](http://opendata.caceres.es/def/ontomunicipio#AmountOfMoney) (c)<br />[om:QuantumEfficiency](http://opendata.caceres.es/def/ontomunicipio#QuantumEfficiency) (c)<br />[om:ElectricCurrent](http://opendata.caceres.es/def/ontomunicipio#ElectricCurrent) (c)<br />[om:ScaleFactor](http://opendata.caceres.es/def/ontomunicipio#ScaleFactor) (c)<br />[om:QualityMark](http://opendata.caceres.es/def/ontomunicipio#QualityMark) (c)<br />[om:CauseEndOfVaseLifeYellowLeaves](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeYellowLeaves) (c)<br />[om:VolumetricFlowRate](http://opendata.caceres.es/def/ontomunicipio#VolumetricFlowRate) (c)<br />[om:NormalisedDetectivity](http://opendata.caceres.es/def/ontomunicipio#NormalisedDetectivity) (c)<br />[om:InformationCapacity](http://opendata.caceres.es/def/ontomunicipio#InformationCapacity) (c)<br />[om:CurrentDensity](http://opendata.caceres.es/def/ontomunicipio#CurrentDensity) (c)<br />[om:Exposure](http://opendata.caceres.es/def/ontomunicipio#Exposure) (c)<br />[om:LuminousEfficacy](http://opendata.caceres.es/def/ontomunicipio#LuminousEfficacy) (c)<br />[om:Permittivity](http://opendata.caceres.es/def/ontomunicipio#Permittivity) (c)<br />[om:CauseEndOfVaseLifeAbscisedLeaves](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeAbscisedLeaves) (c)<br />[om:ColourIndex](http://opendata.caceres.es/def/ontomunicipio#ColourIndex) (c)<br />[om:AmountOfSubstance](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstance) (c)<br />[om:PecletNumber](http://opendata.caceres.es/def/ontomunicipio#PecletNumber) (c)<br />[om:NusseltNumberForMassTransfer](http://opendata.caceres.es/def/ontomunicipio#NusseltNumberForMassTransfer) (c)<br />[om:AngularMomentum](http://opendata.caceres.es/def/ontomunicipio#AngularMomentum) (c)<br />[om:LewisNumber](http://opendata.caceres.es/def/ontomunicipio#LewisNumber) (c)<br />[om:SolidAngle](http://opendata.caceres.es/def/ontomunicipio#SolidAngle) (c)<br />[om:CauseEndOfVaseLifeMalformedFlowers](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeMalformedFlowers) (c)<br />[om:Illuminance](http://opendata.caceres.es/def/ontomunicipio#Illuminance) (c)<br />[om:CauseEndOfVaseLifeRottenFlowers](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeRottenFlowers) (c)<br />[om:ManualFirmness](http://opendata.caceres.es/def/ontomunicipio#ManualFirmness) (c)<br />[om:CauseEndOfVaseLifeDryFlowers](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeDryFlowers) (c)<br />[om:Density](http://opendata.caceres.es/def/ontomunicipio#Density) (c)<br />[om:Detectivity](http://opendata.caceres.es/def/ontomunicipio#Detectivity) (c)<br />[om:RayleighNumber](http://opendata.caceres.es/def/ontomunicipio#RayleighNumber) (c)<br />[om:AcousticFirmness](http://opendata.caceres.es/def/ontomunicipio#AcousticFirmness) (c)<br />[om:DynamicRange](http://opendata.caceres.es/def/ontomunicipio#DynamicRange) (c)<br />[om:PecletNumberForMassTransfer](http://opendata.caceres.es/def/ontomunicipio#PecletNumberForMassTransfer) (c)<br />[om:DynamicViscosity](http://opendata.caceres.es/def/ontomunicipio#DynamicViscosity) (c)<br />[om:Temperature](http://opendata.caceres.es/def/ontomunicipio#Temperature) (c)<br />[om:Inductance](http://opendata.caceres.es/def/ontomunicipio#Inductance) (c)<br />[om:Amplitude](http://opendata.caceres.es/def/ontomunicipio#Amplitude) (c)<br />[om:ElectricalConductivity](http://opendata.caceres.es/def/ontomunicipio#ElectricalConductivity) (c)<br />[om:Firmness-Penetrometer-Method1](http://opendata.caceres.es/def/ontomunicipio#Firmness-Penetrometer-Method1) (c)<br />[om:HartmannNumber](http://opendata.caceres.es/def/ontomunicipio#HartmannNumber) (c)<br />[om:Stress](http://opendata.caceres.es/def/ontomunicipio#Stress) (c)<br />[om:Frequency](http://opendata.caceres.es/def/ontomunicipio#Frequency) (c)<br />[om:Strain](http://opendata.caceres.es/def/ontomunicipio#Strain) (c)<br />[om:SpecificHeatCapacity](http://opendata.caceres.es/def/ontomunicipio#SpecificHeatCapacity) (c)<br />[om:MagneticField](http://opendata.caceres.es/def/ontomunicipio#MagneticField) (c)<br />[om:ElectricFluxDensity](http://opendata.caceres.es/def/ontomunicipio#ElectricFluxDensity) (c)<br />[om:Radiance](http://opendata.caceres.es/def/ontomunicipio#Radiance) (c)<br />[om:DecelerationParameter](http://opendata.caceres.es/def/ontomunicipio#DecelerationParameter) (c)<br />[om:KnudsenNumber](http://opendata.caceres.es/def/ontomunicipio#KnudsenNumber) (c)<br />[om:PowerDensity](http://opendata.caceres.es/def/ontomunicipio#PowerDensity) (c)<br />[om:VolumeFraction](http://opendata.caceres.es/def/ontomunicipio#VolumeFraction) (c)<br />[om:CauseEndOfVaseLifeWiltedLeaves](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeWiltedLeaves) (c)<br />[om:CauseEndOfVaseLifeDryBuds](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeDryBuds) (c)<br />[om:MolarEnergy](http://opendata.caceres.es/def/ontomunicipio#MolarEnergy) (c)<br />[om:LuminousIntensity](http://opendata.caceres.es/def/ontomunicipio#LuminousIntensity) (c)<br />[om:Angle](http://opendata.caceres.es/def/ontomunicipio#Angle) (c)<br />[om:SpecificCatalyticActivity](http://opendata.caceres.es/def/ontomunicipio#SpecificCatalyticActivity) (c)<br />[om:Volume](http://opendata.caceres.es/def/ontomunicipio#Volume) (c)<br />[om:Entropy](http://opendata.caceres.es/def/ontomunicipio#Entropy) (c)<br />[om:NumberDensity](http://opendata.caceres.es/def/ontomunicipio#NumberDensity) (c)<br />[om:Action](http://opendata.caceres.es/def/ontomunicipio#Action) (c)<br />
-In domain of |[om:hasAggregateFunction](http://opendata.caceres.es/def/ontomunicipio#hasAggregateFunction) (op)<br />[om:hasContext](http://opendata.caceres.es/def/ontomunicipio#hasContext) (op)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op)<br />[om:hasPhenomenon](http://opendata.caceres.es/def/ontomunicipio#hasPhenomenon) (op)<br />
-In range of |[om:hasBaseQuantity](http://opendata.caceres.es/def/ontomunicipio#hasBaseQuantity) (op)<br />[om:usesQuantity](http://opendata.caceres.es/def/ontomunicipio#usesQuantity) (op)<br />[om:hasQuantity](http://opendata.caceres.es/def/ontomunicipio#hasQuantity) (op)<br />[om:hasDerivedQuantity](http://opendata.caceres.es/def/ontomunicipio#hasDerivedQuantity) (op)<br />
+Sub-classes |[om:Amphiphilicity](http://opendata.caceres.es/def/ontomunicipio#Amphiphilicity) (c)<br />[om:LuminousEfficacy](http://opendata.caceres.es/def/ontomunicipio#LuminousEfficacy) (c)<br />[om:DynamicModulus](http://opendata.caceres.es/def/ontomunicipio#DynamicModulus) (c)<br />[om:FirstCowlingNumber](http://opendata.caceres.es/def/ontomunicipio#FirstCowlingNumber) (c)<br />[om:StantonNumber](http://opendata.caceres.es/def/ontomunicipio#StantonNumber) (c)<br />[om:LuminousEnergy](http://opendata.caceres.es/def/ontomunicipio#LuminousEnergy) (c)<br />[om:MagnetomotiveForce](http://opendata.caceres.es/def/ontomunicipio#MagnetomotiveForce) (c)<br />[om:MassFlow](http://opendata.caceres.es/def/ontomunicipio#MassFlow) (c)<br />[om:CauseEndOfVaseLifeDryBuds](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeDryBuds) (c)<br />[om:CauseEndOfVaseLifeNonturgidLeaves](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeNonturgidLeaves) (c)<br />[om:RayleighNumber](http://opendata.caceres.es/def/ontomunicipio#RayleighNumber) (c)<br />[om:Wavenumber](http://opendata.caceres.es/def/ontomunicipio#Wavenumber) (c)<br />[om:CauseEndOfVaseLifeBotrytis](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeBotrytis) (c)<br />[om:InformationCapacity](http://opendata.caceres.es/def/ontomunicipio#InformationCapacity) (c)<br />[om:DarkNoise](http://opendata.caceres.es/def/ontomunicipio#DarkNoise) (c)<br />[om:MomentOfForce](http://opendata.caceres.es/def/ontomunicipio#MomentOfForce) (c)<br />[om:AmountOfSubstance](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstance) (c)<br />[om:ShearRate](http://opendata.caceres.es/def/ontomunicipio#ShearRate) (c)<br />[om:VolumetricHeatCapacity](http://opendata.caceres.es/def/ontomunicipio#VolumetricHeatCapacity) (c)<br />[om:Stress](http://opendata.caceres.es/def/ontomunicipio#Stress) (c)<br />[om:MagneticFlux](http://opendata.caceres.es/def/ontomunicipio#MagneticFlux) (c)<br />[om:MagneticFluxDensity](http://opendata.caceres.es/def/ontomunicipio#MagneticFluxDensity) (c)<br />[om:Capacitance](http://opendata.caceres.es/def/ontomunicipio#Capacitance) (c)<br />[om:VolumetricFlowRate](http://opendata.caceres.es/def/ontomunicipio#VolumetricFlowRate) (c)<br />[om:Permeance-Electromagnetic](http://opendata.caceres.es/def/ontomunicipio#Permeance-Electromagnetic) (c)<br />[om:Frequency](http://opendata.caceres.es/def/ontomunicipio#Frequency) (c)<br />[om:Entropy](http://opendata.caceres.es/def/ontomunicipio#Entropy) (c)<br />[om:ElectricFluxDensity](http://opendata.caceres.es/def/ontomunicipio#ElectricFluxDensity) (c)<br />[om:Impulse](http://opendata.caceres.es/def/ontomunicipio#Impulse) (c)<br />[om:StantonNumberForMassTransfer](http://opendata.caceres.es/def/ontomunicipio#StantonNumberForMassTransfer) (c)<br />[om:ThermalConductivity](http://opendata.caceres.es/def/ontomunicipio#ThermalConductivity) (c)<br />[om:AlfvenNumber](http://opendata.caceres.es/def/ontomunicipio#AlfvenNumber) (c)<br />[om:CatalyticActivity](http://opendata.caceres.es/def/ontomunicipio#CatalyticActivity) (c)<br />[om:Angle](http://opendata.caceres.es/def/ontomunicipio#Angle) (c)<br />[om:Activity](http://opendata.caceres.es/def/ontomunicipio#Activity) (c)<br />[om:ReynoldsNumber](http://opendata.caceres.es/def/ontomunicipio#ReynoldsNumber) (c)<br />[om:ElectricDipoleMoment](http://opendata.caceres.es/def/ontomunicipio#ElectricDipoleMoment) (c)<br />[om:ThermalInsulance](http://opendata.caceres.es/def/ontomunicipio#ThermalInsulance) (c)<br />[om:MagneticReynoldsNumber](http://opendata.caceres.es/def/ontomunicipio#MagneticReynoldsNumber) (c)<br />[om:Permeability-EarthScience](http://opendata.caceres.es/def/ontomunicipio#Permeability-EarthScience) (c)<br />[om:VolumetricViableCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricViableCount) (c)<br />[om:DynamicViscosity](http://opendata.caceres.es/def/ontomunicipio#DynamicViscosity) (c)<br />[om:Inductance](http://opendata.caceres.es/def/ontomunicipio#Inductance) (c)<br />[om:Momentum](http://opendata.caceres.es/def/ontomunicipio#Momentum) (c)<br />[om:QuantumEfficiency](http://opendata.caceres.es/def/ontomunicipio#QuantumEfficiency) (c)<br />[om:Magnitude](http://opendata.caceres.es/def/ontomunicipio#Magnitude) (c)<br />[om:Illuminance](http://opendata.caceres.es/def/ontomunicipio#Illuminance) (c)<br />[om:Force](http://opendata.caceres.es/def/ontomunicipio#Force) (c)<br />[om:PrandtlNumber](http://opendata.caceres.es/def/ontomunicipio#PrandtlNumber) (c)<br />[om:Luminance](http://opendata.caceres.es/def/ontomunicipio#Luminance) (c)<br />[om:NusseltNumberForMassTransfer](http://opendata.caceres.es/def/ontomunicipio#NusseltNumberForMassTransfer) (c)<br />[om:Pressure](http://opendata.caceres.es/def/ontomunicipio#Pressure) (c)<br />[om:Acidity](http://opendata.caceres.es/def/ontomunicipio#Acidity) (c)<br />[om:CauseEndOfVaseLifeRottenFlowers](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeRottenFlowers) (c)<br />[om:GrashofNumberForMassTransfer](http://opendata.caceres.es/def/ontomunicipio#GrashofNumberForMassTransfer) (c)<br />[om:MachNumber](http://opendata.caceres.es/def/ontomunicipio#MachNumber) (c)<br />[om:EulerNumber](http://opendata.caceres.es/def/ontomunicipio#EulerNumber) (c)<br />[om:CauseEndOfVaseLifeWiltedLeaves](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeWiltedLeaves) (c)<br />[om:DynamicRange](http://opendata.caceres.es/def/ontomunicipio#DynamicRange) (c)<br />[om:KnudsenNumber](http://opendata.caceres.es/def/ontomunicipio#KnudsenNumber) (c)<br />[om:TemperatureRate](http://opendata.caceres.es/def/ontomunicipio#TemperatureRate) (c)<br />[om:ColumnNumberDensity](http://opendata.caceres.es/def/ontomunicipio#ColumnNumberDensity) (c)<br />[om:Mass](http://opendata.caceres.es/def/ontomunicipio#Mass) (c)<br />[om:SpecificEntropy](http://opendata.caceres.es/def/ontomunicipio#SpecificEntropy) (c)<br />[om:MomentOfInertia](http://opendata.caceres.es/def/ontomunicipio#MomentOfInertia) (c)<br />[om:AmountOfSubstanceFractionFlow](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceFractionFlow) (c)<br />[om:CauseEndOfVaseLifeMalformedFlowers](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeMalformedFlowers) (c)<br />[om:Density](http://opendata.caceres.es/def/ontomunicipio#Density) (c)<br />[om:ExternalBrowning](http://opendata.caceres.es/def/ontomunicipio#ExternalBrowning) (c)<br />[om:GrashofNumber](http://opendata.caceres.es/def/ontomunicipio#GrashofNumber) (c)<br />[om:CurrentDensity](http://opendata.caceres.es/def/ontomunicipio#CurrentDensity) (c)<br />[om:MagneticField](http://opendata.caceres.es/def/ontomunicipio#MagneticField) (c)<br />[om:FroudeNumber](http://opendata.caceres.es/def/ontomunicipio#FroudeNumber) (c)<br />[om:HeatTransferCoefficient](http://opendata.caceres.es/def/ontomunicipio#HeatTransferCoefficient) (c)<br />[om:LuminousIntensity](http://opendata.caceres.es/def/ontomunicipio#LuminousIntensity) (c)<br />[om:PecletNumberForMassTransfer](http://opendata.caceres.es/def/ontomunicipio#PecletNumberForMassTransfer) (c)<br />[om:LewisNumber](http://opendata.caceres.es/def/ontomunicipio#LewisNumber) (c)<br />[om:AcousticFirmness](http://opendata.caceres.es/def/ontomunicipio#AcousticFirmness) (c)<br />[om:SpecificHeatCapacity](http://opendata.caceres.es/def/ontomunicipio#SpecificHeatCapacity) (c)<br />[om:EnergyDensity](http://opendata.caceres.es/def/ontomunicipio#EnergyDensity) (c)<br />[om:HubbleConstant](http://opendata.caceres.es/def/ontomunicipio#HubbleConstant) (c)<br />[om:HeatCapacity](http://opendata.caceres.es/def/ontomunicipio#HeatCapacity) (c)<br />[om:ElectricChargeDensity](http://opendata.caceres.es/def/ontomunicipio#ElectricChargeDensity) (c)<br />[om:AbsorbedDoseRate](http://opendata.caceres.es/def/ontomunicipio#AbsorbedDoseRate) (c)<br />[om:AmountOfSubstanceConcentration](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceConcentration) (c)<br />[om:Power](http://opendata.caceres.es/def/ontomunicipio#Power) (c)<br />[om:ElectricalResistivity](http://opendata.caceres.es/def/ontomunicipio#ElectricalResistivity) (c)<br />[om:SpecificViableCount](http://opendata.caceres.es/def/ontomunicipio#SpecificViableCount) (c)<br />[om:MolarVolume](http://opendata.caceres.es/def/ontomunicipio#MolarVolume) (c)<br />[om:AmountOfSubstanceFraction](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceFraction) (c)<br />[om:MolarEnergy](http://opendata.caceres.es/def/ontomunicipio#MolarEnergy) (c)<br />[om:Hydrophobicity](http://opendata.caceres.es/def/ontomunicipio#Hydrophobicity) (c)<br />[om:Length](http://opendata.caceres.es/def/ontomunicipio#Length) (c)<br />[om:SurfaceTension](http://opendata.caceres.es/def/ontomunicipio#SurfaceTension) (c)<br />[om:AreaDensityRate](http://opendata.caceres.es/def/ontomunicipio#AreaDensityRate) (c)<br />[om:Temperature](http://opendata.caceres.es/def/ontomunicipio#Temperature) (c)<br />[om:PulpBrowning](http://opendata.caceres.es/def/ontomunicipio#PulpBrowning) (c)<br />[om:RadiantIntensity](http://opendata.caceres.es/def/ontomunicipio#RadiantIntensity) (c)<br />[om:Lipophilicity](http://opendata.caceres.es/def/ontomunicipio#Lipophilicity) (c)<br />[om:CowlingNumber](http://opendata.caceres.es/def/ontomunicipio#CowlingNumber) (c)<br />[om:CauseEndOfVaseLifeDryLeaves](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeDryLeaves) (c)<br />[om:SpecificCatalyticActivity](http://opendata.caceres.es/def/ontomunicipio#SpecificCatalyticActivity) (c)<br />[om:HartmannNumber](http://opendata.caceres.es/def/ontomunicipio#HartmannNumber) (c)<br />[om:Amplitude](http://opendata.caceres.es/def/ontomunicipio#Amplitude) (c)<br />[om:VascularBrowning](http://opendata.caceres.es/def/ontomunicipio#VascularBrowning) (c)<br />[om:KinematicViscosity](http://opendata.caceres.es/def/ontomunicipio#KinematicViscosity) (c)<br />[om:PermeabilityOfFreeSpace](http://opendata.caceres.es/def/ontomunicipio#PermeabilityOfFreeSpace) (c)<br />[om:Firmness-Penetrometer-Method1](http://opendata.caceres.es/def/ontomunicipio#Firmness-Penetrometer-Method1) (c)<br />[om:CauseEndOfVaseLifeDryFlowers](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeDryFlowers) (c)<br />[om:Molality](http://opendata.caceres.es/def/ontomunicipio#Molality) (c)<br />[om:SpecificVolume](http://opendata.caceres.es/def/ontomunicipio#SpecificVolume) (c)<br />[om:CauseEndOfVaseLifeNonturgidFlowers](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeNonturgidFlowers) (c)<br />[om:Area](http://opendata.caceres.es/def/ontomunicipio#Area) (c)<br />[om:Reddening](http://opendata.caceres.es/def/ontomunicipio#Reddening) (c)<br />[om:Radiance](http://opendata.caceres.es/def/ontomunicipio#Radiance) (c)<br />[om:Responsivity](http://opendata.caceres.es/def/ontomunicipio#Responsivity) (c)<br />[om:BudStadium](http://opendata.caceres.es/def/ontomunicipio#BudStadium) (c)<br />[om:Speed](http://opendata.caceres.es/def/ontomunicipio#Speed) (c)<br />[om:AngularAcceleration](http://opendata.caceres.es/def/ontomunicipio#AngularAcceleration) (c)<br />[om:CatalyticActivityConcentration](http://opendata.caceres.es/def/ontomunicipio#CatalyticActivityConcentration) (c)<br />[om:SymbolRate](http://opendata.caceres.es/def/ontomunicipio#SymbolRate) (c)<br />[om:ColourIndex](http://opendata.caceres.es/def/ontomunicipio#ColourIndex) (c)<br />[om:AbsorbedDose](http://opendata.caceres.es/def/ontomunicipio#AbsorbedDose) (c)<br />[om:GasConstant](http://opendata.caceres.es/def/ontomunicipio#GasConstant) (c)<br />[om:Number](http://opendata.caceres.es/def/ontomunicipio#Number) (c)<br />[om:VolumeFraction](http://opendata.caceres.es/def/ontomunicipio#VolumeFraction) (c)<br />[om:CauseEndOfVaseLifeBlueFlowers](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeBlueFlowers) (c)<br />[om:ElectricPotential](http://opendata.caceres.es/def/ontomunicipio#ElectricPotential) (c)<br />[om:Permittivity](http://opendata.caceres.es/def/ontomunicipio#Permittivity) (c)<br />[om:Firmness-Penetrometer-Method2](http://opendata.caceres.es/def/ontomunicipio#Firmness-Penetrometer-Method2) (c)<br />[om:DecelerationParameter](http://opendata.caceres.es/def/ontomunicipio#DecelerationParameter) (c)<br />[om:AmountOfSubstanceFlow](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceFlow) (c)<br />[om:AreaFraction](http://opendata.caceres.es/def/ontomunicipio#AreaFraction) (c)<br />[om:StickStone](http://opendata.caceres.es/def/ontomunicipio#StickStone) (c)<br />[om:Action](http://opendata.caceres.es/def/ontomunicipio#Action) (c)<br />[om:ElectricalConductance](http://opendata.caceres.es/def/ontomunicipio#ElectricalConductance) (c)<br />[om:QualityMark](http://opendata.caceres.es/def/ontomunicipio#QualityMark) (c)<br />[om:MolarHeatCapacity](http://opendata.caceres.es/def/ontomunicipio#MolarHeatCapacity) (c)<br />[om:ManualFirmness](http://opendata.caceres.es/def/ontomunicipio#ManualFirmness) (c)<br />[om:Ratio](http://opendata.caceres.es/def/ontomunicipio#Ratio) (c)<br />[om:Torque](http://opendata.caceres.es/def/ontomunicipio#Torque) (c)<br />[om:Energy](http://opendata.caceres.es/def/ontomunicipio#Energy) (c)<br />[om:FourierNumberForMassTransfer](http://opendata.caceres.es/def/ontomunicipio#FourierNumberForMassTransfer) (c)<br />[om:CauseEndOfVaseLifeYellowLeaves](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeYellowLeaves) (c)<br />[om:RelativeHumidity](http://opendata.caceres.es/def/ontomunicipio#RelativeHumidity) (c)<br />[om:Extinction](http://opendata.caceres.es/def/ontomunicipio#Extinction) (c)<br />[om:CosmologicalConstant](http://opendata.caceres.es/def/ontomunicipio#CosmologicalConstant) (c)<br />[om:SaltStrength](http://opendata.caceres.es/def/ontomunicipio#SaltStrength) (c)<br />[om:WeberNumber](http://opendata.caceres.es/def/ontomunicipio#WeberNumber) (c)<br />[om:CauseEndOfVaseLifeAbscisedFlowers](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeAbscisedFlowers) (c)<br />[om:StrouhalNumber](http://opendata.caceres.es/def/ontomunicipio#StrouhalNumber) (c)<br />[om:SolidAngle](http://opendata.caceres.es/def/ontomunicipio#SolidAngle) (c)<br />[om:MassFraction](http://opendata.caceres.es/def/ontomunicipio#MassFraction) (c)<br />[om:Strain](http://opendata.caceres.es/def/ontomunicipio#Strain) (c)<br />[om:Exposure](http://opendata.caceres.es/def/ontomunicipio#Exposure) (c)<br />[om:AreaDensity](http://opendata.caceres.es/def/ontomunicipio#AreaDensity) (c)<br />[om:AngularMomentum](http://opendata.caceres.es/def/ontomunicipio#AngularMomentum) (c)<br />[om:Admittance](http://opendata.caceres.es/def/ontomunicipio#Admittance) (c)<br />[om:ThermalDiffusivity](http://opendata.caceres.es/def/ontomunicipio#ThermalDiffusivity) (c)<br />[om:MolarEntropy](http://opendata.caceres.es/def/ontomunicipio#MolarEntropy) (c)<br />[om:SpectralResponse](http://opendata.caceres.es/def/ontomunicipio#SpectralResponse) (c)<br />[om:ScaleFactor](http://opendata.caceres.es/def/ontomunicipio#ScaleFactor) (c)<br />[om:SchmidtNumber](http://opendata.caceres.es/def/ontomunicipio#SchmidtNumber) (c)<br />[om:StemEndRot](http://opendata.caceres.es/def/ontomunicipio#StemEndRot) (c)<br />[om:CurvatureConstant](http://opendata.caceres.es/def/ontomunicipio#CurvatureConstant) (c)<br />[om:Hydrophilicity](http://opendata.caceres.es/def/ontomunicipio#Hydrophilicity) (c)<br />[om:Volume](http://opendata.caceres.es/def/ontomunicipio#Volume) (c)<br />[om:ElectricCurrent](http://opendata.caceres.es/def/ontomunicipio#ElectricCurrent) (c)<br />[om:ElectricCharge](http://opendata.caceres.es/def/ontomunicipio#ElectricCharge) (c)<br />[om:CauseEndOfVaseLifeMalformedBuds](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeMalformedBuds) (c)<br />[om:Detectivity](http://opendata.caceres.es/def/ontomunicipio#Detectivity) (c)<br />[om:CauseEndOfVaseLifeRottenLeaves](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeRottenLeaves) (c)<br />[om:CauseEndOfVaseLifeAbscisedLeaves](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeAbscisedLeaves) (c)<br />[om:NormalisedDetectivity](http://opendata.caceres.es/def/ontomunicipio#NormalisedDetectivity) (c)<br />[om:CauseEndOfVaseLifeAbscisedBuds](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeAbscisedBuds) (c)<br />[om:ExposureToXAndGammaRays](http://opendata.caceres.es/def/ontomunicipio#ExposureToXAndGammaRays) (c)<br />[om:MolarMass](http://opendata.caceres.es/def/ontomunicipio#MolarMass) (c)<br />[om:AngularSpeed](http://opendata.caceres.es/def/ontomunicipio#AngularSpeed) (c)<br />[om:Permeance-MaterialsScience](http://opendata.caceres.es/def/ontomunicipio#Permeance-MaterialsScience) (c)<br />[om:Acceleration](http://opendata.caceres.es/def/ontomunicipio#Acceleration) (c)<br />[om:NusseltNumber](http://opendata.caceres.es/def/ontomunicipio#NusseltNumber) (c)<br />[om:Reluctance](http://opendata.caceres.es/def/ontomunicipio#Reluctance) (c)<br />[om:DensityParameter](http://opendata.caceres.es/def/ontomunicipio#DensityParameter) (c)<br />[om:ThermalResistance](http://opendata.caceres.es/def/ontomunicipio#ThermalResistance) (c)<br />[om:NumberDensity](http://opendata.caceres.es/def/ontomunicipio#NumberDensity) (c)<br />[om:ElectricalConductivity](http://opendata.caceres.es/def/ontomunicipio#ElectricalConductivity) (c)<br />[om:PecletNumber](http://opendata.caceres.es/def/ontomunicipio#PecletNumber) (c)<br />[om:SpecificEnergy](http://opendata.caceres.es/def/ontomunicipio#SpecificEnergy) (c)<br />[om:LuminousFlux](http://opendata.caceres.es/def/ontomunicipio#LuminousFlux) (c)<br />[om:Time](http://opendata.caceres.es/def/ontomunicipio#Time) (c)<br />[om:QuantityOfDimensionOne](http://opendata.caceres.es/def/ontomunicipio#QuantityOfDimensionOne) (c)<br />[om:Fluidity](http://opendata.caceres.es/def/ontomunicipio#Fluidity) (c)<br />[om:ElectricField](http://opendata.caceres.es/def/ontomunicipio#ElectricField) (c)<br />[om:FourierNumber](http://opendata.caceres.es/def/ontomunicipio#FourierNumber) (c)<br />[om:CauseEndOfVaseLifeWiltedFlowers](http://opendata.caceres.es/def/ontomunicipio#CauseEndOfVaseLifeWiltedFlowers) (c)<br />[om:PowerDensity](http://opendata.caceres.es/def/ontomunicipio#PowerDensity) (c)<br />[om:BolometricCorrection](http://opendata.caceres.es/def/ontomunicipio#BolometricCorrection) (c)<br />[om:AmountOfMoney](http://opendata.caceres.es/def/ontomunicipio#AmountOfMoney) (c)<br />[om:DoseEquivalent](http://opendata.caceres.es/def/ontomunicipio#DoseEquivalent) (c)<br />[om:ElectricalResistance](http://opendata.caceres.es/def/ontomunicipio#ElectricalResistance) (c)<br />
+In domain of |[om:hasAggregateFunction](http://opendata.caceres.es/def/ontomunicipio#hasAggregateFunction) (op)<br />[om:hasContext](http://opendata.caceres.es/def/ontomunicipio#hasContext) (op)<br />[om:hasPhenomenon](http://opendata.caceres.es/def/ontomunicipio#hasPhenomenon) (op)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op)<br />
+In range of |[om:hasBaseQuantity](http://opendata.caceres.es/def/ontomunicipio#hasBaseQuantity) (op)<br />[om:hasDerivedQuantity](http://opendata.caceres.es/def/ontomunicipio#hasDerivedQuantity) (op)<br />[om:usesQuantity](http://opendata.caceres.es/def/ontomunicipio#usesQuantity) (op)<br />[om:hasQuantity](http://opendata.caceres.es/def/ontomunicipio#hasQuantity) (op)<br />
 ### quantity of dimension one
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#QuantityOfDimensionOne`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
-Sub-classes |[om:Ellipticity](http://opendata.caceres.es/def/ontomunicipio#Ellipticity) (c)<br />[om:Metallicity](http://opendata.caceres.es/def/ontomunicipio#Metallicity) (c)<br />[om:Eccentricity](http://opendata.caceres.es/def/ontomunicipio#Eccentricity) (c)<br />[om:Albedo](http://opendata.caceres.es/def/ontomunicipio#Albedo) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Sub-classes |[om:Ellipticity](http://opendata.caceres.es/def/ontomunicipio#Ellipticity) (c)<br />[om:Eccentricity](http://opendata.caceres.es/def/ontomunicipio#Eccentricity) (c)<br />[om:Metallicity](http://opendata.caceres.es/def/ontomunicipio#Metallicity) (c)<br />[om:Albedo](http://opendata.caceres.es/def/ontomunicipio#Albedo) (c)<br />
 ### quantity of dimension one unit
 Property | Value
 --- | ---
@@ -4099,7 +4099,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#RadiantIntensityUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### straal
+### radius
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Radius`
@@ -4110,12 +4110,12 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Radius-Angle`
 Super-classes |[om:Angle](http://opendata.caceres.es/def/ontomunicipio#Angle) (c)<br />
-### Rankine temperature
+### Rankinetemperatuur
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#RankineTemperature`
 Super-classes |[om:Temperature](http://opendata.caceres.es/def/ontomunicipio#Temperature) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasScale](http://opendata.caceres.es/def/ontomunicipio#hasScale) (op) **value** [om:RankineScale](http://opendata.caceres.es/def/ontomunicipio#RankineScale) (c)<br />
+Restrictions |[om:hasScale](http://opendata.caceres.es/def/ontomunicipio#hasScale) (op) **value** [om:RankineScale](http://opendata.caceres.es/def/ontomunicipio#RankineScale) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### Rankine temperature scale
 Property | Value
 --- | ---
@@ -4149,7 +4149,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#RayleighNumber`
 Description | <p>The Rayleigh number for a fluid is a dimensionless number associated with buoyancy driven flow.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
 ### Rayleigh number unit
 Property | Value
 --- | ---
@@ -4201,7 +4201,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#RelativeHumidity`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### relative humidity unit
 Property | Value
 --- | ---
@@ -4235,13 +4235,13 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ResponsivityUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### Reynolds number
+### getal van Reynolds
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ReynoldsNumber`
 Description | <p>The Reynolds number is a dimensionless number that gives a measure of the ratio of inertial forces to viscous forces and, consequently, quantifies the relative importance of these two types of forces for given flow conditions.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### Reynolds number unit
 Property | Value
 --- | ---
@@ -4273,7 +4273,7 @@ Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quanti
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Scale`
-Sub-classes |[om:CelsiusTemperatureScale](http://opendata.caceres.es/def/ontomunicipio#CelsiusTemperatureScale) (c)<br />[om:IntervalScale](http://opendata.caceres.es/def/ontomunicipio#IntervalScale) (c)<br />[om:FahrenheitTemperatureScale](http://opendata.caceres.es/def/ontomunicipio#FahrenheitTemperatureScale) (c)<br />[om:RatioScale](http://opendata.caceres.es/def/ontomunicipio#RatioScale) (c)<br />[om:RankineTemperatureScale](http://opendata.caceres.es/def/ontomunicipio#RankineTemperatureScale) (c)<br />[om:Temperature_scale](http://opendata.caceres.es/def/ontomunicipio#Temperature_scale) (c)<br />[om:ReaumurTemperatureScale](http://opendata.caceres.es/def/ontomunicipio#ReaumurTemperatureScale) (c)<br />[om:ThermodynamicTemperatureScale](http://opendata.caceres.es/def/ontomunicipio#ThermodynamicTemperatureScale) (c)<br />
+Sub-classes |[om:RankineTemperatureScale](http://opendata.caceres.es/def/ontomunicipio#RankineTemperatureScale) (c)<br />[om:RatioScale](http://opendata.caceres.es/def/ontomunicipio#RatioScale) (c)<br />[om:CelsiusTemperatureScale](http://opendata.caceres.es/def/ontomunicipio#CelsiusTemperatureScale) (c)<br />[om:Temperature_scale](http://opendata.caceres.es/def/ontomunicipio#Temperature_scale) (c)<br />[om:IntervalScale](http://opendata.caceres.es/def/ontomunicipio#IntervalScale) (c)<br />[om:ThermodynamicTemperatureScale](http://opendata.caceres.es/def/ontomunicipio#ThermodynamicTemperatureScale) (c)<br />[om:FahrenheitTemperatureScale](http://opendata.caceres.es/def/ontomunicipio#FahrenheitTemperatureScale) (c)<br />[om:ReaumurTemperatureScale](http://opendata.caceres.es/def/ontomunicipio#ReaumurTemperatureScale) (c)<br />
 In domain of |[om:hasOff-Set](http://opendata.caceres.es/def/ontomunicipio#hasOff-Set) (dp)<br />
 In range of |[om:hasScale](http://opendata.caceres.es/def/ontomunicipio#hasScale) (op)<br />
 ### schaalfactor
@@ -4298,7 +4298,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#SchmidtNumber`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### Schmidt number unit
 Property | Value
 --- | ---
@@ -4315,7 +4315,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ShearLossModulus`
 Super-classes |[om:StorageModulus](http://opendata.caceres.es/def/ontomunicipio#StorageModulus) (c)<br />
-### shear modulus
+### schuifmodulus
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ShearModulus`
@@ -4337,13 +4337,13 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ShearStorageModulus`
 Super-classes |[om:StorageModulus](http://opendata.caceres.es/def/ontomunicipio#StorageModulus) (c)<br />
-### schuifvervorming
+### shear strain
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ShearStrain`
 Description | <p>Shear strain is a strain that acts parallel to the surface of a material that it acts on.</p>
 Super-classes |[om:Strain](http://opendata.caceres.es/def/ontomunicipio#Strain) (c)<br />
-### shear stress
+### schuifspanning
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ShearStress`
@@ -4354,13 +4354,13 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#SingularUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### 立体角
+### solid angle
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#SolidAngle`
 Description | <p>Solid angle is the ratio of the surface of a portion of a sphere enclosed by the conical surface that forms an angle to the square of the radius of the sphere.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 Sub-classes |[om:AngularSize](http://opendata.caceres.es/def/ontomunicipio#AngularSize) (c)<br />
 ### solid angle unit
 Property | Value
@@ -4383,8 +4383,8 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#SpecificCatalyticActivity`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:specificCatalyticActivity-Dimension](http://opendata.caceres.es/def/ontomunicipio#specificCatalyticActivity-Dimension) (c)<br />
-Sub-classes |[om:SpecificAmylaseActivity](http://opendata.caceres.es/def/ontomunicipio#SpecificAmylaseActivity) (c)<br />[om:SpecificProteaseActivity](http://opendata.caceres.es/def/ontomunicipio#SpecificProteaseActivity) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:specificCatalyticActivity-Dimension](http://opendata.caceres.es/def/ontomunicipio#specificCatalyticActivity-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Sub-classes |[om:SpecificProteaseActivity](http://opendata.caceres.es/def/ontomunicipio#SpecificProteaseActivity) (c)<br />[om:SpecificAmylaseActivity](http://opendata.caceres.es/def/ontomunicipio#SpecificAmylaseActivity) (c)<br />
 ### specific catalytic activity unit
 Property | Value
 --- | ---
@@ -4437,7 +4437,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#SpecificEntropy`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:specificEntropyOrSpecificHeatCapacity-Dimension](http://opendata.caceres.es/def/ontomunicipio#specificEntropyOrSpecificHeatCapacity-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:specificEntropyOrSpecificHeatCapacity-Dimension](http://opendata.caceres.es/def/ontomunicipio#specificEntropyOrSpecificHeatCapacity-Dimension) (c)<br />
 ### specific entropy unit
 Property | Value
 --- | ---
@@ -4448,7 +4448,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#SpecificEscherichiaColiCount`
 Super-classes |[om:SpecificViableCount](http://opendata.caceres.es/def/ontomunicipio#SpecificViableCount) (c)<br />
-### specific heat capacity
+### soortelijke warmte
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#SpecificHeatCapacity`
@@ -4510,7 +4510,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#SpecificViableCount`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
 Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
-Sub-classes |[om:SpecificCorynebacteriumBovisCount](http://opendata.caceres.es/def/ontomunicipio#SpecificCorynebacteriumBovisCount) (c)<br />[om:SpecificEnterobacteriaceaeCount](http://opendata.caceres.es/def/ontomunicipio#SpecificEnterobacteriaceaeCount) (c)<br />[om:SpecificStreptococcusUberisCount](http://opendata.caceres.es/def/ontomunicipio#SpecificStreptococcusUberisCount) (c)<br />[om:SpecificCorynebacteriumCount](http://opendata.caceres.es/def/ontomunicipio#SpecificCorynebacteriumCount) (c)<br />[om:SpecificEscherichiaColiCount](http://opendata.caceres.es/def/ontomunicipio#SpecificEscherichiaColiCount) (c)<br />[om:SpecificColiformBacterieCount](http://opendata.caceres.es/def/ontomunicipio#SpecificColiformBacterieCount) (c)<br />[om:SpecificKlebsiellaCount](http://opendata.caceres.es/def/ontomunicipio#SpecificKlebsiellaCount) (c)<br />[om:SpecificEnterococcusCount](http://opendata.caceres.es/def/ontomunicipio#SpecificEnterococcusCount) (c)<br />[om:SpecificListeriaMonocytogenesCount](http://opendata.caceres.es/def/ontomunicipio#SpecificListeriaMonocytogenesCount) (c)<br />[om:SpecificStaphylococcusAureusCount](http://opendata.caceres.es/def/ontomunicipio#SpecificStaphylococcusAureusCount) (c)<br />[om:SpecificStreptococcusDysgalactiaeCount](http://opendata.caceres.es/def/ontomunicipio#SpecificStreptococcusDysgalactiaeCount) (c)<br />[om:SpecificStreptococcusAgalactiaeCount](http://opendata.caceres.es/def/ontomunicipio#SpecificStreptococcusAgalactiaeCount) (c)<br />[om:SpecificSalmonellaCount](http://opendata.caceres.es/def/ontomunicipio#SpecificSalmonellaCount) (c)<br />[om:SpecificYeastAndFungiCount](http://opendata.caceres.es/def/ontomunicipio#SpecificYeastAndFungiCount) (c)<br />[om:SpecificSerratiaMarcescensCount](http://opendata.caceres.es/def/ontomunicipio#SpecificSerratiaMarcescensCount) (c)<br />
+Sub-classes |[om:SpecificColiformBacterieCount](http://opendata.caceres.es/def/ontomunicipio#SpecificColiformBacterieCount) (c)<br />[om:SpecificStreptococcusAgalactiaeCount](http://opendata.caceres.es/def/ontomunicipio#SpecificStreptococcusAgalactiaeCount) (c)<br />[om:SpecificCorynebacteriumBovisCount](http://opendata.caceres.es/def/ontomunicipio#SpecificCorynebacteriumBovisCount) (c)<br />[om:SpecificStreptococcusDysgalactiaeCount](http://opendata.caceres.es/def/ontomunicipio#SpecificStreptococcusDysgalactiaeCount) (c)<br />[om:SpecificYeastAndFungiCount](http://opendata.caceres.es/def/ontomunicipio#SpecificYeastAndFungiCount) (c)<br />[om:SpecificKlebsiellaCount](http://opendata.caceres.es/def/ontomunicipio#SpecificKlebsiellaCount) (c)<br />[om:SpecificCorynebacteriumCount](http://opendata.caceres.es/def/ontomunicipio#SpecificCorynebacteriumCount) (c)<br />[om:SpecificSalmonellaCount](http://opendata.caceres.es/def/ontomunicipio#SpecificSalmonellaCount) (c)<br />[om:SpecificSerratiaMarcescensCount](http://opendata.caceres.es/def/ontomunicipio#SpecificSerratiaMarcescensCount) (c)<br />[om:SpecificEnterobacteriaceaeCount](http://opendata.caceres.es/def/ontomunicipio#SpecificEnterobacteriaceaeCount) (c)<br />[om:SpecificListeriaMonocytogenesCount](http://opendata.caceres.es/def/ontomunicipio#SpecificListeriaMonocytogenesCount) (c)<br />[om:SpecificStaphylococcusAureusCount](http://opendata.caceres.es/def/ontomunicipio#SpecificStaphylococcusAureusCount) (c)<br />[om:SpecificEscherichiaColiCount](http://opendata.caceres.es/def/ontomunicipio#SpecificEscherichiaColiCount) (c)<br />[om:SpecificEnterococcusCount](http://opendata.caceres.es/def/ontomunicipio#SpecificEnterococcusCount) (c)<br />[om:SpecificStreptococcusUberisCount](http://opendata.caceres.es/def/ontomunicipio#SpecificStreptococcusUberisCount) (c)<br />
 ### specific viable count unit
 Property | Value
 --- | ---
@@ -4522,7 +4522,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#SpecificVolume`
 Description | <p>Specific volume is volume per unit mass.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:specificVolume-Dimension](http://opendata.caceres.es/def/ontomunicipio#specificVolume-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:specificVolume-Dimension](http://opendata.caceres.es/def/ontomunicipio#specificVolume-Dimension) (c)<br />
 ### specific volume unit
 Property | Value
 --- | ---
@@ -4539,13 +4539,13 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#SpectralResponse`
 Description | <p>The change in output signal as a function of changes in the wavelength of the input signal.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-### speed
+### snelheid (scalair)
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Speed`
 Description | <p>Speed is the time rate of motion measured by the distance moved over in unit time.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:speed-Dimension](http://opendata.caceres.es/def/ontomunicipio#speed-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:speed-Dimension](http://opendata.caceres.es/def/ontomunicipio#speed-Dimension) (c)<br />
 Sub-classes |[om:Velocity](http://opendata.caceres.es/def/ontomunicipio#Velocity) (c)<br />[om:DrainageSpeed](http://opendata.caceres.es/def/ontomunicipio#DrainageSpeed) (c)<br />
 ### speed unit
 Property | Value
@@ -4610,7 +4610,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#StemEndRot`
 Description | <p>Aanwezigheid stem end rot (1/0).</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-### stem-end-rot-oppervlaktefractie
+### stem end rot area fraction
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#StemEndRotAreaFraction`
@@ -4627,14 +4627,14 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#StorageModulus`
 Super-classes |[om:DynamicModulus](http://opendata.caceres.es/def/ontomunicipio#DynamicModulus) (c)<br />
-Sub-classes |[om:ShearStorageModulus](http://opendata.caceres.es/def/ontomunicipio#ShearStorageModulus) (c)<br />[om:ShearLossModulus](http://opendata.caceres.es/def/ontomunicipio#ShearLossModulus) (c)<br />
+Sub-classes |[om:ShearLossModulus](http://opendata.caceres.es/def/ontomunicipio#ShearLossModulus) (c)<br />[om:ShearStorageModulus](http://opendata.caceres.es/def/ontomunicipio#ShearStorageModulus) (c)<br />
 ### vervorming
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Strain`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
 Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
-Sub-classes |[om:ShearStrain](http://opendata.caceres.es/def/ontomunicipio#ShearStrain) (c)<br />[om:VolumeStrain](http://opendata.caceres.es/def/ontomunicipio#VolumeStrain) (c)<br />[om:LinearStrain](http://opendata.caceres.es/def/ontomunicipio#LinearStrain) (c)<br />[om:NormalStrain](http://opendata.caceres.es/def/ontomunicipio#NormalStrain) (c)<br />[om:StrainTensor](http://opendata.caceres.es/def/ontomunicipio#StrainTensor) (c)<br />
+Sub-classes |[om:VolumeStrain](http://opendata.caceres.es/def/ontomunicipio#VolumeStrain) (c)<br />[om:NormalStrain](http://opendata.caceres.es/def/ontomunicipio#NormalStrain) (c)<br />[om:ShearStrain](http://opendata.caceres.es/def/ontomunicipio#ShearStrain) (c)<br />[om:StrainTensor](http://opendata.caceres.es/def/ontomunicipio#StrainTensor) (c)<br />[om:LinearStrain](http://opendata.caceres.es/def/ontomunicipio#LinearStrain) (c)<br />
 ### strain tensor
 Property | Value
 --- | ---
@@ -4656,9 +4656,9 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Stress`
 Description | <p>Stress is a force that produces or tends to produce deformation in a body measured by the force applied per unit area.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:pressure-Dimension](http://opendata.caceres.es/def/ontomunicipio#pressure-Dimension) (c)<br />
-Sub-classes |[om:CompressiveStress](http://opendata.caceres.es/def/ontomunicipio#CompressiveStress) (c)<br />[om:NormalStress](http://opendata.caceres.es/def/ontomunicipio#NormalStress) (c)<br />[om:ShearStress](http://opendata.caceres.es/def/ontomunicipio#ShearStress) (c)<br />[om:StressTensor](http://opendata.caceres.es/def/ontomunicipio#StressTensor) (c)<br />
-### stress tensor
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:pressure-Dimension](http://opendata.caceres.es/def/ontomunicipio#pressure-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Sub-classes |[om:NormalStress](http://opendata.caceres.es/def/ontomunicipio#NormalStress) (c)<br />[om:StressTensor](http://opendata.caceres.es/def/ontomunicipio#StressTensor) (c)<br />[om:CompressiveStress](http://opendata.caceres.es/def/ontomunicipio#CompressiveStress) (c)<br />[om:ShearStress](http://opendata.caceres.es/def/ontomunicipio#ShearStress) (c)<br />
+### mechanische-spanningstensor
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#StressTensor`
@@ -4674,14 +4674,14 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#StroemgrenMagnitude`
 Description | <p>A magnitude measured in one of Strömgren's standard passbands (using a standard filter, u, b, v, or y) or in the passbands defined by Crawford (β_narrow or β_wide).</p>
 Super-classes |[om:Magnitude](http://opendata.caceres.es/def/ontomunicipio#Magnitude) (c)<br />
-Sub-classes |[om:bMagnitude](http://opendata.caceres.es/def/ontomunicipio#bMagnitude) (c)<br />[om:uMagnitude](http://opendata.caceres.es/def/ontomunicipio#uMagnitude) (c)<br />[om:BetaWideMagnitude](http://opendata.caceres.es/def/ontomunicipio#BetaWideMagnitude) (c)<br />[om:yMagnitude](http://opendata.caceres.es/def/ontomunicipio#yMagnitude) (c)<br />[om:BetaNarrowMagnitude](http://opendata.caceres.es/def/ontomunicipio#BetaNarrowMagnitude) (c)<br />[om:vMagnitude](http://opendata.caceres.es/def/ontomunicipio#vMagnitude) (c)<br />
+Sub-classes |[om:BetaNarrowMagnitude](http://opendata.caceres.es/def/ontomunicipio#BetaNarrowMagnitude) (c)<br />[om:yMagnitude](http://opendata.caceres.es/def/ontomunicipio#yMagnitude) (c)<br />[om:BetaWideMagnitude](http://opendata.caceres.es/def/ontomunicipio#BetaWideMagnitude) (c)<br />[om:vMagnitude](http://opendata.caceres.es/def/ontomunicipio#vMagnitude) (c)<br />[om:uMagnitude](http://opendata.caceres.es/def/ontomunicipio#uMagnitude) (c)<br />[om:bMagnitude](http://opendata.caceres.es/def/ontomunicipio#bMagnitude) (c)<br />
 ### Strouhal number
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#StrouhalNumber`
 Description | <p>The Strouhal number is a dimensionless number that describes oscillating flow mechanisms.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### Strouhal number unit
 Property | Value
 --- | ---
@@ -4705,13 +4705,13 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#SupergalacticLongitude`
 Description | <p>The angular distance on the celestial sphere measured clockwise from the supergalactic centre (as defined by the International Astronomical Union (IAU)) along the supergalactic equator to the intersection with the great circle drawn from the supergalactic north pole through the object.</p>
 Super-classes |[om:Angle](http://opendata.caceres.es/def/ontomunicipio#Angle) (c)<br />
-### oppervlaktespanning
+### surface tension
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#SurfaceTension`
 Description | <p>Surface tension is an attractive property of the surface of a liquid.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:surfaceTension-Dimension](http://opendata.caceres.es/def/ontomunicipio#surfaceTension-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:surfaceTension-Dimension](http://opendata.caceres.es/def/ontomunicipio#surfaceTension-Dimension) (c)<br />
 ### surface tension unit
 Property | Value
 --- | ---
@@ -4734,7 +4734,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#SystemOfUnits`
 Description | <p>In order to achieve a coherent, interdependent set of units of measure in the wide variety of units that exist, units are organised in systems of units. A system of units is based on a set of units chosen by convention to be the system’s base units, units that are considered to be mutually independent (i.e., can’t be expressed in terms of each other).</p>
-In domain of |[om:hasDerivedUnit](http://opendata.caceres.es/def/ontomunicipio#hasDerivedUnit) (op)<br />[om:hasBaseUnit](http://opendata.caceres.es/def/ontomunicipio#hasBaseUnit) (op)<br />[om:hasDerivedQuantity](http://opendata.caceres.es/def/ontomunicipio#hasDerivedQuantity) (op)<br />[om:hasBaseQuantity](http://opendata.caceres.es/def/ontomunicipio#hasBaseQuantity) (op)<br />
+In domain of |[om:hasBaseUnit](http://opendata.caceres.es/def/ontomunicipio#hasBaseUnit) (op)<br />[om:hasDerivedUnit](http://opendata.caceres.es/def/ontomunicipio#hasDerivedUnit) (op)<br />[om:hasBaseQuantity](http://opendata.caceres.es/def/ontomunicipio#hasBaseQuantity) (op)<br />[om:hasDerivedQuantity](http://opendata.caceres.es/def/ontomunicipio#hasDerivedQuantity) (op)<br />
 ### 温度
 Property | Value
 --- | ---
@@ -4742,8 +4742,8 @@ IRI | `http://opendata.caceres.es/def/ontomunicipio#Temperature`
 Description | <p>Temperature is the extent to which an object is hot.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
 Restrictions |[om:hasScale](http://opendata.caceres.es/def/ontomunicipio#hasScale) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:thermodynamicTemperature-Dimension](http://opendata.caceres.es/def/ontomunicipio#thermodynamicTemperature-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
-Sub-classes |[om:CelsiusTemperature](http://opendata.caceres.es/def/ontomunicipio#CelsiusTemperature) (c)<br />[om:ReaumurTemperature](http://opendata.caceres.es/def/ontomunicipio#ReaumurTemperature) (c)<br />[om:RankineTemperature](http://opendata.caceres.es/def/ontomunicipio#RankineTemperature) (c)<br />[om:ThermodynamicTemperature](http://opendata.caceres.es/def/ontomunicipio#ThermodynamicTemperature) (c)<br />[om:FahrenheitTemperature](http://opendata.caceres.es/def/ontomunicipio#FahrenheitTemperature) (c)<br />
-### temperature rate
+Sub-classes |[om:CelsiusTemperature](http://opendata.caceres.es/def/ontomunicipio#CelsiusTemperature) (c)<br />[om:ReaumurTemperature](http://opendata.caceres.es/def/ontomunicipio#ReaumurTemperature) (c)<br />[om:ThermodynamicTemperature](http://opendata.caceres.es/def/ontomunicipio#ThermodynamicTemperature) (c)<br />[om:FahrenheitTemperature](http://opendata.caceres.es/def/ontomunicipio#FahrenheitTemperature) (c)<br />[om:RankineTemperature](http://opendata.caceres.es/def/ontomunicipio#RankineTemperature) (c)<br />
+### temperatuur-rate
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#TemperatureRate`
@@ -4759,19 +4759,19 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#TemperatureUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-Sub-classes |[om:RankineTemperatureUnit](http://opendata.caceres.es/def/ontomunicipio#RankineTemperatureUnit) (c)<br />[om:ReaumurTemperatureUnit](http://opendata.caceres.es/def/ontomunicipio#ReaumurTemperatureUnit) (c)<br />[om:ThermodynamicTemperatureUnit](http://opendata.caceres.es/def/ontomunicipio#ThermodynamicTemperatureUnit) (c)<br />[om:FahrenheitTemperatureUnit](http://opendata.caceres.es/def/ontomunicipio#FahrenheitTemperatureUnit) (c)<br />[om:CelsiusTemperatureUnit](http://opendata.caceres.es/def/ontomunicipio#CelsiusTemperatureUnit) (c)<br />
+Sub-classes |[om:RankineTemperatureUnit](http://opendata.caceres.es/def/ontomunicipio#RankineTemperatureUnit) (c)<br />[om:CelsiusTemperatureUnit](http://opendata.caceres.es/def/ontomunicipio#CelsiusTemperatureUnit) (c)<br />[om:ReaumurTemperatureUnit](http://opendata.caceres.es/def/ontomunicipio#ReaumurTemperatureUnit) (c)<br />[om:ThermodynamicTemperatureUnit](http://opendata.caceres.es/def/ontomunicipio#ThermodynamicTemperatureUnit) (c)<br />[om:FahrenheitTemperatureUnit](http://opendata.caceres.es/def/ontomunicipio#FahrenheitTemperatureUnit) (c)<br />
 ### Temperature_scale
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Temperature_scale`
 Super-classes |[om:Scale](http://opendata.caceres.es/def/ontomunicipio#Scale) (c)<br />
-### thermal conductivity
+### thermische geleidbaarheid
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ThermalConductivity`
 Description | <p>Termal conductivity indicates the ability of a material to conduct heat.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:thermalConductivity-Dimension](http://opendata.caceres.es/def/ontomunicipio#thermalConductivity-Dimension) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:thermalConductivity-Dimension](http://opendata.caceres.es/def/ontomunicipio#thermalConductivity-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 ### thermal conductivity unit
 Property | Value
 --- | ---
@@ -4793,7 +4793,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ThermalInsulance`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:thermalInsulance-Dimension](http://opendata.caceres.es/def/ontomunicipio#thermalInsulance-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:thermalInsulance-Dimension](http://opendata.caceres.es/def/ontomunicipio#thermalInsulance-Dimension) (c)<br />
 ### thermal insulance unit
 Property | Value
 --- | ---
@@ -4804,20 +4804,20 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ThermalResistance`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:thermalResistance-Dimension](http://opendata.caceres.es/def/ontomunicipio#thermalResistance-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:thermalResistance-Dimension](http://opendata.caceres.es/def/ontomunicipio#thermalResistance-Dimension) (c)<br />
 ### thermal resistance unit
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ThermalResistanceUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### absolute temperatuur
+### thermodynamic temperature
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ThermodynamicTemperature`
 Description | <p>Thermodynamic temperature is the absolute measure of temperature. Its zero point is the temperature at which the particle constituents of matter have minimal motion and can be no colder. Thermodynamic temperature is a base quantity in the International System of Units.</p>
 Super-classes |[om:Temperature](http://opendata.caceres.es/def/ontomunicipio#Temperature) (c)<br />
-Restrictions |[om:hasScale](http://opendata.caceres.es/def/ontomunicipio#hasScale) (op) **value** [om:KelvinScale](http://opendata.caceres.es/def/ontomunicipio#KelvinScale) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
-Sub-classes |[om:ElectronTemperature](http://opendata.caceres.es/def/ontomunicipio#ElectronTemperature) (c)<br />[om:BrightnessTemperature](http://opendata.caceres.es/def/ontomunicipio#BrightnessTemperature) (c)<br />[om:ColourTemperature](http://opendata.caceres.es/def/ontomunicipio#ColourTemperature) (c)<br />[om:IonizationTemperature](http://opendata.caceres.es/def/ontomunicipio#IonizationTemperature) (c)<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasScale](http://opendata.caceres.es/def/ontomunicipio#hasScale) (op) **value** [om:KelvinScale](http://opendata.caceres.es/def/ontomunicipio#KelvinScale) (c)<br />
+Sub-classes |[om:ColourTemperature](http://opendata.caceres.es/def/ontomunicipio#ColourTemperature) (c)<br />[om:IonizationTemperature](http://opendata.caceres.es/def/ontomunicipio#IonizationTemperature) (c)<br />[om:BrightnessTemperature](http://opendata.caceres.es/def/ontomunicipio#BrightnessTemperature) (c)<br />[om:ElectronTemperature](http://opendata.caceres.es/def/ontomunicipio#ElectronTemperature) (c)<br />
 ### thermodynamic temperature scale
 Property | Value
 --- | ---
@@ -4828,7 +4828,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#ThermodynamicTemperatureUnit`
 Super-classes |[om:TemperatureUnit](http://opendata.caceres.es/def/ontomunicipio#TemperatureUnit) (c)<br />
-### thickness
+### dikte
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Thickness`
@@ -4846,14 +4846,14 @@ IRI | `http://opendata.caceres.es/def/ontomunicipio#ThuanAndGunnMagnitude`
 Description | <p>A magnitude measured in one of Thuan and Gunn's standard passbands (using a standard filter, i.e. g).</p>
 Super-classes |[om:Magnitude](http://opendata.caceres.es/def/ontomunicipio#Magnitude) (c)<br />
 Sub-classes |[om:gMagnitude](http://opendata.caceres.es/def/ontomunicipio#gMagnitude) (c)<br />
-### 时间
+### time
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Time`
 Description | <p>Time is a base quantity in the International System of Units and other systems of units. It is measured by numbers of repetitions of cyclical events.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
 Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:time-Dimension](http://opendata.caceres.es/def/ontomunicipio#time-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
-Sub-classes |[om:Duration](http://opendata.caceres.es/def/ontomunicipio#Duration) (c)<br />[om:Date](http://opendata.caceres.es/def/ontomunicipio#Date) (c)<br />[om:Period](http://opendata.caceres.es/def/ontomunicipio#Period) (c)<br />[om:Half-Life](http://opendata.caceres.es/def/ontomunicipio#Half-Life) (c)<br />[om:PeriodOfVariability](http://opendata.caceres.es/def/ontomunicipio#PeriodOfVariability) (c)<br />[om:VaseLife](http://opendata.caceres.es/def/ontomunicipio#VaseLife) (c)<br />[om:LightTime](http://opendata.caceres.es/def/ontomunicipio#LightTime) (c)<br />[om:TimeConstant](http://opendata.caceres.es/def/ontomunicipio#TimeConstant) (c)<br />
+Sub-classes |[om:Half-Life](http://opendata.caceres.es/def/ontomunicipio#Half-Life) (c)<br />[om:Duration](http://opendata.caceres.es/def/ontomunicipio#Duration) (c)<br />[om:PeriodOfVariability](http://opendata.caceres.es/def/ontomunicipio#PeriodOfVariability) (c)<br />[om:LightTime](http://opendata.caceres.es/def/ontomunicipio#LightTime) (c)<br />[om:TimeConstant](http://opendata.caceres.es/def/ontomunicipio#TimeConstant) (c)<br />[om:Period](http://opendata.caceres.es/def/ontomunicipio#Period) (c)<br />[om:Date](http://opendata.caceres.es/def/ontomunicipio#Date) (c)<br />[om:VaseLife](http://opendata.caceres.es/def/ontomunicipio#VaseLife) (c)<br />
 ### time constant
 Property | Value
 --- | ---
@@ -4870,7 +4870,7 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#TopMass`
 Super-classes |[om:Mass](http://opendata.caceres.es/def/ontomunicipio#Mass) (c)<br />
-### 扭矩
+### koppel
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Torque`
@@ -4898,13 +4898,13 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#TotalDistanceTravelled`
 Super-classes |[om:Distance](http://opendata.caceres.es/def/ontomunicipio#Distance) (c)<br />
-### totaal aantal knoppen
+### total number buds
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#TotalNumberBuds`
 Description | <p>Totaal aantal knoppen.</p>
 Super-classes |[om:NumberBuds](http://opendata.caceres.es/def/ontomunicipio#NumberBuds) (c)<br />
-### total number flowers
+### totaal aantal bloemen
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#TotalNumberFlowers`
@@ -4944,20 +4944,20 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Unit`
 Description | <p>A unit of measure is a definite magnitude of a quantity, defined and adopted by convention or by law. It is used as a standard for measurement of the same quantity, where any other value of the quantity can be expressed as a simple multiple of the unit. For example, length is a quantity; the metre is a unit of length that represents a definite predetermined length. When we say 10 metre (or 10 m), we actually mean 10 times the definite predetermined length called "metre".</p>
-Sub-classes |[om:VolumetricFlowRateUnit](http://opendata.caceres.es/def/ontomunicipio#VolumetricFlowRateUnit) (c)<br />[om:MachNumberUnit](http://opendata.caceres.es/def/ontomunicipio#MachNumberUnit) (c)<br />[om:AngularMomentumUnit](http://opendata.caceres.es/def/ontomunicipio#AngularMomentumUnit) (c)<br />[om:HeatTransferCoefficientUnit](http://opendata.caceres.es/def/ontomunicipio#HeatTransferCoefficientUnit) (c)<br />[om:QuantityOfDimensionOneUnit](http://opendata.caceres.es/def/ontomunicipio#QuantityOfDimensionOneUnit) (c)<br />[om:AngularSpeedUnit](http://opendata.caceres.es/def/ontomunicipio#AngularSpeedUnit) (c)<br />[om:CapacitanceUnit](http://opendata.caceres.es/def/ontomunicipio#CapacitanceUnit) (c)<br />[om:QuantumEfficiencyUnit](http://opendata.caceres.es/def/ontomunicipio#QuantumEfficiencyUnit) (c)<br />[om:MassFlowUnit](http://opendata.caceres.es/def/ontomunicipio#MassFlowUnit) (c)<br />[om:SurfaceTensionUnit](http://opendata.caceres.es/def/ontomunicipio#SurfaceTensionUnit) (c)<br />[om:AngularAccelerationUnit](http://opendata.caceres.es/def/ontomunicipio#AngularAccelerationUnit) (c)<br />[om:IlluminanceUnit](http://opendata.caceres.es/def/ontomunicipio#IlluminanceUnit) (c)<br />[om:CompoundUnit](http://opendata.caceres.es/def/ontomunicipio#CompoundUnit) (c)<br />[om:LuminousIntensityUnit](http://opendata.caceres.es/def/ontomunicipio#LuminousIntensityUnit) (c)<br />[om:LengthUnit](http://opendata.caceres.es/def/ontomunicipio#LengthUnit) (c)<br />[om:AngleUnit](http://opendata.caceres.es/def/ontomunicipio#AngleUnit) (c)<br />[om:RelativeHumidityUnit](http://opendata.caceres.es/def/ontomunicipio#RelativeHumidityUnit) (c)<br />[om:VolumetricViableCountUnit](http://opendata.caceres.es/def/ontomunicipio#VolumetricViableCountUnit) (c)<br />[om:MassUnit](http://opendata.caceres.es/def/ontomunicipio#MassUnit) (c)<br />[om:InformationCapacityUnit](http://opendata.caceres.es/def/ontomunicipio#InformationCapacityUnit) (c)<br />[om:PermeabilityOfFreeSpaceUnit](http://opendata.caceres.es/def/ontomunicipio#PermeabilityOfFreeSpaceUnit) (c)<br />[om:MolarHeatCapacityUnit](http://opendata.caceres.es/def/ontomunicipio#MolarHeatCapacityUnit) (c)<br />[om:CatalyticActivityUnit](http://opendata.caceres.es/def/ontomunicipio#CatalyticActivityUnit) (c)<br />[om:AbsorbedDoseUnit](http://opendata.caceres.es/def/ontomunicipio#AbsorbedDoseUnit) (c)<br />[om:MassFractionUnit](http://opendata.caceres.es/def/ontomunicipio#MassFractionUnit) (c)<br />[om:MomentOfForceUnit](http://opendata.caceres.es/def/ontomunicipio#MomentOfForceUnit) (c)<br />[om:TorqueUnit](http://opendata.caceres.es/def/ontomunicipio#TorqueUnit) (c)<br />[om:LuminousEfficacyUnit](http://opendata.caceres.es/def/ontomunicipio#LuminousEfficacyUnit) (c)<br />[om:TimeUnit](http://opendata.caceres.es/def/ontomunicipio#TimeUnit) (c)<br />[om:ElectricChargeDensityUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricChargeDensityUnit) (c)<br />[om:NusseltNumberForMassTransferUnit](http://opendata.caceres.es/def/ontomunicipio#NusseltNumberForMassTransferUnit) (c)<br />[om:CurvatureConstantUnit](http://opendata.caceres.es/def/ontomunicipio#CurvatureConstantUnit) (c)<br />[om:EntropyUnit](http://opendata.caceres.es/def/ontomunicipio#EntropyUnit) (c)<br />[om:AmountOfMoneyUnit](http://opendata.caceres.es/def/ontomunicipio#AmountOfMoneyUnit) (c)<br />[om:EnergyUnit](http://opendata.caceres.es/def/ontomunicipio#EnergyUnit) (c)<br />[om:ElectricalResistanceUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricalResistanceUnit) (c)<br />[om:MagnetomotiveForceUnit](http://opendata.caceres.es/def/ontomunicipio#MagnetomotiveForceUnit) (c)<br />[om:MolarVolumeUnit](http://opendata.caceres.es/def/ontomunicipio#MolarVolumeUnit) (c)<br />[om:MagneticReynoldsNumberUnit](http://opendata.caceres.es/def/ontomunicipio#MagneticReynoldsNumberUnit) (c)<br />[om:ElectricCurrentUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricCurrentUnit) (c)<br />[om:MagneticFluxDensityUnit](http://opendata.caceres.es/def/ontomunicipio#MagneticFluxDensityUnit) (c)<br />[om:PrandtlNumberUnit](http://opendata.caceres.es/def/ontomunicipio#PrandtlNumberUnit) (c)<br />[om:LuminanceUnit](http://opendata.caceres.es/def/ontomunicipio#LuminanceUnit) (c)<br />[om:HubbleConstantUnit](http://opendata.caceres.es/def/ontomunicipio#HubbleConstantUnit) (c)<br />[om:NumberUnit](http://opendata.caceres.es/def/ontomunicipio#NumberUnit) (c)<br />[om:LuminousEnergyUnit](http://opendata.caceres.es/def/ontomunicipio#LuminousEnergyUnit) (c)<br />[om:AreaDensityRateUnit](http://opendata.caceres.es/def/ontomunicipio#AreaDensityRateUnit) (c)<br />[om:SchmidtNumberUnit](http://opendata.caceres.es/def/ontomunicipio#SchmidtNumberUnit) (c)<br />[om:StantonNumberForMassTransferUnit](http://opendata.caceres.es/def/ontomunicipio#StantonNumberForMassTransferUnit) (c)<br />[om:SpecificEnergyUnit](http://opendata.caceres.es/def/ontomunicipio#SpecificEnergyUnit) (c)<br />[om:CurrentDensityUnit](http://opendata.caceres.es/def/ontomunicipio#CurrentDensityUnit) (c)<br />[om:ExposureUnit](http://opendata.caceres.es/def/ontomunicipio#ExposureUnit) (c)<br />[om:ShearRateUnit](http://opendata.caceres.es/def/ontomunicipio#ShearRateUnit) (c)<br />[om:StrainUnit](http://opendata.caceres.es/def/ontomunicipio#StrainUnit) (c)<br />[om:PercentageUnit](http://opendata.caceres.es/def/ontomunicipio#PercentageUnit) (c)<br />[om:GasConstantUnit](http://opendata.caceres.es/def/ontomunicipio#GasConstantUnit) (c)<br />[om:FrequencyUnit](http://opendata.caceres.es/def/ontomunicipio#FrequencyUnit) (c)<br />[om:TemperatureUnit](http://opendata.caceres.es/def/ontomunicipio#TemperatureUnit) (c)<br />[om:SpecificHeatCapacityUnit](http://opendata.caceres.es/def/ontomunicipio#SpecificHeatCapacityUnit) (c)<br />[om:HeatCapacityUnit](http://opendata.caceres.es/def/ontomunicipio#HeatCapacityUnit) (c)<br />[om:PowerDensityUnit](http://opendata.caceres.es/def/ontomunicipio#PowerDensityUnit) (c)<br />[om:CowlingNumberUnit](http://opendata.caceres.es/def/ontomunicipio#CowlingNumberUnit) (c)<br />[om:SpecificCatalyticActivityUnit](http://opendata.caceres.es/def/ontomunicipio#SpecificCatalyticActivityUnit) (c)<br />[om:GrashofNumberForMassTransferUnit](http://opendata.caceres.es/def/ontomunicipio#GrashofNumberForMassTransferUnit) (c)<br />[om:PermittivityUnit](http://opendata.caceres.es/def/ontomunicipio#PermittivityUnit) (c)<br />[om:ReluctanceUnit](http://opendata.caceres.es/def/ontomunicipio#ReluctanceUnit) (c)<br />[om:NumberDensityUnit](http://opendata.caceres.es/def/ontomunicipio#NumberDensityUnit) (c)<br />[om:MagnitudeUnit](http://opendata.caceres.es/def/ontomunicipio#MagnitudeUnit) (c)<br />[om:ThermalResistanceUnit](http://opendata.caceres.es/def/ontomunicipio#ThermalResistanceUnit) (c)<br />[om:FluidityUnit](http://opendata.caceres.es/def/ontomunicipio#FluidityUnit) (c)<br />[om:FourierNumberForMassTransferUnit](http://opendata.caceres.es/def/ontomunicipio#FourierNumberForMassTransferUnit) (c)<br />[om:MolarEntropyUnit](http://opendata.caceres.es/def/ontomunicipio#MolarEntropyUnit) (c)<br />[om:DynamicViscosityUnit](http://opendata.caceres.es/def/ontomunicipio#DynamicViscosityUnit) (c)<br />[om:KinematicViscosityUnit](http://opendata.caceres.es/def/ontomunicipio#KinematicViscosityUnit) (c)<br />[om:ResponsivityUnit](http://opendata.caceres.es/def/ontomunicipio#ResponsivityUnit) (c)<br />[om:ColumnNumberDensityUnit](http://opendata.caceres.es/def/ontomunicipio#ColumnNumberDensityUnit) (c)<br />[om:MolalityUnit](http://opendata.caceres.es/def/ontomunicipio#MolalityUnit) (c)<br />[om:ElectricalResistivityUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricalResistivityUnit) (c)<br />[om:MagneticFieldUnit](http://opendata.caceres.es/def/ontomunicipio#MagneticFieldUnit) (c)<br />[om:MomentumUnit](http://opendata.caceres.es/def/ontomunicipio#MomentumUnit) (c)<br />[om:ElectricFluxDensityUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricFluxDensityUnit) (c)<br />[om:UnitMultiple](http://opendata.caceres.es/def/ontomunicipio#UnitMultiple) (c)<br />[om:MolarEnergyUnit](http://opendata.caceres.es/def/ontomunicipio#MolarEnergyUnit) (c)<br />[om:ThermalDiffusivityUnit](http://opendata.caceres.es/def/ontomunicipio#ThermalDiffusivityUnit) (c)<br />[om:TemperatureRateUnit](http://opendata.caceres.es/def/ontomunicipio#TemperatureRateUnit) (c)<br />[om:ElectricChargeUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricChargeUnit) (c)<br />[om:AlfvenNumberUnit](http://opendata.caceres.es/def/ontomunicipio#AlfvenNumberUnit) (c)<br />[om:ElectricPotentialUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricPotentialUnit) (c)<br />[om:FirstCowlingNumberUnit](http://opendata.caceres.es/def/ontomunicipio#FirstCowlingNumberUnit) (c)<br />[om:SolidAngleUnit](http://opendata.caceres.es/def/ontomunicipio#SolidAngleUnit) (c)<br />[om:AreaFractionUnit](http://opendata.caceres.es/def/ontomunicipio#AreaFractionUnit) (c)<br />[om:PressureUnit](http://opendata.caceres.es/def/ontomunicipio#PressureUnit) (c)<br />[om:StrouhalNumberUnit](http://opendata.caceres.es/def/ontomunicipio#StrouhalNumberUnit) (c)<br />[om:RayleighNumberUnit](http://opendata.caceres.es/def/ontomunicipio#RayleighNumberUnit) (c)<br />[om:EnergyDensityUnit](http://opendata.caceres.es/def/ontomunicipio#EnergyDensityUnit) (c)<br />[om:InductanceUnit](http://opendata.caceres.es/def/ontomunicipio#InductanceUnit) (c)<br />[om:AmountOfSubstanceUnit](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceUnit) (c)<br />[om:WeberNumberUnit](http://opendata.caceres.es/def/ontomunicipio#WeberNumberUnit) (c)<br />[om:MagneticFluxUnit](http://opendata.caceres.es/def/ontomunicipio#MagneticFluxUnit) (c)<br />[om:ThermalInsulanceUnit](http://opendata.caceres.es/def/ontomunicipio#ThermalInsulanceUnit) (c)<br />[om:RadianceUnit](http://opendata.caceres.es/def/ontomunicipio#RadianceUnit) (c)<br />[om:SpecificViableCountUnit](http://opendata.caceres.es/def/ontomunicipio#SpecificViableCountUnit) (c)<br />[om:EulerNumberUnit](http://opendata.caceres.es/def/ontomunicipio#EulerNumberUnit) (c)<br />[om:WavenumberUnit](http://opendata.caceres.es/def/ontomunicipio#WavenumberUnit) (c)<br />[om:MolarMassUnit](http://opendata.caceres.es/def/ontomunicipio#MolarMassUnit) (c)<br />[om:ElectricFieldUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricFieldUnit) (c)<br />[om:AccelerationUnit](http://opendata.caceres.es/def/ontomunicipio#AccelerationUnit) (c)<br />[om:SpecificVolumeUnit](http://opendata.caceres.es/def/ontomunicipio#SpecificVolumeUnit) (c)<br />[om:Permeance-ElectromagneticUnit](http://opendata.caceres.es/def/ontomunicipio#Permeance-ElectromagneticUnit) (c)<br />[om:Permeance-MaterialsScienceUnit](http://opendata.caceres.es/def/ontomunicipio#Permeance-MaterialsScienceUnit) (c)<br />[om:DecelerationParameterUnit](http://opendata.caceres.es/def/ontomunicipio#DecelerationParameterUnit) (c)<br />[om:AbsorbedDoseRateUnit](http://opendata.caceres.es/def/ontomunicipio#AbsorbedDoseRateUnit) (c)<br />[om:SpecificEntropyUnit](http://opendata.caceres.es/def/ontomunicipio#SpecificEntropyUnit) (c)<br />[om:ElectricalConductanceUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricalConductanceUnit) (c)<br />[om:VolumeFractionUnit](http://opendata.caceres.es/def/ontomunicipio#VolumeFractionUnit) (c)<br />[om:StantonNumberUnit](http://opendata.caceres.es/def/ontomunicipio#StantonNumberUnit) (c)<br />[om:MomentOfInertiaUnit](http://opendata.caceres.es/def/ontomunicipio#MomentOfInertiaUnit) (c)<br />[om:ElectricDipoleMomentUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricDipoleMomentUnit) (c)<br />[om:FroudeNumberUnit](http://opendata.caceres.es/def/ontomunicipio#FroudeNumberUnit) (c)<br />[om:ActionUnit](http://opendata.caceres.es/def/ontomunicipio#ActionUnit) (c)<br />[om:GrashofNumberUnit](http://opendata.caceres.es/def/ontomunicipio#GrashofNumberUnit) (c)<br />[om:FourierNumberUnit](http://opendata.caceres.es/def/ontomunicipio#FourierNumberUnit) (c)<br />[om:StressUnit](http://opendata.caceres.es/def/ontomunicipio#StressUnit) (c)<br />[om:SingularUnit](http://opendata.caceres.es/def/ontomunicipio#SingularUnit) (c)<br />[om:CatalyticActivityConcentrationUnit](http://opendata.caceres.es/def/ontomunicipio#CatalyticActivityConcentrationUnit) (c)<br />[om:SymbolRateUnit](http://opendata.caceres.es/def/ontomunicipio#SymbolRateUnit) (c)<br />[om:AmountOfSubstanceFractionUnit](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceFractionUnit) (c)<br />[om:PecletNumberUnit](http://opendata.caceres.es/def/ontomunicipio#PecletNumberUnit) (c)<br />[om:ExposureToXAndGammaRaysUnit](http://opendata.caceres.es/def/ontomunicipio#ExposureToXAndGammaRaysUnit) (c)<br />[om:PrefixedUnit](http://opendata.caceres.es/def/ontomunicipio#PrefixedUnit) (c)<br />[om:AmountOfSubstanceFlowUnit](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceFlowUnit) (c)<br />[om:RatioUnit](http://opendata.caceres.es/def/ontomunicipio#RatioUnit) (c)<br />[om:KnudsenNumberUnit](http://opendata.caceres.es/def/ontomunicipio#KnudsenNumberUnit) (c)<br />[om:Permeability-EarthScienceUnit](http://opendata.caceres.es/def/ontomunicipio#Permeability-EarthScienceUnit) (c)<br />[om:DensityParameterUnit](http://opendata.caceres.es/def/ontomunicipio#DensityParameterUnit) (c)<br />[om:VolumetricHeatCapacityUnit](http://opendata.caceres.es/def/ontomunicipio#VolumetricHeatCapacityUnit) (c)<br />[om:ElectricalConductivityUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricalConductivityUnit) (c)<br />[om:VolumeUnit](http://opendata.caceres.es/def/ontomunicipio#VolumeUnit) (c)<br />[om:AreaUnit](http://opendata.caceres.es/def/ontomunicipio#AreaUnit) (c)<br />[om:LewisNumberUnit](http://opendata.caceres.es/def/ontomunicipio#LewisNumberUnit) (c)<br />[om:HartmannNumberUnit](http://opendata.caceres.es/def/ontomunicipio#HartmannNumberUnit) (c)<br />[om:DoseEquivalentUnit](http://opendata.caceres.es/def/ontomunicipio#DoseEquivalentUnit) (c)<br />[om:DetectivityUnit](http://opendata.caceres.es/def/ontomunicipio#DetectivityUnit) (c)<br />[om:ThermalConductivityUnit](http://opendata.caceres.es/def/ontomunicipio#ThermalConductivityUnit) (c)<br />[om:ForceUnit](http://opendata.caceres.es/def/ontomunicipio#ForceUnit) (c)<br />[om:DensityUnit](http://opendata.caceres.es/def/ontomunicipio#DensityUnit) (c)<br />[om:DynamicRangeUnit](http://opendata.caceres.es/def/ontomunicipio#DynamicRangeUnit) (c)<br />[om:NusseltNumberUnit](http://opendata.caceres.es/def/ontomunicipio#NusseltNumberUnit) (c)<br />[om:RadiantIntensityUnit](http://opendata.caceres.es/def/ontomunicipio#RadiantIntensityUnit) (c)<br />[om:AmountOfSubstanceConcentrationUnit](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceConcentrationUnit) (c)<br />[om:ActivityUnit](http://opendata.caceres.es/def/ontomunicipio#ActivityUnit) (c)<br />[om:AreaDensityUnit](http://opendata.caceres.es/def/ontomunicipio#AreaDensityUnit) (c)<br />[om:ReynoldsNumberUnit](http://opendata.caceres.es/def/ontomunicipio#ReynoldsNumberUnit) (c)<br />[om:PecletNumberForMassTransferUnit](http://opendata.caceres.es/def/ontomunicipio#PecletNumberForMassTransferUnit) (c)<br />[om:LuminousFluxUnit](http://opendata.caceres.es/def/ontomunicipio#LuminousFluxUnit) (c)<br />[om:PowerUnit](http://opendata.caceres.es/def/ontomunicipio#PowerUnit) (c)<br />[om:SpeedUnit](http://opendata.caceres.es/def/ontomunicipio#SpeedUnit) (c)<br />
-In range of |[om:hasDerivedUnit](http://opendata.caceres.es/def/ontomunicipio#hasDerivedUnit) (op)<br />[om:hasUnit](http://opendata.caceres.es/def/ontomunicipio#hasUnit) (op)<br />[om:commonlyHasUnit](http://opendata.caceres.es/def/ontomunicipio#commonlyHasUnit) (op)<br />[om:usesUnit](http://opendata.caceres.es/def/ontomunicipio#usesUnit) (op)<br />[om:hasBaseUnit](http://opendata.caceres.es/def/ontomunicipio#hasBaseUnit) (op)<br />
+Sub-classes |[om:AmountOfSubstanceFractionUnit](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceFractionUnit) (c)<br />[om:PowerDensityUnit](http://opendata.caceres.es/def/ontomunicipio#PowerDensityUnit) (c)<br />[om:VolumetricHeatCapacityUnit](http://opendata.caceres.es/def/ontomunicipio#VolumetricHeatCapacityUnit) (c)<br />[om:PrandtlNumberUnit](http://opendata.caceres.es/def/ontomunicipio#PrandtlNumberUnit) (c)<br />[om:MolarEntropyUnit](http://opendata.caceres.es/def/ontomunicipio#MolarEntropyUnit) (c)<br />[om:DetectivityUnit](http://opendata.caceres.es/def/ontomunicipio#DetectivityUnit) (c)<br />[om:ElectricalResistanceUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricalResistanceUnit) (c)<br />[om:SingularUnit](http://opendata.caceres.es/def/ontomunicipio#SingularUnit) (c)<br />[om:LuminousEnergyUnit](http://opendata.caceres.es/def/ontomunicipio#LuminousEnergyUnit) (c)<br />[om:AbsorbedDoseUnit](http://opendata.caceres.es/def/ontomunicipio#AbsorbedDoseUnit) (c)<br />[om:MagneticFluxUnit](http://opendata.caceres.es/def/ontomunicipio#MagneticFluxUnit) (c)<br />[om:KinematicViscosityUnit](http://opendata.caceres.es/def/ontomunicipio#KinematicViscosityUnit) (c)<br />[om:IlluminanceUnit](http://opendata.caceres.es/def/ontomunicipio#IlluminanceUnit) (c)<br />[om:DecelerationParameterUnit](http://opendata.caceres.es/def/ontomunicipio#DecelerationParameterUnit) (c)<br />[om:ElectricChargeDensityUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricChargeDensityUnit) (c)<br />[om:ActionUnit](http://opendata.caceres.es/def/ontomunicipio#ActionUnit) (c)<br />[om:AngularAccelerationUnit](http://opendata.caceres.es/def/ontomunicipio#AngularAccelerationUnit) (c)<br />[om:TemperatureUnit](http://opendata.caceres.es/def/ontomunicipio#TemperatureUnit) (c)<br />[om:ElectricalConductivityUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricalConductivityUnit) (c)<br />[om:NusseltNumberUnit](http://opendata.caceres.es/def/ontomunicipio#NusseltNumberUnit) (c)<br />[om:EntropyUnit](http://opendata.caceres.es/def/ontomunicipio#EntropyUnit) (c)<br />[om:FroudeNumberUnit](http://opendata.caceres.es/def/ontomunicipio#FroudeNumberUnit) (c)<br />[om:EnergyUnit](http://opendata.caceres.es/def/ontomunicipio#EnergyUnit) (c)<br />[om:AngleUnit](http://opendata.caceres.es/def/ontomunicipio#AngleUnit) (c)<br />[om:ElectricPotentialUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricPotentialUnit) (c)<br />[om:PecletNumberUnit](http://opendata.caceres.es/def/ontomunicipio#PecletNumberUnit) (c)<br />[om:MassUnit](http://opendata.caceres.es/def/ontomunicipio#MassUnit) (c)<br />[om:CurvatureConstantUnit](http://opendata.caceres.es/def/ontomunicipio#CurvatureConstantUnit) (c)<br />[om:FirstCowlingNumberUnit](http://opendata.caceres.es/def/ontomunicipio#FirstCowlingNumberUnit) (c)<br />[om:KnudsenNumberUnit](http://opendata.caceres.es/def/ontomunicipio#KnudsenNumberUnit) (c)<br />[om:ResponsivityUnit](http://opendata.caceres.es/def/ontomunicipio#ResponsivityUnit) (c)<br />[om:SpecificHeatCapacityUnit](http://opendata.caceres.es/def/ontomunicipio#SpecificHeatCapacityUnit) (c)<br />[om:AmountOfSubstanceUnit](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceUnit) (c)<br />[om:EnergyDensityUnit](http://opendata.caceres.es/def/ontomunicipio#EnergyDensityUnit) (c)<br />[om:CatalyticActivityUnit](http://opendata.caceres.es/def/ontomunicipio#CatalyticActivityUnit) (c)<br />[om:RadiantIntensityUnit](http://opendata.caceres.es/def/ontomunicipio#RadiantIntensityUnit) (c)<br />[om:MolarEnergyUnit](http://opendata.caceres.es/def/ontomunicipio#MolarEnergyUnit) (c)<br />[om:MagneticFluxDensityUnit](http://opendata.caceres.es/def/ontomunicipio#MagneticFluxDensityUnit) (c)<br />[om:ThermalResistanceUnit](http://opendata.caceres.es/def/ontomunicipio#ThermalResistanceUnit) (c)<br />[om:RatioUnit](http://opendata.caceres.es/def/ontomunicipio#RatioUnit) (c)<br />[om:DoseEquivalentUnit](http://opendata.caceres.es/def/ontomunicipio#DoseEquivalentUnit) (c)<br />[om:NusseltNumberForMassTransferUnit](http://opendata.caceres.es/def/ontomunicipio#NusseltNumberForMassTransferUnit) (c)<br />[om:ThermalInsulanceUnit](http://opendata.caceres.es/def/ontomunicipio#ThermalInsulanceUnit) (c)<br />[om:VolumetricViableCountUnit](http://opendata.caceres.es/def/ontomunicipio#VolumetricViableCountUnit) (c)<br />[om:SpecificEnergyUnit](http://opendata.caceres.es/def/ontomunicipio#SpecificEnergyUnit) (c)<br />[om:HartmannNumberUnit](http://opendata.caceres.es/def/ontomunicipio#HartmannNumberUnit) (c)<br />[om:ForceUnit](http://opendata.caceres.es/def/ontomunicipio#ForceUnit) (c)<br />[om:VolumetricFlowRateUnit](http://opendata.caceres.es/def/ontomunicipio#VolumetricFlowRateUnit) (c)<br />[om:ReynoldsNumberUnit](http://opendata.caceres.es/def/ontomunicipio#ReynoldsNumberUnit) (c)<br />[om:AmountOfSubstanceFlowUnit](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceFlowUnit) (c)<br />[om:NumberDensityUnit](http://opendata.caceres.es/def/ontomunicipio#NumberDensityUnit) (c)<br />[om:ActivityUnit](http://opendata.caceres.es/def/ontomunicipio#ActivityUnit) (c)<br />[om:StressUnit](http://opendata.caceres.es/def/ontomunicipio#StressUnit) (c)<br />[om:FourierNumberUnit](http://opendata.caceres.es/def/ontomunicipio#FourierNumberUnit) (c)<br />[om:FrequencyUnit](http://opendata.caceres.es/def/ontomunicipio#FrequencyUnit) (c)<br />[om:AmountOfMoneyUnit](http://opendata.caceres.es/def/ontomunicipio#AmountOfMoneyUnit) (c)<br />[om:SchmidtNumberUnit](http://opendata.caceres.es/def/ontomunicipio#SchmidtNumberUnit) (c)<br />[om:ExposureToXAndGammaRaysUnit](http://opendata.caceres.es/def/ontomunicipio#ExposureToXAndGammaRaysUnit) (c)<br />[om:HeatCapacityUnit](http://opendata.caceres.es/def/ontomunicipio#HeatCapacityUnit) (c)<br />[om:Permeance-ElectromagneticUnit](http://opendata.caceres.es/def/ontomunicipio#Permeance-ElectromagneticUnit) (c)<br />[om:Permeability-EarthScienceUnit](http://opendata.caceres.es/def/ontomunicipio#Permeability-EarthScienceUnit) (c)<br />[om:InductanceUnit](http://opendata.caceres.es/def/ontomunicipio#InductanceUnit) (c)<br />[om:MomentOfInertiaUnit](http://opendata.caceres.es/def/ontomunicipio#MomentOfInertiaUnit) (c)<br />[om:SymbolRateUnit](http://opendata.caceres.es/def/ontomunicipio#SymbolRateUnit) (c)<br />[om:AlfvenNumberUnit](http://opendata.caceres.es/def/ontomunicipio#AlfvenNumberUnit) (c)<br />[om:InformationCapacityUnit](http://opendata.caceres.es/def/ontomunicipio#InformationCapacityUnit) (c)<br />[om:DensityUnit](http://opendata.caceres.es/def/ontomunicipio#DensityUnit) (c)<br />[om:GasConstantUnit](http://opendata.caceres.es/def/ontomunicipio#GasConstantUnit) (c)<br />[om:AccelerationUnit](http://opendata.caceres.es/def/ontomunicipio#AccelerationUnit) (c)<br />[om:MolarMassUnit](http://opendata.caceres.es/def/ontomunicipio#MolarMassUnit) (c)<br />[om:RayleighNumberUnit](http://opendata.caceres.es/def/ontomunicipio#RayleighNumberUnit) (c)<br />[om:QuantityOfDimensionOneUnit](http://opendata.caceres.es/def/ontomunicipio#QuantityOfDimensionOneUnit) (c)<br />[om:MagneticFieldUnit](http://opendata.caceres.es/def/ontomunicipio#MagneticFieldUnit) (c)<br />[om:MagnetomotiveForceUnit](http://opendata.caceres.es/def/ontomunicipio#MagnetomotiveForceUnit) (c)<br />[om:NumberUnit](http://opendata.caceres.es/def/ontomunicipio#NumberUnit) (c)<br />[om:MomentumUnit](http://opendata.caceres.es/def/ontomunicipio#MomentumUnit) (c)<br />[om:RadianceUnit](http://opendata.caceres.es/def/ontomunicipio#RadianceUnit) (c)<br />[om:ElectricFluxDensityUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricFluxDensityUnit) (c)<br />[om:ElectricDipoleMomentUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricDipoleMomentUnit) (c)<br />[om:ThermalDiffusivityUnit](http://opendata.caceres.es/def/ontomunicipio#ThermalDiffusivityUnit) (c)<br />[om:MolarHeatCapacityUnit](http://opendata.caceres.es/def/ontomunicipio#MolarHeatCapacityUnit) (c)<br />[om:LuminousFluxUnit](http://opendata.caceres.es/def/ontomunicipio#LuminousFluxUnit) (c)<br />[om:StantonNumberForMassTransferUnit](http://opendata.caceres.es/def/ontomunicipio#StantonNumberForMassTransferUnit) (c)<br />[om:PecletNumberForMassTransferUnit](http://opendata.caceres.es/def/ontomunicipio#PecletNumberForMassTransferUnit) (c)<br />[om:ShearRateUnit](http://opendata.caceres.es/def/ontomunicipio#ShearRateUnit) (c)<br />[om:ReluctanceUnit](http://opendata.caceres.es/def/ontomunicipio#ReluctanceUnit) (c)<br />[om:FourierNumberForMassTransferUnit](http://opendata.caceres.es/def/ontomunicipio#FourierNumberForMassTransferUnit) (c)<br />[om:FluidityUnit](http://opendata.caceres.es/def/ontomunicipio#FluidityUnit) (c)<br />[om:MolalityUnit](http://opendata.caceres.es/def/ontomunicipio#MolalityUnit) (c)<br />[om:QuantumEfficiencyUnit](http://opendata.caceres.es/def/ontomunicipio#QuantumEfficiencyUnit) (c)<br />[om:StrainUnit](http://opendata.caceres.es/def/ontomunicipio#StrainUnit) (c)<br />[om:DynamicRangeUnit](http://opendata.caceres.es/def/ontomunicipio#DynamicRangeUnit) (c)<br />[om:MassFlowUnit](http://opendata.caceres.es/def/ontomunicipio#MassFlowUnit) (c)<br />[om:AmountOfSubstanceConcentrationUnit](http://opendata.caceres.es/def/ontomunicipio#AmountOfSubstanceConcentrationUnit) (c)<br />[om:MassFractionUnit](http://opendata.caceres.es/def/ontomunicipio#MassFractionUnit) (c)<br />[om:HeatTransferCoefficientUnit](http://opendata.caceres.es/def/ontomunicipio#HeatTransferCoefficientUnit) (c)<br />[om:SpecificEntropyUnit](http://opendata.caceres.es/def/ontomunicipio#SpecificEntropyUnit) (c)<br />[om:VolumeFractionUnit](http://opendata.caceres.es/def/ontomunicipio#VolumeFractionUnit) (c)<br />[om:ElectricalConductanceUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricalConductanceUnit) (c)<br />[om:ElectricalResistivityUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricalResistivityUnit) (c)<br />[om:AbsorbedDoseRateUnit](http://opendata.caceres.es/def/ontomunicipio#AbsorbedDoseRateUnit) (c)<br />[om:EulerNumberUnit](http://opendata.caceres.es/def/ontomunicipio#EulerNumberUnit) (c)<br />[om:StrouhalNumberUnit](http://opendata.caceres.es/def/ontomunicipio#StrouhalNumberUnit) (c)<br />[om:PermittivityUnit](http://opendata.caceres.es/def/ontomunicipio#PermittivityUnit) (c)<br />[om:CurrentDensityUnit](http://opendata.caceres.es/def/ontomunicipio#CurrentDensityUnit) (c)<br />[om:AngularSpeedUnit](http://opendata.caceres.es/def/ontomunicipio#AngularSpeedUnit) (c)<br />[om:DensityParameterUnit](http://opendata.caceres.es/def/ontomunicipio#DensityParameterUnit) (c)<br />[om:AngularMomentumUnit](http://opendata.caceres.es/def/ontomunicipio#AngularMomentumUnit) (c)<br />[om:ThermalConductivityUnit](http://opendata.caceres.es/def/ontomunicipio#ThermalConductivityUnit) (c)<br />[om:DynamicViscosityUnit](http://opendata.caceres.es/def/ontomunicipio#DynamicViscosityUnit) (c)<br />[om:GrashofNumberUnit](http://opendata.caceres.es/def/ontomunicipio#GrashofNumberUnit) (c)<br />[om:PressureUnit](http://opendata.caceres.es/def/ontomunicipio#PressureUnit) (c)<br />[om:GrashofNumberForMassTransferUnit](http://opendata.caceres.es/def/ontomunicipio#GrashofNumberForMassTransferUnit) (c)<br />[om:SurfaceTensionUnit](http://opendata.caceres.es/def/ontomunicipio#SurfaceTensionUnit) (c)<br />[om:LuminanceUnit](http://opendata.caceres.es/def/ontomunicipio#LuminanceUnit) (c)<br />[om:ElectricChargeUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricChargeUnit) (c)<br />[om:WeberNumberUnit](http://opendata.caceres.es/def/ontomunicipio#WeberNumberUnit) (c)<br />[om:TorqueUnit](http://opendata.caceres.es/def/ontomunicipio#TorqueUnit) (c)<br />[om:ElectricFieldUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricFieldUnit) (c)<br />[om:StantonNumberUnit](http://opendata.caceres.es/def/ontomunicipio#StantonNumberUnit) (c)<br />[om:MachNumberUnit](http://opendata.caceres.es/def/ontomunicipio#MachNumberUnit) (c)<br />[om:MagnitudeUnit](http://opendata.caceres.es/def/ontomunicipio#MagnitudeUnit) (c)<br />[om:WavenumberUnit](http://opendata.caceres.es/def/ontomunicipio#WavenumberUnit) (c)<br />[om:CatalyticActivityConcentrationUnit](http://opendata.caceres.es/def/ontomunicipio#CatalyticActivityConcentrationUnit) (c)<br />[om:SpecificViableCountUnit](http://opendata.caceres.es/def/ontomunicipio#SpecificViableCountUnit) (c)<br />[om:HubbleConstantUnit](http://opendata.caceres.es/def/ontomunicipio#HubbleConstantUnit) (c)<br />[om:Permeance-MaterialsScienceUnit](http://opendata.caceres.es/def/ontomunicipio#Permeance-MaterialsScienceUnit) (c)<br />[om:TemperatureRateUnit](http://opendata.caceres.es/def/ontomunicipio#TemperatureRateUnit) (c)<br />[om:RelativeHumidityUnit](http://opendata.caceres.es/def/ontomunicipio#RelativeHumidityUnit) (c)<br />[om:MolarVolumeUnit](http://opendata.caceres.es/def/ontomunicipio#MolarVolumeUnit) (c)<br />[om:AreaDensityUnit](http://opendata.caceres.es/def/ontomunicipio#AreaDensityUnit) (c)<br />[om:PowerUnit](http://opendata.caceres.es/def/ontomunicipio#PowerUnit) (c)<br />[om:CompoundUnit](http://opendata.caceres.es/def/ontomunicipio#CompoundUnit) (c)<br />[om:AreaFractionUnit](http://opendata.caceres.es/def/ontomunicipio#AreaFractionUnit) (c)<br />[om:TimeUnit](http://opendata.caceres.es/def/ontomunicipio#TimeUnit) (c)<br />[om:PercentageUnit](http://opendata.caceres.es/def/ontomunicipio#PercentageUnit) (c)<br />[om:AreaDensityRateUnit](http://opendata.caceres.es/def/ontomunicipio#AreaDensityRateUnit) (c)<br />[om:SpeedUnit](http://opendata.caceres.es/def/ontomunicipio#SpeedUnit) (c)<br />[om:CapacitanceUnit](http://opendata.caceres.es/def/ontomunicipio#CapacitanceUnit) (c)<br />[om:ExposureUnit](http://opendata.caceres.es/def/ontomunicipio#ExposureUnit) (c)<br />[om:PrefixedUnit](http://opendata.caceres.es/def/ontomunicipio#PrefixedUnit) (c)<br />[om:MagneticReynoldsNumberUnit](http://opendata.caceres.es/def/ontomunicipio#MagneticReynoldsNumberUnit) (c)<br />[om:MomentOfForceUnit](http://opendata.caceres.es/def/ontomunicipio#MomentOfForceUnit) (c)<br />[om:AreaUnit](http://opendata.caceres.es/def/ontomunicipio#AreaUnit) (c)<br />[om:UnitMultiple](http://opendata.caceres.es/def/ontomunicipio#UnitMultiple) (c)<br />[om:PermeabilityOfFreeSpaceUnit](http://opendata.caceres.es/def/ontomunicipio#PermeabilityOfFreeSpaceUnit) (c)<br />[om:SpecificCatalyticActivityUnit](http://opendata.caceres.es/def/ontomunicipio#SpecificCatalyticActivityUnit) (c)<br />[om:VolumeUnit](http://opendata.caceres.es/def/ontomunicipio#VolumeUnit) (c)<br />[om:LuminousEfficacyUnit](http://opendata.caceres.es/def/ontomunicipio#LuminousEfficacyUnit) (c)<br />[om:LuminousIntensityUnit](http://opendata.caceres.es/def/ontomunicipio#LuminousIntensityUnit) (c)<br />[om:ColumnNumberDensityUnit](http://opendata.caceres.es/def/ontomunicipio#ColumnNumberDensityUnit) (c)<br />[om:LengthUnit](http://opendata.caceres.es/def/ontomunicipio#LengthUnit) (c)<br />[om:LewisNumberUnit](http://opendata.caceres.es/def/ontomunicipio#LewisNumberUnit) (c)<br />[om:CowlingNumberUnit](http://opendata.caceres.es/def/ontomunicipio#CowlingNumberUnit) (c)<br />[om:ElectricCurrentUnit](http://opendata.caceres.es/def/ontomunicipio#ElectricCurrentUnit) (c)<br />[om:SpecificVolumeUnit](http://opendata.caceres.es/def/ontomunicipio#SpecificVolumeUnit) (c)<br />[om:SolidAngleUnit](http://opendata.caceres.es/def/ontomunicipio#SolidAngleUnit) (c)<br />
+In range of |[om:hasBaseUnit](http://opendata.caceres.es/def/ontomunicipio#hasBaseUnit) (op)<br />[om:usesUnit](http://opendata.caceres.es/def/ontomunicipio#usesUnit) (op)<br />[om:hasUnit](http://opendata.caceres.es/def/ontomunicipio#hasUnit) (op)<br />[om:hasDerivedUnit](http://opendata.caceres.es/def/ontomunicipio#hasDerivedUnit) (op)<br />[om:commonlyHasUnit](http://opendata.caceres.es/def/ontomunicipio#commonlyHasUnit) (op)<br />
 ### unit division
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#UnitDivision`
 Super-classes |[om:CompoundUnit](http://opendata.caceres.es/def/ontomunicipio#CompoundUnit) (c)<br />
-Sub-classes |[om:PrefixedGramPerPrefixedLitre](http://opendata.caceres.es/def/ontomunicipio#PrefixedGramPerPrefixedLitre) (c)<br />[om:PrefixedMetrePerSecond-TimeSquared](http://opendata.caceres.es/def/ontomunicipio#PrefixedMetrePerSecond-TimeSquared) (c)<br />[om:PrefixedGramPerLitre](http://opendata.caceres.es/def/ontomunicipio#PrefixedGramPerLitre) (c)<br />[om:GramPerPrefixedLitre](http://opendata.caceres.es/def/ontomunicipio#GramPerPrefixedLitre) (c)<br />[om:MetrePerPrefixedSecond-Time](http://opendata.caceres.es/def/ontomunicipio#MetrePerPrefixedSecond-Time) (c)<br />[om:PrefixedMetrePerPrefixedSecond-Time](http://opendata.caceres.es/def/ontomunicipio#PrefixedMetrePerPrefixedSecond-Time) (c)<br />[om:MetrePerPrefixedSecond-TimeSquared](http://opendata.caceres.es/def/ontomunicipio#MetrePerPrefixedSecond-TimeSquared) (c)<br />[om:PrefixedMolePerLitre](http://opendata.caceres.es/def/ontomunicipio#PrefixedMolePerLitre) (c)<br />[om:PrefixedMolePerMetre](http://opendata.caceres.es/def/ontomunicipio#PrefixedMolePerMetre) (c)<br />[om:PrefixedMetrePerPrefixedSecond-TimeSquared](http://opendata.caceres.es/def/ontomunicipio#PrefixedMetrePerPrefixedSecond-TimeSquared) (c)<br />[om:PrefixedMolePerPrefixedLitre](http://opendata.caceres.es/def/ontomunicipio#PrefixedMolePerPrefixedLitre) (c)<br />[om:PrefixedMetrePerSecond-Time](http://opendata.caceres.es/def/ontomunicipio#PrefixedMetrePerSecond-Time) (c)<br />[om:PrefixedMolePerPrefixedMetre](http://opendata.caceres.es/def/ontomunicipio#PrefixedMolePerPrefixedMetre) (c)<br />[om:MolePerPrefixedMetre](http://opendata.caceres.es/def/ontomunicipio#MolePerPrefixedMetre) (c)<br />[om:MolePerPrefixedLitre](http://opendata.caceres.es/def/ontomunicipio#MolePerPrefixedLitre) (c)<br />
+Sub-classes |[om:PrefixedGramPerLitre](http://opendata.caceres.es/def/ontomunicipio#PrefixedGramPerLitre) (c)<br />[om:MolePerPrefixedLitre](http://opendata.caceres.es/def/ontomunicipio#MolePerPrefixedLitre) (c)<br />[om:GramPerPrefixedLitre](http://opendata.caceres.es/def/ontomunicipio#GramPerPrefixedLitre) (c)<br />[om:PrefixedMetrePerSecond-TimeSquared](http://opendata.caceres.es/def/ontomunicipio#PrefixedMetrePerSecond-TimeSquared) (c)<br />[om:MetrePerPrefixedSecond-TimeSquared](http://opendata.caceres.es/def/ontomunicipio#MetrePerPrefixedSecond-TimeSquared) (c)<br />[om:MolePerPrefixedMetre](http://opendata.caceres.es/def/ontomunicipio#MolePerPrefixedMetre) (c)<br />[om:MetrePerPrefixedSecond-Time](http://opendata.caceres.es/def/ontomunicipio#MetrePerPrefixedSecond-Time) (c)<br />[om:PrefixedMolePerMetre](http://opendata.caceres.es/def/ontomunicipio#PrefixedMolePerMetre) (c)<br />[om:PrefixedMolePerLitre](http://opendata.caceres.es/def/ontomunicipio#PrefixedMolePerLitre) (c)<br />[om:PrefixedMolePerPrefixedLitre](http://opendata.caceres.es/def/ontomunicipio#PrefixedMolePerPrefixedLitre) (c)<br />[om:PrefixedMetrePerPrefixedSecond-Time](http://opendata.caceres.es/def/ontomunicipio#PrefixedMetrePerPrefixedSecond-Time) (c)<br />[om:PrefixedMetrePerPrefixedSecond-TimeSquared](http://opendata.caceres.es/def/ontomunicipio#PrefixedMetrePerPrefixedSecond-TimeSquared) (c)<br />[om:PrefixedGramPerPrefixedLitre](http://opendata.caceres.es/def/ontomunicipio#PrefixedGramPerPrefixedLitre) (c)<br />[om:PrefixedMetrePerSecond-Time](http://opendata.caceres.es/def/ontomunicipio#PrefixedMetrePerSecond-Time) (c)<br />[om:PrefixedMolePerPrefixedMetre](http://opendata.caceres.es/def/ontomunicipio#PrefixedMolePerPrefixedMetre) (c)<br />
 ### unit exponentiation
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#UnitExponentiation`
 Super-classes |[om:CompoundUnit](http://opendata.caceres.es/def/ontomunicipio#CompoundUnit) (c)<br />
-Sub-classes |[om:CubicPrefixedMetre](http://opendata.caceres.es/def/ontomunicipio#CubicPrefixedMetre) (c)<br />[om:PrefixedSecond-TimeSquared](http://opendata.caceres.es/def/ontomunicipio#PrefixedSecond-TimeSquared) (c)<br />[om:SquarePrefixedMetre](http://opendata.caceres.es/def/ontomunicipio#SquarePrefixedMetre) (c)<br />
+Sub-classes |[om:SquarePrefixedMetre](http://opendata.caceres.es/def/ontomunicipio#SquarePrefixedMetre) (c)<br />[om:CubicPrefixedMetre](http://opendata.caceres.es/def/ontomunicipio#CubicPrefixedMetre) (c)<br />[om:PrefixedSecond-TimeSquared](http://opendata.caceres.es/def/ontomunicipio#PrefixedSecond-TimeSquared) (c)<br />
 ### unit multiple
 Property | Value
 --- | ---
@@ -4981,19 +4981,19 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#VMagnitude`
 Description | <p>Johnson V magnitude. The Johnson V band is a standard passband in the visual area, matching the response curve of the human eye. The central wavelength is 550nm and the bandwidth is 90nm.  The filter to be used is the Corning 3384 filter.</p>
 Super-classes |[om:JohnsonMagnitude](http://opendata.caceres.es/def/ontomunicipio#JohnsonMagnitude) (c)<br />
-Sub-classes |[om:VMagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#VMagnitudeAtMinimumBrightness) (c)<br />[om:VMagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#VMagnitudeAtMaximumBrightness) (c)<br />
+Sub-classes |[om:VMagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#VMagnitudeAtMaximumBrightness) (c)<br />[om:VMagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#VMagnitudeAtMinimumBrightness) (c)<br />
 ### V magnitude at maximum brightness
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#VMagnitudeAtMaximumBrightness`
 Description | <p>Johnson V magnitude (apparent) at maximum brightness (i.e. for a variable star). The Johnson V band is a standard filter in the visual area, matching the response curve of the human eye. The central wavelength is 550nm and the bandwidth is 90nm.  The filter to be used is the Corning 3384 filter.</p>
-Super-classes |[om:MagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#MagnitudeAtMaximumBrightness) (c)<br />[om:VMagnitude](http://opendata.caceres.es/def/ontomunicipio#VMagnitude) (c)<br />
+Super-classes |[om:VMagnitude](http://opendata.caceres.es/def/ontomunicipio#VMagnitude) (c)<br />[om:MagnitudeAtMaximumBrightness](http://opendata.caceres.es/def/ontomunicipio#MagnitudeAtMaximumBrightness) (c)<br />
 ### V magnitude at minimum brightness
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#VMagnitudeAtMinimumBrightness`
 Description | <p>Johnson V magnitude (apparent) at minimum brightness (i.e. for a variable star). The Johnson V band is a standard filter in the visual area, matching the response curve of the human eye. The central wavelength is 550nm and the bandwidth is 90nm.  The filter to be used is the Corning 3384 filter.</p>
-Super-classes |[om:MagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#MagnitudeAtMinimumBrightness) (c)<br />[om:VMagnitude](http://opendata.caceres.es/def/ontomunicipio#VMagnitude) (c)<br />
+Super-classes |[om:VMagnitude](http://opendata.caceres.es/def/ontomunicipio#VMagnitude) (c)<br />[om:MagnitudeAtMinimumBrightness](http://opendata.caceres.es/def/ontomunicipio#MagnitudeAtMinimumBrightness) (c)<br />
 ### vascular browning
 Property | Value
 --- | ---
@@ -5012,13 +5012,13 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#VasePlusWaterMass`
 Description | <p>Gewicht vaas plus water.</p>
 Super-classes |[om:Mass](http://opendata.caceres.es/def/ontomunicipio#Mass) (c)<br />
-### vase plus water plus flower mass
+### vaas- plus water- plus bloemmassa
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#VasePlusWaterPlusFlowerMass`
 Description | <p>Gewicht vaas plus water plus bloem (= steel plus blad plus bloem).</p>
 Super-classes |[om:Mass](http://opendata.caceres.es/def/ontomunicipio#Mass) (c)<br />
-### velocity
+### snelheid (vector)
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Velocity`
@@ -5037,12 +5037,12 @@ IRI | `http://opendata.caceres.es/def/ontomunicipio#Volume`
 Description | <p>Volume is a measure of how much three-dimensional space any phenomenon occupies. It is a derived quantity in the International System of Units. Volume is length to the power 3.</p>
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
 Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:volume-Dimension](http://opendata.caceres.es/def/ontomunicipio#volume-Dimension) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
-### volumefractie
+### volume fraction
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#VolumeFraction`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
+Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
 Sub-classes |[om:Overrun](http://opendata.caceres.es/def/ontomunicipio#Overrun) (c)<br />
 ### volume fraction unit
 Property | Value
@@ -5157,7 +5157,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#VolumetricViableCount`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
 Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
-Sub-classes |[om:VolumetricEscherichiaColiCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricEscherichiaColiCount) (c)<br />[om:VolumetricStreptococcusDysgalactiaeCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricStreptococcusDysgalactiaeCount) (c)<br />[om:VolumetricKlebsiellaCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricKlebsiellaCount) (c)<br />[om:VolumetricListeriaMonocytogenesCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricListeriaMonocytogenesCount) (c)<br />[om:VolumetricStreptococcusAgalactiaeCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricStreptococcusAgalactiaeCount) (c)<br />[om:VolumetricSerratiaMarcescensCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricSerratiaMarcescensCount) (c)<br />[om:VolumetricSalmonellaCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricSalmonellaCount) (c)<br />[om:VolumetricEnterobacteriaceaeCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricEnterobacteriaceaeCount) (c)<br />[om:VolumetricStaphylococcusAureusCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricStaphylococcusAureusCount) (c)<br />[om:VolumetricStreptococcusUberisCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricStreptococcusUberisCount) (c)<br />[om:VolumetricCorynebacteriumBovisCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricCorynebacteriumBovisCount) (c)<br />[om:VolumetricCorynebacteriumCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricCorynebacteriumCount) (c)<br />[om:VolumetricYeastAndFungiCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricYeastAndFungiCount) (c)<br />[om:VolumetricEnterococcusCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricEnterococcusCount) (c)<br />[om:VolumetricColiformBacterieCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricColiformBacterieCount) (c)<br />
+Sub-classes |[om:VolumetricSerratiaMarcescensCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricSerratiaMarcescensCount) (c)<br />[om:VolumetricEnterobacteriaceaeCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricEnterobacteriaceaeCount) (c)<br />[om:VolumetricKlebsiellaCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricKlebsiellaCount) (c)<br />[om:VolumetricEscherichiaColiCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricEscherichiaColiCount) (c)<br />[om:VolumetricEnterococcusCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricEnterococcusCount) (c)<br />[om:VolumetricCorynebacteriumCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricCorynebacteriumCount) (c)<br />[om:VolumetricStaphylococcusAureusCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricStaphylococcusAureusCount) (c)<br />[om:VolumetricStreptococcusAgalactiaeCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricStreptococcusAgalactiaeCount) (c)<br />[om:VolumetricStreptococcusDysgalactiaeCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricStreptococcusDysgalactiaeCount) (c)<br />[om:VolumetricListeriaMonocytogenesCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricListeriaMonocytogenesCount) (c)<br />[om:VolumetricSalmonellaCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricSalmonellaCount) (c)<br />[om:VolumetricColiformBacterieCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricColiformBacterieCount) (c)<br />[om:VolumetricStreptococcusUberisCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricStreptococcusUberisCount) (c)<br />[om:VolumetricCorynebacteriumBovisCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricCorynebacteriumBovisCount) (c)<br />[om:VolumetricYeastAndFungiCount](http://opendata.caceres.es/def/ontomunicipio#VolumetricYeastAndFungiCount) (c)<br />
 ### volumetric viable count unit
 Property | Value
 --- | ---
@@ -5180,7 +5180,7 @@ Property | Value
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Wavelength`
 Super-classes |[om:Length](http://opendata.caceres.es/def/ontomunicipio#Length) (c)<br />
 Sub-classes |[om:Cut-OffWavelength](http://opendata.caceres.es/def/ontomunicipio#Cut-OffWavelength) (c)<br />[om:PeakWavelength](http://opendata.caceres.es/def/ontomunicipio#PeakWavelength) (c)<br />
-### golfgetal
+### wavenumber
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Wavenumber`
@@ -5192,18 +5192,18 @@ Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#WavenumberUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### getal van Weber
+### Weber number
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#WeberNumber`
 Super-classes |[om:Quantity](http://opendata.caceres.es/def/ontomunicipio#Quantity) (c)<br />
-Restrictions |[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />
+Restrictions |[om:hasValue](http://opendata.caceres.es/def/ontomunicipio#hasValue) (op) **only** ()<br />[om:hasDimension](http://opendata.caceres.es/def/ontomunicipio#hasDimension) (op) **value** [om:dimensionOne](http://opendata.caceres.es/def/ontomunicipio#dimensionOne) (c)<br />
 ### Weber number unit
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#WeberNumberUnit`
 Super-classes |[om:Unit](http://opendata.caceres.es/def/ontomunicipio#Unit) (c)<br />
-### gewicht
+### weight
 Property | Value
 --- | ---
 IRI | `http://opendata.caceres.es/def/ontomunicipio#Weight`

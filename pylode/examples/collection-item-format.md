@@ -1,6 +1,6 @@
-# Collection item format
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 
+# Collection item format
 
 ## Metadata
 * **IRI**
@@ -14,7 +14,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * **Modified**
   * 2020-03-29
 * **Source**
-  * [https://collection.sl.nsw.gov.au/search?offset=0](https://collection.sl.nsw.gov.au/search?offset=0)
+  * [http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes](http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes)
 * **Ontology RDF**
   * RDF ([collection-item-format.ttl](turtle))
 ### Description

@@ -7,7 +7,7 @@
     <style>
         #pylode {
             position: fixed;
-            top: 80px;
+            top: 130px;
             left: -60px;
             font-size: small;
             transform: rotate(-90deg);
@@ -203,8 +203,11 @@
     </script>
 </head>
 <body>
-<div id="pylode">made by <a href="http://github.com/rdflib/pyLODE"><span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a></div>
-<h1>ISO21972 Information technology — Upper level ontology for smart city indicators</h1>
+  <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
+    <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
+    <span style="font-size:smaller;">2.4</span>
+  </div>
+  <h1>ISO21972 Information technology — Upper level ontology for smart city indicators</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
@@ -254,7 +257,7 @@
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
     </div>
 </section>
-<section id="classes">
+  <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
         <li><a href="#Application_area">Application_area</a></li>
@@ -557,9 +560,9 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Super-classes</th>
                 <td>
+                    <a href="http://www.w3.org/2003/01/geo/wgs84_pos#Feature">http://www.w3.org/2003/01/geo/wgs84_pos#Feature</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#ISO21972Thing">i72:ISO21972Thing</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://http://www.opengis.net/ont/geosparql#Polygon">gis:Polygon</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/2003/01/geo/wgs84_pos#Feature">http://www.w3.org/2003/01/geo/wgs84_pos#Feature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -622,31 +625,31 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#System_of_units">i72:System_of_units</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#point">i72:Point</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Indicator">i72:Indicator</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Statistic">i72:Statistic</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Application_area">i72:Application_area</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#City">i72:City</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Measurement_scale">i72:Measurement_scale</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Prefix">i72:Prefix</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Vectorial_or_tensorial_character">i72:Vectorial_or_tensorial_character</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Ordered_measurement_scale_category">i72:Ordered_measurement_scale_category</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#measure">i72:Measure</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Binary_prefix">i72:Binary_prefix</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Population">i72:Population</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Parameter">i72:Parameter</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Phenomenon">i72:Phenomenon</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Unit_of_measure">i72:Unit_of_measure</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#quantity">i72:Quantity</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Vectorial_or_tensorial_character">i72:Vectorial_or_tensorial_character</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#measure">i72:Measure</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Indicator">i72:Indicator</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Phenomenon">i72:Phenomenon</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Singular_unit">i72:Singular_unit</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Variable">i72:Variable</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Statistic">i72:Statistic</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Measurement_scale_category">i72:Measurement_scale_category</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Monetary_unit">i72:Monetary_unit</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Observation">i72:Observation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Dimension">i72:Dimension</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Population">i72:Population</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Binary_prefix">i72:Binary_prefix</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Ordered_measurement_scale_category">i72:Ordered_measurement_scale_category</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Feature">i72:Feature</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Sample">i72:Sample</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Parameter">i72:Parameter</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Monetary_unit">i72:Monetary_unit</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#System_of_units">i72:System_of_units</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Dimension">i72:Dimension</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#City">i72:City</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Singular_unit">i72:Singular_unit</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#point">i72:Point</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Measurement_scale">i72:Measurement_scale</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Measurement_scale_category">i72:Measurement_scale_category</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Observation">i72:Observation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Variable">i72:Variable</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Feature">i72:Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Prefix">i72:Prefix</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -667,15 +670,15 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#quantity">i72:Quantity</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#ISO21972Thing">i72:ISO21972Thing</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#quantity">i72:Quantity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#unitofmeasure">i72:unit_of_measure</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Unit_of_measure">i72:Unit_of_measure</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#for_time_interval">i72:for_time_interval</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2006/time#DateTimeInterval">time:DateTimeInterval</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#unitofmeasure">i72:unit_of_measure</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Unit_of_measure">i72:Unit_of_measure</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#for_city">i72:for_city</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#City">i72:City</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -784,9 +787,9 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#cardinalscale">i72:Cardinal_scale</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#nominalscale">i72:Nominal_scale</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#ordinalscale">i72:Ordinal_scale</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#cardinalscale">i72:Cardinal_scale</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -822,8 +825,8 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#ISO21972Thing">i72:ISO21972Thing</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Singular_unit">i72:Singular_unit</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ISO21972Thing">i72:ISO21972Thing</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -949,11 +952,11 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Cardinality">i72:Cardinality</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Distinct_count">i72:Distinct_count</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Standard_deviation">i72:Standard_deviation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Mean">i72:Mean</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Sum">i72:Sum</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Cardinality">i72:Cardinality</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Mean">i72:Mean</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Standard_deviation">i72:Standard_deviation</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -1041,21 +1044,21 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#is_described_by">i72:is_described_by</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Parameter">i72:Parameter</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#defined_by">i72:defined_by</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#definition">i72:definition</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Feature">i72:Feature</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#for_time_interval">i72:for_time_interval</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2006/time#DateTimeInterval">time:DateTimeInterval</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#is_described_by">i72:is_described_by</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Parameter">i72:Parameter</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#is_composed_of">i72:is_composed_of</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#for_time_interval">i72:for_time_interval</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2006/time#DateTimeInterval">time:DateTimeInterval</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#cardinality_of">i72:cardinality_of</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#is_part_of">i72:is_part_of</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#std_of">i72:std_of</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#mean_of">i72:mean_of</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#sum_of">i72:sum_of</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#cardinality_of">i72:cardinality_of</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#mean_of">i72:mean_of</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#std_of">i72:std_of</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#is_part_of">i72:is_part_of</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1121,8 +1124,8 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#unitofmeasure">i72:unit_of_measure</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Unit_of_measure">i72:Unit_of_measure</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#value">i72:value</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#measure">i72:Measure</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#unitofmeasure">i72:unit_of_measure</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Unit_of_measure">i72:Unit_of_measure</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -1165,8 +1168,8 @@ Note that there is no property that links Cardinality to a Variable.</p>
                 <th>Restrictions</th>
                 <td>
                     <a href="#denominatot">i72:denominator</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#quantity">i72:Quantity</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#numerator">i72:numerator</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#quantity">i72:Quantity</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#unitofmeasure">i72:unit_of_measure</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#unitdivision">i72:Unit_division</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#numerator">i72:numerator</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#quantity">i72:Quantity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1224,8 +1227,8 @@ Note that there is no property that links Cardinality to a Variable.</p>
                 <th>Restrictions</th>
                 <td>
                     <a href="#is_described_by">i72:is_described_by</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Statistic">i72:Statistic</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#is_composed_of">i72:is_composed_of</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Observation">i72:Observation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#is_part_of">i72:is_part_of</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Population">i72:Population</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#is_composed_of">i72:is_composed_of</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Observation">i72:Observation</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -1436,9 +1439,9 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#basequantity">i72:base_quantity</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#derivedquantity">i72:derived_quantity</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#baseunit">i72:base_unit</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#derivedquantity">i72:derived_quantity</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#basequantity">i72:base_quantity</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1481,8 +1484,8 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#exponent">i72:exponent</a><sup class="sup-fp" title="functional property">fp</sup><br/>
                     <a href="#base">i72:base</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#exponent">i72:exponent</a><sup class="sup-fp" title="functional property">fp</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1531,8 +1534,8 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#term1">i72:term_1</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#term2">i72:term_2</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#term1">i72:term_1</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1559,20 +1562,20 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#unitmultipleorsubmultiple">i72:Unit_multiple_or_submultiple</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#compoundunit">i72:Compound_unit</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#unitmultipleorsubmultiple">i72:Unit_multiple_or_submultiple</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#denominatot">i72:denominator</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#baseunit">i72:base_unit</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#term2">i72:term_2</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#term1">i72:term_1</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#baseunit">i72:base_unit</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#base">i72:base</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#unitofmeasure">i72:unit_of_measure</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#denominatot">i72:denominator</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#numerator">i72:numerator</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#term1">i72:term_1</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -2805,8 +2808,8 @@ Note that there is no property that links Cardinality to a Variable.</p>
     </div>
 </section>
 
-
-<section id="namedindividuals">
+  
+  <section id="namedindividuals">
     <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
         <li><a href="#cubic_metre">cubic_metre</a></li>
@@ -3476,8 +3479,8 @@ Note that there is no property that links Cardinality to a Variable.</p>
         </table>
     </div>
 </section>
-
-<section id="namespaces">
+  
+  <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
         <dt><em>default (:)</em></dt>
@@ -3520,17 +3523,17 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>
 </section>
-<section id="legend">
-    <h2>Legend</h2>
-    <table class="entity">
-        <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
-        <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
-        <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
-        <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
-        <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
-        <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
-        <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
-    </table>
-</section>
+  <section id="legend">
+      <h2>Legend</h2>
+      <table class="entity">
+          <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+          <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+          <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+          <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+          <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+          <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+          <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+      </table>
+  </section>
 </body>
 </html>
