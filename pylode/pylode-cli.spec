@@ -12,11 +12,13 @@ a = Analysis(
                        ('templates/*.*','templates'),
                        ('style/*.css','style')
             ],
-            hiddenimports=[
-                'rdflib.plugins',
-                'rdflib',
+            hiddenimports=[                
                 'urllib3',
-                'rdflib_jsonld'
+                'rdflib',
+                'rdflib.namespace',
+                'rdflib.plugins',
+                'rdflib_jsonld',
+                'rdflib_jsonld.serializer'
             ],
             hookspath=[],
             runtime_hooks=[],
