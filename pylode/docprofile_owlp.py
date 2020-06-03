@@ -5,7 +5,7 @@ from itertools import chain
 import markdown
 from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
-from docprofile import DocProfile, __version__
+from .docprofile import DocProfile, __version__
 
 
 class Owlp(DocProfile):

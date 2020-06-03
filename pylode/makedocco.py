@@ -5,9 +5,9 @@ from rdflib import Graph, util
 from os import path
 import requests
 from rdflib.plugin import register, Serializer
-from docprofiles import PROFILES
-from docprofile_owlp import Owlp
-from docprofile_skosp import Skosp
+from .docprofiles import PROFILES
+from .docprofile_owlp import Owlp
+from .docprofile_skosp import Skosp
 
 
 register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")

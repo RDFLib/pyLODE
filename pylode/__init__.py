@@ -1,1 +1,4 @@
-from pylode import *
+from .makedocco import MakeDocco
+
+__all__ = ['MakeDocco']
+

@@ -1,4 +1,4 @@
-from makedocco import MakeDocco
+from pylode.makedocco import MakeDocco
 
 
 h = MakeDocco(input_data_file="test_ont_html_description.ttl")
