@@ -111,7 +111,7 @@ preprocessed examples.
 
 Installation
 ============
-This tool can be used either as a command line utility (Linux, Mac or Windows, see below) or as a Python module in other Python code. It can also be used via an online API. This repo contains executable files for Mac & Windows (soon Linux!) that you can use without any installation too.
+This tool can be used either as a command line utility (Linux, Mac or Windows, see below) or as a Python module in other Python code. It can also be used via a hosted, online, service or even as a local web server that you can run. This repo contains executable files for Mac & Windows (soon Linux!) that you can use without any installation too.
 
 The most important dependency to get correct when using this as a Python script of a command line program is the package ``rdflib`` which must be v5.0.0 or greater (see requirements.txt).
 
@@ -172,8 +172,8 @@ save it with a basic CSS file into
 
     ./pylode -i ../example/prof.ttl --css true
 
-Online API
-----------
+Online Service
+--------------
 An online API to access pyLODE is now available in test mode at https://kurrawong.net/pylode-online.
 
 Local server - Falcon
@@ -190,12 +190,14 @@ Then, in another terminal:
 
     curl localhost:8000/lode?url=http://sweetontology.net/sweetAll.ttl
 
-Windows - create EXE from source
---------------------------------
-A Windows binary (.exe file) is included in this repository in the ``pylode/bin/`` folder which has been produced via Pyinstaller. Additionally,
-`Pyinstaller <https://www.pyinstaller.org/>`__ can be 
-`used <https://pyinstaller.readthedocs.io/en/stable/usage.html>`__ to create a new
-executable. These Windows executables have the same characteristics as the Linux/Mac
+Windows
+-------
+In ``pylode/bin/``, a Windows executable, ``pylode.exe`` is available for command line use.
+
+Be sure to add ``pylode.exe`` to your Windows user's PATH variable so you can run ``pylode.exe`` from any folder. Just run the Registry Editor (search for "Regedit" in the Start menu) and then navicate to HKEY_CURRENT_USER > Environment > Path. Adding the full path of the folder ``pylode/bin/`` to Path will ensure you can run ``pylode.exe`` within the Windows command prompt, regardless of what folder you are in.
+
+You can rebuild the ``pylode.exe`` file from the source code, if you like. Use the Python program `Pyinstaller <https://www.pyinstaller.org/>`__ as per
+`its instructions <https://pyinstaller.readthedocs.io/en/stable/usage.html>`__. The created ``pylode.exe`` will have the same characteristics as the Linux/Mac
 CLI program.
 
 Pyinstaller uses a ``.spec`` file to make the binary and that is included in this repository: ``pylode-cli.spec``.
@@ -203,7 +205,7 @@ Pyinstaller uses a ``.spec`` file to make the binary and that is included in thi
 See `the PyInstaller installation guide <https://pyinstaller.readthedocs.io/en/stable/installation.html#installing-in-windows>`__
 for info on how to install PyInstaller for Windows.
 
-Once you have Pyinstaller, use ``pyinstaller`` to generate the ``pyLODE.exe`` CLI file like so:
+Once you have PyInstaller, use ``pyinstaller`` to generate the ``pyLODE.exe`` CLI file like so:
 
 ::
 
@@ -215,9 +217,15 @@ This will output ``pylode.exe`` in the ``dist`` directory in ``pylode``. The .ex
 You can now run the pyLODE Command Line utility via ``pylode.exe``. 
 See above for the pyLODE command line util usage instructions.
 
-Mac OS - create APP from source
--------------------------------
-As per instructions for PyInstaller use on Windows, just do it on a Mac! The result is a ``pylode`` file which is renamed ``bin/pylode.app``.
+Mac OS
+------
+In ``pylode/bin/``, there is a Mac executable, ``pylode.app``.
+
+As per instructions for PyInstaller use on Windows, you can rebuild the file ``pylode.app`` using ``pylode.spec``, if you wish.
+
+Linux
+-----
+In ``pylode/bin/``, there is a shell script ``pylode.sh``. You can run this on the command line. It just pushes queries to the Python command line ``cli.py``.
 
 What pyLODE understands
 =======================
@@ -271,7 +279,6 @@ pyLODE understands the following ontology constructs:
     -  it will either read your ontology's default/base URI in annotations or guess it using a number of methods
 -  **named individuals**
     -  *coming!*
-
 
 Agents
 ------
