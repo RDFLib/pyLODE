@@ -1,4 +1,5 @@
 argparse
+beautifulsoup4
 falcon
 gunicorn
 jinja2

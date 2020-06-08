@@ -176,6 +176,29 @@ Online Service
 --------------
 An online API to access pyLODE is now available in test mode at https://kurrawong.net/pylode-online.
 
+Docker
+------
+Install locally by first building the container
+
+::
+
+    docker build -t pylode:latest --build-arg PYTHON_VERSION=3.8-slim .
+
+Then run the container
+
+::
+
+    docker run -it -d -p 8000:8000 -e GTAGID=${Google TagID} pylode
+
+N.B. The Google TagID is NOT required unless Google Analytics is required. 
+It looks as follows `GTAGID=UA-168806395-1`.
+
+You can now access the service on localhost
+
+::
+
+    curl localhost:8000/lode?url=http://sweetontology.net/sweetAll.ttl
+
 Local server - Falcon
 ---------------------
 You can run pyLODE using your own, local, HTTP server like this:
@@ -226,6 +249,7 @@ As per instructions for PyInstaller use on Windows, you can rebuild the file ``p
 Linux
 -----
 In ``pylode/bin/``, there is a shell script ``pylode.sh``. You can run this on the command line. It just pushes queries to the Python command line ``cli.py``.
+
 
 What pyLODE understands
 =======================
