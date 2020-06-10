@@ -29,7 +29,6 @@ RDF_SERIALIZER_MAP = {
 }
 
 
-# used to determine whether or not a given path is actually a real file
 def is_valid_file(parser, arg):
     try:
         return open(arg, "r")

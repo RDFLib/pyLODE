@@ -5,7 +5,10 @@ from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
 import dateutil.parser
 from itertools import chain
 import markdown
-from docprofile import DocProfile, __version__
+try:
+    from .docprofile import DocProfile, __version__
+except:
+    from docprofile import DocProfile, __version__
 
 
 class Skosp(DocProfile):

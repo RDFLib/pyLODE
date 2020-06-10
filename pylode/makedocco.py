@@ -1,15 +1,18 @@
 import sys
-sys.path.append("..")
-
 from rdflib import Graph, util
 from os import path
 import requests
 from rdflib.plugin import register, Serializer
-from docprofiles import PROFILES
-from docprofile_owlp import Owlp
-from docprofile_skosp import Skosp
+try:
+    from .docprofiles import PROFILES
+    from .docprofile_owlp import Owlp
+    from .docprofile_skosp import Skosp
+except:
+    from docprofiles import PROFILES
+    from docprofile_owlp import Owlp
+    from docprofile_skosp import Skosp
 
-
+sys.path.append("..")
 register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
 RDF_FILE_EXTENSIONS = [".rdf", ".owl", ".ttl", ".n3", ".nt", ".json"]
@@ -187,10 +190,10 @@ class MakeDocco:
 
 if __name__ == "__main__":
     m = MakeDocco(
-        input_data_file="/Users/nick/Work/ogc/surround-NamingAuthority/definitions/schema/hy_features/hyf/hyf.ttl",
-        profile="skosp",
+        input_data_file="examples/ogc/hyf.ttl",
+        profile="owlp",
         outputformat="html",
         exclude_css=True
     )
 
-    m.document(destination="examples/ogc/hyf.skos.html")
+    m.document(destination="examples/ogc/hyf.5.html")

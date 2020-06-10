@@ -4,7 +4,7 @@ from rdflib import Graph, URIRef, Literal, Namespace
 from rdflib.namespace import FOAF, OWL, RDF, SDO, SKOS, XSD
 from jinja2 import Environment, FileSystemLoader
 
-__version__ = '2.4'
+__version__ = '2.5'
 
 
 class DocProfile:
