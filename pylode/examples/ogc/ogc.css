@@ -239,12 +239,30 @@ div#footerwhite {
 div#footermain {
     grid-area: footermain;
     background-color: #222;
-    padding: 10px 20% 10px 20%;
-}
+    padding: 30px 20% 10px 20%;
 
+    color: #777;
+}
 #footermain-menu {
-
+    float:left;
 }
+#footermain-menu li {
+    margin-top: 5px;
+    list-style: none;
+}
+#footermain-menu li::before {
+    content: "•"; color: #bbb;
+    display: inline-block; width: 1em;
+    margin-left: -1em;
+}
+#footermain-menu a {
+    color: #bbb;
+    font-size: larger;
+}
+#footermain-menu a:hover {
+    color: rgba(191,191,191,0.6);
+}
+
 div#footerblack {
     grid-area: footerblack;
     background-color: #111;
