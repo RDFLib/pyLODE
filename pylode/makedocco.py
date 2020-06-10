@@ -173,18 +173,24 @@ class MakeDocco:
             )
 
         if destination is not None:
+            doc = p.generate_document()
             try:
                 with open(destination, "w") as f:
-                    f.write(p.generate_document())
+                    f.write(doc)
             except Exception as e:
                 print(e)
-                raise Exception("The file you specified as 'destination' could not be written to.")
+                raise Exception("The file you specified as 'destination' could not be written to. You specified {}.".format(destination))
 
         else:
             return p.generate_document()
 
 
 if __name__ == "__main__":
-    m = MakeDocco(input_data_file="examples/agrif.ttl", profile="owlp", outputformat="html")
+    m = MakeDocco(
+        input_data_file="/Users/nick/Work/ogc/surround-NamingAuthority/definitions/schema/hy_features/hyf/hyf_conceptscheme.ttl",
+        profile="skosp",
+        outputformat="html",
+        exclude_css=True
+    )
 
-    m.document(destination="examples/agrif.html")
+    m.document(destination="examples/hyf.skos.html")

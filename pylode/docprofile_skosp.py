@@ -206,9 +206,15 @@ class Skosp(DocProfile):
 
             # make fid
             # TODO: update to use default language label, not [0]
-            self.COLLECTIONS[c]["fid"] = self._make_fid(
-                self.COLLECTIONS[c]["prefLabels"][0][0], c
-            )
+            try:
+                pl = self.COLLECTIONS[c]["prefLabels"][0][0]
+
+                self.COLLECTIONS[c]["fid"] = self._make_fid(
+                    pl, c
+                )
+            except Exception as e:
+                print(e)
+                raise Exception("You Collection {}  doesn't have a label but it needs one!".format(c))
 
     def _extract_concepts(self):
         """Extracts standard SKOS Concepts and their metadata

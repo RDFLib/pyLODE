@@ -127,15 +127,26 @@ def main(args=None):
         print(MakeDocco.list_profiles())
         exit()
     elif args.inputfile or args.url:
+        if args.excludecss == "true":
+            exclude_css = True
+        else:
+            exclude_css = False
+
         # args are present so getting RDF from input file or uri into an rdflib Graph
         if args.inputfile:
             h = MakeDocco(
                 input_data_file=args.inputfile,
                 outputformat=args.outputformat,
-                profile=args.profile
+                profile=args.profile,
+                exclude_css=exclude_css
             )
         elif args.url:
-            h = MakeDocco(input_uri=args.url, outputformat=args.outputformat, profile=args.profile)
+            h = MakeDocco(
+                input_uri=args.url,
+                outputformat=args.outputformat,
+                profile=args.profile,
+                exclude_css=exclude_css
+            )
         else:
             # we have neither an input file or a URI supplied
             parser.error(
@@ -165,11 +176,6 @@ def main(args=None):
             path.join(style_dir, "pylode.css"), path.join(h.publication_dir, "style.css")
         )
         msg_css = " and CSS"
-
-    if args.excludecss == "true":
-        exclude_css = True
-    else:
-        exclude_css = False
 
     if args.outputfile is not None:
         output_file_name = (
