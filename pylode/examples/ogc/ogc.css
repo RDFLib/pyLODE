@@ -24,13 +24,19 @@
         dt {
             font-weight: bold;
             padding: 5px 0 5px 0;
+            color: #364049;
         }
 
         ul.hlist {
             list-style-type: none;
             border: 1px solid navy;
             padding:5px;
-            background-color: #F4FFFF;
+            background-color: #666;
+        }
+
+        .hlist li a {
+            color: white;
+            text-decoration: none;
         }
 
         ul.hierarchy {
@@ -38,7 +44,6 @@
             padding: 5px 25px 5px 25px;
             background-color: #F4FFFF;
         }
-
 
         ul.hlist li {
             display: inline;
@@ -54,6 +59,7 @@
         .entity th {
             width: 150px;
             vertical-align: top;
+            color: #364049;
         }
 
         .entity th,
@@ -87,7 +93,6 @@
         }
         h1, h2, h3 {
             color: #364049;
-            font-family: "Lato", "Helvetica Neue", "Helvetica", "Arial", sans-serif
         }
         h1 {
             font-size: 170%;
@@ -103,22 +108,9 @@
             padding-bottom: 5px;
             border-bottom: 1px solid navy;
         }
-        h4 { font: bold 100% "Lato", "Helvetica Neue", "Helvetica", "Arial", sans-serif }
-        h5 { font: italic 100% "Lato", "Helvetica Neue", "Helvetica", "Arial", sans-serif }
-        h6 { font: small-caps 100% "Lato", "Helvetica Neue", "Helvetica", "Arial", sans-serif }
-
-
-        body {
-            padding: 2em 70px 2em 70px;
-            margin: 0;
-            font-family: sans-serif;
-            color: black;
-            background: white;
-            background-position: top left;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            text-align: justify;
-        }
+        h4 { font-weight: bold; font-size: 100% }
+        h5 { font-style: italic; font-size: 100%}
+        h6 { font-variant: small-caps;}
 
         section {
             max-width: 1500px;
@@ -128,7 +120,10 @@
             margin-bottom: 20px;
         }
 
-        :link { color: #00C; background: transparent }
+        a {
+            text-decoration: none;
+        }
+        :link { color: #2e81c2; background: transparent }
         :visited { color: #609; background: transparent }
         a:active { color: #C00; background: transparent }
 
@@ -186,8 +181,6 @@
             color: darkred;
         }
 
-
-
         body {
             margin: 0;
             padding: 0;
@@ -202,6 +195,10 @@
                 "footerblack";
             justify-content: stretch;
             background-color: #f6f6f6;
+
+            font-family: "Lato", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+            font-size: 16px;
+            line-height: 1.5em;
         }
 
         div#search {
