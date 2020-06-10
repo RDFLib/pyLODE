@@ -187,10 +187,10 @@ class MakeDocco:
 
 if __name__ == "__main__":
     m = MakeDocco(
-        input_data_file="/Users/nick/Work/ogc/surround-NamingAuthority/definitions/schema/hy_features/hyf/hyf_conceptscheme.ttl",
+        input_data_file="/Users/nick/Work/ogc/surround-NamingAuthority/definitions/schema/hy_features/hyf/hyf.ttl",
         profile="skosp",
         outputformat="html",
         exclude_css=True
     )
 
-    m.document(destination="examples/hyf.skos.html")
+    m.document(destination="examples/ogc/hyf.skos.html")
