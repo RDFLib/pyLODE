@@ -1,0 +1,266 @@
+        #pylode {
+            position: fixed;
+            top: 130px;
+            left: -60px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 5px 0 5px 0;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        /* Webfont: Lato-Regular */
+        @font-face {
+            font-family: 'Lato';
+            src: url('fonts/Lato-Regular.eot'); /* IE9 Compat Modes */
+            src: url('fonts/Lato-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+                 url('fonts/Lato-Regular.woff2') format('woff2'), /* Modern Browsers */
+                 url('fonts/Lato-Regular.woff') format('woff'), /* Modern Browsers */
+                 url('fonts/Lato-Regular.ttf') format('truetype');
+            font-style: normal;
+            font-weight: normal;
+            text-rendering: optimizeLegibility;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #364049;
+            font-family: "Lato", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+        }
+        h1 {
+            font-size: 170%;
+            line-height: 110%;
+        }
+        h2 {
+            font-size: 140%;
+            margin-top:40px;
+        }
+        h3 {
+            font-size: 120%;
+            margin-top: 3px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% "Lato", "Helvetica Neue", "Helvetica", "Arial", sans-serif }
+        h5 { font: italic 100% "Lato", "Helvetica Neue", "Helvetica", "Arial", sans-serif }
+        h6 { font: small-caps 100% "Lato", "Helvetica Neue", "Helvetica", "Arial", sans-serif }
+
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: justify;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-cp,
+        .sup-cl {
+            cursor:help;
+            margin-left: 3px;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-cp {
+            color:orange;
+        }
+
+        .sup-cl {
+            color:darkred;
+        }
+
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-rows: 50px 100px auto 100px 300px 100px ;
+            grid-template-areas:
+                "search"
+                "topmenu"
+                "maingrid"
+                "footerwhite"
+                "footermain"
+                "footerblack";
+            justify-content: stretch;
+            background-color: #f6f6f6;
+        }
+
+        div#search {
+            grid-area: search;
+            background-color: #222;
+            padding: 10px 20% 10px 20%;
+        }
+        div#topmenu {
+            grid-area: topmenu;
+            background-color: white;
+            padding: 10px 20% 10px 20%;
+
+            border-bottom: 1px solid #e4e4e4;
+            box-shadow: 0 0 3px rgba(0,0,0,0.1);
+        }
+
+        #topmenu-links {
+            float:right;
+            padding-top:35px;
+        }
+        #topmenu-links a {
+            color: #999;
+            text-decoration: none;
+            margin-left: 20px
+        }
+
+        div#maingrid {
+            grid-area: maingrid;
+            background-color: #f6f6f6;
+            min-height: 1500px;
+            padding: 10px 20% 10px 20%;
+        }
+        div#footerwhite {
+            grid-area: footerwhite;
+            background-color: white;
+            padding: 10px 20% 10px 20%;
+        }
+        div#footermain {
+            grid-area: footermain;
+            background-color: #222;
+            padding: 10px 20% 10px 20%;
+        }
+        div#footerblack {
+            grid-area: footerblack;
+            background-color: #111;
+            padding: 10px 20% 10px 20%;
+        }
+
+        #header {
+            /*border-bottom: 1px solid #e4e4e4;*/
+            /*box-shadow: 0 0 3px rgba(0,0,0,0.1);*/
+            text-align: left;
+            background-color: white;
+            border: solid 1px red;
+        }
+
+        #content {
+            background-color: white;
+            width:1000px;
+            text-align: left;
+            margin: 0 auto;
+        }
