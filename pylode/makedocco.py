@@ -76,7 +76,7 @@ class MakeDocco:
         elif input_uri is not None:
             self._parse_input_uri(input_uri)
         elif data is not None:
-            self._parse_data()
+            self._parse_data(data)
         else:
             raise Exception("You must supply either an input file or a URI for your ontology's RDF")
 
