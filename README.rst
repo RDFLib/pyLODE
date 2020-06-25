@@ -125,6 +125,21 @@ This tool is available on PyPI, the Python Package Index, at https://pypi.org/pr
 
     pip install pylode
 
+To use pyLODE within Python, try something like this:
+
+::
+
+    import pylode
+
+    html = pylode.MakeDocco(
+        input_data_file=input_file_path,
+        outputformat="html",
+        profile="owlp",
+        exclude_css=True
+    ).document()
+
+You will now have the HTML content within the variable ``html``.
+
 For desktop command line use, just clone this repository and either use ``cli.py`` as per the command line instructions below or use makedocco.py as a Python script directly.
 
 

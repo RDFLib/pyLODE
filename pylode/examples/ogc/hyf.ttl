@@ -1,5 +1,5 @@
 @prefix sc:    <http://shapechange.net/resources/ont/base#> .
-@prefix hyf:   <https://www.opengis.net/def/appschema/hy_features/hyf/> .
+@prefix hyf:   <https://defs-dev.opengis.net/def/schema/hy_features/hyf/> .
 @prefix gsp:   <http://www.opengis.net/ont/geosparql#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
@@ -16,7 +16,7 @@ hyf:realizedCatchment
 hyf:HY_HydroFeature  a   owl:Class ;
         rdfs:subClassOf  [ a                  owl:Restriction ;
                            owl:allValuesFrom  hyf:HY_HydroFeatureName ;
-                           owl:onProperty     hyf:HY_HydroFeature.name
+                           owl:onProperty     hyf:name
                          ] ;
         skos:definition  "basic feature to reflect the properties that all hydrologic features have."@en .
 
@@ -29,13 +29,13 @@ hyf:HY_FlowPath  a       owl:Class ;
         rdfs:subClassOf  hyf:HY_CatchmentRealization ;
         skos:definition  "The HY_Flowpath feature type realizes a catchment specifically as a path connecting the inflow and outflow of the catchment it realizes.HY_Flowpath specializes HY_CatchmentRealization with respect to an implied linear geometric representation including a straight or curved line. Topologically, the flowpath connects the inflow and outflow of the catchment, and is understood as an edge bounded by an inflow node and an outflow node, and corresponding to left-bank and right-bank catchment faces. Hydrologically, the flowpath is a line describing a moving particle of water. Through generalization, HY_Flowpath inherits the shape and the realizedCatchment properties. The optional shape of the flowpath is usually a single curve."@en .
 
-hyf:HY_HydroFeatureName.name
+hyf:name_string
         a                owl:DatatypeProperty ;
         rdfs:domain      hyf:HY_HydroFeatureName ;
         rdfs:range       xsd:string ;
         skos:definition  "indicates whether the name applies to a part of feature only or not, using the Boolean value type"@en .
 
-hyf:HY_HydroFeature.name
+hyf:name
         a                owl:ObjectProperty ;
         rdfs:domain      hyf:HY_HydroFeature ;
         rdfs:range       hyf:HY_HydroFeatureName ;
@@ -247,7 +247,7 @@ hyf:HY_HydroFeatureName
                          ] ;
         rdfs:subClassOf  [ a                  owl:Restriction ;
                            owl:allValuesFrom  xsd:string ;
-                           owl:onProperty     hyf:HY_HydroFeatureName.name
+                           owl:onProperty     hyf:name_string
                          ] ;
         skos:definition  "pattern to handle cultural, political and historical variability of names. This supports the assignment of a referenceable name for all or parts of a hydrologic feature without necessarily having a formal model for the naming."@en .
 
@@ -271,9 +271,9 @@ hyf:HY_HydroLocation  a  owl:Class ;
                          ] ;
         skos:definition  "The HY_HydroLocation feature type (Figure 35) conceptualizes the idea that a hydro nexus can be realized by practically any feature of interest. The hydro nexus concept is used to define the hydrologic determination of a catchment but, like the catchment concept, does not have inherent realization(s). Any hydrologically significant feature that can be identified as (said to be) the outlet of a catchment may realize the hydro nexus. Typically, this will be a permanent, stable location that is fixed and/or referenced by coordinates. Landmarks such as confluences, points corresponding to vertical sections, or the position of a monitoring station on a river are typical realizations of the hydro nexus. Other kinds of hydro nexus realizations that don't carry normal surface water characteristics as defined in this standard, e.g. a spring where groundwater enters the surface, an arbitrary point projected onto the surface, or a nexus that collects many disjoint locations may use or specialize the general HY_HydroLocation type. Topologically, the HY_HydroLocation should be understood to be the boundary of the corresponding catchment, and always of lower topological dimension than the catchment. Even though the topological realization of a hydro nexus is typically as a node between catchment edges, a nexus realization may also have any geometric representation, including a single point.In many cases, HY_HydroLocations are known but corresponding catchments and hydro nexuses are not defined. For example, stream gages that are part of a catchment dataset whose hydro nexus features are realized by confluences. Both the stream gages and confluences are HY_HydroLocations, but the stream gages’ hydro nexus features are not defined. Using this concept, HY_HydroLocation is expected to be used to link between datasets that have catchments delineated for different HY_HydroLocations.HY_HydroLocation carries two attributes: shape and hydroLocationType. It has referencedPosition and realizedNexus associations implying the hydro-complex feature collection."@en .
 
-<https://www.opengis.net/def/appschema/hy_features/hyf>
+<https://defs-dev.opengis.net/def/schema/hy_features/hyf>
         a                owl:Ontology ;
-        skos:prefLabel "HY Features Ontology" ;
+        rdfs:label "HY_Features HydroFeature package" ;
         owl:imports      <http://eelst.cs.unibo.it/apps/LODE/source?url=http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata.ttl> , <http://shapechange.net/resources/ont/base> , <http://www.opengis.net/ont/geosparql> ;
         skos:definition  "The HydroFeature module (Figure 21) provides the core concepts of a named hydrologic feature in the Named Feature, of a hydrologic complex in which the union of catchment and its common outlet is realized in several ways by a collection of hydrologic features, and of a river referencing system which allows placement of an arbitrary feature ‘along a river’ using linear referencing along a one-dimensional topological, flowpath realization. The HY_HydroFeature feature type is defined as hydrology-specific instance of the General Feature metaclass (as defined in the OGC General Feature Model, GFM), whose identity needs to be maintained and tracked through a processing chain from measurement to distribution of hydrologic information.As an instance of the General Feature metaclass a feature type is identified by a unique identifier and typical properties. Typically, a hydrologic feature is additionally identified through names in common usage and through hydrologically significant characteristics. The HY_HydroFeature feature type is specialized into more specific feature types (Figure 23), which specify additional properties and represent particular hydrologic phenomena.Providing a standard terminology for the typical relationships between hydrologic features allows the hydrosphere to be expressed in a consistent way across multiple data products, regardless of various spatial or temporal representations.The definitions of HydroFeature feature types are rooted in the definitions documented in the WMO/UNESCO Glossary of Hydrology. They are applied regardless of their application context in respect to the Earth's surface. For the purpose of testing the applicability of the HY_Features conceptual model in the context of surface water hydrology, the definitions in this standard refer to surface water hydrology. A conceptual model capturing the specifics of features associated with the groundwater domain is developed with reference to the OGC WaterML 2: Part 4 – GroundwaterML2 standard."@en .
 

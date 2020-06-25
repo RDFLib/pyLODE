@@ -115,3 +115,4 @@ venv.bak/
 output_files/
 
 upload-to-PyPI.txt
+/pylode/examples/ogc/excluded/

@@ -1,15 +1,18 @@
 import sys
-sys.path.append("..")
-
 from rdflib import Graph, util
 from os import path
 import requests
 from rdflib.plugin import register, Serializer
-from docprofiles import PROFILES
-from docprofile_owlp import Owlp
-from docprofile_skosp import Skosp
+try:
+    from .docprofiles import PROFILES
+    from .docprofile_owlp import Owlp
+    from .docprofile_skosp import Skosp
+except:
+    from docprofiles import PROFILES
+    from docprofile_owlp import Owlp
+    from docprofile_skosp import Skosp
 
-
+sys.path.append("..")
 register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
 RDF_FILE_EXTENSIONS = [".rdf", ".owl", ".ttl", ".n3", ".nt", ".json"]
@@ -173,18 +176,24 @@ class MakeDocco:
             )
 
         if destination is not None:
+            doc = p.generate_document()
             try:
                 with open(destination, "w") as f:
-                    f.write(p.generate_document())
+                    f.write(doc)
             except Exception as e:
                 print(e)
-                raise Exception("The file you specified as 'destination' could not be written to.")
+                raise Exception("The file you specified as 'destination' could not be written to. You specified {}.".format(destination))
 
         else:
             return p.generate_document()
 
 
 if __name__ == "__main__":
-    m = MakeDocco(input_data_file="examples/agrif.ttl", profile="owlp", outputformat="html")
+    m = MakeDocco(
+        input_data_file="examples/ogc/hyf.ttl",
+        profile="owlp",
+        outputformat="html",
+        exclude_css=True
+    )
 
-    m.document(destination="examples/agrif.html")
+    m.document(destination="examples/ogc/hyf.5.html")
