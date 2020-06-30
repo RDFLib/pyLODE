@@ -3,7 +3,7 @@
 import codecs
 import os
 from setuptools import setup
-from pylode import __version__
+from pylode.common import VERSION
 
 
 def open_local(paths, mode='r', encoding='utf8'):

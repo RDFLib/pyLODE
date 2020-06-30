@@ -1,14 +1,17 @@
+from pylode.common import VERSION, TEMPLATES_DIR, STYLE_DIR
 import collections
 from os import path
 import dateutil.parser
 from itertools import chain
 import markdown
+from jinja2 import Environment, FileSystemLoader
+from os.path import join
 from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
-from pylode import __version__
+from pylode.profiles import BaseProfile
 
 
-class Owlp(DocProfile):
+class OntDoc(BaseProfile):
     def __init__(self, g, source_info, outputformat="html", exclude_css=False, default_language="en", get_curies_online=False):
         super().__init__(g, source_info, outputformat=outputformat, exclude_css=exclude_css, get_curies_online=False, default_language=default_language)
         self.G.bind("prov", PROV)
@@ -173,6 +176,9 @@ class Owlp(DocProfile):
         restriction = restriction + " " + cls if cls is not None else restriction
 
         return restriction
+
+    def _load_template(self, template_file):
+        return Environment(loader=FileSystemLoader(join(TEMPLATES_DIR, "ontdoc"))).get_template(template_file)
 
     def _make_formatted_uri(self, uri, type=None):
         # set display to CURIE
@@ -387,7 +393,10 @@ class Owlp(DocProfile):
 
                 if p == DCTERMS.rights:
                     self.METADATA["rights"] = (
-                        str(o).replace("Copyright", "&copy;").replace("copyright", "&copy;")
+                        str(o)
+                            .replace("Copyright", "&copy;")
+                            .replace("copyright", "&copy;")
+                            .replace("(c)", "&copy;")
                     )
 
                 # Agents
@@ -1081,10 +1090,7 @@ class Owlp(DocProfile):
         css = None
         if self.outputformat == "html":
             if not self.exclude_css:
-                pylode_css = path.join(
-                    path.dirname(path.realpath(__file__)), "style", "pylode.css"
-                )
-                css = open(pylode_css).read()
+                css = open(path.join(STYLE_DIR, "pylode.css")).read()
 
         return self._load_template("owl_document." + self.outputformat).render(
             schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML templates
@@ -1096,7 +1102,7 @@ class Owlp(DocProfile):
             default_namespace=self.METADATA["default_namespace"],
             namespaces=self._make_namespaces(),
             css=css,
-            pylode_version=__version__
+            pylode_version=VERSION
         )
 
     def generate_document(self):

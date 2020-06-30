@@ -1,0 +1,45 @@
+<div class="entity resource_descriptor" id="{{ fid }}">
+    <h3>{{ label }}</h3>
+    <table>
+        {%- if description is not none %}
+        <tr>
+            <th>Description</th>
+            <td>
+                {{- description -}}
+            </td>
+        </tr>
+        {% endif %}
+        {%- if artifact is not none %}
+        <tr>
+            <th>Artifact</th>
+            <td>
+                {{- artifact -}}
+            </td>
+        </tr>
+        {% endif %}
+        {%- if role is not none %}
+        <tr>
+            <th>Role</th>
+            <td>
+                {{- role -}}
+            </td>
+        </tr>
+        {% endif %}
+        {%- if conforms is not none %}
+        <tr>
+            <th>Conforms to</th>
+            <td>
+                {{- conforms -}}
+            </td>
+        </tr>
+        {% endif %}
+        {%- if format is not none %}
+        <tr>
+            <th>Format</th>
+            <td>
+                {{- format -}}
+            </td>
+        </tr>
+        {% endif %}
+    </table>
+</div>

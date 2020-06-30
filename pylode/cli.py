@@ -4,7 +4,7 @@ from os import path
 import shutil
 import sys
 sys.path.insert(0, "..")
-from makedocco import MakeDocco
+from pylode import MakeDocco
 
 # used to know what RDF file types rdflib can handle
 RDF_FILE_EXTENSIONS = [".rdf", ".owl", ".ttl", ".n3", ".nt", ".json"]
@@ -78,7 +78,7 @@ def main(args=None):
         help="A profile - a specified information model - for an ontology. You can indicate this via the profile's URI"
         "or its token. The list of profiles - URIs and their corresponding tokens - supported by pyLODE, can be "
         "found by running the program with the flag -lp or --listprofiles.",
-        default="owlp",
+        default="ontdoc",
     )
 
     parser.add_argument(
@@ -167,7 +167,7 @@ def main(args=None):
         if args.profile:
             if not MakeDocco.is_supported_profile(args.profile):
                 parser.error("The profile you requested, '{}', is not supported. "
-                             "Please choose from those given by List Profiles (-lp)")
+                             "Please choose from those given by List Profiles (-lp)".format(args.profile))
     else:
         parser.error("An ontology source (-i/--inputfile or -u/--url) is required")
 

@@ -1,3 +1,4 @@
+from pylode.common import VERSION, STYLE_DIR, TEMPLATES_DIR
 import collections
 from os import path
 from rdflib import URIRef, BNode, Literal
@@ -5,14 +6,59 @@ from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
 import dateutil.parser
 from itertools import chain
 import markdown
-from pylode import __version__
+from jinja2 import Environment, FileSystemLoader
+from os.path import join
+from pylode.profiles import BaseProfile
 
 
-class Skosp(DocProfile):
+class VocPub(BaseProfile):
     def __init__(self, g, source_info, outputformat="html", exclude_css=False, default_language="en", get_curies_online=False):
         super().__init__(g, source_info, outputformat=outputformat, exclude_css=exclude_css, get_curies_online=False, default_language=default_language)
         self.CONCEPTS = collections.OrderedDict()
         self.COLLECTIONS = collections.OrderedDict()
+
+    def _load_template(self, template_file):
+        return Environment(loader=FileSystemLoader(join(TEMPLATES_DIR, "vocpub"))).get_template(template_file)
+
+    def _make_formatted_uri(self, uri, type=None):
+        # set display to CURIE
+        short = self._get_curie(uri)
+        # if the URI base is within the default namespace of this ontology
+        #   use the fragment URI
+        # else
+        #   use the given URI
+        uri_base = self._get_namespace_from_uri(uri)
+        link = None
+        if uri_base == self.METADATA.get("default_namespace"):
+            if self.CONCEPTS.get(uri):
+                link = "[{}]({})".format(self.CONCEPTS[uri]["default_prefLabel"], self.CONCEPTS[uri]["fid"]) \
+                    if self.outputformat == "md" \
+                    else '<a href="#{}">{}</a>'.format(self.CONCEPTS[uri]["fid"], self.CONCEPTS[uri]["default_prefLabel"])
+            elif self.COLLECTIONS.get(uri):
+                    link = "[{}]({})".format(self.COLLECTIONS[uri]["default_prefLabel"], self.COLLECTIONS[uri]["fid"]) \
+                        if self.outputformat == "md" \
+                        else '<a href="#{}">{}</a>'.format(self.COLLECTIONS[uri]["fid"], self.COLLECTIONS[uri]["default_prefLabel"])
+
+        if link is None:
+            link = "[{}]({})".format(short, uri) \
+                if self.outputformat == "md" \
+                else '<a href="{}">{}</a>'.format(uri, short)
+
+        if type == "cp":
+            if self.outputformat == "md":
+                suffix = ' (cp)'
+            else:
+                suffix = '<sup class="sup-cp" title="concept">cp</sup>'
+        elif type == "cl":
+            if self.outputformat == "md":
+                suffix = ' (cl)'
+            else:
+                suffix = '<sup class="sup-cl" title="collection">cl</sup>'
+        # None
+        else:
+            suffix = ''
+
+        return link + suffix
 
     def _expand_graph(self):
         # name
@@ -55,14 +101,21 @@ class Skosp(DocProfile):
             self.G.add((s, RDF.type, SKOS.ConceptScheme))
 
             # top concepts
-            # if the class is declared here and has no subClassOf
-            for s2 in self.G.subjects(RDF.type, RDFS.Class):
+            # if the class (now typed a Concept) is declared here and
+            #   has no subClassOf
+            #   or is subClassOf skos:Concept
+            #   or is only a subClassOf BNodes (restrictions)
+            for s2 in self.G.subjects(RDF.type, SKOS.Concept):
                 if (s2, RDFS.subClassOf, None) not in self.G:
                     self.G.add((s2, SKOS.topConceptOf, s))
 
-            for s2 in self.G.subjects(RDF.type, OWL.Class):
-                if (s2, RDFS.subClassOf, None) not in self.G:
+                only_bn = True
+                for o3 in self.G.objects(s2, RDFS.subClassOf):
+                    if type(o3) != BNode:
+                        only_bn = False
+                if only_bn:
                     self.G.add((s2, SKOS.topConceptOf, s))
+
 
         # SKOS -> SKOS
         # broader / narrower buildout
@@ -107,46 +160,6 @@ class Skosp(DocProfile):
             self.G.remove((s, DC.publisher, o))
             self.G.remove((s, SDO.publisher, o))
             self.G.add((s, DCTERMS.publisher, o))
-
-    def _make_formatted_uri(self, uri, type=None):
-        # set display to CURIE
-        short = self._get_curie(uri)
-        # if the URI base is within the default namespace of this ontology
-        #   use the fragment URI
-        # else
-        #   use the given URI
-        uri_base = self._get_namespace_from_uri(uri)
-        link = None
-        if uri_base == self.METADATA.get("default_namespace"):
-            if self.CONCEPTS.get(uri):
-                link = "[{}]({})".format(self.CONCEPTS[uri]["default_prefLabel"], self.CONCEPTS[uri]["fid"]) \
-                    if self.outputformat == "md" \
-                    else '<a href="#{}">{}</a>'.format(self.CONCEPTS[uri]["fid"], self.CONCEPTS[uri]["default_prefLabel"])
-            elif self.COLLECTIONS.get(uri):
-                    link = "[{}]({})".format(self.COLLECTIONS[uri]["default_prefLabel"], self.COLLECTIONS[uri]["fid"]) \
-                        if self.outputformat == "md" \
-                        else '<a href="#{}">{}</a>'.format(self.COLLECTIONS[uri]["fid"], self.COLLECTIONS[uri]["default_prefLabel"])
-
-        if link is None:
-            link = "[{}]({})".format(short, uri) \
-                if self.outputformat == "md" \
-                else '<a href="{}">{}</a>'.format(uri, short)
-
-        if type == "cp":
-            if self.outputformat == "md":
-                suffix = ' (cp)'
-            else:
-                suffix = '<sup class="sup-cp" title="concept">cp</sup>'
-        elif type == "cl":
-            if self.outputformat == "md":
-                suffix = ' (cl)'
-            else:
-                suffix = '<sup class="sup-cl" title="collection">cl</sup>'
-        # None
-        else:
-            suffix = ''
-
-        return link + suffix
 
     def _extract_collections(self):
         """Extracts standard SKOS Collection metadata"""
@@ -380,10 +393,11 @@ class Skosp(DocProfile):
                         str(o)
                             .replace("Copyright", "&copy;")
                             .replace("copyright", "&copy;")
+                            .replace("(c)", "&copy;")
                     )
 
                 # Agents
-                if p in [DC.creator, DCTERMS.creator, DC.contributor, DCTERMS.contributor, DC.publisher, DCTERMS.publisher]:
+                if p in [DCTERMS.creator, DCTERMS.contributor, DCTERMS.publisher]:
                     agent_type = p.split("/")[-1] + "s"
                     if type(o) == Literal:
                         self.METADATA[agent_type].add(str(o))
@@ -560,10 +574,7 @@ class Skosp(DocProfile):
         css = None
         if self.outputformat == "html":
             if not self.exclude_css:
-                pylode_css = path.join(
-                    path.dirname(path.realpath(__file__)), "style", "pylode.css"
-                )
-                css = open(pylode_css).read()
+                css = open(path.join(STYLE_DIR, "pylode.css")).read()
 
         return self._load_template("skos_taxonomy." + self.outputformat).render(
             schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML template
@@ -575,7 +586,7 @@ class Skosp(DocProfile):
             concepts=self._make_skos_concepts(),
             namespaces=self._make_namespaces(),
             css=css,
-            pylode_version=__version__
+            pylode_version=VERSION
         )
 
     def generate_document(self):

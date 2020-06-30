@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ title }}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    {%  if css is not none %}
+    <style>
+{{ css }}
+    </style>
+    {% else %}
+    <link rel="stylesheet" type="text/css" href="style.css">
+    {%  endif %}
+    <script type="application/ld+json">
+      {{ schemaorg }}
+    </script>
+</head>
+<body>
+  <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
+    <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
+    <span style="font-size:smaller;">{{ pylode_version }}</span>
+  </div>
+  {{ profile|safe }}
+  {%- if has_resource_descriptors %}
+  {{ resource_descriptors|safe }}
+  {%- endif %}
+  {{ namespaces|safe }}
+</body>
+</html>
