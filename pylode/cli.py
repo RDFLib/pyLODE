@@ -55,6 +55,7 @@ def main(args=None):
         "{} respectively.".format(", ".join(RDF_FILE_EXTENSIONS)),
         type=lambda x: is_valid_file(parser, x),
     )
+
     inputs_group.add_argument(
         "-u",
         "--url",
@@ -120,10 +121,21 @@ def main(args=None):
         default="html",
     )
 
+    parser.add_argument(
+        "-v",
+        "--version",
+        help="The version of this copy of pyLODE.",
+        action="store_true"
+    )
+
     args = parser.parse_args()
 
     if args.listprofiles:
         print(MakeDocco.list_profiles())
+        exit()
+    elif args.version:
+        from pylode import __version__
+        print(__version__)
         exit()
     elif args.inputfile or args.url:
         if args.excludecss == "true":

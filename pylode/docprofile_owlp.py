@@ -5,10 +5,7 @@ from itertools import chain
 import markdown
 from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
-try:
-    from .docprofile import DocProfile, __version__
-except:
-    from docprofile import DocProfile, __version__
+from pylode import __version__
 
 
 class Owlp(DocProfile):

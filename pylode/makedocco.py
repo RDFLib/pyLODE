@@ -196,4 +196,4 @@ if __name__ == "__main__":
         exclude_css=True
     )
 
-    m.document(destination="examples/ogc/hyf.5.html")
+    m.document(destination="hyf.html")

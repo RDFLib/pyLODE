@@ -4,8 +4,6 @@ from rdflib import Graph, URIRef, Literal, Namespace
 from rdflib.namespace import FOAF, OWL, RDF, SDO, SKOS, XSD
 from jinja2 import Environment, FileSystemLoader
 
-__version__ = '2.5'
-
 
 class DocProfile:
     def __init__(self, g, source_info, outputformat="html", exclude_css=False, default_language="en", get_curies_online=False):

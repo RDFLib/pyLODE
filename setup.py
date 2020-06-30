@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: latin-1 -*-
 import codecs
-import re
 import os
 from setuptools import setup
+from pylode import __version__
 
 
 def open_local(paths, mode='r', encoding='utf8'):
@@ -13,13 +13,6 @@ def open_local(paths, mode='r', encoding='utf8'):
     )
     return codecs.open(path, mode, encoding)
 
-
-with open_local(['pylode', 'docprofile.py'], encoding='latin1') as fp:
-    try:
-        version = re.findall(r"^__version__ = '([^']+)'\r?$",
-                             fp.read(), re.M)[0]
-    except IndexError:
-        raise RuntimeError('Unable to determine version.')
 
 with open_local(['README.rst'], encoding='utf-8') as readme:
     long_description = readme.read()
@@ -32,12 +25,12 @@ setup(
     packages=['pylode'],
     package_dir={'pylode': 'pylode'},
     package_data={'pylode': ['templates/*.html', 'templates/*.md', 'style/*.css']},
-    version=version,
+    version=__version__,
     description='An OWL ontology documentation tool using Python and templating, based on LODE.',
     author='Nicholas Car',
     author_email='nicholas.car@surroundaustralia.com',
     url='https://github.com/rdflib/pyLODE',
-    download_url='https://github.com/rdflib/pyLODE/archive/v{:s}.tar.gz'.format(version),
+    download_url='https://github.com/rdflib/pyLODE/archive/v{:s}.tar.gz'.format(__version__),
     license='LICENSE',
     keywords=['Semantic Web', 'OWL', 'ontology', 'template', 'Jinja2', 'documentation'],
     long_description=long_description,
