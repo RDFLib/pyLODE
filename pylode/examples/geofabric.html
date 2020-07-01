@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -205,20 +210,20 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>Geofabric Ontology</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://linked.data.gov.au/def/geofabric</code></dd>
-        <dt>Publisher(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher">Publisher</a>(s)</dt>
         <dd>
             
     <a href="http://catalogue.linked.data.gov.au/org/csiro">CSIRO</a><br/>
         </dd>
-        <dt>Creator(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
         <dd>
             
     <a href="http://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a>
@@ -242,18 +247,18 @@
     </g>
 </svg></a><br/>
         </dd>
-        <dt>Contributors(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/contributor">Contributor</a>(s)</dt>
         <dd>
             
     None<br/>
         </dd>
-        <dt>Created</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/created">Created</a></dt>
         <dd>2019-06-07</dd>
-        <dt>Modified</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
         <dd>2019-07-29</dd>
         <dt>Version Information</dt>
         <dd>Version 1.0 only characterises 3 types of Feature - Contracted Catchment, River Region & Drianage Division - and requires that each CC be within a RR and that an RR be within a DD.</dd>
-        <dt>Version IRI</dt>
+        <dt>Version URI</dt>
         <dd><a href="http://linked.data.gov.au/def/geofabric/1.0">http://linked.data.gov.au/def/geofabric/1.0</a></dd>
         <dt>Imports</dt>
         <dd>
@@ -302,7 +307,7 @@
         <h3>Contracted Catchment<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/geofabric#ContractedCatchment</code></td>
             </tr>
             <tr>
@@ -314,38 +319,15 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>All contracted catchment features of type ContractedArea are aggregations of the
-AHGFCatchment units that participate in a relationship of common geographic extent based
-upon the location of a contracted node from both Geofabric Surface Cartography and
-Geofabric Surface Network or a data sink as defined within the DEM-1S. Levels of confidence
-for contracted nodes are further described in the following section of the Geofabric Product
-Guide.</p>
-<p>Each ContractedArea is assigned with the contracted node identifier (ConNodeID) and the
-confidence level (ConLevel) of the contracted node to which they drain. The ContractedArea
-features are the drainage areas of a combination of Levels 1 and 2 contracted nodes. These
-drainage areas also incorporate catchment areas where there is no discernable flow (at
-1:250,000 scale) in the form of stream flow segment features. The allocation of no flow areas
-to contracted catchments is performed based on the most likely destination of water falling in
-these areas in flood type conditions. </p>
-<p>Contracted catchment hierarchy</p>
-<p>In previous versions of the Geofabric, the set of contracted catchment features provided a
-collection of drainage areas for a set of persistent contracted nodes. In V2.1 these areas have
-been further processed to aggregate these features into a contracted catchment hierarchy.
-This hierarchy of contracted catchments includes only those catchments for key contracted
-nodes taken from a full set of contractible river confluences, sinks, monitoring points and the
-inflow and outflow points of water storages. These key contracted nodes form a stable,
-logical, dendritic hierarchy of catchments that can be reliably reproduced when moving to
-higher resolution or larger scaled data. The contracted catchment hierarchy provides a
-reliable and stable set of catchments that, among other things, can be mapped to a number
-of types of water reporting areas (depending on the use case) as exemplified by the stable
-reporting regions given in Hydrology Reporting Regions.</p>
+                    <p>The Geofabric's Hydrology Reporting Catchments product's AHGF Contracted Catchment object.</p>
+<p>Contracted Catchments are always within River Revions.</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="https://www.opengis.net/def/appschema/hy_features/hyf/HY_Catchment">hyf:HY_Catchment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://www.opengis.net/def/appschema/hy_features/hyf/HY_Catchment">hyf:HY_Catchment</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -360,7 +342,7 @@ reporting regions given in Hydrology Reporting Regions.</p>
         <h3>Drainage Division<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/geofabric#DrainageDivision</code></td>
             </tr>
             <tr>
@@ -380,9 +362,9 @@ and are referred to as the 2010 and 2012 Assessment Reporting Regions.</p>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate">hyf:HY_CatchmentAggregate</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#GeofabricHydrologyreportingregion">ReportingRegion</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate">hyf:HY_CatchmentAggregate</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -391,7 +373,7 @@ and are referred to as the 2010 and 2012 Assessment Reporting Regions.</p>
         <h3>Geofabric Hydrology reporting region<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/geofabric#ReportingRegion</code></td>
             </tr>
             <tr>
@@ -445,26 +427,23 @@ feature subtypes. </p>
         <h3>River Region<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/geofabric#RiverRegion</code></td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>The River Regions were based on a specification developed by Bureau hydrologists involved in
-water resources assessment in consultation with the Geofabric team and scientists from
-CSIRO and ANU. These boundaries were developed for use in regional scale reporting and
-hydrological modelling. The River Region boundaries were not used in the Australian Water
-Resources Assessment 2010 and 2012 but may be considered in the future as the resolution
-of reporting increases.</p>
+                    <p>The Geofabric's Hydrology Reporting Region product's River Region object.</p>
+<p>Reporting Regions are derived from aggregations of Contracted Catchments for regional scale reporting purposes.</p>
+<p>A River Regions is always within one and only one Drainage Division.</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
+                    <a href="#GeofabricHydrologyreportingregion">ReportingRegion</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate">hyf:HY_CatchmentAggregate</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#GeofabricHydrologyreportingregion">ReportingRegion</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -479,16 +458,16 @@ of reporting increases.</p>
         <h3>Feature<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#Feature</code></td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#RiverRegion">RiverRegion</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#GeofabricHydrologyreportingregion">ReportingRegion</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#ContractedCatchment">ContractedCatchment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#DrainageDivision">DrainageDivision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#GeofabricHydrologyreportingregion">ReportingRegion</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#RiverRegion">RiverRegion</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ContractedCatchment">ContractedCatchment</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -497,7 +476,7 @@ of reporting increases.</p>
         <h3>Catchment<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>https://www.opengis.net/def/appschema/hy_features/hyf/HY_Catchment</code></td>
             </tr>
             <tr>
@@ -518,7 +497,7 @@ of reporting increases.</p>
         <h3>Catchment Aggregate<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate</code></td>
             </tr>
             <tr>
@@ -531,8 +510,8 @@ of reporting increases.</p>
                 <th>Sub-classes</th>
                 <td>
                     <a href="#RiverRegion">RiverRegion</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#GeofabricHydrologyreportingregion">ReportingRegion</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#DrainageDivision">DrainageDivision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#GeofabricHydrologyreportingregion">ReportingRegion</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -549,7 +528,7 @@ of reporting increases.</p>
         <h3>source<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/elements/1.1/source</code></td>
             </tr>
         </table>
@@ -558,7 +537,7 @@ of reporting increases.</p>
         <h3>identifier<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>https://schema.org/identifier</code></td>
             </tr>
         </table>
@@ -567,7 +546,7 @@ of reporting increases.</p>
         <h3>name<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>https://schema.org/name</code></td>
             </tr>
         </table>
@@ -584,8 +563,6 @@ of reporting increases.</p>
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://linked.data.gov.au/def/geofabric#</code></dd>
         <dt>:</dt>
         <dd><code>http://linked.data.gov.au/def/geofabric#</code></dd>
         <dt>dc</dt>
@@ -608,8 +585,6 @@ of reporting increases.</p>
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

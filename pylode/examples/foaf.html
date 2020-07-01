@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -205,13 +210,13 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>Friend of a Friend (FOAF) vocabulary</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://xmlns.com/foaf/0.1/</code></dd>
         <dt>Ontology RDF</dt>
         <dd><a href="foaf.ttl">RDF (turtle)</a></dd>
@@ -264,7 +269,7 @@
         <h3>Class<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#Class</code></td>
             </tr>
         </table>
@@ -273,7 +278,7 @@
         <h3>Spatial Thing<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing</code></td>
             </tr>
             <tr>
@@ -300,7 +305,7 @@
         <h3>Agent<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/Agent</code></td>
             </tr>
             <tr>
@@ -312,41 +317,41 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
+                    <a href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/Organization">foaf:Organization</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/Group">foaf:Group</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://xmlns.com/foaf/0.1/age">foaf:age</a><sup class="sup-fp" title="functional property">fp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/interest">foaf:interest</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/icqChatID">foaf:icqChatID</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/skypeID">foaf:skypeID</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/made">foaf:made</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/gender">foaf:gender</a><sup class="sup-fp" title="functional property">fp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/yahooChatID">foaf:yahooChatID</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/holdsAccount">foaf:holdsAccount</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/aimChatID">foaf:aimChatID</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/tipjar">foaf:tipjar</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/msnChatID">foaf:msnChatID</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/birthday">foaf:birthday</a><sup class="sup-fp" title="functional property">fp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/account">foaf:account</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/status">foaf:status</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/mbox_sha1sum">foaf:mbox_sha1sum</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/mbox">foaf:mbox</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/topic_interest">foaf:topic_interest</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/weblog">foaf:weblog</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/aimChatID">foaf:aimChatID</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/yahooChatID">foaf:yahooChatID</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/mbox_sha1sum">foaf:mbox_sha1sum</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/tipjar">foaf:tipjar</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/made">foaf:made</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/skypeID">foaf:skypeID</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/gender">foaf:gender</a><sup class="sup-fp" title="functional property">fp</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/status">foaf:status</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/holdsAccount">foaf:holdsAccount</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/birthday">foaf:birthday</a><sup class="sup-fp" title="functional property">fp</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/openid">foaf:openid</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/icqChatID">foaf:icqChatID</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/account">foaf:account</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/interest">foaf:interest</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/age">foaf:age</a><sup class="sup-fp" title="functional property">fp</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/jabberID">foaf:jabberID</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/openid">foaf:openid</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/weblog">foaf:weblog</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://xmlns.com/foaf/0.1/member">foaf:member</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/maker">foaf:maker</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/member">foaf:member</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -355,7 +360,7 @@
         <h3>Document<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/Document</code></td>
             </tr>
             <tr>
@@ -388,18 +393,18 @@
             <tr>
                 <th>In range of</th>
                 <td>
+                    <a href="http://xmlns.com/foaf/0.1/publications">foaf:publications</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/workplaceHomepage">foaf:workplaceHomepage</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/isPrimaryTopicOf">foaf:isPrimaryTopicOf</a><br/>
+                    <a href="http://xmlns.com/foaf/0.1/homepage">foaf:homepage</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/accountServiceHomepage">foaf:accountServiceHomepage</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/page">foaf:page</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/interest">foaf:interest</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/openid">foaf:openid</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/schoolHomepage">foaf:schoolHomepage</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/weblog">foaf:weblog</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/tipjar">foaf:tipjar</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/publications">foaf:publications</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/openid">foaf:openid</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/workInfoHomepage">foaf:workInfoHomepage</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/workplaceHomepage">foaf:workplaceHomepage</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/page">foaf:page</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/accountServiceHomepage">foaf:accountServiceHomepage</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/homepage">foaf:homepage</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/schoolHomepage">foaf:schoolHomepage</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/interest">foaf:interest</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/isPrimaryTopicOf">foaf:isPrimaryTopicOf</a><br/>
                 </td>
             </tr>
         </table>
@@ -408,7 +413,7 @@
         <h3>Group<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/Group</code></td>
             </tr>
             <tr>
@@ -435,7 +440,7 @@
         <h3>Image<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/Image</code></td>
             </tr>
             <tr>
@@ -459,15 +464,15 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://xmlns.com/foaf/0.1/thumbnail">foaf:thumbnail</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/depicts">foaf:depicts</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/thumbnail">foaf:thumbnail</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://xmlns.com/foaf/0.1/depiction">foaf:depiction</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/thumbnail">foaf:thumbnail</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/depiction">foaf:depiction</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/img">foaf:img</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
@@ -477,7 +482,7 @@
         <h3>Label Property<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/LabelProperty</code></td>
             </tr>
             <tr>
@@ -498,7 +503,7 @@
         <h3>Online Account<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/OnlineAccount</code></td>
             </tr>
             <tr>
@@ -522,16 +527,16 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://xmlns.com/foaf/0.1/OnlineEcommerceAccount">foaf:OnlineEcommerceAccount</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/OnlineChatAccount">foaf:OnlineChatAccount</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/OnlineGamingAccount">foaf:OnlineGamingAccount</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/OnlineEcommerceAccount">foaf:OnlineEcommerceAccount</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://xmlns.com/foaf/0.1/accountServiceHomepage">foaf:accountServiceHomepage</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/accountName">foaf:accountName</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/accountServiceHomepage">foaf:accountServiceHomepage</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -547,7 +552,7 @@
         <h3>Online Chat Account<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/OnlineChatAccount</code></td>
             </tr>
             <tr>
@@ -574,7 +579,7 @@
         <h3>Online E-commerce Account<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/OnlineEcommerceAccount</code></td>
             </tr>
             <tr>
@@ -601,7 +606,7 @@
         <h3>Online Gaming Account<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/OnlineGamingAccount</code></td>
             </tr>
             <tr>
@@ -628,7 +633,7 @@
         <h3>Organization<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/Organization</code></td>
             </tr>
             <tr>
@@ -655,7 +660,7 @@
         <h3>Person<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/Person</code></td>
             </tr>
             <tr>
@@ -673,29 +678,29 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing">http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing">http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://xmlns.com/foaf/0.1/img">foaf:img</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/workplaceHomepage">foaf:workplaceHomepage</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/workInfoHomepage">foaf:workInfoHomepage</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/firstName">foaf:firstName</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/publications">foaf:publications</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/knows">foaf:knows</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/img">foaf:img</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/plan">foaf:plan</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/currentProject">foaf:currentProject</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/family_name">foaf:family_name</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/lastName">foaf:lastName</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/pastProject">foaf:pastProject</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/myersBriggs">foaf:myersBriggs</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/schoolHomepage">foaf:schoolHomepage</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://xmlns.com/foaf/0.1/surname">foaf:surname</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/familyName">foaf:familyName</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/myersBriggs">foaf:myersBriggs</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="http://xmlns.com/foaf/0.1/geekcode">foaf:geekcode</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/workInfoHomepage">foaf:workInfoHomepage</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/family_name">foaf:family_name</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/pastProject">foaf:pastProject</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/workplaceHomepage">foaf:workplaceHomepage</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/lastName">foaf:lastName</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/publications">foaf:publications</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/surname">foaf:surname</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/currentProject">foaf:currentProject</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/knows">foaf:knows</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -710,7 +715,7 @@
         <h3>PersonalProfileDocument<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/PersonalProfileDocument</code></td>
             </tr>
             <tr>
@@ -731,7 +736,7 @@
         <h3>Project<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/Project</code></td>
             </tr>
             <tr>
@@ -790,7 +795,7 @@
         <h3>account<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/account</code></td>
             </tr>
             <tr>
@@ -823,7 +828,7 @@
         <h3>account service homepage<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/accountServiceHomepage</code></td>
             </tr>
             <tr>
@@ -856,7 +861,7 @@
         <h3>based near<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/based_near</code></td>
             </tr>
             <tr>
@@ -889,7 +894,7 @@
         <h3>current project<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/currentProject</code></td>
             </tr>
             <tr>
@@ -922,7 +927,7 @@
         <h3>depiction<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/depiction</code></td>
             </tr>
             <tr>
@@ -961,7 +966,7 @@
         <h3>depicts<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/depicts</code></td>
             </tr>
             <tr>
@@ -1000,7 +1005,7 @@
         <h3>focus<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/focus</code></td>
             </tr>
             <tr>
@@ -1033,7 +1038,7 @@
         <h3>funded by<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/fundedBy</code></td>
             </tr>
             <tr>
@@ -1066,7 +1071,7 @@
         <h3>account<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/holdsAccount</code></td>
             </tr>
             <tr>
@@ -1099,7 +1104,7 @@
         <h3>homepage<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/homepage</code></td>
             </tr>
             <tr>
@@ -1117,8 +1122,8 @@
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://xmlns.com/foaf/0.1/isPrimaryTopicOf">foaf:isPrimaryTopicOf</a>
                     <a href="http://xmlns.com/foaf/0.1/page">foaf:page</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://xmlns.com/foaf/0.1/isPrimaryTopicOf">foaf:isPrimaryTopicOf</a>
                 </td>
             </tr>
             <tr>
@@ -1139,7 +1144,7 @@
         <h3>image<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/img</code></td>
             </tr>
             <tr>
@@ -1178,7 +1183,7 @@
         <h3>interest<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/interest</code></td>
             </tr>
             <tr>
@@ -1211,7 +1216,7 @@
         <h3>knows<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/knows</code></td>
             </tr>
             <tr>
@@ -1244,7 +1249,7 @@
         <h3>logo<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/logo</code></td>
             </tr>
             <tr>
@@ -1277,7 +1282,7 @@
         <h3>made<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/made</code></td>
             </tr>
             <tr>
@@ -1316,7 +1321,7 @@
         <h3>maker<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/maker</code></td>
             </tr>
             <tr>
@@ -1361,7 +1366,7 @@
         <h3>personal mailbox<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/mbox</code></td>
             </tr>
             <tr>
@@ -1394,7 +1399,7 @@
         <h3>member<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/member</code></td>
             </tr>
             <tr>
@@ -1427,7 +1432,7 @@
         <h3>openid<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/openid</code></td>
             </tr>
             <tr>
@@ -1466,7 +1471,7 @@
         <h3>page<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/page</code></td>
             </tr>
             <tr>
@@ -1505,7 +1510,7 @@
         <h3>past project<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/pastProject</code></td>
             </tr>
             <tr>
@@ -1538,7 +1543,7 @@
         <h3>phone<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/phone</code></td>
             </tr>
             <tr>
@@ -1559,7 +1564,7 @@
         <h3>primary topic<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/primaryTopic</code></td>
             </tr>
             <tr>
@@ -1598,7 +1603,7 @@
         <h3>publications<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/publications</code></td>
             </tr>
             <tr>
@@ -1631,7 +1636,7 @@
         <h3>schoolHomepage<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/schoolHomepage</code></td>
             </tr>
             <tr>
@@ -1664,7 +1669,7 @@
         <h3>theme<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/theme</code></td>
             </tr>
             <tr>
@@ -1697,7 +1702,7 @@
         <h3>thumbnail<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/thumbnail</code></td>
             </tr>
             <tr>
@@ -1730,7 +1735,7 @@
         <h3>tipjar<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/tipjar</code></td>
             </tr>
             <tr>
@@ -1769,7 +1774,7 @@
         <h3>topic<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/topic</code></td>
             </tr>
             <tr>
@@ -1808,7 +1813,7 @@
         <h3>topic_interest<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/topic_interest</code></td>
             </tr>
             <tr>
@@ -1841,7 +1846,7 @@
         <h3>weblog<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/weblog</code></td>
             </tr>
             <tr>
@@ -1880,7 +1885,7 @@
         <h3>work info homepage<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/workInfoHomepage</code></td>
             </tr>
             <tr>
@@ -1913,7 +1918,7 @@
         <h3>workplace homepage<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/workplaceHomepage</code></td>
             </tr>
             <tr>
@@ -1955,7 +1960,7 @@
         <h3>age<sup title="functional property" class="sup-fp">fp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/age</code></td>
             </tr>
             <tr>
@@ -1988,7 +1993,7 @@
         <h3>birthday<sup title="functional property" class="sup-fp">fp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/birthday</code></td>
             </tr>
             <tr>
@@ -2021,7 +2026,7 @@
         <h3>gender<sup title="functional property" class="sup-fp">fp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/gender</code></td>
             </tr>
             <tr>
@@ -2084,7 +2089,7 @@
         <h3>account name<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/accountName</code></td>
             </tr>
             <tr>
@@ -2117,7 +2122,7 @@
         <h3>AIM chat ID<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/aimChatID</code></td>
             </tr>
             <tr>
@@ -2156,7 +2161,7 @@
         <h3>DNA checksum<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/dnaChecksum</code></td>
             </tr>
             <tr>
@@ -2183,7 +2188,7 @@
         <h3>familyName<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/familyName</code></td>
             </tr>
             <tr>
@@ -2216,7 +2221,7 @@
         <h3>family_name<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/family_name</code></td>
             </tr>
             <tr>
@@ -2249,7 +2254,7 @@
         <h3>firstName<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/firstName</code></td>
             </tr>
             <tr>
@@ -2282,7 +2287,7 @@
         <h3>geekcode<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/geekcode</code></td>
             </tr>
             <tr>
@@ -2315,7 +2320,7 @@
         <h3>Given name<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/givenName</code></td>
             </tr>
             <tr>
@@ -2336,7 +2341,7 @@
         <h3>Given name<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/givenname</code></td>
             </tr>
             <tr>
@@ -2357,7 +2362,7 @@
         <h3>ICQ chat ID<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/icqChatID</code></td>
             </tr>
             <tr>
@@ -2396,7 +2401,7 @@
         <h3>jabber ID<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/jabberID</code></td>
             </tr>
             <tr>
@@ -2429,7 +2434,7 @@
         <h3>lastName<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/lastName</code></td>
             </tr>
             <tr>
@@ -2462,7 +2467,7 @@
         <h3>sha1sum of a personal mailbox URI name<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/mbox_sha1sum</code></td>
             </tr>
             <tr>
@@ -2495,7 +2500,7 @@
         <h3>MSN chat ID<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/msnChatID</code></td>
             </tr>
             <tr>
@@ -2534,7 +2539,7 @@
         <h3>myersBriggs<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/myersBriggs</code></td>
             </tr>
             <tr>
@@ -2567,7 +2572,7 @@
         <h3>name<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/name</code></td>
             </tr>
             <tr>
@@ -2606,7 +2611,7 @@
         <h3>nickname<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/nick</code></td>
             </tr>
             <tr>
@@ -2627,7 +2632,7 @@
         <h3>plan<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/plan</code></td>
             </tr>
             <tr>
@@ -2660,7 +2665,7 @@
         <h3>sha1sum (hex)<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/sha1</code></td>
             </tr>
             <tr>
@@ -2687,7 +2692,7 @@
         <h3>Skype ID<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/skypeID</code></td>
             </tr>
             <tr>
@@ -2726,7 +2731,7 @@
         <h3>status<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/status</code></td>
             </tr>
             <tr>
@@ -2759,7 +2764,7 @@
         <h3>Surname<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/surname</code></td>
             </tr>
             <tr>
@@ -2792,7 +2797,7 @@
         <h3>title<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/title</code></td>
             </tr>
             <tr>
@@ -2813,7 +2818,7 @@
         <h3>Yahoo chat ID<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/yahooChatID</code></td>
             </tr>
             <tr>
@@ -2865,7 +2870,7 @@
         <h3>date<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/elements/1.1/date</code></td>
             </tr>
         </table>
@@ -2874,7 +2879,7 @@
         <h3>description<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/elements/1.1/description</code></td>
             </tr>
         </table>
@@ -2883,7 +2888,7 @@
         <h3>title<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/elements/1.1/title</code></td>
             </tr>
         </table>
@@ -2892,7 +2897,7 @@
         <h3>term_status<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2003/06/sw-vocab-status/ns#term_status</code></td>
             </tr>
         </table>
@@ -2901,7 +2906,7 @@
         <h3>membershipClass<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/membershipClass</code></td>
             </tr>
             <tr>
@@ -2922,7 +2927,7 @@
         <h3>assurance<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/wot/0.1/assurance</code></td>
             </tr>
         </table>
@@ -2931,7 +2936,7 @@
         <h3>src_assurance<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/wot/0.1/src_assurance</code></td>
             </tr>
         </table>
@@ -2947,7 +2952,7 @@
         <h3>is primary topic of<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/isPrimaryTopicOf</code></td>
             </tr>
             <tr>
@@ -3020,8 +3025,6 @@
         <dd><code>http://www.w3.org/2003/06/sw-vocab-status/ns#</code></dd>
         <dt>wot</dt>
         <dd><code>http://xmlns.com/wot/0.1/</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

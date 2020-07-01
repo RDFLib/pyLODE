@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -205,13 +210,13 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>The RDF Concepts Vocabulary (RDF)</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
         <dt>Ontology RDF</dt>
         <dd><a href="rdf.ttl">RDF (turtle)</a></dd>
@@ -251,7 +256,7 @@
         <h3>Alt<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt</code></td>
             </tr>
             <tr>
@@ -278,7 +283,7 @@
         <h3>Bag<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag</code></td>
             </tr>
             <tr>
@@ -305,7 +310,7 @@
         <h3>List<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#List</code></td>
             </tr>
             <tr>
@@ -345,7 +350,7 @@
         <h3>Property<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</code></td>
             </tr>
             <tr>
@@ -372,7 +377,7 @@
         <h3>Seq<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq</code></td>
             </tr>
             <tr>
@@ -399,7 +404,7 @@
         <h3>Statement<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement</code></td>
             </tr>
             <tr>
@@ -424,8 +429,8 @@
                 <th>In domain of</th>
                 <td>
                     <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a><br/>
-                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate">rdf:predicate</a><br/>
                     <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">rdf:subject</a><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate">rdf:predicate</a><br/>
                 </td>
             </tr>
         </table>
@@ -446,7 +451,7 @@
         <h3>first<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#first</code></td>
             </tr>
             <tr>
@@ -479,7 +484,7 @@
         <h3>object<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#object</code></td>
             </tr>
             <tr>
@@ -512,7 +517,7 @@
         <h3>predicate<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate</code></td>
             </tr>
             <tr>
@@ -545,7 +550,7 @@
         <h3>rest<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#rest</code></td>
             </tr>
             <tr>
@@ -578,7 +583,7 @@
         <h3>subject<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#subject</code></td>
             </tr>
             <tr>
@@ -611,7 +616,7 @@
         <h3>type<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</code></td>
             </tr>
             <tr>
@@ -644,7 +649,7 @@
         <h3>value<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</code></td>
             </tr>
             <tr>
@@ -699,8 +704,6 @@
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

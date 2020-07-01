@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -215,15 +220,15 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>Alternates View Profile Schema</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://data.surroundaustralia.com/def/alternates</code></dd>
-        <dt>Creator(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
         <dd>
             
     <a href="https://orcid.org/0000-0002-7878-2693">Rob Atkinson</a>
@@ -272,9 +277,9 @@
     (<a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a>) of 
     <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a><br/>
         </dd>
-        <dt>Created</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/created">Created</a></dt>
         <dd>2019-10-21</dd>
-        <dt>Modified</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
         <dd>2019-10-21</dd>
         <dt>Imports</dt>
         <dd>
@@ -321,7 +326,7 @@
         <h3>View<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://data.surroundaustralia.com/def/alternates#View</code></td>
             </tr>
             <tr>
@@ -342,7 +347,7 @@
         <h3>Media Type<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/MediaType</code></td>
             </tr>
             <tr>
@@ -383,7 +388,7 @@
         <h3>hasDefaultFormat<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://data.surroundaustralia.com/def/alternates#hasDefaultFormat</code></td>
             </tr>
             <tr>
@@ -398,7 +403,7 @@
         <h3>hasDefaultView<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://data.surroundaustralia.com/def/alternates#hasDefaultView</code></td>
             </tr>
             <tr>
@@ -413,7 +418,7 @@
         <h3>hasView<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://data.surroundaustralia.com/def/alternates#hasView</code></td>
             </tr>
         </table>
@@ -429,7 +434,7 @@
         <h3>format<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/format</code></td>
             </tr>
             <tr>
@@ -463,7 +468,7 @@
         <h3>None<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       https://surroundaustralia.com
@@ -482,8 +487,6 @@
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://data.surroundaustralia.com/def/alternates#</code></dd>
         <dt>:</dt>
         <dd><code>http://data.surroundaustralia.com/def/alternates#</code></dd>
         <dt>dct</dt>
@@ -502,8 +505,6 @@
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

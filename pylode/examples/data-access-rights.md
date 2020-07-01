@@ -1,9 +1,9 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
 
 # Data Access Rights
 
 ## Metadata
-* **IRI**
+* **URI**
   * `http://linked.data.gov.au/def/data-access-rights`
 * **Publisher(s)**
   * [Geological Survey of Queensland](http://linked.data.gov.au/org/gsq)
@@ -33,8 +33,6 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 
 ## Named Individuals
 ## Namespaces
-* **default (:)**
-  * `http://linked.data.gov.au/def/data-access-rights/`
 * **da**
   * `http://linked.data.gov.au/def/data-access-rights/`
 * **dc**
@@ -53,8 +51,6 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
   * `https://schema.org/`
 * **skos**
   * `http://www.w3.org/2004/02/skos/core#`
-* **xml**
-  * `http://www.w3.org/XML/1998/namespace`
 * **xsd**
   * `http://www.w3.org/2001/XMLSchema#`
 

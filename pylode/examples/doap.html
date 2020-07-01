@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -190,7 +195,7 @@
     ],
     "https://schema.org/description": [
       {
-        "@value": "<p>El vocabulario Description of a Project (DOAP, DescripciÃ³n de un Proyecto), descrito usando RDF Schema de W3C\n        y Web Ontology Language.</p>"
+        "@value": "<p>SlovnÃ­k Description of a Project (DOAP, Popis projektu), popsanÃ½ pouÅ¾itÃ­m W3C RDF Schema a Web Ontology Language.</p>"
       }
     ],
     "https://schema.org/name": [
@@ -205,15 +210,15 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>Description of a Project (DOAP) vocabulary</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://usefulinc.com/ns/doap#</code></dd>
-        <dt>Creator(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
         <dd>
             Edd Wilder-James<br/>
         </dd>
@@ -226,8 +231,7 @@
     </dl>
     <h2>Description</h2>
     <div id="description">
-        <p>El vocabulario Description of a Project (DOAP, DescripciÃ³n de un Proyecto), descrito usando RDF Schema de W3C
-        y Web Ontology Language.</p>
+        <p>SlovnÃ­k Description of a Project (DOAP, Popis projektu), popsanÃ½ pouÅ¾itÃ­m W3C RDF Schema a Web Ontology Language.</p>
     </div>
 </section>
 <section id="toc">
@@ -249,25 +253,25 @@
   <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
-        <li><a href="#BazaarBranch">Bazaar Branch</a></li>
-        <li><a href="#BitKeeperRepository">BitKeeper Repository</a></li>
         <li><a href="#CVSRepository">CVS Repository</a></li>
-        <li><a href="#DptGNUArch">DÃ©pÃ´t GNU Arch</a></li>
+        <li><a href="#Dpt">DÃ©pÃ´t</a></li>
+        <li><a href="#DptGit">DÃ©pÃ´t Git</a></li>
+        <li><a href="#DptSubversion">DÃ©pÃ´t Subversion</a></li>
         <li><a href="#Especificao">EspecificaÃ§Ã£o</a></li>
-        <li><a href="#Projeto">Projeto</a></li>
+        <li><a href="#GNUArchrepository">GNU Arch repository</a></li>
+        <li><a href="#MercurialRepository">Mercurial Repository</a></li>
+        <li><a href="#Projet">Projet</a></li>
+        <li><a href="#RamificaoBazaar">RamificaÃ§Ã£o Bazaar</a></li>
         <li><a href="#RamificaoGit">RamificaÃ§Ã£o Git</a></li>
-        <li><a href="#RepositorioGit">Repositorio Git</a></li>
-        <li><a href="#Repository1">Repository</a></li>
-        <li><a href="#RepositrioMercurial">RepositÃ³rio Mercurial</a></li>
-        <li><a href="#RepositrioSubversion">RepositÃ³rio Subversion</a></li>
-        <li><a href="#Repositriodarcs">RepositÃ³rio darcs</a></li>
+        <li><a href="#Repositoriodarcs">Repositorio darcs</a></li>
         <li><a href="#Version">Version</a></li>
+        <li><a href="#loitBitKeeper">ÃšloÅ¾iÅ¡tÄ› BitKeeper</a></li>
     </ul>
-    <div class="entity class" id="DptGNUArch">
-        <h3>DÃ©pÃ´t GNU Arch<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="GNUArchrepository">
+        <h3>GNU Arch repository<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#ArchRepository</code></td>
             </tr>
             <tr>
@@ -279,7 +283,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>ÃšloÅ¾iÅ¡tÄ› zdrojovÃ½ch kÃ³dÅ¯ GNU Arch.</p>
+                    <p>RepositÃ³rio GNU Arch do cÃ³digo fonte.</p>
                 </td>
             </tr>
             <tr>
@@ -290,11 +294,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="BitKeeperRepository">
-        <h3>BitKeeper Repository<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="loitBitKeeper">
+        <h3>ÃšloÅ¾iÅ¡tÄ› BitKeeper<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#BKRepository</code></td>
             </tr>
             <tr>
@@ -306,7 +310,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>RepositÃ³rio BitKeeper do cÃ³digo fonte.</p>
+                    <p>ÃšloÅ¾iÅ¡tÄ› zdrojovÃ½ch kÃ³dÅ¯ BitKeeper.</p>
                 </td>
             </tr>
             <tr>
@@ -317,11 +321,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="BazaarBranch">
-        <h3>Bazaar Branch<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="RamificaoBazaar">
+        <h3>RamificaÃ§Ã£o Bazaar<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#BazaarBranch</code></td>
             </tr>
             <tr>
@@ -348,7 +352,7 @@
         <h3>CVS Repository<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#CVSRepository</code></td>
             </tr>
             <tr>
@@ -360,7 +364,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>RepositÃ³rio CVS do cÃ³digo fonte.</p>
+                    <p>ÃšloÅ¾iÅ¡tÄ› zdrojovÃ½ch kÃ³dÅ¯ CVS.</p>
                 </td>
             </tr>
             <tr>
@@ -371,11 +375,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="Repositriodarcs">
-        <h3>RepositÃ³rio darcs<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="Repositoriodarcs">
+        <h3>Repositorio darcs<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#DarcsRepository</code></td>
             </tr>
             <tr>
@@ -387,7 +391,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>DÃ©pÃ´t darcs du code source.</p>
+                    <p>darcs source code repository.</p>
                 </td>
             </tr>
             <tr>
@@ -402,7 +406,7 @@
         <h3>RamificaÃ§Ã£o Git<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#GitBranch</code></td>
             </tr>
             <tr>
@@ -425,11 +429,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="RepositorioGit">
-        <h3>Repositorio Git<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="DptGit">
+        <h3>DÃ©pÃ´t Git<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#GitRepository</code></td>
             </tr>
             <tr>
@@ -441,7 +445,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>RepositÃ³rio Git do cÃ³digo fonte.</p>
+                    <p>Git source code repository.</p>
                 </td>
             </tr>
             <tr>
@@ -452,11 +456,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="RepositrioMercurial">
-        <h3>RepositÃ³rio Mercurial<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="MercurialRepository">
+        <h3>Mercurial Repository<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#HgRepository</code></td>
             </tr>
             <tr>
@@ -479,11 +483,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="Projeto">
-        <h3>Projeto<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="Projet">
+        <h3>Projet<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#Project</code></td>
             </tr>
             <tr>
@@ -495,7 +499,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Projekt.</p>
+                    <p>Projeto.</p>
                 </td>
             </tr>
             <tr>
@@ -508,34 +512,34 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://usefulinc.com/ns/doap#service-endpoint">doap:service-endpoint</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#developer">doap:developer</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#translator">doap:translator</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#os">doap:os</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#homepage">doap:homepage</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#bug-database">doap:bug-database</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#documenter">doap:documenter</a><br/>
                     <a href="http://usefulinc.com/ns/doap#audience">doap:audience</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#mailing-list">doap:mailing-list</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#category">doap:category</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#blog">doap:blog</a><br/>
                     <a href="http://usefulinc.com/ns/doap#implements">doap:implements</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#release">doap:release</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#helper">doap:helper</a><br/>
                     <a href="http://usefulinc.com/ns/doap#screenshots">doap:screenshots</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#old-homepage">doap:old-homepage</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#download-mirror">doap:download-mirror</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#developer-forum">doap:developer-forum</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#mailing-list">doap:mailing-list</a><br/>
                     <a href="http://usefulinc.com/ns/doap#vendor">doap:vendor</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#maintainer">doap:maintainer</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#programming-language">doap:programming-language</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#service-endpoint">doap:service-endpoint</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#homepage">doap:homepage</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#os">doap:os</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#wiki">doap:wiki</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#bug-database">doap:bug-database</a><br/>
                     <a href="http://usefulinc.com/ns/doap#download-page">doap:download-page</a><br/>
                     <a href="http://usefulinc.com/ns/doap#support-forum">doap:support-forum</a><br/>
                     <a href="http://usefulinc.com/ns/doap#platform">doap:platform</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#release">doap:release</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#documenter">doap:documenter</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#language">doap:language</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#download-mirror">doap:download-mirror</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#developer-forum">doap:developer-forum</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#old-homepage">doap:old-homepage</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#maintainer">doap:maintainer</a><br/>
                     <a href="http://usefulinc.com/ns/doap#tester">doap:tester</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#wiki">doap:wiki</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#programming-language">doap:programming-language</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#helper">doap:helper</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#translator">doap:translator</a><br/>
                     <a href="http://usefulinc.com/ns/doap#repository">doap:repository</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#blog">doap:blog</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#language">doap:language</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#developer">doap:developer</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#category">doap:category</a><br/>
                 </td>
             </tr>
             <tr>
@@ -546,11 +550,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="Repository1">
-        <h3>Repository<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="Dpt">
+        <h3>DÃ©pÃ´t<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#Repository</code></td>
             </tr>
             <tr>
@@ -562,30 +566,30 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Quellcode-Versionierungssystem.</p>
+                    <p>RepositÃ³rio do cÃ³digo fonte.</p>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
                     <a href="http://usefulinc.com/ns/doap#SVNRepository">doap:SVNRepository</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://usefulinc.com/ns/doap#DarcsRepository">doap:DarcsRepository</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://usefulinc.com/ns/doap#GitBranch">doap:GitBranch</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://usefulinc.com/ns/doap#DarcsRepository">doap:DarcsRepository</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://usefulinc.com/ns/doap#CVSRepository">doap:CVSRepository</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://usefulinc.com/ns/doap#BKRepository">doap:BKRepository</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://usefulinc.com/ns/doap#GitRepository">doap:GitRepository</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://usefulinc.com/ns/doap#ArchRepository">doap:ArchRepository</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://usefulinc.com/ns/doap#GitRepository">doap:GitRepository</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://usefulinc.com/ns/doap#HgRepository">doap:HgRepository</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://usefulinc.com/ns/doap#BazaarBranch">doap:BazaarBranch</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://usefulinc.com/ns/doap#CVSRepository">doap:CVSRepository</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
+                    <a href="http://usefulinc.com/ns/doap#repositoryOf">doap:repositoryOf</a><br/>
                     <a href="http://usefulinc.com/ns/doap#browse">doap:browse</a><br/>
                     <a href="http://usefulinc.com/ns/doap#anon-root">doap:anon-root</a><br/>
                     <a href="http://usefulinc.com/ns/doap#location">doap:location</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#repositoryOf">doap:repositoryOf</a><br/>
                 </td>
             </tr>
             <tr>
@@ -596,11 +600,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="RepositrioSubversion">
-        <h3>RepositÃ³rio Subversion<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="DptSubversion">
+        <h3>DÃ©pÃ´t Subversion<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#SVNRepository</code></td>
             </tr>
             <tr>
@@ -612,7 +616,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Subversion source code repository.</p>
+                    <p>RepositÃ³rio Subversion do cÃ³digo fonte.</p>
                 </td>
             </tr>
             <tr>
@@ -627,7 +631,7 @@
         <h3>EspecificaÃ§Ã£o<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#Specification</code></td>
             </tr>
             <tr>
@@ -660,7 +664,7 @@
         <h3>Version<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#Version</code></td>
             </tr>
             <tr>
@@ -672,15 +676,15 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>InformaÃ§Ã£o sobre a versÃ£o do projeto lanÃ§ado.</p>
+                    <p>InformaciÃ³n sobre la versiÃ³n de un release del proyecto.</p>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
                     <a href="http://usefulinc.com/ns/doap#platform">doap:platform</a><br/>
-                    <a href="http://usefulinc.com/ns/doap#file-release">doap:file-release</a><br/>
                     <a href="http://usefulinc.com/ns/doap#revision">doap:revision</a><br/>
+                    <a href="http://usefulinc.com/ns/doap#file-release">doap:file-release</a><br/>
                     <a href="http://usefulinc.com/ns/doap#os">doap:os</a><br/>
                 </td>
             </tr>
@@ -696,52 +700,52 @@
 <section id="properties">
     <h2>Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
-        <li><a href="#razannima">raÃ­z anÃ³nima</a></li>
+        <li><a href="#AnonymesRoot">Anonymes Root</a></li>
         <li><a href="#audincia">audiÃªncia</a></li>
         <li><a href="#blog">blog</a></li>
-        <li><a href="#navegar">navegar</a></li>
-        <li><a href="#bugdatabase">bug database</a></li>
+        <li><a href="#browse">browse</a></li>
+        <li><a href="#basededatosdebugs">base de datos de bugs</a></li>
         <li><a href="#kategorie">kategorie</a></li>
         <li><a href="#erstellt">erstellt</a></li>
-        <li><a href="#descrio">descriÃ§Ã£o</a></li>
-        <li><a href="#desarrollador">desarrollador</a></li>
+        <li><a href="#Beschreibung">Beschreibung</a></li>
+        <li><a href="#vvoj">vÃ½vojÃ¡Å™</a></li>
         <li><a href="#developerforum">developer forum</a></li>
-        <li><a href="#rdacteurdel'aide">rÃ©dacteur de l'aide</a></li>
-        <li><a href="#mirrordedescarga">mirror de descarga</a></li>
-        <li><a href="#pginaparadownload">pÃ¡gina para download</a></li>
+        <li><a href="#documentador">documentador</a></li>
+        <li><a href="#zrcadlostrnkyprostaen">zrcadlo strÃ¡nky pro staÅ¾enÃ­</a></li>
+        <li><a href="#pagedetlchargement">page de tÃ©lÃ©chargement</a></li>
         <li><a href="#publicaodoficheiro">publicaÃ§Ã£o do ficheiro</a></li>
-        <li><a href="#collaborateur">collaborateur</a></li>
-        <li><a href="#homepage">homepage</a></li>
+        <li><a href="#Helfer">Helfer</a></li>
+        <li><a href="#pageweb">page web</a></li>
         <li><a href="#Especificaesparaimplementao">EspecificaÃ§Ãµes para implementaÃ§Ã£o</a></li>
-        <li><a href="#language">language</a></li>
-        <li><a href="#license">license</a></li>
-        <li><a href="#lugardelrespositorio">lugar del respositorio</a></li>
-        <li><a href="#listadedistribuiodee-mail">lista de distribuiÃ§Ã£o de e-mail</a></li>
-        <li><a href="#desarrolladorprincipal">desarrollador principal</a></li>
-        <li><a href="#module">module</a></li>
+        <li><a href="#idioma">idioma</a></li>
+        <li><a href="#licena">licenÃ§a</a></li>
+        <li><a href="#RepositoryLokation">Repository Lokation</a></li>
+        <li><a href="#listedediffusion">liste de diffusion</a></li>
+        <li><a href="#sprvce">sprÃ¡vce</a></li>
+        <li><a href="#Modul">Modul</a></li>
         <li><a href="#nome">nome</a></li>
-        <li><a href="#pginawebantigua">pÃ¡gina web antigua</a></li>
-        <li><a href="#sistemaoperativo">sistema operativo</a></li>
-        <li><a href="#plataforma">plataforma</a></li>
-        <li><a href="#programovacjazyk">programovacÃ­ jazyk</a></li>
-        <li><a href="#publicao">publicaÃ§Ã£o</a></li>
-        <li><a href="#Repository">Repository</a></li>
+        <li><a href="#oldhomepage">old homepage</a></li>
+        <li><a href="#operansystm">operaÄnÃ­ systÃ©m</a></li>
+        <li><a href="#platform">platform</a></li>
+        <li><a href="#langagedeprogrammation">langage de programmation</a></li>
+        <li><a href="#release">release</a></li>
+        <li><a href="#repositrio">repositÃ³rio</a></li>
         <li><a href="#repositoryof">repository of</a></li>
-        <li><a href="#rvision">rÃ©vision</a></li>
-        <li><a href="#Screenshots">Screenshots</a></li>
+        <li><a href="#reviso">revisÃ£o</a></li>
+        <li><a href="#capturesd'cran">captures d'Ã©cran</a></li>
         <li><a href="#serviceendpoint">service endpoint</a></li>
-        <li><a href="#descripcincorta">descripciÃ³n corta</a></li>
+        <li><a href="#shortdescription">short description</a></li>
         <li><a href="#supportingforum">supporting forum</a></li>
         <li><a href="#tester">tester</a></li>
-        <li><a href="#bersetzer">Ãœbersetzer</a></li>
+        <li><a href="#pekladatel">pÅ™ekladatel</a></li>
         <li><a href="#vendor">vendor</a></li>
-        <li><a href="#wiki">wiki</a></li>
+        <li><a href="#Wiki">Wiki</a></li>
     </ul>
-    <div class="entity property" id="razannima">
-        <h3>raÃ­z anÃ³nima<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="AnonymesRoot">
+        <h3>Anonymes Root<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#anon-root</code></td>
             </tr>
             <tr>
@@ -753,7 +757,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    RepositÃ³rio para acesso anÃ³nimo.
+                    DÃ©pÃ´t pour accÃ¨s anonyme.
                 </td>
             </tr>
             <tr>
@@ -774,7 +778,7 @@
         <h3>audiÃªncia<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#audience</code></td>
             </tr>
             <tr>
@@ -807,7 +811,7 @@
         <h3>blog<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#blog</code></td>
             </tr>
             <tr>
@@ -819,7 +823,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    URI de um blog relacionado com um projeto
+                    URI of a blog related to a project
                 </td>
             </tr>
             <tr>
@@ -837,11 +841,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="navegar">
-        <h3>navegar<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="browse">
+        <h3>browse<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#browse</code></td>
             </tr>
             <tr>
@@ -853,7 +857,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Interface web au dÃ©pÃ´t.
+                    Web-Browser Interface fÃ¼r das Repository.
                 </td>
             </tr>
             <tr>
@@ -864,11 +868,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="bugdatabase">
-        <h3>bug database<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="basededatosdebugs">
+        <h3>base de datos de bugs<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#bug-database</code></td>
             </tr>
             <tr>
@@ -880,7 +884,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Bug tracker for a project.
+                    Fehlerdatenbank eines Projektes.
                 </td>
             </tr>
             <tr>
@@ -895,7 +899,7 @@
         <h3>kategorie<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#category</code></td>
             </tr>
             <tr>
@@ -907,7 +911,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Uma categorÃ­a de projeto.
+                    A category of project.
                 </td>
             </tr>
             <tr>
@@ -922,7 +926,7 @@
         <h3>erstellt<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#created</code></td>
             </tr>
             <tr>
@@ -934,7 +938,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Datum, kdy bylo nÄ›co vytvoÅ™eno ve formÃ¡tu RRRR-MM-DD, napÅ™. 2004-04-05
+                    Date when something was created, in YYYY-MM-DD form. e.g. 2004-04-05
                 </td>
             </tr>
             <tr>
@@ -945,11 +949,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="descrio">
-        <h3>descriÃ§Ã£o<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="Beschreibung">
+        <h3>Beschreibung<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#description</code></td>
             </tr>
             <tr>
@@ -961,7 +965,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Beschreibung eines Projekts als einfacher Text mit der LÃ¤nge von 2 bis 4 SÃ¤tzen.
+                    Plain text description of a project, of 2-4 sentences in length.
                 </td>
             </tr>
             <tr>
@@ -972,11 +976,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="desarrollador">
-        <h3>desarrollador<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="vvoj">
+        <h3>vÃ½vojÃ¡Å™<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#developer</code></td>
             </tr>
             <tr>
@@ -988,7 +992,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Desarrollador de software para el proyecto.
+                    Programador de software para o projeto.
                 </td>
             </tr>
             <tr>
@@ -1009,7 +1013,7 @@
         <h3>developer forum<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#developer-forum</code></td>
             </tr>
             <tr>
@@ -1038,11 +1042,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="rdacteurdel'aide">
-        <h3>rÃ©dacteur de l'aide<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="documentador">
+        <h3>documentador<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#documenter</code></td>
             </tr>
             <tr>
@@ -1054,7 +1058,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Spoluautor dokumentace projektu.
+                    Mitarbeiter an der Dokumentation eines Projektes.
                 </td>
             </tr>
             <tr>
@@ -1071,11 +1075,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="mirrordedescarga">
-        <h3>mirror de descarga<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="zrcadlostrnkyprostaen">
+        <h3>zrcadlo strÃ¡nky pro staÅ¾enÃ­<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#download-mirror</code></td>
             </tr>
             <tr>
@@ -1087,7 +1091,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Miroir de la page de tÃ©lÃ©chargement du programme.
+                    Spiegel der Seite von die Projekt-Software heruntergeladen werden kann.
                 </td>
             </tr>
             <tr>
@@ -1098,11 +1102,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="pginaparadownload">
-        <h3>pÃ¡gina para download<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="pagedetlchargement">
+        <h3>page de tÃ©lÃ©chargement<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#download-page</code></td>
             </tr>
             <tr>
@@ -1114,7 +1118,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Page web Ã  partir de laquelle on peut tÃ©lÃ©charger le programme.
+                    PÃ¡gina web de la cuÃ¡l se puede bajar el software.
                 </td>
             </tr>
             <tr>
@@ -1129,7 +1133,7 @@
         <h3>publicaÃ§Ã£o do ficheiro<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#file-release</code></td>
             </tr>
             <tr>
@@ -1141,7 +1145,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    URI of download associated with this release.
+                    URI adresa staÅ¾enÃ­ asociovanÃ© s revizÃ­.
                 </td>
             </tr>
             <tr>
@@ -1152,11 +1156,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="collaborateur">
-        <h3>collaborateur<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="Helfer">
+        <h3>Helfer<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#helper</code></td>
             </tr>
             <tr>
@@ -1168,7 +1172,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Project contributor.
+                    Projekt-Mitarbeiter.
                 </td>
             </tr>
             <tr>
@@ -1185,11 +1189,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="homepage">
-        <h3>homepage<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="pageweb">
+        <h3>page web<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#homepage</code></td>
             </tr>
             <tr>
@@ -1201,8 +1205,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    O URL da pÃ¡gina de um projeto,
-		asociada com exactamente um projeto.
+                    URL adresa domovskÃ© strÃ¡nky projektu asociovanÃ© s prÃ¡vÄ› jednÃ­m projektem.
                 </td>
             </tr>
             <tr>
@@ -1223,7 +1226,7 @@
         <h3>EspecificaÃ§Ãµes para implementaÃ§Ã£o<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#implements</code></td>
             </tr>
             <tr>
@@ -1252,11 +1255,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="language">
-        <h3>language<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="idioma">
+        <h3>idioma<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#language</code></td>
             </tr>
             <tr>
@@ -1268,7 +1271,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    ISO language code a project has been translated into
+                    CÃ³digo de idioma ISO do projeto para o qual foi traduzido
                 </td>
             </tr>
             <tr>
@@ -1285,11 +1288,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="license">
-        <h3>license<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="licena">
+        <h3>licenÃ§a<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#license</code></td>
             </tr>
             <tr>
@@ -1301,16 +1304,16 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    The URI of an RDF description of the license the software is distributed under. E.g. a SPDX reference
+                    URI adresa RDF popisu licence, pod kterou je software distribuovÃ¡n.
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="lugardelrespositorio">
-        <h3>lugar del respositorio<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="RepositoryLokation">
+        <h3>Repository Lokation<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#location</code></td>
             </tr>
             <tr>
@@ -1322,7 +1325,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Emplacement d'un dÃ©pÃ´t.
+                    lugar de un repositorio.
                 </td>
             </tr>
             <tr>
@@ -1333,11 +1336,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="listadedistribuiodee-mail">
-        <h3>lista de distribuiÃ§Ã£o de e-mail<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="listedediffusion">
+        <h3>liste de diffusion<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#mailing-list</code></td>
             </tr>
             <tr>
@@ -1349,7 +1352,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    PÃ¡gina web da lista de distribuiÃ§Ã£o de e-mail ou dos endereÃ§os.
+                    PÃ¡gina web de la lista de correo o direcciÃ³n de correo.
                 </td>
             </tr>
             <tr>
@@ -1366,11 +1369,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="desarrolladorprincipal">
-        <h3>desarrollador principal<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="sprvce">
+        <h3>sprÃ¡vce<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#maintainer</code></td>
             </tr>
             <tr>
@@ -1399,11 +1402,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="module">
-        <h3>module<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="Modul">
+        <h3>Modul<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#module</code></td>
             </tr>
             <tr>
@@ -1415,7 +1418,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    JmÃ©no modulu v CVS, BitKeeper nebo Arch ÃºloÅ¾iÅ¡ti.
+                    Module name of a Subversion, CVS, BitKeeper or Arch repository.
                 </td>
             </tr>
             <tr>
@@ -1430,7 +1433,7 @@
         <h3>nome<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#name</code></td>
             </tr>
             <tr>
@@ -1442,7 +1445,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    O nome de alguma coisa.
+                    JmÃ©no nÄ›Äeho.
                 </td>
             </tr>
             <tr>
@@ -1459,11 +1462,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="pginawebantigua">
-        <h3>pÃ¡gina web antigua<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="oldhomepage">
+        <h3>old homepage<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#old-homepage</code></td>
             </tr>
             <tr>
@@ -1475,8 +1478,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    URL der letzten Projekt-Homepage,
-		verbunden mit genau einem Projekt.
+                    URL adresa pÅ™edeÅ¡lÃ© domovskÃ© strÃ¡nky projektu asociovanÃ© s prÃ¡vÄ› jednÃ­m projektem.
                 </td>
             </tr>
             <tr>
@@ -1493,11 +1495,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="sistemaoperativo">
-        <h3>sistema operativo<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="operansystm">
+        <h3>operaÄnÃ­ systÃ©m<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#os</code></td>
             </tr>
             <tr>
@@ -1509,7 +1511,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Betriebssystem auf dem das Projekt eingesetzt werden kann. Diese Eigenschaft kann ausgelassen werden, wenn das Projekt nicht BS-spezifisch ist.
+                    Sistema operativo a que o projeto estÃ¡ limitado. Omita esta propriedade se o projeto nÃ£o Ã© condicionado pelo SO usado.
                 </td>
             </tr>
             <tr>
@@ -1527,11 +1529,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="plataforma">
-        <h3>plataforma<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="platform">
+        <h3>platform<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#platform</code></td>
             </tr>
             <tr>
@@ -1543,14 +1545,14 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Indicator of software platform (non-OS specific), e.g. Java, Firefox, ECMA CLR
+                    Indicador da plataforma do software (nÃ£o especÃ­fico a nenhum SO), ex.: Java, Firefox, ECMA CLR
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
                     <a href="http://usefulinc.com/ns/doap#Version">doap:Version</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://usefulinc.com/ns/doap#Project">doap:Project</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -1561,11 +1563,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="programovacjazyk">
-        <h3>programovacÃ­ jazyk<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="langagedeprogrammation">
+        <h3>langage de programmation<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#programming-language</code></td>
             </tr>
             <tr>
@@ -1577,7 +1579,8 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    ProgramovacÃ­ jazyk, ve kterÃ©m je projekt implementovÃ¡n nebo pro kterÃ½ je zamÃ½Å¡len k pouÅ¾itÃ­.
+                    Langage de programmation avec lequel un projet est implÃ©mentÃ©,
+		ou avec lequel il est prÃ©vu de l'utiliser.
                 </td>
             </tr>
             <tr>
@@ -1594,11 +1597,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="publicao">
-        <h3>publicaÃ§Ã£o<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="release">
+        <h3>release<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#release</code></td>
             </tr>
             <tr>
@@ -1610,7 +1613,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Une release (rÃ©vision) d'un projet.
+                    A project release.
                 </td>
             </tr>
             <tr>
@@ -1627,11 +1630,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="Repository">
-        <h3>Repository<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="repositrio">
+        <h3>repositÃ³rio<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#repository</code></td>
             </tr>
             <tr>
@@ -1643,7 +1646,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    RepositÃ³rio do cÃ³digo fonte.
+                    Source code repository.
                 </td>
             </tr>
             <tr>
@@ -1670,7 +1673,7 @@
         <h3>repository of<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#repositoryOf</code></td>
             </tr>
             <tr>
@@ -1705,11 +1708,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="rvision">
-        <h3>rÃ©vision<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="reviso">
+        <h3>revisÃ£o<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#revision</code></td>
             </tr>
             <tr>
@@ -1721,7 +1724,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Revision identifier of a software release.
+                    Versionsidentifikator eines Software-Releases.
                 </td>
             </tr>
             <tr>
@@ -1738,11 +1741,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="Screenshots">
-        <h3>Screenshots<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="capturesd'cran">
+        <h3>captures d'Ã©cran<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#screenshots</code></td>
             </tr>
             <tr>
@@ -1754,7 +1757,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Web page with screenshots of project.
+                    Web-Seite mit Screenshots eines Projektes.
                 </td>
             </tr>
             <tr>
@@ -1769,7 +1772,7 @@
         <h3>service endpoint<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#service-endpoint</code></td>
             </tr>
             <tr>
@@ -1798,11 +1801,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="descripcincorta">
-        <h3>descripciÃ³n corta<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="shortdescription">
+        <h3>short description<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#shortdesc</code></td>
             </tr>
             <tr>
@@ -1814,7 +1817,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Short (8 or 9 words) plain text description of a project.
+                    DescriÃ§Ã£o curta (com 8 ou 9 palavras) de um projeto em texto apenas.
                 </td>
             </tr>
             <tr>
@@ -1829,7 +1832,7 @@
         <h3>supporting forum<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#support-forum</code></td>
             </tr>
             <tr>
@@ -1862,7 +1865,7 @@
         <h3>tester<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#tester</code></td>
             </tr>
             <tr>
@@ -1891,11 +1894,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="bersetzer">
-        <h3>Ãœbersetzer<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="pekladatel">
+        <h3>pÅ™ekladatel<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#translator</code></td>
             </tr>
             <tr>
@@ -1907,7 +1910,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Mitarbeiter an den Ãœbersetzungen eines Projektes.
+                    Contribuidor das traduÃ§Ãµes para o projeto.
                 </td>
             </tr>
             <tr>
@@ -1928,7 +1931,7 @@
         <h3>vendor<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#vendor</code></td>
             </tr>
             <tr>
@@ -1957,11 +1960,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="wiki">
-        <h3>wiki<sup title="property" class="sup-p">p</sup></h3>
+    <div class="entity property" id="Wiki">
+        <h3>Wiki<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://usefulinc.com/ns/doap#wiki</code></td>
             </tr>
             <tr>
@@ -1973,7 +1976,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    URL del Wiki para discusiÃ³n colaborativa del proyecto.
+                    URL of Wiki for collaborative discussion of project.
                 </td>
             </tr>
             <tr>
@@ -2022,8 +2025,6 @@
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
         <dt>vs</dt>
         <dd><code>http://www.w3.org/2003/06/sw-vocab-status/ns#</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

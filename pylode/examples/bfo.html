@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -205,15 +210,15 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>Basic Formal Ontology version 2</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://purl.obolibrary.org/obo/bfo.owl</code></dd>
-        <dt>Contributors(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/contributor">Contributor</a>(s)</dt>
         <dd>
             Alan Ruttenberg<br/>
             Albert Goldfain<br/>
@@ -242,6 +247,8 @@
             Thomas Bittner<br/>
             Werner Ceusters<br/>
         </dd>
+        <dt>Version URI</dt>
+        <dd><a href="http://purl.obolibrary.org/obo/bfo/2014-05-03/bfo.owl">http://purl.obolibrary.org/obo/bfo/2014-05-03/bfo.owl</a></dd>
         <dt>Ontology RDF</dt>
         <dd><a href="bfo.ttl">RDF (turtle)</a></dd>
     </dl>
@@ -310,7 +317,7 @@
         <h3>entity<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000001</code></td>
             </tr>
             <tr>
@@ -350,7 +357,7 @@
         <h3>continuant<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000002</code></td>
             </tr>
             <tr>
@@ -368,35 +375,35 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000031">obo:BFO_0000031</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000020">obo:BFO_0000020</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000031">obo:BFO_0000031</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000004">obo:BFO_0000004</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000175">obo:BFO_0000175</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000187">obo:BFO_0000187</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000178">obo:BFO_0000178</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000186">obo:BFO_0000186</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000115">obo:BFO_0000115</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000174">obo:BFO_0000174</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000115">obo:BFO_0000115</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000186">obo:BFO_0000186</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000178">obo:BFO_0000178</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000187">obo:BFO_0000187</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000175">obo:BFO_0000175</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000129">obo:BFO_0000129</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000175">obo:BFO_0000175</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000187">obo:BFO_0000187</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000186">obo:BFO_0000186</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000178">obo:BFO_0000178</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000129">obo:BFO_0000129</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000175">obo:BFO_0000175</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000115">obo:BFO_0000115</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000187">obo:BFO_0000187</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000174">obo:BFO_0000174</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000115">obo:BFO_0000115</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000186">obo:BFO_0000186</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000129">obo:BFO_0000129</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -405,7 +412,7 @@
         <h3>occurrent<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000003</code></td>
             </tr>
             <tr>
@@ -425,38 +432,38 @@
                 <td>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000011">obo:BFO_0000011</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000008">obo:BFO_0000008</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000035">obo:BFO_0000035</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000015">obo:BFO_0000015</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000035">obo:BFO_0000035</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000181">obo:BFO_0000181</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000139">obo:BFO_0000139</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000132">obo:BFO_0000132</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000130">obo:BFO_0000130</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000118">obo:BFO_0000118</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000155">obo:BFO_0000155</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000117">obo:BFO_0000117</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000136">obo:BFO_0000136</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000130">obo:BFO_0000130</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000155">obo:BFO_0000155</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000121">obo:BFO_0000121</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000181">obo:BFO_0000181</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000138">obo:BFO_0000138</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000136">obo:BFO_0000136</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000132">obo:BFO_0000132</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000139">obo:BFO_0000139</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000118">obo:BFO_0000118</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000156">obo:BFO_0000156</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000181">obo:BFO_0000181</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000126">obo:BFO_0000126</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000139">obo:BFO_0000139</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000132">obo:BFO_0000132</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000156">obo:BFO_0000156</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000118">obo:BFO_0000118</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000117">obo:BFO_0000117</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000136">obo:BFO_0000136</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000139">obo:BFO_0000139</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000121">obo:BFO_0000121</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000117">obo:BFO_0000117</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000181">obo:BFO_0000181</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000138">obo:BFO_0000138</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000136">obo:BFO_0000136</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000126">obo:BFO_0000126</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -465,7 +472,7 @@
         <h3>independent continuant<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000004</code></td>
             </tr>
             <tr>
@@ -483,33 +490,33 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000186">obo:BFO_0000186</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000169">obo:BFO_0000169</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2002/07/owl#Nothing">owl:Nothing</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000083">obo:BFO_0000083</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.obolibrary.org/obo/BFO_0000006">obo:BFO_0000006</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000186">obo:BFO_0000186</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000141">obo:BFO_0000141</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000040">obo:BFO_0000040</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000141">obo:BFO_0000141</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000083">obo:BFO_0000083</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000171">obo:BFO_0000171</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000124">obo:BFO_0000124</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000083">obo:BFO_0000083</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000123">obo:BFO_0000123</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000171">obo:BFO_0000171</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000124">obo:BFO_0000124</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000123">obo:BFO_0000123</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -518,7 +525,7 @@
         <h3>spatial region<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000006</code></td>
             </tr>
             <tr>
@@ -536,35 +543,35 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000123">obo:BFO_0000123</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000083">obo:BFO_0000083</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000186">obo:BFO_0000186</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000006">obo:BFO_0000006</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000178">obo:BFO_0000178</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000006">obo:BFO_0000006</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000187">obo:BFO_0000187</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000006">obo:BFO_0000006</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000006">obo:BFO_0000006</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000186">obo:BFO_0000186</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000006">obo:BFO_0000006</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000123">obo:BFO_0000123</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000187">obo:BFO_0000187</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000006">obo:BFO_0000006</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000018">obo:BFO_0000018</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000009">obo:BFO_0000009</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000028">obo:BFO_0000028</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000018">obo:BFO_0000018</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000026">obo:BFO_0000026</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000123">obo:BFO_0000123</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000152">obo:BFO_0000152</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000123">obo:BFO_0000123</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000083">obo:BFO_0000083</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000151">obo:BFO_0000151</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000083">obo:BFO_0000083</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -573,7 +580,7 @@
         <h3>temporal region<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000008</code></td>
             </tr>
             <tr>
@@ -591,8 +598,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000132">obo:BFO_0000132</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000008">obo:BFO_0000008</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000117">obo:BFO_0000117</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000008">obo:BFO_0000008</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000132">obo:BFO_0000132</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000008">obo:BFO_0000008</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000156">obo:BFO_0000156</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000155">obo:BFO_0000155</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
@@ -600,16 +607,16 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000148">obo:BFO_0000148</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000038">obo:BFO_0000038</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000148">obo:BFO_0000148</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000157">obo:BFO_0000157</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000156">obo:BFO_0000156</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000154">obo:BFO_0000154</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000156">obo:BFO_0000156</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000157">obo:BFO_0000157</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -626,7 +633,7 @@
         <h3>two-dimensional spatial region<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000009</code></td>
             </tr>
             <tr>
@@ -654,7 +661,7 @@
         <h3>spatiotemporal region<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000011</code></td>
             </tr>
             <tr>
@@ -672,28 +679,28 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000126">obo:BFO_0000126</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000153">obo:BFO_0000153</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.obolibrary.org/obo/BFO_0000008">obo:BFO_0000008</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000117">obo:BFO_0000117</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000011">obo:BFO_0000011</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000151">obo:BFO_0000151</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.obolibrary.org/obo/BFO_0000006">obo:BFO_0000006</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000130">obo:BFO_0000130</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000153">obo:BFO_0000153</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.obolibrary.org/obo/BFO_0000008">obo:BFO_0000008</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000151">obo:BFO_0000151</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.obolibrary.org/obo/BFO_0000006">obo:BFO_0000006</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000117">obo:BFO_0000117</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000011">obo:BFO_0000011</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000126">obo:BFO_0000126</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000132">obo:BFO_0000132</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000011">obo:BFO_0000011</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000151">obo:BFO_0000151</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000126">obo:BFO_0000126</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000153">obo:BFO_0000153</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000151">obo:BFO_0000151</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000154">obo:BFO_0000154</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000152">obo:BFO_0000152</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000130">obo:BFO_0000130</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000152">obo:BFO_0000152</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -702,7 +709,7 @@
         <h3>process<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000015</code></td>
             </tr>
             <tr>
@@ -720,26 +727,26 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000132">obo:BFO_0000132</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000015">obo:BFO_0000015</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000117">obo:BFO_0000117</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="http://purl.obolibrary.org/obo/BFO_0000015">obo:BFO_0000015</a><sup class="sup-c" title="class">c</sup> or <a href="http://purl.obolibrary.org/obo/BFO_0000035">obo:BFO_0000035</a><sup class="sup-c" title="class">c</sup>)<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000169">obo:BFO_0000169</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.obolibrary.org/obo/BFO_0000040">obo:BFO_0000040</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000132">obo:BFO_0000132</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000015">obo:BFO_0000015</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000182">obo:BFO_0000182</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000144">obo:BFO_0000144</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000182">obo:BFO_0000182</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000057">obo:BFO_0000057</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000167">obo:BFO_0000167</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000184">obo:BFO_0000184</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000055">obo:BFO_0000055</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000119">obo:BFO_0000119</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000167">obo:BFO_0000167</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000055">obo:BFO_0000055</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000184">obo:BFO_0000184</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000057">obo:BFO_0000057</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -747,8 +754,8 @@
                 <td>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000054">obo:BFO_0000054</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000133">obo:BFO_0000133</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000056">obo:BFO_0000056</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000185">obo:BFO_0000185</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000056">obo:BFO_0000056</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -757,7 +764,7 @@
         <h3>disposition<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000016</code></td>
             </tr>
             <tr>
@@ -795,10 +802,10 @@
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000162">obo:BFO_0000162</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000112">obo:BFO_0000112</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000127">obo:BFO_0000127</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000163">obo:BFO_0000163</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000162">obo:BFO_0000162</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000127">obo:BFO_0000127</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -807,7 +814,7 @@
         <h3>realizable entity<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000017</code></td>
             </tr>
             <tr>
@@ -825,8 +832,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000186">obo:BFO_0000186</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000186">obo:BFO_0000186</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
                 </td>
             </tr>
             <tr>
@@ -854,7 +861,7 @@
         <h3>zero-dimensional spatial region<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000018</code></td>
             </tr>
             <tr>
@@ -872,8 +879,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000178">obo:BFO_0000178</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000187">obo:BFO_0000187</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000178">obo:BFO_0000178</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
                 </td>
             </tr>
         </table>
@@ -882,7 +889,7 @@
         <h3>quality<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000019</code></td>
             </tr>
             <tr>
@@ -900,8 +907,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000186">obo:BFO_0000186</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
                 </td>
             </tr>
             <tr>
@@ -929,7 +936,7 @@
         <h3>specifically dependent continuant<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000020</code></td>
             </tr>
             <tr>
@@ -947,9 +954,9 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="http://purl.obolibrary.org/obo/BFO_0000004">obo:BFO_0000004</a><sup class="sup-c" title="class">c</sup> and <a href="ub9bL2217C58">ub9bL2217C58</a><sup class="sup-c" title="class">c</sup>)<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000052">obo:BFO_0000052</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> (<a href="http://purl.obolibrary.org/obo/BFO_0000004">obo:BFO_0000004</a><sup class="sup-c" title="class">c</sup> and <a href="ub9bL2217C58">ub9bL2217C58</a><sup class="sup-c" title="class">c</sup>)<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000186">obo:BFO_0000186</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="http://purl.obolibrary.org/obo/BFO_0000004">obo:BFO_0000004</a><sup class="sup-c" title="class">c</sup> and <a href="ub9bL2217C58">ub9bL2217C58</a><sup class="sup-c" title="class">c</sup>)<br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="http://purl.obolibrary.org/obo/BFO_0000004">obo:BFO_0000004</a><sup class="sup-c" title="class">c</sup> and <a href="ub9bL2217C58">ub9bL2217C58</a><sup class="sup-c" title="class">c</sup>)<br/>
                 </td>
             </tr>
             <tr>
@@ -962,16 +969,16 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000059">obo:BFO_0000059</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000052">obo:BFO_0000052</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000059">obo:BFO_0000059</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000158">obo:BFO_0000158</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000053">obo:BFO_0000053</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000058">obo:BFO_0000058</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000053">obo:BFO_0000053</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -980,7 +987,7 @@
         <h3>role<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000023</code></td>
             </tr>
             <tr>
@@ -1021,7 +1028,7 @@
         <h3>fiat object<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000024</code></td>
             </tr>
             <tr>
@@ -1042,7 +1049,7 @@
         <h3>one-dimensional spatial region<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000026</code></td>
             </tr>
             <tr>
@@ -1070,7 +1077,7 @@
         <h3>object aggregate<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000027</code></td>
             </tr>
             <tr>
@@ -1091,7 +1098,7 @@
         <h3>three-dimensional spatial region<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000028</code></td>
             </tr>
             <tr>
@@ -1112,7 +1119,7 @@
         <h3>site<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000029</code></td>
             </tr>
             <tr>
@@ -1133,7 +1140,7 @@
         <h3>object<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000030</code></td>
             </tr>
             <tr>
@@ -1154,7 +1161,7 @@
         <h3>generically dependent continuant<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000031</code></td>
             </tr>
             <tr>
@@ -1172,23 +1179,23 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000058">obo:BFO_0000058</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.obolibrary.org/obo/BFO_0000020">obo:BFO_0000020</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000186">obo:BFO_0000186</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000084">obo:BFO_0000084</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000058">obo:BFO_0000058</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000084">obo:BFO_0000084</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000101">obo:BFO_0000101</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000059">obo:BFO_0000059</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000101">obo:BFO_0000101</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1197,7 +1204,7 @@
         <h3>function<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000034</code></td>
             </tr>
             <tr>
@@ -1231,7 +1238,7 @@
         <h3>process boundary<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000035</code></td>
             </tr>
             <tr>
@@ -1250,9 +1257,9 @@
                 <th>Restrictions</th>
                 <td>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000132">obo:BFO_0000132</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="http://purl.obolibrary.org/obo/BFO_0000015">obo:BFO_0000015</a><sup class="sup-c" title="class">c</sup> and <a href="http://purl.obolibrary.org/obo/BFO_0000035">obo:BFO_0000035</a><sup class="sup-c" title="class">c</sup> and <a href="http://purl.obolibrary.org/obo/BFO_0000011">obo:BFO_0000011</a><sup class="sup-c" title="class">c</sup> and <a href="ub9bL1760C58">ub9bL1760C58</a><sup class="sup-c" title="class">c</sup>)<br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000108">obo:BFO_0000108</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000148">obo:BFO_0000148</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000130">obo:BFO_0000130</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="http://purl.obolibrary.org/obo/BFO_0000015">obo:BFO_0000015</a><sup class="sup-c" title="class">c</sup> and <a href="http://purl.obolibrary.org/obo/BFO_0000035">obo:BFO_0000035</a><sup class="sup-c" title="class">c</sup> and <a href="http://purl.obolibrary.org/obo/BFO_0000011">obo:BFO_0000011</a><sup class="sup-c" title="class">c</sup> and <a href="ub9bL1760C58">ub9bL1760C58</a><sup class="sup-c" title="class">c</sup>)<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000117">obo:BFO_0000117</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000035">obo:BFO_0000035</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000108">obo:BFO_0000108</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000148">obo:BFO_0000148</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1261,7 +1268,7 @@
         <h3>one-dimensional temporal region<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000038</code></td>
             </tr>
             <tr>
@@ -1282,7 +1289,7 @@
         <h3>material entity<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000040</code></td>
             </tr>
             <tr>
@@ -1300,34 +1307,34 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000040">obo:BFO_0000040</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000083">obo:BFO_0000083</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000028">obo:BFO_0000028</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000186">obo:BFO_0000186</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000040">obo:BFO_0000040</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000178">obo:BFO_0000178</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="http://purl.obolibrary.org/obo/BFO_0000040">obo:BFO_0000040</a><sup class="sup-c" title="class">c</sup> or <a href="http://purl.obolibrary.org/obo/BFO_0000141">obo:BFO_0000141</a><sup class="sup-c" title="class">c</sup> or <a href="http://purl.obolibrary.org/obo/BFO_0000040">obo:BFO_0000040</a><sup class="sup-c" title="class">c</sup> or <a href="http://purl.obolibrary.org/obo/BFO_0000141">obo:BFO_0000141</a><sup class="sup-c" title="class">c</sup>)<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000187">obo:BFO_0000187</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="http://purl.obolibrary.org/obo/BFO_0000040">obo:BFO_0000040</a><sup class="sup-c" title="class">c</sup> or <a href="http://purl.obolibrary.org/obo/BFO_0000141">obo:BFO_0000141</a><sup class="sup-c" title="class">c</sup> or <a href="http://purl.obolibrary.org/obo/BFO_0000040">obo:BFO_0000040</a><sup class="sup-c" title="class">c</sup> or <a href="http://purl.obolibrary.org/obo/BFO_0000141">obo:BFO_0000141</a><sup class="sup-c" title="class">c</sup>)<br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000186">obo:BFO_0000186</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000040">obo:BFO_0000040</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000083">obo:BFO_0000083</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000028">obo:BFO_0000028</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000040">obo:BFO_0000040</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000027">obo:BFO_0000027</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000030">obo:BFO_0000030</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000027">obo:BFO_0000027</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000024">obo:BFO_0000024</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000127">obo:BFO_0000127</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000185">obo:BFO_0000185</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000163">obo:BFO_0000163</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000127">obo:BFO_0000127</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000113">obo:BFO_0000113</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000184">obo:BFO_0000184</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000113">obo:BFO_0000113</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1336,7 +1343,7 @@
         <h3>continuant fiat boundary<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000140</code></td>
             </tr>
             <tr>
@@ -1354,10 +1361,10 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="http://purl.obolibrary.org/obo/BFO_0000009">obo:BFO_0000009</a><sup class="sup-c" title="class">c</sup> or <a href="http://purl.obolibrary.org/obo/BFO_0000018">obo:BFO_0000018</a><sup class="sup-c" title="class">c</sup> or <a href="http://purl.obolibrary.org/obo/BFO_0000026">obo:BFO_0000026</a><sup class="sup-c" title="class">c</sup>)<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000083">obo:BFO_0000083</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="http://purl.obolibrary.org/obo/BFO_0000009">obo:BFO_0000009</a><sup class="sup-c" title="class">c</sup> or <a href="http://purl.obolibrary.org/obo/BFO_0000018">obo:BFO_0000018</a><sup class="sup-c" title="class">c</sup> or <a href="http://purl.obolibrary.org/obo/BFO_0000026">obo:BFO_0000026</a><sup class="sup-c" title="class">c</sup>)<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000186">obo:BFO_0000186</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="http://purl.obolibrary.org/obo/BFO_0000009">obo:BFO_0000009</a><sup class="sup-c" title="class">c</sup> or <a href="http://purl.obolibrary.org/obo/BFO_0000018">obo:BFO_0000018</a><sup class="sup-c" title="class">c</sup> or <a href="http://purl.obolibrary.org/obo/BFO_0000026">obo:BFO_0000026</a><sup class="sup-c" title="class">c</sup>)<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000178">obo:BFO_0000178</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000140">obo:BFO_0000140</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="http://purl.obolibrary.org/obo/BFO_0000009">obo:BFO_0000009</a><sup class="sup-c" title="class">c</sup> or <a href="http://purl.obolibrary.org/obo/BFO_0000018">obo:BFO_0000018</a><sup class="sup-c" title="class">c</sup> or <a href="http://purl.obolibrary.org/obo/BFO_0000026">obo:BFO_0000026</a><sup class="sup-c" title="class">c</sup>)<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000187">obo:BFO_0000187</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000140">obo:BFO_0000140</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -1365,8 +1372,8 @@
                 <th>Sub-classes</th>
                 <td>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000142">obo:BFO_0000142</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000147">obo:BFO_0000147</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000146">obo:BFO_0000146</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000147">obo:BFO_0000147</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1375,7 +1382,7 @@
         <h3>immaterial entity<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000141</code></td>
             </tr>
             <tr>
@@ -1393,17 +1400,17 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000178">obo:BFO_0000178</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000141">obo:BFO_0000141</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000187">obo:BFO_0000187</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000178">obo:BFO_0000178</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000178">obo:BFO_0000178</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000141">obo:BFO_0000141</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000187">obo:BFO_0000187</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://purl.obolibrary.org/obo/BFO_0000141">obo:BFO_0000141</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000006">obo:BFO_0000006</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000029">obo:BFO_0000029</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000006">obo:BFO_0000006</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000140">obo:BFO_0000140</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -1413,7 +1420,7 @@
         <h3>one-dimensional continuant fiat boundary<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000142</code></td>
             </tr>
             <tr>
@@ -1431,8 +1438,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000178">obo:BFO_0000178</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000187">obo:BFO_0000187</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000178">obo:BFO_0000178</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
                 </td>
             </tr>
         </table>
@@ -1441,7 +1448,7 @@
         <h3>process profile<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000144</code></td>
             </tr>
             <tr>
@@ -1480,7 +1487,7 @@
         <h3>relational quality<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000145</code></td>
             </tr>
             <tr>
@@ -1501,7 +1508,7 @@
         <h3>two-dimensional continuant fiat boundary<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000146</code></td>
             </tr>
             <tr>
@@ -1522,7 +1529,7 @@
         <h3>zero-dimensional continuant fiat boundary<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000147</code></td>
             </tr>
             <tr>
@@ -1540,8 +1547,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000187">obo:BFO_0000187</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000178">obo:BFO_0000178</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000187">obo:BFO_0000187</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
                 </td>
             </tr>
         </table>
@@ -1550,7 +1557,7 @@
         <h3>zero-dimensional temporal region<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000148</code></td>
             </tr>
             <tr>
@@ -1577,7 +1584,7 @@
         <h3>history<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000182</code></td>
             </tr>
             <tr>
@@ -1595,8 +1602,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000184">obo:BFO_0000184</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.obolibrary.org/obo/BFO_0000002">obo:BFO_0000002</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000132">obo:BFO_0000132</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> ()<br/>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000184">obo:BFO_0000184</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.obolibrary.org/obo/BFO_0000002">obo:BFO_0000002</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1688,7 +1695,7 @@
         <h3>inheres in at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000052</code></td>
             </tr>
             <tr>
@@ -1722,7 +1729,7 @@
         <h3>bearer of at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000053</code></td>
             </tr>
             <tr>
@@ -1755,7 +1762,7 @@
         <h3>realized in<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000054</code></td>
             </tr>
             <tr>
@@ -1782,7 +1789,7 @@
         <h3>realizes<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000055</code></td>
             </tr>
             <tr>
@@ -1815,7 +1822,7 @@
         <h3>participates in at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000056</code></td>
             </tr>
             <tr>
@@ -1842,7 +1849,7 @@
         <h3>has participant at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000057</code></td>
             </tr>
             <tr>
@@ -1876,7 +1883,7 @@
         <h3>concretized by at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000058</code></td>
             </tr>
             <tr>
@@ -1903,7 +1910,7 @@
         <h3>concretizes at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000059</code></td>
             </tr>
             <tr>
@@ -1936,7 +1943,7 @@
         <h3>occurs in<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000066</code></td>
             </tr>
             <tr>
@@ -1970,7 +1977,7 @@
         <h3>contains process<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000067</code></td>
             </tr>
             <tr>
@@ -1998,7 +2005,7 @@
         <h3>specifically depends on at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000070</code></td>
             </tr>
             <tr>
@@ -2019,7 +2026,7 @@
         <h3>function of at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000079</code></td>
             </tr>
             <tr>
@@ -2046,7 +2053,7 @@
         <h3>quality of at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000080</code></td>
             </tr>
             <tr>
@@ -2073,7 +2080,7 @@
         <h3>role of at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000081</code></td>
             </tr>
             <tr>
@@ -2100,7 +2107,7 @@
         <h3>located in at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000082</code></td>
             </tr>
             <tr>
@@ -2121,7 +2128,7 @@
         <h3>occupies spatial region at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000083</code></td>
             </tr>
             <tr>
@@ -2154,7 +2161,7 @@
         <h3>generically depends on at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000084</code></td>
             </tr>
             <tr>
@@ -2188,7 +2195,7 @@
         <h3>has function at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000085</code></td>
             </tr>
             <tr>
@@ -2215,7 +2222,7 @@
         <h3>has quality at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000086</code></td>
             </tr>
             <tr>
@@ -2242,7 +2249,7 @@
         <h3>has role at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000087</code></td>
             </tr>
             <tr>
@@ -2269,7 +2276,7 @@
         <h3>has generic dependent at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000101</code></td>
             </tr>
             <tr>
@@ -2296,7 +2303,7 @@
         <h3>disposition of at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000107</code></td>
             </tr>
             <tr>
@@ -2323,7 +2330,7 @@
         <h3>exists at<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000108</code></td>
             </tr>
             <tr>
@@ -2356,7 +2363,7 @@
         <h3>has continuant part at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000110</code></td>
             </tr>
             <tr>
@@ -2377,7 +2384,7 @@
         <h3>has proper continuant part at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000111</code></td>
             </tr>
             <tr>
@@ -2399,7 +2406,7 @@
         <h3>has disposition at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000112</code></td>
             </tr>
             <tr>
@@ -2426,7 +2433,7 @@
         <h3>has material basis at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000113</code></td>
             </tr>
             <tr>
@@ -2453,7 +2460,7 @@
         <h3>has member part at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000115</code></td>
             </tr>
             <tr>
@@ -2486,7 +2493,7 @@
         <h3>has occurrent part<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000117</code></td>
             </tr>
             <tr>
@@ -2513,7 +2520,7 @@
         <h3>has proper occurrent part<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000118</code></td>
             </tr>
             <tr>
@@ -2546,7 +2553,7 @@
         <h3>has profile<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000119</code></td>
             </tr>
             <tr>
@@ -2573,7 +2580,7 @@
         <h3>has temporal part<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000121</code></td>
             </tr>
             <tr>
@@ -2606,7 +2613,7 @@
         <h3>has spatial occupant at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000123</code></td>
             </tr>
             <tr>
@@ -2633,7 +2640,7 @@
         <h3>has location at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000124</code></td>
             </tr>
             <tr>
@@ -2660,7 +2667,7 @@
         <h3>has specific dependent at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000125</code></td>
             </tr>
             <tr>
@@ -2688,7 +2695,7 @@
         <h3>has spatiotemporal occupant<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000126</code></td>
             </tr>
             <tr>
@@ -2715,7 +2722,7 @@
         <h3>material basis of at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000127</code></td>
             </tr>
             <tr>
@@ -2742,7 +2749,7 @@
         <h3>member part of at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000129</code></td>
             </tr>
             <tr>
@@ -2754,8 +2761,8 @@
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000175">obo:BFO_0000175</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000176">obo:BFO_0000176</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
             <tr>
@@ -2782,7 +2789,7 @@
         <h3>occupies spatiotemporal region<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000130</code></td>
             </tr>
             <tr>
@@ -2815,7 +2822,7 @@
         <h3>part of occurrent<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000132</code></td>
             </tr>
             <tr>
@@ -2848,7 +2855,7 @@
         <h3>process profile of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000133</code></td>
             </tr>
             <tr>
@@ -2881,7 +2888,7 @@
         <h3>proper temporal part of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000136</code></td>
             </tr>
             <tr>
@@ -2893,8 +2900,8 @@
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000139">obo:BFO_0000139</a><sup class="sup-op" title="object property">op</sup>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000138">obo:BFO_0000138</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000139">obo:BFO_0000139</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
             <tr>
@@ -2921,7 +2928,7 @@
         <h3>proper part of continuant at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000137</code></td>
             </tr>
             <tr>
@@ -2933,8 +2940,8 @@
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000175">obo:BFO_0000175</a><sup class="sup-op" title="object property">op</sup>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000177">obo:BFO_0000177</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000175">obo:BFO_0000175</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
         </table>
@@ -2943,7 +2950,7 @@
         <h3>proper part of occurrent<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000138</code></td>
             </tr>
             <tr>
@@ -2982,7 +2989,7 @@
         <h3>temporal part of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000139</code></td>
             </tr>
             <tr>
@@ -3021,7 +3028,7 @@
         <h3>projects onto spatial region at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000151</code></td>
             </tr>
             <tr>
@@ -3054,7 +3061,7 @@
         <h3>spatial projection of spatiotemporal at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000152</code></td>
             </tr>
             <tr>
@@ -3081,7 +3088,7 @@
         <h3>projects onto temporal region<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000153</code></td>
             </tr>
             <tr>
@@ -3120,7 +3127,7 @@
         <h3>temporal projection of spatiotemporal<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000154</code></td>
             </tr>
             <tr>
@@ -3153,7 +3160,7 @@
         <h3>occupies temporal region<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000155</code></td>
             </tr>
             <tr>
@@ -3192,7 +3199,7 @@
         <h3>has temporal occupant<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000156</code></td>
             </tr>
             <tr>
@@ -3225,7 +3232,7 @@
         <h3>during which exists<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000157</code></td>
             </tr>
             <tr>
@@ -3252,7 +3259,7 @@
         <h3>bearer of at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000158</code></td>
             </tr>
             <tr>
@@ -3285,7 +3292,7 @@
         <h3>has quality at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000159</code></td>
             </tr>
             <tr>
@@ -3312,7 +3319,7 @@
         <h3>has function at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000160</code></td>
             </tr>
             <tr>
@@ -3339,7 +3346,7 @@
         <h3>has role at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000161</code></td>
             </tr>
             <tr>
@@ -3366,7 +3373,7 @@
         <h3>has disposition at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000162</code></td>
             </tr>
             <tr>
@@ -3393,7 +3400,7 @@
         <h3>material basis of at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000163</code></td>
             </tr>
             <tr>
@@ -3426,7 +3433,7 @@
         <h3>concretizes at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000164</code></td>
             </tr>
             <tr>
@@ -3447,7 +3454,7 @@
         <h3>concretized by at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000165</code></td>
             </tr>
             <tr>
@@ -3468,7 +3475,7 @@
         <h3>participates in at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000166</code></td>
             </tr>
             <tr>
@@ -3489,7 +3496,7 @@
         <h3>has participant at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000167</code></td>
             </tr>
             <tr>
@@ -3523,7 +3530,7 @@
         <h3>has specific dependent at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000168</code></td>
             </tr>
             <tr>
@@ -3544,7 +3551,7 @@
         <h3>specifically depends on at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000169</code></td>
             </tr>
             <tr>
@@ -3579,7 +3586,7 @@
         <h3>has location at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000170</code></td>
             </tr>
             <tr>
@@ -3600,7 +3607,7 @@
         <h3>located in at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000171</code></td>
             </tr>
             <tr>
@@ -3633,7 +3640,7 @@
         <h3>has member part at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000172</code></td>
             </tr>
             <tr>
@@ -3645,8 +3652,8 @@
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000110">obo:BFO_0000110</a><sup class="sup-op" title="object property">op</sup>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000111">obo:BFO_0000111</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000110">obo:BFO_0000110</a><sup class="sup-op" title="object property">op</sup>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000115">obo:BFO_0000115</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
@@ -3656,7 +3663,7 @@
         <h3>member part of at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000173</code></td>
             </tr>
             <tr>
@@ -3668,8 +3675,8 @@
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000177">obo:BFO_0000177</a><sup class="sup-op" title="object property">op</sup>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000129">obo:BFO_0000129</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000177">obo:BFO_0000177</a><sup class="sup-op" title="object property">op</sup>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000137">obo:BFO_0000137</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
@@ -3679,7 +3686,7 @@
         <h3>has proper continuant part at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000174</code></td>
             </tr>
             <tr>
@@ -3712,7 +3719,7 @@
         <h3>proper part of continuant at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000175</code></td>
             </tr>
             <tr>
@@ -3751,7 +3758,7 @@
         <h3>part of continuant at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000176</code></td>
             </tr>
             <tr>
@@ -3784,7 +3791,7 @@
         <h3>part of continuant at all times<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000177</code></td>
             </tr>
             <tr>
@@ -3805,7 +3812,7 @@
         <h3>has continuant part at some time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000178</code></td>
             </tr>
             <tr>
@@ -3832,7 +3839,7 @@
         <h3>has proper temporal part<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000181</code></td>
             </tr>
             <tr>
@@ -3844,8 +3851,8 @@
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://purl.obolibrary.org/obo/BFO_0000121">obo:BFO_0000121</a><sup class="sup-op" title="object property">op</sup>
                     <a href="http://purl.obolibrary.org/obo/BFO_0000118">obo:BFO_0000118</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://purl.obolibrary.org/obo/BFO_0000121">obo:BFO_0000121</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
             <tr>
@@ -3866,7 +3873,7 @@
         <h3>history of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000184</code></td>
             </tr>
             <tr>
@@ -3906,7 +3913,7 @@
         <h3>has history<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000185</code></td>
             </tr>
             <tr>
@@ -3940,7 +3947,7 @@
         <h3>part of continuant at all times that whole exists<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000186</code></td>
             </tr>
             <tr>
@@ -3979,7 +3986,7 @@
         <h3>has continuant part at all times that part exists<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000187</code></td>
             </tr>
             <tr>
@@ -4044,7 +4051,7 @@
         <h3>BFO OWL specification label<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000179</code></td>
             </tr>
             <tr>
@@ -4059,7 +4066,7 @@
         <h3>BFO CLIF specification label<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/BFO_0000180</code></td>
             </tr>
             <tr>
@@ -4074,7 +4081,7 @@
         <h3>editor preferred term<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/IAO_0000111</code></td>
             </tr>
             <tr>
@@ -4089,7 +4096,7 @@
         <h3>example of usage<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/IAO_0000112</code></td>
             </tr>
             <tr>
@@ -4104,7 +4111,7 @@
         <h3>definition<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/IAO_0000115</code></td>
             </tr>
             <tr>
@@ -4119,7 +4126,7 @@
         <h3>editor note<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/IAO_0000116</code></td>
             </tr>
             <tr>
@@ -4134,7 +4141,7 @@
         <h3>term editor<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/IAO_0000117</code></td>
             </tr>
             <tr>
@@ -4149,7 +4156,7 @@
         <h3>alternative term<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/IAO_0000118</code></td>
             </tr>
             <tr>
@@ -4164,7 +4171,7 @@
         <h3>definition source<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/IAO_0000119</code></td>
             </tr>
             <tr>
@@ -4179,7 +4186,7 @@
         <h3>curator note<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/IAO_0000232</code></td>
             </tr>
             <tr>
@@ -4194,7 +4201,7 @@
         <h3>imported from<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/IAO_0000412</code></td>
             </tr>
             <tr>
@@ -4209,7 +4216,7 @@
         <h3>elucidation<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/IAO_0000600</code></td>
             </tr>
             <tr>
@@ -4224,7 +4231,7 @@
         <h3>has associated axiom(nl)<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/IAO_0000601</code></td>
             </tr>
             <tr>
@@ -4239,7 +4246,7 @@
         <h3>has associated axiom(fol)<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/IAO_0000602</code></td>
             </tr>
             <tr>
@@ -4254,7 +4261,7 @@
         <h3>has axiom label<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.obolibrary.org/obo/IAO_0010000</code></td>
             </tr>
             <tr>
@@ -4269,7 +4276,7 @@
         <h3>contributor<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/elements/1.1/contributor</code></td>
             </tr>
         </table>
@@ -4278,7 +4285,7 @@
         <h3>member<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/elements/1.1/member</code></td>
             </tr>
         </table>
@@ -4287,7 +4294,7 @@
         <h3>isDefinedBy<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#isDefinedBy</code></td>
             </tr>
         </table>
@@ -4296,7 +4303,7 @@
         <h3>seeAlso<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#seeAlso</code></td>
             </tr>
         </table>
@@ -4305,7 +4312,7 @@
         <h3>homepage<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/homepage</code></td>
             </tr>
         </table>
@@ -4322,8 +4329,6 @@
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://purl.obolibrary.org/obo/bfo.owl#</code></dd>
         <dt>:</dt>
         <dd><code>http://purl.obolibrary.org/obo/bfo.owl#</code></dd>
         <dt>dc</dt>
@@ -4344,8 +4349,6 @@
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

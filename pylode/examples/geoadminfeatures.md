@@ -1,9 +1,9 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
 
 # Geological Administrative Features Ontology
 
 ## Metadata
-* **IRI**
+* **URI**
   * `http://linked.data.gov.au/def/geoadminfeatures`
 * **Publisher(s)**
   * None
@@ -45,34 +45,32 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 ### Administrative feature
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geoadminfeatures#AdministrativeFeature`
+URI | `http://linked.data.gov.au/def/geoadminfeatures#AdministrativeFeature`
 Description | <p>An Administrative Feature is a geo:Feature that is defined by adminstrative processes such as legislation, regulation, policy or procedure.</p>
 Super-classes |[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
-Sub-classes |[geoaf:Block](Block) (c)<br />[geoaf:Permit](Permit) (c)<br />[geoaf:SubBlock](Sub-Block) (c)<br />
+Sub-classes |[geoaf:Permit](Permit) (c)<br />[geoaf:Block](Block) (c)<br />[geoaf:SubBlock](Sub-Block) (c)<br />
 ### Block
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geoadminfeatures#Block`
+URI | `http://linked.data.gov.au/def/geoadminfeatures#Block`
 Description | <p>A Block is an administrative division of the State of Queensland that is used for tenure management. A Block is defined as five minutes of latitude by five minutes of longitude. Blocks are grouped by 1:1,000,000 map sheet areas, the names of which provide the containing Blocks with a four letter prefix (e.g. Clermont 1:1,000,000 provides CLER). Each sheet area contains 3456 Blocks, with the Blocks numbered between 1 and 3456 inclusive. A Block is divided into 25 Sub-Blocks.</p>
 Super-classes |[geoaf:AdministrativeFeature](Administrativefeature) (c)<br />
 ### Permit
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geoadminfeatures#Permit`
+URI | `http://linked.data.gov.au/def/geoadminfeatures#Permit`
 Description | <p>Permits are a license granted over a spatial region within the State of Queensland. Permits govern the activities which can be conducted upon them. Activities include exploration, development, and extraction of a specific commodity or commodities.</p>
 Super-classes |[geoaf:AdministrativeFeature](Administrativefeature) (c)<br />
 ### Sub-Block
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geoadminfeatures#SubBlock`
+URI | `http://linked.data.gov.au/def/geoadminfeatures#SubBlock`
 Description | <p>A Sub-Block is an administrative sub-division of a Block. Each Block is divided into 25 Sub-Blocks. A Sub-Block is defined as one minute of latitude by one minute of longitude. The Sub-Blocks are prefixed with their corresponding Block name and are labelled from A to Z, excluding I. Labels are allocated from left to right, top to bottom, starting from the northwest corner.</p>
 Super-classes |[geoaf:AdministrativeFeature](Administrativefeature) (c)<br />
 Restrictions |[geo:sfWithin](http://www.opengis.net/ont/geosparql#sfWithin) **exactly** 1 [geoaf:Block](Block) (c)<br />
 
 ## Named Individuals
 ## Namespaces
-* **default (:)**
-  * `http://linked.data.gov.au/def/geoadminfeatures#`
 * **dct**
   * `http://purl.org/dc/terms/`
 * **doap**
@@ -95,8 +93,6 @@ Restrictions |[geo:sfWithin](http://www.opengis.net/ont/geosparql#sfWithin) **ex
   * `https://schema.org/`
 * **skos**
   * `http://www.w3.org/2004/02/skos/core#`
-* **xml**
-  * `http://www.w3.org/XML/1998/namespace`
 * **xsd**
   * `http://www.w3.org/2001/XMLSchema#`
 

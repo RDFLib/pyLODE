@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -205,15 +210,15 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>GeoSPARQL Ontology</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://www.opengis.net/ont/geosparql</code></dd>
-        <dt>Creator(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
         <dd>
             Open Geospatial Consortium<br/>
         </dd>
@@ -256,13 +261,13 @@
         <h3>Feature<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#Feature</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -283,8 +288,8 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#defaultGeometry">defaultGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasGeometry">hasGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#defaultGeometry">defaultGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -293,7 +298,7 @@
         <h3>Geometry<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#Geometry</code></td>
             </tr>
             <tr>
@@ -320,14 +325,14 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#dimension">dimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#asWKT">asWKT</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#isEmpty">isEmpty</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#dimension">dimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#hasserialization">hasSerialization</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#spatialDimension">spatialDimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#asGML">asGML</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#coordinateDimension">coordinateDimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#isSimple">isSimple</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#spatialDimension">spatialDimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#asWKT">asWKT</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#asGML">asGML</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -343,13 +348,13 @@
         <h3>SpatialObject<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#SpatialObject</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -370,59 +375,59 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#equals">ehEquals</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#intersects">sfIntersects</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#non-tangentialproperpart">rcc8ntpp</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#touches">sfTouches</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#externallyconnected">rcc8ec</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfEquals">sfEquals</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#crosses">sfCrosses</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#inside">ehInside</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#coveredBy">ehCoveredBy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#covers">ehCovers</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#contains">ehContains</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfEquals">sfEquals</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#non-tangentialproperpart">rcc8ntpp</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfDisjoint">sfDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#within">sfWithin</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#intersects">sfIntersects</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#non-tangentialproperpartinverse">rcc8ntppi</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#partiallyoverlapping">rcc8po</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#disconnected">rcc8dc</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#tangentialproperpart">rcc8tpp</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#overlaps">sfOverlaps</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#tangentialproperpartinverse">rcc8tppi</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#non-tangentialproperpartinverse">rcc8ntppi</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#overlap">ehOverlap</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#contains">ehContains</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfContains">sfContains</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#meet">ehMeet</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#tangentialproperpart">rcc8tpp</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#rcc8eq">rcc8eq</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfDisjoint">sfDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#partiallyoverlapping">rcc8po</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#coveredBy">ehCoveredBy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#meet">ehMeet</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#touches">sfTouches</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#inside">ehInside</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfContains">sfContains</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#externallyconnected">rcc8ec</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#equals">ehEquals</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#disjoint">ehDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#within">sfWithin</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#covers">ehCovers</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#tangentialproperpart">rcc8tpp</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#externallyconnected">rcc8ec</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#non-tangentialproperpart">rcc8ntpp</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#inside">ehInside</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#intersects">sfIntersects</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#disconnected">rcc8dc</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#covers">ehCovers</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#partiallyoverlapping">rcc8po</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#equals">ehEquals</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#touches">sfTouches</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#disjoint">ehDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#sfContains">sfContains</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#overlap">ehOverlap</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#overlaps">sfOverlaps</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#within">sfWithin</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#crosses">sfCrosses</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#contains">ehContains</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#meet">ehMeet</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#rcc8eq">rcc8eq</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfDisjoint">sfDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfEquals">sfEquals</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#tangentialproperpartinverse">rcc8tppi</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#overlap">ehOverlap</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#crosses">sfCrosses</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#non-tangentialproperpart">rcc8ntpp</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#covers">ehCovers</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#intersects">sfIntersects</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#coveredBy">ehCoveredBy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#overlaps">sfOverlaps</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfEquals">sfEquals</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#inside">ehInside</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#tangentialproperpartinverse">rcc8tppi</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#equals">ehEquals</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#disconnected">rcc8dc</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#disjoint">ehDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#externallyconnected">rcc8ec</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#non-tangentialproperpartinverse">rcc8ntppi</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#tangentialproperpart">rcc8tpp</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#meet">ehMeet</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#contains">ehContains</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#partiallyoverlapping">rcc8po</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#touches">sfTouches</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfDisjoint">sfDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#within">sfWithin</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -462,7 +467,7 @@
         <h3>defaultGeometry<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#defaultGeometry</code></td>
             </tr>
             <tr>
@@ -504,7 +509,7 @@
         <h3>contains<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#ehContains</code></td>
             </tr>
             <tr>
@@ -540,13 +545,13 @@
         <h3>coveredBy<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#ehCoveredBy</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -576,7 +581,7 @@
         <h3>covers<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#ehCovers</code></td>
             </tr>
             <tr>
@@ -612,7 +617,7 @@
         <h3>disjoint<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#ehDisjoint</code></td>
             </tr>
             <tr>
@@ -648,7 +653,7 @@
         <h3>equals<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#ehEquals</code></td>
             </tr>
             <tr>
@@ -684,13 +689,13 @@
         <h3>inside<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#ehInside</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -720,13 +725,13 @@
         <h3>meet<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#ehMeet</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -757,7 +762,7 @@
         <h3>overlap<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#ehOverlap</code></td>
             </tr>
             <tr>
@@ -793,13 +798,13 @@
         <h3>hasGeometry<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#hasGeometry</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -828,13 +833,13 @@
         <h3>disconnected<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#rcc8dc</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -864,13 +869,13 @@
         <h3>externally connected<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#rcc8ec</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -900,7 +905,7 @@
         <h3>equals<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#rcc8eq</code></td>
             </tr>
             <tr>
@@ -936,7 +941,7 @@
         <h3>non-tangential proper part<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#rcc8ntpp</code></td>
             </tr>
             <tr>
@@ -972,13 +977,13 @@
         <h3>non-tangential proper part inverse<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#rcc8ntppi</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -1008,7 +1013,7 @@
         <h3>partially overlapping<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#rcc8po</code></td>
             </tr>
             <tr>
@@ -1044,7 +1049,7 @@
         <h3>tangential proper part<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#rcc8tpp</code></td>
             </tr>
             <tr>
@@ -1080,7 +1085,7 @@
         <h3>tangential proper part inverse<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#rcc8tppi</code></td>
             </tr>
             <tr>
@@ -1116,7 +1121,7 @@
         <h3>contains<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#sfContains</code></td>
             </tr>
             <tr>
@@ -1152,7 +1157,7 @@
         <h3>crosses<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#sfCrosses</code></td>
             </tr>
             <tr>
@@ -1188,7 +1193,7 @@
         <h3>disjoint<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#sfDisjoint</code></td>
             </tr>
             <tr>
@@ -1224,13 +1229,13 @@
         <h3>equals<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#sfEquals</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -1260,13 +1265,13 @@
         <h3>intersects<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#sfIntersects</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -1297,13 +1302,13 @@
         <h3>overlaps<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#sfOverlaps</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -1333,7 +1338,7 @@
         <h3>touches<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#sfTouches</code></td>
             </tr>
             <tr>
@@ -1370,7 +1375,7 @@
         <h3>within<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#sfWithin</code></td>
             </tr>
             <tr>
@@ -1420,13 +1425,13 @@
         <h3>asGML<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#asGML</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -1461,13 +1466,13 @@
         <h3>asWKT<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#asWKT</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -1502,7 +1507,7 @@
         <h3>coordinateDimension<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#coordinateDimension</code></td>
             </tr>
             <tr>
@@ -1538,7 +1543,7 @@
         <h3>dimension<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#dimension</code></td>
             </tr>
             <tr>
@@ -1576,13 +1581,13 @@
         <h3>has serialization<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#hasSerialization</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -1611,13 +1616,13 @@
         <h3>isEmpty<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#isEmpty</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -1648,13 +1653,13 @@
         <h3>isSimple<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#isSimple</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -1684,7 +1689,7 @@
         <h3>spatialDimension<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#spatialDimension</code></td>
             </tr>
             <tr>
@@ -1739,7 +1744,7 @@
         <h3>Contributor<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/elements/1.1/contributor</code></td>
             </tr>
             <tr>
@@ -1760,7 +1765,7 @@
         <h3>Creator<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/elements/1.1/creator</code></td>
             </tr>
             <tr>
@@ -1781,7 +1786,7 @@
         <h3>Date<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/elements/1.1/date</code></td>
             </tr>
             <tr>
@@ -1802,7 +1807,7 @@
         <h3>Description<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/elements/1.1/description</code></td>
             </tr>
             <tr>
@@ -1823,7 +1828,7 @@
         <h3>description<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/description</code></td>
             </tr>
         </table>
@@ -1832,7 +1837,7 @@
         <h3>hasVersion<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/hasVersion</code></td>
             </tr>
         </table>
@@ -1841,7 +1846,7 @@
         <h3>issued<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/issued</code></td>
             </tr>
         </table>
@@ -1850,7 +1855,7 @@
         <h3>modified<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/modified</code></td>
             </tr>
         </table>
@@ -1859,7 +1864,7 @@
         <h3>publisher<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/publisher</code></td>
             </tr>
         </table>
@@ -1868,7 +1873,7 @@
         <h3>title<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/title</code></td>
             </tr>
         </table>
@@ -1877,7 +1882,7 @@
         <h3>definition<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2004/02/skos/core#definition</code></td>
             </tr>
         </table>
@@ -1886,7 +1891,7 @@
         <h3>note<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2004/02/skos/core#note</code></td>
             </tr>
         </table>
@@ -1895,7 +1900,7 @@
         <h3>prefLabel<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2004/02/skos/core#prefLabel</code></td>
             </tr>
         </table>
@@ -1912,8 +1917,6 @@
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
         <dt>:</dt>
         <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
         <dt>dc</dt>
@@ -1930,8 +1933,6 @@
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

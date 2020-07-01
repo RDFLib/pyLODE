@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -205,15 +210,15 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>Records Authority Ontology</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://linked.data.gov.au/def/ra</code></dd>
-        <dt>Creator(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
         <dd>
             
     <a href="http://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a>
@@ -239,16 +244,18 @@
     (<a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a>) of 
     <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a><br/>
         </dd>
-        <dt>Contributors(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/contributor">Contributor</a>(s)</dt>
         <dd>
             
     National Archives of Australia, Information Governance Section
     (<a href="mailto:information.governance@naa.gov.au">information.governance@naa.gov.au</a>)<br/>
         </dd>
-        <dt>Created</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/created">Created</a></dt>
         <dd>2019-08-05</dd>
-        <dt>Modified</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
         <dd>2019-08-06</dd>
+        <dt>Version URI</dt>
+        <dd><a href="http://linked.data.gov.au/def/ra">http://linked.data.gov.au/def/ra</a></dd>
         <dt>Ontology RDF</dt>
         <dd><a href="ra.ttl">RDF (turtle)</a></dd>
     </dl>
@@ -287,7 +294,7 @@
         <h3>Record<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agr#Record</code></td>
             </tr>
             <tr>
@@ -302,7 +309,7 @@
         <h3>Function<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/crs#Function</code></td>
             </tr>
             <tr>
@@ -323,7 +330,7 @@
         <h3>Disposal Action<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/ra#DisposalAction</code></td>
             </tr>
             <tr>
@@ -351,7 +358,7 @@
         <h3>Numbered Subclass<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/ra#NumberedSubclass</code></td>
             </tr>
             <tr>
@@ -378,7 +385,7 @@
         <h3>RA Class<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/ra#RaClass</code></td>
             </tr>
             <tr>
@@ -399,7 +406,7 @@
         <h3>Records Authorty<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/ra#RecordsAuthority</code></td>
             </tr>
             <tr>
@@ -429,7 +436,7 @@
         <h3>requires<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/ra#requires</code></td>
             </tr>
             <tr>
@@ -470,8 +477,6 @@
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://linked.data.gov.au/def/ra#</code></dd>
         <dt>:</dt>
         <dd><code>http://linked.data.gov.au/def/ra#</code></dd>
         <dt>agr</dt>
@@ -492,8 +497,6 @@
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

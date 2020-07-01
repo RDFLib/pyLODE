@@ -1,7 +1,7 @@
 from pylode.common import TEMPLATES_DIR
 import collections
 from rdflib import Graph, URIRef, Literal, Namespace
-from rdflib.namespace import FOAF, OWL, RDF, SDO, SKOS, XSD
+from rdflib.namespace import FOAF, OWL, PROF, RDF, SDO, SKOS, XSD
 from jinja2 import Environment, FileSystemLoader
 
 
@@ -205,6 +205,9 @@ class BaseProfile:
         for s in self.G.subjects(predicate=RDF.type, object=SKOS.ConceptScheme):
             ont_uri = str(s)
 
+        for s in self.G.subjects(predicate=RDF.type, object=PROF.Profile):
+            ont_uri = str(s)
+
         for k, v in self.NAMESPACES.items():
             # i.e. the ontology URI is the same as the default namespace + / or #
             if v == ont_uri + "/" or v == ont_uri + "#":
@@ -367,7 +370,7 @@ class BaseProfile:
             orcid = None
             if url is not None:
                 if "orcid.org" in url:
-                    orcid = self._load_template("orcid.md").render()
+                    orcid = BaseProfile._load_template(self, "orcid.md").render()
 
             return BaseProfile._load_template(self, "agent.md").render(
                 url=url,

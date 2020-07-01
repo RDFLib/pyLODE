@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -215,20 +220,20 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>ASGS Ontology</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://linked.data.gov.au/def/asgs</code></dd>
-        <dt>Publisher(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher">Publisher</a>(s)</dt>
         <dd>
             
     <a href="http://linked.data.gov.au/org/abs">Australian Bureau of Statistics</a><br/>
         </dd>
-        <dt>Creator(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
         <dd>
             
     <a href="https://orcid.org/0000-0002-3884-3420">Simon J.D. Cox</a>
@@ -276,7 +281,7 @@
 </svg></a> of 
     <a href="https://www.abs.gov.au">Australian Bureau of Statistics</a><br/>
         </dd>
-        <dt>Contributors(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/contributor">Contributor</a>(s)</dt>
         <dd>
             
     <a href="https://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a>
@@ -302,9 +307,9 @@
     (<a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a>) of 
     <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a><br/>
         </dd>
-        <dt>Created</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/created">Created</a></dt>
         <dd>2018-11-23</dd>
-        <dt>Modified</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
         <dd>2020-02-03</dd>
         <dt>Imports</dt>
         <dd>
@@ -414,7 +419,7 @@
         <h3>Australian Drainage Division<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#AustralianDrainageDivision</code></td>
             </tr>
             <tr>
@@ -447,7 +452,7 @@
         <h3>Commonwealth Electoral Division<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#CommonwealthElectoralDivision</code></td>
             </tr>
             <tr>
@@ -471,8 +476,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#StateOrTerritory">asgs:StateOrTerritory</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#sfContains">geo:sfContains</a> <span class="cardinality">min</span> 1 <a href="#StatisticalAreaLevel1">asgs:StatisticalAreaLevel1</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#StateOrTerritory">asgs:StateOrTerritory</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -481,7 +486,7 @@
         <h3>Country<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#Country</code></td>
             </tr>
             <tr>
@@ -508,7 +513,7 @@
         <h3>DestinationZone<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#DestinationZone</code></td>
             </tr>
             <tr>
@@ -542,7 +547,7 @@
         <h3>ASGS Feature<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#Feature</code></td>
             </tr>
             <tr>
@@ -572,31 +577,31 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#SectionofStateRange">asgs:SectionOfStateRange</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#StatisticalAreaLevel2">asgs:StatisticalAreaLevel2</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#RemotenessArea">asgs:RemotenessArea</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#AustralianDrainageDivision">asgs:AustralianDrainageDivision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#DestinationZone">asgs:DestinationZone</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#LocalGovernmentArea">asgs:LocalGovernmentArea</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#StateOrTerritory">asgs:StateOrTerritory</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#SignificantUrbanArea">asgs:SignificantUrbanArea</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#StateElectoralDivision">asgs:StateElectoralDivision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#StatisticalAreaLevel1">asgs:StatisticalAreaLevel1</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#UrbanCentreAndLocality">asgs:UrbanCentreAndLocality</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#GreaterCapitalCityStatisticalArea">asgs:GreaterCapitalCityStatisticalArea</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#MeshBlock">asgs:MeshBlock</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#IndigenousArea">asgs:IndigenousArea</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#CommonwealthElectoralDivision">asgs:CommonwealthElectoralDivision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#IndigenousLocation">asgs:IndigenousLocation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#StateSuburb">asgs:StateSuburb</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#TourismRegion">asgs:TourismRegion</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#IndigenousRegion">asgs:IndigenousRegion</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#StatisticalAreaLevel3">asgs:StatisticalAreaLevel3</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#NaturalResourceManagementRegion">asgs:NaturalResourceManagementRegion</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Postalarea">asgs:PostalArea</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#SectionofState">asgs:SectionOfState</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#IndigenousArea">asgs:IndigenousArea</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Country">asgs:Country</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#RemotenessArea">asgs:RemotenessArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#IndigenousLocation">asgs:IndigenousLocation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#CommonwealthElectoralDivision">asgs:CommonwealthElectoralDivision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AustralianDrainageDivision">asgs:AustralianDrainageDivision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#GreaterCapitalCityStatisticalArea">asgs:GreaterCapitalCityStatisticalArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#StateOrTerritory">asgs:StateOrTerritory</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#SectionofState">asgs:SectionOfState</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#LocalGovernmentArea">asgs:LocalGovernmentArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#NaturalResourceManagementRegion">asgs:NaturalResourceManagementRegion</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#StateSuburb">asgs:StateSuburb</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#SectionofStateRange">asgs:SectionOfStateRange</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#IndigenousRegion">asgs:IndigenousRegion</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#TourismRegion">asgs:TourismRegion</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#StateElectoralDivision">asgs:StateElectoralDivision</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#StatisticalAreaLevel4">asgs:StatisticalAreaLevel4</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Postalarea">asgs:PostalArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#UrbanCentreAndLocality">asgs:UrbanCentreAndLocality</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#DestinationZone">asgs:DestinationZone</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#StatisticalAreaLevel1">asgs:StatisticalAreaLevel1</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#MeshBlock">asgs:MeshBlock</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#SignificantUrbanArea">asgs:SignificantUrbanArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#StatisticalAreaLevel2">asgs:StatisticalAreaLevel2</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -605,7 +610,7 @@
         <h3>Greater Capital City Statistical Area<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#GreaterCapitalCityStatisticalArea</code></td>
             </tr>
             <tr>
@@ -638,7 +643,7 @@
         <h3>Indigenous Area<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#IndigenousArea</code></td>
             </tr>
             <tr>
@@ -671,7 +676,7 @@
         <h3>Indigenous Location<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#IndigenousLocation</code></td>
             </tr>
             <tr>
@@ -704,7 +709,7 @@
         <h3>Indigenous Region<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#IndigenousRegion</code></td>
             </tr>
             <tr>
@@ -737,7 +742,7 @@
         <h3>Local Government Area<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#LocalGovernmentArea</code></td>
             </tr>
             <tr>
@@ -749,7 +754,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Local Government Areas (LGAs) are an ABS approximation of gazetted local government boundaries as defined by each State and Territory Local Government Department. LGAs cover incorporated areas of Australia. Incorporated areas are legally designated parts of a State or Territory over which incorporated local governing bodies have responsibility. The major areas of Australia not administered by incorporated bodies are the northern parts of South Australia and all of the Australian Capital Territory and the Other Territories. These regions are identified as Ã¢â‚¬ËœUnincorporatedÃ¢â‚¬â„¢ in the Australian Statistical Geography Standard (ASGS) LGA structure. A small number of LGA boundaries and names change each year and the ABS LGAs are updated on an annual basis to reflect these changes. LGAs are approximated using whole Mesh Blocks (MBs). In aggregation LGAs cover Australia without gaps or overlaps. The LGAs are Non ABS Structures within the ASGS. These are mostly administrative areas which are not defined or maintained by the ABS but for which the ABS is committed to providing a range of statistics.</p>
+                    <p>Local Government Areas (LGAs) are an ABS approximation of gazetted local government boundaries as defined by each State and Territory Local Government Department. LGAs cover incorporated areas of Australia. Incorporated areas are legally designated parts of a State or Territory over which incorporated local governing bodies have responsibility. The major areas of Australia not administered by incorporated bodies are the northern parts of South Australia and all of the Australian Capital Territory and the Other Territories. These regions are identified as â€˜Unincorporatedâ€™ in the Australian Statistical Geography Standard (ASGS) LGA structure. A small number of LGA boundaries and names change each year and the ABS LGAs are updated on an annual basis to reflect these changes. LGAs are approximated using whole Mesh Blocks (MBs). In aggregation LGAs cover Australia without gaps or overlaps. The LGAs are Non ABS Structures within the ASGS. These are mostly administrative areas which are not defined or maintained by the ABS but for which the ABS is committed to providing a range of statistics.</p>
                 </td>
             </tr>
             <tr>
@@ -771,7 +776,7 @@
         <h3>Mesh Block<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#MeshBlock</code></td>
             </tr>
             <tr>
@@ -805,7 +810,7 @@
         <h3>Meshblock category<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#MeshblockCategory</code></td>
             </tr>
             <tr>
@@ -826,7 +831,7 @@
         <h3>Natural Resource Management Region<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#NaturalResourceManagementRegion</code></td>
             </tr>
             <tr>
@@ -860,7 +865,7 @@
         <h3>Postal area<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#PostalArea</code></td>
             </tr>
             <tr>
@@ -893,7 +898,7 @@
         <h3>Remoteness Area<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#RemotenessArea</code></td>
             </tr>
             <tr>
@@ -926,7 +931,7 @@
         <h3>Section of State<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#SectionOfState</code></td>
             </tr>
             <tr>
@@ -959,7 +964,7 @@
         <h3>Section of State Range<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#SectionOfStateRange</code></td>
             </tr>
             <tr>
@@ -992,7 +997,7 @@
         <h3>Significant Urban Area<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#SignificantUrbanArea</code></td>
             </tr>
             <tr>
@@ -1019,7 +1024,7 @@
         <h3>State Electoral Division<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#StateElectoralDivision</code></td>
             </tr>
             <tr>
@@ -1043,8 +1048,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#sfContains">geo:sfContains</a> <span class="cardinality">min</span> 1 <a href="#StatisticalAreaLevel1">asgs:StatisticalAreaLevel1</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#StateOrTerritory">asgs:StateOrTerritory</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#sfContains">geo:sfContains</a> <span class="cardinality">min</span> 1 <a href="#StatisticalAreaLevel1">asgs:StatisticalAreaLevel1</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1053,7 +1058,7 @@
         <h3>StateOrTerritory<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#StateOrTerritory</code></td>
             </tr>
             <tr>
@@ -1086,7 +1091,7 @@
         <h3>State Suburb<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#StateSuburb</code></td>
             </tr>
             <tr>
@@ -1120,7 +1125,7 @@
         <h3>Statistical Area Level 1<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#StatisticalAreaLevel1</code></td>
             </tr>
             <tr>
@@ -1144,10 +1149,10 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">max</span> 1 <a href="#UrbanCentreAndLocality">asgs:UrbanCentreAndLocality</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">max</span> 1 <a href="#IndigenousLocation">asgs:IndigenousLocation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#StatisticalAreaLevel2">asgs:StatisticalAreaLevel2</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">max</span> 1 <a href="#RemotenessArea">asgs:RemotenessArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">max</span> 1 <a href="#IndigenousLocation">asgs:IndigenousLocation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">max</span> 1 <a href="#UrbanCentreAndLocality">asgs:UrbanCentreAndLocality</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#StatisticalAreaLevel2">asgs:StatisticalAreaLevel2</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1156,7 +1161,7 @@
         <h3>Statistical Area Level 2<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#StatisticalAreaLevel2</code></td>
             </tr>
             <tr>
@@ -1190,7 +1195,7 @@
         <h3>Statistical Area Level 3<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#StatisticalAreaLevel3</code></td>
             </tr>
             <tr>
@@ -1223,7 +1228,7 @@
         <h3>Statistical Area Level 4<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#StatisticalAreaLevel4</code></td>
             </tr>
             <tr>
@@ -1257,7 +1262,7 @@
         <h3>Tourism Region<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#TourismRegion</code></td>
             </tr>
             <tr>
@@ -1290,7 +1295,7 @@
         <h3>UrbanCentreAndLocality<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#UrbanCentreAndLocality</code></td>
             </tr>
             <tr>
@@ -1329,7 +1334,7 @@
         <h3>type<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/type</code></td>
             </tr>
         </table>
@@ -1345,7 +1350,7 @@
         <h3>identifier<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/identifier</code></td>
             </tr>
         </table>
@@ -1371,7 +1376,7 @@
         <h3>created<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/created</code></td>
             </tr>
         </table>
@@ -1380,7 +1385,7 @@
         <h3>creator<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/creator</code></td>
             </tr>
         </table>
@@ -1389,7 +1394,7 @@
         <h3>date<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/date</code></td>
             </tr>
         </table>
@@ -1398,7 +1403,7 @@
         <h3>description<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/description</code></td>
             </tr>
         </table>
@@ -1407,7 +1412,7 @@
         <h3>modified<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/modified</code></td>
             </tr>
         </table>
@@ -1416,7 +1421,7 @@
         <h3>publisher<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/publisher</code></td>
             </tr>
         </table>
@@ -1425,7 +1430,7 @@
         <h3>rights<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/rights</code></td>
             </tr>
         </table>
@@ -1434,7 +1439,7 @@
         <h3>source<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/source</code></td>
             </tr>
         </table>
@@ -1443,7 +1448,7 @@
         <h3>title<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/title</code></td>
             </tr>
         </table>
@@ -1452,7 +1457,7 @@
         <h3>isDefinedBy<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#isDefinedBy</code></td>
             </tr>
         </table>
@@ -1461,7 +1466,7 @@
         <h3>qualifiedCardinality<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#qualifiedCardinality</code></td>
             </tr>
         </table>
@@ -1478,8 +1483,6 @@
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://linked.data.gov.au/def/asgs#</code></dd>
         <dt>asgs</dt>
         <dd><code>http://linked.data.gov.au/def/asgs#</code></dd>
         <dt>cc</dt>
@@ -1510,8 +1513,6 @@
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
         <dt>void</dt>
         <dd><code>http://rdfs.org/ns/void#</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

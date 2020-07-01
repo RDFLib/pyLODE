@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -190,7 +195,7 @@
     ],
     "https://schema.org/description": [
       {
-        "@value": "<p>This ontology is a reduced-in-scope version of the <a href=\"https://www.w3.org/2005/Incubator/decision/\">W3C Decisions and Decision-Making Incubator Group</a>'s Decision Ontology (DO) which can be found at <a href=\"https://github.com/nicholascar/decision-o\">https://github.com/nicholascar/decision-o</a>. It has been re-worked to align entirely with the W3C's <a href=\"https://www.w3.org/TR/prov-o/\">PROV ontology</a> since it is widely recognised that analysing the elements of decisions <em>post hoc</em> is an exercise in provenance.</p>\n<p>Unlike the original DO, this ontology cannot be used for <em>normative</em> scenarios: it is only capable of recording decisions that have already been made (so-called <em>data-driven</em> use in the DO). This is because PROV, to which this ontology is completely mapped, does not have a templating system which can indicate what <em>should</em> occur in future scenarios.</p>\n<p>This ontology introduces only one new element for decision modelling over that which was present in the DO: an Agent which allows agency in decision making to be recorded.</p>"
+        "@value": "<p>This ontology is for modelling decisions and thus the causes for actions or the use or generation of things. It allows for a better understanding of <em>why</em> something might have taken place, have been used or produced than the more generic <a href=\"https://www.w3.org/TR/prov-o/\">PROV ontology</a>, on which it is mainly based, does.  </p>\n<p>The specialised decision modelling elements of this ontology have been derived from the <a href=\"https://www.w3.org/2005/Incubator/decision/\">W3C Decisions and Decision-Making Incubator Group</a>'s Decision Ontology (DO) which can be found at <a href=\"https://github.com/nicholascar/decision-o\">https://github.com/nicholascar/decision-o</a>. Many DO classes have been aligned with the PROV-O since it is widely recognised that analysing the elements of decisions <em>post hoc</em> is an exercise in provenance.</p>\n<p>Unlike the original DO, this ontology cannot be used for <em>normative</em> scenarios: it is only capable of recording decisions that have already been made (so-called <em>data-driven</em> use in the DO). This is because PROV does not have a templating system which can indicate what <em>should</em> occur in future scenarios.</p>\n<p>This ontology introduces only one new element for decision modelling over that which was present in the DO: an Agent which allows agency in decision making to be recorded.</p>"
       }
     ],
     "https://schema.org/name": [
@@ -205,15 +210,15 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>Decision Provenance ontology (DecPROV)</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://promsns.org/def/decprov</code></dd>
-        <dt>Creator(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
         <dd>
             
     <a href="http://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a>
@@ -239,13 +244,13 @@
     (<a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a>) of 
     <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a><br/>
         </dd>
-        <dt>Created</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/created">Created</a></dt>
         <dd>2017-06-28</dd>
-        <dt>Modified</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
         <dd>2019-08-20</dd>
         <dt>Version Information</dt>
         <dd>2.0</dd>
-        <dt>Version IRI</dt>
+        <dt>Version URI</dt>
         <dd><a href="http://promsns.org/def/decprov">http://promsns.org/def/decprov</a></dd>
         <dt>Imports</dt>
         <dd>
@@ -256,8 +261,9 @@
     </dl>
     <h2>Description</h2>
     <div id="description">
-        <p>This ontology is a reduced-in-scope version of the <a href="https://www.w3.org/2005/Incubator/decision/">W3C Decisions and Decision-Making Incubator Group</a>'s Decision Ontology (DO) which can be found at <a href="https://github.com/nicholascar/decision-o">https://github.com/nicholascar/decision-o</a>. It has been re-worked to align entirely with the W3C's <a href="https://www.w3.org/TR/prov-o/">PROV ontology</a> since it is widely recognised that analysing the elements of decisions <em>post hoc</em> is an exercise in provenance.</p>
-<p>Unlike the original DO, this ontology cannot be used for <em>normative</em> scenarios: it is only capable of recording decisions that have already been made (so-called <em>data-driven</em> use in the DO). This is because PROV, to which this ontology is completely mapped, does not have a templating system which can indicate what <em>should</em> occur in future scenarios.</p>
+        <p>This ontology is for modelling decisions and thus the causes for actions or the use or generation of things. It allows for a better understanding of <em>why</em> something might have taken place, have been used or produced than the more generic <a href="https://www.w3.org/TR/prov-o/">PROV ontology</a>, on which it is mainly based, does.  </p>
+<p>The specialised decision modelling elements of this ontology have been derived from the <a href="https://www.w3.org/2005/Incubator/decision/">W3C Decisions and Decision-Making Incubator Group</a>'s Decision Ontology (DO) which can be found at <a href="https://github.com/nicholascar/decision-o">https://github.com/nicholascar/decision-o</a>. Many DO classes have been aligned with the PROV-O since it is widely recognised that analysing the elements of decisions <em>post hoc</em> is an exercise in provenance.</p>
+<p>Unlike the original DO, this ontology cannot be used for <em>normative</em> scenarios: it is only capable of recording decisions that have already been made (so-called <em>data-driven</em> use in the DO). This is because PROV does not have a templating system which can indicate what <em>should</em> occur in future scenarios.</p>
 <p>This ontology introduces only one new element for decision modelling over that which was present in the DO: an Agent which allows agency in decision making to be recorded.</p>
     </div>
 </section>
@@ -292,7 +298,7 @@
         <h3>Decision Input Data<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://promsns.org/def/decprov#DecisionInputData</code></td>
             </tr>
             <tr>
@@ -319,7 +325,7 @@
         <h3>Decision Logic Expression<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://promsns.org/def/decprov#DecisonLogicExpression</code></td>
             </tr>
             <tr>
@@ -346,7 +352,7 @@
         <h3>Answer<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://promsns.org/def/do#Answer</code></td>
             </tr>
             <tr>
@@ -380,7 +386,7 @@
         <h3>Decision Making<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://promsns.org/def/do#DecisionMaking</code></td>
             </tr>
             <tr>
@@ -401,7 +407,7 @@
         <h3>Question<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://promsns.org/def/do#Question</code></td>
             </tr>
             <tr>
@@ -428,7 +434,7 @@
         <h3>Requirement<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://promsns.org/def/do#Requirement</code></td>
             </tr>
             <tr>
@@ -456,7 +462,7 @@
         <h3>had answer<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://promsns.org/def/decprov#hadAnswer</code></td>
             </tr>
             <tr>
@@ -483,7 +489,7 @@
         <h3>had question<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://promsns.org/def/decprov#hadQuestion</code></td>
             </tr>
             <tr>
@@ -524,7 +530,7 @@
         <h3>DecisionMaker<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://promsns.org/def/do#DecisionMaker
@@ -543,8 +549,6 @@
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://promsns.org/def/decprov#</code></dd>
         <dt>:</dt>
         <dd><code>http://promsns.org/def/decprov#</code></dd>
         <dt>dct</dt>
@@ -563,8 +567,6 @@
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

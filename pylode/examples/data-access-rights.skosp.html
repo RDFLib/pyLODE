@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -205,222 +210,68 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>Data Access Rights</h1>
-<h3><em>A taxonomy</em></h3>
-  <section id="conceptscheme">
-      <h2 style="display:none;">Concept Scheme</h2>
-      <dl>
-          <dt>IRI</dt>
-          <dd><code>http://linked.data.gov.au/def/data-access-rights</code></dd>
-          <dt>Publisher(s)</dt>
-          <dd>
-              
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>URI</dt>
+        <dd><code>http://linked.data.gov.au/def/data-access-rights</code></dd>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher">Publisher</a>(s)</dt>
+        <dd>
+            
     <a href="http://linked.data.gov.au/org/gsq">Geological Survey of Queensland</a><br/>
-          </dd>
-          <dt>Creator(s)</dt>
-          <dd>
-              
+        </dd>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
+        <dd>
+            
     <a href="http://linked.data.gov.au/org/gsq">Geological Survey of Queensland</a><br/>
-          </dd>
-          <dt>Created</dt>
-          <dd>2019-04-03</dd>
-          <dt>Modified</dt>
-          <dd>2019-09-10</dd>
-          <dt>Source</dt>
-          <dd><a href="http://vocabularies.coar-repositories.org/documentation/access_rights/">http://vocabularies.coar-repositories.org/documentation/access_rights/</a></dd>
-          <dt>Ontology RDF</dt>
-          <dd><a href="data-access-rights.ttl">RDF (turtle)</a></dd>
-      </dl>
-      <h2>Description</h2>
-      <div id="description">
-          <p>Data access rights control how users and systems access a data resource.</p>
-      </div>
-      <p><strong>History Note:</strong> <p>This vocabulary is taken from the COAR Controlled Vocabularies Interest Group (http://vocabularies.coar-repositories.org/documentation/access_rights/) but is redelivered as that vocabulary isn't well presented online.</p></p>
-  </section>
-  <section id="toc">
-      <h2>Table of Contents</h2>
-      <ol>
-          <li><a href="#collections">Collections</a></li>
-          <li><a href="#concepts">Concepts</a></li>
-          <li><a href="#namespaces">Namespaces</a></li>
-          <li><a href="#legend">Legend</a></li>
-      </ol>
-  </section>
-  <section id="overview">
-      <h2>Overview</h2>
-      <div class="figure">
-          <div style="width:500px; height:500px; background-color: black;">&nbsp;</div>
-          <div class="caption"><strong>Figure 1:</strong> Taxonomy overview</div>
-      </div>
-  </section>
-  <section id="collections">
-    <h2>Collections <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+        </dd>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/created">Created</a></dt>
+        <dd>2019-04-03</dd>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
+        <dd>2019-09-10</dd>
+        <dt>Source</dt>
+        <dd><a href="http://vocabularies.coar-repositories.org/documentation/access_rights/">http://vocabularies.coar-repositories.org/documentation/access_rights/</a></dd>
+        <dt>Ontology RDF</dt>
+        <dd><a href="data-access-rights.ttl">RDF (turtle)</a></dd>
+    </dl>
+    <h2>Description</h2>
+    <div id="description">
+        <p>Data access rights control how users and systems access a data resource.</p>
+    </div>
+    <p><strong>History Note:</strong> <p>This vocabulary is taken from the COAR Controlled Vocabularies Interest Group (http://vocabularies.coar-repositories.org/documentation/access_rights/) but is redelivered as that vocabulary isn't well presented online.</p></p>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#namespaces">Namespaces</a></li>
+        <li><a href="#legend">Legend</a></li>
+    </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+        <div style="width:500px; height:50px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;">Pictures say 1,000 words</div>
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
+</section>
+  <section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
-        <li><a href="#Closeddataaccessrights">Closed data access rights</a></li>
-        <li><a href="#Opendataaccessrights">Open data access rights</a></li>
     </ul>
-    <div class="entity collection" id="Closeddataaccessrights">
-        <h3>Closed data access rights<sup title="Collection" class="sup-cp">cp</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/data-access-rights/closed-access-rights</code></td>
-            </tr>
-            <tr>
-                <th>Definition</th>
-                <td>Selective restriction of access to data that is OFFICIAL (low or negligible confidentiality impact), SENSITIVE (moderate confidentiality impact) or PROTECTED (high confidentiality impact).</td>
-            </tr>
-            <tr>
-                <th>Members</th>
-                <td>
-                    <a href="#Embargoedaccess">Embargoed access</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="#Protectedaccess">Protected access</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="#Metadataonlyaccess">Metadata only access</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="#Restrictedaccess">Restricted access</a><sup class="sup-cp" title="concept">cp</sup>
-                </td>
-            </tr>
-            
-        </table>
-    </div>
-    <div class="entity collection" id="Opendataaccessrights">
-        <h3>Open data access rights<sup title="Collection" class="sup-cp">cp</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/data-access-rights/open-access-rights</code></td>
-            </tr>
-            <tr>
-                <th>Definition</th>
-                <td>Data that is non-sensitive, freely available, easily discovered and accessed, and published in ways and with licences that allow easy reuse.</td>
-            </tr>
-            <tr>
-                <th>Members</th>
-                <td>
-                    <a href="#Openaccess">Open access</a><sup class="sup-cp" title="concept">cp</sup>
-                </td>
-            </tr>
-            
-        </table>
-    </div>
 </section>
-  <section id="concepts">
-    <h2>Concepts <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <ul class="hierarchy">
-<li><a href="#Openaccess">Open access</a></li><li><a href="#Restrictedaccess">Restricted access</a>
-<ul><li><a href="#Embargoedaccess">Embargoed access</a></li></ul>
-<ul><li><a href="#Metadataonlyaccess">Metadata only access</a></li></ul>
-<ul><li><a href="#Protectedaccess">Protected access</a></li></ul></li>
-</ul>
-    <div class="entity concept" id="Embargoedaccess">
-        <h3>Embargoed access<sup title="Concept" class="sup-cp">cp</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/data-access-rights/embargoed</code></td>
-            </tr>
-            <tr>
-                <th>Definition</th>
-                <td>
-                    Embargoed access refers to a resource accessible as metadata only until released for open access on a specified date.<br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Broader Concepts</th>
-                <td>
-                    <a href="#Restrictedaccess">Restricted access</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity concept" id="Metadataonlyaccess">
-        <h3>Metadata only access<sup title="Concept" class="sup-cp">cp</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/data-access-rights/metadata-only</code></td>
-            </tr>
-            <tr>
-                <th>Definition</th>
-                <td>
-                    Metadata only access refers to a resource in which access is limited to metadata only. Access to the resource requires granting of access rights.<br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Broader Concepts</th>
-                <td>
-                    <a href="#Restrictedaccess">Restricted access</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity concept" id="Openaccess">
-        <h3>Open access<sup title="Concept" class="sup-cp">cp</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/data-access-rights/open</code></td>
-            </tr>
-            <tr>
-                <th>Definition</th>
-                <td>
-                    Open access refers to a resource that is immediately and permanently online, and free for all on the Web, without financial and technical barriers.<br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity concept" id="Protectedaccess">
-        <h3>Protected access<sup title="Concept" class="sup-cp">cp</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/data-access-rights/protected</code></td>
-            </tr>
-            <tr>
-                <th>Definition</th>
-                <td>
-                    Protected access refers to a resource that is stored in a system but is not freely accessible due to specific legal or policy decisions, such as active legal proceedings or ministerial discretion. Access is limited to specific personnel or user groups. <br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Broader Concepts</th>
-                <td>
-                    <a href="#Restrictedaccess">Restricted access</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity concept" id="Restrictedaccess">
-        <h3>Restricted access<sup title="Concept" class="sup-cp">cp</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://linked.data.gov.au/def/data-access-rights/restricted</code></td>
-            </tr>
-            <tr>
-                <th>Definition</th>
-                <td>
-                    Restricted access refers to a resource that is stored in a system but is not freely accessible. Access is limited to specific personnel or user groups.<br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Narrower Concepts</th>
-                <td>
-                    <a href="#Embargoedaccess">Embargoed access</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                    <a href="#Protectedaccess">Protected access</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                    <a href="#Metadataonlyaccess">Metadata only access</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
+  
+  <section id="namedindividuals">
+    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+    </ul>
 </section>
-
+  
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://linked.data.gov.au/def/data-access-rights/</code></dd>
         <dt>da</dt>
         <dd><code>http://linked.data.gov.au/def/data-access-rights/</code></dd>
         <dt>dc</dt>
@@ -429,6 +280,8 @@
         <dd><code>http://purl.org/dc/terms/</code></dd>
         <dt>owl</dt>
         <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>prov</dt>
+        <dd><code>http://www.w3.org/ns/prov#</code></dd>
         <dt>rdf</dt>
         <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
         <dt>rdfs</dt>
@@ -437,19 +290,21 @@
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>
 </section>
-
   <section id="legend">
-    <h2>Legend</h2>
-    <table class="entity">
-      <tr><td><sup class="sup-cl" title="Collections">cl</sup></td><td>Collections</td></tr>
-      <tr><td><sup class="sup-cp" title="Concepts">cp</sup></td><td>Concepts</td></tr>
-    </table>
+      <h2>Legend</h2>
+      <table class="entity">
+          <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+          <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+          <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+          <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+          <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+          <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+          <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+      </table>
   </section>
 </body>
 </html>

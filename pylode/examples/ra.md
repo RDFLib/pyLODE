@@ -1,9 +1,9 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
 
 # Records Authority Ontology
 
 ## Metadata
-* **IRI**
+* **URI**
   * `http://linked.data.gov.au/def/ra`
 * **Creators(s)**
   * [Nicholas J. Car](http://orcid.org/0000-0002-8742-7730)
@@ -41,38 +41,38 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 ### Record
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/agr#Record`
+URI | `http://linked.data.gov.au/def/agr#Record`
 Description | <p>The Archiving of Government Records Ontology's Record class.</p>
 ### Function
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/crs#Function`
+URI | `http://linked.data.gov.au/def/crs#Function`
 Description | <p>The Commonwealth Record Series Ontology's Function class.</p>
 Super-classes |[skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />
 ### Disposal Action
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/ra#DisposalAction`
+URI | `http://linked.data.gov.au/def/ra#DisposalAction`
 Description | <p>A Disposal Action is an instruction to carry out the disposal (retention or descruction) of a government Record. In addition to being a skos:Concept since it acts as a classifier, a Disposal Action is also a Provenance Ontology Plan meaning it instructs a course of action - how to dispose of a record.</p>
 Super-classes |[skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />[prov:Plan](http://www.w3.org/ns/prov#Plan) (c)<br />
 In range of |[requires](requires) (op)<br />
 ### Numbered Subclass
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/ra#NumberedSubclass`
+URI | `http://linked.data.gov.au/def/ra#NumberedSubclass`
 Description | <p>A numbered subclass is a finer-grained Record categorisation concept than an RA Class within a Records Authority. Numbeed Subclasses are idnetified in Records Authorities with an entry number and relate directly to Disposal Actions.</p>
 Super-classes |[skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />
 In domain of |[requires](requires) (op)<br />
 ### RA Class
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/ra#RaClass`
+URI | `http://linked.data.gov.au/def/ra#RaClass`
 Description | <p>An RA Class is a categorisation concept for collections of Records within a Records Authority. An RA class is equivalent to the CRS Ontology's Function records categorisation.</p>
 Super-classes |[skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />
 ### Records Authorty
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/ra#RecordsAuthority`
+URI | `http://linked.data.gov.au/def/ra#RecordsAuthority`
 Description | <p>A Records Authority is a document that identifies minimum retention periods for Records and authorises the destruction of Records as required by Section 24 of the Archives Act 1983.</p> <pre><code>                      A Records Authority individual, as represented in this ontology, contains a collection of RA Classes and Numbered Subclasses used to categorise Records in order for them to be assiged Disposal Actions. </code></pre>
 Super-classes |[owl:NamedIndividual](http://www.w3.org/2002/07/owl#NamedIndividual) (c)<br />[skos:ConceptScheme](http://www.w3.org/2004/02/skos/core#ConceptScheme) (c)<br />
 
@@ -82,7 +82,7 @@ Super-classes |[owl:NamedIndividual](http://www.w3.org/2002/07/owl#NamedIndividu
 ### requires
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/ra#requires`
+URI | `http://linked.data.gov.au/def/ra#requires`
 Description | A Numbered Subclass categorisation of a Record requires a particular Disposal Action assignment (categorisation) for that record.
 Usage Note | Many Numbered Subclasses map to a few Disposal Actions
 Domain(s) |[NumberedSubclass](NumberedSubclass) (c)<br />
@@ -90,8 +90,6 @@ Range(s) |[DisposalAction](DisposalAction) (c)<br />
 
 ## Named Individuals
 ## Namespaces
-* **default (:)**
-  * `http://linked.data.gov.au/def/ra#`
 * **:**
   * `http://linked.data.gov.au/def/ra#`
 * **agr**
@@ -112,8 +110,6 @@ Range(s) |[DisposalAction](DisposalAction) (c)<br />
   * `https://schema.org/`
 * **skos**
   * `http://www.w3.org/2004/02/skos/core#`
-* **xml**
-  * `http://www.w3.org/XML/1998/namespace`
 * **xsd**
   * `http://www.w3.org/2001/XMLSchema#`
 

@@ -1,9 +1,9 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
 
 # Alternates View Profile Schema
 
 ## Metadata
-* **IRI**
+* **URI**
   * `http://data.surroundaustralia.com/def/alternates`
 * **Creators(s)**
   * [Nicholas J. Car](https://orcid.org/0000-0002-8742-7730)
@@ -46,13 +46,13 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 ### View
 Property | Value
 --- | ---
-IRI | `http://data.surroundaustralia.com/def/alternates#View`
+URI | `http://data.surroundaustralia.com/def/alternates#View`
 Description | <p>A set of properties to show for a resource.</p>
 Usage Note | Use this class to represent a 'view' that of representations of a resource conform to.
 ### Media Type
 Property | Value
 --- | ---
-IRI | `http://purl.org/dc/terms/MediaType`
+URI | `http://purl.org/dc/terms/MediaType`
 Is Defined By | http://purl.org/dc/terms/
 Description | <p>A file format or physical medium.</p>
 Usage Note | Use this class to represent instances of Media Types as listed by IANA as the target values for dct:format.
@@ -66,19 +66,19 @@ In range of |[dct:format](http://purl.org/dc/terms/format)<br />
 ### hasDefaultFormat
 Property | Value
 --- | ---
-IRI | `http://data.surroundaustralia.com/def/alternates#hasDefaultFormat`
+URI | `http://data.surroundaustralia.com/def/alternates#hasDefaultFormat`
 Super-properties |[dct:format](http://purl.org/dc/terms/format)<br />
 [](hasDefaultView)
 ### hasDefaultView
 Property | Value
 --- | ---
-IRI | `http://data.surroundaustralia.com/def/alternates#hasDefaultView`
+URI | `http://data.surroundaustralia.com/def/alternates#hasDefaultView`
 Super-properties |[hasView](hasView) (op)<br />
 [](hasView)
 ### hasView
 Property | Value
 --- | ---
-IRI | `http://data.surroundaustralia.com/def/alternates#hasView`
+URI | `http://data.surroundaustralia.com/def/alternates#hasView`
 
 ## Properties
 [format](#format),
@@ -86,7 +86,7 @@ IRI | `http://data.surroundaustralia.com/def/alternates#hasView`
 ### format
 Property | Value
 --- | ---
-IRI | `http://purl.org/dc/terms/format`
+URI | `http://purl.org/dc/terms/format`
 Is Defined By | http://purl.org/dc/terms/
 Usage Note | Use this property to indicate a dct:MediaType
 Range(s) |[dct:MediaType](http://purl.org/dc/terms/MediaType) (c)<br />
@@ -95,12 +95,10 @@ Range(s) |[dct:MediaType](http://purl.org/dc/terms/MediaType) (c)<br />
 ### None <sup>c</sup>
 Property | Value
 --- | ---
-IRI | `https://surroundaustralia.com`
+URI | `https://surroundaustralia.com`
 * **Contributor(s)**
   * [sdo:Organization](https://schema.org/Organization)
 ## Namespaces
-* **default (:)**
-  * `http://data.surroundaustralia.com/def/alternates#`
 * **:**
   * `http://data.surroundaustralia.com/def/alternates#`
 * **dct**
@@ -119,8 +117,6 @@ IRI | `https://surroundaustralia.com`
   * `https://schema.org/`
 * **skos**
   * `http://www.w3.org/2004/02/skos/core#`
-* **xml**
-  * `http://www.w3.org/XML/1998/namespace`
 * **xsd**
   * `http://www.w3.org/2001/XMLSchema#`
 

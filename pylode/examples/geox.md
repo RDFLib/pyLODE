@@ -1,9 +1,9 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
 
 # GeoSPARQL Extensions Ontology
 
 ## Metadata
-* **IRI**
+* **URI**
   * `http://linked.data.gov.au/def/geox`
 * **Publisher(s)**
   * <a href='http://catalogue.linked.data.gov.au/org/csiro'>CSIRO</a>
@@ -16,7 +16,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
   * 2020-02-04
 * **Version Information**
   * Alpha version
-* **Version IRI**
+* **Version URI**
   * [http://linked.data.gov.au/def/geox/1.1](http://linked.data.gov.au/def/geox/1.1)
 * **Imports**
   * [http://linked.data.gov.au/def/datatype](http://linked.data.gov.au/def/datatype)
@@ -43,12 +43,12 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 ### Spatial measure
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geox#SpatialMeasure`
+URI | `http://linked.data.gov.au/def/geox#SpatialMeasure`
 Description | <p>Spatial quantity computed or defined within a specified coordinate reference system</p>
 Super-classes |[data:QuantitativeMeasure](http://linked.data.gov.au/def/datatype/QuantitativeMeasure) (c)<br />
 Restrictions |[geox:inCRS](InCoordinateReferenceSystem) (op) **exactly** 1<br />
 In domain of |[geox:inCRS](InCoordinateReferenceSystem) (op)<br />
-In range of |[geox:hasLength](haslength) (op)<br />[geox:hasArea](hasarea) (op)<br />[geox:hasVolume](hasvolume) (op)<br />
+In range of |[geox:hasLength](haslength) (op)<br />[geox:hasVolume](hasvolume) (op)<br />[geox:hasArea](hasarea) (op)<br />
 
 ## Object Properties
 [has area](#hasarea),
@@ -65,7 +65,7 @@ In range of |[geox:hasLength](haslength) (op)<br />[geox:hasArea](hasarea) (op)<
 ### has area
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geox#hasArea`
+URI | `http://linked.data.gov.au/def/geox#hasArea`
 Example | ````my:plot456`<br />`  :hasArea [`<br />`    data:uncertainty 0.5 ;`<br />`    data:unit <http://qudt.org/vocab/unit/M2> ;`<br />`    data:value 63.9 ;`<br />`  ] ;`<br />`.`<br />```
 Domain(s) |[geo:SpatialObject](http://www.opengis.net/ont/geosparql#SpatialObject) (c)<br />
 Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
@@ -73,14 +73,14 @@ Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
 ### has area in m2
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geox#hasAreaM2`
+URI | `http://linked.data.gov.au/def/geox#hasAreaM2`
 Example | ````my:plot456`<br />`  :hasAreaM2 [`<br />`    data:value 63.9 ;`<br />`  ] ;`<br />`.`<br />```
 Super-properties |[geox:hasArea](hasarea) (op)<br />
 [](haslength)
 ### has length
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geox#hasLength`
+URI | `http://linked.data.gov.au/def/geox#hasLength`
 Example | ````my:road456`<br />`  :hasLength [`<br />`    data:uncertainty 5.0 ;`<br />`    data:unit <http://qudt.org/vocab/unit/M> ;`<br />`    data:value 234.0 ;`<br />`  ] ;`<br />`.`<br />```
 Domain(s) |[geo:SpatialObject](http://www.opengis.net/ont/geosparql#SpatialObject) (c)<br />
 Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
@@ -88,14 +88,14 @@ Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
 ### has length in m
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geox#hasLengthM`
+URI | `http://linked.data.gov.au/def/geox#hasLengthM`
 Example | ````my:road456`<br />`  :hasLengthM [`<br />`    data:value 234.0 ;`<br />`  ] ;`<br />`.`<br />```
 Super-properties |[geox:hasLength](haslength) (op)<br />
 [](hasspatialresolution)
 ### has spatial resolution
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geox#hasResolution`
+URI | `http://linked.data.gov.au/def/geox#hasResolution`
 Example | ````my:image456`<br />`  :hasResolution [`<br />`    data:unit <http://qudt.org/vocab/unit/M> ;`<br />`    data:value 30.0 ;`<br />`  ] ;`<br />`.`<br />```
 Domain(s) |[geo:Geometry](http://www.opengis.net/ont/geosparql#Geometry) (c)<br />
 Range(s) |[data:QuantitativeMeasure](http://linked.data.gov.au/def/datatype/QuantitativeMeasure) (c)<br />
@@ -103,7 +103,7 @@ Range(s) |[data:QuantitativeMeasure](http://linked.data.gov.au/def/datatype/Quan
 ### has spatial resolution in metres
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geox#hasResolutionM`
+URI | `http://linked.data.gov.au/def/geox#hasResolutionM`
 Example | ````my:image456`<br />`  :hasResolutionM [`<br />`    data:value 30.0 ;`<br />`  ] ;`<br />`.`<br />```
 Super-properties |[geox:hasResolution](hasspatialresolution) (op)<br />
 Domain(s) |[geo:Geometry](http://www.opengis.net/ont/geosparql#Geometry) (c)<br />
@@ -111,7 +111,7 @@ Domain(s) |[geo:Geometry](http://www.opengis.net/ont/geosparql#Geometry) (c)<br 
 ### has volume
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geox#hasVolume`
+URI | `http://linked.data.gov.au/def/geox#hasVolume`
 Example | ````my:swimmingPool99`<br />`  :hasVolume [`<br />`    data:unit <http://qudt.org/vocab/unit/M3> ;`<br />`    data:value 3050.0 ;`<br />`  ] ;`<br />`.`<br />```
 Domain(s) |[geo:SpatialObject](http://www.opengis.net/ont/geosparql#SpatialObject) (c)<br />
 Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
@@ -119,27 +119,25 @@ Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
 ### has volume in m3
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geox#hasVolumeM3`
+URI | `http://linked.data.gov.au/def/geox#hasVolumeM3`
 Example | ````my:swimmingPool99`<br />`  :hasVolumeM3 [`<br />`    data:value 3050.0 ;`<br />`  ] ;`<br />`.`<br />```
 Super-properties |[geox:hasVolume](hasvolume) (op)<br />
 [](InCoordinateReferenceSystem)
 ### In Coordinate Reference System
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geox#inCRS`
+URI | `http://linked.data.gov.au/def/geox#inCRS`
 Domain(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
 [](isgeometryof)
 ### is geometry of
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geox#isGeometryOf`
+URI | `http://linked.data.gov.au/def/geox#isGeometryOf`
 Domain(s) |[geo:Geometry](http://www.opengis.net/ont/geosparql#Geometry) (c)<br />
 Range(s) |[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
 
 ## Named Individuals
 ## Namespaces
-* **default (:)**
-  * `http://linked.data.gov.au/def/geox#`
 * **data**
   * `http://linked.data.gov.au/def/datatype/`
 * **dc**
@@ -168,8 +166,6 @@ Range(s) |[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
   * `http://www.w3.org/2004/02/skos/core#`
 * **sosa**
   * `http://www.w3.org/ns/sosa/`
-* **xml**
-  * `http://www.w3.org/XML/1998/namespace`
 * **xsd**
   * `http://www.w3.org/2001/XMLSchema#`
 

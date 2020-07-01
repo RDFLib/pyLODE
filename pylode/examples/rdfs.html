@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -200,13 +205,13 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>The RDF Schema vocabulary (RDFS)</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
         <dt>Ontology RDF</dt>
         <dd><a href="rdfs.ttl">RDF (turtle)</a></dd>
@@ -242,7 +247,7 @@
         <h3>Class<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#Class</code></td>
             </tr>
             <tr>
@@ -278,9 +283,9 @@
             <tr>
                 <th>In range of</th>
                 <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#range">rdfs:range</a><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#domain">rdfs:domain</a><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#subClassOf">rdfs:subClassOf</a><br/>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#range">rdfs:range</a><br/>
                 </td>
             </tr>
         </table>
@@ -289,7 +294,7 @@
         <h3>Container<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#Container</code></td>
             </tr>
             <tr>
@@ -316,7 +321,7 @@
         <h3>ContainerMembershipProperty<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#ContainerMembershipProperty</code></td>
             </tr>
             <tr>
@@ -344,7 +349,7 @@
         <h3>Datatype<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#Datatype</code></td>
             </tr>
             <tr>
@@ -371,7 +376,7 @@
         <h3>Literal<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#Literal</code></td>
             </tr>
             <tr>
@@ -395,8 +400,8 @@
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a><br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a><br/>
                 </td>
             </tr>
         </table>
@@ -405,7 +410,7 @@
         <h3>Resource<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#Resource</code></td>
             </tr>
             <tr>
@@ -424,8 +429,8 @@
                 <th>Sub-classes</th>
                 <td>
                     <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#Container">rdfs:Container</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -433,16 +438,16 @@
                 <td>
                     <a href="http://www.w3.org/2000/01/rdf-schema#member">rdfs:member</a><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#seeAlso">rdfs:seeAlso</a><br/>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy">rdfs:isDefinedBy</a><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a><br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#seeAlso">rdfs:seeAlso</a><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#member">rdfs:member</a><br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#seeAlso">rdfs:seeAlso</a><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy">rdfs:isDefinedBy</a><br/>
                 </td>
             </tr>
@@ -466,7 +471,7 @@
         <h3>comment<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#comment</code></td>
             </tr>
             <tr>
@@ -499,7 +504,7 @@
         <h3>domain<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#domain</code></td>
             </tr>
             <tr>
@@ -532,7 +537,7 @@
         <h3>isDefinedBy<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#isDefinedBy</code></td>
             </tr>
             <tr>
@@ -571,7 +576,7 @@
         <h3>label<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#label</code></td>
             </tr>
             <tr>
@@ -604,7 +609,7 @@
         <h3>member<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#member</code></td>
             </tr>
             <tr>
@@ -637,7 +642,7 @@
         <h3>range<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#range</code></td>
             </tr>
             <tr>
@@ -670,7 +675,7 @@
         <h3>seeAlso<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#seeAlso</code></td>
             </tr>
             <tr>
@@ -703,7 +708,7 @@
         <h3>subClassOf<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#subClassOf</code></td>
             </tr>
             <tr>
@@ -736,7 +741,7 @@
         <h3>subPropertyOf<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2000/01/rdf-schema#subPropertyOf</code></td>
             </tr>
             <tr>
@@ -791,8 +796,6 @@
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

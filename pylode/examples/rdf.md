@@ -1,9 +1,9 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
 
 # The RDF Concepts Vocabulary (RDF)
 
 ## Metadata
-* **IRI**
+* **URI**
   * `http://www.w3.org/1999/02/22-rdf-syntax-ns#`
 * **Ontology RDF**
   * RDF ([rdf.ttl](turtle))
@@ -30,21 +30,21 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 ### Alt
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt`
+URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | <p>The class of containers of alternatives.</p>
 Super-classes |[rdfs:Container](http://www.w3.org/2000/01/rdf-schema#Container) (c)<br />
 ### Bag
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag`
+URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | <p>The class of unordered containers.</p>
 Super-classes |[rdfs:Container](http://www.w3.org/2000/01/rdf-schema#Container) (c)<br />
 ### List
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#List`
+URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#List`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | <p>The class of RDF Lists.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -53,25 +53,25 @@ In range of |[rdf:rest](http://www.w3.org/1999/02/22-rdf-syntax-ns#rest)<br />
 ### Property
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#Property`
+URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#Property`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | <p>The class of RDF properties.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
 ### Seq
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq`
+URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | <p>The class of ordered containers.</p>
 Super-classes |[rdfs:Container](http://www.w3.org/2000/01/rdf-schema#Container) (c)<br />
 ### Statement
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement`
+URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | <p>The class of RDF statements.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
-In domain of |[rdf:subject](http://www.w3.org/1999/02/22-rdf-syntax-ns#subject)<br />[rdf:predicate](http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate)<br />[rdf:object](http://www.w3.org/1999/02/22-rdf-syntax-ns#object)<br />
+In domain of |[rdf:subject](http://www.w3.org/1999/02/22-rdf-syntax-ns#subject)<br />[rdf:object](http://www.w3.org/1999/02/22-rdf-syntax-ns#object)<br />[rdf:predicate](http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate)<br />
 
 ## Properties
 [first](#first),
@@ -85,7 +85,7 @@ In domain of |[rdf:subject](http://www.w3.org/1999/02/22-rdf-syntax-ns#subject)<
 ### first
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#first`
+URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#first`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | The first item in the subject RDF list.
 Domain(s) |[rdf:List](http://www.w3.org/1999/02/22-rdf-syntax-ns#List) (c)<br />
@@ -94,7 +94,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### object
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#object`
+URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#object`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | The object of the subject RDF statement.
 Domain(s) |[rdf:Statement](http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement) (c)<br />
@@ -103,7 +103,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### predicate
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate`
+URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | The predicate of the subject RDF statement.
 Domain(s) |[rdf:Statement](http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement) (c)<br />
@@ -112,7 +112,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### rest
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#rest`
+URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#rest`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | The rest of the subject RDF list after the first item.
 Domain(s) |[rdf:List](http://www.w3.org/1999/02/22-rdf-syntax-ns#List) (c)<br />
@@ -121,7 +121,7 @@ Range(s) |[rdf:List](http://www.w3.org/1999/02/22-rdf-syntax-ns#List) (c)<br />
 ### subject
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#subject`
+URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#subject`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | The subject of the subject RDF statement.
 Domain(s) |[rdf:Statement](http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement) (c)<br />
@@ -130,7 +130,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### type
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#type`
+URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#type`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | The subject is an instance of a class.
 Domain(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -139,7 +139,7 @@ Range(s) |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
 ### value
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#value`
+URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#value`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | Idiomatic property used for structured values.
 Domain(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -161,8 +161,6 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
   * `https://schema.org/`
 * **skos**
   * `http://www.w3.org/2004/02/skos/core#`
-* **xml**
-  * `http://www.w3.org/XML/1998/namespace`
 * **xsd**
   * `http://www.w3.org/2001/XMLSchema#`
 

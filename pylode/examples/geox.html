@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -210,30 +215,30 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>GeoSPARQL Extensions Ontology</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://linked.data.gov.au/def/geox</code></dd>
-        <dt>Publisher(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher">Publisher</a>(s)</dt>
         <dd>
             <a href='http://catalogue.linked.data.gov.au/org/csiro'>CSIRO</a><br/>
         </dd>
-        <dt>Creator(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
         <dd>
             <a href='https://orcid.org/0000-0002-3884-3420'>Simon J D Cox, CSIRO</a><br/>
             <a href='https://orcid.org/0000-0002-8742-7730'>Nicholas J Car, Surround Australia</a><br/>
         </dd>
-        <dt>Created</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/created">Created</a></dt>
         <dd>2019-01-08</dd>
-        <dt>Modified</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
         <dd>2020-02-04</dd>
         <dt>Version Information</dt>
         <dd>Alpha version</dd>
-        <dt>Version IRI</dt>
+        <dt>Version URI</dt>
         <dd><a href="http://linked.data.gov.au/def/geox/1.1">http://linked.data.gov.au/def/geox/1.1</a></dd>
         <dt>Imports</dt>
         <dd>
@@ -275,7 +280,7 @@
         <h3>Spatial measure<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/geox#SpatialMeasure</code></td>
             </tr>
             <tr>
@@ -331,7 +336,7 @@
         <h3>has area<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/geox#hasArea</code></td>
             </tr>
             <tr>
@@ -366,7 +371,7 @@
         <h3>has area in m2<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/geox#hasAreaM2</code></td>
             </tr>
             <tr>
@@ -393,7 +398,7 @@
         <h3>has length<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/geox#hasLength</code></td>
             </tr>
             <tr>
@@ -428,7 +433,7 @@
         <h3>has length in m<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/geox#hasLengthM</code></td>
             </tr>
             <tr>
@@ -455,7 +460,7 @@
         <h3>has spatial resolution<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/geox#hasResolution</code></td>
             </tr>
             <tr>
@@ -489,7 +494,7 @@
         <h3>has spatial resolution in metres<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/geox#hasResolutionM</code></td>
             </tr>
             <tr>
@@ -522,7 +527,7 @@
         <h3>has volume<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/geox#hasVolume</code></td>
             </tr>
             <tr>
@@ -556,7 +561,7 @@
         <h3>has volume in m3<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/geox#hasVolumeM3</code></td>
             </tr>
             <tr>
@@ -583,7 +588,7 @@
         <h3>In Coordinate Reference System<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/geox#inCRS</code></td>
             </tr>
             <tr>
@@ -598,7 +603,7 @@
         <h3>is geometry of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/geox#isGeometryOf</code></td>
             </tr>
             <tr>
@@ -633,8 +638,6 @@
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://linked.data.gov.au/def/geox#</code></dd>
         <dt>data</dt>
         <dd><code>http://linked.data.gov.au/def/datatype/</code></dd>
         <dt>dc</dt>
@@ -663,8 +666,6 @@
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
         <dt>sosa</dt>
         <dd><code>http://www.w3.org/ns/sosa/</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

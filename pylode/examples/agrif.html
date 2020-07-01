@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -205,7 +210,7 @@
     ],
     "https://schema.org/rights": [
       {
-        "@value": "(c) Commonwealth of Australia (Department of Finance) 2019"
+        "@value": "&copy; Commonwealth of Australia (Department of Finance) 2019"
       }
     ]
   }
@@ -215,20 +220,20 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>The Australian Government Records Interoperability Framework (AGRIF) ontology</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://linked.data.gov.au/def/agrif</code></dd>
-        <dt>Publisher(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher">Publisher</a>(s)</dt>
         <dd>
             
     <a href="http://linked.data.gov.au/org/finance">Department of Finance</a><br/>
         </dd>
-        <dt>Creator(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
         <dd>
             
     <a href="http://orcid.org/0000-0003-3425-0780">Armin Haller</a>
@@ -260,7 +265,7 @@
     Katherine Stuart of 
     <a href="https://www.finance.gov.au">Department of Finance</a><br/>
         </dd>
-        <dt>Contributors(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/contributor">Contributor</a>(s)</dt>
         <dd>
             
     <a href="http://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a>
@@ -288,16 +293,18 @@
             Pouya Ghiasnezhad Omran<br/>
             Sergio José Rodríguez Méndez<br/>
         </dd>
-        <dt>Created</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/created">Created</a></dt>
         <dd>2016-12-06</dd>
-        <dt>Modified</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
         <dd>2019-10-21</dd>
         <dt>Version Information</dt>
         <dd>0.9</dd>
+        <dt>Version URI</dt>
+        <dd><a href="http://linked.data.gov.au/def/agrif/0.9">http://linked.data.gov.au/def/agrif/0.9</a></dd>
         <dt>License &amp; Rights</dt>
         <dd>
             <a href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a><br />
-            (c) Commonwealth of Australia (Department of Finance) 2019
+            &copy; Commonwealth of Australia (Department of Finance) 2019
         </dd>
         <dt>Ontology RDF</dt>
         <dd><a href="agrif.ttl">RDF (turtle)</a></dd>
@@ -408,7 +415,7 @@
         <h3>AGIFT Function<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#AGIFTFunction</code></td>
             </tr>
             <tr>
@@ -435,7 +442,7 @@
         <h3>Access Activity<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#AccessActivity</code></td>
             </tr>
             <tr>
@@ -463,7 +470,7 @@
         <h3>Access Control<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#AccessControl</code></td>
             </tr>
             <tr>
@@ -490,7 +497,7 @@
         <h3>Access Trigger<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#AccessTrigger</code></td>
             </tr>
             <tr>
@@ -511,7 +518,7 @@
         <h3>Activity<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Activity</code></td>
             </tr>
             <tr>
@@ -529,23 +536,23 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#guidingPolicy">guidingPolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#endedAtTime">endedAtTime</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#hasLocation">hasLocation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SpatialLocation">SpatialLocation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#startedAtTime">startedAtTime</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#wasAssociatedWith">wasAssociatedWith</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#requiresSecurityClassification">requiresSecurityClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SecurityClassification">SecurityClassification</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasLocation">hasLocation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SpatialLocation">SpatialLocation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#usedRecord">usedRecord</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#endedAtTime">endedAtTime</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#guidingPolicy">guidingPolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#AccessActivity">AccessActivity</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#MaintainActivity">MaintainActivity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AccessActivity">AccessActivity</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#ShareActivity">ShareActivity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -555,7 +562,7 @@
         <h3>Administrator<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Administrator</code></td>
             </tr>
             <tr>
@@ -576,7 +583,7 @@
         <h3>Agent<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Agent</code></td>
             </tr>
             <tr>
@@ -595,8 +602,8 @@
                 <th>Restrictions</th>
                 <td>
                     <a href="#positionIn">positionIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Organisation">Organisation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#actsAs">actsAs</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasPermission">hasPermission</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#SecurityClearance">Permission</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#actsAs">actsAs</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -612,7 +619,7 @@
         <h3>Artefact<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Artefact</code></td>
             </tr>
             <tr>
@@ -624,14 +631,14 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#relatedTo">relatedTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasQuality">hasQuality</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#PreservationQuality">PreservationQuality</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#storedIn">storedIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#IntellectualControlSystem">IntellectualControlSystem</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasLocation">hasLocation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SpatialLocation">SpatialLocation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#requiresSecurityClassification">requiresSecurityClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SecurityClassification">SecurityClassification</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#isAffectedBy">isAffectedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Event">Event</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasLocation">hasLocation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SpatialLocation">SpatialLocation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#storedIn">storedIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#IntellectualControlSystem">IntellectualControlSystem</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasQuality">hasQuality</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#PreservationQuality">PreservationQuality</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#isChangedBy">isChangedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#InformationSystem">InformationSystem</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#relatedTo">relatedTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#softwareAssignedID">softwareAssignedID</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#isChangedBy">isChangedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#InformationSystem">InformationSystem</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -647,7 +654,7 @@
         <h3>Artefact Change Event<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#ArtefactChangeEvent</code></td>
             </tr>
             <tr>
@@ -680,7 +687,7 @@
         <h3>Artefact Control Event<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#ArtefactControlEvent</code></td>
             </tr>
             <tr>
@@ -704,8 +711,8 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#ArtefactShareEvent">ArtefactShareEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#ArtefactPublishEvent">ArtefactPublishEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ArtefactShareEvent">ArtefactShareEvent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -714,7 +721,7 @@
         <h3>Artefact Publish Event<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#ArtefactPublishEvent</code></td>
             </tr>
             <tr>
@@ -735,7 +742,7 @@
         <h3>Artefact Send Event<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#ArtefactSendEvent</code></td>
             </tr>
             <tr>
@@ -763,7 +770,7 @@
         <h3>Artefact Share Event<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#ArtefactShareEvent</code></td>
             </tr>
             <tr>
@@ -791,7 +798,7 @@
         <h3>Association<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Association</code></td>
             </tr>
             <tr>
@@ -809,8 +816,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#associatedRole">associatedRole</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasAgent">hasAgent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#associatedRole">associatedRole</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -819,7 +826,7 @@
         <h3>Business Owner<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#BusinessOwner</code></td>
             </tr>
             <tr>
@@ -840,7 +847,7 @@
         <h3>Classifier<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Classifier</code></td>
             </tr>
             <tr>
@@ -861,7 +868,7 @@
         <h3>Collection<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Collection</code></td>
             </tr>
             <tr>
@@ -879,8 +886,8 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#PhysicalCollection">PhysicalCollection</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#LogicalCollection">LogicalCollection</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#PhysicalCollection">PhysicalCollection</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -889,7 +896,7 @@
         <h3>Control<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Control</code></td>
             </tr>
             <tr>
@@ -901,8 +908,8 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#AccessControl">AccessControl</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#SecurityControl">SecurityControl</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AccessControl">AccessControl</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -911,7 +918,7 @@
         <h3>Controlled Vocabulary<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#ControlledVocabulary</code></td>
             </tr>
             <tr>
@@ -938,7 +945,7 @@
         <h3>Coverage<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Coverage</code></td>
             </tr>
             <tr>
@@ -950,8 +957,8 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#JurisdictionalCoverage">JurisdictionalCoverage</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#SpatialCoverage">SpatialCoverage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#JurisdictionalCoverage">JurisdictionalCoverage</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#TemporalCoverage">TemporalCoverage</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -961,7 +968,7 @@
         <h3>Record Creation Event<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#CreationEvent</code></td>
             </tr>
             <tr>
@@ -982,7 +989,7 @@
         <h3>Creator<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Creator</code></td>
             </tr>
             <tr>
@@ -1003,7 +1010,7 @@
         <h3>Decision Status<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#DecisionStatus</code></td>
             </tr>
             <tr>
@@ -1024,7 +1031,7 @@
         <h3>Digital Artefact<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#DigitalArtefact</code></td>
             </tr>
             <tr>
@@ -1042,10 +1049,10 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#filename">filename</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#format">format</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#filesize">filesize</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#long">xsd:long</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#storedIn">storedIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#InformationSystem">InformationSystem</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#format">format</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#filename">filename</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1054,7 +1061,7 @@
         <h3>Digital Holding Space<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#DigitalHoldingSpace</code></td>
             </tr>
             <tr>
@@ -1075,7 +1082,7 @@
         <h3>Digital Preservation Policy<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#DigitalPreservationPolicy</code></td>
             </tr>
             <tr>
@@ -1096,7 +1103,7 @@
         <h3>Disposal Class<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#DisposalClass</code></td>
             </tr>
             <tr>
@@ -1123,7 +1130,7 @@
         <h3>Event<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Event</code></td>
             </tr>
             <tr>
@@ -1141,11 +1148,11 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#guidingPolicy">guidingPolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#affects">affects</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> (<a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup> or <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup>)<br/>
-                    <a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#wasAssociatedWith">wasAssociatedWith</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#guidingPolicy">guidingPolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#priorEvent">priorEvent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Event">Event</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#triggeredBy">triggeredBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Trigger">Trigger</a><sup class="sup-c" title="class">c</sup><br/>
@@ -1154,10 +1161,10 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#RecordControlEvent">RecordControlEvent</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#ArtefactChangeEvent">ArtefactChangeEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#RecordCreationEvent">CreationEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#RecordControlEvent">RecordControlEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#ArtefactControlEvent">ArtefactControlEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ArtefactChangeEvent">ArtefactChangeEvent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1166,7 +1173,7 @@
         <h3>Form Factor<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#FormFactor</code></td>
             </tr>
             <tr>
@@ -1181,13 +1188,13 @@
         <h3>Function<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Function</code></td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>A Function is a process that is performed routinely to carry out a part of the mandate of an Australian Government Agency.</p>
+                    <p>A Function reflects the responsibilities of an Organisation that can be delegated through official channels. [Commonwealth Records Series Manual]</p>
                 </td>
             </tr>
             <tr>
@@ -1199,8 +1206,8 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#AGIFTFunction">AGIFTFunction</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#RecordsAuthorityFunction">RecordsAuthorityFunction</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AGIFTFunction">AGIFTFunction</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1209,7 +1216,7 @@
         <h3>Holding Space<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#HoldingSpace</code></td>
             </tr>
             <tr>
@@ -1237,7 +1244,7 @@
         <h3>Information Management Policy<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#InformationManagementPolicy</code></td>
             </tr>
             <tr>
@@ -1264,7 +1271,7 @@
         <h3>Information System<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#InformationSystem</code></td>
             </tr>
             <tr>
@@ -1285,7 +1292,7 @@
         <h3>Intellectual Control System<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#IntellectualControlSystem</code></td>
             </tr>
             <tr>
@@ -1319,7 +1326,7 @@
         <h3>Jurisdictional Coverage<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#JurisdictionalCoverage</code></td>
             </tr>
             <tr>
@@ -1340,7 +1347,7 @@
         <h3>Logical Collection<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#LogicalCollection</code></td>
             </tr>
             <tr>
@@ -1361,7 +1368,7 @@
         <h3>Maintain Activity<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#MaintainActivity</code></td>
             </tr>
             <tr>
@@ -1388,7 +1395,7 @@
         <h3>Manifest<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Manifest</code></td>
             </tr>
             <tr>
@@ -1409,7 +1416,7 @@
         <h3>Minimum Metadata Set Policy<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#MinimumMetadataSetPolicy</code></td>
             </tr>
             <tr>
@@ -1430,7 +1437,7 @@
         <h3>Organisation<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Organisation</code></td>
             </tr>
             <tr>
@@ -1469,7 +1476,7 @@
         <h3>Organisational Unit<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#OrganisationalUnit</code></td>
             </tr>
             <tr>
@@ -1496,7 +1503,7 @@
         <h3>Security Clearance<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Permission</code></td>
             </tr>
             <tr>
@@ -1517,7 +1524,7 @@
         <h3>Person<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Person</code></td>
             </tr>
             <tr>
@@ -1544,7 +1551,7 @@
         <h3>Physical Artefact<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#PhysicalArtefact</code></td>
             </tr>
             <tr>
@@ -1579,7 +1586,7 @@
         <h3>Physical Collection<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#PhysicalCollection</code></td>
             </tr>
             <tr>
@@ -1600,7 +1607,7 @@
         <h3>Physical Holding Space<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#PhysicalHoldingSpace</code></td>
             </tr>
             <tr>
@@ -1621,7 +1628,7 @@
         <h3>Policy<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Policy</code></td>
             </tr>
             <tr>
@@ -1640,9 +1647,9 @@
                 <th>Sub-classes</th>
                 <td>
                     <a href="#InformationManagementPolicy">InformationManagementPolicy</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#RecordStorageStandard">RecordStorageStandard</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#RecordsAuthorityDisposalClassPolicy">RecordsAuthorityPolicy</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#MinimumMetadataSetPolicy">MinimumMetadataSetPolicy</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#RecordStorageStandard">RecordStorageStandard</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#DigitalPreservationPolicy">DigitalPreservationPolicy</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -1652,7 +1659,7 @@
         <h3>Preservation Quality<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#PreservationQuality</code></td>
             </tr>
             <tr>
@@ -1673,7 +1680,7 @@
         <h3>Quality<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Quality</code></td>
             </tr>
             <tr>
@@ -1694,7 +1701,7 @@
         <h3>Record<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Record</code></td>
             </tr>
             <tr>
@@ -1706,22 +1713,22 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasSeries">hasSeries</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Series">Series</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasCoverage">hasCoverage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Coverage">Coverage</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#replaces">replaces</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#isAffectedBy">isAffectedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#RecordCreationEvent">CreationEvent</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#relatedTo">relatedTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#requiresControl">hasControl</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Control">Control</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#checksum">checksum</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="#isAffectedBy">isAffectedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Event">Event</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasClassifier">hasClassifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Classifier">Classifier</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#recordOf">recordOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasDisposalClass">hasDisposalClass</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#DisposalClass">DisposalClass</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasActivity">hasActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Activity">Activity</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#requiresControl">hasControl</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Control">Control</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasActivity">hasActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Activity">Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasCoverage">hasCoverage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Coverage">Coverage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#isAffectedBy">isAffectedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#RecordCreationEvent">CreationEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#recordOf">recordOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#requiresSecurityClassification">requiresSecurityClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SecurityClassification">SecurityClassification</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#relatedTo">relatedTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#replaces">replaces</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasSeries">hasSeries</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Series">Series</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasClassifier">hasClassifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Classifier">Classifier</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#isAffectedBy">isAffectedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Event">Event</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasDisposalClass">hasDisposalClass</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#DisposalClass">DisposalClass</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#checksum">checksum</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
                 </td>
             </tr>
         </table>
@@ -1730,7 +1737,7 @@
         <h3>Record Audit Event<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#RecordAuditEvent</code></td>
             </tr>
             <tr>
@@ -1751,7 +1758,7 @@
         <h3>Record Control Event<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#RecordControlEvent</code></td>
             </tr>
             <tr>
@@ -1775,11 +1782,11 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
+                    <a href="#RecordReplacementEvent">RecordReplacementEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#RecordSentencingEvent">RecordSentencingEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#RecordDisposalEvent">RecordDisposalEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#RecordDecisionEvent">RecordDecisionEvent</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#RecordReplacementEvent">RecordReplacementEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#RecordAuditEvent">RecordAuditEvent</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#RecordSentencingEvent">RecordSentencingEvent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1788,7 +1795,7 @@
         <h3>Record Decision Event<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#RecordDecisionEvent</code></td>
             </tr>
             <tr>
@@ -1806,8 +1813,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#prerequisiteDecisionEvent">hasPrerequisiteDecisionEvent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#RecordDecisionEvent">RecordDecisionEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasDecisionStatus">hasDecisionStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#DecisionStatus">DecisionStatus</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#prerequisiteDecisionEvent">hasPrerequisiteDecisionEvent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#RecordDecisionEvent">RecordDecisionEvent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1816,7 +1823,7 @@
         <h3>Record Destruction Event<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#RecordDestructionEvent</code></td>
             </tr>
             <tr>
@@ -1837,7 +1844,7 @@
         <h3>Record Disposal Event<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#RecordDisposalEvent</code></td>
             </tr>
             <tr>
@@ -1855,9 +1862,9 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#RecordDestructionEvent">RecordDestructionEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#RecordFreezeEvent">RecordFreezeEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#RecordTransferEvent">RecordTransferEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#RecordDestructionEvent">RecordDestructionEvent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1866,7 +1873,7 @@
         <h3>Record Freeze Event<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#RecordFreezeEvent</code></td>
             </tr>
             <tr>
@@ -1887,7 +1894,7 @@
         <h3>Record Replacement Event<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#RecordReplacementEvent</code></td>
             </tr>
             <tr>
@@ -1915,7 +1922,7 @@
         <h3>Record Sentencing Event<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#RecordSentencingEvent</code></td>
             </tr>
             <tr>
@@ -1936,7 +1943,7 @@
         <h3>Record Storage Standard<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#RecordStorageStandard</code></td>
             </tr>
             <tr>
@@ -1957,7 +1964,7 @@
         <h3>Record Transfer Event<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#RecordTransferEvent</code></td>
             </tr>
             <tr>
@@ -1984,8 +1991,8 @@
                 <th>Restrictions</th>
                 <td>
                     <a href="#hasManifest">hasManifest</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Manifest">Manifest</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#transferredTo">transferredTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#transferredFrom">transferredFrom</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#transferredTo">transferredTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1994,7 +2001,7 @@
         <h3>Records Authority Function<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#RecordsAuthorityFunction</code></td>
             </tr>
             <tr>
@@ -2015,7 +2022,7 @@
         <h3>Records Authority Disposal Class Policy<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#RecordsAuthorityPolicy</code></td>
             </tr>
             <tr>
@@ -2054,7 +2061,7 @@
         <h3>Role<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Role</code></td>
             </tr>
             <tr>
@@ -2078,10 +2085,10 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#User">User</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#BusinessOwner">BusinessOwner</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Creator">Creator</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Administrator">Administrator</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#User">User</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Creator">Creator</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -2090,7 +2097,7 @@
         <h3>Security Classification<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#SecurityClassification</code></td>
             </tr>
             <tr>
@@ -2117,7 +2124,7 @@
         <h3>Security Control<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#SecurityControl</code></td>
             </tr>
             <tr>
@@ -2138,7 +2145,7 @@
         <h3>Series<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Series</code></td>
             </tr>
             <tr>
@@ -2165,7 +2172,7 @@
         <h3>Share Activity<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#ShareActivity</code></td>
             </tr>
             <tr>
@@ -2192,7 +2199,7 @@
         <h3>Spatial Coverage<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#SpatialCoverage</code></td>
             </tr>
             <tr>
@@ -2213,7 +2220,7 @@
         <h3>Spatial Location<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#SpatialLocation</code></td>
             </tr>
             <tr>
@@ -2234,7 +2241,7 @@
         <h3>Status<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Status</code></td>
             </tr>
             <tr>
@@ -2255,7 +2262,7 @@
         <h3>Temporal Coverage<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#TemporalCoverage</code></td>
             </tr>
             <tr>
@@ -2276,7 +2283,7 @@
         <h3>Trigger<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#Trigger</code></td>
             </tr>
             <tr>
@@ -2303,7 +2310,7 @@
         <h3>User<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#User</code></td>
             </tr>
             <tr>
@@ -2324,7 +2331,7 @@
         <h3>Version History<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#VersionHistory</code></td>
             </tr>
             <tr>
@@ -2396,7 +2403,7 @@
         <h3>accessed By<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#accessedBy</code></td>
             </tr>
             <tr>
@@ -2417,7 +2424,7 @@
         <h3>acts As<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#actsAs</code></td>
             </tr>
             <tr>
@@ -2432,7 +2439,7 @@
         <h3>affects<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#affects</code></td>
             </tr>
             <tr>
@@ -2453,7 +2460,7 @@
         <h3>associated Function<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#associatedFunction</code></td>
             </tr>
             <tr>
@@ -2468,7 +2475,7 @@
         <h3>associated Role<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#associatedRole</code></td>
             </tr>
             <tr>
@@ -2489,7 +2496,7 @@
         <h3>guiding Policy<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#guidingPolicy</code></td>
             </tr>
             <tr>
@@ -2504,7 +2511,7 @@
         <h3>has Activity<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasActivity</code></td>
             </tr>
             <tr>
@@ -2531,7 +2538,7 @@
         <h3>has Agent<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasAgent</code></td>
             </tr>
             <tr>
@@ -2552,7 +2559,7 @@
         <h3>has Classifier<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasClassifier</code></td>
             </tr>
             <tr>
@@ -2567,7 +2574,7 @@
         <h3>requires Control<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasControl</code></td>
             </tr>
             <tr>
@@ -2582,7 +2589,7 @@
         <h3>has Coverage<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasCoverage</code></td>
             </tr>
             <tr>
@@ -2597,7 +2604,7 @@
         <h3>has Decision Status<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasDecisionStatus</code></td>
             </tr>
             <tr>
@@ -2612,7 +2619,7 @@
         <h3>has Disposal Class<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasDisposalClass</code></td>
             </tr>
             <tr>
@@ -2627,7 +2634,7 @@
         <h3>has Form Factor<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasFormFactor</code></td>
             </tr>
             <tr>
@@ -2642,7 +2649,7 @@
         <h3>has Location<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasLocation</code></td>
             </tr>
             <tr>
@@ -2657,7 +2664,7 @@
         <h3>has Manifest<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasManifest</code></td>
             </tr>
             <tr>
@@ -2672,7 +2679,7 @@
         <h3>has Next Version<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasNextVersion</code></td>
             </tr>
             <tr>
@@ -2699,7 +2706,7 @@
         <h3>has Part<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasPart</code></td>
             </tr>
             <tr>
@@ -2720,7 +2727,7 @@
         <h3>has Permission<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasPermission</code></td>
             </tr>
             <tr>
@@ -2735,7 +2742,7 @@
         <h3>prerequisite Decision Event<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasPrerequisiteDecisionEvent</code></td>
             </tr>
             <tr>
@@ -2756,7 +2763,7 @@
         <h3>has Previous Version<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasPreviousVersion</code></td>
             </tr>
             <tr>
@@ -2777,7 +2784,7 @@
         <h3>has Quality<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasQuality</code></td>
             </tr>
             <tr>
@@ -2792,7 +2799,7 @@
         <h3>has Series<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasSeries</code></td>
             </tr>
             <tr>
@@ -2813,7 +2820,7 @@
         <h3>has Source Agent<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasSourceAgent</code></td>
             </tr>
             <tr>
@@ -2834,7 +2841,7 @@
         <h3>has Status<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasStatus</code></td>
             </tr>
             <tr>
@@ -2849,7 +2856,7 @@
         <h3>has Target Agent<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasTargetAgent</code></td>
             </tr>
             <tr>
@@ -2870,7 +2877,7 @@
         <h3>has Version History<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#hasVersionHistory</code></td>
             </tr>
             <tr>
@@ -2885,7 +2892,7 @@
         <h3>is Affected By<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#isAffectedBy</code></td>
             </tr>
             <tr>
@@ -2906,7 +2913,7 @@
         <h3>is Attached To<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#isAttachedTo</code></td>
             </tr>
             <tr>
@@ -2927,7 +2934,7 @@
         <h3>is Based On<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#isBasedOn</code></td>
             </tr>
             <tr>
@@ -2948,7 +2955,7 @@
         <h3>is Changed By<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#isChangedBy</code></td>
             </tr>
             <tr>
@@ -2963,7 +2970,7 @@
         <h3>is Duplicate Of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#isDuplicateOf</code></td>
             </tr>
             <tr>
@@ -2984,7 +2991,7 @@
         <h3>is Mentioned In<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#isMentionedIn</code></td>
             </tr>
             <tr>
@@ -3005,7 +3012,7 @@
         <h3>is Part Of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#isPartOf</code></td>
             </tr>
             <tr>
@@ -3020,7 +3027,7 @@
         <h3>notifies<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#notifies</code></td>
             </tr>
             <tr>
@@ -3035,7 +3042,7 @@
         <h3>part Of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#partOf</code></td>
             </tr>
             <tr>
@@ -3050,7 +3057,7 @@
         <h3>position In<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#positionIn</code></td>
             </tr>
             <tr>
@@ -3065,7 +3072,7 @@
         <h3>prior Event<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#priorEvent</code></td>
             </tr>
             <tr>
@@ -3080,7 +3087,7 @@
         <h3>qualified Association<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#qualifiedAssociation</code></td>
             </tr>
             <tr>
@@ -3095,7 +3102,7 @@
         <h3>record Of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#recordOf</code></td>
             </tr>
             <tr>
@@ -3110,7 +3117,7 @@
         <h3>related To<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#relatedTo</code></td>
             </tr>
             <tr>
@@ -3125,7 +3132,7 @@
         <h3>replaced By<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#replacedBy</code></td>
             </tr>
             <tr>
@@ -3146,7 +3153,7 @@
         <h3>replaces<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#replaces</code></td>
             </tr>
             <tr>
@@ -3161,7 +3168,7 @@
         <h3>requires Security Classification<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#requiresSecurityClassification</code></td>
             </tr>
             <tr>
@@ -3182,7 +3189,7 @@
         <h3>shared With<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#sharedWith</code></td>
             </tr>
             <tr>
@@ -3203,7 +3210,7 @@
         <h3>stored In<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#storedIn</code></td>
             </tr>
             <tr>
@@ -3224,7 +3231,7 @@
         <h3>transferred From<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#transferredFrom</code></td>
             </tr>
             <tr>
@@ -3239,7 +3246,7 @@
         <h3>transferred To<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#transferredTo</code></td>
             </tr>
             <tr>
@@ -3254,7 +3261,7 @@
         <h3>triggered By<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#triggeredBy</code></td>
             </tr>
             <tr>
@@ -3275,7 +3282,7 @@
         <h3>triggers<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#triggers</code></td>
             </tr>
             <tr>
@@ -3290,7 +3297,7 @@
         <h3>used Record<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#usedRecord</code></td>
             </tr>
             <tr>
@@ -3305,7 +3312,7 @@
         <h3>was Associated With<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#wasAssociatedWith</code></td>
             </tr>
             <tr>
@@ -3341,7 +3348,7 @@
         <h3>checksum<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#checksum</code></td>
             </tr>
             <tr>
@@ -3362,7 +3369,7 @@
         <h3>disposalClassNumber<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#disposalClassNumber</code></td>
             </tr>
             <tr>
@@ -3383,7 +3390,7 @@
         <h3>endedAtTime<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#endedAtTime</code></td>
             </tr>
             <tr>
@@ -3410,7 +3417,7 @@
         <h3>filename<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#filename</code></td>
             </tr>
             <tr>
@@ -3425,7 +3432,7 @@
         <h3>filesize<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#filesize</code></td>
             </tr>
             <tr>
@@ -3440,7 +3447,7 @@
         <h3>format<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#format</code></td>
             </tr>
             <tr>
@@ -3461,7 +3468,7 @@
         <h3>seriesNumber<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#seriesNumber</code></td>
             </tr>
             <tr>
@@ -3482,7 +3489,7 @@
         <h3>softwareAssignedID<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#softwareAssignedID</code></td>
             </tr>
             <tr>
@@ -3503,7 +3510,7 @@
         <h3>startedAtTime<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/agrif#startedAtTime</code></td>
             </tr>
             <tr>
@@ -3541,7 +3548,7 @@
         <h3>contributor<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/contributor</code></td>
             </tr>
         </table>
@@ -3550,7 +3557,7 @@
         <h3>source<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/source</code></td>
             </tr>
         </table>
@@ -3559,7 +3566,7 @@
         <h3>example<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2004/02/skos/core#example</code></td>
             </tr>
         </table>
@@ -3568,7 +3575,7 @@
         <h3>identifier<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>https://schema.org/identifier</code></td>
             </tr>
         </table>
@@ -3577,7 +3584,7 @@
         <h3>name<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>https://schema.org/name</code></td>
             </tr>
         </table>
@@ -3608,7 +3615,7 @@
         <h3>Active<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/agrif#Active
@@ -3626,7 +3633,7 @@
         <h3>Approved<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/agrif#Approved
@@ -3644,7 +3651,7 @@
         <h3>AwaitingDisposal<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/agrif#AwaitingDisposal
@@ -3662,7 +3669,7 @@
         <h3>Completed<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/agrif#Completed
@@ -3680,7 +3687,7 @@
         <h3>Confidential<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/agrif#Confidential
@@ -3698,7 +3705,7 @@
         <h3>Disapproved<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/agrif#Disapproved
@@ -3716,7 +3723,7 @@
         <h3>Disposed<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/agrif#Disposed
@@ -3734,7 +3741,7 @@
         <h3>Highly Protected<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/agrif#HighlyProtected
@@ -3752,7 +3759,7 @@
         <h3>Protected<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/agrif#Protected
@@ -3770,7 +3777,7 @@
         <h3>Redundant<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/agrif#Redundant
@@ -3788,7 +3795,7 @@
         <h3>RetainAsNationalArchives<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/agrif#RetainAsNationalArchives
@@ -3806,7 +3813,7 @@
         <h3>Secret<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/agrif#Secret
@@ -3824,7 +3831,7 @@
         <h3>Top Secret (NV)<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/agrif#TopSecretNV
@@ -3842,7 +3849,7 @@
         <h3>Top Secret (PV)<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/agrif#TopSecretPV
@@ -3860,7 +3867,7 @@
         <h3>Unclassified<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/agrif#Unclassified
@@ -3879,8 +3886,6 @@
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://linked.data.gov.au/def/agrif#</code></dd>
         <dt>:</dt>
         <dd><code>http://linked.data.gov.au/def/agrif#</code></dd>
         <dt>dcterms</dt>
@@ -3899,8 +3904,6 @@
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
         <dt>vann</dt>
         <dd><code>http://purl.org/vocab/vann/</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

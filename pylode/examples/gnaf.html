@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -205,20 +210,20 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>GNAF ontology</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://linked.data.gov.au/def/gnaf</code></dd>
-        <dt>Publisher(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher">Publisher</a>(s)</dt>
         <dd>
             
     <a href="http://catalogue.linked.data.gov.au/org/psma">PSMA Australia</a><br/>
         </dd>
-        <dt>Creator(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
         <dd>
             
     <a href="http://orcid.org/0000-0002-8742-7730">Nicholas Car</a>
@@ -243,19 +248,19 @@
 </svg></a>
     (<a href="mailto:nicholas.car@csiro.au">nicholas.car@csiro.au</a>)<br/>
         </dd>
-        <dt>Contributors(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/contributor">Contributor</a>(s)</dt>
         <dd>
             
     Joseph Abhayaratna
     (<a href="mailto:joseph.abhayaratna@psma.com.au">joseph.abhayaratna@psma.com.au</a>)<br/>
         </dd>
-        <dt>Created</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/created">Created</a></dt>
         <dd>2017-12-23</dd>
-        <dt>Modified</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
         <dd>2019-06-07</dd>
         <dt>Version Information</dt>
         <dd>1.2</dd>
-        <dt>Version IRI</dt>
+        <dt>Version URI</dt>
         <dd><a href="http://linked.data.gov.au/def/gnaf/1.2">http://linked.data.gov.au/def/gnaf/1.2</a></dd>
         <dt>Imports</dt>
         <dd>
@@ -315,15 +320,15 @@
         <h3>Location<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://dbpedia.org/ontology/Location</code></td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
                     <a href="#Street">Street</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Locality">Locality</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Address">Address</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Locality">Locality</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -332,45 +337,45 @@
         <h3>Address<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#Address</code></td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
+                    <a href="http://dbpedia.org/ontology/Location">dbo:Location</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#GNAFEntity">GnafEntity</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/prov#Location">prov:Location</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://dbpedia.org/ontology/Location">dbo:Location</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://reference.data.gov.au/def/ont/iso19160-1-address#Address">http://reference.data.gov.au/def/ont/iso19160-1-address#Address</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#GNAFEntity">GnafEntity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasbuildingname">hasBuildingName</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="#hasAlias">hasAlias</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Alias">Alias</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/dc/terms/description">dct:description</a> <span class="cardinality">max</span> 1<br/>
-                    <a href="#haspostcode">hasPostcode</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="#hasStreetLocality">hasStreetLocality</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#StreetLocality">StreetLocality</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasdatelastmodified">hasDateLastModified</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="#hasNumber">hasNumber</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Number">Number</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasMeshBlockmatch">hasMeshBlockMatch</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#MeshBlockMatch">MeshBlockMatch</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasAddressSite">hasAddressSite</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#AddressSite">AddressSite</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasLocality">hasLocality</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Locality">Locality</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasGNAFconfidence">hasGnafConfidence</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://linked.data.gov.au/def/gnaf#GnafConfidence">GnafConfidence</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasdatelastmodified">hasDateLastModified</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#hasAddressSite">hasAddressSite</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#AddressSite">AddressSite</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasbuildingname">hasBuildingName</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#haspostcode">hasPostcode</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#hasNumber">hasNumber</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Number">Number</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasLocality">hasLocality</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Locality">Locality</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasStreetLocality">hasStreetLocality</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#StreetLocality">StreetLocality</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/dc/terms/description">dct:description</a> <span class="cardinality">max</span> 1<br/>
+                    <a href="#hasAlias">hasAlias</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Alias">Alias</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasMeshBlockmatch">hasMeshBlockMatch</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#MeshBlockMatch">MeshBlockMatch</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#hasGeometry">geo:hasGeometry</a> <span class="cardinality">min</span> 1 <a href="http://www.opengis.net/ont/sf#Point">sf:Point</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#hasNumber">hasNumber</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasGeocode">hasGeocode</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasGNAFconfidence">hasGnafConfidence</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasMeshBlockmatch">hasMeshBlockMatch</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasAddressSite">hasAddressSite</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasStreetLocality">hasStreetLocality</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasAddressSite">hasAddressSite</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasNumber">hasNumber</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasGNAFconfidence">hasGnafConfidence</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasGeocode">hasGeocode</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasAddressSecondary">hasAddressSecondary</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
@@ -387,7 +392,7 @@
         <h3>Address Site<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#AddressSite</code></td>
             </tr>
             <tr>
@@ -414,7 +419,7 @@
         <h3>Alias<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#Alias</code></td>
             </tr>
             <tr>
@@ -435,7 +440,7 @@
         <h3>GNAF Entity<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#GnafEntity</code></td>
             </tr>
             <tr>
@@ -460,13 +465,13 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Locality">Locality</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.opengis.net/ont/geosparql#Geometry">geo:Geometry</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#MeshBlockMatch">MeshBlockMatch</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Street">Street</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Alias">Alias</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#AddressSite">AddressSite</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Address">Address</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Alias">Alias</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#MeshBlockMatch">MeshBlockMatch</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Street">Street</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Locality">Locality</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#Geometry">geo:Geometry</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -475,26 +480,26 @@
         <h3>Locality<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#Locality</code></td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#GNAFEntity">GnafEntity</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/prov#Location">prov:Location</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://dbpedia.org/ontology/Location">dbo:Location</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#GNAFEntity">GnafEntity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/prov#Location">prov:Location</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasprimarypostcode">hasPrimaryPostcode</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="#hasAlias">hasAlias</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Alias">Alias</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.opengis.net/ont/geosparql#hasGeometry">geo:hasGeometry</a> <span class="cardinality">min</span> 1 <a href="http://www.opengis.net/ont/sf#Point">sf:Point</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasname">hasName</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="#hasneighbour">hasNeighbour</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Locality">Locality</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasAlias">hasAlias</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Alias">Alias</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#hasGeometry">geo:hasGeometry</a> <span class="cardinality">min</span> 1 <a href="http://www.opengis.net/ont/sf#Point">sf:Point</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasprimarypostcode">hasPrimaryPostcode</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
                 </td>
             </tr>
             <tr>
@@ -508,8 +513,8 @@
                 <th>In range of</th>
                 <td>
                     <a href="#hasLocality">hasLocality</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasAlias">hasAlias</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasneighbour">hasNeighbour</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasAlias">hasAlias</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -518,7 +523,7 @@
         <h3>2011 Mesh Block<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#MB2011</code></td>
             </tr>
             <tr>
@@ -551,7 +556,7 @@
         <h3>2016 Mesh Block<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#MB2016</code></td>
             </tr>
             <tr>
@@ -584,7 +589,7 @@
         <h3>Mesh Block Match<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#MeshBlockMatch</code></td>
             </tr>
             <tr>
@@ -617,7 +622,7 @@
         <h3>Number<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#Number</code></td>
             </tr>
             <tr>
@@ -629,15 +634,15 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hassuffix">hasSuffix</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
                     <a href="#hasprefix">hasPrefix</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#hassuffix">hasSuffix</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#hasprefix">hasPrefix</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#hassuffix">hasSuffix</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#hasprefix">hasPrefix</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -652,16 +657,16 @@
         <h3>Street<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#Street</code></td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://dbpedia.org/ontology/Location">dbo:Location</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/prov#Location">prov:Location</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#GNAFEntity">GnafEntity</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#GNAFEntity">GnafEntity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://dbpedia.org/ontology/Location">dbo:Location</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -696,7 +701,7 @@
         <h3>Street Locality<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#StreetLocality</code></td>
             </tr>
             <tr>
@@ -709,15 +714,15 @@
                 <th>Restrictions</th>
                 <td>
                     <a href="http://www.opengis.net/ont/geosparql#hasGeometry">geo:hasGeometry</a> <span class="cardinality">min</span> 1 <a href="http://www.opengis.net/ont/sf#Point">sf:Point</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasGNAFconfidence">hasGnafConfidence</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://linked.data.gov.au/def/gnaf#GnafConfidence">GnafConfidence</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasLocality">hasLocality</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Locality">Locality</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasGNAFconfidence">hasGnafConfidence</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://linked.data.gov.au/def/gnaf#GnafConfidence">GnafConfidence</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#hasStreetSuffix">hasStreetSuffix</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasLocality">hasLocality</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasStreetSuffix">hasStreetSuffix</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -732,7 +737,7 @@
         <h3>ISO19160-1 Address<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://reference.data.gov.au/def/ont/iso19160-1-address#Address</code></td>
             </tr>
             <tr>
@@ -776,7 +781,7 @@
         <h3>alias of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#aliasOf</code></td>
             </tr>
             <tr>
@@ -791,7 +796,7 @@
         <h3>GNAF type<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#gnafType</code></td>
             </tr>
             <tr>
@@ -806,7 +811,7 @@
         <h3>hasAddressPrimary<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasAddressPrimary</code></td>
             </tr>
             <tr>
@@ -821,7 +826,7 @@
         <h3>has Address Secondary<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasAddressSecondary</code></td>
             </tr>
             <tr>
@@ -842,7 +847,7 @@
         <h3>has Address Site<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasAddressSite</code></td>
             </tr>
             <tr>
@@ -863,7 +868,7 @@
         <h3>has Alias<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasAlias</code></td>
             </tr>
             <tr>
@@ -886,7 +891,7 @@
         <h3>has Geocode<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasGeocode</code></td>
             </tr>
             <tr>
@@ -913,7 +918,7 @@
         <h3>has Geocode Reliability<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasGeocodeReliability</code></td>
             </tr>
         </table>
@@ -922,7 +927,7 @@
         <h3>has GNAF confidence<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasGnafConfidence</code></td>
             </tr>
             <tr>
@@ -943,7 +948,7 @@
         <h3>has Locality<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasLocality</code></td>
             </tr>
             <tr>
@@ -970,7 +975,7 @@
         <h3>has Mesh Block<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasMeshBlock</code></td>
             </tr>
             <tr>
@@ -991,7 +996,7 @@
         <h3>has Mesh Block match<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasMeshBlockMatch</code></td>
             </tr>
             <tr>
@@ -1012,7 +1017,7 @@
         <h3>has neighbour<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasNeighbour</code></td>
             </tr>
             <tr>
@@ -1033,7 +1038,7 @@
         <h3>has Number<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasNumber</code></td>
             </tr>
             <tr>
@@ -1054,7 +1059,7 @@
         <h3>has State<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasState</code></td>
             </tr>
             <tr>
@@ -1075,7 +1080,7 @@
         <h3>has Street Confirmation<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasStreetConfirmation</code></td>
             </tr>
             <tr>
@@ -1096,7 +1101,7 @@
         <h3>has Street Locality<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasStreetLocality</code></td>
             </tr>
             <tr>
@@ -1123,7 +1128,7 @@
         <h3>has Street Suffix<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasStreetSuffix</code></td>
             </tr>
             <tr>
@@ -1162,7 +1167,7 @@
         <h3>has building name<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasBuildingName</code></td>
             </tr>
         </table>
@@ -1171,7 +1176,7 @@
         <h3>has date created<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasDateCreated</code></td>
             </tr>
             <tr>
@@ -1192,7 +1197,7 @@
         <h3>has date last modified<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasDateLastModified</code></td>
             </tr>
             <tr>
@@ -1207,7 +1212,7 @@
         <h3>has date retired<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasDateRetired</code></td>
             </tr>
             <tr>
@@ -1228,7 +1233,7 @@
         <h3>has description<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasDescription</code></td>
             </tr>
             <tr>
@@ -1249,7 +1254,7 @@
         <h3>has legal parcel ID<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasLegalParcelId</code></td>
             </tr>
             <tr>
@@ -1264,7 +1269,7 @@
         <h3>has name<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasName</code></td>
             </tr>
             <tr>
@@ -1285,7 +1290,7 @@
         <h3>has postcode<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasPostcode</code></td>
             </tr>
             <tr>
@@ -1300,7 +1305,7 @@
         <h3>has prefix<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasPrefix</code></td>
             </tr>
             <tr>
@@ -1321,7 +1326,7 @@
         <h3>has primary postcode<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasPrimaryPostcode</code></td>
             </tr>
             <tr>
@@ -1342,7 +1347,7 @@
         <h3>has suffix<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#hasSuffix</code></td>
             </tr>
             <tr>
@@ -1363,7 +1368,7 @@
         <h3>has private street<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#isPrivateStreet</code></td>
             </tr>
             <tr>
@@ -1393,7 +1398,7 @@
         <h3>has date created<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/gnaf#hasDateCreated
@@ -1403,8 +1408,8 @@
             </tr>
             <dt>Classes(s)</dt>
             <dd>
-                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">rdf:Property</a><br/>
                 <a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a><br/>
+                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">rdf:Property</a><br/>
             </dd>
             <tr>
                 <th>Description</th>
@@ -1424,7 +1429,7 @@
         <h3>has date retired<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/gnaf#hasDateRetired
@@ -1434,8 +1439,8 @@
             </tr>
             <dt>Classes(s)</dt>
             <dd>
-                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">rdf:Property</a><br/>
                 <a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a><br/>
+                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">rdf:Property</a><br/>
             </dd>
             <tr>
                 <th>Description</th>
@@ -1455,7 +1460,7 @@
         <h3>has description<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/gnaf#hasDescription
@@ -1486,7 +1491,7 @@
         <h3>has name<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/gnaf#hasName
@@ -1496,8 +1501,8 @@
             </tr>
             <dt>Classes(s)</dt>
             <dd>
-                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">rdf:Property</a><br/>
                 <a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a><br/>
+                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">rdf:Property</a><br/>
             </dd>
             <tr>
                 <th>Description</th>
@@ -1517,7 +1522,7 @@
         <h3>description<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://purl.org/dc/terms/description
@@ -1531,7 +1536,7 @@
         <h3>title<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://purl.org/dc/terms/title
@@ -1545,7 +1550,7 @@
         <h3>wasGeneratedAtTime<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://www.w3.org/ns/prov#wasGeneratedAtTime
@@ -1559,7 +1564,7 @@
         <h3>wasInvalidatedAtTime<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://www.w3.org/ns/prov#wasInvalidatedAtTime
@@ -1574,8 +1579,6 @@
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://linked.data.gov.au/def/gnaf#</code></dd>
         <dt>:</dt>
         <dd><code>http://linked.data.gov.au/def/gnaf#</code></dd>
         <dt>asgs</dt>
@@ -1602,8 +1605,6 @@
         <dd><code>http://www.opengis.net/ont/sf#</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

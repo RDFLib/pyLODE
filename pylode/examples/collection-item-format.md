@@ -1,9 +1,9 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
 
 # Collection item format
 
 ## Metadata
-* **IRI**
+* **URI**
   * `http://linked.data.gov.au/def/collection-item-format`
 * **Publisher(s)**
   * [Australian Government Linked Data Working Group](http://www.linked.data.gov.au/org/agldwg)
@@ -14,7 +14,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 * **Modified**
   * 2020-03-29
 * **Source**
-  * [http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes](http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes)
+  * [https://collection.sl.nsw.gov.au/search?offset=0](https://collection.sl.nsw.gov.au/search?offset=0)
 * **Ontology RDF**
   * RDF ([collection-item-format.ttl](turtle))
 ### Description
@@ -33,8 +33,6 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 
 ## Named Individuals
 ## Namespaces
-* **default (:)**
-  * `http://linked.data.gov.au/def/collection-item-format/`
 * **cif**
   * `http://linked.data.gov.au/def/collection-item-format/`
 * **dc**
@@ -53,8 +51,6 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
   * `https://schema.org/`
 * **skos**
   * `http://www.w3.org/2004/02/skos/core#`
-* **xml**
-  * `http://www.w3.org/XML/1998/namespace`
 * **xsd**
   * `http://www.w3.org/2001/XMLSchema#`
 

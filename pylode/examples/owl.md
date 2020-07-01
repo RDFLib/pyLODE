@@ -1,13 +1,13 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
 
 # The OWL 2 Schema vocabulary (OWL 2)
 
 ## Metadata
-* **IRI**
+* **URI**
   * `http://www.w3.org/2002/07/owl`
 * **Version Information**
   * $Date: 2009/11/15 10:54:12 $
-* **Version IRI**
+* **Version URI**
   * [http://www.w3.org/2002/07/owl](http://www.w3.org/2002/07/owl)
 * **Imports**
   * [http://www.w3.org/2000/01/rdf-schema](http://www.w3.org/2000/01/rdf-schema)
@@ -74,7 +74,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 ### AllDifferent
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#AllDifferent`
+URI | `http://www.w3.org/2002/07/owl#AllDifferent`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of collections of pairwise different individuals.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -82,187 +82,187 @@ In domain of |[owl:distinctMembers](distinctMembers)<br />
 ### AllDisjointClasses
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#AllDisjointClasses`
+URI | `http://www.w3.org/2002/07/owl#AllDisjointClasses`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of collections of pairwise disjoint classes.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
 ### AllDisjointProperties
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#AllDisjointProperties`
+URI | `http://www.w3.org/2002/07/owl#AllDisjointProperties`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of collections of pairwise disjoint properties.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
 ### Annotation
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#Annotation`
+URI | `http://www.w3.org/2002/07/owl#Annotation`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of annotated annotations for which the RDF serialization consists of an annotated subject, predicate and object.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
 ### AnnotationProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#AnnotationProperty`
+URI | `http://www.w3.org/2002/07/owl#AnnotationProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of annotation properties.</p>
 Super-classes |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c)<br />
 ### AsymmetricProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#AsymmetricProperty`
+URI | `http://www.w3.org/2002/07/owl#AsymmetricProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of asymmetric properties.</p>
 Super-classes |[owl:ObjectProperty](ObjectProperty) (c)<br />
 ### Axiom
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#Axiom`
+URI | `http://www.w3.org/2002/07/owl#Axiom`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
 ### Class
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#Class`
+URI | `http://www.w3.org/2002/07/owl#Class`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of OWL classes.</p>
 Super-classes |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
 Sub-classes |[owl:Restriction](Restriction) (c)<br />
-In domain of |[owl:disjointWith](disjointWith)<br />[owl:hasKey](hasKey)<br />[owl:complementOf](complementOf)<br />[owl:disjointUnionOf](disjointUnionOf)<br />
-In range of |[owl:complementOf](complementOf)<br />[owl:onClass](onClass)<br />[owl:disjointWith](disjointWith)<br />
+In domain of |[owl:complementOf](complementOf)<br />[owl:disjointUnionOf](disjointUnionOf)<br />[owl:hasKey](hasKey)<br />[owl:disjointWith](disjointWith)<br />
+In range of |[owl:onClass](onClass)<br />[owl:complementOf](complementOf)<br />[owl:disjointWith](disjointWith)<br />
 ### DataRange
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#DataRange`
+URI | `http://www.w3.org/2002/07/owl#DataRange`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of OWL data ranges, which are special kinds of datatypes. Note: The use of the IRI owl:DataRange has been deprecated as of OWL 2. The IRI rdfs:Datatype SHOULD be used instead.</p>
 Super-classes |[rdfs:Datatype](http://www.w3.org/2000/01/rdf-schema#Datatype) (c)<br />
 ### DatatypeProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#DatatypeProperty`
+URI | `http://www.w3.org/2002/07/owl#DatatypeProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of data properties.</p>
 Super-classes |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c)<br />
 ### DeprecatedClass
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#DeprecatedClass`
+URI | `http://www.w3.org/2002/07/owl#DeprecatedClass`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of deprecated classes.</p>
 Super-classes |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
 ### DeprecatedProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#DeprecatedProperty`
+URI | `http://www.w3.org/2002/07/owl#DeprecatedProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of deprecated properties.</p>
 Super-classes |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c)<br />
 ### FunctionalProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#FunctionalProperty`
+URI | `http://www.w3.org/2002/07/owl#FunctionalProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of functional properties.</p>
 Super-classes |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c)<br />
 ### InverseFunctionalProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#InverseFunctionalProperty`
+URI | `http://www.w3.org/2002/07/owl#InverseFunctionalProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of inverse-functional properties.</p>
 Super-classes |[owl:ObjectProperty](ObjectProperty) (c)<br />
 ### IrreflexiveProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#IrreflexiveProperty`
+URI | `http://www.w3.org/2002/07/owl#IrreflexiveProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of irreflexive properties.</p>
 Super-classes |[owl:ObjectProperty](ObjectProperty) (c)<br />
 ### NamedIndividual
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#NamedIndividual`
+URI | `http://www.w3.org/2002/07/owl#NamedIndividual`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of named individuals.</p>
 Super-classes |[owl:Thing](Thing) (c)<br />
 ### NegativePropertyAssertion
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#NegativePropertyAssertion`
+URI | `http://www.w3.org/2002/07/owl#NegativePropertyAssertion`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of negative property assertions.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
-In domain of |[owl:sourceIndividual](sourceIndividual)<br />[owl:targetValue](targetValue)<br />[owl:assertionProperty](assertionProperty)<br />[owl:targetIndividual](targetIndividual)<br />
+In domain of |[owl:assertionProperty](assertionProperty)<br />[owl:sourceIndividual](sourceIndividual)<br />[owl:targetValue](targetValue)<br />[owl:targetIndividual](targetIndividual)<br />
 ### Nothing
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#Nothing`
+URI | `http://www.w3.org/2002/07/owl#Nothing`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>This is the empty class.</p>
 Super-classes |[owl:Thing](Thing) (c)<br />
 ### ObjectProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#ObjectProperty`
+URI | `http://www.w3.org/2002/07/owl#ObjectProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of object properties.</p>
 Super-classes |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c)<br />
-Sub-classes |[owl:AsymmetricProperty](AsymmetricProperty) (c)<br />[owl:InverseFunctionalProperty](InverseFunctionalProperty) (c)<br />[owl:TransitiveProperty](TransitiveProperty) (c)<br />[owl:IrreflexiveProperty](IrreflexiveProperty) (c)<br />[owl:ReflexiveProperty](ReflexiveProperty) (c)<br />[owl:SymmetricProperty](SymmetricProperty) (c)<br />
+Sub-classes |[owl:InverseFunctionalProperty](InverseFunctionalProperty) (c)<br />[owl:ReflexiveProperty](ReflexiveProperty) (c)<br />[owl:TransitiveProperty](TransitiveProperty) (c)<br />[owl:SymmetricProperty](SymmetricProperty) (c)<br />[owl:AsymmetricProperty](AsymmetricProperty) (c)<br />[owl:IrreflexiveProperty](IrreflexiveProperty) (c)<br />
 In domain of |[owl:inverseOf](inverseOf)<br />[owl:propertyChainAxiom](propertyChainAxiom)<br />
 In range of |[owl:inverseOf](inverseOf)<br />
 ### Ontology
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#Ontology`
+URI | `http://www.w3.org/2002/07/owl#Ontology`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of ontologies.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
-In domain of |[owl:backwardCompatibleWith](backwardCompatibleWith) (ap)<br />[owl:incompatibleWith](incompatibleWith) (ap)<br />[owl:imports](http://www.w3.org/2002/07/owl#imports)<br />[owl:priorVersion](priorVersion) (ap)<br />[owl:versionIRI](http://www.w3.org/2002/07/owl#versionIRI)<br />
-In range of |[owl:versionIRI](http://www.w3.org/2002/07/owl#versionIRI)<br />[owl:priorVersion](priorVersion) (ap)<br />[owl:incompatibleWith](incompatibleWith) (ap)<br />[owl:imports](http://www.w3.org/2002/07/owl#imports)<br />[owl:backwardCompatibleWith](backwardCompatibleWith) (ap)<br />
+In domain of |[owl:backwardCompatibleWith](backwardCompatibleWith) (ap)<br />[owl:priorVersion](priorVersion) (ap)<br />[owl:versionIRI](http://www.w3.org/2002/07/owl#versionIRI)<br />[owl:incompatibleWith](incompatibleWith) (ap)<br />[owl:imports](http://www.w3.org/2002/07/owl#imports)<br />
+In range of |[owl:imports](http://www.w3.org/2002/07/owl#imports)<br />[owl:backwardCompatibleWith](backwardCompatibleWith) (ap)<br />[owl:priorVersion](priorVersion) (ap)<br />[owl:versionIRI](http://www.w3.org/2002/07/owl#versionIRI)<br />[owl:incompatibleWith](incompatibleWith) (ap)<br />
 ### OntologyProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#OntologyProperty`
+URI | `http://www.w3.org/2002/07/owl#OntologyProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of ontology properties.</p>
 Super-classes |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c)<br />
 ### ReflexiveProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#ReflexiveProperty`
+URI | `http://www.w3.org/2002/07/owl#ReflexiveProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of reflexive properties.</p>
 Super-classes |[owl:ObjectProperty](ObjectProperty) (c)<br />
 ### Restriction
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#Restriction`
+URI | `http://www.w3.org/2002/07/owl#Restriction`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of property restrictions.</p>
 Super-classes |[owl:Class](Class) (c)<br />
-In domain of |[owl:onProperties](onProperties)<br />[owl:minCardinality](minCardinality)<br />[owl:onDataRange](onDataRange)<br />[owl:minQualifiedCardinality](minQualifiedCardinality)<br />[owl:onProperty](onProperty)<br />[owl:cardinality](cardinality)<br />[owl:maxCardinality](maxCardinality)<br />[owl:qualifiedCardinality](qualifiedCardinality)<br />[owl:hasValue](hasValue)<br />[owl:allValuesFrom](allValuesFrom)<br />[owl:maxQualifiedCardinality](maxQualifiedCardinality)<br />[owl:onClass](onClass)<br />[owl:hasSelf](hasSelf)<br />[owl:someValuesFrom](someValuesFrom)<br />
+In domain of |[owl:hasValue](hasValue)<br />[owl:minCardinality](minCardinality)<br />[owl:maxQualifiedCardinality](maxQualifiedCardinality)<br />[owl:minQualifiedCardinality](minQualifiedCardinality)<br />[owl:onClass](onClass)<br />[owl:someValuesFrom](someValuesFrom)<br />[owl:maxCardinality](maxCardinality)<br />[owl:cardinality](cardinality)<br />[owl:allValuesFrom](allValuesFrom)<br />[owl:qualifiedCardinality](qualifiedCardinality)<br />[owl:onProperty](onProperty)<br />[owl:onDataRange](onDataRange)<br />[owl:onProperties](onProperties)<br />[owl:hasSelf](hasSelf)<br />
 ### SymmetricProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#SymmetricProperty`
+URI | `http://www.w3.org/2002/07/owl#SymmetricProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of symmetric properties.</p>
 Super-classes |[owl:ObjectProperty](ObjectProperty) (c)<br />
 ### Thing
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#Thing`
+URI | `http://www.w3.org/2002/07/owl#Thing`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of OWL individuals.</p>
 Sub-classes |[owl:Nothing](Nothing) (c)<br />[owl:NamedIndividual](NamedIndividual) (c)<br />
-In domain of |[owl:topObjectProperty](topObjectProperty) (op)<br />[owl:bottomDataProperty](bottomDataProperty) (dp)<br />[owl:differentFrom](differentFrom)<br />[owl:bottomObjectProperty](bottomObjectProperty) (op)<br />[owl:sameAs](sameAs)<br />[owl:topDataProperty](topDataProperty) (dp)<br />
-In range of |[owl:targetIndividual](targetIndividual)<br />[owl:topObjectProperty](topObjectProperty) (op)<br />[owl:sourceIndividual](sourceIndividual)<br />[owl:differentFrom](differentFrom)<br />[owl:bottomObjectProperty](bottomObjectProperty) (op)<br />[owl:sameAs](sameAs)<br />
+In domain of |[owl:differentFrom](differentFrom)<br />[owl:bottomObjectProperty](bottomObjectProperty) (op)<br />[owl:sameAs](sameAs)<br />[owl:topDataProperty](topDataProperty) (dp)<br />[owl:topObjectProperty](topObjectProperty) (op)<br />[owl:bottomDataProperty](bottomDataProperty) (dp)<br />
+In range of |[owl:bottomObjectProperty](bottomObjectProperty) (op)<br />[owl:sameAs](sameAs)<br />[owl:sourceIndividual](sourceIndividual)<br />[owl:topObjectProperty](topObjectProperty) (op)<br />[owl:targetIndividual](targetIndividual)<br />[owl:differentFrom](differentFrom)<br />
 ### TransitiveProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#TransitiveProperty`
+URI | `http://www.w3.org/2002/07/owl#TransitiveProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of transitive properties.</p>
 Super-classes |[owl:ObjectProperty](ObjectProperty) (c)<br />
@@ -274,7 +274,7 @@ Super-classes |[owl:ObjectProperty](ObjectProperty) (c)<br />
 ### bottomObjectProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#bottomObjectProperty`
+URI | `http://www.w3.org/2002/07/owl#bottomObjectProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The object property that does not relate any two individuals.
 Domain(s) |[owl:Thing](Thing) (c)<br />
@@ -283,7 +283,7 @@ Range(s) |[owl:Thing](Thing) (c)<br />
 ### topObjectProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#topObjectProperty`
+URI | `http://www.w3.org/2002/07/owl#topObjectProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The object property that relates every two individuals.
 Domain(s) |[owl:Thing](Thing) (c)<br />
@@ -296,7 +296,7 @@ Range(s) |[owl:Thing](Thing) (c)<br />
 ### bottomDataProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#bottomDataProperty`
+URI | `http://www.w3.org/2002/07/owl#bottomDataProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The data property that does not relate any individual to any data value.
 Domain(s) |[owl:Thing](Thing) (c)<br />
@@ -305,7 +305,7 @@ Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
 ### topDataProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#topDataProperty`
+URI | `http://www.w3.org/2002/07/owl#topDataProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The data property that relates every individual to every data value.
 Domain(s) |[owl:Thing](Thing) (c)<br />
@@ -321,7 +321,7 @@ Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
 ### backwardCompatibleWith
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#backwardCompatibleWith`
+URI | `http://www.w3.org/2002/07/owl#backwardCompatibleWith`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The annotation property that indicates that a given ontology is backward compatible with another ontology.
 Domain(s) |[owl:Ontology](Ontology) (c)<br />
@@ -330,7 +330,7 @@ Range(s) |[owl:Ontology](Ontology) (c)<br />
 ### deprecated
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#deprecated`
+URI | `http://www.w3.org/2002/07/owl#deprecated`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The annotation property that indicates that a given entity has been deprecated.
 Domain(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -339,7 +339,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### incompatibleWith
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#incompatibleWith`
+URI | `http://www.w3.org/2002/07/owl#incompatibleWith`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The annotation property that indicates that a given ontology is incompatible with another ontology.
 Domain(s) |[owl:Ontology](Ontology) (c)<br />
@@ -348,7 +348,7 @@ Range(s) |[owl:Ontology](Ontology) (c)<br />
 ### priorVersion
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#priorVersion`
+URI | `http://www.w3.org/2002/07/owl#priorVersion`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The annotation property that indicates the predecessor ontology of a given ontology.
 Domain(s) |[owl:Ontology](Ontology) (c)<br />
@@ -357,7 +357,7 @@ Range(s) |[owl:Ontology](Ontology) (c)<br />
 ### versionInfo
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#versionInfo`
+URI | `http://www.w3.org/2002/07/owl#versionInfo`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The annotation property that provides version information for an ontology or another OWL construct.
 Domain(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -408,7 +408,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### allValuesFrom
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#allValuesFrom`
+URI | `http://www.w3.org/2002/07/owl#allValuesFrom`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the class that a universal property restriction refers to.
 Domain(s) |[owl:Restriction](Restriction) (c)<br />
@@ -417,7 +417,7 @@ Range(s) |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
 ### annotatedProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#annotatedProperty`
+URI | `http://www.w3.org/2002/07/owl#annotatedProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the predicate of an annotated axiom or annotated annotation.
 Domain(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -426,7 +426,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### annotatedSource
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#annotatedSource`
+URI | `http://www.w3.org/2002/07/owl#annotatedSource`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the subject of an annotated axiom or annotated annotation.
 Domain(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -435,7 +435,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### annotatedTarget
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#annotatedTarget`
+URI | `http://www.w3.org/2002/07/owl#annotatedTarget`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the object of an annotated axiom or annotated annotation.
 Domain(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -444,7 +444,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### assertionProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#assertionProperty`
+URI | `http://www.w3.org/2002/07/owl#assertionProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the predicate of a negative property assertion.
 Domain(s) |[owl:NegativePropertyAssertion](NegativePropertyAssertion) (c)<br />
@@ -453,7 +453,7 @@ Range(s) |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c
 ### cardinality
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#cardinality`
+URI | `http://www.w3.org/2002/07/owl#cardinality`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the cardinality of an exact cardinality restriction.
 Domain(s) |[owl:Restriction](Restriction) (c)<br />
@@ -462,7 +462,7 @@ Range(s) |[xsd:nonNegativeInteger](http://www.w3.org/2001/XMLSchema#nonNegativeI
 ### complementOf
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#complementOf`
+URI | `http://www.w3.org/2002/07/owl#complementOf`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines that a given class is the complement of another class.
 Domain(s) |[owl:Class](Class) (c)<br />
@@ -471,7 +471,7 @@ Range(s) |[owl:Class](Class) (c)<br />
 ### datatypeComplementOf
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#datatypeComplementOf`
+URI | `http://www.w3.org/2002/07/owl#datatypeComplementOf`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines that a given data range is the complement of another data range with respect to the data domain.
 Domain(s) |[rdfs:Datatype](http://www.w3.org/2000/01/rdf-schema#Datatype) (c)<br />
@@ -480,7 +480,7 @@ Range(s) |[rdfs:Datatype](http://www.w3.org/2000/01/rdf-schema#Datatype) (c)<br 
 ### differentFrom
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#differentFrom`
+URI | `http://www.w3.org/2002/07/owl#differentFrom`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines that two given individuals are different.
 Domain(s) |[owl:Thing](Thing) (c)<br />
@@ -489,7 +489,7 @@ Range(s) |[owl:Thing](Thing) (c)<br />
 ### disjointUnionOf
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#disjointUnionOf`
+URI | `http://www.w3.org/2002/07/owl#disjointUnionOf`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines that a given class is equivalent to the disjoint union of a collection of other classes.
 Domain(s) |[owl:Class](Class) (c)<br />
@@ -498,7 +498,7 @@ Range(s) |[rdf:List](http://www.w3.org/1999/02/22-rdf-syntax-ns#List) (c)<br />
 ### disjointWith
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#disjointWith`
+URI | `http://www.w3.org/2002/07/owl#disjointWith`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines that two given classes are disjoint.
 Domain(s) |[owl:Class](Class) (c)<br />
@@ -507,7 +507,7 @@ Range(s) |[owl:Class](Class) (c)<br />
 ### distinctMembers
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#distinctMembers`
+URI | `http://www.w3.org/2002/07/owl#distinctMembers`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom.
 Domain(s) |[owl:AllDifferent](AllDifferent) (c)<br />
@@ -516,7 +516,7 @@ Range(s) |[rdf:List](http://www.w3.org/1999/02/22-rdf-syntax-ns#List) (c)<br />
 ### equivalentClass
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#equivalentClass`
+URI | `http://www.w3.org/2002/07/owl#equivalentClass`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines that two given classes are equivalent, and that is used to specify datatype definitions.
 Domain(s) |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
@@ -525,7 +525,7 @@ Range(s) |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
 ### equivalentProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#equivalentProperty`
+URI | `http://www.w3.org/2002/07/owl#equivalentProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines that two given properties are equivalent.
 Domain(s) |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c)<br />
@@ -534,7 +534,7 @@ Range(s) |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c
 ### hasKey
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#hasKey`
+URI | `http://www.w3.org/2002/07/owl#hasKey`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the collection of properties that jointly build a key.
 Domain(s) |[owl:Class](Class) (c)<br />
@@ -543,7 +543,7 @@ Range(s) |[rdf:List](http://www.w3.org/1999/02/22-rdf-syntax-ns#List) (c)<br />
 ### hasSelf
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#hasSelf`
+URI | `http://www.w3.org/2002/07/owl#hasSelf`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the property that a self restriction refers to.
 Domain(s) |[owl:Restriction](Restriction) (c)<br />
@@ -552,7 +552,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### hasValue
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#hasValue`
+URI | `http://www.w3.org/2002/07/owl#hasValue`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the individual that a has-value restriction refers to.
 Domain(s) |[owl:Restriction](Restriction) (c)<br />
@@ -561,7 +561,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### intersectionOf
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#intersectionOf`
+URI | `http://www.w3.org/2002/07/owl#intersectionOf`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the collection of classes or data ranges that build an intersection.
 Domain(s) |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
@@ -570,7 +570,7 @@ Range(s) |[rdf:List](http://www.w3.org/1999/02/22-rdf-syntax-ns#List) (c)<br />
 ### inverseOf
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#inverseOf`
+URI | `http://www.w3.org/2002/07/owl#inverseOf`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines that two given properties are inverse.
 Domain(s) |[owl:ObjectProperty](ObjectProperty) (c)<br />
@@ -579,7 +579,7 @@ Range(s) |[owl:ObjectProperty](ObjectProperty) (c)<br />
 ### maxCardinality
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#maxCardinality`
+URI | `http://www.w3.org/2002/07/owl#maxCardinality`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the cardinality of a maximum cardinality restriction.
 Domain(s) |[owl:Restriction](Restriction) (c)<br />
@@ -588,7 +588,7 @@ Range(s) |[xsd:nonNegativeInteger](http://www.w3.org/2001/XMLSchema#nonNegativeI
 ### maxQualifiedCardinality
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#maxQualifiedCardinality`
+URI | `http://www.w3.org/2002/07/owl#maxQualifiedCardinality`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the cardinality of a maximum qualified cardinality restriction.
 Domain(s) |[owl:Restriction](Restriction) (c)<br />
@@ -597,7 +597,7 @@ Range(s) |[xsd:nonNegativeInteger](http://www.w3.org/2001/XMLSchema#nonNegativeI
 ### members
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#members`
+URI | `http://www.w3.org/2002/07/owl#members`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the collection of members in either a owl:AllDifferent, owl:AllDisjointClasses or owl:AllDisjointProperties axiom.
 Domain(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -606,7 +606,7 @@ Range(s) |[rdf:List](http://www.w3.org/1999/02/22-rdf-syntax-ns#List) (c)<br />
 ### minCardinality
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#minCardinality`
+URI | `http://www.w3.org/2002/07/owl#minCardinality`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the cardinality of a minimum cardinality restriction.
 Domain(s) |[owl:Restriction](Restriction) (c)<br />
@@ -615,7 +615,7 @@ Range(s) |[xsd:nonNegativeInteger](http://www.w3.org/2001/XMLSchema#nonNegativeI
 ### minQualifiedCardinality
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#minQualifiedCardinality`
+URI | `http://www.w3.org/2002/07/owl#minQualifiedCardinality`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the cardinality of a minimum qualified cardinality restriction.
 Domain(s) |[owl:Restriction](Restriction) (c)<br />
@@ -624,7 +624,7 @@ Range(s) |[xsd:nonNegativeInteger](http://www.w3.org/2001/XMLSchema#nonNegativeI
 ### onClass
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#onClass`
+URI | `http://www.w3.org/2002/07/owl#onClass`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the class that a qualified object cardinality restriction refers to.
 Domain(s) |[owl:Restriction](Restriction) (c)<br />
@@ -633,7 +633,7 @@ Range(s) |[owl:Class](Class) (c)<br />
 ### onDataRange
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#onDataRange`
+URI | `http://www.w3.org/2002/07/owl#onDataRange`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the data range that a qualified data cardinality restriction refers to.
 Domain(s) |[owl:Restriction](Restriction) (c)<br />
@@ -642,7 +642,7 @@ Range(s) |[rdfs:Datatype](http://www.w3.org/2000/01/rdf-schema#Datatype) (c)<br 
 ### onDatatype
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#onDatatype`
+URI | `http://www.w3.org/2002/07/owl#onDatatype`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the datatype that a datatype restriction refers to.
 Domain(s) |[rdfs:Datatype](http://www.w3.org/2000/01/rdf-schema#Datatype) (c)<br />
@@ -651,7 +651,7 @@ Range(s) |[rdfs:Datatype](http://www.w3.org/2000/01/rdf-schema#Datatype) (c)<br 
 ### onProperties
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#onProperties`
+URI | `http://www.w3.org/2002/07/owl#onProperties`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the n-tuple of properties that a property restriction on an n-ary data range refers to.
 Domain(s) |[owl:Restriction](Restriction) (c)<br />
@@ -660,7 +660,7 @@ Range(s) |[rdf:List](http://www.w3.org/1999/02/22-rdf-syntax-ns#List) (c)<br />
 ### onProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#onProperty`
+URI | `http://www.w3.org/2002/07/owl#onProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the property that a property restriction refers to.
 Domain(s) |[owl:Restriction](Restriction) (c)<br />
@@ -669,7 +669,7 @@ Range(s) |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c
 ### oneOf
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#oneOf`
+URI | `http://www.w3.org/2002/07/owl#oneOf`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the collection of individuals or data values that build an enumeration.
 Domain(s) |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
@@ -678,7 +678,7 @@ Range(s) |[rdf:List](http://www.w3.org/1999/02/22-rdf-syntax-ns#List) (c)<br />
 ### propertyChainAxiom
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#propertyChainAxiom`
+URI | `http://www.w3.org/2002/07/owl#propertyChainAxiom`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the n-tuple of properties that build a sub property chain of a given property.
 Domain(s) |[owl:ObjectProperty](ObjectProperty) (c)<br />
@@ -687,7 +687,7 @@ Range(s) |[rdf:List](http://www.w3.org/1999/02/22-rdf-syntax-ns#List) (c)<br />
 ### propertyDisjointWith
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#propertyDisjointWith`
+URI | `http://www.w3.org/2002/07/owl#propertyDisjointWith`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines that two given properties are disjoint.
 Domain(s) |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c)<br />
@@ -696,7 +696,7 @@ Range(s) |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c
 ### qualifiedCardinality
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#qualifiedCardinality`
+URI | `http://www.w3.org/2002/07/owl#qualifiedCardinality`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the cardinality of an exact qualified cardinality restriction.
 Domain(s) |[owl:Restriction](Restriction) (c)<br />
@@ -705,7 +705,7 @@ Range(s) |[xsd:nonNegativeInteger](http://www.w3.org/2001/XMLSchema#nonNegativeI
 ### sameAs
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#sameAs`
+URI | `http://www.w3.org/2002/07/owl#sameAs`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines that two given individuals are equal.
 Domain(s) |[owl:Thing](Thing) (c)<br />
@@ -714,7 +714,7 @@ Range(s) |[owl:Thing](Thing) (c)<br />
 ### someValuesFrom
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#someValuesFrom`
+URI | `http://www.w3.org/2002/07/owl#someValuesFrom`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the class that an existential property restriction refers to.
 Domain(s) |[owl:Restriction](Restriction) (c)<br />
@@ -723,7 +723,7 @@ Range(s) |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
 ### sourceIndividual
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#sourceIndividual`
+URI | `http://www.w3.org/2002/07/owl#sourceIndividual`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the subject of a negative property assertion.
 Domain(s) |[owl:NegativePropertyAssertion](NegativePropertyAssertion) (c)<br />
@@ -732,7 +732,7 @@ Range(s) |[owl:Thing](Thing) (c)<br />
 ### targetIndividual
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#targetIndividual`
+URI | `http://www.w3.org/2002/07/owl#targetIndividual`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the object of a negative object property assertion.
 Domain(s) |[owl:NegativePropertyAssertion](NegativePropertyAssertion) (c)<br />
@@ -741,7 +741,7 @@ Range(s) |[owl:Thing](Thing) (c)<br />
 ### targetValue
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#targetValue`
+URI | `http://www.w3.org/2002/07/owl#targetValue`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the value of a negative data property assertion.
 Domain(s) |[owl:NegativePropertyAssertion](NegativePropertyAssertion) (c)<br />
@@ -750,7 +750,7 @@ Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
 ### unionOf
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#unionOf`
+URI | `http://www.w3.org/2002/07/owl#unionOf`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the collection of classes or data ranges that build a union.
 Domain(s) |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
@@ -759,7 +759,7 @@ Range(s) |[rdf:List](http://www.w3.org/1999/02/22-rdf-syntax-ns#List) (c)<br />
 ### withRestrictions
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#withRestrictions`
+URI | `http://www.w3.org/2002/07/owl#withRestrictions`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | The property that determines the collection of facet-value pairs that define a datatype restriction.
 Domain(s) |[rdfs:Datatype](http://www.w3.org/2000/01/rdf-schema#Datatype) (c)<br />
@@ -767,8 +767,6 @@ Range(s) |[rdf:List](http://www.w3.org/1999/02/22-rdf-syntax-ns#List) (c)<br />
 
 ## Named Individuals
 ## Namespaces
-* **default (:)**
-  * `http://www.w3.org/2002/07/owl#`
 * **dc**
   * `http://purl.org/dc/elements/1.1/`
 * **grddl**
@@ -785,8 +783,6 @@ Range(s) |[rdf:List](http://www.w3.org/1999/02/22-rdf-syntax-ns#List) (c)<br />
   * `https://schema.org/`
 * **skos**
   * `http://www.w3.org/2004/02/skos/core#`
-* **xml**
-  * `http://www.w3.org/XML/1998/namespace`
 * **xsd**
   * `http://www.w3.org/2001/XMLSchema#`
 

@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -200,7 +205,7 @@
     ],
     "https://schema.org/rights": [
       {
-        "@value": "(c) Commonwealth of Australia (Geoscience Australia) 2019"
+        "@value": "&copy; Commonwealth of Australia (Geoscience Australia) 2019"
       }
     ]
   }
@@ -210,20 +215,20 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>Place Names Profile</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://linked.data.gov.au/def/placenames</code></dd>
-        <dt>Publisher(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher">Publisher</a>(s)</dt>
         <dd>
             
     <a href="http://catalogue.linked.data.gov.au/org/ga">Geoscience Australia</a><br/>
         </dd>
-        <dt>Creator(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
         <dd>
             
     <a href="http://orcid.org/0000-0002-8742-7730">Nicholas Car</a>
@@ -249,19 +254,19 @@
     (<a href="mailto:nicholas.car@csiro.au">nicholas.car@csiro.au</a>) of 
     <a href="http://catalogue.linked.data.gov.au/def/csiro">CSIRO</a><br/>
         </dd>
-        <dt>Contributors(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/contributor">Contributor</a>(s)</dt>
         <dd>
             Armin Haller<br/>
             Irina Bastrakova<br/>
         </dd>
-        <dt>Created</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/created">Created</a></dt>
         <dd>2018-08-02</dd>
-        <dt>Modified</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
         <dd>2019-06-01</dd>
         <dt>Version Information</dt>
         <dd>2</dd>
         <dt>Rights</dt>
-        <dd>(c) Commonwealth of Australia (Geoscience Australia) 2019</dd>
+        <dd>&copy; Commonwealth of Australia (Geoscience Australia) 2019</dd>
         <dt>Ontology RDF</dt>
         <dd><a href="placenames.ttl">RDF (turtle)</a></dd>
     </dl>
@@ -311,7 +316,7 @@
         <li><a href="#Geometry">Geometry</a></li>
         <li><a href="#Identifier">Identifier</a></li>
         <li><a href="#Jurisdiction">Jurisdiction</a></li>
-        <li><a href="#Organisation">Organisation</a></li>
+        <li><a href="#Organization">Organization</a></li>
         <li><a href="#Place">Place</a></li>
         <li><a href="#PlaceName">Place Name</a></li>
         <li><a href="#PlaceNameFormality">Place Name Formality</a></li>
@@ -329,7 +334,7 @@
         <h3>ASGS Feature<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#Feature</code></td>
             </tr>
             <tr>
@@ -350,7 +355,7 @@
         <h3>State or Territory<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/asgs#StateOrTerritory</code></td>
             </tr>
             <tr>
@@ -365,7 +370,7 @@
         <h3>Address<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/gnaf#Address</code></td>
             </tr>
             <tr>
@@ -386,7 +391,7 @@
         <h3>ContractedCatchment<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/ContractedCatchment</code></td>
             </tr>
             <tr>
@@ -401,7 +406,7 @@
         <h3>Gazetteer<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/Gazetteer</code></td>
             </tr>
             <tr>
@@ -428,7 +433,7 @@
         <h3>Jurisdiction<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/Jurisdiction</code></td>
             </tr>
             <tr>
@@ -463,7 +468,7 @@
         <h3>Place<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/Place</code></td>
             </tr>
             <tr>
@@ -481,15 +486,15 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#register">register</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Gazetteer">Gazetteer</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasfeatureclassification">hasFeatureClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#PlaceType">PlaceType</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#register">register</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Gazetteer">Gazetteer</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#PointofInterest">PointOfInterest</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Region">Region</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#PointofInterest">PointOfInterest</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -504,7 +509,7 @@
         <h3>Place Name<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/PlaceName</code></td>
             </tr>
             <tr>
@@ -522,19 +527,19 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="https://www.w3.org/ns/adms#identifier">adms:identifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="https://www.w3.org/ns/adms#Identifier">adms:Identifier</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#wasnamedby">wasNamedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Jurisdiction">Jurisdiction</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#pronunciation">hasPronunciation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://www.w3.org/ns/adms#identifier">adms:identifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="https://www.w3.org/ns/adms#Identifier">adms:Identifier</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/linked-data/registry#status">reg:status</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.org/linked-data/registry#Status">reg:Status</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#register">register</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Gazetteer">Gazetteer</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#pronunciation">hasPronunciation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
+                    <a href="#wasnamedby">wasNamedBy</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasplacenamingauthority">hasPlaceNamingAuthority</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasplacenameformality">hasPlaceNameFormality</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#wasnamedby">wasNamedBy</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#pronunciation">hasPronunciation</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
@@ -544,7 +549,7 @@
         <h3>Place Name Formality<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/PlaceNameFormality</code></td>
             </tr>
             <tr>
@@ -571,7 +576,7 @@
         <h3>Place Type<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/PlaceType</code></td>
             </tr>
             <tr>
@@ -598,7 +603,7 @@
         <h3>Point of Interest<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/PointOfInterest</code></td>
             </tr>
             <tr>
@@ -625,7 +630,7 @@
         <h3>Region<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/Region</code></td>
             </tr>
             <tr>
@@ -646,7 +651,7 @@
         <h3>Register<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/linked-data/registry#Register</code></td>
             </tr>
             <tr>
@@ -661,7 +666,7 @@
         <h3>Registered Item<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/linked-data/registry#RegisteredItem</code></td>
             </tr>
             <tr>
@@ -676,7 +681,7 @@
         <h3>Registry Status<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/linked-data/registry#Status</code></td>
             </tr>
             <tr>
@@ -697,7 +702,7 @@
         <h3>Feature<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#Feature</code></td>
             </tr>
             <tr>
@@ -715,17 +720,17 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Place">Place</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://linked.data.gov.au/def/gnaf#Address">gnaf:Address</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#ContractedCatchment">ContractedCatchment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://linked.data.gov.au/def/asgs#Feature">asgs:Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ContractedCatchment">ContractedCatchment</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Place">Place</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#hasplacename">hasPlaceName</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#hasGeometry">geo:hasGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasplacename">hasPlaceName</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -734,7 +739,7 @@
         <h3>Geometry<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#Geometry</code></td>
             </tr>
             <tr>
@@ -755,7 +760,7 @@
         <h3>string<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
             </tr>
         </table>
@@ -764,15 +769,15 @@
         <h3>Concept<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#PlaceNameFormality">PlaceNameFormality</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#PlaceType">PlaceType</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/linked-data/registry#Status">reg:Status</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#PlaceType">PlaceType</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#PlaceNameFormality">PlaceNameFormality</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -781,7 +786,7 @@
         <h3>Temporal Entity<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2006/time#TemporalEntity</code></td>
             </tr>
         </table>
@@ -790,7 +795,7 @@
         <h3>Agent<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/ns/prov#Agent</code></td>
             </tr>
             <tr>
@@ -807,11 +812,11 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="Organisation">
-        <h3>Organisation<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="Organization">
+        <h3>Organization<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>https://schema.org/Organization</code></td>
             </tr>
             <tr>
@@ -838,7 +843,7 @@
         <h3>Identifier<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>https://www.w3.org/ns/adms#Identifier</code></td>
             </tr>
         </table>
@@ -869,7 +874,7 @@
         <h3>has feature classification<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/hasFeatureClassification</code></td>
             </tr>
             <tr>
@@ -902,7 +907,7 @@
         <h3>hasGeometry<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/hasGeometry</code></td>
             </tr>
         </table>
@@ -911,7 +916,7 @@
         <h3>has place name<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/hasPlaceName</code></td>
             </tr>
             <tr>
@@ -951,7 +956,7 @@
         <h3>has place name formality<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/hasPlaceNameFormality</code></td>
             </tr>
             <tr>
@@ -984,7 +989,7 @@
         <h3>has place naming authority<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/hasPlaceNamingAuthority</code></td>
             </tr>
             <tr>
@@ -1011,7 +1016,7 @@
         <h3>pronunciation<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/hasPronunciation</code></td>
             </tr>
             <tr>
@@ -1038,7 +1043,7 @@
         <h3>place name of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/placeNameOf</code></td>
             </tr>
         </table>
@@ -1047,7 +1052,7 @@
         <h3>register<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/register</code></td>
             </tr>
         </table>
@@ -1056,7 +1061,7 @@
         <h3>was named by<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/placenames/wasNamedBy</code></td>
             </tr>
             <tr>
@@ -1089,7 +1094,7 @@
         <h3>containedItemClass<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/linked-data/registry#containedItemClass</code></td>
             </tr>
         </table>
@@ -1098,7 +1103,7 @@
         <h3>has status<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/linked-data/registry#status</code></td>
             </tr>
             <tr>
@@ -1119,7 +1124,7 @@
         <h3>has geometry<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#hasGeometry</code></td>
             </tr>
             <tr>
@@ -1146,7 +1151,7 @@
         <h3>notation<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2004/02/skos/core#notation</code></td>
             </tr>
         </table>
@@ -1155,7 +1160,7 @@
         <h3>has time<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2006/time#hastime</code></td>
             </tr>
         </table>
@@ -1164,7 +1169,7 @@
         <h3>theme<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/ns/dcat#theme</code></td>
             </tr>
         </table>
@@ -1173,7 +1178,7 @@
         <h3>wasAttributedTo<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/ns/prov#wasAttributedTo</code></td>
             </tr>
         </table>
@@ -1182,7 +1187,7 @@
         <h3>identifier<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>https://www.w3.org/ns/adms#identifier</code></td>
             </tr>
         </table>
@@ -1199,7 +1204,7 @@
         <h3>string<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2001/XMLSchema#string</code></td>
             </tr>
         </table>
@@ -1208,7 +1213,7 @@
         <h3>identifier<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>https://schema.org/identifier</code></td>
             </tr>
         </table>
@@ -1225,7 +1230,7 @@
         <h3>scopeNote<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2004/02/skos/core#scopeNote</code></td>
             </tr>
         </table>
@@ -1234,7 +1239,7 @@
         <h3>name<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>https://schema.org/name</code></td>
             </tr>
         </table>
@@ -1251,7 +1256,7 @@
         <h3>Place Name<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://linked.data.gov.au/def/placenames/PlaceName
@@ -1261,8 +1266,8 @@
             </tr>
             <dt>Classes(s)</dt>
             <dd>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a><br/>
                 <a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a><br/>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a><br/>
             </dd>
             <tr>
                 <th>Description</th>
@@ -1277,8 +1282,6 @@
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://linked.data.gov.au/def/placenames/</code></dd>
         <dt>:</dt>
         <dd><code>http://linked.data.gov.au/def/placenames/</code></dd>
         <dt>adms</dt>
@@ -1313,8 +1316,6 @@
         <dd><code>http://www.w3.org/2006/time#</code></dd>
         <dt>vann</dt>
         <dd><code>http://purl.org/vocab/vann/</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

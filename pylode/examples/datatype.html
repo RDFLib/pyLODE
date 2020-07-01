@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -215,22 +220,22 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>Datatypes</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://linked.data.gov.au/def/datatype</code></dd>
-        <dt>Creator(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
         <dd>
             
     None<br/>
         </dd>
-        <dt>Created</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/created">Created</a></dt>
         <dd>2019-03-25</dd>
-        <dt>Modified</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
         <dd>2019-10-03</dd>
         <dt>Imports</dt>
         <dd>
@@ -287,7 +292,7 @@ These may be used for observation results, or for the range of specific properti
         <h3>Boolean<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/datatype/Boolean</code></td>
             </tr>
             <tr>
@@ -299,8 +304,8 @@ These may be used for observation results, or for the range of specific properti
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
         </table>
@@ -309,7 +314,7 @@ These may be used for observation results, or for the range of specific properti
         <h3>Concept<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/datatype/Concept</code></td>
             </tr>
             <tr>
@@ -332,7 +337,7 @@ These may be used for observation results, or for the range of specific properti
         <h3>Count<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/datatype/Count</code></td>
             </tr>
             <tr>
@@ -344,8 +349,8 @@ These may be used for observation results, or for the range of specific properti
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="#datauncertainty">data:uncertainty</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
                 </td>
             </tr>
@@ -355,7 +360,7 @@ These may be used for observation results, or for the range of specific properti
         <h3>Percent<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/datatype/Percent</code></td>
             </tr>
             <tr>
@@ -373,8 +378,8 @@ These may be used for observation results, or for the range of specific properti
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#unitofmeasure">data:unit</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">value</span> <a href="http://qudt.org/vocab/unit/PERCENT">http://qudt.org/vocab/unit/PERCENT</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#datauncertainty">data:uncertainty</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#unitofmeasure">data:unit</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">value</span> <a href="http://qudt.org/vocab/unit/PERCENT">http://qudt.org/vocab/unit/PERCENT</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -383,7 +388,7 @@ These may be used for observation results, or for the range of specific properti
         <h3>Percent range<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/datatype/PercentRange</code></td>
             </tr>
             <tr>
@@ -401,8 +406,8 @@ These may be used for observation results, or for the range of specific properti
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#unitofmeasure">data:unit</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">value</span> <a href="http://qudt.org/vocab/unit/PERCENT">http://qudt.org/vocab/unit/PERCENT</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#datauncertainty">data:uncertainty</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#unitofmeasure">data:unit</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">value</span> <a href="http://qudt.org/vocab/unit/PERCENT">http://qudt.org/vocab/unit/PERCENT</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -411,7 +416,7 @@ These may be used for observation results, or for the range of specific properti
         <h3>Quantitative Measure<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/datatype/QuantitativeMeasure</code></td>
             </tr>
             <tr>
@@ -424,8 +429,8 @@ These may be used for observation results, or for the range of specific properti
                 <th>Restrictions</th>
                 <td>
                     <a href="#datauncertainty">data:uncertainty</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="#unitofmeasure">data:unit</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#unitofmeasure">data:unit</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
@@ -441,7 +446,7 @@ These may be used for observation results, or for the range of specific properti
         <h3>Quantitative Range<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/datatype/QuantitativeRange</code></td>
             </tr>
             <tr>
@@ -453,10 +458,10 @@ These may be used for observation results, or for the range of specific properti
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="#unitofmeasure">data:unit</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#dataminimum">data:min</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="#datauncertainty">data:uncertainty</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
                     <a href="#datamaximum">data:max</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="#dataminimum">data:min</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="#unitofmeasure">data:unit</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
@@ -471,7 +476,7 @@ These may be used for observation results, or for the range of specific properti
         <h3>Text<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/datatype/Text</code></td>
             </tr>
             <tr>
@@ -483,8 +488,8 @@ These may be used for observation results, or for the range of specific properti
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#datavalue">data:value</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -501,7 +506,7 @@ These may be used for observation results, or for the range of specific properti
         <h3>data standard<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/datatype/standard</code></td>
             </tr>
         </table>
@@ -510,7 +515,7 @@ These may be used for observation results, or for the range of specific properti
         <h3>unit of measure<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/datatype/unit</code></td>
             </tr>
             <tr>
@@ -525,7 +530,7 @@ These may be used for observation results, or for the range of specific properti
         <h3>vocabulary<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/datatype/vocabulary</code></td>
             </tr>
             <tr>
@@ -558,7 +563,7 @@ These may be used for observation results, or for the range of specific properti
         <h3>data maximum<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/datatype/max</code></td>
             </tr>
             <tr>
@@ -579,7 +584,7 @@ These may be used for observation results, or for the range of specific properti
         <h3>data minimum<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/datatype/min</code></td>
             </tr>
             <tr>
@@ -600,7 +605,7 @@ These may be used for observation results, or for the range of specific properti
         <h3>data uncertainty<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/datatype/uncertainty</code></td>
             </tr>
             <tr>
@@ -621,7 +626,7 @@ These may be used for observation results, or for the range of specific properti
         <h3>data value<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/datatype/value</code></td>
             </tr>
             <tr>
@@ -644,8 +649,6 @@ These may be used for observation results, or for the range of specific properti
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://linked.data.gov.au/def/datatype/</code></dd>
         <dt>data</dt>
         <dd><code>http://linked.data.gov.au/def/datatype/</code></dd>
         <dt>dct</dt>
@@ -666,8 +669,6 @@ These may be used for observation results, or for the range of specific properti
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

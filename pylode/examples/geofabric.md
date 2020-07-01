@@ -1,9 +1,9 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
 
 # Geofabric Ontology
 
 ## Metadata
-* **IRI**
+* **URI**
   * `http://linked.data.gov.au/def/geofabric`
 * **Publisher(s)**
   * [CSIRO](http://catalogue.linked.data.gov.au/org/csiro)
@@ -18,7 +18,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
   * 2019-07-29
 * **Version Information**
   * Version 1.0 only characterises 3 types of Feature - Contracted Catchment, River Region & Drianage Division - and requires that each CC be within a RR and that an RR be within a DD.
-* **Version IRI**
+* **Version URI**
   * [http://linked.data.gov.au/def/geofabric/1.0](http://linked.data.gov.au/def/geofabric/1.0)
 * **Imports**
   * [geo:](http://www.opengis.net/ont/geosparql#)
@@ -52,50 +52,50 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 ### Contracted Catchment
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geofabric#ContractedCatchment`
+URI | `http://linked.data.gov.au/def/geofabric#ContractedCatchment`
 Source | Section 5.4.3 Page 40 in the Australian Hydrological Geospatial Fabric (Geofabric) v3.0 Product Guide
 Description | <p>All contracted catchment features of type ContractedArea are aggregations of the AHGFCatchment units that participate in a relationship of common geographic extent based upon the location of a contracted node from both Geofabric Surface Cartography and Geofabric Surface Network or a data sink as defined within the DEM-1S. Levels of confidence for contracted nodes are further described in the following section of the Geofabric Product Guide.</p> <p>Each ContractedArea is assigned with the contracted node identifier (ConNodeID) and the confidence level (ConLevel) of the contracted node to which they drain. The ContractedArea features are the drainage areas of a combination of Levels 1 and 2 contracted nodes. These drainage areas also incorporate catchment areas where there is no discernable flow (at 1:250,000 scale) in the form of stream flow segment features. The allocation of no flow areas to contracted catchments is performed based on the most likely destination of water falling in these areas in flood type conditions. </p> <p>Contracted catchment hierarchy</p> <p>In previous versions of the Geofabric, the set of contracted catchment features provided a collection of drainage areas for a set of persistent contracted nodes. In V2.1 these areas have been further processed to aggregate these features into a contracted catchment hierarchy. This hierarchy of contracted catchments includes only those catchments for key contracted nodes taken from a full set of contractible river confluences, sinks, monitoring points and the inflow and outflow points of water storages. These key contracted nodes form a stable, logical, dendritic hierarchy of catchments that can be reliably reproduced when moving to higher resolution or larger scaled data. The contracted catchment hierarchy provides a reliable and stable set of catchments that, among other things, can be mapped to a number of types of water reporting areas (depending on the use case) as exemplified by the stable reporting regions given in Hydrology Reporting Regions.</p>
-Super-classes |[hyf:HY_Catchment](https://www.opengis.net/def/appschema/hy_features/hyf/HY_Catchment) (c)<br />[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
+Super-classes |[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />[hyf:HY_Catchment](https://www.opengis.net/def/appschema/hy_features/hyf/HY_Catchment) (c)<br />
 Restrictions |[geo:sfWithin](http://www.opengis.net/ont/geosparql#sfWithin) **exactly** 1 [RiverRegion](RiverRegion) (c)<br />
 ### Drainage Division
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geofabric#DrainageDivision`
+URI | `http://linked.data.gov.au/def/geofabric#DrainageDivision`
 Source | Page 44 in the Australian Hydrological Geospatial Fabric (Geofabric) v3.0 Product Guide
-Description | <p>The Geofabric's Hydrology Reporting Region product's AWRA Drainage Division object.</p> <p>Drainage Division is defined for the purpose of providing a stable set of reporting regions specifically for the purpose of the Bureau’s Australian Water Resources Assessment (AWRA) and are referred to as the 2010 and 2012 Assessment Reporting Regions</p>
-Super-classes |[hyf:HY_CatchmentAggregate](https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate) (c)<br />[ReportingRegion](GeofabricHydrologyreportingregion) (c)<br />[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
+Description | <p>The AWRA Drainage Division is defined for the purpose of providing a stable set of reporting regions specifically for the purpose of the Bureau’s Australian Water Resources Assessment and are referred to as the 2010 and 2012 Assessment Reporting Regions.</p>
+Super-classes |[ReportingRegion](GeofabricHydrologyreportingregion) (c)<br />[hyf:HY_CatchmentAggregate](https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate) (c)<br />[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
 ### Geofabric Hydrology reporting region
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geofabric#ReportingRegion`
+URI | `http://linked.data.gov.au/def/geofabric#ReportingRegion`
 Source | Section 5.5 Page 44 in the Australian Hydrological Geospatial Fabric (Geofabric) v3.0 Product Guide
 Description | <p>Geofabric Hydrology Reporting Regions are derived from aggregations of contracted catchments from Geofabric Hydrology Reporting Catchments. This product contains two candidate reporting regions, namely AWRA Drainage Division for national scale reporting purposes and River Region for regional scale reporting purposes. More reporting regions may be added in future releases based on user requirements.</p> <p>The AWRA Drainage Division is defined for the purpose of providing a stable set of reporting regions specifically for the purpose of the Bureau’s Australian Water Resources Assessment and are referred to as the 2010 and 2012 Assessment Reporting Regions.</p> <p>The River Regions were based on a specification developed by Bureau hydrologists involved in water resources assessment in consultation with the Geofabric team and scientists from CSIRO and ANU. These boundaries were developed for use in regional scale reporting and hydrological modelling. The River Region boundaries were not used in the Australian Water Resources Assessment 2010 and 2012 but may be considered in the future as the resolution of reporting increases.</p> <p>Though the Geofabric Hydrology Reporting Regions have been developed for the purposes of the Australian Water Resources Assessment, it is envisaged that these units can be used more generally as a standard for hydrological reporting at the national and regional scale, and thus replace the Australia River Basins 1997 (http://www.ga.gov.au/metadatagateway/metadata/record/gcat_42343). Table 31 shows the Geofabric Hydrology Reporting Regions feature class terminology and feature subtypes. </p>
-Super-classes |[hyf:HY_CatchmentAggregate](https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate) (c)<br />[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
+Super-classes |[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />[hyf:HY_CatchmentAggregate](https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate) (c)<br />
 Sub-classes |[RiverRegion](RiverRegion) (c)<br />[DrainageDivision](DrainageDivision) (c)<br />
 ### River Region
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/geofabric#RiverRegion`
-Description | <p>The River Regions were based on a specification developed by Bureau hydrologists involved in water resources assessment in consultation with the Geofabric team and scientists from CSIRO and ANU. These boundaries were developed for use in regional scale reporting and hydrological modelling. The River Region boundaries were not used in the Australian Water Resources Assessment 2010 and 2012 but may be considered in the future as the resolution of reporting increases.</p>
-Super-classes |[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />[ReportingRegion](GeofabricHydrologyreportingregion) (c)<br />[hyf:HY_CatchmentAggregate](https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate) (c)<br />
+URI | `http://linked.data.gov.au/def/geofabric#RiverRegion`
+Description | <p>The Geofabric's Hydrology Reporting Region product's River Region object.</p> <p>Reporting Regions are derived from aggregations of Contracted Catchments for regional scale reporting purposes.</p> <p>A River Regions is always within one and only one Drainage Division.</p>
+Super-classes |[hyf:HY_CatchmentAggregate](https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate) (c)<br />[ReportingRegion](GeofabricHydrologyreportingregion) (c)<br />[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
 Restrictions |[geo:sfWithin](http://www.opengis.net/ont/geosparql#sfWithin) **exactly** 1 [DrainageDivision](DrainageDivision) (c)<br />
 ### Feature
 Property | Value
 --- | ---
-IRI | `http://www.opengis.net/ont/geosparql#Feature`
-Sub-classes |[RiverRegion](RiverRegion) (c)<br />[DrainageDivision](DrainageDivision) (c)<br />[ReportingRegion](GeofabricHydrologyreportingregion) (c)<br />[ContractedCatchment](ContractedCatchment) (c)<br />
+URI | `http://www.opengis.net/ont/geosparql#Feature`
+Sub-classes |[ContractedCatchment](ContractedCatchment) (c)<br />[ReportingRegion](GeofabricHydrologyreportingregion) (c)<br />[DrainageDivision](DrainageDivision) (c)<br />[RiverRegion](RiverRegion) (c)<br />
 ### Catchment
 Property | Value
 --- | ---
-IRI | `https://www.opengis.net/def/appschema/hy_features/hyf/HY_Catchment`
+URI | `https://www.opengis.net/def/appschema/hy_features/hyf/HY_Catchment`
 Description | <p>The HY Features Ontology's generic class for a catchment</p>
 Sub-classes |[ContractedCatchment](ContractedCatchment) (c)<br />
 ### Catchment Aggregate
 Property | Value
 --- | ---
-IRI | `https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate`
+URI | `https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate`
 Description | <p>The HY Features Ontology's generic class for an aggregation of catchments</p>
-Sub-classes |[DrainageDivision](DrainageDivision) (c)<br />[ReportingRegion](GeofabricHydrologyreportingregion) (c)<br />[RiverRegion](RiverRegion) (c)<br />
+Sub-classes |[RiverRegion](RiverRegion) (c)<br />[DrainageDivision](DrainageDivision) (c)<br />[ReportingRegion](GeofabricHydrologyreportingregion) (c)<br />
 
 ## Annotation Properties
 [source](#source),
@@ -105,22 +105,20 @@ Sub-classes |[DrainageDivision](DrainageDivision) (c)<br />[ReportingRegion](Geo
 ### source
 Property | Value
 --- | ---
-IRI | `http://purl.org/dc/elements/1.1/source`
+URI | `http://purl.org/dc/elements/1.1/source`
 [](identifier)
 ### identifier
 Property | Value
 --- | ---
-IRI | `https://schema.org/identifier`
+URI | `https://schema.org/identifier`
 [](name)
 ### name
 Property | Value
 --- | ---
-IRI | `https://schema.org/name`
+URI | `https://schema.org/name`
 
 ## Named Individuals
 ## Namespaces
-* **default (:)**
-  * `http://linked.data.gov.au/def/geofabric#`
 * **:**
   * `http://linked.data.gov.au/def/geofabric#`
 * **dc**
@@ -143,8 +141,6 @@ IRI | `https://schema.org/name`
   * `https://schema.org/`
 * **skos**
   * `http://www.w3.org/2004/02/skos/core#`
-* **xml**
-  * `http://www.w3.org/XML/1998/namespace`
 * **xsd**
   * `http://www.w3.org/2001/XMLSchema#`
 

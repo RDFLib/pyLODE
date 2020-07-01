@@ -881,7 +881,7 @@ class OntDoc(BaseProfile):
             self.NAMED_INDIVIDUALS[ni]["fid"] = self._make_fid(self.NAMED_INDIVIDUALS[ni]["title"], ni)
 
     def _make_metadata(self):
-        return self._load_template("owl_metadata." + self.outputformat).render(
+        return self._load_template("metadata." + self.outputformat).render(
             imports=sorted(self.METADATA["imports"]),
             title=self.METADATA.get("title"),
             uri=self.METADATA.get("uri"),
@@ -911,7 +911,7 @@ class OntDoc(BaseProfile):
 
     def _make_classes(self):
         # make all Classes
-        class_template = self._load_template("owl_class." + self.outputformat)
+        class_template = self._load_template("class." + self.outputformat)
         classes_list = []
         for k, v in self.CLASSES.items():
             # handling Markdown formatting within a table
@@ -950,7 +950,7 @@ class OntDoc(BaseProfile):
             )
 
         # make the template for all Classes
-        classes_template = self._load_template("owl_classes." + self.outputformat)
+        classes_template = self._load_template("classes." + self.outputformat)
         # add in Class index
         fids = sorted(
             [(v.get("fid"), v.get("title")) for k, v in self.CLASSES.items()],
@@ -975,7 +975,7 @@ class OntDoc(BaseProfile):
             desc = property[1].get("description")
             eg = property[1].get("example")
 
-        return self._load_template("owl_property." + self.outputformat).render(
+        return self._load_template("property." + self.outputformat).render(
             uri=property[0],
             fid=property[1].get("fid"),
             property_type=property[1].get("prop_type"),
@@ -1046,7 +1046,7 @@ class OntDoc(BaseProfile):
                 )
 
         # make the template for all properties
-        return self._load_template("owl_properties." + self.outputformat).render(
+        return self._load_template("properties." + self.outputformat).render(
             op_instances=op_instances,
             fp_instances=fp_instances,
             dp_instances=dp_instances,
@@ -1055,7 +1055,7 @@ class OntDoc(BaseProfile):
         )
 
     def _make_named_individual(self, named_individual):
-        return self._load_template("owl_named_individual." + self.outputformat).render(
+        return self._load_template("named_individual." + self.outputformat).render(
             uri=named_individual[0],
             fid=named_individual[1].get("fid"),
             classes=named_individual[1].get("classes"),
@@ -1081,7 +1081,7 @@ class OntDoc(BaseProfile):
             if v.get("fid") is not None:  # ensure BNodes not added
                 fids.append((v.get("fid"), v.get("title")))
         fids = sorted(fids, key=lambda tup: tup[1])
-        return self._load_template("owl_named_individuals." + self.outputformat).render(
+        return self._load_template("named_individuals." + self.outputformat).render(
             fids=fids,
             named_individuals=named_individuals_list
         )
@@ -1092,7 +1092,7 @@ class OntDoc(BaseProfile):
             if not self.exclude_css:
                 css = open(path.join(STYLE_DIR, "pylode.css")).read()
 
-        return self._load_template("owl_document." + self.outputformat).render(
+        return self._load_template("document." + self.outputformat).render(
             schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML templates
             title=self.METADATA["title"],
             metadata=self._make_metadata(),

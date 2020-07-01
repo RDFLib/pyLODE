@@ -1,9 +1,9 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
 
 # LOC-I Ontology
 
 ## Metadata
-* **IRI**
+* **URI**
   * `http://linked.data.gov.au/def/loci`
 * **Publisher(s)**
   * [CSIRO](http://catalogue.linked.data.gov.au/org/csiro)
@@ -17,7 +17,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
   * 2018-11-09
 * **Version Information**
   * Beta version
-* **Version IRI**
+* **Version URI**
   * [http://linked.data.gov.au/def/loci/1.0](http://linked.data.gov.au/def/loci/1.0)
 * **Imports**
   * [dcat:](http://www.w3.org/ns/dcat#)
@@ -56,39 +56,39 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 ### LOCI Data Publishers
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/loci#DataPublisher`
+URI | `http://linked.data.gov.au/def/loci#DataPublisher`
 Description | <p>The set of all approved publishers of LOCI data, all of whom are known</p>
 Super-classes |[http://xmlns.com/foaf/0.1/Group](http://xmlns.com/foaf/0.1/Group) (c)<br />
 ### LOCI Dataset
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/loci#Dataset`
+URI | `http://linked.data.gov.au/def/loci#Dataset`
 Description | <p>A LOCI Dataset is a DCAT and VOID Dataset that has been accepted by the LOCI Registry Manager.</p>
-Super-classes |[dcat:Dataset](http://www.w3.org/ns/dcat#Dataset) (c)<br />[http://rdfs.org/ns/void#Dataset](http://rdfs.org/ns/void#Dataset) (c)<br />
-Restrictions |[dct:publisher](http://purl.org/dc/terms/publisher) **exactly** 1 [http://xmlns.com/foaf/0.1/Organization](http://xmlns.com/foaf/0.1/Organization) (c)<br />[dct:modified](http://purl.org/dc/terms/modified) **exactly** 1<br />[dct:issued](http://purl.org/dc/terms/issued) **exactly** 1<br />[dct:title](http://purl.org/dc/terms/title) **exactly** 1<br />[dcat:contactPoint](http://www.w3.org/ns/dcat#contactPoint) **min** 1<br />
+Super-classes |[http://rdfs.org/ns/void#Dataset](http://rdfs.org/ns/void#Dataset) (c)<br />[dcat:Dataset](http://www.w3.org/ns/dcat#Dataset) (c)<br />
+Restrictions |[dct:publisher](http://purl.org/dc/terms/publisher) **exactly** 1 [http://xmlns.com/foaf/0.1/Organization](http://xmlns.com/foaf/0.1/Organization) (c)<br />[dct:issued](http://purl.org/dc/terms/issued) **exactly** 1<br />[dct:modified](http://purl.org/dc/terms/modified) **exactly** 1<br />[dcat:contactPoint](http://www.w3.org/ns/dcat#contactPoint) **min** 1<br />[dct:title](http://purl.org/dc/terms/title) **exactly** 1<br />
 Sub-classes |[Linkset](LOCILinkset) (c)<br />
 ### LOCI Dataset Linking Statement
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/loci#DatasetLinkingStatement`
+URI | `http://linked.data.gov.au/def/loci#DatasetLinkingStatement`
 Description | <p>An RDF Statement (Subject, Predicate, Object + additional metadata) that links class instances in one LOCI Dataset with class instances in another</p>
 Super-classes |[rdf:Statement](http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement) (c)<br />
-Restrictions |[hadGenerationMethod](hadgenerationmethod) (op) **exactly** 1 [prov:Plan](http://www.w3.org/ns/prov#Plan) (c)<br />[rdf:object](http://www.w3.org/1999/02/22-rdf-syntax-ns#object) **exactly** 1 [Feature](LOCIFeature) (c)<br />[rdf:subject](http://www.w3.org/1999/02/22-rdf-syntax-ns#subject) **exactly** 1 [Feature](LOCIFeature) (c)<br />[http://purl.org/linked-data/registryregister](http://purl.org/linked-data/registryregister) **exactly** 1 [Linkset](LOCILinkset) (c)<br />
+Restrictions |[http://purl.org/linked-data/registryregister](http://purl.org/linked-data/registryregister) **exactly** 1 [Linkset](LOCILinkset) (c)<br />[rdf:subject](http://www.w3.org/1999/02/22-rdf-syntax-ns#subject) **exactly** 1 [Feature](LOCIFeature) (c)<br />[hadGenerationMethod](hadgenerationmethod) (op) **exactly** 1 [prov:Plan](http://www.w3.org/ns/prov#Plan) (c)<br />[rdf:object](http://www.w3.org/1999/02/22-rdf-syntax-ns#object) **exactly** 1 [Feature](LOCIFeature) (c)<br />
 ### LOCI Feature
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/loci#Feature`
+URI | `http://linked.data.gov.au/def/loci#Feature`
 Super-classes |[http://www.opengis.net/ont/geosparql#Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
 ### LOCI Linkset
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/loci#Linkset`
+URI | `http://linked.data.gov.au/def/loci#Linkset`
 Description | <p>A LOCI Linkset is a specialised form of a VOID Linkset that requires the void:subjectsTarget &amp; void:objectsTarget indicate LOCI Datasets</p>
 Super-classes |[Dataset](LOCIDataset) (c)<br />[http://rdfs.org/ns/void#Linkset](http://rdfs.org/ns/void#Linkset) (c)<br />
 ### Statement
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement`
+URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement`
 Sub-classes |[DatasetLinkingStatement](LOCIDatasetLinkingStatement) (c)<br />
 
 ## Object Properties
@@ -97,7 +97,7 @@ Sub-classes |[DatasetLinkingStatement](LOCIDatasetLinkingStatement) (c)<br />
 ### had generation method
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/loci#hadGenerationMethod`
+URI | `http://linked.data.gov.au/def/loci#hadGenerationMethod`
 Description | The LOCI Dataset Linking Statement had a Method that was used to generate it
 Range(s) |[prov:Plan](http://www.w3.org/ns/prov#Plan) (c)<br />
 
@@ -109,17 +109,17 @@ Range(s) |[prov:Plan](http://www.w3.org/ns/prov#Plan) (c)<br />
 ### minQualifiedCardinality
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#minQualifiedCardinality`
+URI | `http://www.w3.org/2002/07/owl#minQualifiedCardinality`
 [](qualifiedCardinality)
 ### qualifiedCardinality
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2002/07/owl#qualifiedCardinality`
+URI | `http://www.w3.org/2002/07/owl#qualifiedCardinality`
 [](member)
 ### member
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2004/02/skos/core#member`
+URI | `http://www.w3.org/2004/02/skos/core#member`
 
 ## Named Individuals
 [ASGS Dataset](#ASGSDataset),
@@ -134,62 +134,60 @@ IRI | `http://www.w3.org/2004/02/skos/core#member`
 ### CSIRO <sup>c</sup>
 Property | Value
 --- | ---
-IRI | `http://catalogue.linked.data.gov.au/org/O-000886`
+URI | `http://catalogue.linked.data.gov.au/org/O-000886`
 * **Contributor(s)**
   * [http://xmlns.com/foaf/0.1/Organization](http://xmlns.com/foaf/0.1/Organization)
 ### Geoscience Australia <sup>c</sup>
 Property | Value
 --- | ---
-IRI | `http://catalogue.linked.data.gov.au/org/O-000887`
+URI | `http://catalogue.linked.data.gov.au/org/O-000887`
 * **Contributor(s)**
   * [http://xmlns.com/foaf/0.1/Organization](http://xmlns.com/foaf/0.1/Organization)
 ### Australian Bureau of Statistics <sup>c</sup>
 Property | Value
 --- | ---
-IRI | `http://catalogue.linked.data.gov.au/org/O-000928`
+URI | `http://catalogue.linked.data.gov.au/org/O-000928`
 * **Contributor(s)**
   * [http://xmlns.com/foaf/0.1/Organization](http://xmlns.com/foaf/0.1/Organization)
 ### PSMA Australia <sup>c</sup>
 Property | Value
 --- | ---
-IRI | `http://catalogue.linked.data.gov.au/org/psma`
+URI | `http://catalogue.linked.data.gov.au/org/psma`
 * **Contributor(s)**
   * [http://xmlns.com/foaf/0.1/Organization](http://xmlns.com/foaf/0.1/Organization)
 ### ASGS Dataset <sup>c</sup>
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/dataset/asgs`
+URI | `http://linked.data.gov.au/dataset/asgs`
 * **Contributor(s)**
   * [Dataset](http://linked.data.gov.au/def/loci#Dataset)
 ### Geofabric Dataset <sup>c</sup>
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/dataset/geofabric`
+URI | `http://linked.data.gov.au/dataset/geofabric`
 * **Contributor(s)**
   * [Dataset](http://linked.data.gov.au/def/loci#Dataset)
 ### GNAF Dataset <sup>c</sup>
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/dataset/gnaf`
+URI | `http://linked.data.gov.au/dataset/gnaf`
 * **Contributor(s)**
   * [Dataset](http://linked.data.gov.au/def/loci#Dataset)
 ### Addresses Catchments Linkset <sup>c</sup>
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/loci#AddressesCatchments`
+URI | `http://linked.data.gov.au/def/loci#AddressesCatchments`
 * **Contributor(s)**
   * [Linkset](http://linked.data.gov.au/def/loci#Linkset)
 ### LOCI Data Publishers <sup>c</sup>
 Property | Value
 --- | ---
-IRI | `http://linked.data.gov.au/def/loci#DataPublisher`
+URI | `http://linked.data.gov.au/def/loci#DataPublisher`
 * **Contributor(s)**
-  * [owl:Class](http://www.w3.org/2002/07/owl#Class)
   * [rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class)
+  * [owl:Class](http://www.w3.org/2002/07/owl#Class)
 Description | The set of all approved publishers of LOCI data, all of whom are known
 ## Namespaces
-* **default (:)**
-  * `http://linked.data.gov.au/def/loci#`
 * **:**
   * `http://linked.data.gov.au/def/loci#`
 * **dcat**
@@ -210,8 +208,6 @@ Description | The set of all approved publishers of LOCI data, all of whom are k
   * `https://schema.org/`
 * **skos**
   * `http://www.w3.org/2004/02/skos/core#`
-* **xml**
-  * `http://www.w3.org/XML/1998/namespace`
 * **xsd**
   * `http://www.w3.org/2001/XMLSchema#`
 

@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -205,15 +210,15 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>ISO21972 Information technology — Upper level ontology for smart city indicators</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972</code></dd>
-        <dt>Creator(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
         <dd>
             Created by Mark S. Fox (msf@eil.utoronto.ca).<br/>
         </dd>
@@ -322,7 +327,7 @@
         <h3>Polygon<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://http://www.opengis.net/ont/geosparql#Polygon</code></td>
             </tr>
             <tr>
@@ -337,7 +342,7 @@
         <h3>Application_area<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Application_area</code></td>
             </tr>
             <tr>
@@ -352,7 +357,7 @@
         <h3>Binary_prefix<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Binary_prefix</code></td>
             </tr>
             <tr>
@@ -367,7 +372,7 @@
         <h3>cardinal scale<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Cardinal_scale</code></td>
             </tr>
             <tr>
@@ -395,7 +400,7 @@
         <h3>Cardinality<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Cardinality</code></td>
             </tr>
             <tr>
@@ -429,7 +434,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Cardinality_scale<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Cardinality_scale</code></td>
             </tr>
             <tr>
@@ -450,7 +455,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Cardinality_unit<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Cardinality_unit</code></td>
             </tr>
             <tr>
@@ -462,7 +467,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="ub45bL478C55">ub45bL478C55</a> <span class="cardinality">exactly</span> 1 <a href="#Cardinality_scale">i72:Cardinality_scale</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="ub43bL478C55">ub43bL478C55</a> <span class="cardinality">exactly</span> 1 <a href="#Cardinality_scale">i72:Cardinality_scale</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -471,14 +476,14 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>City<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#City</code></td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#ISO21972Thing">i72:ISO21972Thing</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://schema.org/City">sch:City</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ISO21972Thing">i72:ISO21972Thing</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -487,7 +492,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>compound unit<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Compound_unit</code></td>
             </tr>
             <tr>
@@ -500,8 +505,8 @@ Note that there is no property that links Cardinality to a Variable.</p>
                 <th>Sub-classes</th>
                 <td>
                     <a href="#unitdivision">i72:Unit_division</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#unitexponentiation">i72:Unit_exponentiation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#unitmultiplication">i72:Unit_multiplication</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#unitexponentiation">i72:Unit_exponentiation</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -510,7 +515,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Dimension<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Dimension</code></td>
             </tr>
             <tr>
@@ -525,7 +530,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Distinct_count<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Distinct_count</code></td>
             </tr>
             <tr>
@@ -554,7 +559,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Feature<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Feature</code></td>
             </tr>
             <tr>
@@ -571,7 +576,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>fixed point<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Fixed_point</code></td>
             </tr>
             <tr>
@@ -598,7 +603,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>fixed zero point<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Fixed_zero_point</code></td>
             </tr>
             <tr>
@@ -619,37 +624,37 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>ISO21972Thing<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#ISO21972Thing</code></td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Indicator">i72:Indicator</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Statistic">i72:Statistic</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Application_area">i72:Application_area</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Sample">i72:Sample</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Vectorial_or_tensorial_character">i72:Vectorial_or_tensorial_character</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Ordered_measurement_scale_category">i72:Ordered_measurement_scale_category</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#measure">i72:Measure</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Binary_prefix">i72:Binary_prefix</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Population">i72:Population</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Parameter">i72:Parameter</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Phenomenon">i72:Phenomenon</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Unit_of_measure">i72:Unit_of_measure</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#quantity">i72:Quantity</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Sample">i72:Sample</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Monetary_unit">i72:Monetary_unit</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#System_of_units">i72:System_of_units</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Dimension">i72:Dimension</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#City">i72:City</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Singular_unit">i72:Singular_unit</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#point">i72:Point</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Measurement_scale">i72:Measurement_scale</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Measurement_scale_category">i72:Measurement_scale_category</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Observation">i72:Observation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Prefix">i72:Prefix</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Variable">i72:Variable</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Feature">i72:Feature</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Prefix">i72:Prefix</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#City">i72:City</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#quantity">i72:Quantity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#point">i72:Point</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Unit_of_measure">i72:Unit_of_measure</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Measurement_scale">i72:Measurement_scale</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Population">i72:Population</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Indicator">i72:Indicator</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Parameter">i72:Parameter</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Statistic">i72:Statistic</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Binary_prefix">i72:Binary_prefix</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Measurement_scale_category">i72:Measurement_scale_category</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#measure">i72:Measure</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Observation">i72:Observation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Monetary_unit">i72:Monetary_unit</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#System_of_units">i72:System_of_units</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Singular_unit">i72:Singular_unit</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Application_area">i72:Application_area</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Dimension">i72:Dimension</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -658,7 +663,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Indicator<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Indicator</code></td>
             </tr>
             <tr>
@@ -677,8 +682,8 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#for_time_interval">i72:for_time_interval</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2006/time#DateTimeInterval">time:DateTimeInterval</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#unitofmeasure">i72:unit_of_measure</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Unit_of_measure">i72:Unit_of_measure</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#for_time_interval">i72:for_time_interval</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2006/time#DateTimeInterval">time:DateTimeInterval</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#for_city">i72:for_city</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#City">i72:City</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -694,7 +699,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>interval scale<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Interval_scale</code></td>
             </tr>
             <tr>
@@ -709,7 +714,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Mean<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Mean</code></td>
             </tr>
             <tr>
@@ -742,7 +747,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>measure<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Measure</code></td>
             </tr>
             <tr>
@@ -769,7 +774,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>measurement scale<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Measurement_scale</code></td>
             </tr>
             <tr>
@@ -804,7 +809,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Measurement_scale_category<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Measurement_scale_category</code></td>
             </tr>
             <tr>
@@ -819,7 +824,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Monetary_unit<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Monetary_unit</code></td>
             </tr>
             <tr>
@@ -835,7 +840,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>nominal scale<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Nominal_scale</code></td>
             </tr>
             <tr>
@@ -856,7 +861,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Observation<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Observation</code></td>
             </tr>
             <tr>
@@ -885,7 +890,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Ordered_measurement_scale_category<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Ordered_measurement_scale_category</code></td>
             </tr>
             <tr>
@@ -906,7 +911,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>ordinal scale<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Ordinal_scale</code></td>
             </tr>
             <tr>
@@ -927,7 +932,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Parameter<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Parameter</code></td>
             </tr>
             <tr>
@@ -939,8 +944,8 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#ISO21972Thing">i72:ISO21972Thing</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#quantity">i72:Quantity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ISO21972Thing">i72:ISO21972Thing</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -952,11 +957,11 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Distinct_count">i72:Distinct_count</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Sum">i72:Sum</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Standard_deviation">i72:Standard_deviation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Distinct_count">i72:Distinct_count</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Cardinality">i72:Cardinality</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Mean">i72:Mean</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Standard_deviation">i72:Standard_deviation</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -977,7 +982,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>phenomenon<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Phenomenon</code></td>
             </tr>
             <tr>
@@ -998,7 +1003,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>point<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Point</code></td>
             </tr>
             <tr>
@@ -1025,7 +1030,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Population<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Population</code></td>
             </tr>
             <tr>
@@ -1044,11 +1049,11 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#defined_by">i72:defined_by</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#definition">i72:definition</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Feature">i72:Feature</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#is_described_by">i72:is_described_by</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Parameter">i72:Parameter</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#is_composed_of">i72:is_composed_of</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#defined_by">i72:defined_by</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#is_described_by">i72:is_described_by</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Parameter">i72:Parameter</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#for_time_interval">i72:for_time_interval</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/2006/time#DateTimeInterval">time:DateTimeInterval</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#definition">i72:definition</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Feature">i72:Feature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -1056,9 +1061,9 @@ Note that there is no property that links Cardinality to a Variable.</p>
                 <td>
                     <a href="#sum_of">i72:sum_of</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#cardinality_of">i72:cardinality_of</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#mean_of">i72:mean_of</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#std_of">i72:std_of</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#is_part_of">i72:is_part_of</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#std_of">i72:std_of</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#mean_of">i72:mean_of</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1067,7 +1072,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>prefix<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Prefix</code></td>
             </tr>
             <tr>
@@ -1106,7 +1111,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>quantity<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Quantity</code></td>
             </tr>
             <tr>
@@ -1131,22 +1136,22 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Indicator">i72:Indicator</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Parameter">i72:Parameter</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Indicator">i72:Indicator</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#phenomenon">i72:phenomenon</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#value">i72:value</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#phenomenon">i72:phenomenon</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#derivedquantity">i72:derived_quantity</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#basequantity">i72:base_quantity</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#derivedquantity">i72:derived_quantity</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1155,7 +1160,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>RatioIndicator<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#RatioIndicator</code></td>
             </tr>
             <tr>
@@ -1167,9 +1172,9 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="#numerator">i72:numerator</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#quantity">i72:Quantity</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#denominatot">i72:denominator</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#quantity">i72:Quantity</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#unitofmeasure">i72:unit_of_measure</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#unitdivision">i72:Unit_division</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#numerator">i72:numerator</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#quantity">i72:Quantity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1178,7 +1183,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>ratio scale<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Ratio_scale</code></td>
             </tr>
             <tr>
@@ -1199,7 +1204,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>SI prefix<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#SI_prefix</code></td>
             </tr>
             <tr>
@@ -1214,7 +1219,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Sample<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Sample</code></td>
             </tr>
             <tr>
@@ -1226,8 +1231,8 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#is_described_by">i72:is_described_by</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Statistic">i72:Statistic</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#is_part_of">i72:is_part_of</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Population">i72:Population</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#is_described_by">i72:is_described_by</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Statistic">i72:Statistic</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#is_composed_of">i72:is_composed_of</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Observation">i72:Observation</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -1243,7 +1248,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Sample_cardinality<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Sample_cardinality</code></td>
             </tr>
             <tr>
@@ -1258,7 +1263,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Sample_mean<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Sample_mean</code></td>
             </tr>
             <tr>
@@ -1273,7 +1278,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Sample_standard_deviation<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Sample_standard_deviation</code></td>
             </tr>
             <tr>
@@ -1288,7 +1293,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Sample_sum<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Sample_sum</code></td>
             </tr>
             <tr>
@@ -1303,7 +1308,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Singular_unit<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Singular_unit</code></td>
             </tr>
             <tr>
@@ -1331,7 +1336,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Standard_deviation<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Standard_deviation</code></td>
             </tr>
             <tr>
@@ -1358,7 +1363,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Statistic<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Statistic</code></td>
             </tr>
             <tr>
@@ -1376,10 +1381,10 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>Sub-classes</th>
                 <td>
+                    <a href="#Sample_mean">i72:Sample_mean</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Sample_standard_deviation">i72:Sample_standard_deviation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Sample_cardinality">i72:Sample_cardinality</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Sample_sum">i72:Sample_sum</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Sample_standard_deviation">i72:Sample_standard_deviation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Sample_mean">i72:Sample_mean</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -1394,7 +1399,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Sum<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Sum</code></td>
             </tr>
             <tr>
@@ -1427,7 +1432,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>System_of_units<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#System_of_units</code></td>
             </tr>
             <tr>
@@ -1439,9 +1444,9 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#baseunit">i72:base_unit</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#derivedquantity">i72:derived_quantity</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#basequantity">i72:base_quantity</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#baseunit">i72:base_unit</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1450,7 +1455,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>unit division<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Unit_division</code></td>
             </tr>
             <tr>
@@ -1472,7 +1477,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>unit exponentiation<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Unit_exponentiation</code></td>
             </tr>
             <tr>
@@ -1494,7 +1499,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>unit multiple or submultiple<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Unit_multiple_or_submultiple</code></td>
             </tr>
             <tr>
@@ -1522,7 +1527,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>unit multiplication<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Unit_multiplication</code></td>
             </tr>
             <tr>
@@ -1534,8 +1539,8 @@ Note that there is no property that links Cardinality to a Variable.</p>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#term2">i72:term_2</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#term1">i72:term_1</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#term2">i72:term_2</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1544,7 +1549,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>unit of measure<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Unit_of_measure</code></td>
             </tr>
             <tr>
@@ -1570,12 +1575,12 @@ Note that there is no property that links Cardinality to a Variable.</p>
                 <th>In range of</th>
                 <td>
                     <a href="#term2">i72:term_2</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#term1">i72:term_1</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#baseunit">i72:base_unit</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#base">i72:base</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#unitofmeasure">i72:unit_of_measure</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#denominatot">i72:denominator</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#base">i72:base</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#baseunit">i72:base_unit</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#term1">i72:term_1</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#numerator">i72:numerator</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#denominatot">i72:denominator</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1584,7 +1589,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Variable<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Variable</code></td>
             </tr>
             <tr>
@@ -1624,7 +1629,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Vectorial_or_tensorial_character<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#Vectorial_or_tensorial_character</code></td>
             </tr>
             <tr>
@@ -1639,7 +1644,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>City<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://schema.org/City</code></td>
             </tr>
             <tr>
@@ -1654,7 +1659,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>DataTypeProperty<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#DataTypeProperty</code></td>
             </tr>
         </table>
@@ -1663,7 +1668,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>ObjectProperty<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#ObjectProperty</code></td>
             </tr>
         </table>
@@ -1672,7 +1677,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>Feature<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2003/01/geo/wgs84_pos#Feature</code></td>
             </tr>
             <tr>
@@ -1687,7 +1692,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>DateTimeInterval<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2006/time#DateTimeInterval</code></td>
             </tr>
         </table>
@@ -1737,7 +1742,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>base<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#base</code></td>
             </tr>
             <tr>
@@ -1764,7 +1769,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>base quantity<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#base_quantity</code></td>
             </tr>
             <tr>
@@ -1791,7 +1796,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>base unit<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#base_unit</code></td>
             </tr>
             <tr>
@@ -1818,7 +1823,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>cardinality_of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#cardinality_of</code></td>
             </tr>
             <tr>
@@ -1845,7 +1850,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>defined_by<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#defined_by</code></td>
             </tr>
             <tr>
@@ -1860,7 +1865,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>definition<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#definition</code></td>
             </tr>
             <tr>
@@ -1875,7 +1880,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>denominatot<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#denominator</code></td>
             </tr>
             <tr>
@@ -1902,7 +1907,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>derived quantity<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#derived_quantity</code></td>
             </tr>
             <tr>
@@ -1929,7 +1934,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>description_of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#description_of</code></td>
             </tr>
             <tr>
@@ -1950,7 +1955,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>distinct_count_of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#distinct_count_of</code></td>
             </tr>
             <tr>
@@ -1965,7 +1970,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>element<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#element</code></td>
             </tr>
             <tr>
@@ -1980,7 +1985,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>for_city<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#for_city</code></td>
             </tr>
             <tr>
@@ -1995,7 +2000,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>for_time_interval<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#for_time_interval</code></td>
             </tr>
             <tr>
@@ -2010,7 +2015,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>has_characteristic<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#has_characteristic</code></td>
             </tr>
             <tr>
@@ -2031,7 +2036,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>is_an_estimate_of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#is_an_estimate_of</code></td>
             </tr>
             <tr>
@@ -2058,7 +2063,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>is_characteristic_of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#is_characteristic_of</code></td>
             </tr>
             <tr>
@@ -2085,7 +2090,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>is_composed_of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#is_composed_of</code></td>
             </tr>
             <tr>
@@ -2118,7 +2123,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>is_described_by<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#is_described_by</code></td>
             </tr>
             <tr>
@@ -2146,7 +2151,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>is_part_of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#is_part_of</code></td>
             </tr>
             <tr>
@@ -2173,7 +2178,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>iso21972ObjectProperty<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#iso21972ObjectProperty</code></td>
             </tr>
         </table>
@@ -2182,7 +2187,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>located_in<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#located_in</code></td>
             </tr>
             <tr>
@@ -2197,7 +2202,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>mean_of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#mean_of</code></td>
             </tr>
             <tr>
@@ -2224,7 +2229,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>measurement scale<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#measurement_scale</code></td>
             </tr>
             <tr>
@@ -2251,7 +2256,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>member_of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#member_of</code></td>
             </tr>
             <tr>
@@ -2266,7 +2271,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>numerator<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#numerator</code></td>
             </tr>
             <tr>
@@ -2293,7 +2298,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>parameter_of_var<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#parameter_of_var</code></td>
             </tr>
             <tr>
@@ -2320,7 +2325,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>phenomenon<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#phenomenon</code></td>
             </tr>
             <tr>
@@ -2341,7 +2346,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>prefix<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#prefix</code></td>
             </tr>
             <tr>
@@ -2368,7 +2373,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>singular unit<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#singular_unit</code></td>
             </tr>
             <tr>
@@ -2395,7 +2400,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>std_of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#std_of</code></td>
             </tr>
             <tr>
@@ -2422,7 +2427,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>sum_of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#sum_of</code></td>
             </tr>
             <tr>
@@ -2449,7 +2454,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>term 1<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#term_1</code></td>
             </tr>
             <tr>
@@ -2476,7 +2481,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>term 2<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#term_2</code></td>
             </tr>
             <tr>
@@ -2503,7 +2508,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>unit of measure<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#unit_of_measure</code></td>
             </tr>
             <tr>
@@ -2536,7 +2541,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>value<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#value</code></td>
             </tr>
             <tr>
@@ -2563,7 +2568,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>zero_element<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#zero_element</code></td>
             </tr>
             <tr>
@@ -2587,7 +2592,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>exponent<sup title="functional property" class="sup-fp">fp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#exponent</code></td>
             </tr>
             <tr>
@@ -2608,7 +2613,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>factor<sup title="functional property" class="sup-fp">fp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#factor</code></td>
             </tr>
             <tr>
@@ -2629,7 +2634,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>rank<sup title="functional property" class="sup-fp">fp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#rank</code></td>
             </tr>
             <tr>
@@ -2659,7 +2664,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>has_Name<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#has_Name</code></td>
             </tr>
             <tr>
@@ -2674,7 +2679,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>numerical value<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#numerical_value</code></td>
             </tr>
             <tr>
@@ -2695,7 +2700,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>symbol<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#symbol</code></td>
             </tr>
         </table>
@@ -2720,7 +2725,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>license<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://creativecommons.org/ns#license</code></td>
             </tr>
         </table>
@@ -2729,7 +2734,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>creator<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/elements/1.1/creator</code></td>
             </tr>
         </table>
@@ -2738,7 +2743,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>description<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/elements/1.1/description</code></td>
             </tr>
         </table>
@@ -2747,7 +2752,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>title<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/elements/1.1/title</code></td>
             </tr>
         </table>
@@ -2756,7 +2761,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>creator<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/dc/terms/creator</code></td>
             </tr>
         </table>
@@ -2765,7 +2770,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>preferredNamespacePrefix<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/vocab/vann/preferredNamespacePrefix</code></td>
             </tr>
         </table>
@@ -2774,7 +2779,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>preferredNamespaceUri<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://purl.org/vocab/vann/preferredNamespaceUri</code></td>
             </tr>
         </table>
@@ -2783,7 +2788,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>pattern<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2001/XMLSchema#pattern</code></td>
             </tr>
         </table>
@@ -2792,7 +2797,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>relatedDocumentation<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/ns/adms#relatedDocumentation</code></td>
             </tr>
         </table>
@@ -2801,7 +2806,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>alternative_label<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.wurvoc.org/vocabularies/om-1.8/alternative_label</code></td>
             </tr>
         </table>
@@ -2852,7 +2857,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>cubic_metre<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#cubic_metre
@@ -2870,7 +2875,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>decibel<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#decibel
@@ -2888,7 +2893,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>fixed_zero_cardinality<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#fixed_zero_cardinality
@@ -2906,7 +2911,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>giga<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#giga
@@ -2924,7 +2929,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>gigapc<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#gigapc
@@ -2942,7 +2947,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>gram<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#gram
@@ -2960,7 +2965,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>hecto_kilo<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#hecto_kilo
@@ -2978,7 +2983,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>hecto_kilo_pc<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#hecto_kilo_pc
@@ -2996,7 +3001,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>hour<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#hour
@@ -3014,7 +3019,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>hour_per_interruption<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#hour_per_interruption
@@ -3032,7 +3037,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>interruption<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#interruption
@@ -3050,7 +3055,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>interruption_per_year<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#interruption_per_year
@@ -3068,7 +3073,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>kilo<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#kilo
@@ -3086,7 +3091,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>kilopc<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#kilopc
@@ -3104,7 +3109,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>kilowatt<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#kilowatt
@@ -3122,7 +3127,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>kilowatt_hour<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#kilowatt_hour
@@ -3140,7 +3145,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>kwh_per_pc<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#kwh_per_pc
@@ -3158,7 +3163,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>kwh_per_square_metre<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#kwh_per_square_metre
@@ -3176,7 +3181,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>kwh_per_year<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#kwh_per_year
@@ -3194,7 +3199,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>mega<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#mega
@@ -3212,7 +3217,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>megapc<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#megapc
@@ -3230,7 +3235,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>metre<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#metre
@@ -3248,7 +3253,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>micro<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#micro
@@ -3266,7 +3271,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>microgram<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#microgram
@@ -3284,7 +3289,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>microgram_per_cubic_metre<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#microgram_per_cubic_metre
@@ -3302,7 +3307,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>minute-time<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#minute-time
@@ -3320,7 +3325,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>minute-time_per_occurence<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#minute-time_per_occurence
@@ -3338,7 +3343,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>occurence_per_hecto_kilo_pc<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#occurence_per_hecto_kilo_pc
@@ -3356,7 +3361,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>occurrence<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#occurrence
@@ -3374,7 +3379,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>pc_per_hecto_kilo_pc<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#pc_per_hecto_kilo_pc
@@ -3392,7 +3397,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>population_cardinality_unit<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#population_cardinality_unit
@@ -3410,7 +3415,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>population_ratio_unit<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#population_ratio_unit
@@ -3428,7 +3433,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>square_metre<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#square_metre
@@ -3446,7 +3451,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>watt<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#watt
@@ -3464,7 +3469,7 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <h3>year<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td>
                   <code>
                       http://ontology.eil.utoronto.ca/ISO21972/iso21972#year
@@ -3483,8 +3488,6 @@ Note that there is no property that links Cardinality to a Variable.</p>
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972#</code></dd>
         <dt>:</dt>
         <dd><code>http://ontology.eil.utoronto.ca/ISO21972/iso21972</code></dd>
         <dt>adms</dt>
@@ -3517,8 +3520,6 @@ Note that there is no property that links Cardinality to a Variable.</p>
         <dd><code>http://www.w3.org/2006/time#</code></dd>
         <dt>vann</dt>
         <dd><code>http://purl.org/vocab/vann/</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

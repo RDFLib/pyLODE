@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -210,27 +215,27 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>ISO19160-1:2015 Address ontology - NZ Profile</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://linked.data.gov.au/def/iso19160-1-address-nz-profile</code></dd>
-        <dt>Publisher(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher">Publisher</a>(s)</dt>
         <dd>
             
     <a href="http://linked.data.gov.au/org/agldwg">Australian Government Linked Data Working Group</a><br/>
         </dd>
-        <dt>Creator(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
         <dd>
             
     Tristan W. Reed
     (<a href="mailto:tristan.reed@curtin.edu.au">tristan.reed@curtin.edu.au</a>) of 
     <a href="https://www.curtin.edu.au/">Curtin University</a><br/>
         </dd>
-        <dt>Contributors(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/contributor">Contributor</a>(s)</dt>
         <dd>
             
     <a href="https://orcid.org/0000-0002-8742-7730">Nicholas J. Car</a>
@@ -256,11 +261,11 @@
     (<a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a>) of 
     <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a><br/>
         </dd>
-        <dt>Created</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/created">Created</a></dt>
         <dd>2017-12-02</dd>
-        <dt>Modified</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
         <dd>2017-10-24</dd>
-        <dt>Version IRI</dt>
+        <dt>Version URI</dt>
         <dd><a href="http://linked.data.gov.au/def/iso19160-1-address-nz-profile/1.1">http://linked.data.gov.au/def/iso19160-1-address-nz-profile/1.1</a></dd>
         <dt>Imports</dt>
         <dd>
@@ -305,7 +310,7 @@
         <h3>Address Alias<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/iso19160-1-address-nz-profile#AddressAlias</code></td>
             </tr>
             <tr>
@@ -333,7 +338,7 @@
         <h3>Address Component<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/iso19160-1-address-nz-profile#AddressComponent</code></td>
             </tr>
             <tr>
@@ -351,9 +356,9 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.locale">iso19160-1:AddressComponentValue.locale</a> <span class="cardinality">exactly</span> 0<br/>
                     <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage">iso19160-1:AddressComponent.lifecycleStage</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.provenance">iso19160-1:Address.provenance</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.locale">iso19160-1:AddressComponentValue.locale</a> <span class="cardinality">exactly</span> 0<br/>
                     <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan">iso19160-1:Address.lifespan</a> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
@@ -363,7 +368,7 @@
         <h3>Addressable Object<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/iso19160-1-address-nz-profile#AddressableObject</code></td>
             </tr>
             <tr>
@@ -381,8 +386,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.position">iso19160-1:Address.position</a> <span class="cardinality">exactly</span> 0<br/>
                     <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan">iso19160-1:Address.lifespan</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.position">iso19160-1:Address.position</a> <span class="cardinality">exactly</span> 0<br/>
                     <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage">iso19160-1:AddressComponent.lifecycleStage</a> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
@@ -392,7 +397,7 @@
         <h3>Address Period<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/iso19160-1-address-nz-profile#AddressedPeriod</code></td>
             </tr>
             <tr>
@@ -410,8 +415,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.provenance">iso19160-1:Address.provenance</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance">iso19160-1:AddressProvenance</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.provenance">iso19160-1:Address.provenance</a> <span class="cardinality">max</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/iso19160-1-address#Address.provenance">iso19160-1:Address.provenance</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance">iso19160-1:AddressProvenance</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -427,8 +432,6 @@
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://linked.data.gov.au/def/iso19160-1-address-nz-profile#</code></dd>
         <dt>:</dt>
         <dd><code>http://linked.data.gov.au/def/iso19160-1-address-nz-profile#</code></dd>
         <dt>dc</dt>
@@ -453,8 +456,6 @@
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

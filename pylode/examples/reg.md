@@ -1,9 +1,9 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
 
 # Registry ontology
 
 ## Metadata
-* **IRI**
+* **URI**
   * `http://purl.org/linked-data/registry`
 * **Creators(s)**
   * Dave Reynolds
@@ -43,37 +43,37 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 ### Delegated
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#Delegated`
+URI | `http://purl.org/linked-data/registry#Delegated`
 Description | <p>A registerable entity which represents some form of delegation</p>
 Restrictions |[reg:delegationTarget](http://purl.org/linked-data/registry#delegationTarget) (op) **exactly** 1<br />
-Sub-classes |[reg:NamespaceForward](http://purl.org/linked-data/registry#NamespaceForward) (c)<br />[reg:DelegatedRegister](http://purl.org/linked-data/registry#DelegatedRegister) (c)<br />[reg:FederatedRegister](http://purl.org/linked-data/registry#FederatedRegister) (c)<br />
+Sub-classes |[reg:FederatedRegister](http://purl.org/linked-data/registry#FederatedRegister) (c)<br />[reg:NamespaceForward](http://purl.org/linked-data/registry#NamespaceForward) (c)<br />[reg:DelegatedRegister](http://purl.org/linked-data/registry#DelegatedRegister) (c)<br />
 In domain of |[reg:delegationTarget](http://purl.org/linked-data/registry#delegationTarget) (op)<br />
 ### Delegated Register
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#DelegatedRegister`
+URI | `http://purl.org/linked-data/registry#DelegatedRegister`
 Description | <p>A register whose member contents are determined through delegation to a SPARQL endpoint</p>
-Super-classes |[reg:Register](http://purl.org/linked-data/registry#Register) (c)<br />[reg:Delegated](http://purl.org/linked-data/registry#Delegated) (c)<br />
-Restrictions |[reg:enumerationSubject](http://purl.org/linked-data/registry#enumerationSubject) (op) **max** 1<br />[reg:enumerationObject](http://purl.org/linked-data/registry#enumerationObject) (op) **max** 1<br />[reg:enumerationPredicate](http://purl.org/linked-data/registry#enumerationPredicate) (op) **max** 1<br />
+Super-classes |[reg:Delegated](http://purl.org/linked-data/registry#Delegated) (c)<br />[reg:Register](http://purl.org/linked-data/registry#Register) (c)<br />
+Restrictions |[reg:enumerationSubject](http://purl.org/linked-data/registry#enumerationSubject) (op) **max** 1<br />[reg:enumerationPredicate](http://purl.org/linked-data/registry#enumerationPredicate) (op) **max** 1<br />[reg:enumerationObject](http://purl.org/linked-data/registry#enumerationObject) (op) **max** 1<br />
 In domain of |[reg:enumerationPredicate](http://purl.org/linked-data/registry#enumerationPredicate) (op)<br />[reg:enumerationSubject](http://purl.org/linked-data/registry#enumerationSubject) (op)<br />[reg:enumerationObject](http://purl.org/linked-data/registry#enumerationObject) (op)<br />
 ### Entity Reference
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#EntityReference`
+URI | `http://purl.org/linked-data/registry#EntityReference`
 Description | <p>A reference to some internal or external Linked Data resource. The reg:reference gives the URI of the resource being referenced. If a reg:sourceGraph value is present then it is the URI for a named graph within the Registry containing the properties of the referenced entity. If reg:entityVersion is present it gives URI for the particular version:Version of the entity being referenced. Normally only one of reg:sourceGraph and reg:entityVersion is needed since versioned entities are normally stored in the default graph.</p>
-Restrictions |[reg:entityVersion](http://purl.org/linked-data/registry#entityVersion) (op) **max** 1<br />[reg:sourceGraph](http://purl.org/linked-data/registry#sourceGraph) (op) **max** 1<br />[reg:entity](http://purl.org/linked-data/registry#entity) (op) **exactly** 1<br />
-In domain of |[reg:entityVersion](http://purl.org/linked-data/registry#entityVersion) (op)<br />[reg:entity](http://purl.org/linked-data/registry#entity) (op)<br />[reg:sourceGraph](http://purl.org/linked-data/registry#sourceGraph) (op)<br />
-In range of |[reg:definition](http://purl.org/linked-data/registry#definition) (op)<br />[reg:alias](http://purl.org/linked-data/registry#alias) (op)<br />
+Restrictions |[reg:entityVersion](http://purl.org/linked-data/registry#entityVersion) (op) **max** 1<br />[reg:entity](http://purl.org/linked-data/registry#entity) (op) **exactly** 1<br />[reg:sourceGraph](http://purl.org/linked-data/registry#sourceGraph) (op) **max** 1<br />
+In domain of |[reg:sourceGraph](http://purl.org/linked-data/registry#sourceGraph) (op)<br />[reg:entityVersion](http://purl.org/linked-data/registry#entityVersion) (op)<br />[reg:entity](http://purl.org/linked-data/registry#entity) (op)<br />
+In range of |[reg:alias](http://purl.org/linked-data/registry#alias) (op)<br />[reg:definition](http://purl.org/linked-data/registry#definition) (op)<br />
 ### Federated Register
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#FederatedRegister`
+URI | `http://purl.org/linked-data/registry#FederatedRegister`
 Description | <p>A registerable entity which forwards all requests to a remote register. Queries which traverse the register hierarchy such as entity search will also be forwarded</p>
-Super-classes |[reg:Register](http://purl.org/linked-data/registry#Register) (c)<br />[reg:Delegated](http://purl.org/linked-data/registry#Delegated) (c)<br />
+Super-classes |[reg:Delegated](http://purl.org/linked-data/registry#Delegated) (c)<br />[reg:Register](http://purl.org/linked-data/registry#Register) (c)<br />
 ### Namespace Forward
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#NamespaceForward`
+URI | `http://purl.org/linked-data/registry#NamespaceForward`
 Description | <p>A registerable entity which simply forwards all requests to the delegation target.</p>
 Super-classes |[reg:Delegated](http://purl.org/linked-data/registry#Delegated) (c)<br />
 Restrictions |[reg:forwardingCode](http://purl.org/linked-data/registry#forwardingCode) (dp) **max** 1<br />
@@ -81,51 +81,51 @@ In domain of |[reg:forwardingCode](http://purl.org/linked-data/registry#forwardi
 ### Register
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#Register`
+URI | `http://purl.org/linked-data/registry#Register`
 Description | <p>Represents a collection of registered items, together with some associated governance regime. If one or more licenses is stated then each license applies to all the entries in the register. </p>
-Super-classes |[void:Dataset](http://rdfs.org/ns/void#Dataset) (c)<br />[version:VersionedThing](http://purl.org/linked-data/version#VersionedThing) (c)<br />[ldp:Container](http://www.w3.org/ns/ldp#Container) (c)<br />
-Restrictions |[dct:modified](http://purl.org/dc/terms/modified) **max** 1<br />[reg:operatingLanguage](http://purl.org/linked-data/registry#operatingLanguage) (op) **min** 0<br />[void:exampleResource](http://rdfs.org/ns/void#exampleResource) **min** 0<br />[void:openSearchDescription](http://rdfs.org/ns/void#openSearchDescription) **min** 0<br />[reg:governancePolicy](http://purl.org/linked-data/registry#governancePolicy) (op) **min** 0<br />[reg:manager](http://purl.org/linked-data/registry#manager) (op) **exactly** 1<br />[dct:license](http://purl.org/dc/terms/license) **min** 0<br />[void:uriLookupEndpoint](http://rdfs.org/ns/void#uriLookupEndpoint) **min** 0<br />[rdfs:label](http://www.w3.org/2000/01/rdf-schema#label) **min** 1<br />[reg:validationQuery](http://purl.org/linked-data/registry#validationQuery) (op) **min** 0<br />[reg:owner](http://purl.org/linked-data/registry#owner) (op) **exactly** 1<br />[void:uriSpace](http://rdfs.org/ns/void#uriSpace) **max** 1<br />[reg:containedItemClass](http://purl.org/linked-data/registry#containedItemClass) (op) **min** 0<br />[dct:description](http://purl.org/dc/terms/description) **min** 1<br />
+Super-classes |[ldp:Container](http://www.w3.org/ns/ldp#Container) (c)<br />[version:VersionedThing](http://purl.org/linked-data/version#VersionedThing) (c)<br />[void:Dataset](http://rdfs.org/ns/void#Dataset) (c)<br />
+Restrictions |[void:uriLookupEndpoint](http://rdfs.org/ns/void#uriLookupEndpoint) **min** 0<br />[reg:containedItemClass](http://purl.org/linked-data/registry#containedItemClass) (op) **min** 0<br />[reg:operatingLanguage](http://purl.org/linked-data/registry#operatingLanguage) (op) **min** 0<br />[dct:modified](http://purl.org/dc/terms/modified) **max** 1<br />[reg:validationQuery](http://purl.org/linked-data/registry#validationQuery) (op) **min** 0<br />[dct:description](http://purl.org/dc/terms/description) **min** 1<br />[rdfs:label](http://www.w3.org/2000/01/rdf-schema#label) **min** 1<br />[reg:governancePolicy](http://purl.org/linked-data/registry#governancePolicy) (op) **min** 0<br />[void:uriSpace](http://rdfs.org/ns/void#uriSpace) **max** 1<br />[void:openSearchDescription](http://rdfs.org/ns/void#openSearchDescription) **min** 0<br />[reg:manager](http://purl.org/linked-data/registry#manager) (op) **exactly** 1<br />[void:exampleResource](http://rdfs.org/ns/void#exampleResource) **min** 0<br />[reg:owner](http://purl.org/linked-data/registry#owner) (op) **exactly** 1<br />[dct:license](http://purl.org/dc/terms/license) **min** 0<br />
 Sub-classes |[reg:DelegatedRegister](http://purl.org/linked-data/registry#DelegatedRegister) (c)<br />[reg:FederatedRegister](http://purl.org/linked-data/registry#FederatedRegister) (c)<br />
-In domain of |[reg:governancePolicy](http://purl.org/linked-data/registry#governancePolicy) (op)<br />[reg:operatingLanguage](http://purl.org/linked-data/registry#operatingLanguage) (op)<br />[reg:owner](http://purl.org/linked-data/registry#owner) (op)<br />[reg:subregister](http://purl.org/linked-data/registry#subregister) (op)<br />[reg:containedItemClass](http://purl.org/linked-data/registry#containedItemClass) (op)<br />[reg:validationQuery](http://purl.org/linked-data/registry#validationQuery) (op)<br />[reg:release](http://purl.org/linked-data/registry#release) (op)<br />[reg:manager](http://purl.org/linked-data/registry#manager) (op)<br />
+In domain of |[reg:governancePolicy](http://purl.org/linked-data/registry#governancePolicy) (op)<br />[reg:owner](http://purl.org/linked-data/registry#owner) (op)<br />[reg:release](http://purl.org/linked-data/registry#release) (op)<br />[reg:operatingLanguage](http://purl.org/linked-data/registry#operatingLanguage) (op)<br />[reg:containedItemClass](http://purl.org/linked-data/registry#containedItemClass) (op)<br />[reg:subregister](http://purl.org/linked-data/registry#subregister) (op)<br />[reg:validationQuery](http://purl.org/linked-data/registry#validationQuery) (op)<br />[reg:manager](http://purl.org/linked-data/registry#manager) (op)<br />
 In range of |[reg:register](http://purl.org/linked-data/registry#register) (op)<br />[reg:subregister](http://purl.org/linked-data/registry#subregister) (op)<br />
 ### RegisterItem
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#RegisterItem`
+URI | `http://purl.org/linked-data/registry#RegisterItem`
 Description | <p>A metadata record for an entry in a register. Note that cardinality constraints can be met by sub-properties, for example an item with a skos:prefLabel implies an rdfs:label and so meets the cardinality constraint on rdfs:label.</p>
 Super-classes |[version:VersionedThing](http://purl.org/linked-data/version#VersionedThing) (c)<br />
-Restrictions |[dct:license](http://purl.org/dc/terms/license) **min** 0<br />[reg:itemClass](http://purl.org/linked-data/registry#itemClass) (op) **min** 1<br />[dct:modified](http://purl.org/dc/terms/modified) **max** 1<br />[reg:notation](http://purl.org/linked-data/registry#notation) (dp) **max** 1<br />[reg:predecessor](http://purl.org/linked-data/registry#predecessor) (op) **min** 0<br />[dct:description](http://purl.org/dc/terms/description) **min** 0<br />[reg:alias](http://purl.org/linked-data/registry#alias) (op) **min** 0<br />[reg:status](http://purl.org/linked-data/registry#status) (op) **min** 1<br />[reg:category](http://purl.org/linked-data/registry#category) (op) **min** 0<br />[reg:definition](http://purl.org/linked-data/registry#definition) (op) **exactly** 1<br />[reg:hasView](http://purl.org/linked-data/registry#hasView) **min** 0<br />[reg:submitter](http://purl.org/linked-data/registry#submitter) (op) **exactly** 1<br />[dct:dateSubmitted](http://purl.org/dc/terms/dateSubmitted) **exactly** 1<br />[reg:representationOf](http://purl.org/linked-data/registry#representationOf) (op) **min** 0<br />[dct:dateAccepted](http://purl.org/dc/terms/dateAccepted) **max** 1<br />[rdfs:label](http://www.w3.org/2000/01/rdf-schema#label) **min** 1<br />
-In domain of |[reg:submitter](http://purl.org/linked-data/registry#submitter) (op)<br />[reg:itemClass](http://purl.org/linked-data/registry#itemClass) (op)<br />[reg:predecessor](http://purl.org/linked-data/registry#predecessor) (op)<br />[reg:annotation](http://purl.org/linked-data/registry#annotation) (op)<br />[reg:category](http://purl.org/linked-data/registry#category) (op)<br />[reg:representationOf](http://purl.org/linked-data/registry#representationOf) (op)<br />[reg:definition](http://purl.org/linked-data/registry#definition) (op)<br />[reg:notation](http://purl.org/linked-data/registry#notation) (dp)<br />[reg:status](http://purl.org/linked-data/registry#status) (op)<br />[reg:successor](http://purl.org/linked-data/registry#successor) (op)<br />[reg:register](http://purl.org/linked-data/registry#register) (op)<br />[reg:alias](http://purl.org/linked-data/registry#alias) (op)<br />
-In range of |[reg:successor](http://purl.org/linked-data/registry#successor) (op)<br />[reg:predecessor](http://purl.org/linked-data/registry#predecessor) (op)<br />
+Restrictions |[reg:representationOf](http://purl.org/linked-data/registry#representationOf) (op) **min** 0<br />[dct:dateSubmitted](http://purl.org/dc/terms/dateSubmitted) **exactly** 1<br />[dct:dateAccepted](http://purl.org/dc/terms/dateAccepted) **max** 1<br />[reg:status](http://purl.org/linked-data/registry#status) (op) **min** 1<br />[dct:description](http://purl.org/dc/terms/description) **min** 0<br />[reg:definition](http://purl.org/linked-data/registry#definition) (op) **exactly** 1<br />[reg:category](http://purl.org/linked-data/registry#category) (op) **min** 0<br />[dct:license](http://purl.org/dc/terms/license) **min** 0<br />[reg:hasView](http://purl.org/linked-data/registry#hasView) **min** 0<br />[dct:modified](http://purl.org/dc/terms/modified) **max** 1<br />[reg:alias](http://purl.org/linked-data/registry#alias) (op) **min** 0<br />[reg:itemClass](http://purl.org/linked-data/registry#itemClass) (op) **min** 1<br />[reg:predecessor](http://purl.org/linked-data/registry#predecessor) (op) **min** 0<br />[rdfs:label](http://www.w3.org/2000/01/rdf-schema#label) **min** 1<br />[reg:submitter](http://purl.org/linked-data/registry#submitter) (op) **exactly** 1<br />[reg:notation](http://purl.org/linked-data/registry#notation) (dp) **max** 1<br />
+In domain of |[reg:category](http://purl.org/linked-data/registry#category) (op)<br />[reg:alias](http://purl.org/linked-data/registry#alias) (op)<br />[reg:status](http://purl.org/linked-data/registry#status) (op)<br />[reg:annotation](http://purl.org/linked-data/registry#annotation) (op)<br />[reg:register](http://purl.org/linked-data/registry#register) (op)<br />[reg:notation](http://purl.org/linked-data/registry#notation) (dp)<br />[reg:successor](http://purl.org/linked-data/registry#successor) (op)<br />[reg:predecessor](http://purl.org/linked-data/registry#predecessor) (op)<br />[reg:representationOf](http://purl.org/linked-data/registry#representationOf) (op)<br />[reg:definition](http://purl.org/linked-data/registry#definition) (op)<br />[reg:submitter](http://purl.org/linked-data/registry#submitter) (op)<br />[reg:itemClass](http://purl.org/linked-data/registry#itemClass) (op)<br />
+In range of |[reg:predecessor](http://purl.org/linked-data/registry#predecessor) (op)<br />[reg:successor](http://purl.org/linked-data/registry#successor) (op)<br />
 ### SPARQL ASK query
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#SPARQLAskQuery`
+URI | `http://purl.org/linked-data/registry#SPARQLAskQuery`
 Description | <p>Represents a SPARQL ASK query as might be used for validation.</p>
 In range of |[reg:validationQuery](http://purl.org/linked-data/registry#validationQuery) (op)<br />
 ### SPARQL CONSTRUCT query
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#SPARQLConstructQuery`
+URI | `http://purl.org/linked-data/registry#SPARQLConstructQuery`
 Description | <p>Represents a SPARQL CONSTRUCT query.</p>
 ### SPARQL query
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#SPARQLQuery`
+URI | `http://purl.org/linked-data/registry#SPARQLQuery`
 Description | <p>Represents a SPARQL query as a reusable resource.</p>
 Restrictions |[reg:query](http://purl.org/linked-data/registry#query) (dp) **exactly** 1<br />
 ### SPARQL SELECT query
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#SPARQLSelectQuery`
+URI | `http://purl.org/linked-data/registry#SPARQLSelectQuery`
 Description | <p>Represents a SPARQL SELECT query.</p>
 ### Status
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#Status`
+URI | `http://purl.org/linked-data/registry#Status`
 Description | <p>Open set of status code for entries in a register</p>
 Super-classes |[skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />
-In domain of |[reg:priorState](http://purl.org/linked-data/registry#priorState) (dp)<br />[reg:presentation](http://purl.org/linked-data/registry#presentation) (dp)<br />[reg:nextState](http://purl.org/linked-data/registry#nextState) (dp)<br />
+In domain of |[reg:nextState](http://purl.org/linked-data/registry#nextState) (dp)<br />[reg:presentation](http://purl.org/linked-data/registry#presentation) (dp)<br />[reg:priorState](http://purl.org/linked-data/registry#priorState) (dp)<br />
 In range of |[reg:status](http://purl.org/linked-data/registry#status) (op)<br />
 
 ## Object Properties
@@ -161,7 +161,7 @@ In range of |[reg:status](http://purl.org/linked-data/registry#status) (op)<br /
 ### alias
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#alias`
+URI | `http://purl.org/linked-data/registry#alias`
 Description | An alternative URI for the entity, the alias resource is regarded by this register as owl:sameAs the definition entity
 Domain(s) |[reg:RegisterItem](http://purl.org/linked-data/registry#RegisterItem) (c)<br />
 Range(s) |[reg:EntityReference](http://purl.org/linked-data/registry#EntityReference) (c)<br />
@@ -169,14 +169,14 @@ Range(s) |[reg:EntityReference](http://purl.org/linked-data/registry#EntityRefer
 ### annotation
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#annotation`
+URI | `http://purl.org/linked-data/registry#annotation`
 Description | The URI of a graph of annotation statements associate with this item
 Domain(s) |[reg:RegisterItem](http://purl.org/linked-data/registry#RegisterItem) (c)<br />
 [](category)
 ### category
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#category`
+URI | `http://purl.org/linked-data/registry#category`
 Description | Optional classification for a registered item within one or more SKOS classification schemes to support navigation and discovery. Orthogonal to the structure provided by the register hierarchy which is about governance.
 Domain(s) |[reg:RegisterItem](http://purl.org/linked-data/registry#RegisterItem) (c)<br />
 Range(s) |[skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />
@@ -184,7 +184,7 @@ Range(s) |[skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />
 ### contained item class
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#containedItemClass`
+URI | `http://purl.org/linked-data/registry#containedItemClass`
 Description | A class of entities that can occur in this register
 Domain(s) |[reg:Register](http://purl.org/linked-data/registry#Register) (c)<br />
 Range(s) |[owl:Class](http://www.w3.org/2002/07/owl#Class) (c)<br />
@@ -192,7 +192,7 @@ Range(s) |[owl:Class](http://www.w3.org/2002/07/owl#Class) (c)<br />
 ### definition
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#definition`
+URI | `http://purl.org/linked-data/registry#definition`
 Description | The entity which has been registered.
 Domain(s) |[reg:RegisterItem](http://purl.org/linked-data/registry#RegisterItem) (c)<br />
 Range(s) |[reg:EntityReference](http://purl.org/linked-data/registry#EntityReference) (c)<br />
@@ -200,7 +200,7 @@ Range(s) |[reg:EntityReference](http://purl.org/linked-data/registry#EntityRefer
 ### delegation target
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#delegationTarget`
+URI | `http://purl.org/linked-data/registry#delegationTarget`
 Description | A resource to which the delegated register delegates, may be a register in another registry service, a SPARQL endpoint or some other web resource
 Domain(s) |[reg:Delegated](http://purl.org/linked-data/registry#Delegated) (c)<br />
 Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -208,7 +208,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### entity
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#entity`
+URI | `http://purl.org/linked-data/registry#entity`
 Description | The RDF resource identified by an entity reference
 Domain(s) |[reg:EntityReference](http://purl.org/linked-data/registry#EntityReference) (c)<br />
 Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -216,7 +216,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### entity version
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#entityVersion`
+URI | `http://purl.org/linked-data/registry#entityVersion`
 Description | Indicates the particular version:Version of the entity being referenced.
 Domain(s) |[reg:EntityReference](http://purl.org/linked-data/registry#EntityReference) (c)<br />
 Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -224,7 +224,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### enumeration object
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#enumerationObject`
+URI | `http://purl.org/linked-data/registry#enumerationObject`
 Description | Specifies the object part of a triple pattern used to enumerate the members of a delegated register
 Domain(s) |[reg:DelegatedRegister](http://purl.org/linked-data/registry#DelegatedRegister) (c)<br />
 Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -232,7 +232,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### enumeration predicate
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#enumerationPredicate`
+URI | `http://purl.org/linked-data/registry#enumerationPredicate`
 Description | Specifies the predicate part of a triple pattern used to enumerate the members of a delegated register
 Domain(s) |[reg:DelegatedRegister](http://purl.org/linked-data/registry#DelegatedRegister) (c)<br />
 Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -240,7 +240,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### enumeration subject
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#enumerationSubject`
+URI | `http://purl.org/linked-data/registry#enumerationSubject`
 Description | Specifies the subject part of a triple pattern used to enumerate the members of a delegated register
 Domain(s) |[reg:DelegatedRegister](http://purl.org/linked-data/registry#DelegatedRegister) (c)<br />
 Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -248,7 +248,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### governance policy
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#governancePolicy`
+URI | `http://purl.org/linked-data/registry#governancePolicy`
 Description | A resource, such as a web accessible-document, which describes the governance policy applicable to this register.
 Domain(s) |[reg:Register](http://purl.org/linked-data/registry#Register) (c)<br />
 Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -256,7 +256,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### inverse membership predicate
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#inverseMembershipPredicate`
+URI | `http://purl.org/linked-data/registry#inverseMembershipPredicate`
 Description | Indicates a property which links a member of a collection back to the collection itself, this is the reverse direction to the normal ldp:membershipPredicate
 Domain(s) |[ldp:Container](http://www.w3.org/ns/ldp#Container) (c)<br />
 Range(s) |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c)<br />
@@ -264,7 +264,7 @@ Range(s) |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c
 ### item class
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#itemClass`
+URI | `http://purl.org/linked-data/registry#itemClass`
 Description | The type of the entity that this record is about. Note that it may be possible to register a non-RDF resource in which case this property provides a way to state the intended class of the entity even though no direct RDF assertion of type is available.
 Domain(s) |[reg:RegisterItem](http://purl.org/linked-data/registry#RegisterItem) (c)<br />
 Range(s) |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
@@ -272,7 +272,7 @@ Range(s) |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
 ### manager
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#manager`
+URI | `http://purl.org/linked-data/registry#manager`
 Description | The manager of the register, may be a person (foaf:Person) or an organization (org:Organization). Operates the register on behalf of the owner, makes day to day decisions on acceptance of entries based on agreed principles but it may be possible to appeal to the owner to override a decision by the manager.
 Domain(s) |[reg:Register](http://purl.org/linked-data/registry#Register) (c)<br />
 Range(s) |[foaf:Agent](http://xmlns.com/foaf/0.1/Agent) (c)<br />
@@ -280,7 +280,7 @@ Range(s) |[foaf:Agent](http://xmlns.com/foaf/0.1/Agent) (c)<br />
 ### operating language
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#operatingLanguage`
+URI | `http://purl.org/linked-data/registry#operatingLanguage`
 Description | Indicates a language supported by the register and the items within it. The language should be indicated by a resource within a well-maintained URI set such as the Library of Congress language URIs e.g. http://id.loc.gov/vocabulary/iso639-1/en
 Domain(s) |[reg:Register](http://purl.org/linked-data/registry#Register) (c)<br />
 Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -288,7 +288,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### owner
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#owner`
+URI | `http://purl.org/linked-data/registry#owner`
 Description | The owner of the register, may be a person (foaf:Person) or an organization (org:Organization). The owner has final authority over the contents of the regster.
 Super-properties |[dct:publisher](http://purl.org/dc/terms/publisher)<br />
 Domain(s) |[reg:Register](http://purl.org/linked-data/registry#Register) (c)<br />
@@ -297,7 +297,7 @@ Range(s) |[foaf:Agent](http://xmlns.com/foaf/0.1/Agent) (c)<br />
 ### predecessor
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#predecessor`
+URI | `http://purl.org/linked-data/registry#predecessor`
 Description | An item which has been replaced this one within the register. Should be asserted between hub resources (VersionedThing).
 Domain(s) |[reg:RegisterItem](http://purl.org/linked-data/registry#RegisterItem) (c)<br />
 Range(s) |[reg:RegisterItem](http://purl.org/linked-data/registry#RegisterItem) (c)<br />
@@ -305,7 +305,7 @@ Range(s) |[reg:RegisterItem](http://purl.org/linked-data/registry#RegisterItem) 
 ### register
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#register`
+URI | `http://purl.org/linked-data/registry#register`
 Description | The register in which this item has been registered.
 Domain(s) |[reg:RegisterItem](http://purl.org/linked-data/registry#RegisterItem) (c)<br />
 Range(s) |[reg:Register](http://purl.org/linked-data/registry#Register) (c)<br />
@@ -313,7 +313,7 @@ Range(s) |[reg:Register](http://purl.org/linked-data/registry#Register) (c)<br /
 ### release
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#release`
+URI | `http://purl.org/linked-data/registry#release`
 Description | A tagged snapshot of a register
 Domain(s) |[reg:Register](http://purl.org/linked-data/registry#Register) (c)<br />
 Range(s) |[prov:Collection](http://www.w3.org/ns/prov#Collection) (c)<br />
@@ -321,14 +321,14 @@ Range(s) |[prov:Collection](http://www.w3.org/ns/prov#Collection) (c)<br />
 ### representation of
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#representationOf`
+URI | `http://purl.org/linked-data/registry#representationOf`
 Description | A resource, typically a real-world object, which the registered entity is a representation for.
 Domain(s) |[reg:RegisterItem](http://purl.org/linked-data/registry#RegisterItem) (c)<br />
 [](sourcedataset)
 ### source dataset
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#sourceDataset`
+URI | `http://purl.org/linked-data/registry#sourceDataset`
 Description | Gives the source dataset in a Linkset, the other link target is assumed to be the destination
 Domain(s) |[void:Linkset](http://rdfs.org/ns/void#Linkset) (c)<br />
 Range(s) |[void:Dataset](http://rdfs.org/ns/void#Dataset) (c)<br />
@@ -336,7 +336,7 @@ Range(s) |[void:Dataset](http://rdfs.org/ns/void#Dataset) (c)<br />
 ### source graph
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#sourceGraph`
+URI | `http://purl.org/linked-data/registry#sourceGraph`
 Description | A resource representing an RDF graph (within the Registry's SPARQL dataset) containing the properties of the reference entity. If not present then assume default graph.
 Domain(s) |[reg:EntityReference](http://purl.org/linked-data/registry#EntityReference) (c)<br />
 Range(s) |[ssd:Graph](http://www.w3.org/ns/sparql-service-description#Graph) (c)<br />
@@ -344,7 +344,7 @@ Range(s) |[ssd:Graph](http://www.w3.org/ns/sparql-service-description#Graph) (c)
 ### status
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#status`
+URI | `http://purl.org/linked-data/registry#status`
 Description | The status of this register entry
 Domain(s) |[reg:RegisterItem](http://purl.org/linked-data/registry#RegisterItem) (c)<br />
 Range(s) |[reg:Status](http://purl.org/linked-data/registry#Status) (c)<br />
@@ -352,7 +352,7 @@ Range(s) |[reg:Status](http://purl.org/linked-data/registry#Status) (c)<br />
 ### submitter
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#submitter`
+URI | `http://purl.org/linked-data/registry#submitter`
 Description | The person or organization who originally submitted this register entry. Subsequent chages to the entry may have been made by other agents.
 Super-properties |[dct:publisher](http://purl.org/dc/terms/publisher)<br />
 Domain(s) |[reg:RegisterItem](http://purl.org/linked-data/registry#RegisterItem) (c)<br />
@@ -361,7 +361,7 @@ Range(s) |[foaf:Agent](http://xmlns.com/foaf/0.1/Agent) (c)<br />
 ### subregister
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#subregister`
+URI | `http://purl.org/linked-data/registry#subregister`
 Description | Indicates a register that is itself an entry in this principle register.
 Domain(s) |[reg:Register](http://purl.org/linked-data/registry#Register) (c)<br />
 Range(s) |[reg:Register](http://purl.org/linked-data/registry#Register) (c)<br />
@@ -369,7 +369,7 @@ Range(s) |[reg:Register](http://purl.org/linked-data/registry#Register) (c)<br /
 ### successor
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#successor`
+URI | `http://purl.org/linked-data/registry#successor`
 Description | Indicates the replacement for a superseded item.
 Domain(s) |[reg:RegisterItem](http://purl.org/linked-data/registry#RegisterItem) (c)<br />
 Range(s) |[reg:RegisterItem](http://purl.org/linked-data/registry#RegisterItem) (c)<br />
@@ -377,7 +377,7 @@ Range(s) |[reg:RegisterItem](http://purl.org/linked-data/registry#RegisterItem) 
 ### validation query
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#validationQuery`
+URI | `http://purl.org/linked-data/registry#validationQuery`
 Description | A SPARQL ASK query which can be used to validate a proposed entry in this register. Returns true of an error is found.
 Domain(s) |[reg:Register](http://purl.org/linked-data/registry#Register) (c)<br />
 Range(s) |[reg:SPARQLAskQuery](http://purl.org/linked-data/registry#SPARQLAskQuery) (c)<br />
@@ -394,7 +394,7 @@ Range(s) |[reg:SPARQLAskQuery](http://purl.org/linked-data/registry#SPARQLAskQue
 ### forwarding code
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#forwardingCode`
+URI | `http://purl.org/linked-data/registry#forwardingCode`
 Description | The HTTP status code to return the requester in order to forward the request.
 Domain(s) |[reg:NamespaceForward](http://purl.org/linked-data/registry#NamespaceForward) (c)<br />
 Range(s) |[xsd:int](http://www.w3.org/2001/XMLSchema#int) (c)<br />
@@ -402,7 +402,7 @@ Range(s) |[xsd:int](http://www.w3.org/2001/XMLSchema#int) (c)<br />
 ### next state
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#nextState`
+URI | `http://purl.org/linked-data/registry#nextState`
 Description | Gives the label of a state which can follow from this state
 Domain(s) |[reg:Status](http://purl.org/linked-data/registry#Status) (c)<br />
 Range(s) |[xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
@@ -410,7 +410,7 @@ Range(s) |[xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
 ### notation
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#notation`
+URI | `http://purl.org/linked-data/registry#notation`
 Description | A short text string which can be used to denote the register item. Must be unique within the register. If available it should be used as the path segment, relative to the parent register, for the RegisterItem (and for the item itself, if managed). Restricted to be a syntactically legal URI segment (i.e. *pchar).
 Domain(s) |[reg:RegisterItem](http://purl.org/linked-data/registry#RegisterItem) (c)<br />
 Range(s) |[xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
@@ -418,7 +418,7 @@ Range(s) |[xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
 ### presentation
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#presentation`
+URI | `http://purl.org/linked-data/registry#presentation`
 Description | Presentational hint for showing items with this status
 Domain(s) |[reg:Status](http://purl.org/linked-data/registry#Status) (c)<br />
 Range(s) |[xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
@@ -426,7 +426,7 @@ Range(s) |[xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
 ### next state
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#priorState`
+URI | `http://purl.org/linked-data/registry#priorState`
 Description | Gives the label of a state which can precede this state
 Domain(s) |[reg:Status](http://purl.org/linked-data/registry#Status) (c)<br />
 Range(s) |[xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
@@ -434,14 +434,14 @@ Range(s) |[xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
 ### query
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#query`
+URI | `http://purl.org/linked-data/registry#query`
 Description | The source of a SPARQL query
 Range(s) |[xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
 [](tag)
 ### tag
 Property | Value
 --- | ---
-IRI | `http://purl.org/linked-data/registry#tag`
+URI | `http://purl.org/linked-data/registry#tag`
 Description | The tag used to label a collection which snapshots the state of a register
 Domain(s) |[prov:Collection](http://www.w3.org/ns/prov#Collection) (c)<br />
 Range(s) |[xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
@@ -478,8 +478,6 @@ Range(s) |[xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
   * `http://rdfs.org/ns/void#`
 * **vs**
   * `http://www.w3.org/2003/06/sw-vocab-status/ns#`
-* **xml**
-  * `http://www.w3.org/XML/1998/namespace`
 * **xsd**
   * `http://www.w3.org/2001/XMLSchema#`
 

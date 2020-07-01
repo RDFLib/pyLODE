@@ -1,9 +1,9 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
 
 # ISO19115-1 CI_RoleCode Codelist
 
 ## Metadata
-* **IRI**
+* **URI**
   * `http://linked.data.gov.au/def/iso19115-1/RoleCode`
 * **Publisher(s)**
   * [Geological Survey of Queensland](http://linked.data.gov.au/org/gsq)
@@ -34,8 +34,6 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 
 ## Named Individuals
 ## Namespaces
-* **default (:)**
-  * `http://linked.data.gov.au/def/iso19115-1/RoleCode/`
 * **dc**
   * `http://purl.org/dc/elements/1.1/`
 * **dct**
@@ -54,8 +52,6 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
   * `https://schema.org/`
 * **skos**
   * `http://www.w3.org/2004/02/skos/core#`
-* **xml**
-  * `http://www.w3.org/XML/1998/namespace`
 * **xsd**
   * `http://www.w3.org/2001/XMLSchema#`
 

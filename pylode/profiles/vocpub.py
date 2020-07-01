@@ -426,7 +426,7 @@ class VocPub(BaseProfile):
             self.METADATA["has_concepts"] = True
 
     def _make_skos_concept_scheme(self):
-        return self._load_template("skos_concept_scheme." + self.outputformat).render(
+        return self._load_template("concept_scheme." + self.outputformat).render(
             title=self.METADATA.get("title"),
             uri=self.METADATA.get("uri"),
             version_uri=self.METADATA.get("versionIRI"),
@@ -449,7 +449,7 @@ class VocPub(BaseProfile):
         )
 
     def _make_skos_collection(self, collection):
-        return self._load_template("skos_collection." + self.outputformat).render(
+        return self._load_template("collection." + self.outputformat).render(
             uri=collection[0],
             fid=collection[1].get("fid"),
             default_prefLabel=collection[1].get("default_prefLabel"),
@@ -472,7 +472,7 @@ class VocPub(BaseProfile):
                 )
             )
 
-        return self._load_template("skos_collections." + self.outputformat).render(collections=collections)
+        return self._load_template("collections." + self.outputformat).render(collections=collections)
 
     def _make_concept_hierarchy(self):
         of = self.outputformat
@@ -533,7 +533,7 @@ class VocPub(BaseProfile):
             else:
                 egs = []
 
-        return self._load_template("skos_concept." + self.outputformat).render(
+        return self._load_template("concept." + self.outputformat).render(
             uri=concept[0],
             fid=concept[1].get("fid"),
             default_prefLabel=concept[1].get("default_prefLabel"),
@@ -565,7 +565,7 @@ class VocPub(BaseProfile):
                 )
             )
 
-        return self._load_template("skos_concepts." + self.outputformat).render(
+        return self._load_template("concepts." + self.outputformat).render(
             concept_hierarchy=self._make_concept_hierarchy(),
             concepts=concepts
         )
@@ -576,7 +576,7 @@ class VocPub(BaseProfile):
             if not self.exclude_css:
                 css = open(path.join(STYLE_DIR, "pylode.css")).read()
 
-        return self._load_template("skos_taxonomy." + self.outputformat).render(
+        return self._load_template("taxonomy." + self.outputformat).render(
             schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML template
             title=self.METADATA["title"],
             concept_scheme=self._make_skos_concept_scheme(),

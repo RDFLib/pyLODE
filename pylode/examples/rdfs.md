@@ -1,9 +1,9 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
 
 # The RDF Schema vocabulary (RDFS)
 
 ## Metadata
-* **IRI**
+* **URI**
   * `http://www.w3.org/2000/01/rdf-schema#`
 * **Ontology RDF**
   * RDF ([rdfs.ttl](turtle))
@@ -28,51 +28,51 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 ### Class
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2000/01/rdf-schema#Class`
+URI | `http://www.w3.org/2000/01/rdf-schema#Class`
 Is Defined By | http://www.w3.org/2000/01/rdf-schema#
 Description | <p>The class of classes.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
 Sub-classes |[rdfs:Datatype](http://www.w3.org/2000/01/rdf-schema#Datatype) (c)<br />
 In domain of |[rdfs:subClassOf](http://www.w3.org/2000/01/rdf-schema#subClassOf)<br />
-In range of |[rdfs:range](http://www.w3.org/2000/01/rdf-schema#range)<br />[rdfs:domain](http://www.w3.org/2000/01/rdf-schema#domain)<br />[rdfs:subClassOf](http://www.w3.org/2000/01/rdf-schema#subClassOf)<br />
+In range of |[rdfs:domain](http://www.w3.org/2000/01/rdf-schema#domain)<br />[rdfs:range](http://www.w3.org/2000/01/rdf-schema#range)<br />[rdfs:subClassOf](http://www.w3.org/2000/01/rdf-schema#subClassOf)<br />
 ### Container
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2000/01/rdf-schema#Container`
+URI | `http://www.w3.org/2000/01/rdf-schema#Container`
 Is Defined By | http://www.w3.org/2000/01/rdf-schema#
 Description | <p>The class of RDF containers.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
 ### ContainerMembershipProperty
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2000/01/rdf-schema#ContainerMembershipProperty`
+URI | `http://www.w3.org/2000/01/rdf-schema#ContainerMembershipProperty`
 Is Defined By | http://www.w3.org/2000/01/rdf-schema#
 Description | <p>The class of container membership properties, rdf:_1, rdf:_2, ...,                     all of which are sub-properties of 'member'.</p>
 Super-classes |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c)<br />
 ### Datatype
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2000/01/rdf-schema#Datatype`
+URI | `http://www.w3.org/2000/01/rdf-schema#Datatype`
 Is Defined By | http://www.w3.org/2000/01/rdf-schema#
 Description | <p>The class of RDF datatypes.</p>
 Super-classes |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
 ### Literal
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2000/01/rdf-schema#Literal`
+URI | `http://www.w3.org/2000/01/rdf-schema#Literal`
 Is Defined By | http://www.w3.org/2000/01/rdf-schema#
 Description | <p>The class of literal values, eg. textual strings and integers.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
-In range of |[rdfs:comment](http://www.w3.org/2000/01/rdf-schema#comment)<br />[rdfs:label](http://www.w3.org/2000/01/rdf-schema#label)<br />
+In range of |[rdfs:label](http://www.w3.org/2000/01/rdf-schema#label)<br />[rdfs:comment](http://www.w3.org/2000/01/rdf-schema#comment)<br />
 ### Resource
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2000/01/rdf-schema#Resource`
+URI | `http://www.w3.org/2000/01/rdf-schema#Resource`
 Is Defined By | http://www.w3.org/2000/01/rdf-schema#
 Description | <p>The class resource, everything.</p>
-Sub-classes |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />[rdfs:Container](http://www.w3.org/2000/01/rdf-schema#Container) (c)<br />[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
-In domain of |[rdfs:isDefinedBy](http://www.w3.org/2000/01/rdf-schema#isDefinedBy)<br />[rdfs:seeAlso](http://www.w3.org/2000/01/rdf-schema#seeAlso)<br />[rdfs:member](http://www.w3.org/2000/01/rdf-schema#member)<br />[rdfs:label](http://www.w3.org/2000/01/rdf-schema#label)<br />[rdfs:comment](http://www.w3.org/2000/01/rdf-schema#comment)<br />
-In range of |[rdfs:isDefinedBy](http://www.w3.org/2000/01/rdf-schema#isDefinedBy)<br />[rdfs:seeAlso](http://www.w3.org/2000/01/rdf-schema#seeAlso)<br />[rdfs:member](http://www.w3.org/2000/01/rdf-schema#member)<br />
+Sub-classes |[rdfs:Container](http://www.w3.org/2000/01/rdf-schema#Container) (c)<br />[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
+In domain of |[rdfs:label](http://www.w3.org/2000/01/rdf-schema#label)<br />[rdfs:isDefinedBy](http://www.w3.org/2000/01/rdf-schema#isDefinedBy)<br />[rdfs:member](http://www.w3.org/2000/01/rdf-schema#member)<br />[rdfs:seeAlso](http://www.w3.org/2000/01/rdf-schema#seeAlso)<br />[rdfs:comment](http://www.w3.org/2000/01/rdf-schema#comment)<br />
+In range of |[rdfs:member](http://www.w3.org/2000/01/rdf-schema#member)<br />[rdfs:seeAlso](http://www.w3.org/2000/01/rdf-schema#seeAlso)<br />[rdfs:isDefinedBy](http://www.w3.org/2000/01/rdf-schema#isDefinedBy)<br />
 
 ## Properties
 [comment](#comment),
@@ -88,7 +88,7 @@ In range of |[rdfs:isDefinedBy](http://www.w3.org/2000/01/rdf-schema#isDefinedBy
 ### comment
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2000/01/rdf-schema#comment`
+URI | `http://www.w3.org/2000/01/rdf-schema#comment`
 Is Defined By | http://www.w3.org/2000/01/rdf-schema#
 Description | A description of the subject resource.
 Domain(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -97,7 +97,7 @@ Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
 ### domain
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2000/01/rdf-schema#domain`
+URI | `http://www.w3.org/2000/01/rdf-schema#domain`
 Is Defined By | http://www.w3.org/2000/01/rdf-schema#
 Description | A domain of the subject property.
 Domain(s) |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c)<br />
@@ -106,7 +106,7 @@ Range(s) |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
 ### isDefinedBy
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2000/01/rdf-schema#isDefinedBy`
+URI | `http://www.w3.org/2000/01/rdf-schema#isDefinedBy`
 Is Defined By | http://www.w3.org/2000/01/rdf-schema#
 Description | The defininition of the subject resource.
 Super-properties |[rdfs:seeAlso](http://www.w3.org/2000/01/rdf-schema#seeAlso)<br />
@@ -116,7 +116,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### label
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2000/01/rdf-schema#label`
+URI | `http://www.w3.org/2000/01/rdf-schema#label`
 Is Defined By | http://www.w3.org/2000/01/rdf-schema#
 Description | A human-readable name for the subject.
 Domain(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -125,7 +125,7 @@ Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
 ### member
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2000/01/rdf-schema#member`
+URI | `http://www.w3.org/2000/01/rdf-schema#member`
 Is Defined By | http://www.w3.org/2000/01/rdf-schema#
 Description | A member of the subject resource.
 Domain(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -134,7 +134,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### range
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2000/01/rdf-schema#range`
+URI | `http://www.w3.org/2000/01/rdf-schema#range`
 Is Defined By | http://www.w3.org/2000/01/rdf-schema#
 Description | A range of the subject property.
 Domain(s) |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c)<br />
@@ -143,7 +143,7 @@ Range(s) |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
 ### seeAlso
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2000/01/rdf-schema#seeAlso`
+URI | `http://www.w3.org/2000/01/rdf-schema#seeAlso`
 Is Defined By | http://www.w3.org/2000/01/rdf-schema#
 Description | Further information about the subject resource.
 Domain(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
@@ -152,7 +152,7 @@ Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br 
 ### subClassOf
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2000/01/rdf-schema#subClassOf`
+URI | `http://www.w3.org/2000/01/rdf-schema#subClassOf`
 Is Defined By | http://www.w3.org/2000/01/rdf-schema#
 Description | The subject is a subclass of a class.
 Domain(s) |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
@@ -161,7 +161,7 @@ Range(s) |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
 ### subPropertyOf
 Property | Value
 --- | ---
-IRI | `http://www.w3.org/2000/01/rdf-schema#subPropertyOf`
+URI | `http://www.w3.org/2000/01/rdf-schema#subPropertyOf`
 Is Defined By | http://www.w3.org/2000/01/rdf-schema#
 Description | The subject is a subproperty of a property.
 Domain(s) |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c)<br />
@@ -183,8 +183,6 @@ Range(s) |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c
   * `https://schema.org/`
 * **skos**
   * `http://www.w3.org/2004/02/skos/core#`
-* **xml**
-  * `http://www.w3.org/XML/1998/namespace`
 * **xsd**
   * `http://www.w3.org/2001/XMLSchema#`
 

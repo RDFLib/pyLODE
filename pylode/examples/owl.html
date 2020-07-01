@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -205,17 +210,17 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>The OWL 2 Schema vocabulary (OWL 2)</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://www.w3.org/2002/07/owl</code></dd>
         <dt>Version Information</dt>
         <dd>$Date: 2009/11/15 10:54:12 $</dd>
-        <dt>Version IRI</dt>
+        <dt>Version URI</dt>
         <dd><a href="http://www.w3.org/2002/07/owl">http://www.w3.org/2002/07/owl</a></dd>
         <dt>Imports</dt>
         <dd>
@@ -297,7 +302,7 @@
         <h3>AllDifferent<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#AllDifferent</code></td>
             </tr>
             <tr>
@@ -330,7 +335,7 @@
         <h3>AllDisjointClasses<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#AllDisjointClasses</code></td>
             </tr>
             <tr>
@@ -357,7 +362,7 @@
         <h3>AllDisjointProperties<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#AllDisjointProperties</code></td>
             </tr>
             <tr>
@@ -384,7 +389,7 @@
         <h3>Annotation<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#Annotation</code></td>
             </tr>
             <tr>
@@ -411,7 +416,7 @@
         <h3>AnnotationProperty<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#AnnotationProperty</code></td>
             </tr>
             <tr>
@@ -438,7 +443,7 @@
         <h3>AsymmetricProperty<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#AsymmetricProperty</code></td>
             </tr>
             <tr>
@@ -465,7 +470,7 @@
         <h3>Axiom<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#Axiom</code></td>
             </tr>
             <tr>
@@ -492,7 +497,7 @@
         <h3>Class<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#Class</code></td>
             </tr>
             <tr>
@@ -522,18 +527,18 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#hasKey">owl:hasKey</a><br/>
-                    <a href="#disjointWith">owl:disjointWith</a><br/>
                     <a href="#complementOf">owl:complementOf</a><br/>
                     <a href="#disjointUnionOf">owl:disjointUnionOf</a><br/>
+                    <a href="#hasKey">owl:hasKey</a><br/>
+                    <a href="#disjointWith">owl:disjointWith</a><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#onClass">owl:onClass</a><br/>
                     <a href="#complementOf">owl:complementOf</a><br/>
                     <a href="#disjointWith">owl:disjointWith</a><br/>
+                    <a href="#onClass">owl:onClass</a><br/>
                 </td>
             </tr>
         </table>
@@ -542,7 +547,7 @@
         <h3>DataRange<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#DataRange</code></td>
             </tr>
             <tr>
@@ -569,7 +574,7 @@
         <h3>DatatypeProperty<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#DatatypeProperty</code></td>
             </tr>
             <tr>
@@ -596,7 +601,7 @@
         <h3>DeprecatedClass<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#DeprecatedClass</code></td>
             </tr>
             <tr>
@@ -623,7 +628,7 @@
         <h3>DeprecatedProperty<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#DeprecatedProperty</code></td>
             </tr>
             <tr>
@@ -650,7 +655,7 @@
         <h3>FunctionalProperty<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#FunctionalProperty</code></td>
             </tr>
             <tr>
@@ -677,7 +682,7 @@
         <h3>InverseFunctionalProperty<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#InverseFunctionalProperty</code></td>
             </tr>
             <tr>
@@ -704,7 +709,7 @@
         <h3>IrreflexiveProperty<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#IrreflexiveProperty</code></td>
             </tr>
             <tr>
@@ -731,7 +736,7 @@
         <h3>NamedIndividual<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#NamedIndividual</code></td>
             </tr>
             <tr>
@@ -758,7 +763,7 @@
         <h3>NegativePropertyAssertion<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#NegativePropertyAssertion</code></td>
             </tr>
             <tr>
@@ -782,10 +787,10 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#targetValue">owl:targetValue</a><br/>
-                    <a href="#assertionProperty">owl:assertionProperty</a><br/>
                     <a href="#sourceIndividual">owl:sourceIndividual</a><br/>
                     <a href="#targetIndividual">owl:targetIndividual</a><br/>
+                    <a href="#targetValue">owl:targetValue</a><br/>
+                    <a href="#assertionProperty">owl:assertionProperty</a><br/>
                 </td>
             </tr>
         </table>
@@ -794,7 +799,7 @@
         <h3>Nothing<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#Nothing</code></td>
             </tr>
             <tr>
@@ -821,7 +826,7 @@
         <h3>ObjectProperty<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#ObjectProperty</code></td>
             </tr>
             <tr>
@@ -845,19 +850,19 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
+                    <a href="#InverseFunctionalProperty">owl:InverseFunctionalProperty</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#SymmetricProperty">owl:SymmetricProperty</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#TransitiveProperty">owl:TransitiveProperty</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#IrreflexiveProperty">owl:IrreflexiveProperty</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#ReflexiveProperty">owl:ReflexiveProperty</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#TransitiveProperty">owl:TransitiveProperty</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#AsymmetricProperty">owl:AsymmetricProperty</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#InverseFunctionalProperty">owl:InverseFunctionalProperty</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#inverseOf">owl:inverseOf</a><br/>
                     <a href="#propertyChainAxiom">owl:propertyChainAxiom</a><br/>
+                    <a href="#inverseOf">owl:inverseOf</a><br/>
                 </td>
             </tr>
             <tr>
@@ -872,7 +877,7 @@
         <h3>Ontology<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#Ontology</code></td>
             </tr>
             <tr>
@@ -896,10 +901,10 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#priorVersion">owl:priorVersion</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
-                    <a href="#incompatibleWith">owl:incompatibleWith</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
                     <a href="http://www.w3.org/2002/07/owl#versionIRI">owl:versionIRI</a><br/>
                     <a href="#backwardCompatibleWith">owl:backwardCompatibleWith</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
+                    <a href="#incompatibleWith">owl:incompatibleWith</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
+                    <a href="#priorVersion">owl:priorVersion</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
                     <a href="http://www.w3.org/2002/07/owl#imports">owl:imports</a><br/>
                 </td>
             </tr>
@@ -907,10 +912,10 @@
                 <th>In range of</th>
                 <td>
                     <a href="#priorVersion">owl:priorVersion</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
+                    <a href="#incompatibleWith">owl:incompatibleWith</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
+                    <a href="#backwardCompatibleWith">owl:backwardCompatibleWith</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
                     <a href="http://www.w3.org/2002/07/owl#imports">owl:imports</a><br/>
                     <a href="http://www.w3.org/2002/07/owl#versionIRI">owl:versionIRI</a><br/>
-                    <a href="#backwardCompatibleWith">owl:backwardCompatibleWith</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
-                    <a href="#incompatibleWith">owl:incompatibleWith</a><sup class="sup-ap" title="annotation property">ap</sup><br/>
                 </td>
             </tr>
         </table>
@@ -919,7 +924,7 @@
         <h3>OntologyProperty<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#OntologyProperty</code></td>
             </tr>
             <tr>
@@ -946,7 +951,7 @@
         <h3>ReflexiveProperty<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#ReflexiveProperty</code></td>
             </tr>
             <tr>
@@ -973,7 +978,7 @@
         <h3>Restriction<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#Restriction</code></td>
             </tr>
             <tr>
@@ -997,20 +1002,20 @@
             <tr>
                 <th>In domain of</th>
                 <td>
+                    <a href="#onProperties">owl:onProperties</a><br/>
                     <a href="#onProperty">owl:onProperty</a><br/>
-                    <a href="#onClass">owl:onClass</a><br/>
-                    <a href="#someValuesFrom">owl:someValuesFrom</a><br/>
-                    <a href="#maxQualifiedCardinality">owl:maxQualifiedCardinality</a><br/>
+                    <a href="#minCardinality">owl:minCardinality</a><br/>
                     <a href="#hasSelf">owl:hasSelf</a><br/>
+                    <a href="#cardinality">owl:cardinality</a><br/>
+                    <a href="#maxQualifiedCardinality">owl:maxQualifiedCardinality</a><br/>
+                    <a href="#hasValue">owl:hasValue</a><br/>
                     <a href="#qualifiedCardinality">owl:qualifiedCardinality</a><br/>
                     <a href="#maxCardinality">owl:maxCardinality</a><br/>
                     <a href="#minQualifiedCardinality">owl:minQualifiedCardinality</a><br/>
-                    <a href="#cardinality">owl:cardinality</a><br/>
-                    <a href="#allValuesFrom">owl:allValuesFrom</a><br/>
-                    <a href="#onProperties">owl:onProperties</a><br/>
                     <a href="#onDataRange">owl:onDataRange</a><br/>
-                    <a href="#minCardinality">owl:minCardinality</a><br/>
-                    <a href="#hasValue">owl:hasValue</a><br/>
+                    <a href="#onClass">owl:onClass</a><br/>
+                    <a href="#someValuesFrom">owl:someValuesFrom</a><br/>
+                    <a href="#allValuesFrom">owl:allValuesFrom</a><br/>
                 </td>
             </tr>
         </table>
@@ -1019,7 +1024,7 @@
         <h3>SymmetricProperty<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#SymmetricProperty</code></td>
             </tr>
             <tr>
@@ -1046,7 +1051,7 @@
         <h3>Thing<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#Thing</code></td>
             </tr>
             <tr>
@@ -1071,12 +1076,12 @@
             <tr>
                 <th>In domain of</th>
                 <td>
+                    <a href="#topObjectProperty">owl:topObjectProperty</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#bottomObjectProperty">owl:bottomObjectProperty</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#topDataProperty">owl:topDataProperty</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#bottomDataProperty">owl:bottomDataProperty</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#sameAs">owl:sameAs</a><br/>
                     <a href="#differentFrom">owl:differentFrom</a><br/>
-                    <a href="#bottomDataProperty">owl:bottomDataProperty</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#topObjectProperty">owl:topObjectProperty</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#topDataProperty">owl:topDataProperty</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -1085,8 +1090,8 @@
                     <a href="#bottomObjectProperty">owl:bottomObjectProperty</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#sameAs">owl:sameAs</a><br/>
                     <a href="#differentFrom">owl:differentFrom</a><br/>
-                    <a href="#sourceIndividual">owl:sourceIndividual</a><br/>
                     <a href="#topObjectProperty">owl:topObjectProperty</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sourceIndividual">owl:sourceIndividual</a><br/>
                     <a href="#targetIndividual">owl:targetIndividual</a><br/>
                 </td>
             </tr>
@@ -1096,7 +1101,7 @@
         <h3>TransitiveProperty<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#TransitiveProperty</code></td>
             </tr>
             <tr>
@@ -1130,7 +1135,7 @@
         <h3>bottomObjectProperty<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#bottomObjectProperty</code></td>
             </tr>
             <tr>
@@ -1163,7 +1168,7 @@
         <h3>topObjectProperty<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#topObjectProperty</code></td>
             </tr>
             <tr>
@@ -1204,7 +1209,7 @@
         <h3>bottomDataProperty<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#bottomDataProperty</code></td>
             </tr>
             <tr>
@@ -1237,7 +1242,7 @@
         <h3>topDataProperty<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#topDataProperty</code></td>
             </tr>
             <tr>
@@ -1281,7 +1286,7 @@
         <h3>backwardCompatibleWith<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#backwardCompatibleWith</code></td>
             </tr>
             <tr>
@@ -1314,7 +1319,7 @@
         <h3>deprecated<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#deprecated</code></td>
             </tr>
             <tr>
@@ -1347,7 +1352,7 @@
         <h3>incompatibleWith<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#incompatibleWith</code></td>
             </tr>
             <tr>
@@ -1380,7 +1385,7 @@
         <h3>priorVersion<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#priorVersion</code></td>
             </tr>
             <tr>
@@ -1413,7 +1418,7 @@
         <h3>versionInfo<sup title="annotation property" class="sup-ap">ap</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#versionInfo</code></td>
             </tr>
             <tr>
@@ -1492,7 +1497,7 @@
         <h3>allValuesFrom<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#allValuesFrom</code></td>
             </tr>
             <tr>
@@ -1525,7 +1530,7 @@
         <h3>annotatedProperty<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#annotatedProperty</code></td>
             </tr>
             <tr>
@@ -1558,7 +1563,7 @@
         <h3>annotatedSource<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#annotatedSource</code></td>
             </tr>
             <tr>
@@ -1591,7 +1596,7 @@
         <h3>annotatedTarget<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#annotatedTarget</code></td>
             </tr>
             <tr>
@@ -1624,7 +1629,7 @@
         <h3>assertionProperty<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#assertionProperty</code></td>
             </tr>
             <tr>
@@ -1657,7 +1662,7 @@
         <h3>cardinality<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#cardinality</code></td>
             </tr>
             <tr>
@@ -1690,7 +1695,7 @@
         <h3>complementOf<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#complementOf</code></td>
             </tr>
             <tr>
@@ -1723,7 +1728,7 @@
         <h3>datatypeComplementOf<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#datatypeComplementOf</code></td>
             </tr>
             <tr>
@@ -1756,7 +1761,7 @@
         <h3>differentFrom<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#differentFrom</code></td>
             </tr>
             <tr>
@@ -1789,7 +1794,7 @@
         <h3>disjointUnionOf<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#disjointUnionOf</code></td>
             </tr>
             <tr>
@@ -1822,7 +1827,7 @@
         <h3>disjointWith<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#disjointWith</code></td>
             </tr>
             <tr>
@@ -1855,7 +1860,7 @@
         <h3>distinctMembers<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#distinctMembers</code></td>
             </tr>
             <tr>
@@ -1888,7 +1893,7 @@
         <h3>equivalentClass<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#equivalentClass</code></td>
             </tr>
             <tr>
@@ -1921,7 +1926,7 @@
         <h3>equivalentProperty<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#equivalentProperty</code></td>
             </tr>
             <tr>
@@ -1954,7 +1959,7 @@
         <h3>hasKey<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#hasKey</code></td>
             </tr>
             <tr>
@@ -1987,7 +1992,7 @@
         <h3>hasSelf<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#hasSelf</code></td>
             </tr>
             <tr>
@@ -2020,7 +2025,7 @@
         <h3>hasValue<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#hasValue</code></td>
             </tr>
             <tr>
@@ -2053,7 +2058,7 @@
         <h3>intersectionOf<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#intersectionOf</code></td>
             </tr>
             <tr>
@@ -2086,7 +2091,7 @@
         <h3>inverseOf<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#inverseOf</code></td>
             </tr>
             <tr>
@@ -2119,7 +2124,7 @@
         <h3>maxCardinality<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#maxCardinality</code></td>
             </tr>
             <tr>
@@ -2152,7 +2157,7 @@
         <h3>maxQualifiedCardinality<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#maxQualifiedCardinality</code></td>
             </tr>
             <tr>
@@ -2185,7 +2190,7 @@
         <h3>members<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#members</code></td>
             </tr>
             <tr>
@@ -2218,7 +2223,7 @@
         <h3>minCardinality<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#minCardinality</code></td>
             </tr>
             <tr>
@@ -2251,7 +2256,7 @@
         <h3>minQualifiedCardinality<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#minQualifiedCardinality</code></td>
             </tr>
             <tr>
@@ -2284,7 +2289,7 @@
         <h3>onClass<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#onClass</code></td>
             </tr>
             <tr>
@@ -2317,7 +2322,7 @@
         <h3>onDataRange<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#onDataRange</code></td>
             </tr>
             <tr>
@@ -2350,7 +2355,7 @@
         <h3>onDatatype<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#onDatatype</code></td>
             </tr>
             <tr>
@@ -2383,7 +2388,7 @@
         <h3>onProperties<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#onProperties</code></td>
             </tr>
             <tr>
@@ -2416,7 +2421,7 @@
         <h3>onProperty<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#onProperty</code></td>
             </tr>
             <tr>
@@ -2449,7 +2454,7 @@
         <h3>oneOf<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#oneOf</code></td>
             </tr>
             <tr>
@@ -2482,7 +2487,7 @@
         <h3>propertyChainAxiom<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#propertyChainAxiom</code></td>
             </tr>
             <tr>
@@ -2515,7 +2520,7 @@
         <h3>propertyDisjointWith<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#propertyDisjointWith</code></td>
             </tr>
             <tr>
@@ -2548,7 +2553,7 @@
         <h3>qualifiedCardinality<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#qualifiedCardinality</code></td>
             </tr>
             <tr>
@@ -2581,7 +2586,7 @@
         <h3>sameAs<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#sameAs</code></td>
             </tr>
             <tr>
@@ -2614,7 +2619,7 @@
         <h3>someValuesFrom<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#someValuesFrom</code></td>
             </tr>
             <tr>
@@ -2647,7 +2652,7 @@
         <h3>sourceIndividual<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#sourceIndividual</code></td>
             </tr>
             <tr>
@@ -2680,7 +2685,7 @@
         <h3>targetIndividual<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#targetIndividual</code></td>
             </tr>
             <tr>
@@ -2713,7 +2718,7 @@
         <h3>targetValue<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#targetValue</code></td>
             </tr>
             <tr>
@@ -2746,7 +2751,7 @@
         <h3>unionOf<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#unionOf</code></td>
             </tr>
             <tr>
@@ -2779,7 +2784,7 @@
         <h3>withRestrictions<sup title="property" class="sup-p">p</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://www.w3.org/2002/07/owl#withRestrictions</code></td>
             </tr>
             <tr>
@@ -2820,8 +2825,6 @@
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
         <dt>dc</dt>
         <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
         <dt>grddl</dt>
@@ -2838,8 +2841,6 @@
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

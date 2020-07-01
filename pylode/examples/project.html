@@ -179,6 +179,11 @@
             color: darkred;
         }
 
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
     </style>
     
     <script type="application/ld+json">
@@ -210,15 +215,15 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+    <span style="font-size:smaller;">2.6</span>
   </div>
   <h1>A Project ontology</h1>
 <section id="metadata">
     <h2 style="display:none;">Metadata</h2>
     <dl>
-        <dt>IRI</dt>
+        <dt>URI</dt>
         <dd><code>http://linked.data.gov.au/def/project</code></dd>
-        <dt>Creator(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
         <dd>
             
     <a href="https://orcid.org/0000-0002-3884-3420">None</a>
@@ -242,13 +247,13 @@
     </g>
 </svg></a><br/>
         </dd>
-        <dt>Contributors(s)</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/contributor">Contributor</a>(s)</dt>
         <dd>
             Peter Brenton, CSIRO<br/>
         </dd>
-        <dt>Created</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/created">Created</a></dt>
         <dd>2017-08-14</dd>
-        <dt>Modified</dt>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
         <dd>2020-04-24</dd>
         <dt>Imports</dt>
         <dd>
@@ -307,7 +312,7 @@
         <h3>Funding association<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#FundingAssociation</code></td>
             </tr>
             <tr>
@@ -346,9 +351,9 @@ ex:FA3
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#agent">prov:agent</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://www.w3.org/ns/prov#hadRole">prov:hadRole</a> <span class="cardinality">value</span> <a href="http://linked.data.gov.au/def/project/Funder">proji:Funder</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://linked.data.gov.au/def/project#fundsProvided">proj:fundsProvided</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://www.w3.org/ns/prov#agent">prov:agent</a> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
@@ -370,7 +375,7 @@ ex:FA3
         <h3>Project<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#Project</code></td>
             </tr>
             <tr>
@@ -433,12 +438,12 @@ prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#hadBudgetTotal">proj:hadBudgetTotal</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://linked.data.gov.au/def/project#hadPlan">proj:hadPlan</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://linked.data.gov.au/def/project#hadSponsor">proj:hadSponsor</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
                     <a href="http://linked.data.gov.au/def/project#plannedStart">proj:plannedStart</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://linked.data.gov.au/def/project#hadLeader">proj:hadLeader</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/project#hadSponsor">proj:hadSponsor</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
                     <a href="http://linked.data.gov.au/def/project#plannedEnd">proj:plannedEnd</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/project#hadBudgetTotal">proj:hadBudgetTotal</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
@@ -450,12 +455,12 @@ prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#hadObjective">proj:hadObjective</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="http://linked.data.gov.au/def/project#hadAreaOfInterest">proj:hadAreaOfInterest</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://linked.data.gov.au/def/project#hadPlan">proj:hadPlan</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#hadObjective">proj:hadObjective</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="http://linked.data.gov.au/def/project#hadBudgetTotal">proj:hadBudgetTotal</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://linked.data.gov.au/def/project#hadSponsor">proj:hadSponsor</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://linked.data.gov.au/def/project#wasFundedThrough">proj:wasFundedThrough</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#hadSponsor">proj:hadSponsor</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#hadAreaOfInterest">proj:hadAreaOfInterest</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -464,7 +469,7 @@ prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
         <h3>Research Project<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#ResearchProject</code></td>
             </tr>
             <tr>
@@ -544,7 +549,7 @@ prov:startedAtTime "2012-12-31T00:00:00"^^xsd:dateTime ;
         <h3>Sum of money<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#SumOfMoney</code></td>
             </tr>
             <tr>
@@ -590,8 +595,8 @@ ex:SM4
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#fundsProvided">proj:fundsProvided</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://linked.data.gov.au/def/project#hadBudgetTotal">proj:hadBudgetTotal</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#fundsProvided">proj:fundsProvided</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -619,7 +624,7 @@ ex:SM4
         <h3>pointer to funding-scheme<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#fundingScheme</code></td>
             </tr>
             <tr>
@@ -634,7 +639,7 @@ ex:SM4
         <h3>funding provided<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#fundsProvided</code></td>
             </tr>
             <tr>
@@ -649,7 +654,7 @@ ex:SM4
         <h3>has area of interest<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#hadAreaOfInterest</code></td>
             </tr>
             <tr>
@@ -676,7 +681,7 @@ ex:SM4
         <h3>total project budget<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#hadBudgetTotal</code></td>
             </tr>
             <tr>
@@ -697,7 +702,7 @@ ex:SM4
         <h3>field of research<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#hadFieldOfResearch</code></td>
             </tr>
             <tr>
@@ -730,7 +735,7 @@ ex:SM4
         <h3>leader<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#hadLeader</code></td>
             </tr>
             <tr>
@@ -751,7 +756,7 @@ ex:SM4
         <h3>Project plan<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#hadPlan</code></td>
             </tr>
             <tr>
@@ -778,7 +783,7 @@ ex:SM4
         <h3>principal investigator<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#hadPrincipalInvestigator</code></td>
             </tr>
             <tr>
@@ -799,7 +804,7 @@ ex:SM4
         <h3>had related activity<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#hadRelatedActivity</code></td>
             </tr>
             <tr>
@@ -832,7 +837,7 @@ ex:SM4
         <h3>activity sponsor<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#hadSponsor</code></td>
             </tr>
             <tr>
@@ -853,7 +858,7 @@ ex:SM4
         <h3>has sub-activity<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#hadSubActivity</code></td>
             </tr>
             <tr>
@@ -874,7 +879,7 @@ ex:SM4
         <h3>currency of a sum of money<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#moneyCurrency</code></td>
             </tr>
             <tr>
@@ -889,7 +894,7 @@ ex:SM4
         <h3>had funding association<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#wasFundedThrough</code></td>
             </tr>
             <tr>
@@ -910,7 +915,7 @@ ex:SM4
         <h3>is sub-activity of<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#wasSubActivityOf</code></td>
             </tr>
             <tr>
@@ -942,7 +947,7 @@ ex:SM4
         <h3>grant or contract number<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#grantNumber</code></td>
             </tr>
             <tr>
@@ -963,7 +968,7 @@ ex:SM4
         <h3>project objective<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#hadObjective</code></td>
             </tr>
             <tr>
@@ -978,7 +983,7 @@ ex:SM4
         <h3>Money amount<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#moneyAmount</code></td>
             </tr>
             <tr>
@@ -999,7 +1004,7 @@ ex:SM4
         <h3>planned end-date|time<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#plannedEnd</code></td>
             </tr>
             <tr>
@@ -1014,7 +1019,7 @@ ex:SM4
         <h3>planned start-date|time<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
-                <th>IRI</th>
+                <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/project#plannedStart</code></td>
             </tr>
             <tr>
@@ -1037,8 +1042,6 @@ ex:SM4
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>http://linked.data.gov.au/def/project/</code></dd>
         <dt>dcterms</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
         <dt>owl</dt>
@@ -1061,8 +1064,6 @@ ex:SM4
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>
