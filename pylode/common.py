@@ -1,10 +1,6 @@
 from os import path
-import sys
-sys.path.insert(0, path.dirname(path.dirname(path.realpath(__file__))))  # pylode module
 import requests
 from rdflib import util, Graph
-from .profiles import OntDoc, Prof, VocPub
-from . import PROFILES
 
 VERSION = "2.6"
 APP_DIR = path.dirname(path.realpath(__file__))
@@ -28,6 +24,9 @@ RDF_SERIALIZER_MAP = {
     "text/n-triples": "nt",
     "text/plain": "nt",  # text/plain is the old/deprecated mimetype for n-triples
 }
+
+
+from .profiles import OntDoc, Prof, VocPub, PROFILES
 
 
 class MakeDocco:

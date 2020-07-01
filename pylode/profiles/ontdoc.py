@@ -1,6 +1,4 @@
 from os import path
-import sys
-sys.path.insert(0, path.dirname(path.dirname(path.realpath(__file__))))  # pylode module
 from pylode.common import VERSION, TEMPLATES_DIR, STYLE_DIR
 import collections
 from os import path

@@ -4,7 +4,7 @@ from jinja2 import Environment, FileSystemLoader
 from rdflib import SDO, SKOS, OWL, URIRef, RDF, PROF, Literal, XSD, Graph, Namespace, FOAF
 
 import pylode.profiles.profile
-from pylode import TEMPLATES_DIR
+from pylode.common import TEMPLATES_DIR
 
 
 class BaseProfile:
