@@ -656,7 +656,7 @@ pyLODE is under continual and constant development. The current developers have 
 which is given here, however, since this is an open source project, new developers may join the pyLODE dev community
 and change/add development priorities.
 
-The current release, as of July 2020, is 2.6.
+The current release, as of July 2020, is 2.7.
 
 .. csv-table:: **pyLODE Release Schedule**
    :header: "Version", "Date", "Description"
