@@ -244,12 +244,13 @@ In ``pylode/bin/``, there is a shell script ``pylode.sh``. You can run this on t
 
 What pyLODE understands
 =======================
+pyLODE understands Ontologies, Taxonomies & Profiles and handles them based on the *Ontology Document*, *Vocabulary Publication* and *PROF* profiles that it contains. These three profiles share understanding of basic annotation properties.
 
 Annotations
 -----------
 pyLODE understands the following ontology constructs:
 
--  **ontology metadata**
+-  **ontology/taxonomy/profile metadata**
     -  *imports* - ``owl:imports``
     -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title`` or ``dc:title``
     -  *description* - ``rdfs:comment`` or ``skos:definition`` or ``dct:description`` or ``dc:description``
@@ -267,7 +268,7 @@ pyLODE understands the following ontology constructs:
     -  **rights**: *license* - ``dct:license`` as a URI & *rights* - ``dct:rights`` as a string
     -  *code respository* - ``schema:codeRepository`` as a URI
     -  *source* - ``dcterms:source`` as a URI or text
--  **classes**
+-  **ontology classes**
     -  per ``rdfs:Class`` or ``owl:Class``
     -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title``
     -  *description* - ``rdf:comment`` or ``skos:definition`` or ``dct:description`` as a string or using `Markdown <https://daringfireball.net/projects/markdown/>`__ or HTML
@@ -277,7 +278,7 @@ pyLODE understands the following ontology constructs:
     -  *sub classes* - pyLODE will work these out itself
     -  *restrictions* - by declaring a class to be ``owl:subClassOf`` of an ``owl:Restriction`` with any of the normal cardinality or property existence etc. restrictions
     -  *in domain/range of* - pyLODE will auto-calculate these
--  **properties**
+-  **ontology properties**
     -  per ``owl:ObjectProperty``, ``owl:DatatypeProperty`` or ``owl:AnnotationProperty``
     -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title``
     -  *description* - ``rdf:comment`` or ``skos:definition`` or ``dct:description``
@@ -293,11 +294,11 @@ pyLODE understands the following ontology constructs:
     -  pyLODE will honour any namespace prefixes you set and look up others in `http://prefix.cc <http://prefix.cc/>`__
     -  it will either read your ontology's default/base URI in annotations or guess it using a number of methods
 -  **named individuals**
-    -  *coming!*
+    -  as per class but also ``owl:sameAs``
 
 Agents
 ------
-Agents, individual persons or organisations, should be associated with ontologies to indicate *authors*, *creators*, *publishers* etc. There are 2 ways to do this that pyLODE understands: datatype & object type.
+Agents, individual persons or organisations, should be associated with ontologies/taxonomies/profiles to indicate *authors*, *creators*, *publishers* etc. There are 2 ways to do this that pyLODE understands: datatype & object type.
 
 Datatype - not preferred
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -428,7 +429,7 @@ e.g.:
 Provenance
 ----------
 
-Ontology Source
+Ontology/Taxonomy Source
 ~~~~~~~~~~~~~~~
 The ontology's HTML representation linking back to the RDF: generated automatically
 
@@ -440,13 +441,15 @@ The ontology's HTML representation linking back to the RDF: generated automatica
 
 Code Repositories
 ~~~~~~~~~~~~~~~~~
-Indicating to readers where the 'live' version of the ontology is managed:
+Indicating to readers where the 'live' version of the ontology/taxonomy is managed:
 
 .. figure:: img/code-repository.png
     :align: center
     :figclass: figure-eg
 
 .....
+
+This should not be done for profiles, instread, create a ``prof:ResourceDescriptor`` instance with ``role:repository`` to indicate a profile's repository.
 
 Code repositories that house an ontology can be indicated either using `schema.org's codeRepository property <https://schema.org/codeRepository>`__ or a combination of the `Description of a Project <https://github.com/ewilderj/doap>`__ and PROV:
 
@@ -499,9 +502,9 @@ Feel free to extend your styling with your own CSS.
 
 Profiles
 ========
-pyLODE can document ontologies and other taxonomies according to different *profiles* which are specifications. The
-basic, default, profile is pyLODE's OWL Profile, which means documentation is generated according to OWL properties
-and classes and the various annotation properties listed here in the `What pyLODE understands`_ section.
+pyLODE can document ontologies, taxonomies and profiles according to different *profiles* which are specifications. The
+basic, default, profile is pyLODE's so-called *Ontology Documentation* profile, which is a profile of OWL and a few
+other bits and pieces. See `What pyLODE understands`_ section.
 
 pyLODE can tell you what profiles it supports: just run ``~$ pylode -lp`` ("list profiles") or, if calling from Python:
 
@@ -519,15 +522,62 @@ profiles include, see the profiles' definitions at:
 ========= ==========================================
 **Token** **URI**
 ========= ==========================================
-owlp      `<https://w3id.org/profile/pylode-owl>`_
-skosp     `<https://w3id.org/profile/pylode-skos>`_
+prof        `<https://www.w3.org/TR/dx-prof/>`_
+ontdoc      `<https://w3id.org/profile/ontdocp>`_
+vocpub      `<https://w3id.org/profile/vocpub>`_
 ========= ==========================================
+
+Creating New Profiles
+---------------------
+In the folder ``pylode/profiles/``, you will see an ``__init__.py`` file containing the ``BaseProfile`` class which all
+profiles must inherit from. The existing ``OntDoc``, ``Prof`` & ``VocPub`` profile classes are in files ``ontdoc.py``,
+``prof.py`` & ``vocpub.py`` respectively. They do all the things profiles need to do and are listed in
+``pylode/profiles/__init__.py`` for pyLODE to know about with both a profile declaration and an entry in the ``PROFILES``
+list. The profile declaration for PROF is:
+
+::
+
+    PROF_PROFILE = Profile(
+        "https://www.w3.org/TR/dx-prof/",
+        "The Profiles Vocabulary",
+        "The Profiles Vocabulary is an RDF vocabulary created to allow the machine-readable description of profiles of "
+        "specifications for information resources.",
+        [HTML_MEDIA_TYPE, "text/markdown"],
+        HTML_MEDIA_TYPE,
+        languages=["en"],
+        default_language="en"
+    )
+
+See the ``Profile`` class in ``pylode/profiles/__init__.py`` for mor details.
+
+The ``PROFILES`` object currently contains:
+
+::
+
+    PROFILES = {
+        "prof": PROF_PROFILE,
+        "ontdoc": ONT_DOC_PROFILE,
+        "vocpub": VOC_PUB_PROFILE,
+    }
+
+Profiles also contain templates in ``pylode/templates/FOLDER`` and need to be imported into ``pylode/__init.py`` and
+added to that file's ``document()`` finction to be made accessible.
+
+So, to create your own profile:
+
+1. create a class to inherit from ``BaseProfile``
+2. do the work of profileing in your class, following the *prof*, *ontdoc* & *vocpub* examples
+3. list your profile with a profile declaration and an entry in PROFILES in ``pylode/profiles/__init__.py``
+4. place your templates in ``pylode/templates/FOLDER`` (FOLDER being your profile's folder name)
+5. make your profile work with pyLODE by importing it into ``pylode/__init.py`` and adding a call to its constructor in ``document()``
+
+We hope to simplify this with profile auto-discovery soon!
 
 
 Transformation by Profile
 -------------------------
-You can, of course, document an OWL ontology using the *owlp* profile or a SKOS taxonomy using the *skosp* profile
-however, you can also document an OWL ontology using the *skosp* profile! This is because SKOS is conceptually a subset
+You can, of course, document an OWL ontology using the *owldoc* profile or a SKOS taxonomy using the *vocpub* profile
+however, you can also document an OWL ontology using the *vocpub* profile! This is because SKOS is conceptually a subset
 of OWL - whatever you can express in SKOS you can express in OWL.
 
 pyLODE performs an OWL > SKOS transformation on OWL ontologies to produce a taxonomy document. The following
