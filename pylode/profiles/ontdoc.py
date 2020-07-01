@@ -1,3 +1,6 @@
+from os import path
+import sys
+sys.path.insert(0, path.dirname(path.dirname(path.realpath(__file__))))  # pylode module
 from pylode.common import VERSION, TEMPLATES_DIR, STYLE_DIR
 import collections
 from os import path
@@ -8,7 +11,7 @@ from jinja2 import Environment, FileSystemLoader
 from os.path import join
 from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
-from pylode.profiles import BaseProfile
+from pylode.profiles.base import BaseProfile
 
 
 class OntDoc(BaseProfile):

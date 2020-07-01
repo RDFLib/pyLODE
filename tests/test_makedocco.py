@@ -1,4 +1,4 @@
-from pylode import MakeDocco
+from pylode.common import MakeDocco
 
 o1 = '''
     @prefix dcterms: <http://purl.org/dc/terms/> .

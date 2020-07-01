@@ -1,5 +1,5 @@
 import glob
-from pylode import MakeDocco
+from pylode.common import MakeDocco
 
 # get all the Turtle files in this dir
 ttl_files = glob.glob("*.ttl")

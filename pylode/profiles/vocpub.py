@@ -8,7 +8,7 @@ from itertools import chain
 import markdown
 from jinja2 import Environment, FileSystemLoader
 from os.path import join
-from pylode.profiles import BaseProfile
+from pylode.profiles.base import BaseProfile
 
 
 class VocPub(BaseProfile):
