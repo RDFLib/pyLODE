@@ -79,8 +79,8 @@ Another, the Australian Government's Records Interoperability Framework (AGRIF) 
     - see `the point-of-truth rendered online <https://linked.data.gov.au/def/agrif>`__
 - **agrif.md** - Markdown output
     - see this `rendered online by GitHub <https://github.com/RDFLib/pyLODE/blob/master/pylode/examples/agrif.md>`__
-- **agrif.skos.html** - HTMl output, "skosp" profile
-    - see this `rendered online by GitHack <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/agrif.skosp.html>`__
+- **agrif.skos.html** - HTMl output, "vocpub" profile
+    - see this `rendered online by GitHack <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/agrif.vocpub.html>`__
 
 You can build all of the example outputs locally by running `pylode/examples/_make_examples.py <pylode/examples/_make_examples.py>`_
 which also serves as a good demonstration of calling pyLODE from a Python file.
@@ -134,7 +134,7 @@ To use pyLODE within Python, try something like this:
     html = pylode.MakeDocco(
         input_data_file=input_file_path,
         outputformat="html",
-        profile="owlp",
+        profile="owldoc",
         exclude_css=True
     ).document()
 
@@ -172,7 +172,7 @@ These are the command line arguments to run pyLODE as a BASH or Python script on
 -  ``-f`` or ``--outputformat``, *optional, default 'html'*
     - The output format of the documentation. 'html' or 'md' accepted.
 -  ``-p`` or ``--profile``, *optional, default 'owl'*
-    - The profile (specification) for ontology documentation used. This has been "owl" (for OWL Ontology) only until the recent introduction of "skosp" (according to the `Simple Knowledge Organization System (SKOS) <https://www.w3.org/TR/skos-reference/>`__). See ``-lp`` for all profiles supported.
+    - The profile (specification) for ontology documentation used. This has been "owl" (for OWL Ontology) only until the recent introduction of "vocpub" (according to the `Simple Knowledge Organization System (SKOS) <https://www.w3.org/TR/skos-reference/>`__). See ``-lp`` for all profiles supported.
 -  ``-lp`` or ``--listprofiles``, *optional, no arguments*
     - Lists all the profiles (specifications) for ontology documentation supported by pyLODE
 
@@ -430,7 +430,7 @@ Provenance
 ----------
 
 Ontology/Taxonomy Source
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 The ontology's HTML representation linking back to the RDF: generated automatically
 
 .. figure:: img/source.png
@@ -510,7 +510,7 @@ pyLODE can tell you what profiles it supports: just run ``~$ pylode -lp`` ("list
 
 ::
 
-    m = MakeDocco(input_data_file="examples/data-access-rights.ttl", profile="skosp")
+    m = MakeDocco(input_data_file="examples/data-access-rights.ttl", profile="vocpub")
     print(m.list_profiles())
 
 
@@ -592,7 +592,7 @@ conversions are made:
 
 To see the full list of transformations, see the function ``_expand_graph_for_skos()`` in *makedocco.py*.
 
-Examples of a small taxonomies documented using the *skosp* profile are:
+Examples of a small taxonomies documented using the *vocpub* profile are:
 
 - `Data Access Rights <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/data-access-rights.skos.html>`_
 - `ISO 19115-1's RoleCodes <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/iso19115-1-RoleCodes.skos.html>`_
@@ -601,10 +601,10 @@ An example of a large one:
 
 - `Earth Science Data Category <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/earth-science-data-category.skos.html>`_
 
-An example of a *skosp*-documented OWL ontology and the corresponding *owlp* original is AGRIF:
+An example of a *vocpub*-documented OWL ontology and the corresponding *owldoc* original is AGRIF:
 
-- `AGRIF as skosp <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/agrif.skos.html>`_
-- `AGRIF as owlp <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/agrif.html>`_
+- `AGRIF as vocpub <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/agrif.skos.html>`_
+- `AGRIF as owldoc <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/agrif.html>`_
 
 
 Differences from LODE
@@ -656,15 +656,16 @@ pyLODE is under continual and constant development. The current developers have 
 which is given here, however, since this is an open source project, new developers may join the pyLODE dev community
 and change/add development priorities.
 
-The current release, as of May 2020, is 2.4.
+The current release, as of July 2020, is 2.6.
 
 .. csv-table:: **pyLODE Release Schedule**
    :header: "Version", "Date", "Description"
    :widths: 15, 10, 30
 
    3.0, *June 2020*, "Will include pre-testing inputs with SHACL"
-   **2.4**, **27 May 2020**, "Small improvements over 2.0"
-   2.0, 18 Apr 2020, "Includes multiple profiles - OWP & SKOSP"
+   **2.6**, **1 July 2020**, "Supports PROF profiles as well as taxonomies & ontologies. Much refactoring"
+   2.4, **27 May 2020**, "Small improvements over 2.0"
+   2.0, 18 Apr 2020, "Includes multiple profiles - OWP & vocpub"
    1.0, 15 Dec 2019, "Initial working release"
 
 Release notes
@@ -681,7 +682,8 @@ Expected to handle
 2.0 - current
 -------------
 - handles Named Individuals in OWL ontologies
-- implements "owlp" & "skosp" documentation profiles for OWL, SKOS and OWL-as-SKOS results
+- implements "owldoc" & "vocpub" documentation profiles for OWL, SKOS and OWL-as-SKOS results
+- implements "prof" profile for documentation of `Profiles Vocabulary <https://www.w3.org/TR/dx-prof/>`__ profiles
 
 1.0 - previous
 --------------
