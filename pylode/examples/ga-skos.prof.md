@@ -26,7 +26,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
   * [Example of a valid vocabulary](ub1bL30C5)
   * [Example of an invalid vocabulary](ub1bL36C5)
   * [Example of a second invalid vocabulary](ub1bL43C5)
-  * [Profile code repository](https://github.com/surroundaustralia/ga-skos-profile)
+  * [Profile code repository](ub1bL50C5)
 ### Description
 
 
@@ -36,14 +36,14 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 ### Specification Document
 Property | Value
 --- | ---
-Artifact | [specification.html](https://linked.data.gov.au/def/ga-skos/specification.html)
+Artifact | [https://linked.data.gov.au/def/ga-skos/specification.html](https://linked.data.gov.au/def/ga-skos/specification.html)
 Roles(s) |[role:specification](http://www.w3.org/ns/dx/prof/role/specification) <br />
 Conforms to |[https://www.w3.org/TR/html52/](https://www.w3.org/TR/html52/) <br />
 
 ### Validator in SHACL
 Property | Value
 --- | ---
-Artifact | [validation.ttl](https://linked.data.gov.au/def/ga-skos/validation.ttl)
+Artifact | [https://linked.data.gov.au/def/ga-skos/validation.ttl](https://linked.data.gov.au/def/ga-skos/validation.ttl)
 Roles(s) |[role:validation](http://www.w3.org/ns/dx/prof/role/validation) <br />
 Conforms to |[https://www.w3.org/TR/shacl/](https://www.w3.org/TR/shacl/) <br />
 
@@ -70,16 +70,13 @@ Roles(s) |[role:example](http://www.w3.org/ns/dx/prof/role/example) <br />
 ### Profile code repository
 Property | Value
 --- | ---
-URI | `https://github.com/surroundaustralia/ga-skos-profile`
 Description | Code repository storing all Profile artifacts
 Artifact | [https://github.com/surroundaustralia/ga-skos-profile](https://github.com/surroundaustralia/ga-skos-profile)
-Roles(s) |[role:repository](http://www.w3.org/ns/dx/prof/role/repository) <br />[role:other](http://www.w3.org/ns/dx/prof/role/other) <br />
+Roles(s) |[role:repository](http://www.w3.org/ns/dx/prof/role/repository) <br />
 
 
 
 ## Namespaces
-* **:**
-  * `https://linked.data.gov.au/def/ga-skos/`
 * **dcterms**
   * `http://purl.org/dc/terms/`
 * **prof**

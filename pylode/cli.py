@@ -2,29 +2,10 @@ import argparse
 import os
 from os import path
 import shutil
-import MakeDocco
-
-# used to know what RDF file types rdflib can handle
-RDF_FILE_EXTENSIONS = [".rdf", ".owl", ".ttl", ".n3", ".nt", ".json"]
-
-# used to know what RDF Media Types rdflib can handle
-RDF_SERIALIZER_MAP = {
-    "text/turtle": "turtle",
-    "text/n3": "n3",
-    "application/n-triples": "nt",
-    "application/ld+json": "json-ld",
-    "application/rdf+xml": "xml",
-    # Some common but incorrect Media Types
-    "application/rdf": "xml",
-    "application/rdf xml": "xml",
-    "application/json": "json-ld",
-    "application/ld json": "json-ld",
-    "text/ttl": "turtle",
-    "text/turtle;charset=UTF-8": "turtle",
-    "text/ntriples": "nt",
-    "text/n-triples": "nt",
-    "text/plain": "nt",  # text/plain is the old/deprecated mimetype for n-triples
-}
+import sys
+sys.path.insert(0, "..")
+sys.path.insert(0, ".")
+from pylode import RDF_FILE_EXTENSIONS, MakeDocco
 
 
 def is_valid_file(parser, arg):
@@ -179,36 +160,27 @@ def main(args=None):
     os.makedirs(h.publication_dir, exist_ok=True)
 
     # include CSS
-    msg_css = ""
     if args.css == "true":
         shutil.copyfile(
             path.join(style_dir, "pylode.css"), path.join(h.publication_dir, "style.css")
         )
-        msg_css = " and CSS"
 
     if args.outputfile is not None:
         output_file_name = (
             args.outputfile if args.outputfile else "doc.html"
         )
 
-        output_format = "HTML"
         if args.outputformat == "html":
             if not output_file_name.endswith(".html"):
                 output_file_name += ".html"
         elif args.outputformat == "md":
             if not output_file_name.endswith(".md"):
                 output_file_name += ".md"
-            output_format = "Markdown"
 
         # generate the HTML doc
         h.document(destination=output_file_name)
 
-        print(
-            "Finished. {} documentation in {}".format(
-                args.profile,
-                output_file_name,
-            )
-        )
+        print("Finished. {} documentation in {}".format(args.profile, output_file_name))
     else:
         print(h.document())
 

@@ -1,9 +1,8 @@
-import pylode.profiles.profile
 from pylode.common import VERSION, STYLE_DIR, TEMPLATES_DIR
 import collections
 from os import path
 from rdflib import URIRef, BNode, Literal
-from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROF, PROV, RDF, RDFS, SDO, SKOS
+from rdflib.namespace import DC, DCTERMS, OWL, PROF, RDF, RDFS, SDO, SKOS
 import dateutil.parser
 from itertools import chain
 import markdown
@@ -29,7 +28,7 @@ class Prof(BaseProfile):
                 "preferredNamespaceUri"
             )
         # if not, try the URI of the ontology compared to all prefixes
-        for s in self.G.subjects(predicate=RDF.type, object=pylode.profiles.profile.Profile):
+        for s in self.G.subjects(predicate=RDF.type, object=PROF.Profile):
             ont_uri = str(s)
         for k, v in self.NAMESPACES.items():
             # i.e. the ontology URI is the same as the default namespace + / or #
@@ -171,7 +170,7 @@ class Prof(BaseProfile):
         self.METADATA["contributors"] = set()
         self.METADATA["publishers"] = set()
         self.METADATA["profiles"] = set()
-        for s in self.G.subjects(predicate=RDF.type, object=pylode.profiles.profile.Profile):
+        for s in self.G.subjects(predicate=RDF.type, object=PROF.Profile):
             self.METADATA["uri"] = str(s)
             for p, o in self.G.predicate_objects(subject=s):
                 if p == RDFS.label:

@@ -663,8 +663,9 @@ The current release, as of July 2020, is 2.6.
    :widths: 15, 10, 30
 
    3.0, *June 2020*, "Will include pre-testing inputs with SHACL"
-   **2.6**, **1 July 2020**, "Supports PROF profiles as well as taxonomies & ontologies. Much refactoring"
-   2.4, **27 May 2020**, "Small improvements over 2.0"
+   **2.7**, **1 July 2020**, "Much refactoring for new profile creation ease"
+   2.6, June 2020, "Supports PROF profiles as well as taxonomies & ontologies"
+   2.4, 27 May 2020, "Small improvements over 2.0"
    2.0, 18 Apr 2020, "Includes multiple profiles - OWP & vocpub"
    1.0, 15 Dec 2019, "Initial working release"
 
@@ -684,6 +685,7 @@ Expected to handle
 - handles Named Individuals in OWL ontologies
 - implements "owldoc" & "vocpub" documentation profiles for OWL, SKOS and OWL-as-SKOS results
 - implements "prof" profile for documentation of `Profiles Vocabulary <https://www.w3.org/TR/dx-prof/>`__ profiles
+- has a more modular structure than 1.0 to assist with the creation or more profiles
 
 1.0 - previous
 --------------
