@@ -171,3 +171,9 @@
             font-size: large;
             color: darkred;
         }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }

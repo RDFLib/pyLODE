@@ -1,7 +1,7 @@
 ### {{ default_prefLabel }}
 Property | Value
 --- | ---
-IRI | `{{ uri }}`
+URI | `{{ uri }}`
 {%- if prefLabels|length > 0 %}
 Preferred Labels | {%- for prefLabel in prefLabels %}{{ prefLabel[0] }} ({{ prefLabel[1] }})<br />{%- endfor %}
 {%- endif %}

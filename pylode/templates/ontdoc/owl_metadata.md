@@ -1,7 +1,7 @@
 # {{ title }}
 
 ## Metadata
-* **IRI**
+* **URI**
   * `{{ uri }}`
 {%- if publishers|length > 0 %}
 * **Publisher(s)**
@@ -42,7 +42,7 @@
 {%- endif %}
 {%- if imports|length > 0 %}
 {%- if version_uri is not none %}
-* **Version IRI**
+* **Version URI**
   * {{ version_uri }}
 {%- endif %}
 * **Imports**

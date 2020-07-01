@@ -2,7 +2,7 @@
 ### A taxonomy
 
 ## Metadata
-* **IRI**
+* **URI**
   * `{{ uri }}`
 {%- if publishers|length > 0 %}
 * **Publisher(s)**
@@ -37,21 +37,24 @@
 * **Issued**
   * {{ issued }}
 {%- endif %}
+
 {%- if version_info is not none %}
 * **Version Information**
   * {{ version_info }}
 {%- endif %}
-{%- if imports|length > 0 %}
 {%- if version_uri is not none %}
-* **Version IRI**
+* **Version URI**
   * {{ version_uri }}
 {%- endif %}
+
+{%- if imports|length > 0 %}
 * **Imports**
 {%- for import in imports %}
   * {{ import }}
 {%- endfor %}
 {%- endif %}
 {%- if rights is not none and license is not none %}
+
 * **License &amp; Rights**
   * {{ license }}
   * {{ rights }}
@@ -66,7 +69,8 @@
 * **Source**
   * {{ source }}  
 {%- endif %}
-* **Ontology RDF**
+
+* **Taxonomy RDF**
   * {{ ont_rdf }}
 {%- if repository is not none %}
 * **Code Repository**

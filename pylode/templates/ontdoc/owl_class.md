@@ -1,7 +1,7 @@
 ### {{ title }}
 Property | Value
 --- | ---
-IRI | `{{ uri }}`
+URI | `{{ uri }}`
 {%- if is_defined_by is not none %}
 Is Defined By | {{ is_defined_by }}
 {%- endif %}

@@ -4,7 +4,7 @@
 @prefix sdo: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
+@prefix : <https://linked.data.gov.au/def/ga-skos/> .
 
 <https://linked.data.gov.au/def/ga-skos>
     a prof:Profile ;
@@ -18,14 +18,14 @@
         skos:prefLabel "Specification Document"@en ;
         dcterms:conformsTo <https://www.w3.org/TR/html52/> ;
         dcterms:format "text/html" ;
-        prof:hasArtifact <https://linked.data.gov.au/def/ga-skos/specification.html> ;
+        prof:hasArtifact :specification.html ;
         prof:hasRole role:specification
     ] ,
     [
         skos:prefLabel "Validator in SHACL"@en ;
         dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
         dcterms:format "text/turtle" ;
-        prof:hasArtifact <https://linked.data.gov.au/def/ga-skos/validation.ttl> ;
+        prof:hasArtifact :validation.ttl ;
         prof:hasRole role:validation
     ] ,
     [
@@ -47,14 +47,16 @@
         dcterms:format "text/turtle" ;
         prof:hasArtifact <https://linked.data.gov.au/def/ga-skos/examples/valid.2.ttl> ;
         prof:hasRole role:example
-    ] ,
-    [
-        skos:prefLabel "Profile code repository"@en ;
-        dcterms:description "Code repository storing all Profile artifacts"@en ;
-        prof:hasArtifact <https://github.com/surroundaustralia/ga-skos-profile> ;
-        prof:hasRole role:repository
-    ] ;
+    ] , <https://github.com/surroundaustralia/ga-skos-profile> ;
     prof:isProfileOf <https://www.w3.org/TR/skos-reference/> ;
+.
+
+<https://github.com/surroundaustralia/ga-skos-profile>
+    a prof:ResourceDescriptor ;
+    skos:prefLabel "Profile code repository"@en ;
+    dcterms:description "Code repository storing all Profile artifacts"@en ;
+    prof:hasArtifact <https://github.com/surroundaustralia/ga-skos-profile> ;
+    prof:hasRole role:repository , role:other
 .
 
 <https://linked.data.gov.au/org/ga> a sdo:Organization ;

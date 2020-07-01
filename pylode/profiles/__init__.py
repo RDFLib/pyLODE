@@ -47,7 +47,7 @@ class BaseProfile:
         else:
             return uri.split("/")[-1]  # could return None if URI ends in /
 
-    def _make_formatted_uri(self):
+    def _make_formatted_uri(self, uri):
         """Abstract method"""
 
     def _get_curie(self, uri):
@@ -186,6 +186,8 @@ class BaseProfile:
                 self.NAMESPACES[":"] = k
             else:
                 self.NAMESPACES[v] = k
+
+        del(self.NAMESPACES["xml"])  # that bloody XML namespace has to go!
 
     def _get_default_namespace(self):
         self.METADATA["default_namespace"] = None
@@ -367,7 +369,7 @@ class BaseProfile:
                 if "orcid.org" in url:
                     orcid = self._load_template("orcid.md").render()
 
-            return self._load_template("agent.md").render(
+            return BaseProfile._load_template(self, "agent.md").render(
                 url=url,
                 name=name,
                 orcid=orcid,

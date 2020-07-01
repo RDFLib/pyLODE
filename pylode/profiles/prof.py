@@ -27,20 +27,17 @@ class Prof(BaseProfile):
             self.METADATA["default_namespace"] = self.METADATA.get(
                 "preferredNamespaceUri"
             )
-
         # if not, try the URI of the ontology compared to all prefixes
         for s in self.G.subjects(predicate=RDF.type, object=PROF.Profile):
             ont_uri = str(s)
-
         for k, v in self.NAMESPACES.items():
             # i.e. the ontology URI is the same as the default namespace + / or #
             if v == ont_uri + "/" or v == ont_uri + "#":
                 self.METADATA["default_namespace"] = v
-
         if self.NAMESPACES.get("") is not None:
             del self.NAMESPACES[""]
 
-    def _make_formatted_uri(self, uri, type=None):
+    def _make_formatted_uri(self, uri):
         # set display to CURIE
         short = self._get_curie(uri)
         # if the URI base is within the default namespace of this ontology
@@ -50,35 +47,17 @@ class Prof(BaseProfile):
         uri_base = self._get_namespace_from_uri(uri)
         link = None
         if uri_base == self.METADATA.get("default_namespace"):
-            if self.CONCEPTS.get(uri):
-                link = "[{}]({})".format(self.CONCEPTS[uri]["default_prefLabel"], self.CONCEPTS[uri]["fid"]) \
+            if self.RESOURCE_DESCRIPTORS.get(uri):
+                link = "[{}]({})".format(self.RESOURCE_DESCRIPTORS[uri]["default_prefLabel"], self.RESOURCE_DESCRIPTORS[uri]["fid"]) \
                     if self.outputformat == "md" \
-                    else '<a href="#{}">{}</a>'.format(self.CONCEPTS[uri]["fid"], self.CONCEPTS[uri]["default_prefLabel"])
-            elif self.COLLECTIONS.get(uri):
-                    link = "[{}]({})".format(self.COLLECTIONS[uri]["default_prefLabel"], self.COLLECTIONS[uri]["fid"]) \
-                        if self.outputformat == "md" \
-                        else '<a href="#{}">{}</a>'.format(self.COLLECTIONS[uri]["fid"], self.COLLECTIONS[uri]["default_prefLabel"])
+                    else '<a href="#{}">{}</a>'.format(self.RESOURCE_DESCRIPTORS[uri]["fid"], self.RESOURCE_DESCRIPTORS[uri]["default_prefLabel"])
 
         if link is None:
             link = "[{}]({})".format(short, uri) \
                 if self.outputformat == "md" \
                 else '<a href="{}">{}</a>'.format(uri, short)
 
-        if type == "cp":
-            if self.outputformat == "md":
-                suffix = ' (cp)'
-            else:
-                suffix = '<sup class="sup-cp" title="concept">cp</sup>'
-        elif type == "cl":
-            if self.outputformat == "md":
-                suffix = ' (cl)'
-            else:
-                suffix = '<sup class="sup-cl" title="collection">cl</sup>'
-        # None
-        else:
-            suffix = ''
-
-        return link + suffix
+        return link
 
     def _expand_graph(self):
         # label
@@ -144,8 +123,7 @@ class Prof(BaseProfile):
         resource_descriptors = []
         # TODO: handle OrderedCollections
         for s in self.G.subjects(predicate=RDF.type, object=PROF.ResourceDescriptor):
-            print("RD: " + str(s))
-            resource_descriptors.append(str(s))  # could be a URI or a BNode
+            resource_descriptors.append(s)  # could be a URI or a BNode
 
         # keeping the OrderedDict ordered
         for rd in sorted(resource_descriptors):
@@ -153,8 +131,6 @@ class Prof(BaseProfile):
 
         # fill in each Resource Descriptor's details from the graph
         for rd in self.RESOURCE_DESCRIPTORS.keys():
-            s = URIRef(rd)  # for use in Graph() loops
-
             self.RESOURCE_DESCRIPTORS[rd]["fid"] = None
             self.RESOURCE_DESCRIPTORS[rd]["label"] = None
             self.RESOURCE_DESCRIPTORS[rd]["comment"] = None
@@ -163,17 +139,17 @@ class Prof(BaseProfile):
             self.RESOURCE_DESCRIPTORS[rd]["conforms"] = set()
             self.RESOURCE_DESCRIPTORS[rd]["format"] = None
 
-            for p, o in self.G.predicate_objects(subject=s):
+            for p, o in self.G.predicate_objects(subject=rd):
                 if p == RDFS.label:
                     self.RESOURCE_DESCRIPTORS[rd]["label"] = str(o)
                 elif p == RDFS.comment:
                     self.RESOURCE_DESCRIPTORS[rd]["comment"] = str(o)
                 elif p == PROF.hasArtifact:
-                    self.RESOURCE_DESCRIPTORS[rd]["artifact"] = str(o)
+                    self.RESOURCE_DESCRIPTORS[rd]["artifact"] = self._make_formatted_uri(str(o))
                 elif p == PROF.hasRole:
-                    self.RESOURCE_DESCRIPTORS[rd]["roles"].add(str(o))
+                    self.RESOURCE_DESCRIPTORS[rd]["roles"].add(self._make_formatted_uri(str(o)))
                 elif p == DCTERMS.conformsTo:
-                    self.RESOURCE_DESCRIPTORS[rd]["conforms"].add(str(o))
+                    self.RESOURCE_DESCRIPTORS[rd]["conforms"].add(self._make_formatted_uri(str(o)))
                 elif p == DCTERMS.format:
                     self.RESOURCE_DESCRIPTORS[rd]["format"] = str(o)
 
@@ -181,7 +157,10 @@ class Prof(BaseProfile):
             self.RESOURCE_DESCRIPTORS[rd]["conforms"] = list(self.RESOURCE_DESCRIPTORS[rd]["conforms"])
 
             # make fid
-            self.RESOURCE_DESCRIPTORS[rd]["fid"] = self._make_fid(None, rd)
+            if type(rd) is BNode:
+                self.RESOURCE_DESCRIPTORS[rd]["fid"] = str(rd)
+            else:  # URI
+                self.RESOURCE_DESCRIPTORS[rd]["fid"] = self._make_fid(str(rd), str(rd))
 
     def _extract_profile(self):
         """Extracts standard prof:Profile metadata
@@ -190,6 +169,7 @@ class Prof(BaseProfile):
         self.METADATA["creators"] = set()
         self.METADATA["contributors"] = set()
         self.METADATA["publishers"] = set()
+        self.METADATA["profiles"] = set()
         for s in self.G.subjects(predicate=RDF.type, object=PROF.Profile):
             self.METADATA["uri"] = str(s)
             for p, o in self.G.predicate_objects(subject=s):
@@ -239,6 +219,9 @@ class Prof(BaseProfile):
                     else:  # Blank Node or URI
                         self.METADATA[agent_type].add(self._make_agent_html(o))
 
+                if p == PROF.isProfileOf:
+                    self.METADATA["profiles"].add(str(o))
+
                 # TODO: cater for other Agent representations
 
         if self.METADATA.get("label") is None:
@@ -249,7 +232,7 @@ class Prof(BaseProfile):
 
     def _make_profile(self):
         return self._load_template("profile." + self.outputformat).render(
-            title=self.METADATA.get("title"),
+            label=self.METADATA.get("label"),
             uri=self.METADATA.get("uri"),
             version_uri=self.METADATA.get("versionIRI"),
             publishers=sorted(self.METADATA["publishers"]),
@@ -264,33 +247,25 @@ class Prof(BaseProfile):
             rights=self.METADATA.get("rights"),
             repository=self.METADATA.get("repository"),
             prof_rdf=self._make_source_file_link(),
-            has_resource_descriptors=True if len(self.RESOURCE_DESCRIPTORS) > 0 else False,
+            profiles=self.METADATA["profiles"],
+            resource_descriptors=self.RESOURCE_DESCRIPTORS,
         )
 
     def _make_resource_descriptor(self, rd):
         return self._load_template("resource_descriptor." + self.outputformat).render(
-            uri=rd[0],
-            fid=rd[1].get("fid"),
-            label=rd[1].get("label"),
-            comment=rd[1].get("comment"),
-            artifact=rd[1].get("artifact"),
-            roles=rd[1].get("roles"),
-            conforms=rd[1].get("conforms"),
-            format=rd[1].get("format"),
+            uri=rd.get("fid") if rd.get("fid").startswith("http") else None,
+            fid=rd.get("fid"),
+            label=rd.get("label"),
+            comment=rd.get("comment"),
+            artifact=rd.get("artifact"),
+            roles=rd.get("roles"),
+            conforms=rd.get("conforms"),
+            format=rd.get("format"),
         )
 
     def _make_resource_descriptors(self):
-        rds = []
-        for k, v in self.RESOURCE_DESCRIPTORS.items():
-            rds.append(
-                (
-                    v["label"],
-                    v["fid"],
-                    self._make_resource_descriptor((k, v)),
-                )
-            )
-
-        return self._load_template("resource_descriptors." + self.outputformat).render(rds=rds)
+        for rdid, rd in self.RESOURCE_DESCRIPTORS.items():
+            self.RESOURCE_DESCRIPTORS[rdid]["html"] = self._make_resource_descriptor(rd)
 
     def _make_document(self):
         css = None
@@ -298,14 +273,12 @@ class Prof(BaseProfile):
             if not self.exclude_css:
                 css = open(path.join(STYLE_DIR, "pylode.css")).read()
 
-        print(True if len(self.RESOURCE_DESCRIPTORS) > 0 else False)
-        print(self._make_resource_descriptors())
-
         return self._load_template("prof." + self.outputformat).render(
             schemaorg=self._make_schemaorg_metadata(),  # only does something for the HTML template
-            title=self.METADATA["label"],
+            label=self.METADATA["label"],
+            profile=self._make_profile(),
             has_resource_descriptors=True if len(self.RESOURCE_DESCRIPTORS) > 0 else False,
-            resource_descriptors=self._make_resource_descriptors(),
+            resource_descriptors=self.RESOURCE_DESCRIPTORS,
             namespaces=self._make_namespaces(),
             css=css,
             pylode_version=VERSION
@@ -317,5 +290,5 @@ class Prof(BaseProfile):
         self._get_default_namespace()
         self._extract_profile()
         self._extract_resource_descriptors()
-
+        self._make_resource_descriptors()
         return self._make_document()

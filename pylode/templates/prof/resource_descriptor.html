@@ -1,44 +1,48 @@
 <div class="entity resource_descriptor" id="{{ fid }}">
     <h3>{{ label }}</h3>
     <table>
-        {%- if description is not none %}
+        {%- if comment is not none %}
         <tr>
-            <th>Description</th>
-            <td>
-                {{- description -}}
-            </td>
+          <th><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description">Description</a></th>
+          <td>
+            {{- comment -}}
+          </td>
         </tr>
         {% endif %}
         {%- if artifact is not none %}
         <tr>
-            <th>Artifact</th>
-            <td>
-                {{- artifact -}}
-            </td>
+          <th><a class="proplink" href="https://www.w3.org/TR/dx-prof/#Property:hasArtifact">Artifact</a></th>
+          <td>
+            {{ artifact }}
+          </td>
         </tr>
         {% endif %}
-        {%- if role is not none %}
+        {%- if roles|length > 0 %}
         <tr>
-            <th>Role</th>
-            <td>
-                {{- role -}}
-            </td>
+          <th><a class="proplink" href="https://www.w3.org/TR/dx-prof/#Property:hasRole">Role(s)</a></th>
+          <td>
+            {% for r in roles %}
+              {{ r }}<br />
+            {% endfor %}
+          </td>
         </tr>
         {% endif %}
-        {%- if conforms is not none %}
+        {%- if conforms|length > 0 %}
         <tr>
-            <th>Conforms to</th>
-            <td>
-                {{- conforms -}}
-            </td>
+          <th><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/conformsTo">Conforms to</a></th>
+          <td>
+            {% for c in conforms %}
+              {{ c }}<br />
+            {% endfor %}
+          </td>
         </tr>
         {% endif %}
         {%- if format is not none %}
         <tr>
-            <th>Format</th>
-            <td>
-                {{- format -}}
-            </td>
+          <th><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/format">Format</a></th>
+          <td>
+            {{- format -}}
+          </td>
         </tr>
         {% endif %}
     </table>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{ title }}</title>
+    <title>{{ label }}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     {%  if css is not none %}
     <style>
@@ -21,7 +21,17 @@
   </div>
   {{ profile|safe }}
   {%- if has_resource_descriptors %}
-  {{ resource_descriptors|safe }}
+  <section id="resource_descriptors">
+      <h2>Resource Descriptors</h2>
+  {#    <ul class="hlist">#}
+  {#        {%- for rdid, rd in resource_descriptors.items() %}#}
+  {#        <a href="#{{ rdid }}">{{ rd["label"] }}</a><br/>#}
+  {#        {%- endfor %}#}
+  {#    </ul>#}
+      {%- for rdid, rd in resource_descriptors.items() %}
+      {{ rd["html"]|safe }}
+      {%- endfor %}
+  </section>
   {%- endif %}
   {{ namespaces|safe }}
 </body>

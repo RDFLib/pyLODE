@@ -2,8 +2,6 @@
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
         {%- if default_namespace is not none %}
-        <dt><em>default (:)</em></dt>
-        <dd><code>{{ default_namespace }}</code></dd>
         {%- endif %}
         {%- for key, value in namespaces.items() %}
         <dt>{{ key }}</dt>
