@@ -200,6 +200,8 @@ class BaseProfile:
                 "preferredNamespaceUri"
             )
 
+        ont_uri = ""
+
         # if not, try the URI of the ontology compared to all prefixes
         for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
             ont_uri = str(s)

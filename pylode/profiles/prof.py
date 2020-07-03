@@ -208,7 +208,7 @@ class Prof(BaseProfile):
 
         if self.METADATA.get("label") is None:
             raise ValueError(
-                "Your profile does not indicate any form of title. "
+                "Your profile does not indicate any form of title... "
                 "You must declare one of the following for it: rdfs:label, dct:title, skos:prefLabel"
             )
 

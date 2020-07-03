@@ -2,7 +2,7 @@ from os import path
 import requests
 from rdflib import util, Graph
 
-VERSION = "2.8.2"
+VERSION = "2.8.3"
 APP_DIR = path.dirname(path.realpath(__file__))
 TEMPLATES_DIR = path.join(path.dirname(path.realpath(__file__)), "templates")
 STYLE_DIR = path.join(path.dirname(path.realpath(__file__)), "style")
@@ -94,8 +94,7 @@ class MakeDocco:
                 if file_name.endswith(".json") or file_name.endswith(".jsonld")
                 else util.guess_format(file_name)
             )
-            # with open(input_data_file, 'r') as f:
-            #     data = f.read()
+
             self.G = Graph().parse(file_name, format=fmt)
             self.source_info = (file_name, fmt)
             self.publication_dir = path.dirname(file_name)

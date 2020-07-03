@@ -3,8 +3,8 @@ import os
 from os import path
 import shutil
 import sys
-sys.path.insert(0, "..")
-sys.path.insert(0, ".")
+from os.path import dirname, realpath
+sys.path.insert(0, dirname(dirname(realpath(__file__))))
 from pylode import RDF_FILE_EXTENSIONS, MakeDocco
 
 
