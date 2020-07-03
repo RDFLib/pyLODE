@@ -21,7 +21,7 @@ Contents
 5. `What pyLODE understands`_
 6. `Profiles`_
 7. `Differences from LODE`_
-8. `Releases roadmap`_
+8. `Releases`_
 9. License_
 10. Citation_
 11. Collaboration_
@@ -650,30 +650,37 @@ Differences from LODE
       handled, if requested
 
 
-Releases Roadmap
-================
+Releases
+========
 pyLODE is under continual and constant development. The current developers have a roadmap for enhancements in mind,
 which is given here, however, since this is an open source project, new developers may join the pyLODE dev community
 and change/add development priorities.
 
+Current Release
+---------------
+
 The current release, as of July 2020, is 2.7.
+
+Release Schedule
+----------------
 
 .. csv-table:: **pyLODE Release Schedule**
    :header: "Version", "Date", "Description"
    :widths: 15, 10, 30
 
    3.0, *June 2020*, "Will include pre-testing inputs with SHACL"
-   **2.7**, **1 July 2020**, "Much refactoring for new profile creation ease"
+   **2.8**, **3 July 2020**, "Packaging bugfix only"
+   2.7, 1 July 2020, "Much refactoring for new profile creation ease"
    2.6, June 2020, "Supports PROF profiles as well as taxonomies & ontologies"
    2.4, 27 May 2020, "Small improvements over 2.0"
    2.0, 18 Apr 2020, "Includes multiple profiles - OWP & vocpub"
    1.0, 15 Dec 2019, "Initial working release"
 
-Release notes
+Release Notes
 -------------
 
 3.0 - expected
---------------
+~~~~~~~~~~~~~~
 Expected to handle
 
 - pre-documentation graph shape testing using SHACL
@@ -681,14 +688,14 @@ Expected to handle
 - "modp", a documentation profile based on the `MOD Ontology <https://github.com/sifrproject/MOD-Ontology>`_
 
 2.0 - current
--------------
+~~~~~~~~~~~~~~
 - handles Named Individuals in OWL ontologies
 - implements "owldoc" & "vocpub" documentation profiles for OWL, SKOS and OWL-as-SKOS results
 - implements "prof" profile for documentation of `Profiles Vocabulary <https://www.w3.org/TR/dx-prof/>`__ profiles
 - has a more modular structure than 1.0 to assist with the creation or more profiles
 
 1.0 - previous
---------------
+~~~~~~~~~~~~~~
 Initial pyLODE release. Generated HTML documentation for OWL ontologies, missed quite a few expected ontology elements,
 such as Named Individuals.
 
