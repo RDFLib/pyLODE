@@ -659,7 +659,7 @@ and change/add development priorities.
 Current Release
 ---------------
 
-The current release, as of July 2020, is 2.7.
+The current release, as of July 2020, is 2.8.1.
 
 Release Schedule
 ----------------
@@ -669,7 +669,7 @@ Release Schedule
    :widths: 15, 10, 30
 
    3.0, *June 2020*, "Will include pre-testing inputs with SHACL"
-   **2.8**, **3 July 2020**, "Packaging bugfix only"
+   **2.8.1**, **3 July 2020**, "Packaging bugfix only"
    2.7, 1 July 2020, "Much refactoring for new profile creation ease"
    2.6, June 2020, "Supports PROF profiles as well as taxonomies & ontologies"
    2.4, 27 May 2020, "Small improvements over 2.0"

@@ -24,7 +24,7 @@ setup(
     name='pyLODE',
     packages=find_packages(),
     package_dir={'pylode': 'pylode'},
-    package_data={'pylode': ['templates/*.html', 'templates/*.md', 'style/*.css']},
+    package_data={'pylode': ['templates/*.html', 'templates/*/*.html', 'templates/*.md', 'templates/*/*.md', 'style/*.css']},
     version=VERSION,
     description='An OWL ontology documentation tool using Python and templating, based on LODE.',
     author='Nicholas J. Car',
