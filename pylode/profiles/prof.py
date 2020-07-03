@@ -19,24 +19,6 @@ class Prof(BaseProfile):
     def _load_template(self, template_file):
         return Environment(loader=FileSystemLoader(join(TEMPLATES_DIR, "prof"))).get_template(template_file)
 
-    def _get_default_namespace(self):
-        self.METADATA["default_namespace"] = None
-
-        # if this ontology declares a preferred URI, use that
-        if self.METADATA.get("preferredNamespaceUri"):
-            self.METADATA["default_namespace"] = self.METADATA.get(
-                "preferredNamespaceUri"
-            )
-        # if not, try the URI of the ontology compared to all prefixes
-        for s in self.G.subjects(predicate=RDF.type, object=PROF.Profile):
-            ont_uri = str(s)
-        for k, v in self.NAMESPACES.items():
-            # i.e. the ontology URI is the same as the default namespace + / or #
-            if v == ont_uri + "/" or v == ont_uri + "#":
-                self.METADATA["default_namespace"] = v
-        if self.NAMESPACES.get("") is not None:
-            del self.NAMESPACES[""]
-
     def _make_formatted_uri(self, uri):
         # set display to CURIE
         short = self._get_curie(uri)

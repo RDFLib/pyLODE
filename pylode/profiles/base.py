@@ -207,7 +207,7 @@ class BaseProfile:
         for s in self.G.subjects(predicate=RDF.type, object=SKOS.ConceptScheme):
             ont_uri = str(s)
 
-        for s in self.G.subjects(predicate=RDF.type, object=pylode.profiles.profile.Profile):
+        for s in self.G.subjects(predicate=RDF.type, object=PROF.Profile):
             ont_uri = str(s)
 
         for k, v in self.NAMESPACES.items():
