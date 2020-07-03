@@ -2,7 +2,7 @@
 # -*- coding: latin-1 -*-
 import codecs
 import os
-from setuptools import setup
+from setuptools import setup, find_packages
 from pylode.common import VERSION
 
 
@@ -22,12 +22,12 @@ with open_local(['requirements.txt']) as req:
 
 setup(
     name='pyLODE',
-    packages=['pylode'],
+    packages=find_packages(),
     package_dir={'pylode': 'pylode'},
     package_data={'pylode': ['templates/*.html', 'templates/*.md', 'style/*.css']},
     version=VERSION,
     description='An OWL ontology documentation tool using Python and templating, based on LODE.',
-    author='Nicholas Car',
+    author='Nicholas J. Car',
     author_email='nicholas.car@surroundaustralia.com',
     url='https://github.com/rdflib/pyLODE',
     download_url='https://github.com/rdflib/pyLODE/archive/v{:s}.tar.gz'.format(VERSION),
