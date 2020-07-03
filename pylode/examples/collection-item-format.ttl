@@ -5,17 +5,18 @@
 @prefix sdo: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
+@prefix cs: <http://linked.data.gov.au/def/collection-item-format> .
 @prefix cif: <http://linked.data.gov.au/def/collection-item-format/> .
 
-<http://linked.data.gov.au/def/collection-item-format>
+cs:
     a owl:Ontology , skos:ConceptScheme ;
     skos:prefLabel "Collection item format"@en ;
     skos:definition "The format of an item within a collection describes its physical presence at the highest level."@en ;
     skos:historyNote "This vocabulary has been developed by referencing publicly available information from select libraries and archives about their FORMAT cataloguing terms."@en ;
     dct:source <http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes> ;
     dct:source <https://collection.sl.nsw.gov.au/search?offset=0> ;
-    dct:creator "Tessa Elieff" ;
+    dct:creator cif:tessa ;
+    dct:contributor "Nicholas J. Car" ;
     dct:created "2020-03-03"^^xsd:date ;
     dct:modified "2020-03-29"^^xsd:date ;
     dct:publisher <http://www.linked.data.gov.au/org/agldwg> ;
@@ -32,12 +33,18 @@
         cif:documentation ,
         cif:tape ,
         cif:video-film ;
-
 .
 
 <http://www.linked.data.gov.au/org/agldwg>
     a sdo:Organization ;
     sdo:name "Australian Government Linked Data Working Group" ;
+    sdo:url <https://linked.data.gov.au> ;
+.
+
+cif:tessa
+    a sdo:Person ;
+    sdo:name "Tessa Elieff" ;
+    sdo:email <mailto:not@given.com> ;
 .
 
 cif:digital a skos:Concept ;
@@ -46,16 +53,16 @@ cif:digital a skos:Concept ;
     skos:prefLabel "Mamati"@mi ;
     skos:altLabel "Digital Storage"@en ;
     skos:definition "A physical device for storing digital content."@en ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
-    skos:topConceptOf <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
 .
 
 cif:disc a skos:Concept ;
     skos:prefLabel "Disc"@en ;
     skos:definition "A sound recording on a thin, flat circular object, usually made of shellac, vinyl, or various laminates. The signal may be either analogue or digital, and recorded/played using acoustical, electrical, magnetic or optical technology."@en ;
     dct:source <https://www.iasa-web.org/cataloguing-rules/appendix-d-glossary> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
-    skos:topConceptOf <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
 .
 
 cif:disk a skos:Concept ;
@@ -63,7 +70,7 @@ cif:disk a skos:Concept ;
     skos:altLabel "Hard Drive" , "HDD" ;
     skos:definition "A round magnetic device for storing information and programmes accessible by computer; may be either a rigid platter (hard disk) or a sheet of flexible plastic (floppy disk or diskette). The disk base is coated with a magnetizable material on which data can be recorded or stored along concentric tracks as small magnetic areas forming patterns of binary digits or bits. Information is written onto the disk, and read from it in a disk drive, by read/write heads mounted on arms which move rapidly across the disk."@en ;
     dct:source <https://www.iasa-web.org/cataloguing-rules/appendix-d-glossary> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
     skos:broader cif:digital ;
 .
 
@@ -71,7 +78,7 @@ cif:dvd a skos:Concept ;
     skos:prefLabel "Digital Versatile Disc"@en ;
     skos:definition "A round plastic, partly metal-coated disc used to store digital data which can be written and read by laser."@en ;
     dct:source <https://en.wikipedia.org/wiki/DVD> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
     skos:broader cif:digital ;
 .
 
@@ -79,8 +86,8 @@ cif:film a skos:Concept ;
     skos:prefLabel "Film"@en ;
     skos:definition "A series of still images collected onto a flexible and transparent piece of film so that they can be projected in a rapid sequence so as to give the illusion of motion."@en ;
     dct:source <https://www.iasa-web.org/cataloguing-rules/appendix-d-glossary> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
-    skos:topConceptOf <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
     skos:broader cif:video-film ;
 .
 
@@ -88,24 +95,24 @@ cif:object a skos:Concept ;
     skos:prefLabel "Object"@en ;
     skos:definition "A thing that you can see or touch but that is not usually a living animal, plant, or person."@en ;
     dct:source <https://dictionary.cambridge.org/dictionary/english/object> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
-    skos:topConceptOf <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
 .
 
 cif:documentation a skos:Concept ;
     skos:prefLabel "Documentation"@en ;
     skos:definition "Photographs and paper collection items."@en ;
     dct:source <http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
-    skos:topConceptOf <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
 .
 
 cif:tape a skos:Concept ;
     skos:prefLabel "Tape"@en ;
     skos:definition "A plastic strip covered with a magnetic substance on which sound, images, or computer information can be recorded."@en ;
     dct:source <https://dictionary.cambridge.org/dictionary/english/magnetic-tape> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
-    skos:topConceptOf <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
     skos:broader cif:video-film ;
 .
 
@@ -113,16 +120,16 @@ cif:book a skos:Concept ;
     skos:prefLabel "Book"@en ;
     skos:definition "A written text that can be published in printed or electronic form."@en ;
     dct:source <https://dictionary.cambridge.org/dictionary/english/book> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
-    skos:topConceptOf <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
 .
 
 cif:picture a skos:Concept ;
     skos:prefLabel "Picture"@en ;
     skos:definition "photographs, prints, drawings, paintings, posters."@en ;
     dct:source <https://collection.sl.nsw.gov.au/search?offset=0> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
-    skos:topConceptOf <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
     skos:broader cif:documentation ;
 .
 
@@ -130,16 +137,16 @@ cif:journal-magazine a skos:Concept ;
     skos:prefLabel "Journal & magazine"@en ;
     skos:definition "Journal and magazine collection items."@en ;
     dct:source <https://collection.sl.nsw.gov.au/search?offset=0> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
-    skos:topConceptOf <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
 .
 
 cif:manuscript a skos:Concept ;
     skos:prefLabel "Manuscript"@en ;
     skos:definition "The original copy of a book or article."@en ;
     dct:source <https://dictionary.cambridge.org/dictionary/english/manuscript> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
-    skos:topConceptOf <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
     skos:broader cif:documentation ;
 .
 
@@ -147,8 +154,8 @@ cif:map a skos:Concept ;
     skos:prefLabel "Map"@en ;
     skos:definition "A drawing of the earth's surface, or part of that surface, showing the shape and position of different countries, political borders, natural features such as rivers and mountains, and artificial features such as roads and buildings."@en ;
     dct:source <https://dictionary.cambridge.org/dictionary/english/map> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
-    skos:topConceptOf <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
     skos:broader cif:documentation ;
 .
 
@@ -156,8 +163,8 @@ cif:newspaper a skos:Concept ;
     skos:prefLabel "Newspaper"@en ;
     skos:definition "A regularly printed document consisting of large sheets of paper that are folded together, or a website, containing news reports, articles, photographs, and advertisements."@en ;
     dct:source <https://dictionary.cambridge.org/dictionary/english/newspaper> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
-    skos:topConceptOf <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
     skos:broader cif:documentation ;
 .
 
@@ -165,16 +172,16 @@ cif:video-film a skos:Concept ;
     skos:prefLabel "Video & film"@en ;
     skos:definition "Video and film collection items."@en ;
     dct:source <https://collection.sl.nsw.gov.au/search?offset=0> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
-    skos:topConceptOf <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
 .
 
 cif:object-slnsw a skos:Concept ;
     skos:prefLabel "Object-SLNSW"@en ;
     skos:definition "Objects, stamps and ephemera collection items."@en ;
     dct:source <https://collection.sl.nsw.gov.au/search?offset=0> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
-    skos:topConceptOf <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
     skos:broader cif:object ;
 .
 
@@ -182,16 +189,16 @@ cif:audio a skos:Concept ;
     skos:prefLabel "Audio"@en ;
     skos:definition "Musical sound recordings and audio books."@en ;
     dct:source <https://collection.sl.nsw.gov.au/search?offset=0> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
-    skos:topConceptOf <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
 .
 
-cif:eresources a skos:Concept ;
-    skos:prefLabel "Eresources"@en ;
+cif:eresource a skos:Concept ;
+    skos:prefLabel "Eresource"@en ;
     skos:definition "Website, database and software collection items."@en ;
     dct:source <https://collection.sl.nsw.gov.au/search?offset=0> ;
-    skos:inScheme <http://linked.data.gov.au/def/collection-item-format> ;
-    skos:topConceptOf <http://linked.data.gov.au/def/collection-item-format> ;
+    skos:inScheme cs: ;
+    skos:topConceptOf cs: ;
     skos:broader cif:digital ;
 .
 
