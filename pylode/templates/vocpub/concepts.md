@@ -1,4 +1,4 @@
-## Classes
+## Concepts
 {%- if concept_hierarchy is not none %}
 {{ concept_hierarchy|safe }}
 {%- endif %}

@@ -8,8 +8,8 @@ Preferred Labels | {%- for prefLabel in prefLabels %}{{ prefLabel[0] }} ({{ pref
 {%- if altLabels|length > 0 %}
 Alternate Labels | {%- for altLabel in altLabels %}{{ altLabel }}<br />{%- endfor %}
 {%- endif %}
-{%- if descriptions|length > 0 %}
-Description | {%- for description in descriptions %}{{ descriptions }}<br />{%- endfor %}
+{%- if definitions|length > 0 %}
+Definitions | {%- for definition in definitions %}{{ definitions }}<br />{%- endfor %}
 {%- endif %}
 {%- if scopeNotes|length > 0 %}
 Scope Notes | {%- for scopeNote in scopeNotes %}{{ scopeNote }}<br />{%- endfor %}
