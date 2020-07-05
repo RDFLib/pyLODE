@@ -153,9 +153,11 @@ pyLODE presents natively as a Python command-line utility,
 * `pylode/bin/pylode.app <pylode/bin/pylode.app>`__ - MAC OS command line executable script
 * `pylode/bin/pylode.exe <pylode/bin/pylode.exe>`__ - Windows command line executable
 
+All use the same command line arguments.
+
 Additionally, there is a `Falcon framework <https://falconframework.org/>`__ local HTTP server option.
 
-All use the same command line arguments.
+Also, a web UI for pyLODE is available at `<https://pylode.surroundaustralia.com>`.
 
 Command line arguments
 ----------------------
