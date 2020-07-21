@@ -71,6 +71,17 @@ PROF_PROFILE = Profile(
     languages=["en"],
     default_language="en"
 )
+PROF_FLAT_PROFILE = Profile(
+    "https://w3id.org/profile/prof-flat",
+    "Flat Profiles Vocabulary Profile",
+    "A profile of the Profiles Vocabulary that requires all of the properties relevant to instance data be present in"
+    "a single profile declaration (a file or graph), including properties of profiles or specifications inherited "
+    "through profile hierarchy.",
+    [HTML_MEDIA_TYPE, "text/markdown"],
+    HTML_MEDIA_TYPE,
+    languages=["en"],
+    default_language="en"
+)
 OWL_PROFILE = Profile(
     "https://www.w3.org/TR/owl2-rdf-based-semantics/",
     "Web Ontology Language (OWL)",
@@ -83,7 +94,7 @@ OWL_PROFILE = Profile(
     default_language="en"
 )
 ONT_DOC_PROFILE = Profile(
-    "https://w3id.org/profile/ontdocp",
+    "https://w3id.org/profile/ontdoc",
     "Ontology Documentation Profile",
     "OWL Classes and Properties as well as additional SKOS, Dublin Core Terms and schema.org annotation "
     "properties to be used to document ontologies.",
@@ -128,7 +139,7 @@ VOC_PUB_PROFILE = Profile(
 # )
 
 PROFILES = {
-    "prof": PROF_PROFILE,
+    "prof": PROF_FLAT_PROFILE,
     "ontdoc": ONT_DOC_PROFILE,
     "vocpub": VOC_PUB_PROFILE,
     # "modp": MOD_PROFILE
