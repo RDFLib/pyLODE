@@ -55,7 +55,7 @@ The tool can be run as in these ways:
     - via the popular `Falcon framework <https://falconframework.org/>`__.
     - see server.py in the main folder
 - as-a-service online
-    - hosted at https://kurrawong.net/pylode-online
+    - hosted at https://pylode.surroundaustralia.com
 
 
 Examples
@@ -191,7 +191,7 @@ save it with a basic CSS file into
 
 Online Service
 --------------
-An online API to access pyLODE is now available in test mode at https://kurrawong.net/pylode-online.
+An online version of pyLODE is now available at https://pylode.surroundaustralia.com/.
 
 Local server - Falcon
 ---------------------
