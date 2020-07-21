@@ -73,9 +73,9 @@ PROF_PROFILE = Profile(
 )
 PROF_FLAT_PROFILE = Profile(
     "https://w3id.org/profile/prof-flat",
-    "Flat Profiles Vocabulary Profile",
-    "A profile of the Profiles Vocabulary that requires all of the properties relevant to instance data be present in"
-    "a single profile declaration (a file or graph), including properties of profiles or specifications inherited "
+    "Flattened PROF Hierarchy",
+    "A profile of the Profiles Vocabulary for documentation purposes that requires all details of profiles within a "
+    "profile hierarchy to be documented be present within a single graph (or file)."
     "through profile hierarchy.",
     [HTML_MEDIA_TYPE, "text/markdown"],
     HTML_MEDIA_TYPE,
@@ -139,7 +139,7 @@ VOC_PUB_PROFILE = Profile(
 # )
 
 PROFILES = {
-    "prof": PROF_FLAT_PROFILE,
+    "prof": PROF_PROFILE,
     "ontdoc": ONT_DOC_PROFILE,
     "vocpub": VOC_PUB_PROFILE,
     # "modp": MOD_PROFILE
