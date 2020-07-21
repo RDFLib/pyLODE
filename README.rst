@@ -525,7 +525,7 @@ profiles include, see the profiles' definitions at:
 **Token** **URI**
 ========= ==========================================
 prof        `<https://www.w3.org/TR/dx-prof/>`_
-ontdoc      `<https://w3id.org/profile/ontdocp>`_
+ontdoc      `<https://w3id.org/profile/ontdoc>`_
 vocpub      `<https://w3id.org/profile/vocpub>`_
 ========= ==========================================
 
