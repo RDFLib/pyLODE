@@ -7,6 +7,7 @@ class DocResource:
         """Handles GET requests"""
         url = req.get_param("url")
         if url is not None:
+            raise Exception(url)
             cmd = "cd ./bin && ./pylode.sh -u {url} -c true".format(url=url)
 
             # remove Overview image placeholder, if present
