@@ -464,7 +464,7 @@ class OntDoc(BaseProfile):
                     self.CLASSES[cls]["description"] = markdown.markdown(str(o))
 
                 if p == SKOS.scopeNote:
-                    self.CLASSES[cls]["scopeNote"] = str(o)
+                    self.CLASSES[cls]["scopeNote"] = markdown.markdown(str(o))
 
                 if p == SKOS.example:
                     self.CLASSES[cls]["example"] = str(o)
