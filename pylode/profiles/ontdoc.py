@@ -652,7 +652,7 @@ class OntDoc(BaseProfile):
                 if p == RDFS.label:
                     self.PROPERTIES[prop]["title"] = str(o)
 
-                if p == RDFS.comment:
+                if p == DCTERMS.description:
                     self.PROPERTIES[prop]["description"] = str(o)
 
                 if p == SKOS.scopeNote:
