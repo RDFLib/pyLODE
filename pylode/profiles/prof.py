@@ -3,7 +3,6 @@ import collections
 from os import path
 from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import DC, DCTERMS, OWL, PROF, RDF, RDFS, SDO, SKOS
-import dateutil.parser
 from itertools import chain
 import markdown
 from jinja2 import Environment, FileSystemLoader
@@ -164,7 +163,7 @@ class Prof(BaseProfile):
                 # dates
                 if p in [DCTERMS.created, DCTERMS.modified, DCTERMS.issued]:
                     date_type = p.split("/")[-1]
-                    self.METADATA[date_type] = dateutil.parser.parse(str(o)).strftime("%Y-%m-%d")
+                    self.METADATA[date_type] = str(o)
 
                 if p == OWL.versionIRI:
                     self.METADATA["versionIRI"] = self._make_formatted_uri(o)

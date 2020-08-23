@@ -3,7 +3,6 @@ import collections
 from os import path
 from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
-import dateutil.parser
 from itertools import chain
 import markdown
 from jinja2 import Environment, FileSystemLoader
@@ -359,9 +358,7 @@ class VocPub(BaseProfile):
                 # dates
                 if p in [DCTERMS.created, DCTERMS.modified, DCTERMS.issued]:
                     date_type = p.split("/")[-1]
-                    self.METADATA[date_type] = dateutil.parser.parse(str(o)).strftime(
-                        "%Y-%m-%d"
-                    )
+                    self.METADATA[date_type] = str(o)
 
                 if p == DCTERMS.source:
                     if str(o).startswith('http'):

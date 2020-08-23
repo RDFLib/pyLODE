@@ -1,5 +1,5 @@
 from os import path
-import requests
+from urllib import request
 from rdflib import util, Graph
 
 VERSION = "2.8.3"
@@ -100,11 +100,10 @@ class MakeDocco:
             self.publication_dir = path.dirname(file_name)
 
     def _parse_input_uri(self, uri):
-        r = requests.get(
-            uri, headers={"Accept": ", ".join(RDF_SERIALIZER_MAP.keys())}
-        )
+        headers = {"Accept": ", ".join(RDF_SERIALIZER_MAP.keys())}
+        resp = request.urlopen(request.Request(uri, None, headers))
         # get RDF format from Media Type
-        media_type = r.headers.get("Content-Type").split(";")[0]  # splitting off any ;charset=...
+        media_type = resp.headers["Content-Type"].split(";")[0]  # splitting off any ;charset=...
         if RDF_SERIALIZER_MAP.get(media_type):
             fmt = RDF_SERIALIZER_MAP.get(media_type)
         else:
@@ -121,7 +120,7 @@ class MakeDocco:
                 "({} was given) or from a file extension".format(media_type)
             )
 
-        self.G = Graph().parse(data=r.text, format=fmt)
+        self.G = Graph().parse(data=resp.read().decode(), format=fmt)
         self.source_info = (uri, fmt)
         self.publication_dir = path.join(
             path.dirname(path.realpath(__file__)), "output_files"

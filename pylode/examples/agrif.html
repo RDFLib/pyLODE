@@ -220,7 +220,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.6</span>
+    <span style="font-size:smaller;">2.8.3</span>
   </div>
   <h1>The Australian Government Records Interoperability Framework (AGRIF) ontology</h1>
 <section id="metadata">
@@ -460,8 +460,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#accessedBy">accessedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#triggers">triggers</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#AccessTrigger">AccessTrigger</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#accessedBy">accessedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -536,24 +536,24 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasLocation">hasLocation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SpatialLocation">SpatialLocation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#startedAtTime">startedAtTime</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
                     <a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#wasAssociatedWith">wasAssociatedWith</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#requiresSecurityClassification">requiresSecurityClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SecurityClassification">SecurityClassification</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#usedRecord">usedRecord</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#endedAtTime">endedAtTime</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="#guidingPolicy">guidingPolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#usedRecord">usedRecord</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#startedAtTime">startedAtTime</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#hasLocation">hasLocation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SpatialLocation">SpatialLocation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#requiresSecurityClassification">requiresSecurityClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SecurityClassification">SecurityClassification</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#wasAssociatedWith">wasAssociatedWith</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#guidingPolicy">guidingPolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
                     <a href="#MaintainActivity">MaintainActivity</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#AccessActivity">AccessActivity</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#ShareActivity">ShareActivity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AccessActivity">AccessActivity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -601,16 +601,16 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#positionIn">positionIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Organisation">Organisation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasPermission">hasPermission</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#SecurityClearance">Permission</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#positionIn">positionIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Organisation">Organisation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#actsAs">actsAs</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Organisation">Organisation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Person">Person</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Organisation">Organisation</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -631,21 +631,21 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasQuality">hasQuality</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#PreservationQuality">PreservationQuality</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#storedIn">storedIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#IntellectualControlSystem">IntellectualControlSystem</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasLocation">hasLocation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SpatialLocation">SpatialLocation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#requiresSecurityClassification">requiresSecurityClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SecurityClassification">SecurityClassification</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#isAffectedBy">isAffectedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Event">Event</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#relatedTo">relatedTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#softwareAssignedID">softwareAssignedID</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#isChangedBy">isChangedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#InformationSystem">InformationSystem</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#requiresSecurityClassification">requiresSecurityClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SecurityClassification">SecurityClassification</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#softwareAssignedID">softwareAssignedID</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#relatedTo">relatedTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasLocation">hasLocation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SpatialLocation">SpatialLocation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#storedIn">storedIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#IntellectualControlSystem">IntellectualControlSystem</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasQuality">hasQuality</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#PreservationQuality">PreservationQuality</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#DigitalArtefact">DigitalArtefact</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#PhysicalArtefact">PhysicalArtefact</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#DigitalArtefact">DigitalArtefact</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -886,8 +886,8 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#LogicalCollection">LogicalCollection</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#PhysicalCollection">PhysicalCollection</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#LogicalCollection">LogicalCollection</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -957,8 +957,8 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#SpatialCoverage">SpatialCoverage</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#JurisdictionalCoverage">JurisdictionalCoverage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#SpatialCoverage">SpatialCoverage</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#TemporalCoverage">TemporalCoverage</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -1049,10 +1049,10 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#filesize">filesize</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#long">xsd:long</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#storedIn">storedIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#InformationSystem">InformationSystem</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#format">format</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#filename">filename</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#format">format</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#storedIn">storedIn</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#InformationSystem">InformationSystem</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#filesize">filesize</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#long">xsd:long</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1149,22 +1149,22 @@
                 <th>Restrictions</th>
                 <td>
                     <a href="#affects">affects</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> (<a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup> or <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup>)<br/>
-                    <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#wasAssociatedWith">wasAssociatedWith</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Agent">Agent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#triggeredBy">triggeredBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Trigger">Trigger</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#guidingPolicy">guidingPolicy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Policy">Policy</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#priorEvent">priorEvent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Event">Event</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#priorEvent">priorEvent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Event">Event</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#triggeredBy">triggeredBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Trigger">Trigger</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#RecordCreationEvent">CreationEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#RecordControlEvent">RecordControlEvent</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#ArtefactControlEvent">ArtefactControlEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#ArtefactChangeEvent">ArtefactChangeEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#RecordCreationEvent">CreationEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ArtefactControlEvent">ArtefactControlEvent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1194,7 +1194,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>A Function reflects the responsibilities of an Organisation that can be delegated through official channels. [Commonwealth Records Series Manual]</p>
+                    <p>A Function is a process that is performed routinely to carry out a part of the mandate of an Australian Government Agency.</p>
                 </td>
             </tr>
             <tr>
@@ -1206,8 +1206,8 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#RecordsAuthorityFunction">RecordsAuthorityFunction</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#AGIFTFunction">AGIFTFunction</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#RecordsAuthorityFunction">RecordsAuthorityFunction</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1234,8 +1234,8 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#PhysicalHoldingSpace">PhysicalHoldingSpace</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#DigitalHoldingSpace">DigitalHoldingSpace</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#PhysicalHoldingSpace">PhysicalHoldingSpace</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1316,8 +1316,8 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#ControlledVocabulary">ControlledVocabulary</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Series">Series</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ControlledVocabulary">ControlledVocabulary</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1564,7 +1564,7 @@
                 <th>Example</th>
                 <td>
                     <pre>
-                      An example of a Phyiscal Artefact in the context of record keeping is information printed or written on paper.
+An example of a Phyiscal Artefact in the context of record keeping is information printed or written on paper.
                     </pre>
                 </td>
             </tr>
@@ -1646,11 +1646,11 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#InformationManagementPolicy">InformationManagementPolicy</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#RecordStorageStandard">RecordStorageStandard</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#RecordsAuthorityDisposalClassPolicy">RecordsAuthorityPolicy</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#MinimumMetadataSetPolicy">MinimumMetadataSetPolicy</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#DigitalPreservationPolicy">DigitalPreservationPolicy</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#RecordsAuthorityDisposalClassPolicy">RecordsAuthorityPolicy</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#InformationManagementPolicy">InformationManagementPolicy</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#MinimumMetadataSetPolicy">MinimumMetadataSetPolicy</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#RecordStorageStandard">RecordStorageStandard</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1713,22 +1713,22 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#requiresControl">hasControl</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Control">Control</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasActivity">hasActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Activity">Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasCoverage">hasCoverage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Coverage">Coverage</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#isAffectedBy">isAffectedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#RecordCreationEvent">CreationEvent</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#recordOf">recordOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#requiresSecurityClassification">requiresSecurityClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SecurityClassification">SecurityClassification</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#relatedTo">relatedTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#replaces">replaces</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasSeries">hasSeries</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Series">Series</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasClassifier">hasClassifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Classifier">Classifier</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#isAffectedBy">isAffectedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Event">Event</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#requiresControl">hasControl</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Control">Control</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#requiresSecurityClassification">requiresSecurityClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#SecurityClassification">SecurityClassification</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#qualifiedAssociation">qualifiedAssociation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Association">Association</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasSeries">hasSeries</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Series">Series</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasDisposalClass">hasDisposalClass</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#DisposalClass">DisposalClass</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#associatedFunction">associatedFunction</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#replaces">replaces</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasCoverage">hasCoverage</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Coverage">Coverage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#recordOf">recordOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="#Artefact">Artefact</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasStatus">hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Status">Status</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#relatedTo">relatedTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#checksum">checksum</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="#isAffectedBy">isAffectedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#RecordCreationEvent">CreationEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasClassifier">hasClassifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Classifier">Classifier</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1782,11 +1782,11 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
+                    <a href="#RecordDecisionEvent">RecordDecisionEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#RecordAuditEvent">RecordAuditEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#RecordReplacementEvent">RecordReplacementEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#RecordSentencingEvent">RecordSentencingEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#RecordDisposalEvent">RecordDisposalEvent</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#RecordDecisionEvent">RecordDecisionEvent</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#RecordAuditEvent">RecordAuditEvent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1863,8 +1863,8 @@
                 <th>Sub-classes</th>
                 <td>
                     <a href="#RecordFreezeEvent">RecordFreezeEvent</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#RecordTransferEvent">RecordTransferEvent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#RecordDestructionEvent">RecordDestructionEvent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#RecordTransferEvent">RecordTransferEvent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1912,8 +1912,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#replacedBy">replacedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasVersionHistory">hasVersionHistory</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#VersionHistory">VersionHistory</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#replacedBy">replacedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Record">Record</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1977,7 +1977,7 @@
                 <th>Example</th>
                 <td>
                     <pre>
-                      An example of a Record Transfer Event is the transfer of a Record from an Agency to the National Archives. Section 27 of the Archives Act 1983 requires Australian government agencies to transfer Records to the Archives within 15 years of their creation.
+An example of a Record Transfer Event is the transfer of a Record from an Agency to the National Archives. Section 27 of the Archives Act 1983 requires Australian government agencies to transfer Records to the Archives within 15 years of their creation.
                     </pre>
                 </td>
             </tr>
@@ -1990,9 +1990,9 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasManifest">hasManifest</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Manifest">Manifest</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#transferredFrom">transferredFrom</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#transferredTo">transferredTo</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#transferredFrom">transferredFrom</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Role">Role</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasManifest">hasManifest</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Manifest">Manifest</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -2085,9 +2085,9 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#BusinessOwner">BusinessOwner</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Administrator">Administrator</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#User">User</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#BusinessOwner">BusinessOwner</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Creator">Creator</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
