@@ -1,4 +1,5 @@
 from pylode.common import MakeDocco
+from pylode.profiles import OntDoc
 
 o1 = '''
     @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -24,16 +25,15 @@ o1 = '''
     '''
 
 
-def test__expand_graph_for_pylode():
-
-    m = MakeDocco()
-    m.G.parse(data=o1, format="turtle")
+def test_ontdoc_expand_graph():
+    m = MakeDocco(data=o1)
 
     assert len(m.G) == 7, "Error loading ontology before expansion. Should have 7 triples, got {}".format(len(g))
 
     # should add a single rdfs:label for the single dcterms:title
     # and a rdf:Property for the owl:ObjectProperty
-    m._expand_graph_for_owl()
+    od = OntDoc(m.G, None, None, None, None, None)
+    od._expand_graph()
 
     assert len(m.G) == 9, "Error loading ontology after expansion. Should have 9 triples, got {}".format(len(g))
 
