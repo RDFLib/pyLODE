@@ -39,4 +39,4 @@ def test_ontdoc_expand_graph():
 
 
 if __name__ == '__main__':
-    test__expand_graph_for_pylode()
+    test_ontdoc_expand_graph()
