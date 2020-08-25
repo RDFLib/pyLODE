@@ -8,12 +8,16 @@ USER root
 RUN apt-get update && \
 	apt-get upgrade -y --allow-downgrades --allow-remove-essential --allow-change-held-packages
 
-#copy the current directory contents
+# install extra requirements for pyLODE-via-server
+COPY requirements.server.txt /tmp/
+RUN pip install -r /tmp/requirements.server.txt
+
+# copy the current directory contents
 ADD . /app
 
 WORKDIR /app
 
-#install pyLODE from source, ensures we always use the latest development branch
+# install pyLODE from source, ensures we always use the latest development branch
 RUN python3 setup.py install
 
 RUN cd ./pylode
