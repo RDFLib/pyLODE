@@ -63,17 +63,9 @@ def main(args=None):
     parser.add_argument(
         "-c",
         "--css",
-        help="Whether (true) or not (false) to copy the default CSS file to the output directory.",
+        help="Whether (true) or not (false) to include CSS within an output HTML file.",
         choices=["true", "false"],
-        default="false",
-    )
-
-    parser.add_argument(
-        "-xc",
-        "--excludecss",
-        help="Whether (true) or not (false) to exclude the standard pyLODE CSS content from an HTML file output.",
-        choices=["true", "false"],
-        default="false",
+        default="true",
     )
 
     parser.add_argument(
@@ -117,10 +109,10 @@ def main(args=None):
         print(__version__)
         exit()
     elif args.inputfile or args.url:
-        if args.excludecss == "true":
-            exclude_css = True
+        if args.css == "true":
+            include_css = True
         else:
-            exclude_css = False
+            include_css = False
 
         # args are present so getting RDF from input file or uri into an rdflib Graph
         if args.inputfile:
@@ -128,14 +120,14 @@ def main(args=None):
                 input_data_file=args.inputfile,
                 outputformat=args.outputformat,
                 profile=args.profile,
-                exclude_css=exclude_css
+                include_css=include_css
             )
         elif args.url:
             h = MakeDocco(
                 input_uri=args.url,
                 outputformat=args.outputformat,
                 profile=args.profile,
-                exclude_css=exclude_css
+                include_css=include_css
             )
         else:
             # we have neither an input file or a URI supplied
@@ -152,23 +144,9 @@ def main(args=None):
 
     # here we have a parsed graph from either a local file or a URI
 
-    # set up output directories and resources
-    main_dir = path.dirname(path.realpath(__file__))
-    style_dir = path.join(main_dir, "style")
-    if h.publication_dir == "":
-        h.publication_dir = "."
-    os.makedirs(h.publication_dir, exist_ok=True)
-
-    # include CSS
-    if args.css == "true":
-        shutil.copyfile(
-            path.join(style_dir, "pylode.css"), path.join(h.publication_dir, "style.css")
-        )
-
+    # name the output file
     if args.outputfile is not None:
-        output_file_name = (
-            args.outputfile if args.outputfile else "doc.html"
-        )
+        output_file_name = args.outputfile
 
         if args.outputformat == "html":
             if not output_file_name.endswith(".html"):
