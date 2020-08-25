@@ -11,8 +11,8 @@ from pylode.profiles.base import BaseProfile
 
 
 class Prof(BaseProfile):
-    def __init__(self, g, source_info, outputformat="html", exclude_css=False, default_language="en", get_curies_online=False):
-        super().__init__(g, source_info, outputformat=outputformat, exclude_css=exclude_css, get_curies_online=False, default_language=default_language)
+    def __init__(self, g, source_info, outputformat="html", include_css=False, default_language="en", get_curies_online=False):
+        super().__init__(g, source_info, outputformat=outputformat, include_css=include_css, get_curies_online=False, default_language=default_language)
         self.RESOURCE_DESCRIPTORS = collections.OrderedDict()
 
     def _load_template(self, template_file):
@@ -251,7 +251,7 @@ class Prof(BaseProfile):
     def _make_document(self):
         css = None
         if self.outputformat == "html":
-            if not self.exclude_css:
+            if self.include_css:
                 css = open(path.join(STYLE_DIR, "pylode.css")).read()
 
         return self._load_template("prof." + self.outputformat).render(

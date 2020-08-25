@@ -167,8 +167,8 @@ These are the command line arguments to run pyLODE as a BASH or Python script on
     -  The RDF ontology file you wish to generate HTML for Must be in either Turtle, RDF/XML, JSON-LD or N-Triples formats indicated by the file type extensions .rdf, .owl, .ttl, .n3, .nt, .json respectively
 -  ``-u`` or ``--url``, *required if* ``-i`` *not used*
     -  The RDF ontology you wish to generate HTML for, online. Must be an absolute URL that can be resolved to RDF, preferably via Content Negotiation.
--  ``-c`` or ``--css``, *optional, default 'false'*
-    -  Whether (true) or not (false) to copy the default CSS file to the output directory.
+-  ``-c`` or ``--css``, *optional, default 'true'*
+    -  Whether (true) or not (false) to include CSS in an HTML output.
 -  ``-o`` or ``--outputfile``, *optional*
     -  A name you wish to assign to the output file. Will be postfixed with .html or .md. If not specified, the name of the input file or last segment of RDF URI will be used, + .html/.md.
 -  ``-f`` or ``--outputformat``, *optional, default 'html'*
@@ -180,14 +180,14 @@ These are the command line arguments to run pyLODE as a BASH or Python script on
 
 Example call
 ------------
-This call to the BASH script in `pylode/bin/ <pylode/bin/>`__ will
-create an HTML document for an ontology called ``placenames.html`` and
-save it with a basic CSS file into
-`pylode/output\_files/ <pylode/output_files/>`__:
+This basic call to the BASH script in `pylode/bin/ <pylode/bin/>`__ will
+print to stnadard out an HTML document for an ontology called ``placenames.html``.
 
 ::
 
-    ./pylode -i ../example/prof.ttl --css true
+    ./pylode -i ../example/prof.ttl
+
+An output file could be specified by using `-o`, rather than printing to standard out.
 
 Online Service
 --------------

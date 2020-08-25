@@ -8,9 +8,9 @@ from pylode.common import TEMPLATES_DIR
 
 
 class BaseProfile:
-    def __init__(self, g, source_info, outputformat="html", exclude_css=False, default_language="en", get_curies_online=False):
+    def __init__(self, g, source_info, outputformat="html", include_css=False, default_language="en", get_curies_online=False):
         self.outputformat = outputformat
-        self.exclude_css = exclude_css
+        self.include_css = include_css
         self.default_language = default_language
         self.get_curies_online = get_curies_online
         self.default_namespace = None

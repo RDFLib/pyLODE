@@ -30,7 +30,7 @@ from .profiles import OntDoc, Prof, VocPub, PROFILES
 
 
 class MakeDocco:
-    def __init__(self, input_data_file=None, input_uri=None, data=None, outputformat="html", exclude_css=False, get_curies_online=False, profile="ontdoc"):
+    def __init__(self, input_data_file=None, input_uri=None, data=None, outputformat="html", include_css=True, get_curies_online=False, profile="ontdoc"):
         """This class receives all of the variables needed to specify how to make documentation from an input RDF source
 
         :param input_data_file: An RDF file
@@ -41,8 +41,8 @@ class MakeDocco:
         :type data: Python varaible (string)
         :param outputformat: The desired output format form the list of supported formats (currently either "html" (default) or "md" for Markdown
         :type outputformat: string (one of "html" or "md")
-        :param exclude_css: Whether (True, default) or not (False) to include styling CSS within HTML outputs (as oposed to producing a separate style.css file)
-        :type exclude_css: boolean
+        :param include_css: Whether (True, default) or not (False) to include styling CSS within HTML outputs
+        :type include_css: boolean
         :param get_curies_online: Whether (True) or not (False, default) to search prefix.cc online for additional URI prefixes
         :type get_curies_online: boolean
         :param profile: When document profile, from a supported set, to use. Currently supported is "ontdoc" (profile of OWL) or "skosp" (profile of SKOS). See `list_profiles()` for full list of profiles.
@@ -55,7 +55,7 @@ class MakeDocco:
         else:
             self.outputformat = outputformat
 
-        self.exclude_css = exclude_css
+        self.include_css = include_css
         self.get_curies_online = get_curies_online
 
         if profile not in PROFILES.keys():
@@ -97,7 +97,6 @@ class MakeDocco:
 
             self.G = Graph().parse(file_name, format=fmt)
             self.source_info = (file_name, fmt)
-            self.publication_dir = path.dirname(file_name)
 
     def _parse_input_uri(self, uri):
         headers = {"Accept": ", ".join(RDF_SERIALIZER_MAP.keys())}
@@ -122,14 +121,10 @@ class MakeDocco:
 
         self.G = Graph().parse(data=resp.read().decode(), format=fmt)
         self.source_info = (uri, fmt)
-        self.publication_dir = path.join(
-            path.dirname(path.realpath(__file__)), "output_files"
-        )
 
     def _parse_data(self, data):
         self.G = Graph().parse(data=data, format="turtle")
         self.source_info = ("input.ttl", "turtle")
-        self.publication_dir = path.dirname(path.realpath(__file__))
 
     @classmethod
     def list_profiles(cls):
@@ -154,7 +149,7 @@ class MakeDocco:
                 self.G,
                 self.source_info,
                 outputformat=self.outputformat,
-                exclude_css=self.exclude_css,
+                include_css=self.include_css,
                 default_language="en",
                 get_curies_online=self.get_curies_online
             )
@@ -163,7 +158,7 @@ class MakeDocco:
                 self.G,
                 self.source_info,
                 outputformat=self.outputformat,
-                exclude_css=self.exclude_css,
+                include_css=self.include_css,
                 default_language="en",
                 get_curies_online=self.get_curies_online
             )
@@ -172,7 +167,7 @@ class MakeDocco:
                 self.G,
                 self.source_info,
                 outputformat=self.outputformat,
-                exclude_css=self.exclude_css,
+                include_css=self.include_css,
                 default_language="en",
                 get_curies_online=self.get_curies_online
             )
@@ -184,7 +179,9 @@ class MakeDocco:
                     f.write(doc)
             except Exception as e:
                 print(e)
-                raise Exception("The file you specified as 'destination' could not be written to. You specified {}.".format(destination))
+                raise Exception(
+                    "The file you specified as 'destination' could not be written to. You specified {}."
+                                .format(destination))
 
         else:
             return p.generate_document()
