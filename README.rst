@@ -222,13 +222,14 @@ You can run pyLODE using your own, local, HTTP server like this:
 
 ::
 
-    cd pylode && gunicorn --chdir /path/to/pyLODE/pylode server:api
+    gunicorn --chdir /path/to/pyLODE/pylode server:api
 
-Then, in another terminal:
+The server is then available at localhost:8000 and localhost:8000/pylode for the active endpoint. Note that the server must be fed a URL to an ontology to document supplied by a server capable of responding to Content Negotiation, i.e. it must supply RDF according to an HTTP `Accept` request for `text/turtle`, `application/rdf+xml` etc.
+
 
 ::
 
-    curl localhost:8000/lode?url=http://sweetontology.net/sweetAll.ttl
+    curl localhost:8000/pylode?url=http://sweetontology.net/sweetAll.ttl
 
 Windows
 -------

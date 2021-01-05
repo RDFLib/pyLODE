@@ -2,7 +2,7 @@ from os import path
 from urllib import request
 from rdflib import util, Graph
 
-VERSION = "2.8.4"
+VERSION = "2.8.5"
 APP_DIR = path.dirname(path.realpath(__file__))
 TEMPLATES_DIR = path.join(path.dirname(path.realpath(__file__)), "templates")
 STYLE_DIR = path.join(path.dirname(path.realpath(__file__)), "style")
