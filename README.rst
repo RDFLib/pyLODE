@@ -181,7 +181,7 @@ These are the command line arguments to run pyLODE as a BASH or Python script on
 Example call
 ------------
 This basic call to the BASH script in `pylode/bin/ <pylode/bin/>`__ will
-print to stnadard out an HTML document for an ontology called ``placenames.html``.
+print to standard out an HTML document for an ontology called ``placenames.html``.
 
 ::
 
@@ -686,7 +686,7 @@ and change/add development priorities.
 Current Release
 ---------------
 
-The current release, as of July 2020, is **2.8.3**.
+The current release, as of January, 2021, is **2.8.5**.
 
 Release Schedule
 ----------------
@@ -695,8 +695,9 @@ Release Schedule
    :header: "Version", "Date", "Description"
    :widths: 15, 10, 30
 
-   3.0, *June 2020*, "Will include pre-testing inputs with SHACL"
-   **2.8.3**, **3 July 2020**, "Packaging bugfixes only"
+   3.0, *?*, "Will include pre-testing inputs with SHACL"
+   **2.8.5**, **5 Jan 20201**, "Small enhancements to the Falcon server deployment option"
+   2.8.3, 3 July 2020, "Packaging bugfixes only"
    2.7, 1 July 2020, "Much refactoring for new profile creation ease"
    2.6, June 2020, "Supports PROF profiles as well as taxonomies & ontologies"
    2.4, 27 May 2020, "Small improvements over 2.0"
