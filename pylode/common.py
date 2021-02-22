@@ -175,7 +175,7 @@ class MakeDocco:
         if destination is not None:
             doc = p.generate_document()
             try:
-                with open(destination, "w") as f:
+                with open(destination, "w", encoding="utf8") as f:
                     f.write(doc)
             except Exception as e:
                 print(e)
