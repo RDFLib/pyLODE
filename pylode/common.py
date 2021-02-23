@@ -1,11 +1,17 @@
 from os import path
 from urllib import request
 from rdflib import util, Graph
+import sys
 
 VERSION = "2.8.6"
-APP_DIR = path.dirname(path.realpath(__file__))
-TEMPLATES_DIR = path.join(path.dirname(path.realpath(__file__)), "templates")
-STYLE_DIR = path.join(path.dirname(path.realpath(__file__)), "style")
+
+# set APP_DIR to EXE folder if being called within pyinstaller EXE
+if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+    APP_DIR = sys._MEIPASS
+else:  # use normal Python pathing
+    APP_DIR = path.dirname(path.realpath(__file__))
+TEMPLATES_DIR = path.join(APP_DIR, "templates")
+STYLE_DIR = path.join(APP_DIR, "style")
 RDF_FILE_EXTENSIONS = [".rdf", ".owl", ".ttl", ".n3", ".nt", ".json"]
 RDF_SERIALIZER_MAP = {
     "text/turtle": "turtle",
