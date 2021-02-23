@@ -3,9 +3,14 @@ from urllib import request
 from rdflib import util, Graph
 
 VERSION = "2.8.6"
-APP_DIR = path.dirname(path.realpath(__file__))
-TEMPLATES_DIR = path.join(path.dirname(path.realpath(__file__)), "templates")
-STYLE_DIR = path.join(path.dirname(path.realpath(__file__)), "style")
+import sys
+if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+    APP_DIR = sys._MEIPASS
+else:
+    APP_DIR = path.dirname(path.realpath(__file__))
+
+TEMPLATES_DIR = path.join(APP_DIR, "templates")
+STYLE_DIR = path.join(APP_DIR, "style")
 RDF_FILE_EXTENSIONS = [".rdf", ".owl", ".ttl", ".n3", ".nt", ".json"]
 RDF_SERIALIZER_MAP = {
     "text/turtle": "turtle",
@@ -175,7 +180,7 @@ class MakeDocco:
         if destination is not None:
             doc = p.generate_document()
             try:
-                with open(destination, "w", encoding="utf8") as f:
+                with open(destination, "w", encoding="utf-8") as f:
                     f.write(doc)
             except Exception as e:
                 print(e)

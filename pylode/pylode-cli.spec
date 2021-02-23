@@ -9,8 +9,8 @@ a = Analysis(
             pathex=['.'],
             binaries=[],
             datas=[
-                       ('templates/*.*','templates'),
-                       ('style/*.css','style')
+                ('templates', 'templates'),
+                ('style', 'style')
             ],
             hiddenimports=[                
                 'urllib3',
@@ -18,7 +18,9 @@ a = Analysis(
                 'rdflib.namespace',
                 'rdflib.plugins',
                 'rdflib_jsonld',
-                'rdflib_jsonld.serializer'
+                'rdflib_jsonld.serializer',
+                'pylode.common',
+                'pylode.profiles'
             ],
             hookspath=[],
             runtime_hooks=[],
