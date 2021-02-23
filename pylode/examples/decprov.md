@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
 
 # Decision Provenance ontology (DecPROV)
 
@@ -49,14 +49,14 @@ Property | Value
 --- | ---
 URI | `http://promsns.org/def/decprov#DecisionInputData`
 Description | <p>A Decision Input Data is an Entity that in input to (prov:used by) a DecisionMaking.</p>
-Usage Note | Do not use this class to represent decision logic: use DecisionLogicExpression for that.
+Usage Note | <p>Do not use this class to represent decision logic: use DecisionLogicExpression for that.</p>
 Super-classes |[prov:Entity](http://www.w3.org/ns/prov#Entity) (c)<br />
 ### Decision Logic Expression
 Property | Value
 --- | ---
 URI | `http://promsns.org/def/decprov#DecisonLogicExpression`
 Description | <p>A Decision Logic Expression is a prov:Plan that instructs a course of decision making action.</p>
-Usage Note | Use this class to contain decision logic epxpressions in microformats, such as Decision Modelling Notation's FEEL expressions, or as a container entity to hold collections of semantic objects representing decision logic.
+Usage Note | <p>Use this class to contain decision logic epxpressions in microformats, such as Decision Modelling Notation's FEEL expressions, or as a container entity to hold collections of semantic objects representing decision logic.</p>
 Super-classes |[prov:Plan](http://www.w3.org/ns/prov#Plan) (c)<br />
 ### Answer
 Property | Value

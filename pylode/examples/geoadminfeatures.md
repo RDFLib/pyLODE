@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
 
 # Geological Administrative Features Ontology
 
@@ -48,7 +48,7 @@ Property | Value
 URI | `http://linked.data.gov.au/def/geoadminfeatures#AdministrativeFeature`
 Description | <p>An Administrative Feature is a geo:Feature that is defined by adminstrative processes such as legislation, regulation, policy or procedure.</p>
 Super-classes |[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
-Sub-classes |[geoaf:Permit](Permit) (c)<br />[geoaf:Block](Block) (c)<br />[geoaf:SubBlock](Sub-Block) (c)<br />
+Sub-classes |[geoaf:Block](Block) (c)<br />[geoaf:SubBlock](Sub-Block) (c)<br />[geoaf:Permit](Permit) (c)<br />
 ### Block
 Property | Value
 --- | ---

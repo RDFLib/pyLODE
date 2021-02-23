@@ -511,7 +511,7 @@ class VocPub(BaseProfile):
             if len(concept[1].get("definitions")) > 0:
                 defs = [d.replace("\n", " ") for d in concept[1].get("definitions")]
             else:
-                defs = None
+                defs = []
             if len(concept[1].get("examples")) > 0:
                 egs = [eg.strip().replace("\t", "    ") for eg in concept[1].get("examples")]
                 egs2 = []

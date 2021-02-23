@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
 
 # Datatypes
 
@@ -59,13 +59,13 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/Concept`
 Description | <p>Class to encapsulate a classifier, usually a values from a controlled vocabulary</p>
-Restrictions |[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value) **only** [skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />[data:vocabulary](vocabulary) (op) **exactly** 1<br />[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value) **exactly** 1<br />
+Restrictions |[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value) **only** [skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value) **exactly** 1<br />[data:vocabulary](vocabulary) (op) **exactly** 1<br />
 ### Count
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/Count`
 Description | <p>Class to encapsulate an integer value</p>
-Restrictions |[data:value](datavalue) (dp) **exactly** 1<br />[data:value](datavalue) (dp) **only** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer) (c)<br />[data:uncertainty](datauncertainty) (dp) **max** 1<br />
+Restrictions |[data:uncertainty](datauncertainty) (dp) **max** 1<br />[data:value](datavalue) (dp) **only** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer) (c)<br />[data:value](datavalue) (dp) **exactly** 1<br />
 ### Percent
 Property | Value
 --- | ---
@@ -79,20 +79,20 @@ Property | Value
 URI | `http://linked.data.gov.au/def/datatype/PercentRange`
 Description | <p>Class to encapsulate a quantitative range expressed as in percent values</p>
 Super-classes |[data:QuantitativeRange](QuantitativeRange) (c)<br />
-Restrictions |[data:unit](unitofmeasure) (op) **value** [http://qudt.org/vocab/unit/PERCENT](http://qudt.org/vocab/unit/PERCENT) (c)<br />[data:uncertainty](datauncertainty) (dp) **max** 1<br />
+Restrictions |[data:uncertainty](datauncertainty) (dp) **max** 1<br />[data:unit](unitofmeasure) (op) **value** [http://qudt.org/vocab/unit/PERCENT](http://qudt.org/vocab/unit/PERCENT) (c)<br />
 ### Quantitative Measure
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/QuantitativeMeasure`
 Description | <p>Class to encapsulate a quantitative measure value</p>
-Restrictions |[data:uncertainty](datauncertainty) (dp) **max** 1<br />[data:value](datavalue) (dp) **exactly** 1<br />[data:value](datavalue) (dp) **only** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal) (c)<br />[data:unit](unitofmeasure) (op) **exactly** 1<br />
+Restrictions |[data:value](datavalue) (dp) **only** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal) (c)<br />[data:unit](unitofmeasure) (op) **exactly** 1<br />[data:uncertainty](datauncertainty) (dp) **max** 1<br />[data:value](datavalue) (dp) **exactly** 1<br />
 Sub-classes |[data:Percent](Percent) (c)<br />
 ### Quantitative Range
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/QuantitativeRange`
 Description | <p>Class to encapsulate a quantitative range </p>
-Restrictions |[data:max](datamaximum) (dp) **exactly** 1<br />[data:unit](unitofmeasure) (op) **exactly** 1<br />[data:min](dataminimum) (dp) **exactly** 1<br />[data:uncertainty](datauncertainty) (dp) **max** 1<br />
+Restrictions |[data:uncertainty](datauncertainty) (dp) **max** 1<br />[data:max](datamaximum) (dp) **exactly** 1<br />[data:min](dataminimum) (dp) **exactly** 1<br />[data:unit](unitofmeasure) (op) **exactly** 1<br />
 Sub-classes |[data:PercentRange](Percentrange) (c)<br />
 ### Text
 Property | Value
@@ -110,17 +110,20 @@ Restrictions |[data:value](datavalue) (dp) **exactly** 1<br />[data:value](datav
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/standard`
+Description | Measurement standard, scale, uom, reference system, controlled vocabulary, taxonomy etc
 [](unitofmeasure)
 ### unit of measure
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/unit`
+Description | Measurement scale 
 Super-properties |[data:standard](datastandard) (op)<br />
 [](vocabulary)
 ### vocabulary
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/vocabulary`
+Description | controlled vocabulary, taxonomy etc 
 Super-properties |[data:standard](datastandard) (op)<br />
 Range(s) |[skos:ConceptScheme](http://www.w3.org/2004/02/skos/core#ConceptScheme) (c)<br />[skos:Collection](http://www.w3.org/2004/02/skos/core#Collection) (c)<br />[owl:Ontology](http://www.w3.org/2002/07/owl#Ontology) (c)<br />
 
@@ -134,6 +137,7 @@ Range(s) |[skos:ConceptScheme](http://www.w3.org/2004/02/skos/core#ConceptScheme
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/max`
+Description | Maximum value of a range
 Super-properties |[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value)<br />
 Range(s) |[xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal) (c)<br />
 [](dataminimum)
@@ -141,6 +145,7 @@ Range(s) |[xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal) (c)<br />
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/min`
+Description | Minimum value of range
 Super-properties |[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value)<br />
 Range(s) |[xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal) (c)<br />
 [](datauncertainty)
@@ -148,6 +153,7 @@ Range(s) |[xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal) (c)<br />
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/uncertainty`
+Description | Uncertainty for a quantitative value
 Super-properties |[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value)<br />
 Range(s) |[xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal) (c)<br />
 [](datavalue)
@@ -155,6 +161,7 @@ Range(s) |[xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal) (c)<br />
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/value`
+Description | simple value (a literal)
 Super-properties |[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value)<br />
 
 ## Named Individuals

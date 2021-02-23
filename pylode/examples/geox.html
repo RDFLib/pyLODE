@@ -215,7 +215,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.6</span>
+    <span style="font-size:smaller;">2.8.6</span>
   </div>
   <h1>GeoSPARQL Extensions Ontology</h1>
 <section id="metadata">
@@ -311,8 +311,8 @@
                 <th>In range of</th>
                 <td>
                     <a href="#hasarea">geox:hasArea</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#haslength">geox:hasLength</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasvolume">geox:hasVolume</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#haslength">geox:hasLength</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -340,10 +340,16 @@
                 <td><code>http://linked.data.gov.au/def/geox#hasArea</code></td>
             </tr>
             <tr>
+                <th>Description</th>
+                <td>
+                    The area of a spatial object, expressed as a scaled number
+                </td>
+            </tr>
+            <tr>
                 <th>Example</th>
                 <td>
                     <pre>
-                      my:plot456
+my:plot456
   :hasArea [
     data:uncertainty 0.5 ;
     data:unit <http://qudt.org/vocab/unit/M2> ;
@@ -375,10 +381,16 @@
                 <td><code>http://linked.data.gov.au/def/geox#hasAreaM2</code></td>
             </tr>
             <tr>
+                <th>Description</th>
+                <td>
+                    The area of the spatial object in m^2
+                </td>
+            </tr>
+            <tr>
                 <th>Example</th>
                 <td>
                     <pre>
-                      my:plot456
+my:plot456
   :hasAreaM2 [
     data:value 63.9 ;
   ] ;
@@ -402,10 +414,16 @@
                 <td><code>http://linked.data.gov.au/def/geox#hasLength</code></td>
             </tr>
             <tr>
+                <th>Description</th>
+                <td>
+                    The length of a spatial object, expressed as a scaled number
+                </td>
+            </tr>
+            <tr>
                 <th>Example</th>
                 <td>
                     <pre>
-                      my:road456
+my:road456
   :hasLength [
     data:uncertainty 5.0 ;
     data:unit <http://qudt.org/vocab/unit/M> ;
@@ -437,10 +455,16 @@
                 <td><code>http://linked.data.gov.au/def/geox#hasLengthM</code></td>
             </tr>
             <tr>
+                <th>Description</th>
+                <td>
+                    The length of a spatial object in metres
+                </td>
+            </tr>
+            <tr>
                 <th>Example</th>
                 <td>
                     <pre>
-                      my:road456
+my:road456
   :hasLengthM [
     data:value 234.0 ;
   ] ;
@@ -464,10 +488,16 @@
                 <td><code>http://linked.data.gov.au/def/geox#hasResolution</code></td>
             </tr>
             <tr>
+                <th>Description</th>
+                <td>
+                    The spatial resolution of the Geometry object, expressed as a linear measurement.
+                </td>
+            </tr>
+            <tr>
                 <th>Example</th>
                 <td>
                     <pre>
-                      my:image456
+my:image456
   :hasResolution [
     data:unit <http://qudt.org/vocab/unit/M> ;
     data:value 30.0 ;
@@ -498,10 +528,16 @@
                 <td><code>http://linked.data.gov.au/def/geox#hasResolutionM</code></td>
             </tr>
             <tr>
+                <th>Description</th>
+                <td>
+                    The spatial resolution of the Geometry object, expressed as a linear distance in metres
+                </td>
+            </tr>
+            <tr>
                 <th>Example</th>
                 <td>
                     <pre>
-                      my:image456
+my:image456
   :hasResolutionM [
     data:value 30.0 ;
   ] ;
@@ -531,10 +567,16 @@
                 <td><code>http://linked.data.gov.au/def/geox#hasVolume</code></td>
             </tr>
             <tr>
+                <th>Description</th>
+                <td>
+                    The volume of a spatial object, expressed as a scaled number
+                </td>
+            </tr>
+            <tr>
                 <th>Example</th>
                 <td>
                     <pre>
-                      my:swimmingPool99
+my:swimmingPool99
   :hasVolume [
     data:unit <http://qudt.org/vocab/unit/M3> ;
     data:value 3050.0 ;
@@ -565,10 +607,16 @@
                 <td><code>http://linked.data.gov.au/def/geox#hasVolumeM3</code></td>
             </tr>
             <tr>
+                <th>Description</th>
+                <td>
+                    The volume of a spatial object in cubic-metres
+                </td>
+            </tr>
+            <tr>
                 <th>Example</th>
                 <td>
                     <pre>
-                      my:swimmingPool99
+my:swimmingPool99
   :hasVolumeM3 [
     data:value 3050.0 ;
   ] ;
@@ -592,6 +640,13 @@
                 <td><code>http://linked.data.gov.au/def/geox#inCRS</code></td>
             </tr>
             <tr>
+                <th>Description</th>
+                <td>
+                    The measure is defined or computed using this CRS. 
+The CRS should be denoted by a URI Reference to a CRS definition, e.g. https://www.opengis.net/def/crs/EPSG/0/4326
+                </td>
+            </tr>
+            <tr>
                 <th>Domain(s)</th>
                 <td>
                     <a href="#Spatialmeasure">geox:SpatialMeasure</a><sup class="sup-c" title="class">c</sup>
@@ -605,6 +660,12 @@
             <tr>
                 <th>URI</th>
                 <td><code>http://linked.data.gov.au/def/geox#isGeometryOf</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    link from a geometry object to the feature(s) for which it is a geometry
+                </td>
             </tr>
             <tr>
                 <th>Inverse properties</th>

@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
 
 # The OWL 2 Schema vocabulary (OWL 2)
 
@@ -129,8 +129,8 @@ Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of OWL classes.</p>
 Super-classes |[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class) (c)<br />
 Sub-classes |[owl:Restriction](Restriction) (c)<br />
-In domain of |[owl:complementOf](complementOf)<br />[owl:disjointUnionOf](disjointUnionOf)<br />[owl:hasKey](hasKey)<br />[owl:disjointWith](disjointWith)<br />
-In range of |[owl:onClass](onClass)<br />[owl:complementOf](complementOf)<br />[owl:disjointWith](disjointWith)<br />
+In domain of |[owl:complementOf](complementOf)<br />[owl:disjointUnionOf](disjointUnionOf)<br />[owl:disjointWith](disjointWith)<br />[owl:hasKey](hasKey)<br />
+In range of |[owl:disjointWith](disjointWith)<br />[owl:onClass](onClass)<br />[owl:complementOf](complementOf)<br />
 ### DataRange
 Property | Value
 --- | ---
@@ -194,7 +194,7 @@ URI | `http://www.w3.org/2002/07/owl#NegativePropertyAssertion`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of negative property assertions.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
-In domain of |[owl:assertionProperty](assertionProperty)<br />[owl:sourceIndividual](sourceIndividual)<br />[owl:targetValue](targetValue)<br />[owl:targetIndividual](targetIndividual)<br />
+In domain of |[owl:targetIndividual](targetIndividual)<br />[owl:sourceIndividual](sourceIndividual)<br />[owl:assertionProperty](assertionProperty)<br />[owl:targetValue](targetValue)<br />
 ### Nothing
 Property | Value
 --- | ---
@@ -209,8 +209,8 @@ URI | `http://www.w3.org/2002/07/owl#ObjectProperty`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of object properties.</p>
 Super-classes |[rdf:Property](http://www.w3.org/1999/02/22-rdf-syntax-ns#Property) (c)<br />
-Sub-classes |[owl:InverseFunctionalProperty](InverseFunctionalProperty) (c)<br />[owl:ReflexiveProperty](ReflexiveProperty) (c)<br />[owl:TransitiveProperty](TransitiveProperty) (c)<br />[owl:SymmetricProperty](SymmetricProperty) (c)<br />[owl:AsymmetricProperty](AsymmetricProperty) (c)<br />[owl:IrreflexiveProperty](IrreflexiveProperty) (c)<br />
-In domain of |[owl:inverseOf](inverseOf)<br />[owl:propertyChainAxiom](propertyChainAxiom)<br />
+Sub-classes |[owl:IrreflexiveProperty](IrreflexiveProperty) (c)<br />[owl:ReflexiveProperty](ReflexiveProperty) (c)<br />[owl:TransitiveProperty](TransitiveProperty) (c)<br />[owl:InverseFunctionalProperty](InverseFunctionalProperty) (c)<br />[owl:SymmetricProperty](SymmetricProperty) (c)<br />[owl:AsymmetricProperty](AsymmetricProperty) (c)<br />
+In domain of |[owl:propertyChainAxiom](propertyChainAxiom)<br />[owl:inverseOf](inverseOf)<br />
 In range of |[owl:inverseOf](inverseOf)<br />
 ### Ontology
 Property | Value
@@ -219,8 +219,8 @@ URI | `http://www.w3.org/2002/07/owl#Ontology`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of ontologies.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
-In domain of |[owl:backwardCompatibleWith](backwardCompatibleWith) (ap)<br />[owl:priorVersion](priorVersion) (ap)<br />[owl:versionIRI](http://www.w3.org/2002/07/owl#versionIRI)<br />[owl:incompatibleWith](incompatibleWith) (ap)<br />[owl:imports](http://www.w3.org/2002/07/owl#imports)<br />
-In range of |[owl:imports](http://www.w3.org/2002/07/owl#imports)<br />[owl:backwardCompatibleWith](backwardCompatibleWith) (ap)<br />[owl:priorVersion](priorVersion) (ap)<br />[owl:versionIRI](http://www.w3.org/2002/07/owl#versionIRI)<br />[owl:incompatibleWith](incompatibleWith) (ap)<br />
+In domain of |[owl:priorVersion](priorVersion) (ap)<br />[owl:imports](http://www.w3.org/2002/07/owl#imports)<br />[owl:incompatibleWith](incompatibleWith) (ap)<br />[owl:versionIRI](http://www.w3.org/2002/07/owl#versionIRI)<br />[owl:backwardCompatibleWith](backwardCompatibleWith) (ap)<br />
+In range of |[owl:imports](http://www.w3.org/2002/07/owl#imports)<br />[owl:priorVersion](priorVersion) (ap)<br />[owl:incompatibleWith](incompatibleWith) (ap)<br />[owl:versionIRI](http://www.w3.org/2002/07/owl#versionIRI)<br />[owl:backwardCompatibleWith](backwardCompatibleWith) (ap)<br />
 ### OntologyProperty
 Property | Value
 --- | ---
@@ -242,7 +242,7 @@ URI | `http://www.w3.org/2002/07/owl#Restriction`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of property restrictions.</p>
 Super-classes |[owl:Class](Class) (c)<br />
-In domain of |[owl:hasValue](hasValue)<br />[owl:minCardinality](minCardinality)<br />[owl:maxQualifiedCardinality](maxQualifiedCardinality)<br />[owl:minQualifiedCardinality](minQualifiedCardinality)<br />[owl:onClass](onClass)<br />[owl:someValuesFrom](someValuesFrom)<br />[owl:maxCardinality](maxCardinality)<br />[owl:cardinality](cardinality)<br />[owl:allValuesFrom](allValuesFrom)<br />[owl:qualifiedCardinality](qualifiedCardinality)<br />[owl:onProperty](onProperty)<br />[owl:onDataRange](onDataRange)<br />[owl:onProperties](onProperties)<br />[owl:hasSelf](hasSelf)<br />
+In domain of |[owl:minQualifiedCardinality](minQualifiedCardinality)<br />[owl:maxQualifiedCardinality](maxQualifiedCardinality)<br />[owl:qualifiedCardinality](qualifiedCardinality)<br />[owl:onProperties](onProperties)<br />[owl:onDataRange](onDataRange)<br />[owl:maxCardinality](maxCardinality)<br />[owl:someValuesFrom](someValuesFrom)<br />[owl:allValuesFrom](allValuesFrom)<br />[owl:hasValue](hasValue)<br />[owl:onProperty](onProperty)<br />[owl:onClass](onClass)<br />[owl:minCardinality](minCardinality)<br />[owl:cardinality](cardinality)<br />[owl:hasSelf](hasSelf)<br />
 ### SymmetricProperty
 Property | Value
 --- | ---
@@ -257,8 +257,8 @@ URI | `http://www.w3.org/2002/07/owl#Thing`
 Is Defined By | http://www.w3.org/2002/07/owl#
 Description | <p>The class of OWL individuals.</p>
 Sub-classes |[owl:Nothing](Nothing) (c)<br />[owl:NamedIndividual](NamedIndividual) (c)<br />
-In domain of |[owl:differentFrom](differentFrom)<br />[owl:bottomObjectProperty](bottomObjectProperty) (op)<br />[owl:sameAs](sameAs)<br />[owl:topDataProperty](topDataProperty) (dp)<br />[owl:topObjectProperty](topObjectProperty) (op)<br />[owl:bottomDataProperty](bottomDataProperty) (dp)<br />
-In range of |[owl:bottomObjectProperty](bottomObjectProperty) (op)<br />[owl:sameAs](sameAs)<br />[owl:sourceIndividual](sourceIndividual)<br />[owl:topObjectProperty](topObjectProperty) (op)<br />[owl:targetIndividual](targetIndividual)<br />[owl:differentFrom](differentFrom)<br />
+In domain of |[owl:topObjectProperty](topObjectProperty) (op)<br />[owl:differentFrom](differentFrom)<br />[owl:topDataProperty](topDataProperty) (dp)<br />[owl:bottomDataProperty](bottomDataProperty) (dp)<br />[owl:bottomObjectProperty](bottomObjectProperty) (op)<br />[owl:sameAs](sameAs)<br />
+In range of |[owl:topObjectProperty](topObjectProperty) (op)<br />[owl:sameAs](sameAs)<br />[owl:differentFrom](differentFrom)<br />[owl:targetIndividual](targetIndividual)<br />[owl:sourceIndividual](sourceIndividual)<br />[owl:bottomObjectProperty](bottomObjectProperty) (op)<br />
 ### TransitiveProperty
 Property | Value
 --- | ---

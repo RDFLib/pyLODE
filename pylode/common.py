@@ -2,7 +2,7 @@ from os import path
 from urllib import request
 from rdflib import util, Graph
 
-VERSION = "2.8.5"
+VERSION = "2.8.6"
 APP_DIR = path.dirname(path.realpath(__file__))
 TEMPLATES_DIR = path.join(path.dirname(path.realpath(__file__)), "templates")
 STYLE_DIR = path.join(path.dirname(path.realpath(__file__)), "style")
@@ -46,7 +46,7 @@ class MakeDocco:
         :param get_curies_online: Whether (True) or not (False, default) to search prefix.cc online for additional URI prefixes
         :type get_curies_online: boolean
         :param profile: When document profile, from a supported set, to use. Currently supported is "ontdoc" (profile of OWL) or "skosp" (profile of SKOS). See `list_profiles()` for full list of profiles.
-        :type profile: string (one of "ontdoc" or "skosp")
+        :type profile: string (one of "ontdoc", "skosp" or "prof")
         """
         self.profile_selected = profile
 

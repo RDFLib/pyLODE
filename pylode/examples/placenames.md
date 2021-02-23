@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
 
 # Place Names Profile
 
@@ -60,7 +60,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
 [Geometry](#Geometry),
 [Identifier](#Identifier),
 [Jurisdiction](#Jurisdiction),
-[Organization](#Organization),
+[Organisation](#Organisation),
 [Place](#Place),
 [Place Name](#PlaceName),
 [Place Name Formality](#PlaceNameFormality),
@@ -116,8 +116,8 @@ Property | Value
 URI | `http://linked.data.gov.au/def/placenames/Place`
 Description | <p>An identifiable geographic Place as defined by the Composite Gazetteer of Australia.</p>
 Super-classes |[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
-Restrictions |[register](register) (op) **some** [Gazetteer](Gazetteer) (c)<br />[hasFeatureClassification](hasfeatureclassification) (op) **only** [PlaceType](PlaceType) (c)<br />
-Sub-classes |[PointOfInterest](PointofInterest) (c)<br />[Region](Region) (c)<br />
+Restrictions |[hasFeatureClassification](hasfeatureclassification) (op) **only** [PlaceType](PlaceType) (c)<br />[register](register) (op) **some** [Gazetteer](Gazetteer) (c)<br />
+Sub-classes |[Region](Region) (c)<br />[PointOfInterest](PointofInterest) (c)<br />
 In domain of |[hasFeatureClassification](hasfeatureclassification) (op)<br />
 ### Place Name
 Property | Value
@@ -125,8 +125,8 @@ Property | Value
 URI | `http://linked.data.gov.au/def/placenames/PlaceName`
 Description | <p>The name of a place, assigned by an official naming authority in the Place Names Gazeteer of Australia.</p>
 Super-classes |[reg:RegisteredItem](http://purl.org/linked-data/registry#RegisteredItem) (c)<br />
-Restrictions |[wasNamedBy](wasnamedby) (op) **some** [Jurisdiction](Jurisdiction) (c)<br />[adms:identifier](https://www.w3.org/ns/adms#identifier) (op) **some** [adms:Identifier](https://www.w3.org/ns/adms#Identifier) (c)<br />[register](register) (op) **some** [Gazetteer](Gazetteer) (c)<br />[reg:status](http://purl.org/linked-data/registry#status) (op) **some** [reg:Status](http://purl.org/linked-data/registry#Status) (c)<br />[hasPronunciation](pronunciation) (op) **some** [xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
-In domain of |[hasPlaceNameFormality](hasplacenameformality) (op)<br />[hasPronunciation](pronunciation) (op)<br />[wasNamedBy](wasnamedby) (op)<br />[hasPlaceNamingAuthority](hasplacenamingauthority) (op)<br />
+Restrictions |[reg:status](http://purl.org/linked-data/registry#status) (op) **some** [reg:Status](http://purl.org/linked-data/registry#Status) (c)<br />[hasPronunciation](pronunciation) (op) **some** [xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />[wasNamedBy](wasnamedby) (op) **some** [Jurisdiction](Jurisdiction) (c)<br />[adms:identifier](https://www.w3.org/ns/adms#identifier) (op) **some** [adms:Identifier](https://www.w3.org/ns/adms#Identifier) (c)<br />[register](register) (op) **some** [Gazetteer](Gazetteer) (c)<br />
+In domain of |[hasPlaceNamingAuthority](hasplacenamingauthority) (op)<br />[hasPronunciation](pronunciation) (op)<br />[wasNamedBy](wasnamedby) (op)<br />[hasPlaceNameFormality](hasplacenameformality) (op)<br />
 ### Place Name Formality
 Property | Value
 --- | ---
@@ -176,8 +176,8 @@ Property | Value
 URI | `http://www.opengis.net/ont/geosparql#Feature`
 Description | <p>The GeoSPARQL Ontology's Feature Class</p>
 Restrictions |[hasPlaceName](hasplacename) (op) **some** [PlaceName](PlaceName) (c)<br />
-Sub-classes |[gnaf:Address](http://linked.data.gov.au/def/gnaf#Address) (c)<br />[Place](Place) (c)<br />[asgs:Feature](http://linked.data.gov.au/def/asgs#Feature) (c)<br />[ContractedCatchment](ContractedCatchment) (c)<br />
-In domain of |[geo:hasGeometry](http://www.opengis.net/ont/geosparql#hasGeometry) (op)<br />[hasPlaceName](hasplacename) (op)<br />
+Sub-classes |[asgs:Feature](http://linked.data.gov.au/def/asgs#Feature) (c)<br />[gnaf:Address](http://linked.data.gov.au/def/gnaf#Address) (c)<br />[Place](Place) (c)<br />[ContractedCatchment](ContractedCatchment) (c)<br />
+In domain of |[hasPlaceName](hasplacename) (op)<br />[geo:hasGeometry](http://www.opengis.net/ont/geosparql#hasGeometry) (op)<br />
 ### Geometry
 Property | Value
 --- | ---
@@ -192,7 +192,7 @@ URI | `http://www.w3.org/2001/XMLSchema#string`
 Property | Value
 --- | ---
 URI | `http://www.w3.org/2004/02/skos/core#Concept`
-Sub-classes |[reg:Status](http://purl.org/linked-data/registry#Status) (c)<br />[PlaceType](PlaceType) (c)<br />[PlaceNameFormality](PlaceNameFormality) (c)<br />
+Sub-classes |[PlaceNameFormality](PlaceNameFormality) (c)<br />[PlaceType](PlaceType) (c)<br />[reg:Status](http://purl.org/linked-data/registry#Status) (c)<br />
 ### Temporal Entity
 Property | Value
 --- | ---
@@ -203,7 +203,7 @@ Property | Value
 URI | `http://www.w3.org/ns/prov#Agent`
 Description | <p>The Provenance Ontology's Agent Class</p>
 Sub-classes |[sdo:Organization](https://schema.org/Organization) (c)<br />
-### Organization
+### Organisation
 Property | Value
 --- | ---
 URI | `https://schema.org/Organization`

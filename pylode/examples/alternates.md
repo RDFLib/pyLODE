@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
 
 # Alternates View Profile Schema
 
@@ -48,14 +48,14 @@ Property | Value
 --- | ---
 URI | `http://data.surroundaustralia.com/def/alternates#View`
 Description | <p>A set of properties to show for a resource.</p>
-Usage Note | Use this class to represent a 'view' that of representations of a resource conform to.
+Usage Note | <p>Use this class to represent a 'view' that of representations of a resource conform to.</p>
 ### Media Type
 Property | Value
 --- | ---
 URI | `http://purl.org/dc/terms/MediaType`
 Is Defined By | http://purl.org/dc/terms/
 Description | <p>A file format or physical medium.</p>
-Usage Note | Use this class to represent instances of Media Types as listed by IANA as the target values for dct:format.
+Usage Note | <p>Use this class to represent instances of Media Types as listed by IANA as the target values for dct:format.</p>
 In range of |[dct:format](http://purl.org/dc/terms/format)<br />
 
 ## Object Properties
@@ -67,18 +67,21 @@ In range of |[dct:format](http://purl.org/dc/terms/format)<br />
 Property | Value
 --- | ---
 URI | `http://data.surroundaustralia.com/def/alternates#hasDefaultFormat`
+Description | The Format returned of a Resource's representation if no specific Format request is made.
 Super-properties |[dct:format](http://purl.org/dc/terms/format)<br />
 [](hasDefaultView)
 ### hasDefaultView
 Property | Value
 --- | ---
 URI | `http://data.surroundaustralia.com/def/alternates#hasDefaultView`
+Description | The View returned to which a Resource's representation conforms if no specific View request is made.
 Super-properties |[hasView](hasView) (op)<br />
 [](hasView)
 ### hasView
 Property | Value
 --- | ---
 URI | `http://data.surroundaustralia.com/def/alternates#hasView`
+Description | A resource' representation has a View
 
 ## Properties
 [format](#format),
@@ -88,6 +91,7 @@ Property | Value
 --- | ---
 URI | `http://purl.org/dc/terms/format`
 Is Defined By | http://purl.org/dc/terms/
+Description | The file format, physical medium, or dimensions of the resource.
 Usage Note | Use this property to indicate a dct:MediaType
 Range(s) |[dct:MediaType](http://purl.org/dc/terms/MediaType) (c)<br />
 
