@@ -686,7 +686,7 @@ and change/add development priorities.
 Current Release
 ---------------
 
-The current release, as of January, 2021, is **2.8.5**.
+The current release, as of February, 2021, is **2.8.6**.
 
 Release Schedule
 ----------------
@@ -696,7 +696,8 @@ Release Schedule
    :widths: 15, 10, 30
 
    3.0, *?*, "Will include pre-testing inputs with SHACL"
-   **2.8.5**, **5 Jan 20201**, "Small enhancements to the Falcon server deployment option"
+   **2.8.5**, **23 Feb 20201**, "Fixing char encoding issues, updated examples, new test files style - per issue"
+   2.8.5, 5 Jan 20201, "Small enhancements to the Falcon server deployment option"
    2.8.3, 3 July 2020, "Packaging bugfixes only"
    2.7, 1 July 2020, "Much refactoring for new profile creation ease"
    2.6, June 2020, "Supports PROF profiles as well as taxonomies & ontologies"

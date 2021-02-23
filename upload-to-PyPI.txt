@@ -1,0 +1,18 @@
+# 1. delete build/ , dist/, pyLODE.egg-info
+> rm -rf build dist pyLODE.egg-info
+
+# 2. change version no in pylode/common.py
+
+# 3. Update README, esp Releases Roadmap - 3 places: "current release", table & release notes
+
+# 4. $ git commit changes
+
+# 5. $ git tag <VERSION_NO>
+
+# 6. $ git push
+#    $ git push --tags
+
+# 7. $ python setup.py sdist bdist_wheel
+
+# 8. $ twine upload dist/*
+#    $ twine check dist/*  -- check ReStructuredText
