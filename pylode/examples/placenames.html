@@ -215,7 +215,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.6</span>
+    <span style="font-size:smaller;">2.8.6</span>
   </div>
   <h1>Place Names Profile</h1>
 <section id="metadata">
@@ -316,7 +316,7 @@
         <li><a href="#Geometry">Geometry</a></li>
         <li><a href="#Identifier">Identifier</a></li>
         <li><a href="#Jurisdiction">Jurisdiction</a></li>
-        <li><a href="#Organization">Organization</a></li>
+        <li><a href="#Organisation">Organisation</a></li>
         <li><a href="#Place">Place</a></li>
         <li><a href="#PlaceName">Place Name</a></li>
         <li><a href="#PlaceNameFormality">Place Name Formality</a></li>
@@ -486,15 +486,15 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasfeatureclassification">hasFeatureClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#PlaceType">PlaceType</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#register">register</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Gazetteer">Gazetteer</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasfeatureclassification">hasFeatureClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#PlaceType">PlaceType</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Region">Region</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#PointofInterest">PointOfInterest</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Region">Region</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -527,8 +527,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#wasnamedby">wasNamedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Jurisdiction">Jurisdiction</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#pronunciation">hasPronunciation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#wasnamedby">wasNamedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Jurisdiction">Jurisdiction</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://www.w3.org/ns/adms#identifier">adms:identifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="https://www.w3.org/ns/adms#Identifier">adms:Identifier</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/linked-data/registry#status">reg:status</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.org/linked-data/registry#Status">reg:Status</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#register">register</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Gazetteer">Gazetteer</a><sup class="sup-c" title="class">c</sup><br/>
@@ -537,10 +537,10 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#wasnamedby">wasNamedBy</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasplacenamingauthority">hasPlaceNamingAuthority</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasplacenameformality">hasPlaceNameFormality</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasplacenamingauthority">hasPlaceNamingAuthority</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#pronunciation">hasPronunciation</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#wasnamedby">wasNamedBy</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -720,10 +720,10 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/gnaf#Address">gnaf:Address</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/asgs#Feature">asgs:Feature</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#ContractedCatchment">ContractedCatchment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#Place">Place</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/asgs#Feature">asgs:Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/gnaf#Address">gnaf:Address</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ContractedCatchment">ContractedCatchment</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -775,9 +775,9 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://purl.org/linked-data/registry#Status">reg:Status</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#PlaceType">PlaceType</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#PlaceNameFormality">PlaceNameFormality</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#PlaceType">PlaceType</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#Status">reg:Status</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -812,8 +812,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="Organization">
-        <h3>Organization<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="Organisation">
+        <h3>Organisation<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>URI</th>

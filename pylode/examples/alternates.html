@@ -220,7 +220,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.6</span>
+    <span style="font-size:smaller;">2.8.6</span>
   </div>
   <h1>Alternates View Profile Schema</h1>
 <section id="metadata">
@@ -338,7 +338,7 @@
             <tr>
                 <th>Usage Note</th>
                 <td>
-                    Use this class to represent a 'view' that of representations of a resource conform to.
+                    <p>Use this class to represent a 'view' that of representations of a resource conform to.</p>
                 </td>
             </tr>
         </table>
@@ -365,7 +365,7 @@
             <tr>
                 <th>Usage Note</th>
                 <td>
-                    Use this class to represent instances of Media Types as listed by IANA as the target values for dct:format.
+                    <p>Use this class to represent instances of Media Types as listed by IANA as the target values for dct:format.</p>
                 </td>
             </tr>
             <tr>
@@ -392,6 +392,12 @@
                 <td><code>http://data.surroundaustralia.com/def/alternates#hasDefaultFormat</code></td>
             </tr>
             <tr>
+                <th>Description</th>
+                <td>
+                    The Format returned of a Resource's representation if no specific Format request is made.
+                </td>
+            </tr>
+            <tr>
                 <th>Super-properties</th>
                 <td>
                     <a href="http://purl.org/dc/terms/format">dct:format</a>
@@ -407,6 +413,12 @@
                 <td><code>http://data.surroundaustralia.com/def/alternates#hasDefaultView</code></td>
             </tr>
             <tr>
+                <th>Description</th>
+                <td>
+                    The View returned to which a Resource's representation conforms if no specific View request is made.
+                </td>
+            </tr>
+            <tr>
                 <th>Super-properties</th>
                 <td>
                     <a href="#hasView">hasView</a><sup class="sup-op" title="object property">op</sup>
@@ -420,6 +432,12 @@
             <tr>
                 <th>URI</th>
                 <td><code>http://data.surroundaustralia.com/def/alternates#hasView</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A resource' representation has a View
+                </td>
             </tr>
         </table>
     </div>
@@ -441,6 +459,12 @@
                 <th>Is Defined By</th>
                 <td>
                     http://purl.org/dc/terms/
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The file format, physical medium, or dimensions of the resource.
                 </td>
             </tr>
             <tr>

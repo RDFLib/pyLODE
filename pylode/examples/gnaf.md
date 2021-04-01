@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
 
 # GNAF ontology
 
@@ -71,9 +71,9 @@ Sub-classes |[Locality](Locality) (c)<br />[Address](Address) (c)<br />[Street](
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/gnaf#Address`
-Super-classes |[prov:Location](http://www.w3.org/ns/prov#Location) (c)<br />[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />[http://reference.data.gov.au/def/ont/iso19160-1-address#Address](http://reference.data.gov.au/def/ont/iso19160-1-address#Address) (c)<br />[GnafEntity](GNAFEntity) (c)<br />[dbo:Location](http://dbpedia.org/ontology/Location) (c)<br />
-Restrictions |[hasAlias](hasAlias) (op) **some** [Alias](Alias) (c)<br />[hasMeshBlockMatch](hasMeshBlockmatch) (op) **some** [MeshBlockMatch](MeshBlockMatch) (c)<br />[dct:description](http://purl.org/dc/terms/description) **max** 1<br />[hasAddressSite](hasAddressSite) (op) **exactly** 1 [AddressSite](AddressSite) (c)<br />[hasNumber](hasNumber) (op) **some** [Number](Number) (c)<br />[hasStreetLocality](hasStreetLocality) (op) **exactly** 1 [StreetLocality](StreetLocality) (c)<br />[hasBuildingName](hasbuildingname) (dp) **max** 1<br />[hasLocality](hasLocality) (op) **exactly** 1 [Locality](Locality) (c)<br />[hasDateLastModified](hasdatelastmodified) (dp) **exactly** 1<br />[geo:hasGeometry](http://www.opengis.net/ont/geosparql#hasGeometry) **min** 1 [sf:Point](http://www.opengis.net/ont/sf#Point) (c)<br />[hasGnafConfidence](hasGNAFconfidence) (op) **exactly** 1 [GnafConfidence](http://linked.data.gov.au/def/gnaf#GnafConfidence) (c)<br />[hasPostcode](haspostcode) (dp) **max** 1<br />
-In domain of |[hasGeocode](hasGeocode) (op)<br />[hasMeshBlockMatch](hasMeshBlockmatch) (op)<br />[hasNumber](hasNumber) (op)<br />[hasAddressSite](hasAddressSite) (op)<br />[hasGnafConfidence](hasGNAFconfidence) (op)<br />[hasAddressSecondary](hasAddressSecondary) (op)<br />[hasStreetLocality](hasStreetLocality) (op)<br />
+Super-classes |[dbo:Location](http://dbpedia.org/ontology/Location) (c)<br />[prov:Location](http://www.w3.org/ns/prov#Location) (c)<br />[http://reference.data.gov.au/def/ont/iso19160-1-address#Address](http://reference.data.gov.au/def/ont/iso19160-1-address#Address) (c)<br />[GnafEntity](GNAFEntity) (c)<br />[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
+Restrictions |[dct:description](http://purl.org/dc/terms/description) **max** 1<br />[hasMeshBlockMatch](hasMeshBlockmatch) (op) **some** [MeshBlockMatch](MeshBlockMatch) (c)<br />[geo:hasGeometry](http://www.opengis.net/ont/geosparql#hasGeometry) **min** 1 [sf:Point](http://www.opengis.net/ont/sf#Point) (c)<br />[hasBuildingName](hasbuildingname) (dp) **max** 1<br />[hasNumber](hasNumber) (op) **some** [Number](Number) (c)<br />[hasDateLastModified](hasdatelastmodified) (dp) **exactly** 1<br />[hasAlias](hasAlias) (op) **some** [Alias](Alias) (c)<br />[hasPostcode](haspostcode) (dp) **max** 1<br />[hasGnafConfidence](hasGNAFconfidence) (op) **exactly** 1 [GnafConfidence](http://linked.data.gov.au/def/gnaf#GnafConfidence) (c)<br />[hasStreetLocality](hasStreetLocality) (op) **exactly** 1 [StreetLocality](StreetLocality) (c)<br />[hasAddressSite](hasAddressSite) (op) **exactly** 1 [AddressSite](AddressSite) (c)<br />[hasLocality](hasLocality) (op) **exactly** 1 [Locality](Locality) (c)<br />
+In domain of |[hasStreetLocality](hasStreetLocality) (op)<br />[hasGnafConfidence](hasGNAFconfidence) (op)<br />[hasAddressSite](hasAddressSite) (op)<br />[hasAddressSecondary](hasAddressSecondary) (op)<br />[hasGeocode](hasGeocode) (op)<br />[hasMeshBlockMatch](hasMeshBlockmatch) (op)<br />[hasNumber](hasNumber) (op)<br />
 In range of |[hasAddressSecondary](hasAddressSecondary) (op)<br />[hasAlias](hasAlias) (op)<br />
 ### Address Site
 Property | Value
@@ -95,15 +95,15 @@ URI | `http://linked.data.gov.au/def/gnaf#GnafEntity`
 Description | <p>Entities (things) that are present as records in the GNAF database. Every GNAF Entity has a data created, date last modified (can be the same) and may have a data retired. These dates indicate the creation, modification &amp; retirement of the representation of the Entity in the GNAF database, not the real-world Entity.</p>
 Super-classes |[prov:Entity](http://www.w3.org/ns/prov#Entity) (c)<br />
 Restrictions |[hasDateRetired](hasdateretired) (dp) **max** 1<br />[hasDateCreated](hasdatecreated) (dp) **exactly** 1<br />
-Sub-classes |[MeshBlockMatch](MeshBlockMatch) (c)<br />[Locality](Locality) (c)<br />[Address](Address) (c)<br />[Street](Street) (c)<br />[Alias](Alias) (c)<br />[AddressSite](AddressSite) (c)<br />[geo:Geometry](http://www.opengis.net/ont/geosparql#Geometry) (c)<br />
+Sub-classes |[AddressSite](AddressSite) (c)<br />[MeshBlockMatch](MeshBlockMatch) (c)<br />[Locality](Locality) (c)<br />[Address](Address) (c)<br />[Street](Street) (c)<br />[geo:Geometry](http://www.opengis.net/ont/geosparql#Geometry) (c)<br />[Alias](Alias) (c)<br />
 ### Locality
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/gnaf#Locality`
-Super-classes |[dbo:Location](http://dbpedia.org/ontology/Location) (c)<br />[prov:Location](http://www.w3.org/ns/prov#Location) (c)<br />[GnafEntity](GNAFEntity) (c)<br />[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
-Restrictions |[hasName](hasname) (dp) **exactly** 1<br />[hasNeighbour](hasneighbour) (op) **some** [Locality](Locality) (c)<br />[hasAlias](hasAlias) (op) **some** [Alias](Alias) (c)<br />[hasPrimaryPostcode](hasprimarypostcode) (dp) **max** 1<br />[geo:hasGeometry](http://www.opengis.net/ont/geosparql#hasGeometry) **min** 1 [sf:Point](http://www.opengis.net/ont/sf#Point) (c)<br />
+Super-classes |[dbo:Location](http://dbpedia.org/ontology/Location) (c)<br />[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />[GnafEntity](GNAFEntity) (c)<br />[prov:Location](http://www.w3.org/ns/prov#Location) (c)<br />
+Restrictions |[hasNeighbour](hasneighbour) (op) **some** [Locality](Locality) (c)<br />[hasAlias](hasAlias) (op) **some** [Alias](Alias) (c)<br />[geo:hasGeometry](http://www.opengis.net/ont/geosparql#hasGeometry) **min** 1 [sf:Point](http://www.opengis.net/ont/sf#Point) (c)<br />[hasPrimaryPostcode](hasprimarypostcode) (dp) **max** 1<br />[hasName](hasname) (dp) **exactly** 1<br />
 In domain of |[hasPrimaryPostcode](hasprimarypostcode) (dp)<br />[hasNeighbour](hasneighbour) (op)<br />
-In range of |[hasNeighbour](hasneighbour) (op)<br />[hasAlias](hasAlias) (op)<br />[hasLocality](hasLocality) (op)<br />
+In range of |[hasLocality](hasLocality) (op)<br />[hasNeighbour](hasneighbour) (op)<br />[hasAlias](hasAlias) (op)<br />
 ### 2011 Mesh Block
 Property | Value
 --- | ---
@@ -133,15 +133,15 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/gnaf#Number`
 Super-classes |[prov:Entity](http://www.w3.org/ns/prov#Entity) (c)<br />
-Restrictions |[hasPrefix](hasprefix) (dp) **max** 1<br />[hasSuffix](hassuffix) (dp) **max** 1<br />
-In domain of |[hasSuffix](hassuffix) (dp)<br />[hasPrefix](hasprefix) (dp)<br />
+Restrictions |[hasSuffix](hassuffix) (dp) **max** 1<br />[hasPrefix](hasprefix) (dp) **max** 1<br />
+In domain of |[hasPrefix](hasprefix) (dp)<br />[hasSuffix](hassuffix) (dp)<br />
 In range of |[hasNumber](hasNumber) (op)<br />
 ### Street
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/gnaf#Street`
-Super-classes |[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />[prov:Location](http://www.w3.org/ns/prov#Location) (c)<br />[GnafEntity](GNAFEntity) (c)<br />[dbo:Location](http://dbpedia.org/ontology/Location) (c)<br />
-Restrictions |[hasAlias](hasAlias) (op) **some** [Alias](Alias) (c)<br />[hasName](hasname) (dp) **exactly** 1<br />[hasStreetSuffix](hasStreetSuffix) (op) **max** 1 [StreetSuffix](http://linked.data.gov.au/def/gnaf#StreetSuffix) (c)<br />
+Super-classes |[prov:Location](http://www.w3.org/ns/prov#Location) (c)<br />[dbo:Location](http://dbpedia.org/ontology/Location) (c)<br />[GnafEntity](GNAFEntity) (c)<br />[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
+Restrictions |[hasName](hasname) (dp) **exactly** 1<br />[hasStreetSuffix](hasStreetSuffix) (op) **max** 1 [StreetSuffix](http://linked.data.gov.au/def/gnaf#StreetSuffix) (c)<br />[hasAlias](hasAlias) (op) **some** [Alias](Alias) (c)<br />
 Sub-classes |[StreetLocality](StreetLocality) (c)<br />
 In domain of |[hasStreetConfirmation](hasStreetConfirmation) (op)<br />
 In range of |[hasAlias](hasAlias) (op)<br />
@@ -150,7 +150,7 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/gnaf#StreetLocality`
 Super-classes |[Street](Street) (c)<br />
-Restrictions |[hasGnafConfidence](hasGNAFconfidence) (op) **exactly** 1 [GnafConfidence](http://linked.data.gov.au/def/gnaf#GnafConfidence) (c)<br />[hasLocality](hasLocality) (op) **exactly** 1 [Locality](Locality) (c)<br />[geo:hasGeometry](http://www.opengis.net/ont/geosparql#hasGeometry) **min** 1 [sf:Point](http://www.opengis.net/ont/sf#Point) (c)<br />
+Restrictions |[hasLocality](hasLocality) (op) **exactly** 1 [Locality](Locality) (c)<br />[geo:hasGeometry](http://www.opengis.net/ont/geosparql#hasGeometry) **min** 1 [sf:Point](http://www.opengis.net/ont/sf#Point) (c)<br />[hasGnafConfidence](hasGNAFconfidence) (op) **exactly** 1 [GnafConfidence](http://linked.data.gov.au/def/gnaf#GnafConfidence) (c)<br />
 In domain of |[hasStreetSuffix](hasStreetSuffix) (op)<br />[hasLocality](hasLocality) (op)<br />
 In range of |[hasStreetLocality](hasStreetLocality) (op)<br />
 ### ISO19160-1 Address
@@ -215,7 +215,7 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/gnaf#hasAlias`
 Domain(s) |[Alias](Alias) (c)<br />
-Range(s) |[Locality](Locality) (c)<br />[Address](Address) (c)<br />[Street](Street) (c)<br />
+Range(s) |[Street](Street) (c)<br />[Address](Address) (c)<br />[Locality](Locality) (c)<br />
 [](hasGeocode)
 ### has Geocode
 Property | Value

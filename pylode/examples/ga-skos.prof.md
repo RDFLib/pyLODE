@@ -21,12 +21,12 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * **Profile RDF**
   * 
 * **Has Resource Descriptor(s)**
-  * [Specification Document](ub1bL16C22)
-  * [Validator in SHACL](ub1bL23C5)
-  * [Example of a valid vocabulary](ub1bL30C5)
-  * [Example of an invalid vocabulary](ub1bL36C5)
-  * [Example of a second invalid vocabulary](ub1bL43C5)
-  * [Profile code repository](ub1bL50C5)
+  * [Specification Document](ub2bL16C22)
+  * [Validator in SHACL](ub2bL23C5)
+  * [Example of a valid vocabulary](ub2bL30C5)
+  * [Example of an invalid vocabulary](ub2bL36C5)
+  * [Example of a second invalid vocabulary](ub2bL43C5)
+  * [Profile code repository](ub2bL50C5)
 ### Description
 
 

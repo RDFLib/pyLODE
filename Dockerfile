@@ -10,7 +10,7 @@ RUN apt-get update && \
 
 # install extra requirements for pyLODE-via-server
 COPY requirements.server.txt /tmp/
-RUN pip install -r /tmp/requirements.server.txt
+RUN pip3 install -r /tmp/requirements.server.txt
 
 # copy the current directory contents
 ADD . /app

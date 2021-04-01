@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
 
 # Sensor, Observation, Sample, and Actuator (SOSA) Ontology
 
@@ -10,7 +10,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
 * **Created**
   * 2017-04-17
 * **License &amp; Rights**
-  * [http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document](http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document)
+  * [http://www.opengeospatial.org/ogc/Software](http://www.opengeospatial.org/ogc/Software)
   * &copy; 2017 W3C/OGC.
 * **Ontology RDF**
   * RDF ([sosa.ttl](turtle))
@@ -122,7 +122,7 @@ Property | Value
 --- | ---
 URI | `http://www.w3.org/ns/sosa/Sample`
 Is Defined By | http://www.w3.org/ns/sosa/
-Description | <p>Samples are artifacts of an observational strategy, and have no significant function outside of their role in the observation process. The characteristics of the samples themselves are of little interest, except perhaps to the manager of a sampling campaign.</p> <p>A Sample is intended to sample some FatureOfInterest, so there is an expectation of at least one isSampleOf property. However, in some cases the identity, and even the exact type, of the sampled feature may not be known when observations are made using the sampling features.</p>
+Description | <p>Physical samples are sometimes known as 'specimens'.</p>
 Example | `A statistical sample is often designed to be characteristic of an entire population, so that observations can be made regarding the sample that provide a good estimate of the properties of the population.`<br />
 ### Sampler
 Property | Value
@@ -137,7 +137,7 @@ Property | Value
 URI | `http://www.w3.org/ns/sosa/Sampling`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | <p>An act of Sampling carries out a sampling Procedure to create or transform one or more samples.</p>
-Example | `Taking a diamond-drill core from a rock outcrop.`<br />
+Example | `Selecting a subset of a population.`<br />
 ### Sensor
 Property | Value
 --- | ---

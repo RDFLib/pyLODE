@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
 
 # The RDF Concepts Vocabulary (RDF)
 
@@ -48,7 +48,7 @@ URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#List`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | <p>The class of RDF Lists.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
-In domain of |[rdf:rest](http://www.w3.org/1999/02/22-rdf-syntax-ns#rest)<br />[rdf:first](http://www.w3.org/1999/02/22-rdf-syntax-ns#first)<br />
+In domain of |[rdf:first](http://www.w3.org/1999/02/22-rdf-syntax-ns#first)<br />[rdf:rest](http://www.w3.org/1999/02/22-rdf-syntax-ns#rest)<br />
 In range of |[rdf:rest](http://www.w3.org/1999/02/22-rdf-syntax-ns#rest)<br />
 ### Property
 Property | Value
@@ -71,7 +71,7 @@ URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | <p>The class of RDF statements.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
-In domain of |[rdf:subject](http://www.w3.org/1999/02/22-rdf-syntax-ns#subject)<br />[rdf:object](http://www.w3.org/1999/02/22-rdf-syntax-ns#object)<br />[rdf:predicate](http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate)<br />
+In domain of |[rdf:object](http://www.w3.org/1999/02/22-rdf-syntax-ns#object)<br />[rdf:subject](http://www.w3.org/1999/02/22-rdf-syntax-ns#subject)<br />[rdf:predicate](http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate)<br />
 
 ## Properties
 [first](#first),

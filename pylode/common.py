@@ -1,11 +1,17 @@
 from os import path
 from urllib import request
 from rdflib import util, Graph
+import sys
 
-VERSION = "2.8.4"
-APP_DIR = path.dirname(path.realpath(__file__))
-TEMPLATES_DIR = path.join(path.dirname(path.realpath(__file__)), "templates")
-STYLE_DIR = path.join(path.dirname(path.realpath(__file__)), "style")
+VERSION = "2.8.6"
+
+# set APP_DIR to EXE folder if being called within pyinstaller EXE
+if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+    APP_DIR = sys._MEIPASS
+else:  # use normal Python pathing
+    APP_DIR = path.dirname(path.realpath(__file__))
+TEMPLATES_DIR = path.join(APP_DIR, "templates")
+STYLE_DIR = path.join(APP_DIR, "style")
 RDF_FILE_EXTENSIONS = [".rdf", ".owl", ".ttl", ".n3", ".nt", ".json"]
 RDF_SERIALIZER_MAP = {
     "text/turtle": "turtle",
@@ -46,7 +52,7 @@ class MakeDocco:
         :param get_curies_online: Whether (True) or not (False, default) to search prefix.cc online for additional URI prefixes
         :type get_curies_online: boolean
         :param profile: When document profile, from a supported set, to use. Currently supported is "ontdoc" (profile of OWL) or "skosp" (profile of SKOS). See `list_profiles()` for full list of profiles.
-        :type profile: string (one of "ontdoc" or "skosp")
+        :type profile: string (one of "ontdoc", "skosp" or "prof")
         """
         self.profile_selected = profile
 
@@ -175,7 +181,7 @@ class MakeDocco:
         if destination is not None:
             doc = p.generate_document()
             try:
-                with open(destination, "w") as f:
+                with open(destination, "w", encoding="utf8") as f:
                     f.write(doc)
             except Exception as e:
                 print(e)

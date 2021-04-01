@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
 
 # GeoSPARQL Extensions Ontology
 
@@ -48,7 +48,7 @@ Description | <p>Spatial quantity computed or defined within a specified coordin
 Super-classes |[data:QuantitativeMeasure](http://linked.data.gov.au/def/datatype/QuantitativeMeasure) (c)<br />
 Restrictions |[geox:inCRS](InCoordinateReferenceSystem) (op) **exactly** 1<br />
 In domain of |[geox:inCRS](InCoordinateReferenceSystem) (op)<br />
-In range of |[geox:hasLength](haslength) (op)<br />[geox:hasVolume](hasvolume) (op)<br />[geox:hasArea](hasarea) (op)<br />
+In range of |[geox:hasArea](hasarea) (op)<br />[geox:hasVolume](hasvolume) (op)<br />[geox:hasLength](haslength) (op)<br />
 
 ## Object Properties
 [has area](#hasarea),
@@ -66,6 +66,7 @@ In range of |[geox:hasLength](haslength) (op)<br />[geox:hasVolume](hasvolume) (
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/geox#hasArea`
+Description | The area of a spatial object, expressed as a scaled number
 Example | ````my:plot456`<br />`  :hasArea [`<br />`    data:uncertainty 0.5 ;`<br />`    data:unit <http://qudt.org/vocab/unit/M2> ;`<br />`    data:value 63.9 ;`<br />`  ] ;`<br />`.`<br />```
 Domain(s) |[geo:SpatialObject](http://www.opengis.net/ont/geosparql#SpatialObject) (c)<br />
 Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
@@ -74,6 +75,7 @@ Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/geox#hasAreaM2`
+Description | The area of the spatial object in m^2
 Example | ````my:plot456`<br />`  :hasAreaM2 [`<br />`    data:value 63.9 ;`<br />`  ] ;`<br />`.`<br />```
 Super-properties |[geox:hasArea](hasarea) (op)<br />
 [](haslength)
@@ -81,6 +83,7 @@ Super-properties |[geox:hasArea](hasarea) (op)<br />
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/geox#hasLength`
+Description | The length of a spatial object, expressed as a scaled number
 Example | ````my:road456`<br />`  :hasLength [`<br />`    data:uncertainty 5.0 ;`<br />`    data:unit <http://qudt.org/vocab/unit/M> ;`<br />`    data:value 234.0 ;`<br />`  ] ;`<br />`.`<br />```
 Domain(s) |[geo:SpatialObject](http://www.opengis.net/ont/geosparql#SpatialObject) (c)<br />
 Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
@@ -89,6 +92,7 @@ Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/geox#hasLengthM`
+Description | The length of a spatial object in metres
 Example | ````my:road456`<br />`  :hasLengthM [`<br />`    data:value 234.0 ;`<br />`  ] ;`<br />`.`<br />```
 Super-properties |[geox:hasLength](haslength) (op)<br />
 [](hasspatialresolution)
@@ -96,6 +100,7 @@ Super-properties |[geox:hasLength](haslength) (op)<br />
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/geox#hasResolution`
+Description | The spatial resolution of the Geometry object, expressed as a linear measurement.
 Example | ````my:image456`<br />`  :hasResolution [`<br />`    data:unit <http://qudt.org/vocab/unit/M> ;`<br />`    data:value 30.0 ;`<br />`  ] ;`<br />`.`<br />```
 Domain(s) |[geo:Geometry](http://www.opengis.net/ont/geosparql#Geometry) (c)<br />
 Range(s) |[data:QuantitativeMeasure](http://linked.data.gov.au/def/datatype/QuantitativeMeasure) (c)<br />
@@ -104,6 +109,7 @@ Range(s) |[data:QuantitativeMeasure](http://linked.data.gov.au/def/datatype/Quan
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/geox#hasResolutionM`
+Description | The spatial resolution of the Geometry object, expressed as a linear distance in metres
 Example | ````my:image456`<br />`  :hasResolutionM [`<br />`    data:value 30.0 ;`<br />`  ] ;`<br />`.`<br />```
 Super-properties |[geox:hasResolution](hasspatialresolution) (op)<br />
 Domain(s) |[geo:Geometry](http://www.opengis.net/ont/geosparql#Geometry) (c)<br />
@@ -112,6 +118,7 @@ Domain(s) |[geo:Geometry](http://www.opengis.net/ont/geosparql#Geometry) (c)<br 
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/geox#hasVolume`
+Description | The volume of a spatial object, expressed as a scaled number
 Example | ````my:swimmingPool99`<br />`  :hasVolume [`<br />`    data:unit <http://qudt.org/vocab/unit/M3> ;`<br />`    data:value 3050.0 ;`<br />`  ] ;`<br />`.`<br />```
 Domain(s) |[geo:SpatialObject](http://www.opengis.net/ont/geosparql#SpatialObject) (c)<br />
 Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
@@ -120,6 +127,7 @@ Range(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/geox#hasVolumeM3`
+Description | The volume of a spatial object in cubic-metres
 Example | ````my:swimmingPool99`<br />`  :hasVolumeM3 [`<br />`    data:value 3050.0 ;`<br />`  ] ;`<br />`.`<br />```
 Super-properties |[geox:hasVolume](hasvolume) (op)<br />
 [](InCoordinateReferenceSystem)
@@ -127,12 +135,14 @@ Super-properties |[geox:hasVolume](hasvolume) (op)<br />
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/geox#inCRS`
+Description | The measure is defined or computed using this CRS.  The CRS should be denoted by a URI Reference to a CRS definition, e.g. https://www.opengis.net/def/crs/EPSG/0/4326
 Domain(s) |[geox:SpatialMeasure](Spatialmeasure) (c)<br />
 [](isgeometryof)
 ### is geometry of
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/geox#isGeometryOf`
+Description | link from a geometry object to the feature(s) for which it is a geometry
 Domain(s) |[geo:Geometry](http://www.opengis.net/ont/geosparql#Geometry) (c)<br />
 Range(s) |[geo:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
 
