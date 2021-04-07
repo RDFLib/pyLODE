@@ -1,0 +1,127 @@
+<h1>{{ title }}</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>URI</dt>
+        <dd><code>{{ uri }}</code></dd>
+        {%- if publishers|length > 0 %}
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher">Publisher</a>(s)</dt>
+        <dd>
+            {%- for publisher in publishers %}
+            {{ publisher }}<br/>
+            {%- endfor %}
+        </dd>
+        {%- endif %}
+        {%- if creators|length > 0 %}
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
+        <dd>
+            {%- for creator in creators %}
+            {{ creator }}<br/>
+            {%- endfor %}
+        </dd>
+        {%- endif %}
+        {%- if contributors|length > 0 %}
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/contributor">Contributor</a>(s)</dt>
+        <dd>
+            {%- for contributor in contributors %}
+            {{ contributor }}<br/>
+            {%- endfor %}
+        </dd>
+        {%- endif %}
+        {%- if created is not none %}
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/created">Created</a></dt>
+        <dd>{{ created }}</dd>
+        {%- endif %}
+        {%- if modified is not none %}
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
+        <dd>{{ modified }}</dd>
+        {%- endif %}
+        {%- if issued is not none %}
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/issued">Issued</a></dt>
+        <dd>{{ issued }}</dd>
+        {%- endif %}
+        {%- if version_info is not none %}
+        <dt>Version Information</dt>
+        <dd>{{ version_info }}</dd>
+        {%- endif %}
+        {%- if version_uri is not none %}
+        <dt>Version URI</dt>
+        <dd>{{ version_uri }}</dd>
+        {%- endif %}
+        {%- if imports|length > 0 %}
+        <dt>Imports</dt>
+        <dd>
+            {%- for import in imports %}
+            {{ import }}<br/>
+            {%- endfor %}
+        </dd>
+        {%- endif %}
+        {%- if rights is not none and license is not none %}
+        <dt>License &amp; Rights</dt>
+        <dd>
+            {{ license }}<br />
+            {{ rights }}
+        </dd>
+        {%- elif rights is not none and license is none %}
+        <dt>Rights</dt>
+        <dd>{{ rights }}</dd>
+        {%- elif rights is none and license is not none %}
+        <dt>License</dt>
+        <dd>{{ license }}</dd>
+        {%- endif %}
+        {%- if source is not none %}
+        <dt>Source</dt>
+        <dd>{{ source }}</dd>
+        {%- endif %}
+        <dt>Ontology RDF</dt>
+        <dd>{{ ont_rdf }}</dd>
+        {%- if repository is not none %}
+        <dt>Code Repository</dt>
+        <dd>{{ repository }}</dd>
+        {%- endif %}
+    </dl>
+    {%- if description is not none %}
+    <h2>Description</h2>
+    <div id="description">
+        {{ description }}
+    </div>
+    {%- endif %}
+    {%- if historyNote is not none %}
+    <p><strong>History Note:</strong> {{ historyNote }}</p>
+    {%- endif %}
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        {%- if has_classes %}
+        <li><a href="#classes">Classes</a></li>
+        {%- endif %}
+        {%- if has_ops %}
+        <li><a href="#objectproperties">Object Properties</a></li>
+        {%- endif %}
+        {%- if has_fps %}
+        <li><a href="#functionalproperties">Functional Properties</a></li>
+        {%- endif %}
+        {%- if has_dps %}
+        <li><a href="#datatypeproperties">Datatype Properties</a></li>
+        {%- endif %}
+        {%- if has_aps %}
+        <li><a href="#annotationproperties">Annotation Properties</a></li>
+        {%- endif %}
+        {%- if has_ps %}
+        <li><a href="#properties">Properties</a></li>
+        {%- endif %}
+        {%- if has_nis %}
+        <li><a href="#namedindividuals">Named Individuals</a></li>
+        {%- endif %}
+        <li><a href="#namespaces">Namespaces</a></li>
+        <li><a href="#legend">Legend</a></li>
+    </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+        <div style="width:500px; height:50px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;">Pictures say 1,000 words</div>
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
+</section>
