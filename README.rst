@@ -134,8 +134,7 @@ To use pyLODE within Python, try something like this:
     html = pylode.MakeDocco(
         input_data_file=input_file_path,
         outputformat="html",
-        profile="owldoc",
-        exclude_css=True
+        profile="ontdoc"
     ).document()
 
 You will now have the HTML content within the variable ``html``.
@@ -207,7 +206,7 @@ Then run the container
 
     docker run -it -d -p 8000:8000 -e GTAGID=${Google TagID} pylode
 
-N.B. The Google TagID is NOT required unless Google Analytics is required. 
+N.B. The Google TagID is NOT required unless Google Analytics is required.
 It looks as follows `GTAGID=UA-168806395-1`.
 
 You can now access the service on localhost
@@ -255,7 +254,7 @@ Once you have PyInstaller, use ``pyinstaller`` to generate the ``pyLODE.exe`` CL
 
 This will output ``pylode.exe`` in the ``dist`` directory in ``pylode``. The .exe file in ``bin/`` is just the latest copy of this.
 
-You can now run the pyLODE Command Line utility via ``pylode.exe``. 
+You can now run the pyLODE Command Line utility via ``pylode.exe``.
 See above for the pyLODE command line util usage instructions.
 
 Mac OS

@@ -117,5 +117,15 @@
                 </td>
             </tr>
             {%- endif %}
+            {%- if has_members|length > 0 %}
+            <tr>
+                <th>Members</th>
+                <td>
+                    {%- for r in has_members %}
+                    {{ r }}<br/>
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
         </table>
     </div>

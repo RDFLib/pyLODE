@@ -54,15 +54,15 @@ class OntDoc(BaseProfile):
                             # domain collections (unionOf | intersectionOf
                             q = '''
                                 PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+                                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
                                 SELECT ?col_type ?col_member
                                 WHERE {{
-                                    <{}> rdfs:domain ?domain .  
+                                    <{}> rdfs:domain ?domain .
                                     ?domain owl:unionOf|owl:intersectionOf ?collection .
-                                    ?domain ?col_type ?collection . 
-                                    ?collection rdf:rest*/rdf:first ?col_member .              
-                                }} 
+                                    ?domain ?col_type ?collection .
+                                    ?collection rdf:rest*/rdf:first ?col_member .
+                                }}
                             '''.format(s)
                             collection_type = None
                             collection_members = []
@@ -70,22 +70,22 @@ class OntDoc(BaseProfile):
                                 collection_type = self._get_curie(str(r.col_type))
                                 collection_members.append(str(r.col_member))
                             domains.append((collection_type, collection_members))
-                    self.PROPERTIES[prop]['domains'] = domains                
+                    self.PROPERTIES[prop]['domains'] = domains
 
                     """
                     if type(o2) == BNode:
                         # onClass collections (unionOf | intersectionOf
                         q = """
                             PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+                            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
                             SELECT ?col_type ?col_member
                             WHERE {{
-                                <{}> owl:onClass ?onClass .  
+                                <{}> owl:onClass ?onClass .
                                 ?onClass owl:unionOf|owl:intersectionOf ?collection .
-                                ?onClass ?col_type ?collection . 
-                                ?collection rdf:rest*/rdf:first ?col_member .              
-                            }} 
+                                ?onClass ?col_type ?collection .
+                                ?collection rdf:rest*/rdf:first ?col_member .
+                            }}
                         """.format(
                             str(subject)
                         )
@@ -133,16 +133,16 @@ class OntDoc(BaseProfile):
                         # someValuesFrom collections (unionOf | intersectionOf
                         q = """
                             PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+                            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
                             SELECT ?col_type ?col_member
                             WHERE {{
                                 <{0}> ?x _:{1} .
                                 _:{1} owl:someValuesFrom|owl:allValuesFrom ?bn2 .
                                 ?bn2 owl:unionOf|owl:intersectionOf ?collection .
-                                ?s ?col_type ?collection . 
-                                ?collection rdf:rest*/rdf:first ?col_member .              
-                            }} 
+                                ?s ?col_type ?collection .
+                                ?collection rdf:rest*/rdf:first ?col_member .
+                            }}
                         """.format(
                             str(subject), str(o2)
                         )
@@ -493,15 +493,15 @@ class OntDoc(BaseProfile):
                     # equivalent classes collections (unionOf | intersectionOf
                     q = """
                         PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
                         SELECT ?col_type ?col_member
                         WHERE {{
-                            <{}> owl:equivalentClass ?eq .  
+                            <{}> owl:equivalentClass ?eq .
                             ?eq owl:unionOf|owl:intersectionOf ?collection .
-                            ?eq ?col_type ?collection . 
-                            ?collection rdf:rest*/rdf:first ?col_member .              
-                        }} 
+                            ?eq ?col_type ?collection .
+                            ?collection rdf:rest*/rdf:first ?col_member .
+                        }}
                     """.format(
                         s
                     )
@@ -524,15 +524,15 @@ class OntDoc(BaseProfile):
                         # super collections (unionOf | intersectionOf
                         q = """
                             PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+                            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
                             SELECT ?col_type ?col_member
                             WHERE {{
-                                <{}> rdfs:subClassOf ?sup .  
+                                <{}> rdfs:subClassOf ?sup .
                                 ?sup owl:unionOf|owl:intersectionOf ?collection .
-                                ?sup ?col_type ?collection . 
-                                ?collection rdf:rest*/rdf:first ?col_member .              
-                            }} 
+                                ?sup ?col_type ?collection .
+                                ?collection rdf:rest*/rdf:first ?col_member .
+                            }}
                         """.format(
                             s
                         )
@@ -557,15 +557,15 @@ class OntDoc(BaseProfile):
                     # sub classes collections (unionOf | intersectionOf
                     q = """
                         PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
                         SELECT ?col_type ?col_member
                         WHERE {{
-                            ?sub rdfs:subClassOf <{}> . 
+                            ?sub rdfs:subClassOf <{}> .
                             ?sub owl:unionOf|owl:intersectionOf ?collection .
-                            ?sub ?col_type ?collection . 
-                            ?collection rdf:rest*/rdf:first ?col_member .              
-                        }} 
+                            ?sub ?col_type ?collection .
+                            ?collection rdf:rest*/rdf:first ?col_member .
+                        }}
                     """.format(
                         s
                     )
@@ -598,6 +598,10 @@ class OntDoc(BaseProfile):
             self.CLASSES[cls]["in_range_includes_of"] = in_range_includes_of
 
             # TODO: cater for Named Individuals of this class - "has members"
+            has_members = []
+            for o in self.G.subjects(predicate=RDF.type, object=s):
+                has_members.append(str(o))
+            self.CLASSES[cls]["has_members"] = has_members
 
         # # sort properties by title
         # x = sorted([(k, v) for k, v in classes.items()], key=lambda tup: tup[1]['title'])
@@ -705,15 +709,15 @@ class OntDoc(BaseProfile):
                     # domain collections (unionOf | intersectionOf
                     q = """
                         PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
                         SELECT ?col_type ?col_member
                         WHERE {{
-                            <{}> rdfs:domain ?domain .  
+                            <{}> rdfs:domain ?domain .
                             ?domain owl:unionOf|owl:intersectionOf ?collection .
-                            ?domain ?col_type ?collection . 
-                            ?collection rdf:rest*/rdf:first ?col_member .              
-                        }} 
+                            ?domain ?col_type ?collection .
+                            ?collection rdf:rest*/rdf:first ?col_member .
+                        }}
                     """.format(
                         s
                     )
@@ -734,15 +738,15 @@ class OntDoc(BaseProfile):
                     # domainIncludes collections (unionOf | intersectionOf
                     q = """
                         PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                        PREFIX sdo: <https://schema.org/>  
+                        PREFIX sdo: <https://schema.org/>
 
                         SELECT ?col_type ?col_member
                         WHERE {{
-                            <{}> sdo:domainIncludes ?domainIncludes .  
+                            <{}> sdo:domainIncludes ?domainIncludes .
                             ?domainIncludes owl:unionOf|owl:intersectionOf ?collection .
-                            ?domainIncludes ?col_type ?collection . 
-                            ?collection rdf:rest*/rdf:first ?col_member .              
-                        }} 
+                            ?domainIncludes ?col_type ?collection .
+                            ?collection rdf:rest*/rdf:first ?col_member .
+                        }}
                     """.format(
                         s
                     )
@@ -761,15 +765,15 @@ class OntDoc(BaseProfile):
                     # range collections (unionOf | intersectionOf
                     q = """
                         PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
                         SELECT ?col_type ?col_member
                         WHERE {{
-                            <{}> rdfs:range ?range .  
+                            <{}> rdfs:range ?range .
                             ?range owl:unionOf|owl:intersectionOf ?collection .
-                            ?range ?col_type ?collection . 
-                            ?collection rdf:rest*/rdf:first ?col_member .              
-                        }} 
+                            ?range ?col_type ?collection .
+                            ?collection rdf:rest*/rdf:first ?col_member .
+                        }}
                     """.format(
                         s
                     )
@@ -788,15 +792,15 @@ class OntDoc(BaseProfile):
                     # rangeIncludes collections (unionOf | intersectionOf
                     q = """
                         PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-                        PREFIX sdo: <https://schema.org/>  
+                        PREFIX sdo: <https://schema.org/>
 
                         SELECT ?col_type ?col_member
                         WHERE {{
-                            <{}> sdo:rangeIncludes ?rangeIncludes .  
+                            <{}> sdo:rangeIncludes ?rangeIncludes .
                             ?rangeIncludes owl:unionOf|owl:intersectionOf ?collection .
-                            ?rangeIncludes ?col_type ?collection . 
-                            ?collection rdf:rest*/rdf:first ?col_member .              
-                        }} 
+                            ?rangeIncludes ?col_type ?collection .
+                            ?collection rdf:rest*/rdf:first ?col_member .
+                        }}
                     """.format(
                         s
                     )
@@ -944,6 +948,7 @@ class OntDoc(BaseProfile):
                     in_domain_includes_of=v["in_domain_includes_of"],
                     in_range_of=v["in_range_of"],
                     in_range_includes_of=v["in_range_includes_of"],
+                    has_members=v["has_members"]
                 )
             )
 
@@ -1276,5 +1281,15 @@ class OntDoc(BaseProfile):
                 )
                 html.append(self._make_formatted_uri(p, type=prop_type))
             self.CLASSES[uri]["in_range_includes_of"] = html
+
+            html = []
+            for p in cls["has_members"]:
+                prop_type = (
+                    self.PROPERTIES.get(p).get("prop_type")
+                    if self.PROPERTIES.get(p)
+                    else None
+                )
+                html.append(self._make_formatted_uri(p, type=prop_type))
+            self.CLASSES[uri]["has_members"] = html
 
         return self._make_document()

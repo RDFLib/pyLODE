@@ -38,3 +38,6 @@ In range of | {%- for i in in_range_of %}{{ i }}<br />{%- endfor %}
 {%- if in_rangeIncludes_of|length > 0 %}
 In range of | {%- for i in in_rangeIncludes_of %}{{ i }}<br />{%- endfor %}
 {%- endif %}
+{%- if has_members|length > 0 %}
+Has members | {%- for i in has_members %}{{ i }}<br />{%- endfor %}
+{%- endif %}
