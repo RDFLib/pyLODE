@@ -1,7 +1,7 @@
 import collections
 
 from jinja2 import Environment, FileSystemLoader
-from rdflib import SDO, SKOS, OWL, URIRef, RDF, PROF, Literal, XSD, Graph, Namespace, FOAF
+from rdflib import SDO, SKOS, OWL, URIRef, RDF, PROF, Literal, XSD, Graph, Namespace, FOAF, Graph
 
 import pylode.profiles.profile
 from pylode.common import TEMPLATES_DIR
@@ -14,13 +14,22 @@ class BaseProfile:
         self.default_language = default_language
         self.get_curies_online = get_curies_online
         self.default_namespace = None
-        self.G = g
+        self.G = self._filter_graph_by_language(g, default_language)
         self.source_info = source_info
         self.G.bind("sdo", SDO)
         self.G.bind("skos", SKOS)
         self.NAMESPACES = collections.OrderedDict()
         self.FIDS = {}
         self.METADATA = {}
+
+    def _filter_graph_by_language(self, g, language):
+        filtered = Graph()
+
+        for s, p, o in g:
+            if not type(o) is Literal or not o.language or o.language == language:
+                filtered.add((s, p, o))
+
+        return filtered
 
     def _load_template(self, template_file):
         return Environment(loader=FileSystemLoader(TEMPLATES_DIR)).get_template(template_file)
