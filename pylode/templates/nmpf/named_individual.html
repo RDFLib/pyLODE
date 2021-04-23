@@ -21,6 +21,14 @@
                 {%- endfor %}
             </dd>
             {%- endif %}
+            {%- if policy_code is not none %}
+            <tr>
+                <th>Policy Code</th>
+                <td>
+                    {{ policy_code }}
+                </td>
+            </tr>
+            {%- endif %}
             {%- if is_defined_by is not none %}
             <tr>
                 <th>Is Defined By</th>
@@ -42,6 +50,30 @@
                 <th>Description</th>
                 <td>
                     {{ description }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if applies_whole is not none %}
+            <tr>
+                <th>Applies to Whole Maritime Area</th>
+                <td>
+                    {{ applies_whole }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if directs_chapter is not none %}
+            <tr>
+                <th>Directs Chapter Topic Activity Proposals</th>
+                <td>
+                    {{ directs_chapter }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if directs_other is not none %}
+            <tr>
+                <th>Directs Other Proposals in Relation to the Topic Activity</th>
+                <td>
+                    {{ directs_other }}
                 </td>
             </tr>
             {%- endif %}

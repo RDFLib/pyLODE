@@ -11,7 +11,7 @@ from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
 from pylode.profiles.base import BaseProfile
 
 
-class OntDoc(BaseProfile):
+class NMPF(BaseProfile):
     def __init__(self, g, source_info, outputformat="html", include_css=False, default_language="en", get_curies_online=False):
         super().__init__(g, source_info, outputformat=outputformat, include_css=include_css, get_curies_online=False, default_language=default_language)
         self.G.bind("prov", PROV)
@@ -846,6 +846,10 @@ class OntDoc(BaseProfile):
             self.NAMED_INDIVIDUALS[ni]["source"] = None
             self.NAMED_INDIVIDUALS[ni]["seeAlso"] = None
             self.NAMED_INDIVIDUALS[ni]["sameAs"] = None
+            self.NAMED_INDIVIDUALS[ni]["appliesToWholeMaritimeArea"] = None
+            self.NAMED_INDIVIDUALS[ni]["policyCode"] = None
+            self.NAMED_INDIVIDUALS[ni]["directsOther"] = None
+            self.NAMED_INDIVIDUALS[ni]["directsChapter"] = None
 
             for p, o in self.G.predicate_objects(subject=s):
                 # list all the other classes of this NI
@@ -874,6 +878,18 @@ class OntDoc(BaseProfile):
 
                 if p == OWL.sameAs:
                     self.NAMED_INDIVIDUALS[ni]["sameAs"] = self._make_formatted_uri(o)
+
+                if p == URIRef('http://something/national-marine-planning-framework-policies#appliesToWholeMaritimeArea'):
+                    self.NAMED_INDIVIDUALS[ni]['appliesToWholeMaritimeArea'] = str(o)
+
+                if p == URIRef('http://something/national-marine-planning-framework-policies#policyCode'):
+                    self.NAMED_INDIVIDUALS[ni]['policyCode'] = str(o)
+
+                if p == URIRef('http://something/national-marine-planning-framework-policies#directsOtherProposalsInRelationToTopicActivity'):
+                    self.NAMED_INDIVIDUALS[ni]['directsOther'] = str(o)
+
+                if p == URIRef('http://something/national-marine-planning-framework-policies#directsChapterTopicActivityProposals'):
+                    self.NAMED_INDIVIDUALS[ni]['directsChapter'] = str(o)
 
             # patch title from URI if we haven't got one
             if self.NAMED_INDIVIDUALS[ni].get("title") is None:
@@ -1067,7 +1083,11 @@ class OntDoc(BaseProfile):
             is_defined_by=named_individual[1].get("isDefinedBy"),
             source=named_individual[1].get("source"),
             see_also=named_individual[1].get("seeAlso"),
-            same_as=named_individual[1].get("sameAs")
+            same_as=named_individual[1].get("sameAs"),
+            applies_whole=named_individual[1].get("appliesToWholeMaritimeArea"),
+            policy_code=named_individual[1].get("policyCode"),
+            directs_other=named_individual[1].get("directsOther"),
+            directs_chapter=named_individual[1].get("directsChapter")
         )
 
     def _make_named_individuals(self):

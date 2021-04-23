@@ -104,6 +104,17 @@ ONT_DOC_PROFILE = Profile(
     default_language="en",
     is_profile_of=["https://www.w3.org/TR/owl2-rdf-based-semantics/"]
 )
+NMPF_PROFILE = Profile(
+    "https://w3id.org/profile/nmpf",
+    "Ireland's National Marine Planning Framework Ontology Documentation Profile",
+    "OWL Classes and Properties as well as additional SKOS, Dublin Core Terms and schema.org annotation "
+    "properties to be used to document ontologies.",
+    [HTML_MEDIA_TYPE, "text/markdown"],
+    HTML_MEDIA_TYPE,
+    languages=["en"],
+    default_language="en",
+    is_profile_of=["https://www.w3.org/TR/owl2-rdf-based-semantics/"]
+)
 SKOS_PROFILE = Profile(
     "https://www.w3.org/TR/skos-reference/",
     "Simple Knowledge Organization System (SKOS)",
@@ -142,5 +153,6 @@ PROFILES = {
     "prof": PROF_PROFILE,
     "ontdoc": ONT_DOC_PROFILE,
     "vocpub": VOC_PUB_PROFILE,
+    "nmpf": NMPF_PROFILE
     # "modp": MOD_PROFILE
 }

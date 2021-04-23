@@ -32,7 +32,7 @@ RDF_SERIALIZER_MAP = {
 }
 
 
-from .profiles import OntDoc, Prof, VocPub, PROFILES
+from .profiles import OntDoc, Prof, VocPub, NMPF, PROFILES
 
 
 class MakeDocco:
@@ -169,6 +169,15 @@ class MakeDocco:
                 outputformat=self.outputformat,
                 include_css=self.include_css,
                 default_language=self.language,
+                get_curies_online=self.get_curies_online
+            )
+        elif self.profile_selected == "nmpf":
+            p = NMPF(
+                self.G,
+                self.source_info,
+                outputformat=self.outputformat,
+                include_css=self.include_css,
+                default_language="en",
                 get_curies_online=self.get_curies_online
             )
         else:
