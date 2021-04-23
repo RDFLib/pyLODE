@@ -93,6 +93,13 @@ def main(args=None):
     )
 
     parser.add_argument(
+        "-l",
+        "--language",
+        help="The ISO 639 language code for the desired output language.",
+        default="en",
+    )
+
+    parser.add_argument(
         "-v",
         "--version",
         help="The version of this copy of pyLODE.",
@@ -120,14 +127,16 @@ def main(args=None):
                 input_data_file=args.inputfile,
                 outputformat=args.outputformat,
                 profile=args.profile,
-                include_css=include_css
+                include_css=include_css,
+                language=args.language,
             )
         elif args.url:
             h = MakeDocco(
                 input_uri=args.url,
                 outputformat=args.outputformat,
                 profile=args.profile,
-                include_css=include_css
+                include_css=include_css,
+                language=args.language,
             )
         else:
             # we have neither an input file or a URI supplied

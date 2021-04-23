@@ -36,7 +36,7 @@ from .profiles import OntDoc, Prof, VocPub, PROFILES
 
 
 class MakeDocco:
-    def __init__(self, input_data_file=None, input_uri=None, data=None, outputformat="html", include_css=True, get_curies_online=False, profile="ontdoc"):
+    def __init__(self, input_data_file=None, input_uri=None, data=None, outputformat="html", include_css=True, get_curies_online=False, profile="ontdoc", language="en"):
         """This class receives all of the variables needed to specify how to make documentation from an input RDF source
 
         :param input_data_file: An RDF file
@@ -53,6 +53,8 @@ class MakeDocco:
         :type get_curies_online: boolean
         :param profile: When document profile, from a supported set, to use. Currently supported is "ontdoc" (profile of OWL) or "skosp" (profile of SKOS). See `list_profiles()` for full list of profiles.
         :type profile: string (one of "ontdoc", "skosp" or "prof")
+        :param language: ISO 639 code for the desired output language
+        :type language: string
         """
         self.profile_selected = profile
 
@@ -63,6 +65,7 @@ class MakeDocco:
 
         self.include_css = include_css
         self.get_curies_online = get_curies_online
+        self.language = language
 
         if profile not in PROFILES.keys():
             print("The profile you've selected, {}, is not recognised so the default profile, {} is being used. "
@@ -156,7 +159,7 @@ class MakeDocco:
                 self.source_info,
                 outputformat=self.outputformat,
                 include_css=self.include_css,
-                default_language="en",
+                default_language=self.language,
                 get_curies_online=self.get_curies_online
             )
         elif self.profile_selected == "vocpub":
@@ -165,7 +168,7 @@ class MakeDocco:
                 self.source_info,
                 outputformat=self.outputformat,
                 include_css=self.include_css,
-                default_language="en",
+                default_language=self.language,
                 get_curies_online=self.get_curies_online
             )
         else:
@@ -174,7 +177,7 @@ class MakeDocco:
                 self.source_info,
                 outputformat=self.outputformat,
                 include_css=self.include_css,
-                default_language="en",
+                default_language=self.language,
                 get_curies_online=self.get_curies_online
             )
 
