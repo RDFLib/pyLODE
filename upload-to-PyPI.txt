@@ -14,5 +14,5 @@
 
 # 7. $ python setup.py sdist bdist_wheel
 
-# 8. $ twine upload dist/*
-#    $ twine check dist/*  -- check ReStructuredText
+# 8. $ twine check dist/*  -- check ReStructuredText
+#    $ twine upload dist/*  -- push up

@@ -8,10 +8,19 @@ from pylode.common import TEMPLATES_DIR
 
 
 class BaseProfile:
-    def __init__(self, g, source_info, outputformat="html", include_css=False, default_language="en", get_curies_online=False):
+    def __init__(
+            self,
+            g,
+            source_info,
+            outputformat="html",
+            include_css=False,
+            default_language="en",
+            use_curies_stored=True,
+            get_curies_online=False):
         self.outputformat = outputformat
         self.include_css = include_css
         self.default_language = default_language
+        self.use_curies_stored = use_curies_stored
         self.get_curies_online = get_curies_online
         self.default_namespace = None
         self.G = self._filter_graph_by_language(g, default_language)
@@ -187,7 +196,17 @@ class BaseProfile:
         # for the de-duplicated URIs, if the uri_base is not in namespaces, get CURIE and add it
         for uri_base in uri_bases:
             if ns.get(uri_base) is None:
+                # try to match uri_base to stored CURIES first
+                if self.use_curies_stored:
+                    from pylode.curies import CURIES
+
+                    try:
+                        ns[uri_base] = list(CURIES.keys())[list(CURIES.values()).index(uri_base)]
+                    except ValueError:
+                        pass
+
                 if self.get_curies_online:
+                    print(f"get CURIE for {uri_base}")
                     uri_prefix = self._get_curie_prefix(uri_base, [x for x in ns.values()])
                     ns[uri_base] = uri_prefix
 
