@@ -211,10 +211,10 @@ class VocPub(BaseProfile):
                     self.COLLECTIONS[c]["altLabels"].add(str(o))  # TODO: add in language
 
                 elif p == SKOS.definition:
-                    self.COLLECTIONS[c]["definitions"].add(str(o))  # TODO: add in language
+                    self.COLLECTIONS[c]["definitions"].add(markdown.markdown(str(o)))  # TODO: add in language
 
                 elif p == SKOS.scopeNote:
-                    self.COLLECTIONS[c]["scopeNotes"].add(str(o))  # TODO: add in language
+                    self.COLLECTIONS[c]["scopeNotes"].add(markdown.markdown(str(o)))  # TODO: add in language
 
                 elif p == DCTERMS.source:
                     self.COLLECTIONS[c]["source"] = str(o)
@@ -289,10 +289,10 @@ class VocPub(BaseProfile):
                     self.CONCEPTS[c]["altLabels"].add(str(o))  # TODO: add in language
 
                 elif p == SKOS.definition:
-                    self.CONCEPTS[c]["definitions"].add(str(o))  # TODO: add in language
+                    self.CONCEPTS[c]["definitions"].add(markdown.markdown(str(o)))  # TODO: add in language
 
                 elif p == SKOS.scopeNote:
-                    self.CONCEPTS[c]["scopeNotes"].add(str(o))  # TODO: add in language
+                    self.CONCEPTS[c]["scopeNotes"].add(markdown.markdown(str(o)))  # TODO: add in language
 
                 elif p == SKOS.example:
                     self.CONCEPTS[c]["examples"].add(str(o))  # TODO: add in language

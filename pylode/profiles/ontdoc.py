@@ -670,10 +670,10 @@ class OntDoc(BaseProfile):
                     self.PROPERTIES[prop]["title"] = str(o)
 
                 if p == DCTERMS.description:
-                    self.PROPERTIES[prop]["description"] = str(o)
+                    self.PROPERTIES[prop]["description"] = markdown.markdown(str(o))
 
                 if p == SKOS.scopeNote:
-                    self.PROPERTIES[prop]["scopeNote"] = str(o)
+                    self.PROPERTIES[prop]["scopeNote"] = markdown.markdown(str(o))
 
                 if p == SKOS.example:
                     self.PROPERTIES[prop]["example"] = str(o)
