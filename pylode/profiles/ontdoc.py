@@ -131,7 +131,7 @@ class OntDoc(BaseProfile):
                     elif p2 in [OWL.cardinality, OWL.qualifiedCardinality]:
                         card = "exactly"
 
-                    if self.outputformat == "md":
+                    if self.outputformat in ["md", "adoc"]:
                         card = '**{}** {}'.format(
                             card, str(o2)
                         )
@@ -174,12 +174,12 @@ class OntDoc(BaseProfile):
                     else:
                         c = self._make_formatted_uri(str(o2), type="c")
 
-                    if self.outputformat == "md":
+                    if self.outputformat in ["md", "adoc"]:
                         card = '**{}** {}'.format(card, c)
                     else:
                         card = '<span class="cardinality">{}</span> {}'.format(card, c)
                 elif p2 == OWL.hasValue:
-                    if self.outputformat == "md":
+                    if self.outputformat in ["md", "adoc"]:
                         card = '**value** {}'.format(
                             self._make_formatted_uri(str(o2), type="c")
                         )
@@ -203,55 +203,82 @@ class OntDoc(BaseProfile):
         #   use the fragment URI
         # else
         #   use the given URI
-        uri_base = self._get_namespace_from_uri(uri)
         link = None
-        if uri_base == self.METADATA.get("default_namespace"):
+        # if the uri contains the default namespace, make a fragment link
+        starts_with_colon = False
+        colon = self.NAMESPACES.get(":")
+        if colon is not None:
+            if uri.startswith(colon):
+                starts_with_colon = True
+        starts_with_default = False
+        default = self.METADATA.get("default_namespace")
+        if default is not None:
+            if uri.startswith(default):
+                starts_with_default = True
+        if starts_with_default or starts_with_colon:
             if self.PROPERTIES.get(uri):
-                link = "[{}]({})".format(short, self.PROPERTIES[uri]["fid"]) \
-                    if self.outputformat == "md" \
-                    else '<a href="#{}">{}</a>'.format(self.PROPERTIES[uri]["fid"], short)
+                if self.outputformat == "md":
+                    link = "[{}](#{})".format(self.PROPERTIES[uri]["title"], self.PROPERTIES[uri]["fid"])
+                elif self.outputformat == "adoc":
+                    link = "link:#{}[{}]".format(self.PROPERTIES[uri]["fid"], self.PROPERTIES[uri]["title"])
+                else:
+                    link = '<a href="#{}">{}</a>'.format(self.PROPERTIES[uri]["fid"], self.PROPERTIES[uri]["title"])
             elif self.CLASSES.get(uri):
-                link = "[{}]({})".format(short, self.CLASSES[uri]["fid"]) \
-                    if self.outputformat == "md" \
-                    else '<a href="#{}">{}</a>'.format(self.CLASSES[uri]["fid"], short)
-            else:
-                link = "[{}]({})".format(short, uri) \
-                    if self.outputformat == "md" \
-                    else '<a href="{}">{}</a>'.format(uri, short)
+                if self.outputformat == "md":
+                    link = "[{}]({})".format(self.CLASSES[uri]["title"], self.CLASSES[uri]["fid"])
+                elif self.outputformat == "adoc":
+                    link = "link:#{}[{}]".format(self.CLASSES[uri]["fid"], self.CLASSES[uri]["title"])
+                else:
+                    link ='<a href="#{}">{}</a>'.format(self.CLASSES[uri]["fid"], self.CLASSES[uri]["title"])
 
-        if link is None:
-            link = "[{}]({})".format(short, uri) \
-                if self.outputformat == "md" \
-                else '<a href="{}">{}</a>'.format(uri, short)
+        if link is None:            
+            if self.outputformat == "md":
+                link = "[{}]({})".format(short, uri)
+            elif self.outputformat == "adoc":
+                link = "link:{}[{}]".format(uri, short)
+            else:
+                link = '<a href="{}">{}</a>'.format(uri, short)
 
         if type == "c":
             if self.outputformat == "md":
                 suffix = ' (c)'
+            elif self.outputformat == "adoc":
+                suffix = ' ^c^'
             else:
                 suffix = '<sup class="sup-c" title="class">c</sup>'
         elif type == "op":
             if self.outputformat == "md":
                 suffix = ' (op)'
+            elif self.outputformat == "adoc":
+                suffix = ' ^op^'
             else:
                 suffix = '<sup class="sup-op" title="object property">op</sup>'
         elif type == "fp":
             if self.outputformat == "md":
                 suffix = ' (fp)'
+            elif self.outputformat == "adoc":
+                suffix = ' ^fp^'
             else:
                 suffix = '<sup class="sup-fp" title="functional property">fp</sup>'
         elif type == "dp":
             if self.outputformat == "md":
                 suffix = ' (dp)'
+            elif self.outputformat == "adoc":
+                suffix = ' ^dp^'
             else:
                 suffix = '<sup class="sup-dp" title="datatype property">dp</sup>'
         elif type == "ap":
             if self.outputformat == "md":
                 suffix = ' (ap)'
+            elif self.outputformat == "adoc":
+                suffix = ' ^ap^'
             else:
                 suffix = '<sup class="sup-ap" title="annotation property">ap</sup>'
         elif type == "ni":
             if self.outputformat == "md":
                 suffix = ' (ni)'
+            elif self.outputformat == "adoc":
+                suffix = ' ^ni^'
             else:
                 suffix = '<sup class="sup-ni" title="named individual">ni</sup>'
         else:
@@ -370,10 +397,20 @@ class OntDoc(BaseProfile):
                     self.METADATA["title"] = str(o)
 
                 if p == DCTERMS.description:
-                    self.METADATA["description"] = markdown.markdown(str(o))
+                    if self.outputformat == "md":
+                        self.METADATA["description"] = str(o)
+                    elif self.outputformat == "adoc":
+                        self.METADATA["description"] = str(o)
+                    else:
+                        self.METADATA["description"] = markdown.markdown(str(o))
 
                 if p == SKOS.historyNote:
-                    self.METADATA["historyNote"] = markdown.markdown(str(o))
+                    if self.outputformat == "md":
+                        self.METADATA["historyNote"] = str(o)
+                    elif self.outputformat == "adoc":
+                        self.METADATA["historyNote"] = str(o)
+                    else:
+                        self.METADATA["historyNote"] = markdown.markdown(str(o))
 
                 # dates
                 if p in [DCTERMS.created, DCTERMS.modified, DCTERMS.issued]:
@@ -421,7 +458,7 @@ class OntDoc(BaseProfile):
                     if type(o) == Literal:
                         self.METADATA[agent_type].add(str(o))
                     else:  # Blank Node or URI
-                        self.METADATA[agent_type].add(self._make_agent_html(o))
+                        self.METADATA[agent_type].add(self._make_agent(o))
 
                 if p == PROV.wasGeneratedBy:
                     for o2 in self.G.objects(subject=o, predicate=DOAP.repository):
@@ -459,7 +496,9 @@ class OntDoc(BaseProfile):
         for cls in self.CLASSES.keys():
             s = URIRef(cls)
             # create Python dict for each class
-            self.CLASSES[cls] = {}
+            self.CLASSES[cls] = {
+                "iri": cls
+            }
 
             # basic class properties
             self.CLASSES[cls]["title"] = None
@@ -474,10 +513,20 @@ class OntDoc(BaseProfile):
                     self.CLASSES[cls]["title"] = str(o)
 
                 if p == DCTERMS.description:
-                    self.CLASSES[cls]["description"] = markdown.markdown(str(o))
+                    if self.outputformat == "md":
+                        self.CLASSES[cls]["description"] = str(o)
+                    elif self.outputformat == "adoc":
+                        self.CLASSES[cls]["description"] = str(o)
+                    else:
+                        self.CLASSES[cls]["description"] = markdown.markdown(str(o))
 
                 if p == SKOS.scopeNote:
-                    self.CLASSES[cls]["scopeNote"] = markdown.markdown(str(o))
+                    if self.outputformat == "md":
+                        self.CLASSES[cls]["scopeNote"] = str(o)
+                    elif self.outputformat == "adoc":
+                        self.CLASSES[cls]["scopeNote"] = str(o)
+                    else:
+                        self.CLASSES[cls]["scopeNote"] = markdown.markdown(str(o))
 
                 if p == SKOS.example:
                     self.CLASSES[cls]["example"] = str(o)
@@ -670,10 +719,20 @@ class OntDoc(BaseProfile):
                     self.PROPERTIES[prop]["title"] = str(o)
 
                 if p == DCTERMS.description:
-                    self.PROPERTIES[prop]["description"] = markdown.markdown(str(o))
+                    if self.outputformat == "md":
+                        self.PROPERTIES[prop]["description"] = str(o)
+                    elif self.outputformat == "adoc":
+                        self.PROPERTIES[prop]["description"] = str(o)
+                    else:
+                        self.PROPERTIES[prop]["description"] = markdown.markdown(str(o))
 
                 if p == SKOS.scopeNote:
-                    self.PROPERTIES[prop]["scopeNote"] = markdown.markdown(str(o))
+                    if self.outputformat == "md":
+                        self.PROPERTIES[prop]["scopeNote"] = str(o)
+                    elif self.outputformat == "adoc":
+                        self.PROPERTIES[prop]["scopeNote"] = str(o)
+                    else:
+                        self.PROPERTIES[prop]["scopeNote"] = markdown.markdown(str(o))
 
                 if p == SKOS.example:
                     self.PROPERTIES[prop]["example"] = str(o)
@@ -776,9 +835,9 @@ class OntDoc(BaseProfile):
             # ranges
             for o in self.G.objects(subject=s, predicate=RDFS.range):
                 if type(o) != BNode:
-                    self.PROPERTIES[prop]["ranges"].append(str(o))  # ranges that are just classes
+                    self.PROPERTIES[prop]["ranges"].append(self._make_formatted_uri(o, type="c"))  # ranges that are just classes
                 else:
-                    # range collections (unionOf | intersectionOf
+                    # range collections (unionOf | intersectionOf)
                     q = """
                         PREFIX owl:  <http://www.w3.org/2002/07/owl#>
                         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -927,55 +986,60 @@ class OntDoc(BaseProfile):
             has_nis=self.METADATA.get("has_nis"),
         )
 
-    def _make_classes(self):
-        # make all Classes
+    def _make_class(self, uri, class_):
         class_template = self._load_template("class." + self.outputformat)
+        # handling Markdown formatting within a table
+        if self.outputformat == "md":
+            desc = class_["description"].replace("\n", " ") if class_.get("description") is not None else None
+            if class_.get("example") is not None:
+                eg = class_["example"].strip().replace("\t", "    ").split("\n")
+                eg2 = ""
+                for line in eg:
+                    eg2 += "`" + line + "`<br />"
+                eg = eg2
+            else:
+                eg = None
+        elif self.outputformat == "adoc":
+            desc = class_["description"]
+            eg = class_["example"]
+        else:
+            desc = class_["description"]
+            eg = class_["example"].replace("<", "&lt;").replace(">", "&gt;") if class_.get("example") is not None else None
+
+        return class_template.render(
+            uri=uri,
+            fid=class_["fid"],
+            title=class_["title"],
+            description=desc,
+            supers=class_["supers"],
+            restrictions=class_["restrictions"],
+            scopeNote=class_["scopeNote"],
+            example=eg,
+            is_defined_by=class_["isDefinedBy"],
+            source=class_["source"],
+            subs=class_["subs"],
+            in_domain_of=class_["in_domain_of"],
+            in_domain_includes_of=class_["in_domain_includes_of"],
+            in_range_of=class_["in_range_of"],
+            in_range_includes_of=class_["in_range_includes_of"],
+            has_members=class_["has_members"]
+        )
+
+    def _make_classes(self):
+        # make all the individual Classes
         classes_list = []
         for k, v in self.CLASSES.items():
-            # handling Markdown formatting within a table
-            if self.outputformat == "md":
-                desc = v["description"].replace("\n", " ") if v.get("description") is not None else None
-                if v.get("example") is not None:
-                    eg = v["example"].strip().replace("\t", "    ").split("\n")
-                    eg2 = ""
-                    for line in eg:
-                        eg2 += "`" + line + "`<br />"
-                    eg = eg2
-                else:
-                    eg = None
-            else:
-                desc = v["description"]
-                eg = v["example"].replace("<", "&lt;").replace(">", "&gt;") if v.get("example") is not None else None
-
-            classes_list.append(
-                class_template.render(
-                    uri=k,
-                    fid=v["fid"],
-                    title=v["title"],
-                    description=desc,
-                    supers=v["supers"],
-                    restrictions=v["restrictions"],
-                    scopeNote=v["scopeNote"],
-                    example=eg,
-                    is_defined_by=v["isDefinedBy"],
-                    source=v["source"],
-                    subs=v["subs"],
-                    in_domain_of=v["in_domain_of"],
-                    in_domain_includes_of=v["in_domain_includes_of"],
-                    in_range_of=v["in_range_of"],
-                    in_range_includes_of=v["in_range_includes_of"],
-                    has_members=v["has_members"]
-                )
-            )
+            classes_list.append(self._make_class(k, v))
 
         # make the template for all Classes
         classes_template = self._load_template("classes." + self.outputformat)
         # add in Class index
-        fids = sorted(
-            [(v.get("fid"), v.get("title")) for k, v in self.CLASSES.items()],
-            key=lambda tup: tup[1],
-        )
-        return classes_template.render(fids=fids, classes=classes_list, )
+        # fids = sorted(
+        #     [(v.get("fid"), v.get("title")) for k, v in self.CLASSES.items()],
+        #     key=lambda tup: tup[1],
+        # )
+        class_index = [self._make_formatted_uri(x) for x in self.CLASSES.keys()]
+        return classes_template.render(class_index=class_index, classes=classes_list, )
 
     def _make_property(self, property):
         # handling Markdown formatting within a table
@@ -990,6 +1054,9 @@ class OntDoc(BaseProfile):
                 eg = eg2
             else:
                 eg = None
+        elif self.outputformat == "adoc":
+            desc = property[1].get("description")
+            eg = property[1].get("example")
         else:
             desc = property[1].get("description")
             eg = property[1].get("example")
@@ -1087,7 +1154,6 @@ class OntDoc(BaseProfile):
         )
 
     def _make_named_individuals(self):
-        # make all NIs
         named_individuals_list = []
         for k, v in self.NAMED_INDIVIDUALS.items():
             named_individuals_list.append(
@@ -1211,9 +1277,9 @@ class OntDoc(BaseProfile):
             for d in prop["ranges"]:
                 if type(d) == tuple:
                     for m in d[1]:
-                        html.append(self._make_formatted_uri(m, type="c"))
+                        html.append(m)
                 else:
-                    html.append(self._make_formatted_uri(d, type="c"))
+                    html.append(d)
             self.PROPERTIES[uri]["ranges"] = html
 
             html = []

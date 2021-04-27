@@ -416,7 +416,7 @@ class VocPub(BaseProfile):
                     if type(o) == Literal:
                         self.METADATA[agent_type].add(str(o))
                     else:  # Blank Node or URI
-                        self.METADATA[agent_type].add(self._make_agent_html(o))
+                        self.METADATA[agent_type].add(self._make_agent(o))
 
                 # TODO: cater for other Agent representations
 
