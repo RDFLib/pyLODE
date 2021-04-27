@@ -3,7 +3,6 @@ import collections
 from jinja2 import Environment, FileSystemLoader
 from rdflib import SDO, SKOS, OWL, URIRef, RDF, PROF, Literal, XSD, Graph, Namespace, FOAF, Graph
 
-import pylode.profiles.profile
 from pylode.common import TEMPLATES_DIR
 
 

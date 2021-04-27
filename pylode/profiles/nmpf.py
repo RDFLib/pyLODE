@@ -1,4 +1,3 @@
-from os import path
 from pylode.common import VERSION, TEMPLATES_DIR, STYLE_DIR
 import collections
 from os import path

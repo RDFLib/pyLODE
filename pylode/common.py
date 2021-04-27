@@ -2,8 +2,7 @@ from os import path
 from urllib import request
 from rdflib import util, Graph
 import sys
-
-VERSION = "2.8.6"
+from ._version import version_tuple
 
 # set APP_DIR to EXE folder if being called within pyinstaller EXE
 if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
@@ -30,13 +29,24 @@ RDF_SERIALIZER_MAP = {
     "text/n-triples": "nt",
     "text/plain": "nt",  # text/plain is the old/deprecated mimetype for n-triples
 }
-
+VERSION = f"{version_tuple[0]}.{version_tuple[1]}.{version_tuple[2]}"
 
 from .profiles import OntDoc, Prof, VocPub, NMPF, PROFILES
 
 
 class MakeDocco:
-    def __init__(self, input_data_file=None, input_uri=None, data=None, outputformat="html", include_css=True, get_curies_online=False, profile="ontdoc", language="en"):
+    def __init__(
+            self,
+            input_data_file=None,
+            input_uri=None,
+            data=None,
+            outputformat="html",
+            include_css=True,
+            use_curies_stored=True,
+            get_curies_online=False,
+            profile="ontdoc",
+            language="en"
+    ):
         """This class receives all of the variables needed to specify how to make documentation from an input RDF source
 
         :param input_data_file: An RDF file
@@ -64,6 +74,7 @@ class MakeDocco:
             self.outputformat = outputformat
 
         self.include_css = include_css
+        self.use_curies_stored = use_curies_stored
         self.get_curies_online = get_curies_online
         self.language = language
 
@@ -160,6 +171,7 @@ class MakeDocco:
                 outputformat=self.outputformat,
                 include_css=self.include_css,
                 default_language=self.language,
+                use_curies_stored=self.use_curies_stored,
                 get_curies_online=self.get_curies_online
             )
         elif self.profile_selected == "vocpub":
@@ -169,6 +181,7 @@ class MakeDocco:
                 outputformat=self.outputformat,
                 include_css=self.include_css,
                 default_language=self.language,
+                use_curies_stored=self.use_curies_stored,
                 get_curies_online=self.get_curies_online
             )
         elif self.profile_selected == "nmpf":
@@ -178,6 +191,7 @@ class MakeDocco:
                 outputformat=self.outputformat,
                 include_css=self.include_css,
                 default_language="en",
+                use_curies_stored=self.use_curies_stored,
                 get_curies_online=self.get_curies_online
             )
         else:
@@ -187,6 +201,7 @@ class MakeDocco:
                 outputformat=self.outputformat,
                 include_css=self.include_css,
                 default_language=self.language,
+                use_curies_stored=self.use_curies_stored,
                 get_curies_online=self.get_curies_online
             )
 
