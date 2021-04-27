@@ -1,14 +1,13 @@
 from os import path
 from urllib import request
 from rdflib import util, Graph
-
-VERSION = "2.8.6"
 import sys
-if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
-    APP_DIR = sys._MEIPASS
-else:
-    APP_DIR = path.dirname(path.realpath(__file__))
 
+# set APP_DIR to EXE folder if being called within pyinstaller EXE
+if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+    APP_DIR = sys._MEIPASS
+else:  # use normal Python pathing
+    APP_DIR = path.dirname(path.realpath(__file__))
 TEMPLATES_DIR = path.join(APP_DIR, "templates")
 STYLE_DIR = path.join(APP_DIR, "style")
 RDF_FILE_EXTENSIONS = [".rdf", ".owl", ".ttl", ".n3", ".nt", ".json"]
@@ -30,12 +29,22 @@ RDF_SERIALIZER_MAP = {
     "text/plain": "nt",  # text/plain is the old/deprecated mimetype for n-triples
 }
 
-
-from .profiles import OntDoc, Prof, VocPub, PROFILES
+from .profiles import OntDoc, Prof, VocPub, NMPF, PROFILES
 
 
 class MakeDocco:
-    def __init__(self, input_data_file=None, input_uri=None, data=None, outputformat="html", include_css=True, get_curies_online=False, profile="ontdoc"):
+    def __init__(
+            self,
+            input_data_file=None,
+            input_uri=None,
+            data=None,
+            outputformat="html",
+            include_css=True,
+            use_curies_stored=True,
+            get_curies_online=False,
+            profile="ontdoc",
+            language="en"
+    ):
         """This class receives all of the variables needed to specify how to make documentation from an input RDF source
 
         :param input_data_file: An RDF file
@@ -52,6 +61,8 @@ class MakeDocco:
         :type get_curies_online: boolean
         :param profile: When document profile, from a supported set, to use. Currently supported is "ontdoc" (profile of OWL) or "skosp" (profile of SKOS). See `list_profiles()` for full list of profiles.
         :type profile: string (one of "ontdoc", "skosp" or "prof")
+        :param language: ISO 639 code for the desired output language
+        :type language: string
         """
         self.profile_selected = profile
 
@@ -61,7 +72,9 @@ class MakeDocco:
             self.outputformat = outputformat
 
         self.include_css = include_css
+        self.use_curies_stored = use_curies_stored
         self.get_curies_online = get_curies_online
+        self.language = language
 
         if profile not in PROFILES.keys():
             print("The profile you've selected, {}, is not recognised so the default profile, {} is being used. "
@@ -155,7 +168,8 @@ class MakeDocco:
                 self.source_info,
                 outputformat=self.outputformat,
                 include_css=self.include_css,
-                default_language="en",
+                default_language=self.language,
+                use_curies_stored=self.use_curies_stored,
                 get_curies_online=self.get_curies_online
             )
         elif self.profile_selected == "vocpub":
@@ -164,7 +178,18 @@ class MakeDocco:
                 self.source_info,
                 outputformat=self.outputformat,
                 include_css=self.include_css,
+                default_language=self.language,
+                use_curies_stored=self.use_curies_stored,
+                get_curies_online=self.get_curies_online
+            )
+        elif self.profile_selected == "nmpf":
+            p = NMPF(
+                self.G,
+                self.source_info,
+                outputformat=self.outputformat,
+                include_css=self.include_css,
                 default_language="en",
+                use_curies_stored=self.use_curies_stored,
                 get_curies_online=self.get_curies_online
             )
         else:
@@ -173,7 +198,8 @@ class MakeDocco:
                 self.source_info,
                 outputformat=self.outputformat,
                 include_css=self.include_css,
-                default_language="en",
+                default_language=self.language,
+                use_curies_stored=self.use_curies_stored,
                 get_curies_online=self.get_curies_online
             )
 

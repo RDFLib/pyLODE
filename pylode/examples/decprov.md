@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.10
 
 # Decision Provenance ontology (DecPROV)
 
@@ -64,8 +64,8 @@ Property | Value
 URI | `http://promsns.org/def/do#Answer`
 Description | <p>A recorded answer to a Question</p>
 Super-classes |[prov:Entity](http://www.w3.org/ns/prov#Entity) (c)<br />
-Restrictions |[prov:wasInfluencedBy](http://www.w3.org/ns/prov#wasInfluencedBy) **some** [do:Question](http://promsns.org/def/do#Question) (c)<br />[prov:wasGeneratedBy](http://www.w3.org/ns/prov#wasGeneratedBy) **some** [do:DecisionMaking](http://promsns.org/def/do#DecisionMaking) (c)<br />
-In domain of |[hadQuestion](hadquestion) (op)<br />
+Restrictions |[prov:wasGeneratedBy](http://www.w3.org/ns/prov#wasGeneratedBy) **some** [http://promsns.org/def/do#DecisionMaking](http://promsns.org/def/do#DecisionMaking) (c)<br />[prov:wasInfluencedBy](http://www.w3.org/ns/prov#wasInfluencedBy) **some** [http://promsns.org/def/do#Question](http://promsns.org/def/do#Question) (c)<br />
+In domain of |[decprov:hadQuestion](hadquestion) (op)<br />
 ### Decision Making
 Property | Value
 --- | ---
@@ -78,7 +78,7 @@ Property | Value
 URI | `http://promsns.org/def/do#Question`
 Description | <p>A recorded question</p>
 Super-classes |[prov:Entity](http://www.w3.org/ns/prov#Entity) (c)<br />
-In range of |[hadQuestion](hadquestion) (op)<br />
+In range of |[decprov:hadQuestion](hadquestion) (op)<br />
 ### Requirement
 Property | Value
 --- | ---
@@ -103,8 +103,8 @@ Property | Value
 URI | `http://promsns.org/def/decprov#hadQuestion`
 Description | Links an Answer to the Question that motivated a DecisionMaking to generate it.
 Super-properties |[prov:wasDerivedFrom](http://www.w3.org/ns/prov#wasDerivedFrom)<br />
-Domain(s) |[do:Answer](http://promsns.org/def/do#Answer) (c)<br />
-Range(s) |[do:Question](http://promsns.org/def/do#Question) (c)<br />
+Domain(s) |[http://promsns.org/def/do#Answer](http://promsns.org/def/do#Answer) (c)<br />
+Range(s) |[http://promsns.org/def/do#Question](http://promsns.org/def/do#Question) (c)<br />
 
 ## Named Individuals
 [DecisionMaker](#DecisionMaker),
@@ -115,12 +115,10 @@ URI | `http://promsns.org/def/do#DecisionMaker`
 * **Contributor(s)**
   * [prov:Role](http://www.w3.org/ns/prov#Role)
 ## Namespaces
-* **:**
-  * `http://promsns.org/def/decprov#`
 * **dct**
   * `http://purl.org/dc/terms/`
-* **do**
-  * `http://promsns.org/def/do#`
+* **decprov**
+  * `http://promsns.org/def/decprov#`
 * **owl**
   * `http://www.w3.org/2002/07/owl#`
 * **prov**

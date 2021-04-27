@@ -3,7 +3,7 @@
 import codecs
 import os
 from setuptools import setup, find_packages
-from pylode.common import VERSION
+from pylode import __version__
 
 
 def open_local(paths, mode='r', encoding='utf8'):
@@ -23,14 +23,18 @@ with open_local(['requirements.txt']) as req:
 setup(
     name='pyLODE',
     packages=find_packages(),
-    package_dir={'pylode': 'pylode'},
-    package_data={'pylode': ['templates/*.html', 'templates/*/*.html', 'templates/*.md', 'templates/*/*.md', 'style/*.css']},
-    version=VERSION,
+    package_dir={'pylode': 'pylode', 'img': 'img'},
+    package_data={
+        'pylode': ['templates/*.html', 'templates/*/*.html', 'templates/*.md', 'templates/*/*.md', 'style/*.css'],
+        'img': ['pyLODE-250.png']
+    },
+    version=__version__,
+    use_scm_version={'write_to': 'pylode/_version.py'},
     description='An OWL ontology documentation tool using Python and templating, based on LODE.',
     author='Nicholas J. Car',
     author_email='nicholas.car@surroundaustralia.com',
     url='https://github.com/rdflib/pyLODE',
-    download_url='https://github.com/rdflib/pyLODE/archive/v{:s}.tar.gz'.format(VERSION),
+    download_url='https://github.com/rdflib/pyLODE/archive/v{:s}.tar.gz'.format(__version__),
     license='LICENSE',
     keywords=['Semantic Web', 'OWL', 'ontology', 'template', 'Jinja2', 'documentation'],
     long_description=long_description,

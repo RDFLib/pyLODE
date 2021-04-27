@@ -210,7 +210,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.8.6</span>
+    <span style="font-size:smaller;">2.8.10</span>
   </div>
   <h1>Decision Provenance ontology (DecPROV)</h1>
 <section id="metadata">
@@ -370,14 +370,14 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#wasInfluencedBy">prov:wasInfluencedBy</a> <span class="cardinality">some</span> <a href="http://promsns.org/def/do#Question">do:Question</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/prov#wasGeneratedBy">prov:wasGeneratedBy</a> <span class="cardinality">some</span> <a href="http://promsns.org/def/do#DecisionMaking">do:DecisionMaking</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/prov#wasInfluencedBy">prov:wasInfluencedBy</a> <span class="cardinality">some</span> <a href="http://promsns.org/def/do#Question">http://promsns.org/def/do#Question</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/prov#wasGeneratedBy">prov:wasGeneratedBy</a> <span class="cardinality">some</span> <a href="http://promsns.org/def/do#DecisionMaking">http://promsns.org/def/do#DecisionMaking</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#hadquestion">hadQuestion</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hadquestion">decprov:hadQuestion</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -425,7 +425,7 @@
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#hadquestion">hadQuestion</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hadquestion">decprov:hadQuestion</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -480,7 +480,7 @@
             <tr>
                 <th>Inverse properties</th>
                 <td>
-                    <a href="#hadquestion">hadQuestion</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="#hadquestion">decprov:hadQuestion</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
         </table>
@@ -507,13 +507,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://promsns.org/def/do#Answer">do:Answer</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://promsns.org/def/do#Answer">http://promsns.org/def/do#Answer</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://promsns.org/def/do#Question">do:Question</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://promsns.org/def/do#Question">http://promsns.org/def/do#Question</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -521,12 +521,12 @@
 </section>
 
   
-  <section id="namedindividuals">
-    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <ul class="hlist">
-        <li><a href="#DecisionMaker">DecisionMaker</a></li>
-    </ul>
-    <div class="entity named_individual" id="DecisionMaker">
+    <section id="namedindividuals">
+        <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+        <ul class="hlist">
+            <li><a href="#DecisionMaker">DecisionMaker</a></li>
+        </ul>
+            <div class="entity named_individual" id="DecisionMaker">
         <h3>DecisionMaker<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
@@ -544,17 +544,15 @@
             </dd>
         </table>
     </div>
-</section>
-  
+    </section>
+
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt>:</dt>
-        <dd><code>http://promsns.org/def/decprov#</code></dd>
         <dt>dct</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
-        <dt>do</dt>
-        <dd><code>http://promsns.org/def/do#</code></dd>
+        <dt>decprov</dt>
+        <dd><code>http://promsns.org/def/decprov#</code></dd>
         <dt>owl</dt>
         <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
         <dt>prov</dt>

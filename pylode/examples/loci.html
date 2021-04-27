@@ -220,7 +220,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.8.6</span>
+    <span style="font-size:smaller;">2.8.10</span>
   </div>
   <h1>LOC-I Ontology</h1>
 <section id="metadata">
@@ -333,7 +333,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://xmlns.com/foaf/0.1/Group">http://xmlns.com/foaf/0.1/Group</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://xmlns.com/foaf/0.1/Group">foaf:Group</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -355,23 +355,31 @@
                 <th>Super-classes</th>
                 <td>
                     <a href="http://www.w3.org/ns/dcat#Dataset">dcat:Dataset</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://rdfs.org/ns/void#Dataset">http://rdfs.org/ns/void#Dataset</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://rdfs.org/ns/void#Dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.org/dc/terms/title">dct:title</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/dcat#contactPoint">dcat:contactPoint</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://purl.org/dc/terms/publisher">dct:publisher</a> <span class="cardinality">exactly</span> 1 <a href="http://xmlns.com/foaf/0.1/Organization">http://xmlns.com/foaf/0.1/Organization</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/dc/terms/issued">dct:issued</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/title">dct:title</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/issued">dct:issued</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/dcat#contactPoint">dcat:contactPoint</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/publisher">dct:publisher</a> <span class="cardinality">exactly</span> 1 <a href="http://xmlns.com/foaf/0.1/Organization">foaf:Organization</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#LOCILinkset">Linkset</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/loci#Linkset">http://linked.data.gov.au/def/loci#Linkset</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://linked.data.gov.au/dataset/geofabric">http://linked.data.gov.au/dataset/geofabric</a><br/>
+                    <a href="http://linked.data.gov.au/dataset/gnaf">http://linked.data.gov.au/dataset/gnaf</a><br/>
+                    <a href="http://linked.data.gov.au/dataset/asgs">http://linked.data.gov.au/dataset/asgs</a><br/>
                 </td>
             </tr>
         </table>
@@ -398,10 +406,10 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a> <span class="cardinality">exactly</span> 1 <a href="#LOCIFeature">Feature</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hadgenerationmethod">hadGenerationMethod</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/ns/prov#Plan">prov:Plan</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/linked-data/registryregister">http://purl.org/linked-data/registryregister</a> <span class="cardinality">exactly</span> 1 <a href="#LOCILinkset">Linkset</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">rdf:subject</a> <span class="cardinality">exactly</span> 1 <a href="#LOCIFeature">Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">rdf:subject</a> <span class="cardinality">exactly</span> 1 <a href="http://linked.data.gov.au/def/loci#Feature">http://linked.data.gov.au/def/loci#Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a> <span class="cardinality">exactly</span> 1 <a href="http://linked.data.gov.au/def/loci#Feature">http://linked.data.gov.au/def/loci#Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/loci#hadGenerationMethod">http://linked.data.gov.au/def/loci#hadGenerationMethod</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/ns/prov#Plan">prov:Plan</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/registryregister">http://purl.org/linked-data/registryregister</a> <span class="cardinality">exactly</span> 1 <a href="http://linked.data.gov.au/def/loci#Linkset">http://linked.data.gov.au/def/loci#Linkset</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -416,7 +424,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Feature">http://www.opengis.net/ont/geosparql#Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -437,8 +445,14 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://rdfs.org/ns/void#Linkset">http://rdfs.org/ns/void#Linkset</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#LOCIDataset">Dataset</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://rdfs.org/ns/void#Linkset">void:Linkset</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/loci#Dataset">http://linked.data.gov.au/def/loci#Dataset</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://linked.data.gov.au/def/loci#AddressesCatchments">http://linked.data.gov.au/def/loci#AddressesCatchments</a><br/>
                 </td>
             </tr>
         </table>
@@ -453,7 +467,7 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#LOCIDatasetLinkingStatement">DatasetLinkingStatement</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/loci#DatasetLinkingStatement">http://linked.data.gov.au/def/loci#DatasetLinkingStatement</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -524,20 +538,20 @@
 </section>
 
   
-  <section id="namedindividuals">
-    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <ul class="hlist">
-        <li><a href="#ASGSDataset">ASGS Dataset</a></li>
-        <li><a href="#AddressesCatchmentsLinkset">Addresses Catchments Linkset</a></li>
-        <li><a href="#AustralianBureauofStatistics">Australian Bureau of Statistics</a></li>
-        <li><a href="#CSIRO">CSIRO</a></li>
-        <li><a href="#GNAFDataset">GNAF Dataset</a></li>
-        <li><a href="#GeofabricDataset">Geofabric Dataset</a></li>
-        <li><a href="#GeoscienceAustralia">Geoscience Australia</a></li>
-        <li><a href="#LOCIDataPublishers">LOCI Data Publishers</a></li>
-        <li><a href="#PSMAAustralia">PSMA Australia</a></li>
-    </ul>
-    <div class="entity named_individual" id="CSIRO">
+    <section id="namedindividuals">
+        <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+        <ul class="hlist">
+            <li><a href="#ASGSDataset">ASGS Dataset</a></li>
+            <li><a href="#AddressesCatchmentsLinkset">Addresses Catchments Linkset</a></li>
+            <li><a href="#AustralianBureauofStatistics">Australian Bureau of Statistics</a></li>
+            <li><a href="#CSIRO">CSIRO</a></li>
+            <li><a href="#GNAFDataset">GNAF Dataset</a></li>
+            <li><a href="#GeofabricDataset">Geofabric Dataset</a></li>
+            <li><a href="#GeoscienceAustralia">Geoscience Australia</a></li>
+            <li><a href="#LOCIDataPublishers">LOCI Data Publishers</a></li>
+            <li><a href="#PSMAAustralia">PSMA Australia</a></li>
+        </ul>
+            <div class="entity named_individual" id="CSIRO">
         <h3>CSIRO<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
@@ -551,11 +565,11 @@
             </tr>
             <dt>Classes(s)</dt>
             <dd>
-                <a href="http://xmlns.com/foaf/0.1/Organization">http://xmlns.com/foaf/0.1/Organization</a><br/>
+                <a href="http://xmlns.com/foaf/0.1/Organization">foaf:Organization</a><br/>
             </dd>
         </table>
     </div>
-    <div class="entity named_individual" id="GeoscienceAustralia">
+            <div class="entity named_individual" id="GeoscienceAustralia">
         <h3>Geoscience Australia<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
@@ -569,11 +583,11 @@
             </tr>
             <dt>Classes(s)</dt>
             <dd>
-                <a href="http://xmlns.com/foaf/0.1/Organization">http://xmlns.com/foaf/0.1/Organization</a><br/>
+                <a href="http://xmlns.com/foaf/0.1/Organization">foaf:Organization</a><br/>
             </dd>
         </table>
     </div>
-    <div class="entity named_individual" id="AustralianBureauofStatistics">
+            <div class="entity named_individual" id="AustralianBureauofStatistics">
         <h3>Australian Bureau of Statistics<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
@@ -587,11 +601,11 @@
             </tr>
             <dt>Classes(s)</dt>
             <dd>
-                <a href="http://xmlns.com/foaf/0.1/Organization">http://xmlns.com/foaf/0.1/Organization</a><br/>
+                <a href="http://xmlns.com/foaf/0.1/Organization">foaf:Organization</a><br/>
             </dd>
         </table>
     </div>
-    <div class="entity named_individual" id="PSMAAustralia">
+            <div class="entity named_individual" id="PSMAAustralia">
         <h3>PSMA Australia<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
@@ -605,11 +619,11 @@
             </tr>
             <dt>Classes(s)</dt>
             <dd>
-                <a href="http://xmlns.com/foaf/0.1/Organization">http://xmlns.com/foaf/0.1/Organization</a><br/>
+                <a href="http://xmlns.com/foaf/0.1/Organization">foaf:Organization</a><br/>
             </dd>
         </table>
     </div>
-    <div class="entity named_individual" id="ASGSDataset">
+            <div class="entity named_individual" id="ASGSDataset">
         <h3>ASGS Dataset<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
@@ -623,11 +637,11 @@
             </tr>
             <dt>Classes(s)</dt>
             <dd>
-                <a href="http://linked.data.gov.au/def/loci#Dataset">Dataset</a><br/>
+                <a href="http://linked.data.gov.au/def/loci#Dataset">http://linked.data.gov.au/def/loci#Dataset</a><br/>
             </dd>
         </table>
     </div>
-    <div class="entity named_individual" id="GeofabricDataset">
+            <div class="entity named_individual" id="GeofabricDataset">
         <h3>Geofabric Dataset<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
@@ -641,11 +655,11 @@
             </tr>
             <dt>Classes(s)</dt>
             <dd>
-                <a href="http://linked.data.gov.au/def/loci#Dataset">Dataset</a><br/>
+                <a href="http://linked.data.gov.au/def/loci#Dataset">http://linked.data.gov.au/def/loci#Dataset</a><br/>
             </dd>
         </table>
     </div>
-    <div class="entity named_individual" id="GNAFDataset">
+            <div class="entity named_individual" id="GNAFDataset">
         <h3>GNAF Dataset<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
@@ -659,11 +673,11 @@
             </tr>
             <dt>Classes(s)</dt>
             <dd>
-                <a href="http://linked.data.gov.au/def/loci#Dataset">Dataset</a><br/>
+                <a href="http://linked.data.gov.au/def/loci#Dataset">http://linked.data.gov.au/def/loci#Dataset</a><br/>
             </dd>
         </table>
     </div>
-    <div class="entity named_individual" id="AddressesCatchmentsLinkset">
+            <div class="entity named_individual" id="AddressesCatchmentsLinkset">
         <h3>Addresses Catchments Linkset<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
@@ -677,11 +691,11 @@
             </tr>
             <dt>Classes(s)</dt>
             <dd>
-                <a href="http://linked.data.gov.au/def/loci#Linkset">Linkset</a><br/>
+                <a href="http://linked.data.gov.au/def/loci#Linkset">http://linked.data.gov.au/def/loci#Linkset</a><br/>
             </dd>
         </table>
     </div>
-    <div class="entity named_individual" id="LOCIDataPublishers">
+            <div class="entity named_individual" id="LOCIDataPublishers">
         <h3>LOCI Data Publishers<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
@@ -695,8 +709,8 @@
             </tr>
             <dt>Classes(s)</dt>
             <dd>
-                <a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a><br/>
                 <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a><br/>
+                <a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a><br/>
             </dd>
             <tr>
                 <th>Description</th>
@@ -706,17 +720,19 @@
             </tr>
         </table>
     </div>
-</section>
-  
+    </section>
+
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt>:</dt>
-        <dd><code>http://linked.data.gov.au/def/loci#</code></dd>
         <dt>dcat</dt>
         <dd><code>http://www.w3.org/ns/dcat#</code></dd>
         <dt>dct</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>foaf</dt>
+        <dd><code>http://xmlns.com/foaf/0.1/</code></dd>
+        <dt>geosparql</dt>
+        <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
         <dt>owl</dt>
         <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
         <dt>prov</dt>
@@ -725,12 +741,12 @@
         <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
         <dt>rdfs</dt>
         <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
-        <dt>reg</dt>
-        <dd><code>http://purl.org/linked-data/registry</code></dd>
         <dt>sdo</dt>
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>void</dt>
+        <dd><code>http://rdfs.org/ns/void#</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

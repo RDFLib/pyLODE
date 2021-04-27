@@ -210,7 +210,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.8.6</span>
+    <span style="font-size:smaller;">2.8.10</span>
   </div>
   <h1>The RDF Concepts Vocabulary (RDF)</h1>
 <section id="metadata">
@@ -344,6 +344,12 @@
                     <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#rest">rdf:rest</a><br/>
                 </td>
             </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil">rdf:nil</a><br/>
+                </td>
+            </tr>
         </table>
     </div>
     <div class="entity class" id="Property">
@@ -369,6 +375,18 @@
                 <th>Super-classes</th>
                 <td>
                     <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#first">rdf:first</a><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#type">rdf:type</a><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#value">rdf:value</a><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">rdf:subject</a><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate">rdf:predicate</a><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#rest">rdf:rest</a><br/>
                 </td>
             </tr>
         </table>
@@ -428,8 +446,8 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate">rdf:predicate</a><br/>
                     <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">rdf:subject</a><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate">rdf:predicate</a><br/>
                     <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a><br/>
                 </td>
             </tr>
@@ -681,17 +699,13 @@
 </section>
 
   
-  <section id="namedindividuals">
-    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <ul class="hlist">
-    </ul>
-</section>
-  
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
         <dt>dc</dt>
         <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+        <dt>dct</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
         <dt>owl</dt>
         <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
         <dt>prov</dt>

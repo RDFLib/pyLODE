@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.10
 
 # Records Authority Ontology
 
@@ -54,15 +54,15 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/ra#DisposalAction`
 Description | <p>A Disposal Action is an instruction to carry out the disposal (retention or descruction) of a government Record. In addition to being a skos:Concept since it acts as a classifier, a Disposal Action is also a Provenance Ontology Plan meaning it instructs a course of action - how to dispose of a record.</p>
-Super-classes |[skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />[prov:Plan](http://www.w3.org/ns/prov#Plan) (c)<br />
-In range of |[requires](requires) (op)<br />
+Super-classes |[prov:Plan](http://www.w3.org/ns/prov#Plan) (c)<br />[skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />
+In range of |[http://linked.data.gov.au/def/ra#requires](http://linked.data.gov.au/def/ra#requires) (op)<br />
 ### Numbered Subclass
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/ra#NumberedSubclass`
 Description | <p>A numbered subclass is a finer-grained Record categorisation concept than an RA Class within a Records Authority. Numbeed Subclasses are idnetified in Records Authorities with an entry number and relate directly to Disposal Actions.</p>
 Super-classes |[skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />
-In domain of |[requires](requires) (op)<br />
+In domain of |[http://linked.data.gov.au/def/ra#requires](http://linked.data.gov.au/def/ra#requires) (op)<br />
 ### RA Class
 Property | Value
 --- | ---
@@ -74,7 +74,7 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/ra#RecordsAuthority`
 Description | <p>A Records Authority is a document that identifies minimum retention periods for Records and authorises the destruction of Records as required by Section 24 of the Archives Act 1983.</p> <pre><code>                      A Records Authority individual, as represented in this ontology, contains a collection of RA Classes and Numbered Subclasses used to categorise Records in order for them to be assiged Disposal Actions. </code></pre>
-Super-classes |[owl:NamedIndividual](http://www.w3.org/2002/07/owl#NamedIndividual) (c)<br />[skos:ConceptScheme](http://www.w3.org/2004/02/skos/core#ConceptScheme) (c)<br />
+Super-classes |[skos:ConceptScheme](http://www.w3.org/2004/02/skos/core#ConceptScheme) (c)<br />[owl:NamedIndividual](http://www.w3.org/2002/07/owl#NamedIndividual) (c)<br />
 
 ## Object Properties
 [requires](#requires),
@@ -85,17 +85,11 @@ Property | Value
 URI | `http://linked.data.gov.au/def/ra#requires`
 Description | A Numbered Subclass categorisation of a Record requires a particular Disposal Action assignment (categorisation) for that record.
 Usage Note | Many Numbered Subclasses map to a few Disposal Actions
-Domain(s) |[NumberedSubclass](NumberedSubclass) (c)<br />
-Range(s) |[DisposalAction](DisposalAction) (c)<br />
+Domain(s) |[http://linked.data.gov.au/def/ra#NumberedSubclass](http://linked.data.gov.au/def/ra#NumberedSubclass) (c)<br />
+Range(s) |[http://linked.data.gov.au/def/ra#DisposalAction](http://linked.data.gov.au/def/ra#DisposalAction) (c)<br />
 
 ## Named Individuals
 ## Namespaces
-* **:**
-  * `http://linked.data.gov.au/def/ra#`
-* **agr**
-  * `http://linked.data.gov.au/def/agr#`
-* **crs**
-  * `http://linked.data.gov.au/def/crs#`
 * **dct**
   * `http://purl.org/dc/terms/`
 * **owl**

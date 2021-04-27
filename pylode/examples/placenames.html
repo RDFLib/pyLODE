@@ -215,7 +215,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.8.6</span>
+    <span style="font-size:smaller;">2.8.10</span>
   </div>
   <h1>Place Names Profile</h1>
 <section id="metadata">
@@ -316,7 +316,7 @@
         <li><a href="#Geometry">Geometry</a></li>
         <li><a href="#Identifier">Identifier</a></li>
         <li><a href="#Jurisdiction">Jurisdiction</a></li>
-        <li><a href="#Organisation">Organisation</a></li>
+        <li><a href="#Organization">Organization</a></li>
         <li><a href="#Place">Place</a></li>
         <li><a href="#PlaceName">Place Name</a></li>
         <li><a href="#PlaceNameFormality">Place Name Formality</a></li>
@@ -346,7 +346,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -361,7 +361,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Jurisdiction">Jurisdiction</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/Jurisdiction">http://linked.data.gov.au/def/placenames/Jurisdiction</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -382,7 +382,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -397,7 +397,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -418,13 +418,13 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://purl.org/linked-data/registry#Register">reg:Register</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#Register">http://purl.org/linked-data/registry#Register</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://purl.org/linked-data/registry#containedItemClass">reg:containedItemClass</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">value</span> <a href="#PlaceName">PlaceName</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#containedItemClass">http://purl.org/linked-data/registry#containedItemClass</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">value</span> <a href="http://linked.data.gov.au/def/placenames/PlaceName">http://linked.data.gov.au/def/placenames/PlaceName</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -452,14 +452,14 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/asgs#StateOrTerritory">asgs:StateOrTerritory</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/asgs#StateOrTerritory">http://linked.data.gov.au/def/asgs#StateOrTerritory</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#hasplacenamingauthority">hasPlaceNamingAuthority</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#wasnamedby">wasNamedBy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/wasNamedBy">http://linked.data.gov.au/def/placenames/wasNamedBy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/hasPlaceNamingAuthority">http://linked.data.gov.au/def/placenames/hasPlaceNamingAuthority</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -480,27 +480,27 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#register">register</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Gazetteer">Gazetteer</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasfeatureclassification">hasFeatureClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#PlaceType">PlaceType</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/register">http://linked.data.gov.au/def/placenames/register</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/placenames/Gazetteer">http://linked.data.gov.au/def/placenames/Gazetteer</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/hasFeatureClassification">http://linked.data.gov.au/def/placenames/hasFeatureClassification</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/placenames/PlaceType">http://linked.data.gov.au/def/placenames/PlaceType</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#PointofInterest">PointOfInterest</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Region">Region</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/Region">http://linked.data.gov.au/def/placenames/Region</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/PointOfInterest">http://linked.data.gov.au/def/placenames/PointOfInterest</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#hasfeatureclassification">hasFeatureClassification</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/hasFeatureClassification">http://linked.data.gov.au/def/placenames/hasFeatureClassification</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -521,26 +521,26 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://purl.org/linked-data/registry#RegisteredItem">reg:RegisteredItem</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#RegisteredItem">http://purl.org/linked-data/registry#RegisteredItem</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#pronunciation">hasPronunciation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#wasnamedby">wasNamedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Jurisdiction">Jurisdiction</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://www.w3.org/ns/adms#identifier">adms:identifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="https://www.w3.org/ns/adms#Identifier">adms:Identifier</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#status">reg:status</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.org/linked-data/registry#Status">reg:Status</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#register">register</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Gazetteer">Gazetteer</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#status">http://purl.org/linked-data/registry#status</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://purl.org/linked-data/registry#Status">http://purl.org/linked-data/registry#Status</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/hasPronunciation">http://linked.data.gov.au/def/placenames/hasPronunciation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/register">http://linked.data.gov.au/def/placenames/register</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/placenames/Gazetteer">http://linked.data.gov.au/def/placenames/Gazetteer</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/wasNamedBy">http://linked.data.gov.au/def/placenames/wasNamedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/placenames/Jurisdiction">http://linked.data.gov.au/def/placenames/Jurisdiction</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://www.w3.org/ns/adms#identifier">https://www.w3.org/ns/adms#identifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="https://www.w3.org/ns/adms#Identifier">https://www.w3.org/ns/adms#Identifier</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#hasplacenameformality">hasPlaceNameFormality</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasplacenamingauthority">hasPlaceNamingAuthority</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#pronunciation">hasPronunciation</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#wasnamedby">wasNamedBy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/hasPlaceNameFormality">http://linked.data.gov.au/def/placenames/hasPlaceNameFormality</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/wasNamedBy">http://linked.data.gov.au/def/placenames/wasNamedBy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/hasPronunciation">http://linked.data.gov.au/def/placenames/hasPronunciation</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/hasPlaceNamingAuthority">http://linked.data.gov.au/def/placenames/hasPlaceNamingAuthority</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -567,7 +567,7 @@
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#hasplacenameformality">hasPlaceNameFormality</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/hasPlaceNameFormality">http://linked.data.gov.au/def/placenames/hasPlaceNameFormality</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -594,7 +594,7 @@
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#hasfeatureclassification">hasFeatureClassification</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/hasFeatureClassification">http://linked.data.gov.au/def/placenames/hasFeatureClassification</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -615,13 +615,13 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Place">Place</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/Place">http://linked.data.gov.au/def/placenames/Place</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#wasnamedby">wasNamedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/prov#Agent">prov:Agent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/wasNamedBy">http://linked.data.gov.au/def/placenames/wasNamedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/prov#Agent">prov:Agent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -642,7 +642,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Place">Place</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/Place">http://linked.data.gov.au/def/placenames/Place</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -657,7 +657,7 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Gazetteer">Gazetteer</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/Gazetteer">http://linked.data.gov.au/def/placenames/Gazetteer</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -672,7 +672,7 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#PlaceName">PlaceName</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/PlaceName">http://linked.data.gov.au/def/placenames/PlaceName</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -693,7 +693,7 @@
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://purl.org/linked-data/registry#status">reg:status</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#status">http://purl.org/linked-data/registry#status</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -714,23 +714,23 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasplacename">hasPlaceName</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#PlaceName">PlaceName</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/hasPlaceName">http://linked.data.gov.au/def/placenames/hasPlaceName</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/placenames/PlaceName">http://linked.data.gov.au/def/placenames/PlaceName</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Place">Place</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/asgs#Feature">asgs:Feature</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/gnaf#Address">gnaf:Address</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#ContractedCatchment">ContractedCatchment</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/gnaf#Address">http://linked.data.gov.au/def/gnaf#Address</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/asgs#Feature">http://linked.data.gov.au/def/asgs#Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/ContractedCatchment">http://linked.data.gov.au/def/placenames/ContractedCatchment</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/Place">http://linked.data.gov.au/def/placenames/Place</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#hasGeometry">geo:hasGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasplacename">hasPlaceName</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/hasPlaceName">http://linked.data.gov.au/def/placenames/hasPlaceName</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#hasGeometry">geosparql:hasGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -751,7 +751,7 @@
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#hasGeometry">geo:hasGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#hasGeometry">geosparql:hasGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -775,9 +775,9 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#PlaceNameFormality">PlaceNameFormality</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#PlaceType">PlaceType</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/linked-data/registry#Status">reg:Status</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/registry#Status">http://purl.org/linked-data/registry#Status</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/PlaceNameFormality">http://linked.data.gov.au/def/placenames/PlaceNameFormality</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/PlaceType">http://linked.data.gov.au/def/placenames/PlaceType</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -812,8 +812,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="Organisation">
-        <h3>Organisation<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="Organization">
+        <h3>Organization<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -834,7 +834,7 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Jurisdiction">Jurisdiction</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/placenames/Jurisdiction">http://linked.data.gov.au/def/placenames/Jurisdiction</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -892,13 +892,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Place">Place</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/placenames/Place">http://linked.data.gov.au/def/placenames/Place</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#PlaceType">PlaceType</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/placenames/PlaceType">http://linked.data.gov.au/def/placenames/PlaceType</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -934,19 +934,19 @@
             <tr>
                 <th>Inverse properties</th>
                 <td>
-                    <a href="#placenameof">placeNameOf</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://linked.data.gov.au/def/placenames/placeNameOf">http://linked.data.gov.au/def/placenames/placeNameOf</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#PlaceName">PlaceName</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/placenames/PlaceName">http://linked.data.gov.au/def/placenames/PlaceName</a><sup class="sup-c" title="class">c</sup>
                     <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
@@ -974,13 +974,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#PlaceName">PlaceName</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/placenames/PlaceName">http://linked.data.gov.au/def/placenames/PlaceName</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#PlaceNameFormality">PlaceNameFormality</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/placenames/PlaceNameFormality">http://linked.data.gov.au/def/placenames/PlaceNameFormality</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1001,13 +1001,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#PlaceName">PlaceName</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/placenames/PlaceName">http://linked.data.gov.au/def/placenames/PlaceName</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Jurisdiction">Jurisdiction</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/placenames/Jurisdiction">http://linked.data.gov.au/def/placenames/Jurisdiction</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1034,7 +1034,7 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#PlaceName">PlaceName</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/placenames/PlaceName">http://linked.data.gov.au/def/placenames/PlaceName</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1079,13 +1079,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#PlaceName">PlaceName</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/placenames/PlaceName">http://linked.data.gov.au/def/placenames/PlaceName</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Jurisdiction">Jurisdiction</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/placenames/Jurisdiction">http://linked.data.gov.au/def/placenames/Jurisdiction</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1115,7 +1115,7 @@
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://purl.org/linked-data/registry#Status">reg:Status</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://purl.org/linked-data/registry#Status">http://purl.org/linked-data/registry#Status</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1136,13 +1136,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Geometry">geo:Geometry</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#Geometry">geosparql:Geometry</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1247,12 +1247,12 @@
 </section>
 
   
-  <section id="namedindividuals">
-    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <ul class="hlist">
-        <li><a href="#PlaceName">Place Name</a></li>
-    </ul>
-    <div class="entity named_individual" id="PlaceName">
+    <section id="namedindividuals">
+        <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+        <ul class="hlist">
+            <li><a href="#PlaceName">Place Name</a></li>
+        </ul>
+            <div class="entity named_individual" id="PlaceName">
         <h3>Place Name<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
@@ -1266,8 +1266,8 @@
             </tr>
             <dt>Classes(s)</dt>
             <dd>
-                <a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a><br/>
                 <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a><br/>
+                <a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a><br/>
             </dd>
             <tr>
                 <th>Description</th>
@@ -1277,27 +1277,17 @@
             </tr>
         </table>
     </div>
-</section>
-  
+    </section>
+
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt>:</dt>
-        <dd><code>http://linked.data.gov.au/def/placenames/</code></dd>
-        <dt>adms</dt>
-        <dd><code>https://www.w3.org/ns/adms#</code></dd>
-        <dt>asgs</dt>
-        <dd><code>http://linked.data.gov.au/def/asgs#</code></dd>
-        <dt>dc</dt>
-        <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
         <dt>dcat</dt>
         <dd><code>http://www.w3.org/ns/dcat#</code></dd>
         <dt>dct</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
-        <dt>geo</dt>
+        <dt>geosparql</dt>
         <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
-        <dt>gnaf</dt>
-        <dd><code>http://linked.data.gov.au/def/gnaf#</code></dd>
         <dt>owl</dt>
         <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
         <dt>prov</dt>
@@ -1306,8 +1296,6 @@
         <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
         <dt>rdfs</dt>
         <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
-        <dt>reg</dt>
-        <dd><code>http://purl.org/linked-data/registry#</code></dd>
         <dt>sdo</dt>
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>

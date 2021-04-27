@@ -215,7 +215,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.8.6</span>
+    <span style="font-size:smaller;">2.8.10</span>
   </div>
   <h1>A Project ontology</h1>
 <section id="metadata">
@@ -257,7 +257,7 @@
         <dd>2020-04-24</dd>
         <dt>Imports</dt>
         <dd>
-            <a href="http://purl.org/dc/terms/">dcterms:</a><br/>
+            <a href="http://purl.org/dc/terms/">dct:</a><br/>
             <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a><br/>
             <a href="http://www.w3.org/ns/prov">http://www.w3.org/ns/prov</a><br/>
             <a href="https://www.w3.org/ns/dx/prof">https://www.w3.org/ns/dx/prof</a><br/>
@@ -351,22 +351,22 @@ ex:FA3
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#fundsProvided">proj:fundsProvided</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://www.w3.org/ns/prov#hadRole">prov:hadRole</a> <span class="cardinality">value</span> <a href="http://linked.data.gov.au/def/project/Funder">proji:Funder</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#fundsProvided">http://linked.data.gov.au/def/project#fundsProvided</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
                     <a href="http://www.w3.org/ns/prov#agent">prov:agent</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/prov#hadRole">prov:hadRole</a> <span class="cardinality">value</span> <a href="http://linked.data.gov.au/def/project/Funder">http://linked.data.gov.au/def/project/Funder</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#grantNumber">proj:grantNumber</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="http://linked.data.gov.au/def/project#fundingScheme">proj:fundingScheme</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#grantNumber">http://linked.data.gov.au/def/project#grantNumber</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#fundingScheme">http://linked.data.gov.au/def/project#fundingScheme</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#wasFundedThrough">proj:wasFundedThrough</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#wasFundedThrough">http://linked.data.gov.au/def/project#wasFundedThrough</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -438,29 +438,29 @@ prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#hadLeader">proj:hadLeader</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://linked.data.gov.au/def/project#hadPlan">proj:hadPlan</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://linked.data.gov.au/def/project#plannedStart">proj:plannedStart</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://linked.data.gov.au/def/project#hadSponsor">proj:hadSponsor</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://linked.data.gov.au/def/project#hadBudgetTotal">proj:hadBudgetTotal</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://linked.data.gov.au/def/project#plannedEnd">proj:plannedEnd</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/project#hadSponsor">http://linked.data.gov.au/def/project#hadSponsor</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/project#plannedEnd">http://linked.data.gov.au/def/project#plannedEnd</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/project#hadBudgetTotal">http://linked.data.gov.au/def/project#hadBudgetTotal</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/project#hadLeader">http://linked.data.gov.au/def/project#hadLeader</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/project#hadPlan">http://linked.data.gov.au/def/project#hadPlan</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/project#plannedStart">http://linked.data.gov.au/def/project#plannedStart</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#ResearchProject">proj:ResearchProject</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#ResearchProject">http://linked.data.gov.au/def/project#ResearchProject</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#hadSponsor">proj:hadSponsor</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://linked.data.gov.au/def/project#wasFundedThrough">proj:wasFundedThrough</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://linked.data.gov.au/def/project#hadPlan">proj:hadPlan</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://linked.data.gov.au/def/project#hadAreaOfInterest">proj:hadAreaOfInterest</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://linked.data.gov.au/def/project#hadObjective">proj:hadObjective</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="http://linked.data.gov.au/def/project#hadBudgetTotal">proj:hadBudgetTotal</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#hadAreaOfInterest">http://linked.data.gov.au/def/project#hadAreaOfInterest</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#hadSponsor">http://linked.data.gov.au/def/project#hadSponsor</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#wasFundedThrough">http://linked.data.gov.au/def/project#wasFundedThrough</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#hadObjective">http://linked.data.gov.au/def/project#hadObjective</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#hadPlan">http://linked.data.gov.au/def/project#hadPlan</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#hadBudgetTotal">http://linked.data.gov.au/def/project#hadBudgetTotal</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -527,20 +527,20 @@ prov:startedAtTime "2012-12-31T00:00:00"^^xsd:dateTime ;
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#Project">proj:Project</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#Project">http://linked.data.gov.au/def/project#Project</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#hadFieldOfResearch">proj:hadFieldOfResearch</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/project#hadFieldOfResearch">http://linked.data.gov.au/def/project#hadFieldOfResearch</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#hadFieldOfResearch">proj:hadFieldOfResearch</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://linked.data.gov.au/def/project#hadPrincipalInvestigator">proj:hadPrincipalInvestigator</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#hadPrincipalInvestigator">http://linked.data.gov.au/def/project#hadPrincipalInvestigator</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#hadFieldOfResearch">http://linked.data.gov.au/def/project#hadFieldOfResearch</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -581,22 +581,22 @@ ex:SM4
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#moneyAmount">proj:moneyAmount</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://linked.data.gov.au/def/project#moneyCurrency">proj:moneyCurrency</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/project#moneyAmount">http://linked.data.gov.au/def/project#moneyAmount</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/project#moneyCurrency">http://linked.data.gov.au/def/project#moneyCurrency</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#moneyCurrency">proj:moneyCurrency</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://linked.data.gov.au/def/project#moneyAmount">proj:moneyAmount</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#moneyCurrency">http://linked.data.gov.au/def/project#moneyCurrency</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#moneyAmount">http://linked.data.gov.au/def/project#moneyAmount</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#fundsProvided">proj:fundsProvided</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://linked.data.gov.au/def/project#hadBudgetTotal">proj:hadBudgetTotal</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#hadBudgetTotal">http://linked.data.gov.au/def/project#hadBudgetTotal</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/project#fundsProvided">http://linked.data.gov.au/def/project#fundsProvided</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -641,7 +641,7 @@ Link to description of funding scheme, e.g.
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#FundingAssociation">proj:FundingAssociation</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/project#FundingAssociation">http://linked.data.gov.au/def/project#FundingAssociation</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -662,7 +662,7 @@ Link to description of funding scheme, e.g.
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#SumOfMoney">proj:SumOfMoney</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/project#SumOfMoney">http://linked.data.gov.au/def/project#SumOfMoney</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -691,13 +691,13 @@ Address, place, locality, location, etc
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#Project">proj:Project</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/project#Project">http://linked.data.gov.au/def/project#Project</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://purl.org/dc/terms/Location">dcterms:Location</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://purl.org/dc/terms/Location">dct:Location</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -722,13 +722,13 @@ More complex arrangements, for example if multiple funders are involved, can be 
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#Project">proj:Project</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/project#Project">http://linked.data.gov.au/def/project#Project</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#SumOfMoney">proj:SumOfMoney</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/project#SumOfMoney">http://linked.data.gov.au/def/project#SumOfMoney</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -757,13 +757,13 @@ The field of research of the research project.
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://purl.org/dc/terms/subject">dcterms:subject</a>
+                    <a href="http://purl.org/dc/terms/subject">dct:subject</a>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#ResearchProject">proj:ResearchProject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/project#ResearchProject">http://linked.data.gov.au/def/project#ResearchProject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -832,7 +832,7 @@ We distinguish one sub-class, the `proj:ResearchProject`, in which the leader(s)
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#Project">proj:Project</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/project#Project">http://linked.data.gov.au/def/project#Project</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -861,13 +861,13 @@ The person who acts as principal investigator on the research project.
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#hadLeader">proj:hadLeader</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://linked.data.gov.au/def/project#hadLeader">http://linked.data.gov.au/def/project#hadLeader</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#ResearchProject">proj:ResearchProject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/project#ResearchProject">http://linked.data.gov.au/def/project#ResearchProject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -945,7 +945,7 @@ More complex arrangements, for example if multiple funders are involved, can be 
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#Project">proj:Project</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/project#Project">http://linked.data.gov.au/def/project#Project</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -989,7 +989,7 @@ Relationship from an activity to a subsidiary activity.
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#SumOfMoney">proj:SumOfMoney</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/project#SumOfMoney">http://linked.data.gov.au/def/project#SumOfMoney</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1016,13 +1016,13 @@ More complex arrangements, for example if multiple funders are involved, can be 
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#Project">proj:Project</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/project#Project">http://linked.data.gov.au/def/project#Project</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#FundingAssociation">proj:FundingAssociation</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/project#FundingAssociation">http://linked.data.gov.au/def/project#FundingAssociation</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1051,7 +1051,7 @@ Relationship from an activity to its parent activity or project.
             <tr>
                 <th>Inverse properties</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#hadSubActivity">proj:hadSubActivity</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://linked.data.gov.au/def/project#hadSubActivity">http://linked.data.gov.au/def/project#hadSubActivity</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
         </table>
@@ -1083,7 +1083,7 @@ Relationship from an activity to its parent activity or project.
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#FundingAssociation">proj:FundingAssociation</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/project#FundingAssociation">http://linked.data.gov.au/def/project#FundingAssociation</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -1110,7 +1110,7 @@ Relationship from an activity to its parent activity or project.
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#Project">proj:Project</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/project#Project">http://linked.data.gov.au/def/project#Project</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1131,7 +1131,7 @@ Relationship from an activity to its parent activity or project.
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/project#SumOfMoney">proj:SumOfMoney</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/project#SumOfMoney">http://linked.data.gov.au/def/project#SumOfMoney</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -1187,34 +1187,24 @@ Relationship from an activity to its parent activity or project.
 </section>
 
   
-  <section id="namedindividuals">
-    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <ul class="hlist">
-    </ul>
-</section>
-  
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt>dcterms</dt>
+        <dt>dct</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
         <dt>owl</dt>
         <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
         <dt>prof</dt>
         <dd><code>http://www.w3.org/ns/dx/prof/</code></dd>
-        <dt>proj</dt>
-        <dd><code>http://linked.data.gov.au/def/project#</code></dd>
-        <dt>proji</dt>
-        <dd><code>http://linked.data.gov.au/def/project/</code></dd>
         <dt>prov</dt>
         <dd><code>http://www.w3.org/ns/prov#</code></dd>
         <dt>rdf</dt>
         <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
         <dt>rdfs</dt>
         <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
-        <dt>sdo</dt>
+        <dt>schema</dt>
         <dd><code>http://schema.org/</code></dd>
-        <dt>sdo1</dt>
+        <dt>sdo</dt>
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>

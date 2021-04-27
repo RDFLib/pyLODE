@@ -1,0 +1,518 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix isothes: <http://purl.org/iso25964/skos-thes#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcterms:issued a owl:AnnotationProperty .
+
+dcterms:modified a owl:AnnotationProperty .
+
+isothes:broaderGeneric a owl:ObjectProperty ;
+    rdfs:label "broader term (generic)"@en ;
+    dcterms:modified "2013-11-11"^^xsd:date ;
+    rdfs:domain skos:Concept ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:range skos:Concept ;
+    rdfs:subPropertyOf skos:broader ;
+    owl:inverseOf isothes:narrowerGeneric ;
+    vs:term_status "proposed"^^xsd:string ;
+    skos:definition """Definition: ISO 25964-1: BTG
+The immediate (direct or one-step) class - generalized class relationship."""@en .
+
+isothes:broaderInstantial a owl:ObjectProperty ;
+    rdfs:label "broader term (instantial)"@en ;
+    dcterms:modified "2013-12-09"^^xsd:date ;
+    rdfs:domain skos:Concept ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:range skos:Concept ;
+    rdfs:subPropertyOf skos:broader ;
+    owl:inverseOf isothes:narrowerInstantial ;
+    vs:term_status "proposed"^^xsd:string ;
+    skos:changeNote "The URI has been renamed: #broaderInstantive is replaced by #broaderInstantial according to the observed usage of these words in English. (2013-12-09)"@en ;
+    skos:definition """Definition: ISO 25964-1: BTI
+The immediate (direct or one-step) instance - class relationship."""@en .
+
+isothes:broaderPartitive a owl:ObjectProperty ;
+    rdfs:label "broader term (partitive)"@en ;
+    dcterms:modified "2013-11-18"^^xsd:date ;
+    rdfs:domain skos:Concept ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:range skos:Concept ;
+    rdfs:subPropertyOf skos:broader ;
+    owl:inverseOf isothes:narrowerPartitive ;
+    vs:term_status "proposed"^^xsd:string ;
+    skos:definition """Definition: ISO 25964-1: BTP
+When the ISO 25964 standard is followed, the BTP/NTP relationship should qualify for a transitive closure."""@en ;
+    skos:example """A "bicycle wheel" for instance belongs uniquely to a "bicycle" while a "wheel" does not.
+A BTP/NTP relationship should not be established between "bicycles" and "wheels" because a wheel could be part of a motor car, a wheelbarrow or one of many other artefacts."""@en .
+
+isothes:microThesaurusOf a owl:ObjectProperty ;
+    rdfs:label "micro-thesaurus of"@en ;
+    dcterms:modified "2013-10-04"^^xsd:date ;
+    rdfs:domain isothes:ConceptGroup ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:range skos:ConceptScheme ;
+    rdfs:subPropertyOf skos:inScheme ;
+    vs:term_status "released"^^xsd:string ;
+    skos:definition "Definition: Concept groups published as sub-thesauri (e.g., having micro-thesaurus as ISO conceptGroupType) "@en .
+
+isothes:plusUFTerm a owl:ObjectProperty ;
+    rdfs:label "UF+"@en ;
+    dcterms:modified "2013-12-09"^^xsd:date ;
+    rdfs:domain isothes:PreferredTerm ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:range isothes:SplitNonPreferredTerm ;
+    rdfs:subPropertyOf skosxl:labelRelation ;
+    owl:inverseOf isothes:plusUseTerm ;
+    vs:term_status "released"^^xsd:string ;
+    skos:definition """Definition: ISO 25964-1: UF+
+The non-preferred term expressing a compound concept that should be represented by a combination of preferred terms"""@en .
+
+isothes:status a owl:DatatypeProperty ;
+    rdfs:label "status"@en ;
+    dcterms:modified "2013-10-04"^^xsd:date ;
+    rdfs:comment """ISO status
+- on ThesaurusConcept
+- on ThesaurusTerm"""@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( skos:Concept skosxl:Label ) ] ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:range xsd:string ;
+    vs:term_status "released"^^xsd:string .
+
+isothes:subGroup a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "sub group"@en ;
+    dcterms:modified "2013-10-04"^^xsd:date ;
+    rdfs:domain isothes:ConceptGroup ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:range isothes:ConceptGroup ;
+    owl:inverseOf isothes:superGroup ;
+    vs:term_status "released"^^xsd:string ;
+    skos:definition "Definition: All members of the (object) subGroup are members of the (subject) group."@en .
+
+isothes:subordinateArray a owl:ObjectProperty ;
+    rdfs:label "subordinate array"@en ;
+    dcterms:modified "2013-12-09"^^xsd:date ;
+    rdfs:domain skos:Concept ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:range isothes:ThesaurusArray ;
+    owl:inverseOf isothes:superOrdinate ;
+    vs:term_status "released"^^xsd:string ;
+    skos:definition """Definition: Explicitly links a (superordinate) concept to one or more subordinate arrays. Each array may either be composed of narrower concepts of the superordinate concept (in which case there may be an associated node label with a characteristic of division) or by concepts that need not be narrower concepts of the superordinate concept (in which case a node label may provide a facet name).
+
+In other words, though each array only contains sibling concepts, no hierarchical relation may be automatically derived between a concept and the concepts in any of its subordinate arrays. The hierarchical relationship between these concepts has to be asserted explicitly."""@en .
+
+xsd:date a rdfs:Datatype .
+
+vs:term_status a owl:AnnotationProperty ;
+    rdfs:label "model axiom or term status"@en ;
+    dcterms:issued "2013-12-05"^^xsd:date ;
+    dcterms:modified "2013-12-05"^^xsd:date ;
+    rdfs:isDefinedBy <http://www.w3.org/2003/06/sw-vocab-status/ns> ;
+    rdfs:range xsd:string ;
+    vs:term_status "proposed"^^xsd:string .
+
+skos:altLabel rdfs:comment """Simple or basic super property of ISO hasNonPreferredLabel
+
+Applies if the value of "hasNonPreferredLabel" is of class SimpleNonPreferredTerm with the Boolean attribute "hidden" either absent or with value false."""@en .
+
+skos:broaderTransitive rdfs:comment """Can be used to derive ISO hasTopConcept (which is different from skos:hasTopConcept).
+
+The ISO hasTopConcept can be derived in SKOS from skos:broaderTransitive where the object of skos:broaderTransitive is a concept having the property skos:topConceptOf (i.e., a ThesaurusConcept having topConcept = true)."""@en .
+
+skos:definition skos:definition "Caution: In ISO 25964, \"hasDefinition\" applies to a term rather than to a concept."@en .
+
+skos:editorialNote skos:definition "Caution: In ISO 25964, \"hasEditorialNote\" applies to a term rather than to a concept."@en .
+
+skos:hasTopConcept skos:definition "Definition: Captures ISO TopLevelRelationship"@en .
+
+skos:hiddenLabel rdfs:comment """Simple or basic super property of ISO hasNonPreferredLabel
+
+Applies if the value of "hasNonPreferredLabel" is of class SimpleNonPreferredTerm with the Boolean attribute "hidden" having value true."""@en .
+
+skos:historyNote skos:definition "Definition: In ISO 25964, \"hasHistoryNote\" can apply to a term or to a concept."@en .
+
+skos:member rdfs:comment """ISO
+- hasMemberArray
+- hasMemberConcept
+- hasAsMember
+Note: SKOS S39 (any concept in a List of a skos:memberList is also a value of skos:member).
+
+By definition, used to represent members of a thesaurus Array or of a thesaurus Group.
+
+An Array may have as members thesaurus Concepts or other thesaurus Arrays.
+
+Thesaurus Group members are thesaurus Concepts."""@en .
+
+skos:memberList rdfs:comment """ISO
+- hasMemberArray<ordered=true>
+- hasMemberConcept<ordered=true>"""@en .
+
+skos:narrowerTransitive rdfs:comment """Can be used to derive ISO isTopConceptOf (which is different from skos:isTopConceptOf).
+
+The ISO isTopConceptOf can be derived in SKOS from skos:narrowerTransitive where the skos:narrowerTransitive has as subject a concept that is object of a skos:hasTopConcept statement (i.e., a ThesaurusConcept having topConcept = true)."""@en .
+
+skos:notation rdfs:comment """Best practice in SKOS is to (RDF) type the notation value object. This allows multiple notation value types for the same concept or term to be distinguished. 
+
+Note: In ISO 25964-1, such typing is implicit in the thesaurus or it is part of the "notation" value."""@en .
+
+skos:note rdfs:comment """ISO refersTo is not mapped.
+
+Work is ongoing in the RDF group to type the content explicitly as HTML or XML in RDF1.1 (http://dvcs.w3.org/hg/rdf/raw-file/default/rdf-concepts/index.html#section-html). This would allow embedding relevant hyperlinks in notes.
+
+May be an embedded and tagged link in the note value (e.g., as done for EuroVoc).
+
+
+In ISO 25964, some types of Note are associated with concepts, others with terms. In SKOS, all documentation notes are associated with concepts.
+
+In basic SKOS, notes are represented using simple annotation properties, which type captures the note type. However the SKOS annotation properties can also be used with structured representation of notes as fully-fledged resources. See http://www.w3.org/TR/skos-primer/#secdocumentation and http://www.w3.org/TR/skos-primer/#secadvanceddocumentation for examples of both approaches.
+
+Within a thesaurus the application of notes to concept and term is more restrictive than in SKOS.
+
+A note may have some structure or formatting. In general, this can be modelled using rdf:value (to represent lexicalValue)
+
+The language should be held in rdf:value. If this is an XMLLiteral, the language shall also be made available using dc:language (or dct:language).
+
+Note: Work is ongoing in the RDF group to type the content explicitly as HTML or XML In RDF1.1 (http://dvcs.w3.org/hg/rdf/raw-file/default/rdf-concepts/index.html#section-html). This would allow embedding relevant hyperlinks in notes.
+
+Additional attributes can be added to the note structure:
+- dct:created
+- dct:modified"""@en .
+
+skos:prefLabel rdfs:comment """Simple super property of ISO hasPreferredLabel
+
+Basic SKOS allows labels (as simple literals) to be attached directly to Concepts using skos:prefLabel; this is the preferred simple scenario where label relations are not explicit."""@en .
+
+skos:related skos:definition "Comment: As an extension to SKOS, sub-properties of skos:related may be needed to model the different associative relationships identified by the ISO 25964 attribute \"role\"."@en .
+
+skos:scopeNote skos:definition "Caution: In ISO 25964, \"hasScopeNote\" applies to a concept rather than to a term."@en .
+
+skos:topConceptOf skos:definition """Definition: Super property of ISO isPartOf of a ThesaurusConcept having its attribute topConcept = true.
+
+Captures ISO TopLevelRelationship"""@en .
+
+skosxl:altLabel rdfs:comment """Complex super property of ISO hasNonPreferredLabel
+
+Applies if the value of "hasNonPreferredLabel" is of class SimpleNonPreferredTerm with the Boolean attribute "hidden" either absent or with value false."""@en .
+
+skosxl:hiddenLabel rdfs:comment """Complex super property of ISO hasNonPreferredLabel
+
+Applies if the value of "hasNonPreferredLabel" is of class SimpleNonPreferredTerm with the Boolean attribute "hidden" having value true."""@en .
+
+skosxl:prefLabel rdfs:comment """Complex super property of ISO hasPreferredLabel
+
+When a label is represented as skos xl:Label, a skos:prefLabel statement is derived from the skos-xl:prefLabel one. (Likewise for altLabel and hiddenLabel.)"""@en .
+
+isothes:SimpleNonPreferredTerm a owl:Class ;
+    rdfs:label "Simple Non Preferred Term"@en ;
+    dcterms:modified "2016-06-08"^^xsd:date ;
+    rdfs:comment """ISO SimpleNonPreferredTerm
+
+Instances of iso:SimpleNonPreferredTerm are the object of either of skos xl:altLabel or skos xl:hiddenLabel statements.
+
+
+Identifying cases of Equivalence:
+
+In SKOS/-XL, Equivalence may be derived between the skos/skos xl:prefLabel statements on one hand and the skos/skos xl:altLabel or the skos/skos xl:hiddenLabel statements on the other hand where:
+- the subject of all these statements is the same instance of skos:Concept,
+- the language of all the bound labels is the same,
+- the prefLabel has the role USE, and
+- the altLabel and hiddenLabel have the role UF."""@en ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:subClassOf skosxl:Label ;
+    vs:term_status "deprecated"^^xsd:string .
+
+isothes:narrowerGeneric a owl:ObjectProperty ;
+    rdfs:label "narrower term (generic)"@en ;
+    dcterms:modified "2013-11-11"^^xsd:date ;
+    rdfs:domain skos:Concept ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:range skos:Concept ;
+    rdfs:subPropertyOf skos:narrower ;
+    vs:term_status "proposed"^^xsd:string ;
+    skos:definition """Definition: ISO 25964-1: NTG
+The immediate (direct or one-step) class - specialized class relationship."""@en .
+
+isothes:narrowerInstantial a owl:ObjectProperty ;
+    rdfs:label "narrower term (instantial)"@en ;
+    dcterms:modified "2013-12-09"^^xsd:date ;
+    rdfs:domain skos:Concept ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:range skos:Concept ;
+    rdfs:subPropertyOf skos:narrower ;
+    vs:term_status "proposed"^^xsd:string ;
+    skos:changeNote "The URI has been renamed: #narrowerInstantive is replaced by #narrowerInstantial according to the observed usage of these words in English. (2013-12-09)"@en ;
+    skos:definition """Definition: ISO 25964-1: NTI
+The immediate (direct or one-step) class - instance relationship."""@en .
+
+isothes:narrowerPartitive a owl:ObjectProperty ;
+    rdfs:label "narrower term (partitive)"@en ;
+    dcterms:modified "2013-11-18"^^xsd:date ;
+    rdfs:domain skos:Concept ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:range skos:Concept ;
+    rdfs:subPropertyOf skos:narrower ;
+    vs:term_status "proposed"^^xsd:string ;
+    skos:definition """Definition: ISO 25964-1: NTP
+When the ISO 25964 standard is followed, the BTP/NTP relationship should qualify for a transitive closure."""@en ;
+    skos:example """A "bicycle wheel" for instance belongs uniquely to a "bicycle" while a "wheel" does not.
+A BTP/NTP relationship should not be established between "bicycles" and "wheels" because a wheel could be part of a motor car, a wheelbarrow or one of many other artefacts."""@en .
+
+isothes:plusUF a owl:ObjectProperty ;
+    rdfs:label "split non preferred term"@en ;
+    dcterms:modified "2016-06-08"^^xsd:date ;
+    rdfs:domain isothes:CompoundEquivalence ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:range isothes:SplitNonPreferredTerm ;
+    vs:term_status "deprecated"^^xsd:string ;
+    skos:definition """Definition: ISO 25964-1: UF+
+The non preferred term labeling a complex concept.
+The complex concept will be identified by splitting the non preferred term into 2 or more (component) preferred terms."""@en .
+
+isothes:plusUse a owl:ObjectProperty ;
+    rdfs:label "component preferred term"@en ;
+    dcterms:modified "2016-06-08"^^xsd:date ;
+    rdfs:domain isothes:CompoundEquivalence ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:range isothes:PreferredTerm ;
+    vs:term_status "deprecated"^^xsd:string ;
+    skos:scopeNote """ISO 25964-1: USE+
+One of two or more (component) preferred terms used together to represent the (complex) concept labeled by a (split) non preferred term."""@en .
+
+isothes:plusUseTerm a owl:ObjectProperty ;
+    rdfs:label "USE+"@en ;
+    dcterms:modified "2013-10-04"^^xsd:date ;
+    rdfs:domain isothes:SplitNonPreferredTerm ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:range isothes:PreferredTerm ;
+    rdfs:subPropertyOf skosxl:labelRelation ;
+    vs:term_status "released"^^xsd:string ;
+    skos:definition """Definition: ISO 25964-1: USE+
+The two or more (component) preferred terms following should be used together to represent the concept indicated by the (split) non preferred term."""@en ;
+    skos:scopeNote """iso-thes:plusUseTerm (and its inverse iso-thes:plusUFTerm) may be derived from iso-thes:CompoundEquivalence.
+
+For an iso-thes:CompoundEquivalence instance each derived iso-thes:plusUseTerm has as:
+- subject: the iso-thes:plusUF value
+- object: the iso-thes:plusUse value
+
+In special cases where the iso-thes:SplitNonPreferredTerm has more than one decomposition, the inverse inference may not be possible.
+"""@en .
+
+isothes:superGroup a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "super group"@en ;
+    dcterms:modified "2013-11-11"^^xsd:date ;
+    rdfs:domain isothes:ConceptGroup ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:range isothes:ConceptGroup ;
+    vs:term_status "released"^^xsd:string ;
+    skos:definition "Definition: All members of the (subject) group are members of the (object) superGroup."@en .
+
+isothes:superOrdinate a owl:ObjectProperty ;
+    rdfs:label "super ordinate"@en ;
+    dcterms:modified "2013-11-09"^^xsd:date ;
+    rdfs:domain isothes:ThesaurusArray ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:range skos:Concept ;
+    vs:term_status "released"^^xsd:string ;
+    skos:definition """Definition: ISO 25964: hasSuperOrdinateConcept
+The (subject) array organizes a set of sibling concepts under the (object) concept."""@en .
+
+skos:ConceptScheme rdfs:comment """super class of ISO Thesaurus
+
+The mandatory attribute identifier may be mapped to the Dublin Core property dc:identifier. A typical representation of a thesaurus should document a (scoped) relationship between an identifier of this thesaurus and the URI of the RDF Concept Scheme URI.
+
+The mandatory attribute lang can be mapped to either of the Dublin Core properties dc:language or dct:language. The value space is defined by RFC 4646. For multilingual thesaurus, one lang attribute is needed per supported language.
+
+Typically these can be mapped to the corresponding Dublin Core dc: (or dct:) properties:
+- dc:contributor
+- dc:coverage
+- dc:creator
+- dct:created
+- dct:modified
+- dc:date
+- skos:definition
+- dc:format
+- dc:publisher
+- dc:relation, dct:relation or a specialization
+- dc:rights
+- dc:source
+- dc:subject
+- dc:title
+- dc:type
+
+The association "hasVersion" is discussed in the Version_History section of the mapping documentation (http://www.niso.org/schemas/iso25964/correspondencesSKOS/)."""@en .
+
+skos:inScheme rdfs:comment """Super property of ISO isPartOf
+
+Applies to any ISO 25964 "isPartOf" relation that targets the Thesaurus. Subjects of the skos:inScheme statements can be ISO 25964’s ThesaurusConcept, ConceptGroup, and ThesaurusArray.
+
+Only applies to ISO 25964 "contains" statements having a Thesaurus [ConceptScheme] as subject."""@en .
+
+isothes:CompoundEquivalence a owl:Class ;
+    rdfs:label "Compound Equivalence"@en ;
+    dcterms:modified "2013-12-09"^^xsd:date ;
+    rdfs:comment """ISO CompoundEquivalence 
+
+iso-thes:plusUseTerm (and its inverse iso-thes:plusUFTerm) may be derived from iso-thes:CompoundEquivalence.
+
+For a iso-thes:CompoundEquivalence instance each derived iso thes:plusUseTerm has as:
+- subject: the iso thes:plusUF value
+- object: the iso thes:plusUse value
+
+An ISO 25964 compliant thesaurus only has one compound equivalence relation for each split non preferred term.
+
+In special cases where the iso-thes:SplitNonPreferredTerm has more than one decomposition, the inverse inference may not be possible.   (While this situation should not arise within a single thesaurus that complies with ISO 25964, it could occur if terms and relationships have been drawn from more than one thesaurus. For this reason the property skos:inScheme (http://www.w3.org/2004/02/skos/core#inScheme) should be used with each instance of the class Compound Equivalence, to relate it to its Thesaurus.)"""@en ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass isothes:SplitNonPreferredTerm ;
+            owl:onProperty isothes:plusUF ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass isothes:PreferredTerm ;
+            owl:onProperty isothes:plusUse ] ;
+    vs:term_status "released"^^xsd:string .
+
+isothes:ThesaurusArray a owl:Class ;
+    rdfs:label "Thesaurus Array"@en ;
+    dcterms:modified "2013-12-09"^^xsd:date ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:subClassOf skos:Collection ;
+    vs:term_status "released"^^xsd:string ;
+    skos:definition """Definition: ISO ThesaurusArray
+An array is a group of sibling concepts
+
+Instances of ThesaurusArray can be mapped to instances of skos:OrderedCollection (a subclass of skos:Collection) if and only if the array needs to be an ordered array (in the ISO-25964 model the value of its Boolean attribute "ordered" is true).
+It is advised to use the skos:inScheme (http://www.w3.org/2004/02/skos/core#inScheme) property on such a skos:Collection to relate it to its Thesaurus (see ISO 25964: isPartOf).
+
+Concepts in a thesaurus array are sibling concepts in the thesaurus.
+
+If present, the node label of a thesaurus array is mapped to rdfs:label or xl:prefLabel.
+Optional node label attributes typically are mapped to dc: (or dct:) properties:
+- dct:created
+- dct:modified
+These can be attached (if needed) to the xl:Label instance that is the value of xl:prefLabel."""@en .
+
+skos:broader skos:definition "Comment: As an extension to SKOS, sub-properties of skos:broader and skos:narrower may be needed to model the different hierarchical relationships identified by the ISO 25964 attribute \"role\"."@en .
+
+skos:narrower skos:definition "Comment: As an extension to SKOS, sub-properties of skos:broader and skos:narrower may be needed to model the different hierarchical relationships identified by the ISO 25964 attribute \"role\"."@en .
+
+skosxl:Label rdfs:comment """Super class of ISO ThesaurusTerm and of ISO NodeLabel.
+
+A ThesaurusTerm has mandatory attributes lexicalValue and identifier. lexicalValue can be mapped to skos xl:literalForm. The value of identifier can be used as the URI of the skos xl:Label or as the object of a dc:identifier statement on that skos-xl:Label.
+A NodeLabel has mandatory attributes lexicalValue.
+
+The optional ISO25964 lang attribute of ThesaurusTerm and of NodeLabel must be mapped to RDF language tag for RDF plain literals.
+
+Attributes or associations not detailed below typically are mapped to dc: (or dct:) properties:
+- dct:created
+- dct:modified
+- dc:source"""@en .
+
+isothes:ConceptGroup a owl:Class ;
+    rdfs:label "Concept Group"@en ;
+    dcterms:modified "2016-06-08"^^xsd:date ;
+    rdfs:comment """ISO ConceptGroup
+
+Concept groups have several applications.
+
+One such application is illustrated by the EUROVOC and the UNESCO thesaurus.  Both of these use a super structure of domain and of micro-thesaurus.  Both of these structuring elements can be modeled using ConceptGroup."""@en ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:subClassOf skos:Collection ;
+    owl:disjointWith isothes:ThesaurusArray ;
+    vs:term_status "deprecated"^^xsd:string ;
+    skos:definition """Definition: A concept group is a group of concepts making up a subset of the thesaurus. Member concepts may be drawn from many different facets or hierarchies of the thesaurus. While almost any criterion may be used to select the members, this construct is commonly used to define a micro-thesaurus that will be used by a particular user group or domain.
+
+The skos:inScheme (http://www.w3.org/2004/02/skos/core#inScheme) property should be used to indicate the thesaurus to which an instance of skos:Collection applies (see ISO 25964: isPartOf).
+
+Use rdfs:label or xl:prefLabel for the ConceptGroup label (1 per language).
+Optional label attributes typically are mapped to dc: (or dct:) properties:
+- dct:created
+- dct:modified
+These can be attached to the xl:Label instance that is the value of the xl:prefLabel.
+
+Depending on the value of the ISO conceptGroupType a sub-class of iso thes:ConceptGroup should be defined.
+e.g.: EUROVOC and UNESCO use
+- Domain
+- MicroThesaurus (an iso-thes:hasSubGroup of a Domain)"""@en .
+
+isothes:PreferredTerm a owl:Class ;
+    rdfs:label "Preferred Term"@en ;
+    dcterms:modified "2013-12-09"^^xsd:date ;
+    rdfs:comment """ISO PreferredTerm:
+
+Instances of iso-thes:PreferredTerm are objects of skos-xl:prefLabel statements.
+
+Making the class explicit allows RDF/OWL consistency checks for CompoundEquivalence."""@en ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:subClassOf skosxl:Label ;
+    vs:term_status "released"^^xsd:string .
+
+isothes:SplitNonPreferredTerm a owl:Class ;
+    rdfs:label "Split Non Preferred Term"@en ;
+    dcterms:modified "2016-06-08"^^xsd:date ;
+    rdfs:comment """iso SplitNonPreferredTerm
+
+This class provides for an 'imagined' concept that may exist in a user’s mind but is not present in the thesaurus (Concept Scheme); it can, however, be represented by a combination of two or more preferred terms (skos-xl:prefLabel) in the thesaurus. (In contrast, concepts present in the thesaurus are provided for by the ThesaurusConcept class.)
+This label is provided by the object property iso thes:plusUF
+- domain: iso-thes:CompoundEquivalence
+- range: iso-thes:SplitNonPreferredTerm."""@en ;
+    rdfs:isDefinedBy <http://purl.org/iso25964/skos-thes> ;
+    rdfs:subClassOf skosxl:Label ;
+    vs:term_status "deprecated"^^xsd:string .
+
+skos:Concept rdfs:comment """super class of ISO ThesaurusConcept
+
+The mandatory attribute identifier may be mapped to the Dublin Core property dc:identifier.
+Attributes or associations not detailed below typically are mapped to dc: (or dct:) properties:
+- dct:created
+- dct:modified"""@en .
+
+<http://purl.org/iso25964/skos-thes> a owl:Ontology ;
+    dc:date "2013-12-09"^^xsd:date ;
+    dcterms:contributor "" ;
+    dcterms:created "2013-10-04"^^xsd:date ;
+    dcterms:creator "" ;
+    dcterms:modified "2013-12-09"^^xsd:date ;
+    voaf:toDoList """Todo: 
+Not modelled but requiring further extension:
+
+- CustomTermAttribute : 
+  Best practice would be to define custom RDF data-type properties taking plain literal values. The property name depends on the customAttributeType.
+
+- CustomConceptAttribute :
+  Best practice would be to define custom RDF data-type properties taking plain literal values. The property name depends on the customAttributeType.
+
+- refersTo (reference from within a note to a concept or label/term:
+   May be an embedded and tagged link in the note value (e.g., as done for EuroVoc http://eurovoc.europa.eu/).
+
+- CustomNote :
+  Depending noteType a new custom property should be defined as a sub-property of skos:note (consider applicability of: skos:changeNote and skos:example)
+ 
+ - BTG/NTG - BTP/NTP - BTI/NTI :
+   Currently these are only defined as direct (one-step) sub-properties of skos:broader / skos:narrower.
+
+Some constraints currently expressed only in natural language (in rdfs:comment) may be formally expressed as OWL(2) axioms.
+
+We have postponed the implementation of the iso-thes properties mentioned in the VersionHistory section of the mapping documentation.""";
+    rdfs:comment """These notes apply to the published mapping between the ISO 25964 data model and the SKOS schema (http://www.niso.org/schemas/iso25964/correspondencesSKOS/).
+Remarks can be exchanged using: 25964info@list.niso.org 
+Subscription info and archive is on: http://www.niso.org/lists/25964info/ 
+General information about ISO 25964: http://www.niso.org/schemas/iso25964/
+
+The annotation http://www.w3.org/2003/06/sw-vocab-status/ns#term_status indicates "proposed" properties that are not part of the mapping documentation."""@en ;
+    rdfs:seeAlso <http://www.niso.org/schemas/iso25964/correspondencesSKOS/> ;
+    owl:imports <http://www.w3.org/2004/02/skos/core>,
+        <http://www.w3.org/2008/05/skos-xl> .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( isothes:PreferredTerm isothes:SimpleNonPreferredTerm isothes:SplitNonPreferredTerm ) .

@@ -1,0 +1,97 @@
+<div class="entity named_individual" id="{{ fid }}">
+        <h3>{{ title }}<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                  {%- if uri.startswith("http") %}
+                      {{ uri }}
+                  {% else %}
+                    []
+                  {%- endif %}
+                  </code>
+                </td>
+            </tr>
+            {%- if classes|length > 0 %}
+            <dt>Classes(s)</dt>
+            <dd>
+                {%- for class in classes %}
+                {{ class }}<br/>
+                {%- endfor %}
+            </dd>
+            {%- endif %}
+            {%- if policy_code is not none %}
+            <tr>
+                <th>Policy Code</th>
+                <td>
+                    {{ policy_code }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if is_defined_by is not none %}
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    {{ is_defined_by }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if source is not none %}
+            <tr>
+                <th>Source</th>
+                <td>
+                    {{ source }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if description is not none %}
+            <tr>
+                <th>Description</th>
+                <td>
+                    {{ description }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if applies_whole is not none %}
+            <tr>
+                <th>Applies to Whole Maritime Area</th>
+                <td>
+                    {{ applies_whole }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if directs_chapter is not none %}
+            <tr>
+                <th>Directs Chapter Topic Activity Proposals</th>
+                <td>
+                    {{ directs_chapter }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if directs_other is not none %}
+            <tr>
+                <th>Directs Other Proposals in Relation to the Topic Activity</th>
+                <td>
+                    {{ directs_other }}
+                </td>
+            </tr>
+            {%- endif %}
+             {%- if see_also is not none %}
+            <tr>
+                <th>See Also</th>
+                <td>
+                    {{ see_also }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if same_as is not none %}
+            <tr>
+                <th>Same As</th>
+                <td>
+                    {{ same_as }}
+                </td>
+            </tr>
+            {%- endif %}
+        </table>
+    </div>

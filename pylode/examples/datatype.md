@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.10
 
 # Datatypes
 
@@ -53,53 +53,53 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/Boolean`
 Description | <p>Class to encapsulate a true-or-false value</p>
-Restrictions |[data:value](datavalue) (dp) **exactly** 1<br />[data:value](datavalue) (dp) **only** [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/datatype/value](http://linked.data.gov.au/def/datatype/value) (dp) **exactly** 1<br />[http://linked.data.gov.au/def/datatype/value](http://linked.data.gov.au/def/datatype/value) (dp) **only** [xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean) (c)<br />
 ### Concept
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/Concept`
 Description | <p>Class to encapsulate a classifier, usually a values from a controlled vocabulary</p>
-Restrictions |[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value) **only** [skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value) **exactly** 1<br />[data:vocabulary](vocabulary) (op) **exactly** 1<br />
+Restrictions |[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value) **only** [skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value) **exactly** 1<br />[http://linked.data.gov.au/def/datatype/vocabulary](http://linked.data.gov.au/def/datatype/vocabulary) (op) **exactly** 1<br />
 ### Count
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/Count`
 Description | <p>Class to encapsulate an integer value</p>
-Restrictions |[data:uncertainty](datauncertainty) (dp) **max** 1<br />[data:value](datavalue) (dp) **only** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer) (c)<br />[data:value](datavalue) (dp) **exactly** 1<br />
+Restrictions |[http://linked.data.gov.au/def/datatype/uncertainty](http://linked.data.gov.au/def/datatype/uncertainty) (dp) **max** 1<br />[http://linked.data.gov.au/def/datatype/value](http://linked.data.gov.au/def/datatype/value) (dp) **only** [xsd:integer](http://www.w3.org/2001/XMLSchema#integer) (c)<br />[http://linked.data.gov.au/def/datatype/value](http://linked.data.gov.au/def/datatype/value) (dp) **exactly** 1<br />
 ### Percent
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/Percent`
 Description | <p>Class to encapsulate a quantitative measure expressed as a percent value</p>
-Super-classes |[data:QuantitativeMeasure](QuantitativeMeasure) (c)<br />
-Restrictions |[data:uncertainty](datauncertainty) (dp) **max** 1<br />[data:unit](unitofmeasure) (op) **value** [http://qudt.org/vocab/unit/PERCENT](http://qudt.org/vocab/unit/PERCENT) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/datatype/QuantitativeMeasure](http://linked.data.gov.au/def/datatype/QuantitativeMeasure) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/datatype/unit](http://linked.data.gov.au/def/datatype/unit) (op) **value** [http://qudt.org/vocab/unit/PERCENT](http://qudt.org/vocab/unit/PERCENT) (c)<br />[http://linked.data.gov.au/def/datatype/uncertainty](http://linked.data.gov.au/def/datatype/uncertainty) (dp) **max** 1<br />
 ### Percent range
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/PercentRange`
 Description | <p>Class to encapsulate a quantitative range expressed as in percent values</p>
-Super-classes |[data:QuantitativeRange](QuantitativeRange) (c)<br />
-Restrictions |[data:uncertainty](datauncertainty) (dp) **max** 1<br />[data:unit](unitofmeasure) (op) **value** [http://qudt.org/vocab/unit/PERCENT](http://qudt.org/vocab/unit/PERCENT) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/datatype/QuantitativeRange](http://linked.data.gov.au/def/datatype/QuantitativeRange) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/datatype/uncertainty](http://linked.data.gov.au/def/datatype/uncertainty) (dp) **max** 1<br />[http://linked.data.gov.au/def/datatype/unit](http://linked.data.gov.au/def/datatype/unit) (op) **value** [http://qudt.org/vocab/unit/PERCENT](http://qudt.org/vocab/unit/PERCENT) (c)<br />
 ### Quantitative Measure
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/QuantitativeMeasure`
 Description | <p>Class to encapsulate a quantitative measure value</p>
-Restrictions |[data:value](datavalue) (dp) **only** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal) (c)<br />[data:unit](unitofmeasure) (op) **exactly** 1<br />[data:uncertainty](datauncertainty) (dp) **max** 1<br />[data:value](datavalue) (dp) **exactly** 1<br />
-Sub-classes |[data:Percent](Percent) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/datatype/value](http://linked.data.gov.au/def/datatype/value) (dp) **only** [xsd:decimal](http://www.w3.org/2001/XMLSchema#decimal) (c)<br />[http://linked.data.gov.au/def/datatype/unit](http://linked.data.gov.au/def/datatype/unit) (op) **exactly** 1<br />[http://linked.data.gov.au/def/datatype/value](http://linked.data.gov.au/def/datatype/value) (dp) **exactly** 1<br />[http://linked.data.gov.au/def/datatype/uncertainty](http://linked.data.gov.au/def/datatype/uncertainty) (dp) **max** 1<br />
+Sub-classes |[http://linked.data.gov.au/def/datatype/Percent](http://linked.data.gov.au/def/datatype/Percent) (c)<br />
 ### Quantitative Range
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/QuantitativeRange`
 Description | <p>Class to encapsulate a quantitative range </p>
-Restrictions |[data:uncertainty](datauncertainty) (dp) **max** 1<br />[data:max](datamaximum) (dp) **exactly** 1<br />[data:min](dataminimum) (dp) **exactly** 1<br />[data:unit](unitofmeasure) (op) **exactly** 1<br />
-Sub-classes |[data:PercentRange](Percentrange) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/datatype/uncertainty](http://linked.data.gov.au/def/datatype/uncertainty) (dp) **max** 1<br />[http://linked.data.gov.au/def/datatype/unit](http://linked.data.gov.au/def/datatype/unit) (op) **exactly** 1<br />[http://linked.data.gov.au/def/datatype/min](http://linked.data.gov.au/def/datatype/min) (dp) **exactly** 1<br />[http://linked.data.gov.au/def/datatype/max](http://linked.data.gov.au/def/datatype/max) (dp) **exactly** 1<br />
+Sub-classes |[http://linked.data.gov.au/def/datatype/PercentRange](http://linked.data.gov.au/def/datatype/PercentRange) (c)<br />
 ### Text
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/Text`
 Description | <p>Class to encapsulate a textual value</p>
-Restrictions |[data:value](datavalue) (dp) **exactly** 1<br />[data:value](datavalue) (dp) **only** [xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/datatype/value](http://linked.data.gov.au/def/datatype/value) (dp) **exactly** 1<br />[http://linked.data.gov.au/def/datatype/value](http://linked.data.gov.au/def/datatype/value) (dp) **only** [xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
 
 ## Object Properties
 [data standard](#datastandard),
@@ -117,14 +117,14 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/unit`
 Description | Measurement scale 
-Super-properties |[data:standard](datastandard) (op)<br />
+Super-properties |[http://linked.data.gov.au/def/datatype/standard](http://linked.data.gov.au/def/datatype/standard) (op)<br />
 [](vocabulary)
 ### vocabulary
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/datatype/vocabulary`
 Description | controlled vocabulary, taxonomy etc 
-Super-properties |[data:standard](datastandard) (op)<br />
+Super-properties |[http://linked.data.gov.au/def/datatype/standard](http://linked.data.gov.au/def/datatype/standard) (op)<br />
 Range(s) |[skos:ConceptScheme](http://www.w3.org/2004/02/skos/core#ConceptScheme) (c)<br />[skos:Collection](http://www.w3.org/2004/02/skos/core#Collection) (c)<br />[owl:Ontology](http://www.w3.org/2002/07/owl#Ontology) (c)<br />
 
 ## Datatype Properties
@@ -166,8 +166,6 @@ Super-properties |[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value)<
 
 ## Named Individuals
 ## Namespaces
-* **data**
-  * `http://linked.data.gov.au/def/datatype/`
 * **dct**
   * `http://purl.org/dc/terms/`
 * **doap**
@@ -180,9 +178,9 @@ Super-properties |[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value)<
   * `http://www.w3.org/1999/02/22-rdf-syntax-ns#`
 * **rdfs**
   * `http://www.w3.org/2000/01/rdf-schema#`
-* **sdo**
+* **schema**
   * `http://schema.org/`
-* **sdo1**
+* **sdo**
   * `https://schema.org/`
 * **skos**
   * `http://www.w3.org/2004/02/skos/core#`

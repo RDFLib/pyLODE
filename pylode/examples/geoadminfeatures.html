@@ -215,7 +215,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.8.6</span>
+    <span style="font-size:smaller;">2.8.10</span>
   </div>
   <h1>Geological Administrative Features Ontology</h1>
 <section id="metadata">
@@ -316,15 +316,15 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Feature">geo:Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Sub-Block">geoaf:SubBlock</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Permit">geoaf:Permit</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Block">geoaf:Block</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/geoadminfeatures#Block">http://linked.data.gov.au/def/geoadminfeatures#Block</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/geoadminfeatures#SubBlock">http://linked.data.gov.au/def/geoadminfeatures#SubBlock</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/geoadminfeatures#Permit">http://linked.data.gov.au/def/geoadminfeatures#Permit</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -345,7 +345,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Administrativefeature">geoaf:AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/geoadminfeatures#AdministrativeFeature">http://linked.data.gov.au/def/geoadminfeatures#AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -366,7 +366,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Administrativefeature">geoaf:AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/geoadminfeatures#AdministrativeFeature">http://linked.data.gov.au/def/geoadminfeatures#AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -387,23 +387,17 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Administrativefeature">geoaf:AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/geoadminfeatures#AdministrativeFeature">http://linked.data.gov.au/def/geoadminfeatures#AdministrativeFeature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geo:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="#Block">geoaf:Block</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#sfWithin">geosparql:sfWithin</a> <span class="cardinality">exactly</span> 1 <a href="http://linked.data.gov.au/def/geoadminfeatures#Block">http://linked.data.gov.au/def/geoadminfeatures#Block</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-</section>
-  
-  <section id="namedindividuals">
-    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <ul class="hlist">
-    </ul>
 </section>
   
   <section id="namespaces">
@@ -413,12 +407,8 @@
         <dd><code>http://purl.org/dc/terms/</code></dd>
         <dt>doap</dt>
         <dd><code>http://usefulinc.com/ns/doap#</code></dd>
-        <dt>geo</dt>
+        <dt>geosparql</dt>
         <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
-        <dt>geoaf</dt>
-        <dd><code>http://linked.data.gov.au/def/geoadminfeatures#</code></dd>
-        <dt>loci</dt>
-        <dd><code>http://linked.data.gov.au/def/loci#</code></dd>
         <dt>owl</dt>
         <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
         <dt>prov</dt>

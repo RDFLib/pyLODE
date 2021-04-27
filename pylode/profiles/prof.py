@@ -1,4 +1,5 @@
-from pylode.common import VERSION, STYLE_DIR, TEMPLATES_DIR
+from pylode import __version__
+from pylode.common import STYLE_DIR, TEMPLATES_DIR
 import collections
 from os import path
 from rdflib import URIRef, BNode, Literal
@@ -11,8 +12,24 @@ from pylode.profiles.base import BaseProfile
 
 
 class Prof(BaseProfile):
-    def __init__(self, g, source_info, outputformat="html", include_css=False, default_language="en", get_curies_online=False):
-        super().__init__(g, source_info, outputformat=outputformat, include_css=include_css, get_curies_online=False, default_language=default_language)
+    def __init__(
+            self,
+            g,
+            source_info,
+            outputformat="html",
+            include_css=False,
+            default_language="en",
+            use_curies_stored=True,
+            get_curies_online=False
+    ):
+        super().__init__(
+            g,
+            source_info,
+            outputformat=outputformat,
+            include_css=include_css,
+            use_curies_stored=use_curies_stored,
+            get_curies_online=get_curies_online,
+            default_language=default_language)
         self.RESOURCE_DESCRIPTORS = collections.OrderedDict()
 
     def _load_template(self, template_file):
@@ -262,7 +279,7 @@ class Prof(BaseProfile):
             resource_descriptors=self.RESOURCE_DESCRIPTORS,
             namespaces=self._make_namespaces(),
             css=css,
-            pylode_version=VERSION
+            pylode_version=__version__
         )
 
     def generate_document(self):

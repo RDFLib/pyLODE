@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.10
 
 # Alternates View Profile Schema
 
@@ -75,7 +75,7 @@ Property | Value
 --- | ---
 URI | `http://data.surroundaustralia.com/def/alternates#hasDefaultView`
 Description | The View returned to which a Resource's representation conforms if no specific View request is made.
-Super-properties |[hasView](hasView) (op)<br />
+Super-properties |[http://data.surroundaustralia.com/def/alternates#hasView](http://data.surroundaustralia.com/def/alternates#hasView) (op)<br />
 [](hasView)
 ### hasView
 Property | Value
@@ -103,8 +103,6 @@ URI | `https://surroundaustralia.com`
 * **Contributor(s)**
   * [sdo:Organization](https://schema.org/Organization)
 ## Namespaces
-* **:**
-  * `http://data.surroundaustralia.com/def/alternates#`
 * **dct**
   * `http://purl.org/dc/terms/`
 * **doap**
