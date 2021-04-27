@@ -210,7 +210,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.8.6</span>
+    <span style="font-size:smaller;">2.8.7</span>
   </div>
   <h1>Commonwealth Record Series Ontology</h1>
 <section id="metadata">
@@ -284,10 +284,10 @@
         <dt>Version Information</dt>
         <dd>Beta version</dd>
         <dt>Version URI</dt>
-        <dd><a href="http://linked.data.gov.au/def/crs#">crs:</a></dd>
+        <dd><a href="http://linked.data.gov.au/def/crs#">http://linked.data.gov.au/def/crs#</a></dd>
         <dt>Imports</dt>
         <dd>
-            <a href="http://purl.org/dc/elements/1.1/">dc:</a><br/>
+            <a href="http://purl.org/dc/elements/1.1/">http://purl.org/dc/elements/1.1/</a><br/>
             <a href="http://www.w3.org/2006/time">http://www.w3.org/2006/time</a><br/>
             <a href="http://www.w3.org/ns/org#">org:</a><br/>
         </dd>
@@ -387,13 +387,13 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Relationship">crs:Relationship</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#Relationship">http://linked.data.gov.au/def/crs#Relationship</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasagent">crs:hasAgent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 2<br/>
+                    <a href="http://linked.data.gov.au/def/crs#hasAgent">http://linked.data.gov.au/def/crs#hasAgent</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 2<br/>
                 </td>
             </tr>
         </table>
@@ -415,23 +415,23 @@ Associations may be temporal, for example John Howard was Associated with the De
                 <th>Sub-classes</th>
                 <td>
                     <a href="https://schema.org/Person">sdo:Person</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#CommonwealthOrganisation">crs:CommonwealthOrganisation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#CommonwealthAgency">crs:CommonwealthAgency</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#CommonwealthAgency">http://linked.data.gov.au/def/crs#CommonwealthAgency</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#CommonwealthOrganisation">http://linked.data.gov.au/def/crs#CommonwealthOrganisation</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#Affiliatedwith">crs:affiliatedWith</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#created">crs:created</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#affiliatedWith">http://linked.data.gov.au/def/crs#affiliatedWith</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#created">http://linked.data.gov.au/def/crs#created</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
+                    <a href="http://linked.data.gov.au/def/crs#hasAgent">http://linked.data.gov.au/def/crs#hasAgent</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#creator">http://linked.data.gov.au/def/crs#creator</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://www.w3.org/ns/org#hasMember">org:hasMember</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#creator">crs:creator</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasagent">crs:hasAgent</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -467,7 +467,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#mandatedby">crs:mandatedBy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#mandatedBy">http://linked.data.gov.au/def/crs#mandatedBy</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -482,22 +482,22 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Agent">crs:Agent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/org#Organization">org:Organization</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#Agent">http://linked.data.gov.au/def/crs#Agent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#created">crs:created</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="#Series">crs:Series</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#ispartof">crs:isPartOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#CommonwealthOrganisation">crs:CommonwealthOrganisation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#performs">crs:performs</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="#GovernmentFunction">crs:Function</a><sup class="sup-c" title="class">c</sup> or <a href="#Relationship">crs:Relationship</a><sup class="sup-c" title="class">c</sup>)<br/>
+                    <a href="http://linked.data.gov.au/def/crs#isPartOf">http://linked.data.gov.au/def/crs#isPartOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/crs#CommonwealthOrganisation">http://linked.data.gov.au/def/crs#CommonwealthOrganisation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#created">http://linked.data.gov.au/def/crs#created</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="http://linked.data.gov.au/def/crs#Series">http://linked.data.gov.au/def/crs#Series</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#performs">http://linked.data.gov.au/def/crs#performs</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="http://linked.data.gov.au/def/crs#Function">http://linked.data.gov.au/def/crs#Function</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/crs#Relationship">http://linked.data.gov.au/def/crs#Relationship</a><sup class="sup-c" title="class">c</sup>)<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#performs">crs:performs</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#performs">http://linked.data.gov.au/def/crs#performs</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -525,13 +525,13 @@ Associations may be temporal, for example John Howard was Associated with the De
                 <th>Super-classes</th>
                 <td>
                     <a href="http://www.w3.org/ns/org#Organization">org:Organization</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Agent">crs:Agent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#Agent">http://linked.data.gov.au/def/crs#Agent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#haspart">crs:hasPart</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#CommonwealthAgency">crs:CommonwealthAgency</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#hasPart">http://linked.data.gov.au/def/crs#hasPart</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/crs#CommonwealthAgency">http://linked.data.gov.au/def/crs#CommonwealthAgency</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -564,14 +564,14 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#created">crs:created</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0 <a href="#Series">crs:Series</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#created">http://linked.data.gov.au/def/crs#created</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0 <a href="http://linked.data.gov.au/def/crs#Series">http://linked.data.gov.au/def/crs#Series</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Minister">crs:Minister</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#ParliamentarySecretary">crs:ParliamentarySecretary</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#ParliamentarySecretary">http://linked.data.gov.au/def/crs#ParliamentarySecretary</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#Minister">http://linked.data.gov.au/def/crs#Minister</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -598,7 +598,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#MinisterofState">crs:MinisterOfState</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#MinisterOfState">http://linked.data.gov.au/def/crs#MinisterOfState</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -625,25 +625,25 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/agift#Function">agift:Function</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/agift#Function">http://linked.data.gov.au/def/agift#Function</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#isperformedby">crs:isPerformedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="#CommonwealthAgency">crs:CommonwealthAgency</a><sup class="sup-c" title="class">c</sup> or <a href="#Relationship">crs:Relationship</a><sup class="sup-c" title="class">c</sup>)<br/>
+                    <a href="http://linked.data.gov.au/def/crs#isPerformedBy">http://linked.data.gov.au/def/crs#isPerformedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="http://linked.data.gov.au/def/crs#CommonwealthAgency">http://linked.data.gov.au/def/crs#CommonwealthAgency</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/crs#Relationship">http://linked.data.gov.au/def/crs#Relationship</a><sup class="sup-c" title="class">c</sup>)<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#isperformedby">crs:isPerformedBy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#isPerformedBy">http://linked.data.gov.au/def/crs#isPerformedBy</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#forFunction">crs:forFunction</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#forFunction">http://linked.data.gov.au/def/crs#forFunction</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -671,13 +671,13 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/agrif#Record">agrif:Record</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/agrif#Record">http://linked.data.gov.au/def/agrif#Record</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#ispartof">crs:isPartOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Series">crs:Series</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#isPartOf">http://linked.data.gov.au/def/crs#isPartOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/crs#Series">http://linked.data.gov.au/def/crs#Series</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -713,13 +713,13 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#CommonwealthPerson">crs:CommonwealthPerson</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#CommonwealthPerson">http://linked.data.gov.au/def/crs#CommonwealthPerson</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#MinisterofState">crs:MinisterOfState</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#MinisterOfState">http://linked.data.gov.au/def/crs#MinisterOfState</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -734,14 +734,14 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Minister">crs:Minister</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#Minister">http://linked.data.gov.au/def/crs#Minister</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#DeputyPrimeMinister">crs:DeputyPrimeMinister</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#PrimeMinister">crs:PrimeMinister</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#DeputyPrimeMinister">http://linked.data.gov.au/def/crs#DeputyPrimeMinister</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#PrimeMinister">http://linked.data.gov.au/def/crs#PrimeMinister</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -762,7 +762,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#CommonwealthPerson">crs:CommonwealthPerson</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#CommonwealthPerson">http://linked.data.gov.au/def/crs#CommonwealthPerson</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -789,7 +789,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#MinisterofState">crs:MinisterOfState</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#MinisterOfState">http://linked.data.gov.au/def/crs#MinisterOfState</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -810,17 +810,17 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Affiliation">crs:Affiliation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/org#Membership">org:Membership</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#Affiliation">http://linked.data.gov.au/def/crs#Affiliation</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#relatedduring">crs:relatedDuring</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasagent">crs:hasAgent</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#forFunction">crs:forFunction</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasrole">crs:hasRole</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#forFunction">http://linked.data.gov.au/def/crs#forFunction</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#hasAgent">http://linked.data.gov.au/def/crs#hasAgent</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#relatedDuring">http://linked.data.gov.au/def/crs#relatedDuring</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#hasRole">http://linked.data.gov.au/def/crs#hasRole</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -853,7 +853,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#hasrole">crs:hasRole</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#hasRole">http://linked.data.gov.au/def/crs#hasRole</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -886,10 +886,10 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#haspart">crs:hasPart</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
-                    <a href="#haspart">crs:hasPart</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Item">crs:Item</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#creator">crs:creator</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="#CommonwealthAgency">crs:CommonwealthAgency</a><sup class="sup-c" title="class">c</sup> or <a href="#CommonwealthPerson">crs:CommonwealthPerson</a><sup class="sup-c" title="class">c</sup>)<br/>
-                    <a href="#creator">crs:creator</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/crs#creator">http://linked.data.gov.au/def/crs#creator</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> (<a href="http://linked.data.gov.au/def/crs#CommonwealthAgency">http://linked.data.gov.au/def/crs#CommonwealthAgency</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/crs#CommonwealthPerson">http://linked.data.gov.au/def/crs#CommonwealthPerson</a><sup class="sup-c" title="class">c</sup>)<br/>
+                    <a href="http://linked.data.gov.au/def/crs#creator">http://linked.data.gov.au/def/crs#creator</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/crs#hasPart">http://linked.data.gov.au/def/crs#hasPart</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/crs#Item">http://linked.data.gov.au/def/crs#Item</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#hasPart">http://linked.data.gov.au/def/crs#hasPart</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
                 </td>
             </tr>
         </table>
@@ -904,7 +904,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#relatedduring">crs:relatedDuring</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#relatedDuring">http://linked.data.gov.au/def/crs#relatedDuring</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://www.w3.org/ns/org#memberDuring">org:memberDuring</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
@@ -920,7 +920,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Relationship">crs:Relationship</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#Relationship">http://linked.data.gov.au/def/crs#Relationship</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -935,17 +935,17 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#CommonwealthOrganisation">crs:CommonwealthOrganisation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#CommonwealthAgency">crs:CommonwealthAgency</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#CommonwealthOrganisation">http://linked.data.gov.au/def/crs#CommonwealthOrganisation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#CommonwealthAgency">http://linked.data.gov.au/def/crs#CommonwealthAgency</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
+                    <a href="http://www.w3.org/ns/org#hasMember">org:hasMember</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://www.w3.org/ns/org#memberDuring">org:memberDuring</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://www.w3.org/ns/org#linkedTo">org:linkedTo</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://www.w3.org/ns/org#hasSubOrganization">org:hasSubOrganization</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://www.w3.org/ns/org#memberDuring">org:memberDuring</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://www.w3.org/ns/org#hasMember">org:hasMember</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -968,7 +968,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Agent">crs:Agent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#Agent">http://linked.data.gov.au/def/crs#Agent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -983,13 +983,13 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Agent">crs:Agent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#Agent">http://linked.data.gov.au/def/crs#Agent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#CommonwealthPerson">crs:CommonwealthPerson</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/crs#CommonwealthPerson">http://linked.data.gov.au/def/crs#CommonwealthPerson</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1048,14 +1048,14 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Agent">crs:Agent</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Agent">http://linked.data.gov.au/def/crs#Agent</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Affiliation">crs:Affiliation</a><sup class="sup-c" title="class">c</sup>
-                    <a href="#Agent">crs:Agent</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Affiliation">http://linked.data.gov.au/def/crs#Affiliation</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Agent">http://linked.data.gov.au/def/crs#Agent</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1076,7 +1076,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Agent">crs:Agent</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Agent">http://linked.data.gov.au/def/crs#Agent</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1097,7 +1097,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Agent">crs:Agent</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Agent">http://linked.data.gov.au/def/crs#Agent</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1124,13 +1124,13 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Relationship">crs:Relationship</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Relationship">http://linked.data.gov.au/def/crs#Relationship</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#GovernmentFunction">crs:Function</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Function">http://linked.data.gov.au/def/crs#Function</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1163,13 +1163,13 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Relationship">crs:Relationship</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Relationship">http://linked.data.gov.au/def/crs#Relationship</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Agent">crs:Agent</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Agent">http://linked.data.gov.au/def/crs#Agent</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1190,7 +1190,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Inverse properties</th>
                 <td>
-                    <a href="#ispartof">crs:isPartOf</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://linked.data.gov.au/def/crs#isPartOf">http://linked.data.gov.au/def/crs#isPartOf</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
         </table>
@@ -1217,13 +1217,13 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Relationship">crs:Relationship</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Relationship">http://linked.data.gov.au/def/crs#Relationship</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Role">crs:Role</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Role">http://linked.data.gov.au/def/crs#Role</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1244,7 +1244,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Inverse properties</th>
                 <td>
-                    <a href="#haspart">crs:hasPart</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://linked.data.gov.au/def/crs#hasPart">http://linked.data.gov.au/def/crs#hasPart</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
         </table>
@@ -1259,14 +1259,14 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#GovernmentFunction">crs:Function</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Function">http://linked.data.gov.au/def/crs#Function</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#CommonwealthAgency">crs:CommonwealthAgency</a><sup class="sup-c" title="class">c</sup>
-                    <a href="#Relationship">crs:Relationship</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#CommonwealthAgency">http://linked.data.gov.au/def/crs#CommonwealthAgency</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Relationship">http://linked.data.gov.au/def/crs#Relationship</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1293,7 +1293,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Authority">crs:Authority</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Authority">http://linked.data.gov.au/def/crs#Authority</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1314,20 +1314,20 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Inverse properties</th>
                 <td>
-                    <a href="#isperformedby">crs:isPerformedBy</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://linked.data.gov.au/def/crs#isPerformedBy">http://linked.data.gov.au/def/crs#isPerformedBy</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#CommonwealthAgency">crs:CommonwealthAgency</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#CommonwealthAgency">http://linked.data.gov.au/def/crs#CommonwealthAgency</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#GovernmentFunction">crs:Function</a><sup class="sup-c" title="class">c</sup>
-                    <a href="#Relationship">crs:Relationship</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Function">http://linked.data.gov.au/def/crs#Function</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Relationship">http://linked.data.gov.au/def/crs#Relationship</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1354,7 +1354,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Inverse properties</th>
                 <td>
-                    <a href="#subsequentagency">crs:subsequentAgency</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://linked.data.gov.au/def/crs#subsequentAgency">http://linked.data.gov.au/def/crs#subsequentAgency</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
         </table>
@@ -1375,13 +1375,13 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Relationship">crs:Relationship</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Relationship">http://linked.data.gov.au/def/crs#Relationship</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2006/time#Interval">http://www.w3.org/2006/time#Interval</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2006/time#Interval">time:Interval</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1408,7 +1408,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Relationship">crs:Relationship</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Relationship">http://linked.data.gov.au/def/crs#Relationship</a><sup class="sup-c" title="class">c</sup>
                     <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
@@ -1430,14 +1430,14 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://www.w3.org/ns/org#linkedTo">org:linkedTo</a><sup class="sup-op" title="object property">op</sup>
                     <a href="http://www.w3.org/ns/org#hasSubOrganization">org:hasSubOrganization</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://www.w3.org/ns/org#linkedTo">org:linkedTo</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
             <tr>
                 <th>Inverse properties</th>
                 <td>
-                    <a href="#superioragency">crs:superiorAgency</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://linked.data.gov.au/def/crs#superiorAgency">http://linked.data.gov.au/def/crs#superiorAgency</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
         </table>
@@ -1510,7 +1510,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="#Affiliatedwith">crs:affiliatedWith</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://linked.data.gov.au/def/crs#affiliatedWith">http://linked.data.gov.au/def/crs#affiliatedWith</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
             <tr>
@@ -1528,7 +1528,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Agent">crs:Agent</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/crs#Agent">http://linked.data.gov.au/def/crs#Agent</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1636,7 +1636,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/2006/time#Interval">http://www.w3.org/2006/time#Interval</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/2006/time#Interval">time:Interval</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1657,7 +1657,7 @@ Associations may be temporal, for example John Howard was Associated with the De
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="#Affiliatedwith">crs:affiliatedWith</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://linked.data.gov.au/def/crs#affiliatedWith">http://linked.data.gov.au/def/crs#affiliatedWith</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
             <tr>
@@ -1796,13 +1796,13 @@ Associations may be temporal, for example John Howard was Associated with the De
 </section>
 
   
-  <section id="namedindividuals">
-    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <ul class="hlist">
-        <li><a href="#CommonwealthRecordSeriesOntology">Commonwealth Record Series Ontology</a></li>
-        <li><a href="#NicholasJ.Car">Nicholas J. Car</a></li>
-    </ul>
-    <div class="entity named_individual" id="CommonwealthRecordSeriesOntology">
+    <section id="namedindividuals">
+        <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+        <ul class="hlist">
+            <li><a href="#CommonwealthRecordSeriesOntology">Commonwealth Record Series Ontology</a></li>
+            <li><a href="#NicholasJ.Car">Nicholas J. Car</a></li>
+        </ul>
+            <div class="entity named_individual" id="CommonwealthRecordSeriesOntology">
         <h3>Commonwealth Record Series Ontology<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
@@ -1836,7 +1836,7 @@ It also refers to components in other Australian government ontologies, particul
             </tr>
         </table>
     </div>
-    <div class="entity named_individual" id="NicholasJ.Car">
+            <div class="entity named_individual" id="NicholasJ.Car">
         <h3>Nicholas J. Car<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
@@ -1850,23 +1850,15 @@ It also refers to components in other Australian government ontologies, particul
             </tr>
         </table>
     </div>
-</section>
-  
+    </section>
+
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt>agift</dt>
-        <dd><code>http://linked.data.gov.au/def/agift#</code></dd>
-        <dt>agrif</dt>
-        <dd><code>http://linked.data.gov.au/def/agrif#</code></dd>
-        <dt>auorg</dt>
-        <dd><code>http://linked.data.gov.au/def/auorg/</code></dd>
-        <dt>crs</dt>
-        <dd><code>http://linked.data.gov.au/def/crs#</code></dd>
-        <dt>dc</dt>
-        <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
         <dt>dct</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>orcid</dt>
+        <dd><code>http://orcid.org/</code></dd>
         <dt>org</dt>
         <dd><code>http://www.w3.org/ns/org#</code></dd>
         <dt>owl</dt>
@@ -1882,7 +1874,7 @@ It also refers to components in other Australian government ontologies, particul
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
         <dt>time</dt>
-        <dd><code>http://www.w3.org/2006/time</code></dd>
+        <dd><code>http://www.w3.org/2006/time#</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.7
 
 # {no title found}
 
@@ -128,189 +128,191 @@ Property | Value
 URI | `http://linked.data.gov.au/def/agrif#AGIFTFunction`
 Is Defined By | https://data.naa.gov.au/def/agift/
 Description | <p>An AGIFT Function is a Function that classifies a Record according to the Australian Governments' Interactive Functions Thesaurus.</p>
-Super-classes |[Function](Function) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Function](http://linked.data.gov.au/def/agrif#Function) (c)<br />
 ### Access Activity
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#AccessActivity`
 Description | <p>An Access Activity is an Activity where a Record is accessed by an Agent over a period of time.</p>
-Super-classes |[Activity](Activity) (c)<br />
-Restrictions |[triggers](triggers) (op) **only** [AccessTrigger](AccessTrigger) (c)<br />[accessedBy](accessedBy) (op) **some** [Agent](Agent) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Activity](http://linked.data.gov.au/def/agrif#Activity) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#triggers](http://linked.data.gov.au/def/agrif#triggers) (op) **only** [http://linked.data.gov.au/def/agrif#AccessTrigger](http://linked.data.gov.au/def/agrif#AccessTrigger) (c)<br />[http://linked.data.gov.au/def/agrif#accessedBy](http://linked.data.gov.au/def/agrif#accessedBy) (op) **some** [http://linked.data.gov.au/def/agrif#Agent](http://linked.data.gov.au/def/agrif#Agent) (c)<br />
 ### Access Control
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#AccessControl`
 Description | <p>Access Control is the selective restriction of access to a Record or Artefact.</p>
-Super-classes |[Control](Control) (c)<br />
-Sub-classes |[SecurityClassification](SecurityClassification) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Control](http://linked.data.gov.au/def/agrif#Control) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification) (c)<br />
 ### Access Trigger
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#AccessTrigger`
 Description | <p>An Access Trigger is a Trigger that can be initiated when a Record is accessed.</p>
-Super-classes |[Trigger](Trigger) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Trigger](http://linked.data.gov.au/def/agrif#Trigger) (c)<br />
 ### Activity
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Activity`
 Source | [https://www.w3.org/TR/prov-o/#Activity](https://www.w3.org/TR/prov-o/#Activity)
 Description | <p>An Activity is something that occurs over a period of time on a Record.</p>
-Restrictions |[startedAtTime](startedAtTime) (dp) **max** 1<br />[requiresSecurityClassification](requiresSecurityClassification) (op) **only** [SecurityClassification](SecurityClassification) (c)<br />[endedAtTime](endedAtTime) (dp) **max** 1<br />[associatedFunction](associatedFunction) (op) **only** [Function](Function) (c)<br />[guidingPolicy](guidingPolicy) (op) **only** [Policy](Policy) (c)<br />[wasAssociatedWith](wasAssociatedWith) (op) **some** [Agent](Agent) (c)<br />[hasStatus](hasStatus) (op) **only** [Status](Status) (c)<br />[qualifiedAssociation](qualifiedAssociation) (op) **some** [Association](Association) (c)<br />[usedRecord](usedRecord) (op) **only** [Record](Record) (c)<br />[hasLocation](hasLocation) (op) **only** [SpatialLocation](SpatialLocation) (c)<br />
-Sub-classes |[ShareActivity](ShareActivity) (c)<br />[AccessActivity](AccessActivity) (c)<br />[MaintainActivity](MaintainActivity) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#startedAtTime](http://linked.data.gov.au/def/agrif#startedAtTime) (dp) **max** 1<br />[http://linked.data.gov.au/def/agrif#usedRecord](http://linked.data.gov.au/def/agrif#usedRecord) (op) **only** [http://linked.data.gov.au/def/agrif#Record](http://linked.data.gov.au/def/agrif#Record) (c)<br />[http://linked.data.gov.au/def/agrif#endedAtTime](http://linked.data.gov.au/def/agrif#endedAtTime) (dp) **max** 1<br />[http://linked.data.gov.au/def/agrif#wasAssociatedWith](http://linked.data.gov.au/def/agrif#wasAssociatedWith) (op) **some** [http://linked.data.gov.au/def/agrif#Agent](http://linked.data.gov.au/def/agrif#Agent) (c)<br />[http://linked.data.gov.au/def/agrif#qualifiedAssociation](http://linked.data.gov.au/def/agrif#qualifiedAssociation) (op) **some** [http://linked.data.gov.au/def/agrif#Association](http://linked.data.gov.au/def/agrif#Association) (c)<br />[http://linked.data.gov.au/def/agrif#requiresSecurityClassification](http://linked.data.gov.au/def/agrif#requiresSecurityClassification) (op) **only** [http://linked.data.gov.au/def/agrif#SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification) (c)<br />[http://linked.data.gov.au/def/agrif#guidingPolicy](http://linked.data.gov.au/def/agrif#guidingPolicy) (op) **only** [http://linked.data.gov.au/def/agrif#Policy](http://linked.data.gov.au/def/agrif#Policy) (c)<br />[http://linked.data.gov.au/def/agrif#hasLocation](http://linked.data.gov.au/def/agrif#hasLocation) (op) **only** [http://linked.data.gov.au/def/agrif#SpatialLocation](http://linked.data.gov.au/def/agrif#SpatialLocation) (c)<br />[http://linked.data.gov.au/def/agrif#associatedFunction](http://linked.data.gov.au/def/agrif#associatedFunction) (op) **only** [http://linked.data.gov.au/def/agrif#Function](http://linked.data.gov.au/def/agrif#Function) (c)<br />[http://linked.data.gov.au/def/agrif#hasStatus](http://linked.data.gov.au/def/agrif#hasStatus) (op) **only** [http://linked.data.gov.au/def/agrif#Status](http://linked.data.gov.au/def/agrif#Status) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#AccessActivity](http://linked.data.gov.au/def/agrif#AccessActivity) (c)<br />[http://linked.data.gov.au/def/agrif#MaintainActivity](http://linked.data.gov.au/def/agrif#MaintainActivity) (c)<br />[http://linked.data.gov.au/def/agrif#ShareActivity](http://linked.data.gov.au/def/agrif#ShareActivity) (c)<br />
 ### Administrator
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Administrator`
 Description | <p>An Administrator is a Role that has overall responsibility for the administration and functions of an Information System, but not necessarily for the information stored within.</p>
-Super-classes |[Role](Role) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Role](http://linked.data.gov.au/def/agrif#Role) (c)<br />
 ### Agent
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Agent`
 Source | [https://www.w3.org/TR/prov-o/#Agent](https://www.w3.org/TR/prov-o/#Agent)
 Description | <p>An Agent is a corporate entity, organisational element or system, or individual responsible for the performance of some Activity or Event, including those on Records.</p>
-Restrictions |[hasPermission](hasPermission) (op) **some** [Permission](SecurityClearance) (c)<br />[actsAs](actsAs) (op) **some** [Role](Role) (c)<br />[positionIn](positionIn) (op) **some** [Organisation](Organisation) (c)<br />
-Sub-classes |[Organisation](Organisation) (c)<br />[Person](Person) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#actsAs](http://linked.data.gov.au/def/agrif#actsAs) (op) **some** [http://linked.data.gov.au/def/agrif#Role](http://linked.data.gov.au/def/agrif#Role) (c)<br />[http://linked.data.gov.au/def/agrif#positionIn](http://linked.data.gov.au/def/agrif#positionIn) (op) **some** [http://linked.data.gov.au/def/agrif#Organisation](http://linked.data.gov.au/def/agrif#Organisation) (c)<br />[http://linked.data.gov.au/def/agrif#hasPermission](http://linked.data.gov.au/def/agrif#hasPermission) (op) **some** [http://linked.data.gov.au/def/agrif#Permission](http://linked.data.gov.au/def/agrif#Permission) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#Person](http://linked.data.gov.au/def/agrif#Person) (c)<br />[http://linked.data.gov.au/def/agrif#Organisation](http://linked.data.gov.au/def/agrif#Organisation) (c)<br />
 ### Artefact
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Artefact`
 Description | <p>An Artefact is an object that is made by a Person and that is to be preserved.</p>
-Restrictions |[isChangedBy](isChangedBy) (op) **some** [InformationSystem](InformationSystem) (c)<br />[storedIn](storedIn) (op) **some** [IntellectualControlSystem](IntellectualControlSystem) (c)<br />[requiresSecurityClassification](requiresSecurityClassification) (op) **only** [SecurityClassification](SecurityClassification) (c)<br />[isAffectedBy](isAffectedBy) (op) **some** [Event](Event) (c)<br />[hasLocation](hasLocation) (op) **only** [SpatialLocation](SpatialLocation) (c)<br />[relatedTo](relatedTo) (op) **only** [Artefact](Artefact) (c)<br />[softwareAssignedID](softwareAssignedID) (dp) **some** [xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />[hasQuality](hasQuality) (op) **some** [PreservationQuality](PreservationQuality) (c)<br />
-Sub-classes |[DigitalArtefact](DigitalArtefact) (c)<br />[PhysicalArtefact](PhysicalArtefact) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#isChangedBy](http://linked.data.gov.au/def/agrif#isChangedBy) (op) **some** [http://linked.data.gov.au/def/agrif#InformationSystem](http://linked.data.gov.au/def/agrif#InformationSystem) (c)<br />[http://linked.data.gov.au/def/agrif#hasQuality](http://linked.data.gov.au/def/agrif#hasQuality) (op) **some** [http://linked.data.gov.au/def/agrif#PreservationQuality](http://linked.data.gov.au/def/agrif#PreservationQuality) (c)<br />[http://linked.data.gov.au/def/agrif#hasLocation](http://linked.data.gov.au/def/agrif#hasLocation) (op) **only** [http://linked.data.gov.au/def/agrif#SpatialLocation](http://linked.data.gov.au/def/agrif#SpatialLocation) (c)<br />[http://linked.data.gov.au/def/agrif#relatedTo](http://linked.data.gov.au/def/agrif#relatedTo) (op) **only** [http://linked.data.gov.au/def/agrif#Artefact](http://linked.data.gov.au/def/agrif#Artefact) (c)<br />[http://linked.data.gov.au/def/agrif#isAffectedBy](http://linked.data.gov.au/def/agrif#isAffectedBy) (op) **some** [http://linked.data.gov.au/def/agrif#Event](http://linked.data.gov.au/def/agrif#Event) (c)<br />[http://linked.data.gov.au/def/agrif#storedIn](http://linked.data.gov.au/def/agrif#storedIn) (op) **some** [http://linked.data.gov.au/def/agrif#IntellectualControlSystem](http://linked.data.gov.au/def/agrif#IntellectualControlSystem) (c)<br />[http://linked.data.gov.au/def/agrif#softwareAssignedID](http://linked.data.gov.au/def/agrif#softwareAssignedID) (dp) **some** [xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />[http://linked.data.gov.au/def/agrif#requiresSecurityClassification](http://linked.data.gov.au/def/agrif#requiresSecurityClassification) (op) **only** [http://linked.data.gov.au/def/agrif#SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#DigitalArtefact](http://linked.data.gov.au/def/agrif#DigitalArtefact) (c)<br />[http://linked.data.gov.au/def/agrif#PhysicalArtefact](http://linked.data.gov.au/def/agrif#PhysicalArtefact) (c)<br />
 ### Artefact Change Event
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#ArtefactChangeEvent`
 Description | <p>An Artefact Change Event is an Event that results in a new version of an Artefact.</p>
-Super-classes |[Event](Event) (c)<br />
-Restrictions |[affects](affects) (op) **min** 2 [Artefact](Artefact) (c)<br />
-Sub-classes |[ArtefactSendEvent](ArtefactSendEvent) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Event](http://linked.data.gov.au/def/agrif#Event) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#affects](http://linked.data.gov.au/def/agrif#affects) (op) **min** 2 [http://linked.data.gov.au/def/agrif#Artefact](http://linked.data.gov.au/def/agrif#Artefact) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#ArtefactSendEvent](http://linked.data.gov.au/def/agrif#ArtefactSendEvent) (c)<br />
 ### Artefact Control Event
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#ArtefactControlEvent`
 Description | <p>An Artefact Control Event is an Event that requires a particular level of access to an Artefact.</p>
-Super-classes |[Event](Event) (c)<br />
-Restrictions |[hasControl](requiresControl) (op) **only** [Control](Control) (c)<br />
-Sub-classes |[ArtefactPublishEvent](ArtefactPublishEvent) (c)<br />[ArtefactShareEvent](ArtefactShareEvent) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Event](http://linked.data.gov.au/def/agrif#Event) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#hasControl](http://linked.data.gov.au/def/agrif#hasControl) (op) **only** [http://linked.data.gov.au/def/agrif#Control](http://linked.data.gov.au/def/agrif#Control) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#ArtefactShareEvent](http://linked.data.gov.au/def/agrif#ArtefactShareEvent) (c)<br />[http://linked.data.gov.au/def/agrif#ArtefactPublishEvent](http://linked.data.gov.au/def/agrif#ArtefactPublishEvent) (c)<br />
 ### Artefact Publish Event
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#ArtefactPublishEvent`
 Description | <p>An Artefact Publish Event is an Event that gives indiscriminate access to an Artefact to a set of Agents.</p>
-Super-classes |[ArtefactControlEvent](ArtefactControlEvent) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#ArtefactControlEvent](http://linked.data.gov.au/def/agrif#ArtefactControlEvent) (c)<br />
 ### Artefact Send Event
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#ArtefactSendEvent`
 Description | <p>An Artefact Send Event is an Event that results in a new version or a set of new versions of an Artefact at a target Agent or a set of target Agents.</p>
-Super-classes |[ArtefactChangeEvent](ArtefactChangeEvent) (c)<br />
-Restrictions |[hasSourceAgent](hasSourceAgent) (op) **exactly** 1 [Agent](Agent) (c)<br />[hasTargetAgent](hasTargetAgent) (op) **min** 1 [Agent](Agent) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#ArtefactChangeEvent](http://linked.data.gov.au/def/agrif#ArtefactChangeEvent) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#hasSourceAgent](http://linked.data.gov.au/def/agrif#hasSourceAgent) (op) **exactly** 1 [http://linked.data.gov.au/def/agrif#Agent](http://linked.data.gov.au/def/agrif#Agent) (c)<br />[http://linked.data.gov.au/def/agrif#hasTargetAgent](http://linked.data.gov.au/def/agrif#hasTargetAgent) (op) **min** 1 [http://linked.data.gov.au/def/agrif#Agent](http://linked.data.gov.au/def/agrif#Agent) (c)<br />
 ### Artefact Share Event
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#ArtefactShareEvent`
 Description | <p>An Artefact Share Event is an Event that gives access to an Artefact to an Agent or a defined set of Agents.</p>
-Super-classes |[ArtefactControlEvent](ArtefactControlEvent) (c)<br />
-Restrictions |[hasTargetAgent](hasTargetAgent) (op) **min** 1 [Agent](Agent) (c)<br />[hasSourceAgent](hasSourceAgent) (op) **exactly** 1 [Agent](Agent) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#ArtefactControlEvent](http://linked.data.gov.au/def/agrif#ArtefactControlEvent) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#hasTargetAgent](http://linked.data.gov.au/def/agrif#hasTargetAgent) (op) **min** 1 [http://linked.data.gov.au/def/agrif#Agent](http://linked.data.gov.au/def/agrif#Agent) (c)<br />[http://linked.data.gov.au/def/agrif#hasSourceAgent](http://linked.data.gov.au/def/agrif#hasSourceAgent) (op) **exactly** 1 [http://linked.data.gov.au/def/agrif#Agent](http://linked.data.gov.au/def/agrif#Agent) (c)<br />
 ### Association
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Association`
 Source | [https://www.w3.org/TR/prov-o/#Association](https://www.w3.org/TR/prov-o/#Association)
 Description | <p>An Association is a qualified assignment of responsibility to an Agent in an Activity or Event, indicating that the Agent had a Role in the Activity.</p>
-Restrictions |[associatedRole](associatedRole) (op) **only** [Role](Role) (c)<br />[hasAgent](hasAgent) (op) **only** [Agent](Agent) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#hasAgent](http://linked.data.gov.au/def/agrif#hasAgent) (op) **only** [http://linked.data.gov.au/def/agrif#Agent](http://linked.data.gov.au/def/agrif#Agent) (c)<br />[http://linked.data.gov.au/def/agrif#associatedRole](http://linked.data.gov.au/def/agrif#associatedRole) (op) **only** [http://linked.data.gov.au/def/agrif#Role](http://linked.data.gov.au/def/agrif#Role) (c)<br />
 ### Business Owner
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#BusinessOwner`
 Description | <p>A Business Owner is the Role that has the managerial control of a Function.</p>
-Super-classes |[Role](Role) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Role](http://linked.data.gov.au/def/agrif#Role) (c)<br />
 ### Classifier
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Classifier`
 Description | <p>A Classifier is a machine-generated and applied category that a set of Records belong to.</p>
-Restrictions |[associatedFunction](associatedFunction) (op) **only** [Function](Function) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#associatedFunction](http://linked.data.gov.au/def/agrif#associatedFunction) (op) **only** [http://linked.data.gov.au/def/agrif#Function](http://linked.data.gov.au/def/agrif#Function) (c)<br />
 ### Collection
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Collection`
 Description | <p>A Collection is an aggregation of Artefact items.</p>
-Restrictions |[hasPart](hasPart) (op) **some** [Artefact](Artefact) (c)<br />
-Sub-classes |[PhysicalCollection](PhysicalCollection) (c)<br />[LogicalCollection](LogicalCollection) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#hasPart](http://linked.data.gov.au/def/agrif#hasPart) (op) **some** [http://linked.data.gov.au/def/agrif#Artefact](http://linked.data.gov.au/def/agrif#Artefact) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#LogicalCollection](http://linked.data.gov.au/def/agrif#LogicalCollection) (c)<br />[http://linked.data.gov.au/def/agrif#PhysicalCollection](http://linked.data.gov.au/def/agrif#PhysicalCollection) (c)<br />
 ### Control
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Control`
 Description | <p>A Control is a security or access measure that safeguards or restricts access to an asset.</p>
-Sub-classes |[SecurityControl](SecurityControl) (c)<br />[AccessControl](AccessControl) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#AccessControl](http://linked.data.gov.au/def/agrif#AccessControl) (c)<br />[http://linked.data.gov.au/def/agrif#SecurityControl](http://linked.data.gov.au/def/agrif#SecurityControl) (c)<br />
 ### Controlled Vocabulary
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#ControlledVocabulary`
 Description | <p>A Controlled Vocabulary is an Intellectual Control System that provides a way to organize Records that facilitates a later discovery of a Record.</p>
-Super-classes |[IntellectualControlSystem](IntellectualControlSystem) (c)<br />
-Restrictions |[associatedFunction](associatedFunction) (op) **only** [Function](Function) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#IntellectualControlSystem](http://linked.data.gov.au/def/agrif#IntellectualControlSystem) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#associatedFunction](http://linked.data.gov.au/def/agrif#associatedFunction) (op) **only** [http://linked.data.gov.au/def/agrif#Function](http://linked.data.gov.au/def/agrif#Function) (c)<br />
 ### Coverage
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Coverage`
 Description | <p>A Coverage denotes the jurisdictional applicability, or the temporal and/or spatial extent to which a Record is observed.</p>
-Sub-classes |[TemporalCoverage](TemporalCoverage) (c)<br />[JurisdictionalCoverage](JurisdictionalCoverage) (c)<br />[SpatialCoverage](SpatialCoverage) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#JurisdictionalCoverage](http://linked.data.gov.au/def/agrif#JurisdictionalCoverage) (c)<br />[http://linked.data.gov.au/def/agrif#SpatialCoverage](http://linked.data.gov.au/def/agrif#SpatialCoverage) (c)<br />[http://linked.data.gov.au/def/agrif#TemporalCoverage](http://linked.data.gov.au/def/agrif#TemporalCoverage) (c)<br />
 ### Record Creation Event
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#CreationEvent`
 Description | <p>A Record Creation Event is an Event that results in the creation of a Record.</p>
-Super-classes |[Event](Event) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Event](http://linked.data.gov.au/def/agrif#Event) (c)<br />
 ### Creator
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Creator`
 Description | <p>A Creator is the Agent that has created a Record or Artefact.</p>
-Super-classes |[Role](Role) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Role](http://linked.data.gov.au/def/agrif#Role) (c)<br />
 ### Decision Status
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#DecisionStatus`
 Description | <p>A Decision Status is a Status that indicates the approval or disapproval of a Decision Event.</p>
-Super-classes |[Status](Status) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Status](http://linked.data.gov.au/def/agrif#Status) (c)<br />
+Has members |[http://linked.data.gov.au/def/agrif#Approved](http://linked.data.gov.au/def/agrif#Approved)<br />[http://linked.data.gov.au/def/agrif#Disapproved](http://linked.data.gov.au/def/agrif#Disapproved)<br />
 ### Digital Artefact
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#DigitalArtefact`
 Description | <p>A Digital Artefact is an Artefact that is of a digital nature and stored in an Information System.</p>
-Super-classes |[Artefact](Artefact) (c)<br />
-Restrictions |[filesize](filesize) (dp) **some** [xsd:long](http://www.w3.org/2001/XMLSchema#long) (c)<br />[storedIn](storedIn) (op) **some** [InformationSystem](InformationSystem) (c)<br />[format](format) (dp) **some** [rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />[filename](filename) (dp) **some** [rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Artefact](http://linked.data.gov.au/def/agrif#Artefact) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#filesize](http://linked.data.gov.au/def/agrif#filesize) (dp) **some** [xsd:long](http://www.w3.org/2001/XMLSchema#long) (c)<br />[http://linked.data.gov.au/def/agrif#format](http://linked.data.gov.au/def/agrif#format) (dp) **some** [rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />[http://linked.data.gov.au/def/agrif#storedIn](http://linked.data.gov.au/def/agrif#storedIn) (op) **some** [http://linked.data.gov.au/def/agrif#InformationSystem](http://linked.data.gov.au/def/agrif#InformationSystem) (c)<br />[http://linked.data.gov.au/def/agrif#filename](http://linked.data.gov.au/def/agrif#filename) (dp) **some** [rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
 ### Digital Holding Space
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#DigitalHoldingSpace`
 Description | <p>A Digital Holding Space is a space that is used or reserved for the storage of a Digital Artefact on a storage medium or virtual storage space.</p>
-Super-classes |[HoldingSpace](HoldingSpace) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#HoldingSpace](http://linked.data.gov.au/def/agrif#HoldingSpace) (c)<br />
 ### Digital Preservation Policy
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#DigitalPreservationPolicy`
 Description | <p>The Digital Preservation Policy defines the process of active management by which the National Archives ensures that a digital object will be accessible in the future.</p>
-Super-classes |[Policy](Policy) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Policy](http://linked.data.gov.au/def/agrif#Policy) (c)<br />
 ### Disposal Class
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#DisposalClass`
 Description | <p>A Disposal Class is a Policy that defines the sentencing requirements of an item.</p>
-Super-classes |[RecordsAuthorityPolicy](RecordsAuthorityDisposalClassPolicy) (c)<br />
-Restrictions |[disposalClassNumber](disposalClassNumber) (dp) **exactly** 1<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#RecordsAuthorityPolicy](http://linked.data.gov.au/def/agrif#RecordsAuthorityPolicy) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#disposalClassNumber](http://linked.data.gov.au/def/agrif#disposalClassNumber) (dp) **exactly** 1<br />
+Has members |[http://linked.data.gov.au/def/agrif#RetainAsNationalArchives](http://linked.data.gov.au/def/agrif#RetainAsNationalArchives)<br />
 ### Event
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Event`
 Source | [https://www.w3.org/TR/prov-o/#InstantaneousEvent](https://www.w3.org/TR/prov-o/#InstantaneousEvent)
 Description | <p>An Event denotes an instantaneous transition in the world.</p>
-Restrictions |[affects](affects) (op) **some** ([Artefact](Artefact) (c) or [Record](Record) (c))<br />[triggeredBy](triggeredBy) (op) **only** [Trigger](Trigger) (c)<br />[qualifiedAssociation](qualifiedAssociation) (op) **some** [Association](Association) (c)<br />[wasAssociatedWith](wasAssociatedWith) (op) **some** [Agent](Agent) (c)<br />[associatedFunction](associatedFunction) (op) **only** [Function](Function) (c)<br />[guidingPolicy](guidingPolicy) (op) **only** [Policy](Policy) (c)<br />[priorEvent](priorEvent) (op) **only** [Event](Event) (c)<br />[hasStatus](hasStatus) (op) **only** [Status](Status) (c)<br />
-Sub-classes |[CreationEvent](RecordCreationEvent) (c)<br />[RecordControlEvent](RecordControlEvent) (c)<br />[ArtefactChangeEvent](ArtefactChangeEvent) (c)<br />[ArtefactControlEvent](ArtefactControlEvent) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#affects](http://linked.data.gov.au/def/agrif#affects) (op) **some** ([http://linked.data.gov.au/def/agrif#Artefact](http://linked.data.gov.au/def/agrif#Artefact) (c) or [http://linked.data.gov.au/def/agrif#Record](http://linked.data.gov.au/def/agrif#Record) (c))<br />[http://linked.data.gov.au/def/agrif#associatedFunction](http://linked.data.gov.au/def/agrif#associatedFunction) (op) **only** [http://linked.data.gov.au/def/agrif#Function](http://linked.data.gov.au/def/agrif#Function) (c)<br />[http://linked.data.gov.au/def/agrif#priorEvent](http://linked.data.gov.au/def/agrif#priorEvent) (op) **only** [http://linked.data.gov.au/def/agrif#Event](http://linked.data.gov.au/def/agrif#Event) (c)<br />[http://linked.data.gov.au/def/agrif#triggeredBy](http://linked.data.gov.au/def/agrif#triggeredBy) (op) **only** [http://linked.data.gov.au/def/agrif#Trigger](http://linked.data.gov.au/def/agrif#Trigger) (c)<br />[http://linked.data.gov.au/def/agrif#hasStatus](http://linked.data.gov.au/def/agrif#hasStatus) (op) **only** [http://linked.data.gov.au/def/agrif#Status](http://linked.data.gov.au/def/agrif#Status) (c)<br />[http://linked.data.gov.au/def/agrif#wasAssociatedWith](http://linked.data.gov.au/def/agrif#wasAssociatedWith) (op) **some** [http://linked.data.gov.au/def/agrif#Agent](http://linked.data.gov.au/def/agrif#Agent) (c)<br />[http://linked.data.gov.au/def/agrif#guidingPolicy](http://linked.data.gov.au/def/agrif#guidingPolicy) (op) **only** [http://linked.data.gov.au/def/agrif#Policy](http://linked.data.gov.au/def/agrif#Policy) (c)<br />[http://linked.data.gov.au/def/agrif#qualifiedAssociation](http://linked.data.gov.au/def/agrif#qualifiedAssociation) (op) **some** [http://linked.data.gov.au/def/agrif#Association](http://linked.data.gov.au/def/agrif#Association) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#ArtefactChangeEvent](http://linked.data.gov.au/def/agrif#ArtefactChangeEvent) (c)<br />[http://linked.data.gov.au/def/agrif#RecordControlEvent](http://linked.data.gov.au/def/agrif#RecordControlEvent) (c)<br />[http://linked.data.gov.au/def/agrif#ArtefactControlEvent](http://linked.data.gov.au/def/agrif#ArtefactControlEvent) (c)<br />[http://linked.data.gov.au/def/agrif#CreationEvent](http://linked.data.gov.au/def/agrif#CreationEvent) (c)<br />
 ### Form Factor
 Property | Value
 --- | ---
@@ -320,84 +322,84 @@ Description | <p>A Form Factor defines and prescribes the size, shape, and other
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Function`
-Description | <p>A Function reflects the responsibilities of an Organisation that can be delegated through official channels. [Commonwealth Records Series Manual]</p>
-Restrictions |[guidingPolicy](guidingPolicy) (op) **only** [Policy](Policy) (c)<br />
-Sub-classes |[AGIFTFunction](AGIFTFunction) (c)<br />[RecordsAuthorityFunction](RecordsAuthorityFunction) (c)<br />
+Description | <p>A Function is a process that is performed routinely to carry out a part of the mandate of an Australian Government Agency.</p>
+Restrictions |[http://linked.data.gov.au/def/agrif#guidingPolicy](http://linked.data.gov.au/def/agrif#guidingPolicy) (op) **only** [http://linked.data.gov.au/def/agrif#Policy](http://linked.data.gov.au/def/agrif#Policy) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#AGIFTFunction](http://linked.data.gov.au/def/agrif#AGIFTFunction) (c)<br />[http://linked.data.gov.au/def/agrif#RecordsAuthorityFunction](http://linked.data.gov.au/def/agrif#RecordsAuthorityFunction) (c)<br />
 ### Holding Space
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#HoldingSpace`
 Description | <p>A Holding Space is a space that is used or reserved for the storage of an Artefact.</p>
-Super-classes |[SpatialLocation](SpatialLocation) (c)<br />
-Sub-classes |[PhysicalHoldingSpace](PhysicalHoldingSpace) (c)<br />[DigitalHoldingSpace](DigitalHoldingSpace) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#SpatialLocation](http://linked.data.gov.au/def/agrif#SpatialLocation) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#DigitalHoldingSpace](http://linked.data.gov.au/def/agrif#DigitalHoldingSpace) (c)<br />[http://linked.data.gov.au/def/agrif#PhysicalHoldingSpace](http://linked.data.gov.au/def/agrif#PhysicalHoldingSpace) (c)<br />
 ### Information Management Policy
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#InformationManagementPolicy`
 Description | <p>An Information Management Policy is a Policy that helps to align information management practices to fulfill the requirements of an information governance framework. An Information Management Policy provides direction and guidance to staff for creating, capturing and managing information to satisfy business, legal and stakeholder requirements, and assigns responsibilities across the agency.</p>
-Super-classes |[Policy](Policy) (c)<br />
-Restrictions |[hasDisposalClass](hasDisposalClass) (op) **only** [DisposalClass](DisposalClass) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Policy](http://linked.data.gov.au/def/agrif#Policy) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#hasDisposalClass](http://linked.data.gov.au/def/agrif#hasDisposalClass) (op) **only** [http://linked.data.gov.au/def/agrif#DisposalClass](http://linked.data.gov.au/def/agrif#DisposalClass) (c)<br />
 ### Information System
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#InformationSystem`
 Description | <p>An Information System is an organized system for the collection, organization, storage and communication of information, typically Digital Artefacts or Records.</p>
-Sub-classes |[IntellectualControlSystem](IntellectualControlSystem) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#IntellectualControlSystem](http://linked.data.gov.au/def/agrif#IntellectualControlSystem) (c)<br />
 ### Intellectual Control System
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#IntellectualControlSystem`
 Description | <p>An Intellectual Control System is a System that enables Agents to locate and manage information.</p>
-Super-classes |[InformationSystem](InformationSystem) (c)<br />
-Restrictions |[guidingPolicy](guidingPolicy) (op) **only** [Policy](Policy) (c)<br />
-Sub-classes |[ControlledVocabulary](ControlledVocabulary) (c)<br />[Series](Series) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#InformationSystem](http://linked.data.gov.au/def/agrif#InformationSystem) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#guidingPolicy](http://linked.data.gov.au/def/agrif#guidingPolicy) (op) **only** [http://linked.data.gov.au/def/agrif#Policy](http://linked.data.gov.au/def/agrif#Policy) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#ControlledVocabulary](http://linked.data.gov.au/def/agrif#ControlledVocabulary) (c)<br />[http://linked.data.gov.au/def/agrif#Series](http://linked.data.gov.au/def/agrif#Series) (c)<br />
 ### Jurisdictional Coverage
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#JurisdictionalCoverage`
 Description | <p>A Jurisdictional Coverage denotes the jurisdictional applicability of the Record.</p>
-Super-classes |[Coverage](Coverage) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Coverage](http://linked.data.gov.au/def/agrif#Coverage) (c)<br />
 ### Logical Collection
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#LogicalCollection`
 Description | <p>A Logical Collection is an aggregation of Artefact items that are stored within one physical file.</p>
-Super-classes |[Collection](Collection) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Collection](http://linked.data.gov.au/def/agrif#Collection) (c)<br />
 ### Maintain Activity
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#MaintainActivity`
 Description | <p>A Maintain Activity is an Activity to maintain a Record over a period of time due to a BusinessFunction or Policy.</p>
-Super-classes |[Activity](Activity) (c)<br />
-Restrictions |[hasQuality](hasQuality) (op) **some** [PreservationQuality](PreservationQuality) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Activity](http://linked.data.gov.au/def/agrif#Activity) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#hasQuality](http://linked.data.gov.au/def/agrif#hasQuality) (op) **some** [http://linked.data.gov.au/def/agrif#PreservationQuality](http://linked.data.gov.au/def/agrif#PreservationQuality) (c)<br />
 ### Manifest
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Manifest`
 Description | <p>A Manifest describes the files involved in the transfer of a Record from an Agency to the National Archives, including details such as the filesize, the destination hierarchy and the file's metadata.</p>
-Restrictions |[checksum](checksum) (dp) **exactly** 1<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#checksum](http://linked.data.gov.au/def/agrif#checksum) (dp) **exactly** 1<br />
 ### Minimum Metadata Set Policy
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#MinimumMetadataSetPolicy`
 Description | <p>The Minimum Metadata Set Policy is a Policy that has been developed by the National Archives of Australia to identify metadata properties essential for agency management of information as well as those needed for records which will be transferred to the Archives. It supports the Digital Continuity 2020 principles of interoperable systems and processes and is a practical application of the Australian Government Recordkeeping Metadata Standard 2.2 (AGRkMS) to support metadata implementation and information use in agencies.</p>
-Super-classes |[Policy](Policy) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Policy](http://linked.data.gov.au/def/agrif#Policy) (c)<br />
 ### Organisation
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Organisation`
 Source | [https://www.w3.org/TR/prov-o/#Organization](https://www.w3.org/TR/prov-o/#Organization)
 Description | <p>An Organisation is a type of Agent that denotes a social or legal institution such as a government agency, a corporation, society, etc.</p>
-Super-classes |[Agent](Agent) (c)<br />
-Restrictions |[associatedFunction](associatedFunction) (op) **some** [Function](Function) (c)<br />
-Sub-classes |[OrganisationalUnit](OrganisationalUnit) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Agent](http://linked.data.gov.au/def/agrif#Agent) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#associatedFunction](http://linked.data.gov.au/def/agrif#associatedFunction) (op) **some** [http://linked.data.gov.au/def/agrif#Function](http://linked.data.gov.au/def/agrif#Function) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#OrganisationalUnit](http://linked.data.gov.au/def/agrif#OrganisationalUnit) (c)<br />
 ### Organisational Unit
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#OrganisationalUnit`
 Description | <p>An Organisational Unit is a division of labour typically organised around a business function that form part of the Organisation.</p>
-Super-classes |[Organisation](Organisation) (c)<br />
-Restrictions |[partOf](partOf) (op) **only** [Organisation](Organisation) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Organisation](http://linked.data.gov.au/def/agrif#Organisation) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#partOf](http://linked.data.gov.au/def/agrif#partOf) (op) **only** [http://linked.data.gov.au/def/agrif#Organisation](http://linked.data.gov.au/def/agrif#Organisation) (c)<br />
 ### Security Clearance
 Property | Value
 --- | ---
@@ -410,206 +412,208 @@ Property | Value
 URI | `http://linked.data.gov.au/def/agrif#Person`
 Source | [https://www.w3.org/TR/prov-o/#Person](https://www.w3.org/TR/prov-o/#Person)
 Description | <p>A Person is an Agent that denotes a human.</p>
-Super-classes |[Agent](Agent) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Agent](http://linked.data.gov.au/def/agrif#Agent) (c)<br />
 ### Physical Artefact
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#PhysicalArtefact`
 Description | <p>A Physical Artefact is an Artefact that is of physical nature.</p>
 Example | `An example of a Phyiscal Artefact in the context of record keeping is information printed or written on paper.`<br />
-Super-classes |[Artefact](Artefact) (c)<br />
-Restrictions |[hasFormFactor](hasFormFactor) (op) **only** [FormFactor](FormFactor) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Artefact](http://linked.data.gov.au/def/agrif#Artefact) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#hasFormFactor](http://linked.data.gov.au/def/agrif#hasFormFactor) (op) **only** [http://linked.data.gov.au/def/agrif#FormFactor](http://linked.data.gov.au/def/agrif#FormFactor) (c)<br />
 ### Physical Collection
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#PhysicalCollection`
 Description | <p>A Physical Collection is an aggregation of Artefact items that are stored in separate physical files.</p>
-Super-classes |[Collection](Collection) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Collection](http://linked.data.gov.au/def/agrif#Collection) (c)<br />
 ### Physical Holding Space
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#PhysicalHoldingSpace`
 Description | <p>A Physical Holding Space is a Spatial Location that is used or reserved for the storage of a Physical Artefact.</p>
-Super-classes |[HoldingSpace](HoldingSpace) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#HoldingSpace](http://linked.data.gov.au/def/agrif#HoldingSpace) (c)<br />
 ### Policy
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Policy`
-Source | [dcterms:Policy](http://purl.org/dc/terms/Policy)
+Source | [dct:Policy](http://purl.org/dc/terms/Policy)
 Description | <p>A Policy is a deliberate system of principles to guide decisions and achieve rational outcomes.</p>
-Sub-classes |[DigitalPreservationPolicy](DigitalPreservationPolicy) (c)<br />[MinimumMetadataSetPolicy](MinimumMetadataSetPolicy) (c)<br />[InformationManagementPolicy](InformationManagementPolicy) (c)<br />[RecordsAuthorityPolicy](RecordsAuthorityDisposalClassPolicy) (c)<br />[RecordStorageStandard](RecordStorageStandard) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#InformationManagementPolicy](http://linked.data.gov.au/def/agrif#InformationManagementPolicy) (c)<br />[http://linked.data.gov.au/def/agrif#MinimumMetadataSetPolicy](http://linked.data.gov.au/def/agrif#MinimumMetadataSetPolicy) (c)<br />[http://linked.data.gov.au/def/agrif#RecordsAuthorityPolicy](http://linked.data.gov.au/def/agrif#RecordsAuthorityPolicy) (c)<br />[http://linked.data.gov.au/def/agrif#DigitalPreservationPolicy](http://linked.data.gov.au/def/agrif#DigitalPreservationPolicy) (c)<br />[http://linked.data.gov.au/def/agrif#RecordStorageStandard](http://linked.data.gov.au/def/agrif#RecordStorageStandard) (c)<br />
 ### Preservation Quality
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#PreservationQuality`
 Description | <p>A Preservation Quality describes a Quality of an Artefact that supports or threatens the long term preservation of the information that is to be preserved.</p>
-Super-classes |[Quality](Quality) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Quality](http://linked.data.gov.au/def/agrif#Quality) (c)<br />
 ### Quality
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Quality`
 Description | <p>A Quality is an attribute that is intrinsically associated with an entity.</p>
-Sub-classes |[PreservationQuality](PreservationQuality) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#PreservationQuality](http://linked.data.gov.au/def/agrif#PreservationQuality) (c)<br />
 ### Record
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Record`
 Description | <p>A Record is information in any format created, received and maintained as evidence by an Organisation or Person, in pursuance of legal obligations or in the transaction of business. A Record may comprise a Digital or Physical Artefact.</p>
-Restrictions |[hasActivity](hasActivity) (op) **only** [Activity](Activity) (c)<br />[hasStatus](hasStatus) (op) **only** [Status](Status) (c)<br />[qualifiedAssociation](qualifiedAssociation) (op) **some** [Association](Association) (c)<br />[checksum](checksum) (dp) **max** 1<br />[hasCoverage](hasCoverage) (op) **only** [Coverage](Coverage) (c)<br />[replaces](replaces) (op) **only** [Record](Record) (c)<br />[recordOf](recordOf) (op) **min** 1 [Artefact](Artefact) (c)<br />[hasControl](requiresControl) (op) **only** [Control](Control) (c)<br />[relatedTo](relatedTo) (op) **only** [Record](Record) (c)<br />[requiresSecurityClassification](requiresSecurityClassification) (op) **only** [SecurityClassification](SecurityClassification) (c)<br />[hasDisposalClass](hasDisposalClass) (op) **exactly** 1 [DisposalClass](DisposalClass) (c)<br />[hasClassifier](hasClassifier) (op) **some** [Classifier](Classifier) (c)<br />[isAffectedBy](isAffectedBy) (op) **only** [Event](Event) (c)<br />[isAffectedBy](isAffectedBy) (op) **exactly** 1 [CreationEvent](RecordCreationEvent) (c)<br />[hasSeries](hasSeries) (op) **only** [Series](Series) (c)<br />[associatedFunction](associatedFunction) (op) **min** 1 [Function](Function) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#recordOf](http://linked.data.gov.au/def/agrif#recordOf) (op) **min** 1 [http://linked.data.gov.au/def/agrif#Artefact](http://linked.data.gov.au/def/agrif#Artefact) (c)<br />[http://linked.data.gov.au/def/agrif#checksum](http://linked.data.gov.au/def/agrif#checksum) (dp) **max** 1<br />[http://linked.data.gov.au/def/agrif#hasClassifier](http://linked.data.gov.au/def/agrif#hasClassifier) (op) **some** [http://linked.data.gov.au/def/agrif#Classifier](http://linked.data.gov.au/def/agrif#Classifier) (c)<br />[http://linked.data.gov.au/def/agrif#hasActivity](http://linked.data.gov.au/def/agrif#hasActivity) (op) **only** [http://linked.data.gov.au/def/agrif#Activity](http://linked.data.gov.au/def/agrif#Activity) (c)<br />[http://linked.data.gov.au/def/agrif#qualifiedAssociation](http://linked.data.gov.au/def/agrif#qualifiedAssociation) (op) **some** [http://linked.data.gov.au/def/agrif#Association](http://linked.data.gov.au/def/agrif#Association) (c)<br />[http://linked.data.gov.au/def/agrif#replaces](http://linked.data.gov.au/def/agrif#replaces) (op) **only** [http://linked.data.gov.au/def/agrif#Record](http://linked.data.gov.au/def/agrif#Record) (c)<br />[http://linked.data.gov.au/def/agrif#hasDisposalClass](http://linked.data.gov.au/def/agrif#hasDisposalClass) (op) **exactly** 1 [http://linked.data.gov.au/def/agrif#DisposalClass](http://linked.data.gov.au/def/agrif#DisposalClass) (c)<br />[http://linked.data.gov.au/def/agrif#hasControl](http://linked.data.gov.au/def/agrif#hasControl) (op) **only** [http://linked.data.gov.au/def/agrif#Control](http://linked.data.gov.au/def/agrif#Control) (c)<br />[http://linked.data.gov.au/def/agrif#associatedFunction](http://linked.data.gov.au/def/agrif#associatedFunction) (op) **min** 1 [http://linked.data.gov.au/def/agrif#Function](http://linked.data.gov.au/def/agrif#Function) (c)<br />[http://linked.data.gov.au/def/agrif#relatedTo](http://linked.data.gov.au/def/agrif#relatedTo) (op) **only** [http://linked.data.gov.au/def/agrif#Record](http://linked.data.gov.au/def/agrif#Record) (c)<br />[http://linked.data.gov.au/def/agrif#requiresSecurityClassification](http://linked.data.gov.au/def/agrif#requiresSecurityClassification) (op) **only** [http://linked.data.gov.au/def/agrif#SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification) (c)<br />[http://linked.data.gov.au/def/agrif#hasCoverage](http://linked.data.gov.au/def/agrif#hasCoverage) (op) **only** [http://linked.data.gov.au/def/agrif#Coverage](http://linked.data.gov.au/def/agrif#Coverage) (c)<br />[http://linked.data.gov.au/def/agrif#isAffectedBy](http://linked.data.gov.au/def/agrif#isAffectedBy) (op) **exactly** 1 [http://linked.data.gov.au/def/agrif#CreationEvent](http://linked.data.gov.au/def/agrif#CreationEvent) (c)<br />[http://linked.data.gov.au/def/agrif#hasStatus](http://linked.data.gov.au/def/agrif#hasStatus) (op) **only** [http://linked.data.gov.au/def/agrif#Status](http://linked.data.gov.au/def/agrif#Status) (c)<br />[http://linked.data.gov.au/def/agrif#isAffectedBy](http://linked.data.gov.au/def/agrif#isAffectedBy) (op) **only** [http://linked.data.gov.au/def/agrif#Event](http://linked.data.gov.au/def/agrif#Event) (c)<br />[http://linked.data.gov.au/def/agrif#hasSeries](http://linked.data.gov.au/def/agrif#hasSeries) (op) **only** [http://linked.data.gov.au/def/agrif#Series](http://linked.data.gov.au/def/agrif#Series) (c)<br />
 ### Record Audit Event
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#RecordAuditEvent`
 Description | <p>An Record Audit Event is the systematic examination of a Record to ascertain how and where the Record is stored, who created it, or manages it, who uses it and how much longer the Record is required to be maintained.</p>
-Super-classes |[RecordControlEvent](RecordControlEvent) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#RecordControlEvent](http://linked.data.gov.au/def/agrif#RecordControlEvent) (c)<br />
 ### Record Control Event
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#RecordControlEvent`
 Description | <p>A Record Control Event is an Event that requires a particular level of access to the Record.</p>
-Super-classes |[Event](Event) (c)<br />
-Restrictions |[hasControl](requiresControl) (op) **only** [Control](Control) (c)<br />
-Sub-classes |[RecordSentencingEvent](RecordSentencingEvent) (c)<br />[RecordReplacementEvent](RecordReplacementEvent) (c)<br />[RecordDisposalEvent](RecordDisposalEvent) (c)<br />[RecordAuditEvent](RecordAuditEvent) (c)<br />[RecordDecisionEvent](RecordDecisionEvent) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Event](http://linked.data.gov.au/def/agrif#Event) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#hasControl](http://linked.data.gov.au/def/agrif#hasControl) (op) **only** [http://linked.data.gov.au/def/agrif#Control](http://linked.data.gov.au/def/agrif#Control) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#RecordDisposalEvent](http://linked.data.gov.au/def/agrif#RecordDisposalEvent) (c)<br />[http://linked.data.gov.au/def/agrif#RecordSentencingEvent](http://linked.data.gov.au/def/agrif#RecordSentencingEvent) (c)<br />[http://linked.data.gov.au/def/agrif#RecordAuditEvent](http://linked.data.gov.au/def/agrif#RecordAuditEvent) (c)<br />[http://linked.data.gov.au/def/agrif#RecordDecisionEvent](http://linked.data.gov.au/def/agrif#RecordDecisionEvent) (c)<br />[http://linked.data.gov.au/def/agrif#RecordReplacementEvent](http://linked.data.gov.au/def/agrif#RecordReplacementEvent) (c)<br />
 ### Record Decision Event
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#RecordDecisionEvent`
 Description | <p>A Record Decision Event changes the Decision Status on the Control of a Record.</p>
-Super-classes |[RecordControlEvent](RecordControlEvent) (c)<br />
-Restrictions |[hasDecisionStatus](hasDecisionStatus) (op) **only** [DecisionStatus](DecisionStatus) (c)<br />[hasPrerequisiteDecisionEvent](prerequisiteDecisionEvent) (op) **only** [RecordDecisionEvent](RecordDecisionEvent) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#RecordControlEvent](http://linked.data.gov.au/def/agrif#RecordControlEvent) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#hasDecisionStatus](http://linked.data.gov.au/def/agrif#hasDecisionStatus) (op) **only** [http://linked.data.gov.au/def/agrif#DecisionStatus](http://linked.data.gov.au/def/agrif#DecisionStatus) (c)<br />[http://linked.data.gov.au/def/agrif#hasPrerequisiteDecisionEvent](http://linked.data.gov.au/def/agrif#hasPrerequisiteDecisionEvent) (op) **only** [http://linked.data.gov.au/def/agrif#RecordDecisionEvent](http://linked.data.gov.au/def/agrif#RecordDecisionEvent) (c)<br />
 ### Record Destruction Event
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#RecordDestructionEvent`
 Description | <p>A Record Destruction Event is a Disposal Event that results in the regular authorised permanent desctruction of a Record that is no longer required for business purposes.</p>
-Super-classes |[RecordDisposalEvent](RecordDisposalEvent) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#RecordDisposalEvent](http://linked.data.gov.au/def/agrif#RecordDisposalEvent) (c)<br />
 ### Record Disposal Event
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#RecordDisposalEvent`
 Description | <p>A Record Disposal Event is an Event that results in the regular authorised destruction or change of custody of a Record that is no longer required for business purposes.</p>
-Super-classes |[RecordControlEvent](RecordControlEvent) (c)<br />
-Sub-classes |[RecordFreezeEvent](RecordFreezeEvent) (c)<br />[RecordDestructionEvent](RecordDestructionEvent) (c)<br />[RecordTransferEvent](RecordTransferEvent) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#RecordControlEvent](http://linked.data.gov.au/def/agrif#RecordControlEvent) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#RecordFreezeEvent](http://linked.data.gov.au/def/agrif#RecordFreezeEvent) (c)<br />[http://linked.data.gov.au/def/agrif#RecordTransferEvent](http://linked.data.gov.au/def/agrif#RecordTransferEvent) (c)<br />[http://linked.data.gov.au/def/agrif#RecordDestructionEvent](http://linked.data.gov.au/def/agrif#RecordDestructionEvent) (c)<br />
 ### Record Freeze Event
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#RecordFreezeEvent`
 Description | <p>A Record Freeze Event is a Disposal Event that leads to a records disposal freeze or retention notice in support of compliance requirements or an identified need to suspend the Archives' records destruction permissions.</p>
-Super-classes |[RecordDisposalEvent](RecordDisposalEvent) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#RecordDisposalEvent](http://linked.data.gov.au/def/agrif#RecordDisposalEvent) (c)<br />
 ### Record Replacement Event
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#RecordReplacementEvent`
 Description | <p>A Record Replacement Event is an Event that results in the replacement of a Record with a new version. Edits to a Record constitute a Replace Event.</p>
-Super-classes |[RecordControlEvent](RecordControlEvent) (c)<br />
-Restrictions |[hasVersionHistory](hasVersionHistory) (op) **only** [VersionHistory](VersionHistory) (c)<br />[replacedBy](replacedBy) (op) **exactly** 1 [Record](Record) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#RecordControlEvent](http://linked.data.gov.au/def/agrif#RecordControlEvent) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#replacedBy](http://linked.data.gov.au/def/agrif#replacedBy) (op) **exactly** 1 [http://linked.data.gov.au/def/agrif#Record](http://linked.data.gov.au/def/agrif#Record) (c)<br />[http://linked.data.gov.au/def/agrif#hasVersionHistory](http://linked.data.gov.au/def/agrif#hasVersionHistory) (op) **only** [http://linked.data.gov.au/def/agrif#VersionHistory](http://linked.data.gov.au/def/agrif#VersionHistory) (c)<br />
 ### Record Sentencing Event
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#RecordSentencingEvent`
 Description | <p>A Record Sentencing Event is an Event that classifies an Agencies Record to a specific class of a Records Authority Disposal Class Policy. This helps determine the Records value and how it should be managed throughout its lifecycle.</p>
-Super-classes |[RecordControlEvent](RecordControlEvent) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#RecordControlEvent](http://linked.data.gov.au/def/agrif#RecordControlEvent) (c)<br />
 ### Record Storage Standard
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#RecordStorageStandard`
 Description | <p>The Standard for the storage of non-digital archival Records is designed to set out the requirements for the safe storage and preservation of non-digital records in the Archives’ custody; to ensure all non-digital records are protected, secure and accessible for as long as they are required to meet business and accountability needs and community expectations; and to ensure all non-digital records are stored in the most cost-effective manner possible.</p>
-Super-classes |[Policy](Policy) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Policy](http://linked.data.gov.au/def/agrif#Policy) (c)<br />
 ### Record Transfer Event
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#RecordTransferEvent`
 Description | <p>A Transfer Event is a Disposal Event that results in a change of custody.</p>
 Example | `An example of a Record Transfer Event is the transfer of a Record from an Agency to the National Archives. Section 27 of the Archives Act 1983 requires Australian government agencies to transfer Records to the Archives within 15 years of their creation.`<br />
-Super-classes |[RecordDisposalEvent](RecordDisposalEvent) (c)<br />
-Restrictions |[transferredFrom](transferredFrom) (op) **some** [Role](Role) (c)<br />[hasManifest](hasManifest) (op) **only** [Manifest](Manifest) (c)<br />[transferredTo](transferredTo) (op) **some** [Role](Role) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#RecordDisposalEvent](http://linked.data.gov.au/def/agrif#RecordDisposalEvent) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#hasManifest](http://linked.data.gov.au/def/agrif#hasManifest) (op) **only** [http://linked.data.gov.au/def/agrif#Manifest](http://linked.data.gov.au/def/agrif#Manifest) (c)<br />[http://linked.data.gov.au/def/agrif#transferredTo](http://linked.data.gov.au/def/agrif#transferredTo) (op) **some** [http://linked.data.gov.au/def/agrif#Role](http://linked.data.gov.au/def/agrif#Role) (c)<br />[http://linked.data.gov.au/def/agrif#transferredFrom](http://linked.data.gov.au/def/agrif#transferredFrom) (op) **some** [http://linked.data.gov.au/def/agrif#Role](http://linked.data.gov.au/def/agrif#Role) (c)<br />
 ### Records Authority Function
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#RecordsAuthorityFunction`
 Description | <p>A Records Authority Function is a Function that is assigned by the National Archives to classify Agency business.</p>
-Super-classes |[Function](Function) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Function](http://linked.data.gov.au/def/agrif#Function) (c)<br />
 ### Records Authority Disposal Class Policy
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#RecordsAuthorityPolicy`
 Source | Australian Government Recordkeeping Metadata Standard
 Description | <p>A Records Authority Disposal Class Policy is a Policy that identifies the specific disposal class that authorises the retention or destruction of a Record.</p>
-Super-classes |[Policy](Policy) (c)<br />
-Restrictions |[hasDisposalClass](hasDisposalClass) (op) **exactly** 1 [DisposalClass](DisposalClass) (c)<br />
-Sub-classes |[DisposalClass](DisposalClass) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Policy](http://linked.data.gov.au/def/agrif#Policy) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#hasDisposalClass](http://linked.data.gov.au/def/agrif#hasDisposalClass) (op) **exactly** 1 [http://linked.data.gov.au/def/agrif#DisposalClass](http://linked.data.gov.au/def/agrif#DisposalClass) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#DisposalClass](http://linked.data.gov.au/def/agrif#DisposalClass) (c)<br />
 ### Role
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Role`
 Source | [https://www.w3.org/TR/prov-o/#Role](https://www.w3.org/TR/prov-o/#Role)
 Description | <p>A Role is the function of an entity or agent with respect to an Activity or Event, in the context of a usage, generation, invalidation, association, start, and end.</p>
-Restrictions |[hasPermission](hasPermission) (op) **some** [Permission](SecurityClearance) (c)<br />
-Sub-classes |[Administrator](Administrator) (c)<br />[BusinessOwner](BusinessOwner) (c)<br />[Creator](Creator) (c)<br />[User](User) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#hasPermission](http://linked.data.gov.au/def/agrif#hasPermission) (op) **some** [http://linked.data.gov.au/def/agrif#Permission](http://linked.data.gov.au/def/agrif#Permission) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#Creator](http://linked.data.gov.au/def/agrif#Creator) (c)<br />[http://linked.data.gov.au/def/agrif#User](http://linked.data.gov.au/def/agrif#User) (c)<br />[http://linked.data.gov.au/def/agrif#Administrator](http://linked.data.gov.au/def/agrif#Administrator) (c)<br />[http://linked.data.gov.au/def/agrif#BusinessOwner](http://linked.data.gov.au/def/agrif#BusinessOwner) (c)<br />
 ### Security Classification
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#SecurityClassification`
 Source | Australian Government Recordkeeping Metadata Standard
 Description | <p>A Security Classification denotes the security status of a Record that an Agent needs to possess to access the Record.</p>
-Super-classes |[AccessControl](AccessControl) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#AccessControl](http://linked.data.gov.au/def/agrif#AccessControl) (c)<br />
+Has members |[http://linked.data.gov.au/def/agrif#HighlyProtected](http://linked.data.gov.au/def/agrif#HighlyProtected)<br />[http://linked.data.gov.au/def/agrif#Confidential](http://linked.data.gov.au/def/agrif#Confidential)<br />[http://linked.data.gov.au/def/agrif#Protected](http://linked.data.gov.au/def/agrif#Protected)<br />[http://linked.data.gov.au/def/agrif#TopSecretPV](http://linked.data.gov.au/def/agrif#TopSecretPV)<br />[http://linked.data.gov.au/def/agrif#TopSecretNV](http://linked.data.gov.au/def/agrif#TopSecretNV)<br />[http://linked.data.gov.au/def/agrif#Secret](http://linked.data.gov.au/def/agrif#Secret)<br />[http://linked.data.gov.au/def/agrif#Unclassified](http://linked.data.gov.au/def/agrif#Unclassified)<br />
 ### Security Control
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#SecurityControl`
 Description | <p>A Security Control is a safeguard or countermeasures to avoid, detect, counteract, or minimize security risks to a Record or Artefact.</p>
-Super-classes |[Control](Control) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Control](http://linked.data.gov.au/def/agrif#Control) (c)<br />
 ### Series
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Series`
 Description | <p>A Series is an identifier for an item, and when combined with a control symbol gives an item its intellectual context.</p>
-Super-classes |[IntellectualControlSystem](IntellectualControlSystem) (c)<br />
-Restrictions |[associatedFunction](associatedFunction) (op) **only** [Function](Function) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#IntellectualControlSystem](http://linked.data.gov.au/def/agrif#IntellectualControlSystem) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#associatedFunction](http://linked.data.gov.au/def/agrif#associatedFunction) (op) **only** [http://linked.data.gov.au/def/agrif#Function](http://linked.data.gov.au/def/agrif#Function) (c)<br />
 ### Share Activity
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#ShareActivity`
 Description | <p>A Share Activity is an Activity where the custodianship of a Record is transferred to or shared with Agents over a period of time.</p>
-Super-classes |[Activity](Activity) (c)<br />
-Restrictions |[sharedWith](sharedWith) (op) **some** [Agent](Agent) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Activity](http://linked.data.gov.au/def/agrif#Activity) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#sharedWith](http://linked.data.gov.au/def/agrif#sharedWith) (op) **some** [http://linked.data.gov.au/def/agrif#Agent](http://linked.data.gov.au/def/agrif#Agent) (c)<br />
 ### Spatial Coverage
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#SpatialCoverage`
 Description | <p>A Spatial Coverage denotes the spatial extent to which a Record is observed.</p>
-Super-classes |[Coverage](Coverage) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Coverage](http://linked.data.gov.au/def/agrif#Coverage) (c)<br />
 ### Spatial Location
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#SpatialLocation`
 Description | <p>A Spatial Location describes where a something (e.g. a Record, Collection or Artefact) is physically located, using geospatial coordinates such as latitude and longitude.</p>
-Sub-classes |[HoldingSpace](HoldingSpace) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#HoldingSpace](http://linked.data.gov.au/def/agrif#HoldingSpace) (c)<br />
 ### Status
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Status`
 Description | <p>A Status indicates an Activities current state.</p>
-Sub-classes |[DecisionStatus](DecisionStatus) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#DecisionStatus](http://linked.data.gov.au/def/agrif#DecisionStatus) (c)<br />
+Has members |[http://linked.data.gov.au/def/agrif#Redundant](http://linked.data.gov.au/def/agrif#Redundant)<br />[http://linked.data.gov.au/def/agrif#Completed](http://linked.data.gov.au/def/agrif#Completed)<br />[http://linked.data.gov.au/def/agrif#AwaitingDisposal](http://linked.data.gov.au/def/agrif#AwaitingDisposal)<br />[http://linked.data.gov.au/def/agrif#Active](http://linked.data.gov.au/def/agrif#Active)<br />[http://linked.data.gov.au/def/agrif#Disposed](http://linked.data.gov.au/def/agrif#Disposed)<br />
 ### Temporal Coverage
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#TemporalCoverage`
 Description | <p>A Temporal Coverage denotes the temporal extent to which a Record is observed.</p>
-Super-classes |[Coverage](Coverage) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Coverage](http://linked.data.gov.au/def/agrif#Coverage) (c)<br />
 ### Trigger
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Trigger`
 Description | <p>A Trigger is an entity that initiated an Activity or Event.</p>
-Restrictions |[notifies](notifies) (op) **some** [Agent](Agent) (c)<br />
-Sub-classes |[AccessTrigger](AccessTrigger) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/agrif#notifies](http://linked.data.gov.au/def/agrif#notifies) (op) **some** [http://linked.data.gov.au/def/agrif#Agent](http://linked.data.gov.au/def/agrif#Agent) (c)<br />
+Sub-classes |[http://linked.data.gov.au/def/agrif#AccessTrigger](http://linked.data.gov.au/def/agrif#AccessTrigger) (c)<br />
 ### User
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#User`
 Description | <p>A User is an Agent that uses a Record.</p>
-Super-classes |[Role](Role) (c)<br />
+Super-classes |[http://linked.data.gov.au/def/agrif#Role](http://linked.data.gov.au/def/agrif#Role) (c)<br />
 ### Version History
 Property | Value
 --- | ---
@@ -675,7 +679,7 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#accessedBy`
 Description | A relation that indicates that an Agent has accessed a Record as defined in an Access Activity.
-Super-properties |[wasAssociatedWith](wasAssociatedWith) (op)<br />
+Super-properties |[http://linked.data.gov.au/def/agrif#wasAssociatedWith](http://linked.data.gov.au/def/agrif#wasAssociatedWith) (op)<br />
 [](actsAs)
 ### acts As
 Property | Value
@@ -775,7 +779,7 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#hasNextVersion`
 Description | A relation that indicates that an Artefact has a newer version.
-Super-properties |[relatedTo](relatedTo) (op)<br />
+Super-properties |[http://linked.data.gov.au/def/agrif#relatedTo](http://linked.data.gov.au/def/agrif#relatedTo) (op)<br />
 [](hasPart)
 ### has Part
 Property | Value
@@ -794,14 +798,14 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#hasPrerequisiteDecisionEvent`
 Description | A relation between a Decision Event and a prerequisite Decision Event, indicating a Decision chain in a Chain of Command.
-Super-properties |[priorEvent](priorEvent) (op)<br />
+Super-properties |[http://linked.data.gov.au/def/agrif#priorEvent](http://linked.data.gov.au/def/agrif#priorEvent) (op)<br />
 [](hasPreviousVersion)
 ### has Previous Version
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#hasPreviousVersion`
 Description | A relation that indicates that an Artefact has an older version.
-Super-properties |[relatedTo](relatedTo) (op)<br />
+Super-properties |[http://linked.data.gov.au/def/agrif#relatedTo](http://linked.data.gov.au/def/agrif#relatedTo) (op)<br />
 [](hasQuality)
 ### has Quality
 Property | Value
@@ -821,7 +825,7 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#hasSourceAgent`
 Description | A relation that denotes the source Agent of a Record or an Artefact in an Event or Activity.
-Super-properties |[wasAssociatedWith](wasAssociatedWith) (op)<br />
+Super-properties |[http://linked.data.gov.au/def/agrif#wasAssociatedWith](http://linked.data.gov.au/def/agrif#wasAssociatedWith) (op)<br />
 [](hasStatus)
 ### has Status
 Property | Value
@@ -834,7 +838,7 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#hasTargetAgent`
 Description | A relation that denotes the target Agent of a Record or an Artefact in an Event or Activity.
-Super-properties |[wasAssociatedWith](wasAssociatedWith) (op)<br />
+Super-properties |[http://linked.data.gov.au/def/agrif#wasAssociatedWith](http://linked.data.gov.au/def/agrif#wasAssociatedWith) (op)<br />
 [](hasVersionHistory)
 ### has Version History
 Property | Value
@@ -854,14 +858,14 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#isAttachedTo`
 Description | A relation that indicates that an Artefact is logically or physically attached to another Artefact.
-Super-properties |[relatedTo](relatedTo) (op)<br />
+Super-properties |[http://linked.data.gov.au/def/agrif#relatedTo](http://linked.data.gov.au/def/agrif#relatedTo) (op)<br />
 [](isBasedOn)
 ### is Based On
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#isBasedOn`
 Description | A relation that indicates that an Artefact is in part or as a whole based on another Artefact.
-Super-properties |[relatedTo](relatedTo) (op)<br />
+Super-properties |[http://linked.data.gov.au/def/agrif#relatedTo](http://linked.data.gov.au/def/agrif#relatedTo) (op)<br />
 [](isChangedBy)
 ### is Changed By
 Property | Value
@@ -874,14 +878,14 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#isDuplicateOf`
 Description | A relation that indicates that an Artefact is an exact copy of another Artefact, i.e. the content is exactly the same, but its Record may be different.
-Super-properties |[relatedTo](relatedTo) (op)<br />
+Super-properties |[http://linked.data.gov.au/def/agrif#relatedTo](http://linked.data.gov.au/def/agrif#relatedTo) (op)<br />
 [](isMentionedIn)
 ### is Mentioned In
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#isMentionedIn`
 Description | A relation that indicates that an Artefact is mentioned in another Artefact. An example of such a relation is a citation of a document in another document.
-Super-properties |[relatedTo](relatedTo) (op)<br />
+Super-properties |[http://linked.data.gov.au/def/agrif#relatedTo](http://linked.data.gov.au/def/agrif#relatedTo) (op)<br />
 [](isPartOf)
 ### is Part Of
 Property | Value
@@ -948,14 +952,14 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#requiresSecurityClassification`
 Description | A relation between a Record and a Security Classification that denotes the required level of Security Clearance an Agent needs to possess to access the Record.
-Super-properties |[hasControl](requiresControl) (op)<br />
+Super-properties |[http://linked.data.gov.au/def/agrif#hasControl](http://linked.data.gov.au/def/agrif#hasControl) (op)<br />
 [](sharedWith)
 ### shared With
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#sharedWith`
 Description | A relation that indicates that a Record was shared with an Agent as defined in a Share Activity.
-Super-properties |[wasAssociatedWith](wasAssociatedWith) (op)<br />
+Super-properties |[http://linked.data.gov.au/def/agrif#wasAssociatedWith](http://linked.data.gov.au/def/agrif#wasAssociatedWith) (op)<br />
 [](storedIn)
 ### stored In
 Property | Value
@@ -1050,7 +1054,7 @@ Description | File size is a measure of how much data a computer file contains o
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#format`
-Source | [http://purl.org/dc/elements/1.1/format](http://purl.org/dc/elements/1.1/format)
+Source | [dc:format](http://purl.org/dc/elements/1.1/format)
 Description | The file format, physical medium, or dimensions of the resource.
 [](seriesNumber)
 ### seriesNumber
@@ -1128,95 +1132,95 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Active`
 * **Contributor(s)**
-  * [Status](http://linked.data.gov.au/def/agrif#Status)
+  * [http://linked.data.gov.au/def/agrif#Status](http://linked.data.gov.au/def/agrif#Status)
 ### Approved <sup>c</sup>
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Approved`
 * **Contributor(s)**
-  * [DecisionStatus](http://linked.data.gov.au/def/agrif#DecisionStatus)
+  * [http://linked.data.gov.au/def/agrif#DecisionStatus](http://linked.data.gov.au/def/agrif#DecisionStatus)
 ### AwaitingDisposal <sup>c</sup>
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#AwaitingDisposal`
 * **Contributor(s)**
-  * [Status](http://linked.data.gov.au/def/agrif#Status)
+  * [http://linked.data.gov.au/def/agrif#Status](http://linked.data.gov.au/def/agrif#Status)
 ### Completed <sup>c</sup>
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Completed`
 * **Contributor(s)**
-  * [Status](http://linked.data.gov.au/def/agrif#Status)
+  * [http://linked.data.gov.au/def/agrif#Status](http://linked.data.gov.au/def/agrif#Status)
 ### Confidential <sup>c</sup>
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Confidential`
 * **Contributor(s)**
-  * [SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification)
+  * [http://linked.data.gov.au/def/agrif#SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification)
 ### Disapproved <sup>c</sup>
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Disapproved`
 * **Contributor(s)**
-  * [DecisionStatus](http://linked.data.gov.au/def/agrif#DecisionStatus)
+  * [http://linked.data.gov.au/def/agrif#DecisionStatus](http://linked.data.gov.au/def/agrif#DecisionStatus)
 ### Disposed <sup>c</sup>
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Disposed`
 * **Contributor(s)**
-  * [Status](http://linked.data.gov.au/def/agrif#Status)
+  * [http://linked.data.gov.au/def/agrif#Status](http://linked.data.gov.au/def/agrif#Status)
 ### Highly Protected <sup>c</sup>
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#HighlyProtected`
 * **Contributor(s)**
-  * [SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification)
+  * [http://linked.data.gov.au/def/agrif#SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification)
 ### Protected <sup>c</sup>
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Protected`
 * **Contributor(s)**
-  * [SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification)
+  * [http://linked.data.gov.au/def/agrif#SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification)
 ### Redundant <sup>c</sup>
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Redundant`
 * **Contributor(s)**
-  * [Status](http://linked.data.gov.au/def/agrif#Status)
+  * [http://linked.data.gov.au/def/agrif#Status](http://linked.data.gov.au/def/agrif#Status)
 ### RetainAsNationalArchives <sup>c</sup>
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#RetainAsNationalArchives`
 * **Contributor(s)**
-  * [DisposalClass](http://linked.data.gov.au/def/agrif#DisposalClass)
+  * [http://linked.data.gov.au/def/agrif#DisposalClass](http://linked.data.gov.au/def/agrif#DisposalClass)
 ### Secret <sup>c</sup>
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Secret`
 * **Contributor(s)**
-  * [SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification)
+  * [http://linked.data.gov.au/def/agrif#SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification)
 ### Top Secret (NV) <sup>c</sup>
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#TopSecretNV`
 * **Contributor(s)**
-  * [SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification)
+  * [http://linked.data.gov.au/def/agrif#SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification)
 ### Top Secret (PV) <sup>c</sup>
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#TopSecretPV`
 * **Contributor(s)**
-  * [SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification)
+  * [http://linked.data.gov.au/def/agrif#SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification)
 ### Unclassified <sup>c</sup>
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Unclassified`
 * **Contributor(s)**
-  * [SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification)
+  * [http://linked.data.gov.au/def/agrif#SecurityClassification](http://linked.data.gov.au/def/agrif#SecurityClassification)
 ## Namespaces
-* **:**
-  * `http://linked.data.gov.au/def/agrif#`
-* **dcterms**
+* **dc**
+  * `http://purl.org/dc/elements/1.1/`
+* **dct**
   * `http://purl.org/dc/terms/`
 * **owl**
   * `http://www.w3.org/2002/07/owl#`

@@ -42,7 +42,7 @@ Property | Value
 URI | `http://www.opengis.net/def/geosparql/funcsrules`
 Description | all GeoSPARQL functions and rules presented as a SKOS vocabulary
 Artifact | [http://defs-dev.opengis.net/static/definitions/conceptschemes/functions_geosparql.ttl](http://defs-dev.opengis.net/static/definitions/conceptschemes/functions_geosparql.ttl)
-Roles(s) |[role:vocabulary](http://www.w3.org/ns/dx/prof/role/vocabulary) <br />
+Roles(s) |[http://www.w3.org/ns/dx/prof/role/vocabulary](http://www.w3.org/ns/dx/prof/role/vocabulary) <br />
 Conforms to |[https://www.w3.org/TR/skos-reference/](https://www.w3.org/TR/skos-reference/) <br />
 
 ### GeoSPARQL Rules in RIF
@@ -51,7 +51,7 @@ Property | Value
 URI | `http://www.opengis.net/def/geosparql/rules`
 Description | This file contains Rules Interchange Format (RIF) rules for the GeoSPARQL rules defined in the Specification. These rules have been automatically generated using the 'Generator script for GeoSPARQL Rules in RIF' which, in turn, uses the RIF template provided in the Specification.
 Artifact | [https://github.com/opengeospatial/ogc-geosparql/blob/master/1.1/rules.rifps](https://github.com/opengeospatial/ogc-geosparql/blob/master/1.1/rules.rifps)
-Roles(s) |[role:specification](http://www.w3.org/ns/dx/prof/role/specification) <br />
+Roles(s) |[http://www.w3.org/ns/dx/prof/role/specification](http://www.w3.org/ns/dx/prof/role/specification) <br />
 Conforms to |[https://www.w3.org/TR/rif-bld/](https://www.w3.org/TR/rif-bld/) <br />
 
 ### Generator script for GeoSPARQL Rules in RIF
@@ -60,7 +60,7 @@ Property | Value
 URI | `http://www.opengis.net/def/geosparql/rules-script`
 Description | This is a Python script used to generate the 'GeoSPARQL Rules in RIF' artifact from templates specified in the 'Ontology specification in PDF'
 Artifact | [https://github.com/opengeospatial/ogc-geosparql/blob/master/1.1/rifgenerator.py](https://github.com/opengeospatial/ogc-geosparql/blob/master/1.1/rifgenerator.py)
-Roles(s) |[role:guidance](http://www.w3.org/ns/dx/prof/role/guidance) <br />
+Roles(s) |[http://www.w3.org/ns/dx/prof/role/guidance](http://www.w3.org/ns/dx/prof/role/guidance) <br />
 Conforms to |[https://www.w3.org/TR/rif-bld/](https://www.w3.org/TR/rif-bld/) <br />
 
 ### GeoSPARQL Specification online
@@ -68,14 +68,14 @@ Property | Value
 --- | ---
 URI | `http://www.opengis.net/doc/IS/geosparql/1.1`
 Artifact | [https://github.com/opengeospatial/ogc-geosparql/master/1.1/spec/_11-052r4.html](https://github.com/opengeospatial/ogc-geosparql/master/1.1/spec/_11-052r4.html)
-Roles(s) |[role:specification](http://www.w3.org/ns/dx/prof/role/specification) <br />
+Roles(s) |[http://www.w3.org/ns/dx/prof/role/specification](http://www.w3.org/ns/dx/prof/role/specification) <br />
 
 ### GeoSPARQL Specification Document as a PDF
 Property | Value
 --- | ---
 URI | `http://www.opengis.net/doc/IS/geosparql/1.1.pdf`
 Artifact | [https://github.com/opengeospatial/ogc-geosparql/master/1.1/spec/_11-052r4.pdf](https://github.com/opengeospatial/ogc-geosparql/master/1.1/spec/_11-052r4.pdf)
-Roles(s) |[role:specification](http://www.w3.org/ns/dx/prof/role/specification) <br />
+Roles(s) |[http://www.w3.org/ns/dx/prof/role/specification](http://www.w3.org/ns/dx/prof/role/specification) <br />
 
 ### GeoSPARQL Ontology
 Property | Value
@@ -83,7 +83,7 @@ Property | Value
 URI | `http://www.opengis.net/ont/geosparql`
 Description | The GeoSPARQL 1.1 ontology in RDF (turtle)
 Artifact | [https://github.com/opengeospatial/ogc-geosparql/master/1.1/geo.ttl](https://github.com/opengeospatial/ogc-geosparql/master/1.1/geo.ttl)
-Roles(s) |[role:schema](http://www.w3.org/ns/dx/prof/role/schema) <br />
+Roles(s) |[http://www.w3.org/ns/dx/prof/role/schema](http://www.w3.org/ns/dx/prof/role/schema) <br />
 
 ### Validation SHACL file
 Property | Value
@@ -91,16 +91,16 @@ Property | Value
 URI | `http://www.opengis.net/ont/geosparql/profile/validation`
 Description | A Shapes Contraint Language (SHACL) validator provided to validate RDF documents cliaming conformance to GeoSPARQL 1.1
 Artifact | [https://github.com/opengeospatial/ogc-geosparql/master/1.1/validation.ttl](https://github.com/opengeospatial/ogc-geosparql/master/1.1/validation.ttl)
-Roles(s) |[role:validation](http://www.w3.org/ns/dx/prof/role/validation) <br />
+Roles(s) |[http://www.w3.org/ns/dx/prof/role/validation](http://www.w3.org/ns/dx/prof/role/validation) <br />
 Conforms to |[https://www.w3.org/TR/shacl/](https://www.w3.org/TR/shacl/) <br />
 
 ### Simple Features Vocabulary
 Property | Value
 --- | ---
 URI | `http://www.opengis.net/ont/sf`
-Description | An OWL ontology (vocabulary) of the Simple Features geometry types
+Description | A Turtle format artifact for this Resource is present in the GeoSPARQL 1.0 profile repository. It includes ontology annotations (title, date etc.) not present in the online artifact referenced here.
 Artifact | [http://schemas.opengis.net/sf/1.0/simple_features_geometries.rdf](http://schemas.opengis.net/sf/1.0/simple_features_geometries.rdf)
-Roles(s) |[role:vocabulary](http://www.w3.org/ns/dx/prof/role/vocabulary) <br />
+Roles(s) |[http://www.w3.org/ns/dx/prof/role/vocabulary](http://www.w3.org/ns/dx/prof/role/vocabulary) <br />
 Conforms to |[http://www.w3.org/TR/owl2-rdf-based-semantics/](http://www.w3.org/TR/owl2-rdf-based-semantics/) <br />
 
 ### Profile code repository
@@ -109,13 +109,15 @@ Property | Value
 URI | `https://github.com/opengeospatial/ogc-geosparql`
 Description | Code repository storing all Profile artifacts
 Artifact | [https://github.com/opengeospatial/ogc-geosparql](https://github.com/opengeospatial/ogc-geosparql)
-Roles(s) |[role:repository](http://www.w3.org/ns/dx/prof/role/repository) <br />
+Roles(s) |[http://www.w3.org/ns/dx/prof/role/repository](http://www.w3.org/ns/dx/prof/role/repository) <br />
 
 
 
 ## Namespaces
-* **dcterms**
+* **dct**
   * `http://purl.org/dc/terms/`
+* **ogc**
+  * `http://www.opengis.net/def/`
 * **owl**
   * `http://www.w3.org/2002/07/owl#`
 * **prof**
@@ -124,8 +126,6 @@ Roles(s) |[role:repository](http://www.w3.org/ns/dx/prof/role/repository) <br />
   * `http://www.w3.org/1999/02/22-rdf-syntax-ns#`
 * **rdfs**
   * `http://www.w3.org/2000/01/rdf-schema#`
-* **role**
-  * `http://www.w3.org/ns/dx/prof/role/`
 * **sdo**
   * `https://schema.org/`
 * **skos**

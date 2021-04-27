@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.7
 
 # Sensor, Observation, Sample, and Actuator (SOSA) Ontology
 
@@ -10,7 +10,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.
 * **Created**
   * 2017-04-17
 * **License &amp; Rights**
-  * [http://www.opengeospatial.org/ogc/Software](http://www.opengeospatial.org/ogc/Software)
+  * [http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document](http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document)
   * &copy; 2017 W3C/OGC.
 * **Ontology RDF**
   * RDF ([sosa.ttl](turtle))
@@ -50,6 +50,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.
 Property | Value
 --- | ---
 URI | `http://purl.org/vocommons/voaf#Vocabulary`
+Has members |[sosa:](http://www.w3.org/ns/sosa/)<br />
 ### TemporalEntity
 Property | Value
 --- | ---
@@ -122,7 +123,7 @@ Property | Value
 --- | ---
 URI | `http://www.w3.org/ns/sosa/Sample`
 Is Defined By | http://www.w3.org/ns/sosa/
-Description | <p>Physical samples are sometimes known as 'specimens'.</p>
+Description | <p>A Sample is the result from an act of Sampling.</p>
 Example | `A statistical sample is often designed to be characteristic of an entire population, so that observations can be made regarding the sample that provide a good estimate of the properties of the population.`<br />
 ### Sampler
 Property | Value
@@ -137,7 +138,7 @@ Property | Value
 URI | `http://www.w3.org/ns/sosa/Sampling`
 Is Defined By | http://www.w3.org/ns/sosa/
 Description | <p>An act of Sampling carries out a sampling Procedure to create or transform one or more samples.</p>
-Example | `Selecting a subset of a population.`<br />
+Example | `Drilling an observation well.`<br />
 ### Sensor
 Property | Value
 --- | ---
@@ -149,6 +150,7 @@ Example | `Accelerometers, gyroscopes, barometers, magnetometers, and so forth a
 Property | Value
 --- | ---
 URI | `http://xmlns.com/foaf/0.1/Agent`
+Has members |[ub58bL37C19](ub58bL37C19)<br />
 
 ## Object Properties
 [acts on property](#actsonproperty),
@@ -431,7 +433,7 @@ URI | `http://xmlns.com/foaf/0.1/name`
 
 ## Named Individuals
 ## Namespaces
-* **dcterms**
+* **dct**
   * `http://purl.org/dc/terms/`
 * **foaf**
   * `http://xmlns.com/foaf/0.1/`

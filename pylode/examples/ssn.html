@@ -200,7 +200,7 @@
     ],
     "https://schema.org/license": [
       {
-        "@id": "http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document"
+        "@id": "http://www.opengeospatial.org/ogc/Software"
       }
     ],
     "https://schema.org/name": [
@@ -220,7 +220,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.8.6</span>
+    <span style="font-size:smaller;">2.8.7</span>
   </div>
   <h1>Semantic Sensor Network Ontology</h1>
 <section id="metadata">
@@ -247,7 +247,7 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
         </dd>
         <dt>License &amp; Rights</dt>
         <dd>
-            <a href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document</a><br />
+            <a href="http://www.opengeospatial.org/ogc/Software">http://www.opengeospatial.org/ogc/Software</a><br />
             &copy; 2017 W3C/OGC.
         </dd>
         <dt>Ontology RDF</dt>
@@ -298,6 +298,12 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
                 <th>URI</th>
                 <td><code>http://purl.org/vocommons/voaf#Vocabulary</code></td>
             </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.w3.org/ns/ssn/">ssn:</a><br/>
+                </td>
+            </tr>
         </table>
     </div>
     <div class="entity class" id="Actuation">
@@ -316,16 +322,16 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/sosa/actsOnProperty">sosa:actsOnProperty</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/ActuatableProperty">sosa:ActuatableProperty</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">sosa:FeatureOfInterest</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Result">sosa:Result</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/sosa/actsOnProperty">sosa:actsOnProperty</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/madeByActuator">sosa:madeByActuator</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">min</span> 1<br/>
                     <a href="http://www.w3.org/ns/sosa/resultTime">sosa:resultTime</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">sosa:FeatureOfInterest</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/actsOnProperty">sosa:actsOnProperty</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/ActuatableProperty">sosa:ActuatableProperty</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/madeByActuator">sosa:madeByActuator</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Actuator">sosa:Actuator</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Result">sosa:Result</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/madeByActuator">sosa:madeByActuator</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://www.w3.org/ns/sosa/usedProcedure">sosa:usedProcedure</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/madeByActuator">sosa:madeByActuator</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Actuator">sosa:Actuator</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">min</span> 1<br/>
                 </td>
             </tr>
         </table>
@@ -346,19 +352,19 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="http://www.w3.org/ns/sosa/observedProperty">sosa:observedProperty</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/resultTime">sosa:resultTime</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">sosa:FeatureOfInterest</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/ssn/wasOriginatedBy">ssn:wasOriginatedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://www.w3.org/ns/sosa/madeBySensor">sosa:madeBySensor</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://www.w3.org/ns/sosa/phenomenonTime">sosa:phenomenonTime</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/observedProperty">sosa:observedProperty</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">sosa:FeatureOfInterest</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Result">sosa:Result</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/resultTime">sosa:resultTime</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://www.w3.org/ns/sosa/madeBySensor">sosa:madeBySensor</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/observedProperty">sosa:observedProperty</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/ObservableProperty">sosa:ObservableProperty</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/ssn/wasOriginatedBy">ssn:wasOriginatedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/ssn/Stimulus">ssn:Stimulus</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/ssn/wasOriginatedBy">ssn:wasOriginatedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Result">sosa:Result</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/sosa/usedProcedure">sosa:usedProcedure</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/observedProperty">sosa:observedProperty</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/ObservableProperty">sosa:ObservableProperty</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/ssn/wasOriginatedBy">ssn:wasOriginatedBy</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/ssn/Stimulus">ssn:Stimulus</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -379,14 +385,14 @@ In particular, (a) the scope is extended to include actuation and sampling; (b) 
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/sosa/resultTime">sosa:resultTime</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">sosa:FeatureOfInterest</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/madeBySampler">sosa:madeBySampler</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Sampler">sosa:Sampler</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/madeBySampler">sosa:madeBySampler</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/usedProcedure">sosa:usedProcedure</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Sample">sosa:Sample</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/usedProcedure">sosa:usedProcedure</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">sosa:FeatureOfInterest</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/resultTime">sosa:resultTime</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/madeBySampler">sosa:madeBySampler</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Sampler">sosa:Sampler</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/madeBySampler">sosa:madeBySampler</a> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
         </table>
@@ -450,8 +456,8 @@ For example, a temperature Sensor deployed on a wall, or a whole network of Sens
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="ub59bL144C60">ub59bL144C60</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="ub59bL143C60">ub59bL143C60</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="ub59bL144C60">ub59bL144C60</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -478,8 +484,8 @@ For example, a temperature Sensor deployed on a wall, or a whole network of Sens
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="ub59bL157C60">ub59bL157C60</a> <span class="cardinality">min</span> 1<br/>
                     <a href="ub59bL158C60">ub59bL158C60</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="ub59bL157C60">ub59bL157C60</a> <span class="cardinality">min</span> 1<br/>
                 </td>
             </tr>
         </table>
@@ -512,8 +518,8 @@ For example, a temperature Sensor deployed on a wall, or a whole network of Sens
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://www.w3.org/ns/sosa/ObservableProperty">sosa:ObservableProperty</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/sosa/ActuatableProperty">sosa:ActuatableProperty</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/ObservableProperty">sosa:ObservableProperty</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -540,9 +546,9 @@ For example, a temperature Sensor deployed on a wall, or a whole network of Sens
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/ssn/isProxyFor">ssn:isProxyFor</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/ObservableProperty">sosa:ObservableProperty</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="ub59bL299C56">ub59bL299C56</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="ub59bL298C56">ub59bL298C56</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/ssn/isProxyFor">ssn:isProxyFor</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/ObservableProperty">sosa:ObservableProperty</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -569,19 +575,19 @@ For example, a temperature Sensor deployed on a wall, or a whole network of Sens
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/sosa/isHostedBy">sosa:isHostedBy</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Platform">sosa:Platform</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/ssn/hasSubSystem">ssn:hasSubSystem</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/ssn/System">ssn:System</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="ub59bL354C56">ub59bL354C56</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/ssn/System">ssn:System</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/ssn/hasDeployment">ssn:hasDeployment</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/ssn/Deployment">ssn:Deployment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/ssn/implements">ssn:implements</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/isHostedBy">sosa:isHostedBy</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/sosa/Platform">sosa:Platform</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/ssn/hasDeployment">ssn:hasDeployment</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/ssn/Deployment">ssn:Deployment</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
+                    <a href="http://www.w3.org/ns/sosa/Actuator">sosa:Actuator</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/sosa/Sampler">sosa:Sampler</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/Actuator">sosa:Actuator</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -592,6 +598,12 @@ For example, a temperature Sensor deployed on a wall, or a whole network of Sens
             <tr>
                 <th>URI</th>
                 <td><code>http://xmlns.com/foaf/0.1/Agent</code></td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="ub59bL33C19">ub59bL33C19</a><br/>
+                </td>
             </tr>
         </table>
     </div>
@@ -1159,16 +1171,10 @@ For example, the expansion of quicksilver is a stimulus that serves as a proxy f
 </section>
 
   
-  <section id="namedindividuals">
-    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <ul class="hlist">
-    </ul>
-</section>
-  
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt>dcterms</dt>
+        <dt>dct</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
         <dt>foaf</dt>
         <dd><code>http://xmlns.com/foaf/0.1/</code></dd>
@@ -1188,8 +1194,6 @@ For example, the expansion of quicksilver is a stimulus that serves as a proxy f
         <dd><code>http://www.w3.org/ns/sosa/</code></dd>
         <dt>ssn</dt>
         <dd><code>http://www.w3.org/ns/ssn/</code></dd>
-        <dt>time</dt>
-        <dd><code>http://www.w3.org/2006/time#</code></dd>
         <dt>vann</dt>
         <dd><code>http://purl.org/vocab/vann/</code></dd>
         <dt>voaf</dt>

@@ -215,7 +215,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.8.6</span>
+    <span style="font-size:smaller;">2.8.7</span>
   </div>
   <h1>The PLOT ontology</h1>
 <section id="metadata">
@@ -234,8 +234,8 @@
         <dd>2019-06-11</dd>
         <dt>Imports</dt>
         <dd>
-            <a href="http://purl.org/dc/elements/1.1/">http://purl.org/dc/elements/1.1/</a><br/>
-            <a href="http://www.w3.org/ns/ssn/ext">ssn:ext</a><br/>
+            <a href="http://purl.org/dc/elements/1.1/">dc:</a><br/>
+            <a href="http://www.w3.org/ns/ssn/ext">http://www.w3.org/ns/ssn/ext</a><br/>
         </dd>
         <dt>License</dt>
         <dd><a href="http://creativecommons.org/publicdomain/zero/1.0/">http://creativecommons.org/publicdomain/zero/1.0/</a></dd>
@@ -298,22 +298,22 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://purl.org/dc/terms/Location">dcterms:Location</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/dc/terms/Location">dct:Location</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/mapScale">plot:mapScale</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="http://linked.data.gov.au/def/plot/mapsheetName">plot:mapsheetName</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
-                    <a href="http://www.w3.org/ns/locn#geometry">locn:geometry</a> <span class="cardinality">some</span> <a href="http://www.w3.org/2003/01/geo/wgs84_pos#Point">w3cgeo:Point</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/plot/mapsheetNumber">plot:mapsheetNumber</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="http://www.w3.org/ns/locn#geometry">locn:geometry</a> <span class="cardinality">some</span> <a href="http://www.w3.org/2003/01/geo/wgs84_pos#Point">geo:Point</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/mapsheetNumber">http://linked.data.gov.au/def/plot/mapsheetNumber</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/plot/mapsheetName">http://linked.data.gov.au/def/plot/mapsheetName</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">max</span> 1<br/>
+                    <a href="http://linked.data.gov.au/def/plot/mapScale">http://linked.data.gov.au/def/plot/mapScale</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/x/isLocationOf">plot-x:isLocationOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/x/isLocationOf">http://linked.data.gov.au/def/plot/x/isLocationOf</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -338,17 +338,17 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.w3.org/2006/time#TemporalEntity">http://www.w3.org/2006/time#TemporalEntity</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/sosa/Sample">sosa:Sample</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/2006/time#TemporalEntity">time:TemporalEntity</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/plot/x/EcologicalCommunity">plot-x:EcologicalCommunity</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.opengis.net/ont/geosparql#defaultGeometry">geosparql:defaultGeometry</a> <span class="cardinality">only</span> <a href="http://www.w3.org/2003/01/geo/wgs84_pos#Point">w3cgeo:Point</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#defaultGeometry">geosparql:defaultGeometry</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.opengis.net/ont/geosparql#defaultGeometry">geosparql:defaultGeometry</a> <span class="cardinality">only</span> <a href="http://www.w3.org/2003/01/geo/wgs84_pos#Point">geo:Point</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/plot/x/EcologicalCommunity">http://linked.data.gov.au/def/plot/x/EcologicalCommunity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -363,8 +363,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Location where observations may be made
-May be a plot, quadrat, transect, trap etc</p>
+                    <p>ownership is associated with the parent survey</p>
                 </td>
             </tr>
             <tr>
@@ -377,24 +376,24 @@ May be a plot, quadrat, transect, trap etc</p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/locn#location">locn:location</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/plot/Location">plot:Location</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/isResultOf">sosa:isResultOf</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/plot/SiteVisit">plot:SiteVisit</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/plot/siteDescription">plot:siteDescription</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://purl.org/dc/terms/isPartOf">dcterms:isPartOf</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/plot/Site">plot:Site</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/dc/terms/relation">dct:relation</a> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/plot/Site">http://linked.data.gov.au/def/plot/Site</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/dc/terms/isPartOf">dct:isPartOf</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/plot/Site">http://linked.data.gov.au/def/plot/Site</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a> <span class="cardinality">some</span> (<a href="http://linked.data.gov.au/def/plot/x/EnvironmentalSystem">http://linked.data.gov.au/def/plot/x/EnvironmentalSystem</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/plot/x/EnvironmentalZone">http://linked.data.gov.au/def/plot/x/EnvironmentalZone</a><sup class="sup-c" title="class">c</sup>)<br/>
+                    <a href="http://www.w3.org/ns/locn#location">locn:location</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/plot/Location">http://linked.data.gov.au/def/plot/Location</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/dc/terms/created">dct:created</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/hasPart">dct:hasPart</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/plot/Site">http://linked.data.gov.au/def/plot/Site</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/siteDescription">http://linked.data.gov.au/def/plot/siteDescription</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/isResultOf">sosa:isResultOf</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/plot/SiteVisit">http://linked.data.gov.au/def/plot/SiteVisit</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/prov#wasGeneratedBy">prov:wasGeneratedBy</a> <span class="cardinality">only</span> <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a> <span class="cardinality">some</span> (<a href="http://linked.data.gov.au/def/plot/x/EnvironmentalSystem">plot-x:EnvironmentalSystem</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/plot/x/EnvironmentalZone">plot-x:EnvironmentalZone</a><sup class="sup-c" title="class">c</sup>)<br/>
-                    <a href="http://purl.org/dc/terms/hasPart">dcterms:hasPart</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/plot/Site">plot:Site</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/dc/terms/relation">dcterms:relation</a> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/plot/Site">plot:Site</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/dc/terms/created">dcterms:created</a> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/x/sampleLevel">plot-x:sampleLevel</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://linked.data.gov.au/def/plot/x/sampleType">plot-x:sampleType</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://linked.data.gov.au/def/plot/siteDescription">plot:siteDescription</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://linked.data.gov.au/def/plot/x/floristics">plot-x:floristics</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/x/floristics">http://linked.data.gov.au/def/plot/x/floristics</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/x/sampleType">http://linked.data.gov.au/def/plot/x/sampleType</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/siteDescription">http://linked.data.gov.au/def/plot/siteDescription</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/x/sampleLevel">http://linked.data.gov.au/def/plot/x/sampleLevel</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -421,8 +420,8 @@ May be a plot, quadrat, transect, trap etc</p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/plot/Site">plot:Site</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/plot/stratum">plot:stratum</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/plot/Site">http://linked.data.gov.au/def/plot/Site</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/stratum">http://linked.data.gov.au/def/plot/stratum</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
         </table>
@@ -449,12 +448,12 @@ May be a plot, quadrat, transect, trap etc</p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/taxon">plot:taxon</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a> <span class="cardinality">min</span> 1 <a href="http://linked.data.gov.au/def/plot/Site">plot:Site</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/plot/SiteStratum">plot:SiteStratum</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/plot/SiteTaxon">plot:SiteTaxon</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/taxon">http://linked.data.gov.au/def/plot/taxon</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/plot/SiteTaxon">http://linked.data.gov.au/def/plot/SiteTaxon</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a> <span class="cardinality">min</span> 1 <a href="http://linked.data.gov.au/def/plot/Site">http://linked.data.gov.au/def/plot/Site</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/plot/SiteStratum">http://linked.data.gov.au/def/plot/SiteStratum</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/stratum">http://linked.data.gov.au/def/plot/stratum</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://www.w3.org/ns/sosa/isFeatureOfInterestOf">sosa:isFeatureOfInterestOf</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://linked.data.gov.au/def/plot/stratum">plot:stratum</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
         </table>
@@ -469,7 +468,7 @@ May be a plot, quadrat, transect, trap etc</p>
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Community of a single taxon in vegetation ecosystem occurring at an observation site</p>
+                    <p>Data corresponding to an individual of this class would usually be derived from observations relating to a set of SiteStratumTaxon at the same site on the same taxon</p>
                 </td>
             </tr>
             <tr>
@@ -481,8 +480,8 @@ May be a plot, quadrat, transect, trap etc</p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/plot/Site">plot:Site</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/plot/taxon">plot:taxon</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/plot/Site">http://linked.data.gov.au/def/plot/Site</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/taxon">http://linked.data.gov.au/def/plot/taxon</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
         </table>
@@ -503,9 +502,9 @@ May be a plot, quadrat, transect, trap etc</p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/wasSubActivityOf">plot:wasSubActivityOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/plot/x/Survey">plot-x:Survey</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/plot/Site">plot:Site</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/plot/hadSubActivity">plot:hadSubActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> (<a href="http://www.w3.org/ns/sosa/Sampling">sosa:Sampling</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.w3.org/ns/ssn/ext/ObservationCollection">ssn-ext:ObservationCollection</a><sup class="sup-c" title="class">c</sup>)<br/>
+                    <a href="http://linked.data.gov.au/def/plot/hadSubActivity">http://linked.data.gov.au/def/plot/hadSubActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> (<a href="http://www.w3.org/ns/sosa/Sampling">sosa:Sampling</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.w3.org/ns/ssn/ext/ObservationCollection">http://www.w3.org/ns/ssn/ext/ObservationCollection</a><sup class="sup-c" title="class">c</sup>)<br/>
+                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">only</span> <a href="http://linked.data.gov.au/def/plot/Site">http://linked.data.gov.au/def/plot/Site</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/wasSubActivityOf">http://linked.data.gov.au/def/plot/wasSubActivityOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/plot/x/Survey">http://linked.data.gov.au/def/plot/x/Survey</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -535,7 +534,7 @@ May be a plot, quadrat, transect, trap etc</p>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/x/EcologicalCommunity">plot-x:EcologicalCommunity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/x/EcologicalCommunity">http://linked.data.gov.au/def/plot/x/EcologicalCommunity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -550,13 +549,13 @@ May be a plot, quadrat, transect, trap etc</p>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/x/EnvironmentalSystem">plot-x:EnvironmentalSystem</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/x/EnvironmentalSystem">http://linked.data.gov.au/def/plot/x/EnvironmentalSystem</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/x/Assemblage">plot-x:Assemblage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/x/Assemblage">http://linked.data.gov.au/def/plot/x/Assemblage</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -583,8 +582,8 @@ May be a plot, quadrat, transect, trap etc</p>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/x/EnvironmentalSystem">plot-x:EnvironmentalSystem</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/plot/x/EnvironmentalZone">plot-x:EnvironmentalZone</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/x/EnvironmentalSystem">http://linked.data.gov.au/def/plot/x/EnvironmentalSystem</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/x/EnvironmentalZone">http://linked.data.gov.au/def/plot/x/EnvironmentalZone</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -599,14 +598,14 @@ May be a plot, quadrat, transect, trap etc</p>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant">plot-x:EnvironmentalContinuant</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant">http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/x/EcologicalCommunity">plot-x:EcologicalCommunity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/x/EcologicalCommunity">http://linked.data.gov.au/def/plot/x/EcologicalCommunity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -621,8 +620,8 @@ May be a plot, quadrat, transect, trap etc</p>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant">plot-x:EnvironmentalContinuant</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant">http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -643,8 +642,8 @@ May be a plot, quadrat, transect, trap etc</p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/sosa/hosts">sosa:hosts</a> <span class="cardinality">min</span> 1 <a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/locn#location">locn:location</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://www.w3.org/ns/sosa/hosts">sosa:hosts</a> <span class="cardinality">min</span> 1 <a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -665,8 +664,8 @@ May be a plot, quadrat, transect, trap etc</p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">only</span> (<a href="http://linked.data.gov.au/def/plot/Site">plot:Site</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/plot/OrganismOccurence">plot:OrganismOccurence</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant">plot-x:EnvironmentalContinuant</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/plot/OrganismOccurence">plot:OrganismOccurence</a><sup class="sup-c" title="class">c</sup>)<br/>
-                    <a href="http://www.w3.org/ns/ssn/ext/hasUltimateFeatureOfInterest">ssn-ext:hasUltimateFeatureOfInterest</a> <span class="cardinality">only</span> (<a href="http://linked.data.gov.au/def/plot/Site">plot:Site</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/plot/OrganismOccurence">plot:OrganismOccurence</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant">plot-x:EnvironmentalContinuant</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/plot/OrganismOccurence">plot:OrganismOccurence</a><sup class="sup-c" title="class">c</sup>)<br/>
+                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">only</span> (<a href="http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant">http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/plot/OrganismOccurence">http://linked.data.gov.au/def/plot/OrganismOccurence</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/plot/Site">http://linked.data.gov.au/def/plot/Site</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/plot/OrganismOccurence">http://linked.data.gov.au/def/plot/OrganismOccurence</a><sup class="sup-c" title="class">c</sup>)<br/>
+                    <a href="http://www.w3.org/ns/ssn/ext/hasUltimateFeatureOfInterest">http://www.w3.org/ns/ssn/ext/hasUltimateFeatureOfInterest</a> <span class="cardinality">only</span> (<a href="http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant">http://linked.data.gov.au/def/plot/x/EnvironmentalContinuant</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/plot/OrganismOccurence">http://linked.data.gov.au/def/plot/OrganismOccurence</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/plot/Site">http://linked.data.gov.au/def/plot/Site</a><sup class="sup-c" title="class">c</sup> or <a href="http://linked.data.gov.au/def/plot/OrganismOccurence">http://linked.data.gov.au/def/plot/OrganismOccurence</a><sup class="sup-c" title="class">c</sup>)<br/>
                 </td>
             </tr>
         </table>
@@ -702,7 +701,7 @@ May be a plot, quadrat, transect, trap etc</p>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#used">prov:used</a> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/plot/x/StudyLocation">plot-x:StudyLocation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/prov#used">prov:used</a> <span class="cardinality">some</span> <a href="http://linked.data.gov.au/def/plot/x/StudyLocation">http://linked.data.gov.au/def/plot/x/StudyLocation</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -730,13 +729,13 @@ In this context the value of feature-of-interest is expected to be the value of 
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="http://purl.org/dc/terms/title">dct:title</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/dc/elements/1.1/creator">dc:creator</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/accessRights">dct:accessRights</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/ns/odrl/2/Permission">odrl:Permission</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">min</span> 1 <a href="http://linked.data.gov.au/def/plot/Site">http://linked.data.gov.au/def/plot/Site</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/locn#location">locn:location</a> <span class="cardinality">only</span> <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a> <span class="cardinality">some</span> <a href="http://www.w3.org/ns/prov#Organization">prov:Organization</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/dc/terms/license">dcterms:license</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/ns/odrl/2/Policy">http://www.w3.org/ns/odrl/2/Policy</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/dc/elements/1.1/creator">http://purl.org/dc/elements/1.1/creator</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a> <span class="cardinality">min</span> 1 <a href="http://linked.data.gov.au/def/plot/Site">plot:Site</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/dc/terms/accessRights">dcterms:accessRights</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/ns/odrl/2/Permission">http://www.w3.org/ns/odrl/2/Permission</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/dc/terms/title">dcterms:title</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/license">dct:license</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/ns/odrl/2/Policy">odrl:Policy</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -757,7 +756,7 @@ In this context the value of feature-of-interest is expected to be the value of 
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/ns/sosa/observedProperty">sosa:observedProperty</a> <span class="cardinality">value</span> <a href="http://www.tern.org.au/cv/op/Taxon-identity">op:Taxon-identity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/ns/sosa/observedProperty">sosa:observedProperty</a> <span class="cardinality">value</span> <a href="http://www.tern.org.au/cv/op/Taxon-identity">http://www.tern.org.au/cv/op/Taxon-identity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -834,13 +833,13 @@ In this context the value of feature-of-interest is expected to be the value of 
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/Site">plot:Site</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/plot/Site">http://linked.data.gov.au/def/plot/Site</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/ns/ssn/ext/ObservationCollection">ssn-ext:ObservationCollection</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/ns/ssn/ext/ObservationCollection">http://www.w3.org/ns/ssn/ext/ObservationCollection</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -855,7 +854,7 @@ In this context the value of feature-of-interest is expected to be the value of 
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://purl.org/dc/terms/type">dcterms:type</a>
+                    <a href="http://purl.org/dc/terms/type">dct:type</a>
                 </td>
             </tr>
             <tr>
@@ -876,7 +875,7 @@ In this context the value of feature-of-interest is expected to be the value of 
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://purl.org/dc/terms/type">dcterms:type</a>
+                    <a href="http://purl.org/dc/terms/type">dct:type</a>
                 </td>
             </tr>
             <tr>
@@ -903,7 +902,7 @@ In this context the value of feature-of-interest is expected to be the value of 
             <tr>
                 <th>Inverse properties</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/hadSubActivity">plot:hadSubActivity</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://linked.data.gov.au/def/plot/hadSubActivity">http://linked.data.gov.au/def/plot/hadSubActivity</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
         </table>
@@ -918,13 +917,13 @@ In this context the value of feature-of-interest is expected to be the value of 
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://purl.org/dc/terms/type">dcterms:type</a>
+                    <a href="http://purl.org/dc/terms/type">dct:type</a>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/Site">plot:Site</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/plot/Site">http://linked.data.gov.au/def/plot/Site</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -951,7 +950,7 @@ In this context the value of feature-of-interest is expected to be the value of 
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    (<a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.w3.org/ns/ssn/ext/ObservationCollection">ssn-ext:ObservationCollection</a><sup class="sup-c" title="class">c</sup>)
+                    (<a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.w3.org/ns/ssn/ext/ObservationCollection">http://www.w3.org/ns/ssn/ext/ObservationCollection</a><sup class="sup-c" title="class">c</sup>)
                 </td>
             </tr>
         </table>
@@ -978,7 +977,7 @@ In this context the value of feature-of-interest is expected to be the value of 
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/Location">plot:Location</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/plot/Location">http://linked.data.gov.au/def/plot/Location</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -993,8 +992,8 @@ In this context the value of feature-of-interest is expected to be the value of 
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a>
                     <a href="http://www.w3.org/ns/sosa/madeBySensor">sosa:madeBySensor</a>
+                    <a href="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a>
                 </td>
             </tr>
         </table>
@@ -1009,13 +1008,13 @@ In this context the value of feature-of-interest is expected to be the value of 
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://purl.org/dc/terms/type">dcterms:type</a>
+                    <a href="http://purl.org/dc/terms/type">dct:type</a>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/Site">plot:Site</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/plot/Site">http://linked.data.gov.au/def/plot/Site</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -1042,13 +1041,13 @@ In this context the value of feature-of-interest is expected to be the value of 
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://purl.org/dc/terms/type">dcterms:type</a>
+                    <a href="http://purl.org/dc/terms/type">dct:type</a>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/Site">plot:Site</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://linked.data.gov.au/def/plot/Site">http://linked.data.gov.au/def/plot/Site</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -1106,25 +1105,25 @@ In this context the value of feature-of-interest is expected to be the value of 
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/plot/wasSubActivityOf">plot:wasSubActivityOf</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="http://linked.data.gov.au/def/plot/wasSubActivityOf">http://linked.data.gov.au/def/plot/wasSubActivityOf</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
             <tr>
                 <th>Inverse properties</th>
                 <td>
-                    <a href="http://www.w3.org/ns/ssn/ext/hasMember">ssn-ext:hasMember</a>
+                    <a href="http://www.w3.org/ns/ssn/ext/hasMember">http://www.w3.org/ns/ssn/ext/hasMember</a>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    (<a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.w3.org/ns/ssn/ext/ObservationCollection">ssn-ext:ObservationCollection</a><sup class="sup-c" title="class">c</sup>)
+                    (<a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a><sup class="sup-c" title="class">c</sup> or <a href="http://www.w3.org/ns/ssn/ext/ObservationCollection">http://www.w3.org/ns/ssn/ext/ObservationCollection</a><sup class="sup-c" title="class">c</sup>)
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.w3.org/ns/ssn/ext/ObservationCollection">ssn-ext:ObservationCollection</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.w3.org/ns/ssn/ext/ObservationCollection">http://www.w3.org/ns/ssn/ext/ObservationCollection</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1170,49 +1169,43 @@ In this context the value of feature-of-interest is expected to be the value of 
 </section>
 
   
-  <section id="namedindividuals">
-    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <ul class="hlist">
-    </ul>
-</section>
-  
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt>dcterms</dt>
+        <dt>cdao</dt>
+        <dd><code>http://purl.obolibrary.org/obo/</code></dd>
+        <dt>dc</dt>
+        <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+        <dt>dct</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>dwc</dt>
+        <dd><code>http://rs.tdwg.org/dwc/terms/</code></dd>
+        <dt>geo</dt>
+        <dd><code>http://www.w3.org/2003/01/geo/wgs84_pos#</code></dd>
         <dt>geosparql</dt>
         <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
         <dt>locn</dt>
         <dd><code>http://www.w3.org/ns/locn#</code></dd>
-        <dt>op</dt>
-        <dd><code>http://www.tern.org.au/cv/op/</code></dd>
+        <dt>odrl</dt>
+        <dd><code>http://www.w3.org/ns/odrl/2/</code></dd>
         <dt>owl</dt>
         <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
-        <dt>plot</dt>
-        <dd><code>http://linked.data.gov.au/def/plot/</code></dd>
-        <dt>plot-x</dt>
-        <dd><code>http://linked.data.gov.au/def/plot/x/</code></dd>
         <dt>prov</dt>
         <dd><code>http://www.w3.org/ns/prov#</code></dd>
         <dt>rdf</dt>
         <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
         <dt>rdfs</dt>
         <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
-        <dt>sdo</dt>
+        <dt>schema</dt>
         <dd><code>http://schema.org/</code></dd>
-        <dt>sdo1</dt>
+        <dt>sdo</dt>
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>
         <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
         <dt>sosa</dt>
         <dd><code>http://www.w3.org/ns/sosa/</code></dd>
-        <dt>ssn</dt>
-        <dd><code>http://www.w3.org/ns/ssn/</code></dd>
-        <dt>ssn-ext</dt>
-        <dd><code>http://www.w3.org/ns/ssn/ext/</code></dd>
-        <dt>w3cgeo</dt>
-        <dd><code>http://www.w3.org/2003/01/geo/wgs84_pos#</code></dd>
+        <dt>time</dt>
+        <dd><code>http://www.w3.org/2006/time#</code></dd>
         <dt>xsd</dt>
         <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
     </dl>

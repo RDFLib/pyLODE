@@ -205,7 +205,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.8.6</span>
+    <span style="font-size:smaller;">2.8.7</span>
   </div>
   <h1>GeoSPARQL 1.1 Profile</h1>
 <h3><em>A Profile</em></h3>
@@ -274,7 +274,7 @@
           <th><a class="proplink" href="https://www.w3.org/TR/dx-prof/#Property:hasRole">Role(s)</a></th>
           <td>
             
-              <a href="http://www.w3.org/ns/dx/prof/role/vocabulary">role:vocabulary</a><br />
+              <a href="http://www.w3.org/ns/dx/prof/role/vocabulary">http://www.w3.org/ns/dx/prof/role/vocabulary</a><br />
             
           </td>
         </tr>
@@ -309,7 +309,7 @@
           <th><a class="proplink" href="https://www.w3.org/TR/dx-prof/#Property:hasRole">Role(s)</a></th>
           <td>
             
-              <a href="http://www.w3.org/ns/dx/prof/role/specification">role:specification</a><br />
+              <a href="http://www.w3.org/ns/dx/prof/role/specification">http://www.w3.org/ns/dx/prof/role/specification</a><br />
             
           </td>
         </tr>
@@ -344,7 +344,7 @@
           <th><a class="proplink" href="https://www.w3.org/TR/dx-prof/#Property:hasRole">Role(s)</a></th>
           <td>
             
-              <a href="http://www.w3.org/ns/dx/prof/role/guidance">role:guidance</a><br />
+              <a href="http://www.w3.org/ns/dx/prof/role/guidance">http://www.w3.org/ns/dx/prof/role/guidance</a><br />
             
           </td>
         </tr>
@@ -374,7 +374,7 @@
           <th><a class="proplink" href="https://www.w3.org/TR/dx-prof/#Property:hasRole">Role(s)</a></th>
           <td>
             
-              <a href="http://www.w3.org/ns/dx/prof/role/specification">role:specification</a><br />
+              <a href="http://www.w3.org/ns/dx/prof/role/specification">http://www.w3.org/ns/dx/prof/role/specification</a><br />
             
           </td>
         </tr>
@@ -395,7 +395,7 @@
           <th><a class="proplink" href="https://www.w3.org/TR/dx-prof/#Property:hasRole">Role(s)</a></th>
           <td>
             
-              <a href="http://www.w3.org/ns/dx/prof/role/specification">role:specification</a><br />
+              <a href="http://www.w3.org/ns/dx/prof/role/specification">http://www.w3.org/ns/dx/prof/role/specification</a><br />
             
           </td>
         </tr>
@@ -421,7 +421,7 @@
           <th><a class="proplink" href="https://www.w3.org/TR/dx-prof/#Property:hasRole">Role(s)</a></th>
           <td>
             
-              <a href="http://www.w3.org/ns/dx/prof/role/schema">role:schema</a><br />
+              <a href="http://www.w3.org/ns/dx/prof/role/schema">http://www.w3.org/ns/dx/prof/role/schema</a><br />
             
           </td>
         </tr>
@@ -447,7 +447,7 @@
           <th><a class="proplink" href="https://www.w3.org/TR/dx-prof/#Property:hasRole">Role(s)</a></th>
           <td>
             
-              <a href="http://www.w3.org/ns/dx/prof/role/validation">role:validation</a><br />
+              <a href="http://www.w3.org/ns/dx/prof/role/validation">http://www.w3.org/ns/dx/prof/role/validation</a><br />
             
           </td>
         </tr>
@@ -468,7 +468,7 @@
     <table>
         <tr>
           <th><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description">Description</a></th>
-          <td>A Turtle format artifact for this Resource is present in the GeoSPARQL 1.0 profile repository. It includes ontology annotations (title, date etc.) not present in the online artifact referenced here.</td>
+          <td>An OWL ontology (vocabulary) of the Simple Features geometry types</td>
         </tr>
         
         <tr>
@@ -482,7 +482,7 @@
           <th><a class="proplink" href="https://www.w3.org/TR/dx-prof/#Property:hasRole">Role(s)</a></th>
           <td>
             
-              <a href="http://www.w3.org/ns/dx/prof/role/vocabulary">role:vocabulary</a><br />
+              <a href="http://www.w3.org/ns/dx/prof/role/vocabulary">http://www.w3.org/ns/dx/prof/role/vocabulary</a><br />
             
           </td>
         </tr>
@@ -517,7 +517,7 @@
           <th><a class="proplink" href="https://www.w3.org/TR/dx-prof/#Property:hasRole">Role(s)</a></th>
           <td>
             
-              <a href="http://www.w3.org/ns/dx/prof/role/repository">role:repository</a><br />
+              <a href="http://www.w3.org/ns/dx/prof/role/repository">http://www.w3.org/ns/dx/prof/role/repository</a><br />
             
           </td>
         </tr>
@@ -528,8 +528,10 @@
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt>dcterms</dt>
+        <dt>dct</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>ogc</dt>
+        <dd><code>http://www.opengis.net/def/</code></dd>
         <dt>owl</dt>
         <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
         <dt>prof</dt>
@@ -538,8 +540,6 @@
         <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
         <dt>rdfs</dt>
         <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
-        <dt>role</dt>
-        <dd><code>http://www.w3.org/ns/dx/prof/role/</code></dd>
         <dt>sdo</dt>
         <dd><code>https://schema.org/</code></dd>
         <dt>skos</dt>

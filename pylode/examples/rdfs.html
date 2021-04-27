@@ -205,7 +205,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.8.6</span>
+    <span style="font-size:smaller;">2.8.7</span>
   </div>
   <h1>The RDF Schema vocabulary (RDFS)</h1>
 <section id="metadata">
@@ -283,9 +283,20 @@
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#range">rdfs:range</a><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#domain">rdfs:domain</a><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#subClassOf">rdfs:subClassOf</a><br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#range">rdfs:range</a><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Members</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#ContainerMembershipProperty">rdfs:ContainerMembershipProperty</a><br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a><br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a><br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Container">rdfs:Container</a><br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Datatype">rdfs:Datatype</a><br/>
                 </td>
             </tr>
         </table>
@@ -400,8 +411,8 @@
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a><br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a><br/>
                 </td>
             </tr>
         </table>
@@ -428,18 +439,18 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#Container">rdfs:Container</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
                     <a href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy">rdfs:isDefinedBy</a><br/>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#seeAlso">rdfs:seeAlso</a><br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#member">rdfs:member</a><br/>
                 </td>
             </tr>
@@ -773,17 +784,13 @@
 </section>
 
   
-  <section id="namedindividuals">
-    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <ul class="hlist">
-    </ul>
-</section>
-  
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
         <dt>dc</dt>
         <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+        <dt>dct</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
         <dt>owl</dt>
         <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
         <dt>prov</dt>

@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.6
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.7
 
 # Records Authority Ontology
 
@@ -55,14 +55,14 @@ Property | Value
 URI | `http://linked.data.gov.au/def/ra#DisposalAction`
 Description | <p>A Disposal Action is an instruction to carry out the disposal (retention or descruction) of a government Record. In addition to being a skos:Concept since it acts as a classifier, a Disposal Action is also a Provenance Ontology Plan meaning it instructs a course of action - how to dispose of a record.</p>
 Super-classes |[skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />[prov:Plan](http://www.w3.org/ns/prov#Plan) (c)<br />
-In range of |[requires](requires) (op)<br />
+In range of |[http://linked.data.gov.au/def/ra#requires](http://linked.data.gov.au/def/ra#requires) (op)<br />
 ### Numbered Subclass
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/ra#NumberedSubclass`
 Description | <p>A numbered subclass is a finer-grained Record categorisation concept than an RA Class within a Records Authority. Numbeed Subclasses are idnetified in Records Authorities with an entry number and relate directly to Disposal Actions.</p>
 Super-classes |[skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />
-In domain of |[requires](requires) (op)<br />
+In domain of |[http://linked.data.gov.au/def/ra#requires](http://linked.data.gov.au/def/ra#requires) (op)<br />
 ### RA Class
 Property | Value
 --- | ---
@@ -85,17 +85,11 @@ Property | Value
 URI | `http://linked.data.gov.au/def/ra#requires`
 Description | A Numbered Subclass categorisation of a Record requires a particular Disposal Action assignment (categorisation) for that record.
 Usage Note | Many Numbered Subclasses map to a few Disposal Actions
-Domain(s) |[NumberedSubclass](NumberedSubclass) (c)<br />
-Range(s) |[DisposalAction](DisposalAction) (c)<br />
+Domain(s) |[http://linked.data.gov.au/def/ra#NumberedSubclass](http://linked.data.gov.au/def/ra#NumberedSubclass) (c)<br />
+Range(s) |[http://linked.data.gov.au/def/ra#DisposalAction](http://linked.data.gov.au/def/ra#DisposalAction) (c)<br />
 
 ## Named Individuals
 ## Namespaces
-* **:**
-  * `http://linked.data.gov.au/def/ra#`
-* **agr**
-  * `http://linked.data.gov.au/def/agr#`
-* **crs**
-  * `http://linked.data.gov.au/def/crs#`
 * **dct**
   * `http://purl.org/dc/terms/`
 * **owl**

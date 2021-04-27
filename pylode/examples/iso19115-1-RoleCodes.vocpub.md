@@ -178,12 +178,8 @@ Preferred Labels |User (en)<br />
 Definitions |['Party who uses the resource']<br />
 
 ## Namespaces
-* **dc**
-  * `http://purl.org/dc/elements/1.1/`
 * **dct**
   * `http://purl.org/dc/terms/`
-* **isorole**
-  * `http://linked.data.gov.au/def/iso19115-1/RoleCode/`
 * **owl**
   * `http://www.w3.org/2002/07/owl#`
 * **rdf**
