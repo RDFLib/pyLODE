@@ -112,8 +112,8 @@ def main(args=None):
         print(MakeDocco.list_profiles())
         exit()
     elif args.version:
-        from pylode import __version__
-        print(__version__)
+        from pylode._version import version_tuple
+        print(f"{version_tuple[0]}.{version_tuple[1]}.{version_tuple[2]}")
         exit()
     elif args.inputfile or args.url:
         if args.css == "true":
