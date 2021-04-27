@@ -145,7 +145,7 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/project#hadFieldOfResearch`
 Description |  The field of research of the research project. 
-Usage Note | The value is usually taken from a curated vocabulary, such as [ANZSRC Fields of Research](http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E), [Re3data subjects](http://www.re3data.org/browse/by-subject/), [EDAM Topic](http://edamontology.org/topic_0003) or [Scigraph subjects](https://github.com/springernature/scigraph/wiki)
+Scope Notes | The value is usually taken from a curated vocabulary, such as [ANZSRC Fields of Research](http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E), [Re3data subjects](http://www.re3data.org/browse/by-subject/), [EDAM Topic](http://edamontology.org/topic_0003) or [Scigraph subjects](https://github.com/springernature/scigraph/wiki)
 Super-properties |[dct:subject](http://purl.org/dc/terms/subject)<br />
 Domain(s) |[http://linked.data.gov.au/def/project#ResearchProject](http://linked.data.gov.au/def/project#ResearchProject) (c)<br />
 Range(s) |[skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) (c)<br />
@@ -256,14 +256,14 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/project#plannedEnd`
 Description | The date and time at which an activity was planned to end. See also project:plannedStart.
-Usage Note | Usually an xsd:date or xsd:dateTime
+Scope Notes | Usually an xsd:date or xsd:dateTime
 [](plannedstart-date|time)
 ### planned start-date|time
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/project#plannedStart`
 Description | The date and time at which an activity was planned to start. See also project:plannedEnd.
-Usage Note | Usually an xsd:date or xsd:dateTime
+Scope Notes | Usually an xsd:date or xsd:dateTime
 
 ## Named Individuals
 ## Namespaces

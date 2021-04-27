@@ -298,7 +298,7 @@ pyLODE understands the following ontology constructs:
     -  per ``rdfs:Class`` or ``owl:Class``
     -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title``
     -  *description* - ``rdf:comment`` or ``skos:definition`` or ``dct:description`` as a string or using `Markdown <https://daringfireball.net/projects/markdown/>`__ or HTML
-    -  *usage note* - a ``skos:scopeNote`` string
+    -  *scope note* - a ``skos:scopeNote`` string
     -  *example* - a ``skos:example`` string containing RDF
     -  *super classes* - by declaring a class to be ``owl:subClassOf`` something
     -  *sub classes* - pyLODE will work these out itself

@@ -48,14 +48,14 @@ Property | Value
 --- | ---
 URI | `http://data.surroundaustralia.com/def/alternates#View`
 Description | <p>A set of properties to show for a resource.</p>
-Usage Note | <p>Use this class to represent a 'view' that of representations of a resource conform to.</p>
+Scope Notes | <p>Use this class to represent a 'view' that of representations of a resource conform to.</p>
 ### Media Type
 Property | Value
 --- | ---
 URI | `http://purl.org/dc/terms/MediaType`
 Is Defined By | http://purl.org/dc/terms/
 Description | <p>A file format or physical medium.</p>
-Usage Note | <p>Use this class to represent instances of Media Types as listed by IANA as the target values for dct:format.</p>
+Scope Notes | <p>Use this class to represent instances of Media Types as listed by IANA as the target values for dct:format.</p>
 In range of |[dct:format](http://purl.org/dc/terms/format)<br />
 
 ## Object Properties
@@ -92,7 +92,7 @@ Property | Value
 URI | `http://purl.org/dc/terms/format`
 Is Defined By | http://purl.org/dc/terms/
 Description | The file format, physical medium, or dimensions of the resource.
-Usage Note | Use this property to indicate a dct:MediaType
+Scope Notes | Use this property to indicate a dct:MediaType
 Range(s) |[dct:MediaType](http://purl.org/dc/terms/MediaType) (c)<br />
 
 ## Named Individuals
