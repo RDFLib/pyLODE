@@ -685,7 +685,7 @@ and change/add development priorities.
 Current Release
 ---------------
 
-The current release, as of February, 2021, is **2.8.6**.
+The current release, as of April, 2021, is **2.8.8**.
 
 Release Schedule
 ----------------
@@ -695,7 +695,8 @@ Release Schedule
    :widths: 15, 10, 30
 
    3.0, *?*, "Will include pre-testing inputs with SHACL"
-   **2.8.5**, **23 Feb 20201**, "Fixing char encoding issues, updated examples, new test files style - per issue"
+   **2.8.8**, **27 Apr 2021**, "Several small bugs fixed, auto-generation of version no. from Git tag"
+   2.8.6, 23 Feb 20201, "Fixing char encoding issues, updated examples, new test files style - per issue"
    2.8.5, 5 Jan 20201, "Small enhancements to the Falcon server deployment option"
    2.8.3, 3 July 2020, "Packaging bugfixes only"
    2.7, 1 July 2020, "Much refactoring for new profile creation ease"
@@ -717,6 +718,7 @@ Expected to handle
 
 2.0 - current
 ~~~~~~~~~~~~~~
+- includes 3rd-party-created profile: NMPF
 - handles Named Individuals in OWL ontologies
 - implements "owldoc" & "vocpub" documentation profiles for OWL, SKOS and OWL-as-SKOS results
 - implements "prof" profile for documentation of `Profiles Vocabulary <https://www.w3.org/TR/dx-prof/>`__ profiles
