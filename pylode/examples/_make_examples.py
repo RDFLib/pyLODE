@@ -1,6 +1,7 @@
 # this file runs pyLODe against the ontology, vocabulary and profile files in this dir
 from pylode.common import MakeDocco
 
+
 def main():
     # OntDoc
     ontdoc_file = [
