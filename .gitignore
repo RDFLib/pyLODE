@@ -115,6 +115,3 @@ venv.bak/
 output_files/
 
 /pylode/examples/ogc/excluded/
-
-# auto-generated versioning
-pylode/_version.py
