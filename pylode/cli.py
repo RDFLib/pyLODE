@@ -1,7 +1,5 @@
 import argparse
-import os
-from os import path
-import shutil
+from sys import exit
 import sys
 from os.path import dirname, realpath
 sys.path.insert(0, dirname(dirname(realpath(__file__))))
