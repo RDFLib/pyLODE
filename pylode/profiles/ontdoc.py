@@ -20,7 +20,8 @@ class OntDoc(BaseProfile):
             include_css=False,
             default_language="en",
             use_curies_stored=True,
-            get_curies_online=False):
+            get_curies_online=False
+    ):
         super().__init__(
             g,
             source_info,
