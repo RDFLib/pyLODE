@@ -20,7 +20,7 @@ class RdfGraphError(Exception):
 
 def main(args=None):
     # read the input ontology file into a graph
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     overarching_group = parser.add_mutually_exclusive_group()
     inputs_group = overarching_group.add_mutually_exclusive_group()
 
