@@ -695,7 +695,8 @@ Release Schedule
    :widths: 15, 10, 30
 
    3.0, *?*, "Will include pre-testing inputs with SHACL"
-   **2.8.9**, **27 Apr 2021**, "PyPI enhancements only"
+   **2.8.10**, **27 Apr 2021**, "Further changes for PyPI only"
+   2.8.9, 27 Apr 2021, "PyPI enhancements only"
    2.8.8, 27 Apr 2021, "Several small bugs fixed, auto-generation of version no. from Git tag"
    2.8.6, 23 Feb 20201, "Fixing char encoding issues, updated examples, new test files style - per issue"
    2.8.5, 5 Jan 20201, "Small enhancements to the Falcon server deployment option"

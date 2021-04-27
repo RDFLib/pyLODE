@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.7
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.10
 
 # Decision Provenance ontology (DecPROV)
 
@@ -22,9 +22,8 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.
 * **Ontology RDF**
   * RDF ([decprov.ttl](turtle))
 ### Description
-<p>This ontology is for modelling decisions and thus the causes for actions or the use or generation of things. It allows for a better understanding of <em>why</em> something might have taken place, have been used or produced than the more generic <a href="https://www.w3.org/TR/prov-o/">PROV ontology</a>, on which it is mainly based, does.  </p>
-<p>The specialised decision modelling elements of this ontology have been derived from the <a href="https://www.w3.org/2005/Incubator/decision/">W3C Decisions and Decision-Making Incubator Group</a>'s Decision Ontology (DO) which can be found at <a href="https://github.com/nicholascar/decision-o">https://github.com/nicholascar/decision-o</a>. Many DO classes have been aligned with the PROV-O since it is widely recognised that analysing the elements of decisions <em>post hoc</em> is an exercise in provenance.</p>
-<p>Unlike the original DO, this ontology cannot be used for <em>normative</em> scenarios: it is only capable of recording decisions that have already been made (so-called <em>data-driven</em> use in the DO). This is because PROV does not have a templating system which can indicate what <em>should</em> occur in future scenarios.</p>
+<p>This ontology is a reduced-in-scope version of the <a href="https://www.w3.org/2005/Incubator/decision/">W3C Decisions and Decision-Making Incubator Group</a>'s Decision Ontology (DO) which can be found at <a href="https://github.com/nicholascar/decision-o">https://github.com/nicholascar/decision-o</a>. It has been re-worked to align entirely with the W3C's <a href="https://www.w3.org/TR/prov-o/">PROV ontology</a> since it is widely recognised that analysing the elements of decisions <em>post hoc</em> is an exercise in provenance.</p>
+<p>Unlike the original DO, this ontology cannot be used for <em>normative</em> scenarios: it is only capable of recording decisions that have already been made (so-called <em>data-driven</em> use in the DO). This is because PROV, to which this ontology is completely mapped, does not have a templating system which can indicate what <em>should</em> occur in future scenarios.</p>
 <p>This ontology introduces only one new element for decision modelling over that which was present in the DO: an Agent which allows agency in decision making to be recorded.</p>
 
 ## Table of Contents

@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.7
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.10
 
 # The RDF Concepts Vocabulary (RDF)
 
@@ -58,7 +58,7 @@ URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#Property`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | <p>The class of RDF properties.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
-Has members |[rdf:subject](http://www.w3.org/1999/02/22-rdf-syntax-ns#subject)<br />[rdf:rest](http://www.w3.org/1999/02/22-rdf-syntax-ns#rest)<br />[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value)<br />[rdf:first](http://www.w3.org/1999/02/22-rdf-syntax-ns#first)<br />[rdf:object](http://www.w3.org/1999/02/22-rdf-syntax-ns#object)<br />[rdf:type](http://www.w3.org/1999/02/22-rdf-syntax-ns#type)<br />[rdf:predicate](http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate)<br />
+Has members |[rdf:object](http://www.w3.org/1999/02/22-rdf-syntax-ns#object)<br />[rdf:predicate](http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate)<br />[rdf:type](http://www.w3.org/1999/02/22-rdf-syntax-ns#type)<br />[rdf:value](http://www.w3.org/1999/02/22-rdf-syntax-ns#value)<br />[rdf:subject](http://www.w3.org/1999/02/22-rdf-syntax-ns#subject)<br />[rdf:first](http://www.w3.org/1999/02/22-rdf-syntax-ns#first)<br />[rdf:rest](http://www.w3.org/1999/02/22-rdf-syntax-ns#rest)<br />
 ### Seq
 Property | Value
 --- | ---
@@ -73,7 +73,7 @@ URI | `http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement`
 Is Defined By | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 Description | <p>The class of RDF statements.</p>
 Super-classes |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
-In domain of |[rdf:object](http://www.w3.org/1999/02/22-rdf-syntax-ns#object)<br />[rdf:predicate](http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate)<br />[rdf:subject](http://www.w3.org/1999/02/22-rdf-syntax-ns#subject)<br />
+In domain of |[rdf:predicate](http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate)<br />[rdf:subject](http://www.w3.org/1999/02/22-rdf-syntax-ns#subject)<br />[rdf:object](http://www.w3.org/1999/02/22-rdf-syntax-ns#object)<br />
 
 ## Properties
 [first](#first),

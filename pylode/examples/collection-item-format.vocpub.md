@@ -18,7 +18,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * **Modified**
   * 2020-03-29
 * **Source**
-  * [https://collection.sl.nsw.gov.au/search?offset=0](https://collection.sl.nsw.gov.au/search?offset=0)
+  * [http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes](http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes)
 
 * **Taxonomy RDF**
   * RDF ([collection-item-format.ttl](turtle))
@@ -48,7 +48,7 @@ URI | `http://linked.data.gov.au/def/collection-item-format/national-film-and-so
 Preferred Labels |National Film and Sound Archive's Formats (en)<br />
 Alternate Labels |N (F)<br />
 Source | https://www.nfsa.gov.au/
-Members |[http://linked.data.gov.au/def/collection-item-format/film](http://linked.data.gov.au/def/collection-item-format/film) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/documentation](http://linked.data.gov.au/def/collection-item-format/documentation) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/tape](http://linked.data.gov.au/def/collection-item-format/tape) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/disc](http://linked.data.gov.au/def/collection-item-format/disc) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/digital](http://linked.data.gov.au/def/collection-item-format/digital) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/object](http://linked.data.gov.au/def/collection-item-format/object) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/disk](http://linked.data.gov.au/def/collection-item-format/disk) (cp)<br />
+Members |[http://linked.data.gov.au/def/collection-item-format/documentation](http://linked.data.gov.au/def/collection-item-format/documentation) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/object](http://linked.data.gov.au/def/collection-item-format/object) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/film](http://linked.data.gov.au/def/collection-item-format/film) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/tape](http://linked.data.gov.au/def/collection-item-format/tape) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/disc](http://linked.data.gov.au/def/collection-item-format/disc) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/digital](http://linked.data.gov.au/def/collection-item-format/digital) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/disk](http://linked.data.gov.au/def/collection-item-format/disk) (cp)<br />
 
 ### State Library New South Wales' Formats
 Property | Value
@@ -57,7 +57,7 @@ URI | `http://linked.data.gov.au/def/collection-item-format/state-library-new-so
 Preferred Labels |State Library New South Wales' Formats (en)<br />
 Alternate Labels |S (L)<br />
 Source | https://www.sl.nsw.gov.au/
-Members |[http://linked.data.gov.au/def/collection-item-format/journal-magazine](http://linked.data.gov.au/def/collection-item-format/journal-magazine) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/book](http://linked.data.gov.au/def/collection-item-format/book) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/object-slnsw](http://linked.data.gov.au/def/collection-item-format/object-slnsw) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/picture](http://linked.data.gov.au/def/collection-item-format/picture) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/newspaper](http://linked.data.gov.au/def/collection-item-format/newspaper) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/map](http://linked.data.gov.au/def/collection-item-format/map) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/audio](http://linked.data.gov.au/def/collection-item-format/audio) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/video-film](http://linked.data.gov.au/def/collection-item-format/video-film) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/eresource](http://linked.data.gov.au/def/collection-item-format/eresource) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/manuscript](http://linked.data.gov.au/def/collection-item-format/manuscript) (cp)<br />
+Members |[http://linked.data.gov.au/def/collection-item-format/audio](http://linked.data.gov.au/def/collection-item-format/audio) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/newspaper](http://linked.data.gov.au/def/collection-item-format/newspaper) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/journal-magazine](http://linked.data.gov.au/def/collection-item-format/journal-magazine) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/picture](http://linked.data.gov.au/def/collection-item-format/picture) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/manuscript](http://linked.data.gov.au/def/collection-item-format/manuscript) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/map](http://linked.data.gov.au/def/collection-item-format/map) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/video-film](http://linked.data.gov.au/def/collection-item-format/video-film) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/object-slnsw](http://linked.data.gov.au/def/collection-item-format/object-slnsw) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/eresource](http://linked.data.gov.au/def/collection-item-format/eresource) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/book](http://linked.data.gov.au/def/collection-item-format/book) (cp)<br />
 
 ## Concepts
 * [Audio](http://linked.data.gov.au/def/collection-item-format/audio)
@@ -110,7 +110,7 @@ URI | `http://linked.data.gov.au/def/collection-item-format/digital`
 Preferred Labels |Digital (en)<br />
 Alternate Labels |Digital Storage<br />
 Definitions |['A physical device for storing digital content.']<br />
-Narrower Concepts |[http://linked.data.gov.au/def/collection-item-format/disk](http://linked.data.gov.au/def/collection-item-format/disk) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/dvd](http://linked.data.gov.au/def/collection-item-format/dvd) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/eresource](http://linked.data.gov.au/def/collection-item-format/eresource) (cp)<br />
+Narrower Concepts |[http://linked.data.gov.au/def/collection-item-format/dvd](http://linked.data.gov.au/def/collection-item-format/dvd) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/eresource](http://linked.data.gov.au/def/collection-item-format/eresource) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/disk](http://linked.data.gov.au/def/collection-item-format/disk) (cp)<br />
 ### Disc
 Property | Value
 --- | ---
@@ -123,7 +123,7 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/collection-item-format/disk`
 Preferred Labels |Disk (en)<br />
-Alternate Labels |HDD<br />Hard Drive<br />
+Alternate Labels |Hard Drive<br />HDD<br />
 Definitions |['A round magnetic device for storing information and programmes accessible by computer; may be either a rigid platter (hard disk) or a sheet of flexible plastic (floppy disk or diskette). The disk base is coated with a magnetizable material on which data can be recorded or stored along concentric tracks as small magnetic areas forming patterns of binary digits or bits. Information is written onto the disk, and read from it in a disk drive, by read/write heads mounted on arms which move rapidly across the disk.']<br />
 Source | https://www.iasa-web.org/cataloguing-rules/appendix-d-glossary
 Broader Concepts |[http://linked.data.gov.au/def/collection-item-format/digital](http://linked.data.gov.au/def/collection-item-format/digital) (cp)<br />
@@ -134,7 +134,7 @@ URI | `http://linked.data.gov.au/def/collection-item-format/documentation`
 Preferred Labels |Documentation (en)<br />
 Definitions |['Photographs and paper collection items.']<br />
 Source | http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes
-Narrower Concepts |[http://linked.data.gov.au/def/collection-item-format/manuscript](http://linked.data.gov.au/def/collection-item-format/manuscript) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/map](http://linked.data.gov.au/def/collection-item-format/map) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/newspaper](http://linked.data.gov.au/def/collection-item-format/newspaper) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/picture](http://linked.data.gov.au/def/collection-item-format/picture) (cp)<br />
+Narrower Concepts |[http://linked.data.gov.au/def/collection-item-format/picture](http://linked.data.gov.au/def/collection-item-format/picture) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/manuscript](http://linked.data.gov.au/def/collection-item-format/manuscript) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/map](http://linked.data.gov.au/def/collection-item-format/map) (cp)<br />[http://linked.data.gov.au/def/collection-item-format/newspaper](http://linked.data.gov.au/def/collection-item-format/newspaper) (cp)<br />
 ### Digital Versatile Disc
 Property | Value
 --- | ---

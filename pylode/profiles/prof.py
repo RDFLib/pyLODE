@@ -1,4 +1,5 @@
-from pylode.common import VERSION, STYLE_DIR, TEMPLATES_DIR
+from pylode import __version__
+from pylode.common import STYLE_DIR, TEMPLATES_DIR
 import collections
 from os import path
 from rdflib import URIRef, BNode, Literal
@@ -278,7 +279,7 @@ class Prof(BaseProfile):
             resource_descriptors=self.RESOURCE_DESCRIPTORS,
             namespaces=self._make_namespaces(),
             css=css,
-            pylode_version=VERSION
+            pylode_version=__version__
         )
 
     def generate_document(self):

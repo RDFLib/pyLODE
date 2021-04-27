@@ -8,6 +8,7 @@ def test_basic_class():
         # outputformat="html",
     )
 
+    agrif_html = m.document(destination="agrif.html")
     agrif_html = m.document()
 
     assert '<h3>Series<sup title="class" class="sup-c">c</sup></h3>' in agrif_html

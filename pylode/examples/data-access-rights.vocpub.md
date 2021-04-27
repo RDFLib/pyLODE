@@ -43,7 +43,7 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/data-access-rights/closed-access-rights`
 Preferred Labels |Closed data access rights (en)<br />
-Members |[http://linked.data.gov.au/def/data-access-rights/embargoed](http://linked.data.gov.au/def/data-access-rights/embargoed) (cp)<br />[http://linked.data.gov.au/def/data-access-rights/restricted](http://linked.data.gov.au/def/data-access-rights/restricted) (cp)<br />[http://linked.data.gov.au/def/data-access-rights/metadata-only](http://linked.data.gov.au/def/data-access-rights/metadata-only) (cp)<br />[http://linked.data.gov.au/def/data-access-rights/protected](http://linked.data.gov.au/def/data-access-rights/protected) (cp)<br />
+Members |[http://linked.data.gov.au/def/data-access-rights/protected](http://linked.data.gov.au/def/data-access-rights/protected) (cp)<br />[http://linked.data.gov.au/def/data-access-rights/restricted](http://linked.data.gov.au/def/data-access-rights/restricted) (cp)<br />[http://linked.data.gov.au/def/data-access-rights/metadata-only](http://linked.data.gov.au/def/data-access-rights/metadata-only) (cp)<br />[http://linked.data.gov.au/def/data-access-rights/embargoed](http://linked.data.gov.au/def/data-access-rights/embargoed) (cp)<br />
 
 ### Open data access rights
 Property | Value
@@ -96,7 +96,7 @@ Property | Value
 URI | `http://linked.data.gov.au/def/data-access-rights/restricted`
 Preferred Labels |Restricted access (en)<br />
 Definitions |['Restricted access refers to a resource that is stored in a system but is not freely accessible. Access is limited to specific personnel or user groups.']<br />
-Narrower Concepts |[http://linked.data.gov.au/def/data-access-rights/protected](http://linked.data.gov.au/def/data-access-rights/protected) (cp)<br />[http://linked.data.gov.au/def/data-access-rights/embargoed](http://linked.data.gov.au/def/data-access-rights/embargoed) (cp)<br />[http://linked.data.gov.au/def/data-access-rights/metadata-only](http://linked.data.gov.au/def/data-access-rights/metadata-only) (cp)<br />
+Narrower Concepts |[http://linked.data.gov.au/def/data-access-rights/protected](http://linked.data.gov.au/def/data-access-rights/protected) (cp)<br />[http://linked.data.gov.au/def/data-access-rights/metadata-only](http://linked.data.gov.au/def/data-access-rights/metadata-only) (cp)<br />[http://linked.data.gov.au/def/data-access-rights/embargoed](http://linked.data.gov.au/def/data-access-rights/embargoed) (cp)<br />
 
 ## Namespaces
 * **dct**

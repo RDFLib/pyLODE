@@ -98,7 +98,7 @@ Conforms to |[https://www.w3.org/TR/shacl/](https://www.w3.org/TR/shacl/) <br />
 Property | Value
 --- | ---
 URI | `http://www.opengis.net/ont/sf`
-Description | A Turtle format artifact for this Resource is present in the GeoSPARQL 1.0 profile repository. It includes ontology annotations (title, date etc.) not present in the online artifact referenced here.
+Description | An OWL ontology (vocabulary) of the Simple Features geometry types
 Artifact | [http://schemas.opengis.net/sf/1.0/simple_features_geometries.rdf](http://schemas.opengis.net/sf/1.0/simple_features_geometries.rdf)
 Roles(s) |[http://www.w3.org/ns/dx/prof/role/vocabulary](http://www.w3.org/ns/dx/prof/role/vocabulary) <br />
 Conforms to |[http://www.w3.org/TR/owl2-rdf-based-semantics/](http://www.w3.org/TR/owl2-rdf-based-semantics/) <br />

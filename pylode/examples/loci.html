@@ -220,7 +220,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.8.7</span>
+    <span style="font-size:smaller;">2.8.10</span>
   </div>
   <h1>LOC-I Ontology</h1>
 <section id="metadata">
@@ -354,18 +354,18 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://rdfs.org/ns/void#Dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/ns/dcat#Dataset">dcat:Dataset</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://rdfs.org/ns/void#Dataset">void:Dataset</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/title">dct:title</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://purl.org/dc/terms/issued">dct:issued</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://www.w3.org/ns/dcat#contactPoint">dcat:contactPoint</a> <span class="cardinality">min</span> 1<br/>
                     <a href="http://purl.org/dc/terms/publisher">dct:publisher</a> <span class="cardinality">exactly</span> 1 <a href="http://xmlns.com/foaf/0.1/Organization">foaf:Organization</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/dc/terms/modified">dct:modified</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://purl.org/dc/terms/issued">dct:issued</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://purl.org/dc/terms/title">dct:title</a> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
@@ -378,8 +378,8 @@
                 <th>Members</th>
                 <td>
                     <a href="http://linked.data.gov.au/dataset/geofabric">http://linked.data.gov.au/dataset/geofabric</a><br/>
-                    <a href="http://linked.data.gov.au/dataset/asgs">http://linked.data.gov.au/dataset/asgs</a><br/>
                     <a href="http://linked.data.gov.au/dataset/gnaf">http://linked.data.gov.au/dataset/gnaf</a><br/>
+                    <a href="http://linked.data.gov.au/dataset/asgs">http://linked.data.gov.au/dataset/asgs</a><br/>
                 </td>
             </tr>
         </table>
@@ -406,10 +406,10 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a> <span class="cardinality">exactly</span> 1 <a href="http://linked.data.gov.au/def/loci#Feature">http://linked.data.gov.au/def/loci#Feature</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/linked-data/registryregister">http://purl.org/linked-data/registryregister</a> <span class="cardinality">exactly</span> 1 <a href="http://linked.data.gov.au/def/loci#Linkset">http://linked.data.gov.au/def/loci#Linkset</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/loci#hadGenerationMethod">http://linked.data.gov.au/def/loci#hadGenerationMethod</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/ns/prov#Plan">prov:Plan</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">rdf:subject</a> <span class="cardinality">exactly</span> 1 <a href="http://linked.data.gov.au/def/loci#Feature">http://linked.data.gov.au/def/loci#Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a> <span class="cardinality">exactly</span> 1 <a href="http://linked.data.gov.au/def/loci#Feature">http://linked.data.gov.au/def/loci#Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/loci#hadGenerationMethod">http://linked.data.gov.au/def/loci#hadGenerationMethod</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/ns/prov#Plan">prov:Plan</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/linked-data/registryregister">http://purl.org/linked-data/registryregister</a> <span class="cardinality">exactly</span> 1 <a href="http://linked.data.gov.au/def/loci#Linkset">http://linked.data.gov.au/def/loci#Linkset</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -445,8 +445,8 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/loci#Dataset">http://linked.data.gov.au/def/loci#Dataset</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://rdfs.org/ns/void#Linkset">void:Linkset</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/loci#Dataset">http://linked.data.gov.au/def/loci#Dataset</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -709,8 +709,8 @@
             </tr>
             <dt>Classes(s)</dt>
             <dd>
-                <a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a><br/>
                 <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a><br/>
+                <a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a><br/>
             </dd>
             <tr>
                 <th>Description</th>

@@ -210,7 +210,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.8.7</span>
+    <span style="font-size:smaller;">2.8.10</span>
   </div>
   <h1>Geofabric Ontology</h1>
 <section id="metadata">
@@ -257,7 +257,7 @@
         <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
         <dd>2019-07-29</dd>
         <dt>Version Information</dt>
-        <dd>Beta version</dd>
+        <dd>Version 1.0 only characterises 3 types of Feature - Contracted Catchment, River Region & Drianage Division - and requires that each CC be within a RR and that an RR be within a DD.</dd>
         <dt>Version URI</dt>
         <dd><a href="http://linked.data.gov.au/def/geofabric/1.0">http://linked.data.gov.au/def/geofabric/1.0</a></dd>
         <dt>Imports</dt>
@@ -319,38 +319,15 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>All contracted catchment features of type ContractedArea are aggregations of the
-AHGFCatchment units that participate in a relationship of common geographic extent based
-upon the location of a contracted node from both Geofabric Surface Cartography and
-Geofabric Surface Network or a data sink as defined within the DEM-1S. Levels of confidence
-for contracted nodes are further described in the following section of the Geofabric Product
-Guide.</p>
-<p>Each ContractedArea is assigned with the contracted node identifier (ConNodeID) and the
-confidence level (ConLevel) of the contracted node to which they drain. The ContractedArea
-features are the drainage areas of a combination of Levels 1 and 2 contracted nodes. These
-drainage areas also incorporate catchment areas where there is no discernable flow (at
-1:250,000 scale) in the form of stream flow segment features. The allocation of no flow areas
-to contracted catchments is performed based on the most likely destination of water falling in
-these areas in flood type conditions. </p>
-<p>Contracted catchment hierarchy</p>
-<p>In previous versions of the Geofabric, the set of contracted catchment features provided a
-collection of drainage areas for a set of persistent contracted nodes. In V2.1 these areas have
-been further processed to aggregate these features into a contracted catchment hierarchy.
-This hierarchy of contracted catchments includes only those catchments for key contracted
-nodes taken from a full set of contractible river confluences, sinks, monitoring points and the
-inflow and outflow points of water storages. These key contracted nodes form a stable,
-logical, dendritic hierarchy of catchments that can be reliably reproduced when moving to
-higher resolution or larger scaled data. The contracted catchment hierarchy provides a
-reliable and stable set of catchments that, among other things, can be mapped to a number
-of types of water reporting areas (depending on the use case) as exemplified by the stable
-reporting regions given in Hydrology Reporting Regions.</p>
+                    <p>The Geofabric's Hydrology Reporting Catchments product's AHGF Contracted Catchment object.</p>
+<p>Contracted Catchments are always within River Revions.</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="https://www.opengis.net/def/appschema/hy_features/hyf/HY_Catchment">https://www.opengis.net/def/appschema/hy_features/hyf/HY_Catchment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://www.opengis.net/def/appschema/hy_features/hyf/HY_Catchment">https://www.opengis.net/def/appschema/hy_features/hyf/HY_Catchment</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -377,16 +354,15 @@ reporting regions given in Hydrology Reporting Regions.</p>
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>The AWRA Drainage Division is defined for the purpose of providing a stable set of reporting
-regions specifically for the purpose of the Bureau’s Australian Water Resources Assessment
-and are referred to as the 2010 and 2012 Assessment Reporting Regions.</p>
+                    <p>The Geofabric's Hydrology Reporting Region product's AWRA Drainage Division object.</p>
+<p>Drainage Division is defined for the purpose of providing a stable set of reporting regions specifically for the purpose of the Bureau’s Australian Water Resources Assessment (AWRA) and are referred to as the 2010 and 2012 Assessment Reporting Regions</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate">https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://linked.data.gov.au/def/geofabric#ReportingRegion">http://linked.data.gov.au/def/geofabric#ReportingRegion</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -433,15 +409,15 @@ feature subtypes. </p>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate">https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://www.opengis.net/ont/geosparql#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/geofabric#RiverRegion">http://linked.data.gov.au/def/geofabric#RiverRegion</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://linked.data.gov.au/def/geofabric#DrainageDivision">http://linked.data.gov.au/def/geofabric#DrainageDivision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/geofabric#RiverRegion">http://linked.data.gov.au/def/geofabric#RiverRegion</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -467,9 +443,9 @@ of reporting increases.</p>
             <tr>
                 <th>Super-classes</th>
                 <td>
+                    <a href="http://linked.data.gov.au/def/geofabric#ReportingRegion">http://linked.data.gov.au/def/geofabric#ReportingRegion</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate">https://www.opengis.net/def/appschema/hy_features/hyf/HY_CatchmentAggregate</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.opengis.net/ont/geosparql#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/geofabric#ReportingRegion">http://linked.data.gov.au/def/geofabric#ReportingRegion</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -490,10 +466,10 @@ of reporting increases.</p>
             <tr>
                 <th>Sub-classes</th>
                 <td>
+                    <a href="http://linked.data.gov.au/def/geofabric#ContractedCatchment">http://linked.data.gov.au/def/geofabric#ContractedCatchment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://linked.data.gov.au/def/geofabric#ReportingRegion">http://linked.data.gov.au/def/geofabric#ReportingRegion</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://linked.data.gov.au/def/geofabric#DrainageDivision">http://linked.data.gov.au/def/geofabric#DrainageDivision</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://linked.data.gov.au/def/geofabric#RiverRegion">http://linked.data.gov.au/def/geofabric#RiverRegion</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://linked.data.gov.au/def/geofabric#ContractedCatchment">http://linked.data.gov.au/def/geofabric#ContractedCatchment</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -535,9 +511,9 @@ of reporting increases.</p>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/geofabric#RiverRegion">http://linked.data.gov.au/def/geofabric#RiverRegion</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://linked.data.gov.au/def/geofabric#ReportingRegion">http://linked.data.gov.au/def/geofabric#ReportingRegion</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://linked.data.gov.au/def/geofabric#DrainageDivision">http://linked.data.gov.au/def/geofabric#DrainageDivision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://linked.data.gov.au/def/geofabric#RiverRegion">http://linked.data.gov.au/def/geofabric#RiverRegion</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>

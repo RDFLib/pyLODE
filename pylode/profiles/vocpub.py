@@ -1,4 +1,5 @@
-from pylode.common import VERSION, STYLE_DIR, TEMPLATES_DIR
+from pylode import __version__
+from pylode.common import STYLE_DIR, TEMPLATES_DIR
 import collections
 from os import path
 from rdflib import URIRef, BNode, Literal
@@ -599,7 +600,7 @@ class VocPub(BaseProfile):
             concepts=self._make_skos_concepts(),
             namespaces=self._make_namespaces(),
             css=css,
-            pylode_version=VERSION
+            pylode_version=__version__
         )
 
     def generate_document(self):

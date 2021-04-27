@@ -99,7 +99,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 		* [Controlled Vocabulary](http://linked.data.gov.au/def/agrif#ControlledVocabulary)
 		* [Series](http://linked.data.gov.au/def/agrif#Series)
 * [Manifest](http://linked.data.gov.au/def/agrif#Manifest)
-* [Security Clearance](http://linked.data.gov.au/def/agrif#Permission)
+* [Permission](http://linked.data.gov.au/def/agrif#Permission)
 * [Policy](http://linked.data.gov.au/def/agrif#Policy)
 	* [Digital Preservation Policy](http://linked.data.gov.au/def/agrif#DigitalPreservationPolicy)
 	* [Information Management Policy](http://linked.data.gov.au/def/agrif#InformationManagementPolicy)
@@ -162,7 +162,7 @@ URI | `http://linked.data.gov.au/def/agrif#Activity`
 Preferred Labels |Activity (en)<br />
 Definitions |['An Activity is something that occurs over a period of time on a Record.']<br />
 Source | https://www.w3.org/TR/prov-o/#Activity
-Narrower Concepts |[http://linked.data.gov.au/def/agrif#ShareActivity](http://linked.data.gov.au/def/agrif#ShareActivity) (cp)<br />[http://linked.data.gov.au/def/agrif#MaintainActivity](http://linked.data.gov.au/def/agrif#MaintainActivity) (cp)<br />[http://linked.data.gov.au/def/agrif#AccessActivity](http://linked.data.gov.au/def/agrif#AccessActivity) (cp)<br />
+Narrower Concepts |[http://linked.data.gov.au/def/agrif#ShareActivity](http://linked.data.gov.au/def/agrif#ShareActivity) (cp)<br />[http://linked.data.gov.au/def/agrif#AccessActivity](http://linked.data.gov.au/def/agrif#AccessActivity) (cp)<br />[http://linked.data.gov.au/def/agrif#MaintainActivity](http://linked.data.gov.au/def/agrif#MaintainActivity) (cp)<br />
 ### Administrator
 Property | Value
 --- | ---
@@ -184,7 +184,7 @@ Property | Value
 URI | `http://linked.data.gov.au/def/agrif#Artefact`
 Preferred Labels |Artefact (en)<br />
 Definitions |['An Artefact is an object that is made by a Person and that is to be preserved.']<br />
-Narrower Concepts |[http://linked.data.gov.au/def/agrif#PhysicalArtefact](http://linked.data.gov.au/def/agrif#PhysicalArtefact) (cp)<br />[http://linked.data.gov.au/def/agrif#DigitalArtefact](http://linked.data.gov.au/def/agrif#DigitalArtefact) (cp)<br />
+Narrower Concepts |[http://linked.data.gov.au/def/agrif#DigitalArtefact](http://linked.data.gov.au/def/agrif#DigitalArtefact) (cp)<br />[http://linked.data.gov.au/def/agrif#PhysicalArtefact](http://linked.data.gov.au/def/agrif#PhysicalArtefact) (cp)<br />
 ### Artefact Change Event
 Property | Value
 --- | ---
@@ -200,7 +200,7 @@ URI | `http://linked.data.gov.au/def/agrif#ArtefactControlEvent`
 Preferred Labels |Artefact Control Event (en)<br />
 Definitions |['An Artefact Control Event is an Event that requires a particular level of access to an Artefact.']<br />
 Broader Concepts |[http://linked.data.gov.au/def/agrif#Event](http://linked.data.gov.au/def/agrif#Event) (cp)<br />
-Narrower Concepts |[http://linked.data.gov.au/def/agrif#ArtefactShareEvent](http://linked.data.gov.au/def/agrif#ArtefactShareEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#ArtefactPublishEvent](http://linked.data.gov.au/def/agrif#ArtefactPublishEvent) (cp)<br />
+Narrower Concepts |[http://linked.data.gov.au/def/agrif#ArtefactPublishEvent](http://linked.data.gov.au/def/agrif#ArtefactPublishEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#ArtefactShareEvent](http://linked.data.gov.au/def/agrif#ArtefactShareEvent) (cp)<br />
 ### Artefact Publish Event
 Property | Value
 --- | ---
@@ -326,7 +326,7 @@ URI | `http://linked.data.gov.au/def/agrif#Event`
 Preferred Labels |Event (en)<br />
 Definitions |['An Event denotes an instantaneous transition in the world.']<br />
 Source | https://www.w3.org/TR/prov-o/#InstantaneousEvent
-Narrower Concepts |[http://linked.data.gov.au/def/agrif#CreationEvent](http://linked.data.gov.au/def/agrif#CreationEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#ArtefactControlEvent](http://linked.data.gov.au/def/agrif#ArtefactControlEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#RecordControlEvent](http://linked.data.gov.au/def/agrif#RecordControlEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#ArtefactChangeEvent](http://linked.data.gov.au/def/agrif#ArtefactChangeEvent) (cp)<br />
+Narrower Concepts |[http://linked.data.gov.au/def/agrif#RecordControlEvent](http://linked.data.gov.au/def/agrif#RecordControlEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#CreationEvent](http://linked.data.gov.au/def/agrif#CreationEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#ArtefactControlEvent](http://linked.data.gov.au/def/agrif#ArtefactControlEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#ArtefactChangeEvent](http://linked.data.gov.au/def/agrif#ArtefactChangeEvent) (cp)<br />
 ### Form Factor
 Property | Value
 --- | ---
@@ -338,7 +338,7 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Function`
 Preferred Labels |Function (en)<br />
-Definitions |['A Function reflects the responsibilities of an Organisation that can be delegated through official channels. [Commonwealth Records Series Manual]', 'A Function is a process that is performed routinely to carry out a part of the mandate of an Australian Government Agency.']<br />['A Function reflects the responsibilities of an Organisation that can be delegated through official channels. [Commonwealth Records Series Manual]', 'A Function is a process that is performed routinely to carry out a part of the mandate of an Australian Government Agency.']<br />
+Definitions |['A Function is a process that is performed routinely to carry out a part of the mandate of an Australian Government Agency.', 'A Function reflects the responsibilities of an Organisation that can be delegated through official channels. [Commonwealth Records Series Manual]']<br />['A Function is a process that is performed routinely to carry out a part of the mandate of an Australian Government Agency.', 'A Function reflects the responsibilities of an Organisation that can be delegated through official channels. [Commonwealth Records Series Manual]']<br />
 Narrower Concepts |[http://linked.data.gov.au/def/agrif#RecordsAuthorityFunction](http://linked.data.gov.au/def/agrif#RecordsAuthorityFunction) (cp)<br />[http://linked.data.gov.au/def/agrif#AGIFTFunction](http://linked.data.gov.au/def/agrif#AGIFTFunction) (cp)<br />
 ### Holding Space
 Property | Value
@@ -369,7 +369,7 @@ URI | `http://linked.data.gov.au/def/agrif#IntellectualControlSystem`
 Preferred Labels |Intellectual Control System (en)<br />
 Definitions |['An Intellectual Control System is a System that enables Agents to locate and manage information.']<br />
 Broader Concepts |[http://linked.data.gov.au/def/agrif#InformationSystem](http://linked.data.gov.au/def/agrif#InformationSystem) (cp)<br />
-Narrower Concepts |[http://linked.data.gov.au/def/agrif#ControlledVocabulary](http://linked.data.gov.au/def/agrif#ControlledVocabulary) (cp)<br />[http://linked.data.gov.au/def/agrif#Series](http://linked.data.gov.au/def/agrif#Series) (cp)<br />
+Narrower Concepts |[http://linked.data.gov.au/def/agrif#Series](http://linked.data.gov.au/def/agrif#Series) (cp)<br />[http://linked.data.gov.au/def/agrif#ControlledVocabulary](http://linked.data.gov.au/def/agrif#ControlledVocabulary) (cp)<br />
 ### Jurisdictional Coverage
 Property | Value
 --- | ---
@@ -420,7 +420,7 @@ URI | `http://linked.data.gov.au/def/agrif#OrganisationalUnit`
 Preferred Labels |Organisational Unit (en)<br />
 Definitions |['An Organisational Unit is a division of labour typically organised around a business function that form part of the Organisation.']<br />
 Broader Concepts |[http://linked.data.gov.au/def/agrif#Organisation](http://linked.data.gov.au/def/agrif#Organisation) (cp)<br />
-### Security Clearance
+### Permission
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/agrif#Permission`
@@ -464,7 +464,7 @@ URI | `http://linked.data.gov.au/def/agrif#Policy`
 Preferred Labels |Policy (en)<br />
 Definitions |['A Policy is a deliberate system of principles to guide decisions and achieve rational outcomes.']<br />
 Source | http://purl.org/dc/terms/Policy
-Narrower Concepts |[http://linked.data.gov.au/def/agrif#RecordStorageStandard](http://linked.data.gov.au/def/agrif#RecordStorageStandard) (cp)<br />[http://linked.data.gov.au/def/agrif#DigitalPreservationPolicy](http://linked.data.gov.au/def/agrif#DigitalPreservationPolicy) (cp)<br />[http://linked.data.gov.au/def/agrif#InformationManagementPolicy](http://linked.data.gov.au/def/agrif#InformationManagementPolicy) (cp)<br />[http://linked.data.gov.au/def/agrif#MinimumMetadataSetPolicy](http://linked.data.gov.au/def/agrif#MinimumMetadataSetPolicy) (cp)<br />[http://linked.data.gov.au/def/agrif#RecordsAuthorityPolicy](http://linked.data.gov.au/def/agrif#RecordsAuthorityPolicy) (cp)<br />
+Narrower Concepts |[http://linked.data.gov.au/def/agrif#InformationManagementPolicy](http://linked.data.gov.au/def/agrif#InformationManagementPolicy) (cp)<br />[http://linked.data.gov.au/def/agrif#MinimumMetadataSetPolicy](http://linked.data.gov.au/def/agrif#MinimumMetadataSetPolicy) (cp)<br />[http://linked.data.gov.au/def/agrif#DigitalPreservationPolicy](http://linked.data.gov.au/def/agrif#DigitalPreservationPolicy) (cp)<br />[http://linked.data.gov.au/def/agrif#RecordStorageStandard](http://linked.data.gov.au/def/agrif#RecordStorageStandard) (cp)<br />[http://linked.data.gov.au/def/agrif#RecordsAuthorityPolicy](http://linked.data.gov.au/def/agrif#RecordsAuthorityPolicy) (cp)<br />
 ### Preservation Quality
 Property | Value
 --- | ---
@@ -499,7 +499,7 @@ URI | `http://linked.data.gov.au/def/agrif#RecordControlEvent`
 Preferred Labels |Record Control Event (en)<br />
 Definitions |['A Record Control Event is an Event that requires a particular level of access to the Record.']<br />
 Broader Concepts |[http://linked.data.gov.au/def/agrif#Event](http://linked.data.gov.au/def/agrif#Event) (cp)<br />
-Narrower Concepts |[http://linked.data.gov.au/def/agrif#RecordDecisionEvent](http://linked.data.gov.au/def/agrif#RecordDecisionEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#RecordReplacementEvent](http://linked.data.gov.au/def/agrif#RecordReplacementEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#RecordSentencingEvent](http://linked.data.gov.au/def/agrif#RecordSentencingEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#RecordAuditEvent](http://linked.data.gov.au/def/agrif#RecordAuditEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#RecordDisposalEvent](http://linked.data.gov.au/def/agrif#RecordDisposalEvent) (cp)<br />
+Narrower Concepts |[http://linked.data.gov.au/def/agrif#RecordSentencingEvent](http://linked.data.gov.au/def/agrif#RecordSentencingEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#RecordDecisionEvent](http://linked.data.gov.au/def/agrif#RecordDecisionEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#RecordReplacementEvent](http://linked.data.gov.au/def/agrif#RecordReplacementEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#RecordAuditEvent](http://linked.data.gov.au/def/agrif#RecordAuditEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#RecordDisposalEvent](http://linked.data.gov.au/def/agrif#RecordDisposalEvent) (cp)<br />
 ### Record Decision Event
 Property | Value
 --- | ---
@@ -521,7 +521,7 @@ URI | `http://linked.data.gov.au/def/agrif#RecordDisposalEvent`
 Preferred Labels |Record Disposal Event (en)<br />
 Definitions |['A Record Disposal Event is an Event that results in the regular authorised destruction or change of custody of a Record that is no longer required for business purposes.']<br />
 Broader Concepts |[http://linked.data.gov.au/def/agrif#RecordControlEvent](http://linked.data.gov.au/def/agrif#RecordControlEvent) (cp)<br />
-Narrower Concepts |[http://linked.data.gov.au/def/agrif#RecordDestructionEvent](http://linked.data.gov.au/def/agrif#RecordDestructionEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#RecordTransferEvent](http://linked.data.gov.au/def/agrif#RecordTransferEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#RecordFreezeEvent](http://linked.data.gov.au/def/agrif#RecordFreezeEvent) (cp)<br />
+Narrower Concepts |[http://linked.data.gov.au/def/agrif#RecordDestructionEvent](http://linked.data.gov.au/def/agrif#RecordDestructionEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#RecordFreezeEvent](http://linked.data.gov.au/def/agrif#RecordFreezeEvent) (cp)<br />[http://linked.data.gov.au/def/agrif#RecordTransferEvent](http://linked.data.gov.au/def/agrif#RecordTransferEvent) (cp)<br />
 ### Record Freeze Event
 Property | Value
 --- | ---
@@ -581,7 +581,7 @@ URI | `http://linked.data.gov.au/def/agrif#Role`
 Preferred Labels |Role (en)<br />
 Definitions |['A Role is the function of an entity or agent with respect to an Activity or Event, in the context of a usage, generation, invalidation, association, start, and end.']<br />
 Source | https://www.w3.org/TR/prov-o/#Role
-Narrower Concepts |[http://linked.data.gov.au/def/agrif#Creator](http://linked.data.gov.au/def/agrif#Creator) (cp)<br />[http://linked.data.gov.au/def/agrif#Administrator](http://linked.data.gov.au/def/agrif#Administrator) (cp)<br />[http://linked.data.gov.au/def/agrif#BusinessOwner](http://linked.data.gov.au/def/agrif#BusinessOwner) (cp)<br />[http://linked.data.gov.au/def/agrif#User](http://linked.data.gov.au/def/agrif#User) (cp)<br />
+Narrower Concepts |[http://linked.data.gov.au/def/agrif#Creator](http://linked.data.gov.au/def/agrif#Creator) (cp)<br />[http://linked.data.gov.au/def/agrif#Administrator](http://linked.data.gov.au/def/agrif#Administrator) (cp)<br />[http://linked.data.gov.au/def/agrif#User](http://linked.data.gov.au/def/agrif#User) (cp)<br />[http://linked.data.gov.au/def/agrif#BusinessOwner](http://linked.data.gov.au/def/agrif#BusinessOwner) (cp)<br />
 ### Security Classification
 Property | Value
 --- | ---

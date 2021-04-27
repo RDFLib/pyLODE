@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.7
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.10
 
 # ISO19160-1:2015 Address ontology - NZ Profile
 
@@ -51,28 +51,28 @@ Property | Value
 URI | `http://linked.data.gov.au/def/iso19160-1-address-nz-profile#AddressAlias`
 Description | <p>ISO 19160 Address Alias class with the additional restrictions of requiring Address Alias lifecycle stage properties to have Address Lifecycle Stage class object and Address Alias lifespan to have Lifespan class objects as their range values.</p>
 Super-classes |[http://linked.data.gov.au/def/iso19160-1-address#AddressAlias](http://linked.data.gov.au/def/iso19160-1-address#AddressAlias) (c)<br />
-Restrictions |[http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.lifecycleStage](http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.lifecycleStage) **only** [http://linked.data.gov.au/def/iso19160-1-address#AddressLifecycleStage](http://linked.data.gov.au/def/iso19160-1-address#AddressLifecycleStage) (c)<br />[http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.lifespan](http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.lifespan) **only** [http://linked.data.gov.au/def/iso19160-1-address#Lifespan](http://linked.data.gov.au/def/iso19160-1-address#Lifespan) (c)<br />
+Restrictions |[http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.lifespan](http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.lifespan) **only** [http://linked.data.gov.au/def/iso19160-1-address#Lifespan](http://linked.data.gov.au/def/iso19160-1-address#Lifespan) (c)<br />[http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.lifecycleStage](http://linked.data.gov.au/def/iso19160-1-address#AddressAlias.lifecycleStage) **only** [http://linked.data.gov.au/def/iso19160-1-address#AddressLifecycleStage](http://linked.data.gov.au/def/iso19160-1-address#AddressLifecycleStage) (c)<br />
 ### Address Component
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/iso19160-1-address-nz-profile#AddressComponent`
 Description | <p>ISO 19160 Address Component class with the additional restrictions of requiring one and only one Address lifespan, Address provenance, Address Component lifecycle stage and an Address Component Value locale  properties</p>
 Super-classes |[http://linked.data.gov.au/def/iso19160-1-address#AddressComponent](http://linked.data.gov.au/def/iso19160-1-address#AddressComponent) (c)<br />
-Restrictions |[http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.locale](http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.locale) **exactly** 0<br />[http://linked.data.gov.au/def/iso19160-1-address#Address.provenance](http://linked.data.gov.au/def/iso19160-1-address#Address.provenance) **exactly** 1<br />[http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage](http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage) **exactly** 1<br />[http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan](http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan) **exactly** 1<br />
+Restrictions |[http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.locale](http://linked.data.gov.au/def/iso19160-1-address#AddressComponentValue.locale) **exactly** 0<br />[http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan](http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan) **exactly** 1<br />[http://linked.data.gov.au/def/iso19160-1-address#Address.provenance](http://linked.data.gov.au/def/iso19160-1-address#Address.provenance) **exactly** 1<br />[http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage](http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage) **exactly** 1<br />
 ### Addressable Object
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/iso19160-1-address-nz-profile#AddressableObject`
 Description | <p>ISO 19160 Addressable Object class with the additional restrictions of requiring one and only one Address Component lifespan, Address Component position and an Address Component lifecycle stage properties.</p>
 Super-classes |[http://linked.data.gov.au/def/iso19160-1-address#AddressableObject](http://linked.data.gov.au/def/iso19160-1-address#AddressableObject) (c)<br />
-Restrictions |[http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage](http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage) **exactly** 1<br />[http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan](http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan) **exactly** 1<br />[http://linked.data.gov.au/def/iso19160-1-address#Address.position](http://linked.data.gov.au/def/iso19160-1-address#Address.position) **exactly** 0<br />
+Restrictions |[http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage](http://linked.data.gov.au/def/iso19160-1-address#AddressComponent.lifecycleStage) **exactly** 1<br />[http://linked.data.gov.au/def/iso19160-1-address#Address.position](http://linked.data.gov.au/def/iso19160-1-address#Address.position) **exactly** 0<br />[http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan](http://linked.data.gov.au/def/iso19160-1-address#Address.lifespan) **exactly** 1<br />
 ### Address Period
 Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/iso19160-1-address-nz-profile#AddressedPeriod`
 Description | <p>ISO 19160 Addressed Period class with the additional restriction of requiring at most one Address provenance properties.</p>
 Super-classes |[http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod](http://linked.data.gov.au/def/iso19160-1-address#AddressedPeriod) (c)<br />
-Restrictions |[http://linked.data.gov.au/def/iso19160-1-address#Address.provenance](http://linked.data.gov.au/def/iso19160-1-address#Address.provenance) **only** [http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance](http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance) (c)<br />[http://linked.data.gov.au/def/iso19160-1-address#Address.provenance](http://linked.data.gov.au/def/iso19160-1-address#Address.provenance) **max** 1<br />
+Restrictions |[http://linked.data.gov.au/def/iso19160-1-address#Address.provenance](http://linked.data.gov.au/def/iso19160-1-address#Address.provenance) **max** 1<br />[http://linked.data.gov.au/def/iso19160-1-address#Address.provenance](http://linked.data.gov.au/def/iso19160-1-address#Address.provenance) **only** [http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance](http://linked.data.gov.au/def/iso19160-1-address#AddressProvenance) (c)<br />
 
 ## Named Individuals
 ## Namespaces

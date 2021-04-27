@@ -1,5 +1,5 @@
-from os import path
-from pylode.common import VERSION, TEMPLATES_DIR, STYLE_DIR
+from pylode import __version__
+from pylode.common import TEMPLATES_DIR, STYLE_DIR
 import collections
 from os import path
 from itertools import chain
@@ -1121,7 +1121,7 @@ class OntDoc(BaseProfile):
             default_namespace=self.METADATA["default_namespace"],
             namespaces=self._make_namespaces(),
             css=css,
-            pylode_version=VERSION
+            pylode_version=__version__
         )
 
     def generate_document(self):

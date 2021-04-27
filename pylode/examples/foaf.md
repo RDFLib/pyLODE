@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.7
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.10
 
 # Friend of a Friend (FOAF) vocabulary
 
@@ -44,7 +44,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.
 Property | Value
 --- | ---
 URI | `http://www.w3.org/2000/01/rdf-schema#Class`
-Has members |[foaf:Image](http://xmlns.com/foaf/0.1/Image)<br />[foaf:Project](http://xmlns.com/foaf/0.1/Project)<br />[foaf:OnlineGamingAccount](http://xmlns.com/foaf/0.1/OnlineGamingAccount)<br />[foaf:OnlineAccount](http://xmlns.com/foaf/0.1/OnlineAccount)<br />[foaf:OnlineChatAccount](http://xmlns.com/foaf/0.1/OnlineChatAccount)<br />[foaf:Agent](http://xmlns.com/foaf/0.1/Agent)<br />[foaf:Person](http://xmlns.com/foaf/0.1/Person)<br />[foaf:Group](http://xmlns.com/foaf/0.1/Group)<br />[geo:SpatialThing](http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing)<br />[foaf:Document](http://xmlns.com/foaf/0.1/Document)<br />[foaf:Organization](http://xmlns.com/foaf/0.1/Organization)<br />[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class)<br />[foaf:OnlineEcommerceAccount](http://xmlns.com/foaf/0.1/OnlineEcommerceAccount)<br />[foaf:PersonalProfileDocument](http://xmlns.com/foaf/0.1/PersonalProfileDocument)<br />[foaf:LabelProperty](http://xmlns.com/foaf/0.1/LabelProperty)<br />
+Has members |[foaf:LabelProperty](http://xmlns.com/foaf/0.1/LabelProperty)<br />[foaf:OnlineGamingAccount](http://xmlns.com/foaf/0.1/OnlineGamingAccount)<br />[foaf:PersonalProfileDocument](http://xmlns.com/foaf/0.1/PersonalProfileDocument)<br />[foaf:OnlineAccount](http://xmlns.com/foaf/0.1/OnlineAccount)<br />[foaf:Person](http://xmlns.com/foaf/0.1/Person)<br />[foaf:Image](http://xmlns.com/foaf/0.1/Image)<br />[geo:SpatialThing](http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing)<br />[foaf:Group](http://xmlns.com/foaf/0.1/Group)<br />[foaf:OnlineChatAccount](http://xmlns.com/foaf/0.1/OnlineChatAccount)<br />[foaf:OnlineEcommerceAccount](http://xmlns.com/foaf/0.1/OnlineEcommerceAccount)<br />[foaf:Agent](http://xmlns.com/foaf/0.1/Agent)<br />[foaf:Project](http://xmlns.com/foaf/0.1/Project)<br />[foaf:Organization](http://xmlns.com/foaf/0.1/Organization)<br />[rdfs:Class](http://www.w3.org/2000/01/rdf-schema#Class)<br />[foaf:Document](http://xmlns.com/foaf/0.1/Document)<br />
 ### Spatial Thing
 Property | Value
 --- | ---
@@ -57,8 +57,8 @@ Property | Value
 --- | ---
 URI | `http://xmlns.com/foaf/0.1/Agent`
 Description | <p>An agent (eg. person, group, software or physical artifact).</p>
-Sub-classes |[foaf:Person](http://xmlns.com/foaf/0.1/Person) (c)<br />[foaf:Organization](http://xmlns.com/foaf/0.1/Organization) (c)<br />[foaf:Group](http://xmlns.com/foaf/0.1/Group) (c)<br />
-In domain of |[foaf:openid](http://xmlns.com/foaf/0.1/openid) (op)<br />[foaf:mbox](http://xmlns.com/foaf/0.1/mbox) (op)<br />[foaf:weblog](http://xmlns.com/foaf/0.1/weblog) (op)<br />[foaf:holdsAccount](http://xmlns.com/foaf/0.1/holdsAccount) (op)<br />[foaf:yahooChatID](http://xmlns.com/foaf/0.1/yahooChatID) (dp)<br />[foaf:made](http://xmlns.com/foaf/0.1/made) (op)<br />[foaf:jabberID](http://xmlns.com/foaf/0.1/jabberID) (dp)<br />[foaf:msnChatID](http://xmlns.com/foaf/0.1/msnChatID) (dp)<br />[foaf:topic_interest](http://xmlns.com/foaf/0.1/topic_interest) (op)<br />[foaf:interest](http://xmlns.com/foaf/0.1/interest) (op)<br />[foaf:birthday](http://xmlns.com/foaf/0.1/birthday) (fp)<br />[foaf:account](http://xmlns.com/foaf/0.1/account) (op)<br />[foaf:skypeID](http://xmlns.com/foaf/0.1/skypeID) (dp)<br />[foaf:gender](http://xmlns.com/foaf/0.1/gender) (fp)<br />[foaf:aimChatID](http://xmlns.com/foaf/0.1/aimChatID) (dp)<br />[foaf:status](http://xmlns.com/foaf/0.1/status) (dp)<br />[foaf:tipjar](http://xmlns.com/foaf/0.1/tipjar) (op)<br />[foaf:age](http://xmlns.com/foaf/0.1/age) (fp)<br />[foaf:mbox_sha1sum](http://xmlns.com/foaf/0.1/mbox_sha1sum) (dp)<br />[foaf:icqChatID](http://xmlns.com/foaf/0.1/icqChatID) (dp)<br />
+Sub-classes |[foaf:Group](http://xmlns.com/foaf/0.1/Group) (c)<br />[foaf:Organization](http://xmlns.com/foaf/0.1/Organization) (c)<br />[foaf:Person](http://xmlns.com/foaf/0.1/Person) (c)<br />
+In domain of |[foaf:status](http://xmlns.com/foaf/0.1/status) (dp)<br />[foaf:gender](http://xmlns.com/foaf/0.1/gender) (fp)<br />[foaf:age](http://xmlns.com/foaf/0.1/age) (fp)<br />[foaf:skypeID](http://xmlns.com/foaf/0.1/skypeID) (dp)<br />[foaf:topic_interest](http://xmlns.com/foaf/0.1/topic_interest) (op)<br />[foaf:aimChatID](http://xmlns.com/foaf/0.1/aimChatID) (dp)<br />[foaf:yahooChatID](http://xmlns.com/foaf/0.1/yahooChatID) (dp)<br />[foaf:holdsAccount](http://xmlns.com/foaf/0.1/holdsAccount) (op)<br />[foaf:account](http://xmlns.com/foaf/0.1/account) (op)<br />[foaf:mbox_sha1sum](http://xmlns.com/foaf/0.1/mbox_sha1sum) (dp)<br />[foaf:interest](http://xmlns.com/foaf/0.1/interest) (op)<br />[foaf:birthday](http://xmlns.com/foaf/0.1/birthday) (fp)<br />[foaf:icqChatID](http://xmlns.com/foaf/0.1/icqChatID) (dp)<br />[foaf:jabberID](http://xmlns.com/foaf/0.1/jabberID) (dp)<br />[foaf:weblog](http://xmlns.com/foaf/0.1/weblog) (op)<br />[foaf:tipjar](http://xmlns.com/foaf/0.1/tipjar) (op)<br />[foaf:msnChatID](http://xmlns.com/foaf/0.1/msnChatID) (dp)<br />[foaf:mbox](http://xmlns.com/foaf/0.1/mbox) (op)<br />[foaf:openid](http://xmlns.com/foaf/0.1/openid) (op)<br />[foaf:made](http://xmlns.com/foaf/0.1/made) (op)<br />
 In range of |[foaf:member](http://xmlns.com/foaf/0.1/member) (op)<br />[foaf:maker](http://xmlns.com/foaf/0.1/maker) (op)<br />
 ### Document
 Property | Value
@@ -66,9 +66,9 @@ Property | Value
 URI | `http://xmlns.com/foaf/0.1/Document`
 Is Defined By | http://xmlns.com/foaf/0.1/
 Description | <p>A document.</p>
-Sub-classes |[foaf:PersonalProfileDocument](http://xmlns.com/foaf/0.1/PersonalProfileDocument) (c)<br />[foaf:Image](http://xmlns.com/foaf/0.1/Image) (c)<br />
+Sub-classes |[foaf:Image](http://xmlns.com/foaf/0.1/Image) (c)<br />[foaf:PersonalProfileDocument](http://xmlns.com/foaf/0.1/PersonalProfileDocument) (c)<br />
 In domain of |[foaf:primaryTopic](http://xmlns.com/foaf/0.1/primaryTopic) (op)<br />[foaf:sha1](http://xmlns.com/foaf/0.1/sha1) (dp)<br />[foaf:topic](http://xmlns.com/foaf/0.1/topic) (op)<br />
-In range of |[foaf:accountServiceHomepage](http://xmlns.com/foaf/0.1/accountServiceHomepage) (op)<br />[foaf:schoolHomepage](http://xmlns.com/foaf/0.1/schoolHomepage) (op)<br />[foaf:isPrimaryTopicOf](http://xmlns.com/foaf/0.1/isPrimaryTopicOf)<br />[foaf:page](http://xmlns.com/foaf/0.1/page) (op)<br />[foaf:tipjar](http://xmlns.com/foaf/0.1/tipjar) (op)<br />[foaf:openid](http://xmlns.com/foaf/0.1/openid) (op)<br />[foaf:homepage](http://xmlns.com/foaf/0.1/homepage) (op)<br />[foaf:publications](http://xmlns.com/foaf/0.1/publications) (op)<br />[foaf:weblog](http://xmlns.com/foaf/0.1/weblog) (op)<br />[foaf:interest](http://xmlns.com/foaf/0.1/interest) (op)<br />[foaf:workplaceHomepage](http://xmlns.com/foaf/0.1/workplaceHomepage) (op)<br />[foaf:workInfoHomepage](http://xmlns.com/foaf/0.1/workInfoHomepage) (op)<br />
+In range of |[foaf:tipjar](http://xmlns.com/foaf/0.1/tipjar) (op)<br />[foaf:workInfoHomepage](http://xmlns.com/foaf/0.1/workInfoHomepage) (op)<br />[foaf:homepage](http://xmlns.com/foaf/0.1/homepage) (op)<br />[foaf:openid](http://xmlns.com/foaf/0.1/openid) (op)<br />[foaf:page](http://xmlns.com/foaf/0.1/page) (op)<br />[foaf:isPrimaryTopicOf](http://xmlns.com/foaf/0.1/isPrimaryTopicOf)<br />[foaf:schoolHomepage](http://xmlns.com/foaf/0.1/schoolHomepage) (op)<br />[foaf:weblog](http://xmlns.com/foaf/0.1/weblog) (op)<br />[foaf:accountServiceHomepage](http://xmlns.com/foaf/0.1/accountServiceHomepage) (op)<br />[foaf:workplaceHomepage](http://xmlns.com/foaf/0.1/workplaceHomepage) (op)<br />[foaf:publications](http://xmlns.com/foaf/0.1/publications) (op)<br />[foaf:interest](http://xmlns.com/foaf/0.1/interest) (op)<br />
 ### Group
 Property | Value
 --- | ---
@@ -83,8 +83,8 @@ URI | `http://xmlns.com/foaf/0.1/Image`
 Is Defined By | http://xmlns.com/foaf/0.1/
 Description | <p>An image.</p>
 Super-classes |[foaf:Document](http://xmlns.com/foaf/0.1/Document) (c)<br />
-In domain of |[foaf:thumbnail](http://xmlns.com/foaf/0.1/thumbnail) (op)<br />[foaf:depicts](http://xmlns.com/foaf/0.1/depicts) (op)<br />
-In range of |[foaf:depiction](http://xmlns.com/foaf/0.1/depiction) (op)<br />[foaf:thumbnail](http://xmlns.com/foaf/0.1/thumbnail) (op)<br />[foaf:img](http://xmlns.com/foaf/0.1/img) (op)<br />
+In domain of |[foaf:depicts](http://xmlns.com/foaf/0.1/depicts) (op)<br />[foaf:thumbnail](http://xmlns.com/foaf/0.1/thumbnail) (op)<br />
+In range of |[foaf:thumbnail](http://xmlns.com/foaf/0.1/thumbnail) (op)<br />[foaf:depiction](http://xmlns.com/foaf/0.1/depiction) (op)<br />[foaf:img](http://xmlns.com/foaf/0.1/img) (op)<br />
 ### Label Property
 Property | Value
 --- | ---
@@ -98,8 +98,8 @@ URI | `http://xmlns.com/foaf/0.1/OnlineAccount`
 Is Defined By | http://xmlns.com/foaf/0.1/
 Description | <p>An online account.</p>
 Super-classes |[owl:Thing](http://www.w3.org/2002/07/owl#Thing) (c)<br />
-Sub-classes |[foaf:OnlineChatAccount](http://xmlns.com/foaf/0.1/OnlineChatAccount) (c)<br />[foaf:OnlineGamingAccount](http://xmlns.com/foaf/0.1/OnlineGamingAccount) (c)<br />[foaf:OnlineEcommerceAccount](http://xmlns.com/foaf/0.1/OnlineEcommerceAccount) (c)<br />
-In domain of |[foaf:accountServiceHomepage](http://xmlns.com/foaf/0.1/accountServiceHomepage) (op)<br />[foaf:accountName](http://xmlns.com/foaf/0.1/accountName) (dp)<br />
+Sub-classes |[foaf:OnlineGamingAccount](http://xmlns.com/foaf/0.1/OnlineGamingAccount) (c)<br />[foaf:OnlineChatAccount](http://xmlns.com/foaf/0.1/OnlineChatAccount) (c)<br />[foaf:OnlineEcommerceAccount](http://xmlns.com/foaf/0.1/OnlineEcommerceAccount) (c)<br />
+In domain of |[foaf:accountName](http://xmlns.com/foaf/0.1/accountName) (dp)<br />[foaf:accountServiceHomepage](http://xmlns.com/foaf/0.1/accountServiceHomepage) (op)<br />
 In range of |[foaf:holdsAccount](http://xmlns.com/foaf/0.1/holdsAccount) (op)<br />[foaf:account](http://xmlns.com/foaf/0.1/account) (op)<br />
 ### Online Chat Account
 Property | Value
@@ -135,8 +135,8 @@ Property | Value
 URI | `http://xmlns.com/foaf/0.1/Person`
 Is Defined By | http://xmlns.com/foaf/0.1/
 Description | <p>A person.</p>
-Super-classes |[foaf:Agent](http://xmlns.com/foaf/0.1/Agent) (c)<br />[geo:SpatialThing](http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing) (c)<br />
-In domain of |[foaf:lastName](http://xmlns.com/foaf/0.1/lastName) (dp)<br />[foaf:surname](http://xmlns.com/foaf/0.1/surname) (dp)<br />[foaf:pastProject](http://xmlns.com/foaf/0.1/pastProject) (op)<br />[foaf:currentProject](http://xmlns.com/foaf/0.1/currentProject) (op)<br />[foaf:firstName](http://xmlns.com/foaf/0.1/firstName) (dp)<br />[foaf:img](http://xmlns.com/foaf/0.1/img) (op)<br />[foaf:workplaceHomepage](http://xmlns.com/foaf/0.1/workplaceHomepage) (op)<br />[foaf:family_name](http://xmlns.com/foaf/0.1/family_name) (dp)<br />[foaf:plan](http://xmlns.com/foaf/0.1/plan) (dp)<br />[foaf:workInfoHomepage](http://xmlns.com/foaf/0.1/workInfoHomepage) (op)<br />[foaf:geekcode](http://xmlns.com/foaf/0.1/geekcode) (dp)<br />[foaf:familyName](http://xmlns.com/foaf/0.1/familyName) (dp)<br />[foaf:publications](http://xmlns.com/foaf/0.1/publications) (op)<br />[foaf:knows](http://xmlns.com/foaf/0.1/knows) (op)<br />[foaf:myersBriggs](http://xmlns.com/foaf/0.1/myersBriggs) (dp)<br />[foaf:schoolHomepage](http://xmlns.com/foaf/0.1/schoolHomepage) (op)<br />
+Super-classes |[geo:SpatialThing](http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing) (c)<br />[foaf:Agent](http://xmlns.com/foaf/0.1/Agent) (c)<br />
+In domain of |[foaf:knows](http://xmlns.com/foaf/0.1/knows) (op)<br />[foaf:myersBriggs](http://xmlns.com/foaf/0.1/myersBriggs) (dp)<br />[foaf:firstName](http://xmlns.com/foaf/0.1/firstName) (dp)<br />[foaf:publications](http://xmlns.com/foaf/0.1/publications) (op)<br />[foaf:schoolHomepage](http://xmlns.com/foaf/0.1/schoolHomepage) (op)<br />[foaf:img](http://xmlns.com/foaf/0.1/img) (op)<br />[foaf:workplaceHomepage](http://xmlns.com/foaf/0.1/workplaceHomepage) (op)<br />[foaf:familyName](http://xmlns.com/foaf/0.1/familyName) (dp)<br />[foaf:plan](http://xmlns.com/foaf/0.1/plan) (dp)<br />[foaf:surname](http://xmlns.com/foaf/0.1/surname) (dp)<br />[foaf:family_name](http://xmlns.com/foaf/0.1/family_name) (dp)<br />[foaf:geekcode](http://xmlns.com/foaf/0.1/geekcode) (dp)<br />[foaf:currentProject](http://xmlns.com/foaf/0.1/currentProject) (op)<br />[foaf:pastProject](http://xmlns.com/foaf/0.1/pastProject) (op)<br />[foaf:lastName](http://xmlns.com/foaf/0.1/lastName) (dp)<br />[foaf:workInfoHomepage](http://xmlns.com/foaf/0.1/workInfoHomepage) (op)<br />
 In range of |[foaf:knows](http://xmlns.com/foaf/0.1/knows) (op)<br />
 ### PersonalProfileDocument
 Property | Value
@@ -273,7 +273,7 @@ Property | Value
 URI | `http://xmlns.com/foaf/0.1/homepage`
 Is Defined By | http://xmlns.com/foaf/0.1/
 Description | A homepage for some thing.
-Super-properties |[foaf:page](http://xmlns.com/foaf/0.1/page) (op)<br />[foaf:isPrimaryTopicOf](http://xmlns.com/foaf/0.1/isPrimaryTopicOf)<br />
+Super-properties |[foaf:isPrimaryTopicOf](http://xmlns.com/foaf/0.1/isPrimaryTopicOf)<br />[foaf:page](http://xmlns.com/foaf/0.1/page) (op)<br />
 Domain(s) |[owl:Thing](http://www.w3.org/2002/07/owl#Thing) (c)<br />
 Range(s) |[foaf:Document](http://xmlns.com/foaf/0.1/Document) (c)<br />
 [](image)

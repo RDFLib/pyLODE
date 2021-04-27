@@ -2,7 +2,6 @@ from os import path
 from urllib import request
 from rdflib import util, Graph
 import sys
-from ._version import version_tuple
 
 # set APP_DIR to EXE folder if being called within pyinstaller EXE
 if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
@@ -29,7 +28,6 @@ RDF_SERIALIZER_MAP = {
     "text/n-triples": "nt",
     "text/plain": "nt",  # text/plain is the old/deprecated mimetype for n-triples
 }
-VERSION = f"{version_tuple[0]}.{version_tuple[1]}.{version_tuple[2]}"
 
 from .profiles import OntDoc, Prof, VocPub, NMPF, PROFILES
 

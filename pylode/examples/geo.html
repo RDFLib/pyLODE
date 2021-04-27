@@ -210,7 +210,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.8.7</span>
+    <span style="font-size:smaller;">2.8.10</span>
   </div>
   <h1>GeoSPARQL Ontology</h1>
 <section id="metadata">
@@ -267,7 +267,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -288,8 +288,8 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#hasGeometry">geosparql:hasGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#defaultGeometry">geosparql:defaultGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasGeometry">geosparql:hasGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -304,7 +304,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -326,20 +326,20 @@
                 <th>In domain of</th>
                 <td>
                     <a href="#hasserialization">geosparql:hasSerialization</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#dimension">geosparql:dimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#asGML">geosparql:asGML</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#spatialDimension">geosparql:spatialDimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#coordinateDimension">geosparql:coordinateDimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#isSimple">geosparql:isSimple</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#asWKT">geosparql:asWKT</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#coordinateDimension">geosparql:coordinateDimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#isEmpty">geosparql:isEmpty</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#spatialDimension">geosparql:spatialDimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#asGML">geosparql:asGML</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#dimension">geosparql:dimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#defaultGeometry">geosparql:defaultGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasGeometry">geosparql:hasGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#defaultGeometry">geosparql:defaultGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -375,59 +375,59 @@
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#meet">geosparql:ehMeet</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#coveredBy">geosparql:ehCoveredBy</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#rcc8eq">geosparql:rcc8eq</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#disjoint">geosparql:ehDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#contains">geosparql:ehContains</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#partiallyoverlapping">geosparql:rcc8po</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#overlaps">geosparql:sfOverlaps</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#inside">geosparql:ehInside</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfDisjoint">geosparql:sfDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#tangentialproperpartinverse">geosparql:rcc8tppi</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#tangentialproperpart">geosparql:rcc8tpp</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#equals">geosparql:ehEquals</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#sfEquals">geosparql:sfEquals</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#overlaps">geosparql:sfOverlaps</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#externallyconnected">geosparql:rcc8ec</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#touches">geosparql:sfTouches</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#non-tangentialproperpart">geosparql:rcc8ntpp</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#non-tangentialproperpartinverse">geosparql:rcc8ntppi</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#covers">geosparql:ehCovers</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfContains">geosparql:sfContains</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#tangentialproperpartinverse">geosparql:rcc8tppi</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8eq">geosparql:rcc8eq</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#coveredBy">geosparql:ehCoveredBy</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#intersects">geosparql:sfIntersects</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#disconnected">geosparql:rcc8dc</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#overlap">geosparql:ehOverlap</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#within">geosparql:sfWithin</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#non-tangentialproperpart">geosparql:rcc8ntpp</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#partiallyoverlapping">geosparql:rcc8po</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#covers">geosparql:ehCovers</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#externallyconnected">geosparql:rcc8ec</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#crosses">geosparql:sfCrosses</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfDisjoint">geosparql:sfDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#inside">geosparql:ehInside</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#tangentialproperpart">geosparql:rcc8tpp</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#non-tangentialproperpartinverse">geosparql:rcc8ntppi</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#overlap">geosparql:ehOverlap</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#meet">geosparql:ehMeet</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#touches">geosparql:sfTouches</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#contains">geosparql:ehContains</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfContains">geosparql:sfContains</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#within">geosparql:sfWithin</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#disconnected">geosparql:rcc8dc</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#disconnected">geosparql:rcc8dc</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#crosses">geosparql:sfCrosses</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfContains">geosparql:sfContains</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#tangentialproperpart">geosparql:rcc8tpp</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#rcc8eq">geosparql:rcc8eq</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#coveredBy">geosparql:ehCoveredBy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#non-tangentialproperpartinverse">geosparql:rcc8ntppi</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#meet">geosparql:ehMeet</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfEquals">geosparql:sfEquals</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#tangentialproperpartinverse">geosparql:rcc8tppi</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#inside">geosparql:ehInside</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#overlap">geosparql:ehOverlap</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#non-tangentialproperpart">geosparql:rcc8ntpp</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#crosses">geosparql:sfCrosses</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#partiallyoverlapping">geosparql:rcc8po</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#equals">geosparql:ehEquals</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#externallyconnected">geosparql:rcc8ec</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#overlap">geosparql:ehOverlap</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#within">geosparql:sfWithin</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfContains">geosparql:sfContains</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#inside">geosparql:ehInside</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#tangentialproperpartinverse">geosparql:rcc8tppi</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#touches">geosparql:sfTouches</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfEquals">geosparql:sfEquals</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#non-tangentialproperpart">geosparql:rcc8ntpp</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#non-tangentialproperpartinverse">geosparql:rcc8ntppi</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#covers">geosparql:ehCovers</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#meet">geosparql:ehMeet</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#contains">geosparql:ehContains</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#intersects">geosparql:sfIntersects</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfDisjoint">geosparql:sfDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#within">geosparql:sfWithin</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#disconnected">geosparql:rcc8dc</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#externallyconnected">geosparql:rcc8ec</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8eq">geosparql:rcc8eq</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#coveredBy">geosparql:ehCoveredBy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#covers">geosparql:ehCovers</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#disjoint">geosparql:ehDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#overlaps">geosparql:sfOverlaps</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#contains">geosparql:ehContains</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#touches">geosparql:sfTouches</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfDisjoint">geosparql:sfDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -473,7 +473,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -551,7 +551,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -623,7 +623,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -659,7 +659,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -695,7 +695,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -731,7 +731,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -768,7 +768,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -839,7 +839,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -875,7 +875,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -911,7 +911,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -983,7 +983,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -1055,7 +1055,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -1127,7 +1127,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -1163,7 +1163,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -1271,7 +1271,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -1344,7 +1344,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.0
                 </td>
             </tr>
             <tr>
@@ -1472,7 +1472,7 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
@@ -1756,7 +1756,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Examples of a Contributor include a person, an organization, or a service. Typically, the name of a Contributor should be used to indicate the entity.
+                    An entity responsible for making contributions to the resource.
                 </td>
             </tr>
         </table>
@@ -1777,7 +1777,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Examples of a Creator include a person, an organization, or a service. Typically, the name of a Creator should be used to indicate the entity.
+                    An entity primarily responsible for making the resource.
                 </td>
             </tr>
         </table>
@@ -1798,7 +1798,7 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    Date may be used to express temporal information at any level of granularity.  Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF].
+                    A point or period of time associated with an event in the lifecycle of the resource.
                 </td>
             </tr>
         </table>

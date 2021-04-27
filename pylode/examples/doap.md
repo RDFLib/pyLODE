@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.7
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.10
 
 # Description of a Project (DOAP) vocabulary
 
@@ -100,8 +100,8 @@ Property | Value
 URI | `http://usefulinc.com/ns/doap#Project`
 Is Defined By | http://usefulinc.com/ns/doap#
 Description | <p>A project.</p>
-Super-classes |[foaf:Project](http://xmlns.com/foaf/0.1/Project) (c)<br />[wn:Project](http://xmlns.com/wordnet/1.6/Project) (c)<br />
-In domain of |[doap:old-homepage](http://usefulinc.com/ns/doap#old-homepage)<br />[doap:maintainer](http://usefulinc.com/ns/doap#maintainer)<br />[doap:mailing-list](http://usefulinc.com/ns/doap#mailing-list)<br />[doap:blog](http://usefulinc.com/ns/doap#blog)<br />[doap:repository](http://usefulinc.com/ns/doap#repository)<br />[doap:programming-language](http://usefulinc.com/ns/doap#programming-language)<br />[doap:download-page](http://usefulinc.com/ns/doap#download-page)<br />[doap:vendor](http://usefulinc.com/ns/doap#vendor)<br />[doap:implements](http://usefulinc.com/ns/doap#implements)<br />[doap:release](http://usefulinc.com/ns/doap#release)<br />[doap:bug-database](http://usefulinc.com/ns/doap#bug-database)<br />[doap:language](http://usefulinc.com/ns/doap#language)<br />[doap:documenter](http://usefulinc.com/ns/doap#documenter)<br />[doap:developer-forum](http://usefulinc.com/ns/doap#developer-forum)<br />[doap:support-forum](http://usefulinc.com/ns/doap#support-forum)<br />[doap:service-endpoint](http://usefulinc.com/ns/doap#service-endpoint)<br />[doap:developer](http://usefulinc.com/ns/doap#developer)<br />[doap:download-mirror](http://usefulinc.com/ns/doap#download-mirror)<br />[doap:category](http://usefulinc.com/ns/doap#category)<br />[doap:helper](http://usefulinc.com/ns/doap#helper)<br />[doap:screenshots](http://usefulinc.com/ns/doap#screenshots)<br />[doap:platform](http://usefulinc.com/ns/doap#platform)<br />[doap:tester](http://usefulinc.com/ns/doap#tester)<br />[doap:os](http://usefulinc.com/ns/doap#os)<br />[doap:audience](http://usefulinc.com/ns/doap#audience)<br />[doap:translator](http://usefulinc.com/ns/doap#translator)<br />[doap:wiki](http://usefulinc.com/ns/doap#wiki)<br />[doap:homepage](http://usefulinc.com/ns/doap#homepage)<br />
+Super-classes |[wn:Project](http://xmlns.com/wordnet/1.6/Project) (c)<br />[foaf:Project](http://xmlns.com/foaf/0.1/Project) (c)<br />
+In domain of |[doap:audience](http://usefulinc.com/ns/doap#audience)<br />[doap:screenshots](http://usefulinc.com/ns/doap#screenshots)<br />[doap:wiki](http://usefulinc.com/ns/doap#wiki)<br />[doap:os](http://usefulinc.com/ns/doap#os)<br />[doap:translator](http://usefulinc.com/ns/doap#translator)<br />[doap:developer](http://usefulinc.com/ns/doap#developer)<br />[doap:download-page](http://usefulinc.com/ns/doap#download-page)<br />[doap:download-mirror](http://usefulinc.com/ns/doap#download-mirror)<br />[doap:tester](http://usefulinc.com/ns/doap#tester)<br />[doap:blog](http://usefulinc.com/ns/doap#blog)<br />[doap:repository](http://usefulinc.com/ns/doap#repository)<br />[doap:mailing-list](http://usefulinc.com/ns/doap#mailing-list)<br />[doap:helper](http://usefulinc.com/ns/doap#helper)<br />[doap:service-endpoint](http://usefulinc.com/ns/doap#service-endpoint)<br />[doap:release](http://usefulinc.com/ns/doap#release)<br />[doap:vendor](http://usefulinc.com/ns/doap#vendor)<br />[doap:documenter](http://usefulinc.com/ns/doap#documenter)<br />[doap:category](http://usefulinc.com/ns/doap#category)<br />[doap:platform](http://usefulinc.com/ns/doap#platform)<br />[doap:developer-forum](http://usefulinc.com/ns/doap#developer-forum)<br />[doap:language](http://usefulinc.com/ns/doap#language)<br />[doap:bug-database](http://usefulinc.com/ns/doap#bug-database)<br />[doap:homepage](http://usefulinc.com/ns/doap#homepage)<br />[doap:programming-language](http://usefulinc.com/ns/doap#programming-language)<br />[doap:maintainer](http://usefulinc.com/ns/doap#maintainer)<br />[doap:implements](http://usefulinc.com/ns/doap#implements)<br />[doap:old-homepage](http://usefulinc.com/ns/doap#old-homepage)<br />[doap:support-forum](http://usefulinc.com/ns/doap#support-forum)<br />
 In range of |[doap:repositoryOf](http://usefulinc.com/ns/doap#repositoryOf)<br />
 ### Repository
 Property | Value
@@ -109,8 +109,8 @@ Property | Value
 URI | `http://usefulinc.com/ns/doap#Repository`
 Is Defined By | http://usefulinc.com/ns/doap#
 Description | <p>Source code repository.</p>
-Sub-classes |[doap:HgRepository](http://usefulinc.com/ns/doap#HgRepository) (c)<br />[doap:CVSRepository](http://usefulinc.com/ns/doap#CVSRepository) (c)<br />[doap:DarcsRepository](http://usefulinc.com/ns/doap#DarcsRepository) (c)<br />[doap:GitBranch](http://usefulinc.com/ns/doap#GitBranch) (c)<br />[doap:GitRepository](http://usefulinc.com/ns/doap#GitRepository) (c)<br />[doap:BKRepository](http://usefulinc.com/ns/doap#BKRepository) (c)<br />[doap:BazaarBranch](http://usefulinc.com/ns/doap#BazaarBranch) (c)<br />[doap:ArchRepository](http://usefulinc.com/ns/doap#ArchRepository) (c)<br />[doap:SVNRepository](http://usefulinc.com/ns/doap#SVNRepository) (c)<br />
-In domain of |[doap:location](http://usefulinc.com/ns/doap#location)<br />[doap:anon-root](http://usefulinc.com/ns/doap#anon-root)<br />[doap:repositoryOf](http://usefulinc.com/ns/doap#repositoryOf)<br />[doap:browse](http://usefulinc.com/ns/doap#browse)<br />
+Sub-classes |[doap:SVNRepository](http://usefulinc.com/ns/doap#SVNRepository) (c)<br />[doap:GitBranch](http://usefulinc.com/ns/doap#GitBranch) (c)<br />[doap:GitRepository](http://usefulinc.com/ns/doap#GitRepository) (c)<br />[doap:CVSRepository](http://usefulinc.com/ns/doap#CVSRepository) (c)<br />[doap:DarcsRepository](http://usefulinc.com/ns/doap#DarcsRepository) (c)<br />[doap:BKRepository](http://usefulinc.com/ns/doap#BKRepository) (c)<br />[doap:ArchRepository](http://usefulinc.com/ns/doap#ArchRepository) (c)<br />[doap:HgRepository](http://usefulinc.com/ns/doap#HgRepository) (c)<br />[doap:BazaarBranch](http://usefulinc.com/ns/doap#BazaarBranch) (c)<br />
+In domain of |[doap:location](http://usefulinc.com/ns/doap#location)<br />[doap:browse](http://usefulinc.com/ns/doap#browse)<br />[doap:repositoryOf](http://usefulinc.com/ns/doap#repositoryOf)<br />[doap:anon-root](http://usefulinc.com/ns/doap#anon-root)<br />
 In range of |[doap:repository](http://usefulinc.com/ns/doap#repository)<br />
 ### Subversion Repository
 Property | Value
@@ -133,7 +133,7 @@ Property | Value
 URI | `http://usefulinc.com/ns/doap#Version`
 Is Defined By | http://usefulinc.com/ns/doap#
 Description | <p>Version information of a project release.</p>
-In domain of |[doap:os](http://usefulinc.com/ns/doap#os)<br />[doap:revision](http://usefulinc.com/ns/doap#revision)<br />[doap:platform](http://usefulinc.com/ns/doap#platform)<br />[doap:file-release](http://usefulinc.com/ns/doap#file-release)<br />
+In domain of |[doap:platform](http://usefulinc.com/ns/doap#platform)<br />[doap:file-release](http://usefulinc.com/ns/doap#file-release)<br />[doap:revision](http://usefulinc.com/ns/doap#revision)<br />[doap:os](http://usefulinc.com/ns/doap#os)<br />
 In range of |[doap:release](http://usefulinc.com/ns/doap#release)<br />
 
 ## Properties
@@ -203,7 +203,7 @@ URI | `http://usefulinc.com/ns/doap#blog`
 Is Defined By | http://usefulinc.com/ns/doap#
 Description | URI of a blog related to a project
 Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
-Range(s) |[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />[sioct:Weblog](http://rdfs.org/sioc/types#Weblog) (c)<br />
+Range(s) |[sioct:Weblog](http://rdfs.org/sioc/types#Weblog) (c)<br />[rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) (c)<br />
 [](browse)
 ### browse
 Property | Value
@@ -397,7 +397,7 @@ Property | Value
 URI | `http://usefulinc.com/ns/doap#os`
 Is Defined By | http://usefulinc.com/ns/doap#
 Description | Operating system that a project is limited to.  Omit this property if the project is not OS-specific.
-Domain(s) |[doap:Version](http://usefulinc.com/ns/doap#Version) (c)<br />[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
+Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />[doap:Version](http://usefulinc.com/ns/doap#Version) (c)<br />
 Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
 [](platform)
 ### platform
@@ -406,7 +406,7 @@ Property | Value
 URI | `http://usefulinc.com/ns/doap#platform`
 Is Defined By | http://usefulinc.com/ns/doap#
 Description | Indicator of software platform (non-OS specific), e.g. Java, Firefox, ECMA CLR
-Domain(s) |[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />[doap:Version](http://usefulinc.com/ns/doap#Version) (c)<br />
+Domain(s) |[doap:Version](http://usefulinc.com/ns/doap#Version) (c)<br />[doap:Project](http://usefulinc.com/ns/doap#Project) (c)<br />
 Range(s) |[rdfs:Literal](http://www.w3.org/2000/01/rdf-schema#Literal) (c)<br />
 [](programminglanguage)
 ### programming language

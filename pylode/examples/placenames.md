@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.7
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.10
 
 # Place Names Profile
 
@@ -125,8 +125,8 @@ Property | Value
 URI | `http://linked.data.gov.au/def/placenames/PlaceName`
 Description | <p>The name of a place, assigned by an official naming authority in the Place Names Gazeteer of Australia.</p>
 Super-classes |[http://purl.org/linked-data/registry#RegisteredItem](http://purl.org/linked-data/registry#RegisteredItem) (c)<br />
-Restrictions |[http://linked.data.gov.au/def/placenames/hasPronunciation](http://linked.data.gov.au/def/placenames/hasPronunciation) (op) **some** [xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />[http://purl.org/linked-data/registry#status](http://purl.org/linked-data/registry#status) (op) **some** [http://purl.org/linked-data/registry#Status](http://purl.org/linked-data/registry#Status) (c)<br />[http://linked.data.gov.au/def/placenames/wasNamedBy](http://linked.data.gov.au/def/placenames/wasNamedBy) (op) **some** [http://linked.data.gov.au/def/placenames/Jurisdiction](http://linked.data.gov.au/def/placenames/Jurisdiction) (c)<br />[http://linked.data.gov.au/def/placenames/register](http://linked.data.gov.au/def/placenames/register) (op) **some** [http://linked.data.gov.au/def/placenames/Gazetteer](http://linked.data.gov.au/def/placenames/Gazetteer) (c)<br />[https://www.w3.org/ns/adms#identifier](https://www.w3.org/ns/adms#identifier) (op) **some** [https://www.w3.org/ns/adms#Identifier](https://www.w3.org/ns/adms#Identifier) (c)<br />
-In domain of |[http://linked.data.gov.au/def/placenames/wasNamedBy](http://linked.data.gov.au/def/placenames/wasNamedBy) (op)<br />[http://linked.data.gov.au/def/placenames/hasPlaceNameFormality](http://linked.data.gov.au/def/placenames/hasPlaceNameFormality) (op)<br />[http://linked.data.gov.au/def/placenames/hasPlaceNamingAuthority](http://linked.data.gov.au/def/placenames/hasPlaceNamingAuthority) (op)<br />[http://linked.data.gov.au/def/placenames/hasPronunciation](http://linked.data.gov.au/def/placenames/hasPronunciation) (op)<br />
+Restrictions |[https://www.w3.org/ns/adms#identifier](https://www.w3.org/ns/adms#identifier) (op) **some** [https://www.w3.org/ns/adms#Identifier](https://www.w3.org/ns/adms#Identifier) (c)<br />[http://linked.data.gov.au/def/placenames/register](http://linked.data.gov.au/def/placenames/register) (op) **some** [http://linked.data.gov.au/def/placenames/Gazetteer](http://linked.data.gov.au/def/placenames/Gazetteer) (c)<br />[http://linked.data.gov.au/def/placenames/wasNamedBy](http://linked.data.gov.au/def/placenames/wasNamedBy) (op) **some** [http://linked.data.gov.au/def/placenames/Jurisdiction](http://linked.data.gov.au/def/placenames/Jurisdiction) (c)<br />[http://purl.org/linked-data/registry#status](http://purl.org/linked-data/registry#status) (op) **some** [http://purl.org/linked-data/registry#Status](http://purl.org/linked-data/registry#Status) (c)<br />[http://linked.data.gov.au/def/placenames/hasPronunciation](http://linked.data.gov.au/def/placenames/hasPronunciation) (op) **some** [xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
+In domain of |[http://linked.data.gov.au/def/placenames/hasPlaceNameFormality](http://linked.data.gov.au/def/placenames/hasPlaceNameFormality) (op)<br />[http://linked.data.gov.au/def/placenames/wasNamedBy](http://linked.data.gov.au/def/placenames/wasNamedBy) (op)<br />[http://linked.data.gov.au/def/placenames/hasPronunciation](http://linked.data.gov.au/def/placenames/hasPronunciation) (op)<br />[http://linked.data.gov.au/def/placenames/hasPlaceNamingAuthority](http://linked.data.gov.au/def/placenames/hasPlaceNamingAuthority) (op)<br />
 ### Place Name Formality
 Property | Value
 --- | ---
@@ -192,7 +192,7 @@ URI | `http://www.w3.org/2001/XMLSchema#string`
 Property | Value
 --- | ---
 URI | `http://www.w3.org/2004/02/skos/core#Concept`
-Sub-classes |[http://linked.data.gov.au/def/placenames/PlaceNameFormality](http://linked.data.gov.au/def/placenames/PlaceNameFormality) (c)<br />[http://purl.org/linked-data/registry#Status](http://purl.org/linked-data/registry#Status) (c)<br />[http://linked.data.gov.au/def/placenames/PlaceType](http://linked.data.gov.au/def/placenames/PlaceType) (c)<br />
+Sub-classes |[http://purl.org/linked-data/registry#Status](http://purl.org/linked-data/registry#Status) (c)<br />[http://linked.data.gov.au/def/placenames/PlaceNameFormality](http://linked.data.gov.au/def/placenames/PlaceNameFormality) (c)<br />[http://linked.data.gov.au/def/placenames/PlaceType](http://linked.data.gov.au/def/placenames/PlaceType) (c)<br />
 ### Temporal Entity
 Property | Value
 --- | ---
