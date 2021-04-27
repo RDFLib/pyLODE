@@ -11,8 +11,24 @@ from pylode.profiles.base import BaseProfile
 
 
 class Prof(BaseProfile):
-    def __init__(self, g, source_info, outputformat="html", include_css=False, default_language="en", get_curies_online=False):
-        super().__init__(g, source_info, outputformat=outputformat, include_css=include_css, get_curies_online=False, default_language=default_language)
+    def __init__(
+            self,
+            g,
+            source_info,
+            outputformat="html",
+            include_css=False,
+            default_language="en",
+            use_curies_stored=True,
+            get_curies_online=False
+    ):
+        super().__init__(
+            g,
+            source_info,
+            outputformat=outputformat,
+            include_css=include_css,
+            use_curies_stored=use_curies_stored,
+            get_curies_online=get_curies_online,
+            default_language=default_language)
         self.RESOURCE_DESCRIPTORS = collections.OrderedDict()
 
     def _load_template(self, template_file):
