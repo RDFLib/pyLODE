@@ -445,7 +445,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div style="page-break-after: always;"></div>
 <div class="paragraph">
-<p><em>ASCIIDOC documentation created by <a href="http://github.com/rdflib/pyLODE">pyLODE</a> 2.8.10</em></p>
+<p><em>ASCIIDOC documentation created by <a href="http://github.com/rdflib/pyLODE">pyLODE</a> 2.9.0</em></p>
 </div>
 <div style="page-break-after: always;"></div>
 <div class="dlist">
@@ -908,10 +908,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="#triggers">triggers</a> <sup>op</sup> <strong>only</strong> <a href="#AccessTrigger">Access Trigger</a> <sup>c</sup></p>
+<p><a href="#accessedBy">accessed By</a> <sup>op</sup> <strong>some</strong> <a href="#Agent">Agent</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#accessedBy">accessed By</a> <sup>op</sup> <strong>some</strong> <a href="#Agent">Agent</a> <sup>c</sup></p>
+<p><a href="#triggers">triggers</a> <sup>op</sup> <strong>only</strong> <a href="#AccessTrigger">Access Trigger</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -1044,19 +1044,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="#hasStatus">has Status</a> <sup>op</sup> <strong>only</strong> <a href="#Status">Status</a> <sup>c</sup></p>
+<p><a href="#qualifiedAssociation">qualified Association</a> <sup>op</sup> <strong>some</strong> <a href="#Association">Association</a> <sup>c</sup></p>
 </li>
 <li>
 <p><a href="#hasLocation">has Location</a> <sup>op</sup> <strong>only</strong> <a href="#SpatialLocation">Spatial Location</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#qualifiedAssociation">qualified Association</a> <sup>op</sup> <strong>some</strong> <a href="#Association">Association</a> <sup>c</sup></p>
+<p><a href="#associatedFunction">associated Function</a> <sup>op</sup> <strong>only</strong> <a href="#Function">Function</a> <sup>c</sup></p>
+</li>
+<li>
+<p><a href="#requiresSecurityClassification">requires Security Classification</a> <sup>op</sup> <strong>only</strong> <a href="#SecurityClassification">Security Classification</a> <sup>c</sup></p>
+</li>
+<li>
+<p><a href="#endedAtTime">endedAtTime</a> <sup>dp</sup> <strong>max</strong> 1</p>
 </li>
 <li>
 <p><a href="#usedRecord">used Record</a> <sup>op</sup> <strong>only</strong> <a href="#Record">Record</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#endedAtTime">endedAtTime</a> <sup>dp</sup> <strong>max</strong> 1</p>
+<p><a href="#wasAssociatedWith">was Associated With</a> <sup>op</sup> <strong>some</strong> <a href="#Agent">Agent</a> <sup>c</sup></p>
 </li>
 <li>
 <p><a href="#startedAtTime">startedAtTime</a> <sup>dp</sup> <strong>max</strong> 1</p>
@@ -1065,13 +1071,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="#guidingPolicy">guiding Policy</a> <sup>op</sup> <strong>only</strong> <a href="#Policy">Policy</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#requiresSecurityClassification">requires Security Classification</a> <sup>op</sup> <strong>only</strong> <a href="#SecurityClassification">Security Classification</a> <sup>c</sup></p>
-</li>
-<li>
-<p><a href="#associatedFunction">associated Function</a> <sup>op</sup> <strong>only</strong> <a href="#Function">Function</a> <sup>c</sup></p>
-</li>
-<li>
-<p><a href="#wasAssociatedWith">was Associated With</a> <sup>op</sup> <strong>some</strong> <a href="#Agent">Agent</a> <sup>c</sup></p>
+<p><a href="#hasStatus">has Status</a> <sup>op</sup> <strong>only</strong> <a href="#Status">Status</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -1084,10 +1084,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="#ShareActivity">Share Activity</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#AccessActivity">Access Activity</a> <sup>c</sup></p>
+<p><a href="#MaintainActivity">Maintain Activity</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#MaintainActivity">Maintain Activity</a> <sup>c</sup></p>
+<p><a href="#AccessActivity">Access Activity</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -1171,13 +1171,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
+<p><a href="#actsAs">acts As</a> <sup>op</sup> <strong>some</strong> <a href="#Role">Role</a> <sup>c</sup></p>
+</li>
+<li>
 <p><a href="#hasPermission">has Permission</a> <sup>op</sup> <strong>some</strong> <a href="#SecurityClearance">Security Clearance</a> <sup>c</sup></p>
 </li>
 <li>
 <p><a href="#positionIn">position In</a> <sup>op</sup> <strong>some</strong> <a href="#Organisation">Organisation</a> <sup>c</sup></p>
-</li>
-<li>
-<p><a href="#actsAs">acts As</a> <sup>op</sup> <strong>some</strong> <a href="#Role">Role</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -1187,10 +1187,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="#Person">Person</a> <sup>c</sup></p>
+<p><a href="#Organisation">Organisation</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#Organisation">Organisation</a> <sup>c</sup></p>
+<p><a href="#Person">Person</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -1229,19 +1229,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="#hasQuality">has Quality</a> <sup>op</sup> <strong>some</strong> <a href="#PreservationQuality">Preservation Quality</a> <sup>c</sup></p>
-</li>
-<li>
-<p><a href="#isChangedBy">is Changed By</a> <sup>op</sup> <strong>some</strong> <a href="#InformationSystem">Information System</a> <sup>c</sup></p>
-</li>
-<li>
-<p><a href="#relatedTo">related To</a> <sup>op</sup> <strong>only</strong> <a href="#Artefact">Artefact</a> <sup>c</sup></p>
-</li>
-<li>
 <p><a href="#softwareAssignedID">softwareAssignedID</a> <sup>dp</sup> <strong>some</strong> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a> <sup>c</sup></p>
 </li>
 <li>
+<p><a href="#hasQuality">has Quality</a> <sup>op</sup> <strong>some</strong> <a href="#PreservationQuality">Preservation Quality</a> <sup>c</sup></p>
+</li>
+<li>
 <p><a href="#storedIn">stored In</a> <sup>op</sup> <strong>some</strong> <a href="#IntellectualControlSystem">Intellectual Control System</a> <sup>c</sup></p>
+</li>
+<li>
+<p><a href="#requiresSecurityClassification">requires Security Classification</a> <sup>op</sup> <strong>only</strong> <a href="#SecurityClassification">Security Classification</a> <sup>c</sup></p>
 </li>
 <li>
 <p><a href="#hasLocation">has Location</a> <sup>op</sup> <strong>only</strong> <a href="#SpatialLocation">Spatial Location</a> <sup>c</sup></p>
@@ -1250,7 +1247,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="#isAffectedBy">is Affected By</a> <sup>op</sup> <strong>some</strong> <a href="#Event">Event</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#requiresSecurityClassification">requires Security Classification</a> <sup>op</sup> <strong>only</strong> <a href="#SecurityClassification">Security Classification</a> <sup>c</sup></p>
+<p><a href="#relatedTo">related To</a> <sup>op</sup> <strong>only</strong> <a href="#Artefact">Artefact</a> <sup>c</sup></p>
+</li>
+<li>
+<p><a href="#isChangedBy">is Changed By</a> <sup>op</sup> <strong>some</strong> <a href="#InformationSystem">Information System</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -1260,10 +1260,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="#DigitalArtefact">Digital Artefact</a> <sup>c</sup></p>
+<p><a href="#PhysicalArtefact">Physical Artefact</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#PhysicalArtefact">Physical Artefact</a> <sup>c</sup></p>
+<p><a href="#DigitalArtefact">Digital Artefact</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -1381,10 +1381,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="#ArtefactShareEvent">Artefact Share Event</a> <sup>c</sup></p>
+<p><a href="#ArtefactPublishEvent">Artefact Publish Event</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#ArtefactPublishEvent">Artefact Publish Event</a> <sup>c</sup></p>
+<p><a href="#ArtefactShareEvent">Artefact Share Event</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -1472,10 +1472,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="#hasTargetAgent">has Target Agent</a> <sup>op</sup> <strong>min</strong> 1 <a href="#Agent">Agent</a> <sup>c</sup></p>
+<p><a href="#hasSourceAgent">has Source Agent</a> <sup>op</sup> <strong>exactly</strong> 1 <a href="#Agent">Agent</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#hasSourceAgent">has Source Agent</a> <sup>op</sup> <strong>exactly</strong> 1 <a href="#Agent">Agent</a> <sup>c</sup></p>
+<p><a href="#hasTargetAgent">has Target Agent</a> <sup>op</sup> <strong>min</strong> 1 <a href="#Agent">Agent</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -1524,10 +1524,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="#hasSourceAgent">has Source Agent</a> <sup>op</sup> <strong>exactly</strong> 1 <a href="#Agent">Agent</a> <sup>c</sup></p>
+<p><a href="#hasTargetAgent">has Target Agent</a> <sup>op</sup> <strong>min</strong> 1 <a href="#Agent">Agent</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#hasTargetAgent">has Target Agent</a> <sup>op</sup> <strong>min</strong> 1 <a href="#Agent">Agent</a> <sup>c</sup></p>
+<p><a href="#hasSourceAgent">has Source Agent</a> <sup>op</sup> <strong>exactly</strong> 1 <a href="#Agent">Agent</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -1838,10 +1838,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="#JurisdictionalCoverage">Jurisdictional Coverage</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#SpatialCoverage">Spatial Coverage</a> <sup>c</sup></p>
+<p><a href="#TemporalCoverage">Temporal Coverage</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#TemporalCoverage">Temporal Coverage</a> <sup>c</sup></p>
+<p><a href="#SpatialCoverage">Spatial Coverage</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -1968,10 +1968,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="http://linked.data.gov.au/def/agrif#Approved">Approved</a></p>
+<p><a href="http://linked.data.gov.au/def/agrif#Disapproved">Disapproved</a></p>
 </li>
 <li>
-<p><a href="http://linked.data.gov.au/def/agrif#Disapproved">Disapproved</a></p>
+<p><a href="http://linked.data.gov.au/def/agrif#Approved">Approved</a></p>
 </li>
 </ul>
 </div></div></td>
@@ -2020,7 +2020,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="#format">format</a> <sup>dp</sup> <strong>some</strong> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup>c</sup></p>
+<p><a href="#storedIn">stored In</a> <sup>op</sup> <strong>some</strong> <a href="#InformationSystem">Information System</a> <sup>c</sup></p>
 </li>
 <li>
 <p><a href="#filename">filename</a> <sup>dp</sup> <strong>some</strong> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup>c</sup></p>
@@ -2029,7 +2029,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="#filesize">filesize</a> <sup>dp</sup> <strong>some</strong> <a href="http://www.w3.org/2001/XMLSchema#long">xsd:long</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#storedIn">stored In</a> <sup>op</sup> <strong>some</strong> <a href="#InformationSystem">Information System</a> <sup>c</sup></p>
+<p><a href="#format">format</a> <sup>dp</sup> <strong>some</strong> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -2214,16 +2214,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="#triggeredBy">triggered By</a> <sup>op</sup> <strong>only</strong> <a href="#Trigger">Trigger</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#hasStatus">has Status</a> <sup>op</sup> <strong>only</strong> <a href="#Status">Status</a> <sup>c</sup></p>
-</li>
-<li>
-<p><a href="#qualifiedAssociation">qualified Association</a> <sup>op</sup> <strong>some</strong> <a href="#Association">Association</a> <sup>c</sup></p>
+<p><a href="#affects">affects</a> <sup>op</sup> <strong>some</strong> (<a href="#Artefact">Artefact</a> <sup>c</sup> or <a href="#Record">Record</a> <sup>c</sup>)</p>
 </li>
 <li>
 <p><a href="#priorEvent">prior Event</a> <sup>op</sup> <strong>only</strong> <a href="#Event">Event</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#guidingPolicy">guiding Policy</a> <sup>op</sup> <strong>only</strong> <a href="#Policy">Policy</a> <sup>c</sup></p>
+<p><a href="#hasStatus">has Status</a> <sup>op</sup> <strong>only</strong> <a href="#Status">Status</a> <sup>c</sup></p>
 </li>
 <li>
 <p><a href="#associatedFunction">associated Function</a> <sup>op</sup> <strong>only</strong> <a href="#Function">Function</a> <sup>c</sup></p>
@@ -2232,7 +2229,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="#wasAssociatedWith">was Associated With</a> <sup>op</sup> <strong>some</strong> <a href="#Agent">Agent</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#affects">affects</a> <sup>op</sup> <strong>some</strong> (<a href="#Artefact">Artefact</a> <sup>c</sup> or <a href="#Record">Record</a> <sup>c</sup>)</p>
+<p><a href="#guidingPolicy">guiding Policy</a> <sup>op</sup> <strong>only</strong> <a href="#Policy">Policy</a> <sup>c</sup></p>
+</li>
+<li>
+<p><a href="#qualifiedAssociation">qualified Association</a> <sup>op</sup> <strong>some</strong> <a href="#Association">Association</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -2242,16 +2242,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="#ArtefactControlEvent">Artefact Control Event</a> <sup>c</sup></p>
+<p><a href="#RecordControlEvent">Record Control Event</a> <sup>c</sup></p>
 </li>
 <li>
 <p><a href="#RecordCreationEvent">Record Creation Event</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#RecordControlEvent">Record Control Event</a> <sup>c</sup></p>
+<p><a href="#ArtefactChangeEvent">Artefact Change Event</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#ArtefactChangeEvent">Artefact Change Event</a> <sup>c</sup></p>
+<p><a href="#ArtefactControlEvent">Artefact Control Event</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -2311,7 +2311,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>A Function reflects the responsibilities of an Organisation that can be delegated through official channels. [Commonwealth Records Series Manual]</p>
+<p>A Function is a process that is performed routinely to carry out a part of the mandate of an Australian Government Agency.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2329,10 +2329,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="#AGIFTFunction">AGIFT Function</a> <sup>c</sup></p>
+<p><a href="#RecordsAuthorityFunction">Records Authority Function</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#RecordsAuthorityFunction">Records Authority Function</a> <sup>c</sup></p>
+<p><a href="#AGIFTFunction">AGIFT Function</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -2531,10 +2531,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="#Series">Series</a> <sup>c</sup></p>
+<p><a href="#ControlledVocabulary">Controlled Vocabulary</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#ControlledVocabulary">Controlled Vocabulary</a> <sup>c</sup></p>
+<p><a href="#Series">Series</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -3112,19 +3112,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
+<p><a href="#RecordStorageStandard">Record Storage Standard</a> <sup>c</sup></p>
+</li>
+<li>
+<p><a href="#MinimumMetadataSetPolicy">Minimum Metadata Set Policy</a> <sup>c</sup></p>
+</li>
+<li>
 <p><a href="#DigitalPreservationPolicy">Digital Preservation Policy</a> <sup>c</sup></p>
 </li>
 <li>
 <p><a href="#RecordsAuthorityDisposalClassPolicy">Records Authority Disposal Class Policy</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#RecordStorageStandard">Record Storage Standard</a> <sup>c</sup></p>
-</li>
-<li>
 <p><a href="#InformationManagementPolicy">Information Management Policy</a> <sup>c</sup></p>
-</li>
-<li>
-<p><a href="#MinimumMetadataSetPolicy">Minimum Metadata Set Policy</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -3241,22 +3241,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="#checksum">checksum</a> <sup>dp</sup> <strong>max</strong> 1</p>
-</li>
-<li>
 <p><a href="#requiresControl">requires Control</a> <sup>op</sup> <strong>only</strong> <a href="#Control">Control</a> <sup>c</sup></p>
-</li>
-<li>
-<p><a href="#relatedTo">related To</a> <sup>op</sup> <strong>only</strong> <a href="#Record">Record</a> <sup>c</sup></p>
-</li>
-<li>
-<p><a href="#recordOf">record Of</a> <sup>op</sup> <strong>min</strong> 1 <a href="#Artefact">Artefact</a> <sup>c</sup></p>
-</li>
-<li>
-<p><a href="#hasStatus">has Status</a> <sup>op</sup> <strong>only</strong> <a href="#Status">Status</a> <sup>c</sup></p>
-</li>
-<li>
-<p><a href="#hasClassifier">has Classifier</a> <sup>op</sup> <strong>some</strong> <a href="#Classifier">Classifier</a> <sup>c</sup></p>
 </li>
 <li>
 <p><a href="#requiresSecurityClassification">requires Security Classification</a> <sup>op</sup> <strong>only</strong> <a href="#SecurityClassification">Security Classification</a> <sup>c</sup></p>
@@ -3265,13 +3250,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="#hasDisposalClass">has Disposal Class</a> <sup>op</sup> <strong>exactly</strong> 1 <a href="#DisposalClass">Disposal Class</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#hasActivity">has Activity</a> <sup>op</sup> <strong>only</strong> <a href="#Activity">Activity</a> <sup>c</sup></p>
+<p><a href="#hasClassifier">has Classifier</a> <sup>op</sup> <strong>some</strong> <a href="#Classifier">Classifier</a> <sup>c</sup></p>
+</li>
+<li>
+<p><a href="#hasCoverage">has Coverage</a> <sup>op</sup> <strong>only</strong> <a href="#Coverage">Coverage</a> <sup>c</sup></p>
 </li>
 <li>
 <p><a href="#associatedFunction">associated Function</a> <sup>op</sup> <strong>min</strong> 1 <a href="#Function">Function</a> <sup>c</sup></p>
-</li>
-<li>
-<p><a href="#replaces">replaces</a> <sup>op</sup> <strong>only</strong> <a href="#Record">Record</a> <sup>c</sup></p>
 </li>
 <li>
 <p><a href="#qualifiedAssociation">qualified Association</a> <sup>op</sup> <strong>some</strong> <a href="#Association">Association</a> <sup>c</sup></p>
@@ -3280,13 +3265,28 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="#isAffectedBy">is Affected By</a> <sup>op</sup> <strong>only</strong> <a href="#Event">Event</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#hasCoverage">has Coverage</a> <sup>op</sup> <strong>only</strong> <a href="#Coverage">Coverage</a> <sup>c</sup></p>
+<p><a href="#hasActivity">has Activity</a> <sup>op</sup> <strong>only</strong> <a href="#Activity">Activity</a> <sup>c</sup></p>
+</li>
+<li>
+<p><a href="#hasStatus">has Status</a> <sup>op</sup> <strong>only</strong> <a href="#Status">Status</a> <sup>c</sup></p>
+</li>
+<li>
+<p><a href="#relatedTo">related To</a> <sup>op</sup> <strong>only</strong> <a href="#Record">Record</a> <sup>c</sup></p>
+</li>
+<li>
+<p><a href="#replaces">replaces</a> <sup>op</sup> <strong>only</strong> <a href="#Record">Record</a> <sup>c</sup></p>
+</li>
+<li>
+<p><a href="#isAffectedBy">is Affected By</a> <sup>op</sup> <strong>exactly</strong> 1 <a href="#RecordCreationEvent">Record Creation Event</a> <sup>c</sup></p>
+</li>
+<li>
+<p><a href="#checksum">checksum</a> <sup>dp</sup> <strong>max</strong> 1</p>
 </li>
 <li>
 <p><a href="#hasSeries">has Series</a> <sup>op</sup> <strong>only</strong> <a href="#Series">Series</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#isAffectedBy">is Affected By</a> <sup>op</sup> <strong>exactly</strong> 1 <a href="#RecordCreationEvent">Record Creation Event</a> <sup>c</sup></p>
+<p><a href="#recordOf">record Of</a> <sup>op</sup> <strong>min</strong> 1 <a href="#Artefact">Artefact</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -3387,16 +3387,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="#RecordSentencingEvent">Record Sentencing Event</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#RecordAuditEvent">Record Audit Event</a> <sup>c</sup></p>
+<p><a href="#RecordReplacementEvent">Record Replacement Event</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#RecordReplacementEvent">Record Replacement Event</a> <sup>c</sup></p>
+<p><a href="#RecordDecisionEvent">Record Decision Event</a> <sup>c</sup></p>
 </li>
 <li>
 <p><a href="#RecordDisposalEvent">Record Disposal Event</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#RecordDecisionEvent">Record Decision Event</a> <sup>c</sup></p>
+<p><a href="#RecordAuditEvent">Record Audit Event</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -3445,10 +3445,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="#hasDecisionStatus">has Decision Status</a> <sup>op</sup> <strong>only</strong> <a href="#DecisionStatus">Decision Status</a> <sup>c</sup></p>
+<p><a href="#prerequisiteDecisionEvent">prerequisite Decision Event</a> <sup>op</sup> <strong>only</strong> <a href="#RecordDecisionEvent">Record Decision Event</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#prerequisiteDecisionEvent">prerequisite Decision Event</a> <sup>op</sup> <strong>only</strong> <a href="#RecordDecisionEvent">Record Decision Event</a> <sup>c</sup></p>
+<p><a href="#hasDecisionStatus">has Decision Status</a> <sup>op</sup> <strong>only</strong> <a href="#DecisionStatus">Decision Status</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -3767,10 +3767,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="#hasManifest">has Manifest</a> <sup>op</sup> <strong>only</strong> <a href="#Manifest">Manifest</a> <sup>c</sup></p>
+<p><a href="#transferredFrom">transferred From</a> <sup>op</sup> <strong>some</strong> <a href="#Role">Role</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#transferredFrom">transferred From</a> <sup>op</sup> <strong>some</strong> <a href="#Role">Role</a> <sup>c</sup></p>
+<p><a href="#hasManifest">has Manifest</a> <sup>op</sup> <strong>only</strong> <a href="#Manifest">Manifest</a> <sup>c</sup></p>
 </li>
 <li>
 <p><a href="#transferredTo">transferred To</a> <sup>op</sup> <strong>some</strong> <a href="#Role">Role</a> <sup>c</sup></p>
@@ -3935,13 +3935,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="#Administrator">Administrator</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#Creator">Creator</a> <sup>c</sup></p>
+<p><a href="#User">User</a> <sup>c</sup></p>
 </li>
 <li>
 <p><a href="#BusinessOwner">Business Owner</a> <sup>c</sup></p>
 </li>
 <li>
-<p><a href="#User">User</a> <sup>c</sup></p>
+<p><a href="#Creator">Creator</a> <sup>c</sup></p>
 </li>
 </ul>
 </div></div></td>
@@ -3996,25 +3996,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="http://linked.data.gov.au/def/agrif#TopSecretPV">TopSecretPV</a></p>
-</li>
-<li>
-<p><a href="http://linked.data.gov.au/def/agrif#Protected">Protected</a></p>
-</li>
-<li>
-<p><a href="http://linked.data.gov.au/def/agrif#Secret">Secret</a></p>
-</li>
-<li>
-<p><a href="http://linked.data.gov.au/def/agrif#Unclassified">Unclassified</a></p>
-</li>
-<li>
 <p><a href="http://linked.data.gov.au/def/agrif#Confidential">Confidential</a></p>
 </li>
 <li>
 <p><a href="http://linked.data.gov.au/def/agrif#TopSecretNV">TopSecretNV</a></p>
 </li>
 <li>
+<p><a href="http://linked.data.gov.au/def/agrif#Unclassified">Unclassified</a></p>
+</li>
+<li>
 <p><a href="http://linked.data.gov.au/def/agrif#HighlyProtected">HighlyProtected</a></p>
+</li>
+<li>
+<p><a href="http://linked.data.gov.au/def/agrif#Secret">Secret</a></p>
+</li>
+<li>
+<p><a href="http://linked.data.gov.au/def/agrif#TopSecretPV">TopSecretPV</a></p>
+</li>
+<li>
+<p><a href="http://linked.data.gov.au/def/agrif#Protected">Protected</a></p>
 </li>
 </ul>
 </div></div></td>
@@ -4278,19 +4278,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="http://linked.data.gov.au/def/agrif#AwaitingDisposal">AwaitingDisposal</a></p>
-</li>
-<li>
-<p><a href="http://linked.data.gov.au/def/agrif#Active">Active</a></p>
+<p><a href="http://linked.data.gov.au/def/agrif#Disposed">Disposed</a></p>
 </li>
 <li>
 <p><a href="http://linked.data.gov.au/def/agrif#Completed">Completed</a></p>
 </li>
 <li>
-<p><a href="http://linked.data.gov.au/def/agrif#Disposed">Disposed</a></p>
+<p><a href="http://linked.data.gov.au/def/agrif#Redundant">Redundant</a></p>
 </li>
 <li>
-<p><a href="http://linked.data.gov.au/def/agrif#Redundant">Redundant</a></p>
+<p><a href="http://linked.data.gov.au/def/agrif#AwaitingDisposal">AwaitingDisposal</a></p>
+</li>
+<li>
+<p><a href="http://linked.data.gov.au/def/agrif#Active">Active</a></p>
 </li>
 </ul>
 </div></div></td>
@@ -7285,7 +7285,7 @@ link:Top Secret (PV)[TopSecret(PV)]
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-04-28 15:09:54 +1000
+Last updated 2021-04-28 16:31:16 +1000
 </div>
 </div>
 </body>

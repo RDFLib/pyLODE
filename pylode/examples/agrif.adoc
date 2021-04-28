@@ -171,8 +171,8 @@ link:#VersionHistory[Version History]
 |* link:#Activity[Activity] ^c^
 
 |Restrictions
-|* link:#triggers[triggers] ^op^ **only** link:#AccessTrigger[Access Trigger] ^c^
-* link:#accessedBy[accessed By] ^op^ **some** link:#Agent[Agent] ^c^
+|* link:#accessedBy[accessed By] ^op^ **some** link:#Agent[Agent] ^c^
+* link:#triggers[triggers] ^op^ **only** link:#AccessTrigger[Access Trigger] ^c^
 
 |===
 [#AccessControl]
@@ -225,21 +225,21 @@ link:#VersionHistory[Version History]
 |Description
 |An Activity is something that occurs over a period of time on a Record.
 |Restrictions
-|* link:#endedAtTime[endedAtTime] ^dp^ **max** 1
-* link:#usedRecord[used Record] ^op^ **only** link:#Record[Record] ^c^
-* link:#hasStatus[has Status] ^op^ **only** link:#Status[Status] ^c^
-* link:#startedAtTime[startedAtTime] ^dp^ **max** 1
+|* link:#qualifiedAssociation[qualified Association] ^op^ **some** link:#Association[Association] ^c^
 * link:#hasLocation[has Location] ^op^ **only** link:#SpatialLocation[Spatial Location] ^c^
-* link:#requiresSecurityClassification[requires Security Classification] ^op^ **only** link:#SecurityClassification[Security Classification] ^c^
-* link:#guidingPolicy[guiding Policy] ^op^ **only** link:#Policy[Policy] ^c^
-* link:#qualifiedAssociation[qualified Association] ^op^ **some** link:#Association[Association] ^c^
-* link:#wasAssociatedWith[was Associated With] ^op^ **some** link:#Agent[Agent] ^c^
 * link:#associatedFunction[associated Function] ^op^ **only** link:#Function[Function] ^c^
+* link:#requiresSecurityClassification[requires Security Classification] ^op^ **only** link:#SecurityClassification[Security Classification] ^c^
+* link:#endedAtTime[endedAtTime] ^dp^ **max** 1
+* link:#usedRecord[used Record] ^op^ **only** link:#Record[Record] ^c^
+* link:#wasAssociatedWith[was Associated With] ^op^ **some** link:#Agent[Agent] ^c^
+* link:#startedAtTime[startedAtTime] ^dp^ **max** 1
+* link:#guidingPolicy[guiding Policy] ^op^ **only** link:#Policy[Policy] ^c^
+* link:#hasStatus[has Status] ^op^ **only** link:#Status[Status] ^c^
 
 |Sub-classes
-|* link:#AccessActivity[Access Activity] ^c^
+|* link:#ShareActivity[Share Activity] ^c^
 * link:#MaintainActivity[Maintain Activity] ^c^
-* link:#ShareActivity[Share Activity] ^c^
+* link:#AccessActivity[Access Activity] ^c^
 
 |===
 [#Administrator]
@@ -274,12 +274,12 @@ link:#VersionHistory[Version History]
 |An Agent is a corporate entity, organisational element or system, or individual responsible for the performance of some Activity or Event, including those on Records.
 |Restrictions
 |* link:#actsAs[acts As] ^op^ **some** link:#Role[Role] ^c^
-* link:#positionIn[position In] ^op^ **some** link:#Organisation[Organisation] ^c^
 * link:#hasPermission[has Permission] ^op^ **some** link:#SecurityClearance[Security Clearance] ^c^
+* link:#positionIn[position In] ^op^ **some** link:#Organisation[Organisation] ^c^
 
 |Sub-classes
-|* link:#Person[Person] ^c^
-* link:#Organisation[Organisation] ^c^
+|* link:#Organisation[Organisation] ^c^
+* link:#Person[Person] ^c^
 
 |===
 [#Artefact]
@@ -295,18 +295,18 @@ link:#VersionHistory[Version History]
 |Description
 |An Artefact is an object that is made by a Person and that is to be preserved.
 |Restrictions
-|* link:#isChangedBy[is Changed By] ^op^ **some** link:#InformationSystem[Information System] ^c^
-* link:#requiresSecurityClassification[requires Security Classification] ^op^ **only** link:#SecurityClassification[Security Classification] ^c^
-* link:#softwareAssignedID[softwareAssignedID] ^dp^ **some** link:http://www.w3.org/2001/XMLSchema#string[xsd:string] ^c^
-* link:#isAffectedBy[is Affected By] ^op^ **some** link:#Event[Event] ^c^
+|* link:#softwareAssignedID[softwareAssignedID] ^dp^ **some** link:http://www.w3.org/2001/XMLSchema#string[xsd:string] ^c^
 * link:#hasQuality[has Quality] ^op^ **some** link:#PreservationQuality[Preservation Quality] ^c^
-* link:#relatedTo[related To] ^op^ **only** link:#Artefact[Artefact] ^c^
 * link:#storedIn[stored In] ^op^ **some** link:#IntellectualControlSystem[Intellectual Control System] ^c^
+* link:#requiresSecurityClassification[requires Security Classification] ^op^ **only** link:#SecurityClassification[Security Classification] ^c^
 * link:#hasLocation[has Location] ^op^ **only** link:#SpatialLocation[Spatial Location] ^c^
+* link:#isAffectedBy[is Affected By] ^op^ **some** link:#Event[Event] ^c^
+* link:#relatedTo[related To] ^op^ **only** link:#Artefact[Artefact] ^c^
+* link:#isChangedBy[is Changed By] ^op^ **some** link:#InformationSystem[Information System] ^c^
 
 |Sub-classes
-|* link:#DigitalArtefact[Digital Artefact] ^c^
-* link:#PhysicalArtefact[Physical Artefact] ^c^
+|* link:#PhysicalArtefact[Physical Artefact] ^c^
+* link:#DigitalArtefact[Digital Artefact] ^c^
 
 |===
 [#ArtefactChangeEvent]
@@ -386,8 +386,8 @@ link:#VersionHistory[Version History]
 |* link:#ArtefactChangeEvent[Artefact Change Event] ^c^
 
 |Restrictions
-|* link:#hasTargetAgent[has Target Agent] ^op^ **min** 1 link:#Agent[Agent] ^c^
-* link:#hasSourceAgent[has Source Agent] ^op^ **exactly** 1 link:#Agent[Agent] ^c^
+|* link:#hasSourceAgent[has Source Agent] ^op^ **exactly** 1 link:#Agent[Agent] ^c^
+* link:#hasTargetAgent[has Target Agent] ^op^ **min** 1 link:#Agent[Agent] ^c^
 
 |===
 [#ArtefactShareEvent]
@@ -530,9 +530,9 @@ link:#VersionHistory[Version History]
 |Description
 |A Coverage denotes the jurisdictional applicability, or the temporal and/or spatial extent to which a Record is observed.
 |Sub-classes
-|* link:#TemporalCoverage[Temporal Coverage] ^c^
+|* link:#JurisdictionalCoverage[Jurisdictional Coverage] ^c^
+* link:#TemporalCoverage[Temporal Coverage] ^c^
 * link:#SpatialCoverage[Spatial Coverage] ^c^
-* link:#JurisdictionalCoverage[Jurisdictional Coverage] ^c^
 
 |===
 [#RecordCreationEvent]
@@ -605,8 +605,8 @@ link:#VersionHistory[Version History]
 |Restrictions
 |* link:#storedIn[stored In] ^op^ **some** link:#InformationSystem[Information System] ^c^
 * link:#filename[filename] ^dp^ **some** link:http://www.w3.org/2000/01/rdf-schema#Literal[rdfs:Literal] ^c^
-* link:#format[format] ^dp^ **some** link:http://www.w3.org/2000/01/rdf-schema#Literal[rdfs:Literal] ^c^
 * link:#filesize[filesize] ^dp^ **some** link:http://www.w3.org/2001/XMLSchema#long[xsd:long] ^c^
+* link:#format[format] ^dp^ **some** link:http://www.w3.org/2000/01/rdf-schema#Literal[rdfs:Literal] ^c^
 
 |===
 [#DigitalHoldingSpace]
@@ -678,20 +678,20 @@ link:#VersionHistory[Version History]
 |Description
 |An Event denotes an instantaneous transition in the world.
 |Restrictions
-|* link:#hasStatus[has Status] ^op^ **only** link:#Status[Status] ^c^
-* link:#qualifiedAssociation[qualified Association] ^op^ **some** link:#Association[Association] ^c^
-* link:#priorEvent[prior Event] ^op^ **only** link:#Event[Event] ^c^
-* link:#triggeredBy[triggered By] ^op^ **only** link:#Trigger[Trigger] ^c^
-* link:#wasAssociatedWith[was Associated With] ^op^ **some** link:#Agent[Agent] ^c^
-* link:#associatedFunction[associated Function] ^op^ **only** link:#Function[Function] ^c^
+|* link:#triggeredBy[triggered By] ^op^ **only** link:#Trigger[Trigger] ^c^
 * link:#affects[affects] ^op^ **some** (link:#Artefact[Artefact] ^c^ or link:#Record[Record] ^c^)
+* link:#priorEvent[prior Event] ^op^ **only** link:#Event[Event] ^c^
+* link:#hasStatus[has Status] ^op^ **only** link:#Status[Status] ^c^
+* link:#associatedFunction[associated Function] ^op^ **only** link:#Function[Function] ^c^
+* link:#wasAssociatedWith[was Associated With] ^op^ **some** link:#Agent[Agent] ^c^
 * link:#guidingPolicy[guiding Policy] ^op^ **only** link:#Policy[Policy] ^c^
+* link:#qualifiedAssociation[qualified Association] ^op^ **some** link:#Association[Association] ^c^
 
 |Sub-classes
-|* link:#RecordCreationEvent[Record Creation Event] ^c^
-* link:#RecordControlEvent[Record Control Event] ^c^
-* link:#ArtefactControlEvent[Artefact Control Event] ^c^
+|* link:#RecordControlEvent[Record Control Event] ^c^
+* link:#RecordCreationEvent[Record Creation Event] ^c^
 * link:#ArtefactChangeEvent[Artefact Change Event] ^c^
+* link:#ArtefactControlEvent[Artefact Control Event] ^c^
 
 |===
 [#FormFactor]
@@ -743,8 +743,8 @@ link:#VersionHistory[Version History]
 |* link:#SpatialLocation[Spatial Location] ^c^
 
 |Sub-classes
-|* link:#DigitalHoldingSpace[Digital Holding Space] ^c^
-* link:#PhysicalHoldingSpace[Physical Holding Space] ^c^
+|* link:#PhysicalHoldingSpace[Physical Holding Space] ^c^
+* link:#DigitalHoldingSpace[Digital Holding Space] ^c^
 
 |===
 [#InformationManagementPolicy]
@@ -1033,11 +1033,11 @@ link:#VersionHistory[Version History]
 |Description
 |A Policy is a deliberate system of principles to guide decisions and achieve rational outcomes.
 |Sub-classes
-|* link:#InformationManagementPolicy[Information Management Policy] ^c^
-* link:#RecordStorageStandard[Record Storage Standard] ^c^
-* link:#DigitalPreservationPolicy[Digital Preservation Policy] ^c^
+|* link:#RecordStorageStandard[Record Storage Standard] ^c^
 * link:#MinimumMetadataSetPolicy[Minimum Metadata Set Policy] ^c^
+* link:#DigitalPreservationPolicy[Digital Preservation Policy] ^c^
 * link:#RecordsAuthorityDisposalClassPolicy[Records Authority Disposal Class Policy] ^c^
+* link:#InformationManagementPolicy[Information Management Policy] ^c^
 
 |===
 [#PreservationQuality]
@@ -1085,22 +1085,22 @@ link:#VersionHistory[Version History]
 |Description
 |A Record is information in any format created, received and maintained as evidence by an Organisation or Person, in pursuance of legal obligations or in the transaction of business. A Record may comprise a Digital or Physical Artefact.
 |Restrictions
-|* link:#requiresSecurityClassification[requires Security Classification] ^op^ **only** link:#SecurityClassification[Security Classification] ^c^
-* link:#hasClassifier[has Classifier] ^op^ **some** link:#Classifier[Classifier] ^c^
-* link:#relatedTo[related To] ^op^ **only** link:#Record[Record] ^c^
-* link:#hasCoverage[has Coverage] ^op^ **only** link:#Coverage[Coverage] ^c^
+|* link:#requiresControl[requires Control] ^op^ **only** link:#Control[Control] ^c^
+* link:#requiresSecurityClassification[requires Security Classification] ^op^ **only** link:#SecurityClassification[Security Classification] ^c^
 * link:#hasDisposalClass[has Disposal Class] ^op^ **exactly** 1 link:#DisposalClass[Disposal Class] ^c^
-* link:#hasActivity[has Activity] ^op^ **only** link:#Activity[Activity] ^c^
-* link:#isAffectedBy[is Affected By] ^op^ **only** link:#Event[Event] ^c^
-* link:#replaces[replaces] ^op^ **only** link:#Record[Record] ^c^
-* link:#qualifiedAssociation[qualified Association] ^op^ **some** link:#Association[Association] ^c^
-* link:#hasSeries[has Series] ^op^ **only** link:#Series[Series] ^c^
-* link:#hasStatus[has Status] ^op^ **only** link:#Status[Status] ^c^
-* link:#recordOf[record Of] ^op^ **min** 1 link:#Artefact[Artefact] ^c^
-* link:#checksum[checksum] ^dp^ **max** 1
-* link:#requiresControl[requires Control] ^op^ **only** link:#Control[Control] ^c^
-* link:#isAffectedBy[is Affected By] ^op^ **exactly** 1 link:#RecordCreationEvent[Record Creation Event] ^c^
+* link:#hasClassifier[has Classifier] ^op^ **some** link:#Classifier[Classifier] ^c^
+* link:#hasCoverage[has Coverage] ^op^ **only** link:#Coverage[Coverage] ^c^
 * link:#associatedFunction[associated Function] ^op^ **min** 1 link:#Function[Function] ^c^
+* link:#qualifiedAssociation[qualified Association] ^op^ **some** link:#Association[Association] ^c^
+* link:#isAffectedBy[is Affected By] ^op^ **only** link:#Event[Event] ^c^
+* link:#hasActivity[has Activity] ^op^ **only** link:#Activity[Activity] ^c^
+* link:#hasStatus[has Status] ^op^ **only** link:#Status[Status] ^c^
+* link:#relatedTo[related To] ^op^ **only** link:#Record[Record] ^c^
+* link:#replaces[replaces] ^op^ **only** link:#Record[Record] ^c^
+* link:#isAffectedBy[is Affected By] ^op^ **exactly** 1 link:#RecordCreationEvent[Record Creation Event] ^c^
+* link:#checksum[checksum] ^dp^ **max** 1
+* link:#hasSeries[has Series] ^op^ **only** link:#Series[Series] ^c^
+* link:#recordOf[record Of] ^op^ **min** 1 link:#Artefact[Artefact] ^c^
 
 |===
 [#RecordAuditEvent]
@@ -1138,11 +1138,11 @@ link:#VersionHistory[Version History]
 |* link:#requiresControl[requires Control] ^op^ **only** link:#Control[Control] ^c^
 
 |Sub-classes
-|* link:#RecordDisposalEvent[Record Disposal Event] ^c^
+|* link:#RecordSentencingEvent[Record Sentencing Event] ^c^
 * link:#RecordReplacementEvent[Record Replacement Event] ^c^
-* link:#RecordAuditEvent[Record Audit Event] ^c^
 * link:#RecordDecisionEvent[Record Decision Event] ^c^
-* link:#RecordSentencingEvent[Record Sentencing Event] ^c^
+* link:#RecordDisposalEvent[Record Disposal Event] ^c^
+* link:#RecordAuditEvent[Record Audit Event] ^c^
 
 |===
 [#RecordDecisionEvent]
@@ -1197,8 +1197,8 @@ link:#VersionHistory[Version History]
 |* link:#RecordControlEvent[Record Control Event] ^c^
 
 |Sub-classes
-|* link:#RecordFreezeEvent[Record Freeze Event] ^c^
-* link:#RecordDestructionEvent[Record Destruction Event] ^c^
+|* link:#RecordDestructionEvent[Record Destruction Event] ^c^
+* link:#RecordFreezeEvent[Record Freeze Event] ^c^
 * link:#RecordTransferEvent[Record Transfer Event] ^c^
 
 |===
@@ -1289,9 +1289,9 @@ link:#VersionHistory[Version History]
 |* link:#RecordDisposalEvent[Record Disposal Event] ^c^
 
 |Restrictions
-|* link:#hasManifest[has Manifest] ^op^ **only** link:#Manifest[Manifest] ^c^
+|* link:#transferredFrom[transferred From] ^op^ **some** link:#Role[Role] ^c^
+* link:#hasManifest[has Manifest] ^op^ **only** link:#Manifest[Manifest] ^c^
 * link:#transferredTo[transferred To] ^op^ **some** link:#Role[Role] ^c^
-* link:#transferredFrom[transferred From] ^op^ **some** link:#Role[Role] ^c^
 
 |===
 [#RecordsAuthorityFunction]
@@ -1352,10 +1352,10 @@ link:#VersionHistory[Version History]
 |* link:#hasPermission[has Permission] ^op^ **some** link:#SecurityClearance[Security Clearance] ^c^
 
 |Sub-classes
-|* link:#BusinessOwner[Business Owner] ^c^
-* link:#Administrator[Administrator] ^c^
-* link:#Creator[Creator] ^c^
+|* link:#Administrator[Administrator] ^c^
 * link:#User[User] ^c^
+* link:#BusinessOwner[Business Owner] ^c^
+* link:#Creator[Creator] ^c^
 
 |===
 [#SecurityClassification]
@@ -1376,13 +1376,13 @@ link:#VersionHistory[Version History]
 |* link:#AccessControl[Access Control] ^c^
 
 |Has members
-|* link:http://linked.data.gov.au/def/agrif#Secret[Secret]
-* link:http://linked.data.gov.au/def/agrif#Protected[Protected]
-* link:http://linked.data.gov.au/def/agrif#HighlyProtected[HighlyProtected]
-* link:http://linked.data.gov.au/def/agrif#TopSecretPV[TopSecretPV]
-* link:http://linked.data.gov.au/def/agrif#Confidential[Confidential]
-* link:http://linked.data.gov.au/def/agrif#Unclassified[Unclassified]
+|* link:http://linked.data.gov.au/def/agrif#Confidential[Confidential]
 * link:http://linked.data.gov.au/def/agrif#TopSecretNV[TopSecretNV]
+* link:http://linked.data.gov.au/def/agrif#Unclassified[Unclassified]
+* link:http://linked.data.gov.au/def/agrif#HighlyProtected[HighlyProtected]
+* link:http://linked.data.gov.au/def/agrif#Secret[Secret]
+* link:http://linked.data.gov.au/def/agrif#TopSecretPV[TopSecretPV]
+* link:http://linked.data.gov.au/def/agrif#Protected[Protected]
 
 |===
 [#SecurityControl]
@@ -1487,11 +1487,11 @@ link:#VersionHistory[Version History]
 |* link:#DecisionStatus[Decision Status] ^c^
 
 |Has members
-|* link:http://linked.data.gov.au/def/agrif#Redundant[Redundant]
+|* link:http://linked.data.gov.au/def/agrif#Disposed[Disposed]
 * link:http://linked.data.gov.au/def/agrif#Completed[Completed]
-* link:http://linked.data.gov.au/def/agrif#Active[Active]
+* link:http://linked.data.gov.au/def/agrif#Redundant[Redundant]
 * link:http://linked.data.gov.au/def/agrif#AwaitingDisposal[AwaitingDisposal]
-* link:http://linked.data.gov.au/def/agrif#Disposed[Disposed]
+* link:http://linked.data.gov.au/def/agrif#Active[Active]
 
 |===
 [#TemporalCoverage]

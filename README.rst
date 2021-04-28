@@ -62,7 +62,7 @@ Examples
 ========
 pyLODE has been tested with all of the 30+ ontologies in `pylode/examples/ <pylode/examples/>`_ and we are trying to
 ensure it captures all of their annotations. For each example, there is the original RDF file and the corresponding
-output, in HTML & Markdown.
+output, in HTML & Markdown. There are some examples of ADOC too.
 
 For example, `Epimorphic's <https://www.epimorphics.com/>`__'s **Registry Ontology** is:
 
@@ -79,6 +79,9 @@ Another, the Australian Government's Records Interoperability Framework (AGRIF) 
     - see `the point-of-truth rendered online <https://linked.data.gov.au/def/agrif>`__
 - **agrif.md** - Markdown output
     - see this `rendered online by GitHub <https://github.com/RDFLib/pyLODE/blob/master/pylode/examples/agrif.md>`__
+- **agrif.md** - ASCIIDOC output
+    - `resulting ADOC source <https://github.com/RDFLib/pyLODE/blob/master/pylode/examples/agrif.adoc>`__
+    - `rendered in HTML <https://github.com/RDFLib/pyLODE/blob/master/pylode/examples/agrif.adoc.html>`__
 - **agrif.skos.html** - HTMl output, "vocpub" profile
     - see this `rendered online by GitHack <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/agrif.vocpub.html>`__
 
@@ -169,11 +172,11 @@ These are the command line arguments to run pyLODE as a BASH or Python script on
 -  ``-c`` or ``--css``, *optional, default 'true'*
     -  Whether (true) or not (false) to include CSS in an HTML output.
 -  ``-o`` or ``--outputfile``, *optional*
-    -  A name you wish to assign to the output file. Will be postfixed with .html or .md. If not specified, the name of the input file or last segment of RDF URI will be used, + .html/.md.
+    -  A name you wish to assign to the output file. Will be postfixed with .html, .md or .adoc. If not specified, the name of the input file or last segment of RDF URI will be used, + .html/.md/.adoc.
 -  ``-f`` or ``--outputformat``, *optional, default 'html'*
-    - The output format of the documentation. 'html' or 'md' accepted.
--  ``-p`` or ``--profile``, *optional, default 'owl'*
-    - The profile (specification) for ontology documentation used. This has been "owl" (for OWL Ontology) only until the recent introduction of "vocpub" (according to the `Simple Knowledge Organization System (SKOS) <https://www.w3.org/TR/skos-reference/>`__). See ``-lp`` for all profiles supported.
+    - The output format of the documentation. 'html', 'md' or 'adoc' accepted.
+-  ``-p`` or ``--profile``, *optional, default 'ontdoc'*
+    - The profile (specification) for ontology documentation used. "ontdoc" (for OWL Ontologies), "vocpub" (for `Simple Knowledge Organization System (SKOS) <https://www.w3.org/TR/skos-reference/>`__) vocabularies or SKOS versions of OWL ontologies, "prof" for `Profiles Vocabularies <https://www.w3.org/TR/dx-prof/>`__ profiles. See ``-lp`` for all profiles supported.
 -  ``-lp`` or ``--listprofiles``, *optional, no arguments*
     - Lists all the profiles (specifications) for ontology documentation supported by pyLODE
 
@@ -695,7 +698,7 @@ Release Schedule
    :widths: 15, 10, 30
 
    3.0, *?*, "Will include pre-testing inputs with SHACL"
-   **2.9.0**, **28 Apr 2021**, "Support for ASCIIDOC format (OntDoc profile only)"
+   **2.9.1**, **28 Apr 2021**, "Support for ASCIIDOC format (OntDoc profile only)"
    2.8.11, 28 Apr 2021, "Further changes for PyPI only"
    2.8.10, 27 Apr 2021, "Further changes for PyPI only"
    2.8.9, 27 Apr 2021, "PyPI enhancements only"
