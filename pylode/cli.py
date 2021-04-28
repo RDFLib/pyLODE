@@ -121,7 +121,7 @@ def main(args=None):
         print(__version__)
         exit()
     elif args.inputfile or args.url:
-        if args.outputformat == "adoc" and args.profile != "dontdoc":
+        if args.outputformat == "adoc" and args.profile != "ontdoc":
             raise NotImplementedError("Sorry, ASCIIDOC format is currently only available for the OntDoc profile")
 
         include_css = True if args.css == "true" else False
