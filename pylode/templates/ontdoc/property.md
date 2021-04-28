@@ -32,6 +32,6 @@ Domain(s) | {%- if domains|length > 0 %}{%- for domain in domains %}{{ domain }}
 Range(s) | {%- if ranges|length > 0 %}{%- for range in ranges %}{{ range }}<br />{%- endfor %}
 {%- endif %}
 {%- if rangeIncludes|length > 0 %}
-([sdo:rangeIncludes](https://schema.org/domainIncludes)){%- for rangeInclude in rangeIncludes %}{{ rangeInclude }}{%- endfor %}
+([sdo:rangeIncludes](https://schema.org/rangeIncludes)){%- for rangeInclude in rangeIncludes %}{{ rangeInclude }}{%- endfor %}
 {%- endif %}
 {%- endif %}

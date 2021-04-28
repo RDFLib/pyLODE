@@ -309,7 +309,7 @@ pyLODE understands the following ontology constructs:
     -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title``
     -  *description* - ``rdf:comment`` or ``skos:definition`` or ``dct:description``
     -  *usage note* - a ``skos:scopeNote`` string
-    -  *example* - a ``skos:example`` string containing RDF
+    -  *example* - a ``skos:example`` string containing RDF - this will be monospaced in outputs
     -  *super properties* - by declaring a class to be ``owl:subPropertyOf`` something
     -  *sub properties* - pyLODE will work these out itself
     -  *equivalent properties* - by declaring a class to be ``owl:equivalentProperty`` something

@@ -1,0 +1,752 @@
+= A Project ontology
+:encoding: utf-8
+:lang: en
+:table-stripes: even
+:toc:
+:toc-placement!:
+:toclevels: 3
+:sectnumlevels: 4
+:sectanchors:
+:figure-id: 0
+:table-id: 0
+:req-id: 0
+:rec-id: 0
+:per-id: 0
+:xrefstyle: short
+:chapter-refsig: Clause
+:idprefix:
+:idseparator:
+
+<<<
+_ASCIIDOC documentation created by http://github.com/rdflib/pyLODE[pyLODE] 2.8.10_
+
+<<<
+IRI::
+  * `http://linked.data.gov.au/def/project`
+Creators(s)::
+  * link:https://orcid.org/0000-0002-3884-3420[Simon J D Cox]
+    [link:https://orcid.org/0000-0002-3884-3420[0000-0002-3884-3420]]
+    simon.cox@csiro.au of link:https://csiro.au[Commonwealth Scientific and Industrial Research Organisation]
+Contributor(s)::
+  * Peter Brenton, CSIRO
+Created::
+  * 2017-08-14
+Modified::
+  2020-04-24
+Imports::
+  * link:http://purl.org/dc/terms/[dcterms:]
+  * link:http://www.w3.org/2004/02/skos/core[http://www.w3.org/2004/02/skos/core]
+  * link:http://www.w3.org/ns/prov[http://www.w3.org/ns/prov]
+  * link:https://www.w3.org/ns/dx/prof[https://www.w3.org/ns/dx/prof]
+License::
+  * link:https://creativecommons.org/licenses/by/4.0/[https://creativecommons.org/licenses/by/4.0/]
+
+Ontology RDF::
+  RDF link:project.ttl[turtle]
+Code Repository::
+  link:https://github.com/dr-shorthair/project-ont[https://github.com/dr-shorthair/project-ont]
+Description::
+  
+The PROJECT ontology is designed to enable publication of information describing projects, including research projects. It is not designed to support project management, though sub-activities are included. As far as possible PROJECT is intended to be domain-neutral, and it is expected that domains and applications will specialize or extend this ontology for more specific purposes.
+
+The ontology gives terms to support the representation of:
+
+- project planning, funding, goals
+- project stakeholders and relationships
+- project activities and timeline
+
+One specialization is included - the **Research Project** - which has been the subject of several predecessor designs that have informed the design of this ontology.
+
+PROJECT extends the W3C PROV-O ontology. Otherwise, it has no dependencies except for the normal RDF/OWL infrastructure (RDF [rdf11-concepts], RDFS [rdf-schema], OWL [owl2-quick-reference]), Dublin Core [dc-terms] for some ontology metadata, and SKOS [skos-reference] to support some relationships between Role values, and project classification.
+
+A summary of the main classes and relationships in PROJECT is shown in the diagram below, including the key superclass `prov:Activity`.
+
+![summary of PROJECT ontology](../images/Project-overview.png)
+
+Core classes from PROJECT vocabulary.
+
+
+
+
+toc::[]
+<<<
+
+:sectnums!:
+
+== Classes
+link:http://linked.data.gov.au/def/project#FundingAssociation[proj:FundingAssociation]
+link:http://linked.data.gov.au/def/project#Project[proj:Project]
+link:http://linked.data.gov.au/def/project#ResearchProject[proj:ResearchProject]
+link:http://linked.data.gov.au/def/project#SumOfMoney[proj:SumOfMoney]
+[#Fundingassociation]
+=== Funding association
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#FundingAssociation`
+|Description
+|
+Association to a funder and a sum of money
+
+![Project funding association](../images/Project-funding.png)
+
+
+|Example
+|....
+ex:FA3
+  rdf:type proj:FundingAssociation ;
+  rdfs:label "Level crossing removal project phase 1 funding arrangement" ;
+  rdfs:seeAlso <http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/> ;
+  proj:fundsProvided [
+    rdf:type proj:SumOfMoney ;
+    proj:moneyAmount "524000000"^^xsd:decimal ;
+    proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+  ] ;
+  prov:agent <http://www.vic.gov.au/> ;
+ .
+....
+&nbsp;
+|Super-classes
+|* link:http://www.w3.org/ns/prov#Association[prov:Association] ^c^
+
+|Restrictions
+|* link:http://www.w3.org/ns/prov#hadRole[prov:hadRole] **value** link:http://linked.data.gov.au/def/project/Funder[http://linked.data.gov.au/def/project/Funder] ^c^
+* link:http://www.w3.org/ns/prov#agent[prov:agent] **exactly** 1
+* link:http://linked.data.gov.au/def/project#fundsProvided[proj:fundsProvided] ^op^ **min** 1
+
+|In domain of
+|* link:http://linked.data.gov.au/def/project#grantNumber[proj:grantNumber] ^dp^
+* link:http://linked.data.gov.au/def/project#fundingScheme[proj:fundingScheme] ^op^
+
+|In range of
+|* link:http://linked.data.gov.au/def/project#wasFundedThrough[proj:wasFundedThrough] ^op^
+
+|===
+[#Project]
+=== Project
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#Project`
+|Description
+|
+A Project is a planned activity with a budget, a sponsor, and a leader.
+
+Project stakeholders are indicated using `prov:wasAssociatedWith` or the `prov:qualifiedAssociation` structure which allows their role to be catpured. Some special stakeholders have specific sub-properties with the roles fixed, including project-leader, project-participant, and project-funder.
+
+Activities within a project are indicated using the `proj:hasSubActivity` (simple) or `proj:subActivityAssociation` properties - the latter allowing the nature of the relationshp to be described as well.
+
+![Project details](../images/Project.png)
+
+
+|Example
+|....
+ex:Project1
+rdf:type proj:Project ;
+rdfs:label "Victoria level-crossing removal - phase 1" ;
+proj:hadBudgetTotal [
+  rdf:type proj:SumOfMoney ;
+  rdfs:label "Level crossing removal phase 1 budget" ;
+  proj:moneyAmount "524000000"^^xsd:decimal ;
+  proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+] ;
+proj:hadLeader ex:johnholland-kbr ;
+proj:hadSponsor <http://levelcrossings.vic.gov.au/about/about-the-authority> ;
+proj:hadSubActivity ex:BentleighLevelCrossingRemoval ;
+proj:hadSubActivity ex:BurkeRoadLevelCrossingRemoval ;
+proj:hadSubActivity ex:McKinnonRoadLevelCrossingRemoval ;
+proj:hadSubActivity ex:NorthRoadLevelCrossingRemoval ;
+proj:wasFundedThrough [
+  rdf:type proj:FundingAssociation ;
+  rdfs:label "Level crossing removal project phase 1 funding arrangement" ;
+  rdfs:seeAlso <http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/> ;
+  proj:fundsProvided [
+    rdf:type proj:SumOfMoney ;
+    proj:moneyAmount "524000000"^^xsd:decimal ;
+    proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+  ] ;
+  prov:agent <http://www.vic.gov.au/> ;
+] ;
+rdfs:label "Victoria level-crossing removal - phase 1" ;
+proj:plannedEnd "2017-03-31"^^xsd:date ;
+proj:plannedStart "2015-10-01"^^xsd:date ;
+prov:atLocation <https://dbpedia.org/resource/Melbourne> ;
+prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
+prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
+.
+....
+&nbsp;
+|Super-classes
+|* link:http://www.w3.org/ns/prov#Activity[prov:Activity] ^c^
+
+|Restrictions
+|* link:http://linked.data.gov.au/def/project#hadSponsor[proj:hadSponsor] ^op^ **min** 1
+* link:http://linked.data.gov.au/def/project#plannedStart[proj:plannedStart] ^dp^ **exactly** 1
+* link:http://linked.data.gov.au/def/project#hadBudgetTotal[proj:hadBudgetTotal] ^op^ **exactly** 1
+* link:http://linked.data.gov.au/def/project#plannedEnd[proj:plannedEnd] ^dp^ **exactly** 1
+* link:http://linked.data.gov.au/def/project#hadLeader[proj:hadLeader] ^op^ **min** 1
+* link:http://linked.data.gov.au/def/project#hadPlan[proj:hadPlan] ^op^ **min** 1
+
+|Sub-classes
+|* link:http://linked.data.gov.au/def/project#ResearchProject[proj:ResearchProject] ^c^
+
+|In domain of
+|* link:http://linked.data.gov.au/def/project#wasFundedThrough[proj:wasFundedThrough] ^op^
+* link:http://linked.data.gov.au/def/project#hadAreaOfInterest[proj:hadAreaOfInterest] ^op^
+* link:http://linked.data.gov.au/def/project#hadSponsor[proj:hadSponsor] ^op^
+* link:http://linked.data.gov.au/def/project#hadPlan[proj:hadPlan] ^op^
+* link:http://linked.data.gov.au/def/project#hadObjective[proj:hadObjective] ^dp^
+* link:http://linked.data.gov.au/def/project#hadBudgetTotal[proj:hadBudgetTotal] ^op^
+
+|===
+[#ResearchProject]
+=== Research Project
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#ResearchProject`
+|Description
+|
+A research project is a project that has
+
+- one or more PIs who are individual persons, and
+- should be classified according to standard research classification, such as the Australian Bureau of Statistics ANZSRC-FOR or NASA's Global Change Master Directory - Science Keywords.
+
+|Example
+|....
+ex:Project2
+rdf:type proj:Project ;
+rdf:type proj:ResearchProject ;
+rdfs:label "Improved management of feral animals in remote tropical Australia" ;
+proj:budgetTotal [
+  rdf:type proj:SumOfMoney ;
+  proj:moneyAmount 0 ;
+  proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+] ;
+proj:hadFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050202> ;
+proj:hadPrincipalInvestigator <http://orcid.org/0000-0002-5823-7364> ;
+proj:hadSponsor <http://dbpedia.org/resource/Commonwealth_Scientific_and_Industrial_Research_Organisation> ;
+proj:hadSubActivity ex:Aerial ;
+proj:wasSubActivityOf <http://www.environment.gov.au/science/nesp> ;
+rdfs:label "Improved management of feral animals in remote tropical Australia" ;
+proj:hadObjective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
+proj:plannedEnd "2022-12-31"^^xsd:date ;
+proj:plannedStart "2012-12-31"^^xsd:date ;
+proj:projectParticipant <mailto:peter.brenton@csiro.au> ;
+proj:hadPlan ex:FCY-project-plan ;
+proj:wasFundedThrough [
+  rdf:type proj:FundingAssociation ;
+  proj:fundsProvided [
+    rdf:type proj:SumOfMoney ;
+    proj:moneyAmount 0 ;
+    proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+  ] ;
+  prov:agent <http://dbpedia.org/resource/Government_of_Australia> ;
+] ;
+prov:atLocation <http://dbpedia.org/resource/Archer_River,_Queensland> ;
+prov:generated <https://doi.org/10.1071/WF15133> ;
+prov:startedAtTime "2012-12-31T00:00:00"^^xsd:dateTime ;
+.
+....
+&nbsp;
+|Super-classes
+|* link:http://linked.data.gov.au/def/project#Project[proj:Project] ^c^
+
+|Restrictions
+|* link:http://linked.data.gov.au/def/project#hadFieldOfResearch[proj:hadFieldOfResearch] ^op^ **min** 1
+
+|In domain of
+|* link:http://linked.data.gov.au/def/project#hadPrincipalInvestigator[proj:hadPrincipalInvestigator] ^op^
+* link:http://linked.data.gov.au/def/project#hadFieldOfResearch[proj:hadFieldOfResearch] ^op^
+
+|===
+[#Sumofmoney]
+=== Sum of money
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#SumOfMoney`
+|Description
+|A sum of money, expressed as an amount and a specified currency
+|Example
+|....
+ex:SM4
+    rdf:type proj:SumOfMoney ;
+    proj:moneyAmount "524000000"^^xsd:decimal ;
+    proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+ .
+....
+&nbsp;
+|Super-classes
+|* link:http://www.w3.org/2002/07/owl#Thing[owl:Thing] ^c^
+
+|Restrictions
+|* link:http://linked.data.gov.au/def/project#moneyCurrency[proj:moneyCurrency] ^op^ **exactly** 1
+* link:http://linked.data.gov.au/def/project#moneyAmount[proj:moneyAmount] ^dp^ **exactly** 1
+
+|In domain of
+|* link:http://linked.data.gov.au/def/project#moneyAmount[proj:moneyAmount] ^dp^
+* link:http://linked.data.gov.au/def/project#moneyCurrency[proj:moneyCurrency] ^op^
+
+|In range of
+|* link:http://linked.data.gov.au/def/project#fundsProvided[proj:fundsProvided] ^op^
+* link:http://linked.data.gov.au/def/project#hadBudgetTotal[proj:hadBudgetTotal] ^op^
+
+|===
+== Properties
+=== Object Properties
+link:pointertofunding-scheme[pointer to funding-scheme]
+link:fundingprovided[funding provided]
+link:hasareaofinterest[has area of interest]
+link:totalprojectbudget[total project budget]
+link:fieldofresearch[field of research]
+link:leader[leader]
+link:Projectplan[Project plan]
+link:principalinvestigator[principal investigator]
+link:hadrelatedactivity[had related activity]
+link:activitysponsor[activity sponsor]
+link:hassub-activity[has sub-activity]
+link:currencyofasumofmoney[currency of a sum of money]
+link:hadfundingassociation[had funding association]
+link:issub-activityof[is sub-activity of]
+[#pointertofunding-scheme]
+==== pointer to funding-scheme
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#fundingScheme`
+|Description
+|
+Link to description of funding scheme, e.g.
+
+- [European Commission Horizon 2020](https://ec.europa.eu/programmes/horizon2020/)
+- [Australian National Collaborative Research Infrastructure Strategy](https://www.education.gov.au/national-collaborative-research-infrastructure-strategy-ncris)
+
+    |Domain(s)
+    |* link:http://linked.data.gov.au/def/project#FundingAssociation[proj:FundingAssociation] ^c^
+|===
+[#fundingprovided]
+==== funding provided
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#fundsProvided`
+|Description
+|Link to a sum of money.
+    |Range(s) 
+    |* link:http://linked.data.gov.au/def/project#SumOfMoney[proj:SumOfMoney] ^c^
+
+|===
+[#hasareaofinterest]
+==== has area of interest
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#hadAreaOfInterest`
+|Description
+|
+Address, place, locality, location, etc
+
+|Super-properties
+|* link:http://www.w3.org/ns/prov#atLocation[prov:atLocation]
+
+    |Domain(s)
+    |* link:http://linked.data.gov.au/def/project#Project[proj:Project] ^c^
+    |Range(s) 
+    |* link:http://purl.org/dc/terms/Location[dcterms:Location] ^c^
+
+|===
+[#totalprojectbudget]
+==== total project budget
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#hadBudgetTotal`
+|Description
+|
+Basic funding arrangements are captured through the `proj:hadSponsor` and `proj:hadBudgetTotal` properties.
+
+More complex arrangements, for example if multiple funders are involved, can be captured through the `proj:wasFundedThrough` property, which links a funding agent with a funding amount in the context of a project.
+
+    |Domain(s)
+    |* link:http://linked.data.gov.au/def/project#Project[proj:Project] ^c^
+    |Range(s) 
+    |* link:http://linked.data.gov.au/def/project#SumOfMoney[proj:SumOfMoney] ^c^
+
+|===
+[#fieldofresearch]
+==== field of research
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#hadFieldOfResearch`
+|Description
+|
+The field of research of the research project.
+
+|Scope Notes
+|The value is usually taken from a curated vocabulary, such as [ANZSRC Fields of Research](http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E), [Re3data subjects](http://www.re3data.org/browse/by-subject/), [EDAM Topic](http://edamontology.org/topic_0003) or [Scigraph subjects](https://github.com/springernature/scigraph/wiki)
+|Super-properties
+|* link:http://purl.org/dc/terms/subject[dcterms:subject]
+
+    |Domain(s)
+    |* link:http://linked.data.gov.au/def/project#ResearchProject[proj:ResearchProject] ^c^
+    |Range(s) 
+    |* link:http://www.w3.org/2004/02/skos/core#Concept[skos:Concept] ^c^
+
+|===
+[#leader]
+==== leader
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#hadLeader`
+|Description
+|
+There are a number of distinctive stakeholders in a project, in particular: a leader who is accountable for the delivery of project outcomes; a sponsor under whose authority the project is undertaken; funders; and project staff or participants.
+In some cases it is useful to provide specific details of a participant's role in the project.
+PROJECT provides a number of ways to represent the relationships of stakeholders to projects and activities.
+
+The standard role of _leader_ is implemented as a directly named property from an `prov:Activity` to a `prov:Agent`, and _sponsor_ as a directly named property from a `proj:Project` to a `prov:Agent`.
+
+We distinguish one sub-class, the `proj:ResearchProject`, in which the leader(s) is known as a _Principal Investigator_, and which is classified according to its _field of research_.
+
+
+|Super-properties
+|* link:http://www.w3.org/ns/prov#wasAssociatedWith[prov:wasAssociatedWith]
+
+    |Range(s) 
+    |* link:http://www.w3.org/ns/prov#Person[prov:Person] ^c^
+
+|===
+[#Projectplan]
+==== Project plan
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#hadPlan`
+|Description
+|The project plan.
+|Super-properties
+|* link:http://www.w3.org/ns/prov#used[prov:used]
+
+    |Domain(s)
+    |* link:http://linked.data.gov.au/def/project#Project[proj:Project] ^c^
+    |Range(s) 
+    |* link:http://www.w3.org/ns/prov#Plan[prov:Plan] ^c^
+
+|===
+[#principalinvestigator]
+==== principal investigator
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#hadPrincipalInvestigator`
+|Description
+|
+The person who acts as principal investigator on the research project.
+
+|Super-properties
+|* link:http://linked.data.gov.au/def/project#hadLeader[proj:hadLeader] ^op^
+
+    |Domain(s)
+    |* link:http://linked.data.gov.au/def/project#ResearchProject[proj:ResearchProject] ^c^
+|===
+[#hadrelatedactivity]
+==== had related activity
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#hadRelatedActivity`
+|Description
+|
+Link from an activity to a related activity.
+
+|Super-properties
+|* link:http://www.w3.org/ns/prov#qualifiedInfluence[prov:qualifiedInfluence]
+
+    |Domain(s)
+    |* link:http://www.w3.org/ns/prov#Activity[prov:Activity] ^c^
+    |Range(s) 
+    |* link:http://www.w3.org/ns/prov#ActivityInfluence[prov:ActivityInfluence] ^c^
+
+|===
+[#activitysponsor]
+==== activity sponsor
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#hadSponsor`
+|Description
+|
+There are a number of distinctive stakeholders in a project, in particular: a leader who is accountable for the delivery of project outcomes; a sponsor under whose authority the project is undertaken; funders; and project staff or participants.
+In some cases it is useful to provide specific details of a participant's role in the project.
+PROJECT provides a number of ways to represent the relationships of stakeholders to projects and activities.
+
+Basic funding arrangements are captured through the `proj:hadSponsor` and `proj:hadBudgetTotal` properties.
+More complex arrangements, for example if multiple funders are involved, can be captured through the `proj:wasFundedThrough` property, which links a funding agent with a funding amount in the context of a project.
+
+![Project funding association](../images/Project-funding.png)
+
+
+|Super-properties
+|* link:http://www.w3.org/ns/prov#wasAssociatedWith[prov:wasAssociatedWith]
+
+    |Domain(s)
+    |* link:http://linked.data.gov.au/def/project#Project[proj:Project] ^c^
+|===
+[#hassub-activity]
+==== has sub-activity
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#hadSubActivity`
+|Description
+|
+Relationship from an activity to a subsidiary activity.
+
+    |Domain(s)
+    |* link:http://www.w3.org/ns/prov#Activity[prov:Activity] ^c^
+    |Range(s) 
+    |* link:http://www.w3.org/ns/prov#Activity[prov:Activity] ^c^
+
+|===
+[#currencyofasumofmoney]
+==== currency of a sum of money
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#moneyCurrency`
+    |Domain(s)
+    |* link:http://linked.data.gov.au/def/project#SumOfMoney[proj:SumOfMoney] ^c^
+|===
+[#hadfundingassociation]
+==== had funding association
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#wasFundedThrough`
+|Description
+|
+Basic funding arrangements are captured through the `proj:hadSponsor` and `proj:hadBudgetTotal` properties.
+More complex arrangements, for example if multiple funders are involved, can be captured through the `proj:wasFundedThrough` property, which links a funding agent with a funding amount in the context of a project.
+
+![Project funding association](../images/Project-funding.png)
+
+
+    |Domain(s)
+    |* link:http://linked.data.gov.au/def/project#Project[proj:Project] ^c^
+    |Range(s) 
+    |* link:http://linked.data.gov.au/def/project#FundingAssociation[proj:FundingAssociation] ^c^
+
+|===
+[#issub-activityof]
+==== is sub-activity of
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#wasSubActivityOf`
+|Description
+|
+Relationship from an activity to its parent activity or project.
+
+|Super-properties
+|* link:http://www.w3.org/ns/prov#wasInformedBy[prov:wasInformedBy]
+
+|===
+
+=== Datatype Properties
+link:grantorcontractnumber[grant or contract number]
+link:projectobjective[project objective]
+link:Moneyamount[Money amount]
+link:plannedend-date|time[planned end-date|time]
+link:plannedstart-date|time[planned start-date|time]
+[#grantorcontractnumber]
+==== grant or contract number
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#grantNumber`
+|Description
+|The grant or contract number assigned to the funding arrangement by the funder.  'Grant number' is common for research or charitable projects, 'Contract number' in a commercial context.
+    |Domain(s)
+    |* link:http://linked.data.gov.au/def/project#FundingAssociation[proj:FundingAssociation] ^c^
+    |Range(s) 
+    |* link:http://www.w3.org/2001/XMLSchema#string[xsd:string] ^c^
+
+|===
+[#projectobjective]
+==== project objective
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#hadObjective`
+|Description
+|Textual description of project objective.
+    |Domain(s)
+    |* link:http://linked.data.gov.au/def/project#Project[proj:Project] ^c^
+|===
+[#Moneyamount]
+==== Money amount
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#moneyAmount`
+|Description
+|Numeric value of a sum of money, which must be scaled by a specified currency to get the actual value
+    |Domain(s)
+    |* link:http://linked.data.gov.au/def/project#SumOfMoney[proj:SumOfMoney] ^c^
+    |Range(s) 
+    |* link:http://www.w3.org/2001/XMLSchema#decimal[xsd:decimal] ^c^
+
+|===
+[#plannedend-date|time]
+==== planned end-date|time
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#plannedEnd`
+|Description
+|The date and time at which an activity was planned to end. See also project:plannedStart.
+|Scope Notes
+|Usually an xsd:date or xsd:dateTime
+|===
+[#plannedstart-date|time]
+==== planned start-date|time
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://linked.data.gov.au/def/project#plannedStart`
+|Description
+|The date and time at which an activity was planned to start. See also project:plannedEnd.
+|Scope Notes
+|Usually an xsd:date or xsd:dateTime
+|===
+
+## Named Individuals
+== Namespaces
+default (:)::
+    `None`
+dcterms::
+  `http://purl.org/dc/terms/`
+owl::
+  `http://www.w3.org/2002/07/owl#`
+prof::
+  `http://www.w3.org/ns/dx/prof/`
+proj::
+  `http://linked.data.gov.au/def/project#`
+proji::
+  `http://linked.data.gov.au/def/project`
+prov::
+  `http://www.w3.org/ns/prov#`
+rdf::
+  `http://www.w3.org/1999/02/22-rdf-syntax-ns#`
+rdfs::
+  `http://www.w3.org/2000/01/rdf-schema#`
+sdo::
+  `https://schema.org/`
+skos::
+  `http://www.w3.org/2004/02/skos/core#`
+xsd::
+  `http://www.w3.org/2001/XMLSchema#`
+
+== Legend
+* Classes: **c**
+* Object Properties: **op**
+* Functional Properties: **fp**
+* Data Properties: **dp**
+* Annotation Properties: **dp**
+* Properties: **p**
+* Named Individuals: **ni**

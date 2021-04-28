@@ -53,8 +53,9 @@ class MakeDocco:
         :type input_uri: A URI (string)
         :param data: RDF data
         :type data: Python varaible (string)
-        :param outputformat: The desired output format form the list of supported formats (currently either "html" (default) or "md" for Markdown
-        :type outputformat: string (one of "html" or "md")
+        :param outputformat: The desired output format from the list of supported formats ("html" (default),
+                            "md" - Markdown or "adoc" - ASCII Doc
+        :type outputformat: string (one of "html" or "md" or "adoc")
         :param include_css: Whether (True, default) or not (False) to include styling CSS within HTML outputs
         :type include_css: boolean
         :param get_curies_online: Whether (True) or not (False, default) to search prefix.cc online for additional URI prefixes
@@ -66,7 +67,7 @@ class MakeDocco:
         """
         self.profile_selected = profile
 
-        if outputformat not in ["html", "md"]:
+        if outputformat not in ["html", "md", "adoc"]:
             self.outputformat = "html"
         else:
             self.outputformat = outputformat

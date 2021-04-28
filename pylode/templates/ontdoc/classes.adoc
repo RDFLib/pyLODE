@@ -1,4 +1,5 @@
-## Classes
+== Classes
+
 {%- for i in class_index %}
 {{i}}
 {%- endfor %}
