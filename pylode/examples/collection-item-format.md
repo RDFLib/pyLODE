@@ -18,7 +18,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 * **Modified**
   * 2020-03-29
 * **Source**
-  * [http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes](http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes)
+  * [https://collection.sl.nsw.gov.au/search?offset=0](https://collection.sl.nsw.gov.au/search?offset=0)
 
 * **Taxonomy RDF**
   * RDF ([collection-item-format.ttl](turtle))
@@ -48,7 +48,7 @@ URI | `http://linked.data.gov.au/def/collection-item-format/national-film-and-so
 Preferred Labels |National Film and Sound Archive's Formats (en)<br />
 Alternate Labels |N (F)<br />
 Source | https://www.nfsa.gov.au/
-Members |[Digital](#Digital) (con)<br />[Tape](#Tape) (con)<br />[Object](#Object) (con)<br />[Disk](#Disk) (con)<br />[Documentation](#Documentation) (con)<br />[Film](#Film) (con)<br />[Disc](#Disc) (con)<br />
+Members |[Object](#Object) (con)<br />[Tape](#Tape) (con)<br />[Disk](#Disk) (con)<br />[Documentation](#Documentation) (con)<br />[Film](#Film) (con)<br />[Disc](#Disc) (con)<br />[Digital](#Digital) (con)<br />
 
 ### State Library New South Wales' Formats
 Property | Value
@@ -57,7 +57,7 @@ URI | `http://linked.data.gov.au/def/collection-item-format/state-library-new-so
 Preferred Labels |State Library New South Wales' Formats (en)<br />
 Alternate Labels |S (L)<br />
 Source | https://www.sl.nsw.gov.au/
-Members |[Eresource](#Eresource) (con)<br />[Book](#Book) (con)<br />[Manuscript](#Manuscript) (con)<br />[Object-SLNSW](#Object-SLNSW) (con)<br />[Journal & magazine](#Journalmagazine) (con)<br />[Map](#Map) (con)<br />[Video & film](#Videofilm) (con)<br />[Newspaper](#Newspaper) (con)<br />[Picture](#Picture) (con)<br />[Audio](#Audio) (con)<br />
+Members |[Book](#Book) (con)<br />[Picture](#Picture) (con)<br />[Newspaper](#Newspaper) (con)<br />[Manuscript](#Manuscript) (con)<br />[Map](#Map) (con)<br />[Audio](#Audio) (con)<br />[Object-SLNSW](#Object-SLNSW) (con)<br />[Journal & magazine](#Journalmagazine) (con)<br />[Eresource](#Eresource) (con)<br />[Video & film](#Videofilm) (con)<br />
 
 ## Concepts
 * [Audio](#Audio) (con)* [Book](#Book) (con)* [Digital](#Digital) (con)	* [Disk](#Disk) (con)	* [Digital Versatile Disc](#DigitalVersatileDisc) (con)	* [Eresource](#Eresource) (con)* [Disc](#Disc) (con)* [Disk](#Disk) (con)* [Documentation](#Documentation) (con)	* [Manuscript](#Manuscript) (con)	* [Map](#Map) (con)	* [Newspaper](#Newspaper) (con)	* [Picture](#Picture) (con)* [Digital Versatile Disc](#DigitalVersatileDisc) (con)* [Eresource](#Eresource) (con)* [Film](#Film) (con)* [Journal & magazine](#Journalmagazine) (con)* [Manuscript](#Manuscript) (con)* [Map](#Map) (con)* [Newspaper](#Newspaper) (con)* [Object](#Object) (con)	* [Object-SLNSW](#Object-SLNSW) (con)* [Object-SLNSW](#Object-SLNSW) (con)* [Picture](#Picture) (con)* [Tape](#Tape) (con)* [Video & film](#Videofilm) (con)	* [Film](#Film) (con)	* [Tape](#Tape) (con)
@@ -82,7 +82,7 @@ URI | `http://linked.data.gov.au/def/collection-item-format/digital`
 Preferred Labels |Digital (en)<br />
 Alternate Labels |Digital Storage<br />
 Definitions |A physical device for storing digital content.<br />
-Narrower Concepts |[Eresource](#Eresource) (con)<br />[Digital Versatile Disc](#DigitalVersatileDisc) (con)<br />[Disk](#Disk) (con)<br />
+Narrower Concepts |[Digital Versatile Disc](#DigitalVersatileDisc) (con)<br />[Eresource](#Eresource) (con)<br />[Disk](#Disk) (con)<br />
 ### Disc
 Property | Value
 --- | ---
@@ -106,7 +106,7 @@ URI | `http://linked.data.gov.au/def/collection-item-format/documentation`
 Preferred Labels |Documentation (en)<br />
 Definitions |Photographs and paper collection items.<br />
 Source | http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes
-Narrower Concepts |[Newspaper](#Newspaper) (con)<br />[Picture](#Picture) (con)<br />[Manuscript](#Manuscript) (con)<br />[Map](#Map) (con)<br />
+Narrower Concepts |[Newspaper](#Newspaper) (con)<br />[Manuscript](#Manuscript) (con)<br />[Picture](#Picture) (con)<br />[Map](#Map) (con)<br />
 ### Digital Versatile Disc
 Property | Value
 --- | ---
