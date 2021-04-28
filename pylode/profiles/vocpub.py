@@ -40,18 +40,17 @@ class VocPub(BaseProfile):
         """VocPub Profile allows fragment URIs for Concepts & Collections"""
         if self.CONCEPTS.get(uri) or self.COLLECTIONS.get(uri):
             if self.CONCEPTS.get(uri):
+                title = self.CONCEPTS[uri]["default_prefLabel"]
                 uri = self.CONCEPTS[uri]["fid"]
-                title = self.CONCEPTS[uri]["title"]
             elif self.COLLECTIONS.get(uri):
+                title = self.COLLECTIONS[uri]["default_prefLabel"]
                 uri = self.COLLECTIONS[uri]["fid"]
-                title = self.COLLECTIONS[uri]["title"]
 
             links = {
                 "md": f"[{title}](#{uri})",
                 "adoc": f"link:#{uri}[{title}]",
-                "html": f'<a href="{uri}">{title}</a>'
+                "html": f'<a href="#{uri}">{title}</a>'
             }
-
             return links[self.outputformat]
         else:
             return self._make_formatted_uri_basic(uri)
@@ -70,7 +69,7 @@ class VocPub(BaseProfile):
         suffixes = {
             "md": f' ({type})',
             "adoc": f' ^{type}^',
-            "html": f'<sup class="sup-{type}" title="{types[{type}]}">{type}</sup>'
+            "html": f'<sup class="sup-{type}" title="{types[type]}">{type}</sup>'
         }
 
         return link + suffixes[self.outputformat]
@@ -210,10 +209,18 @@ class VocPub(BaseProfile):
                     self.COLLECTIONS[c]["altLabels"].add(str(o))  # TODO: add in language
 
                 elif p == SKOS.definition:
-                    self.COLLECTIONS[c]["definitions"].add(markdown.markdown(str(o)))  # TODO: add in language
+                    # TODO: add in language
+                    if self.outputformat == "md":
+                        self.COLLECTIONS[c]["definitions"].add(str(o))
+                    else:
+                        self.COLLECTIONS[c]["definitions"].add(markdown.markdown(str(o)))
 
                 elif p == SKOS.scopeNote:
-                    self.COLLECTIONS[c]["scopeNotes"].add(markdown.markdown(str(o)))  # TODO: add in language
+                    # TODO: add in language
+                    if self.outputformat == "md":
+                        self.COLLECTIONS[c]["scopeNotes"].add(str(o))
+                    else:
+                        self.COLLECTIONS[c]["scopeNotes"].add(markdown.markdown(str(o)))
 
                 elif p == DCTERMS.source:
                     self.COLLECTIONS[c]["source"] = str(o)
@@ -288,10 +295,18 @@ class VocPub(BaseProfile):
                     self.CONCEPTS[c]["altLabels"].add(str(o))  # TODO: add in language
 
                 elif p == SKOS.definition:
-                    self.CONCEPTS[c]["definitions"].add(markdown.markdown(str(o)))  # TODO: add in language
+                    # TODO: add in language
+                    if self.outputformat == "md":
+                        self.CONCEPTS[c]["definitions"].add(str(o))
+                    else:
+                        self.CONCEPTS[c]["definitions"].add(markdown.markdown(str(o)))
 
                 elif p == SKOS.scopeNote:
-                    self.CONCEPTS[c]["scopeNotes"].add(markdown.markdown(str(o)))  # TODO: add in language
+                    # TODO: add in language
+                    if self.outputformat == "md":
+                        self.CONCEPTS[c]["scopeNotes"].add(str(o))
+                    else:
+                        self.CONCEPTS[c]["scopeNotes"].add(markdown.markdown(str(o)))
 
                 elif p == SKOS.example:
                     self.CONCEPTS[c]["examples"].add(str(o))  # TODO: add in language
@@ -366,10 +381,16 @@ class VocPub(BaseProfile):
                     self.METADATA["title"] = str(o)
 
                 if p == SKOS.definition:
-                    self.METADATA["description"] = markdown.markdown(str(o))
+                    if self.outputformat == "md":
+                        self.METADATA["description"] = str(o)
+                    else:
+                        self.METADATA["description"] = markdown.markdown(str(o))
 
                 if p == SKOS.historyNote:
-                    self.METADATA["historyNote"] = markdown.markdown(str(o))
+                    if self.outputformat == "md":
+                        self.METADATA["historyNote"] = str(o)
+                    else:
+                        self.METADATA["historyNote"] = markdown.markdown(str(o))
 
                 # dates
                 if p in [DCTERMS.created, DCTERMS.modified, DCTERMS.issued]:
@@ -492,7 +513,7 @@ class VocPub(BaseProfile):
         # render concept
         def _render(c, children, of, level=0):
             if of == "md":
-                md = level*"\t" + "* [{}]({})\n".format(self.CONCEPTS.get(c).get("default_prefLabel"), c)
+                md = level*"\t" + "* " + self._make_formatted_uri(c, type="con")
                 if len(children) > 0:
                     for ch in sorted(children):
                         md += _render(ch, self.CONCEPTS.get(ch).get("narrowers"), of, level=level + 1)

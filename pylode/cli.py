@@ -117,10 +117,13 @@ def main(args=None):
         print(MakeDocco.list_profiles())
         exit()
     elif args.version:
-        from pylode._version import version_tuple
-        print(f"{version_tuple[0]}.{version_tuple[1]}.{version_tuple[2]}")
+        from pylode import __version__
+        print(__version__)
         exit()
     elif args.inputfile or args.url:
+        if args.outputformat == "adoc" and args.profile != "dontdoc":
+            raise NotImplementedError("Sorry, ASCIIDOC format is currently only available for the OntDoc profile")
+
         include_css = True if args.css == "true" else False
         use_curies_stored = True if args.usecuriesstored == "true" else False
         get_curies_online = True if args.getcuriesonline == "true" else False

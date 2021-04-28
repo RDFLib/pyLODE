@@ -12,6 +12,7 @@ except ImportError:
     from setuptools_scm import get_version as _gv
     from os import path as _path
     __version__ = _gv(_path.join(_path.dirname(__file__), _path.pardir))
+    __version__ = ".".join(__version__.split(".")[0:3])
 
 from .common import *
 from .profiles import OntDoc, Prof, VocPub, NMPF, PROFILES, RDF_MEDIA_TYPES

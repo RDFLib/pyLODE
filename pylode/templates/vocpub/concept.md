@@ -9,7 +9,7 @@ Preferred Labels | {%- for prefLabel in prefLabels %}{{ prefLabel[0] }} ({{ pref
 Alternate Labels | {%- for altLabel in altLabels %}{{ altLabel }}<br />{%- endfor %}
 {%- endif %}
 {%- if definitions|length > 0 %}
-Definitions | {%- for definition in definitions %}{{ definitions }}<br />{%- endfor %}
+Definitions | {%- for definition in definitions %}{{ definition }}<br />{%- endfor %}
 {%- endif %}
 {%- if scopeNotes|length > 0 %}
 Scope Notes | {%- for scopeNote in scopeNotes %}{{ scopeNote }}<br />{%- endfor %}

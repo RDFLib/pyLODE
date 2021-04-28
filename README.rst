@@ -685,7 +685,7 @@ and change/add development priorities.
 Current Release
 ---------------
 
-The current release, as of April, 2021, is **2.8.11**.
+The current release, as of April, 2021, is **2.9.0**.
 
 Release Schedule
 ----------------
@@ -695,7 +695,8 @@ Release Schedule
    :widths: 15, 10, 30
 
    3.0, *?*, "Will include pre-testing inputs with SHACL"
-   **2.8.11**, **28 Apr 2021**, "Further changes for PyPI only"
+   **2.9.0**, **28 Apr 2021**, "Support for ASCIIDOC format (OntDoc profile only)"
+   2.8.11, 28 Apr 2021, "Further changes for PyPI only"
    2.8.10, 27 Apr 2021, "Further changes for PyPI only"
    2.8.9, 27 Apr 2021, "PyPI enhancements only"
    2.8.8, 27 Apr 2021, "Several small bugs fixed, auto-generation of version no. from Git tag"
