@@ -35,27 +35,9 @@ class Prof(BaseProfile):
     def _load_template(self, template_file):
         return Environment(loader=FileSystemLoader(join(TEMPLATES_DIR, "prof"))).get_template(template_file)
 
-    def _make_formatted_uri(self, uri):
-        # set display to CURIE
-        short = self._get_curie(uri)
-        # if the URI base is within the default namespace of this ontology
-        #   use the fragment URI
-        # else
-        #   use the given URI
-        uri_base = self._get_namespace_from_uri(uri)
-        link = None
-        if uri_base == self.METADATA.get("default_namespace"):
-            if self.RESOURCE_DESCRIPTORS.get(uri):
-                link = "[{}]({})".format(self.RESOURCE_DESCRIPTORS[uri]["default_prefLabel"], self.RESOURCE_DESCRIPTORS[uri]["fid"]) \
-                    if self.outputformat == "md" \
-                    else '<a href="#{}">{}</a>'.format(self.RESOURCE_DESCRIPTORS[uri]["fid"], self.RESOURCE_DESCRIPTORS[uri]["default_prefLabel"])
-
-        if link is None:
-            link = "[{}]({})".format(short, uri) \
-                if self.outputformat == "md" \
-                else '<a href="{}">{}</a>'.format(uri, short)
-
-        return link
+    # use parent class - i.e. no overriding
+    # def _make_formatted_uri(self, uri):
+    #     pass
 
     def _expand_graph(self):
         # label

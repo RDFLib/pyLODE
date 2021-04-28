@@ -69,8 +69,28 @@ class BaseProfile:
         else:
             return uri.split("/")[-1]  # could return None if URI ends in /
 
+    def _make_formatted_uri_basic(self, uri):
+        curie = self._get_curie(uri)
+
+        links = {
+            "md": f"[{curie}]({uri})",
+            "adoc": f"link:{uri}[{curie}]",
+            "html": f'<a href="{uri}">{curie}</a>'
+        }
+
+        return links[self.outputformat]
+
+    def _make_fragment_uri(self, uri):
+        """This function should be overriden with profile-specific implementations
+        """
+        return self._make_formatted_uri_basic(uri)
+
     def _make_formatted_uri(self, uri):
-        """Abstract method"""
+        if uri.startswith(self.METADATA.get("default_namespace")):
+            return self._make_fragment_uri(uri)
+        else:
+            # URI isn't in the default namespace, so use an absolut URI
+            return self._make_formatted_uri_basic(uri)
 
     def _get_curie(self, uri):
         n = self._get_namespace_from_uri(str(uri))
@@ -242,11 +262,13 @@ class BaseProfile:
 
         if preferred_namespace_uri is not None:
             self.METADATA["default_namespace"] = preferred_namespace_uri
+
             if preferred_namespace_prefix is not None:
                 self.NAMESPACES[preferred_namespace_prefix] = preferred_namespace_uri
                 self.METADATA["default_prefix"] = preferred_namespace_prefix
             else:
                 self.NAMESPACES[":"] = preferred_namespace_uri
+                self.METADATA["default_prefix"] = ":"
         # if not, try the URI of the main object, compared to all prefixes
         else:
             default_uri = None
@@ -255,6 +277,9 @@ class BaseProfile:
                 default_uri = str(s)
 
             if default_uri is not None:
+                self.METADATA["default_namespace"] = default_uri
+                self.METADATA["default_prefix"] = ":"
+
                 default_prefix = None
                 for k, v in self.NAMESPACES.items():
                     # i.e. the default_uri is the same as the default namespace + / or #
@@ -269,15 +294,16 @@ class BaseProfile:
                 # can't find either a declared or default namespace so we have an error
                 raise Exception("pyLODE can't detect a URI for an owl:Ontology, a skos:ConceptScheme or a prof:Profile")
 
-            print(self.NAMESPACES)
-
     def _make_namespaces(self):
         # if the default namespace is also listed in NAMESPACES, remove it and replace the default key (:) with its key
         default_ns_prefix = self.METADATA.get("default_prefix")
-        if self.METADATA["default_namespace"] in self.NAMESPACES.values():
-            default_ns_prefix = list(self.NAMESPACES.keys())[list(self.NAMESPACES.values())
-                .index(self.METADATA["default_namespace"])]
-            del(self.NAMESPACES[default_ns_prefix])
+        for_removal = []
+        for k, v in self.NAMESPACES.items():
+            if v == self.METADATA["default_namespace"]:
+                for_removal.append(k)
+
+        for r in for_removal:
+            del(self.NAMESPACES[r])
 
         return BaseProfile._load_template(self, "namespaces." + self.outputformat).render(
             namespaces=self.NAMESPACES,

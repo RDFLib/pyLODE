@@ -196,95 +196,50 @@ class OntDoc(BaseProfile):
     def _load_template(self, template_file):
         return Environment(loader=FileSystemLoader(join(TEMPLATES_DIR, "ontdoc"))).get_template(template_file)
 
-    def _make_formatted_uri(self, uri, type=None):
-        # set display to CURIE
-        short = self._get_curie(uri)
-        # if the URI base is within the default namespace of this ontology
-        #   use the fragment URI
-        # else
-        #   use the given URI
-        link = None
-        # if the uri contains the default namespace, make a fragment link
-        starts_with_colon = False
-        colon = self.NAMESPACES.get(":")
-        if colon is not None:
-            if uri.startswith(colon):
-                starts_with_colon = True
-        starts_with_default = False
-        default = self.METADATA.get("default_namespace")
-        if default is not None:
-            if uri.startswith(default):
-                starts_with_default = True
-        if starts_with_default or starts_with_colon:
+    def _make_fragment_uri(self, uri):
+        """OntDoc Profile allows fragment URIs for Classes & Properties"""
+        if self.PROPERTIES.get(uri) or self.CLASSES.get(uri):
             if self.PROPERTIES.get(uri):
-                if self.outputformat == "md":
-                    link = "[{}](#{})".format(self.PROPERTIES[uri]["title"], self.PROPERTIES[uri]["fid"])
-                elif self.outputformat == "adoc":
-                    link = "link:#{}[{}]".format(self.PROPERTIES[uri]["fid"], self.PROPERTIES[uri]["title"])
-                else:
-                    link = '<a href="#{}">{}</a>'.format(self.PROPERTIES[uri]["fid"], self.PROPERTIES[uri]["title"])
+                title = self.PROPERTIES[uri]["title"] \
+                    if self.PROPERTIES[uri].get("title") is not None else self.PROPERTIES[uri]["fid"]
+                uri = self.PROPERTIES[uri]["fid"]
             elif self.CLASSES.get(uri):
-                if self.outputformat == "md":
-                    link = "[{}]({})".format(self.CLASSES[uri]["title"], self.CLASSES[uri]["fid"])
-                elif self.outputformat == "adoc":
-                    link = "link:#{}[{}]".format(self.CLASSES[uri]["fid"], self.CLASSES[uri]["title"])
-                else:
-                    link ='<a href="#{}">{}</a>'.format(self.CLASSES[uri]["fid"], self.CLASSES[uri]["title"])
+                title = self.CLASSES[uri]["title"] \
+                    if self.CLASSES[uri].get("title") is not None else self.CLASSES[uri]["fid"]
+                uri = self.CLASSES[uri]["fid"]
 
-        if link is None:            
-            if self.outputformat == "md":
-                link = "[{}]({})".format(short, uri)
-            elif self.outputformat == "adoc":
-                link = "link:{}[{}]".format(uri, short)
-            else:
-                link = '<a href="{}">{}</a>'.format(uri, short)
+            links = {
+                "md": f"[{title}](#{uri})",
+                "adoc": f"link:#{uri}[{title}]",
+                "html": f'<a href="#{uri}">{title}</a>'
+            }
 
-        if type == "c":
-            if self.outputformat == "md":
-                suffix = ' (c)'
-            elif self.outputformat == "adoc":
-                suffix = ' ^c^'
-            else:
-                suffix = '<sup class="sup-c" title="class">c</sup>'
-        elif type == "op":
-            if self.outputformat == "md":
-                suffix = ' (op)'
-            elif self.outputformat == "adoc":
-                suffix = ' ^op^'
-            else:
-                suffix = '<sup class="sup-op" title="object property">op</sup>'
-        elif type == "fp":
-            if self.outputformat == "md":
-                suffix = ' (fp)'
-            elif self.outputformat == "adoc":
-                suffix = ' ^fp^'
-            else:
-                suffix = '<sup class="sup-fp" title="functional property">fp</sup>'
-        elif type == "dp":
-            if self.outputformat == "md":
-                suffix = ' (dp)'
-            elif self.outputformat == "adoc":
-                suffix = ' ^dp^'
-            else:
-                suffix = '<sup class="sup-dp" title="datatype property">dp</sup>'
-        elif type == "ap":
-            if self.outputformat == "md":
-                suffix = ' (ap)'
-            elif self.outputformat == "adoc":
-                suffix = ' ^ap^'
-            else:
-                suffix = '<sup class="sup-ap" title="annotation property">ap</sup>'
-        elif type == "ni":
-            if self.outputformat == "md":
-                suffix = ' (ni)'
-            elif self.outputformat == "adoc":
-                suffix = ' ^ni^'
-            else:
-                suffix = '<sup class="sup-ni" title="named individual">ni</sup>'
+            return links[self.outputformat]
         else:
-            suffix = ''
+            return self._make_formatted_uri_basic(uri)
 
-        return link + suffix
+    def _make_formatted_uri(self, uri, type=None):
+        link = super()._make_formatted_uri(uri)
+
+        types = {
+            "c": "class",
+            "op": "object property",
+            "fp": "functional property",
+            "dp": "datatype property",
+            "ap": "annotation property",
+            "ni": "named individual"
+        }
+
+        if type not in types.keys():
+            return link
+
+        suffixes = {
+            "md": f' ({type})',
+            "adoc": f' ^{type}^',
+            "html": f'<sup class="sup-{type}" title="{types[type]}">{type}</sup>'  # {}
+        }
+
+        return link + suffixes[self.outputformat]
 
     def _expand_graph(self):
         # name
@@ -536,7 +491,7 @@ class OntDoc(BaseProfile):
 
                 if p == DCTERMS.source or p == DC.source:
                     if str(o).startswith('http'):
-                        self.CLASSES[cls]["source"] = self._make_formatted_uri(o)  # '<a href="{0}">{0}</a>'.format(str(o))
+                        self.CLASSES[cls]["source"] = self._make_formatted_uri(o)
                     else:
                         self.CLASSES[cls]["source"] = str(o)
 
@@ -742,8 +697,7 @@ class OntDoc(BaseProfile):
 
                 if p == DCTERMS.source or p == DC.source:
                     if str(o).startswith('http'):
-                        self.PROPERTIES[prop]["source"] = self._make_formatted_uri(
-                            o)  # '<a href="{0}">{0}</a>'.format(str(o))
+                        self.PROPERTIES[prop]["source"] = self._make_formatted_uri(o)
                     else:
                         self.PROPERTIES[prop]["source"] = str(o)
 
@@ -939,8 +893,7 @@ class OntDoc(BaseProfile):
 
                 if p == DCTERMS.source or p == DC.source:
                     if str(o).startswith('http'):
-                        self.NAMED_INDIVIDUALS[ni]["source"] = self._make_formatted_uri(
-                            o)  # '<a href="{0}">{0}</a>'.format(str(o))
+                        self.NAMED_INDIVIDUALS[ni]["source"] = self._make_formatted_uri(o)
                     else:
                         self.NAMED_INDIVIDUALS[ni]["source"] = str(o)
 
