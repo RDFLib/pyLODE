@@ -292,6 +292,7 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
     <ol>
         <li><a href="#classes">Classes</a></li>
         <li><a href="#objectproperties">Object Properties</a></li>
+        <li><a href="#datatypeproperties">Datatype Properties</a></li>
         <li><a href="#namespaces">Namespaces</a></li>
         <li><a href="#legend">Legend</a></li>
     </ol>
@@ -331,17 +332,15 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
                 </td>
             </tr>
             <tr>
-                <th>Example</th>
+                <th>Example(s)</th>
                 <td>
-                    <pre>
-https://example.com/individuals/creature-x
-                    </pre>
+                    <a href="https://example.com/individuals/creature-x">https://example.com/individuals/creature-x</a><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="https://example.com#bornOrHatchedDate">bornOrHatchedDate</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#bornorhatcheddate">born or hatched date</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
@@ -353,7 +352,7 @@ https://example.com/individuals/creature-x
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="https://example.com#bornOrHatchedDate">bornOrHatchedDate</a><br/>
+                    <a href="#bornorhatcheddate">born or hatched date</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
         </table>
@@ -378,10 +377,9 @@ https://example.com/individuals/creature-x
                 </td>
             </tr>
             <tr>
-                <th>Example</th>
+                <th>Example(s)</th>
                 <td>
-                    <pre>
-{
+                    <pre>{
   "@id": "https://example.com#flipper",
   "@type": "https://example.com#Fish",
   "http://www.w3.org/2004/02/skos/core#definition": "Flipper is the fish that lives in Nick's fish tank",
@@ -391,8 +389,7 @@ https://example.com/individuals/creature-x
   },
   "https://example.com#livesInFreshWater": true,
   "https://example.com#livesInSaltWater": false
-}
-                    </pre>
+}</pre><br/>
                 </td>
             </tr>
             <tr>
@@ -404,18 +401,18 @@ https://example.com/individuals/creature-x
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#None">None</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
-                    <a href="https://example.com#livesInEstuarineWater">livesInEstuarineWater</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="https://example.com#livesInSaltWater">livesInSaltWater</a> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="https://example.com#livesInFreshWater">livesInFreshWater</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#livesinsaltwater">lives in salt water</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#livesinestuarinewater">lives in estuarine water</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#livesinfreshwater">lives in fresh water</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="#eats">eats</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="https://example.com#livesInSaltWater">livesInSaltWater</a><br/>
-                    <a href="https://example.com#livesInEstuarineWater">livesInEstuarineWater</a><br/>
-                    <a href="https://example.com#livesInFreshWater">livesInFreshWater</a><br/>
+                    <a href="#livesinfreshwater">lives in fresh water</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#livesinsaltwater">lives in salt water</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#livesinestuarinewater">lives in estuarine water</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
         </table>
@@ -436,7 +433,13 @@ https://example.com/individuals/creature-x
             <tr>
                 <th>Scope Notes</th>
                 <td>
-                    <p>class with no example</p>
+                    <p>class with a local image example</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Example(s)</th>
+                <td>
+                    <img src="fish-food.png" /><br/>
                 </td>
             </tr>
             <tr>
@@ -463,7 +466,13 @@ https://example.com/individuals/creature-x
             <tr>
                 <th>Scope Notes</th>
                 <td>
-                    <p>class with no example</p>
+                    <p>class with an external URI example</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Example(s)</th>
+                <td>
+                    <a href="http://fake.com/thing/food-x">http://fake.com/thing/food-x</a><br/>
                 </td>
             </tr>
             <tr>
@@ -475,7 +484,7 @@ https://example.com/individuals/creature-x
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#None">None</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#eats">eats</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -484,11 +493,11 @@ https://example.com/individuals/creature-x
 <section id="objectproperties">
     <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
-        <li><a href="#None">None</a></li>
-        <li><a href="#None">None</a></li>
+        <li><a href="#eats">eats</a></li>
+        <li><a href="#hasscalecolour">has scale colour</a></li>
     </ul>
-    <div class="entity property" id="None">
-        <h3>None<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="eats">
+        <h3>eats<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -503,15 +512,29 @@ https://example.com/individuals/creature-x
             <tr>
                 <th>Scope Notes</th>
                 <td>
-                    <p>property with Resource Descriptor example in same file</p>
+                    <p>property with two Resource Descriptor example in same file, conforms to this ontology and something else (http://other.com)</p>
                 </td>
             </tr>
             <tr>
-                <th>Example</th>
+                <th>Example(s)</th>
                 <td>
-                    <pre>
-https://example.com#eats-example
-                    </pre>
+                    <div style="border:solid 1px lightgrey; padding:5px;"><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;rdf:RDF
+   xmlns="https://example.com"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+&gt;
+  &lt;rdf:Description rdf:about="file:///Users/nick/Work/rdflib/pyLODE/pylode/examples/examples-ont/y2"&gt;
+    &lt;rdf:type rdf:resource="https://example.comFood"/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about="file:///Users/nick/Work/rdflib/pyLODE/pylode/examples/examples-ont/x2"&gt;
+    &lt;rdf:type rdf:resource="https://example.comCreature"/&gt;
+    &lt;eats rdf:resource="file:///Users/nick/Work/rdflib/pyLODE/pylode/examples/examples-ont/y2"/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</pre><br />Conforms to: <a href="https://other.com">https://other.com</a></div><br/>
+                    <div style="border:solid 1px lightgrey; padding:5px;"><pre>&lt;x&gt; a :Creature ;
+    :eats &lt;y&gt; ;
+.
+&lt;y&gt; a :Food .</pre><br />Conforms to: <a href="https://example.com">https://example.com</a></div><br/>
                 </td>
             </tr>
             <tr>
@@ -522,8 +545,8 @@ https://example.com#eats-example
             </tr>
         </table>
     </div>
-    <div class="entity property" id="None">
-        <h3>None<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="hasscalecolour">
+        <h3>has scale colour<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -542,17 +565,195 @@ https://example.com#eats-example
                 </td>
             </tr>
             <tr>
-                <th>Example</th>
+                <th>Example(s)</th>
                 <td>
-                    <pre>
-<strong><em>scale colour</em></strong>:<ul><li>blue</li><li>orange</li><li>white</li></ul>
-                    </pre>
+                    <strong><em>scale colour</em></strong>:<ul><li>blue</li><li>orange</li><li>white</li></ul><br/>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
                     <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="datatypeproperties">
+    <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#bornorhatcheddate">born or hatched date</a></li>
+        <li><a href="#livesinestuarinewater">lives in estuarine water</a></li>
+        <li><a href="#livesinfreshwater">lives in fresh water</a></li>
+        <li><a href="#livesinsaltwater">lives in salt water</a></li>
+    </ul>
+    <div class="entity property" id="bornorhatcheddate">
+        <h3>born or hatched date<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://example.com#bornOrHatchedDate</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The Gregorian calendar date on which this Creature was born or hatched</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Scope Notes</th>
+                <td>
+                    <p>property with example in inline XML</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Example(s)</th>
+                <td>
+                    <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;rdf:RDF
+   xmlns="https://example.com#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+&gt;
+  &lt;rdf:Description rdf:about="https://example.com#flipper"&gt;
+    &lt;rdf:type rdf:resource="https://example.com#Fish"/&gt;
+    &lt;bornOrHatchedDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date"&gt;2020-05-11&lt;/bornOrHatchedDate&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+</pre><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Creature">Creature</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="livesinestuarinewater">
+        <h3>lives in estuarine water<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://example.com#livesInEstuarineWater</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>True if the fish lives in estuarine water. It may also live in other water</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Scope Notes</th>
+                <td>
+                    <p>property with example using Resource Descriptor for inline Markdown</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Example(s)</th>
+                <td>
+                    <p><strong>lives in estuarine water</strong>: <em>true</em></p><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Fish">Fish</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="livesinfreshwater">
+        <h3>lives in fresh water<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://example.com#livesInFreshWater</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>True if the fish lives in fresh water. It may also live in other water</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Scope Notes</th>
+                <td>
+                    <p>property with example in inline RDF</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Example(s)</th>
+                <td>
+                    <pre>&lt;x&gt; a eggs:Fish ;
+    skos:prefLabel "Fish X"@en ;
+    eggs:livesInFreshWater true ;
+    ...
+.</pre><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Fish">Fish</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="livesinsaltwater">
+        <h3>lives in salt water<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://example.com#livesInSaltWater</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>True if the fish lives in salt water. It may also live in other water</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Scope Notes</th>
+                <td>
+                    <p>property with an remote-hosted image example</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Example(s)</th>
+                <td>
+                    <img src="https://raw.githubusercontent.com/RDFLib/pyLODE/master/pylode/examples/examples-ont/toothy.png" /><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Fish">Fish</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>

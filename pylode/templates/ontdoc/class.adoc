@@ -29,9 +29,11 @@
 |{{ scopeNote }}
 {%- endif %}
 
-{%- if example is not none %}
-|Example
-|....{{ example|safe }}....
+{%- if examples|length > 0 %}
+|Example(s)
+|{% for example in examples %}
+{{ example|safe }}
+{% endfor %}
 &nbsp;
 {%- endif %}
 

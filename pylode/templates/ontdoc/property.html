@@ -49,13 +49,13 @@
                 </td>
             </tr>
             {%- endif %}
-            {%- if example is not none %}
+            {%- if examples|length > 0 %}
             <tr>
-                <th>Example</th>
+                <th>Example(s)</th>
                 <td>
-                    <pre>
-{{ example }}
-                    </pre>
+                    {%- for example in examples %}
+                    {{ example|safe }}<br/>
+                    {%- endfor %}
                 </td>
             </tr>
             {%- endif %}

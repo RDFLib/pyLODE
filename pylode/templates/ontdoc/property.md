@@ -15,8 +15,8 @@ Description | {{ description }}
 {%- if scopeNote is not none %}
 Scope Notes | {{ scopeNote }}
 {%- endif %}
-{%- if example is not none %}
-Example | ```{{ example|safe }}```
+{%- if examples|length > 0 %}
+Example(s) | {%- for example in examples %}{{ example|safe }}<br />{% endfor %}
 {%- endif %}
 {%- if supers|length > 0 %}
 Super-properties | {%- for super in supers %}{{ super }}<br />{%- endfor %}

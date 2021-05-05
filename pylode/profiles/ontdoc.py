@@ -1,3 +1,4 @@
+from typing import Union
 from pylode import __version__
 from pylode.common import TEMPLATES_DIR, STYLE_DIR
 import collections
@@ -7,8 +8,9 @@ import markdown
 from jinja2 import Environment, FileSystemLoader
 from os.path import join
 from rdflib import URIRef, BNode, Literal
-from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROV, RDF, RDFS, SDO, SKOS
+from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROF, PROV, RDF, RDFS, SDO, SKOS
 from pylode.profiles.base import BaseProfile
+import re
 
 
 class OntDoc(BaseProfile):
@@ -459,7 +461,7 @@ class OntDoc(BaseProfile):
             self.CLASSES[cls]["title"] = None
             self.CLASSES[cls]["description"] = None
             self.CLASSES[cls]["scopeNote"] = None
-            self.CLASSES[cls]["example"] = None
+            self.CLASSES[cls]["examples"] = []
             self.CLASSES[cls]["isDefinedBy"] = None
             self.CLASSES[cls]["source"] = None
 
@@ -484,7 +486,7 @@ class OntDoc(BaseProfile):
                         self.CLASSES[cls]["scopeNote"] = markdown.markdown(str(o))
 
                 if p == SKOS.example:
-                    self.CLASSES[cls]["example"] = str(o)
+                    self.CLASSES[cls]["examples"].append(self._make_example(o))
 
                 if p == RDFS.isDefinedBy:
                     self.CLASSES[cls]["isDefinedBy"] = str(o)
@@ -657,7 +659,7 @@ class OntDoc(BaseProfile):
             self.PROPERTIES[prop]["title"] = None
             self.PROPERTIES[prop]["description"] = None
             self.PROPERTIES[prop]["scopeNote"] = None
-            self.PROPERTIES[prop]["example"] = None
+            self.PROPERTIES[prop]["examples"] = []
             self.PROPERTIES[prop]["isDefinedBy"] = None
             self.PROPERTIES[prop]["source"] = None
             self.PROPERTIES[prop]["supers"] = []
@@ -690,7 +692,7 @@ class OntDoc(BaseProfile):
                         self.PROPERTIES[prop]["scopeNote"] = markdown.markdown(str(o))
 
                 if p == SKOS.example:
-                    self.PROPERTIES[prop]["example"] = str(o)
+                    self.PROPERTIES[prop]["examples"].append(self._make_example(o))
 
                 if p == RDFS.isDefinedBy:
                     self.PROPERTIES[prop]["isDefinedBy"] = str(o)
@@ -944,20 +946,10 @@ class OntDoc(BaseProfile):
         # handling Markdown formatting within a table
         if self.outputformat == "md":
             desc = class_["description"].replace("\n", " ") if class_.get("description") is not None else None
-            if class_.get("example") is not None:
-                eg = class_["example"].strip().replace("\t", "    ").split("\n")
-                eg2 = ""
-                for line in eg:
-                    eg2 += "`" + line + "`<br />"
-                eg = eg2
-            else:
-                eg = None
         elif self.outputformat == "adoc":
             desc = class_["description"]
-            eg = class_["example"]
         else:
             desc = class_["description"]
-            eg = class_["example"].replace("<", "&lt;").replace(">", "&gt;") if class_.get("example") is not None else None
 
         return class_template.render(
             uri=uri,
@@ -967,7 +959,7 @@ class OntDoc(BaseProfile):
             supers=class_["supers"],
             restrictions=class_["restrictions"],
             scopeNote=class_["scopeNote"],
-            example=eg,
+            examples=class_["examples"],
             is_defined_by=class_["isDefinedBy"],
             source=class_["source"],
             subs=class_["subs"],
@@ -999,20 +991,10 @@ class OntDoc(BaseProfile):
         if self.outputformat == "md":
             desc = property[1].get("description").replace("\n", " ") \
                 if property[1].get("description") is not None else None
-            if property[1].get("example") is not None:
-                eg = property[1].get("example").strip().replace("\t", "    ").split("\n")
-                eg2 = ""
-                for line in eg:
-                    eg2 += "`" + line + "`<br />"
-                eg = eg2
-            else:
-                eg = None
         elif self.outputformat == "adoc":
             desc = property[1].get("description")
-            eg = property[1].get("example")
         else:
             desc = property[1].get("description")
-            eg = property[1].get("example")
 
         return self._load_template("property." + self.outputformat).render(
             uri=property[0],
@@ -1021,7 +1003,7 @@ class OntDoc(BaseProfile):
             title=property[1].get("title"),
             description=desc,
             scopeNote=property[1].get("scopeNote"),
-            example=eg,
+            examples=property[1].get("examples"),
             is_defined_by=property[1].get("isDefinedBy"),
             source=property[1].get("source"),
             supers=property[1].get("supers"),
@@ -1044,9 +1026,6 @@ class OntDoc(BaseProfile):
 
         for k, v in self.PROPERTIES.items():
             if v.get("prop_type") == "op":
-                print("k, v")
-                print(k)
-                print(v)
                 op_instances.append(
                     (
                         v["title"],
@@ -1126,6 +1105,125 @@ class OntDoc(BaseProfile):
             fids=fids,
             named_individuals=named_individuals_list
         )
+
+    def _make_code(self, field_var) -> str:
+        """Returns the given field_var as code (<code>) in this instances' output format"""
+        if self.outputformat == "md":
+            escaped_var = field_var.rstrip().replace("\t", "    ").split("\n")
+            eg2 = ""
+            for line in escaped_var:
+                eg2 += f"`{line}` <br /> "
+            field_var = eg2
+            return field_var
+        if self.outputformat == "adoc":
+            return f"....{field_var}...."
+        else:
+            escaped_var = field_var.replace("<", "&lt;").replace(">", "&gt;")
+            return f"<pre>{escaped_var}</pre>"
+
+    def _make_resource_descriptor_example(self, rd: Union[URIRef, BNode]) -> str:
+        code_formats = [
+            "text/turtle",
+            "text/n3",
+            "application/ld+json",
+            "application/json",
+            "application/rdf+xml",
+            "application/xml",
+        ]
+        markup_formats = [
+            "text/html",
+            "text/markdown",
+            "text/asciidoc",
+            # "text/x-rst"
+        ]
+        is_code = False
+        is_markup = False
+        artifact = None
+        format = None
+        conforms_to = None
+        for p, o in self.G.predicate_objects(subject=rd):
+            if p == DCTERMS["format"]:
+                format = str(o)
+                if format in code_formats:
+                    is_code = True
+                elif format in markup_formats:
+                    is_markup = True
+            elif p == DCTERMS.conformsTo:
+                conforms_to = str(o)
+            elif p == PROF.hasArtifact:
+                artifact = str(o)
+
+        eg = ""
+        if is_code:
+            eg = self._make_code(artifact)
+        elif is_markup:
+            if format == "text/html":
+                eg = artifact
+            elif format == "text/markdown" and self.outputformat == "html":
+                eg = markdown.markdown(artifact)
+            elif format == "text/asciidoc" and self.outputformat == "html":  # TODO: test ASCIIDOC rendering in HTML
+                eg = markdown.markdown(artifact)
+        else:
+            eg = self._make_code(artifact)
+
+        if conforms_to is not None:
+            if self.outputformat == "html":
+                return f"<div style=\"border:solid 1px lightgrey; padding:5px;\">{eg}<br />Conforms to: <a href=\"{conforms_to}\">{conforms_to}</a></div>"
+            elif self.outputformat == "md":
+                return f"{eg}\n\nConforms to: [{conforms_to}]({conforms_to})"
+            elif self.outputformat == "adoc":
+                return f"{eg}\n\nConforms to: link:{conforms_to}[{conforms_to}]"
+        else:
+            return eg
+
+    def _make_example(self, o: Union[URIRef, BNode, Literal]) -> str:
+        """Returns an HTML / Markdown / ASCIIDOC string of this Class / Property's example, formatted according
+        to this OntDoc instance's outputformat instance variable. All content needed is extracted from this
+        instance's graph (self.G)"""
+
+        o_str = str(o)
+
+        # check to see if it is an image, if so, render it
+        # could be a URIRef or Literal
+        if re.findall(r"(.png|.jpg|.tiff|.gif|.webp|.pdf|.svg)#?", o_str):
+            if self.outputformat == "md":
+                return f"![]({o_str}) "
+            if self.outputformat == "adoc":
+                return f"image::{o_str}[]"
+            else:
+                return f"<img src=\"{o_str}\" />"
+
+        # check to see if this is a hyperlink only, if so, render a link
+        # could be a URIRef or Literal
+        if re.match(r"http", o_str):
+            # check to see if the hyperlink is to an object in this ont
+            local = False
+            for p2, o2 in self.G.predicate_objects(subject=o):
+                local = True
+
+            if local:
+                return self._make_resource_descriptor_example(o)
+
+            if self.outputformat == "md":
+                return f"[{o_str}]({o_str}) "
+            elif self.outputformat == "adoc":
+                return f"{o_str} "
+            else:  # self.outputformat == "md":
+                return f"<a href=\"{o_str}\">{o_str}</a>"
+
+        # check to see if it's a BN for further handling or a Literal
+        if type(o) == BNode:
+            # it must be a Resource Descriptor BN
+            return self._make_resource_descriptor_example(o)
+        elif type(o) == Literal:
+            # handle any declared datatypes (within rdf:HTML, rdf:XMLLiteral & rdf:JSON)
+            if o.datatype == RDF.HTML:
+                return o
+            if o.datatype == RDF.XMLLiteral or RDF.JSON:
+                return self._make_code(o)
+
+        # fall-back: just print out a <code>-formatted literal
+        return self._make_code(o)
 
     def _make_document(self):
         css = None
