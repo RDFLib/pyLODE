@@ -670,7 +670,7 @@ class OntDoc(BaseProfile):
             self.PROPERTIES[prop]["rangeIncludes"] = []
 
             for p, o in self.G.predicate_objects(subject=s):
-                if p == RDFS.label:
+                if p == DCTERMS.title:
                     self.PROPERTIES[prop]["title"] = str(o)
 
                 if p == DCTERMS.description:
@@ -882,10 +882,10 @@ class OntDoc(BaseProfile):
                     if o != OWL.NamedIndividual:
                         self.NAMED_INDIVIDUALS[ni]["classes"].add(self._make_formatted_uri(o))
 
-                if p == RDFS.label:
+                if p == DCTERMS.title:
                     self.NAMED_INDIVIDUALS[ni]["title"] = str(o)
 
-                if p == RDFS.comment:
+                if p == DCTERMS.description:
                     self.NAMED_INDIVIDUALS[ni]["description"] = str(o)
 
                 if p == RDFS.isDefinedBy:
@@ -1044,6 +1044,9 @@ class OntDoc(BaseProfile):
 
         for k, v in self.PROPERTIES.items():
             if v.get("prop_type") == "op":
+                print("k, v")
+                print(k)
+                print(v)
                 op_instances.append(
                     (
                         v["title"],
