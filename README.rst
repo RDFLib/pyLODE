@@ -281,11 +281,11 @@ pyLODE understands the following ontology constructs:
 
 -  **ontology/taxonomy/profile metadata**
     -  *imports* - ``owl:imports``
-    -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title`` or ``dc:title``
-    -  *description* - ``rdfs:comment`` or ``skos:definition`` or ``dct:description`` or ``dc:description``
-        - Markdown is supported
+    -  *title* - ``rdfs:label``, ``skos:prefLabel``, ``dct:title`` or ``dc:title``
+    -  *description* - ``rdfs:comment``, ``skos:definition``, ``dct:description`` or ``dc:description``
+        - inline HTML & Markdown are supported
     -  *historyNote* - ``skos:historyNote``
-        - Markdown is supported
+        - inline HTML & Markdown are supported
     -  *version URI* - ``owl:versionIRI`` as a URI
     -  *version info* - ``owl:versionInfo`` as a string
         - *preferred namespace prefix* - ``vann:preferredNamespacePrefix`` as a token
@@ -295,24 +295,29 @@ pyLODE understands the following ontology constructs:
         - see the `pylode/examples/ <pylode/examples/>`__ directory for examples!
     -  **dates**: *created*, *modified*, *issued* - ``dct:created`` etc., all as ``xsd:date`` or ``xsd:dateTime`` datatype properties
     -  **rights**: *license* - ``dct:license`` as a URI & *rights* - ``dct:rights`` as a string
-    -  *code respository* - ``schema:codeRepository`` as a URI
-    -  *source* - ``dcterms:source`` as a URI or text
+    -  *code respository* - ``schema:codeRepository`` as a literal of type ``xsd:anyURI``
+    -  *source* - ``dcterms:source`` as a literal of type ``xsd:anyURI`` or text
 -  **ontology classes**
     -  per ``rdfs:Class`` or ``owl:Class``
     -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title``
-    -  *description* - ``rdf:comment`` or ``skos:definition`` or ``dct:description`` as a string or using `Markdown <https://daringfireball.net/projects/markdown/>`__ or HTML
-    -  *scope note* - a ``skos:scopeNote`` string
-    -  *example* - a ``skos:example`` string containing RDF
+    -  *description* - ``rdf:comment``, ``skos:definition``, ``dct:description`` as a string or using inline HTML or `Markdown <https://daringfireball.net/projects/markdown/>`__
+    -  *scope note* - a ``skos:scopeNote`` as a literal
+        - inline HTML & Markdown are supported
+    -  *example* - a ``skos:example``
+        - see *Example Handling* below
     -  *super classes* - by declaring a class to be ``owl:subClassOf`` something
     -  *sub classes* - pyLODE will work these out itself
     -  *restrictions* - by declaring a class to be ``owl:subClassOf`` of an ``owl:Restriction`` with any of the normal cardinality or property existence etc. restrictions
     -  *in domain/range of* - pyLODE will auto-calculate these
 -  **ontology properties**
     -  per ``owl:ObjectProperty``, ``owl:DatatypeProperty`` or ``owl:AnnotationProperty``
-    -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title``
-    -  *description* - ``rdf:comment`` or ``skos:definition`` or ``dct:description``
-    -  *usage note* - a ``skos:scopeNote`` string
-    -  *example* - a ``skos:example`` string containing RDF - this will be monospaced in outputs
+    -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title`` string literal
+    -  *description* - ``rdf:comment``, ``skos:definition``, ``dct:description`` string literal
+        - inline HTML & Markdown are supported
+    -  *usage note* - a ``skos:scopeNote`` string literal
+        - inline HTML & Markdown are supported
+    -  *example* - a ``skos:example``
+        - see *Example Handling* below
     -  *super properties* - by declaring a class to be ``owl:subPropertyOf`` something
     -  *sub properties* - pyLODE will work these out itself
     -  *equivalent properties* - by declaring a class to be ``owl:equivalentProperty`` something
@@ -324,6 +329,76 @@ pyLODE understands the following ontology constructs:
     -  it will either read your ontology's default/base URI in annotations or guess it using a number of methods
 -  **named individuals**
     -  as per class but also ``owl:sameAs``
+
+Example Handling
+~~~~~~~~~~~~~~~~
+pyLODE can handle many forms of examples for Classes & Properties and can handle multiple examples per class/property. In all cases, the example value is indicated with a ``skos:example`` property like this:
+
+::
+
+    <x>
+        a owl:Class ;
+        skos:example {Literal, Blank Node or URI}
+    .
+
+**Simple Literals**
+
+The most basic form is an example that is a literal with no format type indicated. This will be printed out in monospaced text, e.g. the Class ``Fish`` in the `Examples Ontology <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/examples-ont/examples.html>`_ has a plain Turtle example like this:
+
+::
+
+    <x> a eggs:Fish ;
+        skos:prefLabel "Fish X"@en ;
+        eggs:livesInFreshWater true ;
+        ...
+    .
+
+If you indicate one of the RDF built-in formats (``rdf:HTML``, ``rdf:XMLLiteral`` or ``rdf:JSON``), it will be interpreted in the markup form specified, which means, in practice, that HTML will be rendered where as XML or JSON will be monospaced. The Examples Ontology has this HTML example for the property ``has scale colour``:
+
+----
+
+**scale colour:**
+
+* blue
+* orange
+* white
+
+----
+
+You can use Markdown in example literals too, but to do so, you must set the format to ``text/markdown`` so see the *Resource Descriptor* method below.
+
+
+**URIs**
+
+If you put a URI in the example field like this: ``<x> skos:example <...> ;`` or like this ``<x> skos:example "..."^^xsd:anyURI ;`` then pyLODE will render it as a clickable hyperlink in HTML, Markdown or ASCIIDOC, as per your chose output format.
+
+**Images**
+
+You can use images in the example field. To do so, either use a URI to an image on the web or a relative URI to a local image file. pyLODE will render either form as an inline image. See the `Fish Food class example  <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/examples-ont/examples.html#FishFood>`_ that looks like this:
+
+.. image:: examples/examples-ont/fish-food.png
+
+**"Resource Descriptor" Examples**
+
+To do more you can use a `Profiles Vocabulary (PROF) <https://w3c.github.io/dx-prof/prof/>`__ ``ResourceDescriptor`` to define multiple properties for an example resource. This involves defining a ``ResourceDescriptor`` either as a Blank Node or a URI node like this, the `Examples Ont 'eats' property <https://raw.githack.com/RDFLib/pyLODE/master/pylode/examples/examples-ont/examples.html#FishFood>`_:
+
+::
+
+    :eats skos:example :eats-example .
+
+    :eats-example
+        a prof:ResourceDescriptor ;
+        dcterms:format "text/turtle" ;
+        dcterms:conformsTo <https://example.com> ;
+        prof:hasArtifact """<x> a :Creature ;
+        :eats <y> ;
+    .
+    <y> a :Food .""" ;
+    .
+
+Here the ``ResourceDescriptor`` says that this example is in the ``text/turtle`` format, has an inline artifact (the actual example text) and conforms to something, in this case the profile defined by ``<https://example.com>``.
+
+You can use this ``ResourceDescriptor`` method to create multiple examples for a class or property that conform to different things (perhaps profiles of your ontology).
 
 Agents
 ------
