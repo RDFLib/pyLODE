@@ -1116,7 +1116,7 @@ class OntDoc(BaseProfile):
             field_var = eg2
             return field_var
         if self.outputformat == "adoc":
-            return f"....\n{field_var}\n...."
+            return f"....\n{field_var}\n....\n\n"
         else:
             escaped_var = field_var.replace("<", "&lt;").replace(">", "&gt;")
             return f"<pre>{escaped_var}</pre>"
@@ -1157,11 +1157,15 @@ class OntDoc(BaseProfile):
         if is_code:
             eg = self._make_code(artifact)
         elif is_markup:
-            if format == "text/html":
+            if format == "text/html" and self.outputformat in ["html", "md"]:
                 eg = artifact
+            elif format == "text/html" and self.outputformat == "adoc":
+                eg = f"+++{artifact}+++\n&nbsp;"
             elif format == "text/markdown" and self.outputformat == "md":
                 eg = artifact
-            elif format == "text/markdown" and self.outputformat in ["html", "adoc"]:
+            elif format == "text/markdown" and self.outputformat == "adoc":
+                eg = f"+++{markdown.markdown(artifact)}+++\n&nbsp;"
+            elif format == "text/markdown" and self.outputformat == "html":
                 eg = markdown.markdown(artifact)
             elif format == "text/asciidoc" and self.outputformat == "html":  # TODO: test ASCIIDOC rendering in HTML
                 eg = markdown.markdown(artifact)
@@ -1220,7 +1224,12 @@ class OntDoc(BaseProfile):
         elif type(o) == Literal:
             # handle any declared datatypes (within rdf:HTML, rdf:XMLLiteral & rdf:JSON)
             if o.datatype == RDF.HTML:
-                return o
+                if self.outputformat == "md":
+                    return str(o)
+                elif self.outputformat == "adoc":
+                    return f"+++{str(o)}+++\n&nbsp;"
+                else:  # self.outputformat == "html":
+                    return str(o)
             if o.datatype == RDF.XMLLiteral or RDF.JSON:
                 return self._make_code(o)
 
