@@ -1116,7 +1116,7 @@ class OntDoc(BaseProfile):
             field_var = eg2
             return field_var
         if self.outputformat == "adoc":
-            return f"....{field_var}...."
+            return f"....\n{field_var}\n...."
         else:
             escaped_var = field_var.replace("<", "&lt;").replace(">", "&gt;")
             return f"<pre>{escaped_var}</pre>"
@@ -1159,7 +1159,9 @@ class OntDoc(BaseProfile):
         elif is_markup:
             if format == "text/html":
                 eg = artifact
-            elif format == "text/markdown" and self.outputformat == "html":
+            elif format == "text/markdown" and self.outputformat == "md":
+                eg = artifact
+            elif format == "text/markdown" and self.outputformat in ["html", "adoc"]:
                 eg = markdown.markdown(artifact)
             elif format == "text/asciidoc" and self.outputformat == "html":  # TODO: test ASCIIDOC rendering in HTML
                 eg = markdown.markdown(artifact)

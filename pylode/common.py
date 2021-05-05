@@ -35,15 +35,15 @@ from .profiles import OntDoc, Prof, VocPub, NMPF, PROFILES
 class MakeDocco:
     def __init__(
             self,
-            input_data_file=None,
-            input_uri=None,
-            data=None,
-            outputformat="html",
-            include_css=True,
-            use_curies_stored=True,
-            get_curies_online=False,
-            profile="ontdoc",
-            language="en"
+            input_data_file: str = None,
+            input_uri: str = None,
+            data: str = None,
+            outputformat: str = "html",
+            include_css: bool = True,
+            use_curies_stored: bool = True,
+            get_curies_online: bool = False,
+            profile: str = "ontdoc",
+            language: str = "en"
     ):
         """This class receives all of the variables needed to specify how to make documentation from an input RDF source
 
@@ -52,7 +52,7 @@ class MakeDocco:
         :param input_uri: A URI resolving to RDF data
         :type input_uri: A URI (string)
         :param data: RDF data
-        :type data: Python varaible (string)
+        :type data: Python variable (string)
         :param outputformat: The desired output format from the list of supported formats ("html" (default),
                             "md" - Markdown or "adoc" - ASCII Doc
         :type outputformat: string (one of "html" or "md" or "adoc")
@@ -142,7 +142,11 @@ class MakeDocco:
         self.source_info = (uri, fmt)
 
     def _parse_data(self, data):
-        self.G = Graph().parse(data=data, format="turtle")
+        if type(data) == Graph:
+            self.G = data
+        elif type(data) == str:
+            self.G = Graph().parse(data=data, format="turtle")
+
         self.source_info = ("input.ttl", "turtle")
 
     @classmethod
