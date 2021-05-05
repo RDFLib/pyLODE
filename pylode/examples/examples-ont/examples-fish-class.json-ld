@@ -1,0 +1,33 @@
+[
+  {
+    "@id": "https://example.com#flipper",
+    "@type": [
+      "https://example.com#Fish"
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@value": "Flipper is the fish that lives in Nick's fish tank"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@value": "Flipper the Fish"
+      }
+    ],
+    "https://example.com#hasScaleColour": [
+      {
+        "@id": "http://example-voc.com/concept/Orange"
+      }
+    ],
+    "https://example.com#livesInFreshWater": [
+      {
+        "@value": true
+      }
+    ],
+    "https://example.com#livesInSaltWater": [
+      {
+        "@value": false
+      }
+    ]
+  }
+]

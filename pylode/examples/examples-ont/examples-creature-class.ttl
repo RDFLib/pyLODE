@@ -1,0 +1,8 @@
+@prefix : <https://example.com#> .
+@prefix beasts: <https://example.com/beast/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:flipper
+    a :Fish ;
+    :bornOrHatchedDate "2020-05-11"^^xsd:date ;
+.

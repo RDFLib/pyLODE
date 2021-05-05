@@ -1,0 +1,495 @@
+[
+  {
+    "@id": "https://example.com",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Ontology"
+    ],
+    "http://purl.org/dc/terms/contributor": [
+      {
+        "@value": "Santa Clause"
+      }
+    ],
+    "http://purl.org/dc/terms/created": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2021-05-05"
+      }
+    ],
+    "http://purl.org/dc/terms/creator": [
+      {
+        "@id": "http://orcid.org/0000-0002-8742-7730"
+      }
+    ],
+    "http://purl.org/dc/terms/license": [
+      {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
+    ],
+    "http://purl.org/dc/terms/modified": [
+      {
+        "@language": "en",
+        "@value": "2019-10-21"
+      }
+    ],
+    "http://purl.org/dc/terms/publisher": [
+      {
+        "@id": "https://linked.data.gov.au/org/surround"
+      }
+    ],
+    "http://purl.org/dc/terms/rights": [
+      {
+        "@language": "en",
+        "@value": "(c) SURROUND Australia Pty Ltd"
+      }
+    ],
+    "http://purl.org/vocab/vann/preferredNamespacePrefix": [
+      {
+        "@language": "en",
+        "@value": "eggs"
+      }
+    ],
+    "http://purl.org/vocab/vann/preferredNamespaceUri": [
+      {
+        "@value": "https://example.com#"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#priorVersion": [
+      {
+        "@language": "en",
+        "@value": "0.8"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#versionIRI": [
+      {
+        "@id": "https://example.com/0.9"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#versionInfo": [
+      {
+        "@language": "en",
+        "@value": "0.9"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "This ontology contains several simple classes and properties about animals that are defined only to show off pyLODE's ability to represent different forms of example rendering."
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@language": "en",
+        "@value": "Examples Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "https://example.com#livesInEstuarineWater",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DataypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://example.com#Fish"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#boolean"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "True if the fish lives in estuarine water. It may also live in other water"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#example": [
+      {
+        "@id": "_:ndbf04efd6a154153b4ad6fde0dd0df9bb6"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@language": "en",
+        "@value": "lives in estuarine water"
+      }
+    ]
+  },
+  {
+    "@id": "_:ndbf04efd6a154153b4ad6fde0dd0df9bb6",
+    "http://purl.org/dc/terms/format": [
+      {
+        "@value": "text/markdown"
+      }
+    ],
+    "http://www.w3.org/ns/dx/prof/hasArtifact": [
+      {
+        "@value": "**lives in estuarine water**: _true_"
+      }
+    ]
+  },
+  {
+    "@id": "https://example.com#Fish",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://example.com#Creature"
+      },
+      {
+        "@id": "_:ndbf04efd6a154153b4ad6fde0dd0df9bb2"
+      },
+      {
+        "@id": "_:ndbf04efd6a154153b4ad6fde0dd0df9bb3"
+      },
+      {
+        "@id": "_:ndbf04efd6a154153b4ad6fde0dd0df9bb4"
+      },
+      {
+        "@id": "_:ndbf04efd6a154153b4ad6fde0dd0df9bb5"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "Fish are aquatic, craniate, gill-bearing animals that lack limbs with digits. They form a sister group to the tunicates, together forming the olfactores. Included in this definition are the living hagfish, lampreys, and cartilaginous and bony fish as well as various extinct related groups. Around 99% of living fish species are ray-finned fish, belonging to the class Actinopterygii, with over 95% belonging to the teleost subgrouping."
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#example": [
+      {
+        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
+        "@value": "{\n  \"@id\": \"https://example.com#flipper\",\n  \"@type\": \"https://example.com#Fish\",\n  \"http://www.w3.org/2004/02/skos/core#definition\": \"Flipper is the fish that lives in Nick's fish tank\",\n  \"http://www.w3.org/2004/02/skos/core#prefLabel\": \"Flipper the Fish\",\n  \"https://example.com#hasScaleColour\": {\n    \"@id\": \"http://example-voc.com/concept/Orange\"\n  },\n  \"https://example.com#livesInFreshWater\": true,\n  \"https://example.com#livesInSaltWater\": false\n}"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@language": "en",
+        "@value": "Fish"
+      }
+    ]
+  },
+  {
+    "@id": "_:ndbf04efd6a154153b4ad6fde0dd0df9bb2",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#cardinality": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+        "@value": "1"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "https://example.com#livesInFreshWater"
+      }
+    ]
+  },
+  {
+    "@id": "_:ndbf04efd6a154153b4ad6fde0dd0df9bb3",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#cardinality": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+        "@value": "1"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "https://example.com#livesInSaltWater"
+      }
+    ]
+  },
+  {
+    "@id": "_:ndbf04efd6a154153b4ad6fde0dd0df9bb4",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#cardinality": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+        "@value": "1"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "https://example.com#livesInEstuarineWater"
+      }
+    ]
+  },
+  {
+    "@id": "_:ndbf04efd6a154153b4ad6fde0dd0df9bb5",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#minCardinality": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+        "@value": "1"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "https://example.com#eats"
+      }
+    ]
+  },
+  {
+    "@id": "https://example.com#livesInSaltWater",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DataypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://example.com#Fish"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#boolean"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "True if the fish lives in salt water. It may also live in other water"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@language": "en",
+        "@value": "lives in salt water"
+      }
+    ]
+  },
+  {
+    "@id": "https://example.com#eats",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "https://example.com#Food"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "A creature eats a kind of food"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#example": [
+      {
+        "@id": "https://example.com#eats-example"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@language": "en",
+        "@value": "eats"
+      }
+    ]
+  },
+  {
+    "@id": "https://example.com#FishFood",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://example.com#Food"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "Fish food is food primarily eaten by fish. It may also be eaten by other Creatures too"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@language": "en",
+        "@value": "Fish food"
+      }
+    ]
+  },
+  {
+    "@id": "https://example.com#Creature",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "_:ndbf04efd6a154153b4ad6fde0dd0df9bb1"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "A Creature is a living animal"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#example": [
+      {
+        "@id": "https://example.com/individuals/creature-x"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@language": "en",
+        "@value": "Creature"
+      }
+    ]
+  },
+  {
+    "@id": "_:ndbf04efd6a154153b4ad6fde0dd0df9bb1",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#cardinality": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+        "@value": "1"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "https://example.com#bornOrHatchedDate"
+      }
+    ]
+  },
+  {
+    "@id": "https://example.com#eats-example",
+    "@type": [
+      "http://www.w3.org/ns/dx/prof/ResourceDescriptor"
+    ],
+    "http://purl.org/dc/terms/format": [
+      {
+        "@value": "text/turtle"
+      }
+    ],
+    "http://www.w3.org/ns/dx/prof/hasArtifact": [
+      {
+        "@value": "<x> a :Creature ;\n    :eats <y> ;\n.\n<y> a :Food ."
+      }
+    ]
+  },
+  {
+    "@id": "https://example.com#Food",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "Food is consumed by Creatures to give them energy"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@language": "en",
+        "@value": "Food"
+      }
+    ]
+  },
+  {
+    "@id": "https://example.com#bornOrHatchedDate",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DataypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://example.com#Creature"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#date"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "The Gregorian calendar date on which this Creature was born or hatched"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#example": [
+      {
+        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral",
+        "@value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rdf:RDF\n   xmlns=\"https://example.com#\"\n   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n>\n  <rdf:Description rdf:about=\"https://example.com#flipper\">\n    <rdf:type rdf:resource=\"https://example.com#Fish\"/>\n    <bornOrHatchedDate rdf:datatype=\"http://www.w3.org/2001/XMLSchema#date\">2020-05-11</bornOrHatchedDate>\n  </rdf:Description>\n</rdf:RDF>\n"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@language": "en",
+        "@value": "born or hatched date"
+      }
+    ]
+  },
+  {
+    "@id": "https://example.com#hasScaleColour",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2004/02/skos/core#Concept"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "A colour of the fish's scales. Can have multiple colours."
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#example": [
+      {
+        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML",
+        "@value": "<strong><em>scale colour</em></strong>:<ul><li>blue</li><li>orange</li><li>white</li></ul>"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@language": "en",
+        "@value": "has scale colour"
+      }
+    ]
+  },
+  {
+    "@id": "https://example.com#livesInFreshWater",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DataypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "https://example.com#Fish"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#boolean"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#definition": [
+      {
+        "@language": "en",
+        "@value": "True if the fish lives in fresh water. It may also live in other water"
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#example": [
+      {
+        "@value": "<x> a eggs:Fish ;\n    skos:prefLabel \"Fish X\"@en ;\n    eggs:livesInFreshWater true ;\n    ...\n."
+      }
+    ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel": [
+      {
+        "@language": "en",
+        "@value": "lives in fresh water"
+      }
+    ]
+  }
+]
