@@ -314,7 +314,7 @@ pyLODE understands the following ontology constructs:
     -  *title* - ``rdfs:label`` or ``skos:prefLabel`` or ``dct:title`` string literal
     -  *description* - ``rdf:comment``, ``skos:definition``, ``dct:description`` string literal
         - inline HTML & Markdown are supported
-    -  *usage note* - a ``skos:scopeNote`` string literal
+    -  *scope note* - a ``skos:scopeNote`` string literal
         - inline HTML & Markdown are supported
     -  *example* - a ``skos:example``
         - see *Example Handling* below
