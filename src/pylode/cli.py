@@ -13,6 +13,8 @@ logger = logging.getLogger(__name__)
 # create file handler which logs even debug messages
 fh = logging.FileHandler('pylode-cli.log')
 fh.setLevel(logging.DEBUG)
+f_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+fh.setFormatter(f_format)
 logger.addHandler(fh)
 
 # used to know what RDF file types rdflib can handle

@@ -9,13 +9,8 @@ from jinja2 import Environment, FileSystemLoader
 import test.test_sys
 import logging
 
-# create logger with 'spam_application'
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-# create file handler which logs even debug messages
-fh = logging.FileHandler('pylode-cli.log')
-fh.setLevel(logging.DEBUG)
-logger.addHandler(fh)
+
 
 
 class MakeDocco:
