@@ -6,6 +6,16 @@ import requests
 import collections
 import dateutil.parser
 from jinja2 import Environment, FileSystemLoader
+import test.test_sys
+import logging
+
+# create logger with 'spam_application'
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+# create file handler which logs even debug messages
+fh = logging.FileHandler('pylode-cli.log')
+fh.setLevel(logging.DEBUG)
+logger.addHandler(fh)
 
 
 class MakeDocco:
@@ -1229,7 +1239,11 @@ class MakeDocco:
             g.add((uri, SDO.copyrightYear, copyrightYear))
         if self.METADATA.get('repository') is not None:
             g.add((uri, SDO.codeRepository, repository))
-
+        
+        #make sure the json-ld serializer is registered
+        from rdflib.plugin import register, Serializer
+        register('json-ld', Serializer, 'rdflib_jsonld.serializer', 'JsonLDSerializer')
+        
         return g.serialize(format='json-ld').decode('utf-8')
 
     def _make_metadata(self, source_info, outputformat='html'):
@@ -1238,7 +1252,15 @@ class MakeDocco:
         else:
             template_file_ext = 'html'
 
-        template_dir = path.join(path.dirname(path.realpath(__file__)), 'templates')
+        #use the pyinstaller temp folder if exists
+        try:
+            # PyInstaller creates a temp folder and stores path in _MEIPASS
+            main_dir = sys._MEIPASS
+        except Exception:
+            main_dir = path.dirname(path.realpath(__file__))
+
+        template_dir = path.join(main_dir, 'templates')
+        logger.debug("Template dir: " + template_dir )
         template = Environment(loader=FileSystemLoader(template_dir)).get_template('metadata.' + template_file_ext)
         return template.render(
             imports=self.METADATA['imports'],

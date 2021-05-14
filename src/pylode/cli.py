@@ -5,7 +5,15 @@ import shutil
 import requests
 import rdflib
 from makedocco import MakeDocco
+import pkg_resources
+import logging
 
+# create logger with 'spam_application'
+logger = logging.getLogger(__name__)
+# create file handler which logs even debug messages
+fh = logging.FileHandler('pylode-cli.log')
+fh.setLevel(logging.DEBUG)
+logger.addHandler(fh)
 
 # used to know what RDF file types rdflib can handle
 RDF_FILE_EXTENSIONS = [
@@ -111,7 +119,26 @@ def main(args):
         default='html'
     )
 
+    parser.add_argument(
+        '-l', '--loglevel',
+        help='Log level to pylode-cli.log.',
+        choices=['info', 'debug', 'error'],
+        default='error'
+    )
+
+    logger.debug("Parsing args")
     args = parser.parse_args()
+
+
+    if args.loglevel:
+        if args.loglevel == "info":
+            logger.setLevel(logging.INFO)
+        elif args.loglevel == "debug":
+            logger.setLevel(logging.DEBUG)
+        else:
+            logger.setLevel(logging.ERROR)
+        
+
 
     if args.listprofiles:
         print('list profiles')
@@ -154,7 +181,15 @@ def main(args):
 
             g = rdflib.Graph().parse(data=r.text, format=fmt)
             source_info = (args.url, fmt)
-            publication_dir = path.join(path.dirname(path.realpath(__file__)), 'output_files')
+            #check if this is using pyinstaller
+            try:
+                if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+                    publication_dir ="output_files"
+                else:
+                    publication_dir = path.join(path.dirname(path.realpath(__file__)), 'output_files')
+            except Exception:
+                publication_dir = path.join(path.dirname(path.realpath(__file__)), 'output_files')
+            logger.debug("Publication dir: " + publication_dir)
         else:
             # we have neither an input file or a URI supplied
             parser.error('Either an inputfile or a url is required to access the ontology\'s RDF')
@@ -165,14 +200,26 @@ def main(args):
     # here we have a parsed graph from either a local file or a URI
 
     # set up output directories and resources
-    main_dir = path.dirname(path.realpath(__file__))
+    #use the pyinstaller temp folder if exists
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        main_dir = sys._MEIPASS
+    except Exception:
+        main_dir = path.dirname(path.realpath(__file__))
+    logger.debug("Main dir: " + main_dir)
+
     style_dir = path.join(main_dir, 'style')
+    logger.debug("Style dir: " + style_dir)
+    logger.debug("Publication dir: " + publication_dir)
+    if(publication_dir == None or publication_dir == ''):
+        publication_dir = "output_files"
+
     os.makedirs(publication_dir, exist_ok=True)
 
     # include CSS
     msg_css = ''
     if args.css == 'true':
-        shutil.copyfile(path.join(style_dir, 'pylode.css'), path.join(publication_dir, 'style.css'))
+        shutil.copyfile(pkg_resources.resource_filename("pylode", 'style/pylode.css'), path.join(publication_dir, 'style.css'))
         msg_css = ' and CSS'
 
     if args.excludecss == 'true':
