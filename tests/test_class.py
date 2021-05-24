@@ -2,18 +2,16 @@ import pylode
 
 
 def test_basic_class():
-    m = pylode.MakeDocco(
-        input_data_file="agrif.ttl",
-        # profile="ontdoc",
-        # outputformat="html",
-    )
+    m = pylode.MakeDocco(input_data_file="agrif.ttl")
 
-    agrif_html = m.document(destination="agrif.html")
     agrif_html = m.document()
 
-    assert '<h3>Series<sup title="class" class="sup-c">c</sup></h3>' in agrif_html
+    assert '<li><a href="#Series">Series</a></li>' in agrif_html
     assert '''    <div class="entity class" id="Series">
-        <h3>Series<sup title="class" class="sup-c">c</sup></h3>
+        <h3>
+          Series<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Series" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -28,8 +26,17 @@ def test_basic_class():
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="https://linked.data.gov.au/def/agrif#IntellectualControlSystem">https://linked.data.gov.au/def/agrif#IntellectualControlSystem</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>''' in agrif_html
+                    <a href="#IntellectualControlSystem">Intellectual Control System</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#associatedFunction">associated Function</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>''' in agrif_html
 
 
 if __name__ == "__main__":

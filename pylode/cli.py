@@ -4,6 +4,15 @@ import sys
 from os.path import dirname, realpath
 sys.path.insert(0, dirname(dirname(realpath(__file__))))
 from pylode import RDF_FILE_EXTENSIONS, MakeDocco
+import logging
+
+
+# create logger
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.ERROR)  # start with minimal logging
+fh = logging.FileHandler("pylode.log")
+fh.setFormatter(logging.Formatter("%(asctime)s %(levelname)s: %(name)s - %(message)s"))
+logger.addHandler(fh)
 
 
 def is_valid_file(parser, arg):
@@ -98,6 +107,13 @@ def main(args=None):
     )
 
     parser.add_argument(
+        "-log", "--loglevel",
+        help="Log level for pylode.log.",
+        choices=["debug", "info", "warning", "error"],
+        default="error"
+    )
+
+    parser.add_argument(
         "-l",
         "--language",
         help="The ISO 639 language code for the desired output language.",
@@ -112,6 +128,20 @@ def main(args=None):
     )
 
     args = parser.parse_args()
+
+    if args.loglevel:
+        if args.loglevel == "debug":
+            logger.setLevel(logging.DEBUG)
+            logger.log(logging.DEBUG, "logger set to DEBUG")
+            print("logger set to DEBUG")
+        elif args.loglevel == "info":
+            logger.setLevel(logging.INFO)
+            logger.log(logging.DEBUG, "logger set to INFO")
+            print("logger set to INFO")
+        elif args.loglevel == "warning":
+            logger.setLevel(logging.WARNING)
+        else:
+            logger.setLevel(logging.ERROR)
 
     if args.listprofiles:
         print(MakeDocco.list_profiles())
@@ -130,6 +160,7 @@ def main(args=None):
 
         # args are present so getting RDF from input file or uri into an rdflib Graph
         if args.inputfile:
+            logger.log(logging.DEBUG, f"args.inputfile: {args.inputfile.name}")
             h = MakeDocco(
                 input_data_file=args.inputfile,
                 outputformat=args.outputformat,
@@ -140,6 +171,7 @@ def main(args=None):
                 get_curies_online=get_curies_online,
             )
         elif args.url:
+            logger.log(logging.DEBUG, f"args.url: {args.url.name}")
             h = MakeDocco(
                 input_uri=args.url,
                 outputformat=args.outputformat,
