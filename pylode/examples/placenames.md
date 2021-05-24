@@ -253,7 +253,7 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/placenames/hasPlaceName`
 Description | The Feature has a place name (label) assigned to it
-Usage Note | All PlaceName objects names indicated by hasPlaceName should have the role of the name indicated with a Name Type
+Scope Notes | All PlaceName objects names indicated by hasPlaceName should have the role of the name indicated with a Name Type
 Domain(s) |[geosparql:Feature](http://www.opengis.net/ont/geosparql#Feature) (c)<br />
 Range(s) |[http://linked.data.gov.au/def/placenames/PlaceName](http://linked.data.gov.au/def/placenames/PlaceName) (c)<br />[xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />
 [](hasplacenameformality)
@@ -262,7 +262,7 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/placenames/hasPlaceNameFormality`
 Description | The formality of a Place Name
-Usage Note | Values for this property must be selected from the Place Name Formality vocabulary
+Scope Notes | Values for this property must be selected from the Place Name Formality vocabulary
 Domain(s) |[http://linked.data.gov.au/def/placenames/PlaceName](http://linked.data.gov.au/def/placenames/PlaceName) (c)<br />
 Range(s) |[http://linked.data.gov.au/def/placenames/PlaceNameFormality](http://linked.data.gov.au/def/placenames/PlaceNameFormality) (c)<br />
 [](hasplacenamingauthority)
@@ -310,7 +310,7 @@ URI | `http://purl.org/linked-data/registry#containedItemClass`
 Property | Value
 --- | ---
 URI | `http://purl.org/linked-data/registry#status`
-Usage Note | This property is the generic Registry Ontology status property indicating the status of a RegisteredItem in a Registry but in this ontology it is used to indicate only the status of a Place Name in a Gazetteer.
+Scope Notes | This property is the generic Registry Ontology status property indicating the status of a RegisteredItem in a Registry but in this ontology it is used to indicate only the status of a Place Name in a Gazetteer.
 Range(s) |[http://purl.org/linked-data/registry#Status](http://purl.org/linked-data/registry#Status) (c)<br />
 [](hasgeometry)
 ### has geometry

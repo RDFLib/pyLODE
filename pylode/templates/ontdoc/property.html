@@ -11,6 +11,20 @@
             {%- else -%}
             <sup title="property" class="sup-p">p</sup>
             {%- endif -%}
+          <span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#{{ fid }}" title="fragment link to here">#</a>&nbsp;
+            {%- if property_type == 'op' -%}
+             <a href="#objectproperties" title="Object Properties Index">OPs</a>
+            {%- elif property_type == 'fp' -%}
+            <a href="#functionalproperties" title="Functional Properties Index">FPs</a>
+            {%- elif property_type == 'dp' -%}
+            <a href="#datatypeproperties" title="Datatype Properties Index">DPs</a>
+            {%- elif property_type == 'ap' -%}
+            <a href="#annotationproperties" title="Annotation Properties Index">APs</a>
+            {%- else -%}
+            <a href="#properties" title="Properties Index">Props</a>
+            {%- endif -%}
+          </span>
         </h3>
         <table>
             <tr>
@@ -43,19 +57,19 @@
             {%- endif %}
             {%- if scopeNote is not none %}
             <tr>
-                <th>Usage Note</th>
+                <th>Scope Notes</th>
                 <td>
                     {{ scopeNote }}
                 </td>
             </tr>
             {%- endif %}
-            {%- if example is not none %}
+            {%- if examples|length > 0 %}
             <tr>
-                <th>Example</th>
+                <th>Example(s)</th>
                 <td>
-                    <pre>
-{{ example }}
-                    </pre>
+                    {%- for example in examples %}
+                    {{ example|safe }}<br/>
+                    {%- endfor %}
                 </td>
             </tr>
             {%- endif %}

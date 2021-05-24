@@ -1,0 +1,1248 @@
+= GeoSPARQL Ontology
+:encoding: utf-8
+:lang: en
+:table-stripes: even
+:toc:
+:toc-placement!:
+:toclevels: 3
+:sectnumlevels: 4
+:sectanchors:
+:figure-id: 0
+:table-id: 0
+:req-id: 0
+:rec-id: 0
+:per-id: 0
+:xrefstyle: short
+:chapter-refsig: Clause
+:idprefix:
+:idseparator:
+
+<<<
+_ASCIIDOC documentation created by http://github.com/rdflib/pyLODE[pyLODE] 2.9.1_
+
+<<<
+IRI::
+  * `http://www.opengis.net/ont/geosparql`
+Publisher(s)::
+  * Open Geospatial Consortium
+Creators(s)::
+  * OGC GeoSPARQL Standards Working Group
+Contributor(s)::
+  * Joseph Abhayaratna
+    joseph.abhayaratna@geoscape.com.au
+  * Nicholas J. Car
+    nicholas.car@surroundaustralia.com
+  * Simon J D Cox
+    simon.cox@csiro.au
+  * Timo Homburg
+    timo.homburg@hs-mainz.de
+Created::
+  * 2020-09-09
+Modified::
+  2021-03-25
+Version Information::
+  OGC GeoSPARQL 1.1
+Source::
+  OGC GeoSPARQL – A Geographic Query Language for RDF Data OGC 11-052r5
+
+Ontology RDF::
+  RDF link:geo.ttl[turtle]
+Description::
+  An RDF/OWL vocabulary for representing spatial information
+
+
+
+toc::[]
+<<<
+
+:sectnums!:
+
+== Classes
+link:#Feature[Feature]
+link:#Geometry[Geometry]
+link:#SpatialMeasure[Spatial Measure]
+link:#SpatialObject[Spatial Object]
+[#Feature]
+=== Feature
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#Feature`
+|Is Defined By 
+|http://www.opengis.net/ont/geosparql
+|Description
+|This class represents the top-level feature type. This class is equivalent to GFI_Feature defined in ISO 19156:2011, and it is superclass of all feature types.
+|Example
+|....http://www.opengis.net/spec/geosparql/1.1/specification.html#annexB_example1....
+&nbsp;
+|Super-classes
+|* link:#SpatialObject[Spatial Object] ^c^
+
+|In domain of
+|* link:#hasGeometry[hasGeometry] ^op^
+* link:#hasVolume[hasVolume] ^op^
+* link:#hasDefaultGeometry[hasDefaultGeometry] ^op^
+* link:#hasCentroid[hasCentroid] ^op^
+* link:#hasArea[hasArea] ^op^
+* link:#defaultGeometry[defaultGeometry] ^op^
+* link:#hasLength[hasLength] ^op^
+* link:#hasBoundingBox[hasBoundingBox] ^op^
+
+|===
+[#Geometry]
+=== Geometry
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#Geometry`
+|Is Defined By 
+|http://www.opengis.net/ont/geosparql
+|Description
+|The class represents the top-level geometry type. This class is equivalent to the UML class GM_Object defined in ISO 19107, and it is superclass of all geometry types.
+|Example
+|....http://www.opengis.net/spec/geosparql/1.1/specification.html#annexB_example1....
+&nbsp;
+|Super-classes
+|* link:#SpatialObject[Spatial Object] ^c^
+
+|In domain of
+|* link:#asWKT[asWKT] ^dp^
+* link:#isEmpty[isEmpty] ^dp^
+* link:#dimension[dimension] ^dp^
+* link:#asKML[asKML] ^dp^
+* link:#spatialDimension[spatialDimension] ^dp^
+* link:#hasSerialization[hasSerialization] ^dp^
+* link:#isSimple[isSimple] ^dp^
+* link:#coordinateDimension[coordinateDimension] ^dp^
+* link:#inSRS[inSRS] ^op^
+* link:#asGeoJSON[asGeoJSON] ^dp^
+* link:#hasSpatialResolution[hasSpatialResolution] ^op^
+* link:#asGML[asGML] ^dp^
+* link:#asDggsWkt[asDggsWkt] ^dp^
+
+|In range of
+|* link:#hasGeometry[hasGeometry] ^op^
+* link:#defaultGeometry[defaultGeometry] ^op^
+* link:#hasCentroid[hasCentroid] ^op^
+* link:#hasBoundingBox[hasBoundingBox] ^op^
+* link:#hasDefaultGeometry[hasDefaultGeometry] ^op^
+
+|===
+[#SpatialMeasure]
+=== Spatial Measure
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#SpatialMeasure`
+|Is Defined By 
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|This class represents a measurement of some dimension of a feature's spatial presence.
+|In range of
+|* link:#hasVolume[hasVolume] ^op^
+* link:#hasArea[hasArea] ^op^
+* link:#hasLength[hasLength] ^op^
+
+|===
+[#SpatialObject]
+=== Spatial Object
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#SpatialObject`
+|Is Defined By 
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|The class spatial-object represents everything that can have a spatial representation. It is superclass of feature and geometry.
+|Sub-classes
+|* link:#Geometry[Geometry] ^c^
+* link:#Feature[Feature] ^c^
+
+|In domain of
+|* link:#rcc8ntppi[rcc8ntppi] ^op^
+* link:#sfOverlaps[sfOverlaps] ^op^
+* link:#ehCovers[ehCovers] ^op^
+* link:#ehContains[ehContains] ^op^
+* link:#rcc8eq[rcc8eq] ^op^
+* link:#sfIntersects[sfIntersects] ^op^
+* link:#ehMeet[ehMeet] ^op^
+* link:#rcc8ec[rcc8ec] ^op^
+* link:#ehInside[ehInside] ^op^
+* link:#sfDisjoint[sfDisjoint] ^op^
+* link:#ehCoveredBy[ehCoveredBy] ^op^
+* link:#sfTouches[sfTouches] ^op^
+* link:#ehDisjoint[ehDisjoint] ^op^
+* link:#sfEquals[sfEquals] ^op^
+* link:#rcc8po[rcc8po] ^op^
+* link:#rcc8ntpp[rcc8ntpp] ^op^
+* link:#sfContains[sfContains] ^op^
+* link:#sfWithin[sfWithin] ^op^
+* link:#rcc8tppi[rcc8tppi] ^op^
+* link:#rcc8tpp[rcc8tpp] ^op^
+* link:#ehOverlap[ehOverlap] ^op^
+* link:#ehEquals[ehEquals] ^op^
+* link:#rcc8dc[rcc8dc] ^op^
+* link:#sfCrosses[sfCrosses] ^op^
+
+|In range of
+|* link:#ehMeet[ehMeet] ^op^
+* link:#ehContains[ehContains] ^op^
+* link:#ehInside[ehInside] ^op^
+* link:#rcc8eq[rcc8eq] ^op^
+* link:#ehEquals[ehEquals] ^op^
+* link:#ehCoveredBy[ehCoveredBy] ^op^
+* link:#sfDisjoint[sfDisjoint] ^op^
+* link:#rcc8dc[rcc8dc] ^op^
+* link:#rcc8tppi[rcc8tppi] ^op^
+* link:#ehDisjoint[ehDisjoint] ^op^
+* link:#sfWithin[sfWithin] ^op^
+* link:#rcc8ntpp[rcc8ntpp] ^op^
+* link:#rcc8ntppi[rcc8ntppi] ^op^
+* link:#ehCovers[ehCovers] ^op^
+* link:#sfOverlaps[sfOverlaps] ^op^
+* link:#sfCrosses[sfCrosses] ^op^
+* link:#rcc8ec[rcc8ec] ^op^
+* link:#sfIntersects[sfIntersects] ^op^
+* link:#ehOverlap[ehOverlap] ^op^
+* link:#rcc8po[rcc8po] ^op^
+* link:#sfContains[sfContains] ^op^
+* link:#sfTouches[sfTouches] ^op^
+* link:#sfEquals[sfEquals] ^op^
+* link:#rcc8tpp[rcc8tpp] ^op^
+
+|===
+== Properties
+=== Object Properties
+link:#defaultGeometry[defaultGeometry]
+link:#ehContains[ehContains]
+link:#ehCoveredBy[ehCoveredBy]
+link:#ehCovers[ehCovers]
+link:#ehDisjoint[ehDisjoint]
+link:#ehEquals[ehEquals]
+link:#ehInside[ehInside]
+link:#ehMeet[ehMeet]
+link:#ehOverlap[ehOverlap]
+link:#hasArea[hasArea]
+link:#hasBoundingBox[hasBoundingBox]
+link:#hasCentroid[hasCentroid]
+link:#hasDefaultGeometry[hasDefaultGeometry]
+link:#hasGeometry[hasGeometry]
+link:#hasLength[hasLength]
+link:#hasSpatialResolution[hasSpatialResolution]
+link:#hasVolume[hasVolume]
+link:#inSRS[inSRS]
+link:#rcc8dc[rcc8dc]
+link:#rcc8ec[rcc8ec]
+link:#rcc8eq[rcc8eq]
+link:#rcc8ntpp[rcc8ntpp]
+link:#rcc8ntppi[rcc8ntppi]
+link:#rcc8po[rcc8po]
+link:#rcc8tpp[rcc8tpp]
+link:#rcc8tppi[rcc8tppi]
+link:#sfContains[sfContains]
+link:#sfCrosses[sfCrosses]
+link:#sfDisjoint[sfDisjoint]
+link:#sfEquals[sfEquals]
+link:#sfIntersects[sfIntersects]
+link:#sfOverlaps[sfOverlaps]
+link:#sfTouches[sfTouches]
+link:#sfWithin[sfWithin]
+[#defaultGeometry]
+==== defaultGeometry
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#defaultGeometry`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|The default geometry to be used in spatial calculations. It is usually the most detailed geometry.
+|Super-properties
+|* link:#hasGeometry[hasGeometry] ^op^
+
+    |Domain(s)
+    |* link:#Feature[Feature] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#Geometry[Geometry] ^c^
+
+|===
+[#ehContains]
+==== ehContains
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#ehContains`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|Exists if the subject SpatialObject spatially contains the object SpatialObject. DE-9IM: T*TFF*FF*
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#ehCoveredBy]
+==== ehCoveredBy
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#ehCoveredBy`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|Exists if the subject SpatialObject is spatially covered by the object SpatialObject. DE-9IM: TFF*TFT**
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#ehCovers]
+==== ehCovers
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#ehCovers`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|Exists if the subject SpatialObject spatially covers the object SpatialObject. DE-9IM: T*TFT*FF*
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#ehDisjoint]
+==== ehDisjoint
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#ehDisjoint`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|Exists if the subject SpatialObject is spatially disjoint from the object SpatialObject. DE-9IM: FF*FF****
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#ehEquals]
+==== ehEquals
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#ehEquals`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|Exists if the subject SpatialObject spatially equals the object SpatialObject. DE-9IM: TFFFTFFFT
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#ehInside]
+==== ehInside
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#ehInside`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|Exists if the subject SpatialObject is spatially inside the object SpatialObject. DE-9IM: TFF*FFT**
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#ehMeet]
+==== ehMeet
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#ehMeet`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|Exists if the subject SpatialObject spatially meets the object SpatialObject. DE-9IM: FT******* ^ F**T***** ^ F***T****
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#ehOverlap]
+==== ehOverlap
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#ehOverlap`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|Exists if the subject SpatialObject spatially overlaps the object SpatialObject. DE-9IM: T*T***T**
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#hasArea]
+==== hasArea
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#hasArea`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|The area of a Feature, expressed as a Spatial Measure.
+    |Domain(s)
+    |* link:#Feature[Feature] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialMeasure[SpatialMeasure] ^c^
+
+|===
+[#hasBoundingBox]
+==== hasBoundingBox
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#hasBoundingBox`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|The minimum or smallest bounding or enclosing box of a given feature.
+|Scope Notes
+|The target is a geometry that defines a rectilinear region whose edges are aligned with the axes of the coordinate reference system, which exactly contains the geometry or feature e.g. sf:Envelope.
+|Super-properties
+|* link:#hasGeometry[hasGeometry] ^op^
+
+    |Domain(s)
+    |* link:#Feature[Feature] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#Geometry[Geometry] ^c^
+
+|===
+[#hasCentroid]
+==== hasCentroid
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#hasCentroid`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|The arithmetic mean position of all the geometry points of a given feature.
+|Scope Notes
+|The target geometry shall describe a point, e.g. sf:Point.
+|Super-properties
+|* link:#hasGeometry[hasGeometry] ^op^
+
+    |Domain(s)
+    |* link:#Feature[Feature] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#Geometry[Geometry] ^c^
+
+|===
+[#hasDefaultGeometry]
+==== hasDefaultGeometry
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#hasDefaultGeometry`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|The default geometry to be used in spatial calculations, usually the most detailed geometry.
+|Super-properties
+|* link:#hasGeometry[hasGeometry] ^op^
+
+    |Domain(s)
+    |* link:#Feature[Feature] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#Geometry[Geometry] ^c^
+
+|===
+[#hasGeometry]
+==== hasGeometry
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#hasGeometry`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|A spatial representation for a given feature.
+|Example
+|....http://www.opengis.net/spec/geosparql/1.1/specification.html#annexB_example1....
+&nbsp;
+    |Domain(s)
+    |* link:#Feature[Feature] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#Geometry[Geometry] ^c^
+
+|===
+[#hasLength]
+==== hasLength
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#hasLength`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|The length of a one-dimensional Feature or the perimeter length of a two-dimensional Feature, expressed as a Spatial Measure.
+    |Domain(s)
+    |* link:#Feature[Feature] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialMeasure[SpatialMeasure] ^c^
+
+|===
+[#hasSpatialResolution]
+==== hasSpatialResolution
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#hasSpatialResolution`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|The spatial resolution of a Geometry.
+    |Domain(s)
+    |* link:#Geometry[Geometry] ^c^
+|===
+[#hasVolume]
+==== hasVolume
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#hasVolume`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|The volume of a three-dimensional Feature, expressed as a Spatial Measure.
+    |Domain(s)
+    |* link:#Feature[Feature] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialMeasure[SpatialMeasure] ^c^
+
+|===
+[#inSRS]
+==== inSRS
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#inSRS`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|The spatial reference system used for the literal representation of the geometry.
+    |Domain(s)
+    |* link:#Geometry[Geometry] ^c^
+    |Range(s) 
+    |* link:http://www.w3.org/2004/02/skos/core#Concept[skos:Concept] ^c^
+
+|===
+[#rcc8dc]
+==== rcc8dc
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#rcc8dc`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|Exists if the subject SpatialObject is spatially disjoint  from the object SpatialObject. DE-9IM: FFTFFTTTT
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#rcc8ec]
+==== rcc8ec
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#rcc8ec`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|Exists if the subject SpatialObject spatially meets the object SpatialObject. DE-9IM: FFTFTTTTT
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#rcc8eq]
+==== rcc8eq
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#rcc8eq`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|Exists if the subject SpatialObject spatially equals the object SpatialObject. DE-9IM: TFFFTFFFT
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#rcc8ntpp]
+==== rcc8ntpp
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#rcc8ntpp`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|Exists if the subject SpatialObject is spatially inside the object SpatialObject. DE-9IM: TFFTFFTTT
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#rcc8ntppi]
+==== rcc8ntppi
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#rcc8ntppi`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|Exists if the subject SpatialObject spatially contains the object SpatialObject. DE-9IM: TTTFFTFFT
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#rcc8po]
+==== rcc8po
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#rcc8po`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|Exists if the subject SpatialObject spatially overlaps the object SpatialObject. DE-9IM: TTTTTTTTT
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#rcc8tpp]
+==== rcc8tpp
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#rcc8tpp`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|Exists if the subject SpatialObject is spatially covered by the object SpatialObject. DE-9IM: TFFTTFTTT
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#rcc8tppi]
+==== rcc8tppi
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#rcc8tppi`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|Exists if the subject SpatialObject spatially covers the object SpatialObject. DE-9IM: TTTFTTFFT
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#sfContains]
+==== sfContains
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#sfContains`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|Exists if the subject SpatialObject spatially contains the object SpatialObject. DE-9IM: T*****FF*
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#sfCrosses]
+==== sfCrosses
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#sfCrosses`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|Exists if the subject SpatialObject spatially crosses the object SpatialObject. DE-9IM: T*T******
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#sfDisjoint]
+==== sfDisjoint
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#sfDisjoint`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|Exists if the subject SpatialObject is spatially disjoint from the object SpatialObject. DE-9IM: FF*FF****
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#sfEquals]
+==== sfEquals
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#sfEquals`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|Exists if the subject SpatialObject spatially equals the object SpatialObject. DE-9IM: TFFFTFFFT
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#sfIntersects]
+==== sfIntersects
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#sfIntersects`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|Exists if the subject SpatialObject is not spatially disjoint from the object SpatialObject. DE-9IM: T******** ^ *T******* ^ ***T***** ^ ****T****
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#sfOverlaps]
+==== sfOverlaps
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#sfOverlaps`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|Exists if the subject SpatialObject spatially overlaps the object SpatialObject. DE-9IM: T*T***T**
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#sfTouches]
+==== sfTouches
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#sfTouches`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|Exists if the subject SpatialObject spatially touches the object SpatialObject. DE-9IM: FT******* ^ F**T***** ^ F***T****
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+[#sfWithin]
+==== sfWithin
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#sfWithin`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|Exists if the subject SpatialObject is spatially within the object SpatialObject. DE-9IM: T*F**F***
+    |Domain(s)
+    |* link:#SpatialObject[Spatial Object] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#SpatialObject[SpatialObject] ^c^
+
+|===
+
+=== Datatype Properties
+link:#asDggsWkt[asDggsWkt]
+link:#asGML[asGML]
+link:#asGeoJSON[asGeoJSON]
+link:#asKML[asKML]
+link:#asWKT[asWKT]
+link:#coordinateDimension[coordinateDimension]
+link:#dimension[dimension]
+link:#hasSerialization[hasSerialization]
+link:#isEmpty[isEmpty]
+link:#isSimple[isSimple]
+link:#spatialDimension[spatialDimension]
+[#asDggsWkt]
+==== asDggsWkt
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#asDggsWkt`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|The Discrete Global Grid System (DGGS) serialization of a geometry
+|Super-properties
+|* link:#hasSerialization[hasSerialization] ^dp^
+
+    |Domain(s)
+    |* link:#Geometry[Geometry] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#dggsWktLiteral[dggsWktLiteral] ^c^
+
+|===
+[#asGML]
+==== asGML
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#asGML`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|The GML serialization of a geometry
+|Super-properties
+|* link:#hasSerialization[hasSerialization] ^dp^
+
+    |Domain(s)
+    |* link:#Geometry[Geometry] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#gmlLiteral[gmlLiteral] ^c^
+
+|===
+[#asGeoJSON]
+==== asGeoJSON
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#asGeoJSON`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|The GeoJSON serialization of a geometry
+|Super-properties
+|* link:#hasSerialization[hasSerialization] ^dp^
+
+    |Domain(s)
+    |* link:#Geometry[Geometry] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#geoJSONLiteral[geoJSONLiteral] ^c^
+
+|===
+[#asKML]
+==== asKML
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#asKML`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|The KML serialization of a geometry
+|Super-properties
+|* link:#hasSerialization[hasSerialization] ^dp^
+
+    |Domain(s)
+    |* link:#Geometry[Geometry] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#kmlLiteral[kmlLiteral] ^c^
+
+|===
+[#asWKT]
+==== asWKT
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#asWKT`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|The WKT serialization of a geometry
+|Example
+|....http://www.opengis.net/spec/geosparql/1.1/specification.html#annexB_example5....
+&nbsp;
+|Super-properties
+|* link:#hasSerialization[hasSerialization] ^dp^
+
+    |Domain(s)
+    |* link:#Geometry[Geometry] ^c^
+    |Range(s) 
+    |* link:http://www.opengis.net/ont/geosparql#wktLiteral[wktLiteral] ^c^
+
+|===
+[#coordinateDimension]
+==== coordinateDimension
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#coordinateDimension`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|The number of measurements or axes needed to describe the position of this geometry in a coordinate system.
+    |Domain(s)
+    |* link:#Geometry[Geometry] ^c^
+    |Range(s) 
+    |* link:http://www.w3.org/2001/XMLSchema#integer[xsd:integer] ^c^
+
+|===
+[#dimension]
+==== dimension
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#dimension`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|The topological dimension of this geometric object, which must be less than or equal to the coordinate dimension. In non-homogeneous collections, this will return the largest topological dimension of the contained objects.
+    |Domain(s)
+    |* link:#Geometry[Geometry] ^c^
+    |Range(s) 
+    |* link:http://www.w3.org/2001/XMLSchema#integer[xsd:integer] ^c^
+
+|===
+[#hasSerialization]
+==== hasSerialization
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#hasSerialization`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|Connects a geometry object with its text-based serialization.
+    |Domain(s)
+    |* link:#Geometry[Geometry] ^c^
+    |Range(s) 
+    |* link:http://www.w3.org/2000/01/rdf-schema#Literal[rdfs:Literal] ^c^
+
+|===
+[#isEmpty]
+==== isEmpty
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#isEmpty`
+|Is Defined By
+|http://www.opengis.net/ont/geosparql
+|Description
+|(true) if this geometric object is the empty Geometry. If true, then this geometric object represents the empty point set for the coordinate space.
+    |Domain(s)
+    |* link:#Geometry[Geometry] ^c^
+    |Range(s) 
+    |* link:http://www.w3.org/2001/XMLSchema#boolean[xsd:boolean] ^c^
+
+|===
+[#isSimple]
+==== isSimple
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#isSimple`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|(true) if this geometric object has no anomalous geometric points, such as self intersection or self tangency.
+    |Domain(s)
+    |* link:#Geometry[Geometry] ^c^
+    |Range(s) 
+    |* link:http://www.w3.org/2001/XMLSchema#boolean[xsd:boolean] ^c^
+
+|===
+[#spatialDimension]
+==== spatialDimension
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`http://www.opengis.net/ont/geosparql#spatialDimension`
+|Is Defined By
+|http://www.opengis.net/spec/geosparql/1.1
+|Description
+|The number of measurements or axes needed to describe the spatial position of this geometry in a coordinate system.
+    |Domain(s)
+    |* link:#Geometry[Geometry] ^c^
+    |Range(s) 
+    |* link:http://www.w3.org/2001/XMLSchema#integer[xsd:integer] ^c^
+
+|===
+
+## Named Individuals
+== Namespaces
+default (:)::
+    `http://www.opengis.net/ont/geosparql`
+:::
+  `http://www.opengis.net/ont/geosparql#`
+dcterms::
+  `http://purl.org/dc/terms/`
+geosparql-doc::
+  `http://www.opengis.net/spec/geosparql/1.1/specification.html#`
+geosparql-spec::
+  `http://www.opengis.net/spec/geosparql/1.1`
+owl::
+  `http://www.w3.org/2002/07/owl#`
+prov::
+  `http://www.w3.org/ns/prov#`
+rdf::
+  `http://www.w3.org/1999/02/22-rdf-syntax-ns#`
+rdfs::
+  `http://www.w3.org/2000/01/rdf-schema#`
+sdo::
+  `https://schema.org/`
+skos::
+  `http://www.w3.org/2004/02/skos/core#`
+xsd::
+  `http://www.w3.org/2001/XMLSchema#`
+
+== Legend
+* Classes: **c**
+* Object Properties: **op**
+* Functional Properties: **fp**
+* Data Properties: **dp**
+* Annotation Properties: **dp**
+* Properties: **p**
+* Named Individuals: **ni**

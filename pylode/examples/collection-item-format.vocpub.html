@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <title>Collection item format</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==">
+    <link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1Sew
+EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     
     <style>
@@ -132,8 +135,8 @@
         .sup-ap,
         .sup-p,
         .sup-ni,
-        .sup-cp,
-        .sup-cl {
+        .sup-con,
+        .sup-col {
             cursor:help;
             margin-left: 3px;
         }
@@ -166,11 +169,11 @@
             color:brown;
         }
 
-        .sup-cp {
+        .sup-con {
             color:orange;
         }
 
-        .sup-cl {
+        .sup-col {
             color:darkred;
         }
 
@@ -210,7 +213,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.8.10</span>
+    <span style="font-size:smaller;">2.9.1</span>
   </div>
   <h1>Collection item format</h1>
 <h3><em>A taxonomy</em></h3>
@@ -239,7 +242,7 @@
           <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
           <dd>2020-03-29</dd>
           <dt>Source</dt>
-          <dd><a href="http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes">http://colsearch.nfsa.gov.au/nfsa/search/search.w3p;adv=yes</a></dd>
+          <dd><a href="https://collection.sl.nsw.gov.au/search?offset=0">https://collection.sl.nsw.gov.au/search?offset=0</a></dd>
           <dt>Ontology RDF</dt>
           <dd><a href="collection-item-format.ttl">RDF (turtle)</a></dd>
       </dl>
@@ -272,7 +275,7 @@
         <li><a href="#StateLibraryNewSouthWales'Formats">State Library New South Wales' Formats</a></li>
     </ul>
     <div class="entity collection" id="NationalFilmandSoundArchive'sFormats">
-        <h3>National Film and Sound Archive's Formats<sup title="Collection" class="sup-cl">cl</sup></h3>
+        <h3>National Film and Sound Archive's Formats<sup title="Collection" class="sup-col">col</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -280,7 +283,7 @@
             </tr>
             <tr>
                 <th>Definition</th>
-                <td>The National Film and Sound Archive of Australia is Australia's audiovisual archive, responsible for developing, preserving, maintaining, promoting and providing access to a national collection of film, television, sound, radio, video games, new media, and related documents and artefacts.</td>
+                <td><p>The National Film and Sound Archive of Australia is Australia's audiovisual archive, responsible for developing, preserving, maintaining, promoting and providing access to a national collection of film, television, sound, radio, video games, new media, and related documents and artefacts.</p></td>
             </tr>
             <tr>
                 <th>Source</th>
@@ -291,20 +294,20 @@
             <tr>
                 <th>Members</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/documentation">http://linked.data.gov.au/def/collection-item-format/documentation</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="http://linked.data.gov.au/def/collection-item-format/object">http://linked.data.gov.au/def/collection-item-format/object</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="http://linked.data.gov.au/def/collection-item-format/film">http://linked.data.gov.au/def/collection-item-format/film</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="http://linked.data.gov.au/def/collection-item-format/disc">http://linked.data.gov.au/def/collection-item-format/disc</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="http://linked.data.gov.au/def/collection-item-format/tape">http://linked.data.gov.au/def/collection-item-format/tape</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="http://linked.data.gov.au/def/collection-item-format/digital">http://linked.data.gov.au/def/collection-item-format/digital</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="http://linked.data.gov.au/def/collection-item-format/disk">http://linked.data.gov.au/def/collection-item-format/disk</a><sup class="sup-cp" title="concept">cp</sup>
+                    <a href="#Tape">Tape</a><sup class="sup-con" title="concept">con</sup>, 
+                    <a href="#Disk">Disk</a><sup class="sup-con" title="concept">con</sup>, 
+                    <a href="#Digital">Digital</a><sup class="sup-con" title="concept">con</sup>, 
+                    <a href="#Film">Film</a><sup class="sup-con" title="concept">con</sup>, 
+                    <a href="#Disc">Disc</a><sup class="sup-con" title="concept">con</sup>, 
+                    <a href="#Documentation">Documentation</a><sup class="sup-con" title="concept">con</sup>, 
+                    <a href="#Object">Object</a><sup class="sup-con" title="concept">con</sup>
                 </td>
             </tr>
             
         </table>
     </div>
     <div class="entity collection" id="StateLibraryNewSouthWales'Formats">
-        <h3>State Library New South Wales' Formats<sup title="Collection" class="sup-cl">cl</sup></h3>
+        <h3>State Library New South Wales' Formats<sup title="Collection" class="sup-col">col</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -312,7 +315,7 @@
             </tr>
             <tr>
                 <th>Definition</th>
-                <td>The State Library of NSW collects and preserves materials and evidence relating to our place in the world and makes them accessible to everyone in New South Wales and beyond.</td>
+                <td><p>The State Library of NSW collects and preserves materials and evidence relating to our place in the world and makes them accessible to everyone in New South Wales and beyond.</p></td>
             </tr>
             <tr>
                 <th>Source</th>
@@ -323,16 +326,16 @@
             <tr>
                 <th>Members</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/audio">http://linked.data.gov.au/def/collection-item-format/audio</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="http://linked.data.gov.au/def/collection-item-format/journal-magazine">http://linked.data.gov.au/def/collection-item-format/journal-magazine</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="http://linked.data.gov.au/def/collection-item-format/picture">http://linked.data.gov.au/def/collection-item-format/picture</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="http://linked.data.gov.au/def/collection-item-format/manuscript">http://linked.data.gov.au/def/collection-item-format/manuscript</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="http://linked.data.gov.au/def/collection-item-format/object-slnsw">http://linked.data.gov.au/def/collection-item-format/object-slnsw</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="http://linked.data.gov.au/def/collection-item-format/video-film">http://linked.data.gov.au/def/collection-item-format/video-film</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="http://linked.data.gov.au/def/collection-item-format/newspaper">http://linked.data.gov.au/def/collection-item-format/newspaper</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="http://linked.data.gov.au/def/collection-item-format/map">http://linked.data.gov.au/def/collection-item-format/map</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="http://linked.data.gov.au/def/collection-item-format/eresource">http://linked.data.gov.au/def/collection-item-format/eresource</a><sup class="sup-cp" title="concept">cp</sup>, 
-                    <a href="http://linked.data.gov.au/def/collection-item-format/book">http://linked.data.gov.au/def/collection-item-format/book</a><sup class="sup-cp" title="concept">cp</sup>
+                    <a href="#Object-SLNSW">Object-SLNSW</a><sup class="sup-con" title="concept">con</sup>, 
+                    <a href="#Picture">Picture</a><sup class="sup-con" title="concept">con</sup>, 
+                    <a href="#Map">Map</a><sup class="sup-con" title="concept">con</sup>, 
+                    <a href="#Eresource">Eresource</a><sup class="sup-con" title="concept">con</sup>, 
+                    <a href="#Videofilm">Video & film</a><sup class="sup-con" title="concept">con</sup>, 
+                    <a href="#Book">Book</a><sup class="sup-con" title="concept">con</sup>, 
+                    <a href="#Journalmagazine">Journal & magazine</a><sup class="sup-con" title="concept">con</sup>, 
+                    <a href="#Manuscript">Manuscript</a><sup class="sup-con" title="concept">con</sup>, 
+                    <a href="#Newspaper">Newspaper</a><sup class="sup-con" title="concept">con</sup>, 
+                    <a href="#Audio">Audio</a><sup class="sup-con" title="concept">con</sup>
                 </td>
             </tr>
             
@@ -342,20 +345,20 @@
   <section id="concepts">
     <h2>Concepts <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hierarchy">
-<li><a href="http://linked.data.gov.au/def/collection-item-format/audio">http://linked.data.gov.au/def/collection-item-format/audio</a></li><li><a href="http://linked.data.gov.au/def/collection-item-format/book">http://linked.data.gov.au/def/collection-item-format/book</a></li><li><a href="http://linked.data.gov.au/def/collection-item-format/digital">http://linked.data.gov.au/def/collection-item-format/digital</a>
-<ul><li><a href="http://linked.data.gov.au/def/collection-item-format/disk">http://linked.data.gov.au/def/collection-item-format/disk</a></li></ul>
-<ul><li><a href="http://linked.data.gov.au/def/collection-item-format/dvd">http://linked.data.gov.au/def/collection-item-format/dvd</a></li></ul>
-<ul><li><a href="http://linked.data.gov.au/def/collection-item-format/eresource">http://linked.data.gov.au/def/collection-item-format/eresource</a></li></ul></li><li><a href="http://linked.data.gov.au/def/collection-item-format/disc">http://linked.data.gov.au/def/collection-item-format/disc</a></li><li><a href="http://linked.data.gov.au/def/collection-item-format/disk">http://linked.data.gov.au/def/collection-item-format/disk</a></li><li><a href="http://linked.data.gov.au/def/collection-item-format/documentation">http://linked.data.gov.au/def/collection-item-format/documentation</a>
-<ul><li><a href="http://linked.data.gov.au/def/collection-item-format/manuscript">http://linked.data.gov.au/def/collection-item-format/manuscript</a></li></ul>
-<ul><li><a href="http://linked.data.gov.au/def/collection-item-format/map">http://linked.data.gov.au/def/collection-item-format/map</a></li></ul>
-<ul><li><a href="http://linked.data.gov.au/def/collection-item-format/newspaper">http://linked.data.gov.au/def/collection-item-format/newspaper</a></li></ul>
-<ul><li><a href="http://linked.data.gov.au/def/collection-item-format/picture">http://linked.data.gov.au/def/collection-item-format/picture</a></li></ul></li><li><a href="http://linked.data.gov.au/def/collection-item-format/dvd">http://linked.data.gov.au/def/collection-item-format/dvd</a></li><li><a href="http://linked.data.gov.au/def/collection-item-format/eresource">http://linked.data.gov.au/def/collection-item-format/eresource</a></li><li><a href="http://linked.data.gov.au/def/collection-item-format/film">http://linked.data.gov.au/def/collection-item-format/film</a></li><li><a href="http://linked.data.gov.au/def/collection-item-format/journal-magazine">http://linked.data.gov.au/def/collection-item-format/journal-magazine</a></li><li><a href="http://linked.data.gov.au/def/collection-item-format/manuscript">http://linked.data.gov.au/def/collection-item-format/manuscript</a></li><li><a href="http://linked.data.gov.au/def/collection-item-format/map">http://linked.data.gov.au/def/collection-item-format/map</a></li><li><a href="http://linked.data.gov.au/def/collection-item-format/newspaper">http://linked.data.gov.au/def/collection-item-format/newspaper</a></li><li><a href="http://linked.data.gov.au/def/collection-item-format/object">http://linked.data.gov.au/def/collection-item-format/object</a>
-<ul><li><a href="http://linked.data.gov.au/def/collection-item-format/object-slnsw">http://linked.data.gov.au/def/collection-item-format/object-slnsw</a></li></ul></li><li><a href="http://linked.data.gov.au/def/collection-item-format/object-slnsw">http://linked.data.gov.au/def/collection-item-format/object-slnsw</a></li><li><a href="http://linked.data.gov.au/def/collection-item-format/picture">http://linked.data.gov.au/def/collection-item-format/picture</a></li><li><a href="http://linked.data.gov.au/def/collection-item-format/tape">http://linked.data.gov.au/def/collection-item-format/tape</a></li><li><a href="http://linked.data.gov.au/def/collection-item-format/video-film">http://linked.data.gov.au/def/collection-item-format/video-film</a>
-<ul><li><a href="http://linked.data.gov.au/def/collection-item-format/film">http://linked.data.gov.au/def/collection-item-format/film</a></li></ul>
-<ul><li><a href="http://linked.data.gov.au/def/collection-item-format/tape">http://linked.data.gov.au/def/collection-item-format/tape</a></li></ul></li>
+<li><a href="#Audio">Audio</a></li><li><a href="#Book">Book</a></li><li><a href="#Digital">Digital</a>
+<ul><li><a href="#Disk">Disk</a></li></ul>
+<ul><li><a href="#DigitalVersatileDisc">Digital Versatile Disc</a></li></ul>
+<ul><li><a href="#Eresource">Eresource</a></li></ul></li><li><a href="#Disc">Disc</a></li><li><a href="#Disk">Disk</a></li><li><a href="#Documentation">Documentation</a>
+<ul><li><a href="#Manuscript">Manuscript</a></li></ul>
+<ul><li><a href="#Map">Map</a></li></ul>
+<ul><li><a href="#Newspaper">Newspaper</a></li></ul>
+<ul><li><a href="#Picture">Picture</a></li></ul></li><li><a href="#DigitalVersatileDisc">Digital Versatile Disc</a></li><li><a href="#Eresource">Eresource</a></li><li><a href="#Film">Film</a></li><li><a href="#Journalmagazine">Journal & magazine</a></li><li><a href="#Manuscript">Manuscript</a></li><li><a href="#Map">Map</a></li><li><a href="#Newspaper">Newspaper</a></li><li><a href="#Object">Object</a>
+<ul><li><a href="#Object-SLNSW">Object-SLNSW</a></li></ul></li><li><a href="#Object-SLNSW">Object-SLNSW</a></li><li><a href="#Picture">Picture</a></li><li><a href="#Tape">Tape</a></li><li><a href="#Videofilm">Video & film</a>
+<ul><li><a href="#Film">Film</a></li></ul>
+<ul><li><a href="#Tape">Tape</a></li></ul></li>
 </ul>
     <div class="entity concept" id="Audio">
-        <h3>Audio<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Audio<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -364,7 +367,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    Musical sound recordings and audio books.<br/>
+                    <p>Musical sound recordings and audio books.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -376,7 +379,7 @@
         </table>
     </div>
     <div class="entity concept" id="Book">
-        <h3>Book<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Book<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -385,7 +388,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    A written text that can be published in printed or electronic form.<br/>
+                    <p>A written text that can be published in printed or electronic form.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -397,7 +400,7 @@
         </table>
     </div>
     <div class="entity concept" id="Digital">
-        <h3>Digital<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Digital<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -406,21 +409,21 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    A physical device for storing digital content.<br/>
+                    <p>A physical device for storing digital content.</p><br/>
                 </td>
             </tr>
             <tr>
                 <th>Narrower Concepts</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/dvd">http://linked.data.gov.au/def/collection-item-format/dvd</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/eresource">http://linked.data.gov.au/def/collection-item-format/eresource</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/disk">http://linked.data.gov.au/def/collection-item-format/disk</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#Disk">Disk</a><sup class="sup-con" title="concept">con</sup><br/>
+                    <a href="#DigitalVersatileDisc">Digital Versatile Disc</a><sup class="sup-con" title="concept">con</sup><br/>
+                    <a href="#Eresource">Eresource</a><sup class="sup-con" title="concept">con</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity concept" id="Disc">
-        <h3>Disc<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Disc<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -429,7 +432,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    A sound recording on a thin, flat circular object, usually made of shellac, vinyl, or various laminates. The signal may be either analogue or digital, and recorded/played using acoustical, electrical, magnetic or optical technology.<br/>
+                    <p>A sound recording on a thin, flat circular object, usually made of shellac, vinyl, or various laminates. The signal may be either analogue or digital, and recorded/played using acoustical, electrical, magnetic or optical technology.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -441,7 +444,7 @@
         </table>
     </div>
     <div class="entity concept" id="Disk">
-        <h3>Disk<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Disk<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -450,7 +453,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    A round magnetic device for storing information and programmes accessible by computer; may be either a rigid platter (hard disk) or a sheet of flexible plastic (floppy disk or diskette). The disk base is coated with a magnetizable material on which data can be recorded or stored along concentric tracks as small magnetic areas forming patterns of binary digits or bits. Information is written onto the disk, and read from it in a disk drive, by read/write heads mounted on arms which move rapidly across the disk.<br/>
+                    <p>A round magnetic device for storing information and programmes accessible by computer; may be either a rigid platter (hard disk) or a sheet of flexible plastic (floppy disk or diskette). The disk base is coated with a magnetizable material on which data can be recorded or stored along concentric tracks as small magnetic areas forming patterns of binary digits or bits. Information is written onto the disk, and read from it in a disk drive, by read/write heads mounted on arms which move rapidly across the disk.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -462,13 +465,13 @@
             <tr>
                 <th>Broader Concepts</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/digital">http://linked.data.gov.au/def/collection-item-format/digital</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#Digital">Digital</a><sup class="sup-con" title="concept">con</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity concept" id="Documentation">
-        <h3>Documentation<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Documentation<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -477,7 +480,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    Photographs and paper collection items.<br/>
+                    <p>Photographs and paper collection items.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -489,16 +492,16 @@
             <tr>
                 <th>Narrower Concepts</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/picture">http://linked.data.gov.au/def/collection-item-format/picture</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/manuscript">http://linked.data.gov.au/def/collection-item-format/manuscript</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/map">http://linked.data.gov.au/def/collection-item-format/map</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/newspaper">http://linked.data.gov.au/def/collection-item-format/newspaper</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#Map">Map</a><sup class="sup-con" title="concept">con</sup><br/>
+                    <a href="#Picture">Picture</a><sup class="sup-con" title="concept">con</sup><br/>
+                    <a href="#Manuscript">Manuscript</a><sup class="sup-con" title="concept">con</sup><br/>
+                    <a href="#Newspaper">Newspaper</a><sup class="sup-con" title="concept">con</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity concept" id="DigitalVersatileDisc">
-        <h3>Digital Versatile Disc<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Digital Versatile Disc<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -507,7 +510,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    A round plastic, partly metal-coated disc used to store digital data which can be written and read by laser.<br/>
+                    <p>A round plastic, partly metal-coated disc used to store digital data which can be written and read by laser.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -519,13 +522,13 @@
             <tr>
                 <th>Broader Concepts</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/digital">http://linked.data.gov.au/def/collection-item-format/digital</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#Digital">Digital</a><sup class="sup-con" title="concept">con</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity concept" id="Eresource">
-        <h3>Eresource<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Eresource<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -534,7 +537,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    Website, database and software collection items.<br/>
+                    <p>Website, database and software collection items.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -546,13 +549,13 @@
             <tr>
                 <th>Broader Concepts</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/digital">http://linked.data.gov.au/def/collection-item-format/digital</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#Digital">Digital</a><sup class="sup-con" title="concept">con</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity concept" id="Film">
-        <h3>Film<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Film<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -561,7 +564,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    A series of still images collected onto a flexible and transparent piece of film so that they can be projected in a rapid sequence so as to give the illusion of motion.<br/>
+                    <p>A series of still images collected onto a flexible and transparent piece of film so that they can be projected in a rapid sequence so as to give the illusion of motion.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -573,13 +576,13 @@
             <tr>
                 <th>Broader Concepts</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/video-film">http://linked.data.gov.au/def/collection-item-format/video-film</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#Videofilm">Video & film</a><sup class="sup-con" title="concept">con</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity concept" id="Journalmagazine">
-        <h3>Journal & magazine<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Journal & magazine<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -588,7 +591,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    Journal and magazine collection items.<br/>
+                    <p>Journal and magazine collection items.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -600,7 +603,7 @@
         </table>
     </div>
     <div class="entity concept" id="Manuscript">
-        <h3>Manuscript<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Manuscript<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -609,7 +612,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    The original copy of a book or article.<br/>
+                    <p>The original copy of a book or article.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -621,13 +624,13 @@
             <tr>
                 <th>Broader Concepts</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/documentation">http://linked.data.gov.au/def/collection-item-format/documentation</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#Documentation">Documentation</a><sup class="sup-con" title="concept">con</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity concept" id="Map">
-        <h3>Map<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Map<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -636,7 +639,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    A drawing of the earth's surface, or part of that surface, showing the shape and position of different countries, political borders, natural features such as rivers and mountains, and artificial features such as roads and buildings.<br/>
+                    <p>A drawing of the earth's surface, or part of that surface, showing the shape and position of different countries, political borders, natural features such as rivers and mountains, and artificial features such as roads and buildings.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -648,13 +651,13 @@
             <tr>
                 <th>Broader Concepts</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/documentation">http://linked.data.gov.au/def/collection-item-format/documentation</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#Documentation">Documentation</a><sup class="sup-con" title="concept">con</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity concept" id="Newspaper">
-        <h3>Newspaper<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Newspaper<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -663,7 +666,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    A regularly printed document consisting of large sheets of paper that are folded together, or a website, containing news reports, articles, photographs, and advertisements.<br/>
+                    <p>A regularly printed document consisting of large sheets of paper that are folded together, or a website, containing news reports, articles, photographs, and advertisements.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -675,13 +678,13 @@
             <tr>
                 <th>Broader Concepts</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/documentation">http://linked.data.gov.au/def/collection-item-format/documentation</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#Documentation">Documentation</a><sup class="sup-con" title="concept">con</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity concept" id="Object">
-        <h3>Object<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Object<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -690,7 +693,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    A thing that you can see or touch but that is not usually a living animal, plant, or person.<br/>
+                    <p>A thing that you can see or touch but that is not usually a living animal, plant, or person.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -702,13 +705,13 @@
             <tr>
                 <th>Narrower Concepts</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/object-slnsw">http://linked.data.gov.au/def/collection-item-format/object-slnsw</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#Object-SLNSW">Object-SLNSW</a><sup class="sup-con" title="concept">con</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity concept" id="Object-SLNSW">
-        <h3>Object-SLNSW<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Object-SLNSW<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -717,7 +720,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    Objects, stamps and ephemera collection items.<br/>
+                    <p>Objects, stamps and ephemera collection items.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -729,13 +732,13 @@
             <tr>
                 <th>Broader Concepts</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/object">http://linked.data.gov.au/def/collection-item-format/object</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#Object">Object</a><sup class="sup-con" title="concept">con</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity concept" id="Picture">
-        <h3>Picture<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Picture<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -744,7 +747,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    photographs, prints, drawings, paintings, posters.<br/>
+                    <p>photographs, prints, drawings, paintings, posters.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -756,13 +759,13 @@
             <tr>
                 <th>Broader Concepts</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/documentation">http://linked.data.gov.au/def/collection-item-format/documentation</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#Documentation">Documentation</a><sup class="sup-con" title="concept">con</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity concept" id="Tape">
-        <h3>Tape<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Tape<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -771,7 +774,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    A plastic strip covered with a magnetic substance on which sound, images, or computer information can be recorded.<br/>
+                    <p>A plastic strip covered with a magnetic substance on which sound, images, or computer information can be recorded.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -783,13 +786,13 @@
             <tr>
                 <th>Broader Concepts</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/video-film">http://linked.data.gov.au/def/collection-item-format/video-film</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#Videofilm">Video & film</a><sup class="sup-con" title="concept">con</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity concept" id="Videofilm">
-        <h3>Video & film<sup title="Concept" class="sup-cp">cp</sup></h3>
+        <h3>Video & film<sup title="Concept" class="sup-con">con</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -798,7 +801,7 @@
             <tr>
                 <th>Definition</th>
                 <td>
-                    Video and film collection items.<br/>
+                    <p>Video and film collection items.</p><br/>
                 </td>
             </tr>
             <tr>
@@ -810,8 +813,8 @@
             <tr>
                 <th>Narrower Concepts</th>
                 <td>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/film">http://linked.data.gov.au/def/collection-item-format/film</a><sup class="sup-cp" title="concept">cp</sup><br/>
-                    <a href="http://linked.data.gov.au/def/collection-item-format/tape">http://linked.data.gov.au/def/collection-item-format/tape</a><sup class="sup-cp" title="concept">cp</sup><br/>
+                    <a href="#Tape">Tape</a><sup class="sup-con" title="concept">con</sup><br/>
+                    <a href="#Film">Film</a><sup class="sup-con" title="concept">con</sup><br/>
                 </td>
             </tr>
         </table>
@@ -821,6 +824,12 @@
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
+        <dt>default (:)</dt>
+        <dd><code>http://linked.data.gov.au/def/collection-item-format</code></dd>
+        <dt>cif</dt>
+        <dd><code>http://linked.data.gov.au/def/collection-item-format/</code></dd>
+        <dt>dc</dt>
+        <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
         <dt>dct</dt>
         <dd><code>http://purl.org/dc/terms/</code></dd>
         <dt>owl</dt>
@@ -841,8 +850,8 @@
   <section id="legend">
     <h2>Legend</h2>
     <table class="entity">
-      <tr><td><sup class="sup-cl" title="Collections">cl</sup></td><td>Collections</td></tr>
-      <tr><td><sup class="sup-cp" title="Concepts">cp</sup></td><td>Concepts</td></tr>
+      <tr><td><sup class="sup-col" title="Collections">col</sup></td><td>Collections</td></tr>
+      <tr><td><sup class="sup-con" title="Concepts">con</sup></td><td>Concepts</td></tr>
     </table>
   </section>
 </body>

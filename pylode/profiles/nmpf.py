@@ -421,7 +421,7 @@ class NMPF(BaseProfile):
                     if type(o) == Literal:
                         self.METADATA[agent_type].add(str(o))
                     else:  # Blank Node or URI
-                        self.METADATA[agent_type].add(self._make_agent_html(o))
+                        self.METADATA[agent_type].add(self._make_agent(o))
 
                 if p == PROV.wasGeneratedBy:
                     for o2 in self.G.objects(subject=o, predicate=DOAP.repository):
@@ -670,10 +670,10 @@ class NMPF(BaseProfile):
                     self.PROPERTIES[prop]["title"] = str(o)
 
                 if p == DCTERMS.description:
-                    self.PROPERTIES[prop]["description"] = str(o)
+                    self.PROPERTIES[prop]["description"] = markdown.markdown(str(o))
 
                 if p == SKOS.scopeNote:
-                    self.PROPERTIES[prop]["scopeNote"] = str(o)
+                    self.PROPERTIES[prop]["scopeNote"] = markdown.markdown(str(o))
 
                 if p == SKOS.example:
                     self.PROPERTIES[prop]["example"] = str(o)

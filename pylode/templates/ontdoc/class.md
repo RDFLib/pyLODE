@@ -12,10 +12,10 @@ Source | {{ source }}
 Description | {{ description }}
 {%- endif %}
 {%- if scopeNote is not none %}
-Usage Note | {{ scopeNote }}
+Scope Notes | {{ scopeNote }}
 {%- endif %}
-{%- if example is not none %}
-Example | {{ example|safe }}
+{%- if examples|length > 0 %}
+Example(s) | {%- for example in examples %}{{ example|safe }}<br />{% endfor %}
 {%- endif %}
 {%- if supers|length > 0 %}
 Super-classes | {%- for super in supers %}{{ super }}<br />{%- endfor %}

@@ -1,0 +1,204 @@
+@prefix : <https://example.com#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sdo: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<https://example.com> 
+    a owl:Ontology ;
+    owl:versionIRI <https://example.com/0.9> ;
+    dcterms:modified "2019-10-21"@en ;
+    dcterms:contributor "Santa Clause" ;
+    dcterms:created "2021-05-05"^^xsd:date ;
+    dcterms:creator <http://orcid.org/0000-0002-8742-7730> ;
+    owl:priorVersion "0.8"@en ;
+    skos:prefLabel "Examples Ontology"@en ;
+    owl:versionInfo "0.9"@en ;
+    skos:definition "This ontology contains several simple classes and properties about animals that are defined only to show off pyLODE's ability to represent different forms of example rendering."@en ;
+    dcterms:publisher <https://linked.data.gov.au/org/surround> ;
+    vann:preferredNamespaceUri "https://example.com#"^^xsd:string ;
+    vann:preferredNamespacePrefix "eggs"@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights "(c) SURROUND Australia Pty Ltd"@en ;
+.
+
+<http://orcid.org/0000-0002-8742-7730> sdo:name "Nicholas J. Car" .
+
+:Creature
+    a owl:Class ;
+    skos:prefLabel "Creature"@en ;
+    skos:definition "A Creature is a living animal"@en ;
+    rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty :bornOrHatchedDate ;
+    ] ;
+    skos:example <https://example.com/individuals/creature-x> ;
+    skos:scopeNote "class with link example" ;
+.
+
+:bornOrHatchedDate
+    a owl:DatatypeProperty ;
+    skos:prefLabel "born or hatched date"@en ;
+    skos:definition "The Gregorian calendar date on which this Creature was born or hatched"@en ;
+    rdfs:domain :Creature ;
+    rdfs:range xsd:date ;
+    skos:example """<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns="https://example.com#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="https://example.com#flipper">
+    <rdf:type rdf:resource="https://example.com#Fish"/>
+    <bornOrHatchedDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-05-11</bornOrHatchedDate>
+  </rdf:Description>
+</rdf:RDF>
+"""^^rdf:XMLLiteral ;
+    skos:scopeNote "property with example in inline XML" ;
+.
+
+:Fish
+    a owl:Class ;
+    rdfs:subClassOf :Creature ;
+    skos:prefLabel "Fish"@en ;
+    skos:definition "Fish are aquatic, craniate, gill-bearing animals that lack limbs with digits. They form a sister group to the tunicates, together forming the olfactores. Included in this definition are the living hagfish, lampreys, and cartilaginous and bony fish as well as various extinct related groups. Around 99% of living fish species are ray-finned fish, belonging to the class Actinopterygii, with over 95% belonging to the teleost subgrouping."@en ;
+    rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty :livesInFreshWater ;
+    ] ;
+    rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty :livesInSaltWater ;
+    ] ;
+    rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty :livesInEstuarineWater ;
+    ] ;
+    rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty :eats ;
+    ] ;
+    skos:example """{
+  "@id": "https://example.com#flipper",
+  "@type": "https://example.com#Fish",
+  "http://www.w3.org/2004/02/skos/core#definition": "Flipper is the fish that lives in Nick's fish tank",
+  "http://www.w3.org/2004/02/skos/core#prefLabel": "Flipper the Fish",
+  "https://example.com#hasScaleColour": {
+    "@id": "http://example-voc.com/concept/Orange"
+  },
+  "https://example.com#livesInFreshWater": true,
+  "https://example.com#livesInSaltWater": false
+}"""^^rdf:JSON ;
+    skos:scopeNote "class with example in inline JSON-LD" ;
+.
+
+:Food
+    a owl:Class ;
+    skos:prefLabel "Food"@en ;
+    skos:definition "Food is consumed by Creatures to give them energy"@en ;
+    skos:scopeNote "class with an external URI example" ;
+    skos:example "http://fake.com/thing/food-x" ;
+.
+
+:FishFood
+    a owl:Class ;
+    rdfs:subClassOf :Food ;
+    skos:prefLabel "Fish food"@en ;
+    skos:definition "Fish food is food primarily eaten by fish. It may also be eaten by other Creatures too"@en ;
+    skos:scopeNote "class with a local image example" ;
+    skos:example "fish-food.png" ;
+.
+
+:livesInFreshWater
+    a owl:DatatypeProperty ;
+    skos:prefLabel "lives in fresh water"@en ;
+    skos:definition "True if the fish lives in fresh water. It may also live in other water"@en ;
+    rdfs:domain :Fish ;
+    rdfs:range xsd:boolean ;
+    skos:example """<x> a eg:Fish ;
+    skos:prefLabel "Fish X"@en ;
+    eg:livesInFreshWater true ;
+    ...
+.""" ;  # no datatype
+    skos:scopeNote "property with example in inline RDF" ;
+.
+
+:livesInSaltWater
+    a owl:DatatypeProperty ;
+    skos:prefLabel "lives in salt water"@en ;
+    skos:definition "True if the fish lives in salt water. It may also live in other water"@en ;
+    rdfs:domain :Fish ;
+    rdfs:range xsd:boolean ;
+    skos:scopeNote "property with an remote-hosted image example" ;
+    skos:example "https://raw.githubusercontent.com/RDFLib/pyLODE/master/pylode/examples/examples-ont/toothy.png" ;
+.
+
+:livesInEstuarineWater
+    a owl:DatatypeProperty ;
+    skos:prefLabel "lives in estuarine water"@en ;
+    skos:definition "True if the fish lives in estuarine water. It may also live in other water"@en ;
+    rdfs:domain :Fish ;
+    rdfs:range xsd:boolean ;
+    skos:example [
+        dcterms:format "text/markdown" ;
+        prof:hasArtifact """**lives in estuarine water**: _true_""" ;
+    ] ;
+    skos:scopeNote "property with example using Resource Descriptor for inline Markdown" ;
+.
+
+:hasScaleColour
+    a owl:ObjectProperty ;
+    skos:prefLabel "has scale colour"@en ;
+    skos:definition "A colour of the fish's scales. Can have multiple colours."@en ;
+    rdfs:range skos:Concept ;
+    skos:example """<strong><em>scale colour</em></strong>:<ul><li>blue</li><li>orange</li><li>white</li></ul>"""^^rdf:HTML ;  # to be interpreted as HTML
+    skos:scopeNote "property with example in inline HTML" ;
+.
+
+:eats
+    a owl:ObjectProperty ;
+    skos:prefLabel "eats"@en ;
+    skos:definition "A creature eats a kind of food"@en ;
+    rdfs:range :Food ;
+    skos:example :eats-example , :eats-example2 ;
+    skos:scopeNote "property with two Resource Descriptor example in same file, conforms to this ontology and something else (http://other.com)" ;
+.
+
+:eats-example
+    a prof:ResourceDescriptor ;
+    dcterms:format "text/turtle" ;
+    dcterms:conformsTo <https://example.com> ;
+    prof:hasArtifact """<x> a :Creature ;
+    :eats <y> ;
+.
+<y> a :Food .""" ;
+.
+
+:eats-example2
+    a prof:ResourceDescriptor ;
+    dcterms:format "application/rdf+xml" ;
+    dcterms:conformsTo <https://other.com> ;
+    prof:hasArtifact """<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns="https://example.com"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="file:///Users/nick/Work/rdflib/pyLODE/pylode/examples/examples-ont/y2">
+    <rdf:type rdf:resource="https://example.comFood"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="file:///Users/nick/Work/rdflib/pyLODE/pylode/examples/examples-ont/x2">
+    <rdf:type rdf:resource="https://example.comCreature"/>
+    <eats rdf:resource="file:///Users/nick/Work/rdflib/pyLODE/pylode/examples/examples-ont/y2"/>
+  </rdf:Description>
+</rdf:RDF>""" ;
+.
+

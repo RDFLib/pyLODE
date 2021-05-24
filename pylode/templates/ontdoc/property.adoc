@@ -1,0 +1,66 @@
+[#{{ fid }}]
+==== {{ title }}
+
+[cols="1,4a",options=header]
+|===
+|Property
+|Value
+
+|IRI
+|`{{ uri }}`
+
+{%- if is_defined_by is not none %}
+|Is Defined By
+|{{ is_defined_by }}
+{%- endif %}
+
+{%- if source is not none %}
+|Source
+|{{ source }}
+{%- endif %}
+
+{%- if description is not none %}
+|Description
+|{{ description }}
+{%- endif %}
+
+{%- if scopeNote is not none %}
+|Scope Notes
+|{{ scopeNote }}
+{%- endif %}
+
+{%- if examples|length > 0 %}
+|Example(s)
+|{% for example in examples %}
+{{ example|safe }}
+{% endfor %}
+{%- endif %}
+
+{%- if supers|length > 0 %}
+|Super-properties
+|{%- for super in supers %}* {{ super }}
+{% endfor %}
+{%- endif %}
+
+{%- if domains|length > 0 or domainIncludes|length > 0 %}
+    |Domain(s)
+    |{%- if domains|length > 0 %}{%- for domain in domains %}* {{ domain }}
+{%- endfor %}{%- endif %}
+    {%- if domainIncludes|length > 0 %}
+        (link:https://schema.org/domainIncludes[sdo:domainIncludes])
+        {%- for domainInclude in domainIncludes %}* {{ domainInclude }}
+{% endfor %}
+    {%- endif %}
+{%- endif %}
+
+{%- if ranges|length > 0 or rangeIncludes|length > 0 %}
+    |Range(s) 
+    |{%- if ranges|length > 0 %}{%- for range in ranges %}* {{ range }}
+{% endfor %}{%- endif %}
+    {%- if rangeIncludes|length > 0 %}
+        (link:https://schema.org/rangeIncludes[sdo:rangeIncludes])
+        {%- for rangeInclude in rangeIncludes %}{{ rangeInclude }}
+{% endfor %}
+    {%- endif %}
+{%- endif %}
+|===

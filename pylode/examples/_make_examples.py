@@ -15,6 +15,7 @@ def main():
         "datatype.ttl",
         "decprov.ttl",
         "doap.ttl",
+        "ebg.ttl",
         "foaf.ttl",
         "geo.ttl",
         "geoadminfeatures.ttl",

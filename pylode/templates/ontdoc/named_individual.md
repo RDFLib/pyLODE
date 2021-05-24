@@ -6,7 +6,7 @@ URI | `{{ uri }}`
 Is Defined By | {{ is_defined_by }}
 {%- endif %}
 {%- if classes|length > 0 %}
-* **Contributor(s)**
+* **Class(es)**
 {%- for class in classes %}
   * {{ class }}
 {%- endfor %}

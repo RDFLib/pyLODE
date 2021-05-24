@@ -1,5 +1,5 @@
 <div class="entity collection" id="{{ fid }}">
-        <h3>{{ prefLabels[0][0] }}<sup title="Collection" class="sup-cl">cl</sup></h3>
+        <h3>{{ prefLabels[0][0] }}<sup title="Collection" class="sup-col">col</sup></h3>
             {%- if prefLabels|length > 1 %}
             <h4>
               {%- for prefLabel in prefLabels %}
@@ -23,7 +23,7 @@
             {%- endif %}
             {%- if scopeNotes|length > 0 %}
             <tr>
-                <th>Usage Note</th>
+                <th>Scope Notes</th>
                 <td>
                     {{- scopeNotes[0] -}}
                 </td>

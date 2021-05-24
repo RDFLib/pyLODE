@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <title>GeoSPARQL Ontology</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==">
+    <link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1Sew
+EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     
     <style>
@@ -132,8 +135,8 @@
         .sup-ap,
         .sup-p,
         .sup-ni,
-        .sup-cp,
-        .sup-cl {
+        .sup-con,
+        .sup-col {
             cursor:help;
             margin-left: 3px;
         }
@@ -166,11 +169,11 @@
             color:brown;
         }
 
-        .sup-cp {
+        .sup-con {
             color:orange;
         }
 
-        .sup-cl {
+        .sup-col {
             color:darkred;
         }
 
@@ -210,7 +213,7 @@
 <body>
   <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
     <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.8.10</span>
+    <span style="font-size:smaller;">2.9.1</span>
   </div>
   <h1>GeoSPARQL Ontology</h1>
 <section id="metadata">
@@ -218,12 +221,38 @@
     <dl>
         <dt>URI</dt>
         <dd><code>http://www.opengis.net/ont/geosparql</code></dd>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher">Publisher</a>(s)</dt>
+        <dd>
+            
+    Open Geospatial Consortium<br/>
+        </dd>
         <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
         <dd>
-            Open Geospatial Consortium<br/>
+            OGC GeoSPARQL Standards Working Group<br/>
         </dd>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/contributor">Contributor</a>(s)</dt>
+        <dd>
+            
+    Joseph Abhayaratna
+    (<a href="mailto:joseph.abhayaratna@geoscape.com.au">joseph.abhayaratna@geoscape.com.au</a>)<br/>
+            
+    Nicholas J. Car
+    (<a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a>)<br/>
+            
+    Simon J D Cox
+    (<a href="mailto:simon.cox@csiro.au">simon.cox@csiro.au</a>)<br/>
+            
+    Timo Homburg
+    (<a href="mailto:timo.homburg@hs-mainz.de">timo.homburg@hs-mainz.de</a>)<br/>
+        </dd>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/created">Created</a></dt>
+        <dd>2020-09-09</dd>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
+        <dd>2021-03-25</dd>
         <dt>Version Information</dt>
-        <dd>OGC GeoSPARQL 1.0</dd>
+        <dd>OGC GeoSPARQL 1.1</dd>
+        <dt>Source</dt>
+        <dd>OGC GeoSPARQL – A Geographic Query Language for RDF Data OGC 11-052r5</dd>
         <dt>Ontology RDF</dt>
         <dd><a href="geo.ttl">RDF (turtle)</a></dd>
     </dl>
@@ -238,7 +267,6 @@
         <li><a href="#classes">Classes</a></li>
         <li><a href="#objectproperties">Object Properties</a></li>
         <li><a href="#datatypeproperties">Datatype Properties</a></li>
-        <li><a href="#annotationproperties">Annotation Properties</a></li>
         <li><a href="#namespaces">Namespaces</a></li>
         <li><a href="#legend">Legend</a></li>
     </ol>
@@ -253,9 +281,10 @@
   <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
-        <li><a href="#Feature">Feature</a></li>
-        <li><a href="#Geometry">Geometry</a></li>
-        <li><a href="#SpatialObject">SpatialObject</a></li>
+      <a href="#Feature">Feature</a>
+      <a href="#Geometry">Geometry</a>
+      <a href="#SpatialMeasure">Spatial Measure</a>
+      <a href="#SpatialObject">Spatial Object</a>
     </ul>
     <div class="entity class" id="Feature">
         <h3>Feature<sup title="class" class="sup-c">c</sup></h3>
@@ -267,29 +296,40 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    <pre><code>  This class represents the top-level feature type. This class is
-  equivalent to GFI_Feature defined in ISO 19156:2011, and it is
-  superclass of all feature types.
-</code></pre>
+                    <p>This class represents the top-level feature type. This class is equivalent to GFI_Feature defined in ISO 19156:2011, and it is superclass of all feature types.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Example</th>
+                <td>
+                    <pre>
+http://www.opengis.net/spec/geosparql/1.1/specification.html#annexB_example3
+                    </pre>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#defaultGeometry">geosparql:defaultGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasGeometry">geosparql:hasGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasLength">hasLength</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasGeometry">hasGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasDefaultGeometry">hasDefaultGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasVolume">hasVolume</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasCentroid">hasCentroid</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasArea">hasArea</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#defaultGeometry">defaultGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasBoundingBox">hasBoundingBox</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -304,48 +344,90 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    <pre><code>  The class represents the top-level geometry type. This class is
-  equivalent to the UML class GM_Object defined in ISO 19107, and
-  it is superclass of all geometry types.
-</code></pre>
+                    <p>The class represents the top-level geometry type. This class is equivalent to the UML class GM_Object defined in ISO 19107, and it is superclass of all geometry types.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Example</th>
+                <td>
+                    <pre>
+http://www.opengis.net/spec/geosparql/1.1/specification.html#annexB_example4
+                    </pre>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#hasserialization">geosparql:hasSerialization</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#dimension">geosparql:dimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#asGML">geosparql:asGML</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#spatialDimension">geosparql:spatialDimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#coordinateDimension">geosparql:coordinateDimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#isSimple">geosparql:isSimple</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#asWKT">geosparql:asWKT</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#isEmpty">geosparql:isEmpty</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#inSRS">inSRS</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#spatialDimension">spatialDimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#asGML">asGML</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#asWKT">asWKT</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#dimension">dimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#asGeoJSON">asGeoJSON</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#hasSerialization">hasSerialization</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#isEmpty">isEmpty</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#coordinateDimension">coordinateDimension</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#asKML">asKML</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#hasSpatialResolution">hasSpatialResolution</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#asDggsWkt">asDggsWkt</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="#isSimple">isSimple</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#hasGeometry">geosparql:hasGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#defaultGeometry">geosparql:defaultGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasBoundingBox">hasBoundingBox</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#defaultGeometry">defaultGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasDefaultGeometry">hasDefaultGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasGeometry">hasGeometry</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasCentroid">hasCentroid</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="SpatialMeasure">
+        <h3>Spatial Measure<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.opengis.net/ont/geosparql#SpatialMeasure</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.opengis.net/spec/geosparql/1.1
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>This class represents a measurement of some dimension of a feature's spatial presence.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#hasLength">hasLength</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasVolume">hasVolume</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasArea">hasArea</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity class" id="SpatialObject">
-        <h3>SpatialObject<sup title="class" class="sup-c">c</sup></h3>
+        <h3>Spatial Object<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -354,80 +436,78 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    <pre><code>  The class spatial-object represents everything that can have
-  a spatial representation. It is superclass of feature and geometry.
-</code></pre>
+                    <p>The class spatial-object represents everything that can have a spatial representation. It is superclass of feature and geometry.</p>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#Geometry">geosparql:Geometry</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Feature">Feature</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#disjoint">geosparql:ehDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#overlaps">geosparql:sfOverlaps</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#inside">geosparql:ehInside</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfDisjoint">geosparql:sfDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#tangentialproperpartinverse">geosparql:rcc8tppi</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#tangentialproperpart">geosparql:rcc8tpp</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#equals">geosparql:ehEquals</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfEquals">geosparql:sfEquals</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#rcc8eq">geosparql:rcc8eq</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#coveredBy">geosparql:ehCoveredBy</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#intersects">geosparql:sfIntersects</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#non-tangentialproperpart">geosparql:rcc8ntpp</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#partiallyoverlapping">geosparql:rcc8po</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#covers">geosparql:ehCovers</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#externallyconnected">geosparql:rcc8ec</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#crosses">geosparql:sfCrosses</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#non-tangentialproperpartinverse">geosparql:rcc8ntppi</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#overlap">geosparql:ehOverlap</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#meet">geosparql:ehMeet</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#touches">geosparql:sfTouches</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#contains">geosparql:ehContains</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfContains">geosparql:sfContains</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#within">geosparql:sfWithin</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#disconnected">geosparql:rcc8dc</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ehOverlap">ehOverlap</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfTouches">sfTouches</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8ntppi">rcc8ntppi</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ehCoveredBy">ehCoveredBy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8eq">rcc8eq</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ehMeet">ehMeet</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfDisjoint">sfDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ehDisjoint">ehDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ehInside">ehInside</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8po">rcc8po</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8ntpp">rcc8ntpp</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8tppi">rcc8tppi</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8dc">rcc8dc</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ehCovers">ehCovers</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8ec">rcc8ec</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfCrosses">sfCrosses</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8tpp">rcc8tpp</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ehEquals">ehEquals</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfIntersects">sfIntersects</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfWithin">sfWithin</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfOverlaps">sfOverlaps</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfEquals">sfEquals</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ehContains">ehContains</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfContains">sfContains</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#sfContains">geosparql:sfContains</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#tangentialproperpart">geosparql:rcc8tpp</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#non-tangentialproperpartinverse">geosparql:rcc8ntppi</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#meet">geosparql:ehMeet</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfEquals">geosparql:sfEquals</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#tangentialproperpartinverse">geosparql:rcc8tppi</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#inside">geosparql:ehInside</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#overlap">geosparql:ehOverlap</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#non-tangentialproperpart">geosparql:rcc8ntpp</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#crosses">geosparql:sfCrosses</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#partiallyoverlapping">geosparql:rcc8po</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#equals">geosparql:ehEquals</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#intersects">geosparql:sfIntersects</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#within">geosparql:sfWithin</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#disconnected">geosparql:rcc8dc</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#externallyconnected">geosparql:rcc8ec</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#rcc8eq">geosparql:rcc8eq</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#coveredBy">geosparql:ehCoveredBy</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#covers">geosparql:ehCovers</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#disjoint">geosparql:ehDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#overlaps">geosparql:sfOverlaps</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#contains">geosparql:ehContains</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#touches">geosparql:sfTouches</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#sfDisjoint">geosparql:sfDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ehMeet">ehMeet</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ehEquals">ehEquals</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfCrosses">sfCrosses</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfTouches">sfTouches</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8ntppi">rcc8ntppi</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8dc">rcc8dc</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8tpp">rcc8tpp</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8tppi">rcc8tppi</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfContains">sfContains</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfIntersects">sfIntersects</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfWithin">sfWithin</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfDisjoint">sfDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8ec">rcc8ec</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ehDisjoint">ehDisjoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8eq">rcc8eq</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ehCoveredBy">ehCoveredBy</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ehCovers">ehCovers</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ehContains">ehContains</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8po">rcc8po</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ehInside">ehInside</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#ehOverlap">ehOverlap</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfOverlaps">sfOverlaps</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#rcc8ntpp">rcc8ntpp</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#sfEquals">sfEquals</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -437,31 +517,39 @@
     <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
         <li><a href="#defaultGeometry">defaultGeometry</a></li>
-        <li><a href="#contains">contains</a></li>
-        <li><a href="#coveredBy">coveredBy</a></li>
-        <li><a href="#covers">covers</a></li>
-        <li><a href="#disjoint">disjoint</a></li>
-        <li><a href="#equals">equals</a></li>
-        <li><a href="#inside">inside</a></li>
-        <li><a href="#meet">meet</a></li>
-        <li><a href="#overlap">overlap</a></li>
+        <li><a href="#ehContains">ehContains</a></li>
+        <li><a href="#ehCoveredBy">ehCoveredBy</a></li>
+        <li><a href="#ehCovers">ehCovers</a></li>
+        <li><a href="#ehDisjoint">ehDisjoint</a></li>
+        <li><a href="#ehEquals">ehEquals</a></li>
+        <li><a href="#ehInside">ehInside</a></li>
+        <li><a href="#ehMeet">ehMeet</a></li>
+        <li><a href="#ehOverlap">ehOverlap</a></li>
+        <li><a href="#hasArea">hasArea</a></li>
+        <li><a href="#hasBoundingBox">hasBoundingBox</a></li>
+        <li><a href="#hasCentroid">hasCentroid</a></li>
+        <li><a href="#hasDefaultGeometry">hasDefaultGeometry</a></li>
         <li><a href="#hasGeometry">hasGeometry</a></li>
-        <li><a href="#disconnected">disconnected</a></li>
-        <li><a href="#externallyconnected">externally connected</a></li>
-        <li><a href="#rcc8eq">equals</a></li>
-        <li><a href="#non-tangentialproperpart">non-tangential proper part</a></li>
-        <li><a href="#non-tangentialproperpartinverse">non-tangential proper part inverse</a></li>
-        <li><a href="#partiallyoverlapping">partially overlapping</a></li>
-        <li><a href="#tangentialproperpart">tangential proper part</a></li>
-        <li><a href="#tangentialproperpartinverse">tangential proper part inverse</a></li>
-        <li><a href="#sfContains">contains</a></li>
-        <li><a href="#crosses">crosses</a></li>
-        <li><a href="#sfDisjoint">disjoint</a></li>
-        <li><a href="#sfEquals">equals</a></li>
-        <li><a href="#intersects">intersects</a></li>
-        <li><a href="#overlaps">overlaps</a></li>
-        <li><a href="#touches">touches</a></li>
-        <li><a href="#within">within</a></li>
+        <li><a href="#hasLength">hasLength</a></li>
+        <li><a href="#hasSpatialResolution">hasSpatialResolution</a></li>
+        <li><a href="#hasVolume">hasVolume</a></li>
+        <li><a href="#inSRS">inSRS</a></li>
+        <li><a href="#rcc8dc">rcc8dc</a></li>
+        <li><a href="#rcc8ec">rcc8ec</a></li>
+        <li><a href="#rcc8eq">rcc8eq</a></li>
+        <li><a href="#rcc8ntpp">rcc8ntpp</a></li>
+        <li><a href="#rcc8ntppi">rcc8ntppi</a></li>
+        <li><a href="#rcc8po">rcc8po</a></li>
+        <li><a href="#rcc8tpp">rcc8tpp</a></li>
+        <li><a href="#rcc8tppi">rcc8tppi</a></li>
+        <li><a href="#sfContains">sfContains</a></li>
+        <li><a href="#sfCrosses">sfCrosses</a></li>
+        <li><a href="#sfDisjoint">sfDisjoint</a></li>
+        <li><a href="#sfEquals">sfEquals</a></li>
+        <li><a href="#sfIntersects">sfIntersects</a></li>
+        <li><a href="#sfOverlaps">sfOverlaps</a></li>
+        <li><a href="#sfTouches">sfTouches</a></li>
+        <li><a href="#sfWithin">sfWithin</a></li>
     </ul>
     <div class="entity property" id="defaultGeometry">
         <h3>defaultGeometry<sup title="object property" class="sup-op">op</sup></h3>
@@ -473,40 +561,37 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      The default geometry to be used in spatial calculations.
-      It is Usually the most detailed geometry.
-    
+                    <p>The default geometry to be used in spatial calculations. It is usually the most detailed geometry.</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="#hasGeometry">geosparql:hasGeometry</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="#hasGeometry">hasGeometry</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Feature">Feature</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Geometry">geosparql:Geometry</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="contains">
-        <h3>contains<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="ehContains">
+        <h3>ehContains<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -515,34 +600,31 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject spatially contains the
-      object SpatialObject. DE-9IM: T*TFF*FF*
-    
+                    <p>Exists if the subject SpatialObject spatially contains the object SpatialObject. DE-9IM: T<em>TFF</em>FF*</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="coveredBy">
-        <h3>coveredBy<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="ehCoveredBy">
+        <h3>ehCoveredBy<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -551,38 +633,68 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject is spatially covered
-      by the object SpatialObject. DE-9IM: TFF*TFT**
-    
+                    <p>Exists if the subject SpatialObject is spatially covered by the object SpatialObject. DE-9IM: TFF<em>TFT</em>*</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="covers">
-        <h3>covers<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="ehCovers">
+        <h3>ehCovers<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#ehCovers</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.opengis.net/spec/geosparql/1.1
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Exists if the subject SpatialObject spatially covers the object SpatialObject. DE-9IM: T<em>TFT</em>FF*</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="ehDisjoint">
+        <h3>ehDisjoint<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.opengis.net/ont/geosparql#ehDisjoint</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
@@ -593,64 +705,25 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject spatially covers the
-      object SpatialObject. DE-9IM: T*TFT*FF*
-    
+                    <p>Exists if the subject SpatialObject is spatially disjoint from the object SpatialObject. DE-9IM: FF<em>FF</em>***</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="disjoint">
-        <h3>disjoint<sup title="object property" class="sup-op">op</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>http://www.opengis.net/ont/geosparql#ehDisjoint</code></td>
-            </tr>
-            <tr>
-                <th>Is Defined By</th>
-                <td>
-                    http://www.opengis.net/spec/geosparql/1.0
-                </td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    
-      Exists if the subject SpatialObject is spatially disjoint
-      from the object SpatialObject. DE-9IM: FF*FF****
-    
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="equals">
-        <h3>equals<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="ehEquals">
+        <h3>ehEquals<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -665,28 +738,25 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject spatially equals the
-      object SpatialObject. DE-9IM: TFFFTFFFT
-    
+                    <p>Exists if the subject SpatialObject spatially equals the object SpatialObject. DE-9IM: TFFFTFFFT</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="inside">
-        <h3>inside<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="ehInside">
+        <h3>ehInside<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -695,75 +765,35 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject is spatially inside
-      the object SpatialObject. DE-9IM: TFF*FFT**
-    
+                    <p>Exists if the subject SpatialObject is spatially inside the object SpatialObject. DE-9IM: TFF<em>FFT</em>*</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="meet">
-        <h3>meet<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="ehMeet">
+        <h3>ehMeet<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
                 <td><code>http://www.opengis.net/ont/geosparql#ehMeet</code></td>
-            </tr>
-            <tr>
-                <th>Is Defined By</th>
-                <td>
-                    http://www.opengis.net/spec/geosparql/1.0
-                </td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    
-      Exists if the subject SpatialObject spatially meets the
-      object SpatialObject.
-      DE-9IM: FT******* ^ F**T***** ^ F***T****
-    
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="overlap">
-        <h3>overlap<sup title="object property" class="sup-op">op</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>http://www.opengis.net/ont/geosparql#ehOverlap</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
@@ -774,22 +804,214 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject spatially overlaps the
-      object SpatialObject. DE-9IM: T*T***T**
-    
+                    <p>Exists if the subject SpatialObject spatially meets the object SpatialObject. DE-9IM: FT<strong><em>*</em></strong> ^ F<strong>T****<em> ^ F</em></strong>T****</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="ehOverlap">
+        <h3>ehOverlap<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.opengis.net/ont/geosparql#ehOverlap</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.opengis.net/spec/geosparql/1.1
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Exists if the subject SpatialObject spatially overlaps the object SpatialObject. DE-9IM: T<em>T</em><strong>T</strong></p>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasArea">
+        <h3>hasArea<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.opengis.net/ont/geosparql#hasArea</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.opengis.net/ont/geosparql
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The area of a Feature, expressed as a Spatial Measure.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Feature">Feature</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialMeasure">SpatialMeasure</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasBoundingBox">
+        <h3>hasBoundingBox<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.opengis.net/ont/geosparql#hasBoundingBox</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.opengis.net/ont/geosparql
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The minimum or smallest bounding or enclosing box of a given feature.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Scope Notes</th>
+                <td>
+                    <p>The target is a geometry that defines a rectilinear region whose edges are aligned with the axes of the coordinate reference system, which exactly contains the geometry or feature e.g. sf:Envelope.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#hasGeometry">hasGeometry</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Feature">Feature</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasCentroid">
+        <h3>hasCentroid<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.opengis.net/ont/geosparql#hasCentroid</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.opengis.net/ont/geosparql
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The arithmetic mean position of all the geometry points of a given feature.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Scope Notes</th>
+                <td>
+                    <p>The target geometry shall describe a point, e.g. sf:Point.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#hasGeometry">hasGeometry</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Feature">Feature</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasDefaultGeometry">
+        <h3>hasDefaultGeometry<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.opengis.net/ont/geosparql#hasDefaultGeometry</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.opengis.net/spec/geosparql/1.1
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The default geometry to be used in spatial calculations, usually the most detailed geometry.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#hasGeometry">hasGeometry</a><sup class="sup-op" title="object property">op</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Feature">Feature</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -804,37 +1026,103 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      A spatial representation for a given feature.
-    
+                    <p>A spatial representation for a given feature.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Example</th>
+                <td>
+                    <pre>
+http://www.opengis.net/spec/geosparql/1.1/specification.html#annexB_example4
+                    </pre>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Feature">geosparql:Feature</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Feature">Feature</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Geometry">geosparql:Geometry</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="disconnected">
-        <h3>disconnected<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="hasLength">
+        <h3>hasLength<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
-                <td><code>http://www.opengis.net/ont/geosparql#rcc8dc</code></td>
+                <td><code>http://www.opengis.net/ont/geosparql#hasLength</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.opengis.net/spec/geosparql/1.1
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The length of a one-dimensional Feature or the perimeter length of a two-dimensional Feature, expressed as a Spatial Measure.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Feature">Feature</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialMeasure">SpatialMeasure</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasSpatialResolution">
+        <h3>hasSpatialResolution<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.opengis.net/ont/geosparql#hasSpatialResolution</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.opengis.net/spec/geosparql/1.1
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The spatial resolution of a Geometry.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasVolume">
+        <h3>hasVolume<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.opengis.net/ont/geosparql#hasVolume</code></td>
             </tr>
             <tr>
                 <th>Is Defined By</th>
@@ -845,28 +1133,91 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject is spatially disjoint
-      from the object SpatialObject. DE-9IM: FFTFFTTTT
-    
+                    <p>The volume of a three-dimensional Feature, expressed as a Spatial Measure.</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Feature">Feature</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialMeasure">SpatialMeasure</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="externallyconnected">
-        <h3>externally connected<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="inSRS">
+        <h3>inSRS<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.opengis.net/ont/geosparql#inSRS</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.opengis.net/spec/geosparql/1.1
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The spatial reference system used for the literal representation of the geometry.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="rcc8dc">
+        <h3>rcc8dc<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.opengis.net/ont/geosparql#rcc8dc</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.opengis.net/spec/geosparql/1.1
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Exists if the subject SpatialObject is spatially disjoint  from the object SpatialObject. DE-9IM: FFTFFTTTT</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="rcc8ec">
+        <h3>rcc8ec<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -875,34 +1226,31 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject spatially meets the
-      object SpatialObject. DE-9IM: FFTFTTTTT
-    
+                    <p>Exists if the subject SpatialObject spatially meets the object SpatialObject. DE-9IM: FFTFTTTTT</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity property" id="rcc8eq">
-        <h3>equals<sup title="object property" class="sup-op">op</sup></h3>
+        <h3>rcc8eq<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -911,34 +1259,31 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject spatially equals the
-      object SpatialObject. DE-9IM: TFFFTFFFT
-    
+                    <p>Exists if the subject SpatialObject spatially equals the object SpatialObject. DE-9IM: TFFFTFFFT</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="non-tangentialproperpart">
-        <h3>non-tangential proper part<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="rcc8ntpp">
+        <h3>rcc8ntpp<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -947,34 +1292,31 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject is spatially inside
-      the object SpatialObject. DE-9IM: TFFTFFTTT
-    
+                    <p>Exists if the subject SpatialObject is spatially inside the object SpatialObject. DE-9IM: TFFTFFTTT</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="non-tangentialproperpartinverse">
-        <h3>non-tangential proper part inverse<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="rcc8ntppi">
+        <h3>rcc8ntppi<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -989,28 +1331,25 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject spatially contains the
-      object SpatialObject. DE-9IM: TTTFFTFFT
-    
+                    <p>Exists if the subject SpatialObject spatially contains the object SpatialObject. DE-9IM: TTTFFTFFT</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="partiallyoverlapping">
-        <h3>partially overlapping<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="rcc8po">
+        <h3>rcc8po<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -1019,34 +1358,31 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject spatially overlaps the
-      object SpatialObject. DE-9IM: TTTTTTTTT
-    
+                    <p>Exists if the subject SpatialObject spatially overlaps the object SpatialObject. DE-9IM: TTTTTTTTT</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="tangentialproperpart">
-        <h3>tangential proper part<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="rcc8tpp">
+        <h3>rcc8tpp<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -1061,28 +1397,25 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject is spatially covered
-      by the object SpatialObject. DE-9IM: TFFTTFTTT
-    
+                    <p>Exists if the subject SpatialObject is spatially covered by the object SpatialObject. DE-9IM: TFFTTFTTT</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="tangentialproperpartinverse">
-        <h3>tangential proper part inverse<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="rcc8tppi">
+        <h3>rcc8tppi<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -1091,34 +1424,31 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject spatially covers the
-      object SpatialObject. DE-9IM: TTTFTTFFT
-    
+                    <p>Exists if the subject SpatialObject spatially covers the object SpatialObject. DE-9IM: TTTFTTFFT</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity property" id="sfContains">
-        <h3>contains<sup title="object property" class="sup-op">op</sup></h3>
+        <h3>sfContains<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -1127,34 +1457,31 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject spatially contains the
-      object SpatialObject. DE-9IM: T*****FF*
-    
+                    <p>Exists if the subject SpatialObject spatially contains the object SpatialObject. DE-9IM: T<strong>*</strong>FF*</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="crosses">
-        <h3>crosses<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="sfCrosses">
+        <h3>sfCrosses<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -1163,34 +1490,31 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject spatially crosses the
-      object SpatialObject. DE-9IM: T*T******
-    
+                    <p>Exists if the subject SpatialObject spatially crosses the object SpatialObject. DE-9IM: T<em>T</em><strong>*</strong></p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity property" id="sfDisjoint">
-        <h3>disjoint<sup title="object property" class="sup-op">op</sup></h3>
+        <h3>sfDisjoint<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -1199,34 +1523,31 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject is spatially disjoint
-      from the object SpatialObject. DE-9IM: FF*FF****
-    
+                    <p>Exists if the subject SpatialObject is spatially disjoint from the object SpatialObject. DE-9IM: FF<em>FF</em>***</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity property" id="sfEquals">
-        <h3>equals<sup title="object property" class="sup-op">op</sup></h3>
+        <h3>sfEquals<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -1235,34 +1556,31 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject spatially equals the
-      object SpatialObject. DE-9IM: TFFFTFFFT
-    
+                    <p>Exists if the subject SpatialObject spatially equals the object SpatialObject. DE-9IM: TFFFTFFFT</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="intersects">
-        <h3>intersects<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="sfIntersects">
+        <h3>sfIntersects<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -1271,35 +1589,31 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject is not spatially disjoint
-      from the object SpatialObject.
-      DE-9IM: T******** ^ *T******* ^ ***T***** ^ ****T****
-    
+                    <p>Exists if the subject SpatialObject is not spatially disjoint from the object SpatialObject. DE-9IM: T<strong><em>*</em></strong><em> ^ </em>T<strong><em>*</em></strong> ^ <strong><em>T</em></strong><strong> ^ ***<em>T</em></strong>*</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="overlaps">
-        <h3>overlaps<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="sfOverlaps">
+        <h3>sfOverlaps<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -1308,34 +1622,31 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject spatially overlaps the
-      object SpatialObject. DE-9IM: T*T***T**
-    
+                    <p>Exists if the subject SpatialObject spatially overlaps the object SpatialObject. DE-9IM: T<em>T</em><strong>T</strong></p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="touches">
-        <h3>touches<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="sfTouches">
+        <h3>sfTouches<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -1344,35 +1655,31 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject spatially touches the
-      object SpatialObject.
-      DE-9IM: FT******* ^ F**T***** ^ F***T****
-    
+                    <p>Exists if the subject SpatialObject spatially touches the object SpatialObject. DE-9IM: FT<strong><em>*</em></strong> ^ F<strong>T****<em> ^ F</em></strong>T****</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity property" id="within">
-        <h3>within<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="sfWithin">
+        <h3>sfWithin<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -1381,28 +1688,25 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Exists if the subject SpatialObject is spatially within the
-      object SpatialObject. DE-9IM: T*F**F***
-    
+                    <p>Exists if the subject SpatialObject is spatially within the object SpatialObject. DE-9IM: T<em>F</em><em>F</em>**</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#SpatialObject">Spatial Object</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#SpatialObject">geosparql:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#SpatialObject">SpatialObject</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1412,15 +1716,57 @@
 <section id="datatypeproperties">
     <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
+        <li><a href="#asDggsWkt">asDggsWkt</a></li>
         <li><a href="#asGML">asGML</a></li>
+        <li><a href="#asGeoJSON">asGeoJSON</a></li>
+        <li><a href="#asKML">asKML</a></li>
         <li><a href="#asWKT">asWKT</a></li>
         <li><a href="#coordinateDimension">coordinateDimension</a></li>
         <li><a href="#dimension">dimension</a></li>
-        <li><a href="#hasserialization">has serialization</a></li>
+        <li><a href="#hasSerialization">hasSerialization</a></li>
         <li><a href="#isEmpty">isEmpty</a></li>
         <li><a href="#isSimple">isSimple</a></li>
         <li><a href="#spatialDimension">spatialDimension</a></li>
     </ul>
+    <div class="entity property" id="asDggsWkt">
+        <h3>asDggsWkt<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.opengis.net/ont/geosparql#asDggsWkt</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.opengis.net/spec/geosparql/1.1
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The Discrete Global Grid System (DGGS) serialization of a geometry</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#hasSerialization">hasSerialization</a><sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#dggsWktLiteral">dggsWktLiteral</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
     <div class="entity property" id="asGML">
         <h3>asGML<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
@@ -1431,33 +1777,109 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      The GML serialization of a geometry
-    
+                    <p>The GML serialization of a geometry</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="#hasserialization">geosparql:hasSerialization</a><sup class="sup-dp" title="datatype property">dp</sup>
+                    <a href="#hasSerialization">hasSerialization</a><sup class="sup-dp" title="datatype property">dp</sup>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Geometry">geosparql:Geometry</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#gmlLiteral">geosparql:gmlLiteral</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#gmlLiteral">gmlLiteral</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="asGeoJSON">
+        <h3>asGeoJSON<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.opengis.net/ont/geosparql#asGeoJSON</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.opengis.net/ont/geosparql
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The GeoJSON serialization of a geometry</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#hasSerialization">hasSerialization</a><sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#geoJSONLiteral">geoJSONLiteral</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="asKML">
+        <h3>asKML<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.opengis.net/ont/geosparql#asKML</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    http://www.opengis.net/ont/geosparql
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The KML serialization of a geometry</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#hasSerialization">hasSerialization</a><sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/geosparql#kmlLiteral">kmlLiteral</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1478,27 +1900,33 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      The WKT serialization of a geometry
-    
+                    <p>The WKT serialization of a geometry</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Example</th>
+                <td>
+                    <pre>
+http://www.opengis.net/spec/geosparql/1.1/specification.html#annexB_example1
+                    </pre>
                 </td>
             </tr>
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="#hasserialization">geosparql:hasSerialization</a><sup class="sup-dp" title="datatype property">dp</sup>
+                    <a href="#hasSerialization">hasSerialization</a><sup class="sup-dp" title="datatype property">dp</sup>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Geometry">geosparql:Geometry</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="http://www.opengis.net/ont/geosparql#wktLiteral">geosparql:wktLiteral</a><sup class="sup-c" title="class">c</sup>
+                    <a href="http://www.opengis.net/ont/geosparql#wktLiteral">wktLiteral</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1513,22 +1941,19 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/ont/geosparql
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      The number of measurements or axes needed to describe the position of this
-      geometry in a coordinate system.
-    
+                    <p>The number of measurements or axes needed to describe the position of this geometry in a coordinate system.</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Geometry">geosparql:Geometry</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -1549,24 +1974,19 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/ont/geosparql
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      The topological dimension of this geometric object, which
-      must be less than or equal to the coordinate dimension.
-      In non-homogeneous collections, this will return the largest
-      topological dimension of the contained objects.
-    
+                    <p>The topological dimension of this geometric object, which must be less than or equal to the coordinate dimension. In non-homogeneous collections, this will return the largest topological dimension of the contained objects.</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Geometry">geosparql:Geometry</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -1577,8 +1997,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="hasserialization">
-        <h3>has serialization<sup title="datatype property" class="sup-dp">dp</sup></h3>
+    <div class="entity property" id="hasSerialization">
+        <h3>hasSerialization<sup title="datatype property" class="sup-dp">dp</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -1593,15 +2013,13 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      Connects a geometry object with its text-based serialization.
-    
+                    <p>Connects a geometry object with its text-based serialization.</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Geometry">geosparql:Geometry</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -1628,17 +2046,13 @@
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      (true) if this geometric object is the empty Geometry. If
-      true, then this geometric object represents the empty point
-      set for the coordinate space.
-    
+                    <p>(true) if this geometric object is the empty Geometry. If true, then this geometric object represents the empty point set for the coordinate space.</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Geometry">geosparql:Geometry</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -1659,22 +2073,19 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      (true) if this geometric object has no anomalous geometric
-      points, such as self intersection or self tangency.
-    
+                    <p>(true) if this geometric object has no anomalous geometric points, such as self intersection or self tangency.</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Geometry">geosparql:Geometry</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -1695,22 +2106,19 @@
             <tr>
                 <th>Is Defined By</th>
                 <td>
-                    http://www.opengis.net/spec/geosparql/1.0
+                    http://www.opengis.net/spec/geosparql/1.1
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    
-      The number of measurements or axes needed to describe the spatial position of
-      this geometry in a coordinate system.
-    
+                    <p>The number of measurements or axes needed to describe the spatial position of this geometry in a coordinate system.</p>
                 </td>
             </tr>
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Geometry">geosparql:Geometry</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Geometry">Geometry</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -1723,200 +2131,20 @@
     </div>
 </section>
 
-<section id="annotationproperties">
-    <h2>Annotation Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <ul class="hlist">
-        <li><a href="#Contributor">Contributor</a></li>
-        <li><a href="#Creator">Creator</a></li>
-        <li><a href="#Date">Date</a></li>
-        <li><a href="#Description">Description</a></li>
-        <li><a href="#description">description</a></li>
-        <li><a href="#hasVersion">hasVersion</a></li>
-        <li><a href="#issued">issued</a></li>
-        <li><a href="#modified">modified</a></li>
-        <li><a href="#publisher">publisher</a></li>
-        <li><a href="#title">title</a></li>
-        <li><a href="#definition">definition</a></li>
-        <li><a href="#note">note</a></li>
-        <li><a href="#prefLabel">prefLabel</a></li>
-    </ul>
-    <div class="entity property" id="Contributor">
-        <h3>Contributor<sup title="annotation property" class="sup-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>http://purl.org/dc/elements/1.1/contributor</code></td>
-            </tr>
-            <tr>
-                <th>Is Defined By</th>
-                <td>
-                    http://purl.org/dc/elements/1.1/
-                </td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    An entity responsible for making contributions to the resource.
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="Creator">
-        <h3>Creator<sup title="annotation property" class="sup-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>http://purl.org/dc/elements/1.1/creator</code></td>
-            </tr>
-            <tr>
-                <th>Is Defined By</th>
-                <td>
-                    http://purl.org/dc/elements/1.1/
-                </td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    An entity primarily responsible for making the resource.
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="Date">
-        <h3>Date<sup title="annotation property" class="sup-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>http://purl.org/dc/elements/1.1/date</code></td>
-            </tr>
-            <tr>
-                <th>Is Defined By</th>
-                <td>
-                    http://purl.org/dc/elements/1.1/
-                </td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    A point or period of time associated with an event in the lifecycle of the resource.
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="Description">
-        <h3>Description<sup title="annotation property" class="sup-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>http://purl.org/dc/elements/1.1/description</code></td>
-            </tr>
-            <tr>
-                <th>Is Defined By</th>
-                <td>
-                    http://purl.org/dc/elements/1.1/
-                </td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="description">
-        <h3>description<sup title="annotation property" class="sup-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>http://purl.org/dc/terms/description</code></td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="hasVersion">
-        <h3>hasVersion<sup title="annotation property" class="sup-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>http://purl.org/dc/terms/hasVersion</code></td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="issued">
-        <h3>issued<sup title="annotation property" class="sup-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>http://purl.org/dc/terms/issued</code></td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="modified">
-        <h3>modified<sup title="annotation property" class="sup-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>http://purl.org/dc/terms/modified</code></td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="publisher">
-        <h3>publisher<sup title="annotation property" class="sup-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>http://purl.org/dc/terms/publisher</code></td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="title">
-        <h3>title<sup title="annotation property" class="sup-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>http://purl.org/dc/terms/title</code></td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="definition">
-        <h3>definition<sup title="annotation property" class="sup-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>http://www.w3.org/2004/02/skos/core#definition</code></td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="note">
-        <h3>note<sup title="annotation property" class="sup-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>http://www.w3.org/2004/02/skos/core#note</code></td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="prefLabel">
-        <h3>prefLabel<sup title="annotation property" class="sup-ap">ap</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>http://www.w3.org/2004/02/skos/core#prefLabel</code></td>
-            </tr>
-        </table>
-    </div>
-</section>
-
   
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
-        <dt>dc</dt>
-        <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
-        <dt>dct</dt>
-        <dd><code>http://purl.org/dc/terms/</code></dd>
-        <dt>geosparql</dt>
+        <dt>default (:)</dt>
+        <dd><code>http://www.opengis.net/ont/geosparql</code></dd>
+        <dt>:</dt>
         <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
+        <dt>dcterms</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>geosparql-doc</dt>
+        <dd><code>http://www.opengis.net/spec/geosparql/1.1/specification.html#</code></dd>
+        <dt>geosparql-spec</dt>
+        <dd><code>http://www.opengis.net/spec/geosparql/1.1</code></dd>
         <dt>owl</dt>
         <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
         <dt>prov</dt>

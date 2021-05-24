@@ -13,10 +13,10 @@ Source | {{ source }}
 Description | {{ description }}
 {%- endif %}
 {%- if scopeNote is not none %}
-Usage Note | {{ scopeNote }}
+Scope Notes | {{ scopeNote }}
 {%- endif %}
-{%- if example is not none %}
-Example | ```{{ example|safe }}```
+{%- if examples|length > 0 %}
+Example(s) | {%- for example in examples %}{{ example|safe }}<br />{% endfor %}
 {%- endif %}
 {%- if supers|length > 0 %}
 Super-properties | {%- for super in supers %}{{ super }}<br />{%- endfor %}
@@ -32,6 +32,6 @@ Domain(s) | {%- if domains|length > 0 %}{%- for domain in domains %}{{ domain }}
 Range(s) | {%- if ranges|length > 0 %}{%- for range in ranges %}{{ range }}<br />{%- endfor %}
 {%- endif %}
 {%- if rangeIncludes|length > 0 %}
-([sdo:rangeIncludes](https://schema.org/domainIncludes)){%- for rangeInclude in rangeIncludes %}{{ rangeInclude }}{%- endfor %}
+([sdo:rangeIncludes](https://schema.org/rangeIncludes)){%- for rangeInclude in rangeIncludes %}{{ rangeInclude }}{%- endfor %}
 {%- endif %}
 {%- endif %}

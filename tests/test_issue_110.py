@@ -11,5 +11,6 @@ def test_issue_110():
 if __name__ == '__main__':
     test_issue_110()
 
+    print("ok")
     # this test works running on BASH command line with with
     # `pylode -i test_issue_110_input.ttl -c true -o test_issue_110_output.html`

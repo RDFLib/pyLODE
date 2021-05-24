@@ -84,7 +84,7 @@ Property | Value
 --- | ---
 URI | `http://linked.data.gov.au/def/ra#requires`
 Description | A Numbered Subclass categorisation of a Record requires a particular Disposal Action assignment (categorisation) for that record.
-Usage Note | Many Numbered Subclasses map to a few Disposal Actions
+Scope Notes | Many Numbered Subclasses map to a few Disposal Actions
 Domain(s) |[http://linked.data.gov.au/def/ra#NumberedSubclass](http://linked.data.gov.au/def/ra#NumberedSubclass) (c)<br />
 Range(s) |[http://linked.data.gov.au/def/ra#DisposalAction](http://linked.data.gov.au/def/ra#DisposalAction) (c)<br />
 

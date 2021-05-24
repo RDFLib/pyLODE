@@ -12,7 +12,7 @@ Source | {{ source }}
 Description | {{ description }}
 {%- endif %}
 {%- if scopeNote is not none %}
-Usage Note | {{ scopeNote }}
+Scope Notes | {{ scopeNote }}
 {%- endif %}
 {%- if example is not none %}
 Example | {{ example|safe }}

@@ -1,0 +1,11 @@
+{%- if url is not none -%}
+    link:{{ url }}[{{ name }}]
+{%- else -%}
+    {{ name }}
+{%- endif %}
+{%- if orcid %}
+    {{ orcid }}
+{%- endif %}
+{%- if email is not none %}
+    {{ email }}
+{%- endif %}

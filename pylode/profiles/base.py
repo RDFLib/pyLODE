@@ -37,6 +37,9 @@ class BaseProfile:
             if not type(o) is Literal or not o.language or o.language == language:
                 filtered.add((s, p, o))
 
+        for k, v in g.namespaces():
+            filtered.bind(k, v)
+
         return filtered
 
     def _load_template(self, template_file):
@@ -66,8 +69,28 @@ class BaseProfile:
         else:
             return uri.split("/")[-1]  # could return None if URI ends in /
 
+    def _make_formatted_uri_basic(self, uri):
+        curie = self._get_curie(uri)
+
+        links = {
+            "md": f"[{curie}]({uri})",
+            "adoc": f"link:{uri}[{curie}]",
+            "html": f'<a href="{uri}">{curie}</a>'
+        }
+
+        return links[self.outputformat]
+
+    def _make_fragment_uri(self, uri):
+        """This function should be overriden with profile-specific implementations
+        """
+        return self._make_formatted_uri_basic(uri)
+
     def _make_formatted_uri(self, uri):
-        """Abstract method"""
+        if uri.startswith(self.METADATA.get("default_namespace")):
+            return self._make_fragment_uri(uri)
+        else:
+            # URI isn't in the default namespace, so use an absolut URI
+            return self._make_formatted_uri_basic(uri)
 
     def _get_curie(self, uri):
         n = self._get_namespace_from_uri(str(uri))
@@ -195,19 +218,26 @@ class BaseProfile:
         # for the de-duplicated URIs, if the uri_base is not in namespaces, get CURIE and add it
         for uri_base in uri_bases:
             if ns.get(uri_base) is None:
+                found = False
                 # try to match uri_base to stored CURIES first
                 if self.use_curies_stored:
                     from pylode.curies import CURIES
 
                     try:
                         ns[uri_base] = list(CURIES.keys())[list(CURIES.values()).index(uri_base)]
+                        found = True
                     except ValueError:
                         pass
 
-                if self.get_curies_online:
-                    print(f"get CURIE for {uri_base}")
-                    uri_prefix = self._get_curie_prefix(uri_base, [x for x in ns.values()])
-                    ns[uri_base] = uri_prefix
+                if not found:
+                    if self.get_curies_online:
+                        print(f"getting CURIE for {uri_base} online")
+                        uri_prefix = self._get_curie_prefix(uri_base, [x for x in ns.values()])
+                        ns[uri_base] = uri_prefix
+                        found = True
+
+                # if not found:
+                #     ns[uri_base] = "ns" + str(len(ns))
 
         # invert the key/values in instances
         for k, v in sorted(ns.items(), key=lambda x: x[1]):
@@ -222,34 +252,62 @@ class BaseProfile:
         self.METADATA["default_namespace"] = None
 
         # if this ontology declares a preferred URI, use that
-        if self.METADATA.get("preferredNamespaceUri"):
-            self.METADATA["default_namespace"] = self.METADATA.get(
-                "preferredNamespaceUri"
-            )
+        preferred_namespace_uri = None
+        for s, o in self.G.subject_objects(predicate=URIRef("http://purl.org/vocab/vann/preferredNamespaceUri")):
+            preferred_namespace_uri = str(o)
 
-        ont_uri = ""
+        preferred_namespace_prefix = None
+        for s, o in self.G.subject_objects(predicate=URIRef("http://purl.org/vocab/vann/preferredNamespacePrefix")):
+            preferred_namespace_prefix = str(o)
 
-        # if not, try the URI of the ontology compared to all prefixes
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
-            ont_uri = str(s)
+        if preferred_namespace_uri is not None:
+            self.METADATA["default_namespace"] = preferred_namespace_uri
 
-        for s in self.G.subjects(predicate=RDF.type, object=SKOS.ConceptScheme):
-            ont_uri = str(s)
+            if preferred_namespace_prefix is not None:
+                self.NAMESPACES[preferred_namespace_prefix] = preferred_namespace_uri
+                self.METADATA["default_prefix"] = preferred_namespace_prefix
+            else:
+                self.NAMESPACES[":"] = preferred_namespace_uri
+                self.METADATA["default_prefix"] = ":"
+        # if not, try the URI of the main object, compared to all prefixes
+        else:
+            default_uri = None
 
-        for s in self.G.subjects(predicate=RDF.type, object=PROF.Profile):
-            ont_uri = str(s)
+            for s in self.G.subjects(predicate=RDF.type, object=(OWL.Ontology or SKOS.ConceptScheme or PROF.Profile)):
+                default_uri = str(s)
 
-        for k, v in self.NAMESPACES.items():
-            # i.e. the ontology URI is the same as the default namespace + / or #
-            if v == ont_uri + "/" or v == ont_uri + "#":
-                self.METADATA["default_namespace"] = v
+            if default_uri is not None:
+                self.METADATA["default_namespace"] = default_uri
+                self.METADATA["default_prefix"] = ":"
 
-        if self.NAMESPACES.get("") is not None:
-            del self.NAMESPACES[""]
+                default_prefix = None
+                for k, v in self.NAMESPACES.items():
+                    # i.e. the default_uri is the same as the default namespace + / or #
+                    if str(v).startswith(default_uri):
+                        default_prefix = k
+
+                if default_prefix is not None:
+                    self.NAMESPACES[default_prefix] = default_uri
+                else:
+                    self.NAMESPACES[":"] = default_uri
+            else:
+                # can't find either a declared or default namespace so we have an error
+                raise Exception("pyLODE can't detect a URI for an owl:Ontology, a skos:ConceptScheme or a prof:Profile")
 
     def _make_namespaces(self):
+        # if the default namespace is also listed in NAMESPACES, remove it and replace the default key (:) with its key
+        default_ns_prefix = self.METADATA.get("default_prefix")
+        for_removal = []
+        for k, v in self.NAMESPACES.items():
+            if v == self.METADATA["default_namespace"]:
+                for_removal.append(k)
+
+        for r in for_removal:
+            del(self.NAMESPACES[r])
+
         return BaseProfile._load_template(self, "namespaces." + self.outputformat).render(
             namespaces=self.NAMESPACES,
+            default_namespace_prefix=default_ns_prefix if default_ns_prefix is not None else ":",
             default_namespace=self.METADATA["default_namespace"],
         )
 
@@ -321,6 +379,8 @@ class BaseProfile:
         if self.METADATA.get("license") is not None:
             if self.outputformat == "md":
                 license = URIRef(self.METADATA.get("license").split('(')[0].strip('[]'))
+            elif self.outputformat == "adoc":
+                license = URIRef(self.METADATA.get("license").replace("link:", "").split("[")[0])
             else:
                 license = URIRef(self.METADATA.get("license").split('"')[1])
         else:
@@ -335,6 +395,8 @@ class BaseProfile:
         if self.METADATA.get("repository") is not None:
             if self.outputformat == "md":
                 repository = URIRef(self.METADATA.get("repository").split('(')[0].strip('[]'))
+            if self.outputformat == "adoc":
+                repository = URIRef(self.METADATA.get("repository").replace("link:", "").split("[")[0])
             else:
                 repository = URIRef(self.METADATA.get("repository").split('"')[1])
 
@@ -394,6 +456,10 @@ class BaseProfile:
         if self.METADATA.get("repository") is not None:
             g.add((uri, SDO.codeRepository, repository))
 
+        # make sure the json-ld serializer is registered
+        from rdflib.plugin import register, Serializer
+        register('json-ld', Serializer, 'rdflib_jsonld.serializer', 'JsonLDSerializer')
+
         return g.serialize(format="json-ld").decode("utf-8")
 
     def _make_agent_link(self, name, url=None, email=None, affiliation=None):
@@ -401,9 +467,28 @@ class BaseProfile:
             orcid = None
             if url is not None:
                 if "orcid.org" in url:
-                    orcid = BaseProfile._load_template(self, "orcid.md").render()
+                    orcid = BaseProfile._load_template(self, "orcid.md").render(
+                        orcid_url=url,
+                        orcid_id=url.replace("http://orcid.org/", "").replace("https://orcid.org/", "").strip("/")
+                    )
 
             return BaseProfile._load_template(self, "agent.md").render(
+                url=url,
+                name=name,
+                orcid=orcid,
+                email=email.replace("mailto:", "") if email is not None else None,
+                affiliation=affiliation
+            )
+        elif self.outputformat == "adoc":
+            orcid = None
+            if url is not None:
+                if "orcid.org" in url:
+                    orcid = BaseProfile._load_template(self, "orcid.adoc").render(
+                        orcid_url=url,
+                        orcid_id=url.replace("http://orcid.org/", "").replace("https://orcid.org/", "").strip("/")
+                    )
+
+            return BaseProfile._load_template(self, "agent.adoc").render(
                 url=url,
                 name=name,
                 orcid=orcid,
@@ -414,7 +499,9 @@ class BaseProfile:
             orcid = None
             if url is not None:
                 if "orcid.org" in url:
-                    orcid = BaseProfile._load_template(self, "orcid.html").render()
+                    orcid = BaseProfile._load_template(self, "orcid.html").render(
+                        orcid_url=url,
+                    )
 
             return BaseProfile._load_template(self, "agent.html").render(
                 url=url,
@@ -424,7 +511,7 @@ class BaseProfile:
                 affiliation=affiliation
             )
 
-    def _make_agent_html(self, agent_node):
+    def _make_agent(self, agent_node):
         # we understand foaf:name, foaf:homepage & sdo:name & sdo:identifier & sdo:email (as a URI)
         # TODO: cater for other Agent representations
 
@@ -471,6 +558,10 @@ class BaseProfile:
             uri_of_rdf = self.source_info[0].split("/")[-1]
         if self.outputformat == "md":
             return 'RDF ([{}]({}))'.format(
+                uri_of_rdf, self.source_info[1]
+            )
+        if self.outputformat == "adoc":
+            return 'RDF link:{}[{}]'.format(
                 uri_of_rdf, self.source_info[1]
             )
         else:

@@ -36,45 +36,43 @@ class VocPub(BaseProfile):
     def _load_template(self, template_file):
         return Environment(loader=FileSystemLoader(join(TEMPLATES_DIR, "vocpub"))).get_template(template_file)
 
-    def _make_formatted_uri(self, uri, type=None):
-        # set display to CURIE
-        short = self._get_curie(uri)
-        # if the URI base is within the default namespace of this ontology
-        #   use the fragment URI
-        # else
-        #   use the given URI
-        uri_base = self._get_namespace_from_uri(uri)
-        link = None
-        if uri_base == self.METADATA.get("default_namespace"):
+    def _make_fragment_uri(self, uri):
+        """VocPub Profile allows fragment URIs for Concepts & Collections"""
+        if self.CONCEPTS.get(uri) or self.COLLECTIONS.get(uri):
             if self.CONCEPTS.get(uri):
-                link = "[{}]({})".format(self.CONCEPTS[uri]["default_prefLabel"], self.CONCEPTS[uri]["fid"]) \
-                    if self.outputformat == "md" \
-                    else '<a href="#{}">{}</a>'.format(self.CONCEPTS[uri]["fid"], self.CONCEPTS[uri]["default_prefLabel"])
+                title = self.CONCEPTS[uri]["default_prefLabel"]
+                uri = self.CONCEPTS[uri]["fid"]
             elif self.COLLECTIONS.get(uri):
-                    link = "[{}]({})".format(self.COLLECTIONS[uri]["default_prefLabel"], self.COLLECTIONS[uri]["fid"]) \
-                        if self.outputformat == "md" \
-                        else '<a href="#{}">{}</a>'.format(self.COLLECTIONS[uri]["fid"], self.COLLECTIONS[uri]["default_prefLabel"])
+                title = self.COLLECTIONS[uri]["default_prefLabel"]
+                uri = self.COLLECTIONS[uri]["fid"]
 
-        if link is None:
-            link = "[{}]({})".format(short, uri) \
-                if self.outputformat == "md" \
-                else '<a href="{}">{}</a>'.format(uri, short)
-
-        if type == "cp":
-            if self.outputformat == "md":
-                suffix = ' (cp)'
-            else:
-                suffix = '<sup class="sup-cp" title="concept">cp</sup>'
-        elif type == "cl":
-            if self.outputformat == "md":
-                suffix = ' (cl)'
-            else:
-                suffix = '<sup class="sup-cl" title="collection">cl</sup>'
-        # None
+            links = {
+                "md": f"[{title}](#{uri})",
+                "adoc": f"link:#{uri}[{title}]",
+                "html": f'<a href="#{uri}">{title}</a>'
+            }
+            return links[self.outputformat]
         else:
-            suffix = ''
+            return self._make_formatted_uri_basic(uri)
 
-        return link + suffix
+    def _make_formatted_uri(self, uri, type=None):
+        link = super()._make_formatted_uri(uri)
+
+        types = {
+            "con": "concept",
+            "col": "collection",
+        }
+
+        if type not in types.keys():
+            return link
+
+        suffixes = {
+            "md": f' ({type})',
+            "adoc": f' ^{type}^',
+            "html": f'<sup class="sup-{type}" title="{types[type]}">{type}</sup>'
+        }
+
+        return link + suffixes[self.outputformat]
 
     def _expand_graph(self):
         # name
@@ -211,10 +209,18 @@ class VocPub(BaseProfile):
                     self.COLLECTIONS[c]["altLabels"].add(str(o))  # TODO: add in language
 
                 elif p == SKOS.definition:
-                    self.COLLECTIONS[c]["definitions"].add(str(o))  # TODO: add in language
+                    # TODO: add in language
+                    if self.outputformat == "md":
+                        self.COLLECTIONS[c]["definitions"].add(str(o))
+                    else:
+                        self.COLLECTIONS[c]["definitions"].add(markdown.markdown(str(o)))
 
                 elif p == SKOS.scopeNote:
-                    self.COLLECTIONS[c]["scopeNotes"].add(str(o))  # TODO: add in language
+                    # TODO: add in language
+                    if self.outputformat == "md":
+                        self.COLLECTIONS[c]["scopeNotes"].add(str(o))
+                    else:
+                        self.COLLECTIONS[c]["scopeNotes"].add(markdown.markdown(str(o)))
 
                 elif p == DCTERMS.source:
                     self.COLLECTIONS[c]["source"] = str(o)
@@ -289,10 +295,18 @@ class VocPub(BaseProfile):
                     self.CONCEPTS[c]["altLabels"].add(str(o))  # TODO: add in language
 
                 elif p == SKOS.definition:
-                    self.CONCEPTS[c]["definitions"].add(str(o))  # TODO: add in language
+                    # TODO: add in language
+                    if self.outputformat == "md":
+                        self.CONCEPTS[c]["definitions"].add(str(o))
+                    else:
+                        self.CONCEPTS[c]["definitions"].add(markdown.markdown(str(o)))
 
                 elif p == SKOS.scopeNote:
-                    self.CONCEPTS[c]["scopeNotes"].add(str(o))  # TODO: add in language
+                    # TODO: add in language
+                    if self.outputformat == "md":
+                        self.CONCEPTS[c]["scopeNotes"].add(str(o))
+                    else:
+                        self.CONCEPTS[c]["scopeNotes"].add(markdown.markdown(str(o)))
 
                 elif p == SKOS.example:
                     self.CONCEPTS[c]["examples"].add(str(o))  # TODO: add in language
@@ -367,10 +381,16 @@ class VocPub(BaseProfile):
                     self.METADATA["title"] = str(o)
 
                 if p == SKOS.definition:
-                    self.METADATA["description"] = markdown.markdown(str(o))
+                    if self.outputformat == "md":
+                        self.METADATA["description"] = str(o)
+                    else:
+                        self.METADATA["description"] = markdown.markdown(str(o))
 
                 if p == SKOS.historyNote:
-                    self.METADATA["historyNote"] = markdown.markdown(str(o))
+                    if self.outputformat == "md":
+                        self.METADATA["historyNote"] = str(o)
+                    else:
+                        self.METADATA["historyNote"] = markdown.markdown(str(o))
 
                 # dates
                 if p in [DCTERMS.created, DCTERMS.modified, DCTERMS.issued]:
@@ -416,7 +436,7 @@ class VocPub(BaseProfile):
                     if type(o) == Literal:
                         self.METADATA[agent_type].add(str(o))
                     else:  # Blank Node or URI
-                        self.METADATA[agent_type].add(self._make_agent_html(o))
+                        self.METADATA[agent_type].add(self._make_agent(o))
 
                 # TODO: cater for other Agent representations
 
@@ -472,7 +492,7 @@ class VocPub(BaseProfile):
             definitions=collection[1].get("definitions"),
             scopeNotes=collection[1].get("scopeNotes"),
             source=collection[1].get("source"),
-            members=[self._make_formatted_uri(x, type="cp") for x in collection[1].get("members")],
+            members=[self._make_formatted_uri(x, type="con") for x in collection[1].get("members")],
         )
 
     def _make_skos_collections(self):
@@ -493,7 +513,7 @@ class VocPub(BaseProfile):
         # render concept
         def _render(c, children, of, level=0):
             if of == "md":
-                md = level*"\t" + "* [{}]({})\n".format(self.CONCEPTS.get(c).get("default_prefLabel"), c)
+                md = level*"\t" + "* " + self._make_formatted_uri(c, type="con")
                 if len(children) > 0:
                     for ch in sorted(children):
                         md += _render(ch, self.CONCEPTS.get(ch).get("narrowers"), of, level=level + 1)
@@ -557,12 +577,12 @@ class VocPub(BaseProfile):
             scopeNotes=concept[1].get("scopeNotes"),
             examples=egs,
             source=concept[1].get("source"),
-            broaders=[self._make_formatted_uri(x, type="cp") for x in concept[1].get("broaders")],
-            narrowers=[self._make_formatted_uri(x, type="cp") for x in concept[1].get("narrowers")],
-            exactMatches=[self._make_formatted_uri(x, type="cp") for x in concept[1].get("exactMatches")],
-            closeMatches=[self._make_formatted_uri(x, type="cp") for x in concept[1].get("closeMatches")],
-            broadMatches=[self._make_formatted_uri(x, type="cp") for x in concept[1].get("broadMatches")],
-            narrowMatches=[self._make_formatted_uri(x, type="cp") for x in concept[1].get("narrowMatches")],
+            broaders=[self._make_formatted_uri(x, type="con") for x in concept[1].get("broaders")],
+            narrowers=[self._make_formatted_uri(x, type="con") for x in concept[1].get("narrowers")],
+            exactMatches=[self._make_formatted_uri(x, type="con") for x in concept[1].get("exactMatches")],
+            closeMatches=[self._make_formatted_uri(x, type="con") for x in concept[1].get("closeMatches")],
+            broadMatches=[self._make_formatted_uri(x, type="con") for x in concept[1].get("broadMatches")],
+            narrowMatches=[self._make_formatted_uri(x, type="con") for x in concept[1].get("narrowMatches")],
         )
 
     def _make_skos_concepts(self):

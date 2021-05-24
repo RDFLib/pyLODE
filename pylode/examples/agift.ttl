@@ -6,6 +6,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix sdo: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 agift:AGIFT
@@ -46,6 +47,8 @@ agift:AGIFT
     agift:TOURISM ,
     agift:TRADE ,
     agift:TRANSPORT ;
+    vann:preferredNamespacePrefix "agift"@en ;
+    vann:preferredNamespaceUri "https://data.naa.gov.au/def/agift/" ;
 .
 <https://linked.data.gov.au/org/naa>
   a sdo:Organization ;

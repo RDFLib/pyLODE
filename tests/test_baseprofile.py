@@ -41,7 +41,7 @@ def test_ontdoc_extract_namespaces():
 
     assert "ad" in bp.NAMESPACES.keys()
     assert "owl" in bp.NAMESPACES.keys()
-    assert len(bp.NAMESPACES.keys()) == 8
+    assert len(bp.NAMESPACES.keys()) == 10
 
 
 if __name__ == '__main__':

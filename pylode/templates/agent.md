@@ -1,11 +1,11 @@
 {%- if url is not none -%}
-    [{{name}}]({{url}})
+    [{{ name }}]({{ url }})
 {%- else -%}
-    {{name}}
+    {{ name }}
 {%- endif %}
 {%- if orcid %}
-    [{{orcid}}]({{url}})
+    {{ orcid }}
 {%- endif %}
 {%- if email is not none %}
-    (<{{email}}></a>)
+    [{{ email }}]({{ email }})
 {%- endif %}

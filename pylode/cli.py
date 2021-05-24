@@ -4,6 +4,15 @@ import sys
 from os.path import dirname, realpath
 sys.path.insert(0, dirname(dirname(realpath(__file__))))
 from pylode import RDF_FILE_EXTENSIONS, MakeDocco
+import logging
+
+
+# create logger
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.ERROR)  # start with minimal logging
+fh = logging.FileHandler("pylode.log")
+fh.setFormatter(logging.Formatter("%(asctime)s %(levelname)s: %(name)s - %(message)s"))
+logger.addHandler(fh)
 
 
 def is_valid_file(parser, arg):
@@ -20,7 +29,7 @@ class RdfGraphError(Exception):
 
 def main(args=None):
     # read the input ontology file into a graph
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     overarching_group = parser.add_mutually_exclusive_group()
     inputs_group = overarching_group.add_mutually_exclusive_group()
 
@@ -67,7 +76,14 @@ def main(args=None):
     )
 
     parser.add_argument(
-        "-q",
+        "-cs",
+        "--usecuriesstored",
+        help="Whether (true) or not (false) to look up CURIEs for unknown namespaces using the stored CURIE list.",
+        choices=["true", "false"],
+        default="true",
+    )
+    parser.add_argument(
+        "-co",
         "--getcuriesonline",
         help="Whether (true) or not (false) to look up CURIEs for unknown namespaces using http://prefix.cc.",
         choices=["true", "false"],
@@ -77,17 +93,24 @@ def main(args=None):
     parser.add_argument(
         "-o",
         "--outputfile",
-        help="A name you wish to assign to the output file. Will be postfixed with .html/.md if not already added. If "
-             "no output file is given, output will be printed to screen",
+        help="A name you wish to assign to the output file. Will be postfixed with .html/.md/.adoc if not already "
+             "added. If no output file is given, output will be printed to screen",
         default=None
     )
 
     parser.add_argument(
         "-f",
         "--outputformat",
-        help="The output format of the documentation.",
-        choices=["html", "md"],
+        help="The output format of the documentation. HTML, Markdown and ASCIIDOC are supported",
+        choices=["html", "md", "adoc"],
         default="html",
+    )
+
+    parser.add_argument(
+        "-log", "--loglevel",
+        help="Log level for pylode.log.",
+        choices=["debug", "info", "warning", "error"],
+        default="error"
     )
 
     parser.add_argument(
@@ -106,35 +129,57 @@ def main(args=None):
 
     args = parser.parse_args()
 
+    if args.loglevel:
+        if args.loglevel == "debug":
+            logger.setLevel(logging.DEBUG)
+            logger.log(logging.DEBUG, "logger set to DEBUG")
+            print("logger set to DEBUG")
+        elif args.loglevel == "info":
+            logger.setLevel(logging.INFO)
+            logger.log(logging.DEBUG, "logger set to INFO")
+            print("logger set to INFO")
+        elif args.loglevel == "warning":
+            logger.setLevel(logging.WARNING)
+        else:
+            logger.setLevel(logging.ERROR)
+
     if args.listprofiles:
         print(MakeDocco.list_profiles())
         exit()
     elif args.version:
-        from pylode._version import version_tuple
-        print(f"{version_tuple[0]}.{version_tuple[1]}.{version_tuple[2]}")
+        from pylode import __version__
+        print(__version__)
         exit()
     elif args.inputfile or args.url:
-        if args.css == "true":
-            include_css = True
-        else:
-            include_css = False
+        if args.outputformat == "adoc" and args.profile != "ontdoc":
+            raise NotImplementedError("Sorry, ASCIIDOC format is currently only available for the OntDoc profile")
+
+        include_css = True if args.css == "true" else False
+        use_curies_stored = True if args.usecuriesstored == "true" else False
+        get_curies_online = True if args.getcuriesonline == "true" else False
 
         # args are present so getting RDF from input file or uri into an rdflib Graph
         if args.inputfile:
+            logger.log(logging.DEBUG, f"args.inputfile: {args.inputfile.name}")
             h = MakeDocco(
                 input_data_file=args.inputfile,
                 outputformat=args.outputformat,
                 profile=args.profile,
                 include_css=include_css,
                 language=args.language,
+                use_curies_stored=use_curies_stored,
+                get_curies_online=get_curies_online,
             )
         elif args.url:
+            logger.log(logging.DEBUG, f"args.url: {args.url.name}")
             h = MakeDocco(
                 input_uri=args.url,
                 outputformat=args.outputformat,
                 profile=args.profile,
                 include_css=include_css,
                 language=args.language,
+                use_curies_stored=use_curies_stored,
+                get_curies_online=get_curies_online,
             )
         else:
             # we have neither an input file or a URI supplied
@@ -155,12 +200,8 @@ def main(args=None):
     if args.outputfile is not None:
         output_file_name = args.outputfile
 
-        if args.outputformat == "html":
-            if not output_file_name.endswith(".html"):
-                output_file_name += ".html"
-        elif args.outputformat == "md":
-            if not output_file_name.endswith(".md"):
-                output_file_name += ".md"
+        if not output_file_name.endswith(args.outputformat):
+            output_file_name += "." + args.outputformat
 
         # generate the HTML doc
         h.document(destination=output_file_name)

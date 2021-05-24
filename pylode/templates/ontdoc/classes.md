@@ -1,6 +1,6 @@
 ## Classes
-{%- for fid in fids %}
-[{{ fid[1] }}](#{{ fid[0] }}), 
+{%- for i in class_index %}
+{{i}}
 {%- endfor %}
 {%- for class in classes %}
 {{ class|safe }}

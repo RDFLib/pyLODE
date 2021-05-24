@@ -13,5 +13,5 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE)
 {{ namespaces|safe }}
 
 ## Legend
-* Collections: cl
-* Concepts: cp
+* Collections: col
+* Concepts: con

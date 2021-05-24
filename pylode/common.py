@@ -2,12 +2,17 @@ from os import path
 from urllib import request
 from rdflib import util, Graph
 import sys
+import test.test_sys
+import logging
+
+logger = logging.getLogger(__name__)
 
 # set APP_DIR to EXE folder if being called within pyinstaller EXE
 if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
     APP_DIR = sys._MEIPASS
 else:  # use normal Python pathing
     APP_DIR = path.dirname(path.realpath(__file__))
+logger.debug("Application dir: " + APP_DIR)
 TEMPLATES_DIR = path.join(APP_DIR, "templates")
 STYLE_DIR = path.join(APP_DIR, "style")
 RDF_FILE_EXTENSIONS = [".rdf", ".owl", ".ttl", ".n3", ".nt", ".json"]
@@ -35,15 +40,15 @@ from .profiles import OntDoc, Prof, VocPub, NMPF, PROFILES
 class MakeDocco:
     def __init__(
             self,
-            input_data_file=None,
-            input_uri=None,
-            data=None,
-            outputformat="html",
-            include_css=True,
-            use_curies_stored=True,
-            get_curies_online=False,
-            profile="ontdoc",
-            language="en"
+            input_data_file: str = None,
+            input_uri: str = None,
+            data: str = None,
+            outputformat: str = "html",
+            include_css: bool = True,
+            use_curies_stored: bool = True,
+            get_curies_online: bool = False,
+            profile: str = "ontdoc",
+            language: str = "en"
     ):
         """This class receives all of the variables needed to specify how to make documentation from an input RDF source
 
@@ -52,9 +57,10 @@ class MakeDocco:
         :param input_uri: A URI resolving to RDF data
         :type input_uri: A URI (string)
         :param data: RDF data
-        :type data: Python varaible (string)
-        :param outputformat: The desired output format form the list of supported formats (currently either "html" (default) or "md" for Markdown
-        :type outputformat: string (one of "html" or "md")
+        :type data: Python variable (string)
+        :param outputformat: The desired output format from the list of supported formats ("html" (default),
+                            "md" - Markdown or "adoc" - ASCII Doc
+        :type outputformat: string (one of "html" or "md" or "adoc")
         :param include_css: Whether (True, default) or not (False) to include styling CSS within HTML outputs
         :type include_css: boolean
         :param get_curies_online: Whether (True) or not (False, default) to search prefix.cc online for additional URI prefixes
@@ -66,7 +72,7 @@ class MakeDocco:
         """
         self.profile_selected = profile
 
-        if outputformat not in ["html", "md"]:
+        if outputformat not in ["html", "md", "adoc"]:
             self.outputformat = "html"
         else:
             self.outputformat = outputformat
@@ -141,7 +147,11 @@ class MakeDocco:
         self.source_info = (uri, fmt)
 
     def _parse_data(self, data):
-        self.G = Graph().parse(data=data, format="turtle")
+        if type(data) == Graph:
+            self.G = data
+        elif type(data) == str:
+            self.G = Graph().parse(data=data, format="turtle")
+
         self.source_info = ("input.ttl", "turtle")
 
     @classmethod
