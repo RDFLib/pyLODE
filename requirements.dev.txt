@@ -1,4 +1,3 @@
 pytest
 wheel
 twine
-setuptools_scm
