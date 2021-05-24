@@ -1,5 +1,5 @@
 # -*- mode: python ; coding: utf-8 -*-
-## run `pyinstaller pylode-cli.spec` to create `dist/pylode.exe` dist
+## run `pyinstaller pyshacl-cli.spec` to create `dist/pyshacl.exe` dist
 ## note it requires pywin32
 
 block_cipher = None
@@ -7,20 +7,32 @@ block_cipher = None
 a = Analysis(
             ['cli.py'],
             pathex=['.'],
-            binaries=[],
-            datas=[
-               ('templates','templates'),
-               ('style','style')
+            binaries=[
             ],
-            hiddenimports=[                
-                'urllib3',
-                'rdflib',
-                'rdflib.namespace',
+            datas=[
+                ('style/*.css', 'style' ),
+                ('templates/*.*', 'templates' )
+            ],
+            hiddenimports=[
                 'rdflib.plugins',
+                'rdflib.plugins',
+                'rdflib.plugins.memory',
+                'rdflib',
+                'urllib3',
+                'validators',
+                'rdflib.plugins.parsers.notation3',
+                'rdflib.plugins.serializers.turtle',
+                'rdflib.plugins',
+                'rdflib',
+                'urllib3',
+                'rdflib.serializer',
+                'rdflib.serializer.Serializer',
                 'rdflib_jsonld',
-                'rdflib_jsonld.serializer'
-                'pylode.common',
-                'pylode.profiles'
+                'rdflib-jsonld',
+                'rdflib_jsonld.serializer',
+                'rdflib_jsonld.parser',
+                'win32com.gen_py',
+                'pkg_resources.py2_warn'
             ],
             hookspath=[],
             runtime_hooks=[],
@@ -44,7 +56,7 @@ exe = EXE(
             a.zipfiles,
             a.datas,
             [],
-            name='pylode',
+            name='pyLODE',
             debug=False,
             bootloader_ignore_signals=False,
             strip=False,
