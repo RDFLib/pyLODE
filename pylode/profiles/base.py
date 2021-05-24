@@ -1,5 +1,5 @@
 import collections
-
+from itertools import chain
 from jinja2 import Environment, FileSystemLoader
 from rdflib import SDO, SKOS, OWL, URIRef, RDF, PROF, Literal, XSD, Graph, Namespace, FOAF, Graph
 
@@ -273,7 +273,11 @@ class BaseProfile:
         else:
             default_uri = None
 
-            for s in self.G.subjects(predicate=RDF.type, object=(OWL.Ontology or SKOS.ConceptScheme or PROF.Profile)):
+            for s in chain(
+                self.G.subjects(predicate=RDF.type, object=OWL.Ontology),
+                self.G.subjects(predicate=RDF.type, object=SKOS.ConceptScheme),
+                self.G.subjects(predicate=RDF.type, object=PROF.Profile)
+            ):
                 default_uri = str(s)
 
             if default_uri is not None:
