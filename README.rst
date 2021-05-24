@@ -763,7 +763,7 @@ and change/add development priorities.
 Current Release
 ---------------
 
-The current release, as of April, 2021, is **2.9.0**.
+The current release, as of May, 2021, is **2.10.0**.
 
 Release Schedule
 ----------------
@@ -773,7 +773,8 @@ Release Schedule
    :widths: 15, 10, 30
 
    3.0, *?*, "Will include pre-testing inputs with SHACL"
-   **2.9.1**, **28 Apr 2021**, "Support for ASCIIDOC format (OntDoc profile only)"
+   **2.10.0**, 24 May 2021, "Update Windows EXE build process, simplified versioning"
+   2.9.1, 28 Apr 2021, "Support for ASCIIDOC format (OntDoc profile only)"
    2.8.11, 28 Apr 2021, "Further changes for PyPI only"
    2.8.10, 27 Apr 2021, "Further changes for PyPI only"
    2.8.9, 27 Apr 2021, "PyPI enhancements only"
@@ -800,6 +801,8 @@ Expected to handle
 
 2.0 - current
 ~~~~~~~~~~~~~~
+- handles complex Examples (``skos:example``)
+- can export to ASCIIDOC format
 - includes 3rd-party-created profile: NMPF
 - handles Named Individuals in OWL ontologies
 - implements "owldoc" & "vocpub" documentation profiles for OWL, SKOS and OWL-as-SKOS results
