@@ -1,5 +1,5 @@
 # -*- mode: python ; coding: utf-8 -*-
-## run `pyinstaller pyshacl-cli.spec` to create `dist/pyshacl.exe` dist
+## run `pyinstaller pyLODE-cli.spec` to create `dist/pylode.exe` dist
 ## note it requires pywin32
 
 block_cipher = None
