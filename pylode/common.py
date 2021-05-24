@@ -2,7 +2,6 @@ from os import path
 from urllib import request
 from rdflib import util, Graph
 import sys
-import test.test_sys
 import logging
 
 logger = logging.getLogger(__name__)
