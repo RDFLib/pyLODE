@@ -7,13 +7,24 @@ from itertools import chain
 import markdown
 from jinja2 import Environment, FileSystemLoader
 from os.path import join
-from rdflib import URIRef, BNode, Literal
-from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROF, PROV, RDF, RDFS, SDO, SKOS
+from rdflib import URIRef, BNode, Literal, Namespace
+from rdflib.namespace import DC, DCTERMS, DOAP, FOAF, OWL, PROF, PROV, RDF, RDFS, SDO, SKOS, VOID
 from pylode.profiles.base import BaseProfile
 import re
 
+CC = Namespace("http://creativecommons.org/ns#")
+DOAP = Namespace("http://usefulinc.com/ns/doap/")
+IDOT = Namespace("http://identifiers.org/idot/")
+DOOR = Namespace("http://kannel.open.ac.uk/ontology#")
+MOD = Namespace("http://www.isibang.ac.in/ns/mod#")
+OMV = Namespace("http://omv.ontoware.org/2005/05/ontology#")
+PAV = Namespace("http://purl.org/pav/")
+SD = Namespace("http://www.w3.org/ns/sparql-service-description#")
+VANN = Namespace("http://purl.org/vocab/vann/")
+VOAF = Namespace("http://purl.org/vocommons/voaf#")
 
-class MOD(BaseProfile):
+
+class Mod(BaseProfile):
     def __init__(
             self,
             g,
@@ -196,10 +207,10 @@ class MOD(BaseProfile):
         return restriction
 
     def _load_template(self, template_file):
-        return Environment(loader=FileSystemLoader(join(TEMPLATES_DIR, "ontdoc"))).get_template(template_file)
+        return Environment(loader=FileSystemLoader(join(TEMPLATES_DIR, "mod"))).get_template(template_file)
 
     def _make_fragment_uri(self, uri):
-        """OntDoc Profile allows fragment URIs for Classes & Properties"""
+        """MOD Profile allows fragment URIs for Classes & Properties"""
         if self.PROPERTIES.get(uri) or self.CLASSES.get(uri):
             if self.PROPERTIES.get(uri):
                 title = self.PROPERTIES[uri]["title"] \
@@ -310,6 +321,136 @@ class MOD(BaseProfile):
             self.G.add((s, DCTERMS.publisher, o))
 
     def _extract_metadata(self):
+        MOD_ONT_OBJECT_PROPS = [
+            DCTERMS.License,
+            DCTERMS.accessRights,
+            DCTERMS.accrualMethod,
+            DCTERMS.accrualPeriodicity,
+            DCTERMS.accrualPolicy,
+            DCTERMS.audience,
+            DCTERMS.contributor,
+            DCTERMS.creator,
+            DCTERMS.isPartOf,
+            DCTERMS.publisher,
+            DCTERMS.relation,
+            DOOR.comesFromTheSameDomain,
+            DOOR.hasDisparateModelling,
+            DOOR.ontologyRelatedTo,
+            FOAF.fundedBy,
+            MOD.analytics,
+            MOD.group,
+            MOD.hasEvaluation,
+            MOD.ontologyInUse,
+            OMV.conformsToKnowledgeRepresentationParadigm,
+            OMV.endorsedBy,
+            OMV.hasFormalityLevel,
+            OMV.hasOntologyLanguage,
+            OMV.hasOntologySyntax,
+            OMV.isOfType,
+            OMV.usedOntologyEngineeringMethodology,
+            OMV.usedOntologyEngineeringTool,
+            OWL.BackwardCompatibleWith,
+            OWL.IncompatibleWith,
+            PAV.curatedBy,
+            PROV.wasGeneratedBy,
+            PROV.wasinvalidatedBy,
+            SDO.comment,
+            SDO.translationOfWork,
+            SDO.translator,
+            VOAF.generalizes,
+            VOAF.hasDisjunctionsWith,
+            VOAF.hasEquivalencesWith,
+            VOAF.similar,
+            VOAF.usedBy,
+        ]
+
+        MOD_ONT_DATATYPE_PROPS = [
+            CC.morePermissions,
+            CC.useGuidelines,
+            DCTERMS.Title,
+            DCTERMS.abstract,
+            DCTERMS.alternative,
+            DCTERMS.bibliographicCitation,
+            DCTERMS.coverage,
+            DCTERMS.created,
+            DCTERMS.dateSubmitted,
+            DCTERMS.hasFormat,
+            DCTERMS.hasVersion,
+            DCTERMS.identifier,
+            DCTERMS.isFormatOf,
+            DCTERMS.language,
+            DCTERMS.modified,
+            DCTERMS.source,
+            DCTERMS.subject,
+            DCTERMS.valid,
+            DOAP.bugDatabase,
+            DOAP.repository,
+            FOAF.depiction,
+            FOAF.logo,
+            IDOT.exampleIdentifier,
+            MOD.authorProperty,
+            MOD.averageChildCount,
+            MOD.browsingUI,
+            MOD.byteSize,
+            MOD.classesWithMoreThan25Children,
+            MOD.classesWithNoDefinition,
+            MOD.classesWithOneChild,
+            MOD.competencyQuestion,
+            MOD.definitionProperty,
+            MOD.hierarchyProperty,
+            MOD.maxChildCount,
+            MOD.maxDepth,
+            MOD.numberOfLabels,
+            MOD.obsoleteParent,
+            MOD.obsoleteProperty,
+            MOD.prefLabelProperty,
+            MOD.rootClasses,
+            MOD.sampleQueries,
+            MOD.synonymProperty,
+            MOD.vocabularyUsed,
+            OMV.designedForOntologyTask,
+            OMV.keyClasses,
+            OMV.keywords,
+            OMV.knownUsage,
+            OMV.numberOfAxioms,
+            OMV.numberOfClasses,
+            OMV.numberOfIndividuals,
+            OMV.numberOfProperties,
+            OMV.resourceLocator,
+            OMV.status,
+            OWL.deprecated,
+            OWL.priorVersion,
+            OWL.imports,
+            OWL.ontologyIRI,
+            OWL.versionIRI,
+            OWL.versionInfo,
+            PAV.curatedOn,
+            RDFS.comment,
+            SD.endpoint,
+            SDO.associatedMedia,
+            SDO.award,
+            SDO.includedInDataCatalog,
+            SDO.workTranslation,
+            VANN.changes,
+            VANN.example,
+            VANN.preferredNamespacePrefix,
+            VANN.preferredNamespaceUri,
+            VOAF.toDoList,
+            VOID.classPartition,
+            VOID.dataDump,
+            VOID.openSearchDescription,
+            VOID.propertyPartition,
+            VOID.uriLookupEndpoint,
+            VOID.uriRegexPattern,
+        ]
+
+        MOD_ONT_ANNOTATION_PROPS = [
+            OWL.priorVersion,
+            OWL.versionInfo,
+            PAV.derivedFrom,
+            PAV.importedOn,
+        ]
+
         if len(self.CLASSES.keys()) > 0:
             self.METADATA["has_classes"] = True
 
@@ -342,7 +483,7 @@ class MOD(BaseProfile):
         self.METADATA["editors"] = set()
         self.METADATA["funders"] = set()
         self.METADATA["translators"] = set()
-        for s in self.G.subjects(predicate=RDF.type, object=OWL.Ontology):
+        for s in self.G.subjects(predicate=RDF.type, object=MOD.Ontology):
             s_str = str(s)  # this is the Ontology's URI
             self.METADATA["uri"] = s_str
 
@@ -1184,7 +1325,7 @@ class MOD(BaseProfile):
 
     def _make_example(self, o: Union[URIRef, BNode, Literal]) -> str:
         """Returns an HTML / Markdown / ASCIIDOC string of this Class / Property's example, formatted according
-        to this OntDoc instance's outputformat instance variable. All content needed is extracted from this
+        to this MOD instance's outputformat instance variable. All content needed is extracted from this
         instance's graph (self.G)"""
 
         o_str = str(o)

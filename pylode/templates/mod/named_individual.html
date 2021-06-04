@@ -1,0 +1,65 @@
+<div class="entity named_individual" id="{{ fid }}">
+        <h3>{{ title }}<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                  {%- if uri.startswith("http") %}
+                      {{ uri }}
+                  {% else %}
+                    []
+                  {%- endif %}
+                  </code>
+                </td>
+            </tr>
+            {%- if classes|length > 0 %}
+            <dt>Class(es)</dt>
+            <dd>
+                {%- for class in classes %}
+                {{ class }}<br/>
+                {%- endfor %}
+            </dd>
+            {%- endif %}
+            {%- if is_defined_by is not none %}
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    {{ is_defined_by }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if source is not none %}
+            <tr>
+                <th>Source</th>
+                <td>
+                    {{ source }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if description is not none %}
+            <tr>
+                <th>Description</th>
+                <td>
+                    {{ description }}
+                </td>
+            </tr>
+            {%- endif %}
+             {%- if see_also is not none %}
+            <tr>
+                <th>See Also</th>
+                <td>
+                    {{ see_also }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if same_as is not none %}
+            <tr>
+                <th>Same As</th>
+                <td>
+                    {{ same_as }}
+                </td>
+            </tr>
+            {%- endif %}
+        </table>
+    </div>

@@ -1,0 +1,134 @@
+<div class="entity class" id="{{ fid }}">
+        <h3>
+          {{ title }}<sup title="class" class="sup-c">c</sup>
+          <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#{{ fid }}" title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>{{ uri }}</code></td>
+            </tr>
+            {%- if is_defined_by is not none %}
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    {{ is_defined_by }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if source is not none %}
+            <tr>
+                <th>Source</th>
+                <td>
+                    {{ source }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if description is not none %}
+            <tr>
+                <th>Description</th>
+                <td>
+                    {{ description }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if scopeNote is not none %}
+            <tr>
+                <th>Scope Notes</th>
+                <td>
+                    {{ scopeNote }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if examples|length > 0 %}
+            <tr>
+                <th>Example(s)</th>
+                <td>
+                    {%- for example in examples %}
+                    {{ example|safe }}<br/>
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if supers|length > 0 %}
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    {%- for super in supers %}
+                    {{ super }}<br/>
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if restrictions|length > 0 %}
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    {%- for r in restrictions %}
+                    {{ r }}<br/>
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if subs|length > 0 %}
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    {%- for sub in subs %}
+                    {{ sub }}<br/>
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if in_domain_of|length > 0 %}
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    {%- for d in in_domain_of %}
+                    {{ d }}<br/>
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if in_domain_includes_of|length > 0 %}
+            <tr>
+                <th>In domainIncludes of</th>
+                <td>
+                    {%- for d in in_domain_includes_of %}
+                    {{ d }}<br/>
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if in_range_of|length > 0 %}
+            <tr>
+                <th>In range of</th>
+                <td>
+                    {%- for r in in_range_of %}
+                    {{ r }}<br/>
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if in_range_includes_of|length > 0 %}
+            <tr>
+                <th>In rangeIncludes of</th>
+                <td>
+                    {%- for r in in_range_includes_of %}
+                    {{ r }}<br/>
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if has_members|length > 0 %}
+            <tr>
+                <th>Members</th>
+                <td>
+                    {%- for r in has_members %}
+                    {{ r }}<br/>
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+        </table>
+    </div>

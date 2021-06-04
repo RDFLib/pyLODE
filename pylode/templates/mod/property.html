@@ -1,0 +1,143 @@
+<div class="entity property" id="{{ fid }}">
+        <h3>{{ title }}
+            {%- if property_type == 'op' -%}
+            <sup title="object property" class="sup-op">op</sup>
+            {%- elif property_type == 'fp' -%}
+            <sup title="functional property" class="sup-fp">fp</sup>
+            {%- elif property_type == 'dp' -%}
+            <sup title="datatype property" class="sup-dp">dp</sup>
+            {%- elif property_type == 'ap' -%}
+            <sup title="annotation property" class="sup-ap">ap</sup>
+            {%- else -%}
+            <sup title="property" class="sup-p">p</sup>
+            {%- endif -%}
+          <span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#{{ fid }}" title="fragment link to here">#</a>&nbsp;
+            {%- if property_type == 'op' -%}
+             <a href="#objectproperties" title="Object Properties Index">OPs</a>
+            {%- elif property_type == 'fp' -%}
+            <a href="#functionalproperties" title="Functional Properties Index">FPs</a>
+            {%- elif property_type == 'dp' -%}
+            <a href="#datatypeproperties" title="Datatype Properties Index">DPs</a>
+            {%- elif property_type == 'ap' -%}
+            <a href="#annotationproperties" title="Annotation Properties Index">APs</a>
+            {%- else -%}
+            <a href="#properties" title="Properties Index">Props</a>
+            {%- endif -%}
+          </span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>{{ uri }}</code></td>
+            </tr>
+            {%- if is_defined_by is not none %}
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    {{ is_defined_by }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if source is not none %}
+            <tr>
+                <th>Source</th>
+                <td>
+                    {{ source }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if description is not none %}
+            <tr>
+                <th>Description</th>
+                <td>
+                    {{ description }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if scopeNote is not none %}
+            <tr>
+                <th>Scope Notes</th>
+                <td>
+                    {{ scopeNote }}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if examples|length > 0 %}
+            <tr>
+                <th>Example(s)</th>
+                <td>
+                    {%- for example in examples %}
+                    {{ example|safe }}<br/>
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if supers|length > 0 %}
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    {%- for super in supers %}
+                    {{ super }}
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if equivs|length > 0 %}
+            <tr>
+                <th>Equivalent properties</th>
+                <td>
+                    {%- for equiv in equivs %}
+                    {{ equiv }}
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if invs|length > 0 %}
+            <tr>
+                <th>Inverse properties</th>
+                <td>
+                    {%- for inv in invs %}
+                    {{ inv }}
+                    {%- endfor %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if domains|length > 0 or domainIncludes|length > 0 %}
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    {%- if domains|length > 0 %}
+                    {%- for domain in domains %}
+                    {{ domain }}
+                    {%- endfor %}
+                    {%- endif %}
+                    {%- if domainIncludes|length > 0 %}
+                    (<a href="https://schema.org/domainIncludes">sdo:domainIncludes</a>)
+                    {%- for domainInclude in domainIncludes %}
+                    {{ domainInclude }}
+                    {%- endfor %}
+                    {%- endif %}
+                </td>
+            </tr>
+            {%- endif %}
+            {%- if ranges|length > 0 or rangeIncludes|length > 0 %}
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    {%- if ranges|length > 0 %}
+                    {%- for range in ranges %}
+                    {{ range }}
+                    {%- endfor %}
+                    {%- endif %}
+                    {%- if rangeIncludes|length > 0 %}
+                    (<a href="https://schema.org/domainIncludes">sdo:rangeIncludes</a>)
+                    {%- for rangeInclude in rangeIncludes %}
+                    {{ rangeInclude }}
+                    {%- endfor %}
+                    {%- endif %}
+                </td>
+            </tr>
+            {%- endif %}
+        </table>
+    </div>
