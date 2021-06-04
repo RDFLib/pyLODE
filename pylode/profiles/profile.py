@@ -61,6 +61,20 @@ RDF_MEDIA_TYPES = [
     'application/n-triples'
 ]
 HTML_MEDIA_TYPE = "text/html"
+MOD_PROFILE = Profile(
+    "http://www.isibang.ac.in/ns/mod/1.4",
+    "Metadata for Ontology Description and Publication (MOD)",
+    "A vocabulary to describe and publish ontologies",
+    RDF_MEDIA_TYPES + [HTML_MEDIA_TYPE, "text/markdown"],
+    HTML_MEDIA_TYPE,
+    languages=["en"],
+    default_language="en",
+    is_profile_of=[
+        "https://www.w3.org/TR/owl2-rdf-based-semantics/",
+        "http://purl.org/dc/terms/",
+        "https://www.w3.org/TR/vocab-dcat/"
+    ]
+)
 PROF_PROFILE = Profile(
     "https://www.w3.org/TR/dx-prof/",
     "The Profiles Vocabulary",
@@ -138,21 +152,10 @@ VOC_PUB_PROFILE = Profile(
     is_profile_of=["https://www.w3.org/TR/skos-reference/"]
 )
 
-# MOD_PROFILE = Profile(
-#     "http://www.isibang.ac.in/ns/mod#MetadataForOntologyDescriptionAndPublication",
-#     "Metadata for Ontology Description and Publication (MOD)",
-#     "To describe the vocabularies, e.g., ontology, classification, metadata, etc.",
-#     RDF_MEDIA_TYPES + [HTML_MEDIA_TYPE, "text/markdown"],
-#     HTML_MEDIA_TYPE,
-#     languages=["en"],
-#     default_language="en",
-#     is_profile_of=["https://www.w3.org/TR/owl2-rdf-based-semantics/", "http://purl.org/dc/terms/"]
-# )
-
 PROFILES = {
     "prof": PROF_PROFILE,
     "ontdoc": ONT_DOC_PROFILE,
     "vocpub": VOC_PUB_PROFILE,
-    "nmpf": NMPF_PROFILE
-    # "modp": MOD_PROFILE
+    "nmpf": NMPF_PROFILE,
+    "mod": MOD_PROFILE,
 }

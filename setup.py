@@ -29,7 +29,6 @@ setup(
         'img': ['pyLODE-250.png']
     },
     version=__version__,
-    use_scm_version={'write_to': 'pylode/_version.py'},
     description='An OWL ontology documentation tool using Python and templating, based on LODE.',
     author='Nicholas J. Car',
     author_email='nicholas.car@surroundaustralia.com',
