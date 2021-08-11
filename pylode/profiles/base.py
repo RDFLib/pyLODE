@@ -1,7 +1,7 @@
 import collections
 from itertools import chain
 from jinja2 import Environment, FileSystemLoader
-from rdflib import SDO, SKOS, OWL, URIRef, RDF, PROF, Literal, XSD, Graph, Namespace, FOAF, Graph
+from rdflib import SDO, SKOS, OWL, URIRef, RDF, PROF, Literal, XSD, Namespace, FOAF, Graph
 
 from pylode.common import TEMPLATES_DIR
 
@@ -460,11 +460,7 @@ class BaseProfile:
         if self.METADATA.get("repository") is not None:
             g.add((uri, SDO.codeRepository, repository))
 
-        # make sure the json-ld serializer is registered
-        from rdflib.plugin import register, Serializer
-        register('json-ld', Serializer, 'rdflib_jsonld.serializer', 'JsonLDSerializer')
-
-        return g.serialize(format="json-ld").decode("utf-8")
+        return g.serialize(format="json-ld")
 
     def _make_agent_link(self, name, url=None, email=None, affiliation=None):
         if self.outputformat == "md":
