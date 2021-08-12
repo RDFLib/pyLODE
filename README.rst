@@ -763,7 +763,7 @@ and change/add development priorities.
 Current Release
 ---------------
 
-The current release, as of August, 2021, is **2.11.0**.
+The current release, as of August, 2021, is **2.12.0**.
 
 Release Schedule
 ----------------
@@ -773,7 +773,8 @@ Release Schedule
    :widths: 15, 10, 30
 
    3.0, *?*, "Will include pre-testing inputs with SHACL"
-   **2.11.0**, 12 Aug 2021, "Updates to work with rdflib 6.0.0"
+   **2.12.0**, 12 Aug 2021, "Changed license to BSD 3-clause (like RDFlib)"
+   2.11.0, 11 Aug 2021, "Updates to work with rdflib 6.0.0"
    2.10.0, 24 May 2021, "Update Windows EXE build process, simplified versioning"
    2.9.1, 28 Apr 2021, "Support for ASCIIDOC format (OntDoc profile only)"
    2.8.11, 28 Apr 2021, "Further changes for PyPI only"

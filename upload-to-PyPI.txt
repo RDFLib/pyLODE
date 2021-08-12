@@ -2,15 +2,16 @@
 
 # 2. Update version in pylode/__init__.py
 
-# 2. $ git commit changes
+# 3. $ git commit changes
 
-# 3. $ git tag <VERSION_NO>
+# 4. $ git tag <VERSION_NO>
 
-# 4. $ git push
+# 5. $ git push
 #    $ git push --tags
 
-# 5. remove build dirs: rm -r build dist pyLODE.egg-info
-# 5. $ python setup.py sdist bdist_wheel
+# 6. remove build dirs: rm -r build dist pyLODE.egg-info
 
-# 6. $ twine check dist/*  -- check ReStructuredText
+# 7. $ python setup.py sdist bdist_wheel
+
+# 8. $ twine check dist/*  -- check ReStructuredText
 #    $ twine upload dist/*  -- push up

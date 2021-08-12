@@ -1,4 +1,4 @@
-__version__ = "2.11.0"
+__version__ = "2.12.0"
 
 from .common import *
 from .profiles import OntDoc, Prof, VocPub, NMPF, PROFILES, RDF_MEDIA_TYPES

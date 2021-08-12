@@ -530,7 +530,7 @@ class BaseProfile:
                 email = str(o).split("/")[-1].split("#")[-1]  # remove base URI leaving only email address
             elif p in [SDO.memberOf, SDO.affiliation]:
                 for p2, o2 in self.G.predicate_objects(subject=o):
-                    if p2 in [FOAF.homepage, SDO.identifier, SDO.url]:  # TODO: split homepage form IDs, cater for rdfs:seeAlso
+                    if p2 in [FOAF.homepage, SDO.identifier, SDO.url]:  # TODO: split homepage from IDs, cater for rdfs:seeAlso
                         org_url = str(o2)
                     elif p2 in [FOAF.name, SDO.name]:
                         org_name = str(o2)
