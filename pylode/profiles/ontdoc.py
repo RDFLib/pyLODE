@@ -645,10 +645,10 @@ class OntDoc(BaseProfile):
         for prop in self.PROPERTIES.keys():
             s = URIRef(prop)
             # property type
-            if (s, RDF.type, OWL.ObjectProperty) in self.G:
-                self.PROPERTIES[prop]["prop_type"] = "op"
-            elif (s, RDF.type, OWL.FunctionalProperty) in self.G:
+            if (s, RDF.type, OWL.FunctionalProperty) in self.G:
                 self.PROPERTIES[prop]["prop_type"] = "fp"
+            elif (s, RDF.type, OWL.ObjectProperty) in self.G:
+                self.PROPERTIES[prop]["prop_type"] = "op"
             elif (s, RDF.type, OWL.DatatypeProperty) in self.G:
                 self.PROPERTIES[prop]["prop_type"] = "dp"
             elif (s, RDF.type, OWL.AnnotationProperty) in self.G:
