@@ -462,7 +462,7 @@ class BaseProfile:
 
         # make sure the json-ld serializer is registered
         from rdflib.plugin import register, Serializer
-        register('json-ld', Serializer, 'rdflib_jsonld.serializer', 'JsonLDSerializer')
+        register('json-ld', Serializer, 'rdflib.plugins.serializers.jsonld', 'JsonLDSerializer')
 
         return g.serialize(format="json-ld", encoding="utf-8")  # support >= rdflib 6.0.0 and ensure backwards compat (last python 2 release)
 
