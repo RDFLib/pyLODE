@@ -1,10 +1,14 @@
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).absolute().parent.parent))
 import pylode
 
 
 def test_basic_class():
-    m = pylode.MakeDocco(input_data_file="agrif.ttl")
+    m = pylode.MakeDocco(input_data_file=str(Path(__file__).absolute().parent / "agrif-testing.ttl"))
 
     agrif_html = m.document()
+    m.document(destination="agrif-testing.html")
 
     assert '<li><a href="#Series">Series</a></li>' in agrif_html
     assert '''    <div class="entity class" id="Series">
@@ -32,12 +36,8 @@ def test_basic_class():
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#associatedFunction">associated Function</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#associatedFunction">associated Function</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="https://linked.data.gov.au/def/agrif#Function">Function</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>''' in agrif_html
-
-
-if __name__ == "__main__":
-    test_basic_class()

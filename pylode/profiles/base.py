@@ -460,11 +460,7 @@ class BaseProfile:
         if self.METADATA.get("repository") is not None:
             g.add((uri, SDO.codeRepository, repository))
 
-        # make sure the json-ld serializer is registered
-        from rdflib.plugin import register, Serializer
-        register('json-ld', Serializer, 'rdflib_jsonld.serializer', 'JsonLDSerializer')
-
-        return g.serialize(format="json-ld", encoding="utf-8")  # support >= rdflib 6.0.0 and ensure backwards compat (last python 2 release)
+        return g.serialize(format="json-ld")
 
     def _make_agent_link(self, name, url=None, email=None, affiliation=None):
         if self.outputformat == "md":

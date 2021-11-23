@@ -1,0 +1,180 @@
+@prefix : <https://linked.data.gov.au/def/agrif#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sdo: <https://schema.org/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <https://linked.data.gov.au/def/agrif> .
+
+<https://linked.data.gov.au/def/agrif> rdf:type owl:Ontology ;
+                                       owl:versionIRI <https://linked.data.gov.au/def/agrif/0.9> ;
+                                       dcterms:modified "2019-10-21"^^xsd:date ;
+                                       dcterms:contributor "Pouya Ghiasnezhad Omran" ,
+                                                           "Sergio José Rodríguez Méndez" ,
+                                                           "Kerry Taylor" ,                                                         
+                                                          <http://orcid.org/0000-0002-8742-7730> ;                                                          
+                                       dcterms:creator [
+                                                          sdo:name "Katherine Stuart" ;
+                                                          sdo:affiliation <https://linked.data.gov.au/org/finance> ;
+                                                       ] ,
+                                                       <http://orcid.org/0000-0003-3425-0780> ,
+                                                       [
+                                                          sdo:name "John Machin" ;
+                                                          sdo:affiliation <https://linked.data.gov.au/org/finance> ;
+                                                       ] ; 
+                                       owl:priorVersion "0.8" ;
+                                       rdfs:label "The Australian Government Records Interoperability Framework (AGRIF) ontology"@en ;
+                                       owl:versionInfo "0.9" ;
+                                       rdfs:comment "The Australian Government Records Interoperability Framework (AGRIF, ‘the Framework’) is a system of related semantic ontologies that describe the structure, functions, and activities of the Australian Government, providing sufficient context for the effective use – including but not limited to management – of Australian Government information assets. It complies with the World Wide Web Consortium’s Web Ontology Language (OWL2) Recommendation and makes reference to other Recommendations and existing domain ontologies for archival and preservation processes."@en ;
+                                       dcterms:publisher <https://linked.data.gov.au/org/finance> ;
+                                       vann:preferredNamespaceUri "https://linked.data.gov.au/def/agrif#"^^xsd:string ;
+                                       vann:preferredNamespacePrefix "agrif"@en ;
+                                       dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                       dcterms:rights "(c) Commonwealth of Australia (Department of Finance) 2019"@en ;
+                                       rdfs:seeAlso <https://github.com/agldwg/agrif-ont> ;
+                                       dcterms:created "2016-12-06"^^xsd:date .
+
+<http://orcid.org/0000-0003-3425-0780>
+  a sdo:Person ;
+  sdo:name "Armin Haller" ;
+  sdo:identifier <http://orcid.org/0000-0003-3425-0780> ;
+  sdo:email "armin.haller@anu.edu.au"^^xsd:anyURI ;
+  sdo:affiliation <https://www.anu.edu.au> ;
+.
+
+<https://www.anu.edu.au>
+  a sdo:Organization ;
+  sdo:name "Australian National University" ;
+  sdo:url "https://www.anu.edu.au"^^xsd:anyURI ;
+.
+
+<https://linked.data.gov.au/org/finance>
+  a sdo:Organization ;
+  sdo:name "Department of Finance" ;
+  sdo:url <https://www.finance.gov.au> ;
+.
+
+<http://orcid.org/0000-0002-8742-7730>
+    a sdo:Person ;
+    sdo:name "Nicholas J. Car" ;
+    sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+    sdo:email "nicholas.car@surroundaustralia.com"^^xsd:anyURI ;
+    sdo:affiliation <https://surroundaustralia.com> ;
+.    
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://linked.data.gov.au/def/agrif#accessedBy
+:accessedBy rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :wasAssociatedWith ;
+            rdfs:comment "A relation that indicates that an Agent has accessed a Record as defined in an Access Activity."@en ;
+            rdfs:label "accessed By"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#actsAs
+:actsAs rdf:type owl:ObjectProperty ;
+        rdfs:comment "A relation between an Agent and the Role that Agent acts in."@en ;
+        rdfs:label "acts As"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#affects
+:affects rdf:type owl:ObjectProperty ;
+         owl:inverseOf :isAffectedBy ;
+         rdfs:comment "A relation between an Event and an Artefact or a Record."@en ;
+         rdfs:label "affects"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#associatedFunction
+:associatedFunction rdf:type owl:ObjectProperty ;
+                    rdfs:comment "A relation that associates a Function to an Entity, Event or Activity."@en ;
+                    rdfs:label "associated Function"@en .
+
+
+###  http://linked.data.gov.au/def/agrif#associatedRole
+:associatedRole rdf:type owl:ObjectProperty ;
+                dcterms:source  <https://www.w3.org/TR/prov-o/#hadRole> ; ;
+                rdfs:comment "An associated Role is a qualified association between a Role and an Activity or Event defined by an Association."@en ;
+                rdfs:label "associated Role"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+
+###  http://linked.data.gov.au/def/agrif#Activity
+:Activity rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :qualifiedAssociation ;
+                            owl:someValuesFrom :Association
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :wasAssociatedWith ;
+                            owl:someValuesFrom :Agent
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :associatedFunction ;
+                            owl:allValuesFrom :Function
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :guidingPolicy ;
+                            owl:allValuesFrom :Policy
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasLocation ;
+                            owl:allValuesFrom :SpatialLocation
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasStatus ;
+                            owl:allValuesFrom :Status
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :requiresSecurityClassification ;
+                            owl:allValuesFrom :SecurityClassification
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :usedRecord ;
+                            owl:allValuesFrom :Record
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :endedAtTime ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:dateTime
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :startedAtTime ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:dateTime
+                          ] ;
+          dcterms:source  <https://www.w3.org/TR/prov-o/#Activity> ;
+          rdfs:comment "An Activity is something that occurs over a period of time on a Record."@en ;
+          rdfs:label "Activity"@en .
+
+###  http://linked.data.gov.au/def/agrif#IntellectualControlSystem
+:IntellectualControlSystem rdf:type owl:Class ;
+                           rdfs:subClassOf :InformationSystem ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :guidingPolicy ;
+                                             owl:allValuesFrom :Policy
+                                           ] ;
+                           rdfs:comment "An Intellectual Control System is a System that enables Agents to locate and manage information."@en ;
+                           rdfs:label "Intellectual Control System"@en .
+
+###  http://linked.data.gov.au/def/agrif#Series
+:Series rdf:type owl:Class ;
+        rdfs:subClassOf :IntellectualControlSystem ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :associatedFunction ;
+                          owl:allValuesFrom :Function
+                        ] ;
+        rdfs:comment "A Series is an identifier for an item, and when combined with a control symbol gives an item its intellectual context."@en ;
+        rdfs:label "Series"@en .
+

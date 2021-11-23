@@ -6,7 +6,7 @@ def main():
     # OntDoc
     ontdoc_file = [
         "agrif-notitle.ttl",
-        "agrif.ttl",
+        "agrif-testing.ttl",
         "alternates.ttl",
         "asgs.ttl",
         "bfo.ttl",
@@ -47,7 +47,7 @@ def main():
 
     # for these files, make a vocpub html & md output
     vocpub_files = [
-        'agrif.ttl',
+        'agrif-testing.ttl',
         "agift.ttl",
         'asgs.ttl',
         'collection-item-format.ttl',
