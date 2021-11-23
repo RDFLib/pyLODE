@@ -1,4 +1,2 @@
-jinja2
-markdown
 rdflib==6.0.2
-requests
+dominate
