@@ -537,10 +537,15 @@ class BaseProfile:
                     elif p in [FOAF.mbox, SDO.email]:
                         org_email = str(o2).split("/")[-1].split("#")[-1]  # remove base URI leaving only email address
 
-            # use the URI of the Agent for its URL if no FOAF.homepage or SDO.identifier has been set
-            if url is None and type(agent_node) == URIRef:
-                url = str(agent_node)
+        # use the URI of the Agent for its URL if no FOAF.homepage or SDO.identifier has been set
+        if url is None and type(agent_node) == URIRef:
+            url = str(agent_node)
 
+        if name is None:
+            if type(agent_node) == Literal:
+                name = agent_node
+            if type(agent_node) == URIRef:
+                name = agent_node.split("/")[-1].split("#")[-1]
         agent = self._make_agent_link(name, url=url, email=email)
 
         if org_name is not None:
