@@ -763,7 +763,7 @@ and change/add development priorities.
 Current Release
 ---------------
 
-The current release, as of November, 2021, is **2.11.0**.
+The current release, as of November, 2021, is **2.13.0**.
 
 Release Schedule
 ----------------
