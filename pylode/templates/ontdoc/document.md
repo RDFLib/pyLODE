@@ -11,6 +11,6 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) {{ p
 * Object Properties: op
 * Functional Properties: fp
 * Data Properties: dp
-* Annotation Properties: dp
+* Annotation Properties: ap
 * Properties: p
 * Named Individuals: ni

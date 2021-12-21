@@ -522,6 +522,7 @@ class BaseProfile:
         org_url = None
         org_email = None
         for p, o in self.G.predicate_objects(subject=agent_node):
+            print(p, o)
             if p in [FOAF.homepage, SDO.identifier]:
                 url = str(o)
             elif p in [FOAF.name, SDO.name]:
