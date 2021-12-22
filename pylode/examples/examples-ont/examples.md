@@ -1,4 +1,4 @@
-Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.9.1
+Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.13.2
 
 # Examples Ontology
 
@@ -6,7 +6,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.9.
 * **URI**
   * `https://example.com`
 * **Publisher(s)**
-  * None
+  * [surround](https://linked.data.gov.au/org/surround)
 * **Creators(s)**
   * [Nicholas J. Car](http://orcid.org/0000-0002-8742-7730)
     [[0000-0002-8742-7730](http://orcid.org/0000-0002-8742-7730)]
@@ -38,10 +38,10 @@ This ontology contains several simple classes and properties about animals that 
 
 **Figure 1:** Ontology overview
 ## Classes
-[Creature](#Creature)
-[Fish](#Fish)
-[Fish food](#Fishfood)
-[Food](#Food)
+* [Creature](#Creature)
+* [Fish](#Fish)
+* [Fish food](#Fishfood)
+* [Food](#Food)
 ### Creature
 Property | Value
 --- | ---
@@ -60,7 +60,7 @@ Description | Fish are aquatic, craniate, gill-bearing animals that lack limbs w
 Scope Notes | class with example in inline JSON-LD
 Example(s) |`{` <br /> `  "@id": "https://example.com#flipper",` <br /> `  "@type": "https://example.com#Fish",` <br /> `  "http://www.w3.org/2004/02/skos/core#definition": "Flipper is the fish that lives in Nick's fish tank",` <br /> `  "http://www.w3.org/2004/02/skos/core#prefLabel": "Flipper the Fish",` <br /> `  "https://example.com#hasScaleColour": {` <br /> `    "@id": "http://example-voc.com/concept/Orange"` <br /> `  },` <br /> `  "https://example.com#livesInFreshWater": true,` <br /> `  "https://example.com#livesInSaltWater": false` <br /> `}` <br /> <br />
 Super-classes |[Creature](#Creature) (c)<br />
-Restrictions |[eats](#eats) (op) **min** 1<br />[lives in fresh water](#livesinfreshwater) (dp) **exactly** 1<br />[lives in salt water](#livesinsaltwater) (dp) **exactly** 1<br />[lives in estuarine water](#livesinestuarinewater) (dp) **exactly** 1<br />
+Restrictions |[eats](#eats) (op) **min** 1<br />[lives in salt water](#livesinsaltwater) (dp) **exactly** 1<br />[lives in estuarine water](#livesinestuarinewater) (dp) **exactly** 1<br />[lives in fresh water](#livesinfreshwater) (dp) **exactly** 1<br />
 In domain of |[lives in estuarine water](#livesinestuarinewater) (dp)<br />[lives in fresh water](#livesinfreshwater) (dp)<br />[lives in salt water](#livesinsaltwater) (dp)<br />
 ### Fish food
 Property | Value
@@ -128,7 +128,7 @@ Property | Value
 URI | `https://example.com#livesInEstuarineWater`
 Description | True if the fish lives in estuarine water. It may also live in other water
 Scope Notes | property with example using Resource Descriptor for inline Markdown
-Example(s) |<br />
+Example(s) |**lives in estuarine water**: _true_<br />
 Domain(s) |[Fish](#Fish) (c)<br />
 Range(s) |[xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean) (c)<br />
 [](livesinfreshwater)
@@ -156,26 +156,58 @@ Range(s) |[xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean) (c)<br />
 ## Namespaces
 * **default (eggs)**
   * `https://example.com#`
+* **brick**
+  * `https://brickschema.org/schema/Brick#`
+* **csvw**
+  * `http://www.w3.org/ns/csvw#`
+* **dc**
+  * `http://purl.org/dc/elements/1.1/`
+* **dcam**
+  * `http://purl.org/dc/dcam/`
+* **dcat**
+  * `http://www.w3.org/ns/dcat#`
+* **dcmitype**
+  * `http://purl.org/dc/dcmitype/`
 * **dcterms**
   * `http://purl.org/dc/terms/`
+* **doap**
+  * `http://usefulinc.com/ns/doap#`
+* **foaf**
+  * `http://xmlns.com/foaf/0.1/`
+* **odrl**
+  * `http://www.w3.org/ns/odrl/2/`
 * **orcid**
   * `http://orcid.org/`
+* **org**
+  * `http://www.w3.org/ns/org#`
 * **owl**
   * `http://www.w3.org/2002/07/owl#`
 * **prof**
   * `http://www.w3.org/ns/dx/prof/`
 * **prov**
   * `http://www.w3.org/ns/prov#`
+* **qb**
+  * `http://purl.org/linked-data/cube#`
 * **rdf**
   * `http://www.w3.org/1999/02/22-rdf-syntax-ns#`
 * **rdfs**
   * `http://www.w3.org/2000/01/rdf-schema#`
 * **sdo**
   * `https://schema.org/`
+* **sh**
+  * `http://www.w3.org/ns/shacl#`
 * **skos**
   * `http://www.w3.org/2004/02/skos/core#`
+* **sosa**
+  * `http://www.w3.org/ns/sosa/`
+* **ssn**
+  * `http://www.w3.org/ns/ssn/`
+* **time**
+  * `http://www.w3.org/2006/time#`
 * **vann**
   * `http://purl.org/vocab/vann/`
+* **void**
+  * `http://rdfs.org/ns/void#`
 * **xsd**
   * `http://www.w3.org/2001/XMLSchema#`
 
@@ -184,6 +216,6 @@ Range(s) |[xsd:boolean](http://www.w3.org/2001/XMLSchema#boolean) (c)<br />
 * Object Properties: op
 * Functional Properties: fp
 * Data Properties: dp
-* Annotation Properties: dp
+* Annotation Properties: ap
 * Properties: p
 * Named Individuals: ni
