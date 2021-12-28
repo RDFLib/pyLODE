@@ -983,7 +983,13 @@ class OntDoc(BaseProfile):
         #     [(v.get("fid"), v.get("title")) for k, v in self.CLASSES.items()],
         #     key=lambda tup: tup[1],
         # )
-        class_index = [f"<li>{self._make_formatted_uri(x)}</li>" for x in self.CLASSES.keys()]
+        if self.outputformat == "md":
+            class_index = [f"* {self._make_formatted_uri(x)}" for x in self.CLASSES.keys()]
+        elif self.outputformat == "adoc":
+            class_index = [f"* {self._make_formatted_uri(x)}" for x in self.CLASSES.keys()]
+        else:
+            class_index = [f"<li>{self._make_formatted_uri(x)}</li>" for x in self.CLASSES.keys()]
+
         return classes_template.render(class_index=class_index, classes=classes_list, )
 
     def _make_property(self, property):

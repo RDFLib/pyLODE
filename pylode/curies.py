@@ -1768,7 +1768,7 @@ CURIES = {
     "sdmxd": "http://purl.org/linked-data/sdmx/2009/dimension#",
     "sdmxdim": "http://purl.org/linked-data/sdmx/2009/dimension#",
     "sdmxm": "http://purl.org/linked-data/sdmx/2009/measure#",
-    "sdo": "http://schema.org/",
+    "sdo": "https://schema.org/",
     "sdshare": "http://www.sdshare.org/2012/extension/",
     "sdt": "http://statisticaldata.linkedwidgets.org/terms/",
     "sdterms": "http://statisticaldata.linkedwidgets.org/terms/",

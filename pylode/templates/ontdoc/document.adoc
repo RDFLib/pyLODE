@@ -38,6 +38,6 @@ toc::[]
 * Object Properties: **op**
 * Functional Properties: **fp**
 * Data Properties: **dp**
-* Annotation Properties: **dp**
+* Annotation Properties: **ap**
 * Properties: **p**
 * Named Individuals: **ni**

@@ -77,7 +77,6 @@ class BaseProfile:
             "adoc": f"link:{uri}[{curie}]",
             "html": f'<a href="{uri}">{curie}</a>'
         }
-
         return links[self.outputformat]
 
     def _make_fragment_uri(self, uri):
@@ -89,7 +88,7 @@ class BaseProfile:
         if uri.startswith(self.METADATA.get("default_namespace")):
             return self._make_fragment_uri(uri)
         else:
-            # URI isn't in the default namespace, so use an absolut URI
+            # URI isn't in the default namespace, so use an absolute URI
             return self._make_formatted_uri_basic(uri)
 
     def _get_curie(self, uri):

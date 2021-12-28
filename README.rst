@@ -763,7 +763,7 @@ and change/add development priorities.
 Current Release
 ---------------
 
-The current release, as of November, 2021, is **2.13.0**.
+The current release, as of December, 2021, is **2.13.2**.
 
 Release Schedule
 ----------------
@@ -773,7 +773,7 @@ Release Schedule
    :widths: 15, 10, 30
 
    3.0, *?*, "Will include pre-testing inputs with SHACL"
-   **2.13.0**, 23 November 2021, "Updated RDFlib to 6.0.2, improved test to properly use pytest"
+   **2.13.2**, 21 December 2021, "Updated RDFlib to 6.1.1, improved test to properly use pytest"
    2.10.0, 24 May 2021, "Update Windows EXE build process, simplified versioning"
    2.9.1, 28 Apr 2021, "Support for ASCIIDOC format (OntDoc profile only)"
    2.8.11, 28 Apr 2021, "Further changes for PyPI only"
