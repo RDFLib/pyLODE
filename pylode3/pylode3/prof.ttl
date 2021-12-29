@@ -1,0 +1,175 @@
+@prefix : <http://www.w3.org/ns/dx/prof/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://www.w3.org/ns/dx/prof> .
+
+<http://www.w3.org/ns/dx/prof> rdf:type owl:Ontology ;
+                                owl:versionIRI <http://www.w3.org/ns/dx/prof/1.0> ;
+                                rdfs:label "Profiles Vocabulary" ;
+                                dct:contributor <http://orcid.org/0000-0002-8742-7730> ;
+                                dct:creator [
+                                    sdo:name "Nicholas J. Car" ;
+                                    sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
+                                    sdo:email <nicholas.car@surroundaustralia.com> ;
+                                    sdo:affiliation [
+                                        sdo:name "SURROUND Australia Pty Ltd" ;
+                                        sdo:url <https://surroundaustralia.com> ;
+                                    ] ;
+                                ] ,
+                                [
+                                    sdo:name "Rob Atkinson" ;
+                                    sdo:identifier <http://orcid.org/0000-0002-7878-2693> ;
+                                    sdo:email <rob@metalinkage.com.au> ;
+                                    sdo:affiliation [
+                                        sdo:name "Open Geospatial Consortium" ;
+                                        sdo:url <https://www.opengeospatial.org/> ;
+                                    ] ,
+                                    [
+                                        sdo:name "Metalinkage" ;
+                                    ] ;
+                                ] ;
+                              rdfs:comment """This vocabulary is for describing relationships between standards/specifications, profiles of them and supporting artifacts such as validating resources.
+
+This model starts with [http://dublincore.org/2012/06/14/dcterms#Standard](dct:Standard) entities which can either be Base Specifications (a standard not profiling any other Standard) or Profiles (Standards which do profile others). Base Specifications or Profiles can have Resource Descriptors associated with them that defines implementing rules for the it. Resource Descriptors must indicate the role they play (to guide, to validate etc.) and the formalism they adhere to (dct:format) to allow for content negotiation. A vocabulary of Resource Roles are provided alongside this vocabulary but that list is extensible."""@en ;
+                              owl:versionInfo "1.0" ;
+                              dc:contributor "Antoine Isaac" ,
+                                             "Simon Cox" ,
+                                             "Alejandra Gonzalez-Beltran" ,
+                                             "Makx Dekkers" ;
+                              dct:modified "2019-10-25"^^xsd:date ;
+                              dct:created "2018-02-16"^^xsd:date .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/conformsTo
+dct:conformsTo rdf:type owl:AnnotationProperty ;
+                   rdfs:subPropertyOf dc:relation ,
+                                      dct:relation ;
+                   rdfs:range dct:Standard .
+
+
+###  http://purl.org/dc/terms/format
+dct:format rdf:type owl:AnnotationProperty ;
+               rdfs:subPropertyOf dc:format ;
+               rdfs:range dct:MediaTypeOrExtent .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.w3.org/ns/dx/prof/hasArtifact
+:hasArtifact
+  rdf:type owl:ObjectProperty ;
+  skos:definition "The URL of a downloadable file with particulars such as its format and role indicated by the Resource Descriptor"@en ;
+  rdfs:domain :ResourceDescriptor ;
+  rdfs:label "has artifact" ;
+  skos:usageNote "A property to link from a Resource Descriptor to an actual information resource (rdfs:Resource; an individual) that implements it"@en .
+
+
+###  http://www.w3.org/ns/dx/prof/isInheritedFrom
+:isInheritedFrom rdf:type owl:ObjectProperty ;
+               rdfs:domain :ResourceDescriptor ;
+               rdfs:range :Profile ;
+               skos:definition "A base specification, a Resource Descriptor from which is to be considered a Resource Descriptor for this Profile also"@en ;
+               skos:usageNote "This property is created for the convenience of clients. When profile describers wish to allow clients to discover all resources relevant to a Profile without having to navigating an inheritance hierarchy of prof:profileOf relations, this predicate may be used to directly associate inherited Profile Descriptors with the Profile. If this property is present, it should be used consistently and all relevant resources a client may need to utilise the profile should be present and described using this predicate"@en ;
+               rdfs:label "is inherited from" .
+
+
+###  http://www.w3.org/ns/dx/prof/isProfileOf
+:isProfileOf rdf:type owl:ObjectProperty ;
+           rdfs:domain :Profile ;
+           rdfs:range dct:Standard ;
+           rdfs:subPropertyOf :isTransitiveProfileOf ;
+           skos:usageNote "A Profile may define constraints on the usage of one or more specifications. All constraints of these specifications are inherited, in the sense that an object conforming to a profile conforms to all the constraints specified the targets of prof:isProfileOf relations. This property is optional, allowing any specification to be declared at the root of a profile hierarchy using the Profile class"@en ;
+           skos:definition "A specification for which this Profile defines constraints, extensions, or which it uses in combination with other specifications, or provides guidance or explanation about its usage"@en ;
+           rdfs:label "is profile of" .
+
+
+###  http://www.w3.org/ns/dx/prof/isTransitiveProfileOf
+:isTransitiveProfileOf rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Profile ;
+                     rdfs:range dct:Standard ;
+                     skos:definition "The transitive closure of the prof:isProfileOf property. Relates a profile to another specification that it is a profile of, possibly via a chain of intermediate profiles that are in prof:isProfileOf relationships"@en ;
+                     rdfs:label "is transitive profile of" ;
+                     skos:usageNote "This is a convenience property that may be used to access all specifications (including other profiles) that could provide useful information and related resources for the Profile (for example, for better identifying conformance requirements). This avoids forcing clients to traverse a profile hierarchy to find all relevant resources. If this property is used, then all such relationships should be present so a client can safely avoid hierarchy traversal"@en .
+
+
+###  http://www.w3.org/ns/dx/prof/hasResource
+:hasResource rdf:type owl:ObjectProperty ;
+          rdfs:range :ResourceDescriptor ;
+          skos:definition "A resource which describes the nature of an artifact and the role it plays in relation to the Profile"@en ;
+          rdfs:label "has resource"@en ;
+          skos:usageNote "This property is analogous to dcat:distribution however the domain is not necessarily dcat:Dataset. dcat:Dataset and prof:Profile are not disjoint, so it is up to implementations to decide if these are equivalent properties"@en .
+
+
+###  http://www.w3.org/ns/dx/prof/hasRole
+:hasRole rdf:type owl:ObjectProperty ;
+              rdfs:domain :ResourceDescriptor ;
+              rdfs:range skos:Concept ;
+              skos:usageNote "A set of common roles are defined by the Profiles Vocabulary. These are not exhaustive or disjoint, and may be extended for situations where finer grained description of purpose is necessary. A resource may perform multiple roles"@en ;
+              skos:definition "The function of an artifact described by a Resource Descriptor, such as specification, guidance etc."@en ;
+              rdfs:label "has role" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.w3.org/ns/dx/prof/hasToken
+:hasToken rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Profile ;
+       rdfs:range xsd:token ;
+       skos:definition "The preferred identifier for the Profile, for use in circumstances where its URI cannot be used"@en ;
+       skos:usageNote "A simple lexical form of identifier that may be accepted in some circumstances, such as API arguments to reference this profile. This is the “preferred term”, since alternative identifiers may be declared and used by any implementation"@en ;
+       rdfs:label "has token" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+
+###  http://www.w3.org/ns/dx/prof/ResourceDescriptor
+:ResourceDescriptor rdf:type owl:Class ;
+                  rdfs:label "Resource Descriptor"@en ;
+                  skos:definition "A description of a resource that defines an aspect - a particular part, feature or role - of a Profile"@en ;
+                  skos:usageNote "Can be use to indicate the formalism (via dct:format) and any adherence to a dct:Standard (via dct:conformsTo) to allow for machine mediation as well as its purpose via relation to a ResourceRole (via hasRole)"@en .
+
+
+###  http://www.w3.org/ns/dx/prof/ResourceRole
+:ResourceRole rdf:type owl:Class ;
+                  rdfs:label "Resource Role" ;
+                  skos:definition "A role that an profile resource, described by a Resource Descriptor, plays"@en ;
+                  rdfs:subClassOf skos:Concept ;
+                  skos:usageNote "Specific terms must come from a vocabulary"@en .
+
+
+###  http://www.w3.org/ns/dx/prof/Profile
+:Profile rdf:type owl:Class ;
+         rdfs:subClassOf dct:Standard ;
+         dct:source <https://www.w3.org/2017/dxwg/wiki/ProfileContext> ;
+         rdfs:label "Profile" ;
+         skos:definition """A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications.
+
+This definition includes what are often called \"application profiles\", \"metadata application profiles\", or \"metadata profiles\"."""@en .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+dct:conformsTo rdfs:isDefinedBy dct: ;
+                   skos:definition "An established standard to which the described resource conforms"@en ;
+                   rdfs:label "conforms to" .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

@@ -1,0 +1,49 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix od: <https://w3id.org/profile/ontdoc/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+
+<https://w3id.org/profile/ontdoc>
+    a owl:Ontology ;
+    dcterms:title "Ontology Documentation Profile" ;
+    dcterms:description "This small ontology provides only a few properties used to assist with the documentation of other ontologies' content" ;
+.
+
+od:superClassOf
+    a rdf:Property ;
+    dcterms:title "super class of" ;
+    dcterms:description "" ;
+.
+
+od:inDomainOf
+    a rdf:Property ;
+    dcterms:title "in domain of" ;
+    dcterms:description "Inverse of rdfs:domain" ;
+.
+
+od:inDomainIncludesOf
+    a rdf:Property ;
+    dcterms:title "in domain includes of" ;
+    dcterms:description "Inverse of sdo:domainIncludes" ;
+.
+
+od:inRangeOf
+    a rdf:Property ;
+    dcterms:title "in range of" ;
+    dcterms:description "Inverse of rdfs:range" ;
+.
+
+od:inRangeIncludesOf
+    a rdf:Property ;
+    dcterms:title "in range includes of" ;
+    dcterms:description "Inverse of sdo:rangeIncludes" ;
+.
+
+od:hasInstance
+    a rdf:Property ;
+    dcterms:title "has instance" ;
+    dcterms:description "Indicates Named Individuals that are of this class" ;
+.

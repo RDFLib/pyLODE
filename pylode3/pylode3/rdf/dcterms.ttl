@@ -1,0 +1,868 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcam: <http://purl.org/dc/dcam/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://purl.org/dc/terms/>
+    dcterms:modified "2012-06-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    dcterms:publisher <http://purl.org/dc/aboutdcmi#DCMI> ;
+    dcterms:title "DCMI Metadata Terms - other"@en .
+
+dcterms:Agent
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a dcterms:AgentClass, rdfs:Class ;
+    rdfs:comment "A resource that acts or has the power to act."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Agent"@en .
+
+dcterms:AgentClass
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A group of agents."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Agent Class"@en ;
+    rdfs:subClassOf rdfs:Class .
+
+dcterms:BibliographicResource
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A book, article, or other documentary resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Bibliographic Resource"@en .
+
+dcterms:Box
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Datatype ;
+    rdfs:comment "The set of regions in space defined by their geographic coordinates according to the DCMI Box Encoding Scheme."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "DCMI Box"@en ;
+    rdfs:seeAlso <https://www.dublincore.org/specifications/dublin-core/dcmi-box/> .
+
+dcterms:DCMIType
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a dcam:VocabularyEncodingScheme ;
+    rdfs:comment "The set of classes specified by the DCMI Type Vocabulary, used to categorize the nature or genre of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "DCMI Type Vocabulary"@en ;
+    rdfs:seeAlso <http://purl.org/dc/dcmitype/> .
+
+dcterms:DDC
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a dcam:VocabularyEncodingScheme ;
+    rdfs:comment "The set of conceptual resources specified by the Dewey Decimal Classification."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "DDC"@en ;
+    rdfs:seeAlso <http://www.oclc.org/dewey/> .
+
+dcterms:FileFormat
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A digital resource format."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "File Format"@en ;
+    rdfs:subClassOf dcterms:MediaType .
+
+dcterms:Frequency
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A rate at which something recurs."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Frequency"@en .
+
+dcterms:IMT
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a dcam:VocabularyEncodingScheme ;
+    rdfs:comment "The set of media types specified by the Internet Assigned Numbers Authority."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "IMT"@en ;
+    rdfs:seeAlso <http://www.iana.org/assignments/media-types/> .
+
+dcterms:ISO3166
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Datatype ;
+    rdfs:comment "The set of codes listed in ISO 3166-1 for the representation of names of countries."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "ISO 3166"@en ;
+    rdfs:seeAlso <https://www.iso.org/obp/ui/#search> .
+
+dcterms:ISO639-2
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Datatype ;
+    rdfs:comment "The three-letter alphabetic codes listed in ISO639-2 for the representation of names of languages."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "ISO 639-2"@en ;
+    rdfs:seeAlso <http://lcweb.loc.gov/standards/iso639-2/langhome.html> .
+
+dcterms:ISO639-3
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Datatype ;
+    rdfs:comment "The set of three-letter codes listed in ISO 639-3 for the representation of names of languages."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "ISO 639-3"@en ;
+    rdfs:seeAlso <http://www.sil.org/iso639-3/> .
+
+dcterms:Jurisdiction
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "The extent or range of judicial, law enforcement, or other authority."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Jurisdiction"@en ;
+    rdfs:subClassOf dcterms:LocationPeriodOrJurisdiction .
+
+dcterms:LCC
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a dcam:VocabularyEncodingScheme ;
+    rdfs:comment "The set of conceptual resources specified by the Library of Congress Classification."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "LCC"@en ;
+    rdfs:seeAlso <http://lcweb.loc.gov/catdir/cpso/lcco/lcco.html> .
+
+dcterms:LCSH
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a dcam:VocabularyEncodingScheme ;
+    rdfs:comment "The set of labeled concepts specified by the Library of Congress Subject Headings."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "LCSH"@en .
+
+dcterms:LicenseDocument
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A legal document giving official permission to do something with a resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "License Document"@en ;
+    rdfs:subClassOf dcterms:RightsStatement .
+
+dcterms:LinguisticSystem
+    dcterms:description "Written, spoken, sign, and computer languages are linguistic systems."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A system of signs, symbols, sounds, gestures, or rules used in communication."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Linguistic System"@en .
+
+dcterms:Location
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A spatial region or named place."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Location"@en ;
+    rdfs:subClassOf dcterms:LocationPeriodOrJurisdiction .
+
+dcterms:LocationPeriodOrJurisdiction
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A location, period of time, or jurisdiction."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Location, Period, or Jurisdiction"@en .
+
+dcterms:MESH
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a dcam:VocabularyEncodingScheme ;
+    rdfs:comment "The set of labeled concepts specified by the Medical Subject Headings."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "MeSH"@en ;
+    rdfs:seeAlso <http://www.nlm.nih.gov/mesh/meshhome.html> .
+
+dcterms:MediaType
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A file format or physical medium."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Media Type"@en ;
+    rdfs:subClassOf dcterms:MediaTypeOrExtent .
+
+dcterms:MediaTypeOrExtent
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A media type or extent."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Media Type or Extent"@en .
+
+dcterms:MethodOfAccrual
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A method by which resources are added to a collection."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Method of Accrual"@en .
+
+dcterms:MethodOfInstruction
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A process that is used to engender knowledge, attitudes, and skills."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Method of Instruction"@en .
+
+dcterms:NLM
+    dcterms:issued "2005-06-13"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a dcam:VocabularyEncodingScheme ;
+    rdfs:comment "The set of conceptual resources specified by the National Library of Medicine Classification."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "NLM"@en ;
+    rdfs:seeAlso <http://wwwcf.nlm.nih.gov/class/> .
+
+dcterms:Period
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Datatype ;
+    rdfs:comment "The set of time intervals defined by their limits according to the DCMI Period Encoding Scheme."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "DCMI Period"@en ;
+    rdfs:seeAlso <https://www.dublincore.org/specifications/dublin-core/dcmi-period/> .
+
+dcterms:PeriodOfTime
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "An interval of time that is named or defined by its start and end dates."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Period of Time"@en ;
+    rdfs:subClassOf dcterms:LocationPeriodOrJurisdiction .
+
+dcterms:PhysicalMedium
+    dcterms:description "Examples include paper, canvas, or DVD."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A physical material or carrier."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Physical Medium"@en ;
+    rdfs:subClassOf dcterms:MediaType .
+
+dcterms:PhysicalResource
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A material thing."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Physical Resource"@en .
+
+dcterms:Point
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Datatype ;
+    rdfs:comment "The set of points in space defined by their geographic coordinates according to the DCMI Point Encoding Scheme."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "DCMI Point"@en ;
+    rdfs:seeAlso <https://www.dublincore.org/specifications/dublin-core/dcmi-point/> .
+
+dcterms:Policy
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A plan or course of action by an authority, intended to influence and determine decisions, actions, and other matters."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Policy"@en .
+
+dcterms:ProvenanceStatement
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "Any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Provenance Statement"@en .
+
+dcterms:RFC1766
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Datatype ;
+    rdfs:comment "The set of tags, constructed according to RFC 1766, for the identification of languages."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "RFC 1766"@en ;
+    rdfs:seeAlso <http://www.ietf.org/rfc/rfc1766.txt> .
+
+dcterms:RFC3066
+    dcterms:description "RFC 3066 has been obsoleted by RFC 4646."@en ;
+    dcterms:issued "2002-07-13"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Datatype ;
+    rdfs:comment "The set of tags constructed according to RFC 3066 for the identification of languages."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "RFC 3066"@en ;
+    rdfs:seeAlso <http://www.ietf.org/rfc/rfc3066.txt> .
+
+dcterms:RFC4646
+    dcterms:description "RFC 4646 obsoletes RFC 3066."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Datatype ;
+    rdfs:comment "The set of tags constructed according to RFC 4646 for the identification of languages."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "RFC 4646"@en ;
+    rdfs:seeAlso <http://www.ietf.org/rfc/rfc4646.txt> .
+
+dcterms:RFC5646
+    dcterms:description "RFC 5646 obsoletes RFC 4646."@en ;
+    dcterms:issued "2010-10-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Datatype ;
+    rdfs:comment "The set of tags constructed according to RFC 5646 for the identification of languages."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "RFC 5646"@en ;
+    rdfs:seeAlso <http://www.ietf.org/rfc/rfc5646.txt> .
+
+dcterms:RightsStatement
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A statement about the intellectual property rights (IPR) held in or over a resource, a legal document giving official permission to do something with a resource, or a statement about access rights."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Rights Statement"@en .
+
+dcterms:SizeOrDuration
+    dcterms:description "Examples include a number of pages, a specification of length, width, and breadth, or a period in hours, minutes, and seconds."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A dimension or extent, or a time taken to play or execute."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Size or Duration"@en ;
+    rdfs:subClassOf dcterms:MediaTypeOrExtent .
+
+dcterms:Standard
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Class ;
+    rdfs:comment "A reference point against which other things can be evaluated or compared."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Standard"@en .
+
+dcterms:TGN
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a dcam:VocabularyEncodingScheme ;
+    rdfs:comment "The set of places specified by the Getty Thesaurus of Geographic Names."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "TGN"@en ;
+    rdfs:seeAlso <http://www.getty.edu/research/tools/vocabulary/tgn/index.html> .
+
+dcterms:UDC
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a dcam:VocabularyEncodingScheme ;
+    rdfs:comment "The set of conceptual resources specified by the Universal Decimal Classification."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "UDC"@en ;
+    rdfs:seeAlso <http://www.udcc.org/> .
+
+dcterms:URI
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Datatype ;
+    rdfs:comment "The set of identifiers constructed according to the generic syntax for Uniform Resource Identifiers as specified by the Internet Engineering Task Force."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "URI"@en ;
+    rdfs:seeAlso <http://www.ietf.org/rfc/rfc3986.txt> .
+
+dcterms:W3CDTF
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdfs:Datatype ;
+    rdfs:comment "The set of dates and times constructed according to the W3C Date and Time Formats Specification."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "W3C-DTF"@en ;
+    rdfs:seeAlso <http://www.w3.org/TR/NOTE-datetime> .
+
+dcterms:abstract
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A summary of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Abstract"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/description>, dcterms:description .
+
+dcterms:accessRights
+    dcam:rangeIncludes dcterms:RightsStatement ;
+    dcterms:description "Access Rights may include information regarding access or restrictions based on privacy, security, or other policies."@en ;
+    dcterms:issued "2003-02-15"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "Information about who access the resource or an indication of its security status."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Access Rights"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/rights>, dcterms:rights .
+
+dcterms:accrualMethod
+    dcam:rangeIncludes dcterms:MethodOfAccrual ;
+    dcterms:description "Recommended practice is to use a value from the Collection Description Accrual Method Vocabulary [[DCMI-ACCRUALMETHOD](https://dublincore.org/groups/collections/accrual-method/)]."@en ;
+    dcterms:issued "2005-06-13"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "The method by which items are added to a collection."@en ;
+    rdfs:domain <http://purl.org/dc/dcmitype/Collection> ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Accrual Method"@en .
+
+dcterms:accrualPeriodicity
+    dcam:rangeIncludes dcterms:Frequency ;
+    dcterms:description "Recommended practice is to use a value from the Collection Description Frequency Vocabulary [[DCMI-COLLFREQ](https://dublincore.org/groups/collections/frequency/)]."@en ;
+    dcterms:issued "2005-06-13"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "The frequency with which items are added to a collection."@en ;
+    rdfs:domain <http://purl.org/dc/dcmitype/Collection> ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Accrual Periodicity"@en .
+
+dcterms:accrualPolicy
+    dcam:rangeIncludes dcterms:Policy ;
+    dcterms:description "Recommended practice is to use a value from the Collection Description Accrual Policy Vocabulary [[DCMI-ACCRUALPOLICY](https://dublincore.org/groups/collections/accrual-policy/)]."@en ;
+    dcterms:issued "2005-06-13"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "The policy governing the addition of items to a collection."@en ;
+    rdfs:domain <http://purl.org/dc/dcmitype/Collection> ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Accrual Policy"@en .
+
+dcterms:alternative
+    dcterms:description "The distinction between titles and alternative titles is application-specific."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "An alternative name for the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Alternative Title"@en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/title>, dcterms:title .
+
+dcterms:audience
+    dcam:rangeIncludes dcterms:AgentClass ;
+    dcterms:description "Recommended practice is to use this property with non-literal values from a vocabulary of audience types."@en ;
+    dcterms:issued "2001-05-21"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A class of agents for whom the resource is intended or useful."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Audience"@en .
+
+dcterms:available
+    dcterms:description "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "Date that the resource became or will become available."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Date Available"@en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>, dcterms:date .
+
+dcterms:bibliographicCitation
+    dcterms:description "Recommended practice is to include sufficient bibliographic detail to identify the resource as unambiguously as possible."@en ;
+    dcterms:issued "2003-02-15"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A bibliographic reference for the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Bibliographic Citation"@en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/identifier>, dcterms:identifier .
+
+dcterms:conformsTo
+    dcam:rangeIncludes dcterms:Standard ;
+    dcterms:issued "2001-05-21"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "An established standard to which the described resource conforms."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Conforms To"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/relation>, dcterms:relation .
+
+dcterms:contributor
+    dcam:rangeIncludes dcterms:Agent ;
+    dcterms:description "The guidelines for using names of persons or organizations as creators apply to contributors."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "An entity responsible for making contributions to the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Contributor"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/contributor> .
+
+dcterms:coverage
+    dcam:rangeIncludes dcterms:Jurisdiction, dcterms:Location, dcterms:Period ;
+    dcterms:description "Spatial topic and spatial applicability may be a named place or a location specified by its geographic coordinates. Temporal topic may be a named period, date, or date range. A jurisdiction may be a named administrative entity or a geographic place to which the resource applies. Recommended practice is to use a controlled vocabulary such as the Getty Thesaurus of Geographic Names [[TGN](https://www.getty.edu/research/tools/vocabulary/tgn/index.html)]. Where appropriate, named places or time periods may be used in preference to numeric identifiers such as sets of coordinates or date ranges.  Because coverage is so broadly defined, it is preferable to use the more specific subproperties Temporal Coverage and Spatial Coverage."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "The spatial or temporal topic of the resource, spatial applicability of the resource, or jurisdiction under which the resource is relevant."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Coverage"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/coverage> .
+
+dcterms:created
+    dcterms:description "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "Date of creation of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Date Created"@en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>, dcterms:date .
+
+dcterms:creator
+    dcam:rangeIncludes dcterms:Agent ;
+    dcterms:description "Recommended practice is to identify the creator with a URI.  If this is not possible or feasible, a literal value that identifies the creator may be provided."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "An entity responsible for making the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Creator"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/creator>, dcterms:contributor ;
+    owl:equivalentProperty <http://xmlns.com/foaf/0.1/maker> .
+
+dcterms:date
+    dcterms:description "Date may be used to express temporal information at any level of granularity.  Recommended practice is to express the date, date/time, or period of time according to ISO 8601-1 [[ISO 8601-1](https://www.iso.org/iso-8601-date-and-time-format.html)] or a published profile of the ISO standard, such as the W3C Note on Date and Time Formats [[W3CDTF](https://www.w3.org/TR/NOTE-datetime)] or the Extended Date/Time Format Specification [[EDTF](http://www.loc.gov/standards/datetime/)].  If the full date is unknown, month and year (YYYY-MM) or just year (YYYY) may be used. Date ranges may be specified using ISO 8601 period of time specification in which start and end dates are separated by a '/' (slash) character.  Either the start or end date may be missing."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Date"@en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date> .
+
+dcterms:dateAccepted
+    dcterms:description "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.  Examples of resources to which a date of acceptance may be relevant are a thesis (accepted by a university department) or an article (accepted by a journal)."@en ;
+    dcterms:issued "2002-07-13"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "Date of acceptance of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Date Accepted"@en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>, dcterms:date .
+
+dcterms:dateCopyrighted
+    dcterms:description "Typically a year.  Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."@en ;
+    dcterms:issued "2002-07-13"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "Date of copyright of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Date Copyrighted"@en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>, dcterms:date .
+
+dcterms:dateSubmitted
+    dcterms:description "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.  Examples of resources to which a 'Date Submitted' may be relevant include a thesis (submitted to a university department) or an article (submitted to a journal)."@en ;
+    dcterms:issued "2002-07-13"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "Date of submission of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Date Submitted"@en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>, dcterms:date .
+
+dcterms:description
+    dcterms:description "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "An account of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Description"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/description> .
+
+dcterms:educationLevel
+    dcam:rangeIncludes dcterms:AgentClass ;
+    dcterms:issued "2002-07-13"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A class of agents, defined in terms of progression through an educational or training context, for which the described resource is intended."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Audience Education Level"@en ;
+    rdfs:subPropertyOf dcterms:audience .
+
+dcterms:extent
+    dcam:rangeIncludes dcterms:SizeOrDuration ;
+    dcterms:description "Recommended practice is to specify the file size in megabytes and duration in ISO 8601 format."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "The size or duration of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Extent"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/format>, dcterms:format .
+
+dcterms:format
+    dcam:rangeIncludes dcterms:Extent, dcterms:MediaType ;
+    dcterms:description "Recommended practice is to use a controlled vocabulary where available. For example, for file formats one could use the list of Internet Media Types [[MIME](https://www.iana.org/assignments/media-types/media-types.xhtml)].  Examples of dimensions include size and duration."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "The file format, physical medium, or dimensions of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Format"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/format> .
+
+dcterms:hasFormat
+    dcterms:description "This property is intended to be used with non-literal values. This property is an inverse property of Is Format Of."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A related resource that is substantially the same as the pre-existing described resource, but in another format."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Has Format"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/relation>, dcterms:relation .
+
+dcterms:hasPart
+    dcterms:description "This property is intended to be used with non-literal values. This property is an inverse property of Is Part Of."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A related resource that is included either physically or logically in the described resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Has Part"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/relation>, dcterms:relation .
+
+dcterms:hasVersion
+    dcterms:description "Changes in version imply substantive changes in content rather than differences in format. This property is intended to be used with non-literal values. This property is an inverse property of Is Version Of."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A related resource that is a version, edition, or adaptation of the described resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Has Version"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/relation>, dcterms:relation .
+
+dcterms:identifier
+    dcterms:description "Recommended practice is to identify the resource by means of a string conforming to an identification system. Examples include International Standard Book Number (ISBN), Digital Object Identifier (DOI), and Uniform Resource Name (URN).  Persistent identifiers should be provided as HTTP URIs."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "An unambiguous reference to the resource within a given context."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Identifier"@en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/identifier> .
+
+dcterms:instructionalMethod
+    dcam:rangeIncludes dcterms:MethodOfInstruction ;
+    dcterms:description "Instructional Method typically includes ways of presenting instructional materials or conducting instructional activities, patterns of learner-to-learner and learner-to-instructor interactions, and mechanisms by which group and individual levels of learning are measured.  Instructional methods include all aspects of the instruction and learning processes from planning and implementation through evaluation and feedback."@en ;
+    dcterms:issued "2005-06-13"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A process, used to engender knowledge, attitudes and skills, that the described resource is designed to support."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Instructional Method"@en .
+
+dcterms:isFormatOf
+    dcterms:description "This property is intended to be used with non-literal values. This property is an inverse property of Has Format."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A pre-existing related resource that is substantially the same as the described resource, but in another format."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Is Format Of"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/relation>, dcterms:relation .
+
+dcterms:isPartOf
+    dcterms:description "This property is intended to be used with non-literal values. This property is an inverse property of Has Part."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A related resource in which the described resource is physically or logically included."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Is Part Of"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/relation>, dcterms:relation .
+
+dcterms:isReferencedBy
+    dcterms:description "This property is intended to be used with non-literal values. This property is an inverse property of References."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A related resource that references, cites, or otherwise points to the described resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Is Referenced By"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/relation>, dcterms:relation .
+
+dcterms:isReplacedBy
+    dcterms:description "This property is intended to be used with non-literal values. This property is an inverse property of Replaces."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A related resource that supplants, displaces, or supersedes the described resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Is Replaced By"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/relation>, dcterms:relation .
+
+dcterms:isRequiredBy
+    dcterms:description "This property is intended to be used with non-literal values. This property is an inverse property of Requires."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A related resource that requires the described resource to support its function, delivery, or coherence."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Is Required By"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/relation>, dcterms:relation .
+
+dcterms:isVersionOf
+    dcterms:description "Changes in version imply substantive changes in content rather than differences in format. This property is intended to be used with non-literal values. This property is an inverse property of Has Version."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A related resource of which the described resource is a version, edition, or adaptation."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Is Version Of"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/relation>, dcterms:relation .
+
+dcterms:issued
+    dcterms:description "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "Date of formal issuance of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Date Issued"@en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>, dcterms:date .
+
+dcterms:language
+    dcam:rangeIncludes dcterms:LinguisticSystem ;
+    dcterms:description "Recommended practice is to use either a non-literal value representing a language from a controlled vocabulary such as ISO 639-2 or ISO 639-3, or a literal value consisting of an IETF Best Current Practice 47 [[IETF-BCP47](https://tools.ietf.org/html/bcp47)] language tag."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A language of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Language"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/language> .
+
+dcterms:license
+    dcam:rangeIncludes dcterms:LicenseDocument ;
+    dcterms:description "Recommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided."@en ;
+    dcterms:issued "2004-06-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A legal document giving official permission to do something with the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "License"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/rights>, dcterms:rights .
+
+dcterms:mediator
+    dcam:rangeIncludes dcterms:AgentClass ;
+    dcterms:description "In an educational context, a mediator might be a parent, teacher, teaching assistant, or care-giver."@en ;
+    dcterms:issued "2001-05-21"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "An entity that mediates access to the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Mediator"@en ;
+    rdfs:subPropertyOf dcterms:audience .
+
+dcterms:medium
+    dcam:domainIncludes dcterms:PhysicalResource ;
+    dcam:rangeIncludes dcterms:PhysicalMedium ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "The material or physical carrier of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Medium"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/format>, dcterms:format .
+
+dcterms:modified
+    dcterms:description "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "Date on which the resource was changed."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Date Modified"@en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>, dcterms:date .
+
+dcterms:provenance
+    dcam:rangeIncludes dcterms:ProvenanceStatement ;
+    dcterms:description "The statement may include a description of any changes successive custodians made to the resource."@en ;
+    dcterms:issued "2004-09-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A statement of any changes in ownership and custody of the resource since its creation that are significant for its authenticity, integrity, and interpretation."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Provenance"@en .
+
+dcterms:publisher
+    dcam:rangeIncludes dcterms:Agent ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "An entity responsible for making the resource available."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Publisher"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/publisher> .
+
+dcterms:references
+    dcterms:description "This property is intended to be used with non-literal values. This property is an inverse property of Is Referenced By."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A related resource that is referenced, cited, or otherwise pointed to by the described resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "References"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/relation>, dcterms:relation .
+
+dcterms:relation
+    dcterms:description "Recommended practice is to identify the related resource by means of a URI.  If this is not possible or feasible, a string conforming to a formal identification system may be provided."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A related resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Relation"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/relation> .
+
+dcterms:replaces
+    dcterms:description "This property is intended to be used with non-literal values. This property is an inverse property of Is Replaced By."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A related resource that is supplanted, displaced, or superseded by the described resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Replaces"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/relation>, dcterms:relation .
+
+dcterms:requires
+    dcterms:description "This property is intended to be used with non-literal values. This property is an inverse property of Is Required By."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A related resource that is required by the described resource to support its function, delivery, or coherence."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Requires"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/relation>, dcterms:relation .
+
+dcterms:rights
+    dcam:rangeIncludes dcterms:RightsStatement ;
+    dcterms:description "Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights.  Recommended practice is to refer to a rights statement with a URI.  If this is not possible or feasible, a literal value (name, label, or short text) may be provided."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "Information about rights held in and over the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Rights"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/rights> .
+
+dcterms:rightsHolder
+    dcam:rangeIncludes dcterms:Agent ;
+    dcterms:description "Recommended practice is to refer to the rights holder with a URI. If this is not possible or feasible, a literal value that identifies the rights holder may be provided."@en ;
+    dcterms:issued "2004-06-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A person or organization owning or managing rights over the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Rights Holder"@en .
+
+dcterms:source
+    dcterms:description "This property is intended to be used with non-literal values. The described resource may be derived from the related resource in whole or in part. Best practice is to identify the related resource by means of a URI or a string conforming to a formal identification system."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A related resource from which the described resource is derived."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Source"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/source>, dcterms:relation .
+
+dcterms:spatial
+    dcam:rangeIncludes dcterms:Location ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "Spatial characteristics of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Spatial Coverage"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/coverage>, dcterms:coverage .
+
+dcterms:subject
+    dcterms:description "Recommended practice is to refer to the subject with a URI. If this is not possible or feasible, a literal value that identifies the subject may be provided. Both should preferably refer to a subject in a controlled vocabulary."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A topic of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Subject"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/subject> .
+
+dcterms:tableOfContents
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A list of subunits of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Table Of Contents"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/description>, dcterms:description .
+
+dcterms:temporal
+    dcam:rangeIncludes dcterms:PeriodOfTime ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "Temporal characteristics of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Temporal Coverage"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/coverage>, dcterms:coverage .
+
+dcterms:title
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A name given to the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Title"@en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/title> .
+
+dcterms:type
+    dcterms:description "Recommended practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [[DCMI-TYPE](http://dublincore.org/documents/dcmi-type-vocabulary/)]. To describe the file format, physical medium, or dimensions of the resource, use the property Format."@en ;
+    dcterms:issued "2008-01-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "The nature or genre of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Type"@en ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/type> .
+
+dcterms:valid
+    dcterms:description "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."@en ;
+    dcterms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "Date (often a range) of validity of a resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Date Valid"@en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf <http://purl.org/dc/elements/1.1/date>, dcterms:date .
+
