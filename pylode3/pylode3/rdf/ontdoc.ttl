@@ -15,7 +15,13 @@
 od:superClassOf
     a rdf:Property ;
     dcterms:title "super class of" ;
-    dcterms:description "" ;
+    dcterms:description "Inverse of RDFS' subClassOf" ;
+.
+
+od:superPropertyOf
+    a rdf:Property ;
+    dcterms:title "super property of" ;
+    dcterms:description "Inverse of RDFS' subPropertyOf" ;
 .
 
 od:inDomainOf
@@ -46,4 +52,10 @@ od:hasInstance
     a rdf:Property ;
     dcterms:title "has instance" ;
     dcterms:description "Indicates Named Individuals that are of this class" ;
+.
+
+od:restriction
+    a rdf:Property ;
+    dcterms:title "restriction" ;
+    dcterms:description "Convenience property for things that subclass owl:Restriction" ;
 .

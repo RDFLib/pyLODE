@@ -1,7 +1,7 @@
         #pylode {
             position: fixed;
             top: 130px;
-            left: -60px;
+            left: -80px;
             font-size: small;
             transform: rotate(-90deg);
             color: grey;
@@ -32,7 +32,22 @@
 
         dt {
             font-weight: bold;
-            padding: 5px 0 5px 0;
+            padding: 0;
+        }
+
+        dd {
+            margin-bottom: 10px;
+            padding-top: 7px;
+        }
+
+        #metadata ul,
+        #classes ul {
+            list-style-type: none;
+        }
+
+        #metadata ul li,
+        #classes ul li {
+            margin-left: -40px;
         }
 
         ul.hlist {
@@ -137,7 +152,6 @@
         .sup-con,
         .sup-col {
             cursor:help;
-            margin-left: 3px;
         }
 
         .sup-c {
@@ -176,6 +190,9 @@
             color:darkred;
         }
 
+        sup {
+            margin-left: -3px;
+        }
         code {
             font-size: large;
             color: darkred;

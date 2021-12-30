@@ -446,7 +446,7 @@ owl:onProperty a rdf:Property ;
      rdfs:range rdf:Property . 
 
 owl:priorVersion a owl:AnnotationProperty, owl:OntologyProperty ;
-     rdfs:label "priorVersion" ;
+     rdfs:label "prior version" ;
      rdfs:comment "The annotation property that indicates the predecessor ontology of a given ontology." ;
      rdfs:domain owl:Ontology ;
      rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
@@ -530,14 +530,14 @@ owl:unionOf a rdf:Property ;
      rdfs:range rdf:List . 
 
 owl:versionInfo a owl:AnnotationProperty ;
-     rdfs:label "versionInfo" ;
+     rdfs:label "version info" ;
      rdfs:comment "The annotation property that provides version information for an ontology or another OWL construct." ;
      rdfs:domain rdfs:Resource ;
      rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
      rdfs:range rdfs:Resource .
      
 owl:versionIRI a owl:OntologyProperty ;
-     rdfs:label "versionIRI" ;
+     rdfs:label "version IRI" ;
      rdfs:comment "The property that identifies the version IRI of an ontology." ;
      rdfs:domain owl:Ontology ;
      rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;

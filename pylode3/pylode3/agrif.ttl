@@ -20,6 +20,7 @@
                                                             sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
                                                             sdo:email <mailto:nicholas.car@surroundaustralia.com> ;
                                                             sdo:affiliation <https://surroundaustralia.com> ;
+                                                            sdo:url "https://nicholascar.com"^^xsd:anyURI ;
                                                           ] ;
                                        dcterms:creator [
                                                           sdo:name "Katherine Stuart"@en ;
@@ -38,7 +39,9 @@
                                        owl:priorVersion "0.8"@en ;
                                        rdfs:label "The Australian Government Records Interoperability Framework (AGRIF) ontology"@en ;
                                        owl:versionInfo "0.9"@en ;
-                                       rdfs:comment "The Australian Government Records Interoperability Framework (AGRIF, ‘the Framework’) is a system of related semantic ontologies that describe the structure, functions, and activities of the Australian Government, providing sufficient context for the effective use – including but not limited to management – of Australian Government information assets. It complies with the World Wide Web Consortium’s Web Ontology Language (OWL2) Recommendation and makes reference to other Recommendations and existing domain ontologies for archival and preservation processes."@en ;
+                                       rdfs:comment """The Australian Government Records Interoperability Framework (AGRIF, ‘the Framework’) is a system of related semantic ontologies that describe the structure, functions, and activities of the Australian Government, providing sufficient context for the effective use – including but not limited to management – of Australian Government information assets.
+
+It complies with the World Wide Web Consortium’s Web Ontology Language (OWL2) Recommendation and makes reference to other Recommendations and existing domain ontologies for archival and preservation processes."""@en ;
                                        dcterms:publisher <http://linked.data.gov.au/org/finance> ;
                                        vann:preferredNamespaceUri "http://linked.data.gov.au/def/agrif#"^^xsd:string ;
                                        vann:preferredNamespacePrefix "agrif"@en ;

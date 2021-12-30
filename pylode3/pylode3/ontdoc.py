@@ -1,74 +1,27 @@
-from typing import Union
-from rdflib import Graph, BNode, Literal, URIRef, Namespace
-from pathlib import Path
-from itertools import chain
-from rdflib.namespace import DC, DCTERMS, DOAP, OWL, PROF, PROV, RDF, RDFS, SDO, SKOS
+from collections import defaultdict
+from typing import Optional, List
 import dominate
+import markdown
 from dominate.tags import *
 from dominate.util import raw
-import markdown
-import pickle
+from rdflib import BNode, Literal
+from rdflib.paths import ZeroOrMore
+
 from utils import *
-from collections import defaultdict
 
-ONTDOC = Namespace("https://w3id.org/profile/ontdoc/")
 RDF_FOLDER = Path(__file__).parent / "rdf"
-
-CLASS_PROPS = [
-    RDFS.isDefinedBy,
-    DCTERMS.title,
-    DCTERMS.description,
-    SKOS.scopeNote,
-    SKOS.example,
-    DCTERMS.source,
-    DCTERMS.provenance,
-    SKOS.note,
-
-    RDFS.subClassOf,
-    ONTDOC.superClassOf,
-    OWL.equivalentClass,
-    # OWL.restriction,
-    ONTDOC.inDomainOf,
-    ONTDOC.inDomainIncludesOf,
-    ONTDOC.inRangeOf,
-    ONTDOC.inRangeIncludesOf,
-    ONTDOC.hasInstance
-]
 
 
 class OntDoc:
     def __init__(self, ontology: Union[Graph, Path, str]):
-        if isinstance(ontology, Graph):
-            self.g = ontology
-        elif isinstance(ontology, Path):
-            self.g = Graph().parse(ontology)
-        elif isinstance(ontology, str):
-            # see if it's a file path
-            if Path(ontology).is_file():
-                self.g = Graph().parse(ontology)
-            else:  # it's data
-                if ontology.startswith("[") or ontology.startswith("{"):
-                    input_format = "json-ld"
-                elif (
-                    ontology.startswith("<?xml")
-                    or ontology.startswith("<!--")
-                    or ontology.startswith("<rdf:RDF")
-                ):
-                    input_format = "xml"
-                else:
-                    input_format = "turtle"  # this will also cover n-triples
-                self.g = Graph().parse(data=ontology, format=input_format)
-        else:
-            raise ValueError(
-                "The ontology you supply to OntDoc must be either an RDFlib Graph, a Path (to an RDF file) "
-                "or a string (of RDF data)"
-            )
+        self.g = load_ontology(ontology)
         self._expand_graph_to_ontdoc_profile()
-        self.background_onts = self._load_background_onts()
-        self.background_onts_titles = self._load_background_onts_titles()
-        self.class_props_labeled = {}
-        for prop in CLASS_PROPS:
-            self.class_props_labeled[prop] = self._get_property_labels(prop)
+
+        self.background_onts = load_background_onts()
+        self.background_onts_titles = load_background_onts_titles()
+        self._get_property_labels()
+        self.props_labeled = self._get_property_labels()
+
         self.toc = {
             "Classes": {},
             "Properties": {},
@@ -77,7 +30,8 @@ class OntDoc:
             "Legend": True,
         }
         self.fids = {}
-        self._get_default_namespace()
+        self.default_namespace = self._get_default_namespace()
+
         self.doc = dominate.document()
         with self.doc:
             self.content = div(id="content")
@@ -175,24 +129,459 @@ class OntDoc:
             self.g.remove((s, SDO.publisher, o))
             self.g.add((s, DCTERMS.publisher, o))
 
-    def _load_background_onts(self):
-        if Path(RDF_FOLDER / "refs.pickle").is_file():
-            with open(RDF_FOLDER / "refs.pickle", "rb") as f:
-                return pickle.load(f)
-        else:
-            g = load_background_onts()
-            expand_background_graph(g)
-            pickle_background_onts(g)
-            return g
+        # indicate Agent instances from properties
+        for o in chain(
+            self.g.objects(None, DCTERMS.publisher),
+            self.g.objects(None, DCTERMS.creator),
+            self.g.objects(None, DCTERMS.contributor)
+        ):
+            self.g.add((o, RDF.type, PROV.Agent))
 
-    def _load_background_onts_titles(self):
-        if Path(RDF_FOLDER / "refs_titles.pickle").is_file():
-            with open(RDF_FOLDER / "refs_titles.pickle", "rb") as f:
-                return pickle.load(f)
+        # Agent annotations
+        for s, o in self.g.subject_objects(FOAF.name):
+            self.g.add((s, SDO.name, o))
+
+        for s, o in self.g.subject_objects(FOAF.mbox):
+            self.g.add((s, SDO.email, o))
+
+        for s, o in self.g.subject_objects(ORG.memberOf):
+            self.g.add((s, SDO.affiliation, o))
+
+    def _get_property_labels(self):
+        pl = {}
+        for prop in PROPS:
+            pl[prop] = self._get_property_label(prop)
+        return pl
+
+    def _get_property_label(self, property_iri: URIRef) -> dict:
+        title = None
+        description = None
+        ont_title = None
+        for p, o in self.background_onts.predicate_objects(property_iri):
+            if p == DCTERMS.title:
+                title = o
+            if p == DCTERMS.description:
+                description = o
+        for k, v in self.background_onts_titles.items():
+            if property_iri.startswith(k):
+                ont_title = v
+
+        if title is None:
+            title = make_title_from_iri(property_iri)
+
+        return {
+            "title": title,
+            "description": description,
+            "ont_title": ont_title,
+        }
+
+    def _make_fid(self, title: Literal, iri: URIRef):
+        """Makes the fragment ID for a class, property, Named Individual (any entity) based on URI or name"""
+        if isinstance(iri, URIRef):
+            iri = str(iri)
+
+        if isinstance(title, Literal):
+            title = str(title)
+
+        # does this URI already have a fid?
+        existing_fid = self.fids.get(iri)
+        if existing_fid is not None:
+            return existing_fid
+
+        # if we get here, there is no fid, so make one
+        def _remove_non_ascii_chars(s):
+            return "".join(j for j in s if ord(j) < 128).replace("&", "")
+
+        # try creating an ID from label
+        # lowercase, remove spaces, escape all non-ASCII chars
+        if title is not None:
+            fid = _remove_non_ascii_chars(title.replace(" ", ""))
+
+            # do not return fid if it's already in use
+            if fid not in self.fids.values():
+                self.fids[iri] = fid
+                return fid
+
+        # this fid is already present so generate a new one from the URI instead
+
+        # split URI for last slash segment
+        segments = iri.split("/")
+        # return None for empty string - URI ends in slash
+        if len(segments[-1]) < 1:
+            return None
+
+        # return None for domains, i.e. ['http:', '', '{domain}'] - no path segments
+        if len(segments) < 4:
+            return None
+
+        # split out hash URIs
+        # remove any training hashes
+        if segments[-1].endswith("#"):
+            return None
+
+        fid = (
+            segments[-1].split("#")[-1]
+            if segments[-1].split("#")[-1] != ""
+            else segments[-1].split("#")[-2]
+        )
+        # fid = fid.lower()
+
+        # do not return fid if it's already in use
+        if fid not in self.fids.values():
+            self.fids[iri] = fid
+            return fid
         else:
-            g = get_background_ontology_titles(self.background_onts)
-            pickle_background_onts_titles(g)
-            return g
+            # since it's in use but we've exhausted generation options, just add 1 to existing fid name
+            self.fids[iri] = fid + "1"
+            return fid + "1"  # yeah yeah, there could be more than one but unlikely
+
+    def _make_metadata(self):
+        # get all ONT_PROPS props and their (multiple) values
+        this_onts_props = defaultdict(list)
+        for s in chain(
+                self.g.subjects(predicate=RDF.type, object=OWL.Ontology),
+                self.g.subjects(predicate=RDF.type, object=SKOS.ConceptScheme),
+                self.g.subjects(predicate=RDF.type, object=PROF.Profile),
+        ):
+            for p, o in self.g.predicate_objects(s):
+                if p in ONT_PROPS:
+                    this_onts_props[p].append(o)
+
+        # make HTML for all props in order of ONT_PROPS
+        with self.content:
+            with div(id="metadata", _class="section"):
+                h1(this_onts_props[DCTERMS.title])
+                with dl():
+                    dt(strong("IRI"))
+                    dd(code(str(s)))
+                    for prop in ONT_PROPS:
+                        if prop in this_onts_props.keys():
+                            self._dl(
+                                prop,
+                                self.props_labeled[prop]["title"],
+                                self.props_labeled[prop]["description"],
+                                this_onts_props[prop],
+                            )
+
+    def _make_classes(self):
+        with self.content:
+            with div(id="classes", _class="section"):
+                h2("Classes")
+                for s in self.g.subjects(predicate=RDF.type, object=RDFS.Class):
+                    if isinstance(s, URIRef):
+                        this_classes_props = defaultdict(list)
+                        # ignore blank nodes for things like [ owl:unionOf ( ... ) ]
+                        for p, o in self.g.predicate_objects(subject=s):
+                            if p in CLASS_PROPS:
+                                if p == RDFS.subClassOf and (o, RDF.type, OWL.Restriction) in self.g:
+                                    this_classes_props[ONTDOC.restriction].append(o)
+                                else:
+                                    this_classes_props[p].append(o)
+                        this_fid = self._make_fid(this_classes_props[DCTERMS.title][0], s)
+                        this_title = this_classes_props[DCTERMS.title]
+                        self.toc["Classes"]["#"+this_fid] = this_title
+
+                        with div(id=this_fid, _class="class entity"):
+                            h3(this_title, sup("c", _class="sup-c", title="OWL/RDFS Class"))
+                            with table():
+                                with tr():
+                                    th("IRI")
+                                    td(code(str(s)))
+                                # order the properties as per CLASS_PROPS list order
+                                for prop in CLASS_PROPS:
+                                    if prop != DCTERMS.title:
+                                        if prop in this_classes_props.keys():
+                                            self._table_row(
+                                                prop,
+                                                self.props_labeled[prop]["title"],
+                                                self.props_labeled[prop]["description"],
+                                                self.props_labeled[prop]["ont_title"],
+                                                this_classes_props[prop],
+                                                OWL.Class if prop in [RDFS.subClassOf, ONTDOC.superClassOf, OWL.equivalentClass]
+                                                else None
+                                            )
+
+    def _table_row(
+        self,
+        property_iri: URIRef,
+        property_title: Literal,
+        property_description: Literal,
+        ont_title: Literal,
+        obj: Union[list, URIRef, BNode, Literal],
+        obj_type: str
+    ):
+        t = tr()
+        t.appendChild(
+            th(
+                a(
+                    str(property_title).title(),
+                    title=str(property_description).rstrip(".") + ". Defined in " + str(ont_title),
+                    _class="hover_property",
+                    href=str(property_iri),
+                )
+            )
+        )
+        t.appendChild(
+            td(
+                self._rdf_obj_multi(obj, obj_type=obj_type)
+            )
+        )
+        return t
+
+    def _dl(
+        self,
+        property_iri: URIRef,
+        property_title: Literal,
+        property_description: Literal,
+        obj: Union[list, URIRef, BNode, Literal]
+    ):
+        dt(
+            a(
+                str(property_title).title(),
+                title=str(property_description),
+                _class="hover_property",
+                href=str(property_iri),
+            )
+        )
+        dd(
+            self._rdf_obj_multi(obj)
+        )
+
+    def _rdf_obj(self, obj: Union[URIRef, BNode, Literal], obj_type=None):
+        if (obj, RDF.type, PROV.Agent) in self.g:
+            return self._agent(obj)
+        else:
+            if isinstance(obj, URIRef):
+                return self._hyperlink(obj, rdf_type=obj_type)
+            elif isinstance(obj, BNode):
+                # we can only handle BNs that are Agents (above) or Restrictions
+                return self._restriction(obj)
+            elif isinstance(obj, Literal):
+                if str(obj).startswith("http"):
+                    return self._hyperlink(obj)
+            return raw(markdown.markdown(str(obj)))
+
+    def _rdf_obj_multi(self, obj: List[Union[URIRef, BNode, Literal]], obj_type=None):
+        if len(obj) == 1:
+            return self._rdf_obj(obj[0], obj_type=obj_type)
+        else:
+            u = ul()
+            for x in obj:
+                u.appendChild(li(self._rdf_obj(x, obj_type=obj_type)))
+            return u
+
+    def _hyperlink(self, iri, rdf_type: Optional[URIRef] = None):
+        try:
+            qname = self.g.compute_qname(iri, True)
+        except ValueError:
+            qname = iri
+
+        # find type
+        if rdf_type is None:
+            rdf_types = []
+            for o in self.g.objects(iri, RDF.type):
+                if o in ONT_TYPES.keys():
+                    rdf_types.append(o)
+            if OWL.ObjectProperty in rdf_types:
+                rdf_type = OWL.ObjectProperty
+            elif OWL.DatatypeProperty in rdf_types:
+                rdf_type = OWL.DatatypeProperty
+            elif OWL.AnnotationProperty in rdf_types:
+                rdf_type = OWL.AnnotationProperty
+            elif OWL.FunctionalProperty in rdf_types:
+                rdf_type = OWL.FunctionalProperty
+            elif OWL.InverseFunctionalProperty in rdf_types:
+                rdf_type = OWL.InverseFunctionalProperty
+            elif OWL.InverseFunctionalProperty in rdf_types:
+                rdf_type = OWL.InverseFunctionalProperty
+            elif RDF.Property in rdf_types:
+                rdf_type = RDF.Property
+        if rdf_type is None:
+            rdf_types = []
+            for o in self.background_onts.objects(iri, RDF.type):
+                if o in ONT_TYPES.keys():
+                    rdf_types.append(o)
+            if OWL.ObjectProperty in rdf_types:
+                rdf_type = OWL.ObjectProperty
+            elif OWL.DatatypeProperty in rdf_types:
+                rdf_type = OWL.DatatypeProperty
+            elif OWL.AnnotationProperty in rdf_types:
+                rdf_type = OWL.AnnotationProperty
+            elif OWL.FunctionalProperty in rdf_types:
+                rdf_type = OWL.FunctionalProperty
+            elif OWL.InverseFunctionalProperty in rdf_types:
+                rdf_type = OWL.InverseFunctionalProperty
+            elif OWL.InverseFunctionalProperty in rdf_types:
+                rdf_type = OWL.InverseFunctionalProperty
+            elif RDF.Property in rdf_types:
+                rdf_type = RDF.Property
+
+        prefix = "" if qname[0] == "" else f'{qname[0]}:'
+        if str(iri).startswith(self.default_namespace):
+            iri = "#" + self._make_fid(None, iri)
+
+        if rdf_type is not None:
+            ret = span()
+            ret.appendChild(a(f'{prefix}{qname[2]}', href=iri))
+            ret.appendChild(sup(ONT_TYPES[rdf_type][0], _class="sup-" + ONT_TYPES[rdf_type][0], title=ONT_TYPES[rdf_type][1]))
+            return ret
+        else:
+            if isinstance(qname, tuple):
+                return a(f'{prefix}{qname[2]}', href=iri)
+            return a(f'{qname}', href=iri)
+
+    def _agent(self, obj: Union[URIRef, BNode, Literal]):
+        if isinstance(obj, Literal):
+            return str(obj)
+        honorific_prefix = None
+        name = None
+        identifier = None
+        orcid = None
+        orcid_logo = """
+                <svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title>Orcid logo</title>
+                    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
+                            <g id="Group-4">
+                                <g id="vector_iD_icon" transform="translate(924.000000, 72.000000)">
+                                    <path d="M72,36 C72,55.884375 55.884375,72 36,72 C16.115625,72 0,55.884375 0,36 C0,16.115625 16.115625,0 36,0 C55.884375,0 72,16.115625 72,36 Z" id="Path" fill="#A6CE39"></path>
+                                    <g id="Group" transform="translate(18.868966, 12.910345)" fill="#FFFFFF">
+                                        <polygon id="Path" points="5.03734929 39.1250878 0.695429861 39.1250878 0.695429861 9.14431787 5.03734929 9.14431787 5.03734929 22.6930505 5.03734929 39.1250878"></polygon>
+                                        <path d="M11.409257,9.14431787 L23.1380784,9.14431787 C34.303014,9.14431787 39.2088191,17.0664074 39.2088191,24.1486995 C39.2088191,31.846843 33.1470485,39.1530811 23.1944669,39.1530811 L11.409257,39.1530811 L11.409257,9.14431787 Z M15.7511765,35.2620194 L22.6587756,35.2620194 C32.49858,35.2620194 34.7541226,27.8438084 34.7541226,24.1486995 C34.7541226,18.1301509 30.8915059,13.0353795 22.4332213,13.0353795 L15.7511765,13.0353795 L15.7511765,35.2620194 Z" id="Shape"></path>
+                                        <path d="M5.71401206,2.90182329 C5.71401206,4.441452 4.44526937,5.72914146 2.86638958,5.72914146 C1.28750978,5.72914146 0.0187670918,4.441452 0.0187670918,2.90182329 C0.0187670918,1.33420133 1.28750978,0.0745051096 2.86638958,0.0745051096 C4.44526937,0.0745051096 5.71401206,1.36219458 5.71401206,2.90182329 Z" id="Path"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>"""
+        url = None
+        email = None
+        affiliation = None
+
+        for px, o in self.g.predicate_objects(obj):
+            if px in AGENT_PROPS:
+                if px == SDO.name:
+                    name = str(o)
+                elif px == SDO.honorificPrefix:
+                    honorific_prefix = str(o)
+                elif px == SDO.identifier:
+                    identifier = str(o)
+                    if "orcid.org" in str(o):
+                        orcid = True
+                elif px == SDO.url:
+                    url = str(o)
+                elif px == SDO.email:
+                    email = str(o)
+                elif px == SDO.affiliation:
+                    affiliation = o
+
+        p = span()
+        with p:
+            if name is not None:
+                if honorific_prefix is not None:
+                    name = honorific_prefix + " " + name
+
+                if url is not None:
+                    a(name, href=url)
+                else:
+                    span(name)
+
+                if orcid:
+                    a(raw(orcid_logo), href=identifier)
+                elif identifier is not None:
+                    a(identifier, href=identifier)
+
+                if email is not None:
+                    email = email.replace("mailto:", "")
+                    span("(", a(email, href="mailto:" + email), ")")
+
+                if affiliation is not None:
+                    self._affiliation(affiliation)
+        return p
+
+    def _affiliation(self, obj):
+        name = None
+        url = None
+
+        for px, o in self.g.predicate_objects(obj):
+            if px in AGENT_PROPS:
+                if px == SDO.name:
+                    name = str(o)
+                elif px == SDO.url:
+                    url = str(o)
+
+        p = span()
+        with p:
+            if name is not None:
+                if url is not None:
+                    em(" of ", a(name, href=url))
+                else:
+                    em(" of ", name)
+            else:
+                if "http" in obj:
+                    em(" of ", a(obj, href=obj))
+        return p
+
+    def _restriction(self, obj: BNode):
+        prop = None
+        card = None
+        cls = None
+
+        for px, o in self.g.predicate_objects(obj):
+            if px != RDF.type:
+                if px == OWL.onProperty:
+                    prop = self._hyperlink(o)
+                elif px in RESTRICTION_TYPES:
+                    if px in [
+                        OWL.minCardinality, OWL.minQualifiedCardinality,
+                        OWL.maxCardinality, OWL.maxQualifiedCardinality,
+                        OWL.cardinality, OWL.qualifiedCardinality
+                    ]:
+                        if px in [OWL.minCardinality, OWL.minQualifiedCardinality]:
+                            card = "min"
+                        elif px in [OWL.maxCardinality, OWL.maxQualifiedCardinality]:
+                            card = "max"
+                        elif px in [OWL.cardinality, OWL.qualifiedCardinality]:
+                            card = "exactly"
+
+                        card = span(span(card, _class="cardinality"), span(str(o)))
+                    else:
+                        if px == OWL.allValuesFrom:
+                            card = "only"
+                        elif px == OWL.someValuesFrom:
+                            card = "some"
+                        elif px == OWL.hasValue:
+                            card = "value"
+
+                        if type(o) == BNode:  # this is a Union or Intersection class - a list
+                            # what is the nature of the list join?
+                            t = None
+                            for p2, o2 in self.g.predicate_objects(o):
+                                if p2 == OWL.unionOf:
+                                    t = ' <span class="cardinality">or</span> '
+                                elif p2 == OWL.intersectionOf:
+                                    t = ' <span class="cardinality">and</span> '
+
+                            # must iterate through RDF list to get members using property path
+                            col_members = set()
+                            for s3, o3 in self.g.subject_objects(RDF.rest*ZeroOrMore / RDF.first):
+                                if str(o3).startswith(self.default_namespace):
+                                    iri = "#" + self._make_fid(None, o3)
+                                else:
+                                    iri = o3
+                                col_members.add(f'<a href="{iri}">{self.g.qname(o3)}</a><sup class="sup-c" style="margin-left:1px;">c</sup>')
+                            col = " (" + t.join([x for x in sorted(col_members)]) + ")"
+                            card = span(span(card, _class="cardinality"), raw(col))
+                        else:
+                            card = span(span(card, _class="cardinality"), span(self._hyperlink(o, OWL.Class)))
+
+        restriction = span(prop, card, br()) if card is not None else prop
+        restriction = span(restriction, cls, br()) if cls is not None else restriction
+
+        return span(restriction)
 
     def _make_document(self, title, schema_org_json, version):
         self.doc.title = title
@@ -221,11 +610,7 @@ class OntDoc:
 
     def _make_body(self, title, version):
         self._make_pylode_logo(version)
-
-        with self.content:
-            h1(title)
-            p("Some other text")
-
+        self._make_metadata()
         self._make_classes()
         self._make_namespaces()
         self._make_legend()
@@ -245,102 +630,6 @@ class OntDoc:
                         id="version",
                     )
 
-    def _make_classes(self):
-        with self.content:
-            with div(id="classes", _class="section"):
-                h2("Classes")
-                for s in self.g.subjects(predicate=RDF.type, object=RDFS.Class):
-                    this_classes_props = defaultdict(list)
-                    # ignore blank nodes for things like [ owl:unionOf ( ... ) ]
-                    if not isinstance(s, BNode):
-                        for p, o in self.g.predicate_objects(subject=s):
-                            if p in CLASS_PROPS:
-                                this_classes_props[p].append(o)
-                        this_fid = self._make_fid(this_classes_props[DCTERMS.title][0], s)
-                        this_title = this_classes_props[DCTERMS.title]
-                        self.toc["Classes"]["#"+this_fid] = this_title
-
-                        with div(id=this_fid, _class="class entity"):
-                            h3(this_title)
-                            with table():
-                                for k, v in this_classes_props.items():
-                                    self._make_property_table_row(
-                                        k,
-                                        str(self.class_props_labeled[k]["title"]).title(),
-                                        self.class_props_labeled[k]["description"],
-                                        self.class_props_labeled[k]["ont_title"],
-                                        v,
-                                        "c" if k in [
-                                            RDFS.subClassOf,
-                                            ONTDOC.superClassOf,
-                                            OWL.equivalentClass]
-                                        else None
-                                    )
-            # TODO: restrictions = []
-
-    def _get_property_labels(self, property_uri: URIRef) -> dict:
-        title = None
-        description = None
-        ont_title = None
-        for p, o in self.background_onts.predicate_objects(property_uri):
-            if p == DCTERMS.title:
-                title = o
-            if p == DCTERMS.description:
-                description = o
-        for k, v in self.background_onts_titles.items():
-            if property_uri.startswith(k):
-                ont_title = v
-
-        if title is None:
-            title = self._make_title_from_uri(property_uri)
-
-        return {
-            "title": title,
-            "description": description,
-            "ont_title": ont_title,
-        }
-
-    def _make_property_table_row(
-        self,
-        property_uri: URIRef,
-        property_title: Literal,
-        property_description: Literal,
-        ont_title: Literal,
-        obj: Union[list, URIRef, BNode, Literal],
-        obj_type: str
-    ):
-        with tr():
-            th(
-                a(
-                    str(property_title),
-                    title=str(property_description),
-                    _class="hover_property",
-                    href=str(property_uri),
-                )
-            )
-            td(
-                self._render_list_of_rdflib_objects_in_html(obj, obj_type=obj_type)
-            )
-
-    def _render_rdflib_object_in_html(self, obj: Union[URIRef, BNode, Literal], obj_type=None):
-        if isinstance(obj, URIRef):
-            return p(self._make_hyperlink(obj, type=obj_type))
-        elif isinstance(obj, BNode):
-            return p(raw("[ ]"))
-        elif isinstance(obj, Literal):
-            if str(obj).startswith("http"):
-                return p(self._make_hyperlink(obj))
-            return raw(markdown.markdown(str(obj)))
-
-    def _render_list_of_rdflib_objects_in_html(self, obj: Union[list, URIRef, BNode, Literal], obj_type=None):
-        if isinstance(obj, list):
-            l = []
-            for x in obj:
-                l.append(self._render_rdflib_object_in_html(x, obj_type=obj_type))
-            return l
-        else:
-            return self._render_rdflib_object_in_html(obj, obj_type=obj_type)
-
     def _make_legend(self):
         with self.content:
             with div(id="legend"):
@@ -349,17 +638,17 @@ class OntDoc:
 
                     if self.toc["Classes"] is not None:
                         with tr():
-                            td(sup("c", _class="sup-c", title="Classes"))
+                            td(sup("c", _class="sup-c", title="OWL/RDFS Class"))
                             td("Classes")
                     if self.toc["Properties"] is not None:
                         with tr():
-                            td(sup("p", _class="sup-p", title="Properties"))
+                            td(sup("p", _class="sup-p", title="RDF Property"))
                             td("Properties")
                         if self.toc["Properties"].get("Object Properties") is not None:
                             with tr():
                                 td(
                                     sup(
-                                        "op", _class="sup-op", title="Object Properties"
+                                        "op", _class="sup-op", title="OWL Object Property"
                                     )
                                 )
                                 td("Object Properties")
@@ -372,7 +661,7 @@ class OntDoc:
                                     sup(
                                         "dp",
                                         _class="sup-dp",
-                                        title="Datatype Properties",
+                                        title="OWL Datatype Property",
                                     )
                                 )
                                 td("Datatype Properties")
@@ -385,7 +674,7 @@ class OntDoc:
                                     sup(
                                         "ap",
                                         _class="sup-ap",
-                                        title="Annotation Properties",
+                                        title="OWL Annotation Property",
                                     )
                                 )
                                 td("Annotation Properties")
@@ -398,52 +687,49 @@ class OntDoc:
                                     sup(
                                         "fp",
                                         _class="sup-fp",
-                                        title="Functional Properties",
+                                        title="OWL Functional Property",
                                     )
                                 )
                                 td("Functional Properties")
                     if self.toc["Named Individuals"] is not None:
                         with tr():
-                            td(sup("ni", _class="sup-ni", title="Named Individuals"))
+                            td(sup("ni", _class="sup-ni", title="OWL Named Individual"))
                             td("Named Individuals")
 
     def _get_default_namespace(self):
         # if this ontology declares a preferred URI, use that
-        preferred_namespace_uri = None
+        prefn_iri = None
         for s, o in self.g.subject_objects(
-            predicate=URIRef("http://purl.org/vocab/vann/preferredNamespaceUri")
+            predicate=VANN.preferredNamespaceUri
         ):
-            preferred_namespace_uri = str(o)
+            prefn_iri = str(o)
 
-        preferred_namespace_prefix = None
+        prefn_prefix = None
         for s, o in self.g.subject_objects(
-            predicate=URIRef("http://purl.org/vocab/vann/preferredNamespacePrefix")
+            predicate=VANN.preferredNamespacePrefix
         ):
-            preferred_namespace_prefix = str(o)
-        if preferred_namespace_prefix is None:
-            preferred_namespace_prefix = ""
+            prefn_prefix = str(o)
+        if prefn_prefix is None:
+            prefn_prefix = ""
 
-        if preferred_namespace_uri is not None:
-            self.default_namespace = (
-                preferred_namespace_prefix,
-                preferred_namespace_uri,
-            )
+        if prefn_iri is not None:
+            return prefn_prefix, prefn_iri
 
         # if not, try the URI of the main object, compared to all prefixes
         else:
-            default_uri = None
+            default_iri = None
 
             for s in chain(
                 self.g.subjects(predicate=RDF.type, object=OWL.Ontology),
                 self.g.subjects(predicate=RDF.type, object=SKOS.ConceptScheme),
                 self.g.subjects(predicate=RDF.type, object=PROF.Profile),
             ):
-                default_uri = str(s)
+                default_iri = str(s)
 
-            if default_uri is not None:
-                prefix = self.g.compute_qname(default_uri, True)[0]
+            if default_iri is not None:
+                prefix = self.g.compute_qname(default_iri, True)[0]
                 if prefix is not None:
-                    self.default_namespace = (prefix, default_uri)
+                    return prefix, default_iri
             else:
                 # can't find either a declared or default namespace so we have an error
                 raise Exception(
@@ -479,129 +765,26 @@ class OntDoc:
 
                             if label == "Classes":
                                 with ul(_class="second"):
-                                    for cls_uri, cls_label in self.toc[
+                                    for cls_iri, cls_label in self.toc[
                                         "Classes"
                                     ].items():
-                                        li(a(cls_label, href=cls_uri))
+                                        li(a(cls_label, href=cls_iri))
 
                             if label == "Namespaces":
                                 with ul(_class="second"):
                                     for prefix, ns in self.toc["Namespaces"].items():
                                         li(a(prefix, href="#" + prefix))
 
-    def _make_title_from_uri(self, uri):
-        if isinstance(uri, URIRef):
-            uri = str(uri)
-        # can't tolerate any URI faults so return None if anything is wrong
-
-        # URIs with no path segments or ending in slash
-        segments = uri.split("/")
-        if len(segments[-1]) < 1:
-            return None
-
-        # URIs with only a domain - no path segments
-        if len(segments) < 4:
-            return None
-
-        # URIs ending in hash
-        if segments[-1].endswith("#"):
-            return None
-
-        return (
-            segments[-1].split("#")[-1]
-            if segments[-1].split("#")[-1] != ""
-            else segments[-1].split("#")[-2]
-        )
-
-    def _make_hyperlink(self, uri, type=None):
-        try:
-            qname = self.g.compute_qname(uri, True)
-        except ValueError:
-            qname = uri
-
-        types = {
-            "c": "class",
-            "p": "property",
-            "op": "object property",
-            "dp": "datatype property",
-            "ap": "annotation property",
-            "fp": "functional property",
-            "ni": "named individual",
-        }
-
-        if type in types.keys():
-            # sup = f'<sup class="sup-{type}" title="{types[type]}">{type}</sup>'
-            return span(
-                a(f'{qname[0]}:{qname[2]}', href=uri),
-                sup(type, _class="sup-" + type, title=types[type])
-            )
-        else:
-            if isinstance(qname, tuple):
-                return a(f'{qname[0]}:{qname[2]}', href=uri)
-            return a(f'{qname}', href=uri)
-
-    def _make_fid(self, title, uri):
-        """Makes the fragment ID for a class, property, Named Individual (any entity) based on URI or name"""
-        if isinstance(uri, URIRef):
-            uri = str(uri)
-
-        if isinstance(title, Literal):
-            title = str(title)
-
-        # does this URI already have a fid?
-        existing_fid = self.fids.get(uri)
-        if existing_fid is not None:
-            return existing_fid
-
-        # if we get here, there is no fid, so make one
-        def _remove_non_ascii_chars(s):
-            return "".join(j for j in s if ord(j) < 128).replace("&", "")
-
-        # try creating an ID from label
-        # lowercase, remove spaces, escape all non-ASCII chars
-        if title is not None:
-            fid = _remove_non_ascii_chars(title.replace(" ", ""))
-
-            # do not return fid if it's already in use
-            if fid not in self.fids.values():
-                self.fids[uri] = fid
-                return fid
-
-        # this fid is already present so generate a new one from the URI instead
-
-        # split URI for last slash segment
-        segments = uri.split("/")
-        # return None for empty string - URI ends in slash
-        if len(segments[-1]) < 1:
-            return None
-
-        # return None for domains, i.e. ['http:', '', '{domain}'] - no path segments
-        if len(segments) < 4:
-            return None
-
-        # split out hash URIs
-        # remove any training hashes
-        if segments[-1].endswith("#"):
-            return None
-
-        fid = (
-            segments[-1].split("#")[-1]
-            if segments[-1].split("#")[-1] != ""
-            else segments[-1].split("#")[-2]
-        )
-        # fid = fid.lower()
-
-        # do not return fid if it's already in use
-        if fid not in self.fids.values():
-            self.fids[uri] = fid
-            return fid
-        else:
-            # since it's in use but we've exhausted generation options, just add 1 to existing fid name
-            self.fids[uri] = fid + "1"
-            return fid + "1"  # yeah yeah, there could be more than one but unlikely
-
 
 if __name__ == "__main__":
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(message)s",
+        handlers=[
+            logging.StreamHandler()
+        ]
+    )
+
     sdo_json = """[
       {
         "@id": "https://example.com",
@@ -635,3 +818,13 @@ if __name__ == "__main__":
     od = OntDoc(ontology="agrif.ttl")
     od._make_document("Some Ont", sdo_json, version)
     open("some.html", "w").write(od.doc.render())
+
+    # import cProfile
+    #
+    # pr = cProfile.Profile()
+    # pr.enable()
+    #
+    # check_all_props_are_known()
+    #
+    # pr.disable()
+    # pr.print_stats(sort='time')
