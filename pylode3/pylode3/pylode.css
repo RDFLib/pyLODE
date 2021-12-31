@@ -109,14 +109,13 @@
         }
         h3 {
             font: 120% sans-serif;
-            margin-top: 3px;
+            margin-top: 20px;
             padding-bottom: 5px;
             border-bottom: 1px solid navy;
         }
         h4 { font: bold 100% sans-serif }
         h5 { font: italic 100% sans-serif }
         h6 { font: small-caps 100% sans-serif }
-
 
         body {
             padding: 2em 70px 2em 70px;
@@ -216,6 +215,10 @@
     font-size: small;
     width: 180px;
 }
+#toc h3 {
+    margin-top: 5px;
+}
+
 #toc ul {
     list-style: none;
     padding-left: 0;
