@@ -223,10 +223,10 @@
 
 #toc .first > li {
     margin-top: 5px;
-    font-weight: bold;
 }
 
-#toc .second {
+#toc .second,
+#toc .third {
     padding-left: 10px;
 }
 

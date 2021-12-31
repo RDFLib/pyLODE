@@ -2,6 +2,7 @@ from collections import defaultdict
 from typing import Optional, List
 import dominate
 import markdown
+import rdflib
 from dominate.tags import *
 from dominate.util import raw
 from rdflib import BNode, Literal
@@ -22,13 +23,7 @@ class OntDoc:
         self._get_property_labels()
         self.props_labeled = self._get_property_labels()
 
-        self.toc = {
-            "Classes": {},
-            "Properties": {},
-            "Named Individuals": {},
-            "Namespaces": {},
-            "Legend": True,
-        }
+        self.toc = {}
         self.fids = {}
         self.default_namespace = self._get_default_namespace()
 
@@ -263,43 +258,89 @@ class OntDoc:
                                 this_onts_props[prop],
                             )
 
-    def _make_classes(self):
+    def _make_all_elements(self):
         with self.content:
             with div(id="classes", _class="section"):
                 h2("Classes")
-                for s in self.g.subjects(predicate=RDF.type, object=RDFS.Class):
-                    if isinstance(s, URIRef):
-                        this_classes_props = defaultdict(list)
-                        # ignore blank nodes for things like [ owl:unionOf ( ... ) ]
-                        for p, o in self.g.predicate_objects(subject=s):
-                            if p in CLASS_PROPS:
-                                if p == RDFS.subClassOf and (o, RDF.type, OWL.Restriction) in self.g:
-                                    this_classes_props[ONTDOC.restriction].append(o)
-                                else:
-                                    this_classes_props[p].append(o)
-                        this_fid = self._make_fid(this_classes_props[DCTERMS.title][0], s)
-                        this_title = this_classes_props[DCTERMS.title]
-                        self.toc["Classes"]["#"+this_fid] = this_title
+                self._make_elements(OWL.Class, CLASS_PROPS, "classes")
 
-                        with div(id=this_fid, _class="class entity"):
-                            h3(this_title, sup("c", _class="sup-c", title="OWL/RDFS Class"))
-                            with table():
-                                with tr():
-                                    th("IRI")
-                                    td(code(str(s)))
-                                # order the properties as per CLASS_PROPS list order
-                                for prop in CLASS_PROPS:
-                                    if prop != DCTERMS.title:
-                                        if prop in this_classes_props.keys():
-                                            self._table_row(
-                                                prop,
-                                                self.props_labeled[prop]["title"],
-                                                self.props_labeled[prop]["description"],
-                                                self.props_labeled[prop]["ont_title"],
-                                                this_classes_props[prop],
-                                                OWL.Class if prop in [RDFS.subClassOf, ONTDOC.superClassOf, OWL.equivalentClass]
-                                                else None
-                                            )
+            with div(id="properties", _class="section"):
+                h2("Properties")
+                self._make_elements(RDF.Property, PROP_PROPS, "properties")
+
+                with div(id="objectproperties", _class="section"):
+                    h3("Object Properties")
+                    self._make_elements(OWL.ObjectProperty, PROP_PROPS, "objectproperties")
+
+                with div(id="datatypeproperties", _class="section"):
+                    h3("Datatype Properties")
+                    self._make_elements(OWL.DatatypeProperty, PROP_PROPS, "datatypeproperties")
+
+                with div(id="annotationproperties", _class="section"):
+                    h3("Annotation Properties")
+                    self._make_elements(OWL.AnnotationProperty, PROP_PROPS, "annotationproperties")
+
+                with div(id="functionalproperties", _class="section"):
+                    h3("Functional Properties")
+                    self._make_elements(OWL.FunctionalProperty, PROP_PROPS, "functionalproperties")
+
+    def _make_elements(self, obj_class: URIRef, prop_list: list, toc_ul_id: str):
+        # get all objects of this class
+        for s in self.g.subjects(predicate=RDF.type, object=obj_class):
+            if obj_class == RDF.Property:
+                specialised_props = [
+                    (s, RDF.type, OWL.ObjectProperty),
+                    (s, RDF.type, OWL.DatatypeProperty),
+                    (s, RDF.type, OWL.AnnotationProperty),
+                    (s, RDF.type, OWL.FunctionalProperty),
+                ]
+                if any(x in self.g for x in specialised_props):
+                    continue
+            if isinstance(s, URIRef):  # ignore blank nodes for things like [ owl:unionOf ( ... ) ]
+                this_props = defaultdict(list)
+                # get all properties of this object
+                for p, o in self.g.predicate_objects(subject=s):
+                    # ... in the property list for this class
+                    if p in prop_list:
+                        if p == RDFS.subClassOf and (o, RDF.type, OWL.Restriction) in self.g:
+                            this_props[ONTDOC.restriction].append(o)
+                        else:
+                            this_props[p].append(o)
+                if len(this_props[DCTERMS.title]) == 0:
+                    this_fid = self._make_fid(None, s)
+                    this_title = make_title_from_iri(s)
+                else:
+                    this_fid = self._make_fid(this_props[DCTERMS.title][0], s)
+                    this_title = this_props[DCTERMS.title]
+
+                # add to ToC
+                if self.toc.get(toc_ul_id) is None:
+                    self.toc[toc_ul_id] = []
+                self.toc[toc_ul_id].append(("#" + this_fid, this_title))
+
+                # create properties table
+                self._property_table(s, this_fid, this_title, obj_class, prop_list, this_props)
+
+    def _property_table(self, iri, fid, title, ont_type, props_list, this_props):
+        d = div(id=fid, _class="property entity")
+        with d:
+            h3(title, sup(ONT_TYPES[ont_type][0], _class="sup-" + ONT_TYPES[ont_type][0], title=ONT_TYPES[ont_type][1]))
+            with table():
+                with tr():
+                    th("IRI")
+                    td(code(str(iri)))
+                # order the properties as per PROP_PROPS list order
+                for prop in props_list:
+                    if prop != DCTERMS.title:
+                        if prop in this_props.keys():
+                            self._table_row(
+                                prop,
+                                self.props_labeled[prop]["title"],
+                                self.props_labeled[prop]["description"],
+                                self.props_labeled[prop]["ont_title"],
+                                this_props[prop]
+                            )
+        return d
 
     def _table_row(
         self,
@@ -308,7 +349,7 @@ class OntDoc:
         property_description: Literal,
         ont_title: Literal,
         obj: Union[list, URIRef, BNode, Literal],
-        obj_type: str
+        obj_type: Optional[str] = None
     ):
         t = tr()
         t.appendChild(
@@ -333,7 +374,8 @@ class OntDoc:
         property_iri: URIRef,
         property_title: Literal,
         property_description: Literal,
-        obj: Union[list, URIRef, BNode, Literal]
+        obj: Union[list, URIRef, BNode, Literal],
+        obj_type: Optional[str] = None
     ):
         dt(
             a(
@@ -344,7 +386,7 @@ class OntDoc:
             )
         )
         dd(
-            self._rdf_obj_multi(obj)
+            self._rdf_obj_multi(obj, obj_type=obj_type)
         )
 
     def _rdf_obj(self, obj: Union[URIRef, BNode, Literal], obj_type=None):
@@ -378,43 +420,7 @@ class OntDoc:
 
         # find type
         if rdf_type is None:
-            rdf_types = []
-            for o in self.g.objects(iri, RDF.type):
-                if o in ONT_TYPES.keys():
-                    rdf_types.append(o)
-            if OWL.ObjectProperty in rdf_types:
-                rdf_type = OWL.ObjectProperty
-            elif OWL.DatatypeProperty in rdf_types:
-                rdf_type = OWL.DatatypeProperty
-            elif OWL.AnnotationProperty in rdf_types:
-                rdf_type = OWL.AnnotationProperty
-            elif OWL.FunctionalProperty in rdf_types:
-                rdf_type = OWL.FunctionalProperty
-            elif OWL.InverseFunctionalProperty in rdf_types:
-                rdf_type = OWL.InverseFunctionalProperty
-            elif OWL.InverseFunctionalProperty in rdf_types:
-                rdf_type = OWL.InverseFunctionalProperty
-            elif RDF.Property in rdf_types:
-                rdf_type = RDF.Property
-        if rdf_type is None:
-            rdf_types = []
-            for o in self.background_onts.objects(iri, RDF.type):
-                if o in ONT_TYPES.keys():
-                    rdf_types.append(o)
-            if OWL.ObjectProperty in rdf_types:
-                rdf_type = OWL.ObjectProperty
-            elif OWL.DatatypeProperty in rdf_types:
-                rdf_type = OWL.DatatypeProperty
-            elif OWL.AnnotationProperty in rdf_types:
-                rdf_type = OWL.AnnotationProperty
-            elif OWL.FunctionalProperty in rdf_types:
-                rdf_type = OWL.FunctionalProperty
-            elif OWL.InverseFunctionalProperty in rdf_types:
-                rdf_type = OWL.InverseFunctionalProperty
-            elif OWL.InverseFunctionalProperty in rdf_types:
-                rdf_type = OWL.InverseFunctionalProperty
-            elif RDF.Property in rdf_types:
-                rdf_type = RDF.Property
+            rdf_type = self._get_ont_type(iri)
 
         prefix = "" if qname[0] == "" else f'{qname[0]}:'
         if str(iri).startswith(self.default_namespace):
@@ -429,6 +435,52 @@ class OntDoc:
             if isinstance(qname, tuple):
                 return a(f'{prefix}{qname[2]}', href=iri)
             return a(f'{qname}', href=iri)
+
+    def _get_ont_type(self, iri):
+        rdf_types = []
+        for o in self.g.objects(iri, RDF.type):
+            if o in ONT_TYPES.keys():
+                rdf_types.append(o)
+
+        if OWL.ObjectProperty in rdf_types:
+            return OWL.ObjectProperty
+        elif OWL.DatatypeProperty in rdf_types:
+            return OWL.DatatypeProperty
+        elif OWL.AnnotationProperty in rdf_types:
+            return OWL.AnnotationProperty
+        elif OWL.FunctionalProperty in rdf_types:
+            return OWL.FunctionalProperty
+        elif OWL.InverseFunctionalProperty in rdf_types:
+            return OWL.InverseFunctionalProperty
+        elif OWL.InverseFunctionalProperty in rdf_types:
+            return OWL.InverseFunctionalProperty
+        elif RDF.Property in rdf_types:
+            return RDF.Property
+        elif OWL.Class in rdf_types:
+            return OWL.Class
+
+        rdf_types = []
+        for o in self.background_onts.objects(iri, RDF.type):
+            if o in ONT_TYPES.keys():
+                rdf_types.append(o)
+        if OWL.ObjectProperty in rdf_types:
+            return OWL.ObjectProperty
+        elif OWL.DatatypeProperty in rdf_types:
+            return OWL.DatatypeProperty
+        elif OWL.AnnotationProperty in rdf_types:
+            return OWL.AnnotationProperty
+        elif OWL.FunctionalProperty in rdf_types:
+            return OWL.FunctionalProperty
+        elif OWL.InverseFunctionalProperty in rdf_types:
+            return OWL.InverseFunctionalProperty
+        elif OWL.InverseFunctionalProperty in rdf_types:
+            return OWL.InverseFunctionalProperty
+        elif RDF.Property in rdf_types:
+            return RDF.Property
+        elif OWL.Class in rdf_types:
+            return OWL.Class
+
+        return None
 
     def _agent(self, obj: Union[URIRef, BNode, Literal]):
         if isinstance(obj, Literal):
@@ -586,7 +638,7 @@ class OntDoc:
     def _make_document(self, title, schema_org_json, version):
         self.doc.title = title
         self._make_header(schema_org_json)
-        self._make_body(title, version)
+        self._make_body(version)
 
     def _make_header(self, schema_org_json):
         # use standard pyLODE stylesheet
@@ -608,10 +660,10 @@ class OntDoc:
             meta(http_equiv="Content-Type", content="text/html; charset=utf-8")
             script(raw("\n" + schema_org_json + "\n\t"), type="application/ld+json")
 
-    def _make_body(self, title, version):
+    def _make_body(self, version):
         self._make_pylode_logo(version)
         self._make_metadata()
-        self._make_classes()
+        self._make_all_elements()
         self._make_namespaces()
         self._make_legend()
         self._make_toc()
@@ -636,62 +688,53 @@ class OntDoc:
                 h2("Legend")
                 with table(_class="entity"):
 
-                    if self.toc["Classes"] is not None:
+                    if self.toc.get("classes") is not None:
                         with tr():
                             td(sup("c", _class="sup-c", title="OWL/RDFS Class"))
                             td("Classes")
-                    if self.toc["Properties"] is not None:
+                    if self.toc.get("properties") is not None:
                         with tr():
                             td(sup("p", _class="sup-p", title="RDF Property"))
                             td("Properties")
-                        if self.toc["Properties"].get("Object Properties") is not None:
-                            with tr():
-                                td(
-                                    sup(
-                                        "op", _class="sup-op", title="OWL Object Property"
-                                    )
+                    if self.toc.get("objectproperties") is not None:
+                        with tr():
+                            td(
+                                sup(
+                                    "op", _class="sup-op", title="OWL Object Property"
                                 )
-                                td("Object Properties")
-                        if (
-                            self.toc["Properties"].get("Datatype Properties")
-                            is not None
-                        ):
-                            with tr():
-                                td(
-                                    sup(
-                                        "dp",
-                                        _class="sup-dp",
-                                        title="OWL Datatype Property",
-                                    )
+                            )
+                            td("Object Properties")
+                    if self.toc.get("datatypeproperties") is not None:
+                        with tr():
+                            td(
+                                sup(
+                                    "dp",
+                                    _class="sup-dp",
+                                    title="OWL Datatype Property",
                                 )
-                                td("Datatype Properties")
-                        if (
-                            self.toc["Properties"].get("Annotation Properties")
-                            is not None
-                        ):
-                            with tr():
-                                td(
-                                    sup(
-                                        "ap",
-                                        _class="sup-ap",
-                                        title="OWL Annotation Property",
-                                    )
+                            )
+                            td("Datatype Properties")
+                    if self.toc.get("annotationproperties") is not None:
+                        with tr():
+                            td(
+                                sup(
+                                    "ap",
+                                    _class="sup-ap",
+                                    title="OWL Annotation Property",
                                 )
-                                td("Annotation Properties")
-                        if (
-                            self.toc["Properties"].get("Functional Properties")
-                            is not None
-                        ):
-                            with tr():
-                                td(
-                                    sup(
-                                        "fp",
-                                        _class="sup-fp",
-                                        title="OWL Functional Property",
-                                    )
+                            )
+                            td("Annotation Properties")
+                    if self.toc.get("functionalproperties") is not None:
+                        with tr():
+                            td(
+                                sup(
+                                    "fp",
+                                    _class="sup-fp",
+                                    title="OWL Functional Property",
                                 )
-                                td("Functional Properties")
-                    if self.toc["Named Individuals"] is not None:
+                            )
+                            td("Functional Properties")
+                    if self.toc.get("named_individuals") is not None:
                         with tr():
                             td(sup("ni", _class="sup-ni", title="OWL Named Individual"))
                             td("Named Individuals")
@@ -748,32 +791,70 @@ class OntDoc:
             with div(id="namespaces"):
                 h2("Namespaces")
                 with dl():
+                    if self.toc.get("namespaces") is None:
+                        self.toc["namespaces"] = []
                     for prefix, ns in sorted(nses.items()):
                         p = prefix if prefix != "" else ":"
                         dt(p, id=p)
                         dd(code(ns))
-                        self.toc["Namespaces"][p] = ns
+                        self.toc["namespaces"].append(("#" + prefix, prefix))
 
     def _make_toc(self):
         with self.doc:
             with div(id="toc"):
                 h3("Table of Contents")
                 with ul(_class="first"):
-                    for label, section in self.toc.items():
-                        if section is not None:
-                            li(a(label, href="#" + label.replace(" ", "").lower()))
+                    li(h4(a("Metadata", href="#metadata")))
 
-                            if label == "Classes":
-                                with ul(_class="second"):
-                                    for cls_iri, cls_label in self.toc[
-                                        "Classes"
-                                    ].items():
-                                        li(a(cls_label, href=cls_iri))
+                    if self.toc.get("classes") is not None and len(self.toc["classes"]) > 0:
+                        with li():
+                            h4(a("Classes", href="#classes"))
+                            with ul(_class="second"):
+                                for c in self.toc["classes"]:
+                                    li(a(c[1], href=c[0]))
 
-                            if label == "Namespaces":
-                                with ul(_class="second"):
-                                    for prefix, ns in self.toc["Namespaces"].items():
-                                        li(a(prefix, href="#" + prefix))
+                    if self.toc.get("properties") is not None and len(self.toc["properties"]) > 0:
+                        with li():
+                            h4(a("Properties", href="#properties"))
+                            with ul(_class="second"):
+                                for c in self.toc["properties"]:
+                                    li(a(c[1], href=c[0]))
+
+                    if self.toc.get("objectproperties") is not None and len(self.toc["objectproperties"]) > 0:
+                        with li():
+                            h4(a("Object Properties", href="#objectproperties"))
+                            with ul(_class="second"):
+                                for c in self.toc["objectproperties"]:
+                                    li(a(c[1], href=c[0]))
+
+                    if self.toc.get("datatypeproperties") is not None and len(self.toc["datatypeproperties"]) > 0:
+                        with li():
+                            h4(a("Datatype Properties", href="#datatypeproperties"))
+                            with ul(_class="second"):
+                                for c in self.toc["datatypeproperties"]:
+                                    li(a(c[1], href=c[0]))
+
+                    if self.toc.get("annotationproperties") is not None and len(self.toc["annotationproperties"]) > 0:
+                        with li():
+                            h4(a("Annotation Properties", href="#annotationproperties"))
+                            with ul(_class="second"):
+                                for c in self.toc["annotationproperties"]:
+                                    li(a(c[1], href=c[0]))
+
+                    if self.toc.get("functionalproperties") is not None and len(self.toc["functionalproperties"]) > 0:
+                        with li():
+                            h4(a("Functional Properties", href="#functionalproperties"))
+                            with ul(_class="second"):
+                                for c in self.toc["functionalproperties"]:
+                                    li(a(c[1], href=c[0]))
+
+                    with li():
+                        h4(a("Namespaces", href="#namespaces"))
+                        with ul(_class="second"):
+                            for n in self.toc["namespaces"]:
+                                li(a(n[1], href="#" + n[1]))
+
+                    li(h4(a("Legend", href="#legend")), ul(_class="second"))
 
 
 if __name__ == "__main__":

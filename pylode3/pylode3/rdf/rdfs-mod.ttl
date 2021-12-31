@@ -26,7 +26,7 @@ rdfs:subClassOf a rdf:Property ;
 
 rdfs:subPropertyOf a rdf:Property ;
 	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
-	rdfs:label "subPropertyOf" ;
+	rdfs:label "sub Property Of" ;
 	rdfs:comment "The subject is a subproperty of a property." ;
 	rdfs:range rdf:Property ;
 	rdfs:domain rdf:Property .
