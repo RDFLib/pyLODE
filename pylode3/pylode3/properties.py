@@ -2,7 +2,6 @@ from rdflib import Namespace
 from rdflib.namespace import (
     DC,
     DCTERMS,
-    DOAP,
     FOAF,
     ORG,
     OWL,
@@ -17,6 +16,7 @@ from rdflib.namespace import (
 
 ONTDOC = Namespace("https://w3id.org/profile/ontdoc/")
 
+# metadata properties for OWL Ontology instances
 ONT_PROPS = [
     DCTERMS.title,
     DCTERMS.publisher,
@@ -30,6 +30,8 @@ ONT_PROPS = [
     OWL.versionIRI,
     OWL.versionInfo,
     OWL.priorVersion,
+    VANN.preferredNamespacePrefix,
+    VANN.preferredNamespaceUri,
     SKOS.scopeNote,
     DCTERMS.source,
     DCTERMS.provenance,
@@ -38,6 +40,7 @@ ONT_PROPS = [
     ONTDOC.restriction,
 ]
 
+# properties for OWL Class instances
 CLASS_PROPS = [
     RDFS.isDefinedBy,
     DCTERMS.title,
@@ -59,6 +62,7 @@ CLASS_PROPS = [
     ONTDOC.superClassOf,
 ]
 
+# properties for instances of RDF Property and OWL specialised forms, such as ObjectProperty etc.
 PROP_PROPS = [
     RDFS.isDefinedBy,
     DCTERMS.title,
@@ -76,6 +80,7 @@ PROP_PROPS = [
     SDO.rangeIncludes,
 ]
 
+# properties for Agents
 AGENT_PROPS = [
     SDO.name,
     SDO.affiliation,
@@ -85,6 +90,7 @@ AGENT_PROPS = [
     SDO.url,
 ]
 
+# properties for OWL restriction instances
 RESTRICTION_PROPS = [
     OWL.allValuesFrom,
     OWL.someValuesFrom,
@@ -99,17 +105,8 @@ RESTRICTION_PROPS = [
     OWL.maxQualifiedCardinality,
 ]
 
+# all known properties
 PROPS = set(ONT_PROPS + CLASS_PROPS + PROP_PROPS + AGENT_PROPS + RESTRICTION_PROPS)
-
-RDF_ONT_TYPES = {
-    "c": "OWL/RDFS Class",
-    "p": "RDF Property",
-    "op": "OWL Object Property",
-    "dp": "OWL Datatype Property",
-    "ap": "OWL Annotation Property",
-    "fp": "OWL Functional Property",
-    "ni": "OWL Named Individual",
-}
 
 ONT_TYPES = {
     OWL.Class: ("c", "OWL/RDFS Class"),
