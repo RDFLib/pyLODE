@@ -8,142 +8,141 @@ RDF_FOLDER = Path(__file__).parent / "rdf"
 
 class OntDoc:
     def __init__(self, ontology: Union[Graph, Path, str]):
-        self.g = load_ontology(ontology)
-        self._expand()
-
-        self.background_g = load_background_onts()
-        self.background_onts_titles = load_background_onts_titles()
-        self.props_labeled = label_props(self.background_g)
+        self.ont = load_ontology(ontology)
+        self._expand(self.ont)
+        self.back_onts = load_background_onts()
+        self.back_onts_titles = load_background_onts_titles(self.back_onts)
+        self.props_labeled = label_props(self.ont)
 
         self.toc: Dict[str, str] = {}
         self.fids: Dict[str, str] = {}
-        self.ns = get_ns(self.g)
+        self.ns = get_ns(self.ont)
 
         # make HTML doc with title
         t = None
-        for o in chain(
-            self.g.subjects(RDF.type, OWL.Ontology),
-            self.g.subjects(RDF.type, PROF.Profile),
-            self.g.subjects(RDF.type, SKOS.ConceptScheme)
+        for s in chain(
+            self.ont.subjects(RDF.type, OWL.Ontology),
+            self.ont.subjects(RDF.type, PROF.Profile),
+            self.ont.subjects(RDF.type, SKOS.ConceptScheme)
         ):
-            for o2 in self.g.objects(o, DCTERMS.title):
+            for o2 in self.ont.objects(s, DCTERMS.title):
                 t = str(o2)
         self.doc = dominate.document(title=t)
 
         with self.doc:
             self.content = div(id="content")
 
-    def _expand(self):
+    def _expand(self, g):
         # class types
-        for s_ in self.g.subjects(RDF.type, OWL.Class):
-            self.g.add((s_, RDF.type, RDFS.Class))
+        for s_ in g.subjects(RDF.type, OWL.Class):
+            g.add((s_, RDF.type, RDFS.Class))
 
         # property types
         for s_ in chain(
-            self.g.subjects(RDF.type, OWL.ObjectProperty),
-            self.g.subjects(RDF.type, OWL.FunctionalProperty),
-            self.g.subjects(RDF.type, OWL.DatatypeProperty),
-            self.g.subjects(RDF.type, OWL.AnnotationProperty),
+            g.subjects(RDF.type, OWL.ObjectProperty),
+            g.subjects(RDF.type, OWL.FunctionalProperty),
+            g.subjects(RDF.type, OWL.DatatypeProperty),
+            g.subjects(RDF.type, OWL.AnnotationProperty),
         ):
-            self.g.add((s_, RDF.type, RDF.Property))
+            g.add((s_, RDF.type, RDF.Property))
 
         # name
         for s_, o in chain(
-            self.g.subject_objects(DC.title),
-            self.g.subject_objects(RDFS.label),
-            self.g.subject_objects(SKOS.prefLabel),
-            self.g.subject_objects(SDO.name),
+            g.subject_objects(DC.title),
+            g.subject_objects(RDFS.label),
+            g.subject_objects(SKOS.prefLabel),
+            g.subject_objects(SDO.name),
         ):
-            self.g.add((s_, DCTERMS.title, o))
+            g.add((s_, DCTERMS.title, o))
 
         # description
         for s_, o in chain(
-            self.g.subject_objects(DC.description),
-            self.g.subject_objects(RDFS.comment),
-            self.g.subject_objects(SKOS.definition),
-            self.g.subject_objects(SDO.description),
+            g.subject_objects(DC.description),
+            g.subject_objects(RDFS.comment),
+            g.subject_objects(SKOS.definition),
+            g.subject_objects(SDO.description),
         ):
-            self.g.add((s_, DCTERMS.description, o))
+            g.add((s_, DCTERMS.description, o))
 
         # source
-        for s_, o in self.g.subject_objects(DC.source):
-            self.g.add((s_, DCTERMS.source, o))
+        for s_, o in g.subject_objects(DC.source):
+            g.add((s_, DCTERMS.source, o))
 
         # owl:Restrictions from Blank Nodes
-        for s_ in self.g.subjects(OWL.onProperty):
-            self.g.add((s_, RDF.type, OWL.Restriction))
+        for s_ in g.subjects(OWL.onProperty):
+            g.add((s_, RDF.type, OWL.Restriction))
 
         # we do these next few so we only need to loop through Class & Property properties once: single subject
-        for s_, o in self.g.subject_objects(RDFS.subClassOf):
-            self.g.add((o, ONTDOC.superClassOf, s_))
+        for s_, o in g.subject_objects(RDFS.subClassOf):
+            g.add((o, ONTDOC.superClassOf, s_))
 
-        for s_, o in self.g.subject_objects(RDFS.subPropertyOf):
-            self.g.add((o, ONTDOC.superPropertyOf, s_))
+        for s_, o in g.subject_objects(RDFS.subPropertyOf):
+            g.add((o, ONTDOC.superPropertyOf, s_))
 
-        for s_, o in self.g.subject_objects(RDFS.domain):
-            self.g.add((o, ONTDOC.inDomainOf, s_))
+        for s_, o in g.subject_objects(RDFS.domain):
+            g.add((o, ONTDOC.inDomainOf, s_))
 
-        for s_, o in self.g.subject_objects(SDO.domainIncludes):
-            self.g.add((o, ONTDOC.inDomainIncludesOf, s_))
+        for s_, o in g.subject_objects(SDO.domainIncludes):
+            g.add((o, ONTDOC.inDomainIncludesOf, s_))
 
-        for s_, o in self.g.subject_objects(RDFS.range):
-            self.g.add((o, ONTDOC.inRangeOf, s_))
+        for s_, o in g.subject_objects(RDFS.range):
+            g.add((o, ONTDOC.inRangeOf, s_))
 
-        for s_, o in self.g.subject_objects(SDO.rangeIncludes):
-            self.g.add((o, ONTDOC.inRangeIncludesOf, s_))
+        for s_, o in g.subject_objects(SDO.rangeIncludes):
+            g.add((o, ONTDOC.inRangeIncludesOf, s_))
 
-        for s_, o in self.g.subject_objects(RDF.type):
-            self.g.add((o, ONTDOC.hasMember, s_))
+        for s_, o in g.subject_objects(RDF.type):
+            g.add((o, ONTDOC.hasMember, s_))
 
         # Agents
         # creator
         for s_, o in chain(
-            self.g.subject_objects(DC.creator),
-            self.g.subject_objects(SDO.creator),
-            self.g.subject_objects(
+            g.subject_objects(DC.creator),
+            g.subject_objects(SDO.creator),
+            g.subject_objects(
                 SDO.author
             ),  # conflate SDO.author with DCTERMS.creator
         ):
-            self.g.remove((s_, DC.creator, o))
-            self.g.remove((s_, SDO.creator, o))
-            self.g.remove((s_, SDO.author, o))
-            self.g.add((s_, DCTERMS.creator, o))
+            g.remove((s_, DC.creator, o))
+            g.remove((s_, SDO.creator, o))
+            g.remove((s_, SDO.author, o))
+            g.add((s_, DCTERMS.creator, o))
 
         # contributor
         for s_, o in chain(
-            self.g.subject_objects(DC.contributor),
-            self.g.subject_objects(SDO.contributor),
+            g.subject_objects(DC.contributor),
+            g.subject_objects(SDO.contributor),
         ):
-            self.g.remove((s_, DC.contributor, o))
-            self.g.remove((s_, SDO.contributor, o))
-            self.g.add((s_, DCTERMS.contributor, o))
+            g.remove((s_, DC.contributor, o))
+            g.remove((s_, SDO.contributor, o))
+            g.add((s_, DCTERMS.contributor, o))
 
         # publisher
         for s_, o in chain(
-            self.g.subject_objects(DC.publisher),
-            self.g.subject_objects(SDO.publisher)
+            g.subject_objects(DC.publisher),
+            g.subject_objects(SDO.publisher)
         ):
-            self.g.remove((s_, DC.publisher, o))
-            self.g.remove((s_, SDO.publisher, o))
-            self.g.add((s_, DCTERMS.publisher, o))
+            g.remove((s_, DC.publisher, o))
+            g.remove((s_, SDO.publisher, o))
+            g.add((s_, DCTERMS.publisher, o))
 
         # indicate Agent instances from properties
         for o in chain(
-            self.g.objects(None, DCTERMS.publisher),
-            self.g.objects(None, DCTERMS.creator),
-            self.g.objects(None, DCTERMS.contributor)
+            g.objects(None, DCTERMS.publisher),
+            g.objects(None, DCTERMS.creator),
+            g.objects(None, DCTERMS.contributor)
         ):
-            self.g.add((o, RDF.type, PROV.Agent))
+            g.add((o, RDF.type, PROV.Agent))
 
         # Agent annotations
-        for s_, o in self.g.subject_objects(FOAF.name):
-            self.g.add((s_, SDO.name, o))
+        for s_, o in g.subject_objects(FOAF.name):
+            g.add((s_, SDO.name, o))
 
-        for s_, o in self.g.subject_objects(FOAF.mbox):
-            self.g.add((s_, SDO.email, o))
+        for s_, o in g.subject_objects(FOAF.mbox):
+            g.add((s_, SDO.email, o))
 
-        for s_, o in self.g.subject_objects(ORG.memberOf):
-            self.g.add((s_, SDO.affiliation, o))
+        for s_, o in g.subject_objects(ORG.memberOf):
+            g.add((s_, SDO.affiliation, o))
 
     def _make_document(self, schema_org_json):
         self._make_header(schema_org_json)
@@ -196,12 +195,12 @@ class OntDoc:
         # get all ONT_PROPS props and their (multiple) values
         this_onts_props = defaultdict(list)
         for s_ in chain(
-                self.g.subjects(predicate=RDF.type, object=OWL.Ontology),
-                self.g.subjects(predicate=RDF.type, object=SKOS.ConceptScheme),
-                self.g.subjects(predicate=RDF.type, object=PROF.Profile),
+                self.ont.subjects(predicate=RDF.type, object=OWL.Ontology),
+                self.ont.subjects(predicate=RDF.type, object=SKOS.ConceptScheme),
+                self.ont.subjects(predicate=RDF.type, object=PROF.Profile),
         ):
             iri = s_
-            for p_, o in self.g.predicate_objects(s_):
+            for p_, o in self.ont.predicate_objects(s_):
                 if p_ in ONT_PROPS:
                     this_onts_props[p_].append(o)
 
@@ -212,8 +211,8 @@ class OntDoc:
             if prop in this_onts_props.keys():
                 d.appendChild(
                     prop_obj_pair_html(
-                        self.g,
-                        self.background_g,
+                        self.ont,
+                        self.back_onts,
                         self.ns,
                         "dl",
                         prop,
@@ -229,35 +228,35 @@ class OntDoc:
 
     def _make_all_elements(self):
         with self.content:
-            if (None, RDF.type, OWL.Class) in self.g:
+            if (None, RDF.type, OWL.Class) in self.ont:
                 with div(id="classes", _class="section"):
                     h2("Classes")
-                    elements_html(self.g, self.background_g, self.ns, OWL.Class, CLASS_PROPS, self.toc, "classes", self.fids, self.props_labeled)
+                    elements_html(self.ont, self.back_onts, self.ns, OWL.Class, CLASS_PROPS, self.toc, "classes", self.fids, self.props_labeled)
 
-            if (None, RDF.type, RDF.Property) in self.g:
+            if (None, RDF.type, RDF.Property) in self.ont:
                 with div(id="properties", _class="section"):
                     h2("Properties")
-                    elements_html(self.g, self.background_g, self.ns, RDF.Property, PROP_PROPS, self.toc, "properties", self.fids, self.props_labeled)
+                    elements_html(self.ont, self.back_onts, self.ns, RDF.Property, PROP_PROPS, self.toc, "properties", self.fids, self.props_labeled)
 
-                    if (None, RDF.type, OWL.ObjectProperty) in self.g:
+                    if (None, RDF.type, OWL.ObjectProperty) in self.ont:
                         with div(id="objectproperties", _class="section"):
                             h3("Object Properties")
-                            elements_html(self.g, self.background_g, self.ns, OWL.ObjectProperty, PROP_PROPS, self.toc, "objectproperties", self.fids, self.props_labeled)
+                            elements_html(self.ont, self.back_onts, self.ns, OWL.ObjectProperty, PROP_PROPS, self.toc, "objectproperties", self.fids, self.props_labeled)
 
-                    if (None, RDF.type, OWL.DatatypeProperty) in self.g:
+                    if (None, RDF.type, OWL.DatatypeProperty) in self.ont:
                         with div(id="datatypeproperties", _class="section"):
                             h3("Datatype Properties")
-                            elements_html(self.g, self.background_g, self.ns, OWL.DatatypeProperty, PROP_PROPS, self.toc, "datatypeproperties", self.fids, self.props_labeled)
+                            elements_html(self.ont, self.back_onts, self.ns, OWL.DatatypeProperty, PROP_PROPS, self.toc, "datatypeproperties", self.fids, self.props_labeled)
 
-                    if (None, RDF.type, OWL.AnnotationProperty) in self.g:
+                    if (None, RDF.type, OWL.AnnotationProperty) in self.ont:
                         with div(id="annotationproperties", _class="section"):
                             h3("Annotation Properties")
-                            elements_html(self.g, self.background_g, self.ns, OWL.AnnotationProperty, PROP_PROPS, self.toc, "annotationproperties", self.fids, self.props_labeled)
+                            elements_html(self.ont, self.back_onts, self.ns, OWL.AnnotationProperty, PROP_PROPS, self.toc, "annotationproperties", self.fids, self.props_labeled)
 
-                    if (None, RDF.type, OWL.FunctionalProperty) in self.g:
+                    if (None, RDF.type, OWL.FunctionalProperty) in self.ont:
                         with div(id="functionalproperties", _class="section"):
                             h3("Functional Properties")
-                            elements_html(self.g, self.background_g, self.ns, OWL.FunctionalProperty, PROP_PROPS, self.toc, "functionalproperties", self.fids, self.props_labeled)
+                            elements_html(self.ont, self.back_onts, self.ns, OWL.FunctionalProperty, PROP_PROPS, self.toc, "functionalproperties", self.fids, self.props_labeled)
 
     def _make_legend(self):
         with self.content:
@@ -319,8 +318,8 @@ class OntDoc:
     def _make_namespaces(self):
         # get only namespaces used in ont
         nses = {}
-        for n in chain(self.g.subjects(), self.g.predicates(), self.g.objects()):
-            for prefix, ns in self.g.namespaces():
+        for n in chain(self.ont.subjects(), self.ont.predicates(), self.ont.objects()):
+            for prefix, ns in self.ont.namespaces():
                 if str(n).startswith(ns):
                     nses[prefix] = ns
 
@@ -396,8 +395,9 @@ class OntDoc:
 
 if __name__ == "__main__":
     # TODO: schema.org generation from ont
-    # TODO: add title of ont to head
+    # TODO: move background ont into Dataset
     # TODO: cli UI
+    # TODO: fix fid1
 
     logging.basicConfig(
         level=logging.INFO,
@@ -437,7 +437,7 @@ if __name__ == "__main__":
     ]"""
     version = "3.0.0"
 
-    od = OntDoc(ontology="agrif.ttl")
+    od = OntDoc(ontology="prof.ttl")
     od._make_document(sdo_json)
     open("some.html", "w").write(od.doc.render())
 

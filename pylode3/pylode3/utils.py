@@ -5,7 +5,7 @@ from collections import defaultdict
 from itertools import chain
 from pathlib import Path
 from typing import Optional, List
-from typing import Union
+from typing import Union, cast
 
 import markdown
 from dominate.tags import a, span, br, sup, tr, th, td, ul, li, em, code, table, h3, div, dt, dd
@@ -82,7 +82,7 @@ def get_prop_label(property_iri: URIRef, background_g) -> dict:
             title_ = o
         if p_ == DCTERMS.description:
             description = o
-    background_g_titles = load_background_onts_titles()
+    background_g_titles = load_background_onts_titles(background_g)
     for k, v in background_g_titles.items():
         if property_iri.startswith(k):
             ont_title = v
@@ -97,24 +97,28 @@ def get_prop_label(property_iri: URIRef, background_g) -> dict:
     }
 
 
-def get_ns(g):
+def get_graph_from_dataset(d: Dataset, graph_identifier: URIRef) -> Union[Graph, None]:
+    return [x for x in d.contexts() if x.identifier == graph_identifier][0]
+
+
+def get_ns(g: Graph):
     # if this ontology declares a preferred URI, use that
-    prefn_iri = None
+    pref_iri = None
     for s_, o in g.subject_objects(
         predicate=VANN.preferredNamespaceUri
     ):
-        prefn_iri = str(o)
+        pref_iri = str(o)
 
-    prefn_prefix = None
+    pref_prefix = None
     for s_, o in g.subject_objects(
         predicate=VANN.preferredNamespacePrefix
     ):
-        prefn_prefix = str(o)
-    if prefn_prefix is None:
-        prefn_prefix = ""
+        pref_prefix = str(o)
+    if pref_prefix is None:
+        pref_prefix = ""
 
-    if prefn_iri is not None:
-        return prefn_prefix, prefn_iri
+    if pref_iri is not None:
+        return pref_prefix, pref_iri
 
     # if not, try the URI of the main object, compared to all prefixes
     else:
@@ -163,17 +167,14 @@ def make_title_from_iri(iri):
 
 
 def load_ontology(ontology: Union[Graph, Path, str]) -> Dataset:
-    d = Dataset()
     if isinstance(ontology, Graph):
-        g = Graph(identifier=URIRef("ont"))
-        g += ontology
-        return d.add_graph(g)
+        return cast(ontology, Graph)
     elif isinstance(ontology, Path):
-        return d.parse(ontology, publicID=URIRef("ont"))
+        return Graph().parse(ontology, publicID=URIRef("ont:"))
     elif isinstance(ontology, str):
         # see if it's a file path
         if Path(ontology).is_file():
-            return d.parse(ontology, publicID=URIRef("ont"))
+            return Graph().parse(ontology, publicID=URIRef("ont:"))
         else:  # it's data
             if ontology.startswith("[") or ontology.startswith("{"):
                 input_format = "json-ld"
@@ -185,7 +186,7 @@ def load_ontology(ontology: Union[Graph, Path, str]) -> Dataset:
                 input_format = "xml"
             else:
                 input_format = "turtle"  # this will also cover n-triples
-            return d.parse(data=ontology, format=input_format, publicID=URIRef("ont"))
+            return Graph().parse(data=ontology, format=input_format, publicID=URIRef("ont:"))
     else:
         raise ValueError(
             "The ontology you supply to OntDoc must be either an RDFlib Graph, a Path (to an RDF file) "
@@ -206,18 +207,18 @@ def load_background_onts():
         return g
 
 
-def load_background_onts_titles():
+def load_background_onts_titles(g: Graph):
     if Path(RDF_FOLDER / "refs_titles.pickle").is_file():
         with open(RDF_FOLDER / "refs_titles.pickle", "rb") as f:
             return pickle.load(f)
     else:
-        t = get_background_ontology_titles(load_background_onts())
+        t = get_background_ontology_titles(g)
         pickle_background_onts_titles(t)
         return t
 
 
 def _parse_background_onts():
-    g = Graph()
+    g = Graph(identifier=URIRef("background:"))
     for f in RDF_FOLDER.glob("*.ttl"):
         g.parse(f)
 
