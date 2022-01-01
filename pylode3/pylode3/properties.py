@@ -1,31 +1,39 @@
 from rdflib import Namespace
-from rdflib.namespace import DC, DCTERMS, DOAP, FOAF, ORG, OWL, PROF, PROV, RDF, RDFS, SDO, SKOS, VANN
+from rdflib.namespace import (
+    DC,
+    DCTERMS,
+    DOAP,
+    FOAF,
+    ORG,
+    OWL,
+    PROF,
+    PROV,
+    RDF,
+    RDFS,
+    SDO,
+    SKOS,
+    VANN,
+)
 
 ONTDOC = Namespace("https://w3id.org/profile/ontdoc/")
 
 ONT_PROPS = [
     DCTERMS.title,
-
     DCTERMS.publisher,
     DCTERMS.creator,
     DCTERMS.contributor,
-
     DCTERMS.created,
     DCTERMS.modified,
     DCTERMS.issued,
-
     DCTERMS.license,
     DCTERMS.rights,
-
     OWL.versionIRI,
     OWL.versionInfo,
     OWL.priorVersion,
-
     SKOS.scopeNote,
     DCTERMS.source,
     DCTERMS.provenance,
     SKOS.note,
-
     DCTERMS.description,
     ONTDOC.restriction,
 ]
@@ -39,7 +47,6 @@ CLASS_PROPS = [
     DCTERMS.source,
     DCTERMS.provenance,
     SKOS.note,
-
     RDFS.subClassOf,
     OWL.equivalentClass,
     # OWL.restriction,
@@ -61,13 +68,12 @@ PROP_PROPS = [
     DCTERMS.source,
     DCTERMS.provenance,
     SKOS.note,
-
     RDFS.subPropertyOf,
     ONTDOC.superPropertyOf,
     RDFS.domain,
     SDO.domainIncludes,
     RDFS.range,
-    SDO.rangeIncludes
+    SDO.rangeIncludes,
 ]
 
 AGENT_PROPS = [
@@ -76,7 +82,7 @@ AGENT_PROPS = [
     SDO.identifier,
     SDO.email,
     SDO.honorificPrefix,
-    SDO.url
+    SDO.url,
 ]
 
 RESTRICTION_PROPS = [
@@ -125,5 +131,5 @@ RESTRICTION_TYPES = [
     OWL.maxQualifiedCardinality,
     OWL.allValuesFrom,
     OWL.someValuesFrom,
-    OWL.hasValue
+    OWL.hasValue,
 ]

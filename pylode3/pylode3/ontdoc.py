@@ -9,10 +9,10 @@ RDF_FOLDER = Path(__file__).parent / "rdf"
 class OntDoc:
     def __init__(self, ontology: Union[Graph, Path, str]):
         self.ont = load_ontology(ontology)
-        self._expand(self.ont)
+        self._expand_ontdoc(self.ont)
         self.back_onts = load_background_onts()
         self.back_onts_titles = load_background_onts_titles(self.back_onts)
-        self.props_labeled = label_props(self.ont)
+        self.props_labeled = back_onts_label_props(self.ont)
 
         self.toc: Dict[str, str] = {}
         self.fids: Dict[str, str] = {}
@@ -23,7 +23,7 @@ class OntDoc:
         for s in chain(
             self.ont.subjects(RDF.type, OWL.Ontology),
             self.ont.subjects(RDF.type, PROF.Profile),
-            self.ont.subjects(RDF.type, SKOS.ConceptScheme)
+            self.ont.subjects(RDF.type, SKOS.ConceptScheme),
         ):
             for o2 in self.ont.objects(s, DCTERMS.title):
                 t = str(o2)
@@ -32,7 +32,7 @@ class OntDoc:
         with self.doc:
             self.content = div(id="content")
 
-    def _expand(self, g):
+    def _expand_ontdoc(self, g):
         # class types
         for s_ in g.subjects(RDF.type, OWL.Class):
             g.add((s_, RDF.type, RDFS.Class))
@@ -99,9 +99,7 @@ class OntDoc:
         for s_, o in chain(
             g.subject_objects(DC.creator),
             g.subject_objects(SDO.creator),
-            g.subject_objects(
-                SDO.author
-            ),  # conflate SDO.author with DCTERMS.creator
+            g.subject_objects(SDO.author),  # conflate SDO.author with DCTERMS.creator
         ):
             g.remove((s_, DC.creator, o))
             g.remove((s_, SDO.creator, o))
@@ -119,8 +117,7 @@ class OntDoc:
 
         # publisher
         for s_, o in chain(
-            g.subject_objects(DC.publisher),
-            g.subject_objects(SDO.publisher)
+            g.subject_objects(DC.publisher), g.subject_objects(SDO.publisher)
         ):
             g.remove((s_, DC.publisher, o))
             g.remove((s_, SDO.publisher, o))
@@ -130,7 +127,7 @@ class OntDoc:
         for o in chain(
             g.objects(None, DCTERMS.publisher),
             g.objects(None, DCTERMS.creator),
-            g.objects(None, DCTERMS.contributor)
+            g.objects(None, DCTERMS.contributor),
         ):
             g.add((o, RDF.type, PROV.Agent))
 
@@ -178,6 +175,7 @@ class OntDoc:
 
     def _make_pylode_logo(self):
         from pylode3.pylode3 import __version__ as v
+
         with self.doc:
             with div(id="pylode"):
                 with p("made by "):
@@ -195,9 +193,9 @@ class OntDoc:
         # get all ONT_PROPS props and their (multiple) values
         this_onts_props = defaultdict(list)
         for s_ in chain(
-                self.ont.subjects(predicate=RDF.type, object=OWL.Ontology),
-                self.ont.subjects(predicate=RDF.type, object=SKOS.ConceptScheme),
-                self.ont.subjects(predicate=RDF.type, object=PROF.Profile),
+            self.ont.subjects(predicate=RDF.type, object=OWL.Ontology),
+            self.ont.subjects(predicate=RDF.type, object=SKOS.ConceptScheme),
+            self.ont.subjects(predicate=RDF.type, object=PROF.Profile),
         ):
             iri = s_
             for p_, o in self.ont.predicate_objects(s_):
@@ -231,32 +229,92 @@ class OntDoc:
             if (None, RDF.type, OWL.Class) in self.ont:
                 with div(id="classes", _class="section"):
                     h2("Classes")
-                    elements_html(self.ont, self.back_onts, self.ns, OWL.Class, CLASS_PROPS, self.toc, "classes", self.fids, self.props_labeled)
+                    elements_html(
+                        self.ont,
+                        self.back_onts,
+                        self.ns,
+                        OWL.Class,
+                        CLASS_PROPS,
+                        self.toc,
+                        "classes",
+                        self.fids,
+                        self.props_labeled,
+                    )
 
             if (None, RDF.type, RDF.Property) in self.ont:
                 with div(id="properties", _class="section"):
                     h2("Properties")
-                    elements_html(self.ont, self.back_onts, self.ns, RDF.Property, PROP_PROPS, self.toc, "properties", self.fids, self.props_labeled)
+                    elements_html(
+                        self.ont,
+                        self.back_onts,
+                        self.ns,
+                        RDF.Property,
+                        PROP_PROPS,
+                        self.toc,
+                        "properties",
+                        self.fids,
+                        self.props_labeled,
+                    )
 
                     if (None, RDF.type, OWL.ObjectProperty) in self.ont:
                         with div(id="objectproperties", _class="section"):
                             h3("Object Properties")
-                            elements_html(self.ont, self.back_onts, self.ns, OWL.ObjectProperty, PROP_PROPS, self.toc, "objectproperties", self.fids, self.props_labeled)
+                            elements_html(
+                                self.ont,
+                                self.back_onts,
+                                self.ns,
+                                OWL.ObjectProperty,
+                                PROP_PROPS,
+                                self.toc,
+                                "objectproperties",
+                                self.fids,
+                                self.props_labeled,
+                            )
 
                     if (None, RDF.type, OWL.DatatypeProperty) in self.ont:
                         with div(id="datatypeproperties", _class="section"):
                             h3("Datatype Properties")
-                            elements_html(self.ont, self.back_onts, self.ns, OWL.DatatypeProperty, PROP_PROPS, self.toc, "datatypeproperties", self.fids, self.props_labeled)
+                            elements_html(
+                                self.ont,
+                                self.back_onts,
+                                self.ns,
+                                OWL.DatatypeProperty,
+                                PROP_PROPS,
+                                self.toc,
+                                "datatypeproperties",
+                                self.fids,
+                                self.props_labeled,
+                            )
 
                     if (None, RDF.type, OWL.AnnotationProperty) in self.ont:
                         with div(id="annotationproperties", _class="section"):
                             h3("Annotation Properties")
-                            elements_html(self.ont, self.back_onts, self.ns, OWL.AnnotationProperty, PROP_PROPS, self.toc, "annotationproperties", self.fids, self.props_labeled)
+                            elements_html(
+                                self.ont,
+                                self.back_onts,
+                                self.ns,
+                                OWL.AnnotationProperty,
+                                PROP_PROPS,
+                                self.toc,
+                                "annotationproperties",
+                                self.fids,
+                                self.props_labeled,
+                            )
 
                     if (None, RDF.type, OWL.FunctionalProperty) in self.ont:
                         with div(id="functionalproperties", _class="section"):
                             h3("Functional Properties")
-                            elements_html(self.ont, self.back_onts, self.ns, OWL.FunctionalProperty, PROP_PROPS, self.toc, "functionalproperties", self.fids, self.props_labeled)
+                            elements_html(
+                                self.ont,
+                                self.back_onts,
+                                self.ns,
+                                OWL.FunctionalProperty,
+                                PROP_PROPS,
+                                self.toc,
+                                "functionalproperties",
+                                self.fids,
+                                self.props_labeled,
+                            )
 
     def _make_legend(self):
         with self.content:
@@ -274,11 +332,7 @@ class OntDoc:
                             td("Properties")
                     if self.toc.get("objectproperties") is not None:
                         with tr():
-                            td(
-                                sup(
-                                    "op", _class="sup-op", title="OWL Object Property"
-                                )
-                            )
+                            td(sup("op", _class="sup-op", title="OWL Object Property"))
                             td("Object Properties")
                     if self.toc.get("datatypeproperties") is not None:
                         with tr():
@@ -342,42 +396,60 @@ class OntDoc:
                 with ul(_class="first"):
                     li(h4(a("Metadata", href="#metadata")))
 
-                    if self.toc.get("classes") is not None and len(self.toc["classes"]) > 0:
+                    if (
+                        self.toc.get("classes") is not None
+                        and len(self.toc["classes"]) > 0
+                    ):
                         with li():
                             h4(a("Classes", href="#classes"))
                             with ul(_class="second"):
                                 for c in self.toc["classes"]:
                                     li(a(c[1], href=c[0]))
 
-                    if self.toc.get("properties") is not None and len(self.toc["properties"]) > 0:
+                    if (
+                        self.toc.get("properties") is not None
+                        and len(self.toc["properties"]) > 0
+                    ):
                         with li():
                             h4(a("Properties", href="#properties"))
                             with ul(_class="second"):
                                 for c in self.toc["properties"]:
                                     li(a(c[1], href=c[0]))
 
-                    if self.toc.get("objectproperties") is not None and len(self.toc["objectproperties"]) > 0:
+                    if (
+                        self.toc.get("objectproperties") is not None
+                        and len(self.toc["objectproperties"]) > 0
+                    ):
                         with li():
                             h4(a("Object Properties", href="#objectproperties"))
                             with ul(_class="second"):
                                 for c in self.toc["objectproperties"]:
                                     li(a(c[1], href=c[0]))
 
-                    if self.toc.get("datatypeproperties") is not None and len(self.toc["datatypeproperties"]) > 0:
+                    if (
+                        self.toc.get("datatypeproperties") is not None
+                        and len(self.toc["datatypeproperties"]) > 0
+                    ):
                         with li():
                             h4(a("Datatype Properties", href="#datatypeproperties"))
                             with ul(_class="second"):
                                 for c in self.toc["datatypeproperties"]:
                                     li(a(c[1], href=c[0]))
 
-                    if self.toc.get("annotationproperties") is not None and len(self.toc["annotationproperties"]) > 0:
+                    if (
+                        self.toc.get("annotationproperties") is not None
+                        and len(self.toc["annotationproperties"]) > 0
+                    ):
                         with li():
                             h4(a("Annotation Properties", href="#annotationproperties"))
                             with ul(_class="second"):
                                 for c in self.toc["annotationproperties"]:
                                     li(a(c[1], href=c[0]))
 
-                    if self.toc.get("functionalproperties") is not None and len(self.toc["functionalproperties"]) > 0:
+                    if (
+                        self.toc.get("functionalproperties") is not None
+                        and len(self.toc["functionalproperties"]) > 0
+                    ):
                         with li():
                             h4(a("Functional Properties", href="#functionalproperties"))
                             with ul(_class="second"):
@@ -397,14 +469,11 @@ if __name__ == "__main__":
     # TODO: schema.org generation from ont
     # TODO: move background ont into Dataset
     # TODO: cli UI
-    # TODO: fix fid1
 
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s [%(levelname)s] %(message)s",
-        handlers=[
-            logging.StreamHandler()
-        ]
+        handlers=[logging.StreamHandler()],
     )
 
     sdo_json = """[
@@ -437,7 +506,7 @@ if __name__ == "__main__":
     ]"""
     version = "3.0.0"
 
-    od = OntDoc(ontology="prof.ttl")
+    od = OntDoc(ontology="agrif.ttl")
     od._make_document(sdo_json)
     open("some.html", "w").write(od.doc.render())
 
