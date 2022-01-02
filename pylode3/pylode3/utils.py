@@ -265,7 +265,10 @@ def make_title_from_iri(iri: URIRef):
 def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
     """Loads and ontology into an RDFLib Graph.
 
-    Can handle string data, file path or Graph input"""
+    Can handle string data, file path, URL or Graph input"""
+    # try URL
+    if isinstance(ontology, str) and ontology.startswith("http"):
+        return Graph().parse(location=ontology)
     if isinstance(ontology, Graph):
         return cast(ontology, Graph)
     elif isinstance(ontology, Path):

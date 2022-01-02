@@ -2,11 +2,24 @@ import dominate
 from dominate.tags import h2, h1, h4, style, link, meta, script, p, dl, strong, dt, dd
 from utils import *
 from typing import Dict
+import shutil
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
 
 
 class OntDoc:
+    """Ontology Document class used to create HTML documentation from OWL Ontologies.
+
+    Use:
+        # initialise
+        od = OntDoc(ontology="some-ontology-file.ttl")
+
+        # produce HTML
+        html = od.make_html()
+
+        # or save HTML to a file
+        od.make_html(destination="some-resulting-html-file.html")
+    """
     def __init__(self, ontology: Union[Graph, Path, str]):
         self.ont = load_ontology(ontology)
         self._expand_ontdoc(self.ont)
@@ -31,6 +44,15 @@ class OntDoc:
 
         with self.doc:
             self.content = div(id="content")
+
+    def make_html(self, destination: Path = None, include_css: bool = True):
+        self._make_header(self._make_schema_org(), include_css=include_css, destination=destination)
+        self._make_body()
+
+        if destination is not None:
+            open(destination, "w").write(self.doc.render())
+        else:
+            return self.doc.render()
 
     def _expand_ontdoc(self, g):
         # class types
@@ -141,15 +163,14 @@ class OntDoc:
         for s_, o in g.subject_objects(ORG.memberOf):
             g.add((s_, SDO.affiliation, o))
 
-    def _make_document(self, schema_org_json):
-        self._make_header(schema_org_json)
-        self._make_body()
-
-    def _make_header(self, schema_org_json):
-        # use standard pyLODE stylesheet
-        css = "\n" + open("pylode.css").read() + "\n\t"
+    def _make_header(self, schema_org: Graph, include_css: bool = True, destination: Path = None):
         with self.doc.head:
-            style(raw(css))
+            # use standard pyLODE stylesheet
+            if include_css:
+                style(raw("\n" + open("pylode.css").read() + "\n\t"))
+            else:
+                link(href="pylode.css", rel="stylesheet", type="text/css")
+                shutil.copy(Path("pylode.css"), destination.parent / "pylode.css")
             link(
                 rel="icon",
                 type="image/png",
@@ -163,7 +184,7 @@ class OntDoc:
                 href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==",
             )
             meta(http_equiv="Content-Type", content="text/html; charset=utf-8")
-            script(raw("\n" + schema_org_json + "\n\t"), type="application/ld+json")
+            script(raw("\n" + schema_org.serialize(format="json-ld") + "\n\t"), type="application/ld+json")
 
     def _make_body(self):
         self._make_pylode_logo()
@@ -174,7 +195,7 @@ class OntDoc:
         self._make_toc()
 
     def _make_pylode_logo(self):
-        from pylode3.pylode3 import __version__ as v
+        from __init__ import __version__
 
         with self.doc:
             with div(id="pylode"):
@@ -184,8 +205,8 @@ class OntDoc:
                         span("y", id="y")
                         span("LODE")
                     a(
-                        version,
-                        href="https://github.com/rdflib/pyLODE/release/" + v,
+                        __version__,
+                        href="https://github.com/rdflib/pyLODE/release/" + __version__,
                         id="version",
                     )
 
@@ -204,6 +225,7 @@ class OntDoc:
 
         # make HTML for all props in order of ONT_PROPS
         sec = div(h1(this_onts_props[DCTERMS.title]), id="metadata", _class="section")
+        sec.appendChild(h2("Metadata"))
         d = dl(div(dt(strong("IRI")), dd(code(str(iri)))))
         for prop in ONT_PROPS:
             if prop in this_onts_props.keys():
@@ -223,6 +245,50 @@ class OntDoc:
                 )
         sec.appendChild(d)
         self.content.appendChild(sec)
+
+    def _make_schema_org(self):
+        sdo = Graph()
+        for ont_iri in chain(
+            self.ont.subjects(predicate=RDF.type, object=OWL.Ontology),
+            self.ont.subjects(predicate=RDF.type, object=SKOS.ConceptScheme),
+            self.ont.subjects(predicate=RDF.type, object=PROF.Profile),
+        ):
+            sdo.add((ont_iri, RDF.type, SDO.DefinedTermSet))
+            for p, o in self.ont.predicate_objects(ont_iri):
+                if p == DCTERMS.title:
+                    sdo.add((ont_iri, SDO.name, o))
+                elif p == DCTERMS.description:
+                    sdo.add((ont_iri, SDO.description, o))
+                elif p == DCTERMS.publisher:
+                    sdo.add((ont_iri, SDO.publisher, o))
+                    if not isinstance(o, Literal):
+                        for p2, o2 in self.ont.predicate_objects(o):
+                            if p2 in AGENT_PROPS:
+                                sdo.add((o, p2, o2))
+                elif p == DCTERMS.creator:
+                    sdo.add((ont_iri, SDO.creator, o))
+                    if not isinstance(o, Literal):
+                        for p2, o2 in self.ont.predicate_objects(o):
+                            if p2 in AGENT_PROPS:
+                                sdo.add((o, p2, o2))
+                elif p == DCTERMS.contributor:
+                    sdo.add((ont_iri, SDO.contributor, o))
+                    if not isinstance(o, Literal):
+                        for p2, o2 in self.ont.predicate_objects(o):
+                            if p2 in AGENT_PROPS:
+                                sdo.add((o, p2, o2))
+                elif p == DCTERMS.created:
+                    sdo.add((ont_iri, SDO.dateCreated, o))
+                elif p == DCTERMS.modified:
+                    sdo.add((ont_iri, SDO.dateModified, o))
+                elif p == DCTERMS.issued:
+                    sdo.add((ont_iri, SDO.dateIssued, o))
+                elif p == DCTERMS.license:
+                    sdo.add((ont_iri, SDO.license, o))
+                elif p == DCTERMS.rights:
+                    sdo.add((ont_iri, SDO.copyrightNotice, o))
+
+        return sdo
 
     def _make_all_elements(self):
         with self.content:
@@ -476,39 +542,8 @@ if __name__ == "__main__":
         handlers=[logging.StreamHandler()],
     )
 
-    sdo_json = """[
-      {
-        "@id": "https://example.com",
-        "@type": [
-          "https://schema.org/DefinedTermSet"
-        ],
-        "https://schema.org/description": [
-          {
-            "@value": "<p>This ontology contains several simple classes and properties about animals that are defined only to show off pyLODE's ability to represent different forms of example rendering.</p>"
-          }
-        ],
-        "https://schema.org/license": [
-          {
-            "@id": "https://creativecommons.org/licenses/by/4.0/"
-          }
-        ],
-        "https://schema.org/name": [
-          {
-            "@value": "Examples Ontology"
-          }
-        ],
-        "https://schema.org/rights": [
-          {
-            "@value": "&copy; SURROUND Australia Pty Ltd"
-          }
-        ]
-      }
-    ]"""
-    version = "3.0.0"
-
-    od = OntDoc(ontology="agrif.ttl")
-    od._make_document(sdo_json)
-    open("some.html", "w").write(od.doc.render())
+    od = OntDoc(ontology="https://data.surroundaustralia.com/def/exem")
+    od.make_html(destination="some.html")
 
     # import cProfile
     #

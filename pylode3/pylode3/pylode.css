@@ -30,6 +30,11 @@
             color: #aa00aa;
         }
 
+        dl {
+            /*border: 1px solid navy;*/
+            /*padding:5px;*/
+        }
+
         dt {
             font-weight: bold;
             padding: 0;
