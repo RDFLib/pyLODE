@@ -25,16 +25,16 @@ from dominate.tags import (
     div,
     dt,
     dd,
-    h2
+    h2,
 )
 from dominate.util import raw
 from rdflib import BNode, Literal, Graph, URIRef
 from rdflib.paths import ZeroOrMore
 
 try:
-    from .properties import *
+    from .rdf_elements import *
 except:
-    from properties import *
+    from rdf_elements import *
 
 __version__ = "3.0.0"
 
@@ -242,9 +242,7 @@ def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
                     input_format = "xml"
                 else:
                     input_format = "turtle"  # this will also cover n-triples
-                return Graph().parse(
-                    data=ontology, format=input_format
-                )
+                return Graph().parse(data=ontology, format=input_format)
         elif isinstance(ontology, Graph):
             return cast(ontology, Graph)
         elif isinstance(ontology, Path):
@@ -266,6 +264,7 @@ def load_background_onts():
 
     Performs title and description inference and stores a pickle if generating from
     RDF source files."""
+
     def _parse_background_onts():
         g = Graph()
         for f in RDF_FOLDER.glob("*.ttl"):
@@ -276,19 +275,19 @@ def load_background_onts():
     def _expand_background_onts_graph(back_ont: Graph):
         # make regular titles
         for s_, o in chain(
-                back_ont.subject_objects(DC.title),
-                back_ont.subject_objects(RDFS.label),
-                back_ont.subject_objects(SKOS.prefLabel),
-                back_ont.subject_objects(SDO.name),
+            back_ont.subject_objects(DC.title),
+            back_ont.subject_objects(RDFS.label),
+            back_ont.subject_objects(SKOS.prefLabel),
+            back_ont.subject_objects(SDO.name),
         ):
             back_ont.add((s_, DCTERMS.title, o))
 
         # make regular descriptions
         for s_, o in chain(
-                back_ont.subject_objects(DC.description),
-                back_ont.subject_objects(RDFS.comment),
-                back_ont.subject_objects(SKOS.definition),
-                back_ont.subject_objects(SDO.description),
+            back_ont.subject_objects(DC.description),
+            back_ont.subject_objects(RDFS.comment),
+            back_ont.subject_objects(SKOS.definition),
+            back_ont.subject_objects(SDO.description),
         ):
             back_ont.add((s_, DCTERMS.description, o))
 
@@ -310,6 +309,7 @@ def load_background_onts():
 
 def load_background_onts_titles(ont: Graph):
     """Loads the titles of background ontologies into a discionary of Ontology IRI / title"""
+
     def _get_background_ontology_titles(back_ont: Graph):
         onts_titles = {}
         for s_ in back_ont.subjects(predicate=RDF.type, object=OWL.Ontology):
@@ -342,13 +342,14 @@ def rdf_obj_html(
     """Makes a sensible HTML rendering of an RDF resource.
 
     Can handle IRIs, Blank Nodes of Agents or OWL Restrictions or Literals"""
+
     def _rdf_obj_single_html(
-            ont: Graph,
-            back_onts: Graph,
-            ns: Namespace,
-            obj: Union[URIRef, BNode, Literal],
-            fids,
-            obj_type=None,
+        ont: Graph,
+        back_onts: Graph,
+        ns: Namespace,
+        obj: Union[URIRef, BNode, Literal],
+        fids,
+        obj_type=None,
     ):
         def _agent_html(ont, obj: Union[URIRef, BNode, Literal]):
             def _affiliation_html(ont: Graph, obj: Union[URIRef, BNode, Literal]):
@@ -444,7 +445,9 @@ def rdf_obj_html(
                     sp.appendChild(_affiliation_html(ont, affiliation))
             return sp
 
-        def _restriction_html(ont: Graph, back_onts: Graph, ns: Namespace, fids, obj: BNode):
+        def _restriction_html(
+            ont: Graph, back_onts: Graph, ns: Namespace, fids, obj: BNode
+        ):
             prop = None
             card = None
             cls = None
@@ -464,7 +467,10 @@ def rdf_obj_html(
                         ]:
                             if px in [OWL.minCardinality, OWL.minQualifiedCardinality]:
                                 card = "min"
-                            elif px in [OWL.maxCardinality, OWL.maxQualifiedCardinality]:
+                            elif px in [
+                                OWL.maxCardinality,
+                                OWL.maxQualifiedCardinality,
+                            ]:
                                 card = "max"
                             elif px in [OWL.cardinality, OWL.qualifiedCardinality]:
                                 card = "exactly"
@@ -479,7 +485,7 @@ def rdf_obj_html(
                                 card = "value"
 
                             if (
-                                    type(o) == BNode
+                                type(o) == BNode
                             ):  # this is a Union or Intersection class - a list
                                 # what is the nature of the list join?
                                 t = ' <span class="cardinality">and</span> '
@@ -491,7 +497,7 @@ def rdf_obj_html(
                                 # must iterate through RDF list to get members using property path
                                 col_members = set()
                                 for s3, o3 in ont.subject_objects(
-                                        RDF.rest * ZeroOrMore / RDF.first
+                                    RDF.rest * ZeroOrMore / RDF.first
                                 ):
                                     if str(o3).startswith(ns):
                                         iri = "#" + generate_fid(None, o3, fids)
@@ -500,18 +506,26 @@ def rdf_obj_html(
                                     col_members.add(
                                         f'<a href="{iri}">{ont.qname(o3)}</a><sup class="sup-c" style="margin-left:1px;">c</sup>'
                                     )
-                                col_ = " (" + t.join([x for x in sorted(col_members)]) + ")"
+                                col_ = (
+                                    " ("
+                                    + t.join([x for x in sorted(col_members)])
+                                    + ")"
+                                )
                                 card = span(span(card, _class="cardinality"), raw(col_))
                             else:
                                 card = span(
                                     span(card, _class="cardinality"),
                                     span(
-                                        _hyperlink_html(ont, back_onts, ns, o, fids, OWL.Class)
+                                        _hyperlink_html(
+                                            ont, back_onts, ns, o, fids, OWL.Class
+                                        )
                                     ),
                                 )
 
             restriction = span(prop, card, br()) if card is not None else prop
-            restriction = span(restriction, cls, br()) if cls is not None else restriction
+            restriction = (
+                span(restriction, cls, br()) if cls is not None else restriction
+            )
 
             return span(restriction)
 
@@ -530,12 +544,12 @@ def rdf_obj_html(
                     return raw(markdown.markdown(str(obj)))
 
     def _hyperlink_html(
-            ont: Graph,
-            back_onts: Graph,
-            ns: Namespace,
-            iri: URIRef,
-            fids,
-            rdf_type: Optional[URIRef] = None,
+        ont: Graph,
+        back_onts: Graph,
+        ns: Namespace,
+        iri: URIRef,
+        fids,
+        rdf_type: Optional[URIRef] = None,
     ):
         def _get_ont_type(ont: Graph, back_onts: Graph, iri: URIRef):
             types_we_know = [
@@ -563,6 +577,7 @@ def rdf_obj_html(
             for x in types_we_know:
                 if x in this_objects_types:
                     return x
+
         try:
             qname = ont.compute_qname(iri, True)
         except ValueError:
@@ -690,9 +705,15 @@ def section_html(
                             ns,
                             "table",
                             prop,
-                            props_labeled.get(prop).get("title") if props_labeled.get(prop) is not None else None,
-                            props_labeled.get(prop).get("description") if props_labeled.get(prop) is not None else None,
-                            props_labeled.get(prop).get("ont_title") if props_labeled.get(prop) is not None else None,
+                            props_labeled.get(prop).get("title")
+                            if props_labeled.get(prop) is not None
+                            else None,
+                            props_labeled.get(prop).get("description")
+                            if props_labeled.get(prop) is not None
+                            else None,
+                            props_labeled.get(prop).get("ont_title")
+                            if props_labeled.get(prop) is not None
+                            else None,
                             fids,
                             this_props[prop],
                         )

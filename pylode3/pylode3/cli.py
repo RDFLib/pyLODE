@@ -1,6 +1,7 @@
 import argparse
 from pathlib import Path
 import sys
+
 sys.path.insert(0, str(Path(__file__).absolute().parent.parent))
 from pylode3 import __version__
 from pylode3 import OntDoc, PylodeError
@@ -9,10 +10,7 @@ from pylode3 import OntDoc, PylodeError
 parser = argparse.ArgumentParser()
 
 parser.add_argument(
-    "-v",
-    "--version",
-    action="version",
-    version="{version}".format(version=__version__)
+    "-v", "--version", action="version", version="{version}".format(version=__version__)
 )
 
 parser.add_argument(
@@ -24,8 +22,8 @@ parser.add_argument(
     "-o",
     "--outputfile",
     help="A name you wish to assign to the output file. Will be postfixed with .html if not already "
-         "added. If no output file is given, output will be printed to screen",
-    default=None
+    "added. If no output file is given, output will be printed to screen",
+    default=None,
 )
 
 parser.add_argument(

@@ -1,5 +1,29 @@
 import dominate
-from dominate.tags import h2, h1, h4, style, link, meta, script, p, dl, strong, a, span, sup, tr, td, ul, li, code, table, h3, div, dt, dd
+from dominate.tags import (
+    h2,
+    h1,
+    h4,
+    style,
+    link,
+    meta,
+    script,
+    p,
+    dl,
+    strong,
+    a,
+    span,
+    sup,
+    tr,
+    td,
+    ul,
+    li,
+    code,
+    table,
+    h3,
+    div,
+    dt,
+    dd,
+)
 from dominate.util import raw
 from collections import defaultdict
 from typing import Dict
@@ -8,15 +32,46 @@ from itertools import chain
 from pathlib import Path
 from typing import Union
 from rdflib import Literal, Graph
-from rdflib.namespace import DC, DCTERMS, FOAF, ORG, OWL, PROF, PROV, RDF, RDFS, SDO, SKOS
+from rdflib.namespace import (
+    DC,
+    DCTERMS,
+    FOAF,
+    ORG,
+    OWL,
+    PROF,
+    PROV,
+    RDF,
+    RDFS,
+    SDO,
+    SKOS,
+)
+
 try:
-    from .utils import __version__, load_ontology, load_background_onts, load_background_onts_titles, back_onts_label_props, get_ns, prop_obj_pair_html, section_html
+    from .utils import (
+        __version__,
+        load_ontology,
+        load_background_onts,
+        load_background_onts_titles,
+        back_onts_label_props,
+        get_ns,
+        prop_obj_pair_html,
+        section_html,
+    )
 except:
-    from utils import __version__, load_ontology, load_background_onts, load_background_onts_titles, back_onts_label_props, get_ns, prop_obj_pair_html, section_html
+    from utils import (
+        __version__,
+        load_ontology,
+        load_background_onts,
+        load_background_onts_titles,
+        back_onts_label_props,
+        get_ns,
+        prop_obj_pair_html,
+        section_html,
+    )
 try:
-    from .properties import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
+    from .rdf_elements import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
 except:
-    from properties import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
+    from rdf_elements import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
 
@@ -38,6 +93,7 @@ class OntDoc:
         # or save HTML to a file
         od.make_html(destination="some-resulting-html-file.html")
     """
+
     def __init__(self, ontology: Union[Graph, Path, str]):
         self.ont = load_ontology(ontology)
         self._expand_ontdoc(self.ont)
@@ -60,7 +116,8 @@ class OntDoc:
                 t = str(o2)
         if t is None:
             raise PylodeError(
-                "You MUST supply a title property (dcterms:title, rdf:label or sdo:name) for your ontology")
+                "You MUST supply a title property (dcterms:title, rdf:label or sdo:name) for your ontology"
+            )
         self.doc = dominate.document(title=t)
 
         with self.doc:
@@ -70,7 +127,9 @@ class OntDoc:
         """Makes the complete OntDoc HTML document.
 
         Either writes to a file or returns a string"""
-        self._make_head(self._make_schema_org(), include_css=include_css, destination=destination)
+        self._make_head(
+            self._make_schema_org(), include_css=include_css, destination=destination
+        )
         self._make_body()
 
         if destination is not None:
@@ -188,12 +247,20 @@ class OntDoc:
         for s_, o in g.subject_objects(ORG.memberOf):
             g.add((s_, SDO.affiliation, o))
 
-    def _make_head(self, schema_org: Graph, include_css: bool = True, destination: Path = None):
+    def _make_head(
+        self, schema_org: Graph, include_css: bool = True, destination: Path = None
+    ):
         """Healper function for make_html(). Makes <head>???</head> content"""
         with self.doc.head:
             # use standard pyLODE stylesheet
             if include_css:
-                style(raw("\n" + open(Path(__file__).parent / "pylode.css").read() + "\n\t"))
+                style(
+                    raw(
+                        "\n"
+                        + open(Path(__file__).parent / "pylode.css").read()
+                        + "\n\t"
+                    )
+                )
             else:
                 link(href="pylode.css", rel="stylesheet", type="text/css")
                 shutil.copy(Path("pylode.css"), destination.parent / "pylode.css")
@@ -210,12 +277,15 @@ class OntDoc:
                 href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==",
             )
             meta(http_equiv="Content-Type", content="text/html; charset=utf-8")
-            script(raw("\n" + schema_org.serialize(format="json-ld") + "\n\t"), type="application/ld+json")
+            script(
+                raw("\n" + schema_org.serialize(format="json-ld") + "\n\t"),
+                type="application/ld+json",
+            )
 
     def _make_body(self):
         """Healper function for make_html(). Makes <body>???</body> content.
 
-Just calls other helper functions in order"""
+        Just calls other helper functions in order"""
         self._make_pylode_logo()
         self._make_metadata()
         self._make_main_sections()
@@ -395,19 +465,19 @@ Just calls other helper functions in order"""
                 d.render()
 
             if (None, RDF.type, OWL.FunctionalProperty) in self.ont:
-                    d = section_html(
-                        "Functional Properties",
-                        self.ont,
-                        self.back_onts,
-                        self.ns,
-                        OWL.FunctionalProperty,
-                        PROP_PROPS,
-                        self.toc,
-                        "functionalproperties",
-                        self.fids,
-                        self.props_labeled,
-                    )
-                    d.render()
+                d = section_html(
+                    "Functional Properties",
+                    self.ont,
+                    self.back_onts,
+                    self.ns,
+                    OWL.FunctionalProperty,
+                    PROP_PROPS,
+                    self.toc,
+                    "functionalproperties",
+                    self.fids,
+                    self.props_labeled,
+                )
+                d.render()
 
     def _make_legend(self):
         with self.content:
