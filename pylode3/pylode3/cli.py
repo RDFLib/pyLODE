@@ -1,40 +1,43 @@
 import argparse
 from pathlib import Path
-from __init__ import __version__
-from ontdoc import OntDoc
+import sys
+sys.path.insert(0, str(Path(__file__).absolute().parent.parent))
+from pylode3 import __version__
+from pylode3 import OntDoc
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser()
 
-    parser.add_argument(
-        "-v",
-        "--version",
-        action="version",
-        version="{version}".format(version=__version__)
-    )
+parser.add_argument(
+    "-v",
+    "--version",
+    action="version",
+    version="{version}".format(version=__version__)
+)
 
-    parser.add_argument(
-        "input",
-        help="Input file location or URL",
-    )
+parser.add_argument(
+    "input",
+    help="Input file location or URL",
+)
 
-    parser.add_argument(
-        "-o",
-        "--outputfile",
-        help="A name you wish to assign to the output file. Will be postfixed with .html if not already "
-             "added. If no output file is given, output will be printed to screen",
-        default=None
-    )
+parser.add_argument(
+    "-o",
+    "--outputfile",
+    help="A name you wish to assign to the output file. Will be postfixed with .html if not already "
+         "added. If no output file is given, output will be printed to screen",
+    default=None
+)
 
-    parser.add_argument(
-        "-c",
-        "--css",
-        help="Whether (true) or not (false) to include CSS within an output HTML file.",
-        choices=["true", "false"],
-        default="true",
-    )
+parser.add_argument(
+    "-c",
+    "--css",
+    help="Whether (true) or not (false) to include CSS within an output HTML file.",
+    choices=["true", "false"],
+    default="true",
+)
 
+
+def main():
     args = parser.parse_args()
 
     od = OntDoc(args.input)
@@ -56,3 +59,7 @@ if __name__ == "__main__":
         print(od.make_html(**pylode_kwargs))
     else:
         od.make_html(**pylode_kwargs)
+
+
+if __name__ == "__main__":
+    main()

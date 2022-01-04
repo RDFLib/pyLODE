@@ -1,8 +1,22 @@
 import dominate
-from dominate.tags import h2, h1, h4, style, link, meta, script, p, dl, strong, dt, dd
-from utils import *
+from dominate.tags import h2, h1, h4, style, link, meta, script, p, dl, strong, a, span, sup, tr, td, ul, li, code, table, h3, div, dt, dd
+from dominate.util import raw
+from collections import defaultdict
 from typing import Dict
 import shutil
+from itertools import chain
+from pathlib import Path
+from typing import Union
+from rdflib import Literal, Graph
+from rdflib.namespace import DC, DCTERMS, FOAF, ORG, OWL, PROF, PROV, RDF, RDFS, SDO, SKOS
+try:
+    from .utils import __version__, load_ontology, load_background_onts, load_background_onts_titles, back_onts_label_props, get_ns, prop_obj_pair_html, section_html
+except:
+    from utils import __version__, load_ontology, load_background_onts, load_background_onts_titles, back_onts_label_props, get_ns, prop_obj_pair_html, section_html
+try:
+    from .properties import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
+except:
+    from properties import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
 
@@ -25,7 +39,7 @@ class OntDoc:
         self._expand_ontdoc(self.ont)
         self.back_onts = load_background_onts()
         self.back_onts_titles = load_background_onts_titles(self.back_onts)
-        self.props_labeled = back_onts_label_props(self.ont)
+        self.props_labeled = back_onts_label_props(self.back_onts)
 
         self.toc: Dict[str, str] = {}
         self.fids: Dict[str, str] = {}
@@ -46,7 +60,10 @@ class OntDoc:
             self.content = div(id="content")
 
     def make_html(self, destination: Path = None, include_css: bool = True):
-        self._make_header(self._make_schema_org(), include_css=include_css, destination=destination)
+        """Makes the complete OntDoc HTML document.
+
+        Either writes to a file or returns a string"""
+        self._make_head(self._make_schema_org(), include_css=include_css, destination=destination)
         self._make_body()
 
         if destination is not None:
@@ -55,18 +72,19 @@ class OntDoc:
             return self.doc.render()
 
     def _expand_ontdoc(self, g):
+        """Expands the ontology's graph to make OntDoc querying easier"""
         # class types
         for s_ in g.subjects(RDF.type, OWL.Class):
             g.add((s_, RDF.type, RDFS.Class))
 
-        # property types
-        for s_ in chain(
-            g.subjects(RDF.type, OWL.ObjectProperty),
-            g.subjects(RDF.type, OWL.FunctionalProperty),
-            g.subjects(RDF.type, OWL.DatatypeProperty),
-            g.subjects(RDF.type, OWL.AnnotationProperty),
-        ):
-            g.add((s_, RDF.type, RDF.Property))
+        # # property types
+        # for s_ in chain(
+        #     g.subjects(RDF.type, OWL.ObjectProperty),
+        #     g.subjects(RDF.type, OWL.FunctionalProperty),
+        #     g.subjects(RDF.type, OWL.DatatypeProperty),
+        #     g.subjects(RDF.type, OWL.AnnotationProperty),
+        # ):
+        #     g.add((s_, RDF.type, RDF.Property))
 
         # name
         for s_, o in chain(
@@ -163,11 +181,12 @@ class OntDoc:
         for s_, o in g.subject_objects(ORG.memberOf):
             g.add((s_, SDO.affiliation, o))
 
-    def _make_header(self, schema_org: Graph, include_css: bool = True, destination: Path = None):
+    def _make_head(self, schema_org: Graph, include_css: bool = True, destination: Path = None):
+        """Healper function for make_html(). Makes <head>???</head> content"""
         with self.doc.head:
             # use standard pyLODE stylesheet
             if include_css:
-                style(raw("\n" + open("pylode.css").read() + "\n\t"))
+                style(raw("\n" + open(Path(__file__).parent / "pylode.css").read() + "\n\t"))
             else:
                 link(href="pylode.css", rel="stylesheet", type="text/css")
                 shutil.copy(Path("pylode.css"), destination.parent / "pylode.css")
@@ -187,16 +206,17 @@ class OntDoc:
             script(raw("\n" + schema_org.serialize(format="json-ld") + "\n\t"), type="application/ld+json")
 
     def _make_body(self):
+        """Healper function for make_html(). Makes <body>???</body> content.
+
+Just calls other helper functions in order"""
         self._make_pylode_logo()
         self._make_metadata()
-        self._make_all_elements()
+        self._make_main_sections()
         self._make_namespaces()
         self._make_legend()
         self._make_toc()
 
     def _make_pylode_logo(self):
-        from __init__ import __version__
-
         with self.doc:
             with div(id="pylode"):
                 with p("made by "):
@@ -290,97 +310,97 @@ class OntDoc:
 
         return sdo
 
-    def _make_all_elements(self):
+    def _make_main_sections(self):
         with self.content:
             if (None, RDF.type, OWL.Class) in self.ont:
-                with div(id="classes", _class="section"):
-                    h2("Classes")
-                    elements_html(
-                        self.ont,
-                        self.back_onts,
-                        self.ns,
-                        OWL.Class,
-                        CLASS_PROPS,
-                        self.toc,
-                        "classes",
-                        self.fids,
-                        self.props_labeled,
-                    )
+                d = section_html(
+                    "Classes",
+                    self.ont,
+                    self.back_onts,
+                    self.ns,
+                    OWL.Class,
+                    CLASS_PROPS,
+                    self.toc,
+                    "classes",
+                    self.fids,
+                    self.props_labeled,
+                )
+                d.render()
 
             if (None, RDF.type, RDF.Property) in self.ont:
-                with div(id="properties", _class="section"):
-                    h2("Properties")
-                    elements_html(
+                d = section_html(
+                    "Properties",
+                    self.ont,
+                    self.back_onts,
+                    self.ns,
+                    RDF.Property,
+                    PROP_PROPS,
+                    self.toc,
+                    "properties",
+                    self.fids,
+                    self.props_labeled,
+                )
+                d.render()
+
+            if (None, RDF.type, OWL.ObjectProperty) in self.ont:
+                d = section_html(
+                    "Object Properties",
+                    self.ont,
+                    self.back_onts,
+                    self.ns,
+                    OWL.ObjectProperty,
+                    PROP_PROPS,
+                    self.toc,
+                    "objectproperties",
+                    self.fids,
+                    self.props_labeled,
+                )
+                d.render()
+
+            if (None, RDF.type, OWL.DatatypeProperty) in self.ont:
+                d = section_html(
+                    "Datatype Properties",
+                    self.ont,
+                    self.back_onts,
+                    self.ns,
+                    OWL.DatatypeProperty,
+                    PROP_PROPS,
+                    self.toc,
+                    "datatypeproperties",
+                    self.fids,
+                    self.props_labeled,
+                )
+                d.render()
+
+            if (None, RDF.type, OWL.AnnotationProperty) in self.ont:
+                d = section_html(
+                    "Annotation Properties",
+                    self.ont,
+                    self.back_onts,
+                    self.ns,
+                    OWL.AnnotationProperty,
+                    PROP_PROPS,
+                    self.toc,
+                    "annotationproperties",
+                    self.fids,
+                    self.props_labeled,
+                )
+                d.render()
+
+            if (None, RDF.type, OWL.FunctionalProperty) in self.ont:
+                    d = section_html(
+                        "Functional Properties",
                         self.ont,
                         self.back_onts,
                         self.ns,
-                        RDF.Property,
+                        OWL.FunctionalProperty,
                         PROP_PROPS,
                         self.toc,
-                        "properties",
+                        "functionalproperties",
                         self.fids,
                         self.props_labeled,
                     )
-
-                    if (None, RDF.type, OWL.ObjectProperty) in self.ont:
-                        with div(id="objectproperties", _class="section"):
-                            h3("Object Properties")
-                            elements_html(
-                                self.ont,
-                                self.back_onts,
-                                self.ns,
-                                OWL.ObjectProperty,
-                                PROP_PROPS,
-                                self.toc,
-                                "objectproperties",
-                                self.fids,
-                                self.props_labeled,
-                            )
-
-                    if (None, RDF.type, OWL.DatatypeProperty) in self.ont:
-                        with div(id="datatypeproperties", _class="section"):
-                            h3("Datatype Properties")
-                            elements_html(
-                                self.ont,
-                                self.back_onts,
-                                self.ns,
-                                OWL.DatatypeProperty,
-                                PROP_PROPS,
-                                self.toc,
-                                "datatypeproperties",
-                                self.fids,
-                                self.props_labeled,
-                            )
-
-                    if (None, RDF.type, OWL.AnnotationProperty) in self.ont:
-                        with div(id="annotationproperties", _class="section"):
-                            h3("Annotation Properties")
-                            elements_html(
-                                self.ont,
-                                self.back_onts,
-                                self.ns,
-                                OWL.AnnotationProperty,
-                                PROP_PROPS,
-                                self.toc,
-                                "annotationproperties",
-                                self.fids,
-                                self.props_labeled,
-                            )
-
-                    if (None, RDF.type, OWL.FunctionalProperty) in self.ont:
-                        with div(id="functionalproperties", _class="section"):
-                            h3("Functional Properties")
-                            elements_html(
-                                self.ont,
-                                self.back_onts,
-                                self.ns,
-                                OWL.FunctionalProperty,
-                                PROP_PROPS,
-                                self.toc,
-                                "functionalproperties",
-                                self.fids,
-                                self.props_labeled,
-                            )
+                    d.render()
 
     def _make_legend(self):
         with self.content:

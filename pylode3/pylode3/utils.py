@@ -4,8 +4,7 @@ import re
 from collections import defaultdict
 from itertools import chain
 from pathlib import Path
-from typing import Optional, List, Tuple
-from typing import Union, cast
+from typing import Optional, List, Tuple, Union, cast
 
 import markdown
 from dominate.tags import (
@@ -25,13 +24,18 @@ from dominate.tags import (
     div,
     dt,
     dd,
+    h2
 )
 from dominate.util import raw
-from rdflib import BNode, Literal
-from rdflib import Graph, URIRef
+from rdflib import BNode, Literal, Graph, URIRef
 from rdflib.paths import ZeroOrMore
 
-from properties import *
+try:
+    from .properties import *
+except:
+    from properties import *
+
+__version__ = "3.0.0"
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
 
@@ -46,151 +50,6 @@ def check_all_props_are_known():
             print(f"Unknown property: {prop}")
             print(f'Estimating title as "{make_title_from_iri(prop)}"')
             print()
-
-
-def elements_html(
-    ont: Graph,
-    back_onts: Graph,
-    ns: Namespace,
-    obj_class: URIRef,
-    prop_list: list,
-    toc,
-    toc_ul_id: str,
-    fids: dict,
-    props_labeled,
-):
-    """Makes all the HTML (div, title & table) for all instances of a
-    given RDF class, e.g. owl:Class or owl:ObjectProperty"""
-
-    def _element_html(
-            ont: Graph,
-            back_onts: Graph,
-            ns: Namespace,
-            iri: URIRef,
-            fid: str,
-            title_: str,
-            ont_type: URIRef,
-            props_list,
-            this_props,
-            fids: dict,
-            props_labeled,
-    ):
-        """Makes all the HTML (div, title & table) for one instance of a
-        given RDF class, e.g. owl:Class or owl:ObjectProperty"""
-        d = div(
-            h3(
-                title_,
-                sup(
-                    ONT_TYPES[ont_type][0],
-                    _class="sup-" + ONT_TYPES[ont_type][0],
-                    title=ONT_TYPES[ont_type][1],
-                ),
-            ),
-            id=fid,
-            _class="property entity",
-        )
-        t = table(tr(th("IRI"), td(code(str(iri)))))
-        # order the properties as per PROP_PROPS list order
-        for prop in props_list:
-            if prop != DCTERMS.title:
-                if prop in this_props.keys():
-                    t.appendChild(
-                        prop_obj_pair_html(
-                            ont,
-                            back_onts,
-                            ns,
-                            "table",
-                            prop,
-                            props_labeled[prop]["title"],
-                            props_labeled[prop]["description"],
-                            props_labeled[prop]["ont_title"],
-                            fids,
-                            this_props[prop],
-                        )
-                    )
-        d.appendChild(t)
-        return d
-
-    # get all objects of this class
-    for s_ in ont.subjects(predicate=RDF.type, object=obj_class):
-        if obj_class == RDF.Property:
-            specialised_props = [
-                (s_, RDF.type, OWL.ObjectProperty),
-                (s_, RDF.type, OWL.DatatypeProperty),
-                (s_, RDF.type, OWL.AnnotationProperty),
-                (s_, RDF.type, OWL.FunctionalProperty),
-            ]
-            if any(x in ont for x in specialised_props):
-                continue
-        if isinstance(
-            s_, URIRef
-        ):  # ignore blank nodes for things like [ owl:unionOf ( ... ) ]
-            this_props = defaultdict(list)
-            # get all properties of this object
-            for p_, o in ont.predicate_objects(subject=s_):
-                # ... in the property list for this class
-                if p_ in prop_list:
-                    if p_ == RDFS.subClassOf and (o, RDF.type, OWL.Restriction) in ont:
-                        this_props[ONTDOC.restriction].append(o)
-                    else:
-                        this_props[p_].append(o)
-            if len(this_props[DCTERMS.title]) == 0:
-                this_fid = generate_fid(None, s_, fids)
-                this_title = make_title_from_iri(s_)
-            else:
-                this_fid = generate_fid(this_props[DCTERMS.title][0], s_, fids)
-                this_title = this_props[DCTERMS.title]
-
-            # add to ToC
-            if toc.get(toc_ul_id) is None:
-                toc[toc_ul_id] = []
-            toc[toc_ul_id].append(("#" + this_fid, this_title))
-
-            # create properties table
-            _element_html(
-                ont,
-                back_onts,
-                ns,
-                s_,
-                this_fid,
-                this_title,
-                obj_class,
-                prop_list,
-                this_props,
-                fids,
-                props_labeled,
-            )
-
-
-def back_onts_label_props(back_onts: Graph):
-    """Gets titles and descriptions for all properties in the background ontologies"""
-    def _get_prop_label(prop_iri: URIRef, back_onts: Graph) -> dict:
-        title_ = None
-        description = None
-        ont_title = None
-        for p_, o in back_onts.predicate_objects(prop_iri):
-            if p_ == DCTERMS.title:
-                title_ = o
-            if p_ == DCTERMS.description:
-                description = o
-        back_onts_titles = load_background_onts_titles(back_onts)
-        for k, v in back_onts_titles.items():
-            if prop_iri.startswith(k):
-                ont_title = v
-
-        if title_ is None:
-            title_ = make_title_from_iri(prop_iri)
-
-        return {
-            "title": title_,
-            "description": description,
-            "ont_title": ont_title,
-        }
-
-    pl = {}
-    for prop in PROPS:
-        pl[prop] = _get_prop_label(prop, back_onts)
-    return pl
 
 
 def get_ns(ont: Graph) -> Tuple[str, str]:
@@ -257,9 +116,106 @@ def make_title_from_iri(iri: URIRef):
     )
 
     # split CamelCase
-    return " ".join(
-        re.split(r"(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])", id_part)
-    ).title()
+    # title case if the first char is upercase (likely a Class)
+    # else lower (property/Named Individual)
+    words = re.split(r"(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])", id_part)
+    if words[0][0].isupper():
+        return " ".join(words).title()
+    else:
+        return " ".join(words).lower()
+
+
+def generate_fid(title_: Union[Literal, None], iri: URIRef, fids: dict):
+    """Makes an HTML fragment ID for an RDF resource, based on title (preferred) or IRI"""
+    s_iri = str(iri) if iri is not None else None
+    s_title_ = str(title_) if title_ is not None else None
+
+    # does this URI already have a fid?
+    existing_fid = fids.get(s_iri)
+    if existing_fid is not None:
+        return existing_fid
+
+    # if we get here, there is no fid, so make one
+    def _remove_non_ascii_chars(s_):
+        return "".join(j for j in s_ if ord(j) < 128).replace("&", "")
+
+    # try creating an ID from label
+    # remove spaces, escape all non-ASCII chars
+    if s_title_ is not None:
+        fid = _remove_non_ascii_chars(s_title_.replace(" ", ""))
+
+        # if this generated fid is not in use, add it to fids and return it
+        if fid not in fids.values():
+            fids[s_iri] = fid
+            return fid
+
+        # this fid is already present so generate a new one from the URI instead
+
+    # split URI for last slash segment
+    segments = s_iri.split("/")
+
+    # return None for empty string - URI ends in slash
+    if len(segments[-1]) < 1:
+        return None
+
+    # return None for domains, i.e. ['http:', '', '{domain}'] - no path segments
+    if len(segments) < 4:
+        return None
+
+    # split out hash URIs
+    # remove any training hashes
+    if segments[-1].endswith("#"):
+        return None
+
+    fid = (
+        segments[-1].split("#")[-1]
+        if segments[-1].split("#")[-1] != ""
+        else segments[-1].split("#")[-2]
+    )
+
+    # fid = fid.lower()
+
+    # if this generated fid is not in use, add it to fids and return it
+    if fid not in fids.values():
+        fids[s_iri] = fid
+        return fid
+    else:
+        # since it's in use but we've exhausted generation options, just add 1 to existing fid name
+        fids[s_iri] = fid + "1"
+        return fid + "1"  # yeah yeah, there could be more than one but unlikely
+
+
+def back_onts_label_props(back_onts: Graph):
+    """Gets titles and descriptions for all properties in the background ontologies"""
+    back_onts_titles = load_background_onts_titles(back_onts)
+
+    def _get_prop_label(prop_iri: URIRef, back_onts: Graph) -> dict:
+        title_ = None
+        description = None
+        ont_title = None
+        for p_, o in back_onts.predicate_objects(prop_iri):
+            if p_ == DCTERMS.title:
+                title_ = o
+            elif p_ == DCTERMS.description:
+                description = o
+
+        for k, v in back_onts_titles.items():
+            if prop_iri.startswith(k):
+                ont_title = v
+
+        if title_ is None:
+            title_ = make_title_from_iri(prop_iri)
+
+        return {
+            "title": title_,
+            "description": description,
+            "ont_title": ont_title,
+        }
+
+    pl = {}
+    for prop in PROPS:
+        pl[prop] = _get_prop_label(prop, back_onts)
+    return pl
 
 
 def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
@@ -367,95 +323,6 @@ def load_background_onts_titles(ont: Graph):
         t = _get_background_ontology_titles(ont)
         _pickle_background_onts_titles(t)
         return t
-
-
-def generate_fid(title_: Union[Literal, None], iri: URIRef, fids: dict):
-    """Makes an HTML fragment ID for an RDF resource, based on title (preferred) or IRI"""
-    s_iri = str(iri)
-    s_title_ = str(title_)
-
-    # does this URI already have a fid?
-    existing_fid = fids.get(s_iri)
-    if existing_fid is not None:
-        return existing_fid
-
-    # if we get here, there is no fid, so make one
-    def _remove_non_ascii_chars(s_):
-        return "".join(j for j in s_ if ord(j) < 128).replace("&", "")
-
-    # try creating an ID from label
-    # remove spaces, escape all non-ASCII chars
-    if s_title_ is not None:
-        fid = _remove_non_ascii_chars(s_title_.replace(" ", ""))
-
-        # if this generated fid is not in use, add it to fids and return it
-        if fid not in fids.values():
-            fids[s_iri] = fid
-            return fid
-
-    # this fid is already present so generate a new one from the URI instead
-
-    # split URI for last slash segment
-    segments = s_iri.split("/")
-    # return None for empty string - URI ends in slash
-    if len(segments[-1]) < 1:
-        return None
-
-    # return None for domains, i.e. ['http:', '', '{domain}'] - no path segments
-    if len(segments) < 4:
-        return None
-
-    # split out hash URIs
-    # remove any training hashes
-    if segments[-1].endswith("#"):
-        return None
-
-    fid = (
-        segments[-1].split("#")[-1]
-        if segments[-1].split("#")[-1] != ""
-        else segments[-1].split("#")[-2]
-    )
-    # fid = fid.lower()
-
-    # if this generated fid is not in use, add it to fids and return it
-    if fid not in fids.values():
-        fids[s_iri] = fid
-        return fid
-    else:
-        # since it's in use but we've exhausted generation options, just add 1 to existing fid name
-        fids[s_iri] = fid + "1"
-        return fid + "1"  # yeah yeah, there could be more than one but unlikely
-
-
-def prop_obj_pair_html(
-    ont: Graph,
-    back_onts: Graph,
-    ns: Namespace,
-    table_or_dl: str,
-    prop_iri: URIRef,
-    property_title: Literal,
-    property_description: Literal,
-    ont_title: Literal,
-    fids,
-    obj: List[Union[URIRef, BNode, Literal]],
-    obj_type: Optional[str] = None,
-):
-    """Makes an HTML Definition list dt & dd pair or a Table tr, th & td set,
-    for a given RDF property & resource pair"""
-    prop = a(
-        str(property_title).title(),
-        title=str(property_description).rstrip(".") + ". Defined in " + str(ont_title),
-        _class="hover_property",
-        href=str(prop_iri),
-    )
-    o = rdf_obj_html(ont, back_onts, ns, obj, fids, obj_type=obj_type)
-
-    if table_or_dl == "table":
-        t = tr(th(prop), td(o))
-    else:  # dl
-        t = div(dt(prop), dd(o))
-
-    return t
 
 
 def rdf_obj_html(
@@ -690,7 +557,6 @@ def rdf_obj_html(
             for x in types_we_know:
                 if x in this_objects_types:
                     return x
-
         try:
             qname = ont.compute_qname(iri, True)
         except ValueError:
@@ -702,7 +568,9 @@ def rdf_obj_html(
 
         prefix = "" if qname[0] == "" else f"{qname[0]}:"
         if str(iri).startswith(ns):
-            iri = "#" + generate_fid(None, iri, fids)
+            fid = generate_fid(None, iri, fids)
+            if fid is not None:
+                iri = "#" + fid
 
         if rdf_type is not None:
             ret = span()
@@ -731,5 +599,158 @@ def rdf_obj_html(
         return u_
 
 
+def prop_obj_pair_html(
+    ont: Graph,
+    back_onts: Graph,
+    ns: Tuple[str, str],
+    table_or_dl: str,
+    prop_iri: URIRef,
+    property_title: Literal,
+    property_description: Literal,
+    ont_title: Literal,
+    fids,
+    obj: List[Union[URIRef, BNode, Literal]],
+    obj_type: Optional[str] = None,
+):
+    """Makes an HTML Definition list dt & dd pair or a Table tr, th & td set,
+    for a given RDF property & resource pair"""
+    prop = a(
+        str(property_title).title(),
+        title=str(property_description).rstrip(".") + ". Defined in " + str(ont_title),
+        _class="hover_property",
+        href=str(prop_iri),
+    )
+    o = rdf_obj_html(ont, back_onts, ns, obj, fids, obj_type=obj_type)
+
+    if table_or_dl == "table":
+        t = tr(th(prop), td(o))
+    else:  # dl
+        t = div(dt(prop), dd(o))
+
+    return t
+
+
+def section_html(
+    section_title: str,
+    ont: Graph,
+    back_onts: Graph,
+    ns: Tuple[str, str],
+    obj_class: URIRef,
+    prop_list: list,
+    toc,
+    toc_ul_id: str,
+    fids: dict,
+    props_labeled,
+):
+    """Makes all the HTML (div, title & table) for all instances of a
+    given RDF class, e.g. owl:Class or owl:ObjectProperty"""
+
+    def _element_html(
+        ont: Graph,
+        back_onts: Graph,
+        ns: Tuple[str, str],
+        iri: URIRef,
+        fid: str,
+        title_: str,
+        ont_type: URIRef,
+        props_list,
+        this_props,
+        fids: dict,
+        props_labeled,
+    ):
+        """Makes all the HTML (div, title & table) for one instance of a
+        given RDF class, e.g. owl:Class or owl:ObjectProperty"""
+        d = div(
+            h3(
+                title_,
+                sup(
+                    ONT_TYPES[ont_type][0],
+                    _class="sup-" + ONT_TYPES[ont_type][0],
+                    title=ONT_TYPES[ont_type][1],
+                ),
+            ),
+            id=fid,
+            _class="property entity",
+        )
+        t = table(tr(th("IRI"), td(code(str(iri)))))
+        # order the properties as per PROP_PROPS list order
+        for prop in props_list:
+            if prop != DCTERMS.title:
+                if prop in this_props.keys():
+                    t.appendChild(
+                        prop_obj_pair_html(
+                            ont,
+                            back_onts,
+                            ns,
+                            "table",
+                            prop,
+                            props_labeled.get(prop).get("title") if props_labeled.get(prop) is not None else None,
+                            props_labeled.get(prop).get("description") if props_labeled.get(prop) is not None else None,
+                            props_labeled.get(prop).get("ont_title") if props_labeled.get(prop) is not None else None,
+                            fids,
+                            this_props[prop],
+                        )
+                    )
+        d.appendChild(t)
+        return d
+
+    elems = div(id=toc_ul_id, _class="section")
+    elems.appendChild(h2(section_title))
+    # get all objects of this class
+    for s_ in ont.subjects(predicate=RDF.type, object=obj_class):
+        if obj_class == RDF.Property:
+            specialised_props = [
+                (s_, RDF.type, OWL.ObjectProperty),
+                (s_, RDF.type, OWL.DatatypeProperty),
+                (s_, RDF.type, OWL.AnnotationProperty),
+                (s_, RDF.type, OWL.FunctionalProperty),
+            ]
+            if any(x in ont for x in specialised_props):
+                continue
+        if isinstance(
+            s_, URIRef
+        ):  # ignore blank nodes for things like [ owl:unionOf ( ... ) ]
+            this_props = defaultdict(list)
+            # get all properties of this object
+            for p_, o in ont.predicate_objects(subject=s_):
+                # ... in the property list for this class
+                if p_ in prop_list:
+                    if p_ == RDFS.subClassOf and (o, RDF.type, OWL.Restriction) in ont:
+                        this_props[ONTDOC.restriction].append(o)
+                    else:
+                        this_props[p_].append(o)
+            if len(this_props[DCTERMS.title]) == 0:
+                this_fid = generate_fid(None, s_, fids)
+                this_title = make_title_from_iri(s_)
+            else:
+                this_fid = generate_fid(this_props[DCTERMS.title][0], s_, fids)
+                this_title = this_props[DCTERMS.title]
+
+            # add to ToC
+            if toc.get(toc_ul_id) is None:
+                toc[toc_ul_id] = []
+            toc[toc_ul_id].append(("#" + this_fid, this_title))
+
+            # create properties table
+            elems.appendChild(
+                _element_html(
+                    ont,
+                    back_onts,
+                    ns,
+                    s_,
+                    this_fid,
+                    this_title,
+                    obj_class,
+                    prop_list,
+                    this_props,
+                    fids,
+                    props_labeled,
+                )
+            )
+
+    return elems
+
+
 if __name__ == "__main__":
-    check_all_props_are_known()
+    # ("http://example.com/thing/FiveFive", "Five 5", "Five5"),
+    print(generate_fid("Five 5", "http://example.com/thing/FiveFive", {}))
