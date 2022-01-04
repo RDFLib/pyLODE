@@ -1,0 +1,27 @@
+@prefix : <http://example.com/minimal/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.com/minimal>
+    a owl:Ontology ;
+    rdfs:label "Minimal Ontology" ;
+    dct:created "2018-02-16"^^xsd:date ;
+    rdfs:comment """This is a minimal ontology for testing pyLODE"""@en ;
+.
+
+:isProfileOf
+    a owl:ObjectProperty ;
+    rdfs:label "is profile of" ;
+    skos:definition "A specification for which this Profile defines constraints, extensions, or which it uses in combination with other specifications, or provides guidance or explanation about its usage"@en ;
+.
+
+:Profile
+    a owl:Class ;
+    rdfs:label "Profile" ;
+    rdfs:subClassOf dct:Standard ;
+    skos:definition """A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications."""@en ;
+.
+

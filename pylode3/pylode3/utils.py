@@ -4,6 +4,7 @@ import re
 from collections import defaultdict
 from itertools import chain
 from pathlib import Path
+from rdflib.exceptions import ParserError
 from typing import Optional, List, Tuple, Union, cast
 
 import markdown
@@ -222,36 +223,41 @@ def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
     """Loads and ontology into an RDFLib Graph.
 
     Can handle string data, file path, URL or Graph input"""
-    # try URL
-    if isinstance(ontology, str) and ontology.startswith("http"):
-        return Graph().parse(location=ontology)
-    if isinstance(ontology, Graph):
-        return cast(ontology, Graph)
-    elif isinstance(ontology, Path):
-        return Graph().parse(ontology)
-    elif isinstance(ontology, str):
-        # see if it's a file path
-        if Path(ontology).is_file():
+    try:
+        # try URL
+        if isinstance(ontology, str) and ontology.startswith("http"):
+            return Graph().parse(location=ontology)
+        elif isinstance(ontology, str):
+            # see if it's a file path
+            if Path(ontology).is_file():
+                return Graph().parse(ontology)
+            else:  # it's data
+                if ontology.startswith("[") or ontology.startswith("{"):
+                    input_format = "json-ld"
+                elif (
+                    ontology.startswith("<?xml")
+                    or ontology.startswith("<!--")
+                    or ontology.startswith("<rdf:RDF")
+                ):
+                    input_format = "xml"
+                else:
+                    input_format = "turtle"  # this will also cover n-triples
+                return Graph().parse(
+                    data=ontology, format=input_format
+                )
+        elif isinstance(ontology, Graph):
+            return cast(ontology, Graph)
+        elif isinstance(ontology, Path):
             return Graph().parse(ontology)
-        else:  # it's data
-            if ontology.startswith("[") or ontology.startswith("{"):
-                input_format = "json-ld"
-            elif (
-                ontology.startswith("<?xml")
-                or ontology.startswith("<!--")
-                or ontology.startswith("<rdf:RDF")
-            ):
-                input_format = "xml"
-            else:
-                input_format = "turtle"  # this will also cover n-triples
-            return Graph().parse(
-                data=ontology, format=input_format, publicID=URIRef("ont:")
+        else:
+            raise ValueError(
+                "The ontology you supply to OntDoc must be either an RDFlib Graph, a Path (to an RDF file) "
+                "or a string (of RDF data)"
             )
-    else:
-        raise ValueError(
-            "The ontology you supply to OntDoc must be either an RDFlib Graph, a Path (to an RDF file) "
-            "or a string (of RDF data)"
-        )
+    except Exception as e:
+        print(f"{type(e).__name__} Error {e}")
+        exit()
+        # raise ParserError(f"Could not parse supplied ontology.\n\n {type(e).__name__} error with message: {str(e)}")
 
 
 def load_background_onts():

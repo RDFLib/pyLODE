@@ -3,7 +3,7 @@ from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).absolute().parent.parent))
 from pylode3 import __version__
-from pylode3 import OntDoc
+from pylode3 import OntDoc, PylodeError
 
 
 parser = argparse.ArgumentParser()
@@ -40,7 +40,11 @@ parser.add_argument(
 def main():
     args = parser.parse_args()
 
-    od = OntDoc(args.input)
+    try:
+        od = OntDoc(args.input)
+    except PylodeError as e:
+        print("ERROR: " + str(e))
+        exit()
 
     pylode_kwargs = {}
 

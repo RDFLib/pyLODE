@@ -21,6 +21,10 @@ except:
 RDF_FOLDER = Path(__file__).parent / "rdf"
 
 
+class PylodeError(Exception):
+    pass
+
+
 class OntDoc:
     """Ontology Document class used to create HTML documentation from OWL Ontologies.
 
@@ -54,6 +58,9 @@ class OntDoc:
         ):
             for o2 in self.ont.objects(s, DCTERMS.title):
                 t = str(o2)
+        if t is None:
+            raise PylodeError(
+                "You MUST supply a title property (dcterms:title, rdf:label or sdo:name) for your ontology")
         self.doc = dominate.document(title=t)
 
         with self.doc:
