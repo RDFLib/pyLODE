@@ -1,7 +1,11 @@
 import sys
 from pathlib import Path
+
 sys.path.append(str(Path().absolute().parent / "pylode"))
-from pylode.ontdoc import OntDoc
+try:
+    from pylode.ontdoc import OntDoc
+except ImportError:
+    from ontdoc import OntDoc
 
 EXAMPLES_DIR = Path().absolute() / "ontdoc"
 

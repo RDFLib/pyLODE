@@ -56,7 +56,12 @@ try:
         prop_obj_pair_html,
         section_html,
     )
-except:
+
+    from .rdf_elements import ONTDOC, AGENT_PROPS, \
+        ONT_PROPS, CLASS_PROPS, PROP_PROPS
+
+    from .version import __version__
+except ImportError:
     from utils import (
         load_ontology,
         load_background_onts,
@@ -67,14 +72,9 @@ except:
         section_html,
     )
 
-try:
-    from .rdf_elements import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
-except:
-    from rdf_elements import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
+    from rdf_elements import ONTDOC, AGENT_PROPS, \
+        ONT_PROPS, CLASS_PROPS, PROP_PROPS
 
-try:
-    from .version import __version__
-except:
     from version import __version__
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
@@ -85,7 +85,8 @@ class PylodeError(Exception):
 
 
 class OntDoc:
-    """Ontology Document class used to create HTML documentation from OWL Ontologies.
+    """Ontology Document class used to create HTML documentation
+    from OWL Ontologies.
 
     Use:
         # initialise
@@ -120,7 +121,8 @@ class OntDoc:
                 t = str(o2)
         if t is None:
             raise PylodeError(
-                "You MUST supply a title property (dcterms:title, rdf:label or sdo:name) for your ontology"
+                "You MUST supply a title property "
+                "(dcterms:title, rdf:label or sdo:name) for your ontology"
             )
         self.doc = dominate.document(title=t)
 
@@ -132,7 +134,9 @@ class OntDoc:
 
         Either writes to a file or returns a string"""
         self._make_head(
-            self._make_schema_org(), include_css=include_css, destination=destination
+            self._make_schema_org(),
+            include_css=include_css,
+            destination=destination
         )
         self._make_body()
 
@@ -188,12 +192,12 @@ class OntDoc:
             g.add((s_, RDF.type, OWL.Restriction))
 
         for s_ in chain(
-            g.subjects(OWL.unionOf, None),
-            g.subjects(OWL.intersectionOf, None)
+            g.subjects(OWL.unionOf, None), g.subjects(OWL.intersectionOf, None)
         ):
             g.add((s_, RDF.type, OWL.Class))
 
-        # we do these next few so we only need to loop through Class & Property properties once: single subject
+        # we do these next few so we only need to loop through
+        # Class & Property properties once: single subject
         for s_, o in g.subject_objects(RDFS.subClassOf):
             g.add((o, ONTDOC.superClassOf, s_))
 
@@ -222,7 +226,7 @@ class OntDoc:
         for s_, o in chain(
             g.subject_objects(DC.creator),
             g.subject_objects(SDO.creator),
-            g.subject_objects(SDO.author),  # conflate SDO.author with DCTERMS.creator
+            g.subject_objects(SDO.author),
         ):
             g.remove((s_, DC.creator, o))
             g.remove((s_, SDO.creator, o))
@@ -265,7 +269,10 @@ class OntDoc:
             g.add((s_, SDO.affiliation, o))
 
     def _make_head(
-        self, schema_org: Graph, include_css: bool = True, destination: Path = None
+        self,
+        schema_org: Graph,
+        include_css: bool = True,
+        destination: Path = None
     ):
         """Healper function for make_html(). Makes <head>???</head> content"""
         with self.doc.head:
@@ -280,7 +287,9 @@ class OntDoc:
                 )
             else:
                 link(href="pylode.css", rel="stylesheet", type="text/css")
-                shutil.copy(Path("pylode.css"), destination.parent / "pylode.css")
+                shutil.copy(
+                    Path("pylode.css"),
+                    destination.parent / "pylode.css")
             link(
                 rel="icon",
                 type="image/png",
@@ -297,7 +306,7 @@ class OntDoc:
             script(
                 raw("\n" + schema_org.serialize(format="json-ld") + "\n\t"),
                 type="application/ld+json",
-                id="schema.org"
+                id="schema.org",
             )
 
     def _make_body(self):
@@ -321,7 +330,8 @@ class OntDoc:
                         span("LODE")
                     a(
                         __version__,
-                        href="https://github.com/rdflib/pyLODE/release/" + __version__,
+                        href="https://github.com/rdflib/pyLODE/release/"
+                             + __version__,
                         id="version",
                     )
 
@@ -339,7 +349,10 @@ class OntDoc:
                     this_onts_props[p_].append(o)
 
         # make HTML for all props in order of ONT_PROPS
-        sec = div(h1(this_onts_props[DCTERMS.title]), id="metadata", _class="section")
+        sec = div(
+            h1(this_onts_props[DCTERMS.title]),
+            id="metadata",
+            _class="section")
         sec.appendChild(h2("Metadata"))
         d = dl(div(dt(strong("IRI")), dd(code(str(iri)))))
         for prop in ONT_PROPS:
@@ -369,38 +382,38 @@ class OntDoc:
             self.ont.subjects(predicate=RDF.type, object=PROF.Profile),
         ):
             sdo.add((ont_iri, RDF.type, SDO.DefinedTermSet))
-            for p, o in self.ont.predicate_objects(ont_iri):
-                if p == DCTERMS.title:
+            for p_, o in self.ont.predicate_objects(ont_iri):
+                if p_ == DCTERMS.title:
                     sdo.add((ont_iri, SDO.name, o))
-                elif p == DCTERMS.description:
+                elif p_ == DCTERMS.description:
                     sdo.add((ont_iri, SDO.description, o))
-                elif p == DCTERMS.publisher:
+                elif p_ == DCTERMS.publisher:
                     sdo.add((ont_iri, SDO.publisher, o))
                     if not isinstance(o, Literal):
                         for p2, o2 in self.ont.predicate_objects(o):
                             if p2 in AGENT_PROPS:
                                 sdo.add((o, p2, o2))
-                elif p == DCTERMS.creator:
+                elif p_ == DCTERMS.creator:
                     sdo.add((ont_iri, SDO.creator, o))
                     if not isinstance(o, Literal):
                         for p2, o2 in self.ont.predicate_objects(o):
                             if p2 in AGENT_PROPS:
                                 sdo.add((o, p2, o2))
-                elif p == DCTERMS.contributor:
+                elif p_ == DCTERMS.contributor:
                     sdo.add((ont_iri, SDO.contributor, o))
                     if not isinstance(o, Literal):
                         for p2, o2 in self.ont.predicate_objects(o):
                             if p2 in AGENT_PROPS:
                                 sdo.add((o, p2, o2))
-                elif p == DCTERMS.created:
+                elif p_ == DCTERMS.created:
                     sdo.add((ont_iri, SDO.dateCreated, o))
-                elif p == DCTERMS.modified:
+                elif p_ == DCTERMS.modified:
                     sdo.add((ont_iri, SDO.dateModified, o))
-                elif p == DCTERMS.issued:
+                elif p_ == DCTERMS.issued:
                     sdo.add((ont_iri, SDO.dateIssued, o))
-                elif p == DCTERMS.license:
+                elif p_ == DCTERMS.license:
                     sdo.add((ont_iri, SDO.license, o))
-                elif p == DCTERMS.rights:
+                elif p_ == DCTERMS.rights:
                     sdo.add((ont_iri, SDO.copyrightNotice, o))
 
         return sdo
@@ -505,7 +518,10 @@ class OntDoc:
 
                     if self.toc.get("classes") is not None:
                         with tr():
-                            td(sup("c", _class="sup-c", title="OWL/RDFS Class"))
+                            td(sup(
+                                "c",
+                                _class="sup-c",
+                                title="OWL/RDFS Class"))
                             td("Classes")
                     if self.toc.get("properties") is not None:
                         with tr():
@@ -513,7 +529,10 @@ class OntDoc:
                             td("Properties")
                     if self.toc.get("objectproperties") is not None:
                         with tr():
-                            td(sup("op", _class="sup-op", title="OWL Object Property"))
+                            td(sup(
+                                "op",
+                                _class="sup-op",
+                                title="OWL Object Property"))
                             td("Object Properties")
                     if self.toc.get("datatypeproperties") is not None:
                         with tr():
@@ -547,13 +566,21 @@ class OntDoc:
                             td("Functional Properties")
                     if self.toc.get("named_individuals") is not None:
                         with tr():
-                            td(sup("ni", _class="sup-ni", title="OWL Named Individual"))
+                            td(sup(
+                                "ni",
+                                _class="sup-ni",
+                                title="OWL Named Individual"
+                            ))
                             td("Named Individuals")
 
     def _make_namespaces(self):
         # get only namespaces used in ont
         nses = {}
-        for n in chain(self.ont.subjects(), self.ont.predicates(), self.ont.objects()):
+        for n in chain(
+                self.ont.subjects(),
+                self.ont.predicates(),
+                self.ont.objects()
+        ):
             for prefix, ns in self.ont.namespaces():
                 if str(n).startswith(ns):
                     nses[prefix] = ns
@@ -602,7 +629,10 @@ class OntDoc:
                         and len(self.toc["objectproperties"]) > 0
                     ):
                         with li():
-                            h4(a("Object Properties", href="#objectproperties"))
+                            h4(a(
+                                "Object Properties",
+                                href="#objectproperties"
+                            ))
                             with ul(_class="second"):
                                 for c in self.toc["objectproperties"]:
                                     li(a(c[1], href=c[0]))
@@ -612,7 +642,10 @@ class OntDoc:
                         and len(self.toc["datatypeproperties"]) > 0
                     ):
                         with li():
-                            h4(a("Datatype Properties", href="#datatypeproperties"))
+                            h4(a(
+                                "Datatype Properties",
+                                href="#datatypeproperties"
+                            ))
                             with ul(_class="second"):
                                 for c in self.toc["datatypeproperties"]:
                                     li(a(c[1], href=c[0]))
@@ -622,7 +655,10 @@ class OntDoc:
                         and len(self.toc["annotationproperties"]) > 0
                     ):
                         with li():
-                            h4(a("Annotation Properties", href="#annotationproperties"))
+                            h4(a(
+                                "Annotation Properties",
+                                href="#annotationproperties"
+                            ))
                             with ul(_class="second"):
                                 for c in self.toc["annotationproperties"]:
                                     li(a(c[1], href=c[0]))
@@ -632,7 +668,10 @@ class OntDoc:
                         and len(self.toc["functionalproperties"]) > 0
                     ):
                         with li():
-                            h4(a("Functional Properties", href="#functionalproperties"))
+                            h4(a(
+                                "Functional Properties",
+                                href="#functionalproperties"
+                            ))
                             with ul(_class="second"):
                                 for c in self.toc["functionalproperties"]:
                                     li(a(c[1], href=c[0]))
@@ -644,28 +683,3 @@ class OntDoc:
                                 li(a(n[1], href="#" + n[1]))
 
                     li(h4(a("Legend", href="#legend")), ul(_class="second"))
-
-
-if __name__ == "__main__":
-    # TODO: schema.org generation from ont
-    # TODO: move background ont into Dataset
-    # TODO: cli UI
-
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s [%(levelname)s] %(message)s",
-        handlers=[logging.StreamHandler()],
-    )
-
-    od = OntDoc(ontology="https://data.surroundaustralia.com/def/exem")
-    od.make_html(destination="some.html")
-
-    # import cProfile
-    #
-    # pr = cProfile.Profile()
-    # pr.enable()
-    #
-    # check_all_props_are_known()
-    #
-    # pr.disable()
-    # pr.print_stats(sort='time')

@@ -26,24 +26,37 @@ from dominate.tags import (
     dd,
     h2,
 )
-from dominate.util import raw, text
+from dominate.util import raw
 from rdflib import BNode, Literal, Graph, URIRef
 from rdflib.paths import ZeroOrMore
-from rdflib.paths import Path as PropertyPath
-from rdflib.namespace import DC, DCTERMS, FOAF, ORG, OWL, PROF, PROV, RDF, RDFS, SDO, SKOS, VANN
+from rdflib.namespace import (
+    DC,
+    DCTERMS,
+    PROF,
+    PROV,
+    OWL,
+    RDF,
+    RDFS,
+    SDO,
+    SKOS,
+    VANN
+)
 
 try:
-    from .rdf_elements import *
-except:
-    from rdf_elements import *
+    from .rdf_elements import AGENT_PROPS, ONTDOC, ONT_TYPES, \
+        OWL_SET_TYPES, PROPS, RESTRICTION_TYPES
+except ImportError:
+    from rdf_elements import AGENT_PROPS, ONTDOC, ONT_TYPES, \
+        OWL_SET_TYPES, PROPS, RESTRICTION_TYPES
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
 
 
 def check_all_props_are_known():
-    """Check all properties listed in the combined property lists in properties.py to see if
-    their titles and descriptions are present in the background ontologies in the folder rdf/.
-    Run after performing labelling inferencing."""
+    """Check all properties listed in the combined property lists in
+    properties.py to see if their titles and descriptions are present in the
+    background ontologies in the folder rdf/. Run after performing labelling
+    inferencing."""
     bg = load_background_onts()
     for prop in PROPS:
         if (prop, RDF.type, None) not in bg:
@@ -84,9 +97,11 @@ def get_ns(ont: Graph) -> Tuple[str, str]:
             if prefix is not None:
                 return prefix, default_iri
         else:
-            # can't find either a declared or default namespace so we have an error
+            # can't find either a declared or default namespace
+            # so we have an error
             raise Exception(
-                "pyLODE can't detect a URI for an owl:Ontology, a skos:ConceptScheme or a prof:Profile"
+                "pyLODE can't detect a URI for an owl:Ontology, "
+                "a skos:ConceptScheme or a prof:Profile"
             )
 
 
@@ -126,7 +141,8 @@ def make_title_from_iri(iri: URIRef):
 
 
 def generate_fid(title_: Union[Literal, None], iri: URIRef, fids: dict):
-    """Makes an HTML fragment ID for an RDF resource, based on title (preferred) or IRI"""
+    """Makes an HTML fragment ID for an RDF resource,
+    based on title (preferred) or IRI"""
     s_iri = str(iri) if iri is not None else None
     s_title_ = str(title_) if title_ is not None else None
 
@@ -149,7 +165,8 @@ def generate_fid(title_: Union[Literal, None], iri: URIRef, fids: dict):
             fids[s_iri] = fid
             return fid
 
-        # this fid is already present so generate a new one from the URI instead
+        # this fid is already present
+        # so generate a new one from the URI instead
 
     # split URI for last slash segment
     segments = s_iri.split("/")
@@ -158,7 +175,8 @@ def generate_fid(title_: Union[Literal, None], iri: URIRef, fids: dict):
     if len(segments[-1]) < 1:
         return None
 
-    # return None for domains, i.e. ['http:', '', '{domain}'] - no path segments
+    # return None for domains, i.e. ['http:', '', '{domain}'],
+    # no path segments
     if len(segments) < 4:
         return None
 
@@ -180,13 +198,16 @@ def generate_fid(title_: Union[Literal, None], iri: URIRef, fids: dict):
         fids[s_iri] = fid
         return fid
     else:
-        # since it's in use but we've exhausted generation options, just add 1 to existing fid name
+        # since it's in use but we've exhausted generation options,
+        # just add 1 to existing fid name
         fids[s_iri] = fid + "1"
-        return fid + "1"  # yeah yeah, there could be more than one but unlikely
+        return fid + "1"
+        # yeah yeah, there could be more than one but unlikely
 
 
 def back_onts_label_props(back_onts: Graph):
-    """Gets titles and descriptions for all properties in the background ontologies"""
+    """Gets titles and descriptions for all properties
+    in the background ontologies"""
     back_onts_titles = load_background_onts_titles(back_onts)
 
     def _get_prop_label(prop_iri: URIRef, back_onts: Graph) -> dict:
@@ -234,9 +255,9 @@ def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
                 if ontology.startswith("[") or ontology.startswith("{"):
                     input_format = "json-ld"
                 elif (
-                    ontology.startswith("<?xml")
-                    or ontology.startswith("<!--")
-                    or ontology.startswith("<rdf:RDF")
+                        ontology.startswith("<?xml")
+                        or ontology.startswith("<!--")
+                        or ontology.startswith("<rdf:RDF")
                 ):
                     input_format = "xml"
                 else:
@@ -248,21 +269,21 @@ def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
             return Graph().parse(ontology)
         else:
             raise ValueError(
-                "The ontology you supply to OntDoc must be either an RDFlib Graph, a Path (to an RDF file) "
-                "or a string (of RDF data)"
+                "The ontology you supply to OntDoc must be either "
+                "an RDFlib Graph, a Path (to an RDF file) or a string "
+                "(of RDF data)"
             )
     except Exception as e:
         print(f"{type(e).__name__} Error {e}")
         exit()
-        # raise ParserError(f"Could not parse supplied ontology.\n\n {type(e).__name__} error with message: {str(e)}")
 
 
 def load_background_onts():
-    """Loads background ontology files into an RDFLib graph from either RDF source
-    files or a pickled Graph.
+    """Loads background ontology files into an RDFLib graph from either
+    RDF source files or a pickled Graph.
 
-    Performs title and description inference and stores a pickle if generating from
-    RDF source files."""
+    Performs title and description inference and stores a pickle if
+    generating from RDF source files."""
 
     def _parse_background_onts():
         g_ = Graph()
@@ -274,19 +295,19 @@ def load_background_onts():
     def _expand_background_onts_graph(back_ont: Graph):
         # make regular titles
         for s_, o in chain(
-            back_ont.subject_objects(DC.title),
-            back_ont.subject_objects(RDFS.label),
-            back_ont.subject_objects(SKOS.prefLabel),
-            back_ont.subject_objects(SDO.name),
+                back_ont.subject_objects(DC.title),
+                back_ont.subject_objects(RDFS.label),
+                back_ont.subject_objects(SKOS.prefLabel),
+                back_ont.subject_objects(SDO.name),
         ):
             back_ont.add((s_, DCTERMS.title, o))
 
         # make regular descriptions
         for s_, o in chain(
-            back_ont.subject_objects(DC.description),
-            back_ont.subject_objects(RDFS.comment),
-            back_ont.subject_objects(SKOS.definition),
-            back_ont.subject_objects(SDO.description),
+                back_ont.subject_objects(DC.description),
+                back_ont.subject_objects(RDFS.comment),
+                back_ont.subject_objects(SKOS.definition),
+                back_ont.subject_objects(SDO.description),
         ):
             back_ont.add((s_, DCTERMS.description, o))
 
@@ -295,7 +316,7 @@ def load_background_onts():
             with open(RDF_FOLDER / "refs.pickle", "wb") as f_:
                 pickle.dump(back_ont, f_)
         except FileNotFoundError:
-            print("Could not cache background ontologies graph")
+            logging.warning("Could not cache background ontologies graph")
 
     if Path(RDF_FOLDER / "refs.pickle").is_file():
         logging.info("Loading background ontologies from a pickle file")
@@ -310,7 +331,8 @@ def load_background_onts():
 
 
 def load_background_onts_titles(ont: Graph):
-    """Loads the titles of background ontologies into a discionary of Ontology IRI / title"""
+    """Loads the titles of background ontologies
+    into a dictionary of Ontology IRI / title"""
 
     def _get_background_ontology_titles(back_ont: Graph):
         onts_titles = {}
@@ -318,14 +340,22 @@ def load_background_onts_titles(ont: Graph):
             for o in back_ont.objects(subject=s_, predicate=DCTERMS.title):
                 onts_titles[str(s_)] = str(o)
 
-        return {k: v for k, v in sorted(onts_titles.items(), key=lambda item: item[1])}
+        return {
+            k: v
+            for k, v
+            in sorted(
+                onts_titles.items(),
+                key=lambda item: item[1]
+            )
+        }
 
     def _pickle_background_onts_titles(ont_titles: dict):
         try:
             with open(RDF_FOLDER / "refs_titles.pickle", "wb") as f_:
                 pickle.dump(ont_titles, f_)
         except FileNotFoundError:
-            print("Could not cache background ontologies' titles graph")
+            logging.warning(
+                "Could not cache background ontologies' titles graph")
 
     if Path(RDF_FOLDER / "refs_titles.pickle").is_file():
         with open(RDF_FOLDER / "refs_titles.pickle", "rb") as f:
@@ -337,24 +367,24 @@ def load_background_onts_titles(ont: Graph):
 
 
 def rdf_obj_html(
-    ont: Graph,
-    back_onts: Graph,
-    ns: Tuple[str, str],
-    obj: List[Union[URIRef, BNode, Literal]],
-    fids,
-    rdf_type=None,
+        ont: Graph,
+        back_onts: Graph,
+        ns: Tuple[str, str],
+        obj: List[Union[URIRef, BNode, Literal]],
+        fids,
+        rdf_type=None,
 ):
     """Makes a sensible HTML rendering of an RDF resource.
 
     Can handle IRIs, Blank Nodes of Agents or OWL Restrictions or Literals"""
 
     def _rdf_obj_single_html(
-        ont_: Graph,
-        back_onts_: Graph,
-        ns_: Tuple[str, str],
-        obj_: Union[URIRef, BNode, Literal],
-        fids_,
-        rdf_type_=None,
+            ont_: Graph,
+            back_onts_: Graph,
+            ns_: Tuple[str, str],
+            obj_: Union[URIRef, BNode, Literal],
+            fids_,
+            rdf_type_=None,
     ):
         def _hyperlink_html(
                 ont__: Graph,
@@ -391,17 +421,18 @@ def rdf_obj_html(
                     if x_ in this_objects_types:
                         return x_
 
+            # find type
+            if rdf_type__ is None:
+                rdf_type__ = _get_ont_type(ont__, back_onts__, iri__)
+
             try:
                 qname = ont__.compute_qname(iri__, True)
             except ValueError:
                 qname = iri__
 
-            # find type
-            if rdf_type__ is None:
-                rdf_type__ = _get_ont_type(ont__, back_onts__, iri__)
-
             prefix = "" if qname[0] == "" else f"{qname[0]}:"
-            if str(iri__).startswith(ns__):
+
+            if ns__ is not None and str(iri__).startswith(ns__):
                 fid = generate_fid(None, iri__, fids__)
                 if fid is not None:
                     iri__ = "#" + fid
@@ -424,7 +455,9 @@ def rdf_obj_html(
 
         def _literal_html(obj__):
             if str(obj__).startswith("http"):
-                return _hyperlink_html(ont_, back_onts_, ns_, cast(URIRef, obj__), fids_)
+                return _hyperlink_html(
+                    ont_, back_onts_, ns_, cast(URIRef, obj__), fids_
+                )
             else:
                 return raw(markdown.markdown(str(obj__)))
 
@@ -516,7 +549,8 @@ def rdf_obj_html(
 
                 if email is not None:
                     email = email.replace("mailto:", "")
-                    sp.appendChild(span("(", a(email, href="mailto:" + email), ")"))
+                    sp.appendChild(
+                        span("(", a(email, href="mailto:" + email), ")"))
 
                 if affiliation is not None:
                     sp.appendChild(_affiliation_html(ont__, affiliation))
@@ -530,7 +564,13 @@ def rdf_obj_html(
             for px, o in ont__.predicate_objects(obj__):
                 if px != RDF.type:
                     if px == OWL.onProperty:
-                        prop = _hyperlink_html(ont__, back_onts_, ns__, o, fids_)
+                        prop = _hyperlink_html(
+                            ont__,
+                            back_onts_,
+                            ns__,
+                            o,
+                            fids_
+                        )
                     elif px in RESTRICTION_TYPES + OWL_SET_TYPES:
                         if px in [
                             OWL.minCardinality,
@@ -540,14 +580,25 @@ def rdf_obj_html(
                             OWL.cardinality,
                             OWL.qualifiedCardinality,
                         ]:
-                            if px in [OWL.minCardinality, OWL.minQualifiedCardinality]:
+                            if px in [
+                                OWL.minCardinality,
+                                OWL.minQualifiedCardinality
+                            ]:
                                 card = "min"
-                            elif px in [OWL.maxCardinality, OWL.maxQualifiedCardinality]:
+                            elif px in [
+                                OWL.maxCardinality,
+                                OWL.maxQualifiedCardinality,
+                            ]:
                                 card = "max"
-                            elif px in [OWL.cardinality, OWL.qualifiedCardinality]:
+                            elif px in [
+                                OWL.cardinality,
+                                OWL.qualifiedCardinality
+                            ]:
                                 card = "exactly"
 
-                            card = span(span(card, _class="cardinality"), span(str(o)))
+                            card = span(
+                                span(card, _class="cardinality"),
+                                span(str(o)))
                         else:
                             if px == OWL.allValuesFrom:
                                 card = "only"
@@ -560,20 +611,29 @@ def rdf_obj_html(
                             elif px == OWL.intersectionOf:
                                 card = "intersection"
 
-                                card = span(span(card, _class="cardinality"), raw(_rdf_obj_single_html))
+                                card = span(
+                                    span(card, _class="cardinality"),
+                                    raw(_rdf_obj_single_html),
+                                )
                             else:
                                 card = span(
                                     span(card, _class="cardinality"),
                                     span(
                                         _hyperlink_html(
-                                            ont__, back_onts_, ns__, o, fids_, OWL.Class
+                                            ont__,
+                                            back_onts_,
+                                            ns__,
+                                            o,
+                                            fids_,
+                                            OWL.Class
                                         )
                                     ),
                                 )
 
             restriction = span(prop, card, br()) if card is not None else prop
             restriction = (
-                span(restriction, cls, br()) if cls is not None else restriction
+                span(restriction, cls, br())
+                if cls is not None else restriction
             )
 
             return span(restriction) if restriction is not None else "None"
@@ -589,17 +649,21 @@ def rdf_obj_html(
                 joining_word = ' <span class="cardinality">,</span> '
 
             class_set = set()
-            for o in ont__.objects(obj__, OWL.unionOf|OWL.intersectionOf):
+            for o in ont__.objects(obj__, OWL.unionOf | OWL.intersectionOf):
                 for o2 in ont__.objects(o, RDF.rest * ZeroOrMore / RDF.first):
-                    class_set.add(_rdf_obj_single_html(ont__, back_onts__, ns__, o2, fids__, OWL.Class))
+                    class_set.add(
+                        _rdf_obj_single_html(
+                            ont__, back_onts__, ns__, o2, fids__, OWL.Class
+                        )
+                    )
 
             return raw(joining_word.join([mem.render() for mem in class_set]))
 
         def _bn_html(ont__, back_onts__, ns__, fids__, obj__: BNode):
             # TODO: remove back_onts and fids if not needed by subfunctions
             # What kind of BN is it?
-            # An Agent, a Restriction or a Set Class (union/intersection) handled
-            # all typing added in OntDoc inferencing
+            # An Agent, a Restriction or a Set Class (union/intersection)
+            # handled all typing added in OntDoc inferencing
             if (obj__, RDF.type, PROV.Agent) in ont__:
                 return _agent_html(ont__, obj__)
             elif (obj__, RDF.type, OWL.Restriction) in ont__:
@@ -608,44 +672,52 @@ def rdf_obj_html(
                 return _setclass_html(ont__, obj__, back_onts__, ns__, fids__)
 
         if isinstance(obj_, URIRef):
-            ret = _hyperlink_html(ont_, back_onts_, ns_, obj_, fids_, rdf_type__=rdf_type_)
+            ret = _hyperlink_html(
+                ont_, back_onts_, ns_, obj_, fids_, rdf_type__=rdf_type_
+            )
         elif isinstance(obj_, BNode):
             ret = _bn_html(ont_, back_onts_, ns_, fids_, obj_)
         else:  # isinstance(obj, Literal):
             ret = _literal_html(obj_)
 
-        # TODO: replace this filler-inner when all subfunctions are returning fine
-        return ret if ret is not None else span("xxx")
+        return ret if ret is not None else span()
 
     if len(obj) == 1:
-        return _rdf_obj_single_html(ont, back_onts, ns, obj[0], fids, rdf_type_=rdf_type)
+        return _rdf_obj_single_html(
+            ont, back_onts, ns, obj[0], fids, rdf_type_=rdf_type
+        )
     else:
         u_ = ul()
         for x in obj:
             u_.appendChild(
-                li(_rdf_obj_single_html(ont, back_onts, ns, x, fids, rdf_type_=rdf_type))
+                li(
+                    _rdf_obj_single_html(
+                        ont, back_onts, ns, x, fids, rdf_type_=rdf_type
+                    )
+                )
             )
         return u_
 
 
 def prop_obj_pair_html(
-    ont: Graph,
-    back_onts: Graph,
-    ns: Tuple[str, str],
-    table_or_dl: str,
-    prop_iri: URIRef,
-    property_title: Literal,
-    property_description: Literal,
-    ont_title: Literal,
-    fids,
-    obj: List[Union[URIRef, BNode, Literal]],
-    obj_type: Optional[str] = None,
+        ont: Graph,
+        back_onts: Graph,
+        ns: Tuple[str, str],
+        table_or_dl: str,
+        prop_iri: URIRef,
+        property_title: Literal,
+        property_description: Literal,
+        ont_title: Literal,
+        fids,
+        obj: List[Union[URIRef, BNode, Literal]],
+        obj_type: Optional[str] = None,
 ):
     """Makes an HTML Definition list dt & dd pair or a Table tr, th & td set,
     for a given RDF property & resource pair"""
     prop = a(
         str(property_title).title(),
-        title=str(property_description).rstrip(".") + ". Defined in " + str(ont_title),
+        title=str(property_description).rstrip(".") +
+        ". Defined in " + str(ont_title),
         _class="hover_property",
         href=str(prop_iri),
     )
@@ -660,32 +732,32 @@ def prop_obj_pair_html(
 
 
 def section_html(
-    section_title: str,
-    ont: Graph,
-    back_onts: Graph,
-    ns: Tuple[str, str],
-    obj_class: URIRef,
-    prop_list: list,
-    toc,
-    toc_ul_id: str,
-    fids: dict,
-    props_labeled,
+        section_title: str,
+        ont: Graph,
+        back_onts: Graph,
+        ns: Tuple[str, str],
+        obj_class: URIRef,
+        prop_list: list,
+        toc,
+        toc_ul_id: str,
+        fids: dict,
+        props_labeled,
 ):
     """Makes all the HTML (div, title & table) for all instances of a
     given RDF class, e.g. owl:Class or owl:ObjectProperty"""
 
     def _element_html(
-        ont_: Graph,
-        back_onts_: Graph,
-        ns_: Tuple[str, str],
-        iri: URIRef,
-        fid: str,
-        title_: str,
-        ont_type: URIRef,
-        props_list,
-        this_props_,
-        fids_: dict,
-        props_labeled_,
+            ont_: Graph,
+            back_onts_: Graph,
+            ns_: Tuple[str, str],
+            iri: URIRef,
+            fid: str,
+            title_: str,
+            ont_type: URIRef,
+            props_list,
+            this_props_,
+            fids_: dict,
+            props_labeled_,
     ):
         """Makes all the HTML (div, title & table) for one instance of a
         given RDF class, e.g. owl:Class or owl:ObjectProperty"""
@@ -743,14 +815,15 @@ def section_html(
             if any(x in ont for x in specialised_props):
                 continue
         if isinstance(
-            s_, URIRef
+                s_, URIRef
         ):  # ignore blank nodes for things like [ owl:unionOf ( ... ) ]
             this_props = defaultdict(list)
             # get all properties of this object
             for p_, o in ont.predicate_objects(subject=s_):
                 # ... in the property list for this class
                 if p_ in prop_list:
-                    if p_ == RDFS.subClassOf and (o, RDF.type, OWL.Restriction) in ont:
+                    if p_ == RDFS.subClassOf \
+                            and (o, RDF.type, OWL.Restriction) in ont:
                         this_props[ONTDOC.restriction].append(o)
                     else:
                         this_props[p_].append(o)
@@ -788,8 +861,3 @@ def section_html(
 
 def de_space_html(html):
     return "".join([l_.strip().replace("\n", "") for l_ in html.split("\n")])
-
-
-if __name__ == "__main__":
-    # ("http://example.com/thing/FiveFive", "Five 5", "Five5"),
-    print(generate_fid("Five 5", "http://example.com/thing/FiveFive", {}))

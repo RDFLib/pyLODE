@@ -11,12 +11,17 @@ In addition to making web page, human-readable forms of ontologies, pyLODE encou
 practice* by only producing good results for well documented inputs! pyLODE defines what it considers 'well documented'
 in sections below, e.g. `What pyLODE understands`_.
 
-.. note::
+----
 
-    This is pyLODE version 3.0.0 and it's vastly different from pyLODE < 3.0.0. It doesn't yet handle all the various "profiles" that pyLODE 2.13.2 does, such as SKOS _vocabularies_ & Profiles Vocabulary _profiles, it only handles OWL _ontologies_ nor all the special data types, such as JSON literals, BUT, it generates HTML in a much more straightforward manner and the code is both more efficient and much more maintainable, which is why it's been made. v 3.x will eventually catch up to all of v 2.13.2's features.
+**A note on the v 3.x change**
 
-    To access v 2.13.2 of pyLODE, either `download it from PyPI <https://pypi.org/project/pyLODE/2.13.2/>`_, `check it out from GitHub <https://github.com/RDFLib/pyLODE/releases/tag/2.13.2>`_ or access it via the `online service <http://pylode.surroundaustralia.com/>`_.
+*This is pyLODE version 3.0.1 and it's vastly different from pyLODE 2.x. It doesn't yet handle all the various "profiles" that pyLODE 2.13.2 does, such as SKOS 'vocabularies' & Profiles Vocabulary 'profiles', it only handles OWL 'ontologies', nor all the special data types, such as JSON literals, BUT, it generates HTML in a much more straightforward manner and the code is both more efficient and much more maintainable, which is why it's been made.*
 
+*v 3.x will eventually catch up to all of v 2.13.2's features.*
+
+*To access v 2.13.2 of pyLODE, either `download it from PyPI <https://pypi.org/project/pyLODE/2.13.2/>`_, `check it out from GitHub <https://github.com/RDFLib/pyLODE/releases/tag/2.13.2>`_ or access it via the `online service <http://pylode.surroundaustralia.com/>`_.*
+
+----
 
 Contents
 ========
@@ -227,7 +232,7 @@ and change/add development priorities.
 Current Release
 ---------------
 
-The current release, as of December, 2021, is **2.13.2**.
+The current release, as of January, 2022, is **3.0.1**.
 
 Release Schedule
 ----------------
@@ -236,7 +241,7 @@ Release Schedule
    :header: "Version", "Date", "Description"
    :widths: 15, 10, 30
 
-   **3.0.0**, **6 Jan 2022**, "Direct HTML generation using dominate; easier to maintain and extend"
+   **3.0.1**, **6 Jan 2022**, "**Direct HTML generation using dominate; easier to maintain and extend**"
    2.13.2, 21 December 2021, "Updated RDFlib to 6.1.1, improved test to properly use pytest"
    2.10.0, 24 May 2021, "Update Windows EXE build process, simplified versioning"
    2.9.1, 28 Apr 2021, "Support for ASCIIDOC format (OntDoc profile only)"

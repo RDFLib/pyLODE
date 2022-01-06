@@ -10,7 +10,10 @@ from pylode import OntDoc, PylodeError
 parser = argparse.ArgumentParser()
 
 parser.add_argument(
-    "-v", "--version", action="version", version="{version}".format(version=__version__)
+    "-v",
+    "--version",
+    action="version",
+    version="{version}".format(version=__version__)
 )
 
 parser.add_argument(
@@ -21,15 +24,17 @@ parser.add_argument(
 parser.add_argument(
     "-o",
     "--outputfile",
-    help="A name you wish to assign to the output file. Will be postfixed with .html if not already "
-    "added. If no output file is given, output will be printed to screen",
+    help="A name you wish to assign to the output file. Will be postfixed "
+         "with .html if not already added. If no output file is given, "
+         "output will be printed to screen",
     default=None,
 )
 
 parser.add_argument(
     "-c",
     "--css",
-    help="Whether (true) or not (false) to include CSS within an output HTML file.",
+    help="Whether (true) or not (false) to include CSS within an output "
+         "HTML file.",
     choices=["true", "false"],
     default="true",
 )

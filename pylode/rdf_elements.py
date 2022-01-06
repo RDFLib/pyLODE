@@ -1,12 +1,7 @@
 from rdflib import Namespace
 from rdflib.namespace import (
-    DC,
     DCTERMS,
-    FOAF,
-    ORG,
     OWL,
-    PROF,
-    PROV,
     RDF,
     RDFS,
     SDO,
@@ -62,7 +57,8 @@ CLASS_PROPS = [
     ONTDOC.superClassOf,
 ]
 
-# properties for instances of RDF Property and OWL specialised forms, such as ObjectProperty etc.
+# properties for instances of RDF Property and OWL specialised
+# forms, such as ObjectProperty etc.
 PROP_PROPS = [
     RDFS.isDefinedBy,
     DCTERMS.title,
@@ -106,7 +102,9 @@ RESTRICTION_PROPS = [
 ]
 
 # all known properties
-PROPS = set(ONT_PROPS + CLASS_PROPS + PROP_PROPS + AGENT_PROPS + RESTRICTION_PROPS)
+PROPS = set(
+    ONT_PROPS + CLASS_PROPS + PROP_PROPS +
+    AGENT_PROPS + RESTRICTION_PROPS)
 
 ONT_TYPES = {
     OWL.Class: ("c", "OWL/RDFS Class"),
@@ -131,7 +129,4 @@ RESTRICTION_TYPES = [
     OWL.hasValue,
 ]
 
-OWL_SET_TYPES = [
-    OWL.unionOf,
-    OWL.intersectionOf
-]
+OWL_SET_TYPES = [OWL.unionOf, OWL.intersectionOf]

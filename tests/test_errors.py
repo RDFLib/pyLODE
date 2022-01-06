@@ -4,8 +4,6 @@ from pathlib import Path
 sys.path.append(str(Path().absolute().parent.parent / "pylode"))
 
 from pylode.ontdoc import OntDoc, PylodeError
-from pylode.utils import *
-from rdflib.exceptions import ParserError
 
 import pytest
 

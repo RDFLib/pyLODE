@@ -5,9 +5,10 @@ sys.path.append(str(Path().absolute().parent.parent / "pylode"))
 
 from pylode.ontdoc import OntDoc
 from pylode.utils import *
+from pylode.rdf_elements import CLASS_PROPS
 
-from rdflib import URIRef, Literal
-from rdflib.namespace import DCTERMS, XSD
+from rdflib import Graph, URIRef, Literal
+from rdflib.namespace import DCTERMS, OWL, RDF, RDFS, XSD
 import pytest
 
 
@@ -98,9 +99,7 @@ def test_rdf_obj_html(fix_ont, fix_load_background_onts, fix_get_ns):
             datum[0],
             fids,
         )
-        actual = "".join(
-            [l.strip().replace("\n", "") for l in o.render(pretty=False).split("\n")]
-        )
+        actual = de_space_html(o.render(pretty=False))
         assert actual == datum[1], f"Object HTML '{actual}' != '{datum[1]}'"
 
 
@@ -108,19 +107,27 @@ def test_rdf_obj_html_bn(fix_load_background_onts):
     g = OntDoc("../examples/ontdoc/skos-thes.ttl").ont
     bn = None
     for x in g.objects(
-            URIRef("http://purl.org/iso25964/skos-thes#status"),
-            RDFS.domain
+        URIRef("http://purl.org/iso25964/skos-thes#status"), RDFS.domain
     ):
         bn = x
 
     o = rdf_obj_html(
         g,
         fix_load_background_onts,
-        {},
+        None,
         [bn],
         {},
     )
-    print(o)
+    expected = """<span>
+  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span> <span class="cardinality">or</span> <span>
+  <a href="http://www.w3.org/2008/05/skos-xl#Label">skosxl:Label</a>
+  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>"""
+    actual = o.render()
+
+    assert expected == actual
 
 
 def test_prop_obj_pair_html(fix_ont, fix_load_background_onts, fix_get_ns):
@@ -156,9 +163,8 @@ def test_prop_obj_pair_html(fix_ont, fix_load_background_onts, fix_get_ns):
         [obj],
     )
     expected = '<div><dt><a class="hover_property" href="http://purl.org/dc/terms/created" title="Information about rights held in and over the resource. Defined in DCMI Metadata Terms">Rights</a></dt><dd><p>2019-10-25</p></dd></div>'
-    actual = "".join(
-        [l.strip().replace("\n", "") for l in pp.render(pretty=False).split("\n")]
-    )
+    actual = de_space_html(pp.render(pretty=False))
+
     assert actual == expected, f"Object HTML '{actual}' != '{expected}'"
 
 
@@ -178,173 +184,8 @@ def test_section_html(fix_ont, fix_load_background_onts, fix_get_ns):
 
     props_labeled,
     """
-    expected = """<div class="section" id="classes">
-  <h2>Classes</h2>
-  <div class="property entity" id="ResourceDescriptor">
-    <h3>Resource Descriptor
-      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-    </h3>
-    <table>
-      <tr>
-        <th>IRI</th>
-        <td>
-          <code>http://www.w3.org/ns/dx/prof/ResourceDescriptor</code>
-        </td>
-      </tr>
-      <tr>
-        <th>
-          <a class="hover_property" href="http://purl.org/dc/terms/description" title="None. Defined in None">None</a>
-        </th>
-        <td><p>A description of a resource that defines an aspect - a particular part, feature or role - of a Profile</p></td>
-      </tr>
-      <tr>
-        <th>
-          <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="None. Defined in None">None</a>
-        </th>
-        <td>
-          <ul>
-            <li>
-              <span>
-                <a href="#hasArtifact">hasArtifact</a>
-                <sup class="sup-op" title="OWL Object Property">op</sup>
-              </span>
-            </li>
-            <li>
-              <span>
-                <a href="#isInheritedFrom">isInheritedFrom</a>
-                <sup class="sup-op" title="OWL Object Property">op</sup>
-              </span>
-            </li>
-            <li>
-              <span>
-                <a href="#hasRole">hasRole</a>
-                <sup class="sup-op" title="OWL Object Property">op</sup>
-              </span>
-            </li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <th>
-          <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="None. Defined in None">None</a>
-        </th>
-        <td>
-          <span>
-            <a href="#hasResource">hasResource</a>
-            <sup class="sup-op" title="OWL Object Property">op</sup>
-          </span>
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div class="property entity" id="ResourceRole">
-    <h3>Resource Role
-      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-    </h3>
-    <table>
-      <tr>
-        <th>IRI</th>
-        <td>
-          <code>http://www.w3.org/ns/dx/prof/ResourceRole</code>
-        </td>
-      </tr>
-      <tr>
-        <th>
-          <a class="hover_property" href="http://purl.org/dc/terms/description" title="None. Defined in None">None</a>
-        </th>
-        <td><p>A role that an profile resource, described by a Resource Descriptor, plays</p></td>
-      </tr>
-      <tr>
-        <th>
-          <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="None. Defined in None">None</a>
-        </th>
-        <td>
-          <span>
-            <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
-            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-          </span>
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div class="property entity" id="Profile">
-    <h3>Profile
-      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-    </h3>
-    <table>
-      <tr>
-        <th>IRI</th>
-        <td>
-          <code>http://www.w3.org/ns/dx/prof/Profile</code>
-        </td>
-      </tr>
-      <tr>
-        <th>
-          <a class="hover_property" href="http://purl.org/dc/terms/description" title="None. Defined in None">None</a>
-        </th>
-        <td><p>A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications.</p>
-<p>This definition includes what are often called "application profiles", "metadata application profiles", or "metadata profiles".</p></td>
-      </tr>
-      <tr>
-        <th>
-          <a class="hover_property" href="http://purl.org/dc/terms/source" title="None. Defined in None">None</a>
-        </th>
-        <td>
-          <a href="https://www.w3.org/2017/dxwg/wiki/ProfileContext">ns4:ProfileContext</a>
-        </td>
-      </tr>
-      <tr>
-        <th>
-          <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="None. Defined in None">None</a>
-        </th>
-        <td>
-          <a href="http://purl.org/dc/terms/Standard">dct:Standard</a>
-        </td>
-      </tr>
-      <tr>
-        <th>
-          <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="None. Defined in None">None</a>
-        </th>
-        <td>
-          <ul>
-            <li>
-              <span>
-                <a href="#isProfileOf">isProfileOf</a>
-                <sup class="sup-op" title="OWL Object Property">op</sup>
-              </span>
-            </li>
-            <li>
-              <span>
-                <a href="#isTransitiveProfileOf">isTransitiveProfileOf</a>
-                <sup class="sup-op" title="OWL Object Property">op</sup>
-              </span>
-            </li>
-            <li>
-              <span>
-                <a href="#hasToken">hasToken</a>
-                <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
-              </span>
-            </li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <th>
-          <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="None. Defined in None">None</a>
-        </th>
-        <td>
-          <span>
-            <a href="#isInheritedFrom">isInheritedFrom</a>
-            <sup class="sup-op" title="OWL Object Property">op</sup>
-          </span>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>"""
-    expected_oneline = "".join(
-        [l.strip().replace("\n", "") for l in expected.split("\n")]
-    )
+    expected = """<div class="section" id="classes"><h2>Classes</h2><div class="property entity" id="ResourceDescriptor"><h3>Resource Descriptor<sup class="sup-c" title="OWL/RDFS Class">c</sup></h3><table><tr><th>IRI</th><td><code>http://www.w3.org/ns/dx/prof/ResourceDescriptor</code></td></tr><tr><th><a class="hover_property" href="http://purl.org/dc/terms/description" title="None. Defined in None">None</a></th><td><p>A description of a resource that defines an aspect - a particular part, feature or role - of a Profile</p></td></tr><tr><th><a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="None. Defined in None">None</a></th><td><ul><li><span><a href="#hasArtifact">hasArtifact</a><sup class="sup-op" title="OWL Object Property">op</sup></span></li><li><span><a href="#isInheritedFrom">isInheritedFrom</a><sup class="sup-op" title="OWL Object Property">op</sup></span></li><li><span><a href="#hasRole">hasRole</a><sup class="sup-op" title="OWL Object Property">op</sup></span></li></ul></td></tr><tr><th><a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="None. Defined in None">None</a></th><td><span><a href="#hasResource">hasResource</a><sup class="sup-op" title="OWL Object Property">op</sup></span></td></tr></table></div><div class="property entity" id="ResourceRole"><h3>Resource Role<sup class="sup-c" title="OWL/RDFS Class">c</sup></h3><table><tr><th>IRI</th><td><code>http://www.w3.org/ns/dx/prof/ResourceRole</code></td></tr><tr><th><a class="hover_property" href="http://purl.org/dc/terms/description" title="None. Defined in None">None</a></th><td><p>A role that an profile resource, described by a Resource Descriptor, plays</p></td></tr><tr><th><a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="None. Defined in None">None</a></th><td><span><a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="OWL/RDFS Class">c</sup></span></td></tr></table></div><div class="property entity" id="Profile"><h3>Profile<sup class="sup-c" title="OWL/RDFS Class">c</sup></h3><table><tr><th>IRI</th><td><code>http://www.w3.org/ns/dx/prof/Profile</code></td></tr><tr><th><a class="hover_property" href="http://purl.org/dc/terms/description" title="None. Defined in None">None</a></th><td><p>A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications.</p><p>This definition includes what are often called "application profiles", "metadata application profiles", or "metadata profiles".</p></td></tr><tr><th><a class="hover_property" href="http://purl.org/dc/terms/source" title="None. Defined in None">None</a></th><td><a href="https://www.w3.org/2017/dxwg/wiki/ProfileContext">ns4:ProfileContext</a></td></tr><tr><th><a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="None. Defined in None">None</a></th><td><a href="http://purl.org/dc/terms/Standard">dct:Standard</a></td></tr><tr><th><a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="None. Defined in None">None</a></th><td><ul><li><span><a href="#isProfileOf">isProfileOf</a><sup class="sup-op" title="OWL Object Property">op</sup></span></li><li><span><a href="#isTransitiveProfileOf">isTransitiveProfileOf</a><sup class="sup-op" title="OWL Object Property">op</sup></span></li><li><span><a href="#hasToken">hasToken</a><sup class="sup-dp" title="OWL Datatype Property">dp</sup></span></li></ul></td></tr><tr><th><a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="None. Defined in None">None</a></th><td><span><a href="#isInheritedFrom">isInheritedFrom</a><sup class="sup-op" title="OWL Object Property">op</sup></span></td></tr></table></div></div>"""
+
     s = section_html(
         "Classes",
         fix_ont,
@@ -357,39 +198,7 @@ def test_section_html(fix_ont, fix_load_background_onts, fix_get_ns):
         {},
         {},
     )
-    actual_oneline = "".join(
-        [l.strip().replace("\n", "") for l in s.render(pretty=False).split("\n")]
-    )
-
-    assert actual_oneline == expected_oneline
-
-
-def test_restriction_html_t(fix_ont, fix_load_background_onts, fix_get_ns):
-    # ont: Graph,
-    # back_onts: Graph,
-    # ns: Tuple[str, str],
-    # fids,
-    # obj: BNode
-    ttl = """
-        @prefix owl: <http://www.w3.org/2002/07/owl#> .
-        @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-        @prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
-
-        [
-            a owl:Class ;
-            owl:unionOf (
-                skos:Concept
-                skosxl:Label
-            )
-        ] .
-        """
-    g = Graph().parse(data=ttl, format="turtle")
-    bn = None
-    for s in g.subjects(RDF.type, OWL.Class):
-        bn = s
-    restriction_html_t(fix_ont, fix_load_background_onts, fix_get_ns, {}, bn)
-
-
-if __name__ == "__main__":
-
-    test_rdf_obj_html_bn(load_background_onts())
+    actual = de_space_html(s.render(pretty=False))
+    open("expected.html", "w").write(expected)
+    open("actual.html", "w").write(actual)
+    assert actual == expected

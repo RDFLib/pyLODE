@@ -1,21 +1,27 @@
 1. Update all examples - run examples/regenerate_all.py
 
-2. Update README
+2. Update version in version.py
+
+3. Update README
    esp Releases Roadmap - 3 places: "Current Release", "Release Schedule" table & release notes
 
-3. $ git commit changes
+4. $ git commit changes
 
-4. $ git tag <VERSION_NO>
+5. $ git tag <VERSION_NO>
 
-5. $ pyinstaller
+6. $ pyinstaller
    $ cd bin
    $ pyinstaller pyLODE-cli.spec
    $ cp dist/pyLODE .
 
-6. $ git push
+7. $ git push
    $ git push --tags
 
-7. $ python setup.py sdist bdist_wheel
+8. Rebuild dists
+   $ rm -r build dist pyLODE.egg.info
+   $ python setup.py sdist bdist_wheel
 
-8. $ twine check dist/*  -- check ReStructuredText
+9. $ twine check dist/*  -- check ReStructuredText
    $ twine upload dist/*  -- push up
+
+10. Update version in version.py to alpha

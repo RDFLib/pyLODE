@@ -1,8 +1,6 @@
 import sys
 from pathlib import Path
-
 sys.path.append(str(Path().absolute().parent.parent / "pylode"))
-
 from pylode.ontdoc import OntDoc
 from pylode import __version__
 from rdflib import Graph
@@ -11,7 +9,8 @@ import re
 from pylode.utils import de_space_html
 
 
-# scope="session" so that this is reused without regeneration in this testing session
+# scope="session" so that this is reused
+# without regeneration in this testing session
 @pytest.fixture(scope="session")
 def fix_html():
     od = OntDoc("prof.ttl")
@@ -25,9 +24,6 @@ def test_sdo(fix_html):
               "@id": "http://www.w3.org/ns/dx/prof",
               "@type": "https://schema.org/DefinedTermSet",
               "https://schema.org/contributor": [
-                {
-                  "@id": "http://orcid.org/0000-0002-8742-7730"
-                },
                 "Antoine Isaac",
                 "Simon Cox",
                 "Alejandra Gonzalez-Beltran",
@@ -90,7 +86,9 @@ def test_sdo(fix_html):
           ]
         }"""
     g_expected = Graph().parse(data=sdo_expected, format="json-ld")
-    sdo_actual = re.findall(r'<script([^>]*)>([^<]*)<\/script>', de_space_html(fix_html))[0][1]
+    sdo_actual = re.findall(
+        r"<script([^>]*)>([^<]*)<\/script>", de_space_html(fix_html)
+    )[0][1]
     g_actual = Graph().parse(data=sdo_actual, format="json-ld")
 
     assert g_actual.isomorphic(g_expected)
@@ -114,9 +112,7 @@ def test_logo(fix_html):
 
 
 def test_metadata(fix_html):
-    html = fix_html
-    assert (
-        """<div class="section" id="metadata">
+    expected = """<div class="section" id="metadata">
         <h1>Profiles Vocabulary</h1>
         <h2>Metadata</h2>
         <dl>
@@ -213,21 +209,10 @@ def test_metadata(fix_html):
             </dt>
             <dd>
               <ul>
-                <li>
-                  <span></span>
-                </li>
-                <li>
-                  <span>Antoine Isaac</span>
-                </li>
-                <li>
-                  <span>Simon Cox</span>
-                </li>
-                <li>
-                  <span>Alejandra Gonzalez-Beltran</span>
-                </li>
-                <li>
-                  <span>Makx Dekkers</span>
-                </li>
+                <li><p>Antoine Isaac</p></li>
+                <li><p>Simon Cox</p></li>
+                <li><p>Alejandra Gonzalez-Beltran</p></li>
+                <li><p>Makx Dekkers</p></li>
               </ul>
             </dd>
           </div>
@@ -266,12 +251,15 @@ def test_metadata(fix_html):
           </div>
         </dl>
       </div>"""
-        in html
+    open("expected.html", "w").write(expected)
+    open("actual.html", "w").write(fix_html)
+    assert (
+        expected
+        in fix_html
     ), "Metadata section not generated correctly"
 
 
 def test_classes(fix_html):
-    html = fix_html
     assert (
         """<div class="section" id="classes">
         <h2>Classes</h2>
@@ -437,12 +425,11 @@ def test_classes(fix_html):
           </table>
         </div>
       </div>"""
-        in html
+        in fix_html
     ), "Classes section not generated correctly"
 
 
 def test_properties(fix_html):
-    html = fix_html
     assert (
         """<div class="section" id="objectproperties">
         <h2>Object Properties</h2>
@@ -813,14 +800,12 @@ def test_properties(fix_html):
           </table>
         </div>
       </div>"""
-        in html
+        in fix_html
     ), "Properties section not generated correctly"
 
 
 def test_namespaces(fix_html):
-    html = fix_html
-    assert (
-        """<div id="namespaces">
+    expected = """<div id="namespaces">
         <h2>Namespaces</h2>
         <dl>
           <dt id=":">:</dt>
@@ -885,12 +870,13 @@ def test_namespaces(fix_html):
           </dd>
         </dl>
       </div>"""
-        in html
+    assert (
+        expected
+        in fix_html
     ), "Namespaces section not generated correctly"
 
 
 def test_legend(fix_html):
-    html = fix_html
     assert (
         """      <div id="legend">
         <h2>Legend</h2>
@@ -921,14 +907,12 @@ def test_legend(fix_html):
           </tr>
         </table>
       </div>"""
-        in html
+        in fix_html
     ), "Legend section not generated correctly"
 
 
 def test_toc(fix_html):
-    html = fix_html
-    assert (
-        """<div id="toc">
+    expected = """<div id="toc">
       <h3>Table of Contents</h3>
       <ul class="first">
         <li>
@@ -1060,11 +1044,7 @@ def test_toc(fix_html):
         </li>
       </ul>
     </div>"""
-        in html
+    assert (
+        expected
+        in fix_html
     ), "ToC logo not generated correctly"
-
-
-if __name__ == "__main__":
-    od = OntDoc("prof.ttl")
-
-    test_sdo(od.make_html())

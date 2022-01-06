@@ -12,7 +12,6 @@
 <http://www.w3.org/ns/dx/prof> rdf:type owl:Ontology ;
                                 owl:versionIRI <http://www.w3.org/ns/dx/prof/1.0> ;
                                 rdfs:label "Profiles Vocabulary" ;
-                                dct:contributor <http://orcid.org/0000-0002-8742-7730> ;
                                 dct:creator [
                                     sdo:name "Nicholas J. Car" ;
                                     sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
