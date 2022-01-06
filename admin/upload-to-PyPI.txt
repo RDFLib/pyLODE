@@ -23,7 +23,7 @@
    $ git push --tags
 
 8. Rebuild dists
-   $ rm -r build dist pyLODE.egg.info
+   $ rm -r build dist pyLODE.egg-info
    $ python setup.py sdist bdist_wheel
 
 9. $ twine check dist/*  -- check ReStructuredText
