@@ -1,1 +1,0 @@
-[[{{ orcid_id }}]({{ orcid_url }})]
