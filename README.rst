@@ -55,10 +55,12 @@ Use
 
 The tool can be used in multiple ways:
 
-- BASH command line
-    - pylode.sh, pylode.bat in bin/
+- BASH command line script
+    - pyLODE.sh in bin/
 - Windows EXE
-    - pylode.exe in bin/
+    - pyLODE.exe in bin/
+- Mac executable
+    - pyLODE in bin/
 - Python Script
     - cli.py or module
 - as-a-service locally
