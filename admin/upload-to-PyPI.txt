@@ -7,9 +7,7 @@
 
 4. $ git commit changes
 
-5. $ git tag <VERSION_NO>
-
-6. pyinstaller
+5. pyinstaller
    $ cd bin
    $ pyinstaller pyLODE-cli.spec
    $ cp dist/pyLODE .
@@ -18,6 +16,8 @@
    $ copy dist/pyLODE.exe .
    $ git commit -am "updated Windows EXE"
    $ git push
+
+6. $ git tag <VERSION_NO>
 
 7. $ git push
    $ git push --tags
