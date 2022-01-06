@@ -15,11 +15,11 @@ in sections below, e.g. `What pyLODE understands`_.
 
 **A note on the v 3.x change**
 
-*This is pyLODE version 3.0.1 and it's vastly different from pyLODE 2.x. It doesn't yet handle all the various "profiles" that pyLODE 2.13.2 does, such as SKOS 'vocabularies' & Profiles Vocabulary 'profiles', it only handles OWL 'ontologies', nor all the special data types, such as JSON literals, BUT, it generates HTML in a much more straightforward manner and the code is both more efficient and much more maintainable, which is why it's been made.*
+This is pyLODE version 3.0.1 and it's vastly different from pyLODE 2.x. It doesn't yet handle all the various "profiles" that pyLODE 2.13.2 does, such as SKOS 'vocabularies' & Profiles Vocabulary 'profiles', it only handles OWL 'ontologies', nor all the special data types, such as JSON literals, BUT, it generates HTML in a much more straightforward manner and the code is both more efficient and much more maintainable, which is why it's been made.
 
-*v 3.x will eventually catch up to all of v 2.13.2's features.*
+v 3.x will eventually catch up to all of v 2.13.2's features.
 
-*To access v 2.13.2 of pyLODE, either `download it from PyPI <https://pypi.org/project/pyLODE/2.13.2/>`_, `check it out from GitHub <https://github.com/RDFLib/pyLODE/releases/tag/2.13.2>`_ or access it via the `online service <http://pylode.surroundaustralia.com/>`_.*
+To access v 2.13.2 of pyLODE, either `download it from PyPI <https://pypi.org/project/pyLODE/2.13.2/>`_ , `check it out from GitHub <https://github.com/RDFLib/pyLODE/releases/tag/2.13.2>`_ or access it via the `online service <http://pylode.surroundaustralia.com/>`_ .
 
 ----
 
@@ -123,10 +123,10 @@ version of pyLODE.
 
 You can also see rendered versions of these example files online too:
 
-* `minimal.html <http://rdflib.dev/pyLODE/examples/ontdoc/minimal.html>`_
-* `agift.html <http://rdflib.dev/pyLODE/examples/ontdoc/agift.html>`_
-* `alternates.html <http://rdflib.dev/pyLODE/examples/ontdoc/alternates.html>`_
-* `asgs.html <http://rdflib.dev/pyLODE/examples/ontdoc/asgs.html>`_
+* `minimal.html <https://rdflib.dev/pyLODE/examples/ontdoc/minimal.html>`_
+* `agift.html <https://rdflib.dev/pyLODE/examples/ontdoc/agrif.html>`_
+* `alternates.html <https://rdflib.dev/pyLODE/examples/ontdoc/alternates.html>`_
+* `asgs.html <https://rdflib.dev/pyLODE/examples/ontdoc/asgs.html>`_
 
 
 What pyLODE understands
