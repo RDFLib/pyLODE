@@ -66,14 +66,16 @@ except:
         prop_obj_pair_html,
         section_html,
     )
+
 try:
     from .rdf_elements import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
 except:
     from rdf_elements import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
 
-for l_ in open(Path(__file__).absolute().parent / "__init__.py").readlines():
-    if l_.startswith("__version__"):
-        __version__ = l_.replace('__version__ = "', "").replace('"', "")
+try:
+    from .version import __version__
+except:
+    from version import __version__
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
 

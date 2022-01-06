@@ -13,7 +13,7 @@ in sections below, e.g. `What pyLODE understands`_.
 
 .. note::
 
-    This is pyLODE version 3.0.0 and it's vastly different from pyLODE < 3.0.0. It doesn't yet handle all the various "profiles" that pyLODE 2.13.2 does, such as SKOS _vocabularies_ & Profiles Vocabulary _profiles, it only handles OWL _ontologies_ nor all the special data types, such as JSON literals, BUT, it generated HTML in a much more organised manner and the code is both more efficient and much more maintainable, which is why it's been made. v 3.1.0 and so on will catch up to all of v 2.13.2's features.
+    This is pyLODE version 3.0.0 and it's vastly different from pyLODE < 3.0.0. It doesn't yet handle all the various "profiles" that pyLODE 2.13.2 does, such as SKOS _vocabularies_ & Profiles Vocabulary _profiles, it only handles OWL _ontologies_ nor all the special data types, such as JSON literals, BUT, it generates HTML in a much more straightforward manner and the code is both more efficient and much more maintainable, which is why it's been made. v 3.x will eventually catch up to all of v 2.13.2's features.
 
     To access v 2.13.2 of pyLODE, either `download it from PyPI <https://pypi.org/project/pyLODE/2.13.2/>`_, `check it out from GitHub <https://github.com/RDFLib/pyLODE/releases/tag/2.13.2>`_ or access it via the `online service <http://pylode.surroundaustralia.com/>`_.
 
@@ -116,10 +116,10 @@ version of pyLODE.
 
 You can also see rendered versions of these example files online too:
 
-* `minimal.html` <http://rdflib.dev/pyLODE/examples/ontdoc/minimal.html>
-* `agift.html` <http://rdflib.dev/pyLODE/examples/ontdoc/agift.html>
-* `alternates.html` <http://rdflib.dev/pyLODE/examples/ontdoc/alternates.html>
-* `asgs.html` <http://rdflib.dev/pyLODE/examples/ontdoc/asgs.html>
+* `minimal.html <http://rdflib.dev/pyLODE/examples/ontdoc/minimal.html>`_
+* `agift.html <http://rdflib.dev/pyLODE/examples/ontdoc/agift.html>`_
+* `alternates.html <http://rdflib.dev/pyLODE/examples/ontdoc/alternates.html>`_
+* `asgs.html <http://rdflib.dev/pyLODE/examples/ontdoc/asgs.html>`_
 
 
 What pyLODE understands
@@ -185,7 +185,7 @@ Differences from LODE
 
 -  use of modern simple HTML
 
-    - no JavaScript: pyLODE generates static HTML pages
+   - no JavaScript: pyLODE generates static HTML pages
 
 -  catering for a wider range of ontology options such as:
 
@@ -201,6 +201,10 @@ Differences from LODE
       CURIES
    -  it tries to be smart with CURIE presentation by CURIE-ising all
       URIs it finds, rather than printing them
+
+-  reference ontologies property labels
+
+   - pyLODE caches ~ 10 well-known ontologies (RDFS, SKOS etc), properties from which people often use for their ontology documentation. Where these properties are used, the background ontology's labels are use
 
 -  **active development**
 
@@ -230,7 +234,7 @@ Release Schedule
    :header: "Version", "Date", "Description"
    :widths: 15, 10, 30
 
-   **3.0.0**, **5 Jan 2022**, "Direct HTML generation using dominate; easier to maintain and extend"
+   **3.0.0**, **6 Jan 2022**, "Direct HTML generation using dominate; easier to maintain and extend"
    2.13.2, 21 December 2021, "Updated RDFlib to 6.1.1, improved test to properly use pytest"
    2.10.0, 24 May 2021, "Update Windows EXE build process, simplified versioning"
    2.9.1, 28 Apr 2021, "Support for ASCIIDOC format (OntDoc profile only)"
