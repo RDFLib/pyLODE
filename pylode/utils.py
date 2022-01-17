@@ -264,7 +264,7 @@ def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
                     input_format = "turtle"  # this will also cover n-triples
                 return Graph().parse(data=ontology, format=input_format)
         elif isinstance(ontology, Graph):
-            return cast(ontology, Graph)
+            return cast(Graph, ontology)
         elif isinstance(ontology, Path):
             return Graph().parse(ontology)
         else:
