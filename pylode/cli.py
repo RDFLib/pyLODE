@@ -160,7 +160,7 @@ def main(args=None):
 
         # args are present so getting RDF from input file or uri into an rdflib Graph
         if args.inputfile:
-            logger.log(logging.DEBUG, f"args.inputfile: {args.inputfile.name}")
+            logger.log(logging.DEBUG, f"args.inputfile: {args.inputfile}")
             h = MakeDocco(
                 input_data_file=args.inputfile,
                 outputformat=args.outputformat,
@@ -171,7 +171,7 @@ def main(args=None):
                 get_curies_online=get_curies_online,
             )
         elif args.url:
-            logger.log(logging.DEBUG, f"args.url: {args.url.name}")
+            logger.log(logging.DEBUG, f"args.url: {args.url}")
             h = MakeDocco(
                 input_uri=args.url,
                 outputformat=args.outputformat,
