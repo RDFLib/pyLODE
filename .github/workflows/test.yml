@@ -1,0 +1,48 @@
+# This workflow template runs:
+#   - a tox container with tests
+#   - a service container (eg. a database) to be used by tox tests.
+
+name: Test
+
+on:
+  push:
+    branches: [ 2.x ]
+  pull_request:
+    branches: [ 2.x ]
+
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  test-tox-job:
+    runs-on: ubuntu-latest
+    container: python:3.9-slim
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      #  IMPORTANT!! By default `actions/checkout` just checkouts HEAD, so if you want
+      #              to checkout tags and branches too (eg. to auto-version your deployments)
+      #              you need to pass the `fetch-depth: 0` option. eg
+      #
+      #              uses: actions/checkout@v2
+      #              with:
+      #                fetch-depth: 0
+      - uses: actions/checkout@v2
+
+      - name: Run tests.
+        run: |
+          pip3 install tox
+          tox
+  test-pre-commit:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    container: python:3.9
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run commit hooks.
+        run: |
+          pip3 --no-cache-dir install pre-commit
+          git --version
+          pre-commit run -a
