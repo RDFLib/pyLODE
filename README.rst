@@ -133,7 +133,7 @@ What pyLODE understands
 =======================
 
 pyLODE knows about definitional ontologies (``owl:Ontology``) and the major
-elements usually fount in them, such as classes (``owl:Class`` or ``rdf:Class)
+elements usually found in them, such as classes (``owl:Class`` or ``rdf:Class)
 and properties (``rdf:Property`` & ``owl:ObjectProperty`` etc.).
 
 To see what properties for ontology, class and RDF property documentation
@@ -142,7 +142,7 @@ elements' properties supported are given in property lists there.
 
 pyLODES won't just translate everything that you can describe in RDF into
 HTML! This is a conscious design choice to ensure that a certain conventional
-style of documented ontology is produced. However, surrport for new
+style of documented ontology is produced. However, support for new
 properties and ontology patterns can be made - just create an Issue on
 `this project's Issue tracker <https://github.com/RDFLib/pyLODE/issues>`__.
 
