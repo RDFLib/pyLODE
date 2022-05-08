@@ -131,7 +131,7 @@
             background-position: top left;
             background-attachment: fixed;
             background-repeat: no-repeat;
-            text-align: justify;
+            text-align: left;
         }
 
         section {
@@ -251,3 +251,14 @@
 .setclass {
     list-style-type: none;
 }
+
+code{
+    word-wrap: break-word;
+  }
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
+  td {
+    word-wrap: break-word;
+  }
