@@ -136,7 +136,7 @@
             background-position: top left;
             background-attachment: fixed;
             background-repeat: no-repeat;
-            text-align: justify;
+            text-align: left;
         }
 
         section {
@@ -256,43 +256,23 @@
 .setclass {
     list-style-type: none;
 }
+
+code{
+    word-wrap: break-word;
+  }
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
+  td {
+    word-wrap: break-word;
+  }
 	</style>
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png">
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png">
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <script id="schema.org" type="application/ld+json">
 [
-  {
-    "@id": "https://orcid.org/0000-0002-4305-6085",
-    "https://schema.org/affiliation": [
-      {
-        "@id": "http://linked.data.gov.au/org/abs"
-      }
-    ],
-    "https://schema.org/identifier": [
-      {
-        "@id": "https://orcid.org/0000-0002-4305-6085"
-      }
-    ],
-    "https://schema.org/name": [
-      {
-        "@value": "Laurent Lefort"
-      }
-    ]
-  },
-  {
-    "@id": "http://linked.data.gov.au/org/abs",
-    "https://schema.org/name": [
-      {
-        "@value": "Australian Bureau of Statistics"
-      }
-    ],
-    "https://schema.org/url": [
-      {
-        "@id": "https://www.abs.gov.au"
-      }
-    ]
-  },
   {
     "@id": "http://linked.data.gov.au/def/asgs",
     "@type": [
@@ -329,7 +309,7 @@
     "https://schema.org/description": [
       {
         "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML",
-        "@value": "<p><a href='https://www.abs.gov.au/websitedbs/D3310114.nsf/home/Australian+Statistical+Geography+Standard+(ASGS)'>Australian Statistical Geography Standard (ASGS)</a> ABS Structures and non-ABS structures</p>\n<p>Ontology for the Australian Statistical Geography Standard (ASGS), a framework of statistical areas used by the Australian Bureau of Statistics (ABS) and other organisations to enable the publication of statistics that are comparable and spatially integrated. This ontology contains the definitions for the ABS Structures which are areas that the ABS designs specifically for outputting statistics.</p>\n<ul>\n  <li>structures: Mesh Block, Statistical Areas (Level 1 to Level 4), Greater Capital City Statistical Areas, State or Territory, Country classes,</li>\n  <li>Indigenous structures: Indigenous location, Indigenous area, , Indigenous region classes</li>\n  <li>Urban structures: Urban Centre and Locality, Section of State Range, Section of State, and Significant Urban Area classes</li>\n</ul>\n<p>and for the Non ABS Structures which are not defined or maintained by the ABS but represent administrative areas for which the ABS is committed to providing a range of statistics. The classes defined here corresponds to ABS approximations of spatial areas or regions which are defined elsewhere</p>\n<ul>\n  <li>Local Government Areas (LGAs)</li>\n  <li>Postal Areas (POAs)</li>\n  <li>State Suburbs (SSCs)</li>\n  <li>Commonwealth Electoral Divisions (CEDs)</li>\n  <li>State Electoral Divisions (SEDs)</li>\n  <li>Australian Drainage Divisions (ADDs)</li>\n  <li>Natural Resource Management Regions (NRMRs)</li>\n  <li>Tourism Regions (TRs)</li>\n</ul>\n<p>The ASGS uses Mesh Blocks as a common building block for all structures. Mesh Blocks are small enough that they can accurately approximate the changing administrative areas maintained by other organisations, without changing themselves.</p>\n<p>The publication of the ASGS ontology is part of the Australian Bureau of Statistics contribution to a joint effort to publish authoritative, interconnected spatial products (Location Index project).</p>\n<p>The ASGS Ontology is packaged in multiple graphs:</p>\n<ul>\n\t<li>http://linked.data.gov.au/def/asgs (this graph) contains the core classes for ASGS statistical units, and a small number of properties relating to their identity, classification, and containment hierarchy</li>\n  <li>http://linked.data.gov.au/def/asgs-cat contains the meshblock classification scheme</li>\n  <li>http://linked.data.gov.au/def/asgs-id contains specialised string types for identifiers and labels</li>\n  <li>http://linked.data.gov.au/def/asgs-path contains association classes and properties relating to paths between instances of the core classes</li>\n  <li>http://linked.data.gov.au/def/asgs-isof (deprecated) contains specialized predicates for containment relationships - this functionality is provided by the generic 'within' and 'contains' relations</li>\n  <li>http://linked.data.gov.au/def/asgs-code (deprecated) contains specialised annotation properties for identifiers and labels - this functionality has been superseded by a set of data-types to be used in conjunction with more generic properties</li>\n  <li>http://linked.data.gov.au/def/asgs-prop (deprecated) contains specialised ASGS properties for relationships, classifiers, identifiers and labels - this functionality has been superseded by use of types from standardized RDF vocabularies</li>\n</u>"
+        "@value": "<p><a href='https://www.abs.gov.au/websitedbs/D3310114.nsf/home/Australian+Statistical+Geography+Standard+(ASGS)'>Australian Statistical Geography Standard (ASGS)</a> ABS Structures and non-ABS structures</p>\r\n<p>Ontology for the Australian Statistical Geography Standard (ASGS), a framework of statistical areas used by the Australian Bureau of Statistics (ABS) and other organisations to enable the publication of statistics that are comparable and spatially integrated. This ontology contains the definitions for the ABS Structures which are areas that the ABS designs specifically for outputting statistics.</p>\r\n<ul>\r\n  <li>structures: Mesh Block, Statistical Areas (Level 1 to Level 4), Greater Capital City Statistical Areas, State or Territory, Country classes,</li>\r\n  <li>Indigenous structures: Indigenous location, Indigenous area, , Indigenous region classes</li>\r\n  <li>Urban structures: Urban Centre and Locality, Section of State Range, Section of State, and Significant Urban Area classes</li>\r\n</ul>\r\n<p>and for the Non ABS Structures which are not defined or maintained by the ABS but represent administrative areas for which the ABS is committed to providing a range of statistics. The classes defined here corresponds to ABS approximations of spatial areas or regions which are defined elsewhere</p>\r\n<ul>\r\n  <li>Local Government Areas (LGAs)</li>\r\n  <li>Postal Areas (POAs)</li>\r\n  <li>State Suburbs (SSCs)</li>\r\n  <li>Commonwealth Electoral Divisions (CEDs)</li>\r\n  <li>State Electoral Divisions (SEDs)</li>\r\n  <li>Australian Drainage Divisions (ADDs)</li>\r\n  <li>Natural Resource Management Regions (NRMRs)</li>\r\n  <li>Tourism Regions (TRs)</li>\r\n</ul>\r\n<p>The ASGS uses Mesh Blocks as a common building block for all structures. Mesh Blocks are small enough that they can accurately approximate the changing administrative areas maintained by other organisations, without changing themselves.</p>\r\n<p>The publication of the ASGS ontology is part of the Australian Bureau of Statistics contribution to a joint effort to publish authoritative, interconnected spatial products (Location Index project).</p>\r\n<p>The ASGS Ontology is packaged in multiple graphs:</p>\r\n<ul>\r\n\t<li>http://linked.data.gov.au/def/asgs (this graph) contains the core classes for ASGS statistical units, and a small number of properties relating to their identity, classification, and containment hierarchy</li>\r\n  <li>http://linked.data.gov.au/def/asgs-cat contains the meshblock classification scheme</li>\r\n  <li>http://linked.data.gov.au/def/asgs-id contains specialised string types for identifiers and labels</li>\r\n  <li>http://linked.data.gov.au/def/asgs-path contains association classes and properties relating to paths between instances of the core classes</li>\r\n  <li>http://linked.data.gov.au/def/asgs-isof (deprecated) contains specialized predicates for containment relationships - this functionality is provided by the generic 'within' and 'contains' relations</li>\r\n  <li>http://linked.data.gov.au/def/asgs-code (deprecated) contains specialised annotation properties for identifiers and labels - this functionality has been superseded by a set of data-types to be used in conjunction with more generic properties</li>\r\n  <li>http://linked.data.gov.au/def/asgs-prop (deprecated) contains specialised ASGS properties for relationships, classifiers, identifiers and labels - this functionality has been superseded by use of types from standardized RDF vocabularies</li>\r\n</u>"
       }
     ],
     "https://schema.org/name": [
@@ -340,6 +320,24 @@
     "https://schema.org/publisher": [
       {
         "@id": "http://linked.data.gov.au/org/abs"
+      }
+    ]
+  },
+  {
+    "@id": "https://orcid.org/0000-0002-8742-7730",
+    "https://schema.org/affiliation": [
+      {
+        "@id": "https://surroundaustralia.com"
+      }
+    ],
+    "https://schema.org/email": [
+      {
+        "@id": "mailto:nicholas.car@surroundaustralia.com"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Nicholas J. Car"
       }
     ]
   },
@@ -362,20 +360,33 @@
     ]
   },
   {
-    "@id": "https://orcid.org/0000-0002-8742-7730",
-    "https://schema.org/affiliation": [
+    "@id": "http://linked.data.gov.au/org/abs",
+    "https://schema.org/name": [
       {
-        "@id": "https://surroundaustralia.com"
+        "@value": "Australian Bureau of Statistics"
       }
     ],
-    "https://schema.org/email": [
+    "https://schema.org/url": [
       {
-        "@id": "mailto:nicholas.car@surroundaustralia.com"
+        "@id": "https://www.abs.gov.au"
+      }
+    ]
+  },
+  {
+    "@id": "https://orcid.org/0000-0002-4305-6085",
+    "https://schema.org/affiliation": [
+      {
+        "@id": "http://linked.data.gov.au/org/abs"
+      }
+    ],
+    "https://schema.org/identifier": [
+      {
+        "@id": "https://orcid.org/0000-0002-4305-6085"
       }
     ],
     "https://schema.org/name": [
       {
-        "@value": "Nicholas J. Car"
+        "@value": "Laurent Lefort"
       }
     ]
   }
@@ -2524,7 +2535,7 @@
           <span id="y">y</span>
           <span>LODE</span>
         </a>
-        <a href="https://github.com/rdflib/pyLODE/release/3.0.1" id="version">3.0.1</a>
+        <a href="https://github.com/rdflib/pyLODE/release/3.0.2a" id="version">3.0.2a</a>
       </p>
     </div>
     <div id="toc">
