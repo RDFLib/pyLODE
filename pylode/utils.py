@@ -25,6 +25,7 @@ from dominate.tags import (
     dt,
     dd,
     h2,
+    pre,
 )
 from dominate.util import raw
 from rdflib import BNode, Literal, Graph, URIRef
@@ -373,6 +374,7 @@ def rdf_obj_html(
         obj: List[Union[URIRef, BNode, Literal]],
         fids,
         rdf_type=None,
+        prop=None
 ):
     """Makes a sensible HTML rendering of an RDF resource.
 
@@ -385,6 +387,7 @@ def rdf_obj_html(
             obj_: Union[URIRef, BNode, Literal],
             fids_,
             rdf_type_=None,
+            prop=None
     ):
         def _hyperlink_html(
                 ont__: Graph,
@@ -459,7 +462,10 @@ def rdf_obj_html(
                     ont_, back_onts_, ns_, cast(URIRef, obj__), fids_
                 )
             else:
-                return raw(markdown.markdown(str(obj__)))
+                if prop == SKOS.example:
+                    return pre(str(obj__))
+                else:
+                    return raw(markdown.markdown(str(obj__)))
 
         def _agent_html(ont__, obj__: Union[URIRef, BNode, Literal]):
             def _affiliation_html(ont___, obj___):
@@ -684,7 +690,7 @@ def rdf_obj_html(
 
     if len(obj) == 1:
         return _rdf_obj_single_html(
-            ont, back_onts, ns, obj[0], fids, rdf_type_=rdf_type
+            ont, back_onts, ns, obj[0], fids, rdf_type_=rdf_type, prop=prop
         )
     else:
         u_ = ul()
@@ -692,7 +698,7 @@ def rdf_obj_html(
             u_.appendChild(
                 li(
                     _rdf_obj_single_html(
-                        ont, back_onts, ns, x, fids, rdf_type_=rdf_type
+                        ont, back_onts, ns, x, fids, rdf_type_=rdf_type, prop=prop
                     )
                 )
             )
@@ -721,7 +727,7 @@ def prop_obj_pair_html(
         _class="hover_property",
         href=str(prop_iri),
     )
-    o = rdf_obj_html(ont, back_onts, ns, obj, fids, rdf_type=obj_type)
+    o = rdf_obj_html(ont, back_onts, ns, obj, fids, rdf_type=obj_type, prop=prop_iri)
 
     if table_or_dl == "table":
         t = tr(th(prop), td(o))
