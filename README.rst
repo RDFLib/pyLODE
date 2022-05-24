@@ -232,7 +232,7 @@ and change/add development priorities.
 Current Release
 ---------------
 
-The current release, as of May, 2022, is **3.0.3**.
+The current release, as of May, 2022, is **3.0.4**.
 
 Release Schedule
 ----------------
@@ -241,7 +241,7 @@ Release Schedule
    :header: "Version", "Date", "Description"
    :widths: 15, 10, 30
 
-   **3.0.3**, **24 May 2022**, "Use of Poetry"
+   **3.0.4**, **24 May 2022**, "Use of Poetry"
    **3.0.2**, **24 May 2022**, "Support for preformatted skos:example literals"
    3.0.1, 6 Jan 2022, "Direct HTML generation using dominate; easier to maintain and extend"
    2.13.2, 21 December 2021, "Updated RDFlib to 6.1.1, improved test to properly use pytest"
