@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pylode"
-version = "3.0.2"
+version = "3.0.3"
 description = ""
 authors = ["Nicholas Car <nick@kurrawong.net>"]
 

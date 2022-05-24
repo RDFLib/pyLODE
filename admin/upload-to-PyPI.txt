@@ -1,6 +1,8 @@
 1. Update all examples - run examples/regenerate_all.py
 
-2. Update version in version.py
+2. Update version in
+   - version.py
+   - pyproject.toml
 
 3. Update README
    esp Releases Roadmap - 3 places: "Current Release", "Release Schedule" table & release notes
