@@ -1,0 +1,230 @@
+PREFIX su: <https://linked.data.gov.au/def/su/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX gts: <http://resource.geosciml.org/ontology/timescale/gts#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sdo: <https://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+<https://linked.data.gov.au/def/su/ont>
+    a owl:Ontology ;
+    dcterms:created "2020-11-11"^^xsd:date ;
+    dcterms:modified "2020-11-11"^^xsd:date ;
+    dcterms:creator <https://orcid.org/0000-0002-3884-3420> ;
+    dcterms:description """This is an extremely simple ontology - part of the Stratigraphic Units profile - whos purpose is only to provide a Semantic Web view of the data contained within the [Australian Stratigraphic Units Database](http://pid.geoscience.gov.au/dataset/ga/21884). Data from that database is also available according to a number of other profiles which, in some cases, this ontology specialises."""@en ;
+    dcterms:title "Stratigraphic Units Ontology" ;
+    sdo:codeRepository <https://github.com/surroundaustralia/su-ont> ;
+    owl:versionInfo "Beta - first working version but incomplete." ;
+    dcterms:publisher <https://linked.data.gov.au/org/ga> ;
+.
+
+<https://orcid.org/0000-0002-3884-3420>
+    a sdo:Person ;
+    sdo:name "Nicholas J. Car" ;
+    sdo:email <nicholas.car@surroundaustralia.com> ;
+.
+
+<https://linked.data.gov.au/org/ga>
+    a sdo:GovernmentOrganization , sdo:Organization ;
+    sdo:name "Geoscience Australia" ;
+    sdo:url <https://www.ga.gov.au> ;
+.
+
+su:StratigraphicUnit
+    a owl:Class ;
+    rdfs:subClassOf geo:Feature ;
+    skos:prefLabel "Stratigraphic Unit"@en ;
+    skos:definition "A Stratigraphic Unit is a volume of rock of identifiable origin and relative age range that is defined by the distinctive and dominant, easily mapped and recognizable petrographic, lithologic or paleontologic features (facies) that characterise it."@en ;
+    dcterms:source <http://www.opengis.net/gsml/4.1/GeoSciML-Basic/GeologicUnit> ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Stratigraphic_unit> ;
+    rdfs:isDefinedBy <https://linked.data.gov.au/def/su/ont> ;
+.
+
+su:stratigraphicRank
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf dcterms:type ;
+    skos:prefLabel "stratigraphic rank"@en ;
+    skos:definition "Formally identified Stratigraphic Units are structured in a hierarchy of lithostratigraphic ranks with higher rank units generally comprising two or more units of lower rank. Going from smaller to larger in rank, the main lithostratigraphic ranks are Bed, Member, Formation, Group and Supergroup with specific values managed in geoscience vocabularies."@en ;
+    rdfs:domain su:StratigraphicUnit ;
+    rdfs:range skos:Concept ;  # from http://resource.geosciml.org/classifierscheme/cgi/2016.01/stratigraphicrank
+    dcterms:source <http://www.opengis.net/doc/geosciml/4.1> ;
+.
+
+su:StratigraphicRank
+    a owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    skos:prefLabel "Stratigraphic Rank"@en ;
+    skos:definition "The rank - types scale value - of a Stratigraphic Unit."@en ;
+    rdfs:isDefinedBy <https://linked.data.gov.au/def/su/ont> ;
+    skos:scopeNote "This class should have a specific Stratigraphic Rank value taken from a vocabulary and indicated by the use of a property of this class such as _has value_ or similar."@en ;
+.
+
+su:geologicUnitType
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf dcterms:type ;
+    skos:prefLabel "geologic unit type"@en ;
+    skos:definition "The type of a Geologic Unit (Stratigraphic Unit), as defined by the IUGS Commission for Geoscience Information (CGI) Geoscience Terminology Working Group within the Geologic Unit Type vocabulary."@en ;
+    rdfs:domain su:StratigraphicUnit ;
+    rdfs:range skos:Concept ;  # from http://resource.geosciml.org/classifierscheme/cgi/2016.01/geologicunittype
+    dcterms:source <http://www.opengis.net/doc/geosciml/4.1> ;
+.
+
+su:GeologicUnitType
+    a owl:Class ;
+    rdfs:subClassOf geo:Feature ;
+    skos:prefLabel "Geologic Unit Type"@en ;
+    skos:definition "The type of a Geologic Unit (Stratigraphic Unit), as defined by the IUGS Commission for Geoscience Information (CGI) Geoscience Terminology Working Group within the Geologic Unit Type vocabulary."@en ;
+    rdfs:isDefinedBy <https://linked.data.gov.au/def/su/ont> ;
+    skos:scopeNote "This class should have a specific Geologic Unit Type value taken from a vocabulary and indicated by the use of a property of this class such as _has value_ or similar."@en ;
+.
+
+su:descriptionPurpose
+    a owl:ObjectProperty ;
+    skos:prefLabel "description purpose"@en ;
+    skos:definition "Codes used to specify the intended scope of a description of a Geologic Feature (Stratigraphic Unit), as defined by the IUGS Commission for Geoscience Information (CGI) Geoscience Terminology Working Group."@en ;
+    rdfs:domain su:StratigraphicUnit ;
+    rdfs:range skos:Concept ;  # from http://resource.geosciml.org/classifierscheme/cgi/2016.01/descriptionpurpose
+    dcterms:source <http://www.opengis.net/doc/geosciml/4.1> ;
+.
+
+su:geologicHistory
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf dcterms:provenance ;
+    skos:prefLabel "geologic history"@en ;
+    skos:definition "A property that relates a Geologic Feature (Stratigraphic Unit) to one or more Geologic Events that describe is age or geologic history."@en ;
+    rdfs:domain su:StratigraphicUnit ;
+    rdfs:range su:GeologicEvent ;
+    dcterms:source <http://www.opengis.net/doc/geosciml/4.1> ;
+.
+
+su:observationMethod
+    a owl:ObjectProperty ;
+    skos:prefLabel "observation method"@en ;
+    skos:definition "The approach taken to acquire the collection of attributes describing an individual feature instance (Stratigraphic Unit), as defined by the IUGS Commission for Geoscience Information (CGI) Geoscience Terminology Working Group. This is a convienence property that provides a quick approach to shortcut use of more comprehensive observation and measurement constructs when data are reported using a feature view (as opposed to observation view)."@en ;
+    rdfs:domain su:StratigraphicUnit ;
+    rdfs:range skos:Concept ;  # from http://resource.geosciml.org/classifierscheme/cgi/2016.01/featureobservationmethod
+    dcterms:source <http://www.opengis.net/doc/geosciml/4.1> ;
+.
+
+su:GeologicEvent
+    a owl:Class ;
+    rdfs:subClassOf time:ProperInterval ;
+    skos:prefLabel "Geologic Event"@en ;
+    skos:definition "A temporal extent during which one or more geological processes acted to modify geological entities such as Stratigraphic Units. A Geologic Event has a specified geologic age and may have specified environments and processes."@en ;
+    dcterms:source <http://www.opengis.net/gsml/4.1/GeoSciML-Basic/GeologicUnit> ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Stratigraphic_unit> ;
+    rdfs:isDefinedBy <https://linked.data.gov.au/def/su/ont> ;
+    rdfs:subClassOf
+        [
+            a owl:Restriction ;
+            owl:onProperty su:youngerBound ;
+            owl:maxCardinality "1"^^xsd:int
+        ] ,
+        [
+            a owl:Restriction ;
+            owl:onProperty su:olderBound ;
+            owl:maxCardinality "1"^^xsd:int
+        ] ,
+        [
+            a owl:Restriction ;
+            owl:onProperty su:youngerNamedAge ;
+            owl:maxCardinality "1"^^xsd:int
+        ] ,
+        [
+            a owl:Restriction ;
+            owl:onProperty su:olderNamedAge ;
+            owl:maxCardinality "1"^^xsd:int
+        ] ;
+.
+
+su:eventProcess
+    a owl:ObjectProperty ;
+    skos:prefLabel "event process"@en ;
+    skos:definition "Geological processes that are associated with geological events, as defined by the IUGS Commission for Geoscience Information (CGI) Geoscience Terminology Working Group."@en ;
+    rdfs:domain su:GeologicEvent ;
+    rdfs:range skos:Concept ;  # from http://resource.geosciml.org/classifierscheme/cgi/2016.01/eventprocess
+    dcterms:source <http://www.opengis.net/doc/geosciml/4.1> ;
+.
+
+su:youngerBound
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf time:hasEnd ;
+    skos:prefLabel "younger bound"@en ;
+    skos:definition "The younger bounding time instant of an age range."@en ;
+    rdfs:range time:Instant ;
+    dcterms:source <http://www.opengis.net/doc/geosciml/4.1> ;
+.
+
+su:olderBound
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf time:hasEnd ;
+    skos:prefLabel "older bound"@en ;
+    skos:definition "The older bounding time instant of an age range."@en ;
+    rdfs:range time:Instant ;
+    dcterms:source <http://www.opengis.net/doc/geosciml/4.1> ;
+.
+
+su:youngerNamedAge
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf time:intervalMeets ;
+    skos:prefLabel "younger named age"@en ;
+    skos:definition "The next younder geochronologic age."@en ;
+    rdfs:range gts:Age ;
+    dcterms:source <http://www.opengis.net/doc/geosciml/4.1> ;
+.
+
+su:youngestAge
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf time:intervalMetBy ;
+    skos:prefLabel "youngest age"@en ;
+    skos:definition "The youngest geological age (time:ProperInterval) during which any part of a Province was formed."@en ;
+    rdfs:domain su:Province ;
+    rdfs:range gts:Age ;
+    dcterms:source <http://www.opengis.net/doc/geosciml/4.1> ;
+.
+
+su:olderNamedAge
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf time:intervalMetBy ;
+    skos:prefLabel "older named age"@en ;
+    skos:definition "The next older geochronologic age."@en ;
+    rdfs:range gts:Age ;
+    dcterms:source <http://www.opengis.net/doc/geosciml/4.1> ;
+.
+
+su:oldestAge
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf time:intervalMetBy ;
+    skos:prefLabel "oldest age"@en ;
+    skos:definition "The oldest geological age (time:ProperInterval) during which any part of a Province was formed."@en ;
+    rdfs:domain su:Province ;
+    rdfs:range gts:Age ;
+    dcterms:source <http://www.opengis.net/doc/geosciml/4.1> ;
+.
+
+su:provinceRank
+    a owl:ObjectProperty ;
+    skos:prefLabel "rank"@en ;
+    skos:definition "The rank of a Province. Values originate in the Geoscience Australia Provinces Database."@en ;
+    rdfs:domain su:Province ;
+    rdfs:range skos:Concept ;  # from https://linked.data.gov.au/dev/fake-province-rank
+    dcterms:source <http://www.opengis.net/doc/geosciml/4.1> ;
+.
+
+su:provinceType
+    a owl:ObjectProperty ;
+    skos:prefLabel "type"@en ;
+    skos:definition "The type of a Province. Values originate in the Geoscience Australia Provinces Database."@en ;
+    rdfs:domain su:Province ;
+    rdfs:range skos:Concept ;  # from https://linked.data.gov.au/dev/fake-geolu-type
+    dcterms:source <http://www.opengis.net/doc/geosciml/4.1> ;
+.
+
+
+# StratigraphicRank

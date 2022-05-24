@@ -288,7 +288,7 @@ class OntDoc:
             else:
                 link(href="pylode.css", rel="stylesheet", type="text/css")
                 shutil.copy(
-                    Path("pylode.css"),
+                    Path(__file__).parent / "pylode.css",
                     destination.parent / "pylode.css")
             link(
                 rel="icon",

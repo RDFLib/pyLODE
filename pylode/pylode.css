@@ -251,3 +251,14 @@
 .setclass {
     list-style-type: none;
 }
+
+code{
+    word-wrap: break-word;
+  }
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
+  td {
+    word-wrap: break-word;
+  }
