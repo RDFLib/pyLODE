@@ -117,3 +117,5 @@ output_files/
 /pylode/examples/ogc/excluded/
 
 pylode/_version.py
+
+.pickle
