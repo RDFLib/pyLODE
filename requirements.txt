@@ -1,0 +1,3 @@
+rdflib
+markdown
+dominate

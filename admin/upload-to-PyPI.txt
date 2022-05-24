@@ -22,11 +22,8 @@
 7. $ git push
    $ git push --tags
 
-8. Rebuild dists
-   $ rm -r build dist pyLODE.egg-info
-   $ python setup.py sdist bdist_wheel
-
-9. $ twine check dist/*  -- check ReStructuredText
-   $ twine upload dist/*  -- push up
+8. Build & Publish
+   $ poetry build
+   $ poetry publish
 
 10. Update version in version.py to alpha
