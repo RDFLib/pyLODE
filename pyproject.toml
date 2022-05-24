@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "pylode"
+version = "0.1.0"
+description = ""
+authors = ["Nicholas Car <nick@kurrawong.net>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+rdflib = "^6.1.1"
+Markdown = "^3.3.7"
+dominate = "^2.6.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.2"
+black = "^22.3.0"
+flake8 = "^4.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

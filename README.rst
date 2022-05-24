@@ -232,7 +232,7 @@ and change/add development priorities.
 Current Release
 ---------------
 
-The current release, as of January, 2022, is **3.0.1**.
+The current release, as of May, 2022, is **3.0.2**.
 
 Release Schedule
 ----------------
@@ -241,7 +241,8 @@ Release Schedule
    :header: "Version", "Date", "Description"
    :widths: 15, 10, 30
 
-   **3.0.1**, **6 Jan 2022**, "**Direct HTML generation using dominate; easier to maintain and extend**"
+   **3.0.2**, **24 May 2022**, "Support for preformatted skos:example literals"
+   3.0.1, 6 Jan 2022, "Direct HTML generation using dominate; easier to maintain and extend"
    2.13.2, 21 December 2021, "Updated RDFlib to 6.1.1, improved test to properly use pytest"
    2.10.0, 24 May 2021, "Update Windows EXE build process, simplified versioning"
    2.9.1, 28 Apr 2021, "Support for ASCIIDOC format (OntDoc profile only)"
@@ -287,6 +288,6 @@ Contacts
 ========
 | *Author*:
 | **Nicholas Car**
-| *Data System Architect*
-| `SURROUND Australia Pty Ltd <https://surroundaustralia.com>`_
-| nicholas.car@surroundaustralia.com
+| *Data Architect*
+| `Kurrawong AI <https://kurrawong.net>`_
+| nick@kurrawong.net
