@@ -113,6 +113,18 @@ Basic Use
 This will produce the file ``minimal.html`` in this directory which should
 match exactly the file ``examples/minimal.html``.
 
+* as a docker container
+
+build the docker image
+::
+   docker build -t pylode:latest .
+
+copy the example directory, mount it to the countainer and run cli.py in the container
+::
+   docker  run  --mount 'type=bind,src=<ttl_directory>,target=/app/pylode/data' pylode:latest  python3.10 pylode/cli.py data/<ttl_file> -o data/<html_file>
+
+   Note: <ttl_directory> must be absolute 
+
 Module Use
 ^^^^^^^^^^
 
