@@ -11,6 +11,9 @@ rdflib = "^6.1.1"
 Markdown = "^3.3.7"
 dominate = "^2.6.0"
 
+[tool.poetry.scripts]
+pylode = "pylode.cli:main"
+
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.2"
 black = "^22.3.0"
