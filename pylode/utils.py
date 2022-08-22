@@ -397,6 +397,9 @@ def rdf_obj_html(
                 fids__,
                 rdf_type__: Optional[URIRef] = None,
         ):
+            if (iri__, RDF.type, PROV.Agent) in ont__:
+                return _agent_html(ont__, iri__)
+
             def _get_ont_type(ont___, back_onts___, iri___):
                 types_we_know = [
                     OWL.Class,
@@ -520,6 +523,9 @@ def rdf_obj_html(
             email = None
             affiliation = None
 
+            if "orcid.org" in str(obj__):
+                orcid = True
+
             for px, o in ont__.predicate_objects(obj__):
                 if px in AGENT_PROPS:
                     if px == SDO.name:
@@ -549,14 +555,17 @@ def rdf_obj_html(
                     sp.appendChild(span(name))
 
                 if orcid:
-                    sp.appendChild(a(raw(orcid_logo), href=identifier))
+                    if "orcid.org" in obj__:
+                        sp.appendChild(a(raw(orcid_logo), href=obj__))
+                    else:
+                        sp.appendChild(a(raw(orcid_logo), href=identifier))
                 elif identifier is not None:
                     sp.appendChild(a(identifier, href=identifier))
 
                 if email is not None:
                     email = email.replace("mailto:", "")
                     sp.appendChild(
-                        span("(", a(email, href="mailto:" + email), ")"))
+                        span("(", a(email, href="mailto:" + email), " )"))
 
                 if affiliation is not None:
                     sp.appendChild(_affiliation_html(ont__, affiliation))

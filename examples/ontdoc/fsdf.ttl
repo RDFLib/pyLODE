@@ -1,0 +1,598 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX fsdf: <https://linked.data.gov.au/def/fsdf/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sdo: <https://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+geo:FeatureCollection
+    a owl:Class ;
+    rdfs:isDefinedby <http://www.opengis.net/ont/geosparql> ;
+    rdfs:subClassOf
+        owl:Thing ,
+        prov:Entity ;
+    skos:definition "The class Feature Collection represents any collection of individual Features"@en ;
+    skos:prefLabel "Feature Collection"@en ;
+.
+
+sosa:hasSimpleResult
+    a owl:DatatypeProperty ;
+    rdfs:domain
+        sosa:Actuation ,
+        sosa:Observation ,
+        sosa:Sampling ;
+    rdfs:isDefinedBy sosa: ;
+    skos:definition "The simple value of an Observation or Actuation or act of Sampling"@en ;
+    skos:example "For instance, the values 23 or true."^^rdf:HTML ;
+    skos:prefLabel "has simple result"@en ;
+.
+
+fsdf:Material
+    a owl:Class ;
+    rdfs:isDefinedBy <https://linked.data.gov.au/def/fsdf> ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "Types of material used to construct buildings and facilities in various FSDF datasets. All instances of these are contained within the Materials taxonomy within the FSDF Knowledge Graph"@en ;
+    skos:prefLabel "Material"@en ;
+.
+
+fsdf:ObservableProperty
+    a owl:Class ;
+    rdfs:isDefinedBy <https://linked.data.gov.au/def/fsdf> ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "Properties of Features that may be observed. All instances of these are contained within the Observable Properties taxonomy within the FSDF Knowledge Graph"@en ;
+    skos:prefLabel "Observable Property"@en ;
+.
+
+fsdf:PSStructures
+    a owl:Class ;
+    rdfs:isDefinedBy <https://linked.data.gov.au/def/fsdf> ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "The types of structure that Power Stations might have. All instances of these are contained within the PSStructures taxonomy within the FSDF Knowledge Graph"@en ;
+    skos:prefLabel "Power Station Structures"@en ;
+.
+
+fsdf:PhysicalCondition
+    a owl:Class ;
+    rdfs:isDefinedBy <https://linked.data.gov.au/def/fsdf> ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "The types of physical condition that buildings and facilities are known to be in, in various FSDF datasets. All instances of these are contained within the Physical Conditions taxonomy within the FSDF Knowledge Graph"@en ;
+    skos:prefLabel "Physical Condition"@en ;
+.
+
+fsdf:affectsAgency
+    a owl:ObjectProperty ;
+    rdfs:domain fsdf:Mandate ;
+    rdfs:range fsdf:Agency ;
+    skos:definition "A Agency that is subject to the instructions of this Mandate"@en ;
+    skos:example """# example from the FSDF datagraph Mandates
+# Here a particular Mandate affects a particular Agency
+mandates:clp-1994
+  fsdf:affectsAgency agencies:delwp ;
+.""" ;
+    skos:prefLabel "affects agency"@en ;
+.
+
+fsdf:featureDataProvenance
+    a owl:ObjectProperty ;
+    rdfs:domain geo:Feature ;
+    skos:definition "The provenance (source from which, and date) that feature data was received"@en ;
+    skos:prefLabel "feature data provenance"@en ;
+.
+
+fsdf:hasCustodian
+    a owl:ObjectProperty ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range fsdf:Agency ;
+    rdfs:subPropertyOf
+        dcterms:publisher ,
+        prov:agent ;
+    skos:definition "The Agency that manages this Dataset"@en ;
+    skos:prefLabel "has custodian"@en ;
+.
+
+fsdf:hasEmbeddedNetworkOperator
+    a owl:ObjectProperty ;
+    rdfs:domain geo:Feature ;
+    rdfs:range rdfs:Literal ;
+    skos:definition "The embedded network operator identifier for electricity generation infrastructure"@en ;
+    skos:prefLabel "embedded network operator"@en ;
+.
+
+fsdf:hasGeneratorNumber
+    a owl:ObjectProperty ;
+    rdfs:domain geo:Feature ;
+    rdfs:range xsd:integer ;
+    skos:definition "The generator number for electricity generation infrastructure"@en ;
+    skos:prefLabel "generator number"@en ;
+.
+
+fsdf:hasJurisdiction
+    a owl:ObjectProperty ;
+    rdfs:range fsdf:Jurisdiction ;
+    rdfs:subPropertyOf
+        dcterms:publisher ,
+        prov:agent ;
+    skos:definition "The Jurisdiction responsible for this object"@en ;
+    skos:prefLabel "has jurisdiction"@en ;
+.
+
+fsdf:hasOperationalStatus
+    a owl:ObjectProperty ;
+    rdfs:domain geo:Feature ;
+    rdfs:range fsdf:OperationalStatus ;
+    skos:definition "The mode of physical operation of the feature"@en ;
+    skos:prefLabel "has operational status"@en ;
+.
+
+fsdf:hasPrimaryFuel
+    a owl:ObjectProperty ;
+    rdfs:domain geo:Feature ;
+    rdfs:range fsdf:Fuel ;
+    skos:definition "The primary fuel type used by a generator"@en ;
+    skos:prefLabel "primary fuel"@en ;
+.
+
+fsdf:hasPrimarySubFuel
+    a owl:ObjectProperty ;
+    rdfs:domain geo:Feature ;
+    rdfs:range fsdf:Fuel ;
+    skos:definition "The primary sub-fuel type used by a generator"@en ;
+    skos:prefLabel "primary sub-fuel"@en ;
+.
+
+fsdf:hasRelationToGround
+    a owl:ObjectProperty ;
+    rdfs:domain geo:Feature ;
+    rdfs:range fsdf:GroundRelation ;
+    skos:definition "The relation of this Feature to the earth's surface"@en ;
+    skos:prefLabel "has relation to ground"@en ;
+.
+
+fsdf:likelyPropertyOfFeatureWithTheme
+    a owl:ObjectProperty ;
+    rdfs:domain sosa:ObservableProperty ;
+    rdfs:range fsdf:Theme ;
+    owl:inverseOf fsdf:hasExpectedObservableProperty ;
+    skos:definition "This Observable Property is expected to be of a Feature with this theme"@en ;
+    skos:example """# example from the feature-property-relations datagraph
+obsp:ratedVoltage
+  fsdf:likelyPropertyOfFeatureWithTheme themes:electrical-infrastructure ;
+.""" ;
+    skos:prefLabel "likely property of feature with theme"@en ;
+.
+
+fsdf:themeOfFeatureWithProperty
+    a owl:ObjectProperty ;
+    rdfs:domain fsdf:Theme ;
+    rdfs:range sosa:ObservableProperty ;
+    skos:definition "A Feature with this theme has this expected Observable Property"@en ;
+    skos:example """# example from the feature-property-relations datagraph
+themes:electrical-infrastructure
+  fsdf:themeOfFeatureWithProperty obsp:ratedVoltage ;
+.""" ;
+    skos:prefLabel "theme of feature with property"@en ;
+.
+
+dcat:Dataset
+    a owl:Class ;
+    rdfs:isDefinedby <http://www.w3.org/ns/dcat> ;
+    rdfs:subClassOf
+        owl:Thing ,
+        dcat:Resource ,
+        prov:Entity ;
+    skos:definition "A collection of data, published or curated by a single agent, and available for access or download in one or more representations"@en ;
+    skos:prefLabel "Dataset"@en ;
+.
+
+prov:Agent
+    a owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+    skos:definition "An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity"@en ;
+    skos:prefLabel "Agent"@en ;
+.
+
+sosa:hasMember
+    a owl:ObjectProperty ;
+    rdfs:domain sosa:ObservationCollection ;
+    rdfs:range sosa:Observation ;
+    rdfs:subPropertyOf rdfs:member ;
+    skos:definition "Link to a member within a collection of (observations) or (collections of observations) that share the same value for one or more of the characteristic properties"@en ;
+    skos:prefLabel "has member"@en ;
+.
+
+sosa:hasResult
+    a owl:ObjectProperty ;
+    rdfs:domain
+        sosa:Actuation ,
+        sosa:Observation ,
+        sosa:Sampling ;
+    rdfs:isDefinedBy sosa: ;
+    rdfs:range
+        sosa:Result ,
+        sosa:Sample ;
+    owl:inverseOf sosa:isResultOf ;
+    skos:definition "Relation linking an Observation or Actuation or act of Sampling and a Result or Sample"@en ;
+    skos:prefLabel "has result"@en ;
+.
+
+sosa:isFeatureOfInterestOf
+    a owl:ObjectProperty ;
+    rdfs:domain
+        sosa:FeatureOfInterest ,
+        sosa:Sample ;
+    rdfs:isDefinedBy sosa: ;
+    rdfs:range
+        sosa:Actuation ,
+        sosa:Observation ,
+        sosa:Sampling ;
+    owl:inverseOf sosa:hasFeatureOfInterest ;
+    skos:definition "A relation between a FeatureOfInterest and an Observation about it, an Actuation acting on it, or an act of Sampling that sampled it"@en ;
+    skos:prefLabel "is feature of interest of"@en ;
+.
+
+sosa:isResultOf
+    a owl:ObjectProperty ;
+    rdfs:domain
+        sosa:Result ,
+        sosa:Sample ;
+    rdfs:isDefinedBy sosa: ;
+    rdfs:range
+        sosa:Actuation ,
+        sosa:Observation ,
+        sosa:Sampling ;
+    owl:inverseOf sosa:hasResult ;
+    skos:definition "Relation linking a Result to the Observation or Actuation or act of Sampling that created or caused it"@en ;
+    skos:prefLabel "is result of"@en ;
+.
+
+sosa:phenomenonTime
+    a owl:ObjectProperty ;
+    rdfs:domain
+        sosa:Actuation ,
+        sosa:Observation ,
+        sosa:ObservationCollection ,
+        sosa:Sampling ;
+    rdfs:isDefinedBy sosa: ;
+    rdfs:range time:TemporalEntity ;
+    skos:definition "The time that the Result of an Observation, Actuation or Sampling applies to the FeatureOfInterest. Not necessarily the same as the resultTime. May be an Interval or an Instant, or some other compound TemporalEntity"@en ;
+    skos:prefLabel "phenomenon time"@en ;
+.
+
+sosa:resultTime
+    a owl:DatatypeProperty ;
+    rdfs:domain
+        sosa:Actuation ,
+        sosa:Observation ,
+        sosa:ObservationCollection ,
+        sosa:Sampling ;
+    rdfs:isDefinedBy sosa: ;
+    rdfs:range xsd:dateTime ;
+    skos:definition "The result time is the instant of time when the Observation, Actuation or Sampling activity was completed"@en ;
+    skos:prefLabel "result time"@en ;
+.
+
+<https://kurrawong.net>
+    a sdo:Organization ;
+    sdo:description "Kurrawong AI is a small, Artificial Intelligence, company in Australia specialising in Knowledge Graphs." ;
+    sdo:name "Kurrawong AI" ;
+    sdo:url "https://kurrawong.net"^^xsd:anyURI ;
+.
+
+fsdf:GroundRelation
+    a owl:Class ;
+    rdfs:isDefinedBy <https://linked.data.gov.au/def/fsdf> ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "The relations of geospatial Feature to the earth's surface. All instances of these are contained within the Ground Relations taxonomy within the FSDF Knowledge Graph"@en ;
+    skos:prefLabel "Ground Relation"@en ;
+.
+
+fsdf:OperationalStatus
+    a owl:Class ;
+    rdfs:isDefinedBy <https://linked.data.gov.au/def/fsdf> ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "The status of the operations of FSDF infrastructure assets (Features). All instances of these are contained within the Operational Statuses taxonomy within the FSDF Knowledge Graph"@en ;
+    skos:prefLabel "Operational Status"@en ;
+.
+
+fsdf:hasResponsibleAuthority
+    a owl:ObjectProperty ;
+    rdfs:domain fsdf:Mandate ;
+    rdfs:range [
+            a owl:Class ;
+            owl:unionOf (
+                    fsdf:Agency
+                    fsdf:Jurisdiction
+                ) ;
+            skos:definition "Union of all Agency and Jurisdiction instances"@en ;
+            skos:prefLabel "Agency and Jurisdiction Union"@en
+        ] ;
+    skos:definition "The authority responsible for a Mandate"@en ;
+    skos:prefLabel "responsible authority"@en ;
+.
+
+<https://linked.data.gov.au/org/anzlic>
+    a sdo:Organization ;
+    sdo:name "ANZLIC - the Spatial Information Council" ;
+    sdo:url "https://www.anzlic.gov.au"^^xsd:anyURI ;
+.
+
+<https://orcid.org/0000-0002-8742-7730>
+    a sdo:Person ;
+    sdo:affiliation <https://kurrawong.net> ;
+    sdo:email "nick@kurrawong.net"^^xsd:anyURI ;
+    sdo:name "Nicholas J. Car"@en ;
+.
+
+sosa:Result
+    a owl:Class ;
+    rdfs:isDefinedBy sosa: ;
+    rdfs:subClassOf sosa:Sample ;
+    skos:definition "The Result of an Observation, Actuation, or act of Sampling. To store an observation's simple result value one can use the hasSimpleResult property"@en ;
+    skos:example "The value 20 as the height of a certain tree together with the unit, e.g., Meter."^^rdf:HTML ;
+    skos:prefLabel "Result"@en ;
+.
+
+sosa:observedProperty
+    a owl:ObjectProperty ;
+    rdfs:domain
+        sosa:Observation ,
+        sosa:ObservationCollection ;
+    rdfs:isDefinedBy sosa: ;
+    rdfs:range sosa:ObservableProperty ;
+    skos:definition "Relation linking an Observation to the property that was observed. The ObservableProperty should be a property of the FeatureOfInterest (linked by hasFeatureOfInterest) of this Observation"@en ;
+    skos:prefLabel "observed property"@en ;
+.
+
+sosa:usedProcedure
+    a owl:ObjectProperty ;
+    rdfs:domain
+        sosa:Actuation ,
+        sosa:Observation ,
+        sosa:ObservationCollection ,
+        sosa:Sampling ;
+    rdfs:isDefinedBy sosa: ;
+    rdfs:range sosa:Procedure ;
+    skos:definition "A relation to link to a re-usable Procedure used in making an Observation, an Actuation, or a Sample, typically through a Sensor, Actuator or Sampler"@en ;
+    skos:prefLabel "used procedure"@en ;
+.
+
+fsdf:Fuel
+    a owl:Class ;
+    rdfs:isDefinedBy <https://linked.data.gov.au/def/fsdf> ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "A type of fuel used by powerstations. May be renewable or non-renewable. All instances of these are contained within the Fuels taxonomy within the FSDF Knowledge Graph"@en ;
+    skos:prefLabel "Fuel"@en ;
+.
+
+fsdf:Jurisdiction
+    a owl:Class ;
+    rdfs:subClassOf
+        dcterms:Jurisdiction ,
+        sdo:Organization ;
+    owl:disjointWith fsdf:Agency ;
+    skos:definition "A Jurisdiction is a Government Organization that has authority within a domain. The specific domains considered by the FSDF Programme are the Australian Commonwealth (Federal), Australian States and Territories and the Commercial sector"@en ;
+    skos:prefLabel "Jurisdiction"@en ;
+.
+
+fsdf:Mandate
+    a owl:Class ;
+    rdfs:subClassOf
+        [
+            a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty fsdf:hasResponsibleAuthority
+        ] ,
+        sdo:Legislation ;
+    skos:definition "An FSDF Mandate is an Australian Commonwealth or State & Territory legislation thatassigns responsibility for FSDF data or operations to an FSDF Agency. An FSDF Mandate is represented as a specialised form of DCAT Resource which ensures that a DCAT-style catalogue of instances of FSDF Mandates can be made"@en ;
+    skos:example """# example from the FSDF datagraph Mandates
+# Here the Mandate is a law (an Act) that was enacted by Victoria
+# This Act comples the collection of certain natural-resource datasets by DELWP
+mandates:clp-1994
+  a fsdf:Mandate ;
+  dcterms:title "Catchment and Land Protection Act 1994"@en ;
+  fsdf:responsibleAuthority jurisdictions:vic ;
+  fsdf:affectsAgency agencies:delwp ;
+.""" ;
+    skos:prefLabel "Mandate"@en ;
+.
+
+fsdf:Theme
+    a owl:Class ;
+    rdfs:isDefinedBy <https://linked.data.gov.au/def/fsdf> ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "A skos:Concept taken from the FSDF programme's controlled list of 'Themes'. All instnaces are contained within the FSDF Themes taxonomy, and sub-taxonomies of it, all within the FSDF Knowledge Graph"@en ;
+    skos:prefLabel "FSDF Theme"@en ;
+.
+
+sosa:hasFeatureOfInterest
+    a owl:ObjectProperty ;
+    rdfs:domain
+        sosa:Actuation ,
+        sosa:Observation ,
+        sosa:ObservationCollection ,
+        sosa:Sampling ;
+    rdfs:isDefinedBy sosa: ;
+    rdfs:range sosa:FeatureOfInterest ;
+    owl:inverseOf sosa:isFeatureOfInterestOf ;
+    skos:definition "A relation between an Observation and the entity whose quality was observed, or between an Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled"@en ;
+    skos:example "For example, in an Observation of the weight of a person, the FeatureOfInterest is the person and the property is its weight."^^rdf:HTML ;
+    skos:prefLabel "has feature of interest"@en ;
+.
+
+sosa:FeatureOfInterest
+    a owl:Class ;
+    rdfs:isDefinedBy sosa: ;
+    rdfs:subClassOf owl:Thing ;
+    skos:definition "The thing whose property is being estimated or calculated in the course of an Observation to arrive at a Result or whose property is being manipulated by an Actuator, or which is being sampled or transformed in an act of Sampling"@en ;
+    skos:prefLabel "Feature Of Interest"@en ;
+.
+
+sosa:ObservableProperty
+    a owl:Class ;
+    rdfs:isDefinedBy sosa: ;
+    rdfs:subClassOf owl:Thing ;
+    skos:definition "An observable quality (property, characteristic) of a FeatureOfInterest"@en ;
+    skos:example "The height of a tree, the depth of a water body, or the temperature of a surface are examples of observable properties, while the value of a classic car is not (directly) observable but asserted."^^rdf:HTML ;
+    skos:prefLabel "Observable Property"@en ;
+.
+
+fsdf:Agency
+    a owl:Class ;
+    rdfs:subClassOf sdo:Organization ;
+    skos:definition "An FSDF Agency is a Government Organisation that is involved with the FSDF Programme"@en ;
+    skos:example """# example from the FSDF datagraph Agencies
+agencies:nntt
+  a fsdf:Agency ;
+  sdo:name "National Native Title Tribunal"@en ;
+.""" ;
+    skos:prefLabel "Agency"@en ;
+.
+
+sdo:Organization
+    a owl:Class ;
+    rdfs:subClassOf prov:Agent ;
+    skos:definition "An organization such as a government agency, a school, NGO, corporation, club, or even a whole government"@en ;
+    skos:prefLabel "Organisation"@en ;
+.
+
+sosa:ObservationCollection
+    a owl:Class ;
+    rdfs:subClassOf
+        [
+            a owl:Restriction ;
+            owl:allValuesFrom ssn:Stimulus ;
+            owl:onProperty ssn:wasOriginatedBy
+        ] ,
+        [
+            a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:hasFeatureOfInterest
+        ] ,
+        [
+            a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:hasUltimateFeatureOfInterest
+        ] ,
+        [
+            a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:madeBySensor
+        ] ,
+        [
+            a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:observedProperty
+        ] ,
+        [
+            a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:phenomenonTime
+        ] ,
+        [
+            a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:resultTime
+        ] ,
+        [
+            a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:usedProcedure
+        ] ,
+        [
+            a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:hasMember
+        ] ,
+        [
+            a owl:Restriction ;
+            owl:allValuesFrom sosa:FeatureOfInterest ;
+            owl:onProperty sosa:hasFeatureOfInterest
+        ] ,
+        [
+            a owl:Restriction ;
+            owl:allValuesFrom sosa:FeatureOfInterest ;
+            owl:onProperty sosa:hasUltimateFeatureOfInterest
+        ] ,
+        [
+            a owl:Restriction ;
+            owl:allValuesFrom sosa:ObservableProperty ;
+            owl:onProperty sosa:observedProperty
+        ] ,
+        [
+            a owl:Restriction ;
+            owl:allValuesFrom sosa:Procedure ;
+            owl:onProperty sosa:usedProcedure
+        ] ,
+        [
+            a owl:Restriction ;
+            owl:allValuesFrom sosa:Sensor ;
+            owl:onProperty sosa:madeBySensor
+        ] ,
+        owl:Thing ,
+        sosa:Observation ;
+    skos:definition "Collection of observations, typically with one or more property shared by all of its members"@en ;
+    skos:prefLabel "Collection of observations"@en ;
+.
+
+geo:Feature
+    a owl:Class ;
+    rdfs:isDefinedby <http://www.opengis.net/ont/geosparql> ;
+    rdfs:subClassOf
+        owl:Thing ,
+        prov:Entity ;
+    skos:definition "This class represents the top-level feature type. This class is equivalent to GFI_Feature defined in ISO 19156, and it is superclass of all feature types"@en ;
+    skos:prefLabel "Feature"@en ;
+.
+
+skos:Concept
+    a owl:Class ;
+    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+    rdfs:subClassOf owl:Thing ;
+    skos:definition "An idea or notion; a unit of thought"@en ;
+    skos:prefLabel "Concept"@en ;
+.
+
+<https://linked.data.gov.au/def/fsdf>
+    a owl:Ontology ;
+    dcterms:license <http://purl.org/NET/rdflicense/cc-by4.0> ;
+    dcterms:provenance "This ontology was first made in 2018 as a Semantic Web version of the LINK website (https://link.fsdf.org.au website). That website and this ontology have essentially the same data model of Datasets, Jurisdictions and so on to describe the provenance of FSDF datasets. This ontology also contains additional FSDF-specific properties that the LINK website doesn't have. This ontology is maintained, the LINK website is not so this will diverge from the website over time."@en ;
+    dcterms:rights "(c) Australian Government (ICSM), 2022" ;
+    vann:preferredNamespacePrefix "fsdf" ;
+    owl:imports fsdf:common ;
+    owl:versionIRI fsdf:1.2 ;
+    owl:versionInfo
+        "1.2: use of slash IRI, not hash"@en ,
+        "This 1.0 is an early version of the ontology but is a great departure from the 0.5 version that was published in 2018. This version concentrates on defining the FSDF concepts, not listing all of the FSDF datasets which are listed in a separate data graph within the overall FSDF Knolwedge Graph. This version imports the FSDF common elements ontology"@en ;
+    skos:definition """An ontology describing the concepts relevant to the [ANZLIC - The Spatial  Information Council](https://www.anzlic.gov.au)s' Foundation Spatial Data Framework (FSDF) project which is "a common reference for the assembly and maintenance of Australian and New Zealand foundation level spatial data".
+
+This ontology contains a number of classes relevant to dataset description, management and provenance, such as `Dataset`, `Mandate` (laws/policies causing the generation of datasets), `Agency` (government bodies that own and create datasets) and `Jurisdition` (government bodies that authority within a domain). Additionally, properties that link these classes, such as `affectsAgency` (linking a `Mandate` to an `Agency`).
+
+It also contains taxonomies (vocabularies) used to categorise datasets and sub-dataset elements. The main taxonomy is the "FSDF Themes" and there are many specialised sub-taxonomies for elements within it, such as "FSDF Themes - Physcial Infrastructure".
+
+Also provided here are common properties for FSDF datasets and their contents, such as `hasGroundRelation` (relates an infrastructure Feature to the earth's surface) as well as taxonomies for many of these proerties' values."""@en ;
+    skos:prefLabel "FSDF Ontology"@en ;
+    sdo:codeRepository "https://github.com/surroundaustralia/fsdf-kg"^^xsd:anyURI ;
+    sdo:creator <https://orcid.org/0000-0002-8742-7730> ;
+    sdo:dateCreated "2018-03-07"^^xsd:date ;
+    sdo:dateIssued "2019-07-01"^^xsd:date ;
+    sdo:dateModified "2022-08-22"^^xsd:date ;
+    sdo:publisher <https://linked.data.gov.au/org/anzlic> ;
+.
+
+sosa:Observation
+    a owl:Class ;
+    rdfs:isDefinedBy sosa: ;
+    rdfs:subClassOf owl:Thing ;
+    skos:definition "Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest. Links to a Sensor to describe what made the Observation and how; links to an ObservableProperty to describe what the result is an estimate of, and to a FeatureOfInterest to detail what that property was associated with"@en ;
+    skos:example "The activity of estimating the intensity of an Earthquake using the Mercalli intensity scale is an Observation as is measuring the moment magnitude, i.e., the energy released by said earthquake."^^rdf:HTML ;
+    skos:prefLabel "Observation"@en ;
+.
