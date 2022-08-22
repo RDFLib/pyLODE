@@ -578,16 +578,30 @@ class OntDoc:
                             td("Named Individuals")
 
     def _make_namespaces(self):
-        # get only namespaces used in ont
+        # only get namespaces used in ont
         nses = {}
         for n in chain(
                 self.ont.subjects(),
                 self.ont.predicates(),
                 self.ont.objects()
         ):
-            for prefix, ns in self.ont.namespaces():
-                if str(n).startswith(ns):
-                    nses[prefix] = ns
+            # a list of prefixes we don't like
+            excluded_namespaces = (
+                # "https://linked.data.gov.au/def/"
+            )
+            if not str(n).startswith(excluded_namespaces):
+                for prefix, ns in self.ont.namespaces():
+                    if str(n).startswith(ns):
+                        nses[prefix] = ns
+
+        # # deduplicate namespaces
+        # temp = []
+        # res = dict()
+        # for k, v in nses.items():
+        #     if v not in temp:
+        #         temp.append(v)
+        #         res[k] = v
+        # nses = res
 
         with self.content:
             with div(id="namespaces"):

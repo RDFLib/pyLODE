@@ -432,17 +432,20 @@ def rdf_obj_html(
                 rdf_type__ = _get_ont_type(ont__, back_onts__, iri__)
 
             # if it's a thing in this ontology, use a fragment link
+            frag_iri = None
             if ns__ is not None and str(iri__).startswith(ns__):
                 fid = generate_fid(None, iri__, fids__)
                 if fid is not None:
-                    iri__ = "#" + fid
+                    frag_iri = "#" + fid
 
             # use the objet's label for hyperlink text, if it has one
             # if not, try and use a prefixed hyperlink
             # if not, just the iri
             v = back_onts__.value(subject=iri__, predicate=DCTERMS.title)  # no need to check other labels: inference
+            if v is None:
+                v = ont__.value(subject=iri__, predicate=DCTERMS.title)
             if v is not None:
-                anchor = a(f"{v}", href=iri__)
+                anchor = a(f"{v}", href=frag_iri if frag_iri is not None else iri__)
             else:
                 try:
                     qname = ont__.compute_qname(iri__, True)
@@ -451,9 +454,9 @@ def rdf_obj_html(
                 prefix = "" if qname[0] == "" else f"{qname[0]}:"
 
                 if isinstance(qname, tuple):
-                    anchor = a(f"{prefix}{qname[2]}", href=iri__)
+                    anchor = a(f"{prefix}{qname[2]}", href=frag_iri if frag_iri is not None else iri__)
                 else:
-                    anchor = a(f"{qname}", href=iri__)
+                    anchor = a(f"{qname}", href=frag_iri if frag_iri is not None else iri__)
 
             if rdf_type__ is not None:
                 ret = span()
