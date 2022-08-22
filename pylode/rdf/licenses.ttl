@@ -1,0 +1,99 @@
+# baseURI: https://linked.data.gov.au/dataset/fsdf/licenses
+# prefix: license
+
+@prefix dg: <https://linked.data.gov.au/dataset/fsdf/licenses> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ground: <https://linked.data.gov.au/def/fsdf/themes/licenses/> .
+@prefix license: <http://purl.org/NET/rdflicense/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+dg:
+    a owl:Ontology ;
+    dcterms:title "FSDF Licenses"@en ;
+    dcterms:identifier "licenses"^^xsd:token ;
+    dcterms:creator <https://linked.data.gov.au/org/ga> ;
+    dcterms:publisher <https://linked.data.gov.au/org/icsm> ;
+    dcterms:license <http://purl.org/NET/rdflicense/cc-by4.0> ;
+    dcterms:created "2021-06-29"^^xsd:date ;
+    dcterms:modified "2021-07-27"^^xsd:date ;
+    dcterms:provenance "Created for the Loc-I DR Project"@en ;
+    dcterms:description "This Data Graph contains instances of licenses which are ODRL Policy instances contained within the RDF Licenses dataset, online at http://rdflicense.appspot.com/"@en ;
+    owl:versionInfo "1.0"^^xsd:string ;
+    dcterms:hasPart
+    	license:cc-by4.0 ,
+        license:cc-by-nc4.0 ,
+        license:cc-by-sa4.0 ,
+        license:cc-by-nd4.0 ,
+        license:cc-by-sa3.0au ,
+        license:cc-by2.0au ,
+        license:APACHE2.0 ,
+        license:MIT1.0 ,
+        license:publicdomain ;
+.
+
+license:cc-by4.0
+    dcterms:title "Attribution 4.0 International (CC BY 4.0)"@en ;
+    dcterms:description "As per the license' legal code"@en ;
+    dcterms:isPartOf dg: ;
+    rdfs:isDefinedby <http://purl.org/NET/rdflicense> ;
+.
+
+license:cc-by-nc4.0
+    dcterms:title "Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)"@en ;
+    dcterms:description "As per the license' legal code"@en ;
+    dcterms:isPartOf dg: ;
+    rdfs:isDefinedby <http://purl.org/NET/rdflicense> ;
+.
+
+license:cc-by-sa4.0
+    dcterms:title "Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)"@en ;
+    dcterms:description "As per the license' legal code"@en ;
+    dcterms:isPartOf dg: ;
+    rdfs:isDefinedby <http://purl.org/NET/rdflicense> ;
+.
+
+license:cc-by-nd4.0
+    dcterms:title "Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)"@en ;
+    dcterms:description "As per the license' legal code"@en ;
+    dcterms:isPartOf dg: ;
+    rdfs:isDefinedby <http://purl.org/NET/rdflicense> ;
+.
+
+license:cc-by-sa3.0au
+    dcterms:title "Attribution-ShareAlike 3.0 Australia (CC BY-SA 3.0 AU)"@en ;
+    dcterms:description "As per the license' legal code"@en ;
+    dcterms:isPartOf dg: ;
+    rdfs:isDefinedby <http://purl.org/NET/rdflicense> ;
+.
+
+license:cc-by2.0au
+    dcterms:title "Attribution 2.0 Australia (CC BY 2.0 AU)"@en ;
+    dcterms:description "As per the license' legal code"@en ;
+    dcterms:isPartOf dg: ;
+    rdfs:isDefinedby <http://purl.org/NET/rdflicense> ;
+.
+
+license:APACHE2.0
+    dcterms:title "Apache License Version 2.0"@en ;
+    dcterms:description "As per the license' legal code"@en ;
+    dcterms:isPartOf dg: ;
+    rdfs:isDefinedby <http://purl.org/NET/rdflicense> ;
+.
+
+license:MIT1.0
+    dcterms:title "MIT License"@en ;
+    dcterms:description "As per the license' legal code"@en ;
+    dcterms:isPartOf dg: ;
+    rdfs:isDefinedby <http://purl.org/NET/rdflicense> ;
+.
+
+license:publicdomain
+    dcterms:title "Public domain"@en ;
+    dcterms:description "As per the license' legal code"@en ;
+    dcterms:isPartOf dg: ;
+    rdfs:isDefinedby <http://purl.org/NET/rdflicense> ;
+.

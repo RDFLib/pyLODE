@@ -185,6 +185,10 @@ class OntDoc:
         for s_, o in g.subject_objects(DC.source):
             g.add((s_, DCTERMS.source, o))
 
+        # license
+        for s_, o in g.subject_objects(SDO.license):
+            g.add((s_, DCTERMS.license, o))
+
         #
         #   Blank Node Types
         #

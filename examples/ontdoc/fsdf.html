@@ -274,20 +274,6 @@ code{
     <script id="schema.org" type="application/ld+json">
 [
   {
-    "@id": "https://linked.data.gov.au/org/anzlic",
-    "https://schema.org/name": [
-      {
-        "@value": "ANZLIC - the Spatial Information Council"
-      }
-    ],
-    "https://schema.org/url": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
-        "@value": "https://www.anzlic.gov.au"
-      }
-    ]
-  },
-  {
     "@id": "https://orcid.org/0000-0002-8742-7730",
     "https://schema.org/affiliation": [
       {
@@ -304,6 +290,20 @@ code{
       {
         "@language": "en",
         "@value": "Nicholas J. Car"
+      }
+    ]
+  },
+  {
+    "@id": "https://linked.data.gov.au/org/anzlic",
+    "https://schema.org/name": [
+      {
+        "@value": "ANZLIC - the Spatial Information Council"
+      }
+    ],
+    "https://schema.org/url": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
+        "@value": "https://www.anzlic.gov.au"
       }
     ]
   },
@@ -421,7 +421,7 @@ code{
               <a class="hover_property" href="http://purl.org/dc/terms/license" title="A legal document giving official permission to do something with the resource. Defined in DCMI Metadata Terms">License</a>
             </dt>
             <dd>
-              <a href="http://purl.org/NET/rdflicense/cc-by4.0">ns2:cc-by4.0</a>
+              <a href="http://purl.org/NET/rdflicense/cc-by4.0">Attribution 4.0 International (CC BY 4.0)</a>
             </dd>
           </div>
           <div>
@@ -435,7 +435,7 @@ code{
               <a class="hover_property" href="http://www.w3.org/2002/07/owl#versionIRI" title="The property that identifies the version IRI of an ontology. Defined in The OWL 2 Schema vocabulary (OWL 2)">Version Iri</a>
             </dt>
             <dd>
-              <a href="#1.2">fsdf:1.2</a>
+              <a href="#1.2">ns2:1.2</a>
             </dd>
           </div>
           <div>
@@ -499,12 +499,15 @@ code{
                 <ul>
                   <li>
                     <span>
-                      <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a>
+                      <a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
-                    <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a>
+                    <span>
+                      <a href="http://www.w3.org/ns/prov#Entity">Entity</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
                   </li>
                 </ul>
               </td>
@@ -527,7 +530,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#fsdf">ns1:fsdf</a>
+                <a href="#fsdf">ns2:fsdf</a>
               </td>
             </tr>
             <tr>
@@ -542,7 +545,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -565,7 +568,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#fsdf">ns1:fsdf</a>
+                <a href="#fsdf">ns2:fsdf</a>
               </td>
             </tr>
             <tr>
@@ -580,7 +583,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -603,7 +606,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#fsdf">ns1:fsdf</a>
+                <a href="#fsdf">ns2:fsdf</a>
               </td>
             </tr>
             <tr>
@@ -618,7 +621,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -641,7 +644,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#fsdf">ns1:fsdf</a>
+                <a href="#fsdf">ns2:fsdf</a>
               </td>
             </tr>
             <tr>
@@ -656,7 +659,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -688,7 +691,7 @@ code{
                 <ul>
                   <li>
                     <span>
-                      <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a>
+                      <a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -696,7 +699,10 @@ code{
                     <a href="http://www.w3.org/ns/dcat#Resource">dcat:Resource</a>
                   </li>
                   <li>
-                    <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a>
+                    <span>
+                      <a href="http://www.w3.org/ns/prov#Entity">Entity</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
                   </li>
                 </ul>
               </td>
@@ -707,7 +713,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#hasCustodian">fsdf:hasCustodian</a>
+                  <a href="#hasCustodian">ns2:hasCustodian</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -737,7 +743,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a>
+                  <a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -771,7 +777,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#fsdf">ns1:fsdf</a>
+                <a href="#fsdf">ns2:fsdf</a>
               </td>
             </tr>
             <tr>
@@ -786,7 +792,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -797,7 +803,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#hasRelationToGround">fsdf:hasRelationToGround</a>
+                  <a href="#hasRelationToGround">ns2:hasRelationToGround</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -820,7 +826,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#fsdf">ns1:fsdf</a>
+                <a href="#fsdf">ns2:fsdf</a>
               </td>
             </tr>
             <tr>
@@ -835,7 +841,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -846,7 +852,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#hasOperationalStatus">fsdf:hasOperationalStatus</a>
+                  <a href="#hasOperationalStatus">ns2:hasOperationalStatus</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -934,7 +940,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#fsdf">ns1:fsdf</a>
+                <a href="#fsdf">ns2:fsdf</a>
               </td>
             </tr>
             <tr>
@@ -949,7 +955,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -962,13 +968,13 @@ code{
                 <ul>
                   <li>
                     <span>
-                      <a href="#hasPrimaryFuel">fsdf:hasPrimaryFuel</a>
+                      <a href="#hasPrimaryFuel">ns2:hasPrimaryFuel</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasPrimarySubFuel">fsdf:hasPrimarySubFuel</a>
+                      <a href="#hasPrimarySubFuel">ns2:hasPrimarySubFuel</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -1001,7 +1007,7 @@ code{
               <td>
                 <ul>
                   <li>
-                    <a href="http://purl.org/dc/terms/Jurisdiction">dcterms:Jurisdiction</a>
+                    <a href="http://purl.org/dc/terms/Jurisdiction">Jurisdiction</a>
                   </li>
                   <li>
                     <span>
@@ -1018,7 +1024,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#hasJurisdiction">fsdf:hasJurisdiction</a>
+                  <a href="#hasJurisdiction">ns2:hasJurisdiction</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -1074,13 +1080,13 @@ mandates:clp-1994
                 <ul>
                   <li>
                     <span>
-                      <a href="#affectsAgency">fsdf:affectsAgency</a>
+                      <a href="#affectsAgency">ns2:affectsAgency</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasResponsibleAuthority">fsdf:hasResponsibleAuthority</a>
+                      <a href="#hasResponsibleAuthority">ns2:hasResponsibleAuthority</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -1095,7 +1101,7 @@ mandates:clp-1994
                 <span>
                   <span>
                     <span>
-                      <a href="#hasResponsibleAuthority">fsdf:hasResponsibleAuthority</a>
+                      <a href="#hasResponsibleAuthority">ns2:hasResponsibleAuthority</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                     <span>
@@ -1124,7 +1130,7 @@ mandates:clp-1994
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#fsdf">ns1:fsdf</a>
+                <a href="#fsdf">ns2:fsdf</a>
               </td>
             </tr>
             <tr>
@@ -1139,7 +1145,7 @@ mandates:clp-1994
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1150,7 +1156,7 @@ mandates:clp-1994
               </th>
               <td>
                 <span>
-                  <a href="#themeOfFeatureWithProperty">fsdf:themeOfFeatureWithProperty</a>
+                  <a href="#themeOfFeatureWithProperty">ns2:themeOfFeatureWithProperty</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -1161,7 +1167,7 @@ mandates:clp-1994
               </th>
               <td>
                 <span>
-                  <a href="#likelyPropertyOfFeatureWithTheme">fsdf:likelyPropertyOfFeatureWithTheme</a>
+                  <a href="#likelyPropertyOfFeatureWithTheme">ns2:likelyPropertyOfFeatureWithTheme</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -1199,7 +1205,7 @@ mandates:clp-1994
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a>
+                  <a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1267,7 +1273,7 @@ mandates:clp-1994
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a>
+                  <a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1278,7 +1284,7 @@ mandates:clp-1994
               </th>
               <td>
                 <span>
-                  <a href="#likelyPropertyOfFeatureWithTheme">fsdf:likelyPropertyOfFeatureWithTheme</a>
+                  <a href="#likelyPropertyOfFeatureWithTheme">ns2:likelyPropertyOfFeatureWithTheme</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -1291,7 +1297,7 @@ mandates:clp-1994
                 <ul>
                   <li>
                     <span>
-                      <a href="#themeOfFeatureWithProperty">fsdf:themeOfFeatureWithProperty</a>
+                      <a href="#themeOfFeatureWithProperty">ns2:themeOfFeatureWithProperty</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -1354,13 +1360,13 @@ agencies:nntt
                 <ul>
                   <li>
                     <span>
-                      <a href="#affectsAgency">fsdf:affectsAgency</a>
+                      <a href="#affectsAgency">ns2:affectsAgency</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasCustodian">fsdf:hasCustodian</a>
+                      <a href="#hasCustodian">ns2:hasCustodian</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -1392,7 +1398,7 @@ agencies:nntt
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/ns/prov#Agent">prov:Agent</a>
+                  <a href="http://www.w3.org/ns/prov#Agent">Agent</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1405,13 +1411,13 @@ agencies:nntt
                 <ul>
                   <li>
                     <span>
-                      <a href="#Jurisdiction">fsdf:Jurisdiction</a>
+                      <a href="#Jurisdiction">ns2:Jurisdiction</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#Agency">fsdf:Agency</a>
+                      <a href="#Agency">ns2:Agency</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1445,7 +1451,7 @@ agencies:nntt
                 <ul>
                   <li>
                     <span>
-                      <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a>
+                      <a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1696,12 +1702,15 @@ agencies:nntt
                 <ul>
                   <li>
                     <span>
-                      <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a>
+                      <a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
-                    <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a>
+                    <span>
+                      <a href="http://www.w3.org/ns/prov#Entity">Entity</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
                   </li>
                 </ul>
               </td>
@@ -1714,43 +1723,43 @@ agencies:nntt
                 <ul>
                   <li>
                     <span>
-                      <a href="#featureDataProvenance">fsdf:featureDataProvenance</a>
+                      <a href="#featureDataProvenance">ns2:featureDataProvenance</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasEmbeddedNetworkOperator">fsdf:hasEmbeddedNetworkOperator</a>
+                      <a href="#hasEmbeddedNetworkOperator">ns2:hasEmbeddedNetworkOperator</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasGeneratorNumber">fsdf:hasGeneratorNumber</a>
+                      <a href="#hasGeneratorNumber">ns2:hasGeneratorNumber</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasOperationalStatus">fsdf:hasOperationalStatus</a>
+                      <a href="#hasOperationalStatus">ns2:hasOperationalStatus</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasPrimaryFuel">fsdf:hasPrimaryFuel</a>
+                      <a href="#hasPrimaryFuel">ns2:hasPrimaryFuel</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasPrimarySubFuel">fsdf:hasPrimarySubFuel</a>
+                      <a href="#hasPrimarySubFuel">ns2:hasPrimarySubFuel</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasRelationToGround">fsdf:hasRelationToGround</a>
+                      <a href="#hasRelationToGround">ns2:hasRelationToGround</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -1775,7 +1784,7 @@ agencies:nntt
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2004/02/skos/core">ns3:core</a>
+                <a href="http://www.w3.org/2004/02/skos/core">SKOS Vocabulary</a>
               </td>
             </tr>
             <tr>
@@ -1790,7 +1799,7 @@ agencies:nntt
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a>
+                  <a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1803,49 +1812,49 @@ agencies:nntt
                 <ul>
                   <li>
                     <span>
-                      <a href="#Material">fsdf:Material</a>
+                      <a href="#Material">ns2:Material</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#ObservableProperty">fsdf:ObservableProperty</a>
+                      <a href="#ObservableProperty">ns2:ObservableProperty</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#PowerStationStructures">fsdf:PSStructures</a>
+                      <a href="#PowerStationStructures">ns2:PowerStationStructures</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#PhysicalCondition">fsdf:PhysicalCondition</a>
+                      <a href="#PhysicalCondition">ns2:PhysicalCondition</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#GroundRelation">fsdf:GroundRelation</a>
+                      <a href="#GroundRelation">ns2:GroundRelation</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#OperationalStatus">fsdf:OperationalStatus</a>
+                      <a href="#OperationalStatus">ns2:OperationalStatus</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#Fuel">fsdf:Fuel</a>
+                      <a href="#Fuel">ns2:Fuel</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#FSDFTheme">fsdf:Theme</a>
+                      <a href="#FSDFTheme">ns2:FSDFTheme</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1893,7 +1902,7 @@ agencies:nntt
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a>
+                  <a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2027,7 +2036,7 @@ mandates:clp-1994
               </th>
               <td>
                 <span>
-                  <a href="#Mandate">fsdf:Mandate</a>
+                  <a href="#Mandate">ns2:Mandate</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2038,7 +2047,7 @@ mandates:clp-1994
               </th>
               <td>
                 <span>
-                  <a href="#Agency">fsdf:Agency</a>
+                  <a href="#Agency">ns2:Agency</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2100,12 +2109,15 @@ mandates:clp-1994
                 <ul>
                   <li>
                     <span>
-                      <a href="http://purl.org/dc/terms/publisher">dcterms:publisher</a>
+                      <a href="http://purl.org/dc/terms/publisher">Publisher</a>
                       <sup class="sup-p" title="RDF Property">p</sup>
                     </span>
                   </li>
                   <li>
-                    <a href="http://www.w3.org/ns/prov#agent">prov:agent</a>
+                    <span>
+                      <a href="http://www.w3.org/ns/prov#agent">agent</a>
+                      <sup class="sup-op" title="OWL Object Property">op</sup>
+                    </span>
                   </li>
                 </ul>
               </td>
@@ -2127,7 +2139,7 @@ mandates:clp-1994
               </th>
               <td>
                 <span>
-                  <a href="#Agency">fsdf:Agency</a>
+                  <a href="#Agency">ns2:Agency</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2167,7 +2179,7 @@ mandates:clp-1994
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Literal">Literal</a>
               </td>
             </tr>
           </table>
@@ -2235,12 +2247,15 @@ mandates:clp-1994
                 <ul>
                   <li>
                     <span>
-                      <a href="http://purl.org/dc/terms/publisher">dcterms:publisher</a>
+                      <a href="http://purl.org/dc/terms/publisher">Publisher</a>
                       <sup class="sup-p" title="RDF Property">p</sup>
                     </span>
                   </li>
                   <li>
-                    <a href="http://www.w3.org/ns/prov#agent">prov:agent</a>
+                    <span>
+                      <a href="http://www.w3.org/ns/prov#agent">agent</a>
+                      <sup class="sup-op" title="OWL Object Property">op</sup>
+                    </span>
                   </li>
                 </ul>
               </td>
@@ -2251,7 +2266,7 @@ mandates:clp-1994
               </th>
               <td>
                 <span>
-                  <a href="#Jurisdiction">fsdf:Jurisdiction</a>
+                  <a href="#Jurisdiction">ns2:Jurisdiction</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2292,7 +2307,7 @@ mandates:clp-1994
               </th>
               <td>
                 <span>
-                  <a href="#OperationalStatus">fsdf:OperationalStatus</a>
+                  <a href="#OperationalStatus">ns2:OperationalStatus</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2333,7 +2348,7 @@ mandates:clp-1994
               </th>
               <td>
                 <span>
-                  <a href="#Fuel">fsdf:Fuel</a>
+                  <a href="#Fuel">ns2:Fuel</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2374,7 +2389,7 @@ mandates:clp-1994
               </th>
               <td>
                 <span>
-                  <a href="#Fuel">fsdf:Fuel</a>
+                  <a href="#Fuel">ns2:Fuel</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2415,7 +2430,7 @@ mandates:clp-1994
               </th>
               <td>
                 <span>
-                  <a href="#GroundRelation">fsdf:GroundRelation</a>
+                  <a href="#GroundRelation">ns2:GroundRelation</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2467,7 +2482,7 @@ obsp:ratedVoltage
               </th>
               <td>
                 <span>
-                  <a href="#FSDFTheme">fsdf:Theme</a>
+                  <a href="#FSDFTheme">ns2:FSDFTheme</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2508,7 +2523,7 @@ themes:electrical-infrastructure
               </th>
               <td>
                 <span>
-                  <a href="#FSDFTheme">fsdf:Theme</a>
+                  <a href="#FSDFTheme">ns2:FSDFTheme</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2549,7 +2564,7 @@ themes:electrical-infrastructure
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2000/01/rdf-schema#member">rdfs:member</a>
+                  <a href="http://www.w3.org/2000/01/rdf-schema#member">member</a>
                   <sup class="sup-p" title="RDF Property">p</sup>
                 </span>
               </td>
@@ -2861,7 +2876,7 @@ themes:electrical-infrastructure
               </th>
               <td>
                 <span>
-                  <a href="#Mandate">fsdf:Mandate</a>
+                  <a href="#Mandate">ns2:Mandate</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2871,10 +2886,10 @@ themes:electrical-infrastructure
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td><span>
-  <a href="#Agency">fsdf:Agency</a>
+  <a href="#Agency">ns2:Agency</a>
   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span> <span class="cardinality">or</span> <span>
-  <a href="#Jurisdiction">fsdf:Jurisdiction</a>
+  <a href="#Jurisdiction">ns2:Jurisdiction</a>
   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span></td>
             </tr>
@@ -3076,11 +3091,11 @@ themes:electrical-infrastructure
         </div>
       </div>
       <span>
-        <a href="#Agency">fsdf:Agency</a>
+        <a href="#Agency">ns2:Agency</a>
         <sup class="sup-c" title="OWL/RDFS Class">c</sup>
       </span>
       <span>
-        <a href="#Jurisdiction">fsdf:Jurisdiction</a>
+        <a href="#Jurisdiction">ns2:Jurisdiction</a>
         <sup class="sup-c" title="OWL/RDFS Class">c</sup>
       </span>
       <div class="section" id="datatypeproperties">
@@ -3229,11 +3244,7 @@ themes:electrical-infrastructure
           </dd>
           <dt id="ns2">ns2</dt>
           <dd>
-            <code>http://purl.org/NET/rdflicense/</code>
-          </dd>
-          <dt id="ns3">ns3</dt>
-          <dd>
-            <code>http://www.w3.org/2004/02/skos/</code>
+            <code>#</code>
           </dd>
           <dt id="owl">owl</dt>
           <dd>
@@ -3505,9 +3516,6 @@ themes:electrical-infrastructure
             </li>
             <li>
               <a href="#ns2">ns2</a>
-            </li>
-            <li>
-              <a href="#ns3">ns3</a>
             </li>
             <li>
               <a href="#owl">owl</a>

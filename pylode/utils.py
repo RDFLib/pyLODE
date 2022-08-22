@@ -371,7 +371,7 @@ def rdf_obj_html(
         ont: Graph,
         back_onts: Graph,
         ns: Tuple[str, str],
-        obj: List[Union[URIRef, BNode, Literal]],
+        obj: List[Union[URIRef, BNode, Literal, Tuple[Union[URIRef, BNode], str]]],
         fids,
         rdf_type=None,
         prop=None
@@ -384,7 +384,7 @@ def rdf_obj_html(
             ont_: Graph,
             back_onts_: Graph,
             ns_: Tuple[str, str],
-            obj_: Union[URIRef, BNode, Literal],
+            obj_: Union[URIRef, BNode, Literal, Tuple[Union[URIRef, BNode], str]],
             fids_,
             rdf_type_=None,
             prop=None
@@ -431,21 +431,33 @@ def rdf_obj_html(
             if rdf_type__ is None:
                 rdf_type__ = _get_ont_type(ont__, back_onts__, iri__)
 
-            try:
-                qname = ont__.compute_qname(iri__, True)
-            except ValueError:
-                qname = iri__
-
-            prefix = "" if qname[0] == "" else f"{qname[0]}:"
-
+            # if it's a thing in this ontology, use a fragment link
             if ns__ is not None and str(iri__).startswith(ns__):
                 fid = generate_fid(None, iri__, fids__)
                 if fid is not None:
                     iri__ = "#" + fid
 
+            # use the objet's label for hyperlink text, if it has one
+            # if not, try and use a prefixed hyperlink
+            # if not, just the iri
+            v = back_onts__.value(subject=iri__, predicate=DCTERMS.title)  # no need to check other labels: inference
+            if v is not None:
+                anchor = a(f"{v}", href=iri__)
+            else:
+                try:
+                    qname = ont__.compute_qname(iri__, True)
+                except ValueError:
+                    qname = iri__
+                prefix = "" if qname[0] == "" else f"{qname[0]}:"
+
+                if isinstance(qname, tuple):
+                    anchor = a(f"{prefix}{qname[2]}", href=iri__)
+                else:
+                    anchor = a(f"{qname}", href=iri__)
+
             if rdf_type__ is not None:
                 ret = span()
-                ret.appendChild(a(f"{prefix}{qname[2]}", href=iri__))
+                ret.appendChild(anchor)
                 ret.appendChild(
                     sup(
                         ONT_TYPES[rdf_type__][0],
@@ -455,9 +467,7 @@ def rdf_obj_html(
                 )
                 return ret
             else:
-                if isinstance(qname, tuple):
-                    return a(f"{prefix}{qname[2]}", href=iri__)
-                return a(f"{qname}", href=iri__)
+                return anchor
 
         def _literal_html(obj__):
             if str(obj__).startswith("http"):
@@ -686,7 +696,7 @@ def rdf_obj_html(
             else:  # (obj, RDF.type, OWL.Class) in ont:  # Set Class
                 return _setclass_html(ont__, obj__, back_onts__, ns__, fids__)
 
-        if isinstance(obj_, URIRef):
+        if isinstance(obj_, Tuple) or isinstance(obj_, URIRef):
             ret = _hyperlink_html(
                 ont_, back_onts_, ns_, obj_, fids_, rdf_type__=rdf_type_
             )
@@ -724,7 +734,7 @@ def prop_obj_pair_html(
         property_description: Literal,
         ont_title: Literal,
         fids,
-        obj: List[Union[URIRef, BNode, Literal]],
+        obj: List[Union[URIRef, BNode, Literal, Tuple[Union[URIRef, BNode], str]]],
         obj_type: Optional[str] = None,
 ):
     """Makes an HTML Definition list dt & dd pair or a Table tr, th & td set,
