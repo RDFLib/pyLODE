@@ -888,4 +888,7 @@ def section_html(
 
 
 def de_space_html(html):
-    return "".join([l_.strip().replace("\n", "") for l_ in html.split("\n")])
+    # s = "".join([l_.strip().replace("\n", " ") for l_ in html.split("\n")])
+    # return re.sub(" +", " ", s)
+    s = re.sub(r">\s+<", "><", html)
+    return re.sub(r"\s+", " ", s)

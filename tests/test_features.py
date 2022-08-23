@@ -1,6 +1,4 @@
-import sys
 from pathlib import Path
-sys.path.append(str(Path().absolute().parent.parent / "pylode"))
 from pylode.ontdoc import OntDoc
 
 
