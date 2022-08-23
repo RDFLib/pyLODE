@@ -45,7 +45,7 @@ The Live OWL Documentation Environment tool
 Semantic Web circles) Java & XSLT-based tool used to generate
 human-readable HTML documents for OWL and RDF ontologies. That tool is
 now a bit dated (old-style HTML, use of older technologies like XSLT)
-and it's (`online version <https://www.essepuntato.it/lode>`__) is not always
+and its (`online version <https://www.essepuntato.it/lode>`__) is not always
 online.
 
 This tool is a complete re-implementation of LODE's functionality using
@@ -113,6 +113,35 @@ Basic Use
 This will produce the file ``minimal.html`` in this directory which should
 match exactly the file ``examples/minimal.html``.
 
+* as a docker container
+
+build the docker image
+::
+   docker build -t pylode:latest .
+
+copy the example directory, mount it to the countainer and run cli.py in the container
+::
+   docker  run  --mount 'type=bind,src=<ttl_directory>,target=/app/pylode/data' pylode:latest  python3.10 pylode/cli.py data/<ttl_file> -o data/<html_file>
+
+   Note: <ttl_directory> must be absolute 
+
+Module Use
+^^^^^^^^^^
+
+::
+
+    from pylode import OntDoc
+
+    # initialise
+    od = OntDoc(ontology="some-ontology-file.ttl")
+
+    # produce HTML
+    html = od.make_html()
+
+    # or save HTML to a file
+    od.make_html(destination="some-resulting-html-file.html")
+
+This will read from ``some-ontology-file.ttl`` to produce the file ``some-resulting-html-file.html`` in this directory.
 
 Examples
 ========
