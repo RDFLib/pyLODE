@@ -15,7 +15,7 @@ dominate = "^2.6.0"
 pylode = "pylode.cli:main"
 
 [tool.poetry.dev-dependencies]
-pytest = "^7.1.2"
+pytest = "^7.2.0"
 black = "^22.3.0"
 flake8 = "^4.0.1"
 pyinstaller = { version = "^5.1", python = ">=3.9,<3.11" }
