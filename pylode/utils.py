@@ -448,8 +448,10 @@ def rdf_obj_html(
                 anchor = a(f"{v}", href=frag_iri if frag_iri is not None else iri__)
             else:
                 try:
-                    qname = ont__.compute_qname(iri__, True)
-                except ValueError:
+                    qname = ont__.compute_qname(iri__, False)
+                    if "ASGS" in qname[2]:
+                        print(qname)
+                except Exception:
                     qname = iri__
                 prefix = "" if qname[0] == "" else f"{qname[0]}:"
 
