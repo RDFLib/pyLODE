@@ -1,5 +1,5 @@
 from pathlib import Path
-from pylode.ontdoc import OntPub
+from pylode.profiles import OntPub
 from pylode import __version__
 from rdflib import Graph
 import pytest
@@ -103,6 +103,9 @@ def test_logo(fix_html):
           <span>LODE</span>
         </a>
         <a href="https://github.com/rdflib/pyLODE/release/{__version__}" id="version">{__version__}</a>
+        <span> with the </span>
+        <a href="https://w3id.org/profile/ontpub" id="profile">OntPub</a>
+        <span>profile</span>
       </p>
     </div>"""
         in html
@@ -257,114 +260,7 @@ def test_metadata(fix_html):
 
 
 def test_classes(fix_html):
-    expected = """<div class="section" id="classes"><h2>Classes</h2>
-    <div class="property entity" id="ResourceDescriptor"><h3>Resource Descriptor <sup class="sup-c"
-                                                                                     title="OWL/RDFS Class">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.w3.org/ns/dx/prof/ResourceDescriptor</code></td>
-            </tr>
-            <tr>
-                <th><a class="hover_property" href="http://purl.org/dc/terms/description"
-                       title="An account of the resource. Defined in DCMI Metadata Terms">Description</a></th>
-                <td><p>A description of a resource that defines an aspect - a particular part, feature or role - of a Profile</p></td>
-            </tr>
-            <tr>
-                <th><a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf"
-                       title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a></th>
-                <td>
-                    <ul>
-                        <li><span><a href="#hasArtifact">has artifact</a><sup class="sup-op"
-                                                                              title="OWL Object Property">op</sup></span>
-                        </li>
-                        <li><span><a href="#isInheritedFrom">is inherited from</a><sup class="sup-op"
-                                                                                       title="OWL Object Property">op</sup></span>
-                        </li>
-                        <li><span><a href="#hasRole">has role</a><sup class="sup-op"
-                                                                      title="OWL Object Property">op</sup></span></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <th><a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf"
-                       title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a></th>
-                <td><span><a href="#hasResource">has resource</a><sup class="sup-op"
-                                                                      title="OWL Object Property">op</sup></span></td>
-            </tr>
-        </table>
-    </div>
-    <div class="property entity" id="ResourceRole"><h3>Resource Role <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-    </h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.w3.org/ns/dx/prof/ResourceRole</code></td>
-            </tr>
-            <tr>
-                <th><a class="hover_property" href="http://purl.org/dc/terms/description"
-                       title="An account of the resource. Defined in DCMI Metadata Terms">Description</a></th>
-                <td><p>A role that an profile resource, described by a Resource Descriptor, plays</p></td>
-            </tr>
-            <tr>
-                <th><a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf"
-                       title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a></th>
-                <td><span><a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a><sup class="sup-c"
-                                                                                                title="OWL/RDFS Class">c</sup></span>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="property entity" id="Profile"><h3>Profile <sup class="sup-c" title="OWL/RDFS Class">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.w3.org/ns/dx/prof/Profile</code></td>
-            </tr>
-            <tr>
-                <th><a class="hover_property" href="http://purl.org/dc/terms/description"
-                       title="An account of the resource. Defined in DCMI Metadata Terms">Description</a></th>
-                <td><p>A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications.</p>
-                    <p>This definition includes what are often called "application profiles", "metadata application profiles", or "metadata profiles".</p></td>
-            </tr>
-            <tr>
-                <th><a class="hover_property" href="http://purl.org/dc/terms/source"
-                       title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
-                </th>
-                <td><a href="https://www.w3.org/2017/dxwg/wiki/ProfileContext">ns2:ProfileContext</a></td>
-            </tr>
-            <tr>
-                <th><a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf"
-                       title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a></th>
-                <td><a href="http://purl.org/dc/terms/Standard">Standard</a></td>
-            </tr>
-            <tr>
-                <th><a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf"
-                       title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a></th>
-                <td>
-                    <ul>
-                        <li><span><a href="#isProfileOf">is profile of</a><sup class="sup-op"
-                                                                               title="OWL Object Property">op</sup></span>
-                        </li>
-                        <li><span><a href="#isTransitiveProfileOf">is transitive profile of</a><sup class="sup-op"
-                                                                                                    title="OWL Object Property">op</sup></span>
-                        </li>
-                        <li><span><a href="#hasToken">has token</a><sup class="sup-dp"
-                                                                        title="OWL Datatype Property">dp</sup></span>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <th><a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf"
-                       title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a></th>
-                <td><span><a href="#isInheritedFrom">is inherited from</a><sup class="sup-op"
-                                                                               title="OWL Object Property">op</sup></span>
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>"""
+    expected = """<div class="section" id="classes"><h2>Classes</h2><div class="property entity" id="ResourceDescriptor"><h3>Resource Descriptor <sup class="sup-c" title="OWL/RDFS Class">c</sup></h3><table><tr><th>IRI</th><td><code>http://www.w3.org/ns/dx/prof/ResourceDescriptor</code>"""
     e = de_space_html(expected)
     a = de_space_html(fix_html)
     assert e in a, "Classes section not generated correctly"
@@ -763,29 +659,13 @@ def test_namespaces(fix_html):
           <dd>
             <code>http://purl.org/dc/terms/</code>
           </dd>
-          <dt id="dcterms">dcterms</dt>
-          <dd>
-            <code>http://purl.org/dc/terms/</code>
-          </dd>
           <dt id="ns1">ns1</dt>
           <dd>
             <code>http://www.w3.org/ns/dx/</code>
           </dd>
-          <dt id="ns2">ns2</dt>
-          <dd>
-            <code>https://www.w3.org/2017/dxwg/wiki/</code>
-          </dd>
           <dt id="owl">owl</dt>
           <dd>
             <code>http://www.w3.org/2002/07/owl#</code>
-          </dd>
-          <dt id="prof">prof</dt>
-          <dd>
-            <code>http://www.w3.org/ns/dx/prof/</code>
-          </dd>
-          <dt id="prov">prov</dt>
-          <dd>
-            <code>http://www.w3.org/ns/prov#</code>
           </dd>
           <dt id="rdf">rdf</dt>
           <dd>
@@ -794,10 +674,6 @@ def test_namespaces(fix_html):
           <dt id="rdfs">rdfs</dt>
           <dd>
             <code>http://www.w3.org/2000/01/rdf-schema#</code>
-          </dd>
-          <dt id="schema">schema</dt>
-          <dd>
-            <code>https://schema.org/</code>
           </dd>
           <dt id="sdo">sdo</dt>
           <dd>
@@ -939,31 +815,16 @@ def test_toc(fix_html):
               <a href="#dct">dct</a>
             </li>
             <li>
-              <a href="#dcterms">dcterms</a>
-            </li>
-            <li>
               <a href="#ns1">ns1</a>
             </li>
             <li>
-              <a href="#ns2">ns2</a>
-            </li>
-            <li>
               <a href="#owl">owl</a>
-            </li>
-            <li>
-              <a href="#prof">prof</a>
-            </li>
-            <li>
-              <a href="#prov">prov</a>
             </li>
             <li>
               <a href="#rdf">rdf</a>
             </li>
             <li>
               <a href="#rdfs">rdfs</a>
-            </li>
-            <li>
-              <a href="#schema">schema</a>
             </li>
             <li>
               <a href="#sdo">sdo</a>

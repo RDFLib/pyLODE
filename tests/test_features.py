@@ -1,5 +1,5 @@
 from pathlib import Path
-from pylode.ontdoc import OntPub
+from pylode.profiles import OntPub
 
 
 def test_example_preformatting():

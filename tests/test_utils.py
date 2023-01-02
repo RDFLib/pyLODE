@@ -1,4 +1,4 @@
-from pylode.ontdoc import OntPub
+from pylode.profiles import OntPub
 from pylode.utils import *
 from pylode.rdf_elements import CLASS_PROPS
 
@@ -72,12 +72,12 @@ def test_rdf_obj_html(fix_ont, fix_load_background_onts, fix_get_ns):
         ([Literal(True)], "<p>true</p>"),
         ([Literal("Hello World")], "<p>Hello World</p>"),
         ([Literal(41), Literal(42)], "<ul><li><p>41</p></li><li><p>42</p></li></ul>"),
-        ([URIRef("http://example.com/thing/One")], '<a href="#One">ns2:One</a>'),
+        ([URIRef("http://example.com/thing/One")], '<a href="#One">http://example.com/thing/One</a>'),
         (
             [URIRef("http://example.com/thing/FiveFive")],
-            '<a href="#Five5">ns2:FiveFive</a>',
+            '<a href="#Five5">http://example.com/thing/FiveFive</a>',
         ),
-        ([URIRef("http://other.com/thing/Six")], '<a href="#Six">ns3:Six</a>'),
+        ([URIRef("http://other.com/thing/Six")], '<a href="#Six">http://other.com/thing/Six</a>'),
         ([URIRef("not-a-uri")], '<a href="not-a-uri">not-a-uri</a>'),
     ]
 
@@ -97,7 +97,7 @@ def test_rdf_obj_html(fix_ont, fix_load_background_onts, fix_get_ns):
 
 
 def test_rdf_obj_html_bn(fix_load_background_onts):
-    g = OntPub(Path(__file__).parent.parent / "examples/ontdoc/skos-thes.ttl").ont
+    g = OntPub(Path(__file__).parent.parent / "examples/ontpub/skos-thes.ttl").ont
     bn = None
     for x in g.objects(
         URIRef("http://purl.org/iso25964/skos-thes#status"), RDFS.domain
@@ -123,9 +123,9 @@ def test_rdf_obj_html_bn(fix_load_background_onts):
 </span>"""
     actual = o.render()
 
-    assert expected1 in actual
-    assert expected2 in actual
-    assert expected3 in actual
+    assert expected1 in actual, "exp1 failed"
+    assert expected2 in actual, "exp2 failed"
+    assert expected3 in actual, "exp3 failed"
 
 
 def test_prop_obj_pair_html(fix_ont, fix_load_background_onts, fix_get_ns):

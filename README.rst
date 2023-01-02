@@ -30,12 +30,13 @@ Contents
 3. `What pyLODE understands`_
 4. Examples_
 5. Installation_
-6. `Differences from LODE`_
-7. `Releases`_
-8. License_
-9. Citation_
-10. Collaboration_
-11. Contacts_
+6. Testing_
+7. `Differences from LODE`_
+8. `Releases`_
+9. License_
+10. Citation_
+11. Collaboration_
+12. Contacts_
 
 
 Quick Intro
@@ -210,6 +211,15 @@ it using `pip <https://pypi.org/project/pip/>`_ as normal:
 ::
 
     pip install pylode
+
+
+Testing
+=======
+
+It's best to disable warnings to hide pointless warnings from the RDFLib library.
+
+::
+    ~$ python -m pytest tests --disable-warnings
 
 
 Differences from LODE

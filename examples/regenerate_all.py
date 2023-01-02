@@ -5,7 +5,7 @@ sys.path.append(str(Path().absolute().parent / "pylode"))
 try:
     from pylode.ontdoc import OntPub
 except ImportError:
-    from ontdoc import OntDoc
+    from ontpub import OntDoc
 
 EXAMPLES_DIR = Path().absolute() / "ontdoc"
 

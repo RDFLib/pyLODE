@@ -1,7 +1,8 @@
 from .utils import *
 from .rdf_elements import *
-from .ontpub import OntPub, PylodeError
-from .vocpub import VocPub
+from .profiles.ontpub import OntPub
+from .utils import PylodeError
+from .profiles.vocpub import VocPub
 from .version import __version__
 
 

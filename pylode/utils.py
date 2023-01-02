@@ -577,13 +577,17 @@ def rdf_obj_html(
                         sp.appendChild(a(raw(orcid_logo), href=identifier))
                 elif identifier is not None:
                     sp.appendChild(a(identifier, href=identifier))
-
                 if email is not None:
                     email = email.replace("mailto:", "")
                     sp.appendChild(span("(", a(email, href="mailto:" + email), " )"))
 
                 if affiliation is not None:
                     sp.appendChild(_affiliation_html(ont__, affiliation))
+            else:
+                if orcid:
+                    return sp.appendChild(a(obj__, href=obj__))
+                else:
+                    return obj__
             return sp
 
         def _restriction_html(ont__, obj__, ns__):
@@ -890,3 +894,7 @@ def make_pylode_logo(doc, version, profile_name, profile_iri):
                 span(" with the ")
                 a(profile_name, href=profile_iri, id="profile")
                 span("profile")
+
+
+class PylodeError(Exception):
+    pass

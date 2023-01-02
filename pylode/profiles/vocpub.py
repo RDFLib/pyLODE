@@ -1,10 +1,3 @@
-import shutil
-from collections import defaultdict
-from itertools import chain
-from pathlib import Path
-from typing import Dict
-from typing import Union
-
 import dominate
 from dominate.tags import (
     h2,
@@ -14,9 +7,11 @@ from dominate.tags import (
     link,
     meta,
     script,
+    p,
     dl,
     strong,
     a,
+    span,
     sup,
     tr,
     td,
@@ -30,6 +25,12 @@ from dominate.tags import (
     dd,
 )
 from dominate.util import raw
+from collections import defaultdict
+from typing import Dict
+import shutil
+from itertools import chain
+from pathlib import Path
+from typing import Union
 from rdflib import Literal, Graph
 from rdflib.namespace import (
     DC,
@@ -61,7 +62,7 @@ try:
 
     from .version import __version__
 except ImportError:
-    from utils import (
+    from pylode.utils import (
         load_ontology,
         load_background_onts,
         load_background_onts_titles,
@@ -72,9 +73,9 @@ except ImportError:
         make_pylode_logo,
     )
 
-    from rdf_elements import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
+    from pylode.rdf_elements import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
 
-    from version import __version__
+    from pylode.version import __version__
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
 
@@ -83,7 +84,7 @@ class PylodeError(Exception):
     pass
 
 
-class OntPub:
+class VocPub:
     """Ontology Document class used to create HTML documentation
     from OWL Ontologies.
 
@@ -279,7 +280,7 @@ class OntPub:
                 style(
                     raw(
                         "\n"
-                        + open(Path(__file__).parent / "pylode.css").read()
+                        + open(Path(__file__).parent.parent / "pylode.css").read()
                         + "\n\t"
                     )
                 )
@@ -313,7 +314,7 @@ class OntPub:
 
         Just calls other helper functions in order"""
         make_pylode_logo(
-            self.doc, __version__, "OntPub", "https://w3id.org/profile/ontpub"
+            self.doc, __version__, "VocPub", "https://w3id.org/profile/vocpub"
         )
         self._make_metadata()
         self._make_main_sections()
