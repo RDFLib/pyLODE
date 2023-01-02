@@ -10,6 +10,7 @@ python = "^3.9"
 rdflib = "^6.1.1"
 Markdown = "^3.3.7"
 dominate = "^2.6.0"
+html5lib = "^1.1"
 
 [tool.poetry.scripts]
 pylode = "pylode.cli:main"
