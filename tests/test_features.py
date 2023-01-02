@@ -1,13 +1,14 @@
 from pathlib import Path
-from pylode.ontdoc import OntDoc
+from pylode.ontdoc import OntPub
 
 
 def test_example_preformatting():
     input_rdf = Path(__file__).parent / "abisdm.ttl"
 
-    html = OntDoc(input_rdf).make_html()
+    html = OntPub(input_rdf).make_html()
 
-    assert """<pre># Dataset with a embargo period
+    assert (
+        """<pre># Dataset with a embargo period
 PREFIX abisdm: &lt;https://linked.data.gov.au/def/abisdm/&gt;
 PREFIX dcterms: &lt;http://purl.org/dc/terms/&gt;
 PREFIX sdo: &lt;https://schema.org/&gt;
@@ -26,4 +27,6 @@ PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
 &lt;http://example.org/Stream-Environment-and-Water-Pty-Ltd&gt;
     a sdo:Organization ;
     sdo:name &quot;Stream Environment and Water Pty Ltd&quot; ;
-.</pre>""" in html
+.</pre>"""
+        in html
+    )

@@ -1,4 +1,4 @@
-from pylode.ontdoc import OntDoc
+from pylode.ontdoc import OntPub
 from pylode.utils import *
 from pylode.rdf_elements import CLASS_PROPS
 
@@ -10,7 +10,7 @@ import pytest
 # scope="session" so that this is reused without regeneration in this testing session
 @pytest.fixture(scope="session")
 def fix_ont():
-    od = OntDoc(Path(__file__).parent / "prof.ttl")
+    od = OntPub(Path(__file__).parent / "prof.ttl")
     return od.ont
 
 
@@ -97,7 +97,7 @@ def test_rdf_obj_html(fix_ont, fix_load_background_onts, fix_get_ns):
 
 
 def test_rdf_obj_html_bn(fix_load_background_onts):
-    g = OntDoc(Path(__file__).parent.parent / "examples/ontdoc/skos-thes.ttl").ont
+    g = OntPub(Path(__file__).parent.parent / "examples/ontdoc/skos-thes.ttl").ont
     bn = None
     for x in g.objects(
         URIRef("http://purl.org/iso25964/skos-thes#status"), RDFS.domain

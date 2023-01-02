@@ -55,10 +55,10 @@ try:
         get_ns,
         prop_obj_pair_html,
         section_html,
+        make_pylode_logo,
     )
 
-    from .rdf_elements import ONTDOC, AGENT_PROPS, \
-        ONT_PROPS, CLASS_PROPS, PROP_PROPS
+    from .rdf_elements import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
 
     from .version import __version__
 except ImportError:
@@ -70,10 +70,10 @@ except ImportError:
         get_ns,
         prop_obj_pair_html,
         section_html,
+        make_pylode_logo,
     )
 
-    from rdf_elements import ONTDOC, AGENT_PROPS, \
-        ONT_PROPS, CLASS_PROPS, PROP_PROPS
+    from rdf_elements import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
 
     from version import __version__
 
@@ -84,7 +84,7 @@ class PylodeError(Exception):
     pass
 
 
-class OntDoc:
+class VocPub:
     """Ontology Document class used to create HTML documentation
     from OWL Ontologies.
 
@@ -134,9 +134,7 @@ class OntDoc:
 
         Either writes to a file or returns a string"""
         self._make_head(
-            self._make_schema_org(),
-            include_css=include_css,
-            destination=destination
+            self._make_schema_org(), include_css=include_css, destination=destination
         )
         self._make_body()
 
@@ -273,10 +271,7 @@ class OntDoc:
             g.add((s_, SDO.affiliation, o))
 
     def _make_head(
-        self,
-        schema_org: Graph,
-        include_css: bool = True,
-        destination: Path = None
+        self, schema_org: Graph, include_css: bool = True, destination: Path = None
     ):
         """Healper function for make_html(). Makes <head>???</head> content"""
         with self.doc.head:
@@ -293,7 +288,8 @@ class OntDoc:
                 link(href="pylode.css", rel="stylesheet", type="text/css")
                 shutil.copy(
                     Path(__file__).parent / "pylode.css",
-                    destination.parent / "pylode.css")
+                    destination.parent / "pylode.css",
+                )
             link(
                 rel="icon",
                 type="image/png",
@@ -317,27 +313,14 @@ class OntDoc:
         """Healper function for make_html(). Makes <body>???</body> content.
 
         Just calls other helper functions in order"""
-        self._make_pylode_logo()
+        make_pylode_logo(
+            self.doc, __version__, "VocPub", "https://w3id.org/profile/vocpub"
+        )
         self._make_metadata()
         self._make_main_sections()
         self._make_namespaces()
         self._make_legend()
         self._make_toc()
-
-    def _make_pylode_logo(self):
-        with self.doc:
-            with div(id="pylode"):
-                with p("made by "):
-                    with a(href="https://github.com/rdflib/pyLODE"):
-                        span("p", id="p")
-                        span("y", id="y")
-                        span("LODE")
-                    a(
-                        __version__,
-                        href="https://github.com/rdflib/pyLODE/release/"
-                             + __version__,
-                        id="version",
-                    )
 
     def _make_metadata(self):
         # get all ONT_PROPS props and their (multiple) values
@@ -353,10 +336,7 @@ class OntDoc:
                     this_onts_props[p_].append(o)
 
         # make HTML for all props in order of ONT_PROPS
-        sec = div(
-            h1(this_onts_props[DCTERMS.title]),
-            id="metadata",
-            _class="section")
+        sec = div(h1(this_onts_props[DCTERMS.title]), id="metadata", _class="section")
         sec.appendChild(h2("Metadata"))
         d = dl(div(dt(strong("IRI")), dd(code(str(iri)))))
         for prop in ONT_PROPS:
@@ -522,10 +502,7 @@ class OntDoc:
 
                     if self.toc.get("classes") is not None:
                         with tr():
-                            td(sup(
-                                "c",
-                                _class="sup-c",
-                                title="OWL/RDFS Class"))
+                            td(sup("c", _class="sup-c", title="OWL/RDFS Class"))
                             td("Classes")
                     if self.toc.get("properties") is not None:
                         with tr():
@@ -533,10 +510,7 @@ class OntDoc:
                             td("Properties")
                     if self.toc.get("objectproperties") is not None:
                         with tr():
-                            td(sup(
-                                "op",
-                                _class="sup-op",
-                                title="OWL Object Property"))
+                            td(sup("op", _class="sup-op", title="OWL Object Property"))
                             td("Object Properties")
                     if self.toc.get("datatypeproperties") is not None:
                         with tr():
@@ -570,21 +544,13 @@ class OntDoc:
                             td("Functional Properties")
                     if self.toc.get("named_individuals") is not None:
                         with tr():
-                            td(sup(
-                                "ni",
-                                _class="sup-ni",
-                                title="OWL Named Individual"
-                            ))
+                            td(sup("ni", _class="sup-ni", title="OWL Named Individual"))
                             td("Named Individuals")
 
     def _make_namespaces(self):
         # only get namespaces used in ont
         nses = {}
-        for n in chain(
-                self.ont.subjects(),
-                self.ont.predicates(),
-                self.ont.objects()
-        ):
+        for n in chain(self.ont.subjects(), self.ont.predicates(), self.ont.objects()):
             # a list of prefixes we don't like
             excluded_namespaces = (
                 # "https://linked.data.gov.au/def/"
@@ -647,10 +613,7 @@ class OntDoc:
                         and len(self.toc["objectproperties"]) > 0
                     ):
                         with li():
-                            h4(a(
-                                "Object Properties",
-                                href="#objectproperties"
-                            ))
+                            h4(a("Object Properties", href="#objectproperties"))
                             with ul(_class="second"):
                                 for c in self.toc["objectproperties"]:
                                     li(a(c[1], href=c[0]))
@@ -660,10 +623,7 @@ class OntDoc:
                         and len(self.toc["datatypeproperties"]) > 0
                     ):
                         with li():
-                            h4(a(
-                                "Datatype Properties",
-                                href="#datatypeproperties"
-                            ))
+                            h4(a("Datatype Properties", href="#datatypeproperties"))
                             with ul(_class="second"):
                                 for c in self.toc["datatypeproperties"]:
                                     li(a(c[1], href=c[0]))
@@ -673,10 +633,7 @@ class OntDoc:
                         and len(self.toc["annotationproperties"]) > 0
                     ):
                         with li():
-                            h4(a(
-                                "Annotation Properties",
-                                href="#annotationproperties"
-                            ))
+                            h4(a("Annotation Properties", href="#annotationproperties"))
                             with ul(_class="second"):
                                 for c in self.toc["annotationproperties"]:
                                     li(a(c[1], href=c[0]))
@@ -686,10 +643,7 @@ class OntDoc:
                         and len(self.toc["functionalproperties"]) > 0
                     ):
                         with li():
-                            h4(a(
-                                "Functional Properties",
-                                href="#functionalproperties"
-                            ))
+                            h4(a("Functional Properties", href="#functionalproperties"))
                             with ul(_class="second"):
                                 for c in self.toc["functionalproperties"]:
                                     li(a(c[1], href=c[0]))

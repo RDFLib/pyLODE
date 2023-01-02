@@ -4,16 +4,13 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).absolute().parent.parent))
 from pylode import __version__
-from pylode import OntDoc, PylodeError
+from pylode import OntPub, VocPub, PylodeError
 
 
 parser = argparse.ArgumentParser()
 
 parser.add_argument(
-    "-v",
-    "--version",
-    action="version",
-    version="{version}".format(version=__version__)
+    "-v", "--version", action="version", version="{version}".format(version=__version__)
 )
 
 parser.add_argument(
@@ -25,18 +22,27 @@ parser.add_argument(
     "-o",
     "--outputfile",
     help="A name you wish to assign to the output file. Will be postfixed "
-         "with .html if not already added. If no output file is given, "
-         "output will be printed to screen",
+    "with .html if not already added. If no output file is given, "
+    "output will be printed to screen",
     default=None,
 )
 
 parser.add_argument(
     "-c",
     "--css",
-    help="Whether (true) or not (false) to include CSS within an output "
-         "HTML file.",
+    help="Whether (true) or not (false) to include CSS within an output " "HTML file.",
     choices=["true", "false"],
     default="true",
+)
+
+parser.add_argument(
+    "-p",
+    "--profile",
+    help="Which profile to use to generate HTML. Must be one of "
+    "'ontpub' (https://w3id.org/profile/ontpub) - for ontologies, "
+    "'vocpub' (https://w3id.org/profile/vocpub) - for SKOS vocabularies",
+    choices=["ontpub", "vocpub"],
+    default="ontpub",
 )
 
 
@@ -44,7 +50,10 @@ def main():
     args = parser.parse_args()
 
     try:
-        od = OntDoc(args.input)
+        if args.profile == "ontpub":
+            html = OntPub(args.input)
+        elif args.profile == "vocpub":
+            html = VocPub(args.input)
     except PylodeError as e:
         print("ERROR: " + str(e))
         exit()
@@ -63,9 +72,9 @@ def main():
         pylode_kwargs["include_css"] = False
 
     if args.outputfile is None:
-        print(od.make_html(**pylode_kwargs))
+        print(html.make_html(**pylode_kwargs))
     else:
-        od.make_html(**pylode_kwargs)
+        html.make_html(**pylode_kwargs)
 
 
 if __name__ == "__main__":

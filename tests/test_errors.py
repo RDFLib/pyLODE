@@ -3,7 +3,7 @@ from pathlib import Path
 
 sys.path.append(str(Path().absolute().parent.parent / "pylode"))
 
-from pylode.ontdoc import OntDoc, PylodeError
+from pylode.ontdoc import OntPub, PylodeError
 
 import pytest
 
@@ -18,7 +18,7 @@ def test_no_title():
         .
         """
     with pytest.raises(PylodeError) as ctx:
-        od = OntDoc(ont_notitle).ont
+        od = OntPub(ont_notitle).ont
 
 
 def test_invalid_rdf():
@@ -33,13 +33,13 @@ def test_invalid_rdf():
         .
         """
     with pytest.raises(SystemExit):
-        od = OntDoc(invalid_rdf)
+        od = OntPub(invalid_rdf)
 
 
 def test_no_file():
     with pytest.raises(SystemExit):
-        od = OntDoc("this-is-not-a-file.ttl")
+        od = OntPub("this-is-not-a-file.ttl")
 
 
 if __name__ == "__main__":
-    od = OntDoc("this-is-not-a-file.ttl")
+    od = OntPub("this-is-not-a-file.ttl")

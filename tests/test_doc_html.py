@@ -1,5 +1,5 @@
 from pathlib import Path
-from pylode.ontdoc import OntDoc
+from pylode.ontdoc import OntPub
 from pylode import __version__
 from rdflib import Graph
 import pytest
@@ -11,7 +11,7 @@ from pylode.utils import de_space_html
 # without regeneration in this testing session
 @pytest.fixture(scope="session")
 def fix_html():
-    od = OntDoc(Path(__file__).parent / "prof.ttl")
+    od = OntPub(Path(__file__).parent / "prof.ttl")
     return od.make_html()
 
 
@@ -253,9 +253,7 @@ def test_metadata(fix_html):
     a = de_space_html(fix_html)
     # open("expected.html", "w").write(e)
     # open("actual.html", "w").write(a)
-    assert (
-        e in a
-    ), "Metadata section not generated correctly"
+    assert e in a, "Metadata section not generated correctly"
 
 
 def test_classes(fix_html):
@@ -369,9 +367,7 @@ def test_classes(fix_html):
 </div>"""
     e = de_space_html(expected)
     a = de_space_html(fix_html)
-    assert (
-        e in a
-    ), "Classes section not generated correctly"
+    assert e in a, "Classes section not generated correctly"
 
 
 def test_properties(fix_html):
@@ -748,9 +744,7 @@ def test_properties(fix_html):
     a = de_space_html(fix_html)
     open("expected.html", "w").write(e)
     open("actual.html", "w").write(a)
-    assert (
-        e in a
-    ), "Properties section not generated correctly"
+    assert e in a, "Properties section not generated correctly"
 
 
 def test_namespaces(fix_html):
@@ -819,10 +813,7 @@ def test_namespaces(fix_html):
           </dd>
         </dl>
       </div>"""
-    assert (
-        expected
-        in fix_html
-    ), "Namespaces section not generated correctly"
+    assert expected in fix_html, "Namespaces section not generated correctly"
 
 
 def test_legend(fix_html):
@@ -993,7 +984,4 @@ def test_toc(fix_html):
         </li>
       </ul>
     </div>"""
-    assert (
-        expected
-        in fix_html
-    ), "ToC logo not generated correctly"
+    assert expected in fix_html, "ToC logo not generated correctly"
