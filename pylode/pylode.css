@@ -131,7 +131,7 @@
             background-position: top left;
             background-attachment: fixed;
             background-repeat: no-repeat;
-            text-align: justify;
+            text-align: left;
         }
 
         section {
@@ -255,10 +255,13 @@
 code{
     word-wrap: break-word;
   }
-  table {
+table {
     table-layout: fixed;
     width: 100%;
-  }
-  td {
+}
+td {
     word-wrap: break-word;
-  }
+}
+#legend table.entity {
+    width: 25%;
+}
