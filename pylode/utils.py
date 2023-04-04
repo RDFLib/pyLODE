@@ -635,15 +635,15 @@ def rdf_obj_html(
                                     span(card, _class="cardinality"),
                                     raw(_rdf_obj_single_html),
                                 )
-                            else:
-                                card = span(
-                                    span(card, _class="cardinality"),
-                                    span(
-                                        _hyperlink_html(
-                                            ont__, back_onts_, ns__, o, fids_, OWL.Class
-                                        )
-                                    ),
-                                )
+                            
+                            card = span(
+                                span(card, _class="cardinality"),
+                                span(
+                                    _hyperlink_html(
+                                        ont__, back_onts_, ns__, o, fids_, OWL.Class
+                                    )
+                                ),
+                            )
 
             restriction = span(prop, card, br()) if card is not None else prop
             restriction = (
