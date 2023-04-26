@@ -109,7 +109,7 @@ Basic Use
 
 ::
 
-    python pylode examples/minimal.ttl -o minimal.html
+    python pylode examples/ontpub/minimal.ttl -o minimal.html
 
 This will produce the file ``minimal.html`` in this directory which should
 match exactly the file ``examples/minimal.html``.

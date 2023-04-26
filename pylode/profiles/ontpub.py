@@ -243,7 +243,8 @@ class OntPub:
 
         # publisher
         for s_, o in chain(
-            g.subject_objects(DC.publisher), g.subject_objects(SDO.publisher)
+            g.subject_objects(DC.publisher),
+            g.subject_objects(SDO.publisher)
         ):
             g.remove((s_, DC.publisher, o))
             g.remove((s_, SDO.publisher, o))
