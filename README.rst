@@ -118,13 +118,15 @@ match exactly the file ``examples/minimal.html``.
 
 build the docker image
 ::
-   docker build -t pylode:latest .
 
-copy the example directory, mount it to the countainer and run cli.py in the container
+    docker build -t pylode:latest .
+
+copy the example directory, mount it to the container and run cli.py in the container
 ::
-   docker  run  --mount 'type=bind,src=<ttl_directory>,target=/app/pylode/data' pylode:latest  python3.10 pylode/cli.py data/<ttl_file> -o data/<html_file>
 
-   Note: <ttl_directory> must be absolute 
+    docker  run  --mount 'type=bind,src=<ttl_directory>,target=/app/pylode/data' pylode:latest  python3.10 pylode/cli.py data/<ttl_file> -o data/<html_file>
+
+    Note: <ttl_directory> must be absolute
 
 Module Use
 ^^^^^^^^^^
@@ -280,7 +282,7 @@ Release Schedule
    :header: "Version", "Date", "Description"
    :widths: 15, 10, 30
 
-   **3.0.5**, **27 April 2023**, "**Minor patching**"
+   **3.0.5**, **27 April 2023**, "Minor patching"
    3.0.4, 24 May 2022, "Use of Poetry"
    3.0.2, 24 May 2022, "Support for preformatted skos:example literals"
    3.0.1, 6 Jan 2022, "Direct HTML generation using dominate; easier to maintain and extend"
