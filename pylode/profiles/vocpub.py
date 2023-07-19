@@ -73,7 +73,13 @@ except ImportError:
         make_pylode_logo,
     )
 
-    from pylode.rdf_elements import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
+    from pylode.rdf_elements import (
+        ONTDOC,
+        AGENT_PROPS,
+        ONT_PROPS,
+        CLASS_PROPS,
+        PROP_PROPS,
+    )
 
     from pylode.version import __version__
 
