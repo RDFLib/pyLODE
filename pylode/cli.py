@@ -4,7 +4,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).absolute().parent.parent))
 from pylode import __version__, PylodeError
-from pylode import OntPub, VocPub
+from pylode import OntPub, VocPub, Supermodel
 
 parser = argparse.ArgumentParser()
 
@@ -40,7 +40,7 @@ parser.add_argument(
     help="Which profile to use to generate HTML. Must be one of "
     "'ontpub' (https://w3id.org/profile/ontpub) - for ontologies, "
     "'vocpub' (https://w3id.org/profile/vocpub) - for SKOS vocabularies",
-    choices=["ontpub", "vocpub"],
+    choices=["ontpub", "vocpub", "supermodel"],
     default="ontpub",
 )
 
@@ -53,6 +53,10 @@ def main():
             html = OntPub(args.input)
         elif args.profile == "vocpub":
             html = VocPub(args.input)
+        elif args.profile == "supermodel":
+            html = Supermodel(args.input)
+        else:
+            raise ValueError(f"Unexpected profile type '{args.profile}'")
     except PylodeError as e:
         print("ERROR: " + str(e))
         exit()
