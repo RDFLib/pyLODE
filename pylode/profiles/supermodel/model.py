@@ -50,6 +50,7 @@ class ComponentModel:
     classes: list[Class] = field(default_factory=list)
     images: list[Image] = field(default_factory=list)
     order: int = None
+    ignored_classes: list[URIRef] = field(default_factory=list)
 
     def __post_init__(self):
         if self.order is None:

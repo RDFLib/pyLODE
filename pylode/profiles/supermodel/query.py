@@ -99,7 +99,7 @@ def get_superclass(iri: URIRef, graph: Graph) -> Class:
 
 
 def get_superclasses(iri: URIRef, graph: Graph) -> list[Class]:
-    superclasses = list(graph.objects(iri, RDFS.subClassOf))
+    superclasses = filter(lambda x: isinstance(x, URIRef), list(graph.objects(iri, RDFS.subClassOf)))
     return sorted(
         [get_superclass(superclass, graph) for superclass in superclasses],
         key=lambda x: x.name,
@@ -110,7 +110,7 @@ def get_examples(iri: URIRef, graph: Graph) -> list[str]:
     return sorted(dedent(ex) for ex in list(graph.objects(iri, SKOS.example)))
 
 
-def get_component_model_class_properties(iri: str, graph: Graph):
+def get_component_model_class_properties(iri: URIRef, graph: Graph):
     """Get the properties of a class.
 
     Object property - range is Any
@@ -158,11 +158,13 @@ def get_component_model_class_properties(iri: str, graph: Graph):
     return properties
 
 
-def get_component_model_classes(graph: Graph) -> list[Class]:
+def get_component_model_classes(
+    graph: Graph, ignored_classes: list[URIRef]
+) -> list[Class]:
     classes = graph.subjects(RDF.type, OWL.Class)
 
     result = []
-    for c in classes:
+    for c in filter(lambda x: x not in ignored_classes, classes):
         name = get_name(c, graph)
         descriptions = get_descriptions(c, graph)
         superclasses = get_superclasses(c, graph)
@@ -182,6 +184,10 @@ def get_component_model_classes(graph: Graph) -> list[Class]:
             )
         )
     return sorted(result, key=lambda x: x.name)
+
+
+def get_component_model_ignored_classes(iri: URIRef, graph: Graph) -> list[URIRef]:
+    return list(graph.objects(iri, SM.ignoreClass))
 
 
 class Query:
@@ -394,7 +400,8 @@ class Query:
 
             name = get_name(iri, graph)
             descriptions = get_descriptions(iri, graph)
-            classes = get_component_model_classes(graph)
+            ignored_classes = get_component_model_ignored_classes(iri, self.graph)
+            classes = get_component_model_classes(graph, ignored_classes)
             images = get_images(iri, graph)
             order = self.graph.value(iri, SH.order)
             result.append(
@@ -405,6 +412,7 @@ class Query:
                     classes,
                     images,
                     int(order) if order is not None else None,
+                    ignored_classes,
                 )
             )
 
