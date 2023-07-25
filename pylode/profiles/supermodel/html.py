@@ -112,6 +112,16 @@ class Supermodel:
                 with div(_class="paragraph"):
                     p(cls.description)
 
+            if cls.notes:
+                for note in cls.notes:
+                    with div(_class="admonitionblock note"):
+                        with table():
+                            with tbody():
+                                with tr():
+                                    with td(_class="icon"):
+                                        div("Note", _class="title")
+                                    td(note, _class="content")
+
             if cls.superclasses:
                 h5("Subclass of")
                 with div(_class="sect5"):
@@ -201,7 +211,10 @@ class Supermodel:
                                             and property.cardinality_max is None
                                         ):
                                             p(f"[{property.cardinality_min}..*]")
-                                        elif property.cardinality_min == property.cardinality_max:
+                                        elif (
+                                            property.cardinality_min
+                                            == property.cardinality_max
+                                        ):
                                             p(f"[{property.cardinality_max}]")
                                         else:
                                             p(

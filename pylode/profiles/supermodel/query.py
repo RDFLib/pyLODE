@@ -99,7 +99,9 @@ def get_superclass(iri: URIRef, graph: Graph) -> Class:
 
 
 def get_superclasses(iri: URIRef, graph: Graph) -> list[Class]:
-    superclasses = filter(lambda x: isinstance(x, URIRef), list(graph.objects(iri, RDFS.subClassOf)))
+    superclasses = filter(
+        lambda x: isinstance(x, URIRef), list(graph.objects(iri, RDFS.subClassOf))
+    )
     return sorted(
         [get_superclass(superclass, graph) for superclass in superclasses],
         key=lambda x: x.name,
@@ -158,6 +160,10 @@ def get_component_model_class_properties(iri: URIRef, graph: Graph):
     return properties
 
 
+def get_notes(iri: URIRef, graph: Graph) -> list[str]:
+    return sorted(list(graph.objects(iri, SKOS.editorialNote)))
+
+
 def get_component_model_classes(
     graph: Graph, ignored_classes: list[URIRef]
 ) -> list[Class]:
@@ -171,6 +177,7 @@ def get_component_model_classes(
         properties = get_component_model_class_properties(c, graph)
         images = get_images(c, graph)
         examples = get_examples(c, graph)
+        notes = get_notes(c, graph)
 
         result.append(
             Class(
@@ -181,6 +188,7 @@ def get_component_model_classes(
                 properties=properties,
                 images=images,
                 examples=examples,
+                notes=notes,
             )
         )
     return sorted(result, key=lambda x: x.name)

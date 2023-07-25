@@ -40,6 +40,7 @@ class Class:
     properties: list[Property] = field(default_factory=list)
     images: list[Image] = field(default_factory=list)
     examples: list[Literal] = field(default_factory=list)
+    notes: list[str] = field(default_factory=list)
 
 
 @dataclass
