@@ -105,6 +105,9 @@ class Supermodel:
         with div(_class="sect3"):
             h4(f"Class: {cls.name}", True)
 
+            with p():
+                a(cls.iri, href=cls.iri)
+
             if cls.description:
                 with div(_class="paragraph"):
                     p(cls.description)
