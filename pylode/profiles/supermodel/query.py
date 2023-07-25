@@ -107,7 +107,7 @@ def get_superclasses(iri: URIRef, graph: Graph) -> list[Class]:
 
 
 def get_examples(iri: URIRef, graph: Graph) -> list[str]:
-    return sorted(dedent(ex) for ex in list(graph.objects(iri, SKOS.example)))
+    return sorted(dedent(ex).strip() for ex in list(graph.objects(iri, SKOS.example)))
 
 
 def get_component_model_class_properties(iri: URIRef, graph: Graph):
