@@ -28,6 +28,7 @@ from dominate.tags import (
     code,
     thead,
     th,
+    em,
 )
 from dominate.util import raw
 from rdflib import (
@@ -175,11 +176,34 @@ class Supermodel:
                                 with tr():
                                     with td(_class="tableblock halign-left valign-top"):
                                         p(property.name)
-                                        p(f"From {property.belongs_to_class}")
+                                        with em():
+                                            p(f"From {property.belongs_to_class}")
                                     with td(_class="tableblock halign-left valign-top"):
                                         p(property.description)
                                     with td(_class="tableblock halign-left valign-top"):
-                                        p(property.cardinality)
+                                        if (
+                                            property.cardinality_min is None
+                                            and property.cardinality_max is None
+                                        ):
+                                            p("[0..*]")
+                                        elif (
+                                            property.cardinality_min is None
+                                            and isinstance(
+                                                property.cardinality_max, int
+                                            )
+                                        ):
+                                            p(f"[0..{property.cardinality_max}]")
+                                        elif (
+                                            isinstance(property.cardinality_min, int)
+                                            and property.cardinality_max is None
+                                        ):
+                                            p(f"[{property.cardinality_min}..*]")
+                                        elif property.cardinality_min == property.cardinality_max:
+                                            p(f"[{property.cardinality_max}]")
+                                        else:
+                                            p(
+                                                f"[{property.cardinality_min}..{property.cardinality_max}]"
+                                            )
                                     with td(_class="tableblock halign-left valign-top"):
                                         p(property.value_type)
                                     with td(_class="tableblock halign-left valign-top"):

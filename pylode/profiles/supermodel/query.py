@@ -136,13 +136,17 @@ def get_component_model_class_properties(iri: str, graph: Graph):
             sh_description = graph.value(sh_property, SH.description) or ""
             sh_name = graph.value(sh_property, SH.name)
             sh_nodekind = graph.value(sh_property, SH.nodeKind)
+            sh_min = graph.value(sh_property, SH.minCount)
+            sh_max = graph.value(sh_property, SH.maxCount)
 
             properties.append(
                 Property(
-                    graph.qname(sh_path),
-                    graph.qname(sh_path),
-                    sh_description,
-                    graph.qname(iri),
+                    iri=graph.qname(sh_path),
+                    name=graph.qname(sh_path),
+                    description=sh_description,
+                    belongs_to_class=graph.qname(iri),
+                    cardinality_min=int(sh_min) if sh_min is not None else None,
+                    cardinality_max=int(sh_max) if sh_max is not None else None,
                     value_type=graph.qname(sh_nodekind) if sh_nodekind else "",
                     value_class_type=graph.qname(sh_class) if sh_class else "",
                 )
@@ -168,8 +172,8 @@ def get_component_model_classes(graph: Graph) -> list[Class]:
 
         result.append(
             Class(
-                c,
-                name,
+                iri=c,
+                name=name,
                 description=descriptions,
                 superclasses=superclasses,
                 properties=properties,

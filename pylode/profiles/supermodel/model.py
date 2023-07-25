@@ -25,13 +25,10 @@ class Property:
     name: str
     description: str
     belongs_to_class: "Class"
-    cardinality: str = None
+    cardinality_min: int = None
+    cardinality_max: int = None
     value_type: str = None
     value_class_type: URIRef = None
-
-    def __post_init__(self):
-        if self.cardinality is None:
-            self.cardinality = "0..*"
 
 
 @dataclass
