@@ -113,10 +113,14 @@ def get_examples(iri: URIRef, graph: Graph) -> list[str]:
 def get_component_model_class_properties(iri: str, graph: Graph):
     """Get the properties of a class.
 
+    Object property - range is Any
+
+    Object and datatype properties - output shows "Not specified" instead of empty string.
+
     Ways to extract properties of a class:
       [x] - sh:property via an sh:NodeShape, which may also be an owl:Class or rdfs:Class
       [ ] - sh:targetClass
-      [ ] - rdfs:domain and rdfs:range
+      [ ] - rdfs:domain and rdfs:range - consider only when there's no sh:class in the property shape
       [ ] - schema:domainIncludes and schema:rangeIncludes
       [ ] - check for other ways in the SHACL spec...
     """
