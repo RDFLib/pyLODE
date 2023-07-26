@@ -252,8 +252,11 @@ class Supermodel:
                                     )
                                     self.figure_count += 1
 
-                for cls in component_model.classes:
+                for i, cls in enumerate(component_model.classes):
                     self._make_component_model_class(cls)
+
+                    if i != len(component_model.classes) - 1:
+                        hr()
 
             hr()
 
