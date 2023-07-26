@@ -132,30 +132,6 @@ class Supermodel:
                                     with p():
                                         a(superclass.name, href="#")
 
-            if cls.images:
-                h5("Images")
-                with div(_class="sect5"):
-                    for image in cls.images:
-                        h6(image.name)
-                        with div(_class="sect6"):
-                            with div(_class="imageblock text-center"):
-                                with div(_class="content"):
-                                    img(src=image.url, alt=image.description)
-                                div(
-                                    f"Figure {self.figure_count + 1}. {image.description}",
-                                    _class="title",
-                                )
-                                self.figure_count += 1
-
-            if cls.examples:
-                h5("Examples")
-                with div(_class="sect5"):
-                    for example in cls.examples:
-                        with div(_class="listingblock"):
-                            with div(_class="content"):
-                                with pre(_class="highlight"):
-                                    code(example)
-
             if cls.properties:
                 h5("Properties")
                 with div(_class="sect5"):
@@ -224,6 +200,30 @@ class Supermodel:
                                         p(property.value_type)
                                     with td(_class="tableblock halign-left valign-top"):
                                         p(property.value_class_type)
+
+            if cls.images:
+                h5("Images")
+                with div(_class="sect5"):
+                    for image in cls.images:
+                        h6(image.name)
+                        with div(_class="sect6"):
+                            with div(_class="imageblock text-center"):
+                                with div(_class="content"):
+                                    img(src=image.url, alt=image.description)
+                                div(
+                                    f"Figure {self.figure_count + 1}. {image.description}",
+                                    _class="title",
+                                )
+                                self.figure_count += 1
+
+            if cls.examples:
+                h5("Examples")
+                with div(_class="sect5"):
+                    for example in cls.examples:
+                        with div(_class="listingblock"):
+                            with div(_class="content"):
+                                with pre(_class="highlight"):
+                                    code(example)
 
     def _make_component_model(self, component_model: ComponentModel):
         with div(_class="sect2"):
