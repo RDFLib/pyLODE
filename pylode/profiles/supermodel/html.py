@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Type
 
 import dominate
+import dominate.tags
 from dominate.tags import (
     style,
     link,
@@ -37,7 +38,6 @@ from rdflib import (
     SDO,
     DCTERMS,
 )
-from pylode.profiles.supermodel.fragment import make_html_fragment
 
 from pylode.utils import (
     PylodeError,
@@ -48,6 +48,27 @@ from pylode.profiles.supermodel.model import ComponentModel, Class
 from pylode.profiles.supermodel.component import metadata_row, h2, h3, h4, h5, h6
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
+
+
+def get_sections(doc: dominate.document) -> list:
+    headings = []
+    if hasattr(doc, "children"):
+        for child in doc.children:
+            if isinstance(
+                child,
+                (
+                    h1,
+                    dominate.tags.h2,
+                    dominate.tags.h3,
+                    dominate.tags.h4,
+                    dominate.tags.h5,
+                    dominate.tags.h6,
+                ),
+            ):
+                headings.append(child)
+            else:
+                headings += get_sections(child)
+    return headings
 
 
 class Supermodel:
@@ -79,11 +100,36 @@ class Supermodel:
             destination=destination,
         )
         self._make_body()
+        self._make_toc()
 
         if destination is not None:
             open(destination, "w").write(self.doc.render())
         else:
             return self.doc.render()
+
+    def _make_toc(self):
+        sections = get_sections(self.doc)
+        with self.header:
+            with div(_class="toc2", id="toc"):
+                with ul(_class="sectlevel1"):
+                    for section in sections:
+                        if len(section.children) > 1:
+                            if len(section.children[1].children) > 0:
+                                value = section.children[1].children[0]
+                        elif len(section.children) == 1 and isinstance(
+                            section.children[0], str
+                        ):
+                            value = section.children[0]
+                        else:
+                            value = ""
+
+                        with li():
+                            href = (
+                                f"#{section.attributes.get('id')}"
+                                if section.attributes.get("id")
+                                else "#"
+                            )
+                            a(value, href=href)
 
     def _make_body(self):
         self.body: body = self.doc.add(body(_class="book toc2 toc-left"))
