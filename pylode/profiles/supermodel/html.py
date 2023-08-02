@@ -230,8 +230,8 @@ class Supermodel:
                             with tbody():
                                 with tr():
                                     with td(_class="icon"):
-                                        div("Note", _class="title")
-                                    td(note, _class="content")
+                                        div(note.type, _class="title")
+                                    td(note.value, _class="content")
 
             if cls.superclasses:
                 h5("Subclass of")

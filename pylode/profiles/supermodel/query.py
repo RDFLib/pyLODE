@@ -21,7 +21,13 @@ from rdflib.namespace import (
 
 
 from pylode.profiles.supermodel.namespace import SM
-from pylode.profiles.supermodel.model import ComponentModel, Class, Image, Property
+from pylode.profiles.supermodel.model import (
+    ComponentModel,
+    Class,
+    Image,
+    Property,
+    Note,
+)
 from pylode.rdf_elements import AGENT_PROPS, ONT_PROPS, ONTDOC
 from pylode.utils import (
     back_onts_label_props,
@@ -161,7 +167,29 @@ def get_component_model_class_properties(iri: URIRef, graph: Graph):
 
 
 def get_notes(iri: URIRef, graph: Graph) -> list[str]:
-    return sorted(list(graph.objects(iri, SKOS.editorialNote)))
+    notes = []
+
+    skos_notes = get_values(iri, graph, [SKOS.note])
+    for note in skos_notes:
+        notes.append(Note(str(note), "note"))
+
+    change_notes = get_values(iri, graph, [SKOS.changeNote])
+    for note in change_notes:
+        notes.append(Note(str(note), "Change Note"))
+
+    editorial_notes = get_values(iri, graph, [SKOS.editorialNote])
+    for note in editorial_notes:
+        notes.append(Note(str(note), "Editorial Note"))
+
+    history_notes = get_values(iri, graph, [SKOS.historyNote])
+    for note in history_notes:
+        notes.append(Note(str(note), "History Note"))
+
+    scope_notes = get_values(iri, graph, [SKOS.scopeNote])
+    for note in scope_notes:
+        notes.append(Note(str(note), "Scope Note"))
+
+    return sorted(notes, key=lambda note: note.type)
 
 
 def get_component_model_classes(

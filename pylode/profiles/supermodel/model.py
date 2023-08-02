@@ -32,6 +32,25 @@ class Property:
 
 
 @dataclass
+class Note:
+    value: str
+    type: str
+
+    def __post_init__(self):
+        note_types = (
+            "note",
+            "Change Note",
+            "Editorial Note",
+            "History Note",
+            "Scope Note",
+        )
+        if self.type not in note_types:
+            raise ValueError(
+                f"An instance of Note's 'type' attribute must have one of the following values: {note_types}. Received '{self.type}' instead."
+            )
+
+
+@dataclass
 class Class:
     iri: URIRef
     name: str
@@ -40,7 +59,7 @@ class Class:
     properties: list[Property] = field(default_factory=list)
     images: list[Image] = field(default_factory=list)
     examples: list[Literal] = field(default_factory=list)
-    notes: list[str] = field(default_factory=list)
+    notes: list[Note] = field(default_factory=list)
 
 
 @dataclass
