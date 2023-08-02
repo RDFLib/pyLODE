@@ -50,24 +50,27 @@ from pylode.profiles.supermodel.component import metadata_row, h2, h3, h4, h5, h
 RDF_FOLDER = Path(__file__).parent / "rdf"
 
 
-def get_sections(doc: dominate.document) -> list:
+def is_heading(doc: dominate.document) -> bool:
+    if isinstance(
+        doc,
+        (
+            dominate.tags.h2,
+            dominate.tags.h3,
+            dominate.tags.h4,
+        ),
+    ):
+        return True
+    return False
+
+
+def get_headings(doc: dominate.document) -> list:
     headings = []
     if hasattr(doc, "children"):
         for child in doc.children:
-            if isinstance(
-                child,
-                (
-                    h1,
-                    dominate.tags.h2,
-                    dominate.tags.h3,
-                    dominate.tags.h4,
-                    dominate.tags.h5,
-                    dominate.tags.h6,
-                ),
-            ):
+            if is_heading(child):
                 headings.append(child)
             else:
-                headings += get_sections(child)
+                headings += get_headings(child)
     return headings
 
 
@@ -108,28 +111,90 @@ class Supermodel:
             return self.doc.render()
 
     def _make_toc(self):
-        sections = get_sections(self.doc)
+        def heading_value_component(
+            heading: dominate.tags.h2 | dominate.tags.h3 | dominate.tags.h4,
+            value: str,
+        ):
+            with li() as component:
+                href = (
+                    f"#{heading.attributes.get('id')}"
+                    if heading.attributes.get("id")
+                    else "#"
+                )
+                a(value, href=href)
+
+            return component
+
+        headings = get_headings(self.doc)
+
         with self.header:
             with div(_class="toc2", id="toc"):
-                with ul(_class="sectlevel1"):
-                    for section in sections:
-                        if len(section.children) > 1:
-                            if len(section.children[1].children) > 0:
-                                value = section.children[1].children[0]
-                        elif len(section.children) == 1 and isinstance(
-                            section.children[0], str
-                        ):
-                            value = section.children[0]
-                        else:
-                            value = ""
+                top_unordered_list = ul(_class="sectlevel1")
 
-                        with li():
-                            href = (
-                                f"#{section.attributes.get('id')}"
-                                if section.attributes.get("id")
-                                else "#"
-                            )
-                            a(value, href=href)
+        index = {}
+        section_numbers = {
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0,
+        }
+        previous_heading = None
+        for heading in headings:
+            if previous_heading is None:
+                previous_heading_level = 2
+                index[2] = top_unordered_list
+            else:
+                previous_heading_level = int(str(type(previous_heading))[-3:-2])
+
+            heading_level = int(str(type(heading))[-3:-2])
+
+            section_numbers[heading_level - 1] += 1
+
+            if previous_heading_level < heading_level:
+                section_numbers[heading_level - 1] = 1
+
+            section_number = ""
+            if heading_level - 1 == 1:
+                major = section_numbers[1]
+                section_number = f"{major}. "
+            elif heading_level - 1 == 2:
+                major = section_numbers[1]
+                minor = section_numbers[2]
+                section_number = f"{major}.{minor}. "
+            elif heading_level - 1 == 3:
+                major = section_numbers[1]
+                minor = section_numbers[2]
+                patch = section_numbers[3]
+                section_number = f"{major}.{minor}.{patch}. "
+
+            if len(heading.children) > 1:
+                if len(heading.children[1].children) > 0:
+                    value = heading.children[1].children[0]
+            elif len(heading.children) == 1 and isinstance(heading.children[0], str):
+                value = heading.children[0]
+            else:
+                value = ""
+
+            value = f"{section_number}{value}"
+
+            if previous_heading_level == heading_level:
+                level = index.get(heading_level)
+                level = level if level is not None else level
+                unordered_list = index[heading_level]
+                with unordered_list:
+                    heading_value_component(heading, value)
+            elif previous_heading_level < heading_level:
+                with ul() as unordered_list:
+                    heading_value = heading_value_component(heading, value)
+                    index[heading_level - 1].add(unordered_list)
+                    index[heading_level] = heading_value
+            else:
+                unordered_list = index[heading_level]
+                with unordered_list:
+                    heading_value = heading_value_component(heading, value)
+                    index[heading_level] = heading_value
+
+            previous_heading = heading
 
     def _make_body(self):
         self.body: body = self.doc.add(body(_class="book toc2 toc-left"))
