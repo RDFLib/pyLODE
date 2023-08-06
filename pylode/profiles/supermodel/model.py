@@ -55,6 +55,7 @@ class Class:
     iri: URIRef
     name: str
     description: str = None
+    subclasses: list["Class"] = field(default_factory=list)
     superclasses: list["Class"] = field(default_factory=list)
     properties: list[Property] = field(default_factory=list)
     images: list[Image] = field(default_factory=list)

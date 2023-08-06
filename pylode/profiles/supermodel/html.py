@@ -30,6 +30,7 @@ from dominate.tags import (
     thead,
     th,
     em,
+    span,
 )
 from dominate.util import raw
 from rdflib import (
@@ -48,6 +49,9 @@ from pylode.profiles.supermodel.model import ComponentModel, Class
 from pylode.profiles.supermodel.component import metadata_row, h2, h3, h4, h5, h6
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
+
+MODULE_STRING = "Module: {}"
+CLASS_STRING = "Class: {}"
 
 
 def is_heading(doc: dominate.document) -> bool:
@@ -214,7 +218,7 @@ class Supermodel:
 
     def _make_component_model_class(self, cls: Class):
         with div(_class="sect3"):
-            h4(f"Class: {cls.name}", True)
+            h4(CLASS_STRING.format(cls.name), True)
 
             with p():
                 a(cls.iri, href=cls.iri)
@@ -338,7 +342,7 @@ class Supermodel:
 
     def _make_component_model(self, component_model: ComponentModel):
         with div(_class="sect2"):
-            h3(f"Module: {component_model.name}", True)
+            h3(MODULE_STRING.format(component_model.name), True)
             with div(_class="sect3"):
                 with div(_class="paragraph"):
                     with p():
@@ -371,10 +375,55 @@ class Supermodel:
 
             hr()
 
+    def _make_class_hierarchy(self, classes: list[Class]):
+        with ul(_class="nested-hierarchy-list"):
+            for cls in classes:
+                with li():
+                    span(
+                        _class="hierarchy-node"
+                        if cls.subclasses
+                        else "hierarchy-node-leaf"
+                    )
+                    span(cls.name)
+                    if cls.subclasses:
+                        self._make_class_hierarchy(cls.subclasses)
+
+    def _make_class_hierarchy_top_level(self):
+        component_models = self.query.component_models
+
+        h3("Class Hierarchy")
+        with div(_class="class-hierarchy"):
+            with ul(_class="hierarchy-list"):
+                for component_model in component_models:
+                    with li():
+                        span(_class="hierarchy-node")
+                        span(component_model.name)
+                        if component_model.classes:
+                            self._make_class_hierarchy(component_model.classes)
+
+        style(
+            raw(
+                "\n"
+                + open(
+                    Path(__file__).parent.parent.parent / "static/class-hierarchy.css"
+                ).read()
+                + "\n\t"
+            )
+        )
+        script(
+            raw(
+                open(
+                    Path(__file__).parent.parent.parent / "static/class-hierarchy.js"
+                ).read()
+            ),
+        )
+
     def _make_component_models(self):
         with self.content:
             with div(_class="sect1"):
                 h2("Component Models", True)
+
+                self._make_class_hierarchy_top_level()
 
                 for component_model in self.query.component_models:
                     self._make_component_model(component_model)

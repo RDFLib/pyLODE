@@ -96,12 +96,10 @@ def get_descriptions(iri: URIRef, graph: Graph) -> str:
     )
 
 
-def get_superclass(iri: URIRef, graph: Graph) -> Class:
+def get_class(iri: URIRef, graph: Graph) -> Class:
     name = get_name(iri, graph)
-    return Class(
-        iri,
-        name,
-    )
+    subclasses = get_subclasses(iri, graph)
+    return Class(iri, name, subclasses=subclasses)
 
 
 def get_superclasses(iri: URIRef, graph: Graph) -> list[Class]:
@@ -109,7 +107,17 @@ def get_superclasses(iri: URIRef, graph: Graph) -> list[Class]:
         lambda x: isinstance(x, URIRef), list(graph.objects(iri, RDFS.subClassOf))
     )
     return sorted(
-        [get_superclass(superclass, graph) for superclass in superclasses],
+        [get_class(superclass, graph) for superclass in superclasses],
+        key=lambda x: x.name,
+    )
+
+
+def get_subclasses(iri: URIRef, graph: Graph) -> list[Class]:
+    subclasses = filter(
+        lambda x: isinstance(x, URIRef), list(graph.subjects(RDFS.subClassOf, iri))
+    )
+    return sorted(
+        [get_class(subclass, graph) for subclass in subclasses],
         key=lambda x: x.name,
     )
 
@@ -201,6 +209,7 @@ def get_component_model_classes(
     for c in filter(lambda x: x not in ignored_classes, classes):
         name = get_name(c, graph)
         descriptions = get_descriptions(c, graph)
+        subclasses = get_subclasses(c, graph)
         superclasses = get_superclasses(c, graph)
         properties = get_component_model_class_properties(c, graph)
         images = get_images(c, graph)
@@ -212,6 +221,7 @@ def get_component_model_classes(
                 iri=c,
                 name=name,
                 description=descriptions,
+                subclasses=subclasses,
                 superclasses=superclasses,
                 properties=properties,
                 images=images,
