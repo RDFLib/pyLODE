@@ -47,6 +47,7 @@ from pylode.utils import (
 from pylode.profiles.supermodel.query import Query
 from pylode.profiles.supermodel.model import ComponentModel, Class
 from pylode.profiles.supermodel.component import metadata_row, h2, h3, h4, h5, h6
+from pylode.profiles.supermodel.fragment import make_html_fragment
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
 
@@ -245,7 +246,13 @@ class Supermodel:
                             with ul():
                                 with li():
                                     with p():
-                                        a(superclass.name, href="#")
+                                        fragment = make_html_fragment(
+                                            CLASS_STRING.format(superclass.name)
+                                        )
+                                        a(
+                                            superclass.name,
+                                            href=f"#{fragment}",
+                                        )
 
             if cls.properties:
                 h5("Properties")
@@ -384,7 +391,8 @@ class Supermodel:
                         if cls.subclasses
                         else "hierarchy-node-leaf"
                     )
-                    span(cls.name)
+                    fragment = make_html_fragment(CLASS_STRING.format(cls.name))
+                    a(cls.name, href=f"#{fragment}")
                     if cls.subclasses:
                         self._make_class_hierarchy(cls.subclasses)
 
@@ -397,7 +405,10 @@ class Supermodel:
                 for component_model in component_models:
                     with li():
                         span(_class="hierarchy-node")
-                        span(component_model.name)
+                        fragment = make_html_fragment(
+                            MODULE_STRING.format(component_model.name)
+                        )
+                        a(component_model.name, href=f"#{fragment}")
                         if component_model.classes:
                             self._make_class_hierarchy(component_model.classes)
 
