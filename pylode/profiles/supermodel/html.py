@@ -391,7 +391,7 @@ class Supermodel:
     def _make_class_hierarchy_top_level(self):
         component_models = self.query.component_models
 
-        h3("Class Hierarchy")
+        h3("Class Hierarchy", True)
         with div(_class="class-hierarchy"):
             with ul(_class="hierarchy-list"):
                 for component_model in component_models:
