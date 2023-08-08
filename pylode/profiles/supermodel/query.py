@@ -149,7 +149,11 @@ def get_component_model_class_properties(iri: URIRef, graph: Graph):
         for sh_property in sh_properties:
             sh_path = graph.value(sh_property, SH.path)
             sh_class = graph.value(sh_property, SH["class"])
-            sh_description = graph.value(sh_property, SH.description) or ""
+            sh_description = (
+                graph.value(sh_property, SH.description)
+                or graph.value(sh_path, SKOS.definition)
+                or ""
+            )
             sh_name = graph.value(sh_property, SH.name)
             sh_nodekind = graph.value(sh_property, SH.nodeKind)
             sh_min = graph.value(sh_property, SH.minCount)
@@ -158,7 +162,7 @@ def get_component_model_class_properties(iri: URIRef, graph: Graph):
             properties.append(
                 Property(
                     iri=graph.qname(sh_path),
-                    name=graph.qname(sh_path),
+                    name=sh_name or graph.qname(sh_path),
                     description=sh_description,
                     belongs_to_class=graph.qname(iri),
                     cardinality_min=int(sh_min) if sh_min is not None else None,
