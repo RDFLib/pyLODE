@@ -43,4 +43,7 @@
 
 .class-hierarchy {
   user-select: none;
+  background-color: #f8f8f7;
+  border: solid 1px #dedede;
+  padding: 1.25em 1.25em 0;
 }
