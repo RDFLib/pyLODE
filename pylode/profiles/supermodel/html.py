@@ -134,6 +134,7 @@ class Supermodel:
 
         with self.header:
             with div(_class="toc2", id="toc"):
+                div("Table of Contents", id="toctitle")
                 top_unordered_list = ul(_class="sectlevel1")
 
         index = {}
@@ -594,6 +595,14 @@ class Supermodel:
                     Path(__file__).parent.parent / "pylode.css",
                     destination.parent / "pylode.css",
                 )
+            link(
+                rel="stylesheet",
+                href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700",
+            )
+            link(
+                rel="stylesheet",
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
+            )
             link(
                 rel="icon",
                 type="image/png",
