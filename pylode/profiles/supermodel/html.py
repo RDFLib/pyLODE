@@ -259,7 +259,7 @@ class Supermodel:
                 h5("Properties")
                 with div(_class="sect5"):
                     with table(
-                        _class="tableblock frame-all grid-all stripes-odd fit-content stretch"
+                        _class="tableblock frame-all grid-all stripes-even fit-content stretch"
                     ):
                         with thead():
                             with tr():
@@ -287,9 +287,9 @@ class Supermodel:
                             for property in cls.properties:
                                 with tr():
                                     with td(_class="tableblock halign-left valign-top"):
-                                        p(property.name)
-                                        with em():
-                                            p(f"From {property.belongs_to_class}")
+                                        p(property.name, _class="tableblock")
+                                        with p(_class="tableblock"):
+                                            em(f"From {property.belongs_to_class}")
                                     with td(_class="tableblock halign-left valign-top"):
                                         p(property.description)
                                     with td(_class="tableblock halign-left valign-top"):
@@ -297,32 +297,45 @@ class Supermodel:
                                             property.cardinality_min is None
                                             and property.cardinality_max is None
                                         ):
-                                            p("[0..*]")
+                                            p("[0..*]", _class="tableblock")
                                         elif (
                                             property.cardinality_min is None
                                             and isinstance(
                                                 property.cardinality_max, int
                                             )
                                         ):
-                                            p(f"[0..{property.cardinality_max}]")
+                                            p(
+                                                f"[0..{property.cardinality_max}]",
+                                                _class="tableblock",
+                                            )
                                         elif (
                                             isinstance(property.cardinality_min, int)
                                             and property.cardinality_max is None
                                         ):
-                                            p(f"[{property.cardinality_min}..*]")
+                                            p(
+                                                f"[{property.cardinality_min}..*]",
+                                                _class="tableblock",
+                                            )
                                         elif (
                                             property.cardinality_min
                                             == property.cardinality_max
                                         ):
-                                            p(f"[{property.cardinality_max}]")
+                                            p(
+                                                f"[{property.cardinality_max}]",
+                                                _class="tableblock",
+                                            )
                                         else:
                                             p(
-                                                f"[{property.cardinality_min}..{property.cardinality_max}]"
+                                                f"[{property.cardinality_min}..{property.cardinality_max}]",
+                                                _class="tableblock",
                                             )
                                     with td(_class="tableblock halign-left valign-top"):
-                                        p(property.value_type)
+                                        p(property.value_type, _class="tableblock")
                                     with td(_class="tableblock halign-left valign-top"):
-                                        p(property.value_class_type)
+                                        p(
+                                            property.value_class_type,
+                                            _class="tableblock",
+                                        )
 
             if cls.images:
                 h5("Images")
