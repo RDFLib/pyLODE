@@ -302,7 +302,16 @@ class Supermodel:
                                     with td(_class="tableblock halign-left valign-top"):
                                         p(property.name, _class="tableblock")
                                         with p(_class="tableblock"):
-                                            em(f"From {property.belongs_to_class}")
+                                            with em("From "):
+                                                fragment = make_html_fragment(
+                                                    CLASS_STRING.format(
+                                                        property.belongs_to_class.name
+                                                    )
+                                                )
+                                                a(
+                                                    property.belongs_to_class.name,
+                                                    href=f"#{fragment}",
+                                                )
                                     with td(_class="tableblock halign-left valign-top"):
                                         p(property.description)
                                     with td(_class="tableblock halign-left valign-top"):

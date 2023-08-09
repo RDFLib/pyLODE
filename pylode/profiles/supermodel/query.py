@@ -133,7 +133,9 @@ def get_examples(iri: URIRef, graph: Graph) -> list[str]:
     return sorted(dedent(ex).strip() for ex in list(graph.objects(iri, SKOS.example)))
 
 
-def get_component_model_class_properties(iri: URIRef, graph: Graph):
+def get_component_model_class_properties(
+    iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
+):
     """Get the properties of a class.
 
     Object property - range is Any
@@ -165,13 +167,14 @@ def get_component_model_class_properties(iri: URIRef, graph: Graph):
             sh_nodekind = graph.value(sh_property, SH.nodeKind)
             sh_min = graph.value(sh_property, SH.minCount)
             sh_max = graph.value(sh_property, SH.maxCount)
+            belongs_to_class = get_class(iri, graph, ignored_classes)
 
             properties.append(
                 Property(
                     iri=graph.qname(sh_path),
                     name=sh_name,
                     description=sh_description,
-                    belongs_to_class=graph.qname(iri),
+                    belongs_to_class=belongs_to_class,
                     cardinality_min=int(sh_min) if sh_min is not None else None,
                     cardinality_max=int(sh_max) if sh_max is not None else None,
                     value_type=graph.qname(sh_nodekind) if sh_nodekind else "",
@@ -475,7 +478,7 @@ class Query:
             descriptions = get_descriptions(c, graph)
             subclasses = get_subclasses(c, graph, ignored_classes)
             superclasses = get_superclasses(c, graph, ignored_classes)
-            properties = get_component_model_class_properties(c, graph)
+            properties = get_component_model_class_properties(c, graph, ignored_classes)
             images = get_images(c, graph)
             examples = get_examples(c, graph)
             notes = get_notes(c, graph)
