@@ -82,6 +82,7 @@ def get_values(
 
 def get_name(iri: URIRef, graph: Graph) -> str:
     names = get_values(iri, graph, [RDFS.label, SKOS.prefLabel, SDO.name])
+    names.append(graph.qname(iri))
     return str(names[0]) if len(names) > 0 else str(iri)
 
 
@@ -151,10 +152,10 @@ def get_component_model_class_properties(iri: URIRef, graph: Graph):
             sh_class = graph.value(sh_property, SH["class"])
             sh_description = (
                 graph.value(sh_property, SH.description)
-                or graph.value(sh_path, SKOS.definition)
+                or get_descriptions(sh_path, graph)
                 or ""
             )
-            sh_name = graph.value(sh_property, SH.name)
+            sh_name = graph.value(sh_property, SH.name) or get_name(sh_path, graph)
             sh_nodekind = graph.value(sh_property, SH.nodeKind)
             sh_min = graph.value(sh_property, SH.minCount)
             sh_max = graph.value(sh_property, SH.maxCount)
@@ -162,7 +163,7 @@ def get_component_model_class_properties(iri: URIRef, graph: Graph):
             properties.append(
                 Property(
                     iri=graph.qname(sh_path),
-                    name=sh_name or graph.qname(sh_path),
+                    name=sh_name,
                     description=sh_description,
                     belongs_to_class=graph.qname(iri),
                     cardinality_min=int(sh_min) if sh_min is not None else None,
@@ -204,38 +205,6 @@ def get_notes(iri: URIRef, graph: Graph) -> list[str]:
     return sorted(notes, key=lambda note: note.type)
 
 
-def get_component_model_classes(
-    graph: Graph, ignored_classes: list[URIRef]
-) -> list[Class]:
-    classes = graph.subjects(RDF.type, OWL.Class)
-
-    result = []
-    for c in filter(lambda x: x not in ignored_classes, classes):
-        name = get_name(c, graph)
-        descriptions = get_descriptions(c, graph)
-        subclasses = get_subclasses(c, graph)
-        superclasses = get_superclasses(c, graph)
-        properties = get_component_model_class_properties(c, graph)
-        images = get_images(c, graph)
-        examples = get_examples(c, graph)
-        notes = get_notes(c, graph)
-
-        result.append(
-            Class(
-                iri=c,
-                name=name,
-                description=descriptions,
-                subclasses=subclasses,
-                superclasses=superclasses,
-                properties=properties,
-                images=images,
-                examples=examples,
-                notes=notes,
-            )
-        )
-    return sorted(result, key=lambda x: x.name)
-
-
 def get_component_model_ignored_classes(iri: URIRef, graph: Graph) -> list[URIRef]:
     return list(graph.objects(iri, SM.ignoreClass))
 
@@ -243,6 +212,9 @@ def get_component_model_ignored_classes(iri: URIRef, graph: Graph) -> list[URIRe
 class Query:
     def __init__(self, graph: Graph) -> None:
         self.graph = graph
+
+        # An IRI index of classes that 'exist' within this documentation.
+        self.class_index: set[URIRef] = set()
 
         self.component_models = self.load_component_models()
         self.ontdoc_inference()
@@ -451,7 +423,7 @@ class Query:
             name = get_name(iri, graph)
             descriptions = get_descriptions(iri, graph)
             ignored_classes = get_component_model_ignored_classes(iri, self.graph)
-            classes = get_component_model_classes(graph, ignored_classes)
+            classes = self.get_component_model_classes(graph, ignored_classes)
             images = get_images(iri, graph)
             order = self.graph.value(iri, SH.order)
             result.append(
@@ -469,6 +441,39 @@ class Query:
             self.graph += graph
 
         return sorted(result, key=lambda x: x.order)
+
+    def get_component_model_classes(
+        self, graph: Graph, ignored_classes: list[URIRef]
+    ) -> list[Class]:
+        classes = graph.subjects(RDF.type, OWL.Class)
+
+        result = []
+        for c in filter(lambda x: x not in ignored_classes, classes):
+            name = get_name(c, graph)
+            descriptions = get_descriptions(c, graph)
+            subclasses = get_subclasses(c, graph)
+            superclasses = get_superclasses(c, graph)
+            properties = get_component_model_class_properties(c, graph)
+            images = get_images(c, graph)
+            examples = get_examples(c, graph)
+            notes = get_notes(c, graph)
+
+            result.append(
+                Class(
+                    iri=c,
+                    name=name,
+                    description=descriptions,
+                    subclasses=subclasses,
+                    superclasses=superclasses,
+                    properties=properties,
+                    images=images,
+                    examples=examples,
+                    notes=notes,
+                )
+            )
+            self.class_index.add(c)
+
+        return sorted(result, key=lambda x: x.name)
 
     def get_schema_org_metadata_graph(self):
         graph = Graph()
