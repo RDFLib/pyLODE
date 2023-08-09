@@ -46,7 +46,15 @@ from pylode.utils import (
 )
 from pylode.profiles.supermodel.query import Query
 from pylode.profiles.supermodel.model import ComponentModel, Class
-from pylode.profiles.supermodel.component import metadata_row, h2, h3, h4, h5, h6
+from pylode.profiles.supermodel.component import (
+    metadata_row,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    external_link,
+)
 from pylode.profiles.supermodel.fragment import make_html_fragment
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
@@ -247,13 +255,18 @@ class Supermodel:
                             with ul():
                                 with li():
                                     with p():
-                                        fragment = make_html_fragment(
-                                            CLASS_STRING.format(superclass.name)
-                                        )
-                                        a(
-                                            superclass.name,
-                                            href=f"#{fragment}",
-                                        )
+                                        if superclass.iri in self.query.class_index:
+                                            fragment = make_html_fragment(
+                                                CLASS_STRING.format(superclass.name)
+                                            )
+                                            a(
+                                                superclass.name,
+                                                href=f"#{fragment}",
+                                            )
+                                        else:
+                                            external_link(
+                                                superclass.name, superclass.iri
+                                            )
 
             if cls.properties:
                 h5("Properties")
