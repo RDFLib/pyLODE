@@ -409,12 +409,21 @@ class Supermodel:
 
             hr()
 
+    def _class_has_valid_subclasses(self, cls: Class) -> bool:
+        count = 0
+        for subcls in cls.subclasses:
+            if subcls.iri in self.query.class_index:
+                count += 1
+        return count != 0
+
     def _make_class_hierarchy(self, classes: list[Class]):
         with ul(_class="nested-hierarchy-list"):
             for cls in classes:
                 with li():
                     span(
                         _class="hierarchy-node"
+                        if self._class_has_valid_subclasses(cls)
+                        else "hierarchy-node-leaf"
                         if cls.subclasses
                         else "hierarchy-node-leaf"
                     )
@@ -436,8 +445,10 @@ class Supermodel:
                             MODULE_STRING.format(component_model.name)
                         )
                         a(component_model.name, href=f"#{fragment}")
-                        if component_model.classes:
-                            self._make_class_hierarchy(component_model.classes)
+                        if component_model.top_level_classes:
+                            self._make_class_hierarchy(
+                                component_model.top_level_classes
+                            )
 
         style(
             raw(

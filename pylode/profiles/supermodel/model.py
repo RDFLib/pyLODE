@@ -62,6 +62,12 @@ class Class:
     examples: list[Literal] = field(default_factory=list)
     notes: list[Note] = field(default_factory=list)
 
+    def __eq__(self, other):
+        if not isinstance(other, Class):
+            return False
+
+        return self.iri == other.iri
+
 
 @dataclass
 class ComponentModel:
@@ -69,6 +75,7 @@ class ComponentModel:
     name: str
     description: str = None
     classes: list[Class] = field(default_factory=list)
+    top_level_classes: list[Class] = field(default_factory=list)
     images: list[Image] = field(default_factory=list)
     order: int = None
     ignored_classes: list[URIRef] = field(default_factory=list)

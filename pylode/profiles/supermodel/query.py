@@ -97,28 +97,34 @@ def get_descriptions(iri: URIRef, graph: Graph) -> str:
     )
 
 
-def get_class(iri: URIRef, graph: Graph) -> Class:
+def get_class(iri: URIRef, graph: Graph, ignored_classes: list[URIRef]) -> Class:
     name = get_name(iri, graph)
-    subclasses = get_subclasses(iri, graph)
+    subclasses = get_subclasses(iri, graph, ignored_classes)
     return Class(iri, name, subclasses=subclasses)
 
 
-def get_superclasses(iri: URIRef, graph: Graph) -> list[Class]:
+def get_superclasses(
+    iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
+) -> list[Class]:
     superclasses = filter(
-        lambda x: isinstance(x, URIRef), list(graph.objects(iri, RDFS.subClassOf))
+        lambda x: x not in ignored_classes and isinstance(x, URIRef),
+        list(graph.objects(iri, RDFS.subClassOf)),
     )
     return sorted(
-        [get_class(superclass, graph) for superclass in superclasses],
+        [get_class(superclass, graph, ignored_classes) for superclass in superclasses],
         key=lambda x: x.name,
     )
 
 
-def get_subclasses(iri: URIRef, graph: Graph) -> list[Class]:
+def get_subclasses(
+    iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
+) -> list[Class]:
     subclasses = filter(
-        lambda x: isinstance(x, URIRef), list(graph.subjects(RDFS.subClassOf, iri))
+        lambda x: x not in ignored_classes and isinstance(x, URIRef),
+        list(graph.subjects(RDFS.subClassOf, iri)),
     )
     return sorted(
-        [get_class(subclass, graph) for subclass in subclasses],
+        [get_class(subclass, graph, ignored_classes) for subclass in subclasses],
         key=lambda x: x.name,
     )
 
@@ -207,6 +213,20 @@ def get_notes(iri: URIRef, graph: Graph) -> list[str]:
 
 def get_component_model_ignored_classes(iri: URIRef, graph: Graph) -> list[URIRef]:
     return list(graph.objects(iri, SM.ignoreClass))
+
+
+def get_top_level_component_classes(classes: list[Class]) -> list[Class]:
+    top_level_classes = []
+
+    for cls in classes:
+        has_superclass = False
+        for superclass in cls.superclasses:
+            if superclass in classes:
+                has_superclass = True
+        if not has_superclass:
+            top_level_classes.append(cls)
+
+    return top_level_classes
 
 
 class Query:
@@ -424,6 +444,7 @@ class Query:
             descriptions = get_descriptions(iri, graph)
             ignored_classes = get_component_model_ignored_classes(iri, self.graph)
             classes = self.get_component_model_classes(graph, ignored_classes)
+            top_level_classes = get_top_level_component_classes(classes)
             images = get_images(iri, graph)
             order = self.graph.value(iri, SH.order)
             result.append(
@@ -432,6 +453,7 @@ class Query:
                     name,
                     descriptions,
                     classes,
+                    top_level_classes,
                     images,
                     int(order) if order is not None else None,
                     ignored_classes,
@@ -451,8 +473,8 @@ class Query:
         for c in filter(lambda x: x not in ignored_classes, classes):
             name = get_name(c, graph)
             descriptions = get_descriptions(c, graph)
-            subclasses = get_subclasses(c, graph)
-            superclasses = get_superclasses(c, graph)
+            subclasses = get_subclasses(c, graph, ignored_classes)
+            superclasses = get_superclasses(c, graph, ignored_classes)
             properties = get_component_model_class_properties(c, graph)
             images = get_images(c, graph)
             examples = get_examples(c, graph)
