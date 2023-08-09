@@ -231,7 +231,7 @@ class Supermodel:
             h4(CLASS_STRING.format(cls.name), True)
 
             with p():
-                a(cls.iri, href=cls.iri)
+                external_link(cls.iri, href=cls.iri)
 
             if cls.description:
                 with div(_class="paragraph"):
@@ -380,7 +380,7 @@ class Supermodel:
             with div(_class="sect3"):
                 with div(_class="paragraph"):
                     with p():
-                        a(component_model.iri, href=component_model.iri)
+                        external_link(component_model.iri, href=component_model.iri)
 
                 if component_model.description:
                     with div(_class="paragraph"):
