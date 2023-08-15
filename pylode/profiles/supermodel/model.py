@@ -27,8 +27,8 @@ class Property:
     belongs_to_class: "Class"
     cardinality_min: int = None
     cardinality_max: int = None
-    value_type: str = None
-    value_class_type: URIRef = None
+    value_type: "Class" = None
+    value_class_type: "Class" = None
 
 
 @dataclass

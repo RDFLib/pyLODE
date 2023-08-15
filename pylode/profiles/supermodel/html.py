@@ -352,12 +352,49 @@ class Supermodel:
                                                 _class="tableblock",
                                             )
                                     with td(_class="tableblock halign-left valign-top"):
-                                        p(property.value_type, _class="tableblock")
+                                        if property.value_type is not None:
+                                            if (
+                                                property.value_type.iri
+                                                in self.query.class_index
+                                            ):
+                                                fragment = make_html_fragment(
+                                                    CLASS_STRING.format(
+                                                        property.value_type.name
+                                                    )
+                                                )
+                                                a(
+                                                    property.value_type.name,
+                                                    href=f"#{fragment}",
+                                                )
+                                            else:
+                                                external_link(
+                                                    property.value_type.name,
+                                                    property.value_type.iri,
+                                                )
+
                                     with td(_class="tableblock halign-left valign-top"):
-                                        p(
-                                            property.value_class_type,
-                                            _class="tableblock",
-                                        )
+                                        if property.value_class_type is not None:
+                                            with p(
+                                                _class="tableblock",
+                                            ):
+                                                if (
+                                                    property.value_class_type.iri
+                                                    in self.query.class_index
+                                                ):
+                                                    fragment = make_html_fragment(
+                                                        CLASS_STRING.format(
+                                                            property.value_class_type.name
+                                                        )
+                                                    )
+                                                    a(
+                                                        property.value_class_type.name,
+                                                        href=f"#{fragment}",
+                                                    )
+                                                else:
+                                                    external_link(
+                                                        property.value_class_type.name,
+                                                        property.value_class_type.iri,
+                                                    )
 
             if cls.images:
                 h5("Images")

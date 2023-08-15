@@ -168,6 +168,16 @@ def get_component_model_class_properties(
             sh_min = graph.value(sh_property, SH.minCount)
             sh_max = graph.value(sh_property, SH.maxCount)
             belongs_to_class = get_class(iri, graph, ignored_classes)
+            value_type = (
+                get_class(sh_nodekind, graph, ignored_classes)
+                if sh_nodekind is not None
+                else None
+            )
+            value_class_type = (
+                get_class(sh_class, graph, ignored_classes)
+                if sh_class is not None
+                else None
+            )
 
             properties.append(
                 Property(
@@ -177,8 +187,8 @@ def get_component_model_class_properties(
                     belongs_to_class=belongs_to_class,
                     cardinality_min=int(sh_min) if sh_min is not None else None,
                     cardinality_max=int(sh_max) if sh_max is not None else None,
-                    value_type=graph.qname(sh_nodekind) if sh_nodekind else "",
-                    value_class_type=graph.qname(sh_class) if sh_class else "",
+                    value_type=value_type,
+                    value_class_type=value_class_type,
                 )
             )
 
