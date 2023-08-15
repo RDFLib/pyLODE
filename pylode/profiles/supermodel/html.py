@@ -230,7 +230,7 @@ class Supermodel:
         with div(_class="sect3"):
             h4(CLASS_STRING.format(cls.name), True)
 
-            with p():
+            with p(_class="overflow-x-auto"):
                 external_link(cls.iri, href=cls.iri)
 
             if cls.description:
@@ -270,7 +270,7 @@ class Supermodel:
 
             if cls.properties:
                 h5("Properties")
-                with div(_class="sect5"):
+                with div(_class="sect5 overflow-x-auto"):
                     with table(
                         _class="tableblock frame-all grid-all stripes-even fit-content stretch"
                     ):
@@ -547,10 +547,10 @@ class Supermodel:
                         _class="tableblock frame-none grid-none stripes-odd stretch"
                     ):
                         with colgroup():
-                            col(style="width: 100%")
+                            col(_class="w-full")
 
                         with tbody():
-                            with tr(style="background-color:white;"):
+                            with tr(_class="bg-white"):
                                 with td(_class="tableblock halign-right valign-top"):
                                     with p(_class="tableblock"):
                                         strong(
@@ -668,6 +668,15 @@ class Supermodel:
                         "\n"
                         + open(
                             Path(__file__).parent.parent.parent / "static/asciidoc.css"
+                        ).read()
+                        + "\n\t"
+                    )
+                )
+                style(
+                    raw(
+                        "\n"
+                        + open(
+                            Path(__file__).parent.parent.parent / "static/pylode.css"
                         ).read()
                         + "\n\t"
                     )

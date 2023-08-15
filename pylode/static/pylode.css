@@ -1,0 +1,13 @@
+/* Utility classes inspired by tailwindcss */
+
+.w-full {
+  width: 100%;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
