@@ -553,10 +553,20 @@ class Supermodel:
                             with tr(_class="bg-white"):
                                 with td(_class="tableblock halign-right valign-top"):
                                     with p(_class="tableblock"):
-                                        strong(
-                                            "Intergovernmental Committee on Surveying and Mapping",
-                                            _class="big",
-                                        )
+                                        if DCTERMS.publisher in self.query.onts_props:
+                                            strong(
+                                                str(
+                                                    self.query.onts_props[
+                                                        DCTERMS.publisher
+                                                    ][0]
+                                                ),
+                                                _class="big",
+                                            )
+                                        else:
+                                            strong(
+                                                "Untitled",
+                                                _class="big",
+                                            )
 
                             # Submission Date
                             if (
