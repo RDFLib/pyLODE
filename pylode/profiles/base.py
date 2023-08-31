@@ -348,7 +348,7 @@ class BaseProfile:
             return None
 
         # split out hash URIs
-        # remove any training hashes
+        # remove any trailing hashes
         if segments[-1].endswith("#"):
             return None
 
@@ -543,8 +543,12 @@ class BaseProfile:
         if name is None:
             if type(agent_node) == Literal:
                 name = agent_node
-            if type(agent_node) == URIRef:
-                name = agent_node.split("/")[-1].split("#")[-1]
+            elif type(agent_node) == URIRef:
+                # strip trailing slash
+                name = str(agent_node).rstrip("/")
+                name = name.split("/")[-1].split("#")[-1]
+            else:
+                name = str(agent_node)
         agent = self._make_agent_link(name, url=url, email=email)
 
         if org_name is not None:
