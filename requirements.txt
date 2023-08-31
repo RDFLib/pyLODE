@@ -1,4 +1,0 @@
-jinja2
-markdown
-rdflib>=6.1.1,<7.0.0
-requests
