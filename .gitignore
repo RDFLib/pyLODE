@@ -116,4 +116,5 @@ output_files/
 
 /pylode/examples/ogc/excluded/
 
-pylode/_version.py
+# Auto-generated during builds
+/pylode/_version.py

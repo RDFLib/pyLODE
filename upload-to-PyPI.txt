@@ -7,7 +7,7 @@
 # 4. $ git push
 #    $ git push --tags
 
-# 5. $ python setup.py sdist bdist_wheel
+# 5. $ hatch build
 
 # 6. $ twine check dist/*  -- check ReStructuredText
 #    $ twine upload dist/*  -- push up

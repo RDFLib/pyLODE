@@ -41,10 +41,8 @@ class VocPub(BaseProfile):
         if self.CONCEPTS.get(uri) or self.COLLECTIONS.get(uri):
             if self.CONCEPTS.get(uri):
                 title = self.CONCEPTS[uri]["default_prefLabel"]
-                uri = self.CONCEPTS[uri]["fid"]
             elif self.COLLECTIONS.get(uri):
                 title = self.COLLECTIONS[uri]["default_prefLabel"]
-                uri = self.COLLECTIONS[uri]["fid"]
 
             links = {
                 "md": f"[{title}](#{uri})",
@@ -53,6 +51,7 @@ class VocPub(BaseProfile):
             }
             return links[self.outputformat]
         else:
+            # "foreign" URIs (not defined in the processed concept scheme)
             return self._make_formatted_uri_basic(uri)
 
     def _make_formatted_uri(self, uri, type=None):
@@ -73,6 +72,7 @@ class VocPub(BaseProfile):
         }
 
         return link + suffixes[self.outputformat]
+
 
     def _expand_graph(self):
         # name
@@ -190,66 +190,49 @@ class VocPub(BaseProfile):
         for c in self.COLLECTIONS.keys():
             s = URIRef(c)  # for use in Graph() loops
 
-            self.COLLECTIONS[c]["fid"] = None
+            # We use the uri as fragment id
+            self.COLLECTIONS[c]["fid"] = c
             self.COLLECTIONS[c]["default_prefLabel"] = None
-            self.COLLECTIONS[c]["prefLabels"] = set()
-            self.COLLECTIONS[c]["altLabels"] = set()
-            self.COLLECTIONS[c]["definitions"] = set()
-            self.COLLECTIONS[c]["scopeNotes"] = set()
+            self.COLLECTIONS[c]["prefLabels"] = []
+            self.COLLECTIONS[c]["altLabels"] = []
+            self.COLLECTIONS[c]["definitions"] = []
+            self.COLLECTIONS[c]["scopeNotes"] = []
             self.COLLECTIONS[c]["source"] = None
-            self.COLLECTIONS[c]["members"] = set()
+            self.COLLECTIONS[c]["members"] = []
 
             for p, o in self.G.predicate_objects(subject=s):
                 if p == SKOS.prefLabel:
-                    self.COLLECTIONS[c]["prefLabels"].add((str(o), o.language))  # TODO: add in language
+                    self.COLLECTIONS[c]["prefLabels"].append((str(o), o.language))  # TODO: add in language
                     if o.language == self.default_language:
                         self.COLLECTIONS[c]["default_prefLabel"] = str(o)
 
                 elif p == SKOS.altLabel:
-                    self.COLLECTIONS[c]["altLabels"].add(str(o))  # TODO: add in language
+                    self.COLLECTIONS[c]["altLabels"].append(str(o))  # TODO: add in language
 
                 elif p == SKOS.definition:
                     # TODO: add in language
                     if self.outputformat == "md":
-                        self.COLLECTIONS[c]["definitions"].add(str(o))
+                        self.COLLECTIONS[c]["definitions"].append(str(o))
                     else:
-                        self.COLLECTIONS[c]["definitions"].add(markdown.markdown(str(o)))
+                        self.COLLECTIONS[c]["definitions"].append(markdown.markdown(str(o)))
 
                 elif p == SKOS.scopeNote:
                     # TODO: add in language
                     if self.outputformat == "md":
-                        self.COLLECTIONS[c]["scopeNotes"].add(str(o))
+                        self.COLLECTIONS[c]["scopeNotes"].append(str(o))
                     else:
-                        self.COLLECTIONS[c]["scopeNotes"].add(markdown.markdown(str(o)))
+                        self.COLLECTIONS[c]["scopeNotes"].append(markdown.markdown(str(o)))
 
                 elif p == DCTERMS.source:
                     self.COLLECTIONS[c]["source"] = str(o)
 
                 elif p == SKOS.topConceptOf:
-                    self.COLLECTIONS[c]["topConceptOfs"].add(str(o))
+                    self.COLLECTIONS[c]["topConceptOfs"].append(str(o))
 
                 elif p == SKOS.member:
-                    self.COLLECTIONS[c]["members"].add(str(o))
+                    self.COLLECTIONS[c]["members"].append(str(o))
                     # TODO: handle members that are other Collections, not Concepts
 
-            # listify the sets
-            self.COLLECTIONS[c]["prefLabels"] = list(self.COLLECTIONS[c]["prefLabels"])
-            self.COLLECTIONS[c]["altLabels"] = list(self.COLLECTIONS[c]["altLabels"])
-            self.COLLECTIONS[c]["definitions"] = list(self.COLLECTIONS[c]["definitions"])
-            self.COLLECTIONS[c]["scopeNotes"] = list(self.COLLECTIONS[c]["scopeNotes"])
-            self.COLLECTIONS[c]["members"] = list(self.COLLECTIONS[c]["members"])
-
-            # make fid
-            # TODO: update to use default language label, not [0]
-            try:
-                pl = self.COLLECTIONS[c]["prefLabels"][0][0]
-
-                self.COLLECTIONS[c]["fid"] = self._make_fid(
-                    pl, c
-                )
-            except Exception as e:
-                print(e)
-                raise Exception("You Collection {}  doesn't have a label but it needs one!".format(c))
 
     def _extract_concepts(self):
         """Extracts standard SKOS Concepts and their metadata
@@ -268,102 +251,83 @@ class VocPub(BaseProfile):
         for c in self.CONCEPTS.keys():
             s = URIRef(c)  # for use in Graph() loops
 
-            self.CONCEPTS[c]["fid"] = None
-            self.CONCEPTS[c]["prefLabels"] = set()
+            # We use the uri as fragment id (fid).
+            self.CONCEPTS[c]["fid"] = c
+            self.CONCEPTS[c]["prefLabels"] = []
             self.CONCEPTS[c]["default_prefLabel"] = None
-            self.CONCEPTS[c]["altLabels"] = set()
-            self.CONCEPTS[c]["definitions"] = set()
-            self.CONCEPTS[c]["scopeNotes"] = set()
-            self.CONCEPTS[c]["examples"] = set()
-            self.CONCEPTS[c]["inSchemes"] = set()
-            self.CONCEPTS[c]["topConceptOfs"] = set()
+            self.CONCEPTS[c]["altLabels"] = []
+            self.CONCEPTS[c]["definitions"] = []
+            self.CONCEPTS[c]["scopeNotes"] = []
+            self.CONCEPTS[c]["examples"] = []
+            self.CONCEPTS[c]["inSchemes"] = []
+            self.CONCEPTS[c]["topConceptOfs"] = []
             self.CONCEPTS[c]["source"] = None
-            self.CONCEPTS[c]["broaders"] = set()
-            self.CONCEPTS[c]["narrowers"] = set()
-            self.CONCEPTS[c]["exactMatches"] = set()
-            self.CONCEPTS[c]["closeMatches"] = set()
-            self.CONCEPTS[c]["broadMatches"] = set()
-            self.CONCEPTS[c]["narrowMatches"] = set()
+            self.CONCEPTS[c]["broaders"] = []
+            self.CONCEPTS[c]["narrowers"] = []
+            self.CONCEPTS[c]["exactMatches"] = []
+            self.CONCEPTS[c]["closeMatches"] = []
+            self.CONCEPTS[c]["broadMatches"] = []
+            self.CONCEPTS[c]["narrowMatches"] = []
 
             for p, o in self.G.predicate_objects(subject=s):
                 if p == SKOS.prefLabel:
-                    self.CONCEPTS[c]["prefLabels"].add((str(o), o.language))  # TODO: add in language
+                    self.CONCEPTS[c]["prefLabels"].append((str(o), o.language))  # TODO: add in language
                     if o.language == self.default_language:
                         self.CONCEPTS[c]["default_prefLabel"] = str(o)
 
                 elif p == SKOS.altLabel:
-                    self.CONCEPTS[c]["altLabels"].add(str(o))  # TODO: add in language
+                    self.CONCEPTS[c]["altLabels"].append(str(o))  # TODO: add in language
 
                 elif p == SKOS.definition:
                     # TODO: add in language
                     if self.outputformat == "md":
-                        self.CONCEPTS[c]["definitions"].add(str(o))
+                        self.CONCEPTS[c]["definitions"].append(str(o))
                     else:
-                        self.CONCEPTS[c]["definitions"].add(markdown.markdown(str(o)))
+                        self.CONCEPTS[c]["definitions"].append(markdown.markdown(str(o)))
 
                 elif p == SKOS.scopeNote:
                     # TODO: add in language
                     if self.outputformat == "md":
-                        self.CONCEPTS[c]["scopeNotes"].add(str(o))
+                        self.CONCEPTS[c]["scopeNotes"].append(str(o))
                     else:
-                        self.CONCEPTS[c]["scopeNotes"].add(markdown.markdown(str(o)))
+                        self.CONCEPTS[c]["scopeNotes"].append(markdown.markdown(str(o)))
 
                 elif p == SKOS.example:
-                    self.CONCEPTS[c]["examples"].add(str(o))  # TODO: add in language
+                    self.CONCEPTS[c]["examples"].append(str(o))  # TODO: add in language
 
                 elif p == SKOS.inScheme:
-                    self.CONCEPTS[c]["inSchemes"].add(str(o))
+                    self.CONCEPTS[c]["inSchemes"].append(str(o))
 
                 elif p == DCTERMS.source:
                     self.CONCEPTS[c]["source"] = str(o)
 
                 elif p == SKOS.topConceptOf:
-                    self.CONCEPTS[c]["topConceptOfs"].add(str(o))
+                    self.CONCEPTS[c]["topConceptOfs"].append(str(o))
 
                 elif p == SKOS.broader:
-                    self.CONCEPTS[c]["broaders"].add(str(o))
+                    self.CONCEPTS[c]["broaders"].append(str(o))
 
                 elif p == SKOS.narrower:
-                    self.CONCEPTS[c]["narrowers"].add(str(o))
+                    self.CONCEPTS[c]["narrowers"].append(str(o))
 
                 elif p == SKOS.exactMatch:
-                    self.CONCEPTS[c]["exactMatches"].add(str(o))
+                    self.CONCEPTS[c]["exactMatches"].append(str(o))
 
                 elif p == SKOS.closeMatch:
-                    self.CONCEPTS[c]["closeMatches"].add(str(o))
+                    self.CONCEPTS[c]["closeMatches"].append(str(o))
 
                 elif p == SKOS.broadMatch:
-                    self.CONCEPTS[c]["broadMatches"].add(str(o))
+                    self.CONCEPTS[c]["broadMatches"].append(str(o))
 
                 elif p == SKOS.narrowMatch:
-                    self.CONCEPTS[c]["narrowMatches"].add(str(o))
+                    self.CONCEPTS[c]["narrowMatches"].append(str(o))
 
             # patch title from URI if we haven't got one
             if len(self.CONCEPTS[c]["prefLabels"]) < 1:
                 pl = self._make_title_from_uri(c)
-                self.CONCEPTS[c]["prefLabels"].add((pl, 'en'))
+                self.CONCEPTS[c]["prefLabels"].append((pl, 'en'))
                 self.CONCEPTS[c]["default_prefLabel"] = pl
 
-            # listify the sets
-            self.CONCEPTS[c]["prefLabels"] = list(self.CONCEPTS[c]["prefLabels"])
-            self.CONCEPTS[c]["altLabels"] = list(self.CONCEPTS[c]["altLabels"])
-            self.CONCEPTS[c]["definitions"] = list(self.CONCEPTS[c]["definitions"])
-            self.CONCEPTS[c]["scopeNotes"] = list(self.CONCEPTS[c]["scopeNotes"])
-            self.CONCEPTS[c]["examples"] = list(self.CONCEPTS[c]["examples"])
-            self.CONCEPTS[c]["inSchemes"] = list(self.CONCEPTS[c]["inSchemes"])
-            self.CONCEPTS[c]["topConceptOfs"] = list(self.CONCEPTS[c]["topConceptOfs"])
-            self.CONCEPTS[c]["broaders"] = list(self.CONCEPTS[c]["broaders"])
-            self.CONCEPTS[c]["narrowers"] = list(self.CONCEPTS[c]["narrowers"])
-            self.CONCEPTS[c]["exactMatches"] = list(self.CONCEPTS[c]["exactMatches"])
-            self.CONCEPTS[c]["closeMatches"] = list(self.CONCEPTS[c]["closeMatches"])
-            self.CONCEPTS[c]["broadMatches"] = list(self.CONCEPTS[c]["broadMatches"])
-            self.CONCEPTS[c]["narrowMatches"] = list(self.CONCEPTS[c]["narrowMatches"])
-
-            # make fid
-            # TODO: update to use default language label, not [0]
-            self.CONCEPTS[c]["fid"] = self._make_fid(
-                self.CONCEPTS[c]["default_prefLabel"], c
-            )
 
     def _extract_concept_scheme(self):
         """Extracts standard SKOS ConceptScheme metadata
@@ -371,9 +335,9 @@ class VocPub(BaseProfile):
         Will interpret an owl:Ontology as a skos:ConceptScheme if run against an OWL document
         """
 
-        self.METADATA["creators"] = set()
-        self.METADATA["contributors"] = set()
-        self.METADATA["publishers"] = set()
+        self.METADATA["creators"] = []
+        self.METADATA["contributors"] = []
+        self.METADATA["publishers"] = []
         for s in self.G.subjects(predicate=RDF.type, object=SKOS.ConceptScheme):
             self.METADATA["uri"] = str(s)
             for p, o in self.G.predicate_objects(subject=s):
@@ -434,9 +398,9 @@ class VocPub(BaseProfile):
                 if p in [DCTERMS.creator, DCTERMS.contributor, DCTERMS.publisher]:
                     agent_type = p.split("/")[-1] + "s"
                     if type(o) == Literal:
-                        self.METADATA[agent_type].add(str(o))
+                        self.METADATA[agent_type].append(str(o))
                     else:  # Blank Node or URI
-                        self.METADATA[agent_type].add(self._make_agent(o))
+                        self.METADATA[agent_type].append(self._make_agent(o))
 
                 # TODO: cater for other Agent representations
 
@@ -482,7 +446,21 @@ class VocPub(BaseProfile):
             has_concepts=True if len(self.CONCEPTS) > 0 else False,
         )
 
+    def _get_title_by_uri(self, uri):
+        if self.CONCEPTS.get(uri) or self.COLLECTIONS.get(uri):
+            if self.CONCEPTS.get(uri):
+                title = self.CONCEPTS[uri]["default_prefLabel"]
+            elif self.COLLECTIONS.get(uri):
+                title = self.COLLECTIONS[uri]["default_prefLabel"]
+        else:
+            # "foreign" URIs (not defined in the processed concept scheme)
+            title = ""
+        return title.lower()
+
     def _make_skos_collection(self, collection):
+        # sort members
+        member_uris_sorted_by_preflabel = sorted(collection[1].get("members"), key=self._get_title_by_uri)
+
         return self._load_template("collection." + self.outputformat).render(
             uri=collection[0],
             fid=collection[1].get("fid"),
@@ -492,7 +470,7 @@ class VocPub(BaseProfile):
             definitions=collection[1].get("definitions"),
             scopeNotes=collection[1].get("scopeNotes"),
             source=collection[1].get("source"),
-            members=[self._make_formatted_uri(x, type="con") for x in collection[1].get("members")],
+            members=[self._make_formatted_uri(x, type="con") for x in member_uris_sorted_by_preflabel],
         )
 
     def _make_skos_collections(self):
@@ -509,7 +487,6 @@ class VocPub(BaseProfile):
         return self._load_template("collections." + self.outputformat).render(collections=collections)
 
     def _make_concept_hierarchy(self):
-        of = self.outputformat
         # render concept
         def _render(c, children, of, level=0):
             if of == "md":
