@@ -1,0 +1,74 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+# Storing project metadata in pyproject.toml https://peps.python.org/pep-0621/
+name = "pylode"
+description = "SKOS vocabulary management tool of NFDI4Cat."
+authors = [
+  {name = "Nicholas Car", email = "nick@kurrawong.net"},
+]
+license = {text = "GPLv3+"}
+readme = "README.rst"
+requires-python = ">=3.8"
+keywords = ['Semantic Web', 'OWL', 'ontology', 'template', 'Jinja2', 'documentation']
+
+classifiers=[
+    'Development Status :: 4 - Beta',
+    'Topic :: Utilities',
+    'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+    'Intended Audience :: Developers',
+    'Natural Language :: English',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3 :: Only',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: Implementation :: CPython',
+    'Programming Language :: Python :: Implementation :: PyPy',
+    'Topic :: Software Development :: Libraries :: Python Modules',
+]
+
+dependencies = [
+    "jinja2",
+    "markdown",
+    "rdflib>=6.1.1,<7.0.0",
+    "requests",
+]
+
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/rdflib/pyLODE"
+
+[project.scripts]
+pylode = "pylode.cli:main"
+
+[project.optional-dependencies]
+tests = [
+  "pytest",
+]
+dev = [
+    # Recursively including the project's own optional dependencies requires pip>=21.2
+    "pylode[tests]",
+    "hatch",
+    "twine",
+]
+
+# Build targets for hatch are defined as sections within tool.hatch.build.targets:
+[tool.hatch.build.targets.sdist]
+include = [
+  "/pylode",
+  "/img/pyLODE-250.png",
+]
+[tool.hatch.build.targets.wheel]
+packages = ["pylode"]
+
+# integrates git-tag-based versions into hatch, https://github.com/ofek/hatch-vcs
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "pylode/_version.py"
