@@ -30,6 +30,7 @@ ONT_PROPS = [
     SDO.identifier,
     VANN.preferredNamespacePrefix,
     VANN.preferredNamespaceUri,
+    SKOS.historyNote,
     SKOS.scopeNote,
     DCTERMS.source,
     DCTERMS.provenance,
