@@ -21,12 +21,9 @@ from dominate.tags import (
     p,
     strong,
     a,
-    img,
     hr,
     ul,
     li,
-    pre,
-    code,
     thead,
     th,
     em,
@@ -38,6 +35,8 @@ from rdflib import (
     OWL,
     SDO,
     DCTERMS,
+    VANN,
+    SKOS,
 )
 
 from pylode.utils import (
@@ -45,7 +44,7 @@ from pylode.utils import (
     load_ontology,
 )
 from pylode.profiles.supermodel.query import Query
-from pylode.profiles.supermodel.model import ComponentModel, Class
+from pylode.profiles.supermodel.model import ComponentModel, Class, RDFProperty
 from pylode.profiles.supermodel.component import (
     metadata_row,
     h2,
@@ -54,13 +53,15 @@ from pylode.profiles.supermodel.component import (
     h5,
     h6,
     external_link,
+    example,
 )
 from pylode.profiles.supermodel.fragment import make_html_fragment
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
 
 MODULE_STRING = "Module: {}"
-CLASS_STRING = "Class: {}"
+CLASS_STRING = "{}"
+ANNOTATION_PROPERTY_STRING = "{}"
 
 
 def is_heading(doc: dominate.document) -> bool:
@@ -96,9 +97,8 @@ class Supermodel:
 
         self.toc: dict[str, str] = {}
         self.fids: dict[str, str] = {}
-        self.ns = self.query.get_ns()
+        self.ns = self.query.ns
         self.iri = self.query.get_supermodel_iri()
-        self.figure_count = 0
 
         # make HTML doc with title
         title = self.query.get_title(self.iri)
@@ -198,7 +198,7 @@ class Supermodel:
                 with unordered_list:
                     heading_value_component(heading, value)
             elif previous_heading_level < heading_level:
-                with ul() as unordered_list:
+                with ul(_class="mb-0") as unordered_list:
                     heading_value = heading_value_component(heading, value)
                     index[heading_level - 1].add(unordered_list)
                     index[heading_level] = heading_value
@@ -230,7 +230,7 @@ class Supermodel:
         with div(_class="sect3"):
             h4(CLASS_STRING.format(cls.name), True)
 
-            with p(_class="overflow-x-auto"):
+            with p("IRI:", _class="overflow-x-auto"):
                 external_link(cls.iri, href=cls.iri)
 
             if cls.description:
@@ -247,26 +247,47 @@ class Supermodel:
                                         div(note.type, _class="title")
                                     td(note.value, _class="content")
 
+            if cls.is_defined_by is not None:
+                with p("Is defined by "):
+                    a(cls.is_defined_by.name, href=cls.is_defined_by.iri)
+
             if cls.superclasses:
                 h5("Subclass of")
                 with div(_class="sect5"):
-                    for superclass in cls.superclasses:
-                        with div(_class="ulist"):
-                            with ul():
+                    with div(_class="ulist"):
+                        with ul():
+                            for subclass in cls.superclasses:
                                 with li():
                                     with p():
-                                        if superclass.iri in self.query.class_index:
+                                        if subclass.iri in self.query.class_index:
                                             fragment = make_html_fragment(
-                                                CLASS_STRING.format(superclass.name)
+                                                CLASS_STRING.format(subclass.name)
                                             )
                                             a(
-                                                superclass.name,
+                                                subclass.name,
                                                 href=f"#{fragment}",
                                             )
                                         else:
-                                            external_link(
-                                                superclass.name, superclass.iri
+                                            external_link(subclass.name, subclass.iri)
+
+            if cls.subclasses:
+                h5("Superclass of")
+                with div(_class="sect5"):
+                    with div(_class="ulist"):
+                        with ul():
+                            for subclass in cls.subclasses:
+                                with li():
+                                    with p():
+                                        if subclass.iri in self.query.class_index:
+                                            fragment = make_html_fragment(
+                                                CLASS_STRING.format(subclass.name)
                                             )
+                                            a(
+                                                subclass.name,
+                                                href=f"#{fragment}",
+                                            )
+                                        else:
+                                            external_link(subclass.name, subclass.iri)
 
             if cls.properties:
                 h5("Properties")
@@ -300,18 +321,23 @@ class Supermodel:
                             for property in cls.properties:
                                 with tr():
                                     with td(_class="tableblock halign-left valign-top"):
-                                        p(property.name, _class="tableblock")
-                                        with p(_class="tableblock"):
-                                            with em("From "):
-                                                fragment = make_html_fragment(
-                                                    CLASS_STRING.format(
-                                                        property.belongs_to_class.name
+                                        fragment = make_html_fragment(
+                                            CLASS_STRING.format(property.name)
+                                        )
+                                        a(property.name, href=f"#{fragment}")
+
+                                        if property.belongs_to_class is not None:
+                                            with p(_class="tableblock"):
+                                                with em("From "):
+                                                    fragment = make_html_fragment(
+                                                        CLASS_STRING.format(
+                                                            property.belongs_to_class.name
+                                                        )
                                                     )
-                                                )
-                                                a(
-                                                    property.belongs_to_class.name,
-                                                    href=f"#{fragment}",
-                                                )
+                                                    a(
+                                                        property.belongs_to_class.name,
+                                                        href=f"#{fragment}",
+                                                    )
                                     with td(_class="tableblock halign-left valign-top"):
                                         p(property.description)
                                     with td(_class="tableblock halign-left valign-top"):
@@ -373,87 +399,192 @@ class Supermodel:
                                                 )
 
                                     with td(_class="tableblock halign-left valign-top"):
-                                        if property.value_class_type is not None:
+                                        if property.value_class_types:
                                             with p(
                                                 _class="tableblock",
                                             ):
-                                                if (
-                                                    property.value_class_type.iri
-                                                    in self.query.class_index
-                                                ):
-                                                    fragment = make_html_fragment(
-                                                        CLASS_STRING.format(
-                                                            property.value_class_type.name
+                                                for (
+                                                    value_class_type
+                                                ) in property.value_class_types:
+                                                    if (
+                                                        value_class_type.iri
+                                                        in self.query.class_index
+                                                    ):
+                                                        fragment = make_html_fragment(
+                                                            CLASS_STRING.format(
+                                                                value_class_type.name
+                                                            )
                                                         )
-                                                    )
-                                                    a(
-                                                        property.value_class_type.name,
-                                                        href=f"#{fragment}",
-                                                    )
-                                                else:
-                                                    external_link(
-                                                        property.value_class_type.name,
-                                                        property.value_class_type.iri,
-                                                    )
-
-            if cls.images:
-                h5("Images")
-                with div(_class="sect5"):
-                    for image in cls.images:
-                        h6(image.name)
-                        with div(_class="sect6"):
-                            with div(_class="imageblock text-center"):
-                                with div(_class="content"):
-                                    img(src=image.url, alt=image.description)
-                                div(
-                                    f"Figure {self.figure_count + 1}. {image.description}",
-                                    _class="title",
-                                )
-                                self.figure_count += 1
+                                                        a(
+                                                            value_class_type.name,
+                                                            href=f"#{fragment}",
+                                                        )
+                                                    else:
+                                                        external_link(
+                                                            value_class_type.name,
+                                                            value_class_type.iri,
+                                                        )
 
             if cls.examples:
                 h5("Examples")
                 with div(_class="sect5"):
-                    for example in cls.examples:
-                        with div(_class="listingblock"):
-                            with div(_class="content"):
-                                with pre(_class="highlight"):
-                                    code(example)
+                    for image in cls.examples:
+                        example(image, 6)
+
+    def _make_component_model_property(self, prop: RDFProperty):
+        with div(_class="sect3"):
+            h4(ANNOTATION_PROPERTY_STRING.format(prop.name), True)
+
+            with p("IRI:", _class="overflow-x-auto"):
+                external_link(prop.iri, href=prop.iri)
+
+            if prop.description:
+                with div(_class="paragraph"):
+                    p(prop.description)
+
+            if prop.notes:
+                for note in prop.notes:
+                    with div(_class="admonitionblock note"):
+                        with table():
+                            with tbody():
+                                with tr():
+                                    with td(_class="icon"):
+                                        div(note.type, _class="title")
+                                    td(note.value, _class="content")
+
+            if prop.super_properties:
+                p("Sub property of:")
+                with ul():
+                    for super_property in prop.super_properties:
+                        with li():
+                            # TODO: Dynamically render internal or external link based on some index.
+                            external_link(super_property.name, super_property.iri)
+
+            if prop.domain_includes:
+                p("Domain includes:")
+                with ul():
+                    for domain_include_value in prop.domain_includes:
+                        with li():
+                            if domain_include_value.iri in self.query.class_index:
+                                fragment = make_html_fragment(
+                                    CLASS_STRING.format(domain_include_value.name)
+                                )
+                                a(
+                                    domain_include_value.name,
+                                    href=f"#{fragment}",
+                                )
+                            else:
+                                external_link(
+                                    domain_include_value.name, domain_include_value.iri
+                                )
+
+            if prop.range_includes:
+                p("Range includes:")
+                with ul():
+                    for domain_include_value in prop.range_includes:
+                        with li():
+                            if domain_include_value.iri in self.query.class_index:
+                                fragment = make_html_fragment(
+                                    CLASS_STRING.format(domain_include_value.name)
+                                )
+                                a(
+                                    domain_include_value.name,
+                                    href=f"#{fragment}",
+                                )
+                            else:
+                                external_link(
+                                    domain_include_value.name, domain_include_value.iri
+                                )
+
+            if prop.is_defined_by is not None:
+                with p("Is defined by "):
+                    # TODO: determine whether this is determined by local module or external.
+                    external_link(prop.is_defined_by.name, href=prop.is_defined_by.iri)
 
     def _make_component_model(self, component_model: ComponentModel):
-        with div(_class="sect2"):
-            h3(MODULE_STRING.format(component_model.name), True)
-            with div(_class="sect3"):
+        with div(_class="sect1"):
+            h2(MODULE_STRING.format(component_model.name), True)
+            with div(_class="sect2"):
                 with div(_class="paragraph"):
-                    with p():
+                    with p("IRI:"):
                         external_link(component_model.iri, href=component_model.iri)
 
                 if component_model.description:
                     with div(_class="paragraph"):
                         p(component_model.description)
 
-                if component_model.images:
-                    h4("Images")
+                if component_model.examples:
+                    h3("Examples")
                     with div(_class="sect4"):
-                        for image in component_model.images:
-                            h5(image.name, True)
-                            with div(_class="sect5"):
-                                with div(_class="imageblock text-center"):
-                                    with div(_class="content"):
-                                        img(src=image.url, alt=image.description)
-                                    div(
-                                        f"Figure {self.figure_count + 1}. {image.description}",
-                                        _class="title",
-                                    )
-                                    self.figure_count += 1
+                        for image in component_model.examples:
+                            example(image, 4)
 
-                for i, cls in enumerate(component_model.classes):
-                    self._make_component_model_class(cls)
+                hr()
 
-                    if i != len(component_model.classes) - 1:
+                with div(_class="sect2"):
+                    h3("Classes", identifier=f"{component_model.name} - Classes")
+                    hr()
+                    for i, cls in enumerate(component_model.classes):
+                        self._make_component_model_class(cls)
+
+                        if i != len(component_model.classes) - 1:
+                            hr()
+
+                if component_model.annotation_properties:
+                    hr()
+                    with div(_class="sect2"):
+                        h3(
+                            "Annotation Properties",
+                            identifier=f"{component_model.name} - Annotation Properties",
+                        )
                         hr()
+                        for i, prop in enumerate(component_model.annotation_properties):
+                            self._make_component_model_property(prop)
 
-            hr()
+                            if i != len(component_model.annotation_properties) - 1:
+                                hr()
+
+                if component_model.datatype_properties:
+                    hr()
+                    with div(_class="sect2"):
+                        h3(
+                            "Datatype Properties",
+                            identifier=f"{component_model.name} - Datatype Properties",
+                        )
+                        hr()
+                        for i, prop in enumerate(component_model.datatype_properties):
+                            self._make_component_model_property(prop)
+
+                            if i != len(component_model.datatype_properties) - 1:
+                                hr()
+
+                if component_model.object_properties:
+                    hr()
+                    with div(_class="sect2"):
+                        h3(
+                            "Object Properties",
+                            identifier=f"{component_model.name} - Object Properties",
+                        )
+                        hr()
+                        for i, prop in enumerate(component_model.object_properties):
+                            self._make_component_model_property(prop)
+
+                            if i != len(component_model.object_properties) - 1:
+                                hr()
+
+                if component_model.ontology_properties:
+                    hr()
+                    with div(_class="sect2"):
+                        h3(
+                            "Ontology Properties",
+                            identifier=f"{component_model.name} - Ontology Properties",
+                        )
+                        hr()
+                        for i, prop in enumerate(component_model.ontology_properties):
+                            self._make_component_model_property(prop)
+
+                            if i != len(component_model.ontology_properties) - 1:
+                                hr()
 
     def _class_has_valid_subclasses(self, cls: Class) -> bool:
         count = 0
@@ -481,7 +612,7 @@ class Supermodel:
     def _make_class_hierarchy_top_level(self):
         component_models = self.query.component_models
 
-        h3("Class Hierarchy", True)
+        h2("Class Hierarchy", True)
         with div(_class="class-hierarchy"):
             with ul(_class="hierarchy-list"):
                 for component_model in component_models:
@@ -516,8 +647,6 @@ class Supermodel:
     def _make_component_models(self):
         with self.content:
             with div(_class="sect1"):
-                h2("Component Models", True)
-
                 self._make_class_hierarchy_top_level()
 
                 for component_model in self.query.component_models:
@@ -526,18 +655,8 @@ class Supermodel:
     def _make_images(self):
         with self.content:
             with div(_class="sect1"):
-                for image in self.query.images:
-                    h2(image.name, True)
-                    with div(_class="sectionbody"):
-                        with div(_class="sect2"):
-                            with div(_class="imageblock text-center"):
-                                with div(_class="content"):
-                                    img(src=image.url, alt=image.description)
-                                div(
-                                    f"Figure {self.figure_count + 1}. {image.description}",
-                                    _class="title",
-                                )
-                                self.figure_count += 1
+                for image in self.query.examples:
+                    example(image, 2)
 
     def _make_preamble(self):
         with self.content:
@@ -550,10 +669,12 @@ class Supermodel:
                             col(_class="w-full")
 
                         with tbody():
-                            with tr(_class="bg-white"):
-                                with td(_class="tableblock halign-right valign-top"):
-                                    with p(_class="tableblock"):
-                                        if DCTERMS.publisher in self.query.onts_props:
+                            if DCTERMS.publisher in self.query.onts_props:
+                                with tr(_class="bg-white"):
+                                    with td(
+                                        _class="tableblock halign-right valign-top"
+                                    ):
+                                        with p(_class="tableblock"):
                                             strong(
                                                 str(
                                                     self.query.onts_props[
@@ -562,11 +683,16 @@ class Supermodel:
                                                 ),
                                                 _class="big",
                                             )
-                                        else:
-                                            strong(
-                                                "Untitled",
-                                                _class="big",
-                                            )
+
+                            # Modified Date
+                            if (
+                                DCTERMS.modified in self.query.onts_props
+                                and len(self.query.onts_props[DCTERMS.modified]) > 0
+                            ):
+                                metadata_row(
+                                    "Modified Date",
+                                    str(self.query.onts_props[DCTERMS.modified][0]),
+                                )
 
                             # Submission Date
                             if (
@@ -665,6 +791,48 @@ class Supermodel:
                                     "Contributors",
                                     contributors,
                                 )
+
+                            # License
+                            if (
+                                DCTERMS.license in self.query.onts_props
+                                and len(self.query.onts_props[DCTERMS.license]) > 0
+                            ):
+                                metadata_row(
+                                    "License",
+                                    str(self.query.onts_props[DCTERMS.license][0]),
+                                    True,
+                                )
+
+                            # Preferred Namespace Prefix
+                            if (
+                                VANN.preferredNamespacePrefix in self.query.onts_props
+                                and len(
+                                    self.query.onts_props[
+                                        VANN.preferredNamespacePrefix
+                                    ][0]
+                                )
+                                > 0
+                            ):
+                                metadata_row(
+                                    "Preferred Namespace Prefix",
+                                    str(
+                                        self.query.onts_props[
+                                            VANN.preferredNamespacePrefix
+                                        ][0]
+                                    ),
+                                )
+
+                if (
+                    DCTERMS.description in self.query.onts_props
+                    and len(self.query.onts_props[DCTERMS.description]) > 0
+                ):
+                    p(self.query.onts_props[DCTERMS.description])
+
+                if (
+                    SKOS.historyNote in self.query.onts_props
+                    and len(self.query.onts_props[SKOS.historyNote]) > 0
+                ):
+                    p(self.query.onts_props[SKOS.historyNote])
 
     def _make_head(
         self, schema_org: Graph, include_css: bool = True, destination: Path = None

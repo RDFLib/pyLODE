@@ -11,3 +11,7 @@
 .overflow-x-auto {
   overflow-x: auto;
 }
+
+.mb-0 {
+  margin-bottom: 0px;
+}
