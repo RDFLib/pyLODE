@@ -654,7 +654,7 @@ class Supermodel:
                 self._make_class_hierarchy_top_level()
 
                 if len(self.query.component_models) == 1:
-                    h2("Classes and Properties")
+                    h2("Classes and Properties", True)
                     self._make_component_model_core(self.query.component_models[0])
                 else:
                     for component_model in self.query.component_models:
