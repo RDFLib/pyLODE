@@ -686,12 +686,12 @@ class Query:
         result = []
 
         for iri in component_models:
-            component_model_files = list(
-                self.graph.objects(iri, SDO.encoding / SDO.contentUrl)
-            )
+            component_model_files = list(self.graph.objects(iri, SDO.encoding))
             graph = Graph()
             for file in component_model_files:
-                graph.parse(file)
+                path = self.graph.value(file, SDO.contentUrl)
+                mimetype = self.graph.value(file, SDO.encodingFormat) or "text/turtle"
+                graph.parse(path, mimetype)
 
             component_model = self.load_component_model(iri, graph)
             result.append(component_model)
