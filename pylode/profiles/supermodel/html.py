@@ -324,6 +324,9 @@ class Supermodel:
                             for property in cls.properties:
                                 with tr():
                                     with td(_class="tableblock halign-left valign-top"):
+                                        # TODO: have a property tracker
+                                        # If property is documented, link to it with fragment id,
+                                        # else, provide an external link to the IRI.
                                         fragment = make_html_fragment(
                                             CLASS_STRING.format(property.name)
                                         )
