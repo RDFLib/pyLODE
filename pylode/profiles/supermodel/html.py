@@ -250,7 +250,9 @@ class Supermodel:
 
             if cls.is_defined_by is not None:
                 with p("Is defined by "):
-                    a(cls.is_defined_by.name, href=cls.is_defined_by.iri)
+                    # TODO: a tracker for ontologies/modules within the supermodel.
+                    # If internal, fragment id to the module, else, external link.
+                    external_link(cls.is_defined_by.name, href=cls.is_defined_by.iri)
 
             if cls.superclasses:
                 h5("Subclass of")
