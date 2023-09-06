@@ -223,7 +223,7 @@ class Supermodel:
     def _make_content(self):
         self.content = self.body.add(div(id="content"))
         self._make_preamble()
-        self._make_images()
+        self._make_examples()
         self._make_component_models()
 
     def _make_component_model_class(self, cls: Class):
@@ -428,8 +428,8 @@ class Supermodel:
             if cls.examples:
                 h5("Examples")
                 with div(_class="sect5"):
-                    for image in cls.examples:
-                        example(image, 6)
+                    for ex in cls.examples:
+                        example(ex, 6)
 
     def _make_component_model_property(self, prop: RDFProperty):
         with div(_class="sect3"):
@@ -582,8 +582,8 @@ class Supermodel:
                 if component_model.examples:
                     h3("Examples")
                     with div(_class="sect4"):
-                        for image in component_model.examples:
-                            example(image, 4)
+                        for ex in component_model.examples:
+                            example(ex, 4)
 
                 hr()
 
@@ -659,11 +659,11 @@ class Supermodel:
                     for component_model in self.query.component_models:
                         self._make_component_model(component_model)
 
-    def _make_images(self):
+    def _make_examples(self):
         with self.content:
             with div(_class="sect1"):
-                for image in self.query.examples:
-                    example(image, 2)
+                for ex in self.query.examples:
+                    example(ex, 2)
 
     def _make_preamble(self):
         with self.content:
