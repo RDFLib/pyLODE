@@ -501,6 +501,72 @@ class Supermodel:
                     # TODO: determine whether this is determined by local module or external.
                     external_link(prop.is_defined_by.name, href=prop.is_defined_by.iri)
 
+    def _make_component_model_core(self, component_model: ComponentModel):
+        with div(_class="sect2"):
+            h3("Classes", identifier=f"{component_model.name} - Classes")
+            hr()
+            for i, cls in enumerate(component_model.classes):
+                self._make_component_model_class(cls)
+
+                if i != len(component_model.classes) - 1:
+                    hr()
+
+        if component_model.annotation_properties:
+            hr()
+            with div(_class="sect2"):
+                h3(
+                    "Annotation Properties",
+                    identifier=f"{component_model.name} - Annotation Properties",
+                )
+                hr()
+                for i, prop in enumerate(component_model.annotation_properties):
+                    self._make_component_model_property(prop)
+
+                    if i != len(component_model.annotation_properties) - 1:
+                        hr()
+
+        if component_model.datatype_properties:
+            hr()
+            with div(_class="sect2"):
+                h3(
+                    "Datatype Properties",
+                    identifier=f"{component_model.name} - Datatype Properties",
+                )
+                hr()
+                for i, prop in enumerate(component_model.datatype_properties):
+                    self._make_component_model_property(prop)
+
+                    if i != len(component_model.datatype_properties) - 1:
+                        hr()
+
+        if component_model.object_properties:
+            hr()
+            with div(_class="sect2"):
+                h3(
+                    "Object Properties",
+                    identifier=f"{component_model.name} - Object Properties",
+                )
+                hr()
+                for i, prop in enumerate(component_model.object_properties):
+                    self._make_component_model_property(prop)
+
+                    if i != len(component_model.object_properties) - 1:
+                        hr()
+
+        if component_model.ontology_properties:
+            hr()
+            with div(_class="sect2"):
+                h3(
+                    "Ontology Properties",
+                    identifier=f"{component_model.name} - Ontology Properties",
+                )
+                hr()
+                for i, prop in enumerate(component_model.ontology_properties):
+                    self._make_component_model_property(prop)
+
+                    if i != len(component_model.ontology_properties) - 1:
+                        hr()
+
     def _make_component_model(self, component_model: ComponentModel):
         with div(_class="sect1"):
             h2(MODULE_STRING.format(component_model.name), True)
@@ -521,70 +587,7 @@ class Supermodel:
 
                 hr()
 
-                with div(_class="sect2"):
-                    h3("Classes", identifier=f"{component_model.name} - Classes")
-                    hr()
-                    for i, cls in enumerate(component_model.classes):
-                        self._make_component_model_class(cls)
-
-                        if i != len(component_model.classes) - 1:
-                            hr()
-
-                if component_model.annotation_properties:
-                    hr()
-                    with div(_class="sect2"):
-                        h3(
-                            "Annotation Properties",
-                            identifier=f"{component_model.name} - Annotation Properties",
-                        )
-                        hr()
-                        for i, prop in enumerate(component_model.annotation_properties):
-                            self._make_component_model_property(prop)
-
-                            if i != len(component_model.annotation_properties) - 1:
-                                hr()
-
-                if component_model.datatype_properties:
-                    hr()
-                    with div(_class="sect2"):
-                        h3(
-                            "Datatype Properties",
-                            identifier=f"{component_model.name} - Datatype Properties",
-                        )
-                        hr()
-                        for i, prop in enumerate(component_model.datatype_properties):
-                            self._make_component_model_property(prop)
-
-                            if i != len(component_model.datatype_properties) - 1:
-                                hr()
-
-                if component_model.object_properties:
-                    hr()
-                    with div(_class="sect2"):
-                        h3(
-                            "Object Properties",
-                            identifier=f"{component_model.name} - Object Properties",
-                        )
-                        hr()
-                        for i, prop in enumerate(component_model.object_properties):
-                            self._make_component_model_property(prop)
-
-                            if i != len(component_model.object_properties) - 1:
-                                hr()
-
-                if component_model.ontology_properties:
-                    hr()
-                    with div(_class="sect2"):
-                        h3(
-                            "Ontology Properties",
-                            identifier=f"{component_model.name} - Ontology Properties",
-                        )
-                        hr()
-                        for i, prop in enumerate(component_model.ontology_properties):
-                            self._make_component_model_property(prop)
-
-                            if i != len(component_model.ontology_properties) - 1:
-                                hr()
+                self._make_component_model_core(component_model)
 
     def _class_has_valid_subclasses(self, cls: Class) -> bool:
         count = 0
@@ -649,8 +652,12 @@ class Supermodel:
             with div(_class="sect1"):
                 self._make_class_hierarchy_top_level()
 
-                for component_model in self.query.component_models:
-                    self._make_component_model(component_model)
+                if len(self.query.component_models) == 1:
+                    h2("Classes and Properties")
+                    self._make_component_model_core(self.query.component_models[0])
+                else:
+                    for component_model in self.query.component_models:
+                        self._make_component_model(component_model)
 
     def _make_images(self):
         with self.content:
