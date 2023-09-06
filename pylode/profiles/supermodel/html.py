@@ -142,7 +142,8 @@ class Supermodel:
 
         with self.header:
             with div(_class="toc2", id="toc"):
-                div("Table of Contents", id="toctitle")
+                with a(href="#"):
+                    div("Table of Contents", id="toctitle")
                 top_unordered_list = ul(_class="sectlevel1")
 
         index = {}
