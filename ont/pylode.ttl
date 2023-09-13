@@ -1,0 +1,41 @@
+PREFIX lode: <https://w3id.org/lode/ns/>
+PREFIX ont: <https://w3id.org/lode/ns/ont>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+prof:isProfileOf
+    owl:propertyChainAxiom (
+            prof:isQualifiedProfileOf
+            rdf:value
+        ) ;
+.
+
+ont:
+    a owl:Ontology ;
+    rdfs:label "pyLODE Vocabulary"@en ;
+.
+
+lode:componentModel
+    a prof:ResourceRole ;
+    skos:definition "A Component Model is a closed set of classes and properties defined by an ontology."@en ;
+    skos:prefLabel "component model role"@en ;
+    skos:scopeNote "Used as part of pyLODE input metadata to identify profiles that need to be documented as part of the output as a component model (module)."@en ;
+.
+
+lode:ignoreClass
+    a rdf:Property ;
+    skos:definition "A property to classes that should be ignored by application processors."@en ;
+    skos:prefLabel "ignore class"@en ;
+    skos:scopeNote "pyLODE as an application processor will ignore these classes when generating the documentation output."@en ;
+.
+
+lode:isQualifiedProfileOf
+    a owl:ObjectProperty ;
+    skos:definition "A property to a qualified node which has a link to a profile."@en ;
+    skos:prefLabel "is qualified profile of"@en ;
+    skos:scopeNote "As a configuration side effect, pyLODE will only load into the graph closure classes and properties that are defined in a profile that is linked to by lode:isQualifiedProfileOf."@en ;
+.
+

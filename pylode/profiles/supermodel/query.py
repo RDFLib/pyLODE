@@ -20,7 +20,7 @@ from rdflib.namespace import (
 )
 
 
-from pylode.profiles.supermodel.namespace import SM
+from pylode.profiles.supermodel.namespace import LODE
 from pylode.profiles.supermodel.model import (
     ComponentModel,
     Class,
@@ -352,7 +352,7 @@ def get_notes(iri: URIRef, graph: Graph) -> list[str]:
 
 
 def get_component_model_ignored_classes(iri: URIRef, graph: Graph) -> list[URIRef]:
-    return list(graph.objects(iri, SM.ignoreClass))
+    return list(graph.objects(iri, LODE.ignoreClass))
 
 
 def get_top_level_component_classes(classes: list[Class]) -> list[Class]:
@@ -453,8 +453,21 @@ class Query:
         self.examples = get_examples(self.get_supermodel_iri(), self.graph)
 
     def get_supermodel_iri(self) -> URIRef:
-        for s in self.graph.subjects(RDF.type, SM.Supermodel):
-            return s
+        iri = None
+        profiles_count = 0
+        for s in self.graph.subjects(RDF.type, PROF.Profile):
+            iri = s
+            profiles_count += 1
+
+        if iri is None:
+            raise ValueError("No profile found.")
+
+        if profiles_count > 1:
+            raise ValueError(
+                "More than 1 profile found. Expected only 1 profile in the input file."
+            )
+
+        return iri
 
     def get_title(self, iri: str) -> str | None:
         for o2 in self.graph.objects(iri, DCTERMS.title):
@@ -463,7 +476,7 @@ class Query:
     def get_onts_props(self) -> dict[str, list]:
         # get all ONT_PROPS props and their (multiple) values
         this_onts_props = defaultdict(list)
-        for s_ in self.graph.subjects(predicate=RDF.type, object=SM.Supermodel):
+        for s_ in self.graph.subjects(predicate=RDF.type, object=PROF.Profile):
             for p_, o in self.graph.predicate_objects(s_):
                 if p_ in ONT_PROPS:
                     this_onts_props[p_].append(o)
@@ -631,14 +644,14 @@ class Query:
         else:
             default_iri = None
 
-            for s_ in ont.subjects(predicate=RDF.type, object=SM.Supermodel):
+            for s_ in ont.subjects(predicate=RDF.type, object=PROF.Profile):
                 default_iri = str(s_)
 
             if default_iri is None:
                 for s_ in ont.subjects(predicate=RDF.type, object=OWL.Ontology):
                     default_iri = str(s_)
                     if default_iri is not None:
-                        ont.add((s_, RDF.type, SM.Supermodel))
+                        ont.add((s_, RDF.type, PROF.Profile))
 
             if default_iri is not None:
                 prefix = ont.compute_qname(default_iri, True)[0]
@@ -682,15 +695,20 @@ class Query:
 
     def load_component_models(self) -> list[ComponentModel]:
         supermodel = self.get_supermodel_iri()
-        component_models = list(self.graph.objects(supermodel, SM.componentModel))
+        component_models = list(
+            self.graph.objects(supermodel, LODE.isQualifiedProfileOf)
+        )
         result = []
 
         for iri in component_models:
-            component_model_files = list(self.graph.objects(iri, SDO.encoding))
+            component_model_files = list(
+                self.graph.objects(iri, RDF.value / PROF.hasResource)
+            )
             graph = Graph()
             for file in component_model_files:
-                path = self.graph.value(file, SDO.contentUrl)
-                mimetype = self.graph.value(file, SDO.encodingFormat) or "text/turtle"
+                # TODO: remotely fetch resources using a web request.
+                path = self.graph.value(file, PROF.hasArtifact)
+                mimetype = self.graph.value(file, DCTERMS.format) or "text/turtle"
                 graph.parse(path, mimetype)
 
             component_model = self.load_component_model(iri, graph)

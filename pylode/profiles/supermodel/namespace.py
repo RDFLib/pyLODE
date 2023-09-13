@@ -16,3 +16,18 @@ class SM(DefinedNamespace):
     ComponentModel: URIRef
     #: Class IRIs here are ignored by the documentation output.
     ignoreClass: URIRef
+
+
+class LODE(DefinedNamespace):
+    _fail = True
+    _underscore_num = True
+    _NS = Namespace("https://w3id.org/lode/ns/pylode/")
+
+    #: lode:componentModel
+    componentModel: URIRef
+
+    #: lode:ignoreClass
+    ignoreClass: URIRef
+
+    #: lode:isQualifiedProfileOf
+    isQualifiedProfileOf: URIRef
