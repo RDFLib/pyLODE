@@ -2,7 +2,7 @@ from textwrap import dedent
 from collections import defaultdict
 from itertools import chain
 
-from rdflib import Graph, Literal, URIRef
+from rdflib import Graph, Literal, URIRef, Dataset
 from rdflib.namespace import (
     RDF,
     OWL,
@@ -431,11 +431,50 @@ def get_rdf_properties(rdf_property_type: URIRef, graph: Graph) -> list[RDFPrope
     return properties
 
 
+def get_root_profile_iri(graph: Graph) -> URIRef:
+    """Get the root profile IRI in the initial document.
+
+    This also ensures there is only 1 profile in the initial document.
+    """
+    profiles = list(graph.subjects(RDF.type, PROF.Profile, unique=True))
+    count = len(profiles)
+    if count > 1:
+        raise ValueError(
+            f"There is more than 1 prof:Profile defined in the input document. Expected only 1 prof:Profile definition but found {[str(p) for p in profiles]}."
+        )
+    elif count < 1:
+        raise ValueError("Expected 1 prof:Profile definition but found none.")
+
+    return profiles[0]
+
+
 class Query:
+    def add_to_graph(self, graph: Graph, graph_identifier: str) -> None:
+        for s, p, o in graph:
+            self.db.add((s, p, o, graph_identifier))
+
     def __init__(self, graph: Graph) -> None:
-        self.graph = graph
+        self.db = Dataset(default_union=True)
+        self.add_to_graph(graph, "urn:graph:root")
+        self.graph = self.db.graph("urn:graph:root")
+
+        # Tracks the order in which the profiles are imported.
+        # From most specific to the broadest profile by following
+        # lode:isQualifiedProfileOf relationships.
+        self.imported_profiles = []
+
+        self.root_profile_iri = get_root_profile_iri(self.graph)
+        self.import_profiles()
+
+        # for g in self.db.graphs():
+        #     print(g.identifier)
+        # print(len(self.db))
+
+        for imported_profile in self.imported_profiles:
+            print(imported_profile)
 
         # An IRI index of classes that 'exist' within this documentation.
+        # TODO: may not need this anymore since we are now working with a dataset object.
         self.class_index: set[URIRef] = set()
 
         self.ns = self.get_ns()
@@ -452,20 +491,46 @@ class Query:
         self.onts_props = self.get_onts_props()
         self.examples = get_examples(self.get_supermodel_iri(), self.graph)
 
+    def import_profile(self, iri: str):
+        db = self.db
+        qualified_profile_nodes = db.objects(
+            subject=iri, predicate=LODE.isQualifiedProfileOf
+        )
+
+        for node in qualified_profile_nodes:
+            resources = list(self.db.objects(node, RDF.value / PROF.hasResource))
+            for resource in resources:
+                graph = Graph()
+                path = self.db.value(resource, PROF.hasArtifact)
+                mimetype = self.db.value(resource, DCTERMS.format) or "text/turtle"
+                graph.parse(path, mimetype)
+
+                profile_iri = graph.value(
+                    predicate=RDF.type, object=PROF.Profile
+                ) or graph.value(predicate=RDF.type, object=OWL.Ontology)
+
+                if profile_iri is not None:
+                    if node not in self.imported_profiles:
+                        self.imported_profiles.append(node)
+                    self.add_to_graph(graph, node)
+
+                    self.import_profile(profile_iri)
+
+    def import_profiles(self):
+        """Recursively import all profiles referenced by the root profile.
+
+        Only imports profiles referenced with lode:isQualifiedProfileOf.
+        """
+        iri = self.root_profile_iri
+        self.import_profile(iri)
+
     def get_supermodel_iri(self) -> URIRef:
         iri = None
-        profiles_count = 0
-        for s in self.graph.subjects(RDF.type, PROF.Profile):
+        for s in self.graph.subjects(RDF.type, PROF.Profile, unique=True):
             iri = s
-            profiles_count += 1
 
         if iri is None:
             raise ValueError("No profile found.")
-
-        if profiles_count > 1:
-            raise ValueError(
-                "More than 1 profile found. Expected only 1 profile in the input file."
-            )
 
         return iri
 
@@ -694,10 +759,7 @@ class Query:
         )
 
     def load_component_models(self) -> list[ComponentModel]:
-        supermodel = self.get_supermodel_iri()
-        component_models = list(
-            self.graph.objects(supermodel, LODE.isQualifiedProfileOf)
-        )
+        component_models = list(self.db.objects(None, LODE.isQualifiedProfileOf))
         result = []
 
         for iri in component_models:
