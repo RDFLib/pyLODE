@@ -30,14 +30,7 @@ from dominate.tags import (
     span,
 )
 from dominate.util import raw
-from rdflib import (
-    Graph,
-    OWL,
-    SDO,
-    DCTERMS,
-    VANN,
-    SKOS,
-)
+from rdflib import Graph, OWL, SDO, DCTERMS, VANN, SKOS
 
 from pylode.utils import (
     PylodeError,
