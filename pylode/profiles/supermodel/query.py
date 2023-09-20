@@ -3,6 +3,7 @@ from collections import defaultdict
 from itertools import chain
 
 from rdflib import Graph, Literal, URIRef, Dataset
+from rdflib.graph import DATASET_DEFAULT_GRAPH_ID
 from rdflib.namespace import (
     RDF,
     OWL,
@@ -31,6 +32,8 @@ from pylode.profiles.supermodel.model import (
     RDFProperty,
     MediaObject,
     TextObject,
+    Profile,
+    ProfileType,
 )
 from pylode.rdf_elements import AGENT_PROPS, ONT_PROPS, ONTDOC
 from pylode.utils import (
@@ -217,114 +220,6 @@ def get_is_defined_by(iri: URIRef, graph: Graph) -> Ontology | None:
     return None
 
 
-def get_class_properties_from_sh_nodeshape_sh_property(
-    iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
-) -> list[Property]:
-    properties = []
-    classes = list(graph.objects(iri, RDF.type))
-
-    if SH.NodeShape in classes:
-        sh_properties = list(graph.objects(iri, SH.property))
-        for sh_property in sh_properties:
-            sh_path = graph.value(sh_property, SH.path)
-            sh_class = graph.value(sh_property, SH["class"])
-            sh_description = (
-                graph.value(sh_property, SH.description)
-                or get_descriptions(sh_path, graph)
-                or ""
-            )
-            sh_name = graph.value(sh_property, SH.name) or get_name(sh_path, graph)
-            sh_nodekind = graph.value(sh_property, SH.nodeKind)
-            sh_min = graph.value(sh_property, SH.minCount)
-            sh_max = graph.value(sh_property, SH.maxCount)
-            belongs_to_class = get_class(iri, graph, ignored_classes)
-            value_type = (
-                get_class(sh_nodekind, graph, ignored_classes)
-                if sh_nodekind is not None
-                else None
-            )
-            value_class_type = (
-                get_class(sh_class, graph, ignored_classes)
-                if sh_class is not None
-                else None
-            )
-
-            properties.append(
-                Property(
-                    iri=graph.qname(sh_path),
-                    name=sh_name,
-                    description=sh_description,
-                    belongs_to_class=belongs_to_class,
-                    cardinality_min=int(sh_min) if sh_min is not None else None,
-                    cardinality_max=int(sh_max) if sh_max is not None else None,
-                    value_type=value_type,
-                    value_class_types=[value_class_type]
-                    if value_class_type is not None
-                    else [],
-                )
-            )
-
-    return sorted(properties, key=lambda x: x.name)
-
-
-def get_class_properties_from_schema_domain_includes(
-    iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
-) -> list[Property]:
-    properties = []
-    schema_domain_includes_iris = graph.subjects(SDO.domainIncludes, iri)
-    for schema_domain_includes_iri in schema_domain_includes_iris:
-        name = get_name(schema_domain_includes_iri, graph)
-        description = get_descriptions(schema_domain_includes_iri, graph)
-        value_class_types = [
-            get_class(c, graph, ignored_classes)
-            for c in get_values(schema_domain_includes_iri, graph, [SDO.rangeIncludes])
-        ]
-
-        properties.append(
-            Property(
-                iri=schema_domain_includes_iri,
-                name=name,
-                description=description,
-                belongs_to_class=None,
-                value_class_types=value_class_types,
-            )
-        )
-
-    return sorted(properties, key=lambda x: x.name)
-
-
-def get_component_model_class_properties(
-    iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
-):
-    """Get the properties of a class.
-
-    Object property - range is Any
-
-    Object and datatype properties - output shows "Not specified" instead of empty string.
-
-    Ways to extract properties of a class:
-      [x] - sh:property via an sh:NodeShape, which may also be an owl:Class or rdfs:Class
-      [ ] - sh:targetClass
-      [ ] - rdfs:domain and rdfs:range - consider only when there's no sh:class in the property shape
-      [x] - schema:domainIncludes and schema:rangeIncludes
-      [ ] - check for other ways in the SHACL spec...
-      [ ] - concrete data to models - example JSON-LD instance document
-      [ ] - JSON schema and JSON context binding
-      [ ] - RDF data cube - vocabulary binding
-    """
-    properties = []
-
-    properties += get_class_properties_from_sh_nodeshape_sh_property(
-        iri, graph, ignored_classes
-    )
-
-    properties += get_class_properties_from_schema_domain_includes(
-        iri, graph, ignored_classes
-    )
-
-    return properties
-
-
 def get_notes(iri: URIRef, graph: Graph) -> list[str]:
     notes = []
 
@@ -466,24 +361,29 @@ class Query:
         self.root_profile_iri = get_root_profile_iri(self.graph)
         self.import_profiles()
 
-        # for g in self.db.graphs():
-        #     print(g.identifier)
-        # print(len(self.db))
-
-        for imported_profile in self.imported_profiles:
-            print(imported_profile)
-
         # An IRI index of classes that 'exist' within this documentation.
         # TODO: may not need this anymore since we are now working with a dataset object.
         self.class_index: set[URIRef] = set()
 
         self.ns = self.get_ns()
+        # TODO: currently we call load_component_models twice because we perform loading the data into the dataset
+        #       and we are processing the data. We need to separate these two steps.
+        self.component_models = self.load_component_models()
         self.component_models = self.load_component_models()
         if not self.component_models:
             self.component_models = [
                 self.load_component_model(URIRef(self.ns[1]), self.graph)
             ]
         self.ontdoc_inference()
+
+        # TODO: remove print
+        for imported_profile in self.imported_profiles:
+            print("imported_profile", imported_profile)
+
+        # g = self.db.get_context(URIRef("https://linked.data.gov.au/def/csdm/profiles/nz"))
+        print("Named graphs")
+        print([str(g.identifier) for g in self.db.graphs()])
+        # g.print()
 
         self.back_onts = load_background_onts()
         self.back_onts_titles = load_background_onts_titles(self.back_onts)
@@ -522,6 +422,7 @@ class Query:
         Only imports profiles referenced with lode:isQualifiedProfileOf.
         """
         iri = self.root_profile_iri
+        self.imported_profiles.append(iri)
         self.import_profile(iri)
 
     def get_supermodel_iri(self) -> URIRef:
@@ -760,25 +661,217 @@ class Query:
 
     def load_component_models(self) -> list[ComponentModel]:
         component_models = list(self.db.objects(None, LODE.isQualifiedProfileOf))
+        component_models.append(self.root_profile_iri)
         result = []
 
         for iri in component_models:
             component_model_files = list(
-                self.graph.objects(iri, RDF.value / PROF.hasResource)
-            )
+                self.db.objects(iri, RDF.value / PROF.hasResource)
+            ) + list(self.db.objects(iri, PROF.hasResource))
+
             graph = Graph()
             for file in component_model_files:
-                # TODO: remotely fetch resources using a web request.
-                path = self.graph.value(file, PROF.hasArtifact)
-                mimetype = self.graph.value(file, DCTERMS.format) or "text/turtle"
-                graph.parse(path, mimetype)
+                path = self.db.value(file, PROF.hasArtifact)
+                mimetype = self.db.value(file, DCTERMS.format) or "text/turtle"
+
+                # TODO: what are the allowed file types?
+                ALLOWED_MIMETYPES = ["text/turtle"]
+                if str(mimetype) in ALLOWED_MIMETYPES:
+                    graph.parse(path, mimetype)
+                    print(f"Adding graph with name {iri}")
+                    self.add_to_graph(graph, iri)
 
             component_model = self.load_component_model(iri, graph)
             result.append(component_model)
 
-            self.graph += graph
+            # self.graph += graph
 
         return sorted(result, key=lambda x: x.order)
+
+    def get_class_properties_from_sh_nodeshape_sh_property(
+        self, iri: URIRef, ignored_classes: list[URIRef]
+    ) -> list[Property]:
+        properties = []
+        db = self.db
+        classes = list(db.objects(iri, RDF.type))
+
+        if SH.NodeShape in classes:
+            for graph in db.contexts((iri, RDF.type, SH.NodeShape)):
+                if graph.identifier == DATASET_DEFAULT_GRAPH_ID:
+                    continue
+
+                sh_properties = list(db.objects(iri, SH.property))
+
+                for sh_property in sh_properties:
+                    sh_path = graph.value(sh_property, SH.path)
+                    if sh_path is None:
+                        continue
+                    sh_class = graph.value(sh_property, SH["class"])
+                    if self.root_profile_iri == graph.identifier:
+                        profile = Profile(
+                            graph.identifier,
+                            get_name(graph.identifier, db),
+                            ProfileType.ROOT,
+                        )
+                    else:
+                        profile = Profile(
+                            graph.identifier, get_name(graph.identifier, db)
+                        )
+                    sh_description = (
+                        graph.value(sh_property, SH.description)
+                        or get_descriptions(sh_path, graph)
+                        or ""
+                    )
+                    sh_name = graph.value(sh_property, SH.name) or get_name(
+                        sh_path, graph
+                    )
+                    sh_nodekind = graph.value(sh_property, SH.nodeKind)
+                    sh_min = graph.value(sh_property, SH.minCount)
+                    sh_max = graph.value(sh_property, SH.maxCount)
+                    belongs_to_class = get_class(iri, db, ignored_classes)
+                    value_type = (
+                        get_class(sh_nodekind, graph, ignored_classes)
+                        if sh_nodekind is not None
+                        else None
+                    )
+                    value_class_type = (
+                        get_class(sh_class, graph, ignored_classes)
+                        if sh_class is not None
+                        else None
+                    )
+
+                    properties.append(
+                        Property(
+                            iri=sh_path,
+                            name=sh_name,
+                            description=sh_description,
+                            profile=profile,
+                            belongs_to_class=belongs_to_class,
+                            cardinality_min=int(sh_min) if sh_min is not None else None,
+                            cardinality_max=int(sh_max) if sh_max is not None else None,
+                            value_type=value_type,
+                            value_class_types=[value_class_type]
+                            if value_class_type is not None
+                            else [],
+                        )
+                    )
+
+        return sorted(properties, key=lambda x: x.name)
+
+    def _get_class_properties_from_sh_nodeshape_sh_property(
+        self, iri: URIRef, ignored_classes: list[URIRef]
+    ) -> list[dict[str, list[Property]]]:
+        properties: dict[str, list[Property]] = defaultdict(list)
+        graph = self.db
+
+        classes = list(graph.objects(iri, RDF.type))
+
+        if SH.NodeShape in classes:
+            sh_properties = list(graph.objects(iri, SH.property))
+
+            for graph_identifier in graph.contexts((iri, RDF.type, SH.NodeShape)):
+                print(iri, graph_identifier)
+
+            for sh_property in sh_properties:
+                sh_path = graph.value(sh_property, SH.path)
+                sh_class = graph.value(sh_property, SH["class"])
+                sh_description = (
+                    graph.value(sh_property, SH.description)
+                    or get_descriptions(sh_path, graph)
+                    or ""
+                )
+                sh_name = graph.value(sh_property, SH.name) or get_name(sh_path, graph)
+                sh_nodekind = graph.value(sh_property, SH.nodeKind)
+                sh_min = graph.value(sh_property, SH.minCount)
+                sh_max = graph.value(sh_property, SH.maxCount)
+                belongs_to_class = get_class(iri, graph, ignored_classes)
+                value_type = (
+                    get_class(sh_nodekind, graph, ignored_classes)
+                    if sh_nodekind is not None
+                    else None
+                )
+                value_class_type = (
+                    get_class(sh_class, graph, ignored_classes)
+                    if sh_class is not None
+                    else None
+                )
+
+                properties[sh_path].append(
+                    Property(
+                        iri=sh_path,
+                        name=sh_name,
+                        description=sh_description,
+                        belongs_to_class=belongs_to_class,
+                        cardinality_min=int(sh_min) if sh_min is not None else None,
+                        cardinality_max=int(sh_max) if sh_max is not None else None,
+                        value_type=value_type,
+                        value_class_types=[value_class_type]
+                        if value_class_type is not None
+                        else [],
+                    )
+                )
+
+        return properties
+        # return sorted(properties, key=lambda x: x.name)
+
+    def get_class_properties_from_schema_domain_includes(
+        self, iri: URIRef, ignored_classes: list[URIRef]
+    ) -> list[Property]:
+        properties = []
+        graph = self.db
+        schema_domain_includes_iris = graph.subjects(SDO.domainIncludes, iri)
+        for schema_domain_includes_iri in schema_domain_includes_iris:
+            name = get_name(schema_domain_includes_iri, graph)
+            description = get_descriptions(schema_domain_includes_iri, graph)
+            value_class_types = [
+                get_class(c, graph, ignored_classes)
+                for c in get_values(
+                    schema_domain_includes_iri, graph, [SDO.rangeIncludes]
+                )
+            ]
+
+            properties.append(
+                Property(
+                    iri=schema_domain_includes_iri,
+                    name=name,
+                    description=description,
+                    belongs_to_class=None,
+                    value_class_types=value_class_types,
+                )
+            )
+
+        return sorted(properties, key=lambda x: x.name)
+
+    def get_component_model_class_properties(
+        self, iri: URIRef, ignored_classes: list[URIRef]
+    ):
+        """Get the properties of a class.
+
+        Object property - range is Any
+
+        Object and datatype properties - output shows "Not specified" instead of empty string.
+
+        Ways to extract properties of a class:
+        [x] - sh:property via an sh:NodeShape, which may also be an owl:Class or rdfs:Class
+        [ ] - sh:targetClass
+        [ ] - rdfs:domain and rdfs:range - consider only when there's no sh:class in the property shape
+        [x] - schema:domainIncludes and schema:rangeIncludes
+        [ ] - check for other ways in the SHACL spec...
+        [ ] - concrete data to models - example JSON-LD instance document
+        [ ] - JSON schema and JSON context binding
+        [ ] - RDF data cube - vocabulary binding
+        """
+        properties = []
+
+        properties += self.get_class_properties_from_sh_nodeshape_sh_property(
+            iri, ignored_classes
+        )
+
+        properties += self.get_class_properties_from_schema_domain_includes(
+            iri, ignored_classes
+        )
+
+        return properties
 
     def get_component_model_classes(
         self, graph: Graph, ignored_classes: list[URIRef]
@@ -791,7 +884,7 @@ class Query:
             descriptions = get_descriptions(c, graph)
             subclasses = get_subclasses(c, graph, ignored_classes)
             superclasses = get_superclasses(c, graph, ignored_classes)
-            properties = get_component_model_class_properties(c, graph, ignored_classes)
+            properties = self.get_component_model_class_properties(c, ignored_classes)
             examples = get_examples(c, graph)
             notes = get_notes(c, graph)
             is_defined_by = get_is_defined_by(c, graph)

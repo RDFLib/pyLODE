@@ -37,7 +37,12 @@ from pylode.utils import (
     load_ontology,
 )
 from pylode.profiles.supermodel.query import Query
-from pylode.profiles.supermodel.model import ComponentModel, Class, RDFProperty
+from pylode.profiles.supermodel.model import (
+    ComponentModel,
+    Class,
+    RDFProperty,
+    ProfileType,
+)
 from pylode.profiles.supermodel.component import (
     metadata_row,
     h2,
@@ -315,15 +320,23 @@ class Supermodel:
                                 )
                         with tbody():
                             for property in cls.properties:
-                                with tr():
-                                    with td(_class="tableblock halign-left valign-top"):
+                                row_style = (
+                                    "background-color: #d2ffd2;"
+                                    if property.profile.type == ProfileType.ROOT
+                                    else ""
+                                )
+                                with tr(style=row_style):
+                                    with td(
+                                        _class="tableblock halign-left valign-top",
+                                    ):
                                         # TODO: have a property tracker
                                         # If property is documented, link to it with fragment id,
                                         # else, provide an external link to the IRI.
                                         fragment = make_html_fragment(
                                             CLASS_STRING.format(property.name)
                                         )
-                                        a(property.name, href=f"#{fragment}")
+                                        with p():
+                                            a(property.name, href=f"#{fragment}")
 
                                         if property.belongs_to_class is not None:
                                             with p(_class="tableblock"):
@@ -337,6 +350,12 @@ class Supermodel:
                                                         property.belongs_to_class.name,
                                                         href=f"#{fragment}",
                                                     )
+                                        with p(_class="tablelock"):
+                                            with em("In profile "):
+                                                a(
+                                                    property.profile.name,
+                                                    href=property.profile.iri,
+                                                )
                                     with td(_class="tableblock halign-left valign-top"):
                                         p(property.description)
                                     with td(_class="tableblock halign-left valign-top"):

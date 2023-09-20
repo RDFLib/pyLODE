@@ -1,6 +1,7 @@
 from abc import ABC
 from datetime import date
 from dataclasses import dataclass, field
+from enum import Enum, auto
 
 from rdflib import URIRef, Literal
 
@@ -40,11 +41,28 @@ class TextObject(MediaObject):
     text: str
 
 
+class ProfileType(str, Enum):
+    #: The root profile, entrypoint, lowest most specific profile in the initial document.
+    ROOT = auto()
+    #: The base profile, the profile that describes the resource in the highest position in the profiles hierarchy.
+    BASE = auto()
+    #: An intermediary profile, one that is in between the root and the base profile in the profile hierarchy.
+    INTERMEDIARY = auto()
+
+
+@dataclass
+class Profile:
+    iri: URIRef
+    name: str
+    type: ProfileType = ProfileType.INTERMEDIARY
+
+
 @dataclass
 class Property:
     iri: URIRef
     name: str
     description: str
+    profile: Profile
     belongs_to_class: "Class" = None
     cardinality_min: int = None
     cardinality_max: int = None
