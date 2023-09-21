@@ -320,13 +320,14 @@ class Supermodel:
                                 )
                         with tbody():
                             for property_iri in cls.properties:
-                                with tr():
-                                    with td(_class="tableblock halign-left valign-top", style="background-color: #f7f8f7;"):
-                                        with p(_class="tableblock"):
-                                            strong(f"{cls.properties[property_iri][0].name}")
-                                        with p(_class="tableblock"):
-                                            strong(f"({cls.properties[property_iri][-1].name})")
-                                    td(_class="tableblock halign-left valign-top", style="background-color: #f7f8f7;", colspan="4")
+                                if len(cls.properties[property_iri]) > 1:
+                                    with tr():
+                                        with td(_class="tableblock halign-left valign-top", style="background-color: #f7f8f7;"):
+                                            with p(_class="tableblock"):
+                                                strong(f"{cls.properties[property_iri][0].name}")
+                                            with p(_class="tableblock"):
+                                                strong(f"({cls.properties[property_iri][-1].name})")
+                                        td(_class="tableblock halign-left valign-top", style="background-color: #f7f8f7;", colspan="4")
                                 for property in cls.properties[property_iri]:
                                     if property.profile.type == ProfileType.ROOT:
                                         row_style = "background-color: #d2ffd2;"
@@ -656,16 +657,17 @@ class Supermodel:
         with div(_class="class-hierarchy"):
             with ul(_class="hierarchy-list"):
                 for component_model in component_models:
-                    with li():
-                        span(_class="hierarchy-node")
-                        fragment = make_html_fragment(
-                            MODULE_STRING.format(component_model.name)
-                        )
-                        a(component_model.name, href=f"#{fragment}")
-                        if component_model.top_level_classes:
-                            self._make_class_hierarchy(
-                                component_model.top_level_classes
+                    if component_model.classes:
+                        with li():
+                            span(_class="hierarchy-node")
+                            fragment = make_html_fragment(
+                                MODULE_STRING.format(component_model.name)
                             )
+                            a(component_model.name, href=f"#{fragment}")
+                            if component_model.top_level_classes:
+                                self._make_class_hierarchy(
+                                    component_model.top_level_classes
+                                )
 
         style(
             raw(
@@ -694,7 +696,8 @@ class Supermodel:
                     self._make_component_model_core(self.query.component_models[0])
                 else:
                     for component_model in self.query.component_models:
-                        self._make_component_model(component_model)
+                        if component_model.classes:
+                            self._make_component_model(component_model)
 
     def _make_examples(self):
         with self.content:
