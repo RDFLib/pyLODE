@@ -350,15 +350,15 @@ class Query:
 
     def __init__(self, graph: Graph) -> None:
         self.db = Dataset(default_union=True)
-        self.add_to_graph(graph, "urn:graph:root")
-        self.graph = self.db.graph("urn:graph:root")
+        self.root_profile_iri = get_root_profile_iri(graph)
+        self.add_to_graph(graph, self.root_profile_iri)
+        self.graph = self.db.graph(self.root_profile_iri)
 
         # Tracks the order in which the profiles are imported.
         # From most specific to the broadest profile by following
         # lode:isQualifiedProfileOf relationships.
         self.imported_profiles = []
 
-        self.root_profile_iri = get_root_profile_iri(self.graph)
         self.import_profiles()
 
         # An IRI index of classes that 'exist' within this documentation.
@@ -366,9 +366,6 @@ class Query:
         self.class_index: set[URIRef] = set()
 
         self.ns = self.get_ns()
-        # TODO: currently we call load_component_models twice because we perform loading the data into the dataset
-        #       and we are processing the data. We need to separate these two steps.
-        self.component_models = self.load_component_models()
         self.component_models = self.load_component_models()
         if not self.component_models:
             self.component_models = [
@@ -660,19 +657,18 @@ class Query:
         )
 
     def load_component_models(self) -> list[ComponentModel]:
-        component_models = list(self.db.objects(None, LODE.isQualifiedProfileOf))
-        component_models.append(self.root_profile_iri)
+        component_models = self.imported_profiles
         result = []
 
         for iri in component_models:
+            graph = self.db.graph(iri)
             component_model_files = list(
-                self.db.objects(iri, RDF.value / PROF.hasResource)
-            ) + list(self.db.objects(iri, PROF.hasResource))
+                graph.objects(iri, RDF.value / PROF.hasResource)
+            ) + list(graph.objects(iri, PROF.hasResource))
 
-            graph = Graph()
             for file in component_model_files:
-                path = self.db.value(file, PROF.hasArtifact)
-                mimetype = self.db.value(file, DCTERMS.format) or "text/turtle"
+                path = graph.value(file, PROF.hasArtifact)
+                mimetype = graph.value(file, DCTERMS.format) or "text/turtle"
 
                 # TODO: what are the allowed file types?
                 ALLOWED_MIMETYPES = ["text/turtle"]
@@ -684,22 +680,18 @@ class Query:
             component_model = self.load_component_model(iri, graph)
             result.append(component_model)
 
-            # self.graph += graph
-
         return sorted(result, key=lambda x: x.order)
 
     def get_class_properties_from_sh_nodeshape_sh_property(
         self, iri: URIRef, ignored_classes: list[URIRef]
-    ) -> list[Property]:
-        properties = []
+    ) -> list[dict[str, list[Property]]]:
+        properties: dict[str, list[Property]] = defaultdict(list)
         db = self.db
         classes = list(db.objects(iri, RDF.type))
 
         if SH.NodeShape in classes:
-            for graph in db.contexts((iri, RDF.type, SH.NodeShape)):
-                if graph.identifier == DATASET_DEFAULT_GRAPH_ID:
-                    continue
-
+            for graph_identifier in self.imported_profiles:
+                graph = db.graph(graph_identifier)
                 sh_properties = list(db.objects(iri, SH.property))
 
                 for sh_property in sh_properties:
@@ -740,7 +732,7 @@ class Query:
                         else None
                     )
 
-                    properties.append(
+                    properties[sh_path].append(
                         Property(
                             iri=sh_path,
                             name=sh_name,
@@ -756,7 +748,10 @@ class Query:
                         )
                     )
 
-        return sorted(properties, key=lambda x: x.name)
+        for property_iri in properties:
+            properties[property_iri][-1].profile.type = ProfileType.BASE
+
+        return properties
 
     def _get_class_properties_from_sh_nodeshape_sh_property(
         self, iri: URIRef, ignored_classes: list[URIRef]
@@ -861,15 +856,18 @@ class Query:
         [ ] - JSON schema and JSON context binding
         [ ] - RDF data cube - vocabulary binding
         """
-        properties = []
+        properties = defaultdict(list)
 
-        properties += self.get_class_properties_from_sh_nodeshape_sh_property(
-            iri, ignored_classes
+        properties.update(
+            self.get_class_properties_from_sh_nodeshape_sh_property(
+                iri, ignored_classes
+            )
         )
 
-        properties += self.get_class_properties_from_schema_domain_includes(
-            iri, ignored_classes
-        )
+        # TODO: Need to refactor the properties data structure to a dict of list[Property].
+        # properties += self.get_class_properties_from_schema_domain_includes(
+        #     iri, ignored_classes
+        # )
 
         return properties
 

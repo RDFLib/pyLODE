@@ -319,129 +319,148 @@ class Supermodel:
                                     _class="tableblock halign-left valign-top",
                                 )
                         with tbody():
-                            for property in cls.properties:
-                                row_style = (
-                                    "background-color: #d2ffd2;"
-                                    if property.profile.type == ProfileType.ROOT
-                                    else ""
-                                )
-                                with tr(style=row_style):
-                                    with td(
-                                        _class="tableblock halign-left valign-top",
-                                    ):
-                                        # TODO: have a property tracker
-                                        # If property is documented, link to it with fragment id,
-                                        # else, provide an external link to the IRI.
-                                        fragment = make_html_fragment(
-                                            CLASS_STRING.format(property.name)
-                                        )
-                                        with p():
-                                            a(property.name, href=f"#{fragment}")
+                            for property_iri in cls.properties:
+                                with tr():
+                                    with td(_class="tableblock halign-left valign-top", style="background-color: #f7f8f7;"):
+                                        with p(_class="tableblock"):
+                                            strong(f"{cls.properties[property_iri][0].name}")
+                                        with p(_class="tableblock"):
+                                            strong(f"({cls.properties[property_iri][-1].name})")
+                                    td(_class="tableblock halign-left valign-top", style="background-color: #f7f8f7;", colspan="4")
+                                for property in cls.properties[property_iri]:
+                                    if property.profile.type == ProfileType.ROOT:
+                                        row_style = "background-color: #d2ffd2;"
+                                    elif property.profile.type == ProfileType.BASE:
+                                        row_style = "background-color: white;"
+                                    else:
+                                        row_style = "background-color: #efffef;"
+                                    with tr(style=row_style):
+                                        with td(
+                                            _class="tableblock halign-left valign-top",
+                                        ):
+                                            # TODO: have a property tracker
+                                            # If property is documented, link to it with fragment id,
+                                            # else, provide an external link to the IRI.
+                                            fragment = make_html_fragment(
+                                                CLASS_STRING.format(property.name)
+                                            )
+                                            with p():
+                                                a(property.name, href=f"#{fragment}")
 
-                                        if property.belongs_to_class is not None:
-                                            with p(_class="tableblock"):
-                                                with em("From "):
-                                                    fragment = make_html_fragment(
-                                                        CLASS_STRING.format(
-                                                            property.belongs_to_class.name
-                                                        )
-                                                    )
-                                                    a(
-                                                        property.belongs_to_class.name,
-                                                        href=f"#{fragment}",
-                                                    )
-                                        with p(_class="tablelock"):
-                                            with em("In profile "):
-                                                a(
-                                                    property.profile.name,
-                                                    href=property.profile.iri,
-                                                )
-                                    with td(_class="tableblock halign-left valign-top"):
-                                        p(property.description)
-                                    with td(_class="tableblock halign-left valign-top"):
-                                        if (
-                                            property.cardinality_min is None
-                                            and property.cardinality_max is None
-                                        ):
-                                            p("[0..*]", _class="tableblock")
-                                        elif (
-                                            property.cardinality_min is None
-                                            and isinstance(
-                                                property.cardinality_max, int
-                                            )
-                                        ):
-                                            p(
-                                                f"[0..{property.cardinality_max}]",
-                                                _class="tableblock",
-                                            )
-                                        elif (
-                                            isinstance(property.cardinality_min, int)
-                                            and property.cardinality_max is None
-                                        ):
-                                            p(
-                                                f"[{property.cardinality_min}..*]",
-                                                _class="tableblock",
-                                            )
-                                        elif (
-                                            property.cardinality_min
-                                            == property.cardinality_max
-                                        ):
-                                            p(
-                                                f"[{property.cardinality_max}]",
-                                                _class="tableblock",
-                                            )
-                                        else:
-                                            p(
-                                                f"[{property.cardinality_min}..{property.cardinality_max}]",
-                                                _class="tableblock",
-                                            )
-                                    with td(_class="tableblock halign-left valign-top"):
-                                        if property.value_type is not None:
-                                            if (
-                                                property.value_type.iri
-                                                in self.query.class_index
-                                            ):
-                                                fragment = make_html_fragment(
-                                                    CLASS_STRING.format(
-                                                        property.value_type.name
-                                                    )
-                                                )
-                                                a(
-                                                    property.value_type.name,
-                                                    href=f"#{fragment}",
-                                                )
-                                            else:
-                                                external_link(
-                                                    property.value_type.name,
-                                                    property.value_type.iri,
-                                                )
-
-                                    with td(_class="tableblock halign-left valign-top"):
-                                        if property.value_class_types:
-                                            with p(
-                                                _class="tableblock",
-                                            ):
-                                                for (
-                                                    value_class_type
-                                                ) in property.value_class_types:
-                                                    if (
-                                                        value_class_type.iri
-                                                        in self.query.class_index
-                                                    ):
+                                            if property.belongs_to_class is not None:
+                                                with p(_class="tableblock"):
+                                                    with em("From "):
                                                         fragment = make_html_fragment(
                                                             CLASS_STRING.format(
-                                                                value_class_type.name
+                                                                property.belongs_to_class.name
                                                             )
                                                         )
                                                         a(
-                                                            value_class_type.name,
+                                                            property.belongs_to_class.name,
                                                             href=f"#{fragment}",
                                                         )
-                                                    else:
-                                                        external_link(
-                                                            value_class_type.name,
-                                                            value_class_type.iri,
+                                            with p(_class="tablelock"):
+                                                with em("In profile "):
+                                                    a(
+                                                        property.profile.name,
+                                                        href=property.profile.iri,
+                                                    )
+                                        with td(
+                                            _class="tableblock halign-left valign-top"
+                                        ):
+                                            p(property.description)
+                                        with td(
+                                            _class="tableblock halign-left valign-top"
+                                        ):
+                                            if (
+                                                property.cardinality_min is None
+                                                and property.cardinality_max is None
+                                            ):
+                                                p("[0..*]", _class="tableblock")
+                                            elif (
+                                                property.cardinality_min is None
+                                                and isinstance(
+                                                    property.cardinality_max, int
+                                                )
+                                            ):
+                                                p(
+                                                    f"[0..{property.cardinality_max}]",
+                                                    _class="tableblock",
+                                                )
+                                            elif (
+                                                isinstance(
+                                                    property.cardinality_min, int
+                                                )
+                                                and property.cardinality_max is None
+                                            ):
+                                                p(
+                                                    f"[{property.cardinality_min}..*]",
+                                                    _class="tableblock",
+                                                )
+                                            elif (
+                                                property.cardinality_min
+                                                == property.cardinality_max
+                                            ):
+                                                p(
+                                                    f"[{property.cardinality_max}]",
+                                                    _class="tableblock",
+                                                )
+                                            else:
+                                                p(
+                                                    f"[{property.cardinality_min}..{property.cardinality_max}]",
+                                                    _class="tableblock",
+                                                )
+                                        with td(
+                                            _class="tableblock halign-left valign-top"
+                                        ):
+                                            if property.value_type is not None:
+                                                if (
+                                                    property.value_type.iri
+                                                    in self.query.class_index
+                                                ):
+                                                    fragment = make_html_fragment(
+                                                        CLASS_STRING.format(
+                                                            property.value_type.name
                                                         )
+                                                    )
+                                                    a(
+                                                        property.value_type.name,
+                                                        href=f"#{fragment}",
+                                                    )
+                                                else:
+                                                    external_link(
+                                                        property.value_type.name,
+                                                        property.value_type.iri,
+                                                    )
+
+                                        with td(
+                                            _class="tableblock halign-left valign-top"
+                                        ):
+                                            if property.value_class_types:
+                                                with p(
+                                                    _class="tableblock",
+                                                ):
+                                                    for (
+                                                        value_class_type
+                                                    ) in property.value_class_types:
+                                                        if (
+                                                            value_class_type.iri
+                                                            in self.query.class_index
+                                                        ):
+                                                            fragment = make_html_fragment(
+                                                                CLASS_STRING.format(
+                                                                    value_class_type.name
+                                                                )
+                                                            )
+                                                            a(
+                                                                value_class_type.name,
+                                                                href=f"#{fragment}",
+                                                            )
+                                                        else:
+                                                            external_link(
+                                                                value_class_type.name,
+                                                                value_class_type.iri,
+                                                            )
 
             if cls.examples:
                 h5("Examples")
