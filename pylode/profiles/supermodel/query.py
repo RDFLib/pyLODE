@@ -41,6 +41,7 @@ from pylode.utils import (
     load_background_onts,
     load_background_onts_titles,
 )
+from pylode.profiles.supermodel.loader import load_profiles
 
 
 def get_value(
@@ -345,13 +346,16 @@ def get_root_profile_iri(graph: Graph) -> URIRef:
 
 class Query:
     def add_to_graph(self, graph: Graph, graph_identifier: str) -> None:
+        _graph = Graph(identifier=graph_identifier)
         for s, p, o in graph:
-            self.db.add((s, p, o, graph_identifier))
+            self.db.add((s, p, o, _graph))
 
     def __init__(self, graph: Graph) -> None:
-        self.db = Dataset(default_union=True)
         self.root_profile_iri = get_root_profile_iri(graph)
-        self.add_to_graph(graph, self.root_profile_iri)
+        # self.db = Dataset(default_union=True)
+        self.db = load_profiles(self.root_profile_iri, graph.serialize())
+        # self.add_to_graph(graph, self.root_profile_iri)
+        # self.graph = self.db.graph(self.root_profile_iri)
         self.graph = self.db.graph(self.root_profile_iri)
 
         # Tracks the order in which the profiles are imported.

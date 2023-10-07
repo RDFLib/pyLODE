@@ -1,3 +1,4 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX lode: <https://w3id.org/lode/ns/>
 PREFIX ont: <https://w3id.org/lode/ns/ont>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -6,16 +7,28 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
-prof:isProfileOf
-    owl:propertyChainAxiom (
-            prof:isQualifiedProfileOf
-            rdf:value
-        ) ;
+lode:Module
+    a
+        rdfs:Class ,
+        owl:Class ;
+    skos:definition "A pyLODE module contains one or more profiles and its classes, properties and SHACL shapes for display under one heading."@en ;
+    skos:prefLabel "Module"@en ;
+    skos:scopeNote "A prof:Profile can also be a lode:Module. All resources loaded using owl:imports or PROF resources will go into the module as one set of statements."@en ;
 .
 
-ont:
-    a owl:Ontology ;
-    rdfs:label "pyLODE Vocabulary"@en ;
+dcterms:isPartOf
+    a owl:ObjectProperty ;
+    skos:definition "A related resource in which the described resource is physically or logically included."@en ;
+    skos:prefLabel "is part of"@en ;
+    skos:scopeNote "Link prof:Profile resources to a lode:Module using dcterms:isPartOf predicate."@en ;
+.
+
+prof:isProfileOf
+    owl:propertyChainAxiom (
+            lode:isQualifiedProfileOf
+            rdf:value
+        ) ;
+    skos:editorialNote "Possibly no longer required."@en ;
 .
 
 lode:componentModel
@@ -23,6 +36,14 @@ lode:componentModel
     skos:definition "A Component Model is a closed set of classes and properties defined by an ontology."@en ;
     skos:prefLabel "component model role"@en ;
     skos:scopeNote "Used as part of pyLODE input metadata to identify profiles that need to be documented as part of the output as a component model (module)."@en ;
+    skos:editorialNote "Possibly no longer required."@en ;
+.
+
+lode:config
+    a prof:ResourceRole ;
+    skos:definition "A resource with a set of RDF statements that determine parts of pyLODE's documentation processing engine."@en ;
+    skos:prefLabel "pyLODE configuration role"@en ;
+    skos:scopeNote "Use this to include statements such as which profiles are also lode:Module instances, what classes to ignore, the ordering of modules and classes, etc in pyLODE."@en ;
 .
 
 lode:ignoreClass
@@ -30,6 +51,11 @@ lode:ignoreClass
     skos:definition "A property to classes that should be ignored by application processors."@en ;
     skos:prefLabel "ignore class"@en ;
     skos:scopeNote "pyLODE as an application processor will ignore these classes when generating the documentation output."@en ;
+.
+
+ont:
+    a owl:Ontology ;
+    rdfs:label "pyLODE Vocabulary"@en ;
 .
 
 lode:isQualifiedProfileOf
