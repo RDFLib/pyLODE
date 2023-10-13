@@ -2,8 +2,9 @@ import logging
 import time
 
 import httpx
-from rdflib import Graph, Dataset, URIRef, OWL, PROF, RDF, DCTERMS
+from rdflib import Graph, URIRef, OWL, PROF, RDF, DCTERMS
 
+from pylode.profiles.supermodel.dataset import Dataset
 from pylode.profiles.supermodel.namespace import LODE
 
 # TODO: Set up logging elsewhere
@@ -68,20 +69,14 @@ class ProfilesDataset(Dataset):
         profiles = graph.subjects(RDF.type, PROF.Profile)
         for profile in profiles:
             cbd = graph.cbd(profile)
-            _graph = Graph(identifier=str(profile))
-            _graph.__iadd__(cbd)
+            profile_graph = Graph(identifier=str(profile))
+            profile_graph.__iadd__(cbd)
 
-            other = graph - cbd
-            other = self.load_owl_imports(other)
-            prev_graph.__iadd__(other)
-            self.add_graph(_graph)
-            graph = self.load_owl_imports(graph)
-
-            prof_resource_descriptors = graph.objects(None, PROF.hasResource)
+            prof_resource_descriptors = profile_graph.objects(None, PROF.hasResource)
             for prof_resource_descriptor in prof_resource_descriptors:
-                mediatype = graph.value(prof_resource_descriptor, DCTERMS.format)
-                role = graph.value(prof_resource_descriptor, PROF.hasRole)
-                remote_resource = graph.value(prof_resource_descriptor, PROF.hasArtifact)
+                mediatype = profile_graph.value(prof_resource_descriptor, DCTERMS.format)
+                role = profile_graph.value(prof_resource_descriptor, PROF.hasRole)
+                remote_resource = profile_graph.value(prof_resource_descriptor, PROF.hasArtifact)
 
                 if role == LODE.config:
                     config_graph = self.get_graph(URIRef(PYLODE_CONFIG_GRAPH))
@@ -98,8 +93,12 @@ class ProfilesDataset(Dataset):
                     data, content_type = fetch(str(remote_resource), self.client, str(mediatype))
                     new_graph.parse(data=data, format=content_type)
                     new_graph = self.load_owl_imports(new_graph)
-                    _graph.__iadd__(new_graph)
-                    self.load_profiles(new_graph, _graph)
+
+                    if new_graph.value(None, RDF.type, PROF.Profile):
+                        self.load_profiles(new_graph, profile_graph)
+                    else:
+                        profile_graph.__iadd__(new_graph)
+            self.add_graph(profile_graph)
 
     def __init__(self, root_profile_iri: str, data: str):
         super().__init__(default_union=True)
@@ -139,65 +138,6 @@ class ProfilesDataset(Dataset):
     def config_graph(self) -> Graph:
         return self.get_graph(URIRef(PYLODE_CONFIG_GRAPH))
 
-    def load_remote_resources(self, graph: Graph, remote_resources: list[str], load_into_graph: bool = False):
-        for remote_resource in remote_resources:
-            logger.debug(f"Fetching remote resource {remote_resource}")
-            _graph = Graph()
-            try:
-                _graph.parse(str(remote_resource))
-            except Exception as err:
-                raise RuntimeError(f"Failed to parse data from {remote_resource}. {err}")
-
-            # named_graph = _graph.value(None, RDF.type, PROF.Profile)
-            # remote_graph = Graph(identifier=named_graph)
-            # remote_graph.__iadd__(_graph)
-
-            if _graph.value(predicate=RDF.type, object=PROF.Profile):
-                # TODO: Only the profile should be added to the new graph. The rest needs to go into the existing graph.
-                for profile in _graph.subjects(RDF.type, PROF.Profile):
-                    logger.debug(f"--- 🟢 adding new named graph {profile}")
-                    cbd = Graph(identifier=str(profile)).__iadd__(_graph.cbd(profile))
-                    self.add_graph(cbd)
-                    other = Graph(identifier=graph.identifier).__iadd__(_graph - cbd)
-                    graph.__iadd__(other)
-
-                    # self.load_owl_imports(cbd)
-                    # self.load_prof_resources(cbd)
-                    # self.load_owl_imports(other)
-                    # self.load_prof_resources(other)
-            elif load_into_graph:
-                logger.debug(f"--- 🟡 adding to existing graph {graph.identifier}")
-                graph.__iadd__(_graph)
-                logger.debug(f"--- 🟢 adding new named graph {remote_resource}")
-                _graph = Graph(identifier=graph.identifier).__iadd__(_graph)
-                self.load_owl_imports(_graph)
-                self.load_prof_resources(_graph)
-            else:
-                logger.debug(f"--- 🟡 adding to existing graph {graph.identifier}")
-                graph.__iadd__(_graph)
-
-    def load_owl_imports2(self, graph: Graph):
-        import_values = [str(v) for v in graph.objects(None, OWL.imports)]
-        if import_values:
-            logger.debug(f"📂 Found the owl:imports values {import_values}")
-        self.load_remote_resources(graph, import_values)
-
-    def load_prof_resources(self, graph: Graph):
-        prof_resource_descriptors = graph.objects(None, PROF.hasResource)
-        remote_resources = []
-        for prof_resource_descriptor in prof_resource_descriptors:
-            mediatype = graph.value(prof_resource_descriptor, DCTERMS.format)
-            # TODO: currently only supports RDF Turtle.
-            if mediatype is not None and str(mediatype) == "text/turtle":
-                remote_resource = graph.value(prof_resource_descriptor, PROF.hasArtifact)
-                if remote_resource is not None:
-                    remote_resources.append(str(remote_resource))
-
-        if remote_resources:
-            logger.debug(f"📂 Found PROF resource values {remote_resources}")
-
-        self.load_remote_resources(graph, remote_resources, True)
-
 
 def load_profiles(root_profile_iri: str, data: str) -> ProfilesDataset:
     """Create an RDF Dataset by expanding the initial profile data.
@@ -213,5 +153,4 @@ def load_profiles(root_profile_iri: str, data: str) -> ProfilesDataset:
         logger.debug([str(g.identifier) for g in db.graphs()])
         logger.debug(f"pylode config:\n{db.get_graph(URIRef(PYLODE_CONFIG_GRAPH)).serialize(format='longturtle')}")
         db.serialize("output.trig", format="nquads")
-
         return db

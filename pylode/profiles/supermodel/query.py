@@ -2,8 +2,7 @@ from textwrap import dedent
 from collections import defaultdict
 from itertools import chain
 
-from rdflib import Graph, Literal, URIRef, Dataset
-from rdflib.graph import DATASET_DEFAULT_GRAPH_ID
+from rdflib import Graph, Literal, URIRef
 from rdflib.namespace import (
     RDF,
     OWL,
@@ -352,18 +351,8 @@ class Query:
 
     def __init__(self, graph: Graph) -> None:
         self.root_profile_iri = get_root_profile_iri(graph)
-        # self.db = Dataset(default_union=True)
         self.db = load_profiles(self.root_profile_iri, graph.serialize())
-        # self.add_to_graph(graph, self.root_profile_iri)
-        # self.graph = self.db.graph(self.root_profile_iri)
-        self.graph = self.db.graph(self.root_profile_iri)
-
-        # Tracks the order in which the profiles are imported.
-        # From most specific to the broadest profile by following
-        # lode:isQualifiedProfileOf relationships.
-        self.imported_profiles = []
-
-        self.import_profiles()
+        self.graph = self.db.root_graph
 
         # An IRI index of classes that 'exist' within this documentation.
         # TODO: may not need this anymore since we are now working with a dataset object.
@@ -377,14 +366,8 @@ class Query:
             ]
         self.ontdoc_inference()
 
-        # TODO: remove print
-        for imported_profile in self.imported_profiles:
-            print("imported_profile", imported_profile)
-
-        # g = self.db.get_context(URIRef("https://linked.data.gov.au/def/csdm/profiles/nz"))
         print("Named graphs")
         print([str(g.identifier) for g in self.db.graphs()])
-        # g.print()
 
         self.back_onts = load_background_onts()
         self.back_onts_titles = load_background_onts_titles(self.back_onts)
@@ -661,27 +644,11 @@ class Query:
         )
 
     def load_component_models(self) -> list[ComponentModel]:
-        component_models = self.imported_profiles
+        component_models = self.db.config_graph.subjects(RDF.type, LODE.Module)
         result = []
 
         for iri in component_models:
-            graph = self.db.graph(iri)
-            component_model_files = list(
-                graph.objects(iri, RDF.value / PROF.hasResource)
-            ) + list(graph.objects(iri, PROF.hasResource))
-
-            for file in component_model_files:
-                path = graph.value(file, PROF.hasArtifact)
-                mimetype = graph.value(file, DCTERMS.format) or "text/turtle"
-
-                # TODO: what are the allowed file types?
-                ALLOWED_MIMETYPES = ["text/turtle"]
-                if str(mimetype) in ALLOWED_MIMETYPES:
-                    graph.parse(path, mimetype)
-                    print(f"Adding graph with name {iri}")
-                    self.add_to_graph(graph, iri)
-
-            component_model = self.load_component_model(iri, graph)
+            component_model = self.load_component_model(iri, self.db)
             result.append(component_model)
 
         return sorted(result, key=lambda x: x.order)
@@ -694,7 +661,7 @@ class Query:
         classes = list(db.objects(iri, RDF.type))
 
         if SH.NodeShape in classes:
-            for graph_identifier in self.imported_profiles:
+            for graph_identifier in db.graphs():
                 graph = db.graph(graph_identifier)
                 sh_properties = list(db.objects(iri, SH.property))
 
