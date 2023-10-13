@@ -27,6 +27,12 @@ class LODE(DefinedNamespace):
     _underscore_num = True
     _NS = Namespace("https://w3id.org/lode/ns/pylode/")
 
+    #: lode:Module
+    Module: URIRef
+
+    #: lode:config
+    config: URIRef
+
     #: lode:componentModel
     componentModel: URIRef
 

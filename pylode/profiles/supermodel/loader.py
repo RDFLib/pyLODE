@@ -4,6 +4,8 @@ import time
 import httpx
 from rdflib import Graph, Dataset, URIRef, OWL, PROF, RDF, DCTERMS
 
+from pylode.profiles.supermodel.namespace import LODE
+
 # TODO: Set up logging elsewhere
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -11,7 +13,7 @@ logger = logging.getLogger(__name__)
 httpcore_logger = logging.getLogger('httpcore')
 httpcore_logger.setLevel(logging.WARNING)
 
-PYLODE_MODULES_GRAPH = "urn:graph:pylode-modules"
+PYLODE_CONFIG_GRAPH = "urn:graph:pylode-config"
 
 
 MEDIA_TYPES = {
@@ -22,6 +24,7 @@ MEDIA_TYPES = {
 
 
 def fetch(url: str, client: httpx.Client, content_type: str = "text/turtle") -> tuple[str, str]:
+    # TODO: Remove proxies
     proxies = {
         "https://linked.data.gov.au/def/csdm/geometryprim": "http://localhost:8000/geometryprim.ttl",
         "http://www.opengis.net/ont/geosparql": "https://cdn.jsdelivr.net/gh/opengeospatial/ogc-geosparql@master/1.1/geo.ttl",
@@ -77,17 +80,22 @@ class ProfilesDataset(Dataset):
             prof_resource_descriptors = graph.objects(None, PROF.hasResource)
             for prof_resource_descriptor in prof_resource_descriptors:
                 mediatype = graph.value(prof_resource_descriptor, DCTERMS.format)
-                # TODO: currently only supports RDF Turtle.
-                if mediatype is not None and str(mediatype) == "text/turtle":
-                    remote_resource = graph.value(prof_resource_descriptor, PROF.hasArtifact)
-                    if remote_resource is not None:
-                        logger.debug(f"Fetching remote resource {remote_resource} from PROF resource descriptor.")
-                        new_graph = Graph()
-                        data, content_type = fetch(str(remote_resource), self.client)
-                        new_graph.parse(data=data, format=content_type)
-                        # new_graph.parse(str(remote_resource))
-                        graph.__iadd__(new_graph)
-                        self.load_profiles(new_graph, graph)
+                role = graph.value(prof_resource_descriptor, PROF.hasRole)
+                remote_resource = graph.value(prof_resource_descriptor, PROF.hasArtifact)
+
+                if role == LODE.config:
+                    config_graph = self.get_graph(URIRef(PYLODE_CONFIG_GRAPH))
+                    logger.debug(f"Fetching remote resource {remote_resource} from PROF resource descriptor. A pylode config.")
+                    data, content_type = fetch(str(remote_resource), self.client, str(mediatype))
+                    config_graph.parse(data=data, format=content_type)
+                elif str(mediatype) in MEDIA_TYPES:
+                    logger.debug(f"Fetching remote resource {remote_resource} from PROF resource descriptor.")
+                    new_graph = Graph()
+                    data, content_type = fetch(str(remote_resource), self.client, str(mediatype))
+                    new_graph.parse(data=data, format=content_type)
+                    # new_graph.parse(str(remote_resource))
+                    graph.__iadd__(new_graph)
+                    self.load_profiles(new_graph, graph)
 
     def __init__(self, root_profile_iri: str, data: str):
         super().__init__(default_union=True)
@@ -105,14 +113,13 @@ class ProfilesDataset(Dataset):
             cbd = graph.cbd(profile)
             initial_profiles_graph.__iadd__(cbd)
             graph = graph - cbd
+
+        self.add_graph(Graph(identifier=PYLODE_CONFIG_GRAPH))
         self.load_profiles(initial_profiles_graph, graph)
 
         root_graph = Graph(identifier=root_profile_iri)
         root_graph.__iadd__(graph)
         self.add_graph(root_graph)
-        self.add_graph(Graph(identifier=PYLODE_MODULES_GRAPH))
-
-        # self.load_owl_imports(self.root_graph)
 
     def __enter__(self):
         return self
@@ -126,7 +133,7 @@ class ProfilesDataset(Dataset):
 
     @property
     def modules_graph(self) -> Graph:
-        return self.get_graph(URIRef(PYLODE_MODULES_GRAPH))
+        return self.get_graph(URIRef(PYLODE_CONFIG_GRAPH))
 
     def load_remote_resources(self, graph: Graph, remote_resources: list[str], load_into_graph: bool = False):
         for remote_resource in remote_resources:
@@ -191,16 +198,16 @@ class ProfilesDataset(Dataset):
 def load_profiles(root_profile_iri: str, data: str) -> Dataset:
     """Create an RDF Dataset by expanding the initial profile data.
 
-    The steps for loading profiles and its resources:
-        1. Load all owl:imports statements
-
+        Profiles are mapped to a named graph in the dataset.
+        This function loads statements from owl:imports and PROF resources.
+        These statements are loaded into their profile's named graphs.
     """
     starttime = time.time()
     with ProfilesDataset(root_profile_iri, data) as db:
         logger.debug(f"Finished loading profiles in {time.time() - starttime:.2f} seconds.")
         logger.debug(f"Named graphs:")
         logger.debug([str(g.identifier) for g in db.graphs()])
+        logger.debug(f"pylode config:\n{db.get_graph(URIRef(PYLODE_CONFIG_GRAPH)).serialize(format='longturtle')}")
         db.serialize("output.trig", format="nquads")
 
-        exit(0)
         return db
