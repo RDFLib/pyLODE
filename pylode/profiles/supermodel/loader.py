@@ -58,7 +58,7 @@ class ProfilesDataset(Dataset):
                         _graph.parse(data=data, format=content_type)
                         # _graph.parse(str(remote_resource))
                         self.external_resources.add(str(remote_resource))
-                        return self.load_owl_imports(_graph)
+                        return graph + self.load_owl_imports(_graph)
                     except Exception as err:
                         raise RuntimeError(f"Failed to parse data from {remote_resource}. {err}")
 
@@ -88,14 +88,18 @@ class ProfilesDataset(Dataset):
                     logger.debug(f"Fetching remote resource {remote_resource} from PROF resource descriptor. A pylode config.")
                     data, content_type = fetch(str(remote_resource), self.client, str(mediatype))
                     config_graph.parse(data=data, format=content_type)
+
+                    _config_graph = Graph().parse(data=data, format=content_type)
+                    _config_graph = self.load_owl_imports(_config_graph)
+                    self.load_profiles(_config_graph, graph)
                 elif str(mediatype) in MEDIA_TYPES:
                     logger.debug(f"Fetching remote resource {remote_resource} from PROF resource descriptor.")
                     new_graph = Graph()
                     data, content_type = fetch(str(remote_resource), self.client, str(mediatype))
                     new_graph.parse(data=data, format=content_type)
-                    # new_graph.parse(str(remote_resource))
-                    graph.__iadd__(new_graph)
-                    self.load_profiles(new_graph, graph)
+                    new_graph = self.load_owl_imports(new_graph)
+                    _graph.__iadd__(new_graph)
+                    self.load_profiles(new_graph, _graph)
 
     def __init__(self, root_profile_iri: str, data: str):
         super().__init__(default_union=True)
@@ -132,7 +136,7 @@ class ProfilesDataset(Dataset):
         return self.get_graph(URIRef(self.root_profile_iri))
 
     @property
-    def modules_graph(self) -> Graph:
+    def config_graph(self) -> Graph:
         return self.get_graph(URIRef(PYLODE_CONFIG_GRAPH))
 
     def load_remote_resources(self, graph: Graph, remote_resources: list[str], load_into_graph: bool = False):
@@ -195,16 +199,16 @@ class ProfilesDataset(Dataset):
         self.load_remote_resources(graph, remote_resources, True)
 
 
-def load_profiles(root_profile_iri: str, data: str) -> Dataset:
+def load_profiles(root_profile_iri: str, data: str) -> ProfilesDataset:
     """Create an RDF Dataset by expanding the initial profile data.
 
         Profiles are mapped to a named graph in the dataset.
         This function loads statements from owl:imports and PROF resources.
         These statements are loaded into their profile's named graphs.
     """
-    starttime = time.time()
+    start_time = time.time()
     with ProfilesDataset(root_profile_iri, data) as db:
-        logger.debug(f"Finished loading profiles in {time.time() - starttime:.2f} seconds.")
+        logger.debug(f"Finished loading profiles in {time.time() - start_time:.2f} seconds.")
         logger.debug(f"Named graphs:")
         logger.debug([str(g.identifier) for g in db.graphs()])
         logger.debug(f"pylode config:\n{db.get_graph(URIRef(PYLODE_CONFIG_GRAPH)).serialize(format='longturtle')}")
