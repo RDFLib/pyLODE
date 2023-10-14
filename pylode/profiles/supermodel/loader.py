@@ -30,6 +30,9 @@ def fetch(url: str, client: httpx.Client, content_type: str = "text/turtle") -> 
         "https://linked.data.gov.au/def/csdm/geometryprim": "http://localhost:8000/geometryprim.ttl",
         "http://www.opengis.net/ont/geosparql": "https://cdn.jsdelivr.net/gh/opengeospatial/ogc-geosparql@master/1.1/geo.ttl",
         "http://datashapes.org/dash": "https://cdn.jsdelivr.net/gh/zazuko/rdf-vocabularies@master/ontologies/dash/dash.nq",
+        "https://linked.data.gov.au/def/csdm/container": "http://localhost:8000/container.ttl",
+        "https://linked.data.gov.au/def/csdm/parcels": "http://localhost:8000/parcels.ttl",
+        "https://linked.data.gov.au/def/csdm/commonpatterns": "http://localhost:8000/commonpatterns.ttl",
     }
     if url in proxies:
         logger.debug(f"Using proxy URL {url} to {proxies[url]}")
