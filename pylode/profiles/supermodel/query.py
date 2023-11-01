@@ -1,8 +1,11 @@
+import math
+import logging
 from textwrap import dedent
 from collections import defaultdict
 from itertools import chain
 
 from rdflib import Graph, Literal, URIRef
+from rdflib.graph import DATASET_DEFAULT_GRAPH_ID
 from rdflib.namespace import (
     RDF,
     OWL,
@@ -17,6 +20,7 @@ from rdflib.namespace import (
     VANN,
     PROF,
     SH,
+    QB,
 )
 
 
@@ -33,6 +37,7 @@ from pylode.profiles.supermodel.model import (
     TextObject,
     Profile,
     ProfileType,
+    ProfileHierarchyItem, CodedProperty
 )
 from pylode.rdf_elements import AGENT_PROPS, ONT_PROPS, ONTDOC
 from pylode.utils import (
@@ -41,6 +46,8 @@ from pylode.utils import (
     load_background_onts_titles,
 )
 from pylode.profiles.supermodel.loader import load_profiles
+
+logger = logging.getLogger(__name__)
 
 
 def get_value(
@@ -164,7 +171,13 @@ def get_values(
 
 def get_name(iri: URIRef, graph: Graph) -> str:
     names = get_values(iri, graph, [RDFS.label, SKOS.prefLabel, SDO.name])
-    names.append(graph.qname(iri))
+
+    if not names:
+        try:
+            names.append(graph.qname(iri))
+        except ValueError as err:
+            logger.warning(f"Failed to create a qname for IRI {iri}. Reason: {err}. Adding full IRI as name instead.")
+
     return str(names[0]) if len(names) > 0 else str(iri)
 
 
@@ -220,7 +233,7 @@ def get_is_defined_by(iri: URIRef, graph: Graph) -> Ontology | None:
     return None
 
 
-def get_notes(iri: URIRef, graph: Graph) -> list[str]:
+def get_notes(iri: URIRef, graph: Graph) -> list[Note]:
     notes = []
 
     skos_notes = get_values(iri, graph, [SKOS.note])
@@ -323,7 +336,7 @@ def get_rdf_properties(rdf_property_type: URIRef, graph: Graph) -> list[RDFPrope
 
         properties.append(prop)
 
-    return properties
+    return sorted(properties, key=lambda x: x.name)
 
 
 def get_root_profile_iri(graph: Graph) -> URIRef:
@@ -343,11 +356,49 @@ def get_root_profile_iri(graph: Graph) -> URIRef:
     return profiles[0]
 
 
+def get_super_profiles(iri: URIRef, graph: Graph) -> list[ProfileHierarchyItem]:
+    super_profile_iris = graph.objects(iri, PROF.isProfileOf)
+    super_profiles = []
+    for super_profile_iri in super_profile_iris:
+        super_profiles.append(
+            ProfileHierarchyItem(
+                iri=super_profile_iri,
+                name=get_name(super_profile_iri, graph),
+                is_profile_of=get_super_profiles(super_profile_iri, graph)
+            )
+        )
+    return super_profiles
+
+
 class Query:
     def add_to_graph(self, graph: Graph, graph_identifier: str) -> None:
         _graph = Graph(identifier=graph_identifier)
         for s, p, o in graph:
             self.db.add((s, p, o, _graph))
+
+    def get_profiles_hierarchy(self) -> ProfileHierarchyItem:
+        def _get_profile_hierarchy_item(iri: URIRef):
+            return ProfileHierarchyItem(
+                iri=iri,
+                name=get_name(iri, self.db),
+                is_profile_of=get_super_profiles(iri, self.db)
+            )
+
+        return _get_profile_hierarchy_item(self.root_profile_iri)
+
+    def get_profiles_order(self, profiles_hierarchy: ProfileHierarchyItem) -> list[URIRef]:
+        profiles = []
+        focus = profiles_hierarchy
+
+        def _add(profile: ProfileHierarchyItem):
+            profiles.append(profile.iri)
+            if profile.is_profile_of:
+                for _super_profile in profile.is_profile_of:
+                    _add(_super_profile)
+
+        _add(focus)
+
+        return profiles
 
     def __init__(self, graph: Graph) -> None:
         self.root_profile_iri = get_root_profile_iri(graph)
@@ -359,10 +410,15 @@ class Query:
         self.class_index: set[URIRef] = set()
 
         self.ns = self.get_ns()
+
+        self.profiles_hierarchy = self.get_profiles_hierarchy()
+        # This order is mainly used to sort the properties for a class by their profile's specificity.
+        self.profiles_order = self.get_profiles_order(self.profiles_hierarchy)
+
         self.component_models = self.load_component_models()
         if not self.component_models:
             self.component_models = [
-                self.load_component_model(URIRef(self.ns[1]), self.graph)
+                self.load_component_model(URIRef(self.ns[1]), self.db)
             ]
         self.ontdoc_inference()
 
@@ -618,16 +674,16 @@ class Query:
     def load_component_model(self, iri: URIRef, graph: Graph) -> ComponentModel:
         name = get_name(iri, graph)
         descriptions = get_descriptions(iri, graph)
-        ignored_classes = get_component_model_ignored_classes(iri, self.graph)
+        ignored_classes = get_component_model_ignored_classes(iri, graph)
         profile_graph = graph.get_graph(iri)
         classes = self.get_component_model_classes(profile_graph, ignored_classes)
         top_level_classes = get_top_level_component_classes(classes)
         examples = get_examples(iri, graph)
-        order = self.graph.value(iri, SH.order)
-        annotation_properties = get_rdf_properties(OWL.AnnotationProperty, graph)
-        datatype_properties = get_rdf_properties(OWL.DatatypeProperty, graph)
-        object_properties = get_rdf_properties(OWL.ObjectProperty, graph)
-        ontology_properties = get_rdf_properties(OWL.OntologyProperty, graph)
+        order = graph.value(iri, SH.order)
+        annotation_properties = get_rdf_properties(OWL.AnnotationProperty, profile_graph)
+        datatype_properties = get_rdf_properties(OWL.DatatypeProperty, profile_graph)
+        object_properties = get_rdf_properties(OWL.ObjectProperty, profile_graph)
+        ontology_properties = get_rdf_properties(OWL.OntologyProperty, profile_graph)
 
         return ComponentModel(
             iri,
@@ -656,7 +712,7 @@ class Query:
 
     def get_class_properties_from_sh_nodeshape_sh_property(
         self, iri: URIRef, ignored_classes: list[URIRef]
-    ) -> list[dict[str, list[Property]]]:
+    ) -> dict[str, list[Property]]:
         properties: dict[str, list[Property]] = defaultdict(list)
         db = self.db
         classes = list(db.objects(iri, RDF.type))
@@ -720,7 +776,17 @@ class Query:
                         )
                     )
 
+        # Sort each property based on most specific profile to most broad.
+        def _sort_properties_by_profile(profiles_order: list[URIRef], properties: list[Property]) -> list[Property]:
+            order_dict = {profile: i for i, profile in enumerate(profiles_order)}
+            order_dict.update({None: math.inf})
+            return sorted(
+                properties,
+                key=lambda p: order_dict[next((profile for profile in profiles_order if p.profile.iri == profile), None)]
+            )
+
         for property_iri in properties:
+            properties[property_iri] = _sort_properties_by_profile(self.profiles_order, properties[property_iri])
             properties[property_iri][-1].profile.type = ProfileType.BASE
 
         return properties
@@ -809,9 +875,35 @@ class Query:
 
         return sorted(properties, key=lambda x: x.name)
 
+    def get_coded_properties(self, properties: dict[str, list[Property]]) -> dict[str, list[Property]]:
+        for property_iri in properties:
+            properties_size = len(properties[property_iri])
+            for prop in properties[property_iri]:
+                graphs = list(filter(lambda g: g.identifier != DATASET_DEFAULT_GRAPH_ID, self.db.contexts((prop.iri, RDF.type, QB.CodedProperty))))
+                if graphs:
+                    # We just take the first one for now. Need to improve this in the future.
+                    graph = self.db.get_graph(graphs[0].identifier)
+
+                    # We either add to the existing property if it's in another profile (different graph)
+                    # or, we make a copy of the most specific version of the property and clone it,
+                    # and update the profile to the graph where we found the coded property.
+                    # We only need to add the coded property details to one property that we find.
+                    if graph != prop.profile.iri:
+                        prop.coded_properties.append(
+                            CodedProperty(
+                                label=get_name(prop.iri, graph),
+                                expected_value=get_value(prop.iri, RDFS.range, graph),
+                                codelist=[str(x) for x in graph.objects(prop.iri, QB.codeList)],
+                            )
+                        )
+                    else:
+                        ...
+
+        return properties
+
     def get_component_model_class_properties(
         self, iri: URIRef, ignored_classes: list[URIRef]
-    ):
+    ) -> dict[str, list[Property]]:
         """Get the properties of a class.
 
         Object property - range is Any
@@ -836,12 +928,14 @@ class Query:
             )
         )
 
+        properties = self.get_coded_properties(properties)
+
         # TODO: Need to refactor the properties data structure to a dict of list[Property].
         # properties += self.get_class_properties_from_schema_domain_includes(
         #     iri, ignored_classes
         # )
 
-        return properties
+        return dict(sorted(properties.items(), key=lambda t: get_name(t[0], self.db)))
 
     def get_component_model_classes(
         self, graph: Graph, ignored_classes: list[URIRef]
