@@ -16,13 +16,6 @@ lode:Module
     skos:scopeNote "A prof:Profile can also be a lode:Module. All resources loaded using owl:imports or PROF resources will go into the module as one set of statements."@en ;
 .
 
-dcterms:isPartOf
-    a owl:ObjectProperty ;
-    skos:definition "A related resource in which the described resource is physically or logically included."@en ;
-    skos:prefLabel "is part of"@en ;
-    skos:scopeNote "Link prof:Profile resources to a lode:Module using dcterms:isPartOf predicate."@en ;
-.
-
 prof:isProfileOf
     owl:propertyChainAxiom (
             lode:isQualifiedProfileOf

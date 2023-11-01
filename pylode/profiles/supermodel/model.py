@@ -58,6 +58,20 @@ class Profile:
 
 
 @dataclass
+class ProfileHierarchyItem:
+    iri: URIRef
+    name: str
+    is_profile_of: list["ProfileHierarchyItem"] = field(default_factory=list)
+
+
+@dataclass
+class CodedProperty:
+    label: str
+    expected_value: str
+    codelist: list[str] = field(default_factory=list)
+
+
+@dataclass
 class Property:
     iri: URIRef
     name: str
@@ -68,6 +82,7 @@ class Property:
     cardinality_max: int = None
     value_type: "Class" = None
     value_class_types: list["Class"] = field(default_factory=list)
+    coded_properties: list[CodedProperty] = field(default_factory=list)
 
 
 @dataclass
@@ -96,9 +111,8 @@ class Class:
     description: str = None
     subclasses: list["Class"] = field(default_factory=list)
     superclasses: list["Class"] = field(default_factory=list)
-    properties: list[Property] = field(default_factory=list)
+    properties: dict[str, list[Property]] = field(default_factory=dict)
     examples: list[MediaObject] = field(default_factory=list)
-    examples: list[Literal] = field(default_factory=list)
     notes: list[Note] = field(default_factory=list)
     is_defined_by: "Ontology" = None
 
