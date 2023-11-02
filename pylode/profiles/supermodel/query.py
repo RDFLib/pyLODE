@@ -711,8 +711,7 @@ class Query:
 
         return sorted(result, key=lambda x: x.order)
 
-    def get_property_by_sh_path(self, graph: Graph, sh_path: URIRef, sh_property: URIRef, iri: URIRef, db: Graph):
-        sh_class = graph.value(sh_property, SH["class"])
+    def get_property_by_sh_path(self, graph: Graph, sh_path: URIRef, sh_class: URIRef, sh_property: URIRef, iri: URIRef, db: Graph):
         if self.root_profile_iri == graph.identifier:
             profile = Profile(
                 graph.identifier,
@@ -771,7 +770,7 @@ class Query:
         db = self.db
         classes = list(db.objects(iri, RDF.type))
 
-        if URIRef("https://linked.data.gov.au/def/csdm/surveyfeatures/SurveyPoint") == iri:
+        if URIRef("https://linked.data.gov.au/def/csdm/surveyfeatures/Monument") == iri:
             ...
 
         if SH.NodeShape in classes:
@@ -783,45 +782,41 @@ class Query:
                     sh_properties += list(graph.objects(nodeshape, SH.property))
                 sh_properties += list(graph.objects(iri, SH.property))
 
-                # Add other properties that need to be included based on the property shapes found from above.
+                extra_sh_properties = defaultdict(list)
                 for sh_property in sh_properties.copy():
-                    _sh_path = graph.value(sh_property, SH.path)
-                    nodeshapes = list(db.subjects(SH.targetObjectsOf, _sh_path))
-                    for nodeshape in nodeshapes:
-                        for sh_property in db.objects(nodeshape, SH.property):
-                            # TODO: duplicate code fragment
-                            sh_path = db.value(sh_property, SH.path)
-                            if sh_path is None:
-                                continue
+                    sh_class = graph.value(sh_property, SH["class"])
+                    property_shapes = list(db.subjects(SH["class"], sh_class))
+                    for property_shape in property_shapes:
+                        # TODO: handle sequence paths
+                        sh_path = db.value(property_shape, SH.path)
+                        # Get node shapes that have sh:targetObjectsOf
+                        for nodeshape in db.subjects(SH.targetObjectsOf, sh_path):
+                            graphs = list(db.contexts((nodeshape, SH.targetObjectsOf, sh_path)))
+                            _graph = graphs[0]
+                            to_be_added = extra_sh_properties[_graph]
+                            for item in _graph.objects(nodeshape, SH.property):
+                                if item not in to_be_added:
+                                    to_be_added.append(item)
+                            extra_sh_properties[_graph] = to_be_added
+                            # extra_sh_properties[_graph] += set(_graph.objects(nodeshape, SH.property))
 
-                            if isinstance(sh_path, BNode):
-                                # This may be an RDF ordered list.
-                                ordered_list = Collection(graph, sh_path)
-                                if ordered_list:
-                                    # Assign the first value of the SHACL sequence path as the sh:path value.
-                                    sh_path = ordered_list[0]
+                for _graph, _sh_properties in extra_sh_properties.items():
+                    for sh_property in _sh_properties:
+                        sh_path = _graph.value(sh_property, SH.path)
+                        if sh_path is None:
+                            continue
 
-                            prop = self.get_property_by_sh_path(db, sh_path, sh_property, iri, db)
-                            if prop is not None:
-                                properties[_sh_path].append(
-                                    Property(
-                                        iri=_sh_path,
-                                        name=graph.value(sh_property, SH.name) or get_name(_sh_path, graph),
-                                        description=(
-                                            db.value(nodeshape, SH.message)
-                                            or graph.value(sh_property, SH.description)
-                                            or get_descriptions(_sh_path, graph)
-                                            or ""
-                                        ),
-                                        profile=prop.profile,
-                                        belongs_to_class=prop.belongs_to_class,
-                                        cardinality_min=None,
-                                        cardinality_max=None,
-                                        value_type=None,
-                                        value_class_types=[],
-                                        nested_property=prop
-                                    )
-                                )
+                        if isinstance(sh_path, BNode):
+                            # This may be an RDF ordered list.
+                            ordered_list = Collection(_graph, sh_path)
+                            if ordered_list:
+                                # Assign the first value of the SHACL sequence path as the sh:path value.
+                                sh_path = ordered_list[0]
+
+                        sh_class = _graph.value(sh_property, SH["class"])
+                        prop = self.get_property_by_sh_path(_graph, sh_path, sh_class, sh_property, iri, db)
+                        if prop is not None:
+                            properties[sh_path].append(prop)
 
                 for sh_property in sh_properties:
                     sh_path = graph.value(sh_property, SH.path)
@@ -835,7 +830,8 @@ class Query:
                             # Assign the first value of the SHACL sequence path as the sh:path value.
                             sh_path = ordered_list[0]
 
-                    prop = self.get_property_by_sh_path(graph, sh_path, sh_property, iri, db)
+                    sh_class = graph.value(sh_property, SH["class"])
+                    prop = self.get_property_by_sh_path(graph, sh_path, sh_class, sh_property, iri, db)
                     if prop is not None:
                         properties[sh_path].append(prop)
 
