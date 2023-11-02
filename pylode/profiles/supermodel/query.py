@@ -4,8 +4,9 @@ from textwrap import dedent
 from collections import defaultdict
 from itertools import chain
 
-from rdflib import Graph, Literal, URIRef
+from rdflib import Graph, Literal, URIRef, BNode
 from rdflib.graph import DATASET_DEFAULT_GRAPH_ID
+from rdflib.collection import Collection
 from rdflib.namespace import (
     RDF,
     OWL,
@@ -717,15 +718,30 @@ class Query:
         db = self.db
         classes = list(db.objects(iri, RDF.type))
 
+        if URIRef("https://linked.data.gov.au/def/csdm/surveyfeatures/SurveyPoint") == iri:
+            ...
+
         if SH.NodeShape in classes:
             for graph_identifier in db.graphs():
                 graph = db.graph(graph_identifier)
-                sh_properties = list(db.objects(iri, SH.property))
+                nodeshapes_by_target_class = list(graph.subjects(SH.targetClass, iri))
+                sh_properties = []
+                for nodeshape in nodeshapes_by_target_class:
+                    sh_properties += list(graph.objects(nodeshape, SH.property))
+                sh_properties += list(graph.objects(iri, SH.property))
 
                 for sh_property in sh_properties:
                     sh_path = graph.value(sh_property, SH.path)
                     if sh_path is None:
                         continue
+
+                    if isinstance(sh_path, BNode):
+                        # This may be an RDF ordered list.
+                        ordered_list = Collection(graph, sh_path)
+                        if ordered_list:
+                            # Assign the first value of the SHACL sequence path as the sh:path value.
+                            sh_path = ordered_list[0]
+
                     sh_class = graph.value(sh_property, SH["class"])
                     if self.root_profile_iri == graph.identifier:
                         profile = Profile(
