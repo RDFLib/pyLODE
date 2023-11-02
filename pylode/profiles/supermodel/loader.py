@@ -42,6 +42,7 @@ def fetch(url: str, client: httpx.Client, content_type: str = "text/turtle") -> 
         "https://icsm-au.github.io/3d-csdm-profiles/profiles/nz-vocabs-shacl.ttl": "http://localhost:8001/profiles/nz-vocabs-shacl.ttl",
         "https://icsm-au.github.io/3d-csdm/csdm.ttl": "http://localhost:8000/csdm.ttl",
         "https://icsm-au.github.io/3d-csdm/pylode.ttl": "http://localhost:8000/pylode.ttl",
+        "https://icsm-au.github.io/3d-csdm-profiles/profiles/jurisdictional-codelist-types.shacl": "http://localhost:8001/profiles/jurisdictional-codelist-types.shacl",
     }
     if url in proxies:
         logger.debug(f"Using proxy URL {url} to {proxies[url]}")
