@@ -29,18 +29,19 @@ def fetch(url: str, client: httpx.Client, content_type: str = "text/turtle") -> 
     # http://localhost:8001/profiles/nz-profile.ttl
     # http://localhost:8000/csdm.ttl
     proxies = {
-        # "https://linked.data.gov.au/def/csdm/geometryprim": "http://localhost:8000/geometryprim.ttl",
-        # "http://www.opengis.net/ont/geosparql": "https://cdn.jsdelivr.net/gh/opengeospatial/ogc-geosparql@master/1.1/geo.ttl",
-        # "http://datashapes.org/dash": "https://cdn.jsdelivr.net/gh/zazuko/rdf-vocabularies@master/ontologies/dash/dash.nq",
-        # "https://linked.data.gov.au/def/csdm/container": "http://localhost:8000/container.ttl",
-        # "https://linked.data.gov.au/def/csdm/parcels": "http://localhost:8000/parcels.ttl",
-        # "https://linked.data.gov.au/def/csdm/commonpatterns": "http://localhost:8000/commonpatterns.ttl",
-        # "https://icsm-au.github.io/3d-csdm-profiles/profiles/icsm-common.ttl": "http://localhost:8001/profiles/icsm-common.ttl",
-        # "https://icsm-au.github.io/3d-csdm-profiles/profiles/nz-vocab-bindings.ttl": "http://localhost:8001/profiles/nz-vocab-bindings.ttl",
-        # "https://icsm-au.github.io/3d-csdm-profiles/profiles/nz-profile-shacl.ttl": "http://localhost:8001/profiles/nz-profile-shacl.ttl",
-        # "https://icsm-au.github.io/3d-csdm-profiles/profiles/nz-vocabs-shacl.ttl": "http://localhost:8001/profiles/nz-vocabs-shacl.ttl",
-        # "https://icsm-au.github.io/3d-csdm/csdm.ttl": "http://localhost:8000/csdm.ttl",
-        # "https://icsm-au.github.io/3d-csdm/pylode.ttl": "http://localhost:8000/pylode.ttl",
+        "https://linked.data.gov.au/def/csdm/geometryprim": "http://localhost:8000/geometryprim.ttl",
+        "http://www.opengis.net/ont/geosparql": "https://cdn.jsdelivr.net/gh/opengeospatial/ogc-geosparql@master/1.1/geo.ttl",
+        "http://datashapes.org/dash": "https://cdn.jsdelivr.net/gh/zazuko/rdf-vocabularies@master/ontologies/dash/dash.nq",
+        "https://linked.data.gov.au/def/csdm/container": "http://localhost:8000/container.ttl",
+        "https://linked.data.gov.au/def/csdm/parcels": "http://localhost:8000/parcels.ttl",
+        "https://linked.data.gov.au/def/csdm/commonpatterns": "http://localhost:8000/commonpatterns.ttl",
+        "https://icsm-au.github.io/3d-csdm-profiles/profiles/icsm-common.ttl": "http://localhost:8001/profiles/icsm-common.ttl",
+        "https://icsm-au.github.io/3d-csdm-profiles/profiles/icsm-profile-shacl.ttl": "http://localhost:8001/profiles/icsm-profile-shacl.ttl",
+        "https://icsm-au.github.io/3d-csdm-profiles/profiles/nz-vocab-bindings.ttl": "http://localhost:8001/profiles/nz-vocab-bindings.ttl",
+        "https://icsm-au.github.io/3d-csdm-profiles/profiles/nz-profile-shacl.ttl": "http://localhost:8001/profiles/nz-profile-shacl.ttl",
+        "https://icsm-au.github.io/3d-csdm-profiles/profiles/nz-vocabs-shacl.ttl": "http://localhost:8001/profiles/nz-vocabs-shacl.ttl",
+        "https://icsm-au.github.io/3d-csdm/csdm.ttl": "http://localhost:8000/csdm.ttl",
+        "https://icsm-au.github.io/3d-csdm/pylode.ttl": "http://localhost:8000/pylode.ttl",
     }
     if url in proxies:
         logger.debug(f"Using proxy URL {url} to {proxies[url]}")
@@ -70,7 +71,7 @@ class ProfilesDataset(Dataset):
                         _graph.parse(data=data, format=content_type)
                         # _graph.parse(str(remote_resource))
                         self.external_resources.add(str(remote_resource))
-                        return graph + self.load_owl_imports(_graph)
+                        graph.__iadd__(self.load_owl_imports(_graph))
                     except Exception as err:
                         raise RuntimeError(f"Failed to parse data from {remote_resource}. {err}")
 
