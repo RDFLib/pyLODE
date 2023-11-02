@@ -4,7 +4,7 @@ from textwrap import dedent
 from collections import defaultdict
 from itertools import chain
 
-from rdflib import Graph, Literal, URIRef, BNode
+from rdflib import Graph, Literal, URIRef, BNode, Dataset
 from rdflib.graph import DATASET_DEFAULT_GRAPH_ID
 from rdflib.collection import Collection
 from rdflib.namespace import (
@@ -711,6 +711,59 @@ class Query:
 
         return sorted(result, key=lambda x: x.order)
 
+    def get_property_by_sh_path(self, graph: Graph, sh_path: URIRef, sh_property: URIRef, iri: URIRef, db: Graph):
+        sh_class = graph.value(sh_property, SH["class"])
+        if self.root_profile_iri == graph.identifier:
+            profile = Profile(
+                graph.identifier,
+                get_name(graph.identifier, db),
+                ProfileType.ROOT,
+            )
+        elif isinstance(graph, Dataset):
+            contexts = list(graph.contexts((sh_property, SH.path, sh_path)))
+            profile_id = contexts[0].identifier
+            profile = Profile(profile_id, get_name(profile_id, db), ProfileType.ROOT if self.root_profile_iri == profile_id else ProfileType.INTERMEDIARY)
+        else:
+            profile = Profile(
+                graph.identifier, get_name(graph.identifier, db)
+            )
+        sh_description = (
+                graph.value(sh_property, SH.description)
+                or get_descriptions(sh_path, graph)
+                or ""
+        )
+        sh_name = graph.value(sh_property, SH.name) or get_name(
+            sh_path, graph
+        )
+        sh_nodekind = graph.value(sh_property, SH.nodeKind)
+        sh_min = graph.value(sh_property, SH.minCount)
+        sh_max = graph.value(sh_property, SH.maxCount)
+        belongs_to_class = get_class(iri, db, [])
+        value_type = (
+            get_class(sh_nodekind, graph, [])
+            if sh_nodekind is not None
+            else None
+        )
+        value_class_type = (
+            get_class(sh_class, graph, [])
+            if sh_class is not None
+            else None
+        )
+
+        return Property(
+            iri=sh_path,
+            name=sh_name,
+            description=sh_description,
+            profile=profile,
+            belongs_to_class=belongs_to_class,
+            cardinality_min=int(sh_min) if sh_min is not None else None,
+            cardinality_max=int(sh_max) if sh_max is not None else None,
+            value_type=value_type,
+            value_class_types=[value_class_type]
+            if value_class_type is not None
+            else [],
+        )
+
     def get_class_properties_from_sh_nodeshape_sh_property(
         self, iri: URIRef, ignored_classes: list[URIRef]
     ) -> dict[str, list[Property]]:
@@ -730,6 +783,46 @@ class Query:
                     sh_properties += list(graph.objects(nodeshape, SH.property))
                 sh_properties += list(graph.objects(iri, SH.property))
 
+                # Add other properties that need to be included based on the property shapes found from above.
+                for sh_property in sh_properties.copy():
+                    _sh_path = graph.value(sh_property, SH.path)
+                    nodeshapes = list(db.subjects(SH.targetObjectsOf, _sh_path))
+                    for nodeshape in nodeshapes:
+                        for sh_property in db.objects(nodeshape, SH.property):
+                            # TODO: duplicate code fragment
+                            sh_path = db.value(sh_property, SH.path)
+                            if sh_path is None:
+                                continue
+
+                            if isinstance(sh_path, BNode):
+                                # This may be an RDF ordered list.
+                                ordered_list = Collection(graph, sh_path)
+                                if ordered_list:
+                                    # Assign the first value of the SHACL sequence path as the sh:path value.
+                                    sh_path = ordered_list[0]
+
+                            prop = self.get_property_by_sh_path(db, sh_path, sh_property, iri, db)
+                            if prop is not None:
+                                properties[_sh_path].append(
+                                    Property(
+                                        iri=_sh_path,
+                                        name=graph.value(sh_property, SH.name) or get_name(_sh_path, graph),
+                                        description=(
+                                            db.value(nodeshape, SH.message)
+                                            or graph.value(sh_property, SH.description)
+                                            or get_descriptions(_sh_path, graph)
+                                            or ""
+                                        ),
+                                        profile=prop.profile,
+                                        belongs_to_class=prop.belongs_to_class,
+                                        cardinality_min=None,
+                                        cardinality_max=None,
+                                        value_type=None,
+                                        value_class_types=[],
+                                        nested_property=prop
+                                    )
+                                )
+
                 for sh_property in sh_properties:
                     sh_path = graph.value(sh_property, SH.path)
                     if sh_path is None:
@@ -742,55 +835,9 @@ class Query:
                             # Assign the first value of the SHACL sequence path as the sh:path value.
                             sh_path = ordered_list[0]
 
-                    sh_class = graph.value(sh_property, SH["class"])
-                    if self.root_profile_iri == graph.identifier:
-                        profile = Profile(
-                            graph.identifier,
-                            get_name(graph.identifier, db),
-                            ProfileType.ROOT,
-                        )
-                    else:
-                        profile = Profile(
-                            graph.identifier, get_name(graph.identifier, db)
-                        )
-                    sh_description = (
-                        graph.value(sh_property, SH.description)
-                        or get_descriptions(sh_path, graph)
-                        or ""
-                    )
-                    sh_name = graph.value(sh_property, SH.name) or get_name(
-                        sh_path, graph
-                    )
-                    sh_nodekind = graph.value(sh_property, SH.nodeKind)
-                    sh_min = graph.value(sh_property, SH.minCount)
-                    sh_max = graph.value(sh_property, SH.maxCount)
-                    belongs_to_class = get_class(iri, db, ignored_classes)
-                    value_type = (
-                        get_class(sh_nodekind, graph, ignored_classes)
-                        if sh_nodekind is not None
-                        else None
-                    )
-                    value_class_type = (
-                        get_class(sh_class, graph, ignored_classes)
-                        if sh_class is not None
-                        else None
-                    )
-
-                    properties[sh_path].append(
-                        Property(
-                            iri=sh_path,
-                            name=sh_name,
-                            description=sh_description,
-                            profile=profile,
-                            belongs_to_class=belongs_to_class,
-                            cardinality_min=int(sh_min) if sh_min is not None else None,
-                            cardinality_max=int(sh_max) if sh_max is not None else None,
-                            value_type=value_type,
-                            value_class_types=[value_class_type]
-                            if value_class_type is not None
-                            else [],
-                        )
-                    )
+                    prop = self.get_property_by_sh_path(graph, sh_path, sh_property, iri, db)
+                    if prop is not None:
+                        properties[sh_path].append(prop)
 
         # Sort each property based on most specific profile to most broad.
         def _sort_properties_by_profile(profiles_order: list[URIRef], properties: list[Property]) -> list[Property]:
