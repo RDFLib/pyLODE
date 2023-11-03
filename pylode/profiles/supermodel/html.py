@@ -306,7 +306,7 @@ class Supermodel:
                                     _class="tableblock halign-left valign-top",
                                 )
                                 th(
-                                    "Sourced",
+                                    "Source",
                                     _class="tableblock halign-left valign-top",
                                 )
                                 th(
@@ -327,14 +327,13 @@ class Supermodel:
                                 )
                         with tbody():
                             for property_iri in cls.properties:
-                                if len(cls.properties[property_iri]) > 1:
-                                    with tr():
-                                        with td(_class="tableblock halign-left valign-top", style="background-color: #f7f8f7;"):
-                                            with p(_class="tableblock"):
-                                                strong(f"{cls.properties[property_iri][0].name}")
-                                            with p(_class="tableblock"):
-                                                strong(f"({cls.properties[property_iri][-1].name})")
-                                        td(_class="tableblock halign-left valign-top", style="background-color: #f7f8f7;", colspan="4")
+                                with tr():
+                                    with td(_class="tableblock halign-left valign-top", style="background-color: #f7f8f7;"):
+                                        with p(_class="tableblock"):
+                                            strong(f"{cls.properties[property_iri][0].name}")
+                                        with p(_class="tableblock"):
+                                            strong(f"({cls.properties[property_iri][-1].name})")
+                                    td(_class="tableblock halign-left valign-top", style="background-color: #f7f8f7;", colspan="4")
                                 for property_ in cls.properties[property_iri]:
                                     if property_.profile.type == ProfileType.ROOT:
                                         row_style = "background-color: #d2ffd2;"
