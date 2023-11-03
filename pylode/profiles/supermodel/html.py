@@ -306,6 +306,10 @@ class Supermodel:
                                     _class="tableblock halign-left valign-top",
                                 )
                                 th(
+                                    "Sourced",
+                                    _class="tableblock halign-left valign-top",
+                                )
+                                th(
                                     "Description",
                                     _class="tableblock halign-left valign-top",
                                 )
@@ -313,10 +317,10 @@ class Supermodel:
                                     "Cardinality",
                                     _class="tableblock halign-left valign-top",
                                 )
-                                th(
-                                    "Value type",
-                                    _class="tableblock halign-left valign-top",
-                                )
+                                # th(
+                                #     "Value type",
+                                #     _class="tableblock halign-left valign-top",
+                                # )
                                 th(
                                     "Value class type",
                                     _class="tableblock halign-left valign-top",
@@ -351,6 +355,9 @@ class Supermodel:
                                             with p():
                                                 a(property_.name, href=f"#{fragment}")
 
+                                        with td(
+                                            _class="tableblock halign-left valign-top"
+                                        ):
                                             if property_.belongs_to_class is not None:
                                                 with p(_class="tableblock"):
                                                     with em("From "):
@@ -414,26 +421,26 @@ class Supermodel:
                                                     f"[{property_.cardinality_min}..{property_.cardinality_max}]",
                                                     _class="tableblock",
                                                 )
-                                        with td(
-                                            _class="tableblock halign-left valign-top"
-                                        ):
-                                            if property_.value_type is not None:
-                                                if (
-                                                    property_.value_type.iri
-                                                    in self.query.class_index
-                                                ):
-                                                    fragment = make_html_fragment(
-                                                        property_.value_type.iri
-                                                    )
-                                                    a(
-                                                        property_.value_type.name,
-                                                        href=f"#{fragment}",
-                                                    )
-                                                else:
-                                                    external_link(
-                                                        property_.value_type.name,
-                                                        property_.value_type.iri,
-                                                    )
+                                        # with td(
+                                        #     _class="tableblock halign-left valign-top"
+                                        # ):
+                                        #     if property_.value_type is not None:
+                                        #         if (
+                                        #             property_.value_type.iri
+                                        #             in self.query.class_index
+                                        #         ):
+                                        #             fragment = make_html_fragment(
+                                        #                 property_.value_type.iri
+                                        #             )
+                                        #             a(
+                                        #                 property_.value_type.name,
+                                        #                 href=f"#{fragment}",
+                                        #             )
+                                        #         else:
+                                        #             external_link(
+                                        #                 property_.value_type.name,
+                                        #                 property_.value_type.iri,
+                                        #             )
 
                                         with td(
                                             _class="tableblock halign-left valign-top"
