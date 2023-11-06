@@ -199,19 +199,6 @@ def get_class(iri: URIRef, graph: Graph, ignored_classes: list[URIRef]) -> Class
     return Class(iri, name, subclasses=subclasses)
 
 
-def get_superclasses(
-    iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
-) -> list[Class]:
-    superclasses = filter(
-        lambda x: x not in ignored_classes and isinstance(x, URIRef),
-        list(graph.objects(iri, RDFS.subClassOf)),
-    )
-    return sorted(
-        [get_class(superclass, graph, ignored_classes) for superclass in superclasses],
-        key=lambda x: x.name,
-    )
-
-
 def get_subclasses(
     iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
 ) -> list[Class]:
@@ -770,9 +757,6 @@ class Query:
         db = self.db
         classes = list(db.objects(iri, RDF.type))
 
-        if URIRef("https://linked.data.gov.au/def/csdm/surveyfeatures/Monument") == iri:
-            ...
-
         if SH.NodeShape in classes:
             for graph_identifier in db.graphs():
                 graph = db.graph(graph_identifier)
@@ -996,6 +980,61 @@ class Query:
 
         return dict(sorted(properties.items(), key=lambda t: get_name(t[0], self.db)))
 
+    def get_superclasses(
+            self, iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
+    ) -> list[Class]:
+        superclasses = filter(
+            lambda x: x not in ignored_classes and isinstance(x, URIRef),
+            list(graph.objects(iri, RDFS.subClassOf)),
+        )
+        return sorted(
+            [self.get_component_model_class(superclass, graph, ignored_classes) for superclass in superclasses],
+            key=lambda x: x.name,
+        )
+
+    def get_component_model_class(self, iri: URIRef, graph: Graph, ignored_classes: list[URIRef]):
+        name = get_name(iri, graph)
+        descriptions = get_descriptions(iri, graph)
+        subclasses = get_subclasses(iri, graph, ignored_classes)
+        # TODO: Add memoization to remove the need to recalculate the same classes.
+        #       Reuse self.class_index or something similar for memoize data structure.
+        superclasses = self.get_superclasses(iri, graph, ignored_classes)
+        properties = self.get_component_model_class_properties(iri, ignored_classes)
+        from rdflib import URIRef
+        if iri == URIRef("https://linked.data.gov.au/def/csdm/surveyfeatures/SurveyMark"):
+            ...
+
+        def _merge_superclass_properties(superclasses: list[Class]):
+            for superclass in superclasses:
+                for property_iri, superclass_properties in superclass.properties.items():
+                    for superclass_property in superclass_properties:
+                        if properties.get(property_iri):
+                            if superclass_property not in properties[property_iri]:
+                                properties[property_iri].append(superclass_property)
+                        else:
+                            properties[property_iri] = []
+                            properties[property_iri].append(superclass_property)
+
+                if superclass.superclasses:
+                    _merge_superclass_properties(superclass.superclasses)
+
+        _merge_superclass_properties(superclasses)
+        examples = get_examples(iri, graph)
+        notes = get_notes(iri, graph)
+        is_defined_by = get_is_defined_by(iri, graph)
+
+        return Class(
+            iri=iri,
+            name=name,
+            description=descriptions,
+            subclasses=subclasses,
+            superclasses=superclasses,
+            properties=properties,
+            examples=examples,
+            notes=notes,
+            is_defined_by=is_defined_by,
+        )
+
     def get_component_model_classes(
         self, graph: Graph, ignored_classes: list[URIRef]
     ) -> list[Class]:
@@ -1003,27 +1042,8 @@ class Query:
 
         result = []
         for c in filter(lambda x: x not in ignored_classes, classes):
-            name = get_name(c, graph)
-            descriptions = get_descriptions(c, graph)
-            subclasses = get_subclasses(c, graph, ignored_classes)
-            superclasses = get_superclasses(c, graph, ignored_classes)
-            properties = self.get_component_model_class_properties(c, ignored_classes)
-            examples = get_examples(c, graph)
-            notes = get_notes(c, graph)
-            is_defined_by = get_is_defined_by(c, graph)
-
             result.append(
-                Class(
-                    iri=c,
-                    name=name,
-                    description=descriptions,
-                    subclasses=subclasses,
-                    superclasses=superclasses,
-                    properties=properties,
-                    examples=examples,
-                    notes=notes,
-                    is_defined_by=is_defined_by,
-                )
+                self.get_component_model_class(c, graph, ignored_classes)
             )
             self.class_index.add(c)
 

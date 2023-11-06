@@ -84,6 +84,8 @@ class Property:
     value_class_types: list["Class"] = field(default_factory=list)
     coded_properties: list[CodedProperty] = field(default_factory=list)
 
+    def __hash__(self):
+        return hash(f"{self.iri} {self.belongs_to_class.iri} {self.profile.iri}")
 
 @dataclass
 class Note:
