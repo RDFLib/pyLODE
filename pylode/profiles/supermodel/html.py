@@ -26,8 +26,8 @@ from dominate.tags import (
     li,
     thead,
     th,
-    em,
     span,
+    i,
 )
 from dominate.util import raw
 from rdflib import Graph, OWL, SDO, DCTERMS, VANN, SKOS
@@ -52,6 +52,7 @@ from pylode.profiles.supermodel.component import (
     h6,
     external_link,
     example,
+    tooltip,
 )
 from pylode.profiles.supermodel.fragment import make_html_fragment
 
@@ -359,22 +360,18 @@ class Supermodel:
                                         ):
                                             if property_.belongs_to_class is not None:
                                                 with p(_class="tableblock"):
-                                                    with em("From "):
-                                                        fragment = make_html_fragment(
-                                                            CLASS_STRING.format(
-                                                                property_.belongs_to_class.name
-                                                            )
-                                                        )
+                                                    if property_.belongs_to_class.iri in self.query.class_index:
                                                         a(
                                                             property_.belongs_to_class.name,
-                                                            href=f"#{fragment}",
+                                                            href=f"#{property_.belongs_to_class.iri}",
                                                         )
-                                            with p(_class="tablelock"):
-                                                with em("In profile "):
-                                                    a(
-                                                        property_.profile.name,
-                                                        href=property_.profile.iri,
-                                                    )
+                                                    else:
+                                                        external_link(
+                                                            property_.belongs_to_class.name,
+                                                            property_.belongs_to_class.iri,
+                                                        )
+                                                    with tooltip(f"In profile {property_.profile.name}"):
+                                                        i( _class="fa fa-info", aria_hidden="true")
                                         with td(
                                             _class="tableblock halign-left valign-top"
                                         ):
@@ -983,6 +980,14 @@ class Supermodel:
             link(
                 rel="stylesheet",
                 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
+            )
+            link(
+                rel="stylesheet",
+                href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.11.2/cdn/themes/light.css",
+            )
+            script(
+                type="module",
+                src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.11.2/cdn/shoelace-autoloader.js"
             )
             link(
                 rel="icon",
