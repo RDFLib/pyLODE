@@ -38,7 +38,8 @@ from pylode.profiles.supermodel.model import (
     TextObject,
     Profile,
     ProfileType,
-    ProfileHierarchyItem, CodedProperty
+    ProfileHierarchyItem,
+    CodedProperty,
 )
 from pylode.rdf_elements import AGENT_PROPS, ONT_PROPS, ONTDOC
 from pylode.utils import (
@@ -177,7 +178,9 @@ def get_name(iri: URIRef, graph: Graph) -> str:
         try:
             names.append(graph.qname(iri))
         except ValueError as err:
-            logger.warning(f"Failed to create a qname for IRI {iri}. Reason: {err}. Adding full IRI as name instead.")
+            logger.warning(
+                f"Failed to create a qname for IRI {iri}. Reason: {err}. Adding full IRI as name instead."
+            )
 
     return str(names[0]) if len(names) > 0 else str(iri)
 
@@ -352,7 +355,7 @@ def get_super_profiles(iri: URIRef, graph: Graph) -> list[ProfileHierarchyItem]:
             ProfileHierarchyItem(
                 iri=super_profile_iri,
                 name=get_name(super_profile_iri, graph),
-                is_profile_of=get_super_profiles(super_profile_iri, graph)
+                is_profile_of=get_super_profiles(super_profile_iri, graph),
             )
         )
     return super_profiles
@@ -369,12 +372,14 @@ class Query:
             return ProfileHierarchyItem(
                 iri=iri,
                 name=get_name(iri, self.db),
-                is_profile_of=get_super_profiles(iri, self.db)
+                is_profile_of=get_super_profiles(iri, self.db),
             )
 
         return _get_profile_hierarchy_item(self.root_profile_iri)
 
-    def get_profiles_order(self, profiles_hierarchy: ProfileHierarchyItem) -> list[URIRef]:
+    def get_profiles_order(
+        self, profiles_hierarchy: ProfileHierarchyItem
+    ) -> list[URIRef]:
         profiles = []
         focus = profiles_hierarchy
 
@@ -668,7 +673,9 @@ class Query:
         top_level_classes = get_top_level_component_classes(classes)
         examples = get_examples(iri, graph)
         order = graph.value(iri, SH.order)
-        annotation_properties = get_rdf_properties(OWL.AnnotationProperty, profile_graph)
+        annotation_properties = get_rdf_properties(
+            OWL.AnnotationProperty, profile_graph
+        )
         datatype_properties = get_rdf_properties(OWL.DatatypeProperty, profile_graph)
         object_properties = get_rdf_properties(OWL.ObjectProperty, profile_graph)
         ontology_properties = get_rdf_properties(OWL.OntologyProperty, profile_graph)
@@ -698,7 +705,15 @@ class Query:
 
         return sorted(result, key=lambda x: x.order)
 
-    def get_property_by_sh_path(self, graph: Graph, sh_path: URIRef, sh_class: URIRef, sh_property: URIRef, iri: URIRef, db: Graph):
+    def get_property_by_sh_path(
+        self,
+        graph: Graph,
+        sh_path: URIRef,
+        sh_class: URIRef,
+        sh_property: URIRef,
+        iri: URIRef,
+        db: Graph,
+    ):
         if self.root_profile_iri == graph.identifier:
             profile = Profile(
                 graph.identifier,
@@ -708,32 +723,30 @@ class Query:
         elif isinstance(graph, Dataset):
             contexts = list(graph.contexts((sh_property, SH.path, sh_path)))
             profile_id = contexts[0].identifier
-            profile = Profile(profile_id, get_name(profile_id, db), ProfileType.ROOT if self.root_profile_iri == profile_id else ProfileType.INTERMEDIARY)
-        else:
             profile = Profile(
-                graph.identifier, get_name(graph.identifier, db)
+                profile_id,
+                get_name(profile_id, db),
+                ProfileType.ROOT
+                if self.root_profile_iri == profile_id
+                else ProfileType.INTERMEDIARY,
             )
+        else:
+            profile = Profile(graph.identifier, get_name(graph.identifier, db))
         sh_description = (
-                graph.value(sh_property, SH.description)
-                or get_descriptions(sh_path, graph)
-                or ""
+            graph.value(sh_property, SH.description)
+            or get_descriptions(sh_path, graph)
+            or ""
         )
-        sh_name = graph.value(sh_property, SH.name) or get_name(
-            sh_path, graph
-        )
+        sh_name = graph.value(sh_property, SH.name) or get_name(sh_path, graph)
         sh_nodekind = graph.value(sh_property, SH.nodeKind)
         sh_min = graph.value(sh_property, SH.minCount)
         sh_max = graph.value(sh_property, SH.maxCount)
         belongs_to_class = get_class(iri, db, [])
         value_type = (
-            get_class(sh_nodekind, graph, [])
-            if sh_nodekind is not None
-            else None
+            get_class(sh_nodekind, graph, []) if sh_nodekind is not None else None
         )
         value_class_type = (
-            get_class(sh_class, graph, [])
-            if sh_class is not None
-            else None
+            get_class(sh_class, graph, []) if sh_class is not None else None
         )
 
         return Property(
@@ -775,7 +788,9 @@ class Query:
                         sh_path = db.value(property_shape, SH.path)
                         # Get node shapes that have sh:targetObjectsOf
                         for nodeshape in db.subjects(SH.targetObjectsOf, sh_path):
-                            graphs = list(db.contexts((nodeshape, SH.targetObjectsOf, sh_path)))
+                            graphs = list(
+                                db.contexts((nodeshape, SH.targetObjectsOf, sh_path))
+                            )
                             _graph = graphs[0]
                             to_be_added = extra_sh_properties[_graph]
                             for item in _graph.objects(nodeshape, SH.property):
@@ -798,7 +813,9 @@ class Query:
                                 sh_path = ordered_list[0]
 
                         sh_class = _graph.value(sh_property, SH["class"])
-                        prop = self.get_property_by_sh_path(_graph, sh_path, sh_class, sh_property, iri, db)
+                        prop = self.get_property_by_sh_path(
+                            _graph, sh_path, sh_class, sh_property, iri, db
+                        )
                         if prop is not None:
                             properties[sh_path].append(prop)
 
@@ -815,21 +832,36 @@ class Query:
                             sh_path = ordered_list[0]
 
                     sh_class = graph.value(sh_property, SH["class"])
-                    prop = self.get_property_by_sh_path(graph, sh_path, sh_class, sh_property, iri, db)
+                    prop = self.get_property_by_sh_path(
+                        graph, sh_path, sh_class, sh_property, iri, db
+                    )
                     if prop is not None:
                         properties[sh_path].append(prop)
 
         # Sort each property based on most specific profile to most broad.
-        def _sort_properties_by_profile(profiles_order: list[URIRef], properties: list[Property]) -> list[Property]:
+        def _sort_properties_by_profile(
+            profiles_order: list[URIRef], properties: list[Property]
+        ) -> list[Property]:
             order_dict = {profile: i for i, profile in enumerate(profiles_order)}
             order_dict.update({None: math.inf})
             return sorted(
                 properties,
-                key=lambda p: order_dict[next((profile for profile in profiles_order if p.profile.iri == profile), None)]
+                key=lambda p: order_dict[
+                    next(
+                        (
+                            profile
+                            for profile in profiles_order
+                            if p.profile.iri == profile
+                        ),
+                        None,
+                    )
+                ],
             )
 
         for property_iri in properties:
-            properties[property_iri] = _sort_properties_by_profile(self.profiles_order, properties[property_iri])
+            properties[property_iri] = _sort_properties_by_profile(
+                self.profiles_order, properties[property_iri]
+            )
             properties[property_iri][-1].profile.type = ProfileType.BASE
 
         return properties
@@ -918,11 +950,18 @@ class Query:
 
         return sorted(properties, key=lambda x: x.name)
 
-    def get_coded_properties(self, properties: dict[str, list[Property]]) -> dict[str, list[Property]]:
+    def get_coded_properties(
+        self, properties: dict[str, list[Property]]
+    ) -> dict[str, list[Property]]:
         for property_iri in properties:
             properties_size = len(properties[property_iri])
             for prop in properties[property_iri]:
-                graphs = list(filter(lambda g: g.identifier != DATASET_DEFAULT_GRAPH_ID, self.db.contexts((prop.iri, RDF.type, QB.CodedProperty))))
+                graphs = list(
+                    filter(
+                        lambda g: g.identifier != DATASET_DEFAULT_GRAPH_ID,
+                        self.db.contexts((prop.iri, RDF.type, QB.CodedProperty)),
+                    )
+                )
                 if graphs:
                     # We just take the first one for now. Need to improve this in the future.
                     graph = self.db.get_graph(graphs[0].identifier)
@@ -936,7 +975,9 @@ class Query:
                             CodedProperty(
                                 label=get_name(prop.iri, graph),
                                 expected_value=get_value(prop.iri, RDFS.range, graph),
-                                codelist=[str(x) for x in graph.objects(prop.iri, QB.codeList)],
+                                codelist=[
+                                    str(x) for x in graph.objects(prop.iri, QB.codeList)
+                                ],
                             )
                         )
                     else:
@@ -981,18 +1022,23 @@ class Query:
         return dict(sorted(properties.items(), key=lambda t: get_name(t[0], self.db)))
 
     def get_superclasses(
-            self, iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
+        self, iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
     ) -> list[Class]:
         superclasses = filter(
             lambda x: x not in ignored_classes and isinstance(x, URIRef),
             list(graph.objects(iri, RDFS.subClassOf)),
         )
         return sorted(
-            [self.get_component_model_class(superclass, graph, ignored_classes) for superclass in superclasses],
+            [
+                self.get_component_model_class(superclass, graph, ignored_classes)
+                for superclass in superclasses
+            ],
             key=lambda x: x.name,
         )
 
-    def get_component_model_class(self, iri: URIRef, graph: Graph, ignored_classes: list[URIRef]):
+    def get_component_model_class(
+        self, iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
+    ):
         name = get_name(iri, graph)
         descriptions = get_descriptions(iri, graph)
         subclasses = get_subclasses(iri, graph, ignored_classes)
@@ -1001,12 +1047,18 @@ class Query:
         superclasses = self.get_superclasses(iri, graph, ignored_classes)
         properties = self.get_component_model_class_properties(iri, ignored_classes)
         from rdflib import URIRef
-        if iri == URIRef("https://linked.data.gov.au/def/csdm/surveyfeatures/SurveyMark"):
+
+        if iri == URIRef(
+            "https://linked.data.gov.au/def/csdm/surveyfeatures/SurveyMark"
+        ):
             ...
 
         def _merge_superclass_properties(superclasses: list[Class]):
             for superclass in superclasses:
-                for property_iri, superclass_properties in superclass.properties.items():
+                for (
+                    property_iri,
+                    superclass_properties,
+                ) in superclass.properties.items():
                     for superclass_property in superclass_properties:
                         if properties.get(property_iri):
                             if superclass_property not in properties[property_iri]:
@@ -1042,9 +1094,7 @@ class Query:
 
         result = []
         for c in filter(lambda x: x not in ignored_classes, classes):
-            result.append(
-                self.get_component_model_class(c, graph, ignored_classes)
-            )
+            result.append(self.get_component_model_class(c, graph, ignored_classes))
             self.class_index.add(c)
 
         return sorted(result, key=lambda x: x.name)

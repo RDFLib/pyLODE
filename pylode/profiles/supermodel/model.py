@@ -3,7 +3,7 @@ from datetime import date
 from dataclasses import dataclass, field
 from enum import Enum, auto
 
-from rdflib import URIRef, Literal
+from rdflib import URIRef
 
 
 DEFAULT_ORDER_VALUE = 999999
@@ -86,6 +86,7 @@ class Property:
 
     def __hash__(self):
         return hash(f"{self.iri} {self.belongs_to_class.iri} {self.profile.iri}")
+
 
 @dataclass
 class Note:

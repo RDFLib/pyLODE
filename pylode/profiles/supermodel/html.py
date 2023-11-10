@@ -27,11 +27,11 @@ from dominate.tags import (
     thead,
     th,
     span,
-    i,
 )
 from dominate.util import raw
 from rdflib import Graph, OWL, SDO, DCTERMS, VANN, SKOS
 
+from pylode.profiles.supermodel.component.properties_table import property_table_row
 from pylode.utils import (
     PylodeError,
     load_ontology,
@@ -41,7 +41,8 @@ from pylode.profiles.supermodel.model import (
     ComponentModel,
     Class,
     RDFProperty,
-    ProfileType, ProfileHierarchyItem,
+    ProfileType,
+    ProfileHierarchyItem,
 )
 from pylode.profiles.supermodel.component import (
     metadata_row,
@@ -221,11 +222,23 @@ class Supermodel:
         self.header.add(h1(title))
 
     def _make_content(self):
-        self.content = self.body.add(div(id="content"))
-        self._make_preamble()
-        self._make_examples()
-        self._make_profiles_hierarchy_root()
-        self._make_component_models()
+        with self.body:
+            with div(id="content") as content:
+                self.content = content
+                self._make_preamble()
+                self._make_examples()
+                self._make_profiles_hierarchy_root()
+                self._make_component_models()
+
+            # Additionally javascript added after main body content.
+            script(
+                raw(
+                    open(
+                        Path(__file__).parent.parent.parent
+                        / "static/property-table-row.js"
+                    ).read()
+                ),
+            )
 
     def _make_component_model_class(self, cls: Class):
         with div(_class="sect3"):
@@ -328,167 +341,53 @@ class Supermodel:
                                 )
                         with tbody():
                             for property_iri in cls.properties:
-                                with tr():
-                                    with td(_class="tableblock halign-left valign-top", style="background-color: #f7f8f7;"):
+                                with tr(_class="property-row-header"):
+                                    with td(
+                                        _class="tableblock halign-left valign-top",
+                                        style="background-color: #f7f8f7;",
+                                    ):
                                         with p(_class="tableblock"):
-                                            strong(f"{cls.properties[property_iri][0].name}")
+                                            strong(
+                                                f"{cls.properties[property_iri][0].name}"
+                                            )
                                         with p(_class="tableblock"):
-                                            strong(f"({cls.properties[property_iri][-1].name})")
-                                    td(_class="tableblock halign-left valign-top", style="background-color: #f7f8f7;", colspan="4")
-                                for property_ in cls.properties[property_iri]:
+                                            strong(
+                                                f"({cls.properties[property_iri][-1].name})"
+                                            )
+                                    td(
+                                        _class="tableblock halign-left valign-top",
+                                        style="background-color: #f7f8f7;",
+                                        colspan="4",
+                                    )
+                                for i, property_ in enumerate(
+                                    cls.properties[property_iri]
+                                ):
                                     if property_.profile.type == ProfileType.ROOT:
                                         row_style = "background-color: #d2ffd2;"
                                     elif property_.profile.type == ProfileType.BASE:
                                         row_style = "background-color: white;"
                                     else:
                                         row_style = "background-color: #efffef;"
-                                    with tr(style=row_style):
-                                        with td(
-                                            _class="tableblock halign-left valign-top",
-                                        ):
-                                            # TODO: have a property tracker
-                                            # If property is documented, link to it with fragment id,
-                                            # else, provide an external link to the IRI.
-                                            fragment = make_html_fragment(
-                                                CLASS_STRING.format(property_.iri)
-                                            )
-                                            with p():
-                                                a(property_.name, href=f"#{fragment}")
 
-                                        with td(
-                                            _class="tableblock halign-left valign-top"
-                                        ):
-                                            if property_.belongs_to_class is not None:
-                                                with p(_class="tableblock"):
-                                                    if property_.belongs_to_class.iri in self.query.class_index:
-                                                        a(
-                                                            property_.belongs_to_class.name,
-                                                            href=f"#{property_.belongs_to_class.iri}",
-                                                        )
-                                                    else:
-                                                        external_link(
-                                                            property_.belongs_to_class.name,
-                                                            property_.belongs_to_class.iri,
-                                                        )
-                                                    with tooltip(f"In profile {property_.profile.name}"):
-                                                        i( _class="fa fa-info", aria_hidden="true")
-                                        with td(
-                                            _class="tableblock halign-left valign-top"
-                                        ):
-                                            p(property_.description)
-                                        with td(
-                                            _class="tableblock halign-left valign-top"
-                                        ):
-                                            if (
-                                                property_.cardinality_min is None
-                                                and property_.cardinality_max is None
-                                            ):
-                                                p("[0..*]", _class="tableblock")
-                                            elif (
-                                                property_.cardinality_min is None
-                                                and isinstance(
-                                                    property_.cardinality_max, int
-                                                )
-                                            ):
-                                                p(
-                                                    f"[0..{property_.cardinality_max}]",
-                                                    _class="tableblock",
-                                                )
-                                            elif (
-                                                isinstance(
-                                                    property_.cardinality_min, int
-                                                )
-                                                and property_.cardinality_max is None
-                                            ):
-                                                p(
-                                                    f"[{property_.cardinality_min}..*]",
-                                                    _class="tableblock",
-                                                )
-                                            elif (
-                                                property_.cardinality_min
-                                                == property_.cardinality_max
-                                            ):
-                                                p(
-                                                    f"[{property_.cardinality_max}]",
-                                                    _class="tableblock",
-                                                )
-                                            else:
-                                                p(
-                                                    f"[{property_.cardinality_min}..{property_.cardinality_max}]",
-                                                    _class="tableblock",
-                                                )
-                                        # with td(
-                                        #     _class="tableblock halign-left valign-top"
-                                        # ):
-                                        #     if property_.value_type is not None:
-                                        #         if (
-                                        #             property_.value_type.iri
-                                        #             in self.query.class_index
-                                        #         ):
-                                        #             fragment = make_html_fragment(
-                                        #                 property_.value_type.iri
-                                        #             )
-                                        #             a(
-                                        #                 property_.value_type.name,
-                                        #                 href=f"#{fragment}",
-                                        #             )
-                                        #         else:
-                                        #             external_link(
-                                        #                 property_.value_type.name,
-                                        #                 property_.value_type.iri,
-                                        #             )
-
-                                        with td(
-                                            _class="tableblock halign-left valign-top"
-                                        ):
-
-                                            with p(
-                                                _class="tableblock",
-                                            ):
-                                                for (
-                                                    value_class_type
-                                                ) in property_.value_class_types:
-                                                    if (
-                                                        value_class_type.iri
-                                                        in self.query.class_index
-                                                    ):
-                                                        fragment = make_html_fragment(
-                                                            value_class_type.iri
-                                                        )
-                                                        a(
-                                                            value_class_type.name,
-                                                            href=f"#{fragment}",
-                                                        )
-                                                    else:
-                                                        external_link(
-                                                            value_class_type.name,
-                                                            value_class_type.iri,
-                                                        )
-
-                                                # Coded properties
-                                                for coded_property in property_.coded_properties:
-                                                    span("Values expected to be from the following vocabulary:")
-                                                    with ul():
-                                                        for codelist in coded_property.codelist:
-                                                            with li():
-                                                                external_link(codelist, codelist)
-                                                    span("with an expected class type of:")
-                                                    if (
-                                                        coded_property.expected_value
-                                                        in self.query.class_index
-                                                    ):
-                                                        fragment = make_html_fragment(
-                                                            coded_property.expected_value
-                                                        )
-                                                        a(
-                                                            coded_property.expected_value,
-                                                            href=f"#{fragment}",
-                                                        )
-                                                    else:
-                                                        external_link(
-                                                            coded_property.expected_value,
-                                                            coded_property.expected_value,
-                                                        )
+                                    if i == 0:
+                                        has_secondary = (
+                                            True
+                                            if len(cls.properties[property_iri]) > 1
+                                            else False
+                                        )
+                                        # is_first is true only if it's the first element, and it
+                                        # contains secondary property rows.
+                                        property_table_row(
+                                            row_style,
+                                            property_,
+                                            self.query.class_index,
+                                            is_first=True,
+                                            has_secondary=has_secondary,
+                                        )
+                                    else:
+                                        property_table_row(
+                                            row_style, property_, self.query.class_index
+                                        )
 
             if cls.examples:
                 h5("Examples")
@@ -634,7 +533,10 @@ class Supermodel:
 
     def _make_component_model(self, component_model: ComponentModel):
         with div(_class="sect1"):
-            h2(MODULE_STRING.format(component_model.name), identifier=component_model.iri)
+            h2(
+                MODULE_STRING.format(component_model.name),
+                identifier=component_model.iri,
+            )
             with div(_class="sect2"):
                 with div(_class="paragraph"):
                     with p("IRI:"):
@@ -681,14 +583,15 @@ class Supermodel:
         with self.content:
             with div(_class="sect1"):
                 h2("Profiles Hierarchy", True)
-                p("Each child is a super profile of the parent.", style="font-style: italic;")
+                p(
+                    "Each child is a super profile of the parent.",
+                    style="font-style: italic;",
+                )
                 with div(_class="class-hierarchy"):
                     with ul(_class="hierarchy-list"):
                         with li():
                             span(_class="hierarchy-node")
-                            fragment = make_html_fragment(
-                                profiles_hierarchy_root.iri
-                            )
+                            fragment = make_html_fragment(profiles_hierarchy_root.iri)
                             a(self.query.profiles_hierarchy.name, href=f"#{fragment}")
                             if profiles_hierarchy_root.is_profile_of:
                                 self._make_profiles_hierarchy(
@@ -721,9 +624,7 @@ class Supermodel:
                     if component_model.classes:
                         with li():
                             span(_class="hierarchy-node")
-                            fragment = make_html_fragment(
-                                component_model.iri
-                            )
+                            fragment = make_html_fragment(component_model.iri)
                             a(component_model.name, href=f"#{fragment}")
                             if component_model.top_level_classes:
                                 self._make_class_hierarchy(
@@ -987,7 +888,7 @@ class Supermodel:
             )
             script(
                 type="module",
-                src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.11.2/cdn/shoelace-autoloader.js"
+                src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.11.2/cdn/shoelace-autoloader.js",
             )
             link(
                 rel="icon",
