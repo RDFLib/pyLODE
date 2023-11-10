@@ -375,8 +375,6 @@ class Supermodel:
                                             if len(cls.properties[property_iri]) > 1
                                             else False
                                         )
-                                        # is_first is true only if it's the first element, and it
-                                        # contains secondary property rows.
                                         property_table_row(
                                             row_style,
                                             property_,
