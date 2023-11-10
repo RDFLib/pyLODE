@@ -588,10 +588,6 @@ class Supermodel:
         with self.content:
             with div(_class="sect1"):
                 h2("Profiles Hierarchy", True)
-                p(
-                    "Each child is a super profile of the parent.",
-                    style="font-style: italic;",
-                )
                 with div(id="profiles-hierarchy", _class="hierarchy"):
                     with ul(_class="hierarchy-list"):
                         with li():
