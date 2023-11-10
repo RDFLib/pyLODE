@@ -19,3 +19,7 @@
 .hidden {
   display: none;
 }
+
+.whitespace-nowrap {
+  white-space: nowrap;
+}

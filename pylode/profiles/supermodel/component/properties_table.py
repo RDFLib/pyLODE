@@ -31,7 +31,7 @@ def property_table_row(
 
         with td(_class="tableblock halign-left valign-top"):
             if property_.belongs_to_class is not None:
-                with p(_class="tableblock"):
+                with p(_class="tableblock whitespace-nowrap"):
                     if property_.belongs_to_class.iri in class_index:
                         a(
                             property_.belongs_to_class.name,
