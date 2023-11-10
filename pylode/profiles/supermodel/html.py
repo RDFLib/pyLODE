@@ -643,9 +643,7 @@ class Supermodel:
         )
         script(
             raw(
-                open(
-                    Path(__file__).parent.parent.parent / "static/hierarchy.js"
-                ).read()
+                open(Path(__file__).parent.parent.parent / "static/hierarchy.js").read()
             ),
         )
 
