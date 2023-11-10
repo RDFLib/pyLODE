@@ -735,6 +735,7 @@ class Query:
         sh_description = (
             graph.value(sh_property, SH.description)
             or get_descriptions(sh_path, graph)
+            or get_descriptions(sh_path, db)
             or ""
         )
         sh_name = graph.value(sh_property, SH.name) or get_name(sh_path, graph)
@@ -797,9 +798,9 @@ class Query:
                                 if item not in to_be_added:
                                     to_be_added.append(item)
                             extra_sh_properties[_graph] = to_be_added
-                            # extra_sh_properties[_graph] += set(_graph.objects(nodeshape, SH.property))
 
                 for _graph, _sh_properties in extra_sh_properties.items():
+                    # TODO: Refactor duplicate code fragment
                     for sh_property in _sh_properties:
                         sh_path = _graph.value(sh_property, SH.path)
                         if sh_path is None:
