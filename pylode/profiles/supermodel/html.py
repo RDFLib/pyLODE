@@ -592,7 +592,7 @@ class Supermodel:
                     "Each child is a super profile of the parent.",
                     style="font-style: italic;",
                 )
-                with div(_class="class-hierarchy"):
+                with div(id="profiles-hierarchy", _class="hierarchy"):
                     with ul(_class="hierarchy-list"):
                         with li():
                             span(_class="hierarchy-node")
@@ -623,7 +623,7 @@ class Supermodel:
         component_models = self.query.component_models
 
         h2("Modules and Class Hierarchy", True)
-        with div(_class="class-hierarchy"):
+        with div(_class="hierarchy"):
             with ul(_class="hierarchy-list"):
                 for component_model in component_models:
                     if component_model.classes:
@@ -640,7 +640,7 @@ class Supermodel:
             raw(
                 "\n"
                 + open(
-                    Path(__file__).parent.parent.parent / "static/class-hierarchy.css"
+                    Path(__file__).parent.parent.parent / "static/hierarchy.css"
                 ).read()
                 + "\n\t"
             )
@@ -648,7 +648,7 @@ class Supermodel:
         script(
             raw(
                 open(
-                    Path(__file__).parent.parent.parent / "static/class-hierarchy.js"
+                    Path(__file__).parent.parent.parent / "static/hierarchy.js"
                 ).read()
             ),
         )
