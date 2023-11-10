@@ -341,19 +341,31 @@ class Supermodel:
                                 )
                         with tbody():
                             for property_iri in cls.properties:
+                                # Whether there's more than 1 row describing this property.
+                                has_secondary = (
+                                    True
+                                    if len(cls.properties[property_iri]) > 1
+                                    else False
+                                )
+
                                 with tr(_class="property-row-header"):
                                     with td(
                                         _class="tableblock halign-left valign-top",
                                         style="background-color: #f7f8f7;",
                                     ):
+                                        cls_property_name = cls.properties[
+                                            property_iri
+                                        ][0].name
                                         with p(_class="tableblock"):
-                                            strong(
-                                                f"{cls.properties[property_iri][0].name}"
-                                            )
-                                        with p(_class="tableblock"):
-                                            strong(
-                                                f"({cls.properties[property_iri][-1].name})"
-                                            )
+                                            strong(cls_property_name)
+
+                                        if has_secondary:
+                                            base_property_name = cls.properties[
+                                                property_iri
+                                            ][-1].name
+                                            if cls_property_name != base_property_name:
+                                                with p(_class="tableblock"):
+                                                    strong(f"({base_property_name})")
                                     td(
                                         _class="tableblock halign-left valign-top",
                                         style="background-color: #f7f8f7;",
@@ -370,11 +382,6 @@ class Supermodel:
                                         row_style = "background-color: #efffef;"
 
                                     if i == 0:
-                                        has_secondary = (
-                                            True
-                                            if len(cls.properties[property_iri]) > 1
-                                            else False
-                                        )
                                         property_table_row(
                                             row_style,
                                             property_,
