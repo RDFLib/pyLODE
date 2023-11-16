@@ -65,10 +65,17 @@ class ProfileHierarchyItem:
 
 
 @dataclass
+class Resource:
+    iri: URIRef
+    label: str
+    description: str | None = None
+
+
+@dataclass
 class CodedProperty:
     label: str
-    expected_value: str
-    codelist: list[str] = field(default_factory=list)
+    expected_value: Resource
+    codelist: list[Resource] = field(default_factory=list)
 
 
 @dataclass

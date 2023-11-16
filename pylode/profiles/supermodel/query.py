@@ -40,6 +40,7 @@ from pylode.profiles.supermodel.model import (
     ProfileType,
     ProfileHierarchyItem,
     CodedProperty,
+    Resource,
 )
 from pylode.rdf_elements import AGENT_PROPS, ONT_PROPS, ONTDOC
 from pylode.utils import (
@@ -955,7 +956,6 @@ class Query:
         self, properties: dict[str, list[Property]]
     ) -> dict[str, list[Property]]:
         for property_iri in properties:
-            properties_size = len(properties[property_iri])
             for prop in properties[property_iri]:
                 graphs = list(
                     filter(
@@ -965,6 +965,7 @@ class Query:
                 )
                 if graphs:
                     # We just take the first one for now. Need to improve this in the future.
+                    # At the moment, we assume this coded property is only defined in one named graph.
                     graph = self.db.get_graph(graphs[0].identifier)
 
                     # We either add to the existing property if it's in another profile (different graph)
@@ -972,12 +973,13 @@ class Query:
                     # and update the profile to the graph where we found the coded property.
                     # We only need to add the coded property details to one property that we find.
                     if graph != prop.profile.iri:
+                        expected_value_iri = get_value(prop.iri, RDFS.range, graph)
                         prop.coded_properties.append(
                             CodedProperty(
                                 label=get_name(prop.iri, graph),
-                                expected_value=get_value(prop.iri, RDFS.range, graph),
+                                expected_value=Resource(expected_value_iri, get_name(expected_value_iri, graph)),
                                 codelist=[
-                                    str(x) for x in graph.objects(prop.iri, QB.codeList)
+                                    Resource(x, get_name(x, graph), get_descriptions(x, graph)) for x in graph.objects(prop.iri, QB.codeList)
                                 ],
                             )
                         )

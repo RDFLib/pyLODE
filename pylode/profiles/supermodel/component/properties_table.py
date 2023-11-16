@@ -1,12 +1,13 @@
 from dominate.tags import tr, td, p, a, i, span, ul, li, button
 
+from pylode.profiles.supermodel.model import Property
 from pylode.profiles.supermodel.component import external_link, tooltip
 from pylode.profiles.supermodel.fragment import make_html_fragment
 
 
 def property_table_row(
     row_style: str,
-    property_,
+    property_: Property,
     class_index,
     is_first: bool = False,
     has_secondary: bool = False,
@@ -119,18 +120,18 @@ def property_table_row(
                     with ul():
                         for codelist in coded_property.codelist:
                             with li():
-                                external_link(codelist, codelist)
+                                external_link(codelist.label, codelist.iri)
                     span("with an expected class type of:")
-                    if coded_property.expected_value in class_index:
-                        fragment = make_html_fragment(coded_property.expected_value)
+                    if coded_property.expected_value.iri in class_index:
+                        fragment = make_html_fragment(coded_property.expected_value.iri)
                         a(
-                            coded_property.expected_value,
+                            coded_property.expected_value.label,
                             href=f"#{fragment}",
                         )
                     else:
                         external_link(
-                            coded_property.expected_value,
-                            coded_property.expected_value,
+                            coded_property.expected_value.label,
+                            coded_property.expected_value.iri,
                         )
 
     return component
