@@ -800,6 +800,7 @@ class Query:
                                     to_be_added.append(item)
                             extra_sh_properties[_graph] = to_be_added
 
+                # Process the properties found via sh:targetObjectsOf.
                 for _graph, _sh_properties in extra_sh_properties.items():
                     # TODO: Refactor duplicate code fragment
                     for sh_property in _sh_properties:
@@ -821,6 +822,7 @@ class Query:
                         if prop is not None:
                             properties[sh_path].append(prop)
 
+                # Process the normal properties found directly on node shapes that target this object.
                 for sh_property in sh_properties:
                     sh_path = graph.value(sh_property, SH.path)
                     if sh_path is None:
