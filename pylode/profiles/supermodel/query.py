@@ -56,6 +56,7 @@ logger = logging.getLogger(__name__)
 def get_value(
     iri: URIRef, predicate: URIRef, graph: Graph
 ) -> str | int | float | bool | None:
+    """Get the value as a Python data type."""
     value = graph.value(iri, predicate)
     if value is None:
         return None
@@ -975,7 +976,7 @@ class Query:
                     # and update the profile to the graph where we found the coded property.
                     # We only need to add the coded property details to one property that we find.
                     if graph != prop.profile.iri:
-                        expected_value_iri = get_value(prop.iri, RDFS.range, graph)
+                        expected_value_iri = graph.value(prop.iri, RDFS.range)
                         prop.coded_properties.append(
                             CodedProperty(
                                 label=get_name(prop.iri, graph),
@@ -1051,12 +1052,6 @@ class Query:
         #       Reuse self.class_index or something similar for memoize data structure.
         superclasses = self.get_superclasses(iri, graph, ignored_classes)
         properties = self.get_component_model_class_properties(iri, ignored_classes)
-        from rdflib import URIRef
-
-        if iri == URIRef(
-            "https://linked.data.gov.au/def/csdm/surveyfeatures/SurveyMark"
-        ):
-            ...
 
         def _merge_superclass_properties(superclasses: list[Class]):
             for superclass in superclasses:
