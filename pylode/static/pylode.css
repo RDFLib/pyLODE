@@ -23,3 +23,12 @@
 .whitespace-nowrap {
   white-space: nowrap;
 }
+
+.italic {
+  font-style: italic;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}

@@ -16,6 +16,10 @@ const propertyButtons = document.getElementsByClassName(
 const BTN_CIRCLE_RIGHT = "fa-arrow-circle-right";
 const BTN_CIRCLE_DOWN = "fa-arrow-circle-down";
 
+function getProfileSourceElementsForRow(row) {
+    return row.querySelectorAll(".property-row-profile-source");
+}
+
 for (const btn of propertyButtons) {
     btn.addEventListener("click", () => {
         // Toggle button icon
@@ -29,20 +33,22 @@ for (const btn of propertyButtons) {
         }
 
         const parentRow = btn.parentElement.parentElement;
-        const secondaryRows = [];
+        const elements = [];
 
         // Find secondary rows for current property
         let row = parentRow;
+        elements.push(...getProfileSourceElementsForRow(row));
         while (row.nextElementSibling) {
             row = row.nextElementSibling;
 
             if (row.classList.contains("property-row-secondary")) {
-                secondaryRows.push(row);
+                elements.push(row);
+                elements.push(...getProfileSourceElementsForRow(row));
             } else {
                 break;
             }
         }
 
-        toggleHiddenElements(secondaryRows);
+        toggleHiddenElements(elements);
     });
 }

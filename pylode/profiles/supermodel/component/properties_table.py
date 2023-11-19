@@ -43,13 +43,19 @@ def property_table_row(
                             property_.belongs_to_class.name,
                             property_.belongs_to_class.iri,
                         )
-                    with tooltip(f"In profile {property_.profile.name}"):
+                    with tooltip(f"In profile {property_.profile.name}", _class="property-row-profile-source"):
                         i(_class="fa fa-info", aria_hidden="true")
+
+                    with p(f"In profile ", _class="property-row-profile-source italic text-sm hidden"):
+                        # TODO: Show as an external link if the profile is not a pylode:Module within the document.
+                        fragment = make_html_fragment(property_.profile.iri)
+                        a(property_.profile.name, href=f"#{fragment}")
         with td(_class="tableblock halign-left valign-top"):
             p(property_.description)
         with td(_class="tableblock halign-left valign-top"):
             if property_.cardinality_min is None and property_.cardinality_max is None:
-                p("[0..*]", _class="tableblock")
+                # Show nothing if no cardinality specified.
+                p("", _class="tableblock")
             elif property_.cardinality_min is None and isinstance(
                 property_.cardinality_max, int
             ):
