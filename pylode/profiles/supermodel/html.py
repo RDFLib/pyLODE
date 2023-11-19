@@ -53,7 +53,6 @@ from pylode.profiles.supermodel.component import (
     h6,
     external_link,
     example,
-    tooltip,
 )
 from pylode.profiles.supermodel.fragment import make_html_fragment
 
