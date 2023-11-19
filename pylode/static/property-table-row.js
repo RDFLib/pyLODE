@@ -1,13 +1,13 @@
-function toggleHiddenElements(elementsList) {
+function toggleElementsClass(elementsList, cls) {
     for (const el of elementsList) {
-        el.classList.toggle("hidden");
+        el.classList.toggle(cls);
     }
 }
 
 const allSecondaryRows = document.getElementsByClassName(
     "property-row-secondary"
 );
-toggleHiddenElements(allSecondaryRows);
+toggleElementsClass(allSecondaryRows, "hidden");
 
 const propertyButtons = document.getElementsByClassName(
     "property-row-button"
@@ -37,18 +37,25 @@ for (const btn of propertyButtons) {
 
         // Find secondary rows for current property
         let row = parentRow;
+        const rowPropertyHeader = row.previousElementSibling;
+        const currentPropertyRows = [];
+        currentPropertyRows.push(rowPropertyHeader);
+        currentPropertyRows.push(row);
         elements.push(...getProfileSourceElementsForRow(row));
         while (row.nextElementSibling) {
             row = row.nextElementSibling;
 
             if (row.classList.contains("property-row-secondary")) {
                 elements.push(row);
+                currentPropertyRows.push(row);
                 elements.push(...getProfileSourceElementsForRow(row));
             } else {
                 break;
             }
         }
 
-        toggleHiddenElements(elements);
+        toggleElementsClass(currentPropertyRows, "border-l-4");
+        toggleElementsClass(currentPropertyRows, "border-l-orange-700");
+        toggleElementsClass(elements, "hidden");
     });
 }

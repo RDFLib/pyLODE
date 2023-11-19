@@ -326,10 +326,10 @@ class Supermodel:
                                     "Description",
                                     _class="tableblock halign-left valign-top",
                                 )
-                                th(
-                                    "Cardinality",
-                                    _class="tableblock halign-left valign-top",
-                                )
+                                # th(
+                                #     "Cardinality",
+                                #     _class="tableblock halign-left valign-top",
+                                # )
                                 # th(
                                 #     "Value type",
                                 #     _class="tableblock halign-left valign-top",
@@ -355,16 +355,19 @@ class Supermodel:
                                         cls_property_name = cls.properties[
                                             property_iri
                                         ][0].name
-                                        with p(_class="tableblock"):
-                                            strong(cls_property_name)
+                                        # TODO: have a property tracker
+                                        # If property is documented, link to it with fragment id,
+                                        # else, provide an external link to the IRI.
+                                        fragment = make_html_fragment(property_iri)
+                                        with p(_class="tableblock font-bold"):
+                                            a(cls_property_name, href=f"#{fragment}")
 
                                         if has_secondary:
                                             base_property_name = cls.properties[
                                                 property_iri
                                             ][-1].name
                                             if cls_property_name != base_property_name:
-                                                with p(_class="tableblock"):
-                                                    strong(f"({base_property_name})")
+                                                p(f"({base_property_name})", _class="tableblock text-sm italic")
                                     td(
                                         _class="tableblock halign-left valign-top",
                                         style="background-color: #f7f8f7;",

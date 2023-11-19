@@ -19,12 +19,7 @@ def property_table_row(
         with td(
             _class="tableblock halign-left valign-top",
         ):
-            # TODO: have a property tracker
-            # If property is documented, link to it with fragment id,
-            # else, provide an external link to the IRI.
-            fragment = make_html_fragment(property_.iri)
-            with p():
-                a(property_.name, href=f"#{fragment}")
+            p(property_.name)
 
             if is_first and has_secondary:
                 with button(_class="property-row-button"):
@@ -52,35 +47,25 @@ def property_table_row(
                         a(property_.profile.name, href=f"#{fragment}")
         with td(_class="tableblock halign-left valign-top"):
             p(property_.description)
-        with td(_class="tableblock halign-left valign-top"):
-            if property_.cardinality_min is None and property_.cardinality_max is None:
-                # Show nothing if no cardinality specified.
-                p("", _class="tableblock")
-            elif property_.cardinality_min is None and isinstance(
+
+        cardinality = ""
+        if property_.cardinality_min is None and property_.cardinality_max is None:
+            # Show nothing if no cardinality specified.
+            ...
+        elif property_.cardinality_min is None and isinstance(
                 property_.cardinality_max, int
-            ):
-                p(
-                    f"[0..{property_.cardinality_max}]",
-                    _class="tableblock",
-                )
-            elif (
+        ):
+            cardinality = f"[0..{property_.cardinality_max}]"
+        elif (
                 isinstance(property_.cardinality_min, int)
                 and property_.cardinality_max is None
-            ):
-                p(
-                    f"[{property_.cardinality_min}..*]",
-                    _class="tableblock",
-                )
-            elif property_.cardinality_min == property_.cardinality_max:
-                p(
-                    f"[{property_.cardinality_max}]",
-                    _class="tableblock",
-                )
-            else:
-                p(
-                    f"[{property_.cardinality_min}..{property_.cardinality_max}]",
-                    _class="tableblock",
-                )
+        ):
+            cardinality = f"[{property_.cardinality_min}..*]"
+        elif property_.cardinality_min == property_.cardinality_max:
+            cardinality = f"[{property_.cardinality_max}]"
+        else:
+            cardinality = f"[{property_.cardinality_min}..{property_.cardinality_max}]"
+
         # with td(
         #     _class="tableblock halign-left valign-top"
         # ):
@@ -139,5 +124,8 @@ def property_table_row(
                             coded_property.expected_value.label,
                             coded_property.expected_value.iri,
                         )
+
+            if cardinality:
+                p(f"Cardinality: {cardinality}", _class="text-sm")
 
     return component
