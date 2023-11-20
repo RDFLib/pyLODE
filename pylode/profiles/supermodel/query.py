@@ -711,6 +711,7 @@ class Query:
         self,
         graph: Graph,
         sh_path: URIRef,
+        sh_path_name: str,
         sh_class: URIRef,
         sh_property: URIRef,
         iri: URIRef,
@@ -740,7 +741,6 @@ class Query:
             or get_descriptions(sh_path, db)
             or ""
         )
-        sh_name = graph.value(sh_property, SH.name) or get_name(sh_path, graph)
         sh_nodekind = graph.value(sh_property, SH.nodeKind)
         sh_min = graph.value(sh_property, SH.minCount)
         sh_max = graph.value(sh_property, SH.maxCount)
@@ -754,7 +754,7 @@ class Query:
 
         return Property(
             iri=sh_path,
-            name=sh_name,
+            name=sh_path_name,
             description=sh_description,
             profile=profile,
             belongs_to_class=belongs_to_class,
@@ -782,6 +782,7 @@ class Query:
                     sh_properties += list(graph.objects(nodeshape, SH.property))
                 sh_properties += list(graph.objects(iri, SH.property))
 
+                # Handle sh:targetObjectsOf
                 extra_sh_properties = defaultdict(list)
                 for sh_property in sh_properties.copy():
                     sh_class = graph.value(sh_property, SH["class"])
@@ -796,15 +797,15 @@ class Query:
                             )
                             _graph = graphs[0]
                             to_be_added = extra_sh_properties[_graph]
-                            for item in _graph.objects(nodeshape, SH.property):
-                                if item not in to_be_added:
-                                    to_be_added.append(item)
+                            for property_shape in _graph.objects(nodeshape, SH.property):
+                                if property_shape not in to_be_added:
+                                    to_be_added.append((property_shape, sh_path))
                             extra_sh_properties[_graph] = to_be_added
 
                 # Process the properties found via sh:targetObjectsOf.
                 for _graph, _sh_properties in extra_sh_properties.items():
                     # TODO: Refactor duplicate code fragment
-                    for sh_property in _sh_properties:
+                    for sh_property, initial_sh_path in _sh_properties:
                         sh_path = _graph.value(sh_property, SH.path)
                         if sh_path is None:
                             continue
@@ -817,8 +818,10 @@ class Query:
                                 sh_path = ordered_list[0]
 
                         sh_class = _graph.value(sh_property, SH["class"])
+                        initial_sh_path_name = get_name(initial_sh_path, db)
+                        sh_path_name = f"{initial_sh_path_name} / {_graph.value(sh_property, SH.name) or get_name(sh_path, _graph)}"
                         prop = self.get_property_by_sh_path(
-                            _graph, sh_path, sh_class, sh_property, iri, db
+                            _graph, sh_path, sh_path_name, sh_class, sh_property, iri, db
                         )
                         if prop is not None:
                             properties[sh_path].append(prop)
@@ -837,8 +840,9 @@ class Query:
                             sh_path = ordered_list[0]
 
                     sh_class = graph.value(sh_property, SH["class"])
+                    sh_path_name = graph.value(sh_property, SH.name) or get_name(sh_path, graph)
                     prop = self.get_property_by_sh_path(
-                        graph, sh_path, sh_class, sh_property, iri, db
+                        graph, sh_path, sh_path_name, sh_class, sh_property, iri, db
                     )
                     if prop is not None:
                         properties[sh_path].append(prop)
