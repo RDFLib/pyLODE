@@ -174,7 +174,18 @@ def get_values(
 
 
 def get_name(iri: URIRef, graph: Graph) -> str:
-    names = get_values(iri, graph, [RDFS.label, SKOS.prefLabel, SDO.name])
+    """Get name for resource.
+
+    If no name found for graph (profile context), look in
+    dataset (union of all graphs). If still no name found,
+    fall back to using a curie.
+    """
+    name_predicates = [RDFS.label, SKOS.prefLabel, SDO.name]
+
+    names = get_values(iri, graph, name_predicates)
+
+    # if not names:
+    #     names = get_values(iri, db, name_predicates)
 
     if not names:
         try:
@@ -717,21 +728,12 @@ class Query:
         iri: URIRef,
         db: Graph,
     ):
-        if self.root_profile_iri == graph.identifier:
-            profile = Profile(
-                graph.identifier,
-                get_name(graph.identifier, db),
-                ProfileType.ROOT,
-            )
-        elif isinstance(graph, Dataset):
+        if isinstance(graph, Dataset):
             contexts = list(graph.contexts((sh_property, SH.path, sh_path)))
             profile_id = contexts[0].identifier
             profile = Profile(
                 profile_id,
                 get_name(profile_id, db),
-                ProfileType.ROOT
-                if self.root_profile_iri == profile_id
-                else ProfileType.INTERMEDIARY,
             )
         else:
             profile = Profile(graph.identifier, get_name(graph.identifier, db))
@@ -766,6 +768,14 @@ class Query:
             else [],
         )
 
+    def create_property_from_property_shape(self, graph: Graph, sh_path, sh_property, iri, db: Dataset):
+        sh_class = graph.value(sh_property, SH["class"])
+        sh_path_name = graph.value(sh_property, SH.name) or get_name(sh_path, graph)
+        prop = self.get_property_by_sh_path(
+            graph, sh_path, sh_path_name, sh_class, sh_property, iri, db
+        )
+        return prop
+
     def get_class_properties_from_sh_nodeshape_sh_property(
         self, iri: URIRef, ignored_classes: list[URIRef]
     ) -> dict[str, list[Property]]:
@@ -798,7 +808,7 @@ class Query:
                             _graph = graphs[0]
                             to_be_added = extra_sh_properties[_graph]
                             for property_shape in _graph.objects(nodeshape, SH.property):
-                                if property_shape not in to_be_added:
+                                if property_shape not in [x[0] for x in to_be_added]:
                                     to_be_added.append((property_shape, sh_path))
                             extra_sh_properties[_graph] = to_be_added
 
@@ -818,7 +828,7 @@ class Query:
                                 sh_path = ordered_list[0]
 
                         sh_class = _graph.value(sh_property, SH["class"])
-                        initial_sh_path_name = get_name(initial_sh_path, db)
+                        initial_sh_path_name = get_name(initial_sh_path, _graph)
                         sh_path_name = f"{initial_sh_path_name} / {_graph.value(sh_property, SH.name) or get_name(sh_path, _graph)}"
                         prop = self.get_property_by_sh_path(
                             _graph, sh_path, sh_path_name, sh_class, sh_property, iri, db
@@ -839,13 +849,31 @@ class Query:
                             # Assign the first value of the SHACL sequence path as the sh:path value.
                             sh_path = ordered_list[0]
 
-                    sh_class = graph.value(sh_property, SH["class"])
-                    sh_path_name = graph.value(sh_property, SH.name) or get_name(sh_path, graph)
-                    prop = self.get_property_by_sh_path(
-                        graph, sh_path, sh_path_name, sh_class, sh_property, iri, db
-                    )
+                    prop = self.create_property_from_property_shape(graph, sh_path, sh_property, iri, db)
                     if prop is not None:
                         properties[sh_path].append(prop)
+
+                        # Find sh:targetSubjectsOf
+                        nodeshapes = db.subjects(SH.targetSubjectsOf, prop.iri)
+                        for nodeshape in nodeshapes:
+                            for s, p, o, g in db.quads((nodeshape, SH.targetSubjectsOf, prop.iri, None)):
+                                # Get the graph context
+                                _graph = db.graph(g)
+                                for sh_property in _graph.objects(nodeshape, SH.property):
+                                    sh_path = graph.value(sh_property, SH.path)
+                                    if sh_path is None:
+                                        continue
+
+                                    if isinstance(sh_path, BNode):
+                                        # This may be an RDF ordered list.
+                                        ordered_list = Collection(graph, sh_path)
+                                        if ordered_list:
+                                            # Assign the first value of the SHACL sequence path as the sh:path value.
+                                            sh_path = ordered_list[0]
+
+                                    prop = self.create_property_from_property_shape(graph, sh_path, sh_property, iri, db)
+                                    if prop is not None:
+                                        properties[sh_path].append(prop)
 
         # Sort each property based on most specific profile to most broad.
         def _sort_properties_by_profile(
@@ -867,11 +895,20 @@ class Query:
                 ],
             )
 
+        is_defined_by = get_is_defined_by(iri, db)
+
         for property_iri in properties:
             properties[property_iri] = _sort_properties_by_profile(
                 self.profiles_order, properties[property_iri]
             )
-            properties[property_iri][-1].profile.type = ProfileType.BASE
+            # Set any intermediary properties to be of type intermediary if it is of type base.
+            for p in properties[property_iri]:
+                if p.profile.iri == self.root_profile_iri:
+                    p.profile.type = ProfileType.ROOT
+                elif is_defined_by is not None and p.profile.iri == is_defined_by.iri:
+                    p.profile.type = ProfileType.BASE
+                else:
+                    p.profile.type = ProfileType.INTERMEDIARY
 
         return properties
 
@@ -885,9 +922,6 @@ class Query:
 
         if SH.NodeShape in classes:
             sh_properties = list(graph.objects(iri, SH.property))
-
-            for graph_identifier in graph.contexts((iri, RDF.type, SH.NodeShape)):
-                print(iri, graph_identifier)
 
             for sh_property in sh_properties:
                 sh_path = graph.value(sh_property, SH.path)
