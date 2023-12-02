@@ -32,7 +32,6 @@ from pylode.profiles.supermodel.model import (
     ImageObject,
     Property,
     Note,
-    Ontology,
     RDFProperty,
     MediaObject,
     TextObject,
@@ -42,6 +41,15 @@ from pylode.profiles.supermodel.model import (
     CodedProperty,
     Resource,
 )
+from pylode.profiles.supermodel.query.common import (
+    get_class,
+    get_descriptions,
+    get_name,
+    get_values,
+    get_subclasses,
+    get_is_defined_by,
+)
+from pylode.profiles.supermodel.query.property_shape import get_class_properties_by_sh
 from pylode.rdf_elements import AGENT_PROPS, ONT_PROPS, ONTDOC
 from pylode.utils import (
     back_onts_label_props,
@@ -155,86 +163,6 @@ def get_images(iri: URIRef, graph: Graph) -> list[ImageObject]:
         )
 
     return sorted(set(images), key=lambda x: x.order)
-
-
-def get_values(
-    iri: URIRef, graph: Graph, properties: list[URIRef]
-) -> list[URIRef | Literal]:
-    result = list(
-        chain.from_iterable([graph.objects(iri, prop) for prop in properties])
-    )
-
-    for value in result:
-        if not isinstance(value, (URIRef, Literal)):
-            raise ValueError(
-                f"Expected only IRIs or literals but found type {type(value)} with value {value} for IRI {iri}"
-            )
-
-    return result
-
-
-def get_name(iri: URIRef, graph: Graph) -> str:
-    """Get name for resource.
-
-    If no name found for graph (profile context), look in
-    dataset (union of all graphs). If still no name found,
-    fall back to using a curie.
-    """
-    name_predicates = [RDFS.label, SKOS.prefLabel, SDO.name]
-
-    names = get_values(iri, graph, name_predicates)
-
-    # if not names:
-    #     names = get_values(iri, db, name_predicates)
-
-    if not names:
-        try:
-            names.append(graph.qname(iri))
-        except ValueError as err:
-            logger.warning(
-                f"Failed to create a qname for IRI {iri}. Reason: {err}. Adding full IRI as name instead."
-            )
-
-    return str(names[0]) if len(names) > 0 else str(iri)
-
-
-def get_descriptions(iri: URIRef, graph: Graph) -> str:
-    descriptions = get_values(
-        iri, graph, [SKOS.definition, DCTERMS.description, SDO.description]
-    )
-    return (
-        " ".join(sorted(str(i) for i in descriptions))
-        if len(descriptions) > 0
-        else None
-    )
-
-
-def get_class(iri: URIRef, graph: Graph, ignored_classes: list[URIRef]) -> Class:
-    name = get_name(iri, graph)
-    subclasses = get_subclasses(iri, graph, ignored_classes)
-    return Class(iri, name, subclasses=subclasses)
-
-
-def get_subclasses(
-    iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
-) -> list[Class]:
-    subclasses = filter(
-        lambda x: x not in ignored_classes and isinstance(x, URIRef),
-        list(graph.subjects(RDFS.subClassOf, iri)),
-    )
-    return sorted(
-        [get_class(subclass, graph, ignored_classes) for subclass in subclasses],
-        key=lambda x: x.name,
-    )
-
-
-def get_is_defined_by(iri: URIRef, graph: Graph) -> Ontology | None:
-    is_defined_by = get_values(iri, graph, [RDFS.isDefinedBy])
-    ontology = is_defined_by[0] if len(is_defined_by) > 0 else None
-    if ontology is not None:
-        name = get_name(ontology, graph)
-        return Ontology(iri=ontology, name=name)
-    return None
 
 
 def get_notes(iri: URIRef, graph: Graph) -> list[Note]:
@@ -768,7 +696,9 @@ class Query:
             else [],
         )
 
-    def create_property_from_property_shape(self, graph: Graph, sh_path, sh_property, iri, db: Dataset):
+    def create_property_from_property_shape(
+        self, graph: Graph, sh_path, sh_property, iri, db: Dataset
+    ):
         sh_class = graph.value(sh_property, SH["class"])
         sh_path_name = graph.value(sh_property, SH.name) or get_name(sh_path, graph)
         prop = self.get_property_by_sh_path(
@@ -777,7 +707,7 @@ class Query:
         return prop
 
     def get_class_properties_from_sh_nodeshape_sh_property(
-        self, iri: URIRef, ignored_classes: list[URIRef]
+        self, iri: URIRef
     ) -> dict[str, list[Property]]:
         properties: dict[str, list[Property]] = defaultdict(list)
         db = self.db
@@ -795,27 +725,41 @@ class Query:
                 # Handle sh:targetObjectsOf
                 extra_sh_properties = defaultdict(list)
                 for sh_property in sh_properties.copy():
+                    # TODO: This is incorrect. Instead of looking for the class, we need to check
+                    #   whether the current class has a property shape that targets a property that is a value in some node shape that has sh:targetObjectsOf.
                     sh_class = graph.value(sh_property, SH["class"])
-                    property_shapes = list(db.subjects(SH["class"], sh_class))
-                    for property_shape in property_shapes:
-                        # TODO: handle sequence paths
-                        sh_path = db.value(property_shape, SH.path)
-                        # Get node shapes that have sh:targetObjectsOf
-                        for nodeshape in db.subjects(SH.targetObjectsOf, sh_path):
-                            graphs = list(
-                                db.contexts((nodeshape, SH.targetObjectsOf, sh_path))
-                            )
-                            _graph = graphs[0]
-                            to_be_added = extra_sh_properties[_graph]
-                            for property_shape in _graph.objects(nodeshape, SH.property):
-                                if property_shape not in [x[0] for x in to_be_added]:
-                                    to_be_added.append((property_shape, sh_path))
-                            extra_sh_properties[_graph] = to_be_added
+                    if sh_class is not None:
+                        property_shapes = list(db.subjects(SH["class"], sh_class))
+                        for property_shape in property_shapes:
+                            # TODO: handle sequence paths
+                            sh_path = db.value(property_shape, SH.path)
+                            if sh_path is not None:
+                                # Get node shapes that have sh:targetObjectsOf
+                                for nodeshape in db.subjects(
+                                    SH.targetObjectsOf, sh_path
+                                ):
+                                    graphs = list(
+                                        db.contexts(
+                                            (nodeshape, SH.targetObjectsOf, sh_path)
+                                        )
+                                    )
+                                    _graph = graphs[0]
+                                    to_be_added = extra_sh_properties[_graph]
+                                    for property_shape in _graph.objects(
+                                        nodeshape, SH.property
+                                    ):
+                                        if property_shape not in [
+                                            x[0] for x in to_be_added
+                                        ]:
+                                            to_be_added.append(
+                                                (property_shape, sh_path)
+                                            )
+                                    extra_sh_properties[_graph] = to_be_added
 
                 # Process the properties found via sh:targetObjectsOf.
                 for _graph, _sh_properties in extra_sh_properties.items():
                     # TODO: Refactor duplicate code fragment
-                    for sh_property, initial_sh_path in _sh_properties:
+                    for sh_property, nodeshape_targetobjectsof_value in _sh_properties:
                         sh_path = _graph.value(sh_property, SH.path)
                         if sh_path is None:
                             continue
@@ -828,10 +772,18 @@ class Query:
                                 sh_path = ordered_list[0]
 
                         sh_class = _graph.value(sh_property, SH["class"])
-                        initial_sh_path_name = get_name(initial_sh_path, _graph)
+                        initial_sh_path_name = get_name(
+                            nodeshape_targetobjectsof_value, _graph
+                        )
                         sh_path_name = f"{initial_sh_path_name} / {_graph.value(sh_property, SH.name) or get_name(sh_path, _graph)}"
                         prop = self.get_property_by_sh_path(
-                            _graph, sh_path, sh_path_name, sh_class, sh_property, iri, db
+                            _graph,
+                            sh_path,
+                            sh_path_name,
+                            sh_class,
+                            sh_property,
+                            iri,
+                            db,
                         )
                         if prop is not None:
                             properties[sh_path].append(prop)
@@ -849,29 +801,44 @@ class Query:
                             # Assign the first value of the SHACL sequence path as the sh:path value.
                             sh_path = ordered_list[0]
 
-                    prop = self.create_property_from_property_shape(graph, sh_path, sh_property, iri, db)
+                    # sh_class = graph.value(sh_property, SH["class"])
+                    # initial_sh_path_name = get_name(nodeshape_targetobjectsof_value, graph)
+                    # sh_path_name = f"{initial_sh_path_name} / {_graph.value(sh_property, SH.name) or get_name(sh_path, graph)}"
+                    # prop = self.get_property_by_sh_path(
+                    #     graph, sh_path, sh_path_name, sh_class, sh_property, iri, db
+                    # )
+
+                    prop = self.create_property_from_property_shape(
+                        graph, sh_path, sh_property, iri, db
+                    )
                     if prop is not None:
                         properties[sh_path].append(prop)
 
                         # Find sh:targetSubjectsOf
                         nodeshapes = db.subjects(SH.targetSubjectsOf, prop.iri)
                         for nodeshape in nodeshapes:
-                            for s, p, o, g in db.quads((nodeshape, SH.targetSubjectsOf, prop.iri, None)):
+                            for s, p, o, g in db.quads(
+                                (nodeshape, SH.targetSubjectsOf, prop.iri, None)
+                            ):
                                 # Get the graph context
                                 _graph = db.graph(g)
-                                for sh_property in _graph.objects(nodeshape, SH.property):
-                                    sh_path = graph.value(sh_property, SH.path)
+                                for sh_property in _graph.objects(
+                                    nodeshape, SH.property
+                                ):
+                                    sh_path = _graph.value(sh_property, SH.path)
                                     if sh_path is None:
                                         continue
 
                                     if isinstance(sh_path, BNode):
                                         # This may be an RDF ordered list.
-                                        ordered_list = Collection(graph, sh_path)
+                                        ordered_list = Collection(_graph, sh_path)
                                         if ordered_list:
                                             # Assign the first value of the SHACL sequence path as the sh:path value.
                                             sh_path = ordered_list[0]
 
-                                    prop = self.create_property_from_property_shape(graph, sh_path, sh_property, iri, db)
+                                    prop = self.create_property_from_property_shape(
+                                        _graph, sh_path, sh_property, iri, db
+                                    )
                                     if prop is not None:
                                         properties[sh_path].append(prop)
 
@@ -1018,9 +985,17 @@ class Query:
                         prop.coded_properties.append(
                             CodedProperty(
                                 label=get_name(prop.iri, graph),
-                                expected_value=Resource(expected_value_iri, get_name(expected_value_iri, graph)),
+                                expected_value=Resource(
+                                    expected_value_iri,
+                                    get_name(expected_value_iri, graph),
+                                ),
                                 codelist=[
-                                    Resource(x, get_name(x, graph), get_descriptions(x, graph)) for x in graph.objects(prop.iri, QB.codeList)
+                                    Resource(
+                                        x,
+                                        get_name(x, graph),
+                                        get_descriptions(x, graph),
+                                    )
+                                    for x in graph.objects(prop.iri, QB.codeList)
                                 ],
                             )
                         )
@@ -1038,22 +1013,31 @@ class Query:
 
         Object and datatype properties - output shows "Not specified" instead of empty string.
 
-        Ways to extract properties of a class:
-        [x] - sh:property via an sh:NodeShape, which may also be an owl:Class or rdfs:Class
-        [ ] - sh:targetClass
+        Below are the different methods to extract properties of a class.
+
+        SHACL:
+        [x] - sh:property via a sh:NodeShape, which may also be an owl:Class or rdfs:Class
+        [x] - sh:targetClass
+        [x] - sh:targetObjectsOf
+        [x] - sh:targetSubjectsOf
+        [x] - all above should support sh:path as a sequence path
+        [x] - sh:path property for a single value can have its label overridden by sh:name
+        [ ] - sh:path sequence path should not use sh:name to override property names - they are additional title for the constraints
+
+        Other:
         [ ] - rdfs:domain and rdfs:range - consider only when there's no sh:class in the property shape
         [x] - schema:domainIncludes and schema:rangeIncludes
-        [ ] - check for other ways in the SHACL spec...
-        [ ] - concrete data to models - example JSON-LD instance document
-        [ ] - JSON schema and JSON context binding
-        [ ] - RDF data cube - vocabulary binding
+        [x] - RDF data cube - vocabulary binding
         """
         properties = defaultdict(list)
 
-        properties.update(
-            self.get_class_properties_from_sh_nodeshape_sh_property(
-                iri, ignored_classes
-            )
+        # TODO: Remove
+        # if iri == URIRef("https://linked.data.gov.au/def/csdm/surveyfeatures/SurveyMark") or iri == URIRef("https://linked.data.gov.au/def/csdm/container/CSD"):
+        #     results = get_class_properties_by_sh(iri, self.db, self.root_profile_iri, self.profiles_order)
+
+        # properties.update(self.get_class_properties_from_sh_nodeshape_sh_property(iri))
+        properties = get_class_properties_by_sh(
+            iri, self.db, self.root_profile_iri, self.profiles_order
         )
 
         properties = self.get_coded_properties(properties)

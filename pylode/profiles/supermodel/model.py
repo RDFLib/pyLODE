@@ -90,6 +90,7 @@ class Property:
     value_type: "Class" = None
     value_class_types: list["Class"] = field(default_factory=list)
     coded_properties: list[CodedProperty] = field(default_factory=list)
+    method: str = ""
 
     def __hash__(self):
         return hash(f"{self.iri} {self.belongs_to_class.iri} {self.profile.iri}")

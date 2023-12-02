@@ -367,7 +367,10 @@ class Supermodel:
                                                 property_iri
                                             ][-1].name
                                             if cls_property_name != base_property_name:
-                                                p(f"({base_property_name})", _class="tableblock text-sm italic")
+                                                p(
+                                                    f"({base_property_name})",
+                                                    _class="tableblock text-sm italic",
+                                                )
                                     td(
                                         _class="tableblock halign-left valign-top",
                                         style="background-color: #f7f8f7;",

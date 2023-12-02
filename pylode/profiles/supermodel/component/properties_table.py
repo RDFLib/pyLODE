@@ -38,27 +38,35 @@ def property_table_row(
                             property_.belongs_to_class.name,
                             property_.belongs_to_class.iri,
                         )
-                    with tooltip(f"In profile {property_.profile.name}", _class="property-row-profile-source"):
+                    with tooltip(
+                        f"In profile {property_.profile.name}",
+                        _class="property-row-profile-source",
+                    ):
                         i(_class="fa fa-info", aria_hidden="true")
 
-                    with p(f"In profile ", _class="property-row-profile-source italic text-sm hidden"):
+                    with p(
+                        f"In profile ",
+                        _class="property-row-profile-source italic text-sm hidden",
+                    ):
                         # TODO: Show as an external link if the profile is not a pylode:Module within the document.
                         fragment = make_html_fragment(property_.profile.iri)
                         a(property_.profile.name, href=f"#{fragment}")
         with td(_class="tableblock halign-left valign-top"):
             p(property_.description)
+            if property_.method:
+                p(f"Method: {property_.method}")
 
         cardinality = ""
         if property_.cardinality_min is None and property_.cardinality_max is None:
             # Show nothing if no cardinality specified.
             ...
         elif property_.cardinality_min is None and isinstance(
-                property_.cardinality_max, int
+            property_.cardinality_max, int
         ):
             cardinality = f"[0..{property_.cardinality_max}]"
         elif (
-                isinstance(property_.cardinality_min, int)
-                and property_.cardinality_max is None
+            isinstance(property_.cardinality_min, int)
+            and property_.cardinality_max is None
         ):
             cardinality = f"[{property_.cardinality_min}..*]"
         elif property_.cardinality_min == property_.cardinality_max:
@@ -95,15 +103,17 @@ def property_table_row(
                 for value_class_type in property_.value_class_types:
                     if value_class_type.iri in class_index:
                         fragment = make_html_fragment(value_class_type.iri)
-                        a(
-                            value_class_type.name,
-                            href=f"#{fragment}",
-                        )
+                        with p():
+                            a(
+                                value_class_type.name,
+                                href=f"#{fragment}",
+                            )
                     else:
-                        external_link(
-                            value_class_type.name,
-                            value_class_type.iri,
-                        )
+                        with p():
+                            external_link(
+                                value_class_type.name,
+                                value_class_type.iri,
+                            )
 
                 # Coded properties
                 for coded_property in property_.coded_properties:
