@@ -90,7 +90,11 @@ class Property:
     value_type: "Class" = None
     value_class_types: list["Class"] = field(default_factory=list)
     coded_properties: list[CodedProperty] = field(default_factory=list)
+    # The method used to extract this property. Example, sh:path, sh:targetObjectsOf, sdo:rangeIncludes, etc.
     method: str = ""
+    # The property source, example, if it's from SHACL, this contains the node shape and the property shape name, if
+    # both are named nodes (IRIs).
+    property_source: str = ""
 
     def __hash__(self):
         return hash(f"{self.iri} {self.belongs_to_class.iri} {self.profile.iri}")

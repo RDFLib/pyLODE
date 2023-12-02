@@ -56,6 +56,9 @@ def property_table_row(
             if property_.method:
                 p(f"Method: {property_.method}")
 
+            if property_.property_source:
+                p(property_.property_source)
+
         cardinality = ""
         if property_.cardinality_min is None and property_.cardinality_max is None:
             # Show nothing if no cardinality specified.
