@@ -30,23 +30,24 @@ def get_property_shapes(iri: URIRef, graph: Graph) -> dict[str, list[URIRef | BN
 
 def get_sh_path(
     property_shape: URIRef | BNode, profile_graph: Graph, db: Dataset
-) -> URIRef | None:
+) -> tuple[URIRef | None, Collection | None]:
     """Get the sh:path value of a property shape."""
     sh_path = db.value(property_shape, SH.path)
 
     if sh_path is None:
-        return None
+        return None, None
     elif isinstance(sh_path, BNode):
         rdf_list = Collection(db, sh_path)
         if rdf_list:
             # If it's a rdf:List with elements, assign the first element as the sh:path value.
             sh_path = rdf_list[0]
+            return sh_path, rdf_list
         else:
             # sh:path value cannot be a blank node.
             # See https://www.w3.org/TR/shacl/#dfn-shacl-property-path.
-            return None
+            return None, None
 
-    return sh_path
+    return sh_path, None
 
 
 def get_property_by_property_shape(
@@ -58,7 +59,11 @@ def get_property_by_property_shape(
     **kwargs,
 ) -> Property:
     """Get a Property object for the given property shape."""
-    sh_path = kwargs.get("sh_path") or get_sh_path(property_shape, profile_graph, db)
+    if kwargs.get("sh_path"):
+        sh_path = kwargs.get("sh_path")
+        sh_path_list = None
+    else:
+        sh_path, sh_path_list = get_sh_path(property_shape, profile_graph, db)
     name = (
         kwargs.get("name")
         or profile_graph.value(property_shape, SH.name)
@@ -118,7 +123,7 @@ def get_properties_by_sh_target_predicate(
 
     for nodeshape, property_shapes in nodeshape_property_shapes.items():
         for nodeshape_property_shape in property_shapes:
-            sh_path = get_sh_path(nodeshape_property_shape, profile_graph, db)
+            sh_path, sh_path_list = get_sh_path(nodeshape_property_shape, profile_graph, db)
             if sh_path is None:
                 continue
 
@@ -130,7 +135,7 @@ def get_properties_by_sh_target_predicate(
                 _profile_graph = db.graph(profile_iri)
                 for _nodeshape in _profile_graph.subjects(sh_target_predicate, sh_path):
                     for _property_shape in db.objects(_nodeshape, SH.property):
-                        _sh_path = get_sh_path(_property_shape, _profile_graph, db)
+                        _sh_path, _sh_path_list = get_sh_path(_property_shape, _profile_graph, db)
                         if sh_target_predicate == SH.targetObjectsOf:
                             _name = f"{get_name(sh_path, _profile_graph, db)} / {get_name(_sh_path, _profile_graph, db)}"
                             method = "sh:targetObjectsOf"
@@ -212,10 +217,16 @@ def get_class_properties_by_sh(
         # Process the property shapes as normal.
         for nodeshape, property_shapes in nodeshape_property_shapes.items():
             for property_shape in property_shapes:
-                sh_path = get_sh_path(property_shape, profile_graph, db)
+                sh_path, sh_path_list = get_sh_path(property_shape, profile_graph, db)
+
+                if sh_path_list:
+                    name = " / ".join([get_name(item, profile_graph, db) for item in sh_path_list])
+                else:
+                    name = None
+
                 property_source = f"Node shape: {nodeshape if isinstance(nodeshape, URIRef) else '(blank node)'} Property shape: {property_shape if isinstance(property_shape, URIRef) else '(blank node)'}"
                 property_ = get_property_by_property_shape(
-                    iri, property_shape, profile_graph, db, "sh:path", property_source=property_source
+                    iri, property_shape, profile_graph, db, "sh:path", name=name, property_source=property_source
                 )
                 properties[sh_path].append(property_)
 
