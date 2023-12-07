@@ -42,10 +42,6 @@ def get_sh_path(
             # If it's a rdf:List with elements, assign the first element as the sh:path value.
             sh_path = rdf_list[0]
             return sh_path, rdf_list
-        else:
-            # sh:path value cannot be a blank node.
-            # See https://www.w3.org/TR/shacl/#dfn-shacl-property-path.
-            return None, None
 
     return sh_path, None
 
