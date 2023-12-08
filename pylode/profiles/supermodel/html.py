@@ -352,9 +352,20 @@ class Supermodel:
                                         _class="tableblock halign-left valign-top",
                                         style="background-color: #f7f8f7;",
                                     ):
-                                        cls_property_name = cls.properties[
-                                            property_iri
-                                        ][0].name
+                                        if has_secondary and cls.properties[property_iri][0].is_property_path:
+                                            # Assign the property name to the last one.
+                                            # This is usually a base property in the profile that's not a property path.
+                                            cls_property_name = cls.properties[property_iri][-1].name
+
+                                            # Loop through and if we come across a property that's not a
+                                            # property path, then use it.
+                                            for prop in cls.properties[property_iri]:
+                                                if not prop.is_property_path:
+                                                    cls_property_name = prop.name
+                                        else:
+                                            cls_property_name = cls.properties[
+                                                property_iri
+                                            ][0].name
                                         # TODO: have a property tracker
                                         # If property is documented, link to it with fragment id,
                                         # else, provide an external link to the IRI.

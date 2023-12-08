@@ -52,6 +52,7 @@ def get_property_by_property_shape(
     profile_graph: Graph,
     db: Dataset,
     method: str,
+    is_property_path: bool,
     **kwargs,
 ) -> Property:
     """Get a Property object for the given property shape."""
@@ -93,6 +94,7 @@ def get_property_by_property_shape(
         name=name,
         description=description,
         profile=profile,
+        is_property_path=is_property_path,
         belongs_to_class=belongs_to_class,
         cardinality_min=int(sh_min) if sh_min is not None else None,
         cardinality_max=int(sh_max) if sh_max is not None else None,
@@ -134,12 +136,15 @@ def get_properties_by_sh_target_predicate(
                         _sh_path, _sh_path_list = get_sh_path(_property_shape, _profile_graph, db)
                         if sh_target_predicate == SH.targetObjectsOf:
                             _name = f"{get_name(sh_path, _profile_graph, db)} / {get_name(_sh_path, _profile_graph, db)}"
+                            is_property_path = True
                             method = "sh:targetObjectsOf"
                         elif sh_target_predicate == SH.targetSubjectsOf:
                             _name = None
+                            is_property_path = False
                             method = "sh:targetSubjectsOf"
                         else:
                             _name = None
+                            is_property_path = False
                             method = get_name(sh_target_predicate, db)
 
                         property_source = f"Node shape: {nodeshape if isinstance(nodeshape, URIRef) else '(blank node)'} Property shape: {_property_shape if isinstance(_property_shape, URIRef) else '(blank node)'}"
@@ -153,6 +158,7 @@ def get_properties_by_sh_target_predicate(
                             sh_path=_sh_path,
                             name=_name,
                             property_source=property_source,
+                            is_property_path=is_property_path,
                         )
 
                         if sh_target_predicate == SH.targetObjectsOf:
@@ -217,12 +223,14 @@ def get_class_properties_by_sh(
 
                 if sh_path_list:
                     name = " / ".join([get_name(item, profile_graph, db) for item in sh_path_list])
+                    is_property_path = True
                 else:
                     name = None
+                    is_property_path = False
 
                 property_source = f"Node shape: {nodeshape if isinstance(nodeshape, URIRef) else '(blank node)'} Property shape: {property_shape if isinstance(property_shape, URIRef) else '(blank node)'}"
                 property_ = get_property_by_property_shape(
-                    iri, property_shape, profile_graph, db, "sh:path", name=name, property_source=property_source
+                    iri, property_shape, profile_graph, db, "sh:path", name=name, property_source=property_source, is_property_path=is_property_path,
                 )
                 properties[sh_path].append(property_)
 

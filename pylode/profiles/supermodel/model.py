@@ -84,6 +84,7 @@ class Property:
     name: str
     description: str
     profile: Profile
+    is_property_path: bool
     belongs_to_class: "Class" = None
     cardinality_min: int = None
     cardinality_max: int = None
