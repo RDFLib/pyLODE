@@ -1029,11 +1029,6 @@ class Query:
         [x] - schema:domainIncludes and schema:rangeIncludes
         [x] - RDF data cube - vocabulary binding
         """
-        properties = defaultdict(list)
-
-        # TODO: Remove
-        # if iri == URIRef("https://linked.data.gov.au/def/csdm/surveyfeatures/SurveyMark") or iri == URIRef("https://linked.data.gov.au/def/csdm/container/CSD"):
-        #     results = get_class_properties_by_sh(iri, self.db, self.root_profile_iri, self.profiles_order)
 
         # properties.update(self.get_class_properties_from_sh_nodeshape_sh_property(iri))
         properties = get_class_properties_by_sh(
