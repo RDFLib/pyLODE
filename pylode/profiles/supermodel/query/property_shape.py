@@ -5,6 +5,7 @@ from rdflib import URIRef, Dataset, RDF, SH, Graph, BNode
 from rdflib.collection import Collection
 
 from pylode.profiles.supermodel.model import Property, Profile, Class, ProfileType
+from pylode.profiles.supermodel.namespace import LODE
 from pylode.profiles.supermodel.query.common import (
     get_descriptions,
     get_class,
@@ -121,7 +122,9 @@ def get_properties_by_sh_target_predicate(
 
     for nodeshape, property_shapes in nodeshape_property_shapes.items():
         for nodeshape_property_shape in property_shapes:
-            sh_path, sh_path_list = get_sh_path(nodeshape_property_shape, profile_graph, db)
+            sh_path, sh_path_list = get_sh_path(
+                nodeshape_property_shape, profile_graph, db
+            )
             if sh_path is None:
                 continue
 
@@ -133,7 +136,9 @@ def get_properties_by_sh_target_predicate(
                 _profile_graph = db.graph(profile_iri)
                 for _nodeshape in _profile_graph.subjects(sh_target_predicate, sh_path):
                     for _property_shape in db.objects(_nodeshape, SH.property):
-                        _sh_path, _sh_path_list = get_sh_path(_property_shape, _profile_graph, db)
+                        _sh_path, _sh_path_list = get_sh_path(
+                            _property_shape, _profile_graph, db
+                        )
                         if sh_target_predicate == SH.targetObjectsOf:
                             _name = f"{get_name(sh_path, _profile_graph, db)} / {get_name(_sh_path, _profile_graph, db)}"
                             is_property_path = True
@@ -222,7 +227,9 @@ def get_class_properties_by_sh(
                 sh_path, sh_path_list = get_sh_path(property_shape, profile_graph, db)
 
                 if sh_path_list:
-                    name = " / ".join([get_name(item, profile_graph, db) for item in sh_path_list])
+                    name = " / ".join(
+                        [get_name(item, profile_graph, db) for item in sh_path_list]
+                    )
                     is_property_path = True
                 else:
                     name = None
@@ -230,7 +237,14 @@ def get_class_properties_by_sh(
 
                 property_source = f"Node shape: {nodeshape if isinstance(nodeshape, URIRef) else '(blank node)'} Property shape: {property_shape if isinstance(property_shape, URIRef) else '(blank node)'}"
                 property_ = get_property_by_property_shape(
-                    iri, property_shape, profile_graph, db, "sh:path", name=name, property_source=property_source, is_property_path=is_property_path,
+                    iri,
+                    property_shape,
+                    profile_graph,
+                    db,
+                    "sh:path",
+                    name=name,
+                    property_source=property_source,
+                    is_property_path=is_property_path,
                 )
                 properties[sh_path].append(property_)
 
@@ -240,13 +254,19 @@ def get_class_properties_by_sh(
         properties[property_iri] = sort_properties_by_profile(
             profiles_order, properties[property_iri]
         )
-        # Set any intermediary properties to be of type intermediary if it is of type base.
+
         for p in properties[property_iri]:
             if p.profile.iri == root_profile_iri:
+                # Defined by entrypoint profile.
                 p.profile.type = ProfileType.ROOT
             elif is_defined_by is not None and p.profile.iri == is_defined_by.iri:
+                # Defined in current module.
+                p.profile.type = ProfileType.BASE
+            elif is_defined_by is None and (p.profile.iri, RDF.type, LODE.Module) in db:
+                # Defined by another module within the overall model.
                 p.profile.type = ProfileType.BASE
             else:
+                # Defined by one of the intermediary profiles.
                 p.profile.type = ProfileType.INTERMEDIARY
 
     return properties
