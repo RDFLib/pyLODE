@@ -90,6 +90,11 @@ def get_property_by_property_shape(
     )
     property_source = kwargs.get("property_source") or ""
 
+    constraints = ""
+    sh_sparql = profile_graph.value(property_shape, SH.sparql)
+    if sh_sparql is not None:
+        constraints += profile_graph.value(sh_sparql, SH.message) or ""
+
     return Property(
         iri=sh_path,
         name=name,
@@ -103,6 +108,7 @@ def get_property_by_property_shape(
         value_class_types=[value_class_type] if value_class_type is not None else [],
         method=method,
         property_source=property_source,
+        constraints=constraints,
     )
 
 

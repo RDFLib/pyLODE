@@ -118,6 +118,9 @@ def property_table_row(
                                 value_class_type.iri,
                             )
 
+                if property_.constraints:
+                    p(property_.constraints)
+
                 # Coded properties
                 for coded_property in property_.coded_properties:
                     span("Values expected to be from the following vocabulary:")

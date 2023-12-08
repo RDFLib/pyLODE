@@ -91,6 +91,7 @@ class Property:
     value_type: "Class" = None
     value_class_types: list["Class"] = field(default_factory=list)
     coded_properties: list[CodedProperty] = field(default_factory=list)
+    constraints: str = ""
     # The method used to extract this property. Example, sh:path, sh:targetObjectsOf, sdo:rangeIncludes, etc.
     method: str = ""
     # The property source, example, if it's from SHACL, this contains the node shape and the property shape name, if
