@@ -72,25 +72,17 @@ class Resource:
 
 
 @dataclass
-class CodedProperty:
-    label: str
-    expected_value: Resource
-    codelist: list[Resource] = field(default_factory=list)
-
-
-@dataclass
 class Property:
     iri: URIRef
     name: str
     description: str
     profile: Profile
-    is_property_path: bool
+    is_property_path: bool = False
     belongs_to_class: "Class" = None
     cardinality_min: int = None
     cardinality_max: int = None
     value_type: "Class" = None
     value_class_types: list["Class"] = field(default_factory=list)
-    coded_properties: list[CodedProperty] = field(default_factory=list)
     constraints: str = ""
     # The method used to extract this property. Example, sh:path, sh:targetObjectsOf, sdo:rangeIncludes, etc.
     method: str = ""
@@ -100,6 +92,11 @@ class Property:
 
     def __hash__(self):
         return hash(f"{self.iri} {self.belongs_to_class.iri} {self.profile.iri}")
+
+
+@dataclass
+class CodedProperty(Property):
+    codelist: list[Resource] = field(default_factory=list)
 
 
 @dataclass

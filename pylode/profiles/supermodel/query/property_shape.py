@@ -1,15 +1,12 @@
-import math
 from collections import defaultdict
 
 from rdflib import URIRef, Dataset, RDF, SH, Graph, BNode
 from rdflib.collection import Collection
 
-from pylode.profiles.supermodel.model import Property, Profile, Class, ProfileType
-from pylode.profiles.supermodel.namespace import LODE
+from pylode.profiles.supermodel.model import Property, Profile
 from pylode.profiles.supermodel.query.common import (
     get_descriptions,
     get_class,
-    get_is_defined_by,
 )
 from pylode.profiles.supermodel.query import get_name
 
@@ -180,26 +177,7 @@ def get_properties_by_sh_target_predicate(
     return properties
 
 
-def sort_properties_by_profile(
-    profiles_order: list[URIRef], properties: list[Property]
-) -> list[Property]:
-    """Sort each property based on most specific profile to most broad."""
-    order_dict = {profile: i for i, profile in enumerate(profiles_order)}
-    order_dict.update({None: math.inf})
-    return sorted(
-        properties,
-        key=lambda p: order_dict[
-            next(
-                (profile for profile in profiles_order if p.profile.iri == profile),
-                None,
-            )
-        ],
-    )
-
-
-def get_class_properties_by_sh(
-    iri: URIRef, db: Dataset, root_profile_iri: URIRef, profiles_order: list[URIRef]
-) -> dict[str, list[Property]]:
+def get_class_properties_by_sh(iri: URIRef, db: Dataset) -> dict[str, list[Property]]:
     properties: dict[str, list[Property]] = defaultdict(list)
 
     # Check whether this class IRI contains an implicit class target or is targeted by sh:targetClass.
@@ -253,26 +231,5 @@ def get_class_properties_by_sh(
                     is_property_path=is_property_path,
                 )
                 properties[sh_path].append(property_)
-
-    is_defined_by = get_is_defined_by(iri, db)
-
-    for property_iri in properties:
-        properties[property_iri] = sort_properties_by_profile(
-            profiles_order, properties[property_iri]
-        )
-
-        for p in properties[property_iri]:
-            if p.profile.iri == root_profile_iri:
-                # Defined by entrypoint profile.
-                p.profile.type = ProfileType.ROOT
-            elif is_defined_by is not None and p.profile.iri == is_defined_by.iri:
-                # Defined in current module.
-                p.profile.type = ProfileType.BASE
-            elif is_defined_by is None and (p.profile.iri, RDF.type, LODE.Module) in db:
-                # Defined by another module within the overall model.
-                p.profile.type = ProfileType.BASE
-            else:
-                # Defined by one of the intermediary profiles.
-                p.profile.type = ProfileType.INTERMEDIARY
 
     return properties

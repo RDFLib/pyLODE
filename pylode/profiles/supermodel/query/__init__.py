@@ -4,9 +4,8 @@ from textwrap import dedent
 from collections import defaultdict
 from itertools import chain
 
-from rdflib import Graph, Literal, URIRef, BNode, Dataset
+from rdflib import Graph, Literal, URIRef
 from rdflib.graph import DATASET_DEFAULT_GRAPH_ID
-from rdflib.collection import Collection
 from rdflib.namespace import (
     RDF,
     OWL,
@@ -621,6 +620,12 @@ class Query:
         object_properties = get_rdf_properties(OWL.ObjectProperty, profile_graph)
         ontology_properties = get_rdf_properties(OWL.OntologyProperty, profile_graph)
 
+        coded_properties = set()
+        # for cls in classes:
+        #     for properties in cls.properties.values():
+        #         for prop in properties:
+        #             prop.coded_property
+
         return ComponentModel(
             iri,
             name,
@@ -645,292 +650,6 @@ class Query:
             result.append(component_model)
 
         return sorted(result, key=lambda x: x.order)
-
-    def get_property_by_sh_path(
-        self,
-        graph: Graph,
-        sh_path: URIRef,
-        sh_path_name: str,
-        sh_class: URIRef,
-        sh_property: URIRef,
-        iri: URIRef,
-        db: Graph,
-    ):
-        if isinstance(graph, Dataset):
-            contexts = list(graph.contexts((sh_property, SH.path, sh_path)))
-            profile_id = contexts[0].identifier
-            profile = Profile(
-                profile_id,
-                get_name(profile_id, db),
-            )
-        else:
-            profile = Profile(graph.identifier, get_name(graph.identifier, db))
-        sh_description = (
-            graph.value(sh_property, SH.description)
-            or get_descriptions(sh_path, graph)
-            or get_descriptions(sh_path, db)
-            or ""
-        )
-        sh_nodekind = graph.value(sh_property, SH.nodeKind)
-        sh_min = graph.value(sh_property, SH.minCount)
-        sh_max = graph.value(sh_property, SH.maxCount)
-        belongs_to_class = get_class(iri, db, [])
-        value_type = (
-            get_class(sh_nodekind, graph, []) if sh_nodekind is not None else None
-        )
-        value_class_type = (
-            get_class(sh_class, graph, []) if sh_class is not None else None
-        )
-
-        return Property(
-            iri=sh_path,
-            name=sh_path_name,
-            description=sh_description,
-            profile=profile,
-            belongs_to_class=belongs_to_class,
-            cardinality_min=int(sh_min) if sh_min is not None else None,
-            cardinality_max=int(sh_max) if sh_max is not None else None,
-            value_type=value_type,
-            value_class_types=[value_class_type]
-            if value_class_type is not None
-            else [],
-        )
-
-    def create_property_from_property_shape(
-        self, graph: Graph, sh_path, sh_property, iri, db: Dataset
-    ):
-        sh_class = graph.value(sh_property, SH["class"])
-        sh_path_name = graph.value(sh_property, SH.name) or get_name(sh_path, graph)
-        prop = self.get_property_by_sh_path(
-            graph, sh_path, sh_path_name, sh_class, sh_property, iri, db
-        )
-        return prop
-
-    def get_class_properties_from_sh_nodeshape_sh_property(
-        self, iri: URIRef
-    ) -> dict[str, list[Property]]:
-        properties: dict[str, list[Property]] = defaultdict(list)
-        db = self.db
-        classes = list(db.objects(iri, RDF.type))
-
-        if SH.NodeShape in classes:
-            for graph_identifier in db.graphs():
-                graph = db.graph(graph_identifier)
-                nodeshapes_by_target_class = list(graph.subjects(SH.targetClass, iri))
-                sh_properties = []
-                for nodeshape in nodeshapes_by_target_class:
-                    sh_properties += list(graph.objects(nodeshape, SH.property))
-                sh_properties += list(graph.objects(iri, SH.property))
-
-                # Handle sh:targetObjectsOf
-                extra_sh_properties = defaultdict(list)
-                for sh_property in sh_properties.copy():
-                    # TODO: This is incorrect. Instead of looking for the class, we need to check
-                    #   whether the current class has a property shape that targets a property that is a value in some node shape that has sh:targetObjectsOf.
-                    sh_class = graph.value(sh_property, SH["class"])
-                    if sh_class is not None:
-                        property_shapes = list(db.subjects(SH["class"], sh_class))
-                        for property_shape in property_shapes:
-                            # TODO: handle sequence paths
-                            sh_path = db.value(property_shape, SH.path)
-                            if sh_path is not None:
-                                # Get node shapes that have sh:targetObjectsOf
-                                for nodeshape in db.subjects(
-                                    SH.targetObjectsOf, sh_path
-                                ):
-                                    graphs = list(
-                                        db.contexts(
-                                            (nodeshape, SH.targetObjectsOf, sh_path)
-                                        )
-                                    )
-                                    _graph = graphs[0]
-                                    to_be_added = extra_sh_properties[_graph]
-                                    for property_shape in _graph.objects(
-                                        nodeshape, SH.property
-                                    ):
-                                        if property_shape not in [
-                                            x[0] for x in to_be_added
-                                        ]:
-                                            to_be_added.append(
-                                                (property_shape, sh_path)
-                                            )
-                                    extra_sh_properties[_graph] = to_be_added
-
-                # Process the properties found via sh:targetObjectsOf.
-                for _graph, _sh_properties in extra_sh_properties.items():
-                    # TODO: Refactor duplicate code fragment
-                    for sh_property, nodeshape_targetobjectsof_value in _sh_properties:
-                        sh_path = _graph.value(sh_property, SH.path)
-                        if sh_path is None:
-                            continue
-
-                        if isinstance(sh_path, BNode):
-                            # This may be an RDF ordered list.
-                            ordered_list = Collection(_graph, sh_path)
-                            if ordered_list:
-                                # Assign the first value of the SHACL sequence path as the sh:path value.
-                                sh_path = ordered_list[0]
-
-                        sh_class = _graph.value(sh_property, SH["class"])
-                        initial_sh_path_name = get_name(
-                            nodeshape_targetobjectsof_value, _graph
-                        )
-                        sh_path_name = f"{initial_sh_path_name} / {_graph.value(sh_property, SH.name) or get_name(sh_path, _graph)}"
-                        prop = self.get_property_by_sh_path(
-                            _graph,
-                            sh_path,
-                            sh_path_name,
-                            sh_class,
-                            sh_property,
-                            iri,
-                            db,
-                        )
-                        if prop is not None:
-                            properties[sh_path].append(prop)
-
-                # Process the normal properties found directly on node shapes that target this object.
-                for sh_property in sh_properties:
-                    sh_path = graph.value(sh_property, SH.path)
-                    if sh_path is None:
-                        continue
-
-                    if isinstance(sh_path, BNode):
-                        # This may be an RDF ordered list.
-                        ordered_list = Collection(graph, sh_path)
-                        if ordered_list:
-                            # Assign the first value of the SHACL sequence path as the sh:path value.
-                            sh_path = ordered_list[0]
-
-                    # sh_class = graph.value(sh_property, SH["class"])
-                    # initial_sh_path_name = get_name(nodeshape_targetobjectsof_value, graph)
-                    # sh_path_name = f"{initial_sh_path_name} / {_graph.value(sh_property, SH.name) or get_name(sh_path, graph)}"
-                    # prop = self.get_property_by_sh_path(
-                    #     graph, sh_path, sh_path_name, sh_class, sh_property, iri, db
-                    # )
-
-                    prop = self.create_property_from_property_shape(
-                        graph, sh_path, sh_property, iri, db
-                    )
-                    if prop is not None:
-                        properties[sh_path].append(prop)
-
-                        # Find sh:targetSubjectsOf
-                        nodeshapes = db.subjects(SH.targetSubjectsOf, prop.iri)
-                        for nodeshape in nodeshapes:
-                            for s, p, o, g in db.quads(
-                                (nodeshape, SH.targetSubjectsOf, prop.iri, None)
-                            ):
-                                # Get the graph context
-                                _graph = db.graph(g)
-                                for sh_property in _graph.objects(
-                                    nodeshape, SH.property
-                                ):
-                                    sh_path = _graph.value(sh_property, SH.path)
-                                    if sh_path is None:
-                                        continue
-
-                                    if isinstance(sh_path, BNode):
-                                        # This may be an RDF ordered list.
-                                        ordered_list = Collection(_graph, sh_path)
-                                        if ordered_list:
-                                            # Assign the first value of the SHACL sequence path as the sh:path value.
-                                            sh_path = ordered_list[0]
-
-                                    prop = self.create_property_from_property_shape(
-                                        _graph, sh_path, sh_property, iri, db
-                                    )
-                                    if prop is not None:
-                                        properties[sh_path].append(prop)
-
-        # Sort each property based on most specific profile to most broad.
-        def _sort_properties_by_profile(
-            profiles_order: list[URIRef], properties: list[Property]
-        ) -> list[Property]:
-            order_dict = {profile: i for i, profile in enumerate(profiles_order)}
-            order_dict.update({None: math.inf})
-            return sorted(
-                properties,
-                key=lambda p: order_dict[
-                    next(
-                        (
-                            profile
-                            for profile in profiles_order
-                            if p.profile.iri == profile
-                        ),
-                        None,
-                    )
-                ],
-            )
-
-        is_defined_by = get_is_defined_by(iri, db)
-
-        for property_iri in properties:
-            properties[property_iri] = _sort_properties_by_profile(
-                self.profiles_order, properties[property_iri]
-            )
-            # Set any intermediary properties to be of type intermediary if it is of type base.
-            for p in properties[property_iri]:
-                if p.profile.iri == self.root_profile_iri:
-                    p.profile.type = ProfileType.ROOT
-                elif is_defined_by is not None and p.profile.iri == is_defined_by.iri:
-                    p.profile.type = ProfileType.BASE
-                else:
-                    p.profile.type = ProfileType.INTERMEDIARY
-
-        return properties
-
-    def _get_class_properties_from_sh_nodeshape_sh_property(
-        self, iri: URIRef, ignored_classes: list[URIRef]
-    ) -> list[dict[str, list[Property]]]:
-        properties: dict[str, list[Property]] = defaultdict(list)
-        graph = self.db
-
-        classes = list(graph.objects(iri, RDF.type))
-
-        if SH.NodeShape in classes:
-            sh_properties = list(graph.objects(iri, SH.property))
-
-            for sh_property in sh_properties:
-                sh_path = graph.value(sh_property, SH.path)
-                sh_class = graph.value(sh_property, SH["class"])
-                sh_description = (
-                    graph.value(sh_property, SH.description)
-                    or get_descriptions(sh_path, graph)
-                    or ""
-                )
-                sh_name = graph.value(sh_property, SH.name) or get_name(sh_path, graph)
-                sh_nodekind = graph.value(sh_property, SH.nodeKind)
-                sh_min = graph.value(sh_property, SH.minCount)
-                sh_max = graph.value(sh_property, SH.maxCount)
-                belongs_to_class = get_class(iri, graph, ignored_classes)
-                value_type = (
-                    get_class(sh_nodekind, graph, ignored_classes)
-                    if sh_nodekind is not None
-                    else None
-                )
-                value_class_type = (
-                    get_class(sh_class, graph, ignored_classes)
-                    if sh_class is not None
-                    else None
-                )
-
-                properties[sh_path].append(
-                    Property(
-                        iri=sh_path,
-                        name=sh_name,
-                        description=sh_description,
-                        belongs_to_class=belongs_to_class,
-                        cardinality_min=int(sh_min) if sh_min is not None else None,
-                        cardinality_max=int(sh_max) if sh_max is not None else None,
-                        value_type=value_type,
-                        value_class_types=[value_class_type]
-                        if value_class_type is not None
-                        else [],
-                    )
-                )
-
-        return properties
-        # return sorted(properties, key=lambda x: x.name)
 
     def get_class_properties_from_schema_domain_includes(
         self, iri: URIRef, ignored_classes: list[URIRef]
@@ -961,48 +680,92 @@ class Query:
         return sorted(properties, key=lambda x: x.name)
 
     def get_coded_properties(
-        self, properties: dict[str, list[Property]]
+        self, cls_iri: URIRef, properties: dict[str, list[Property]]
     ) -> dict[str, list[Property]]:
-        for property_iri in properties:
-            for prop in properties[property_iri]:
-                graphs = list(
-                    filter(
-                        lambda g: g.identifier != DATASET_DEFAULT_GRAPH_ID,
-                        self.db.contexts((prop.iri, RDF.type, QB.CodedProperty)),
-                    )
+        for prop in properties.copy():
+            graphs = list(
+                filter(
+                    lambda g: g.identifier != DATASET_DEFAULT_GRAPH_ID,
+                    self.db.contexts((prop, RDF.type, QB.CodedProperty)),
                 )
-                if graphs:
-                    # We just take the first one for now. Need to improve this in the future.
-                    # At the moment, we assume this coded property is only defined in one named graph.
-                    graph = self.db.get_graph(graphs[0].identifier)
+            )
+            # TODO: We don't have the logic to classify the profile type here...
+            # TODO: Why for horizontalCRS on CSD class the value class type does not have a clickable link?
+            #   And the label looks weird...
+            if graphs:
+                for graph in graphs:
+                    expected_value_iri = graph.value(prop, RDFS.range)
+                    value_class_types = [get_class(expected_value_iri, self.db, [])]
 
-                    # We either add to the existing property if it's in another profile (different graph)
-                    # or, we make a copy of the most specific version of the property and clone it,
-                    # and update the profile to the graph where we found the coded property.
-                    # We only need to add the coded property details to one property that we find.
-                    if graph != prop.profile.iri:
-                        expected_value_iri = graph.value(prop.iri, RDFS.range)
-                        prop.coded_properties.append(
-                            CodedProperty(
-                                label=get_name(prop.iri, graph),
-                                expected_value=Resource(
-                                    expected_value_iri,
-                                    get_name(expected_value_iri, graph),
-                                ),
-                                codelist=[
-                                    Resource(
-                                        x,
-                                        get_name(x, graph),
-                                        get_descriptions(x, graph),
-                                    )
-                                    for x in graph.objects(prop.iri, QB.codeList)
-                                ],
+                    name = get_name(prop, self.db)
+                    description = get_descriptions(prop, self.db) or ""
+
+                    new_prop = CodedProperty(
+                        prop,
+                        name,
+                        description,
+                        Profile(
+                            graph.identifier,
+                            get_name(graph.identifier, self.db),
+                        ),
+                        belongs_to_class=get_class(cls_iri, self.db, []),
+                        value_class_types=value_class_types,
+                        method="qb:CodedProperty",
+                        codelist=[
+                            Resource(
+                                x,
+                                get_name(x, graph),
+                                get_descriptions(x, graph),
                             )
-                        )
-                    else:
-                        ...
+                            for x in graph.objects(prop, QB.codeList)
+                        ],
+                    )
+                    properties[prop].append(new_prop)
 
         return properties
+
+    def sort_properties_by_profile(self, properties: list[Property]) -> list[Property]:
+        """Sort each property based on most specific profile to most broad."""
+        order_dict = {profile: i for i, profile in enumerate(self.profiles_order)}
+        order_dict.update({None: math.inf})
+        return sorted(
+            properties,
+            key=lambda p: order_dict[
+                next(
+                    (
+                        profile
+                        for profile in self.profiles_order
+                        if p.profile.iri == profile
+                    ),
+                    None,
+                )
+            ],
+        )
+
+    def sort_properties(self, iri: URIRef, properties: dict[str, list[Property]]):
+        is_defined_by = get_is_defined_by(iri, self.db)
+
+        for property_iri in properties:
+            properties[property_iri] = self.sort_properties_by_profile(
+                properties[property_iri]
+            )
+
+            for p in properties[property_iri]:
+                if p.profile.iri == self.root_profile_iri:
+                    # Defined by entrypoint profile.
+                    p.profile.type = ProfileType.ROOT
+                elif is_defined_by is not None and p.profile.iri == is_defined_by.iri:
+                    # Defined in current module.
+                    p.profile.type = ProfileType.BASE
+                elif (
+                    is_defined_by is None
+                    and (p.profile.iri, RDF.type, LODE.Module) in self.db
+                ):
+                    # Defined by another module within the overall model.
+                    p.profile.type = ProfileType.BASE
+                else:
+                    # Defined by one of the intermediary profiles.
+                    p.profile.type = ProfileType.INTERMEDIARY
 
     def get_component_model_class_properties(
         self, iri: URIRef, ignored_classes: list[URIRef]
@@ -1031,11 +794,11 @@ class Query:
         """
 
         # properties.update(self.get_class_properties_from_sh_nodeshape_sh_property(iri))
-        properties = get_class_properties_by_sh(
-            iri, self.db, self.root_profile_iri, self.profiles_order
-        )
+        properties = get_class_properties_by_sh(iri, self.db)
 
-        properties = self.get_coded_properties(properties)
+        properties = self.get_coded_properties(iri, properties)
+
+        self.sort_properties(iri, properties)
 
         # TODO: Need to refactor the properties data structure to a dict of list[Property].
         # properties += self.get_class_properties_from_schema_domain_includes(

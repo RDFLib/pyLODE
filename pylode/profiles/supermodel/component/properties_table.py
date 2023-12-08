@@ -1,6 +1,6 @@
 from dominate.tags import tr, td, p, a, i, span, ul, li, button
 
-from pylode.profiles.supermodel.model import Property
+from pylode.profiles.supermodel.model import Property, CodedProperty
 from pylode.profiles.supermodel.component import external_link, tooltip
 from pylode.profiles.supermodel.fragment import make_html_fragment
 
@@ -121,25 +121,27 @@ def property_table_row(
                 if property_.constraints:
                     p(property_.constraints)
 
-                # Coded properties
-                for coded_property in property_.coded_properties:
+                # Coded property
+                if isinstance(property_, CodedProperty):
                     span("Values expected to be from the following vocabulary:")
                     with ul():
-                        for codelist in coded_property.codelist:
+                        for codelist in property_.codelist:
                             with li():
                                 external_link(codelist.label, codelist.iri)
                     span("with an expected class type of:")
-                    if coded_property.expected_value.iri in class_index:
-                        fragment = make_html_fragment(coded_property.expected_value.iri)
-                        a(
-                            coded_property.expected_value.label,
-                            href=f"#{fragment}",
-                        )
-                    else:
-                        external_link(
-                            coded_property.expected_value.label,
-                            coded_property.expected_value.iri,
-                        )
+
+                    for class_type in property_.value_class_types:
+                        if class_type.iri in class_index:
+                            fragment = make_html_fragment(class_type.iri)
+                            a(
+                                class_type.name,
+                                href=f"#{fragment}",
+                            )
+                        else:
+                            external_link(
+                                class_type.name,
+                                class_type.iri,
+                            )
 
             if cardinality:
                 p(f"Cardinality: {cardinality}", _class="text-sm")
