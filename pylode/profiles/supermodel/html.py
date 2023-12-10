@@ -335,7 +335,7 @@ class Supermodel:
                                 #     _class="tableblock halign-left valign-top",
                                 # )
                                 th(
-                                    "Value class type",
+                                    "Constraints",
                                     _class="tableblock halign-left valign-top",
                                 )
                         with tbody():
@@ -579,6 +579,8 @@ class Supermodel:
                     with div(_class="sect4"):
                         for ex in component_model.examples:
                             example(ex, 4)
+
+                # TODO: Vocab summary table.
 
                 hr()
 
