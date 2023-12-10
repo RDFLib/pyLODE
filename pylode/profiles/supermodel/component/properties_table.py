@@ -106,13 +106,13 @@ def property_table_row(
                 for value_class_type in property_.value_class_types:
                     if value_class_type.iri in class_index:
                         fragment = make_html_fragment(value_class_type.iri)
-                        with p():
+                        with p("Expected class type "):
                             a(
                                 value_class_type.name,
                                 href=f"#{fragment}",
                             )
                     else:
-                        with p():
+                        with p("Expected class type "):
                             external_link(
                                 value_class_type.name,
                                 value_class_type.iri,
