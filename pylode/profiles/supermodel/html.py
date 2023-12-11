@@ -42,7 +42,7 @@ from pylode.profiles.supermodel.model import (
     Class,
     RDFProperty,
     ProfileType,
-    ProfileHierarchyItem,
+    ProfileHierarchyItem, Property,
 )
 from pylode.profiles.supermodel.component import (
     metadata_row,
@@ -239,7 +239,109 @@ class Supermodel:
                 ),
             )
 
-    def _make_component_model_class(self, cls: Class):
+    def _make_component_model_class_properties(self, properties: [dict[str, list[Property]]]):
+        with div(_class="sect5 overflow-x-auto"):
+            with table(
+                    _class="tableblock frame-all grid-all stripes-even fit-content stretch"
+            ):
+                with thead():
+                    with tr():
+                        th(
+                            "Property",
+                            _class="tableblock halign-left valign-top",
+                        )
+                        th(
+                            "Source",
+                            _class="tableblock halign-left valign-top",
+                        )
+                        th(
+                            "Description",
+                            _class="tableblock halign-left valign-top",
+                        )
+                        th(
+                            "Constraints",
+                            _class="tableblock halign-left valign-top",
+                        )
+                with tbody():
+                    for property_iri in properties:
+                        # Whether there's more than 1 row describing this property.
+                        has_secondary = (
+                            True
+                            if len(properties[property_iri]) > 1
+                            else False
+                        )
+
+                        with tr(_class="property-row-header"):
+                            with td(
+                                    _class="tableblock halign-left valign-top",
+                                    style="background-color: #f7f8f7;",
+                            ):
+                                if (
+                                        has_secondary
+                                        and properties[property_iri][
+                                    0
+                                ].is_property_path
+                                ):
+                                    # Assign the property name to the last one.
+                                    # This is usually a base property in the profile that's not a property path.
+                                    cls_property_name = properties[
+                                        property_iri
+                                    ][-1].name
+
+                                    # Loop through and if we come across a property that's not a
+                                    # property path, then use it.
+                                    for prop in properties[property_iri]:
+                                        if not prop.is_property_path:
+                                            cls_property_name = prop.name
+                                else:
+                                    cls_property_name = properties[
+                                        property_iri
+                                    ][0].name
+                                # TODO: have a property tracker
+                                # If property is documented, link to it with fragment id,
+                                # else, provide an external link to the IRI.
+                                fragment = make_html_fragment(property_iri)
+                                with p(_class="tableblock font-bold"):
+                                    a(cls_property_name, href=f"#{fragment}")
+
+                                if has_secondary:
+                                    base_property_name = properties[
+                                        property_iri
+                                    ][-1].name
+                                    if cls_property_name != base_property_name:
+                                        p(
+                                            f"({base_property_name})",
+                                            _class="tableblock text-sm italic",
+                                        )
+                            td(
+                                _class="tableblock halign-left valign-top",
+                                style="background-color: #f7f8f7;",
+                                colspan="4",
+                            )
+                        for i, property_ in enumerate(
+                                properties[property_iri]
+                        ):
+                            if property_.profile.type == ProfileType.ROOT:
+                                row_style = "background-color: #d2ffd2;"
+                            elif property_.profile.type == ProfileType.BASE:
+                                row_style = "background-color: white;"
+                            else:
+                                row_style = "background-color: #efffef;"
+
+                            if i == 0:
+                                property_table_row(
+                                    row_style,
+                                    property_,
+                                    self.query.class_index,
+                                    is_first=True,
+                                    has_secondary=has_secondary,
+                                )
+                            else:
+                                property_table_row(
+                                    row_style, property_, self.query.class_index
+                                )
+
+    def  _make_component_model_class(self, cls: Class):
         with div(_class="sect3"):
             h4(CLASS_STRING.format(cls.name), identifier=cls.iri)
 
@@ -308,114 +410,7 @@ class Supermodel:
 
             if cls.properties:
                 h5("Properties")
-                with div(_class="sect5 overflow-x-auto"):
-                    with table(
-                        _class="tableblock frame-all grid-all stripes-even fit-content stretch"
-                    ):
-                        with thead():
-                            with tr():
-                                th(
-                                    "Property",
-                                    _class="tableblock halign-left valign-top",
-                                )
-                                th(
-                                    "Source",
-                                    _class="tableblock halign-left valign-top",
-                                )
-                                th(
-                                    "Description",
-                                    _class="tableblock halign-left valign-top",
-                                )
-                                # th(
-                                #     "Cardinality",
-                                #     _class="tableblock halign-left valign-top",
-                                # )
-                                # th(
-                                #     "Value type",
-                                #     _class="tableblock halign-left valign-top",
-                                # )
-                                th(
-                                    "Constraints",
-                                    _class="tableblock halign-left valign-top",
-                                )
-                        with tbody():
-                            for property_iri in cls.properties:
-                                # Whether there's more than 1 row describing this property.
-                                has_secondary = (
-                                    True
-                                    if len(cls.properties[property_iri]) > 1
-                                    else False
-                                )
-
-                                with tr(_class="property-row-header"):
-                                    with td(
-                                        _class="tableblock halign-left valign-top",
-                                        style="background-color: #f7f8f7;",
-                                    ):
-                                        if (
-                                            has_secondary
-                                            and cls.properties[property_iri][
-                                                0
-                                            ].is_property_path
-                                        ):
-                                            # Assign the property name to the last one.
-                                            # This is usually a base property in the profile that's not a property path.
-                                            cls_property_name = cls.properties[
-                                                property_iri
-                                            ][-1].name
-
-                                            # Loop through and if we come across a property that's not a
-                                            # property path, then use it.
-                                            for prop in cls.properties[property_iri]:
-                                                if not prop.is_property_path:
-                                                    cls_property_name = prop.name
-                                        else:
-                                            cls_property_name = cls.properties[
-                                                property_iri
-                                            ][0].name
-                                        # TODO: have a property tracker
-                                        # If property is documented, link to it with fragment id,
-                                        # else, provide an external link to the IRI.
-                                        fragment = make_html_fragment(property_iri)
-                                        with p(_class="tableblock font-bold"):
-                                            a(cls_property_name, href=f"#{fragment}")
-
-                                        if has_secondary:
-                                            base_property_name = cls.properties[
-                                                property_iri
-                                            ][-1].name
-                                            if cls_property_name != base_property_name:
-                                                p(
-                                                    f"({base_property_name})",
-                                                    _class="tableblock text-sm italic",
-                                                )
-                                    td(
-                                        _class="tableblock halign-left valign-top",
-                                        style="background-color: #f7f8f7;",
-                                        colspan="4",
-                                    )
-                                for i, property_ in enumerate(
-                                    cls.properties[property_iri]
-                                ):
-                                    if property_.profile.type == ProfileType.ROOT:
-                                        row_style = "background-color: #d2ffd2;"
-                                    elif property_.profile.type == ProfileType.BASE:
-                                        row_style = "background-color: white;"
-                                    else:
-                                        row_style = "background-color: #efffef;"
-
-                                    if i == 0:
-                                        property_table_row(
-                                            row_style,
-                                            property_,
-                                            self.query.class_index,
-                                            is_first=True,
-                                            has_secondary=has_secondary,
-                                        )
-                                    else:
-                                        property_table_row(
-                                            row_style, property_, self.query.class_index
-                                        )
+                self._make_component_model_class_properties(cls.properties)
 
             if cls.examples:
                 h5("Examples")
@@ -495,6 +490,10 @@ class Supermodel:
 
     def _make_component_model_core(self, component_model: ComponentModel):
         with div(_class="sect2"):
+            h3("Vocabularies")
+            p("A summary of properties within this module that have vocabularies as target values.")
+            self._make_component_model_class_properties(component_model.coded_properties)
+
             h3("Classes", identifier=f"{component_model.iri} - Classes")
             hr()
             for i, cls in enumerate(component_model.classes):

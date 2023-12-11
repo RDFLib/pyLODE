@@ -620,15 +620,17 @@ class Query:
         object_properties = get_rdf_properties(OWL.ObjectProperty, profile_graph)
         ontology_properties = get_rdf_properties(OWL.OntologyProperty, profile_graph)
 
-        coded_properties = set()
-        # for cls in classes:
-        #     for properties in cls.properties.values():
-        #         for prop in properties:
-        #             prop.coded_property
+        coded_properties = defaultdict(list)
+        for cls in classes:
+            for properties in cls.properties.values():
+                for prop in properties:
+                    if isinstance(prop, CodedProperty):
+                        coded_properties[prop.iri].append(prop)
 
         return ComponentModel(
             iri,
             name,
+            coded_properties,
             descriptions,
             classes,
             top_level_classes,
@@ -689,9 +691,7 @@ class Query:
                     self.db.contexts((prop, RDF.type, QB.CodedProperty)),
                 )
             )
-            # TODO: We don't have the logic to classify the profile type here...
-            # TODO: Why for horizontalCRS on CSD class the value class type does not have a clickable link?
-            #   And the label looks weird...
+
             if graphs:
                 for graph in graphs:
                     expected_value_iri = graph.value(prop, RDFS.range)

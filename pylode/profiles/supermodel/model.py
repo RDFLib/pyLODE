@@ -98,6 +98,12 @@ class Property:
 class CodedProperty(Property):
     codelist: list[Resource] = field(default_factory=list)
 
+    def __hash__(self):
+        value = f"{self.iri} {self.belongs_to_class.iri} {self.profile.iri}"
+        for code in self.codelist:
+            value += f" {code.label}"
+        return hash(value)
+
 
 @dataclass
 class Note:
@@ -153,6 +159,7 @@ class RDFProperty:
 class ComponentModel:
     iri: URIRef
     name: str
+    coded_properties: dict[str, list[CodedProperty]]
     description: str = None
     classes: list[Class] = field(default_factory=list)
     top_level_classes: list[Class] = field(default_factory=list)
