@@ -485,13 +485,14 @@ class Supermodel:
 
     def _make_component_model_core(self, component_model: ComponentModel):
         with div(_class="sect2"):
-            h3("Vocabularies")
-            p(
-                "A summary of properties within this module that have vocabularies as target values."
-            )
-            self._make_component_model_class_properties(
-                component_model.coded_properties
-            )
+            if component_model.coded_properties:
+                h3("Vocabularies")
+                p(
+                    "A summary of properties within this module that have vocabularies as target values."
+                )
+                self._make_component_model_class_properties(
+                    component_model.coded_properties
+                )
 
             h3("Classes", identifier=f"{component_model.iri} - Classes")
             hr()
