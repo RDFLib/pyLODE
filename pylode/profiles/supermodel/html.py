@@ -42,7 +42,8 @@ from pylode.profiles.supermodel.model import (
     Class,
     RDFProperty,
     ProfileType,
-    ProfileHierarchyItem, Property,
+    ProfileHierarchyItem,
+    Property,
 )
 from pylode.profiles.supermodel.component import (
     metadata_row,
@@ -239,10 +240,12 @@ class Supermodel:
                 ),
             )
 
-    def _make_component_model_class_properties(self, properties: [dict[str, list[Property]]]):
+    def _make_component_model_class_properties(
+        self, properties: [dict[str, list[Property]]]
+    ):
         with div(_class="sect5 overflow-x-auto"):
             with table(
-                    _class="tableblock frame-all grid-all stripes-even fit-content stretch"
+                _class="tableblock frame-all grid-all stripes-even fit-content stretch"
             ):
                 with thead():
                     with tr():
@@ -266,27 +269,23 @@ class Supermodel:
                     for property_iri in properties:
                         # Whether there's more than 1 row describing this property.
                         has_secondary = (
-                            True
-                            if len(properties[property_iri]) > 1
-                            else False
+                            True if len(properties[property_iri]) > 1 else False
                         )
 
                         with tr(_class="property-row-header"):
                             with td(
-                                    _class="tableblock halign-left valign-top",
-                                    style="background-color: #f7f8f7;",
+                                _class="tableblock halign-left valign-top",
+                                style="background-color: #f7f8f7;",
                             ):
                                 if (
-                                        has_secondary
-                                        and properties[property_iri][
-                                    0
-                                ].is_property_path
+                                    has_secondary
+                                    and properties[property_iri][0].is_property_path
                                 ):
                                     # Assign the property name to the last one.
                                     # This is usually a base property in the profile that's not a property path.
-                                    cls_property_name = properties[
-                                        property_iri
-                                    ][-1].name
+                                    cls_property_name = properties[property_iri][
+                                        -1
+                                    ].name
 
                                     # Loop through and if we come across a property that's not a
                                     # property path, then use it.
@@ -294,9 +293,7 @@ class Supermodel:
                                         if not prop.is_property_path:
                                             cls_property_name = prop.name
                                 else:
-                                    cls_property_name = properties[
-                                        property_iri
-                                    ][0].name
+                                    cls_property_name = properties[property_iri][0].name
                                 # TODO: have a property tracker
                                 # If property is documented, link to it with fragment id,
                                 # else, provide an external link to the IRI.
@@ -305,9 +302,9 @@ class Supermodel:
                                     a(cls_property_name, href=f"#{fragment}")
 
                                 if has_secondary:
-                                    base_property_name = properties[
-                                        property_iri
-                                    ][-1].name
+                                    base_property_name = properties[property_iri][
+                                        -1
+                                    ].name
                                     if cls_property_name != base_property_name:
                                         p(
                                             f"({base_property_name})",
@@ -318,9 +315,7 @@ class Supermodel:
                                 style="background-color: #f7f8f7;",
                                 colspan="4",
                             )
-                        for i, property_ in enumerate(
-                                properties[property_iri]
-                        ):
+                        for i, property_ in enumerate(properties[property_iri]):
                             if property_.profile.type == ProfileType.ROOT:
                                 row_style = "background-color: #d2ffd2;"
                             elif property_.profile.type == ProfileType.BASE:
@@ -341,7 +336,7 @@ class Supermodel:
                                     row_style, property_, self.query.class_index
                                 )
 
-    def  _make_component_model_class(self, cls: Class):
+    def _make_component_model_class(self, cls: Class):
         with div(_class="sect3"):
             h4(CLASS_STRING.format(cls.name), identifier=cls.iri)
 
@@ -491,8 +486,12 @@ class Supermodel:
     def _make_component_model_core(self, component_model: ComponentModel):
         with div(_class="sect2"):
             h3("Vocabularies")
-            p("A summary of properties within this module that have vocabularies as target values.")
-            self._make_component_model_class_properties(component_model.coded_properties)
+            p(
+                "A summary of properties within this module that have vocabularies as target values."
+            )
+            self._make_component_model_class_properties(
+                component_model.coded_properties
+            )
 
             h3("Classes", identifier=f"{component_model.iri} - Classes")
             hr()

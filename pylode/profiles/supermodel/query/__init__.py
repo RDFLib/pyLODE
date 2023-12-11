@@ -685,17 +685,21 @@ class Query:
         self, cls_iri: URIRef, properties: dict[str, list[Property]]
     ) -> dict[str, list[Property]]:
         for prop in properties.copy():
-            graphs = list(
+            _graphs = list(
                 filter(
                     lambda g: g.identifier != DATASET_DEFAULT_GRAPH_ID,
                     self.db.contexts((prop, RDF.type, QB.CodedProperty)),
                 )
             )
 
-            if graphs:
-                for graph in graphs:
-                    expected_value_iri = graph.value(prop, RDFS.range)
-                    value_class_types = [get_class(expected_value_iri, self.db, [])]
+            if _graphs:
+                for _graph in _graphs:
+                    graph = self.db.get_graph(_graph.identifier)
+                    expected_value_iris = graph.objects(prop, RDFS.range)
+                    value_class_types = [
+                        get_class(expected_value_iri, self.db, [])
+                        for expected_value_iri in expected_value_iris
+                    ]
 
                     name = get_name(prop, self.db)
                     description = get_descriptions(prop, self.db) or ""

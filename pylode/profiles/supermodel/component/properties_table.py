@@ -103,20 +103,23 @@ def property_table_row(
             with p(
                 _class="tableblock",
             ):
-                for value_class_type in property_.value_class_types:
-                    if value_class_type.iri in class_index:
-                        fragment = make_html_fragment(value_class_type.iri)
-                        with p("Expected class type "):
-                            a(
-                                value_class_type.name,
-                                href=f"#{fragment}",
-                            )
-                    else:
-                        with p("Expected class type "):
-                            external_link(
-                                value_class_type.name,
-                                value_class_type.iri,
-                            )
+                if not isinstance(property_, CodedProperty):
+                    # Don't render this if it's a coded property since most coded properties
+                    # will already render this same info based on their rdfs:range values.
+                    for value_class_type in property_.value_class_types:
+                        if value_class_type.iri in class_index:
+                            fragment = make_html_fragment(value_class_type.iri)
+                            with p("Expected class type "):
+                                a(
+                                    value_class_type.name,
+                                    href=f"#{fragment}",
+                                )
+                        else:
+                            with p("Expected class type "):
+                                external_link(
+                                    value_class_type.name,
+                                    value_class_type.iri,
+                                )
 
                 if property_.constraints:
                     p(property_.constraints)
@@ -130,18 +133,20 @@ def property_table_row(
                                 external_link(codelist.label, codelist.iri)
                     span("with an expected class type of:")
 
-                    for class_type in property_.value_class_types:
-                        if class_type.iri in class_index:
-                            fragment = make_html_fragment(class_type.iri)
-                            a(
-                                class_type.name,
-                                href=f"#{fragment}",
-                            )
-                        else:
-                            external_link(
-                                class_type.name,
-                                class_type.iri,
-                            )
+                    with ul():
+                        for class_type in property_.value_class_types:
+                            with li():
+                                if class_type.iri in class_index:
+                                    fragment = make_html_fragment(class_type.iri)
+                                    a(
+                                        class_type.name,
+                                        href=f"#{fragment}",
+                                    )
+                                else:
+                                    external_link(
+                                        class_type.name,
+                                        class_type.iri,
+                                    )
 
             if cardinality:
                 p(f"Cardinality: {cardinality}", _class="text-sm")
