@@ -131,3 +131,39 @@ def property_table_row(
                 p(f"Cardinality: {cardinality}", _class="text-sm")
 
     return component
+
+
+def property_table_vocabulary_row(
+    row_style: str,
+    property_: Property,
+    is_first: bool = False,
+    has_secondary: bool = False,
+):
+    with tr(
+        style=row_style,
+        _class="property-row-main" if is_first else "property-row-secondary",
+    ) as component:
+        with td(
+            _class="tableblock halign-left valign-top",
+        ):
+            with p(property_.name):
+                if property_.description:
+                    with tooltip(
+                        property_.description,
+                        _class="property-row-profile-source",
+                    ):
+                        i(_class="fa fa-info", aria_hidden="true")
+
+            if is_first and has_secondary:
+                with button(_class="property-row-button"):
+                    i(_class="fa fa-arrow-circle-right")
+
+        with td(_class="tableblock halign-left valign-top"):
+            if property_.codelist:
+                span("Values expected to be from the following vocabulary:")
+                with ul():
+                    for codelist in property_.codelist:
+                        with li():
+                            external_link(codelist.label, codelist.iri)
+
+    return component

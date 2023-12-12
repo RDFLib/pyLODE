@@ -101,7 +101,27 @@ class CodedProperty(Property):
     def __hash__(self):
         value = f"{self.iri} {self.belongs_to_class.iri} {self.profile.iri}"
         for code in self.codelist:
-            value += f" {code.label}"
+            value += f" {code.iri}"
+        return hash(value)
+
+
+@dataclass
+class SimpleCodedProperty:
+    """This is used in the vocabulary summary tables.
+
+    This class has a simpler comparison method which only checks if a coded property is unique
+    based on the IRI and the codelist values.
+    """
+
+    iri: URIRef
+    name: str
+    description: str | None = None
+    codelist: list[Resource] = field(default_factory=list)
+
+    def __hash__(self):
+        value = f"{self.iri}"
+        for code in self.codelist:
+            value += f" {code.iri}"
         return hash(value)
 
 

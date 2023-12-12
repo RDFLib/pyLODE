@@ -39,6 +39,7 @@ from pylode.profiles.supermodel.model import (
     ProfileHierarchyItem,
     CodedProperty,
     Resource,
+    SimpleCodedProperty,
 )
 from pylode.profiles.supermodel.query.common import (
     get_class,
@@ -625,7 +626,11 @@ class Query:
             for properties in cls.properties.values():
                 for prop in properties:
                     if isinstance(prop, CodedProperty):
-                        coded_properties[prop.iri].append(prop)
+                        _prop = SimpleCodedProperty(
+                            prop.iri, prop.name, prop.description, prop.codelist
+                        )
+                        if _prop.codelist and _prop not in coded_properties[prop.iri]:
+                            coded_properties[prop.iri].append(_prop)
 
         return ComponentModel(
             iri,

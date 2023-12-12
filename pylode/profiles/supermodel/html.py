@@ -31,7 +31,10 @@ from dominate.tags import (
 from dominate.util import raw
 from rdflib import Graph, OWL, SDO, DCTERMS, VANN, SKOS
 
-from pylode.profiles.supermodel.component.properties_table import property_table_row
+from pylode.profiles.supermodel.component.properties_table import (
+    property_table_row,
+    property_table_vocabulary_row,
+)
 from pylode.utils import (
     PylodeError,
     load_ontology,
@@ -336,6 +339,69 @@ class Supermodel:
                                     row_style, property_, self.query.class_index
                                 )
 
+    def _make_component_model_vocabularies(
+        self, properties: [dict[str, list[Property]]]
+    ):
+        with div(_class="sect5 overflow-x-auto"):
+            with table(
+                _class="tableblock frame-all grid-all stripes-even fit-content stretch"
+            ):
+                with thead():
+                    with tr():
+                        th(
+                            "Property",
+                            _class="tableblock halign-left valign-top",
+                        )
+                        th(
+                            "Vocabularies",
+                            _class="tableblock halign-left valign-top",
+                        )
+                with tbody():
+                    for property_iri in properties:
+                        # Whether there's more than 1 row describing this property.
+                        has_secondary = (
+                            True if len(properties[property_iri]) > 1 else False
+                        )
+
+                        with tr(_class="property-row-header"):
+                            with td(
+                                _class="tableblock halign-left valign-top",
+                                style="background-color: #f7f8f7;",
+                            ):
+                                cls_property_name = properties[property_iri][0].name
+                                # TODO: have a property tracker
+                                # If property is documented, link to it with fragment id,
+                                # else, provide an external link to the IRI.
+                                fragment = make_html_fragment(property_iri)
+                                with p(_class="tableblock font-bold"):
+                                    a(cls_property_name, href=f"#{fragment}")
+
+                                if has_secondary:
+                                    base_property_name = properties[property_iri][
+                                        -1
+                                    ].name
+                                    if cls_property_name != base_property_name:
+                                        p(
+                                            f"({base_property_name})",
+                                            _class="tableblock text-sm italic",
+                                        )
+                            td(
+                                _class="tableblock halign-left valign-top",
+                                style="background-color: #f7f8f7;",
+                                colspan="4",
+                            )
+                        for i, property_ in enumerate(properties[property_iri]):
+                            row_style = "background-color: white;"
+                            if i == 0:
+                                property_table_vocabulary_row(
+                                    row_style,
+                                    property_,
+                                    is_first=True,
+                                    has_secondary=has_secondary,
+                                )
+                            else:
+                                property_table_vocabulary_row(row_style, property_)
+
     def _make_component_model_class(self, cls: Class):
         with div(_class="sect3"):
             h4(CLASS_STRING.format(cls.name), identifier=cls.iri)
@@ -490,7 +556,7 @@ class Supermodel:
                 p(
                     "A summary of properties within this module that have vocabularies as target values."
                 )
-                self._make_component_model_class_properties(
+                self._make_component_model_vocabularies(
                     component_model.coded_properties
                 )
 
