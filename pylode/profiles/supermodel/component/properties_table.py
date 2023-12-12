@@ -175,7 +175,6 @@ def property_table_vocabulary_row(
 
         with td(_class="tableblock halign-left valign-top"):
             if property_.codelist:
-                span("Values expected to be from the following vocabulary:")
                 with ul():
                     for codelist in property_.codelist:
                         with li():
