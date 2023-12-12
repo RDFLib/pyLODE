@@ -77,27 +77,6 @@ def property_table_row(
         else:
             cardinality = f"[{property_.cardinality_min}..{property_.cardinality_max}]"
 
-        # with td(
-        #     _class="tableblock halign-left valign-top"
-        # ):
-        #     if property_.value_type is not None:
-        #         if (
-        #             property_.value_type.iri
-        #             in self.query.class_index
-        #         ):
-        #             fragment = make_html_fragment(
-        #                 property_.value_type.iri
-        #             )
-        #             a(
-        #                 property_.value_type.name,
-        #                 href=f"#{fragment}",
-        #             )
-        #         else:
-        #             external_link(
-        #                 property_.value_type.name,
-        #                 property_.value_type.iri,
-        #             )
-
         with td(_class="tableblock halign-left valign-top"):
 
             with p(
