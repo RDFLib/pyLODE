@@ -628,7 +628,10 @@ class Query:
                     if isinstance(prop, CodedProperty):
                         # Always get the base name, that's why we use properties[-1].name.
                         _prop = SimpleCodedProperty(
-                            prop.iri, properties[-1].name, prop.description, prop.codelist
+                            prop.iri,
+                            properties[-1].name,
+                            prop.description,
+                            prop.codelist,
                         )
                         if _prop.codelist and _prop not in coded_properties[prop.iri]:
                             coded_properties[prop.iri].append(_prop)
@@ -708,7 +711,11 @@ class Query:
                     ]
 
                     name = get_name(prop, graph, self.db)
-                    description = get_descriptions(prop, graph) or get_descriptions(prop, self.db) or ""
+                    description = (
+                        get_descriptions(prop, graph)
+                        or get_descriptions(prop, self.db)
+                        or ""
+                    )
 
                     new_prop = CodedProperty(
                         prop,
