@@ -368,23 +368,13 @@ class Supermodel:
                                 _class="tableblock halign-left valign-top",
                                 style="background-color: #f7f8f7;",
                             ):
-                                cls_property_name = properties[property_iri][0].name
                                 # TODO: have a property tracker
                                 # If property is documented, link to it with fragment id,
                                 # else, provide an external link to the IRI.
                                 fragment = make_html_fragment(property_iri)
                                 with p(_class="tableblock font-bold"):
-                                    a(cls_property_name, href=f"#{fragment}")
+                                    a(property_iri, href=f"#{fragment}")
 
-                                if has_secondary:
-                                    base_property_name = properties[property_iri][
-                                        -1
-                                    ].name
-                                    if cls_property_name != base_property_name:
-                                        p(
-                                            f"({base_property_name})",
-                                            _class="tableblock text-sm italic",
-                                        )
                             td(
                                 _class="tableblock halign-left valign-top",
                                 style="background-color: #f7f8f7;",
