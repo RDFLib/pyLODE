@@ -42,7 +42,7 @@ def property_table_row(
                         f"In profile {property_.profile.name}",
                         _class="property-row-profile-source",
                     ):
-                        i(_class="fa fa-info", aria_hidden="true")
+                        i(_class="fa fa-info cursor-help", aria_hidden="true")
 
                     with p(
                         f"In profile ",
@@ -54,10 +54,22 @@ def property_table_row(
         with td(_class="tableblock halign-left valign-top"):
             p(property_.description)
             if property_.method:
-                p(f"Method: {property_.method}")
+                with tooltip(
+                        f"Method: {property_.method}",
+                        _class="property-row-profile-source",
+                ):
+                    span("M", _class="font-bold cursor-help", aria_hidden="true")
+
+                p(f"Method: {property_.method}", _class="property-row-profile-source italic text-sm hidden")
 
             if property_.property_source:
-                p(property_.property_source)
+                with tooltip(
+                        f"Property Source: {property_.property_source}",
+                        _class="property-row-profile-source",
+                ):
+                    span("PS", _class="font-bold cursor-help", aria_hidden="true")
+
+                p(f"Property Source: {property_.property_source}", _class="property-row-profile-source italic text-sm hidden")
 
         cardinality = ""
         if property_.cardinality_min is None and property_.cardinality_max is None:
@@ -152,7 +164,10 @@ def property_table_vocabulary_row(
                         property_.description,
                         _class="property-row-profile-source",
                     ):
-                        i(_class="fa fa-info", aria_hidden="true")
+                        i(_class="fa fa-info cursor-help", aria_hidden="true")
+
+                    p(property_.description,
+                      _class="property-row-profile-source italic text-sm hidden")
 
             if is_first and has_secondary:
                 with button(_class="property-row-button"):

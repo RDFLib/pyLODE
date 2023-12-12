@@ -45,3 +45,11 @@
 .border-l-orange-700 {
   border-left-color: rgb(194 65 12);
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-help {
+  cursor: help;
+}
