@@ -212,7 +212,12 @@ def get_class_properties_by_sh(iri: URIRef, db: Dataset) -> dict[str, list[Prope
 
                 if sh_path_list:
                     name = " / ".join(
-                        [get_name(item, profile_graph, db) for item in sh_path_list]
+                        [
+                            get_name(item, profile_graph, db)
+                            if isinstance(item, URIRef)
+                            else "[]"
+                            for item in sh_path_list
+                        ]
                     )
                     is_property_path = True
                 else:
