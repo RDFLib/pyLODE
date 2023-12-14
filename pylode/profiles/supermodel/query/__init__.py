@@ -798,6 +798,7 @@ class Query:
         SHACL:
         [x] - sh:property via a sh:NodeShape, which may also be an owl:Class or rdfs:Class
         [x] - sh:targetClass
+        [x] - implicit target class (contains rdfs:Class and sh:NodeShape)
         [x] - sh:targetObjectsOf
         [x] - sh:targetSubjectsOf
         [x] - all above should support sh:path as a sequence path
@@ -810,7 +811,6 @@ class Query:
         [x] - RDF data cube - vocabulary binding
         """
 
-        # properties.update(self.get_class_properties_from_sh_nodeshape_sh_property(iri))
         properties = get_class_properties_by_sh(iri, self.db)
 
         properties = self.get_coded_properties(iri, properties)
