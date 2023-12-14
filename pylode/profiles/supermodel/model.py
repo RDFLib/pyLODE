@@ -117,6 +117,7 @@ class SimpleCodedProperty:
     name: str
     description: str | None = None
     codelist: list[Resource] = field(default_factory=list)
+    classes: list["Class"] = field(default_factory=list)
 
     def __hash__(self):
         value = f"{self.iri}"

@@ -334,6 +334,67 @@ class Query:
 
         return profiles
 
+    def get_summary_vocabularies(self):
+        coded_properties = defaultdict(list)
+
+        for graph in self.db.graphs():
+            props = list(graph.subjects(RDF.type, QB.CodedProperty))
+            for prop in props:
+                codelist = [
+                    Resource(
+                        x,
+                        get_name(x, graph),
+                        get_descriptions(x, graph),
+                    )
+                    for x in graph.objects(prop, QB.codeList)
+                ]
+                simple_coded_property = SimpleCodedProperty(
+                    prop,
+                    get_name(prop, graph, self.db),
+                    get_descriptions(prop, graph),
+                    codelist,
+                )
+                if simple_coded_property not in coded_properties[prop]:
+                    coded_properties[prop].append(simple_coded_property)
+
+        # Sort by label of the first value.
+        coded_properties = dict(
+            sorted(coded_properties.items(), key=lambda v: v[1][0].name.lower())
+        )
+
+        vocab_class_index = defaultdict(list)
+        for component_model in self.component_models:
+            for cls in component_model.classes:
+                for properties in cls.properties.values():
+                    for prop in properties:
+                        if isinstance(prop, CodedProperty):
+                            if prop.belongs_to_class not in vocab_class_index[prop.iri]:
+                                vocab_class_index[prop.iri].append(
+                                    prop.belongs_to_class
+                                )
+
+        for vocab in vocab_class_index:
+            vocab_class_index[vocab] = sorted(
+                vocab_class_index[vocab], key=lambda x: x.name
+            )
+
+        # Collapse by combining codelist values.
+        for prop in coded_properties:
+            codelist = []
+            for coded_property in coded_properties[prop]:
+                codelist += coded_property.codelist
+
+            # Copy the codelist values to the first coded property.
+            coded_properties[prop][0].codelist = codelist
+
+            # Add classes to coded property.
+            coded_properties[prop][0].classes = vocab_class_index[prop]
+
+            # Only have one copy that has all the codelist values combined.
+            coded_properties[prop] = [coded_properties[prop][0]]
+
+        return coded_properties
+
     def __init__(self, graph: Graph) -> None:
         self.root_profile_iri = get_root_profile_iri(graph)
         self.db = load_profiles(self.root_profile_iri, graph.serialize())
@@ -355,6 +416,8 @@ class Query:
                 self.load_component_model(URIRef(self.ns[1]), self.db)
             ]
         self.ontdoc_inference()
+
+        self.coded_properties = self.get_summary_vocabularies()
 
         print("Named graphs")
         print([str(g.identifier) for g in self.db.graphs()])
@@ -620,6 +683,11 @@ class Query:
         datatype_properties = get_rdf_properties(OWL.DatatypeProperty, profile_graph)
         object_properties = get_rdf_properties(OWL.ObjectProperty, profile_graph)
         ontology_properties = get_rdf_properties(OWL.OntologyProperty, profile_graph)
+
+        # TODO: Remove this coded properties processing, no longer needed as it is now
+        #   processed in self.get_summary_vocabularies().
+        # Get the simple coded properties that are used to display the vocab summary table.
+        coded_properties = defaultdict(list)
 
         coded_properties = defaultdict(list)
         for cls in classes:

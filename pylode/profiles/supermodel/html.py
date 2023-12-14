@@ -224,6 +224,12 @@ class Supermodel:
         self.header: div = self.body.add(div(id="header"))
         self.header.add(h1(title))
 
+    def _make_vocabs_summary(self):
+        with self.content:
+            h2("Vocabularies")
+            p("A summary of properties that have vocabularies as target values.")
+            self._make_component_model_vocabularies(self.query.coded_properties)
+
     def _make_content(self):
         with self.body:
             with div(id="content") as content:
@@ -231,6 +237,7 @@ class Supermodel:
                 self._make_preamble()
                 self._make_examples()
                 self._make_profiles_hierarchy_root()
+                self._make_vocabs_summary()
                 self._make_component_models()
 
             # Additionally javascript added after main body content.
@@ -353,6 +360,10 @@ class Supermodel:
                             _class="tableblock halign-left valign-top",
                         )
                         th(
+                            "Classes",
+                            _class="tableblock halign-left valign-top",
+                        )
+                        th(
                             "Vocabularies",
                             _class="tableblock halign-left valign-top",
                         )
@@ -386,11 +397,14 @@ class Supermodel:
                                 property_table_vocabulary_row(
                                     row_style,
                                     property_,
+                                    self.query.class_index,
                                     is_first=True,
                                     has_secondary=has_secondary,
                                 )
                             else:
-                                property_table_vocabulary_row(row_style, property_)
+                                property_table_vocabulary_row(
+                                    row_style, property_, self.query.class_index
+                                )
 
     def _make_component_model_class(self, cls: Class):
         with div(_class="sect3"):
@@ -541,14 +555,16 @@ class Supermodel:
 
     def _make_component_model_core(self, component_model: ComponentModel):
         with div(_class="sect2"):
-            if component_model.coded_properties:
-                h3("Vocabularies")
-                p(
-                    "A summary of properties within this module that have vocabularies as target values."
-                )
-                self._make_component_model_vocabularies(
-                    component_model.coded_properties
-                )
+            # TODO: Remove this. No longer needed since vocab summary table
+            #  is now at the top of the profile document, but just wait in case requirements change.
+            # if component_model.coded_properties:
+            #     h3("Vocabularies")
+            #     p(
+            #         "A summary of properties within this module that have vocabularies as target values."
+            #     )
+            #     self._make_component_model_vocabularies(
+            #         component_model.coded_properties
+            #     )
 
             h3("Classes", identifier=f"{component_model.iri} - Classes")
             hr()
@@ -634,8 +650,6 @@ class Supermodel:
                     with div(_class="sect4"):
                         for ex in component_model.examples:
                             example(ex, 4)
-
-                # TODO: Vocab summary table.
 
                 hr()
 

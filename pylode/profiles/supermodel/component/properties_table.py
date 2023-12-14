@@ -1,6 +1,11 @@
 from dominate.tags import tr, td, p, a, i, span, ul, li, button
+from rdflib import URIRef
 
-from pylode.profiles.supermodel.model import Property, CodedProperty
+from pylode.profiles.supermodel.model import (
+    Property,
+    CodedProperty,
+    SimpleCodedProperty,
+)
 from pylode.profiles.supermodel.component import external_link, tooltip
 from pylode.profiles.supermodel.fragment import make_html_fragment
 
@@ -153,7 +158,8 @@ def property_table_row(
 
 def property_table_vocabulary_row(
     row_style: str,
-    property_: Property,
+    property_: SimpleCodedProperty,
+    class_index: set[URIRef],
     is_first: bool = False,
     has_secondary: bool = False,
 ):
@@ -180,6 +186,19 @@ def property_table_vocabulary_row(
             if is_first and has_secondary:
                 with button(_class="property-row-button"):
                     i(_class="fa fa-arrow-circle-right")
+
+        with td(_class="tableblock halign-left valign-top"):
+            if property_.classes:
+                with ul():
+                    for cls in property_.classes:
+                        with li():
+                            if cls.iri in class_index:
+                                a(
+                                    cls.name,
+                                    href=f"#{cls.iri}",
+                                )
+                            else:
+                                external_link(cls.name, cls.iri)
 
         with td(_class="tableblock halign-left valign-top"):
             if property_.codelist:
