@@ -910,7 +910,7 @@ class Query:
     def get_component_model_class(
         self, iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
     ):
-        name = get_name(iri, graph)
+        name = get_name(iri, graph, self.db)
         descriptions = get_descriptions(iri, graph)
         subclasses = get_subclasses(iri, graph, ignored_classes)
         # TODO: Add memoization to remove the need to recalculate the same classes.
