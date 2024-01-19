@@ -55,6 +55,7 @@ try:
         get_ns,
         prop_obj_pair_html,
         section_html,
+        sort_ontology,
         make_pylode_logo,
     )
 
@@ -70,6 +71,7 @@ except ImportError:
         get_ns,
         prop_obj_pair_html,
         section_html,
+        sort_ontology,
         make_pylode_logo,
     )
 
@@ -105,8 +107,10 @@ class VocPub:
         od.make_html(destination="some-resulting-html-file.html")
     """
 
-    def __init__(self, ontology: Union[Graph, Path, str]):
+    def __init__(self, ontology: Union[Graph, Path, str], sort_subjects: bool = False):
         self.ont = load_ontology(ontology)
+        if sort_subjects:
+            self.ont = sort_ontology(self.ont)
         self._ontdoc_inference(self.ont)
         self.back_onts = load_background_onts()
         self.back_onts_titles = load_background_onts_titles(self.back_onts)

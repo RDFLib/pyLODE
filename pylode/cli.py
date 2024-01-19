@@ -35,6 +35,13 @@ parser.add_argument(
 )
 
 parser.add_argument(
+    "-s",
+    "--sort",
+    help="Enables sorting of the subjects in the ontology in the output",
+    action='store_true',
+)
+
+parser.add_argument(
     "-p",
     "--profile",
     help="Which profile to use to generate HTML. Must be one of "
@@ -50,12 +57,13 @@ def main():
     args = parser.parse_args()
 
     try:
+        sort_subjects = args.sort
         if args.profile == "ontpub":
-            html = OntPub(args.input)
+            html = OntPub(args.input, sort_subjects)
         elif args.profile == "vocpub":
-            html = VocPub(args.input)
+            html = VocPub(args.input, sort_subjects)
         elif args.profile == "supermodel":
-            html = Supermodel(args.input)
+            html = Supermodel(args.input, sort_subjects)
         else:
             raise ValueError(f"Unexpected profile type '{args.profile}'")
     except PylodeError as e:
