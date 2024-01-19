@@ -687,11 +687,6 @@ class Query:
         object_properties = get_rdf_properties(OWL.ObjectProperty, profile_graph)
         ontology_properties = get_rdf_properties(OWL.OntologyProperty, profile_graph)
 
-        # TODO: Remove this coded properties processing, no longer needed as it is now
-        #   processed in self.get_summary_vocabularies().
-        # Get the simple coded properties that are used to display the vocab summary table.
-        coded_properties = defaultdict(list)
-
         coded_properties = defaultdict(list)
         for cls in classes:
             for properties in cls.properties.values():
