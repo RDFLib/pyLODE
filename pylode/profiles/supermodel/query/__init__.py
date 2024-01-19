@@ -286,7 +286,9 @@ def get_root_profile_iri(graph: Graph) -> URIRef:
         profiles = list(graph.subjects(RDF.type, OWL.Ontology, unique=True))
 
         if len(profiles) != 1:
-            raise ValueError(f"There can only be one owl:Ontology defined in the document.")
+            raise ValueError(
+                f"There can only be one owl:Ontology defined in the document."
+            )
 
     return profiles[0]
 
@@ -729,32 +731,40 @@ class Query:
         return sorted(result, key=lambda x: x.order)
 
     def get_class_properties_from_schema_domain_includes(
-        self, iri: URIRef, ignored_classes: list[URIRef]
+        self,
+        iri: URIRef,
+        properties: dict[URIRef, list[Property]],
+        ignored_classes: list[URIRef],
     ) -> list[Property]:
-        properties = []
-        graph = self.db
-        schema_domain_includes_iris = graph.subjects(SDO.domainIncludes, iri)
-        for schema_domain_includes_iri in schema_domain_includes_iris:
-            name = get_name(schema_domain_includes_iri, graph)
-            description = get_descriptions(schema_domain_includes_iri, graph)
-            value_class_types = [
-                get_class(c, graph, ignored_classes)
-                for c in get_values(
-                    schema_domain_includes_iri, graph, [SDO.rangeIncludes]
-                )
-            ]
 
-            properties.append(
-                Property(
-                    iri=schema_domain_includes_iri,
-                    name=name,
-                    description=description,
-                    belongs_to_class=None,
-                    value_class_types=value_class_types,
-                )
-            )
+        for _graph in self.db.graphs():
+            graph = self.db.get_graph(_graph.identifier)
 
-        return sorted(properties, key=lambda x: x.name)
+            schema_domain_includes_iris = graph.subjects(SDO.domainIncludes, iri)
+            for schema_domain_includes_iri in schema_domain_includes_iris:
+                name = get_name(schema_domain_includes_iri, graph)
+                description = get_descriptions(schema_domain_includes_iri, graph)
+                value_class_types = [
+                    get_class(c, graph, ignored_classes)
+                    for c in get_values(
+                        schema_domain_includes_iri, graph, [SDO.rangeIncludes]
+                    )
+                ]
+
+                properties[schema_domain_includes_iri].append(
+                    Property(
+                        iri=schema_domain_includes_iri,
+                        name=name,
+                        description=description,
+                        profile=Profile(
+                            graph.identifier,
+                            get_name(graph.identifier, self.db),
+                        ),
+                        value_class_types=value_class_types,
+                    )
+                )
+
+        return properties
 
     def get_coded_properties(
         self, cls_iri: URIRef, properties: dict[str, list[Property]]
@@ -880,6 +890,10 @@ class Query:
         properties = get_class_properties_by_sh(iri, self.db)
 
         properties = self.get_coded_properties(iri, properties)
+
+        properties = self.get_class_properties_from_schema_domain_includes(
+            iri, properties, ignored_classes
+        )
 
         self.sort_properties(iri, properties)
 
