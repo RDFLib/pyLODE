@@ -4,7 +4,7 @@ from textwrap import dedent
 from collections import defaultdict
 from itertools import chain
 
-from rdflib import Graph, Literal, URIRef
+from rdflib import Graph, Literal, URIRef, Dataset
 from rdflib.graph import DATASET_DEFAULT_GRAPH_ID
 from rdflib.namespace import (
     RDF,
@@ -671,7 +671,7 @@ class Query:
                     "a skos:ConceptScheme or a prof:Profile"
                 )
 
-    def load_component_model(self, iri: URIRef, graph: Graph) -> ComponentModel:
+    def load_component_model(self, iri: URIRef, graph: Dataset) -> ComponentModel:
         name = get_name(iri, graph)
         descriptions = get_descriptions(iri, graph)
         ignored_classes = get_component_model_ignored_classes(iri, graph)
