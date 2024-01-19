@@ -280,6 +280,14 @@ def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
         print(f"{type(e).__name__} Error {e}")
         exit()
 
+def sort_ontology(ont_orig: Graph) -> Graph:
+    """Creates a copy of the supplied ontology, sorted by subjects"""
+    trpls = ont_orig.triples((None, None, None))
+    trpls_srt = sorted(trpls)
+    ont_sorted = Graph()
+    for trpl in trpls_srt:
+        ont_sorted.add(trpl)
+    return ont_sorted
 
 def load_background_onts():
     """Loads background ontology files into an RDFLib graph from either
