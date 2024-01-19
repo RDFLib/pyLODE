@@ -283,7 +283,10 @@ def get_root_profile_iri(graph: Graph) -> URIRef:
             f"There is more than 1 prof:Profile defined in the input document. Expected only 1 prof:Profile definition but found {[str(p) for p in profiles]}."
         )
     elif count < 1:
-        raise ValueError("Expected 1 prof:Profile definition but found none.")
+        profiles = list(graph.subjects(RDF.type, OWL.Ontology, unique=True))
+
+        if len(profiles) != 1:
+            raise ValueError(f"There can only be one owl:Ontology defined in the document.")
 
     return profiles[0]
 
