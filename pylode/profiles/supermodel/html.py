@@ -555,17 +555,6 @@ class Supermodel:
 
     def _make_component_model_core(self, component_model: ComponentModel):
         with div(_class="sect2"):
-            # TODO: Remove this. No longer needed since vocab summary table
-            #  is now at the top of the profile document, but just wait in case requirements change.
-            # if component_model.coded_properties:
-            #     h3("Vocabularies")
-            #     p(
-            #         "A summary of properties within this module that have vocabularies as target values."
-            #     )
-            #     self._make_component_model_vocabularies(
-            #         component_model.coded_properties
-            #     )
-
             h3("Classes", identifier=f"{component_model.iri} - Classes")
             hr()
             for i, cls in enumerate(component_model.classes):
