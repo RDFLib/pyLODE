@@ -225,10 +225,11 @@ class Supermodel:
         self.header.add(h1(title))
 
     def _make_vocabs_summary(self):
-        with self.content:
-            h2("Vocabularies")
-            p("A summary of properties that have vocabularies as target values.")
-            self._make_component_model_vocabularies(self.query.coded_properties)
+        if self.query.coded_properties:
+            with self.content:
+                h2("Vocabularies")
+                p("A summary of properties that have vocabularies as target values.")
+                self._make_component_model_vocabularies(self.query.coded_properties)
 
     def _make_content(self):
         with self.body:
@@ -668,16 +669,21 @@ class Supermodel:
     def _make_profiles_hierarchy_root(self):
         profiles_hierarchy_root = self.query.profiles_hierarchy
 
-        with self.content:
-            with div(_class="sect1"):
-                h2("Profiles Hierarchy", True)
-                with div(id="profiles-hierarchy", _class="hierarchy"):
-                    with ul(_class="hierarchy-list"):
-                        with li():
-                            span(_class="hierarchy-node")
-                            fragment = make_html_fragment(profiles_hierarchy_root.iri)
-                            a(self.query.profiles_hierarchy.name, href=f"#{fragment}")
-                            if profiles_hierarchy_root.is_profile_of:
+        if profiles_hierarchy_root.is_profile_of:
+            with self.content:
+                with div(_class="sect1"):
+                    h2("Profiles Hierarchy", True)
+                    with div(id="profiles-hierarchy", _class="hierarchy"):
+                        with ul(_class="hierarchy-list"):
+                            with li():
+                                span(_class="hierarchy-node")
+                                fragment = make_html_fragment(
+                                    profiles_hierarchy_root.iri
+                                )
+                                a(
+                                    self.query.profiles_hierarchy.name,
+                                    href=f"#{fragment}",
+                                )
                                 self._make_profiles_hierarchy(
                                     profiles_hierarchy_root.is_profile_of
                                 )
