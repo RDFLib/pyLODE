@@ -130,7 +130,7 @@ copy the example directory, mount it to the container and run cli.py in the cont
 
     docker  run  --mount 'type=bind,src=<ttl_directory>,target=/app/pylode/data' pylode:latest  python3.10 pylode/cli.py data/<ttl_file> -o data/<html_file>
 
-    Note: <ttl_directory> must be absolute
+Note: ``<ttl_directory>`` must be absolute
 
 Module Use
 ^^^^^^^^^^
