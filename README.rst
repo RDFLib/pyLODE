@@ -1,3 +1,5 @@
+.. highlight:: bash
+
 .. image:: https://rawcdn.githack.com/RDFLib/pyLODE/b1ff1b1e19262cdc21ee28c7362b1690ca18e30b/img/pyLODE-250.png
 
 .. image:: https://badge.fury.io/py/pyLODE.svg
@@ -85,7 +87,7 @@ Command line arguments
 The BASH, Windows EXE and Python Script methods all use the same command line
 arguments:
 
-::
+.. code-block:: text
 
     usage: cli.py [-h] [-v] [-o OUTPUTFILE] [-c {true,false}] input
 
@@ -120,13 +122,11 @@ match exactly the file ``examples/minimal.html``.
 
 * as a docker container
 
-build the docker image
-::
+build the docker image::
 
     docker build -t pylode:latest .
 
-copy the example directory, mount it to the container and run cli.py in the container
-::
+copy the example directory, mount it to the container and run cli.py in the container::
 
     docker  run  --mount 'type=bind,src=<ttl_directory>,target=/app/pylode/data' pylode:latest  python3.10 pylode/cli.py data/<ttl_file> -o data/<html_file>
 
@@ -135,7 +135,7 @@ copy the example directory, mount it to the container and run cli.py in the cont
 Module Use
 ^^^^^^^^^^
 
-::
+.. code-block:: python
 
     from pylode import OntDoc
 
@@ -193,7 +193,7 @@ you really must but better would be to take advantage of real Linked Data
 representation, e.g. complex Agent objects with web addresses, emails,
 affiliations, ORCIDs and so on, e.g.:
 
-::
+.. code-block:: turtle
 
     <ontology_x>
         dct:creator [
@@ -224,8 +224,8 @@ Testing
 It's best to disable warnings to hide pointless warnings from the RDFLib library.
 
 ::
-    ~$ python -m pytest tests --disable-warnings
 
+    python -m pytest tests --disable-warnings
 
 Differences from LODE
 =====================
