@@ -204,6 +204,7 @@ affiliations, ORCIDs and so on, e.g.:
                 sdo:url "https://surroundaustralia.com"^^xsd:anyURI ;
             ] ;
         ] ;
+    .
 
 See all the properties in ``rdf_elements.py:AGENT_PROPS`` for a list of
 all the Agent properties pyLODE can handle.
