@@ -55,7 +55,7 @@ def main():
             html = VocPub(args.input)
     except PylodeError as e:
         print("ERROR: " + str(e))
-        exit()
+        exit(1)
 
     pylode_kwargs = {}
 
