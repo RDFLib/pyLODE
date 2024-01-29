@@ -133,12 +133,25 @@ copy the example directory, mount it to the container and run cli.py in the cont
 Module Use
 ^^^^^^^^^^
 
-::
+for OWL::
 
-    from pylode import OntDoc
+    from pylode.profiles.ontpub import OntPub
 
     # initialise
-    od = OntDoc(ontology="some-ontology-file.ttl")
+    od = OntPub(ontology="some-ontology-file.ttl")
+
+    # produce HTML
+    html = od.make_html()
+
+    # or save HTML to a file
+    od.make_html(destination="some-resulting-html-file.html")
+
+for SKOS::
+
+    from pylode.profiles.vocpub import VocPub
+
+    # initialise
+    od = VocPub(ontology="some-ontology-file.ttl")
 
     # produce HTML
     html = od.make_html()
