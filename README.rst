@@ -1,6 +1,6 @@
 .. highlight:: bash
 
-.. image:: https://rawcdn.githack.com/RDFLib/pyLODE/b1ff1b1e19262cdc21ee28c7362b1690ca18e30b/img/pyLODE-250.png
+.. image:: https://rawcdn.githack.com/RDFLib/pyLODE/master/img/pyLODE-250.png
 
 .. image:: https://badge.fury.io/py/pyLODE.svg
     :target: https://badge.fury.io/py/pyLODE
