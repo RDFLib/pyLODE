@@ -159,10 +159,10 @@ version of pyLODE.
 
 You can also see rendered versions of these example files online too:
 
-* `minimal.html <https://rdflib.dev/pyLODE/examples/ontdoc/minimal.html>`_
-* `agift.html <https://rdflib.dev/pyLODE/examples/ontdoc/agrif.html>`_
-* `alternates.html <https://rdflib.dev/pyLODE/examples/ontdoc/alternates.html>`_
-* `asgs.html <https://rdflib.dev/pyLODE/examples/ontdoc/asgs.html>`_
+* `minimal.html <https://rdflib.dev/pyLODE/examples/ontpub/minimal.html>`_
+* `agift.html <https://rdflib.dev/pyLODE/examples/ontpub/agrif.html>`_
+* `alternates.html <https://rdflib.dev/pyLODE/examples/ontpub/alternates.html>`_
+* `asgs.html <https://rdflib.dev/pyLODE/examples/ontpub/asgs.html>`_
 
 What pyLODE understands
 =======================
@@ -343,5 +343,5 @@ Contacts
 | *Author*:
 | **Nicholas Car**
 | *Data Architect*
-| `Kurrawong AI <https://kurrawong.net>`_
-| nick@kurrawong.net
+| `Kurrawong AI <https://kurrawong.ai>`_
+| nick@kurrawong.ai
