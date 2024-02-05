@@ -1,14 +1,14 @@
 # pyLODE Supermodel
 
-A way to document single or multi-part ontologies.
+A way to document standalone and multi-part ontologies.
 
 ## Quickstart
 
 Example usage running pyLODE in the `supermodel` mode with the [Exemplification Ontology](https://github.com/Kurrawong/exem-ont).
 
-Running in `supermodel` mode with a single `owl:Ontology`.
+Running in `supermodel` mode for a standalone `owl:Ontology` model.
 
-> The `supermodel` mode also supports generating multi-part models using terms from the PROF vocabulary. See details below.
+> The `supermodel` mode also supports generating multi-part models using terms from the PROF vocabulary. This will be demonstrated a bit later.
 
 ```turtle
 # ... removed class and property definitions for brevity
@@ -48,6 +48,8 @@ Run pyLODE via the terminal.
 pylode -p supermodel -o index.html https://cdn.jsdelivr.net/gh/kurrawong/exem-ont@bf22aa548c635f43f221df7362d8ddc2d99edcc7/exem.ttl
 ```
 
+The last positional value can either be a file path or a URL of the model description. In this case, it's a URL of the Exemplification Ontology from a pinned version on a CDN.
+
 ## The `supermodel` mode
 
 The `supermodel` mode supports documenting a single ontology or a multi-part ontology described with various standard vocabularies such as OWL, SKOS, DCTERMS, SDO and PROF. The output result is a HTML file with a clean and modern design based on the Asciidoctor stylesheets.
@@ -55,6 +57,12 @@ The `supermodel` mode supports documenting a single ontology or a multi-part ont
 The `supermodel` mode reads a file and must contain either an `owl:Ontology` instance or a `prof:Profile` instance.
 
 With an `owl:Ontology` instance, pyLODE produces an output that is largely the same as the `ontpub` mode but with all of the benefits of the additional functionality added in the `supermodel` mode.
+
+- Customising labels and the ordering of things via a `lode:config` resource
+- Adding images and example text using the Exemplification Ontology
+- Class properties described using various methods such as schema `domainIncludes` and `rangeIncludes` and also using SHACL class and property shapes.
+- Local anchor tags based on the resource's IRI for easier persistent identifier redirection rules
+- Interpret vocabulary bindings
 
 ### Multi-part models (Supermodels)
 
@@ -67,6 +75,8 @@ Any resource descriptor on a profile with one of the following formats will be i
 - text/turtle
 - application/n-triples
 - application/n-quads
+
+Example resource descriptor:
 
 ```turtle
 ont:
@@ -98,6 +108,10 @@ _A profile instance in the resource descriptor marked as a `lode:Module`._
 A profile may contain resource descriptors that contain other profiles. This means that it is valid for a supermodel to recursively load in its resources to expand the pyLODE graph closure until it hits the leaf profiles.
 
 An `sh:order` may exist on a `lode:Module` instance to control the order of the module displayed in the output document.
+
+The output document will contain a section describing all of the classes and properties within that module.
+
+![Geometry Primitive Module in pyLODE document output](./img/module-geom-prim.png)
 
 #### The `lode:ignoreClass` property
 
@@ -147,10 +161,52 @@ SHACL-based class properties defined as property shapes are extracted in the fol
 
 In addition, pyLODE understands both object values and sequence paths for `sh:path`.
 
+An example class with properties described using SHACL, one of which uses a sequence path.
+
+![An example class with properties described using SHACL](./img/direct-position-obs-class.png)
+
+Examples of using SHACL to document the properties of a class are used extensively in the [CSDM Documentation](https://icsm-au.github.io/3d-csdm/docs/).
+
 ### Label overrides
 
-...
+Currently, pyLODE in the `supermodel` mode will look at common predicates as labels for resources. These common predicates are:
+
+- `rdfs:label`
+- `skos:prefLabel`
+- `sdo:name`
+
+> In a future update, label predicates will be configurable via `pylode:config`.
+
+Properties in upstream profiles can have their labels overwritten by providing another label using one of the predicates above in a downstream profile. This is useful when a downstream profile is required to display their own localised label instead of the more general one in the upstream profile.
+
+Likewise, labels can be overwritten if a property is described using SHACL. If the value of the `sh:path` on the SHACL shape contains only one value and the value is not a sequence path, then the label can be overriden by using the `sh:name` predicate.
 
 ### Vocabulary bindings
 
-...
+Vocabulary bindings can be associated with classes and properties by providing a small data description using the RDF Data Cube vocabulary.
+
+When processing models, pyLODE will look for properties that are of type `qb:CodedProperty` and if it contains properties such as
+
+Here's an example where we tag the `sosa:usedProcedure` property as of type `qb:CodedProperty`. pyLODE will then look for the following properties:
+
+- `qb:codeList` - the vocabulary IRI, usually a SKOS Concept Scheme
+- `rdfs:range` - the class to infer (note this may change in the future as we probably don't want RDFS semantics here but just a way to display what the expected class type is. May use SHACL in the future.)
+
+```turtle
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix vocabs: <https://linked.data.gov.au/def/csdm/> .
+
+sosa:usedProcedure a qb:CodedProperty ;
+    qb:codeList vocabs:nz-procedure-used ;
+    rdfs:range sosa:Procedure .
+
+vocabs:nz-procedure-used rdfs:label "NZ Survey Procedures" .
+sosa:Procedure rdfs:label "Procedure" .
+```
+
+The above is rendered in the output document as:
+
+![Vocabulary binding output](./img/vocab-bindings.png)
