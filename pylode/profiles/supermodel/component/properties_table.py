@@ -1,4 +1,4 @@
-from dominate.tags import tr, td, p, a, i, span, ul, li, button
+from dominate.tags import tr, td, p, a, i, span, ul, li, button, div
 from rdflib import URIRef
 
 from pylode.profiles.supermodel.model import (
@@ -27,12 +27,8 @@ def property_table_row(
         ):
             p(property_.name)
 
-            if is_first and has_secondary:
-                with button(_class="property-row-button"):
-                    i(_class="fa fa-arrow-circle-right")
-
-        with td(_class="tableblock halign-left valign-top"):
             if property_.belongs_to_class is not None:
+                div("Sourced from class:")
                 with p(_class="tableblock whitespace-nowrap"):
                     if property_.belongs_to_class.iri in class_index:
                         a(
@@ -57,6 +53,11 @@ def property_table_row(
                         # TODO: Show as an external link if the profile is not a pylode:Module within the document.
                         fragment = make_html_fragment(property_.profile.iri)
                         a(property_.profile.name, href=f"#{fragment}")
+
+            if is_first and has_secondary:
+                with button(_class="property-row-button"):
+                    i(_class="fa fa-arrow-circle-right")
+
         with td(_class="tableblock halign-left valign-top"):
             p(property_.description)
             if debug:

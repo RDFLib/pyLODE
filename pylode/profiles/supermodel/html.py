@@ -258,16 +258,12 @@ class Supermodel:
         with div(_class="sect5 overflow-x-auto"):
             with table(
                 _class="tableblock frame-all grid-all stripes-even fit-content stretch",
-                style="min-width: 60vw;",
+                # style="min-width: 60vw;",
             ):
                 with thead():
                     with tr():
                         th(
                             "Property",
-                            _class="tableblock halign-left valign-top",
-                        )
-                        th(
-                            "Source",
                             _class="tableblock halign-left valign-top",
                         )
                         th(
