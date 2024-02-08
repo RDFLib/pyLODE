@@ -93,7 +93,9 @@ def get_property_by_property_shape(
         constraints += profile_graph.value(sh_sparql, SH.message) or ""
 
     if sh_path is None:
-        raise ValueError(f"Failed to find an sh:path value for the property shape {property_shape} in profile {profile.iri}")
+        raise ValueError(
+            f"Failed to find an sh:path value for the property shape {property_shape} in profile {profile.iri}"
+        )
 
     return Property(
         iri=sh_path,
