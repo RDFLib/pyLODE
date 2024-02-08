@@ -215,7 +215,8 @@ class Supermodel:
             previous_heading = heading
 
     def _make_body(self):
-        self.body: body = self.doc.add(body(_class="book toc2 toc-left"))
+        with self.doc:
+            self.body = body(_class="book toc2 toc-left")
 
         self._make_header(self.query.onts_props[DCTERMS.title])
         self._make_content()
@@ -256,7 +257,8 @@ class Supermodel:
     ):
         with div(_class="sect5 overflow-x-auto"):
             with table(
-                _class="tableblock frame-all grid-all stripes-even fit-content stretch"
+                _class="tableblock frame-all grid-all stripes-even fit-content stretch",
+                style="min-width: 60vw;",
             ):
                 with thead():
                     with tr():
