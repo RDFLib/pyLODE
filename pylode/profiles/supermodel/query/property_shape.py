@@ -92,6 +92,9 @@ def get_property_by_property_shape(
     if sh_sparql is not None:
         constraints += profile_graph.value(sh_sparql, SH.message) or ""
 
+    if sh_path is None:
+        raise ValueError(f"Failed to find an sh:path value for the property shape {property_shape} in profile {profile.iri}")
+
     return Property(
         iri=sh_path,
         name=name,
@@ -237,4 +240,6 @@ def get_class_properties_by_sh(iri: URIRef, db: Dataset) -> dict[str, list[Prope
                 )
                 properties[sh_path].append(property_)
 
+    if str(iri) == "https://linked.data.gov.au/def/csdm/container/CSD":
+        ...
     return properties
