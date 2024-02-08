@@ -378,6 +378,7 @@ class Supermodel:
                             with td(
                                 _class="tableblock halign-left valign-top",
                                 style="background-color: #f7f8f7;",
+                                colspan="3",
                             ):
                                 # TODO: have a property tracker
                                 # If property is documented, link to it with fragment id,
@@ -386,11 +387,6 @@ class Supermodel:
                                 with p(_class="tableblock font-bold"):
                                     a(property_iri, href=f"#{fragment}")
 
-                            td(
-                                _class="tableblock halign-left valign-top",
-                                style="background-color: #f7f8f7;",
-                                colspan="4",
-                            )
                         for i, property_ in enumerate(properties[property_iri]):
                             row_style = "background-color: white;"
                             if i == 0:
