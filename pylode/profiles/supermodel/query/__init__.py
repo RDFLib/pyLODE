@@ -404,6 +404,7 @@ class Query:
         self.root_profile_iri = get_root_profile_iri(graph)
         self.db = load_profiles(self.root_profile_iri, graph.serialize())
         self.graph = self.db.root_graph
+        self.debug = True if (None, LODE.debug, None) in self.db.config_graph else False
 
         # An IRI index of classes that 'exist' within this documentation.
         # TODO: may not need this anymore since we are now working with a dataset object.

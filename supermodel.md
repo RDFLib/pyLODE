@@ -210,3 +210,9 @@ sosa:Procedure rdfs:label "Procedure" .
 The above is rendered in the output document as:
 
 ![Vocabulary binding output](./img/vocab-bindings.png)
+
+### Debugging
+
+With a complex set of models, sometimes it becomes difficult to debug why the document produced by pyLODE is not what you expected. To get additional information rendered in the document output, supply a statement in the pyLODE config `[] lode:debug true .`.
+
+> Note: pyLODE config is supplied as a `prof:ResourceDescriptor` instance with the role `prof:hasRole lode:config`.

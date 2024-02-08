@@ -341,6 +341,7 @@ class Supermodel:
                                     self.query.class_index,
                                     is_first=True,
                                     has_secondary=has_secondary,
+                                    debug=self.query.debug,
                                 )
                             else:
                                 property_table_row(

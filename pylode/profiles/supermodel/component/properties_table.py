@@ -16,6 +16,7 @@ def property_table_row(
     class_index,
     is_first: bool = False,
     has_secondary: bool = False,
+    debug: bool = False,
 ):
     with tr(
         style=row_style,
@@ -58,29 +59,30 @@ def property_table_row(
                         a(property_.profile.name, href=f"#{fragment}")
         with td(_class="tableblock halign-left valign-top"):
             p(property_.description)
-            if property_.method:
-                with tooltip(
-                    f"Method: {property_.method}",
-                    _class="property-row-profile-source",
-                ):
-                    span("M", _class="font-bold cursor-help", aria_hidden="true")
+            if debug:
+                if property_.method:
+                    with tooltip(
+                        f"Method: {property_.method}",
+                        _class="property-row-profile-source",
+                    ):
+                        span("M", _class="font-bold cursor-help", aria_hidden="true")
 
-                p(
-                    f"Method: {property_.method}",
-                    _class="property-row-profile-source italic text-sm hidden",
-                )
+                    p(
+                        f"Method: {property_.method}",
+                        _class="property-row-profile-source italic text-sm hidden",
+                    )
 
-            if property_.property_source:
-                with tooltip(
-                    f"Property Source: {property_.property_source}",
-                    _class="property-row-profile-source",
-                ):
-                    span("PS", _class="font-bold cursor-help", aria_hidden="true")
+                if property_.property_source:
+                    with tooltip(
+                        f"Property Source: {property_.property_source}",
+                        _class="property-row-profile-source",
+                    ):
+                        span("PS", _class="font-bold cursor-help", aria_hidden="true")
 
-                p(
-                    f"Property Source: {property_.property_source}",
-                    _class="property-row-profile-source italic text-sm hidden",
-                )
+                    p(
+                        f"Property Source: {property_.property_source}",
+                        _class="property-row-profile-source italic text-sm hidden",
+                    )
 
         cardinality = ""
         if property_.cardinality_min is None and property_.cardinality_max is None:

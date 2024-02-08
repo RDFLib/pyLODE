@@ -52,6 +52,7 @@ def fetch(
         # "https://icsm-au.github.io/3d-csdm/commonpatterns.ttl": "http://localhost:8000/commonpatterns.ttl",
         # "https://icsm-au.github.io/3d-csdm/shapes/common_patterns.shapes.ttl": "http://localhost:8000/shapes/common_patterns.shapes.ttl",
         # "https://icsm-au.github.io/3d-csdm-profiles/profiles/nz-pointnames-shacl.ttl": "http://localhost:8001/profiles/nz-pointnames-shacl.ttl",
+        # "https://icsm-au.github.io/3d-csdm/shapes/container.shapes.ttl": "http://localhost:8000/shapes/container.shapes.ttl",
     }
     if url in proxies:
         logger.debug(f"Using proxy URL {url} to {proxies[url]}")
