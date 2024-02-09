@@ -74,16 +74,16 @@ def get_property_by_property_shape(
         profile_graph.identifier,
         get_name(profile_graph.identifier, profile_graph, db),
     )
-    belongs_to_class = kwargs.get("belongs_to_class") or get_class(class_iri, db, [])
+    belongs_to_class = kwargs.get("belongs_to_class") or get_class(class_iri, db, db,[])
     sh_nodekind = profile_graph.value(property_shape, SH.nodeKind)
     sh_min = profile_graph.value(property_shape, SH.minCount)
     sh_max = profile_graph.value(property_shape, SH.maxCount)
     sh_class = profile_graph.value(property_shape, SH["class"])
     value_type = (
-        get_class(sh_nodekind, profile_graph, []) if sh_nodekind is not None else None
+        get_class(sh_nodekind, profile_graph, db,[]) if sh_nodekind is not None else None
     )
     value_class_type = (
-        get_class(sh_class, profile_graph, []) if sh_class is not None else None
+        get_class(sh_class, profile_graph, db,[]) if sh_class is not None else None
     )
     property_source = kwargs.get("property_source") or ""
 
