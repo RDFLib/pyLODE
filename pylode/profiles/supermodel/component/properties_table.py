@@ -1,4 +1,4 @@
-from dominate.tags import tr, td, p, a, i, span, ul, li, button
+from dominate.tags import tr, td, p, a, i, span, ul, li, button, div
 from rdflib import URIRef
 
 from pylode.profiles.supermodel.model import (
@@ -16,6 +16,7 @@ def property_table_row(
     class_index,
     is_first: bool = False,
     has_secondary: bool = False,
+    debug: bool = False,
 ):
     with tr(
         style=row_style,
@@ -26,12 +27,8 @@ def property_table_row(
         ):
             p(property_.name)
 
-            if is_first and has_secondary:
-                with button(_class="property-row-button"):
-                    i(_class="fa fa-arrow-circle-right")
-
-        with td(_class="tableblock halign-left valign-top"):
             if property_.belongs_to_class is not None:
+                div("Sourced from class:")
                 with p(_class="tableblock whitespace-nowrap"):
                     if property_.belongs_to_class.iri in class_index:
                         a(
@@ -56,31 +53,37 @@ def property_table_row(
                         # TODO: Show as an external link if the profile is not a pylode:Module within the document.
                         fragment = make_html_fragment(property_.profile.iri)
                         a(property_.profile.name, href=f"#{fragment}")
+
+            if is_first and has_secondary:
+                with button(_class="property-row-button"):
+                    i(_class="fa fa-arrow-circle-right")
+
         with td(_class="tableblock halign-left valign-top"):
             p(property_.description)
-            if property_.method:
-                with tooltip(
-                    f"Method: {property_.method}",
-                    _class="property-row-profile-source",
-                ):
-                    span("M", _class="font-bold cursor-help", aria_hidden="true")
+            if debug:
+                if property_.method:
+                    with tooltip(
+                        f"Method: {property_.method}",
+                        _class="property-row-profile-source",
+                    ):
+                        span("M", _class="font-bold cursor-help", aria_hidden="true")
 
-                p(
-                    f"Method: {property_.method}",
-                    _class="property-row-profile-source italic text-sm hidden",
-                )
+                    p(
+                        f"Method: {property_.method}",
+                        _class="property-row-profile-source italic text-sm hidden",
+                    )
 
-            if property_.property_source:
-                with tooltip(
-                    f"Property Source: {property_.property_source}",
-                    _class="property-row-profile-source",
-                ):
-                    span("PS", _class="font-bold cursor-help", aria_hidden="true")
+                if property_.property_source:
+                    with tooltip(
+                        f"Property Source: {property_.property_source}",
+                        _class="property-row-profile-source",
+                    ):
+                        span("PS", _class="font-bold cursor-help", aria_hidden="true")
 
-                p(
-                    f"Property Source: {property_.property_source}",
-                    _class="property-row-profile-source italic text-sm hidden",
-                )
+                    p(
+                        f"Property Source: {property_.property_source}",
+                        _class="property-row-profile-source italic text-sm hidden",
+                    )
 
         cardinality = ""
         if property_.cardinality_min is None and property_.cardinality_max is None:

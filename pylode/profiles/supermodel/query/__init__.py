@@ -209,44 +209,44 @@ def get_top_level_component_classes(classes: list[Class]) -> list[Class]:
     return top_level_classes
 
 
-def get_super_properties(iri: URIRef, graph: Graph) -> list[RDFProperty]:
+def get_super_properties(iri: URIRef, graph: Graph, db: Dataset) -> list[RDFProperty]:
     super_property_iris = get_values(iri, graph, [RDFS.subPropertyOf])
     properties = []
     for super_property_iri in super_property_iris:
-        prop = get_rdf_property(super_property_iri, graph)
+        prop = get_rdf_property(super_property_iri, graph, db)
         properties.append(prop)
 
     return properties
 
 
-def get_domain_includes(iri: URIRef, graph: Graph) -> list[Class]:
+def get_domain_includes(iri: URIRef, graph: Graph, db: Dataset) -> list[Class]:
     domain_includes_iris = graph.objects(iri, SDO.domainIncludes)
     domain_includes = []
     for domain_includes_iri in domain_includes_iris:
-        c = get_class(domain_includes_iri, graph, [])
+        c = get_class(domain_includes_iri, graph, db,[])
         domain_includes.append(c)
 
     return domain_includes
 
 
-def get_range_includes(iri: URIRef, graph: Graph) -> list[Class]:
+def get_range_includes(iri: URIRef, graph: Graph, db: Dataset) -> list[Class]:
     range_includes_iris = graph.objects(iri, SDO.rangeIncludes)
     range_includes = []
     for range_includes_iri in range_includes_iris:
-        c = get_class(range_includes_iri, graph, [])
+        c = get_class(range_includes_iri, graph, db,[])
         range_includes.append(c)
 
     return range_includes
 
 
-def get_rdf_property(iri, graph) -> RDFProperty:
-    name = get_name(iri, graph)
+def get_rdf_property(iri, graph, db: Dataset) -> RDFProperty:
+    name = get_name(iri, graph, db)
     description = get_descriptions(iri, graph)
     notes = get_notes(iri, graph)
-    is_defined_by = get_is_defined_by(iri, graph)
-    super_properties = get_super_properties(iri, graph)
-    domain_includes = get_domain_includes(iri, graph)
-    range_includes = get_range_includes(iri, graph)
+    is_defined_by = get_is_defined_by(iri, graph, db)
+    super_properties = get_super_properties(iri, graph, db)
+    domain_includes = get_domain_includes(iri, graph, db)
+    range_includes = get_range_includes(iri, graph, db)
 
     return RDFProperty(
         iri,
@@ -260,11 +260,11 @@ def get_rdf_property(iri, graph) -> RDFProperty:
     )
 
 
-def get_rdf_properties(rdf_property_type: URIRef, graph: Graph) -> list[RDFProperty]:
+def get_rdf_properties(rdf_property_type: URIRef, graph: Graph, db: Dataset) -> list[RDFProperty]:
     property_iris = graph.subjects(RDF.type, rdf_property_type)
     properties = []
     for property_iri in property_iris:
-        prop = get_rdf_property(property_iri, graph)
+        prop = get_rdf_property(property_iri, graph, db)
 
         properties.append(prop)
 
@@ -404,6 +404,7 @@ class Query:
         self.root_profile_iri = get_root_profile_iri(graph)
         self.db = load_profiles(self.root_profile_iri, graph.serialize())
         self.graph = self.db.root_graph
+        self.debug = True if (None, LODE.debug, None) in self.db.config_graph else False
 
         # An IRI index of classes that 'exist' within this documentation.
         # TODO: may not need this anymore since we are now working with a dataset object.
@@ -673,21 +674,21 @@ class Query:
                     "a skos:ConceptScheme or a prof:Profile"
                 )
 
-    def load_component_model(self, iri: URIRef, graph: Dataset) -> ComponentModel:
-        name = get_name(iri, graph)
-        descriptions = get_descriptions(iri, graph)
-        ignored_classes = get_component_model_ignored_classes(iri, graph)
-        profile_graph = graph.get_graph(iri)
+    def load_component_model(self, iri: URIRef, db: Dataset) -> ComponentModel:
+        name = get_name(iri, db)
+        descriptions = get_descriptions(iri, db)
+        ignored_classes = get_component_model_ignored_classes(iri, db)
+        profile_graph = db.get_graph(iri)
         classes = self.get_component_model_classes(profile_graph, ignored_classes)
         top_level_classes = get_top_level_component_classes(classes)
-        examples = get_examples(iri, graph)
-        order = graph.value(iri, SH.order)
+        examples = get_examples(iri, db)
+        order = db.value(iri, SH.order)
         annotation_properties = get_rdf_properties(
-            OWL.AnnotationProperty, profile_graph
+            OWL.AnnotationProperty, profile_graph, db
         )
-        datatype_properties = get_rdf_properties(OWL.DatatypeProperty, profile_graph)
-        object_properties = get_rdf_properties(OWL.ObjectProperty, profile_graph)
-        ontology_properties = get_rdf_properties(OWL.OntologyProperty, profile_graph)
+        datatype_properties = get_rdf_properties(OWL.DatatypeProperty, profile_graph, db)
+        object_properties = get_rdf_properties(OWL.ObjectProperty, profile_graph, db)
+        ontology_properties = get_rdf_properties(OWL.OntologyProperty, profile_graph, db)
 
         coded_properties = defaultdict(list)
         for cls in classes:
@@ -745,7 +746,7 @@ class Query:
                 name = get_name(schema_domain_includes_iri, graph)
                 description = get_descriptions(schema_domain_includes_iri, graph)
                 value_class_types = [
-                    get_class(c, graph, ignored_classes)
+                    get_class(c, graph, self.db, ignored_classes)
                     for c in get_values(
                         schema_domain_includes_iri, graph, [SDO.rangeIncludes]
                     )
@@ -782,7 +783,7 @@ class Query:
                     graph = self.db.get_graph(_graph.identifier)
                     expected_value_iris = graph.objects(prop, RDFS.range)
                     value_class_types = [
-                        get_class(expected_value_iri, self.db, [])
+                        get_class(expected_value_iri, self.db, self.db, [])
                         for expected_value_iri in expected_value_iris
                     ]
 
@@ -801,7 +802,7 @@ class Query:
                             graph.identifier,
                             get_name(graph.identifier, self.db),
                         ),
-                        belongs_to_class=get_class(cls_iri, self.db, []),
+                        belongs_to_class=get_class(cls_iri, self.db, self.db,[]),
                         value_class_types=value_class_types,
                         method="qb:CodedProperty",
                         codelist=[
@@ -836,7 +837,7 @@ class Query:
         )
 
     def sort_properties(self, iri: URIRef, properties: dict[str, list[Property]]):
-        is_defined_by = get_is_defined_by(iri, self.db)
+        is_defined_by = get_is_defined_by(iri, self.db, self.db)
 
         for property_iri in properties:
             properties[property_iri] = self.sort_properties_by_profile(
@@ -924,7 +925,7 @@ class Query:
     ):
         name = get_name(iri, graph, self.db)
         descriptions = get_descriptions(iri, graph)
-        subclasses = get_subclasses(iri, graph, ignored_classes)
+        subclasses = get_subclasses(iri, graph, self.db, ignored_classes)
         # TODO: Add memoization to remove the need to recalculate the same classes.
         #       Reuse self.class_index or something similar for memoize data structure.
         superclasses = self.get_superclasses(iri, graph, ignored_classes)
@@ -950,7 +951,7 @@ class Query:
         _merge_superclass_properties(superclasses)
         examples = get_examples(iri, graph)
         notes = get_notes(iri, graph)
-        is_defined_by = get_is_defined_by(iri, graph)
+        is_defined_by = get_is_defined_by(iri, graph, self.db)
 
         return Class(
             iri=iri,

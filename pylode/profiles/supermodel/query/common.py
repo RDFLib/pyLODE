@@ -60,29 +60,29 @@ def get_descriptions(iri: URIRef, graph: Graph) -> str:
     )
 
 
-def get_class(iri: URIRef, graph: Graph, ignored_classes: list[URIRef]) -> Class:
-    name = get_name(iri, graph)
-    subclasses = get_subclasses(iri, graph, ignored_classes)
+def get_class(iri: URIRef, graph: Graph, db: Dataset, ignored_classes: list[URIRef]) -> Class:
+    name = get_name(iri, graph, db)
+    subclasses = get_subclasses(iri, graph, db, ignored_classes)
     return Class(iri, name, subclasses=subclasses)
 
 
 def get_subclasses(
-    iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
+    iri: URIRef, graph: Graph, db: Dataset, ignored_classes: list[URIRef]
 ) -> list[Class]:
     subclasses = filter(
         lambda x: x not in ignored_classes and isinstance(x, URIRef),
         list(graph.subjects(RDFS.subClassOf, iri)),
     )
     return sorted(
-        [get_class(subclass, graph, ignored_classes) for subclass in subclasses],
+        [get_class(subclass, graph, db, ignored_classes) for subclass in subclasses],
         key=lambda x: x.name,
     )
 
 
-def get_is_defined_by(iri: URIRef, graph: Graph) -> Ontology | None:
+def get_is_defined_by(iri: URIRef, graph: Graph, db: Dataset) -> Ontology | None:
     is_defined_by = get_values(iri, graph, [RDFS.isDefinedBy])
     ontology = is_defined_by[0] if len(is_defined_by) > 0 else None
     if ontology is not None:
-        name = get_name(ontology, graph)
+        name = get_name(ontology, graph, db)
         return Ontology(iri=ontology, name=name)
     return None

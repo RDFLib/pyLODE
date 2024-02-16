@@ -215,7 +215,8 @@ class Supermodel:
             previous_heading = heading
 
     def _make_body(self):
-        self.body: body = self.doc.add(body(_class="book toc2 toc-left"))
+        with self.doc:
+            self.body = body(_class="book toc2 toc-left")
 
         self._make_header(self.query.onts_props[DCTERMS.title])
         self._make_content()
@@ -256,16 +257,13 @@ class Supermodel:
     ):
         with div(_class="sect5 overflow-x-auto"):
             with table(
-                _class="tableblock frame-all grid-all stripes-even fit-content stretch"
+                _class="tableblock frame-all grid-all stripes-even fit-content stretch",
+                # style="min-width: 60vw;",
             ):
                 with thead():
                     with tr():
                         th(
                             "Property",
-                            _class="tableblock halign-left valign-top",
-                        )
-                        th(
-                            "Source",
                             _class="tableblock halign-left valign-top",
                         )
                         th(
@@ -341,6 +339,7 @@ class Supermodel:
                                     self.query.class_index,
                                     is_first=True,
                                     has_secondary=has_secondary,
+                                    debug=self.query.debug,
                                 )
                             else:
                                 property_table_row(
@@ -379,6 +378,7 @@ class Supermodel:
                             with td(
                                 _class="tableblock halign-left valign-top",
                                 style="background-color: #f7f8f7;",
+                                colspan="3",
                             ):
                                 # TODO: have a property tracker
                                 # If property is documented, link to it with fragment id,
@@ -387,11 +387,6 @@ class Supermodel:
                                 with p(_class="tableblock font-bold"):
                                     a(property_iri, href=f"#{fragment}")
 
-                            td(
-                                _class="tableblock halign-left valign-top",
-                                style="background-color: #f7f8f7;",
-                                colspan="4",
-                            )
                         for i, property_ in enumerate(properties[property_iri]):
                             row_style = "background-color: white;"
                             if i == 0:

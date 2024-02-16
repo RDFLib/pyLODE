@@ -41,3 +41,6 @@ class LODE(DefinedNamespace):
 
     #: lode:isQualifiedProfileOf
     isQualifiedProfileOf: URIRef
+
+    #: lode:debug
+    debug: URIRef

@@ -46,6 +46,13 @@ def fetch(
         # "https://icsm-au.github.io/3d-csdm/pylode.ttl": "http://localhost:8000/pylode.ttl",
         # "https://icsm-au.github.io/3d-csdm-profiles/profiles/jurisdictional-codelist-types.shacl": "http://localhost:8001/profiles/jurisdictional-codelist-types.shacl",
         # "https://icsm-au.github.io/3d-csdm/shapes/survey_features.shapes.ttl": "http://localhost:8000/shapes/survey_features.shapes.ttl",
+        # "https://icsm-au.github.io/3d-csdm-profiles/profiles/wa-vocab-bindings.ttl": "http://localhost:8001/profiles/wa-vocab-bindings.ttl",
+        # "https://icsm-au.github.io/3d-csdm-profiles/profiles/icsm-vocab-bindings.ttl": "http://localhost:8001/profiles/icsm-vocab-bindings.ttl",
+        # "https://icsm-au.github.io/3d-csdm-profiles/profiles/wa-profile-shacl.ttl": "http://localhost:8001/profiles/wa-profile-shacl.ttl",
+        # "https://icsm-au.github.io/3d-csdm/commonpatterns.ttl": "http://localhost:8000/commonpatterns.ttl",
+        # "https://icsm-au.github.io/3d-csdm/shapes/common_patterns.shapes.ttl": "http://localhost:8000/shapes/common_patterns.shapes.ttl",
+        # "https://icsm-au.github.io/3d-csdm-profiles/profiles/nz-pointnames-shacl.ttl": "http://localhost:8001/profiles/nz-pointnames-shacl.ttl",
+        # "https://icsm-au.github.io/3d-csdm/shapes/container.shapes.ttl": "http://localhost:8000/shapes/container.shapes.ttl",
     }
     if url in proxies:
         logger.debug(f"Using proxy URL {url} to {proxies[url]}")
