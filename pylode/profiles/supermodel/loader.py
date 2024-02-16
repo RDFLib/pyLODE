@@ -201,5 +201,4 @@ def load_profiles(root_profile_iri: str, data: str) -> ProfilesDataset:
         logger.debug(
             f"pylode config:\n{db.get_graph(URIRef(PYLODE_CONFIG_GRAPH)).serialize(format='longturtle')}"
         )
-        db.serialize("output.trig", format="nquads")
         return db
