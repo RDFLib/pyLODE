@@ -1,6 +1,6 @@
 # pyLODE Supermodel
 
-A way to document standalone and multi-part ontologies.
+The `supermodel` mode in pyLODE supports documentation for both standalone models and multi-part models, with a particular emphasis on addressing the documentation requirements of modules and profiles within multi-part models.
 
 ## Quickstart
 
