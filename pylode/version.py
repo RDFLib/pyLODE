@@ -1,1 +1,4 @@
-__version__ = "3.0.6a"
+import pkg_resources
+
+version = pkg_resources.get_distribution("pylode").version
+__version__ = version

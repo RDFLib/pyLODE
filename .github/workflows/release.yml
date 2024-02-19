@@ -1,0 +1,60 @@
+name: Release to PyPI
+
+on:
+  release:
+    types:
+      - published
+
+env:
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+        with:
+          # Required by WyriHaximus/github-action-get-previous-tag
+          fetch-depth: 0
+
+      - name: Get latest tag
+        id: latest-tag
+        uses: WyriHaximus/github-action-get-previous-tag@v1
+        with:
+          fallback: "0.1.0"
+
+      - name: Tag starts with v
+        id: tag-starts-with-v
+        if: ${{ startsWith(steps.latest-tag.outputs.tag, 'v') }}
+        uses: mad9000/actions-find-and-replace-string@2
+        with:
+          source: ${{ steps.latest-tag.outputs.tag }}
+          find: "v"
+          replace: ""
+
+      - name: Tag value
+        id: version
+        uses: haya14busa/action-cond@v1
+        with:
+          cond: ${{ startsWith(steps.latest-tag.outputs.tag, 'v') }}
+          if_true: ${{ steps.tag-starts-with-v.outputs.value }}
+          if_false: ${{ steps.latest-tag.outputs.tag }}
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install Python Poetry
+        uses: snok/install-poetry@v1
+
+      - name: Install project
+        run: |
+          poetry install
+
+      - name: Publish to PyPI
+        run: |
+          poetry version ${{ steps.version.outputs.value }}
+          poetry build 
+          poetry publish --username=__token__ --password=${{ secrets.PYPI_TOKEN }}
