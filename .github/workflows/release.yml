@@ -5,6 +5,9 @@ on:
     types:
       - published
 
+env:
+  PYTHON_VERSION: "3.12"
+
 jobs:
   publish:
     runs-on: ubuntu-latest
