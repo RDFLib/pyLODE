@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pylode"
-version = "3.1.0a"
+version = "3.1.1a"
 description = "An OWL ontology documentation tool using Python, based on LODE."
 authors = ["Nicholas Car <nick@kurrawong.net>"]
 readme = "README.rst"

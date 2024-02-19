@@ -284,7 +284,8 @@ Release Schedule
    :header: "Version", "Date", "Description"
    :widths: 15, 10, 30
 
-   **3.1.0**, **16 February 2024**, "Add supermodel mode - supports documenting profiles and modules"
+   **3.1.1** **19 February 2024**, "Fix release"
+   **3.1.0**, **19 February 2024**, "Add supermodel mode - supports documenting profiles and modules"
    **3.0.5**, **27 April 2023**, "Minor patching"
    3.0.4, 24 May 2022, "Use of Poetry"
    3.0.2, 24 May 2022, "Support for preformatted skos:example literals"
