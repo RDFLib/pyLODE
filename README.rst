@@ -11,6 +11,8 @@ In addition to making web page, human-readable forms of ontologies, pyLODE encou
 practice* by only producing good results for well documented inputs! pyLODE defines what it considers 'well documented'
 in sections below, e.g. `What pyLODE understands`_.
 
+**New mode**: In v3.1.0, pyLODE now has a new mode called ``supermodel``, in addition to the existing ``ontpub`` mode. This new mode allows for documenting **profiles and modules** of multi-part models. See `supermodel.md <supermodel.md>`_ for more information.
+
 ----
 
 **A note on the v 3.x change**
@@ -20,8 +22,6 @@ This is pyLODE version 3.0.1 and it's vastly different from pyLODE 2.x. It doesn
 v 3.x will eventually catch up to all of v 2.13.2's features.
 
 To access v 2.13.2 of pyLODE, either `download it from PyPI <https://pypi.org/project/pyLODE/2.13.2/>`_ , `check it out from GitHub <https://github.com/RDFLib/pyLODE/releases/tag/2.13.2>`_ or access it via the `online service <http://pylode.surroundaustralia.com/>`_ .
-
-In v3.1.0, pyLODE now has a new mode called ``supermodel``, in addition to the existing ``ontpub`` mode. See `supermodel.md <supermodel.md>`_ for more information.
 
 ----
 
