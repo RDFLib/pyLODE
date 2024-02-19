@@ -21,6 +21,8 @@ v 3.x will eventually catch up to all of v 2.13.2's features.
 
 To access v 2.13.2 of pyLODE, either `download it from PyPI <https://pypi.org/project/pyLODE/2.13.2/>`_ , `check it out from GitHub <https://github.com/RDFLib/pyLODE/releases/tag/2.13.2>`_ or access it via the `online service <http://pylode.surroundaustralia.com/>`_ .
 
+In v3.1.0, pyLODE now has a new mode called ``supermodel``, in addition to the existing ``ontpub`` mode. See `supermodel.md <supermodel.md>`_ for more information.
+
 ----
 
 Contents
@@ -282,6 +284,7 @@ Release Schedule
    :header: "Version", "Date", "Description"
    :widths: 15, 10, 30
 
+   **3.1.0**, **16 February 2024**, "Add supermodel mode - supports documenting profiles and modules"
    **3.0.5**, **27 April 2023**, "Minor patching"
    3.0.4, 24 May 2022, "Use of Poetry"
    3.0.2, 24 May 2022, "Support for preformatted skos:example literals"
