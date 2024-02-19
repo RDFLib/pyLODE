@@ -72,12 +72,18 @@ def test_rdf_obj_html(fix_ont, fix_load_background_onts, fix_get_ns):
         ([Literal(True)], "<p>true</p>"),
         ([Literal("Hello World")], "<p>Hello World</p>"),
         ([Literal(41), Literal(42)], "<ul><li><p>41</p></li><li><p>42</p></li></ul>"),
-        ([URIRef("http://example.com/thing/One")], '<a href="#One">http://example.com/thing/One</a>'),
+        (
+            [URIRef("http://example.com/thing/One")],
+            '<a href="#One">http://example.com/thing/One</a>',
+        ),
         (
             [URIRef("http://example.com/thing/FiveFive")],
             '<a href="#Five5">http://example.com/thing/FiveFive</a>',
         ),
-        ([URIRef("http://other.com/thing/Six")], '<a href="#Six">http://other.com/thing/Six</a>'),
+        (
+            [URIRef("http://other.com/thing/Six")],
+            '<a href="#Six">http://other.com/thing/Six</a>',
+        ),
         ([URIRef("not-a-uri")], '<a href="not-a-uri">not-a-uri</a>'),
     ]
 

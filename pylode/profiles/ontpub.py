@@ -74,7 +74,13 @@ except ImportError:
         make_pylode_logo,
     )
 
-    from pylode.rdf_elements import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
+    from pylode.rdf_elements import (
+        ONTDOC,
+        AGENT_PROPS,
+        ONT_PROPS,
+        CLASS_PROPS,
+        PROP_PROPS,
+    )
 
     from pylode.version import __version__
 
@@ -243,8 +249,7 @@ class OntPub:
 
         # publisher
         for s_, o in chain(
-            g.subject_objects(DC.publisher),
-            g.subject_objects(SDO.publisher)
+            g.subject_objects(DC.publisher), g.subject_objects(SDO.publisher)
         ):
             g.remove((s_, DC.publisher, o))
             g.remove((s_, SDO.publisher, o))

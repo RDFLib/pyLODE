@@ -1,0 +1,55 @@
+/* Utility classes inspired by tailwindcss */
+
+.w-full {
+  width: 100%;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
+}
+
+.hidden {
+  display: none;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.border-l-4 {
+  border-left: solid;
+  border-left-width: 4px;
+}
+
+.border-l-orange-700 {
+  border-left-color: rgb(194 65 12);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-help {
+  cursor: help;
+}

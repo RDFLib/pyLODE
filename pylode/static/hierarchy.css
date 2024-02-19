@@ -1,0 +1,49 @@
+.hierarchy-list {
+  list-style-type: none;
+}
+
+.hierarchy-node:before {
+  content: "+";
+  margin-left: -1rem;
+  padding-inline: 0.4rem;
+  cursor: pointer;
+}
+
+.hierarchy-node-leaf:before {
+  content: "";
+  margin-left: -0.2rem;
+  padding-inline: 0.4rem;
+}
+
+.hierarchy-node:hover:before {
+  background-color: #efefef;
+  border-radius: 0.25rem;
+}
+
+.hierarchy-node:active:before {
+  background-color: #e4e4e4;
+  border-radius: 0.25rem;
+}
+
+.hierarchy-node-active:before {
+  content: "-";
+  margin-left: -0.975rem;
+  padding-inline: 0.5rem;
+  cursor: pointer;
+}
+
+.nested-hierarchy-list {
+  display: none;
+  list-style-type: none;
+}
+
+.nested-hierarchy-node-active {
+  display: block;
+}
+
+.hierarchy {
+  user-select: none;
+  background-color: #f8f8f7;
+  border: solid 1px #dedede;
+  padding: 1.25em 1.25em 0;
+}
