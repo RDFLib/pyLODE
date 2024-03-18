@@ -7,7 +7,7 @@ readme = "README.rst"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-rdflib = "^6.1.1"
+rdflib = ">=6.0.0,<8.0.0"
 Markdown = "^3.3.7"
 dominate = "^2.6.0"
 html5lib = "^1.1"
