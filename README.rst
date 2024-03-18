@@ -284,6 +284,7 @@ Release Schedule
    :header: "Version", "Date", "Description"
    :widths: 15, 10, 30
 
+   **3.1.2** **18 March 2024**, "Relax httpx version constraint"
    **3.1.1** **19 February 2024**, "Fix release"
    **3.1.0**, **19 February 2024**, "Add supermodel mode - supports documenting profiles and modules"
    **3.0.5**, **27 April 2023**, "Minor patching"
