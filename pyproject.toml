@@ -11,7 +11,7 @@ rdflib = "^6.1.1"
 Markdown = "^3.3.7"
 dominate = "^2.6.0"
 html5lib = "^1.1"
-httpx = "^0.25.0"
+httpx = ">=0.25.0,<1.0.0"
 
 [tool.poetry.scripts]
 pylode = "pylode.cli:main"
