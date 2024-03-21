@@ -142,7 +142,7 @@ class OntPub:
         self._make_body()
 
         if destination is not None:
-            open(destination, "w").write(self.doc.render())
+            open(destination, "w", encoding="utf8").write(self.doc.render())
         else:
             return self.doc.render()
 
