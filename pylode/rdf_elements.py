@@ -82,7 +82,7 @@ PROP_PROPS = [
 
 # properties for Agents
 AGENT_PROPS = [
-    SDO.name,
+    DCTERMS.title,
     SDO.affiliation,
     SDO.identifier,
     SDO.email,
