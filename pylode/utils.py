@@ -252,7 +252,7 @@ def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
             return Graph().parse(location=ontology)
         elif isinstance(ontology, str):
             # see if it's a file path
-            if Path(ontology).is_file():
+            if (not '\n' in ontology) or Path(ontology).is_file():
                 return Graph().parse(ontology)
             else:  # it's data
                 if ontology.startswith("[") or ontology.startswith("{"):
