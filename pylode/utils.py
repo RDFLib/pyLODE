@@ -242,6 +242,15 @@ def back_onts_label_props(back_onts: Graph):
     return pl
 
 
+def _is_file(filepath: str) -> bool:
+    try:
+        if Path(filepath)._is_file():
+            return True
+        return False
+    except:
+        return False
+
+
 def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
     """Loads and ontology into an RDFLib Graph.
 
@@ -251,8 +260,7 @@ def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
         if isinstance(ontology, str) and ontology.startswith("http"):
             return Graph().parse(location=ontology)
         elif isinstance(ontology, str):
-            # see if it's a file path
-            if (not '\n' in ontology) or Path(ontology).is_file():
+            if _is_file(ontology):
                 return Graph().parse(ontology)
             else:  # it's data
                 if ontology.startswith("[") or ontology.startswith("{"):
