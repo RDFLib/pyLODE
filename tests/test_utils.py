@@ -6,6 +6,8 @@ from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import DCTERMS, OWL, RDF, RDFS, XSD
 import pytest
 
+current_dir = Path(__file__).parent
+
 
 # scope="session" so that this is reused without regeneration in this testing session
 @pytest.fixture(scope="session")
@@ -172,7 +174,7 @@ def test_prop_obj_pair_html(fix_ont, fix_load_background_onts, fix_get_ns):
     assert actual == expected, f"Object HTML '{actual}' != '{expected}'"
 
 
-def test_load_ontology_file():
+def test_load_ontology_data():
     data = """
         @prefix : <http://www.w3.org/ns/dx/prof/> .
         @prefix dc: <http://purl.org/dc/elements/1.1/> .
@@ -188,4 +190,14 @@ def test_load_ontology_file():
         <http://www.w3.org/ns/dx/prof> rdf:type owl:Ontology .
     """
     graph = load_ontology(data)
+    assert len(graph)
+
+
+def test_load_ontology_file():
+    filepath = current_dir / "prof.ttl"
+
+    graph = load_ontology(filepath)
+    assert len(graph)
+
+    graph = load_ontology(str(filepath))
     assert len(graph)

@@ -244,7 +244,7 @@ def back_onts_label_props(back_onts: Graph):
 
 def _is_file(filepath: str) -> bool:
     try:
-        if Path(filepath)._is_file():
+        if Path(filepath).is_file():
             return True
         return False
     except:
