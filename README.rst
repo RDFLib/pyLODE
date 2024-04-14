@@ -167,7 +167,7 @@ What pyLODE understands
 =======================
 
 pyLODE knows about definitional ontologies (``owl:Ontology``) and the major
-elements usually found in them, such as classes (``owl:Class`` or ``rdf:Class)
+elements usually found in them, such as classes (``owl:Class`` or ``rdf:Class``)
 and properties (``rdf:Property`` & ``owl:ObjectProperty`` etc.).
 
 To see what properties for ontology, class and RDF property documentation
