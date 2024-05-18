@@ -38,6 +38,7 @@ from pylode.profiles.supermodel.component.properties_table import (
 from pylode.utils import (
     PylodeError,
     load_ontology,
+    sort_ontology,
 )
 from pylode.profiles.supermodel.query import Query
 from pylode.profiles.supermodel.model import (
@@ -93,9 +94,12 @@ def get_headings(doc: dominate.document) -> list:
 
 class Supermodel:
     def __init__(
-        self, ontology: Graph | Path | str, QueryClass: Type[Query] = Query
+        self, ontology: Graph | Path | str, QueryClass: Type[Query] = Query,
+        sort_subjects: bool = False
     ) -> None:
         self.ont = load_ontology(ontology)
+        if sort_subjects:
+            self.ont = sort_ontology(self.ont)
         self.query = QueryClass(self.ont)
 
         self.toc: dict[str, str] = {}
