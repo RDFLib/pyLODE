@@ -258,10 +258,10 @@ def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
     try:
         # try URL
         if isinstance(ontology, str) and ontology.startswith("http"):
-            return Graph().parse(location=ontology)
+            return Graph(bind_namespaces="core").parse(location=ontology)
         elif isinstance(ontology, str):
             if _is_file(ontology):
-                return Graph().parse(ontology)
+                return Graph(bind_namespaces="core").parse(ontology)
             else:  # it's data
                 if ontology.startswith("[") or ontology.startswith("{"):
                     input_format = "json-ld"
@@ -273,11 +273,11 @@ def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
                     input_format = "xml"
                 else:
                     input_format = "turtle"  # this will also cover n-triples
-                return Graph().parse(data=ontology, format=input_format)
+                return Graph(bind_namespaces="core").parse(data=ontology, format=input_format)
         elif isinstance(ontology, Graph):
             return cast(Graph, ontology)
         elif isinstance(ontology, Path):
-            return Graph().parse(ontology)
+            return Graph(bind_namespaces="core").parse(ontology)
         else:
             raise ValueError(
                 "The ontology you supply to OntDoc must be either "
@@ -292,7 +292,7 @@ def sort_ontology(ont_orig: Graph) -> Graph:
     """Creates a copy of the supplied ontology, sorted by subjects"""
     trpls = ont_orig.triples((None, None, None))
     trpls_srt = sorted(trpls)
-    ont_sorted = Graph()
+    ont_sorted = Graph(bind_namespaces="core")
     for trpl in trpls_srt:
         ont_sorted.add(trpl)
     return ont_sorted
@@ -305,7 +305,7 @@ def load_background_onts():
     generating from RDF source files."""
 
     def _parse_background_onts():
-        g_ = Graph()
+        g_ = Graph(bind_namespaces="core")
         for f_ in RDF_FOLDER.glob("*.ttl"):
             g_.parse(f_)
 

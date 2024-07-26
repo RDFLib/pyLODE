@@ -129,7 +129,7 @@ def test_rdf_obj_html_bn(fix_load_background_onts):
   <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span>"""
-    actual = o.render()
+    actual = "\n".join([x.render() for x in o])
 
     assert expected1 in actual, "exp1 failed"
     assert expected2 in actual, "exp2 failed"
