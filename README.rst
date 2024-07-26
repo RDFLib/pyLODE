@@ -1,7 +1,5 @@
 .. highlight:: bash
-
-.. image:: https://rawcdn.githack.com/RDFLib/pyLODE/b1ff1b1e19262cdc21ee28c7362b1690ca18e30b/img/pyLODE-250.png
-
+.. image:: https://rawcdn.githack.com/RDFLib/pyLODE/master/img/pyLODE-250.png
 .. image:: https://badge.fury.io/py/pyLODE.svg
     :target: https://badge.fury.io/py/pyLODE
 
@@ -24,7 +22,7 @@ This is pyLODE version 3.0.1 and it's vastly different from pyLODE 2.x. It doesn
 
 v 3.x will eventually catch up to all of v 2.13.2's features.
 
-To access v 2.13.2 of pyLODE, either `download it from PyPI <https://pypi.org/project/pyLODE/2.13.2/>`_ , `check it out from GitHub <https://github.com/RDFLib/pyLODE/releases/tag/2.13.2>`_ or access it via the `online service <http://pylode.surroundaustralia.com/>`_ .
+To access v 2.13.2 of pyLODE, either `download it from PyPI <https://pypi.org/project/pylode/2.13.2/>`_ , `check it out from GitHub <https://github.com/RDFLib/pyLODE/releases/tag/2.13.2>`_ or access it via the `online service <http://pylode.surroundaustralia.com/>`_ .
 
 ----
 
@@ -52,7 +50,7 @@ The Live OWL Documentation Environment tool
 Semantic Web circles) Java & XSLT-based tool used to generate
 human-readable HTML documents for OWL and RDF ontologies. That tool is
 now a bit dated (old-style HTML, use of older technologies like XSLT)
-and its (`online version <https://www.essepuntato.it/lode>`__) is not always
+and its (`online version <https://essepuntato.it/lode>`__) is not always
 online.
 
 This tool is a complete re-implementation of LODE's functionality using
@@ -174,10 +172,10 @@ version of pyLODE.
 
 You can also see rendered versions of these example files online too:
 
-* `minimal.html <https://rdflib.dev/pyLODE/examples/ontdoc/minimal.html>`_
-* `agift.html <https://rdflib.dev/pyLODE/examples/ontdoc/agrif.html>`_
-* `alternates.html <https://rdflib.dev/pyLODE/examples/ontdoc/alternates.html>`_
-* `asgs.html <https://rdflib.dev/pyLODE/examples/ontdoc/asgs.html>`_
+* `minimal.html <https://rdflib.dev/pyLODE/examples/ontpub/minimal.html>`_
+* `agift.html <https://rdflib.dev/pyLODE/examples/ontpub/agrif.html>`_
+* `alternates.html <https://rdflib.dev/pyLODE/examples/ontpub/alternates.html>`_
+* `asgs.html <https://rdflib.dev/pyLODE/examples/ontpub/asgs.html>`_
 
 What pyLODE understands
 =======================
@@ -280,7 +278,7 @@ Differences from LODE
       still very much actively developed - it's not just staying still
    -  it will be improved in foreseeable to cater for more and more things
    -  recent ontology documentation initiatives such as the `MOD
-      Ontology <https://github.com/sifrproject/MOD-Ontology>`__ will be
+      Ontology <https://github.com/FAIR-IMPACT/MOD>`__ will be
       handled, if requested
 
 
@@ -358,5 +356,5 @@ Contacts
 | *Author*:
 | **Nicholas Car**
 | *Data Architect*
-| `Kurrawong AI <https://kurrawong.net>`_
-| nick@kurrawong.net
+| `Kurrawong AI <https://kurrawong.ai>`_
+| nick@kurrawong.ai
