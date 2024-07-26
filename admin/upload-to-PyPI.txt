@@ -5,7 +5,7 @@
    - pyproject.toml
 
 3. Update README
-   esp Releases Roadmap - 3 places: "Current Release", "Release Schedule" table & release notes
+   esp Releases Roadmap - 3 places: "Current Release", "Release Schedule"
 
 4. $ git commit changes
 
