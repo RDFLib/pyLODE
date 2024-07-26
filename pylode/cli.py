@@ -68,7 +68,7 @@ def main():
             raise ValueError(f"Unexpected profile type '{args.profile}'")
     except PylodeError as e:
         print("ERROR: " + str(e))
-        exit()
+        exit(1)
 
     pylode_kwargs = {}
 
