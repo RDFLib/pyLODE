@@ -651,15 +651,15 @@ def rdf_obj_html(
                                     span(card, _class="cardinality"),
                                     raw(_rdf_obj_single_html),
                                 )
-                            else:
-                                card = span(
-                                    span(card, _class="cardinality"),
-                                    span(
-                                        _hyperlink_html(
-                                            ont__, back_onts_, ns__, o, fids_, OWL.Class
-                                        )
-                                    ),
-                                )
+                            
+                            card = span(
+                                span(card, _class="cardinality"),
+                                span(
+                                    _hyperlink_html(
+                                        ont__, back_onts_, ns__, o, fids_, OWL.Class
+                                    )
+                                ),
+                            )
 
             restriction = span(prop, card, br()) if card is not None else prop
             restriction = (
@@ -672,11 +672,11 @@ def rdf_obj_html(
             """Makes lists of (union) 'ClassX or Class Y or ClassZ' or
             (intersection) 'ClassX and Class Y and ClassZ'"""
             if (obj__, OWL.unionOf, None) in ont__:
-                joining_word = ' <span class="cardinality">or</span> '
+                joining_word = span("or", _class="cardinality")
             elif (obj__, OWL.intersectionOf, None) in ont__:
-                joining_word = ' <span class="cardinality">and</span> '
+                joining_word = span("and", _class="cardinality")
             else:
-                joining_word = ' <span class="cardinality">,</span> '
+                joining_word = span(",", _class="cardinality")
 
             class_set = set()
             for o in ont__.objects(obj__, OWL.unionOf | OWL.intersectionOf):
@@ -687,7 +687,7 @@ def rdf_obj_html(
                         )
                     )
 
-            return raw(joining_word.join([mem.render() for mem in class_set]))
+            return intersperse(class_set, joining_word)
 
         def _bn_html(ont__, back_onts__, ns__, fids__, obj__: BNode):
             # TODO: remove back_onts and fids if not needed by subfunctions
@@ -886,6 +886,11 @@ def section_html(
 
     return elems
 
+
+def intersperse(lst, sep):
+    result = [sep] * (len(lst) * 2 - 1)
+    result[0::2] = lst
+    return result
 
 def de_space_html(html):
     # s = "".join([l_.strip().replace("\n", " ") for l_ in html.split("\n")])
