@@ -1,3 +1,5 @@
+.. highlight:: bash
+
 .. image:: https://rawcdn.githack.com/RDFLib/pyLODE/b1ff1b1e19262cdc21ee28c7362b1690ca18e30b/img/pyLODE-250.png
 
 .. image:: https://badge.fury.io/py/pyLODE.svg
@@ -5,6 +7,7 @@
 
 pyLODE
 ******
+
 An OWL ontology documentation tool using Python, based on LODE.
 
 In addition to making web page, human-readable forms of ontologies, pyLODE encourages ontology annotation *best
@@ -27,6 +30,7 @@ To access v 2.13.2 of pyLODE, either `download it from PyPI <https://pypi.org/pr
 
 Contents
 ========
+
 1. `Quick Intro`_
 2. Use_
 3. `What pyLODE understands`_
@@ -40,9 +44,9 @@ Contents
 11. Collaboration_
 12. Contacts_
 
-
 Quick Intro
 ===========
+
 The Live OWL Documentation Environment tool
 (`LODE <https://github.com/essepuntato/LODE>`__) is a well-known (in
 Semantic Web circles) Java & XSLT-based tool used to generate
@@ -83,7 +87,7 @@ Command line arguments
 The BASH, Windows EXE and Python Script methods all use the same command line
 arguments:
 
-::
+.. code-block:: text
 
     usage: cli.py [-h] [-v] [-o OUTPUTFILE] [-c {true,false}] input
 
@@ -118,22 +122,21 @@ match exactly the file ``examples/minimal.html``.
 
 * as a docker container
 
-build the docker image
-::
+build the docker image::
 
     docker build -t pylode:latest .
 
-copy the example directory, mount it to the container and run cli.py in the container
-::
+copy the example directory, mount it to the container and run cli.py in the container::
 
     docker  run  --mount 'type=bind,src=<ttl_directory>,target=/app/pylode/data' pylode:latest  python3.10 pylode/cli.py data/<ttl_file> -o data/<html_file>
 
-    Note: <ttl_directory> must be absolute
+Note: ``<ttl_directory>`` must be absolute
 
 Module Use
 ^^^^^^^^^^
 
 for OWL::
+.. code-block:: python
 
     from pylode.profiles.ontpub import OntPub
 
@@ -147,6 +150,7 @@ for OWL::
     od.make_html(destination="some-resulting-html-file.html")
 
 for SKOS::
+.. code-block:: python
 
     from pylode.profiles.vocpub import VocPub
 
@@ -175,12 +179,11 @@ You can also see rendered versions of these example files online too:
 * `alternates.html <https://rdflib.dev/pyLODE/examples/ontdoc/alternates.html>`_
 * `asgs.html <https://rdflib.dev/pyLODE/examples/ontdoc/asgs.html>`_
 
-
 What pyLODE understands
 =======================
 
 pyLODE knows about definitional ontologies (``owl:Ontology``) and the major
-elements usually found in them, such as classes (``owl:Class`` or ``rdf:Class)
+elements usually found in them, such as classes (``owl:Class`` or ``rdf:Class``)
 and properties (``rdf:Property`` & ``owl:ObjectProperty`` etc.).
 
 To see what properties for ontology, class and RDF property documentation
@@ -198,13 +201,14 @@ not really designed to document large ontologies containing class instances.
 
 Notes on Agents
 ---------------
+
 pyLODE can understand both simple and complex Agent objects. You can use
 simple string properties like ``dc:contributor "Nicholas J. Car"`` too if
 you really must but better would be to take advantage of real Linked Data
 representation, e.g. complex Agent objects with web addresses, emails,
 affiliations, ORCIDs and so on, e.g.:
 
-::
+.. code-block:: turtle
 
     <ontology_x>
         dct:creator [
@@ -215,6 +219,7 @@ affiliations, ORCIDs and so on, e.g.:
                 sdo:url "https://surroundaustralia.com"^^xsd:anyURI ;
             ] ;
         ] ;
+    .
 
 See all the properties in ``rdf_elements.py:AGENT_PROPS`` for a list of
 all the Agent properties pyLODE can handle.
@@ -229,18 +234,18 @@ it using `pip <https://pypi.org/project/pip/>`_ as normal:
 
     pip install pylode
 
-
 Testing
 =======
 
 It's best to disable warnings to hide pointless warnings from the RDFLib library.
 
 ::
-    ~$ python -m pytest tests --disable-warnings
 
+    python -m pytest tests --disable-warnings
 
 Differences from LODE
 =====================
+
 -  command line access
 
    -  you can use this on your own desktop so you don't need me to
@@ -281,6 +286,7 @@ Differences from LODE
 
 Releases
 ========
+
 pyLODE is under continual and constant development. The current developers have a roadmap for enhancements in mind,
 which is given here, however, since this is an open source project, new developers may join the pyLODE dev community
 and change/add development priorities.
@@ -322,22 +328,22 @@ Release Schedule
    2.0, 18 Apr 2020, "Includes multiple profiles - OWP & vocpub"
    1.0, 15 Dec 2019, "Initial working release"
 
-
 License
 =======
+
 This code is licensed using the BSD 3-Clause licence. See the `LICENSE
 file <LICENSE>`_ for the deed. Note *Citation* below though for
 attribution.
 
-
 Citation
 ========
+
 If you use pyLODE, please leave the pyLODE logo with a hyperlink back
 here in the top left of published HTML pages.
 
-
 Collaboration
 =============
+
 The maintainers welcome any collaboration.
 
 If you have suggestions, please email the contacts below or leave Issues
@@ -346,9 +352,9 @@ in this repository's `Issue tracker <https://github.com/rdflib/pyLODE/issues>`_.
 But the very best thing you could do is create a Pull Request for us to
 action!
 
-
 Contacts
 ========
+
 | *Author*:
 | **Nicholas Car**
 | *Data Architect*
