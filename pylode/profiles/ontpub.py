@@ -129,7 +129,7 @@ class OntPub:
         if t is None:
             raise PylodeError(
                 "You MUST supply a title property "
-                "(dcterms:title, rdf:label or sdo:name) for your ontology"
+                "(dcterms:title, rdfs:label or sdo:name) for your ontology"
             )
         self.doc = dominate.document(title=t)
 
