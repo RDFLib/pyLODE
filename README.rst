@@ -1,4 +1,3 @@
-.. highlight:: bash
 .. image:: https://rawcdn.githack.com/RDFLib/pyLODE/master/img/pyLODE-250.png
 .. image:: https://badge.fury.io/py/pyLODE.svg
     :target: https://badge.fury.io/py/pyLODE
@@ -120,11 +119,15 @@ match exactly the file ``examples/minimal.html``.
 
 * as a docker container
 
-build the docker image::
+build the docker image:
+
+.. code-block:: bash
 
     docker build -t pylode:latest .
 
-copy the example directory, mount it to the container and run cli.py in the container::
+copy the example directory, mount it to the container and run cli.py in the container:
+
+.. code-block:: bash
 
     docker  run  --mount 'type=bind,src=<ttl_directory>,target=/app/pylode/data' pylode:latest  python3.10 pylode/cli.py data/<ttl_file> -o data/<html_file>
 
@@ -133,7 +136,8 @@ Note: ``<ttl_directory>`` must be absolute
 Module Use
 ^^^^^^^^^^
 
-for OWL::
+for OWL:
+
 .. code-block:: python
 
     from pylode.profiles.ontpub import OntPub
@@ -147,7 +151,8 @@ for OWL::
     # or save HTML to a file
     od.make_html(destination="some-resulting-html-file.html")
 
-for SKOS::
+for SKOS:
+
 .. code-block:: python
 
     from pylode.profiles.vocpub import VocPub
