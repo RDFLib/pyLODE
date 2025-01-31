@@ -297,7 +297,7 @@ and change/add development priorities.
 Current Release
 ---------------
 
-The current release, as of July, 2024, is **3.2.0**.
+The current release is **3.2.1**.
 
 Release Schedule
 ----------------
@@ -306,6 +306,7 @@ Release Schedule
    :header: "Version", "Date", "Description"
    :widths: 15, 10, 30
 
+   3.2.1, 31 January 2025, "Fix version number in version.py"
    3.2.0, 27 July 2024, "dependency updates and merged multiple small PRs"
    3.1.4, 6 April 2024, "Fix load_ontology function's detection of data input"
    3.1.3, 18 March 2024, "Relax rdflib version constraint"
