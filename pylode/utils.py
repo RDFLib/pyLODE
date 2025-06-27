@@ -294,7 +294,7 @@ def sort_ontology(ont_orig: Graph) -> Graph:
     trpls_srt = sorted(trpls)
     ont_sorted = Graph(bind_namespaces="core")
 
-    # Recover the namespaces
+    # Recover the namespaces from the original file
     for prefix, namespace in ont_orig.namespace_manager.namespaces():
         ont_sorted.namespace_manager.bind(prefix, namespace, override=True)
 
