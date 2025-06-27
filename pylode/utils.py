@@ -293,6 +293,11 @@ def sort_ontology(ont_orig: Graph) -> Graph:
     trpls = ont_orig.triples((None, None, None))
     trpls_srt = sorted(trpls)
     ont_sorted = Graph(bind_namespaces="core")
+
+    # Recover the namespaces
+    for prefix, namespace in ont_orig.namespace_manager.namespaces():
+        ont_sorted.namespace_manager.bind(prefix, namespace, override=True)
+
     for trpl in trpls_srt:
         ont_sorted.add(trpl)
     return ont_sorted

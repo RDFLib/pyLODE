@@ -404,6 +404,11 @@ class Query:
         self.root_profile_iri = get_root_profile_iri(graph)
         self.db = load_profiles(self.root_profile_iri, graph.serialize())
         self.graph = self.db.root_graph
+
+        # We need this to see the prefixes in the loaded file
+        for prefix, namespace in graph.namespace_manager.namespaces():
+            self.graph.namespace_manager.bind(prefix, namespace, override=True)
+
         self.debug = True if (None, LODE.debug, None) in self.db.config_graph else False
 
         # An IRI index of classes that 'exist' within this documentation.
