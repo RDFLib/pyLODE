@@ -118,4 +118,7 @@ output_files/
 
 pylode/_version.py
 
-.pickle
+*.pickle
+
+actual.html
+expected.html
