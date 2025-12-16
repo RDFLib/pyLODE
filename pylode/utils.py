@@ -292,7 +292,11 @@ def sort_ontology(ont_orig: Graph) -> Graph:
     """Creates a copy of the supplied ontology, sorted by subjects"""
     trpls = ont_orig.triples((None, None, None))
     trpls_srt = sorted(trpls)
-    ont_sorted = Graph(bind_namespaces="core")
+    ont_sorted = Graph(bind_namespaces="none")
+    # preserve prefix bindings from the original graph's namespace manager
+    for prefix, ns in ont_orig.namespaces():
+        p = prefix if prefix is not None else ""
+        ont_sorted.bind(p, ns)
     for trpl in trpls_srt:
         ont_sorted.add(trpl)
     return ont_sorted
