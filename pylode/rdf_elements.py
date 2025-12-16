@@ -37,6 +37,7 @@ ONT_PROPS = [
     SKOS.note,
     DCTERMS.description,
     ONTDOC.restriction,
+    OWL.imports,
 ]
 
 # properties for OWL Class instances
