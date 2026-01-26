@@ -1,6 +1,7 @@
 from typing import Optional, Union
 
-from rdflib import Dataset as _Dataset, Graph, URIRef, BNode
+from rdflib import BNode, Graph, URIRef
+from rdflib import Dataset as _Dataset
 from rdflib.graph import _ContextIdentifierType, _ContextType
 
 

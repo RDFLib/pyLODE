@@ -4,40 +4,40 @@ import re
 from collections import defaultdict
 from itertools import chain
 from pathlib import Path
-from typing import Optional, List, Tuple, Union, cast
+from typing import List, Optional, Tuple, Union, cast
 
 import markdown
 from dominate.tags import (
-    h2,
-    br,
-    th,
-    em,
-    pre,
-    p,
     a,
-    span,
-    sup,
-    tr,
-    td,
-    ul,
-    li,
+    br,
     code,
-    table,
-    h3,
+    dd,
     div,
     dt,
-    dd,
+    em,
+    h2,
+    h3,
+    li,
+    p,
+    pre,
+    span,
+    sup,
+    table,
+    td,
+    th,
+    tr,
+    ul,
 )
 from dominate.util import raw
-from rdflib import BNode, Literal, Graph, URIRef
-from rdflib.namespace import DC, DCTERMS, PROF, PROV, OWL, RDF, RDFS, SDO, SKOS, VANN
+from rdflib import BNode, Graph, Literal, URIRef
+from rdflib.namespace import DC, DCTERMS, OWL, PROF, PROV, RDF, RDFS, SDO, SKOS, VANN
 from rdflib.paths import ZeroOrMore
 
 try:
     from .rdf_elements import (
         AGENT_PROPS,
-        ONTDOC,
         ONT_TYPES,
+        ONTDOC,
         OWL_SET_TYPES,
         PROPS,
         RESTRICTION_TYPES,
@@ -45,8 +45,8 @@ try:
 except ImportError:
     from rdf_elements import (
         AGENT_PROPS,
-        ONTDOC,
         ONT_TYPES,
+        ONTDOC,
         OWL_SET_TYPES,
         PROPS,
         RESTRICTION_TYPES,
@@ -273,7 +273,9 @@ def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
                     input_format = "xml"
                 else:
                     input_format = "turtle"  # this will also cover n-triples
-                return Graph(bind_namespaces="core").parse(data=ontology, format=input_format)
+                return Graph(bind_namespaces="core").parse(
+                    data=ontology, format=input_format
+                )
         elif isinstance(ontology, Graph):
             return cast(Graph, ontology)
         elif isinstance(ontology, Path):
@@ -288,6 +290,7 @@ def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
         print(f"{type(e).__name__} Error {e}")
         exit()
 
+
 def sort_ontology(ont_orig: Graph) -> Graph:
     """Creates a copy of the supplied ontology, sorted by subjects"""
     trpls = ont_orig.triples((None, None, None))
@@ -296,6 +299,7 @@ def sort_ontology(ont_orig: Graph) -> Graph:
     for trpl in trpls_srt:
         ont_sorted.add(trpl)
     return ont_sorted
+
 
 def load_background_onts():
     """Loads background ontology files into an RDFLib graph from either
@@ -651,7 +655,7 @@ def rdf_obj_html(
                                     span(card, _class="cardinality"),
                                     raw(_rdf_obj_single_html),
                                 )
-                            
+
                             card = span(
                                 span(card, _class="cardinality"),
                                 span(
@@ -891,6 +895,7 @@ def intersperse(lst, sep):
     result = [sep] * (len(lst) * 2 - 1)
     result[0::2] = lst
     return result
+
 
 def de_space_html(html):
     # s = "".join([l_.strip().replace("\n", " ") for l_ in html.split("\n")])

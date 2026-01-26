@@ -1,4 +1,4 @@
-from dominate.tags import tr, td, p, a, strong
+from dominate.tags import a, p, strong, td, tr
 
 
 @tr

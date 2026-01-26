@@ -1,6 +1,5 @@
-from rdflib import URIRef, SDO
-from rdflib.namespace import Namespace, DefinedNamespace
-
+from rdflib import SDO, URIRef
+from rdflib.namespace import DefinedNamespace, Namespace
 
 # Patch schema.org TextObject.
 setattr(SDO, "TextObject", URIRef("https://schema.org/TextObject"))

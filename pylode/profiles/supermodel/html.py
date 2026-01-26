@@ -5,61 +5,60 @@ from typing import Type
 import dominate
 import dominate.tags
 from dominate.tags import (
-    style,
-    link,
-    meta,
-    script,
+    a,
     body,
+    col,
+    colgroup,
     div,
     h1,
-    table,
-    colgroup,
-    col,
-    tbody,
-    tr,
-    td,
-    p,
-    strong,
-    a,
     hr,
-    ul,
     li,
-    thead,
-    th,
+    link,
+    meta,
+    p,
+    script,
     span,
+    strong,
+    style,
+    table,
+    tbody,
+    td,
+    th,
+    thead,
+    tr,
+    ul,
 )
 from dominate.util import raw
-from rdflib import Graph, OWL, SDO, DCTERMS, VANN, SKOS
+from rdflib import DCTERMS, OWL, SDO, SKOS, VANN, Graph
 
+from pylode.profiles.supermodel.component import (
+    example,
+    external_link,
+    h2,
+    h3,
+    h4,
+    h5,
+    metadata_row,
+)
 from pylode.profiles.supermodel.component.properties_table import (
     property_table_row,
     property_table_vocabulary_row,
 )
+from pylode.profiles.supermodel.fragment import make_html_fragment
+from pylode.profiles.supermodel.model import (
+    Class,
+    ComponentModel,
+    ProfileHierarchyItem,
+    ProfileType,
+    Property,
+    RDFProperty,
+)
+from pylode.profiles.supermodel.query import Query
 from pylode.utils import (
     PylodeError,
     load_ontology,
     sort_ontology,
 )
-from pylode.profiles.supermodel.query import Query
-from pylode.profiles.supermodel.model import (
-    ComponentModel,
-    Class,
-    RDFProperty,
-    ProfileType,
-    ProfileHierarchyItem,
-    Property,
-)
-from pylode.profiles.supermodel.component import (
-    metadata_row,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    external_link,
-    example,
-)
-from pylode.profiles.supermodel.fragment import make_html_fragment
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
 
@@ -94,8 +93,10 @@ def get_headings(doc: dominate.document) -> list:
 
 class Supermodel:
     def __init__(
-        self, ontology: Graph | Path | str, QueryClass: Type[Query] = Query,
-        sort_subjects: bool = False
+        self,
+        ontology: Graph | Path | str,
+        QueryClass: Type[Query] = Query,
+        sort_subjects: bool = False,
     ) -> None:
         self.ont = load_ontology(ontology)
         if sort_subjects:

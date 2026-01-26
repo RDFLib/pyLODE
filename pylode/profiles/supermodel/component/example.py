@@ -1,8 +1,8 @@
-from dominate.tags import div, img, pre, code, p
+from dominate.tags import code, div, img, p, pre
 
-from pylode.profiles.supermodel.model import MediaObject, ImageObject, TextObject
-from pylode.profiles.supermodel.component.heading import heading
 from pylode.profiles.supermodel import state
+from pylode.profiles.supermodel.component.heading import heading
+from pylode.profiles.supermodel.model import ImageObject, MediaObject, TextObject
 
 
 def image_component(image_object: ImageObject) -> div:

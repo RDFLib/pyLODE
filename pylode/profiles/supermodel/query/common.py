@@ -1,7 +1,7 @@
 import logging
 from itertools import chain
 
-from rdflib import URIRef, Graph, Dataset, Literal, RDFS, SKOS, SDO, DCTERMS
+from rdflib import DCTERMS, RDFS, SDO, SKOS, Dataset, Graph, Literal, URIRef
 
 from pylode.profiles.supermodel.model import Class, Ontology
 
@@ -60,7 +60,9 @@ def get_descriptions(iri: URIRef, graph: Graph) -> str:
     )
 
 
-def get_class(iri: URIRef, graph: Graph, db: Dataset, ignored_classes: list[URIRef]) -> Class:
+def get_class(
+    iri: URIRef, graph: Graph, db: Dataset, ignored_classes: list[URIRef]
+) -> Class:
     name = get_name(iri, graph, db)
     subclasses = get_subclasses(iri, graph, db, ignored_classes)
     return Class(iri, name, subclasses=subclasses)
