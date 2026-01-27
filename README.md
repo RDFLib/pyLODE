@@ -23,7 +23,7 @@ To access v 2.13.2 of pyLODE, either:
 
 - [Download it from PyPI](https://pypi.org/project/pylode/2.13.2/)
 - [Check it out from GitHub](https://github.com/RDFLib/pyLODE/releases/tag/2.13.2)
-- Access it via the [online service](http://pylode.surroundaustralia.com/)
+- Access it via the [online service](http://tools.kurrawong.ai/pylode)
 
 ---
 
@@ -65,7 +65,7 @@ The tool can be used in multiple ways:
   - via the [Falcon framework](https://falconframework.org/)
   - see `server.py`
 - As-a-service online  
-  - https://pylode.surroundaustralia.com
+  - https://tools.kurrawong.ai/pylode
 
 ### Command line arguments
 
@@ -154,12 +154,13 @@ pyLODE supports simple and complex Agent objects, including ORCIDs, affiliations
 
 ```turtle
 <ontology_x>
-    dct:creator [
-        sdo:name "Nicholas J. Car" ;
-        sdo:identifier <http://orcid.org/0000-0002-8742-7730> ;
-        sdo:affiliation [
-            sdo:name "SURROUND Australia Pty Ldt." ;
-            sdo:url "https://surroundaustralia.com"^^xsd:anyURI ;
+    schema:creator [
+        schema:name "Nicholas J. Car" ;
+        schema:identifier <http://orcid.org/0000-0002-8742-7730> ;
+        schema:email "nick@kurrawong.ai"^^xsd:anyURI ;
+        schema:affiliation [
+            schema:name "KurrawongAI" ;
+            schema:url "https://kurrawong.ai"^^xsd:anyURI ;
         ] ;
     ] ;
 .
@@ -202,12 +203,13 @@ python -m pytest tests --disable-warnings
 
 ## Releases
 
-**Current release:** **3.2.1**
+**Current release:** **3.2.3**
 
 ### Release Schedule
 
 | Version | Date             | Description                                                                     |
 |---------|------------------|---------------------------------------------------------------------------------|
+| 3.2.3   | 27 January 2026  | Updating dependencies & release procedure. Tidy testing cleanup                 |
 | 3.2.1   | 31 January 2025  | Fix version number in version.py                                                |
 | 3.2.0   | 27 July 2024     | dependency updates and merged multiple small PRs                                |
 | 3.1.4   | 6 April 2024     | Fix load_ontology function's detection of data input                            |
@@ -273,6 +275,8 @@ Nicholas Car
 8. publish on PyPI: 
     * `poetry build`
     * `poetry publish -u __token__ -p {TOKEN}`
-9. increment version number to next release in `pyproject.toml`
-10. commit all changes `$ git commit -a "..."`
-11. push changes `$ git push`
+9. make a GitHub release
+    * include `/dist` build artifacts
+10. increment version number to next release in `pyproject.toml`
+11. commit all changes `$ git commit -a "..."`
+12. push changes `$ git push`
