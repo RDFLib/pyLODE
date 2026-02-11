@@ -1,13 +1,51 @@
-from dominate.tags import a, button, div, i, li, p, span, td, tr, ul
-from rdflib import URIRef
+from dominate.tags import a, button, code, div, i, li, p, span, td, tr, ul
+from rdflib import Literal, URIRef
 
 from pylode.profiles.supermodel.component import external_link, tooltip
 from pylode.profiles.supermodel.fragment import make_html_fragment
-from pylode.profiles.supermodel.model import (
-    CodedProperty,
-    Property,
-    SimpleCodedProperty,
-)
+from pylode.profiles.supermodel.model import (Class, CodedProperty, Property,
+                                              Resource, SimpleCodedProperty)
+
+
+def render_resource_or_literal(item: Resource | Literal, class_: Class, class_index):
+    if isinstance(item, Literal):
+        span(str(item))
+    elif class_.iri in class_index:
+        fragment = make_html_fragment(class_.iri)
+        a(
+            item.label,
+            href=f"#{fragment}",
+        )
+    else:
+        external_link(
+            item.label,
+            item.iri,
+        )
+
+
+def create_length_interval(property_: Property) -> str | None:
+    parts = []
+    if property_.min_length is not None:
+        parts.append(f"≥ {property_.min_length}")
+    if property_.max_length is not None:
+        parts.append(f"≤ {property_.max_length}")
+
+    return " and ".join(parts) if parts else None
+
+
+def create_range_interval(property_: Property) -> str | None:
+    parts = []
+    if property_.min_inclusive is not None:
+        parts.append(f"≥ {property_.min_inclusive}")
+    elif property_.min_exclusive:
+        parts.append(f"> {property_.min_exclusive}")
+
+    if property_.max_inclusive is not None:
+        parts.append(f"≤ {property_.max_inclusive}")
+    elif property_.max_exclusive:
+        parts.append(f"< {property_.max_exclusive}")
+
+    return " and ".join(parts) if parts else None
 
 
 def property_table_row(
@@ -47,7 +85,7 @@ def property_table_row(
                         i(_class="fa fa-info cursor-help", aria_hidden="true")
 
                     with p(
-                        f"In profile ",
+                        "In profile ",
                         _class="property-row-profile-source italic text-sm hidden",
                     ):
                         # TODO: Show as an external link if the profile is not a pylode:Module within the document.
@@ -105,7 +143,7 @@ def property_table_row(
 
         with td(_class="tableblock halign-left valign-top"):
             with p(
-                _class="tableblock",
+                style="margin-bottom: 0px;",
             ):
                 if not isinstance(property_, CodedProperty):
                     # Don't render this if it's a coded property since most coded properties
@@ -124,36 +162,130 @@ def property_table_row(
                                     value_class_type.name,
                                     value_class_type.iri,
                                 )
+                    if property_.datatype is not None:
+                        dt_class = property_.datatype
+                        with p("Expected Datatype: "):
+                            if dt_class.iri in class_index:
+                                fragment = make_html_fragment(dt_class.iri)
+                                a(dt_class.name, href=f"#{fragment}")
+                            else:
+                                external_link(dt_class.name, dt_class.iri)
 
                 if property_.constraints:
                     p(property_.constraints)
 
-                # Coded property
-                if isinstance(property_, CodedProperty):
-                    span("Values expected to be from the following vocabulary:")
-                    with ul():
-                        for codelist in property_.codelist:
-                            with li():
-                                external_link(codelist.label, codelist.iri)
-                    span("with an expected class type of:")
-
-                    with ul():
-                        for class_type in property_.value_class_types:
-                            with li():
-                                if class_type.iri in class_index:
-                                    fragment = make_html_fragment(class_type.iri)
-                                    a(
-                                        class_type.name,
-                                        href=f"#{fragment}",
-                                    )
-                                else:
-                                    external_link(
-                                        class_type.name,
-                                        class_type.iri,
-                                    )
-
             if cardinality:
-                p(f"Cardinality: {cardinality}", _class="text-sm")
+                p(f"Cardinality: {cardinality}")
+
+            # Other constraints
+            if property_.has_value:
+                with p("Value kind: "):
+                    render_resource_or_literal(
+                        Resource(property_.value_type.iri, property_.value_type.name),
+                        property_.value_type,
+                        class_index,
+                    )
+            if property_.has_value:
+                with p("Expected value: "):
+                    render_resource_or_literal(
+                        property_.has_value, property_.belongs_to_class, class_index
+                    )
+            if property_.language_in:
+                p("Allowable values:", style="margin-bottom: 0px;")
+                with ul():
+                    for item in property_.value_in:
+                        with li():
+                            render_resource_or_literal(
+                                item, property_.belongs_to_class, class_index
+                            )
+            if property_.regex_pattern:
+                with p("Expected to match pattern: "):
+                    code(property_.regex_pattern)
+            if property_.language_in:
+                with p("Allowable languages:", style="margin-bottom: 0px;"), ul():
+                    for lang in property_.language_in:
+                        li(code(lang))
+            if property_.unique_lang is not None:
+                p("Only one value per language is expected.")
+            length_string = create_length_interval(property_)
+            if length_string:
+                p(f"Length: {length_string}")
+            value_range_string = create_range_interval(property_)
+            if value_range_string is not None:
+                p(f"Range: {value_range_string}")
+            if property_.less_than_predicates:
+                p(
+                    "Values are expected to be less than the values for the following properties:",
+                    style="margin-bottom: 0px;",
+                )
+                with ul():
+                    for pred in property_.less_than_predicates:
+                        with li():
+                            render_resource_or_literal(
+                                pred, property_.belongs_to_class, class_index
+                            )
+            if property_.less_than_or_equals_predicates:
+                p(
+                    "Values are expected to be less than or equal to the values for the following properties:",
+                    style="margin-bottom: 0px;",
+                )
+                with ul():
+                    for pred in property_.less_than_or_equals_predicates:
+                        with li():
+                            render_resource_or_literal(
+                                pred, property_.belongs_to_class, class_index
+                            )
+            if property_.equals_predicates:
+                p(
+                    "Values are expected to be equal the values for the following properties:",
+                    style="margin-bottom: 0px;",
+                )
+                with ul():
+                    for pred in property_.equals_predicates:
+                        with li():
+                            render_resource_or_literal(
+                                pred, property_.belongs_to_class, class_index
+                            )
+            if property_.disjoint_predicates:
+                p("Disjoint with:", style="margin-bottom: 0px;")
+                with ul():
+                    for pred in property_.disjoint_predicates:
+                        with li():
+                            render_resource_or_literal(
+                                pred, property_.belongs_to_class, class_index
+                            )
+            if property_.default_value is not None:
+                with p("Default value:"):
+                    render_resource_or_literal(
+                        property_.default_value, property_.belongs_to_class, class_index
+                    )
+
+            # Coded property
+            if isinstance(property_, CodedProperty):
+                p(
+                    "Values expected to be from the following vocabulary:",
+                    style="margin-bottom: 0px;",
+                )
+                with ul():
+                    for codelist in property_.codelist:
+                        with li():
+                            external_link(codelist.label, codelist.iri)
+                p("with an expected class type of:", style="margin-bottom: 0px;")
+
+                with ul():
+                    for class_type in property_.value_class_types:
+                        with li():
+                            if class_type.iri in class_index:
+                                fragment = make_html_fragment(class_type.iri)
+                                a(
+                                    class_type.name,
+                                    href=f"#{fragment}",
+                                )
+                            else:
+                                external_link(
+                                    class_type.name,
+                                    class_type.iri,
+                                )
 
     return component
 
