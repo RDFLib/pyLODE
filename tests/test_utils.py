@@ -1,10 +1,13 @@
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path().parent.parent.resolve() / "pylode"))
+import pytest
+from rdflib import Literal, URIRef
+from rdflib.namespace import DCTERMS, RDFS, XSD
+
 from pylode.profiles import OntPub
 from pylode.utils import *
-from pylode.rdf_elements import CLASS_PROPS
-
-from rdflib import Graph, URIRef, Literal
-from rdflib.namespace import DCTERMS, OWL, RDF, RDFS, XSD
-import pytest
 
 current_dir = Path(__file__).parent
 
@@ -28,9 +31,9 @@ def fix_get_ns(fix_ont):
 
 def test_get_ns(fix_ont):
     prefix, namespace = get_ns(fix_ont)
-    assert (
-        namespace == "http://www.w3.org/ns/dx/prof"
-    ), "get_ns did not retrieve PROF's namespace"
+    assert namespace == "http://www.w3.org/ns/dx/prof", (
+        "get_ns did not retrieve PROF's namespace"
+    )
 
 
 def test_make_title_from_iri():

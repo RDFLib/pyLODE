@@ -1,13 +1,13 @@
-from dominate.tags import tr, td, p, a, i, span, ul, li, button, div
+from dominate.tags import a, button, div, i, li, p, span, td, tr, ul
 from rdflib import URIRef
 
-from pylode.profiles.supermodel.model import (
-    Property,
-    CodedProperty,
-    SimpleCodedProperty,
-)
 from pylode.profiles.supermodel.component import external_link, tooltip
 from pylode.profiles.supermodel.fragment import make_html_fragment
+from pylode.profiles.supermodel.model import (
+    CodedProperty,
+    Property,
+    SimpleCodedProperty,
+)
 
 
 def property_table_row(
@@ -104,7 +104,6 @@ def property_table_row(
             cardinality = f"[{property_.cardinality_min}..{property_.cardinality_max}]"
 
         with td(_class="tableblock halign-left valign-top"):
-
             with p(
                 _class="tableblock",
             ):

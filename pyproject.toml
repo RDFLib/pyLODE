@@ -1,9 +1,9 @@
 [tool.poetry]
 name = "pylode"
-version = "3.2.0"
+version = "3.2.4a"
 description = "An OWL ontology documentation tool using Python, based on LODE."
-authors = ["Nicholas Car <nick@kurrawong.net>"]
-readme = "README.rst"
+authors = ["Nicholas Car <nick@kurrawong.ai>"]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -16,7 +16,7 @@ httpx = ">=0.25.0,<1.0.0"
 [tool.poetry.scripts]
 pylode = "pylode.cli:main"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pytest = "^7.2.0"
 black = "^24.3.0"
 flake8 = "^4.0.1"
@@ -25,3 +25,6 @@ pyinstaller = { version = "^6.0", python = ">=3.9,<3.11" }
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.lint.dependencies]
+ruff = "0.14.3"

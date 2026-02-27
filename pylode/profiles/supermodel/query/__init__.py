@@ -1,53 +1,53 @@
-import math
 import logging
-from textwrap import dedent
+import math
 from collections import defaultdict
 from itertools import chain
+from textwrap import dedent
 
-from rdflib import Graph, Literal, URIRef, Dataset
+from rdflib import Dataset, Graph, Literal, URIRef
 from rdflib.graph import DATASET_DEFAULT_GRAPH_ID
 from rdflib.namespace import (
-    RDF,
-    OWL,
-    RDFS,
     DC,
-    SKOS,
-    SDO,
     DCTERMS,
-    PROV,
     FOAF,
     ORG,
-    VANN,
+    OWL,
     PROF,
-    SH,
+    PROV,
     QB,
+    RDF,
+    RDFS,
+    SDO,
+    SH,
+    SKOS,
+    VANN,
 )
 
-
-from pylode.profiles.supermodel.namespace import LODE
+from pylode.profiles.supermodel.loader import load_profiles
 from pylode.profiles.supermodel.model import (
-    ComponentModel,
     Class,
-    ImageObject,
-    Property,
-    Note,
-    RDFProperty,
-    MediaObject,
-    TextObject,
-    Profile,
-    ProfileType,
-    ProfileHierarchyItem,
     CodedProperty,
+    ComponentModel,
+    ImageObject,
+    MediaObject,
+    Note,
+    Profile,
+    ProfileHierarchyItem,
+    ProfileType,
+    Property,
+    RDFProperty,
     Resource,
     SimpleCodedProperty,
+    TextObject,
 )
+from pylode.profiles.supermodel.namespace import LODE
 from pylode.profiles.supermodel.query.common import (
     get_class,
     get_descriptions,
-    get_name,
-    get_values,
-    get_subclasses,
     get_is_defined_by,
+    get_name,
+    get_subclasses,
+    get_values,
 )
 from pylode.profiles.supermodel.query.property_shape import get_class_properties_by_sh
 from pylode.rdf_elements import AGENT_PROPS, ONT_PROPS, ONTDOC
@@ -56,7 +56,6 @@ from pylode.utils import (
     load_background_onts,
     load_background_onts_titles,
 )
-from pylode.profiles.supermodel.loader import load_profiles
 
 logger = logging.getLogger(__name__)
 
@@ -223,7 +222,7 @@ def get_domain_includes(iri: URIRef, graph: Graph, db: Dataset) -> list[Class]:
     domain_includes_iris = graph.objects(iri, SDO.domainIncludes)
     domain_includes = []
     for domain_includes_iri in domain_includes_iris:
-        c = get_class(domain_includes_iri, graph, db,[])
+        c = get_class(domain_includes_iri, graph, db, [])
         domain_includes.append(c)
 
     return domain_includes
@@ -233,7 +232,7 @@ def get_range_includes(iri: URIRef, graph: Graph, db: Dataset) -> list[Class]:
     range_includes_iris = graph.objects(iri, SDO.rangeIncludes)
     range_includes = []
     for range_includes_iri in range_includes_iris:
-        c = get_class(range_includes_iri, graph, db,[])
+        c = get_class(range_includes_iri, graph, db, [])
         range_includes.append(c)
 
     return range_includes
@@ -260,7 +259,9 @@ def get_rdf_property(iri, graph, db: Dataset) -> RDFProperty:
     )
 
 
-def get_rdf_properties(rdf_property_type: URIRef, graph: Graph, db: Dataset) -> list[RDFProperty]:
+def get_rdf_properties(
+    rdf_property_type: URIRef, graph: Graph, db: Dataset
+) -> list[RDFProperty]:
     property_iris = graph.subjects(RDF.type, rdf_property_type)
     properties = []
     for property_iri in property_iris:
@@ -404,6 +405,11 @@ class Query:
         self.root_profile_iri = get_root_profile_iri(graph)
         self.db = load_profiles(self.root_profile_iri, graph.serialize())
         self.graph = self.db.root_graph
+
+        # We need this to see the prefixes in the loaded file
+        for prefix, namespace in graph.namespace_manager.namespaces():
+            self.graph.namespace_manager.bind(prefix, namespace, override=True)
+
         self.debug = True if (None, LODE.debug, None) in self.db.config_graph else False
 
         # An IRI index of classes that 'exist' within this documentation.
@@ -686,9 +692,13 @@ class Query:
         annotation_properties = get_rdf_properties(
             OWL.AnnotationProperty, profile_graph, db
         )
-        datatype_properties = get_rdf_properties(OWL.DatatypeProperty, profile_graph, db)
+        datatype_properties = get_rdf_properties(
+            OWL.DatatypeProperty, profile_graph, db
+        )
         object_properties = get_rdf_properties(OWL.ObjectProperty, profile_graph, db)
-        ontology_properties = get_rdf_properties(OWL.OntologyProperty, profile_graph, db)
+        ontology_properties = get_rdf_properties(
+            OWL.OntologyProperty, profile_graph, db
+        )
 
         coded_properties = defaultdict(list)
         for cls in classes:
@@ -737,7 +747,6 @@ class Query:
         properties: dict[URIRef, list[Property]],
         ignored_classes: list[URIRef],
     ) -> list[Property]:
-
         for _graph in self.db.graphs():
             graph = self.db.get_graph(_graph.identifier)
 
@@ -802,7 +811,7 @@ class Query:
                             graph.identifier,
                             get_name(graph.identifier, self.db),
                         ),
-                        belongs_to_class=get_class(cls_iri, self.db, self.db,[]),
+                        belongs_to_class=get_class(cls_iri, self.db, self.db, []),
                         value_class_types=value_class_types,
                         method="qb:CodedProperty",
                         codelist=[

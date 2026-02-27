@@ -1,37 +1,35 @@
+import shutil
+from collections import defaultdict
+from itertools import chain
+from pathlib import Path
+from typing import Dict, Union
+
 import dominate
 from dominate.tags import (
-    h2,
+    a,
+    code,
+    dd,
+    div,
+    dl,
+    dt,
     h1,
+    h2,
+    h3,
     h4,
-    style,
+    li,
     link,
     meta,
     script,
-    p,
-    dl,
     strong,
-    a,
-    span,
+    style,
     sup,
-    tr,
-    td,
-    ul,
-    li,
-    code,
     table,
-    h3,
-    div,
-    dt,
-    dd,
+    td,
+    tr,
+    ul,
 )
 from dominate.util import raw
-from collections import defaultdict
-from typing import Dict
-import shutil
-from itertools import chain
-from pathlib import Path
-from typing import Union
-from rdflib import Literal, Graph
+from rdflib import Graph, Literal
 from rdflib.namespace import (
     DC,
     DCTERMS,
@@ -47,42 +45,38 @@ from rdflib.namespace import (
 )
 
 try:
+    from .rdf_elements import AGENT_PROPS, CLASS_PROPS, ONT_PROPS, ONTDOC, PROP_PROPS
     from .utils import (
-        load_ontology,
-        load_background_onts,
-        load_background_onts_titles,
         back_onts_label_props,
         get_ns,
+        load_background_onts,
+        load_background_onts_titles,
+        load_ontology,
+        make_pylode_logo,
         prop_obj_pair_html,
         section_html,
         sort_ontology,
-        make_pylode_logo,
     )
-
-    from .rdf_elements import ONTDOC, AGENT_PROPS, ONT_PROPS, CLASS_PROPS, PROP_PROPS
-
     from .version import __version__
 except ImportError:
+    from pylode.rdf_elements import (
+        AGENT_PROPS,
+        CLASS_PROPS,
+        ONT_PROPS,
+        ONTDOC,
+        PROP_PROPS,
+    )
     from pylode.utils import (
-        load_ontology,
-        load_background_onts,
-        load_background_onts_titles,
         back_onts_label_props,
         get_ns,
+        load_background_onts,
+        load_background_onts_titles,
+        load_ontology,
+        make_pylode_logo,
         prop_obj_pair_html,
         section_html,
         sort_ontology,
-        make_pylode_logo,
     )
-
-    from pylode.rdf_elements import (
-        ONTDOC,
-        AGENT_PROPS,
-        ONT_PROPS,
-        CLASS_PROPS,
-        PROP_PROPS,
-    )
-
     from pylode.version import __version__
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
@@ -509,7 +503,6 @@ class VocPub:
             with div(id="legend"):
                 h2("Legend")
                 with table(_class="entity"):
-
                     if self.toc.get("classes") is not None:
                         with tr():
                             td(sup("c", _class="sup-c", title="OWL/RDFS Class"))

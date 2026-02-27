@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 import codecs
 import os
+
 from setuptools import setup, find_packages
+
 from pylode import __version__
 
 

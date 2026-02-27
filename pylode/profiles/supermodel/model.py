@@ -1,10 +1,9 @@
 from abc import ABC
-from datetime import date
 from dataclasses import dataclass, field
+from datetime import date
 from enum import Enum, auto
 
 from rdflib import URIRef
-
 
 DEFAULT_ORDER_VALUE = 999999
 

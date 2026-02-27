@@ -1,10 +1,9 @@
 import argparse
-from pathlib import Path
 import sys
+from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).absolute().parent.parent))
-from pylode import __version__, PylodeError
-from pylode import OntPub, VocPub, Supermodel
+from pylode import OntPub, PylodeError, Supermodel, VocPub, __version__
 
 parser = argparse.ArgumentParser()
 
@@ -29,7 +28,7 @@ parser.add_argument(
 parser.add_argument(
     "-c",
     "--css",
-    help="Whether (true) or not (false) to include CSS within an output " "HTML file.",
+    help="Whether (true) or not (false) to include CSS within an output HTML file.",
     choices=["true", "false"],
     default="true",
 )
@@ -38,7 +37,7 @@ parser.add_argument(
     "-s",
     "--sort",
     help="Enables sorting of the subjects in the ontology in the output",
-    action='store_true',
+    action="store_true",
 )
 
 parser.add_argument(
@@ -59,11 +58,11 @@ def main():
     try:
         sort_subjects = args.sort
         if args.profile == "ontpub":
-            html = OntPub(args.input, sort_subjects = sort_subjects)
+            html = OntPub(args.input, sort_subjects=sort_subjects)
         elif args.profile == "vocpub":
-            html = VocPub(args.input, sort_subjects = sort_subjects)
+            html = VocPub(args.input, sort_subjects=sort_subjects)
         elif args.profile == "supermodel":
-            html = Supermodel(args.input, sort_subjects = sort_subjects)
+            html = Supermodel(args.input, sort_subjects=sort_subjects)
         else:
             raise ValueError(f"Unexpected profile type '{args.profile}'")
     except PylodeError as e:

@@ -1,3 +1,3 @@
 from .ontpub import OntPub
-from .vocpub import VocPub
 from .supermodel import Supermodel
+from .vocpub import VocPub

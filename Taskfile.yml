@@ -1,0 +1,25 @@
+# https://taskfile.dev
+
+version: "3"
+
+env:
+  PYTHON_SRC: pylode
+  TESTS_DIR: tests
+
+tasks:
+  install:
+    cmds:
+      - poetry sync
+
+  format:
+    desc: Format Python code.
+    cmds:
+      - poetry run ruff format $PYTHON_SRC
+      - poetry run ruff check --select I --fix $PYTHON_SRC
+      - poetry run ruff format $TESTS_DIR
+      - poetry run ruff check --select I --fix $TESTS_DIR
+
+  test:
+    desc: Run tests
+    cmds:
+      - poetry run pytest tests -rP

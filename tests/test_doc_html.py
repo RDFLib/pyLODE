@@ -1,9 +1,11 @@
-from pathlib import Path
-from pylode.profiles import OntPub
-from pylode import __version__
-from rdflib import Graph
-import pytest
 import re
+from pathlib import Path
+
+import pytest
+from rdflib import Graph
+
+from pylode import __version__
+from pylode.profiles import OntPub
 from pylode.utils import de_space_html
 
 
@@ -641,6 +643,8 @@ def test_properties(fix_html):
     open("expected.html", "w").write(e)
     open("actual.html", "w").write(a)
     assert e in a, "Properties section not generated correctly"
+    Path("expected.html").unlink()
+    Path("actual.html").unlink()
 
 
 def test_namespaces(fix_html):

@@ -2,7 +2,7 @@ import logging
 import time
 
 import httpx
-from rdflib import Graph, URIRef, OWL, PROF, RDF, DCTERMS
+from rdflib import DCTERMS, OWL, PROF, RDF, Graph, URIRef
 
 from pylode.profiles.supermodel.dataset import Dataset
 from pylode.profiles.supermodel.namespace import LODE
