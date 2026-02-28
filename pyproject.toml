@@ -7,7 +7,7 @@ Changelog = "https://github.com/RDFLib/pyLODE/releases"
 
 [project]
 name = "pylode"
-version = "3.3.3"
+version = "3.3.4"
 description = "An OWL ontology documentation tool using Python, based on LODE."
 authors = [{ name = "Nicholas Car", email = "nick@kurrawong.ai" }]
 requires-python = ">=3.9,<4"
@@ -28,10 +28,18 @@ dependencies = [
     "dominate>=2.6.0,<3",
     "html5lib>=1.1,<2",
     "httpx>=0.25.0,<1.0.0",
+    "tqdm>=4.67.3",
 ]
 
 [project.scripts]
 pylode = "pylode.cli:main"
+
+[project.optional-dependencies]
+server = [
+    "bs4>=0.0.2",
+    "falcon>=4.2.0",
+    "validators>=0.35.0",
+]
 
 [dependency-groups]
 dev = [
