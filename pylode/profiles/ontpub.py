@@ -275,7 +275,7 @@ class OntPub:
     def _make_head(
         self, schema_org: Graph, include_css: bool = True, destination: Path = None
     ):
-        """Healper function for make_html(). Makes <head>???</head> content"""
+        """Helper function for make_html(). Makes <head>???</head> content"""
         with self.doc.head:
             # use standard pyLODE stylesheet
             if include_css:
@@ -312,7 +312,7 @@ class OntPub:
             )
 
     def _make_body(self):
-        """Healper function for make_html(). Makes <body>???</body> content.
+        """Helper function for make_html(). Makes <body>???</body> content.
 
         Just calls other helper functions in order"""
         make_pylode_logo(

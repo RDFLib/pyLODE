@@ -532,19 +532,17 @@ def rdf_obj_html(
                 else:
                     if "http" in obj___:
                         sp_.appendChild(em(" of ", a(obj___, href=obj___)))
+                    else:
+                        sp_.appendChild(em(" of ", obj___))
                 return sp_
 
-            if isinstance(obj__, Literal):
-                return span(str(obj__))
-            honorific_prefix = None
-            name = None
-            identifier = None
-            orcid = None
-            orcid_logo = """
+            def _orcid_logo_svg( id ):
+                id = id if ('http' in id) else f"https://orcid.org/{id}"
+                return f"""
                     <svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
                         xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <title>Orcid logo</title>
+                        <title>{id}</title>
                         <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
                                 <g id="Group-4">
@@ -560,6 +558,13 @@ def rdf_obj_html(
                             </g>
                         </g>
                     </svg>"""
+
+            if isinstance(obj__, Literal):
+                return span(str(obj__))
+            honorific_prefix = None
+            name = None
+            identifier = None
+            orcid = None
             url = None
             email = None
             affiliation = None
@@ -597,15 +602,14 @@ def rdf_obj_html(
 
                 if orcid:
                     if "orcid.org" in obj__:
-                        sp.appendChild(a(raw(orcid_logo), href=obj__))
+                        sp.appendChild(a(raw(_orcid_logo_svg(obj__)), href=obj__))
                     else:
-                        sp.appendChild(a(raw(orcid_logo), href=identifier))
+                        sp.appendChild(a(raw(_orcid_logo_svg(identifier)), href=identifier))
                 elif identifier is not None:
                     sp.appendChild(a(identifier, href=identifier))
                 if email is not None:
                     email = email.replace("mailto:", "")
                     sp.appendChild(span("(", a(email, href="mailto:" + email), " )"))
-
                 if affiliation is not None:
                     sp.appendChild(_affiliation_html(ont__, affiliation))
             else:
@@ -709,6 +713,7 @@ def rdf_obj_html(
                 return _restriction_html(ont__, obj__, ns__)
             else:  # (obj, RDF.type, OWL.Class) in ont:  # Set Class
                 return _setclass_html(ont__, obj__, back_onts__, ns__, fids__)
+
 
         if isinstance(obj_, Tuple) or isinstance(obj_, URIRef):
             ret = _hyperlink_html(
