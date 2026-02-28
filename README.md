@@ -1,4 +1,4 @@
-![pyLODE logo](https://rawcdn.githack.com/RDFLib/pyLODE/master/img/pyLODE-250.png)
+![pyLODE logo](https://raw.githubusercontent.com/RDFLib/pyLODE/master/img/pyLODE-250.png)
 [![PyPI version](https://badge.fury.io/py/pyLODE.svg)](https://badge.fury.io/py/pyLODE)
 
 # pyLODE
