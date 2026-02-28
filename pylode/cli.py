@@ -44,8 +44,8 @@ parser.add_argument(
     "-p",
     "--profile",
     help="Which profile to use to generate HTML. Must be one of "
-    "'ontpub' (https://w3id.org/profile/ontpub) - for ontologies, "
-    "'vocpub' (https://w3id.org/profile/vocpub) - for SKOS vocabularies"
+    "'ontpub' (https://linked.data.gov.au/def/ontpub) - for ontologies, "
+    "'vocpub' (https://linked.data.gov.au/def/vocpub) - for SKOS vocabularies"
     "'supermodel' - for profiles of profiles",
     choices=["ontpub", "vocpub", "supermodel"],
     default="ontpub",

@@ -316,7 +316,7 @@ class OntPub:
 
         Just calls other helper functions in order"""
         make_pylode_logo(
-            self.doc, __version__, "OntPub", "https://w3id.org/profile/ontpub"
+            self.doc, __version__, "OntPub", "https://linked.data.gov.au/def/ontpub"
         )
         self._make_metadata()
         self._make_main_sections()

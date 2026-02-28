@@ -3,6 +3,7 @@ from collections import defaultdict
 from itertools import chain
 from pathlib import Path
 from typing import Dict, Union
+from rdflib import URIRef, Literal
 
 import dominate
 from dominate.tags import (
@@ -43,6 +44,8 @@ from rdflib.namespace import (
     SDO,
     SKOS,
 )
+
+from ..rdf_elements import CONCEPT_PROPS
 
 try:
     from .rdf_elements import AGENT_PROPS, CLASS_PROPS, ONT_PROPS, ONTDOC, PROP_PROPS
@@ -274,6 +277,9 @@ class VocPub:
         for s_, o in g.subject_objects(ORG.memberOf):
             g.add((s_, SDO.affiliation, o))
 
+        for s, o in g.subject_objects(SKOS.broader):
+            g.add((o, SKOS.narrower, s))
+
     def _make_head(
         self, schema_org: Graph, include_css: bool = True, destination: Path = None
     ):
@@ -318,12 +324,12 @@ class VocPub:
 
         Just calls other helper functions in order"""
         make_pylode_logo(
-            self.doc, __version__, "VocPub", "https://w3id.org/profile/vocpub"
+            self.doc, __version__, "VocPub", "https://linked.data.gov.au/def/vocpub"
         )
         self._make_metadata()
+        self._make_concept_hierarchy()
         self._make_main_sections()
         self._make_namespaces()
-        self._make_legend()
         self._make_toc()
 
     def _make_metadata(self):
@@ -406,149 +412,97 @@ class VocPub:
 
         return sdo
 
+    def _make_concept_hierarchy(self):
+        with self.content:
+            if (None, RDF.type, SKOS.Concept) in self.ont:
+                concepts = []
+                for s in self.ont.subjects(RDF.type, SKOS.Concept):
+                    for o in self.ont.objects(s, SKOS.prefLabel):
+                        c = {
+                            "iri": str(s),
+                            "prefLabel": str(o)
+                        }
+                        for o2 in self.ont.objects(s, SKOS.broader):
+                            c["broader"] = str(o2)
+                    concepts.append(c)
+
+                def build_html_tree(items):
+                    # Index items by id
+                    by_id = {item["iri"]: dict(item, children=[]) for item in items}
+
+                    roots = []
+
+                    # Build tree structure
+                    for item in by_id.values():
+                        broader = item.get("broader")
+                        if broader and broader in by_id:
+                            by_id[broader]["children"].append(item)
+                        else:
+                            roots.append(item)
+
+                    # Recursive renderer
+                    def render_nodes(nodes):
+                        container = ul()
+                        for node in nodes:
+                            node_li = li(a(node["prefLabel"], href="#" + str(self.ont.namespace_manager.qname(node["iri"]).replace(":", "_")),))
+                            if node["children"]:
+                                node_li.add(render_nodes(node["children"]))
+                            container.add(node_li)
+                        return container
+
+                    return render_nodes(roots)
+
+                d = div(
+                    h2("Concept Hierarchy"),
+                    build_html_tree(concepts),
+                    id="concept-hierarchy"
+                )
+
+                d.render()
+
     def _make_main_sections(self):
+        cs_iri = self.ont.value(predicate=RDF.type, object=SKOS.ConceptScheme)
         with self.content:
-            if (None, RDF.type, OWL.Class) in self.ont:
-                d = section_html(
-                    "Classes",
-                    self.ont,
-                    self.back_onts,
-                    self.ns,
-                    OWL.Class,
-                    CLASS_PROPS,
-                    self.toc,
-                    "classes",
-                    self.fids,
-                    self.props_labeled,
-                )
-                d.render()
+            if (None, RDF.type, SKOS.Concept) in self.ont:
+                concepts = {}
+                for s in self.ont.subjects(RDF.type, SKOS.Concept):
+                    concepts[s] = {}
+                    for p, o in self.ont.predicate_objects(s):
+                        concepts[s][p] = o
 
-            if (None, RDF.type, RDF.Property) in self.ont:
-                d = section_html(
-                    "Properties",
-                    self.ont,
-                    self.back_onts,
-                    self.ns,
-                    RDF.Property,
-                    PROP_PROPS,
-                    self.toc,
-                    "properties",
-                    self.fids,
-                    self.props_labeled,
-                )
-                d.render()
+            def order_dict_by_key_list_keep_rest(d, key_order):
+                ordered = {k: d[k] for k in key_order if k in d}
+                remaining = {k: v for k, v in d.items() if k not in ordered}
+                return ordered | remaining
 
-            if (None, RDF.type, OWL.ObjectProperty) in self.ont:
-                d = section_html(
-                    "Object Properties",
-                    self.ont,
-                    self.back_onts,
-                    self.ns,
-                    OWL.ObjectProperty,
-                    PROP_PROPS,
-                    self.toc,
-                    "objectproperties",
-                    self.fids,
-                    self.props_labeled,
+            d = div(
+                h2("Concepts"),
+                id="concepts"
+            )
+            for iri, concept in order_dict_by_key_list_keep_rest(concepts, CONCEPT_PROPS).items():  # order by CONCEPT_PROPS
+                props_table = table()
+                props_table.add(tr(td(strong("IRI"), style="width:250px;"), td(code(iri))))
+                for k, v in concept.items():
+                    if k not in [RDF.type, SKOS.prefLabel, "iri", SKOS.inScheme]:
+                        if k in CONCEPT_PROPS:
+                            if isinstance(v, URIRef):
+                                if v == cs_iri:
+                                    v = "This vocabulary"
+                                else:
+                                    curie = self.ont.namespace_manager.qname(v).replace(":", "_")
+                                    v = a(self.ont.value(subject=v, predicate=DCTERMS.title), href="#" + curie)
+                            p_label = self.props_labeled.get(k).get("title").title()
+                            p_desc = self.props_labeled.get(k).get("description")
+                            props_table.add(tr(td(a(p_label, href=k, title=p_desc)), td(v)))
+                            #props.add(tr(td(k), td(v)))
+                d.add(
+                    div(
+                        h3(concept[DCTERMS.title], id=self.ont.namespace_manager.qname(iri).replace(":", "_")),
+                        props_table,
+                        _class = "entity"
+                    )
                 )
-                d.render()
-
-            if (None, RDF.type, OWL.DatatypeProperty) in self.ont:
-                d = section_html(
-                    "Datatype Properties",
-                    self.ont,
-                    self.back_onts,
-                    self.ns,
-                    OWL.DatatypeProperty,
-                    PROP_PROPS,
-                    self.toc,
-                    "datatypeproperties",
-                    self.fids,
-                    self.props_labeled,
-                )
-                d.render()
-
-            if (None, RDF.type, OWL.AnnotationProperty) in self.ont:
-                d = section_html(
-                    "Annotation Properties",
-                    self.ont,
-                    self.back_onts,
-                    self.ns,
-                    OWL.AnnotationProperty,
-                    PROP_PROPS,
-                    self.toc,
-                    "annotationproperties",
-                    self.fids,
-                    self.props_labeled,
-                )
-                d.render()
-
-            if (None, RDF.type, OWL.FunctionalProperty) in self.ont:
-                d = section_html(
-                    "Functional Properties",
-                    self.ont,
-                    self.back_onts,
-                    self.ns,
-                    OWL.FunctionalProperty,
-                    PROP_PROPS,
-                    self.toc,
-                    "functionalproperties",
-                    self.fids,
-                    self.props_labeled,
-                )
-                d.render()
-
-    def _make_legend(self):
-        with self.content:
-            with div(id="legend"):
-                h2("Legend")
-                with table(_class="entity"):
-                    if self.toc.get("classes") is not None:
-                        with tr():
-                            td(sup("c", _class="sup-c", title="OWL/RDFS Class"))
-                            td("Classes")
-                    if self.toc.get("properties") is not None:
-                        with tr():
-                            td(sup("p", _class="sup-p", title="RDF Property"))
-                            td("Properties")
-                    if self.toc.get("objectproperties") is not None:
-                        with tr():
-                            td(sup("op", _class="sup-op", title="OWL Object Property"))
-                            td("Object Properties")
-                    if self.toc.get("datatypeproperties") is not None:
-                        with tr():
-                            td(
-                                sup(
-                                    "dp",
-                                    _class="sup-dp",
-                                    title="OWL Datatype Property",
-                                )
-                            )
-                            td("Datatype Properties")
-                    if self.toc.get("annotationproperties") is not None:
-                        with tr():
-                            td(
-                                sup(
-                                    "ap",
-                                    _class="sup-ap",
-                                    title="OWL Annotation Property",
-                                )
-                            )
-                            td("Annotation Properties")
-                    if self.toc.get("functionalproperties") is not None:
-                        with tr():
-                            td(
-                                sup(
-                                    "fp",
-                                    _class="sup-fp",
-                                    title="OWL Functional Property",
-                                )
-                            )
-                            td("Functional Properties")
-                    if self.toc.get("named_individuals") is not None:
-                        with tr():
-                            td(sup("ni", _class="sup-ni", title="OWL Named Individual"))
-                            td("Named Individuals")
+            d.render()
 
     def _make_namespaces(self):
         # only get namespaces used in ont
@@ -591,65 +545,9 @@ class VocPub:
                 with ul(_class="first"):
                     li(h4(a("Metadata", href="#metadata")))
 
-                    if (
-                        self.toc.get("classes") is not None
-                        and len(self.toc["classes"]) > 0
-                    ):
-                        with li():
-                            h4(a("Classes", href="#classes"))
-                            with ul(_class="second"):
-                                for c in self.toc["classes"]:
-                                    li(a(c[1], href=c[0]))
+                    li(h4(a("Concepts Hierarchy", href="#concept-hierarchy")))
 
-                    if (
-                        self.toc.get("properties") is not None
-                        and len(self.toc["properties"]) > 0
-                    ):
-                        with li():
-                            h4(a("Properties", href="#properties"))
-                            with ul(_class="second"):
-                                for c in self.toc["properties"]:
-                                    li(a(c[1], href=c[0]))
-
-                    if (
-                        self.toc.get("objectproperties") is not None
-                        and len(self.toc["objectproperties"]) > 0
-                    ):
-                        with li():
-                            h4(a("Object Properties", href="#objectproperties"))
-                            with ul(_class="second"):
-                                for c in self.toc["objectproperties"]:
-                                    li(a(c[1], href=c[0]))
-
-                    if (
-                        self.toc.get("datatypeproperties") is not None
-                        and len(self.toc["datatypeproperties"]) > 0
-                    ):
-                        with li():
-                            h4(a("Datatype Properties", href="#datatypeproperties"))
-                            with ul(_class="second"):
-                                for c in self.toc["datatypeproperties"]:
-                                    li(a(c[1], href=c[0]))
-
-                    if (
-                        self.toc.get("annotationproperties") is not None
-                        and len(self.toc["annotationproperties"]) > 0
-                    ):
-                        with li():
-                            h4(a("Annotation Properties", href="#annotationproperties"))
-                            with ul(_class="second"):
-                                for c in self.toc["annotationproperties"]:
-                                    li(a(c[1], href=c[0]))
-
-                    if (
-                        self.toc.get("functionalproperties") is not None
-                        and len(self.toc["functionalproperties"]) > 0
-                    ):
-                        with li():
-                            h4(a("Functional Properties", href="#functionalproperties"))
-                            with ul(_class="second"):
-                                for c in self.toc["functionalproperties"]:
-                                    li(a(c[1], href=c[0]))
+                    li(h4(a("Concepts", href="#concepts")))
 
                     with li():
                         h4(a("Namespaces", href="#namespaces"))

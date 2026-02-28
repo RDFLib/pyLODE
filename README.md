@@ -121,8 +121,8 @@ The active endpoint accepts the following querystring parameters:
 * `url` for the absolute URL of the ontology document that you wish to render. The server hosting that ontology document must be capable of responding to Content Negotiation,
 i.e. it must supply RDF according to an HTTP `Accept` request for `text/turtle`, `application/rdf+xml` etc.
 * `profile` for the profile to use to generate HTML. Must be one of:
-    * `ontpub` (https://w3id.org/profile/ontpub) for ontologies. This is the default if no ``profile`` is provided.
-    * `vocpub` (https://w3id.org/profile/vocpub) for SKOS vocabularies
+    * `ontpub` (https://linked.data.gov.au/def/ontpub) for ontologies. This is the default if no ``profile`` is provided.
+    * `vocpub` (https://linked.data.gov.au/def/vocpub) for SKOS vocabularies
     * `supermodel` for profiles of profiles
 * `sort` to indicate whether subjects should be sorted in the rendered output. Must be one of:
     * `true` to sort the subjects (this is the default)

@@ -62,6 +62,21 @@ CLASS_PROPS = [
     ONTDOC.superClassOf,
 ]
 
+# properties for SKOS Concept instances
+CONCEPT_PROPS = [
+    SKOS.prefLabel,
+    SKOS.definition,
+    RDFS.isDefinedBy,
+    SKOS.inScheme,
+    SKOS.altLabel,
+    SKOS.example,
+    DCTERMS.source,
+    DCTERMS.provenance,
+    SKOS.note,
+    SKOS.broader,
+    SKOS.narrower,
+]
+
 # properties for instances of RDF Property and OWL specialised
 # forms, such as ObjectProperty etc.
 PROP_PROPS = [
@@ -107,7 +122,7 @@ RESTRICTION_PROPS = [
 ]
 
 # all known properties
-PROPS = set(ONT_PROPS + CLASS_PROPS + PROP_PROPS + AGENT_PROPS + RESTRICTION_PROPS)
+PROPS = set(ONT_PROPS + CLASS_PROPS + PROP_PROPS + AGENT_PROPS + RESTRICTION_PROPS + CONCEPT_PROPS)
 
 ONT_TYPES = {
     OWL.Class: ("c", "OWL/RDFS Class"),
