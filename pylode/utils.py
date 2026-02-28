@@ -218,7 +218,7 @@ def back_onts_label_props(back_onts: Graph):
         description = None
         ont_title = None
         for p_, o in back_onts.predicate_objects(prop_iri):
-            if p_ == SDO.name:
+            if p_ == DCTERMS.title:
                 title_ = o
             elif p_ == DCTERMS.description:
                 description = o
@@ -493,7 +493,7 @@ def rdf_obj_html(
 
                 for p_, o_ in ont___.predicate_objects(obj___):
                     if p_ in AGENT_PROPS:
-                        if p_ == DCTERMS.title:
+                        if p_ == SDO.name:
                             name_ = str(o_)
                         elif p_ == SDO.url:
                             url_ = str(o_)
@@ -549,7 +549,7 @@ def rdf_obj_html(
 
             for px, o in ont__.predicate_objects(obj__):
                 if px in AGENT_PROPS:
-                    if px == DCTERMS.title:
+                    if px == SDO.name:
                         name = str(o)
                     elif px == SDO.honorificPrefix:
                         honorific_prefix = str(o)
