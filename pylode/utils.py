@@ -218,7 +218,7 @@ def back_onts_label_props(back_onts: Graph):
         description = None
         ont_title = None
         for p_, o in back_onts.predicate_objects(prop_iri):
-            if p_ == DCTERMS.title:
+            if p_ == SDO.name:
                 title_ = o
             elif p_ == DCTERMS.description:
                 description = o
