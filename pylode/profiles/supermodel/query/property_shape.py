@@ -1,14 +1,11 @@
 from collections import defaultdict
 
-from rdflib import RDF, SH, BNode, Dataset, Graph, URIRef
+from rdflib import RDF, SH, BNode, Dataset, Graph, Literal, URIRef
 from rdflib.collection import Collection
 
-from pylode.profiles.supermodel.model import Profile, Property
+from pylode.profiles.supermodel.model import Profile, Property, Resource
 from pylode.profiles.supermodel.query import get_name
-from pylode.profiles.supermodel.query.common import (
-    get_class,
-    get_descriptions,
-)
+from pylode.profiles.supermodel.query.common import get_class, get_descriptions
 
 
 def get_property_shapes(iri: URIRef, graph: Graph) -> dict[str, list[URIRef | BNode]]:
@@ -42,6 +39,16 @@ def get_sh_path(
             return sh_path, rdf_list
 
     return sh_path, None
+
+
+def to_resource_or_literal(
+    graph: Graph, term: URIRef | BNode | Literal | None
+) -> Resource | Literal | None:
+    if term is None:
+        return None
+    elif isinstance(term, Literal):
+        return term
+    return Resource(term, get_name(term, graph))
 
 
 def get_property_by_property_shape(
@@ -81,6 +88,7 @@ def get_property_by_property_shape(
     sh_min = profile_graph.value(property_shape, SH.minCount)
     sh_max = profile_graph.value(property_shape, SH.maxCount)
     sh_class = profile_graph.value(property_shape, SH["class"])
+    sh_datatype = profile_graph.value(property_shape, SH.datatype)
     value_type = (
         get_class(sh_nodekind, profile_graph, db, [])
         if sh_nodekind is not None
@@ -89,7 +97,46 @@ def get_property_by_property_shape(
     value_class_type = (
         get_class(sh_class, profile_graph, db, []) if sh_class is not None else None
     )
+    datatype = (
+        get_class(sh_datatype, profile_graph, db, [])
+        if sh_datatype is not None
+        else None
+    )
     property_source = kwargs.get("property_source") or ""
+
+    # Extract additional SHACL constraints
+    has_value = to_resource_or_literal(
+        profile_graph, profile_graph.value(property_shape, SH.hasValue)
+    )
+    value_in_coll = profile_graph.value(property_shape, SH["in"])
+    sh_pattern: Literal | None = profile_graph.value(property_shape, SH.pattern)
+    language_in_coll = profile_graph.value(property_shape, SH.languageIn)
+    unique_lang: Literal | None = profile_graph.value(property_shape, SH.uniqueLang)
+    min_length = profile_graph.value(property_shape, SH.minLength)
+    max_length = profile_graph.value(property_shape, SH.maxLength)
+    min_exclusive: Literal | None = profile_graph.value(property_shape, SH.minExclusive)
+    min_inclusive: Literal | None = profile_graph.value(property_shape, SH.minInclusive)
+    max_exclusive: Literal | None = profile_graph.value(property_shape, SH.maxExclusive)
+    max_inclusive: Literal | None = profile_graph.value(property_shape, SH.maxInclusive)
+    disjoint_predicates = [
+        to_resource_or_literal(profile_graph, term)
+        for term in profile_graph.objects(property_shape, SH.disjoint)
+    ] or None
+    less_than_predicates = [
+        to_resource_or_literal(profile_graph, term)
+        for term in profile_graph.objects(property_shape, SH.lessThan)
+    ] or None
+    less_than_or_equals_predicates = [
+        to_resource_or_literal(profile_graph, term)
+        for term in profile_graph.objects(property_shape, SH.lessThanOrEquals)
+    ] or None
+    equals_predicates = [
+        to_resource_or_literal(profile_graph, term)
+        for term in profile_graph.objects(property_shape, SH.equals)
+    ] or None
+    default_value = to_resource_or_literal(
+        profile_graph, profile_graph.value(property_shape, SH.defaultValue)
+    )
 
     constraints = ""
     sh_sparql = profile_graph.value(property_shape, SH.sparql)
@@ -112,9 +159,40 @@ def get_property_by_property_shape(
         cardinality_max=int(sh_max) if sh_max is not None else None,
         value_type=value_type,
         value_class_types=[value_class_type] if value_class_type is not None else [],
+        datatype=datatype,
         method=method,
         property_source=property_source,
         constraints=constraints,
+        has_value=has_value,
+        value_in=(
+            None
+            if value_in_coll is None
+            else [
+                to_resource_or_literal(profile_graph, term)
+                for term in Collection(profile_graph, value_in_coll)
+            ]
+        ),
+        regex_pattern=str(sh_pattern) if sh_pattern else None,
+        language_in=(
+            None
+            if language_in_coll is None
+            else [
+                to_resource_or_literal(profile_graph, term)
+                for term in Collection(profile_graph, language_in_coll)
+            ]
+        ),
+        unique_lang=unique_lang.toPython(),
+        min_length=int(min_length) if min_length is not None else None,
+        max_length=int(max_length) if max_length is not None else None,
+        min_exclusive=min_exclusive.toPython() if min_exclusive is not None else None,
+        min_inclusive=min_inclusive.toPython() if min_inclusive is not None else None,
+        max_exclusive=max_exclusive.toPython() if max_exclusive is not None else None,
+        max_inclusive=max_inclusive.toPython() if max_inclusive is not None else None,
+        less_than_predicates=less_than_predicates,
+        less_than_or_equals_predicates=less_than_or_equals_predicates,
+        equals_predicates=equals_predicates,
+        disjoint_predicates=disjoint_predicates,
+        default_value=default_value,
     )
 
 
@@ -190,7 +268,7 @@ def get_class_properties_by_sh(iri: URIRef, db: Dataset) -> dict[str, list[Prope
     properties: dict[str, list[Property]] = defaultdict(list)
 
     # Check whether this class IRI contains an implicit class target or is targeted by sh:targetClass.
-    if not (iri, RDF.type, SH.NodeShape) in db and not list(
+    if (iri, RDF.type, SH.NodeShape) not in db and not list(
         db.subjects(SH.targetClass, iri)
     ):
         return properties
@@ -222,9 +300,11 @@ def get_class_properties_by_sh(iri: URIRef, db: Dataset) -> dict[str, list[Prope
                 if sh_path_list:
                     name = " / ".join(
                         [
-                            get_name(item, profile_graph, db)
-                            if isinstance(item, URIRef)
-                            else "[]"
+                            (
+                                get_name(item, profile_graph, db)
+                                if isinstance(item, URIRef)
+                                else "[]"
+                            )
                             for item in sh_path_list
                         ]
                     )

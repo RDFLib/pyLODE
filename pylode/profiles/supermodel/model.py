@@ -2,8 +2,9 @@ from abc import ABC
 from dataclasses import dataclass, field
 from datetime import date
 from enum import Enum, auto
+from numbers import Number
 
-from rdflib import URIRef
+from rdflib import Literal, URIRef
 
 DEFAULT_ORDER_VALUE = 999999
 
@@ -82,12 +83,31 @@ class Property:
     cardinality_max: int = None
     value_type: "Class" = None
     value_class_types: list["Class"] = field(default_factory=list)
+    datatype: "Class" = None
     constraints: str = ""
     # The method used to extract this property. Example, sh:path, sh:targetObjectsOf, sdo:rangeIncludes, etc.
     method: str = ""
     # The property source, example, if it's from SHACL, this contains the node shape and the property shape name, if
     # both are named nodes (IRIs).
     property_source: str = ""
+
+    # Additional constraints
+    has_value: Resource | Literal | None = None
+    value_in: list[Resource | Literal] | None = None
+    regex_pattern: str | None = None
+    language_in: list[str] | None = None
+    unique_lang: bool | None = None
+    min_length: int | None = None
+    max_length: int | None = None
+    min_exclusive: Number | None = None
+    min_inclusive: Number | None = None
+    max_exclusive: Number | None = None
+    max_inclusive: Number | None = None
+    less_than_predicates: list[Resource] | None = None
+    less_than_or_equals_predicates: list[Resource] | None = None
+    equals_predicates: list[Resource] | None = None
+    disjoint_predicates: list[Resource] | None = None
+    default_value: Resource | Literal | None = None
 
     def __hash__(self):
         return hash(f"{self.iri} {self.belongs_to_class.iri} {self.profile.iri}")
