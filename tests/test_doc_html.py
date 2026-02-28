@@ -7,6 +7,7 @@ from rdflib import Graph
 from pylode import __version__
 from pylode.profiles import OntPub
 from pylode.utils import de_space_html
+from textwrap import dedent
 
 
 # scope="session" so that this is reused
@@ -96,8 +97,8 @@ def test_sdo(fix_html):
 
 def test_logo(fix_html):
     html = fix_html
-    assert (
-        f"""<div id="pylode">
+    actual = dedent(f"""
+    <div id="pylode">
       <p>made by 
         <a href="https://github.com/rdflib/pyLODE">
           <span id="p">p</span>
@@ -106,12 +107,12 @@ def test_logo(fix_html):
         </a>
         <a href="https://github.com/rdflib/pyLODE/release/{__version__}" id="version">{__version__}</a>
         <span> with the </span>
-        <a href="https://w3id.org/profile/ontpub" id="profile">OntPub</a>
+        <a href="https://linked.data.gov.au/def/ontpub" id="profile">OntPub</a>
         <span>profile</span>
       </p>
-    </div>"""
-        in html
-    ), "pyLODE logo not generated correctly"
+    </div>""")
+
+    assert de_space_html(actual).strip() in de_space_html(html), "pyLODE logo not generated correctly"
 
 
 def test_metadata(fix_html):
@@ -146,7 +147,7 @@ def test_metadata(fix_html):
                     <svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
                         xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <title>Orcid logo</title>
+                        <title>http://orcid.org/0000-0002-8742-7730</title>
                         <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
                                 <g id="Group-4">
@@ -179,7 +180,7 @@ def test_metadata(fix_html):
                     <svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
                         xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <title>Orcid logo</title>
+                        <title>http://orcid.org/0000-0002-7878-2693</title>
                         <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
                                 <g id="Group-4">
@@ -258,7 +259,7 @@ def test_metadata(fix_html):
     a = de_space_html(fix_html)
     # open("expected.html", "w").write(e)
     # open("actual.html", "w").write(a)
-    assert e in a, "Metadata section not generated correctly"
+    assert e in a  # , "Metadata section not generated correctly"
 
 
 def test_classes(fix_html):
