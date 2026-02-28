@@ -7,7 +7,7 @@ Changelog = "https://github.com/RDFLib/pyLODE/releases"
 
 [project]
 name = "pylode"
-version = "3.3.4"
+version = "3.3.5"
 description = "An OWL ontology documentation tool using Python, based on LODE."
 authors = [{ name = "Nicholas Car", email = "nick@kurrawong.ai" }]
 requires-python = ">=3.9,<4"
