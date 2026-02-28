@@ -918,7 +918,16 @@ class Supermodel:
                                         ][0]
                                     ),
                                 )
-
+                            # Imports
+                            if (
+                                OWL.imports in self.query.onts_props
+                                and len(self.query.onts_props[OWL.imports]) > 0
+                            ):
+                                imports = [
+                                    str(imp)
+                                    for imp in self.query.onts_props[OWL.imports]
+                                ]
+                                metadata_row("Imports", imports)                         
                 if (
                     DCTERMS.description in self.query.onts_props
                     and len(self.query.onts_props[DCTERMS.description]) > 0
