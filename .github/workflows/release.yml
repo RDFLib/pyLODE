@@ -1,60 +1,31 @@
-name: Release to PyPI
+name: pypi
 
 on:
   release:
-    types:
-      - published
-
-env:
-  PYTHON_VERSION: "3.12"
+    types: [ published ]
 
 jobs:
-  publish:
+  pypi-publish:
+    name: upload release to PyPI
     runs-on: ubuntu-latest
+    # Specifying a GitHub environment is optional, but strongly encouraged
+    environment: pypi
+    permissions:
+      # IMPORTANT: this permission is mandatory for Trusted Publishing
+      id-token: write
     steps:
-      - name: Checkout the repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
         with:
-          # Required by WyriHaximus/github-action-get-previous-tag
-          fetch-depth: 0
+          version-file: "pyproject.toml"
 
-      - name: Get latest tag
-        id: latest-tag
-        uses: WyriHaximus/github-action-get-previous-tag@v1
-        with:
-          fallback: "0.1.0"
+      - name: Install dependencies
+        run: uv sync --extra dataframe
 
-      - name: Tag starts with v
-        id: tag-starts-with-v
-        if: ${{ startsWith(steps.latest-tag.outputs.tag, 'v') }}
-        uses: mad9000/actions-find-and-replace-string@2
-        with:
-          source: ${{ steps.latest-tag.outputs.tag }}
-          find: "v"
-          replace: ""
+      - name: Build package
+        run: uv build
 
-      - name: Tag value
-        id: version
-        uses: haya14busa/action-cond@v1
-        with:
-          cond: ${{ startsWith(steps.latest-tag.outputs.tag, 'v') }}
-          if_true: ${{ steps.tag-starts-with-v.outputs.value }}
-          if_false: ${{ steps.latest-tag.outputs.tag }}
-
-      - name: Install Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-
-      - name: Install Python Poetry
-        uses: snok/install-poetry@v1
-
-      - name: Install project
-        run: |
-          poetry install
-
-      - name: Publish to PyPI
-        run: |
-          poetry version ${{ steps.version.outputs.value }}
-          poetry build 
-          poetry publish --username=__token__ --password=${{ secrets.PYPI_TOKEN }}
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1

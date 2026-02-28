@@ -276,7 +276,7 @@ Nicholas Car
     * `poetry build`
     * `poetry publish -u __token__ -p {TOKEN}`
 9. make a GitHub release
-    * include `/dist` build artifacts
+    * include `/dist` build artefacts
 10. increment version number to next release in `pyproject.toml`
 11. commit all changes `$ git commit -a "..."`
 12. push changes `$ git push`
