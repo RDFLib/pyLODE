@@ -490,7 +490,10 @@ class VocPub:
                                     v = "This vocabulary"
                                 else:
                                     curie = self.ont.namespace_manager.qname(v).replace(":", "_")
-                                    v = a(self.ont.value(subject=v, predicate=DCTERMS.title), href="#" + curie)
+                                    lbl = self.ont.value(subject=v, predicate=DCTERMS.title)
+                                    if lbl is None:
+                                        lbl = v
+                                    v = a(lbl, href="#" + curie)
                             p_label = self.props_labeled.get(k).get("title").title()
                             p_desc = self.props_labeled.get(k).get("description")
                             props_table.add(tr(td(a(p_label, href=k, title=p_desc)), td(v)))
