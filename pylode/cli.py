@@ -1,6 +1,7 @@
 import argparse
 import sys
 from pathlib import Path
+import logging
 
 sys.path.insert(0, str(Path(__file__).absolute().parent.parent))
 from pylode import OntPub, PylodeError, Supermodel, VocPub, __version__
@@ -51,9 +52,28 @@ parser.add_argument(
     default="ontpub",
 )
 
+parser.add_argument(
+    "-l",
+    "--loglevel",
+    help="Set the logging level",
+    choices=["error", "warning", "info", "debug"],
+    default="error",
+)
+
 
 def main():
     args = parser.parse_args()
+
+    logger = logging.getLogger()
+
+    if args.loglevel == "error":
+        logger.setLevel(level=logging.ERROR)
+    elif args.loglevel == "warning":
+        logger.setLevel(level=logging.WARNING)
+    elif args.loglevel == "info":
+        logger.setLevel(level=logging.INFO)
+    elif args.loglevel == "debug":
+        logger.setLevel(level=logging.DEBUG)
 
     try:
         sort_subjects = args.sort
