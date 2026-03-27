@@ -267,7 +267,7 @@ python -m pytest tests --disable-warnings
 
 Since version 3.0.1, we have moved to documenting releases in GitHub: https://github.com/RDFLib/pyLODE/releases
 
-Older releasese
+Older releases
 
 | Version | Date             | Description                                                                     |
 |---------|------------------|---------------------------------------------------------------------------------|

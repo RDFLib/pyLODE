@@ -39,7 +39,7 @@ ONT_PROPS = [
     ONTDOC.restriction,
     OWL.imports,
     SDO.codeRepository,
-    SKOS.hasTopConcept
+    SKOS.hasTopConcept,
 ]
 
 CONCEPT_SCHEME_PROPS = [
@@ -58,7 +58,7 @@ CONCEPT_SCHEME_PROPS = [
     SKOS.historyNote,
     DCTERMS.source,
     DCTERMS.provenance,
-    SDO.codeRepository
+    SDO.codeRepository,
 ]
 
 # properties for OWL Class instances
@@ -143,7 +143,14 @@ RESTRICTION_PROPS = [
 ]
 
 # all known properties
-PROPS = set(ONT_PROPS + CLASS_PROPS + PROP_PROPS + AGENT_PROPS + RESTRICTION_PROPS + CONCEPT_PROPS)
+PROPS = set(
+    ONT_PROPS
+    + CLASS_PROPS
+    + PROP_PROPS
+    + AGENT_PROPS
+    + RESTRICTION_PROPS
+    + CONCEPT_PROPS
+)
 
 ONT_TYPES = {
     OWL.Class: ("c", "OWL/RDFS Class"),

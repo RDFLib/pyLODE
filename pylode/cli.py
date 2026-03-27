@@ -1,7 +1,7 @@
 import argparse
+import logging
 import sys
 from pathlib import Path
-import logging
 
 sys.path.insert(0, str(Path(__file__).absolute().parent.parent))
 from pylode import OntPub, PylodeError, Supermodel, VocPub, __version__
@@ -9,10 +9,7 @@ from pylode import OntPub, PylodeError, Supermodel, VocPub, __version__
 parser = argparse.ArgumentParser()
 
 parser.add_argument(
-    "-v",
-    "--version",
-    action="version",
-    version="{version}".format(version=__version__)
+    "-v", "--version", action="version", version="{version}".format(version=__version__)
 )
 
 parser.add_argument(

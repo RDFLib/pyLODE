@@ -927,7 +927,7 @@ class Supermodel:
                                     str(imp)
                                     for imp in self.query.onts_props[OWL.imports]
                                 ]
-                                metadata_row("Imports", imports)                         
+                                metadata_row("Imports", imports)
                 if (
                     DCTERMS.description in self.query.onts_props
                     and len(self.query.onts_props[DCTERMS.description]) > 0

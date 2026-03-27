@@ -1,10 +1,10 @@
 import json
 import shutil
 from collections import defaultdict
+from datetime import date
 from itertools import chain
 from pathlib import Path
 from typing import Dict, Union
-from rdflib import URIRef, Literal
 
 import dominate
 from dominate.tags import (
@@ -21,18 +21,19 @@ from dominate.tags import (
     li,
     link,
     meta,
+    p,
     script,
     strong,
     style,
-    sup,
     table,
     td,
     tr,
     ul,
-    p
 )
 from dominate.util import raw
-from rdflib import Graph, Literal
+from kurra.labels import find_missing_labels, get_missing_labels
+from kurra.sparql import query as kquery
+from rdflib import Graph, Literal, URIRef
 from rdflib.namespace import (
     DC,
     DCTERMS,
@@ -47,39 +48,24 @@ from rdflib.namespace import (
     SKOS,
 )
 
-from ..rdf_elements import CONCEPT_PROPS
-
-from pylode.rdf_elements import (
-    AGENT_PROPS,
-    CLASS_PROPS,
-    ONT_PROPS,
-    ONTDOC,
-    PROP_PROPS,
-    CONCEPT_SCHEME_PROPS
-)
+from pylode.rdf_elements import AGENT_PROPS, CONCEPT_SCHEME_PROPS, ONT_PROPS, ONTDOC
 from pylode.utils import (
+    PylodeError,
     back_onts_label_props,
     get_ns,
     load_background_onts,
     load_background_onts_titles,
     load_ontology,
     make_pylode_logo,
-    prop_obj_pair_html,
-    section_html,
+    make_title_from_iri,
     sort_ontology,
-    make_title_from_iri
 )
-from datetime import datetime, date
 from pylode.version import __version__
 
-from kurra.labels import find_missing_labels, get_missing_labels
-from kurra.sparql import query as kquery
+from ..rdf_elements import CONCEPT_PROPS
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
 
-
-class PylodeError(Exception):
-    pass
 
 def render_rdf_object(objs):
     def _render_single_object(obj):
@@ -114,15 +100,12 @@ class VocPub:
         od.make_html(destination="some-resulting-html-file.html")
     """
 
-
-
-
     def __init__(self, ontology: Union[Graph, Path, str], sort_subjects: bool = False):
         self.ont = load_ontology(ontology)
 
         self.cs_iri = self.ont.value(predicate=RDF.type, object=SKOS.ConceptScheme)
 
-        #self.ont += get_missing_labels(find_missing_labels(self.ont))
+        # self.ont += get_missing_labels(find_missing_labels(self.ont))
 
         if sort_subjects:
             self.ont = sort_ontology(self.ont)
@@ -161,15 +144,15 @@ class VocPub:
 
         # name
         for s_, o in chain(
-        g.subject_objects(DC.title),
+            g.subject_objects(DC.title),
             g.subject_objects(DCTERMS.title),
             g.subject_objects(RDFS.label),
-            g.subject_objects(SKOS.prefLabel)
+            g.subject_objects(SKOS.prefLabel),
         ):
             g.add((s_, SDO.name, o))
             g.remove((s_, DC.title, o))
             g.remove((s_, DCTERMS.title, o))
-            g.remove((s_, RDFS.label, o)),
+            (g.remove((s_, RDFS.label, o)),)
             g.remove((s_, SKOS.prefLabel, o))
 
         # description
@@ -177,7 +160,7 @@ class VocPub:
             g.subject_objects(DC.description),
             g.subject_objects(DCTERMS.description),
             g.subject_objects(RDFS.comment),
-            g.subject_objects(SKOS.definition)
+            g.subject_objects(SKOS.definition),
         ):
             g.add((s_, SDO.description, o))
             g.remove((s_, DC.description, o))
@@ -391,10 +374,7 @@ class VocPub:
             if props.get(p_iri):
                 props[p_iri]["objects"].append((o_value, o_name))
             else:
-                props[p_iri] = {
-                    "objects": [(o_value, o_name)],
-                    "p_name": p_label
-                }
+                props[p_iri] = {"objects": [(o_value, o_name)], "p_name": p_label}
 
         def order_dict_by_key_list_keep_rest(d, key_order):
             ordered = {k: d[k] for k in key_order if k in d}
@@ -414,7 +394,9 @@ class VocPub:
                 else:
                     return l
 
-        for k, v in order_dict_by_key_list_keep_rest(props, CONCEPT_SCHEME_PROPS).items():
+        for k, v in order_dict_by_key_list_keep_rest(
+            props, CONCEPT_SCHEME_PROPS
+        ).items():
             print(render_rdf_object(v["objects"]))
             d.appendChild(
                 div(dt(a(v["p_name"], href=k)), dd(render_rdf_object(v["objects"])))
@@ -473,10 +455,7 @@ class VocPub:
                 concepts = []
                 for s in self.ont.subjects(RDF.type, SKOS.Concept):
                     for o in self.ont.objects(s, SDO.name):
-                        c = {
-                            "iri": str(s),
-                            "prefLabel": str(o)
-                        }
+                        c = {"iri": str(s), "prefLabel": str(o)}
                         for o2 in self.ont.objects(s, SKOS.broader):
                             c["broader"] = str(o2)
                     concepts.append(c)
@@ -499,7 +478,17 @@ class VocPub:
                     def render_nodes(nodes):
                         container = ul()
                         for node in nodes:
-                            node_li = li(a(node["prefLabel"], href="#" + str(self.ont.namespace_manager.qname(node["iri"]).replace(":", "_")),))
+                            node_li = li(
+                                a(
+                                    node["prefLabel"],
+                                    href="#"
+                                    + str(
+                                        self.ont.namespace_manager.qname(
+                                            node["iri"]
+                                        ).replace(":", "_")
+                                    ),
+                                )
+                            )
                             if node["children"]:
                                 node_li.add(render_nodes(node["children"]))
                             container.add(node_li)
@@ -510,7 +499,7 @@ class VocPub:
                 d = div(
                     h2("Concept Hierarchy"),
                     build_html_tree(concepts),
-                    id="concept-hierarchy"
+                    id="concept-hierarchy",
                 )
 
                 d.render()
@@ -529,34 +518,44 @@ class VocPub:
                 remaining = {k: v for k, v in d.items() if k not in ordered}
                 return ordered | remaining
 
-            d = div(
-                h2("Concepts"),
-                id="concepts"
-            )
-            for iri, concept in dict(sorted(concepts.items(), key=lambda item: item[1][SDO.name])).items():  # order by Concept's label
+            d = div(h2("Concepts"), id="concepts")
+            for iri, concept in dict(
+                sorted(concepts.items(), key=lambda item: item[1][SDO.name])
+            ).items():  # order by Concept's label
                 props_table = table()
-                props_table.add(tr(td(strong("IRI"), style="width:250px;"), td(code(iri))))
-                for k, v in order_dict_by_key_list_keep_rest(concept, CONCEPT_PROPS).items():
+                props_table.add(
+                    tr(td(strong("IRI"), style="width:250px;"), td(code(iri)))
+                )
+                for k, v in order_dict_by_key_list_keep_rest(
+                    concept, CONCEPT_PROPS
+                ).items():
                     if k not in [RDF.type, SDO.name, "iri", SKOS.inScheme]:
                         if k in CONCEPT_PROPS:
                             if isinstance(v, URIRef):
                                 if v == self.cs_iri:
                                     v = "This vocabulary"
                                 else:
-                                    curie = self.ont.namespace_manager.qname(v).replace(":", "_")
+                                    curie = self.ont.namespace_manager.qname(v).replace(
+                                        ":", "_"
+                                    )
                                     lbl = self.ont.value(subject=v, predicate=SDO.name)
                                     if lbl is None:
                                         lbl = v
                                     v = a(lbl, href="#" + curie)
                             p_label = self.props_labeled.get(k).get("title").title()
                             p_desc = self.props_labeled.get(k).get("description")
-                            props_table.add(tr(td(a(p_label, href=k, title=p_desc)), td(v)))
-                            #props.add(tr(td(k), td(v)))
+                            props_table.add(
+                                tr(td(a(p_label, href=k, title=p_desc)), td(v))
+                            )
+                            # props.add(tr(td(k), td(v)))
                 d.add(
                     div(
-                        h3(concept[SDO.name], id=self.ont.namespace_manager.qname(iri).replace(":", "_")),
+                        h3(
+                            concept[SDO.name],
+                            id=self.ont.namespace_manager.qname(iri).replace(":", "_"),
+                        ),
                         props_table,
-                        _class = "entity"
+                        _class="entity",
                     )
                 )
             d.render()

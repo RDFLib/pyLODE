@@ -44,42 +44,20 @@ from rdflib.namespace import (
     SKOS,
 )
 
-from pylode.utils import PylodeError
-
-try:
-    from .rdf_elements import AGENT_PROPS, CLASS_PROPS, ONT_PROPS, ONTDOC, PROP_PROPS
-    from .utils import (
-        back_onts_label_props,
-        get_ns,
-        load_background_onts,
-        load_background_onts_titles,
-        load_ontology,
-        make_pylode_logo,
-        prop_obj_pair_html,
-        section_html,
-        sort_ontology,
-    )
-    from .version import __version__
-except ImportError:
-    from pylode.rdf_elements import (
-        AGENT_PROPS,
-        CLASS_PROPS,
-        ONT_PROPS,
-        ONTDOC,
-        PROP_PROPS,
-    )
-    from pylode.utils import (
-        back_onts_label_props,
-        get_ns,
-        load_background_onts,
-        load_background_onts_titles,
-        load_ontology,
-        make_pylode_logo,
-        prop_obj_pair_html,
-        section_html,
-        sort_ontology,
-    )
-    from pylode.version import __version__
+from ..rdf_elements import AGENT_PROPS, CLASS_PROPS, ONT_PROPS, ONTDOC, PROP_PROPS
+from ..utils import (
+    PylodeError,
+    back_onts_label_props,
+    get_ns,
+    load_background_onts,
+    load_background_onts_titles,
+    load_ontology,
+    make_pylode_logo,
+    prop_obj_pair_html,
+    section_html,
+    sort_ontology,
+)
+from ..version import __version__
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
 

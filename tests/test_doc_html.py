@@ -1,5 +1,6 @@
 import re
 from pathlib import Path
+from textwrap import dedent
 
 import pytest
 from rdflib import Graph
@@ -7,7 +8,6 @@ from rdflib import Graph
 from pylode import __version__
 from pylode.profiles import OntPub
 from pylode.utils import de_space_html
-from textwrap import dedent
 
 
 # scope="session" so that this is reused
@@ -112,7 +112,9 @@ def test_logo(fix_html):
       </p>
     </div>""")
 
-    assert de_space_html(actual).strip() in de_space_html(html), "pyLODE logo not generated correctly"
+    assert de_space_html(actual).strip() in de_space_html(html), (
+        "pyLODE logo not generated correctly"
+    )
 
 
 def test_metadata(fix_html):

@@ -3,8 +3,13 @@ from rdflib import Literal, URIRef
 
 from pylode.profiles.supermodel.component import external_link, tooltip
 from pylode.profiles.supermodel.fragment import make_html_fragment
-from pylode.profiles.supermodel.model import (Class, CodedProperty, Property,
-                                              Resource, SimpleCodedProperty)
+from pylode.profiles.supermodel.model import (
+    Class,
+    CodedProperty,
+    Property,
+    Resource,
+    SimpleCodedProperty,
+)
 
 
 def render_resource_or_literal(item: Resource | Literal, class_: Class, class_index):

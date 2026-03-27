@@ -536,8 +536,8 @@ def rdf_obj_html(
                         sp_.appendChild(em(" of ", obj___))
                 return sp_
 
-            def _orcid_logo_svg( id ):
-                id = id if ('http' in id) else f"https://orcid.org/{id}"
+            def _orcid_logo_svg(id):
+                id = id if ("http" in id) else f"https://orcid.org/{id}"
                 return f"""
                     <svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
                         xmlns="http://www.w3.org/2000/svg"
@@ -604,7 +604,9 @@ def rdf_obj_html(
                     if "orcid.org" in obj__:
                         sp.appendChild(a(raw(_orcid_logo_svg(obj__)), href=obj__))
                     else:
-                        sp.appendChild(a(raw(_orcid_logo_svg(identifier)), href=identifier))
+                        sp.appendChild(
+                            a(raw(_orcid_logo_svg(identifier)), href=identifier)
+                        )
                 elif identifier is not None:
                     sp.appendChild(a(identifier, href=identifier))
                 if email is not None:
@@ -713,7 +715,6 @@ def rdf_obj_html(
                 return _restriction_html(ont__, obj__, ns__)
             else:  # (obj, RDF.type, OWL.Class) in ont:  # Set Class
                 return _setclass_html(ont__, obj__, back_onts__, ns__, fids__)
-
 
         if isinstance(obj_, Tuple) or isinstance(obj_, URIRef):
             ret = _hyperlink_html(
