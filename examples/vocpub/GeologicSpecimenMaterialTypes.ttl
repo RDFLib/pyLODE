@@ -219,6 +219,8 @@ cs:
     schema:publisher <https://linked.data.gov.au/org/mxtg> ;
     schema:status status:experimental ;
     schema:version "1.0" ;
+    schema:codeRepository "https://github.com/tdwg/tdwg-vocabulary-registry"^^xsd:anyURI ;
+    schema:nonExisting "hello" ;
 .
 
 

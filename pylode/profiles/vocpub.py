@@ -1,3 +1,4 @@
+import json
 import shutil
 from collections import defaultdict
 from itertools import chain
@@ -28,6 +29,7 @@ from dominate.tags import (
     td,
     tr,
     ul,
+    p
 )
 from dominate.util import raw
 from rdflib import Graph, Literal
@@ -47,46 +49,54 @@ from rdflib.namespace import (
 
 from ..rdf_elements import CONCEPT_PROPS
 
-try:
-    from .rdf_elements import AGENT_PROPS, CLASS_PROPS, ONT_PROPS, ONTDOC, PROP_PROPS
-    from .utils import (
-        back_onts_label_props,
-        get_ns,
-        load_background_onts,
-        load_background_onts_titles,
-        load_ontology,
-        make_pylode_logo,
-        prop_obj_pair_html,
-        section_html,
-        sort_ontology,
-    )
-    from .version import __version__
-except ImportError:
-    from pylode.rdf_elements import (
-        AGENT_PROPS,
-        CLASS_PROPS,
-        ONT_PROPS,
-        ONTDOC,
-        PROP_PROPS,
-    )
-    from pylode.utils import (
-        back_onts_label_props,
-        get_ns,
-        load_background_onts,
-        load_background_onts_titles,
-        load_ontology,
-        make_pylode_logo,
-        prop_obj_pair_html,
-        section_html,
-        sort_ontology,
-    )
-    from pylode.version import __version__
+from pylode.rdf_elements import (
+    AGENT_PROPS,
+    CLASS_PROPS,
+    ONT_PROPS,
+    ONTDOC,
+    PROP_PROPS,
+    CONCEPT_SCHEME_PROPS
+)
+from pylode.utils import (
+    back_onts_label_props,
+    get_ns,
+    load_background_onts,
+    load_background_onts_titles,
+    load_ontology,
+    make_pylode_logo,
+    prop_obj_pair_html,
+    section_html,
+    sort_ontology,
+    make_title_from_iri
+)
+from datetime import datetime, date
+from pylode.version import __version__
+
+from kurra.labels import find_missing_labels, get_missing_labels
+from kurra.sparql import query as kquery
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
 
 
 class PylodeError(Exception):
     pass
+
+def render_rdf_object(objs):
+    def _render_single_object(obj):
+        v, t_or_n = obj
+        if t_or_n.startswith("http"):
+            if t_or_n == "http://www.w3.org/2001/XMLSchema#anyURI":
+                return p(a(v, href=v))
+            else:
+                return p(v)
+        else:
+            return p(a(t_or_n, href=v))
+
+    html = div()
+    for o in objs:
+        html.appendChild(_render_single_object(o))
+
+    return html
 
 
 class VocPub:
@@ -104,11 +114,19 @@ class VocPub:
         od.make_html(destination="some-resulting-html-file.html")
     """
 
+
+
+
     def __init__(self, ontology: Union[Graph, Path, str], sort_subjects: bool = False):
         self.ont = load_ontology(ontology)
+
+        self.cs_iri = self.ont.value(predicate=RDF.type, object=SKOS.ConceptScheme)
+
+        #self.ont += get_missing_labels(find_missing_labels(self.ont))
+
         if sort_subjects:
             self.ont = sort_ontology(self.ont)
-        self._ontdoc_inference(self.ont)
+        self._vocpub_inference(self.ont)
         self.back_onts = load_background_onts()
         self.back_onts_titles = load_background_onts_titles(self.back_onts)
         self.props_labeled = back_onts_label_props(self.back_onts)
@@ -118,19 +136,7 @@ class VocPub:
         self.ns = get_ns(self.ont)
 
         # make HTML doc with title
-        t = None
-        for s in chain(
-            self.ont.subjects(RDF.type, OWL.Ontology),
-            self.ont.subjects(RDF.type, PROF.Profile),
-            self.ont.subjects(RDF.type, SKOS.ConceptScheme),
-        ):
-            for o2 in self.ont.objects(s, DCTERMS.title):
-                t = str(o2)
-        if t is None:
-            raise PylodeError(
-                "You MUST supply a title property "
-                "(dcterms:title, rdfs:label or sdo:name) for your ontology"
-            )
+        t = self.ont.value(subject=self.cs_iri, predicate=SDO.name)
         self.doc = dominate.document(title=t)
 
         with self.doc:
@@ -150,41 +156,34 @@ class VocPub:
         else:
             return self.doc.render()
 
-    def _ontdoc_inference(self, g):
-        """Expands the ontology's graph to make OntDoc querying easier.
-
-        Uses axioms made up for OntDoc, but they are simple and obvious
-        and don't collide with well-known ontologies"""
-        # class types
-        for s_ in g.subjects(RDF.type, OWL.Class):
-            g.add((s_, RDF.type, RDFS.Class))
-
-        # # property types
-        # for s_ in chain(
-        #     g.subjects(RDF.type, OWL.ObjectProperty),
-        #     g.subjects(RDF.type, OWL.FunctionalProperty),
-        #     g.subjects(RDF.type, OWL.DatatypeProperty),
-        #     g.subjects(RDF.type, OWL.AnnotationProperty),
-        # ):
-        #     g.add((s_, RDF.type, RDF.Property))
+    def _vocpub_inference(self, g):
+        """Convert the VocPub options to schema.org variants for easy querying"""
 
         # name
         for s_, o in chain(
-            g.subject_objects(DC.title),
+        g.subject_objects(DC.title),
+            g.subject_objects(DCTERMS.title),
             g.subject_objects(RDFS.label),
-            g.subject_objects(SKOS.prefLabel),
-            g.subject_objects(SDO.name),
+            g.subject_objects(SKOS.prefLabel)
         ):
-            g.add((s_, DCTERMS.title, o))
+            g.add((s_, SDO.name, o))
+            g.remove((s_, DC.title, o))
+            g.remove((s_, DCTERMS.title, o))
+            g.remove((s_, RDFS.label, o)),
+            g.remove((s_, SKOS.prefLabel, o))
 
         # description
         for s_, o in chain(
             g.subject_objects(DC.description),
+            g.subject_objects(DCTERMS.description),
             g.subject_objects(RDFS.comment),
-            g.subject_objects(SKOS.definition),
-            g.subject_objects(SDO.description),
+            g.subject_objects(SKOS.definition)
         ):
-            g.add((s_, DCTERMS.description, o))
+            g.add((s_, SDO.description, o))
+            g.remove((s_, DC.description, o))
+            g.remove((s_, DCTERMS.description, o))
+            g.remove((s_, RDFS.comment, o))
+            g.remove((s_, SKOS.definition, o))
 
         # source
         for s_, o in g.subject_objects(DC.source):
@@ -349,22 +348,78 @@ class VocPub:
         sec = div(h1(this_onts_props[DCTERMS.title]), id="metadata", _class="section")
         sec.appendChild(h2("Metadata"))
         d = dl(div(dt(strong("IRI")), dd(code(str(iri)))))
-        for prop in ONT_PROPS:
-            if prop in this_onts_props.keys():
-                d.appendChild(
-                    prop_obj_pair_html(
-                        self.ont,
-                        self.back_onts,
-                        self.ns,
-                        "dl",
-                        prop,
-                        self.props_labeled[prop]["title"],
-                        self.props_labeled[prop]["description"],
-                        self.props_labeled[prop]["ont_title"],
-                        self.fids,
-                        this_onts_props[prop],
-                    )
-                )
+
+        # patch all missing labels
+        ont_with_labels = self.ont + get_missing_labels(find_missing_labels(self.ont))
+
+        q = f"""
+            PREFIX schema: <https://schema.org/>
+        
+            SELECT ?p ?o ?p_name ?o_name
+            WHERE {{
+              <{self.cs_iri}> ?p ?o .
+              
+              OPTIONAL {{
+                ?p schema:name ?p_name
+              }}
+              
+              OPTIONAL {{
+                ?o schema:name ?o_name
+              }}
+            }}
+            ORDER BY ?p
+            """
+        props = {}
+        for row in json.loads(kquery(ont_with_labels, q))["results"]["bindings"]:
+            p_iri = row["p"]["value"]
+
+            if row.get("p_name"):
+                p_label = row["p_name"]["value"].title()
+            else:
+                p_label = make_title_from_iri(row["p"]["value"])
+
+            if row.get("o_name"):
+                o_value = row["o"]["value"]
+                o_name = row["o_name"]["value"]
+            else:
+                o_value = row["o"]["value"]
+                if row["o"].get("datatype"):
+                    o_name = row["o"]["datatype"]
+                else:
+                    o_name = "http://www.w3.org/2001/XMLSchema#string"
+
+            if props.get(p_iri):
+                props[p_iri]["objects"].append((o_value, o_name))
+            else:
+                props[p_iri] = {
+                    "objects": [(o_value, o_name)],
+                    "p_name": p_label
+                }
+
+        def order_dict_by_key_list_keep_rest(d, key_order):
+            ordered = {k: d[k] for k in key_order if k in d}
+            remaining = {k: v for k, v in d.items() if k not in ordered}
+            return ordered | remaining
+
+        def render_literal(l):
+            print(l, type(l))
+            if isinstance(l, dict):
+                return "BN"
+
+            if isinstance(l, date):
+                return l.strftime("%Y-%m-%d")
+            elif isinstance(l, str):
+                if l.startswith("http"):
+                    return l
+                else:
+                    return l
+
+        for k, v in order_dict_by_key_list_keep_rest(props, CONCEPT_SCHEME_PROPS).items():
+            print(render_rdf_object(v["objects"]))
+            d.appendChild(
+                div(dt(a(v["p_name"], href=k)), dd(render_rdf_object(v["objects"])))
+            )
+
         sec.appendChild(d)
         self.content.appendChild(sec)
 
@@ -417,7 +472,7 @@ class VocPub:
             if (None, RDF.type, SKOS.Concept) in self.ont:
                 concepts = []
                 for s in self.ont.subjects(RDF.type, SKOS.Concept):
-                    for o in self.ont.objects(s, SKOS.prefLabel):
+                    for o in self.ont.objects(s, SDO.name):
                         c = {
                             "iri": str(s),
                             "prefLabel": str(o)
@@ -461,7 +516,6 @@ class VocPub:
                 d.render()
 
     def _make_main_sections(self):
-        cs_iri = self.ont.value(predicate=RDF.type, object=SKOS.ConceptScheme)
         with self.content:
             if (None, RDF.type, SKOS.Concept) in self.ont:
                 concepts = {}
@@ -479,18 +533,18 @@ class VocPub:
                 h2("Concepts"),
                 id="concepts"
             )
-            for iri, concept in order_dict_by_key_list_keep_rest(concepts, CONCEPT_PROPS).items():  # order by CONCEPT_PROPS
+            for iri, concept in dict(sorted(concepts.items(), key=lambda item: item[1][SDO.name])).items():  # order by Concept's label
                 props_table = table()
                 props_table.add(tr(td(strong("IRI"), style="width:250px;"), td(code(iri))))
-                for k, v in concept.items():
-                    if k not in [RDF.type, SKOS.prefLabel, "iri", SKOS.inScheme]:
+                for k, v in order_dict_by_key_list_keep_rest(concept, CONCEPT_PROPS).items():
+                    if k not in [RDF.type, SDO.name, "iri", SKOS.inScheme]:
                         if k in CONCEPT_PROPS:
                             if isinstance(v, URIRef):
-                                if v == cs_iri:
+                                if v == self.cs_iri:
                                     v = "This vocabulary"
                                 else:
                                     curie = self.ont.namespace_manager.qname(v).replace(":", "_")
-                                    lbl = self.ont.value(subject=v, predicate=DCTERMS.title)
+                                    lbl = self.ont.value(subject=v, predicate=SDO.name)
                                     if lbl is None:
                                         lbl = v
                                     v = a(lbl, href="#" + curie)
@@ -500,7 +554,7 @@ class VocPub:
                             #props.add(tr(td(k), td(v)))
                 d.add(
                     div(
-                        h3(concept[DCTERMS.title], id=self.ont.namespace_manager.qname(iri).replace(":", "_")),
+                        h3(concept[SDO.name], id=self.ont.namespace_manager.qname(iri).replace(":", "_")),
                         props_table,
                         _class = "entity"
                     )

@@ -9,7 +9,10 @@ from pylode import OntPub, PylodeError, Supermodel, VocPub, __version__
 parser = argparse.ArgumentParser()
 
 parser.add_argument(
-    "-v", "--version", action="version", version="{version}".format(version=__version__)
+    "-v",
+    "--version",
+    action="version",
+    version="{version}".format(version=__version__)
 )
 
 parser.add_argument(
