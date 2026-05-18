@@ -630,6 +630,9 @@ def rdf_obj_html(
                 if px != RDF.type:
                     if px == OWL.onProperty:
                         prop = _hyperlink_html(ont__, back_onts_, ns__, o, fids_)
+                    #Added the onClass restriction otherwise the class name is ignored in the HTML output. 
+                    elif px == OWL.onClass:
+                        cls = _hyperlink_html(ont__, back_onts_, ns__, o, fids_, OWL.Class)
                     elif px in RESTRICTION_TYPES + OWL_SET_TYPES:
                         if px in [
                             OWL.minCardinality,
@@ -676,10 +679,13 @@ def rdf_obj_html(
                                 ),
                             )
 
-            restriction = span(prop, card, br()) if card is not None else prop
-            restriction = (
-                span(restriction, cls, br()) if cls is not None else restriction
-            )
+            #Combined the check for card and cls so that only one br is added.
+            if card is not None and cls is not None:
+                restriction = span(prop, card, cls, br())
+            elif card is not None:
+                restriction = span(prop, card, br())
+            else:
+                restriction = prop
 
             return span(restriction) if restriction is not None else "None"
 
