@@ -382,7 +382,6 @@ class VocPub:
             return ordered | remaining
 
         def render_literal(l):
-            print(l, type(l))
             if isinstance(l, dict):
                 return "BN"
 
@@ -397,7 +396,6 @@ class VocPub:
         for k, v in order_dict_by_key_list_keep_rest(
             props, CONCEPT_SCHEME_PROPS
         ).items():
-            print(render_rdf_object(v["objects"]))
             d.appendChild(
                 div(dt(a(v["p_name"], href=k)), dd(render_rdf_object(v["objects"])))
             )
