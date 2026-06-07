@@ -25,6 +25,15 @@ def fix_html():
     return od.make_html()
 
 
+def test_issue_20(fix_html):
+    """
+    Tests that the HTML fragments match the case of RDF elements, e.g. wfprov:describedByParameter
+    """
+    expected_html = """<div class="property entity" id="describedByParameter">"""
+    # open("issues.html", "w").write(de_space_html(fix_html))
+    assert expected_html in de_space_html(fix_html)
+
+
 def test_issue_30_markdown(fix_html):
     """
     Before checking HTML rendering in test_issue_30_markdown, just ensure Markdown is rendered as HTML correctly by default first
