@@ -51,14 +51,13 @@
             padding-top: 7px;
         }
 
-        #metadata ul.pylodelitlist,
-        #classes ul.pylodelitlist {
+        ul.pylodelitlist {
             list-style-type: none;
+            margin-left: -40px;
         }
 
         #metadata ul li,
         #classes ul li {
-            margin-left: -40px;
             margin-bottom: 10px;
         }
 

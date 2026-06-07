@@ -3,8 +3,6 @@ from pathlib import Path
 
 sys.path.append(str(Path().parent.parent.resolve() / "pylode"))
 import pytest
-from rdflib import Literal, URIRef
-from rdflib.namespace import DCTERMS, RDFS, XSD
 
 from pylode.profiles import OntPub
 from pylode.utils import get_ns, de_space_html
@@ -23,6 +21,23 @@ def fix_ont():
 def fix_html():
     od = OntPub(Path(__file__).parent / "data" / "issues.ttl")
     return od.make_html()
+
+
+def test_issue_13(fix_html):
+    """
+    Tests that multiple literals for the same predicate, e.g. schema:description, are concatenated nicely
+    """
+    expected_html = de_space_html("""
+        <td>
+            <ul class="pylodelitlist">
+                <li><p>This object property associate a wfprov:Processrun to its wfdesc:Process description.</p></li>
+                <li><p>Second annoying description for Issue #13 testing</p></li>
+            </ul>
+        </td>
+    """)
+
+    # open("issues.html", "w").write(fix_html)
+    assert expected_html in de_space_html(fix_html)
 
 
 def test_issue_20(fix_html):
@@ -58,3 +73,5 @@ def test_issue_30_html(fix_html):
     )
     # open("issues.html", "w").write(de_space_html(fix_html))
     assert expected_html in de_space_html(fix_html)
+
+

@@ -63,7 +63,9 @@ wfprov:describedByProcess
     rdfs:domain wfprov:ProcessRun ;
     rdfs:isDefinedBy ont: ;
     rdfs:range wfdesc:Process ;
-    schema:description "This object property associate a wfprov:Processrun to its wfdesc:Process description ." ;
+    schema:description
+        "This object property associate a wfprov:Processrun to its wfdesc:Process description." ,
+        "Second annoying description for Issue #13 testing" ;
     schema:name "described by process" ;
 .
 
