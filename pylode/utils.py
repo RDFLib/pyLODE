@@ -794,10 +794,12 @@ def _make_hierarchy_html(
     if (None, RDF.type, obj_class) in ont:
         items = []
         for s in ont.subjects(RDF.type, obj_class):
-            for o in ont.objects(s, SDO.name):
-                c = {"iri": str(s), "name": str(o)}
-                for o2 in ont.objects(s, parent_indicator):
-                    c["parent"] = str(o2)
+            c = {
+                "iri": str(s),
+                "name": str(ont.value(s, SDO.name|SKOS.prefLabel)),
+            }
+            for o2 in ont.objects(s, parent_indicator):
+                c["parent"] = str(o2)
             items.append(c)
 
         def build_html_tree(items):

@@ -50,7 +50,7 @@ from rdflib.namespace import (
 
 from pylode.rdf_elements import AGENT_PROPS, CONCEPT_SCHEME_PROPS, ONT_PROPS, ONTDOC
 from pylode.utils import (
-    PylodeError,
+    _make_hierarchy_html,
     back_onts_label_props,
     get_ns,
     load_background_onts,
@@ -450,53 +450,11 @@ class VocPub:
     def _make_concept_hierarchy(self):
         with self.content:
             if (None, RDF.type, SKOS.Concept) in self.ont:
-                concepts = []
-                for s in self.ont.subjects(RDF.type, SKOS.Concept):
-                    for o in self.ont.objects(s, SDO.name):
-                        c = {"iri": str(s), "prefLabel": str(o)}
-                        for o2 in self.ont.objects(s, SKOS.broader):
-                            c["broader"] = str(o2)
-                    concepts.append(c)
-
-                def build_html_tree(items):
-                    # Index items by id
-                    by_id = {item["iri"]: dict(item, children=[]) for item in items}
-
-                    roots = []
-
-                    # Build tree structure
-                    for item in by_id.values():
-                        broader = item.get("broader")
-                        if broader and broader in by_id:
-                            by_id[broader]["children"].append(item)
-                        else:
-                            roots.append(item)
-
-                    # Recursive renderer
-                    def render_nodes(nodes):
-                        container = ul()
-                        for node in nodes:
-                            node_li = li(
-                                a(
-                                    node["prefLabel"],
-                                    href="#"
-                                    + str(
-                                        self.ont.namespace_manager.qname(
-                                            node["iri"]
-                                        ).replace(":", "_")
-                                    ),
-                                )
-                            )
-                            if node["children"]:
-                                node_li.add(render_nodes(node["children"]))
-                            container.add(node_li)
-                        return container
-
-                    return render_nodes(roots)
-
                 d = div(
                     h2("Concept Hierarchy"),
-                    build_html_tree(concepts),
+                    _make_hierarchy_html(
+                        self.ont, SKOS.Concept, SKOS.broader, self.fids
+                    ),
                     id="concept-hierarchy",
                 )
 
