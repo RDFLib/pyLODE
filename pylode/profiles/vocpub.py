@@ -302,7 +302,7 @@ class VocPub:
             )
 
     def _make_body(self):
-        """Healper function for make_html(). Makes <body>???</body> content.
+        """Helper function for make_html(). Makes <body>???</body> content.
 
         Just calls other helper functions in order"""
         make_pylode_logo(
