@@ -1,4 +1,5 @@
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX fruits: <http://example.com/ns/fruits/>
 PREFIX olis: <https://olis.dev/>
 PREFIX ont: <http://purl.org/wf4ever/wfprov>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -125,6 +126,107 @@ wfprov:ProcessRun
         wfprov:wasOutputFrom ;
     schema:description "A process run is a particular execution of a wfdesc:Process description (wfprov:describedByProcess), which can wfprov:usedInput some wfprov:Artifact instances, and produce new artifacts (wfprov:wasOutputFrom). A wfprov:WorkflowRun is a specialisation of this class." ;
     schema:name "Process Run" ;
+.
+
+
+# Fruits
+# ├── Berry
+# │   ├── Grape
+# │   └── Tomato
+# ├── Pome
+# │   ├── Apple
+# │   │   ├── Gala
+# │   │   └── Granny Smith
+# │   ├── Pear
+# ├── Citrus
+# │   ├── Orange
+# │   └── Lemon
+
+fruits:Berry
+    a owl:Class ;
+    rdfs:isDefinedBy ont: ;
+    schema:description "Dummy desc" ;
+    schema:name "Berry" ;
+.
+
+fruits:Grape
+    a owl:Class ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf fruits:Berry ;
+    schema:description "Dummy desc" ;
+    schema:name "Grape" ;
+.
+
+fruits:Tomato
+    a owl:Class ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf fruits:Berry ;
+    schema:description "Dummy desc" ;
+    schema:name "Tomato" ;
+.
+
+fruits:Pome
+    a owl:Class ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf fruits: ;
+    schema:description "Dummy desc" ;
+    schema:name "Pome" ;
+.
+
+fruits:Apple
+    a owl:Class ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf fruits:Pome ;
+    schema:description "Dummy desc" ;
+    schema:name "Apple" ;
+.
+
+fruits:Gala
+    a owl:Class ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf fruits:Apple ;
+    schema:description "Dummy desc" ;
+    schema:name "Gala" ;
+.
+
+fruits:GrannySmith
+    a owl:Class ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf fruits:Apple ;
+    schema:description "Dummy desc" ;
+    schema:name "Granny Smith" ;
+.
+
+fruits:Pear
+    a owl:Class ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf fruits:Pome ;
+    schema:description "Dummy desc" ;
+    schema:name "Pear" ;
+.
+
+fruits:Citrus
+    a owl:Class ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf fruits: ;
+    schema:description "Dummy desc" ;
+    schema:name "Citrus" ;
+.
+
+fruits:Orange
+    a owl:Class ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf fruits:Citrus ;
+    schema:description "Dummy desc" ;
+    schema:name "Orange" ;
+.
+
+fruits:Lemon
+    a owl:Class ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf fruits:Citrus ;
+    schema:description "Dummy desc" ;
+    schema:name "Lemon" ;
 .
 
 ont:

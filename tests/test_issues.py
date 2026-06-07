@@ -5,22 +5,18 @@ sys.path.append(str(Path().parent.parent.resolve() / "pylode"))
 import pytest
 
 from pylode.profiles import OntPub
-from pylode.utils import get_ns, de_space_html
+from pylode.utils import de_space_html, get_ns
 
 current_dir = Path(__file__).parent
-
-
-# scope="session" so that this is reused without regeneration in this testing session
-@pytest.fixture(scope="session")
-def fix_ont():
-    od = OntPub(Path(__file__).parent / "data" / "issues.ttl")
-    return od.ont
-
 
 @pytest.fixture(scope="session")
 def fix_html():
     od = OntPub(Path(__file__).parent / "data" / "issues.ttl")
     return od.make_html()
+
+
+def test_issue_5(fix_html):
+    open("issues.html", "w").write(fix_html)
 
 
 def test_issue_13(fix_html):
@@ -36,7 +32,6 @@ def test_issue_13(fix_html):
         </td>
     """)
 
-    # open("issues.html", "w").write(fix_html)
     assert expected_html in de_space_html(fix_html)
 
 
@@ -73,5 +68,4 @@ def test_issue_30_html(fix_html):
     )
     # open("issues.html", "w").write(de_space_html(fix_html))
     assert expected_html in de_space_html(fix_html)
-
 

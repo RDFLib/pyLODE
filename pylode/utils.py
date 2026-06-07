@@ -785,6 +785,55 @@ def prop_obj_pair_html(
     return t
 
 
+def _make_hierarchy_html(
+    ont: Graph,
+    obj_class: URIRef,
+    parent_indicator: URIRef,
+    fids: dict
+):
+    if (None, RDF.type, obj_class) in ont:
+        items = []
+        for s in ont.subjects(RDF.type, obj_class):
+            for o in ont.objects(s, SDO.name):
+                c = {"iri": str(s), "name": str(o)}
+                for o2 in ont.objects(s, parent_indicator):
+                    c["parent"] = str(o2)
+            items.append(c)
+
+        def build_html_tree(items):
+            # Index items by id
+            by_id = {item["iri"]: dict(item, children=[]) for item in items}
+
+            roots = []
+
+            # Build tree structure
+            for item in by_id.values():
+                parent = item.get("parent")
+                if parent and parent in by_id:
+                    by_id[parent]["children"].append(item)
+                else:
+                    roots.append(item)
+
+            # Recursive renderer
+            def render_nodes(nodes):
+                container = ul()
+                for node in nodes:
+                    node_li = li(
+                        a(
+                            node["name"],
+                            href="#" + generate_fid(None, node["iri"], fids),
+                        )
+                    )
+                    if node["children"]:
+                        node_li.add(render_nodes(node["children"]))
+                    container.add(node_li)
+                return container
+
+            return render_nodes(roots)
+
+        return build_html_tree(items)
+
+
 def section_html(
     section_title: str,
     ont: Graph,
@@ -857,6 +906,12 @@ def section_html(
 
     elems = div(id=toc_ul_id, _class="section")
     elems.appendChild(h2(section_title))
+    
+    if obj_class == OWL.Class:
+        elems.appendChild(h3("Class Hierarchy", id="class-hierarchy"))
+        elems.appendChild(_make_hierarchy_html(ont, OWL.Class, RDFS.subClassOf, fids))
+        elems.appendChild(h3("Class Definitions", id="class-definitions"))
+    
     # get all objects of this class
     for s_ in ont.subjects(predicate=RDF.type, object=obj_class):
         if obj_class == RDF.Property:
