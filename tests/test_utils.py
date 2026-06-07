@@ -7,7 +7,7 @@ from rdflib import Literal, URIRef
 from rdflib.namespace import DCTERMS, RDFS, XSD
 
 from pylode.profiles import OntPub
-from pylode.utils import *
+from pylode.utils import load_background_onts, get_ns, make_title_from_iri, generate_fid, rdf_obj_html, de_space_html, load_ontology, prop_obj_pair_html
 
 current_dir = Path(__file__).parent
 
@@ -15,7 +15,7 @@ current_dir = Path(__file__).parent
 # scope="session" so that this is reused without regeneration in this testing session
 @pytest.fixture(scope="session")
 def fix_ont():
-    od = OntPub(Path(__file__).parent / "prof.ttl")
+    od = OntPub(Path(__file__).parent / "data" / "prof.ttl")
     return od.ont
 
 
@@ -197,7 +197,7 @@ def test_load_ontology_data():
 
 
 def test_load_ontology_file():
-    filepath = current_dir / "prof.ttl"
+    filepath = current_dir / "data" / "prof.ttl"
 
     graph = load_ontology(filepath)
     assert len(graph)

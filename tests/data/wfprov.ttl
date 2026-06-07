@@ -1,0 +1,161 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX olis: <https://olis.dev/>
+PREFIX ont: <http://purl.org/wf4ever/wfprov>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <https://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX wfdesc: <http://purl.org/wf4ever/wfdesc#>
+PREFIX wfprov: <http://purl.org/wf4ever/wfprov#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+wfprov:describedByParameter
+    a owl:ObjectProperty ;
+    rdfs:domain wfprov:Artifact ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:range wfdesc:Parameter ;
+    schema:description "This object property is used to associate a wfprov:Artifact to the wfdesc:Parameter description." ;
+    schema:name "described by parameter" ;
+.
+
+wfprov:describedByWorkflow
+    a owl:ObjectProperty ;
+    rdfs:domain wfprov:WorkflowRun ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:range wfdesc:WorkflowTemplate ;
+    rdfs:subPropertyOf wfprov:describedByProcess ;
+    schema:description "This property associates a wfprov:WorkflowRun to its corresponding wfdesc:Workflow description." ;
+    schema:name "" ;
+.
+
+wfprov:wasEnactedBy
+    a owl:ObjectProperty ;
+    rdfs:domain wfprov:ProcessRun ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:range wfprov:WorkflowEngine ;
+    schema:description "wfprov:wasEnactedBy associates a wfprov:ProcessRun with a wfprov:WorkflowEngine, specifying that the execution of the process was enacted by the engine." ;
+    schema:name "was enacted by" ;
+.
+
+wfprov:wasPartOfWorkflowRun
+    a owl:ObjectProperty ;
+    rdfs:domain wfprov:ProcessRun ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:range wfprov:WorkflowRun ;
+    schema:description "This property specifies that a wfprov:ProcessRun was executed as part of a wfprov:WorkflowRun. This typically corresponds to wfdesc:hasSubProcess in the workflow description." ;
+    schema:name "was part of workflow run" ;
+.
+
+wfprov:WorkflowEngine
+    a owl:Class ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:seeAlso
+        wfdesc:Workflow ,
+        wfprov:WorkflowRun ;
+    rdfs:subClassOf foaf:Agent ;
+    schema:description "A workflow engine is an foaf:Agent that is responsible for enacting a workflow definition (which could be described in a wfdesc:Workflow). The result of workflow enactment gives rise to a wfprov:WorkflowRun." ;
+    schema:name "Workflow Engine" ;
+.
+
+wfprov:describedByProcess
+    a owl:ObjectProperty ;
+    rdfs:domain wfprov:ProcessRun ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:range wfdesc:Process ;
+    schema:description "This object property associate a wfprov:Processrun to its wfdesc:Process description ." ;
+    schema:name "described by process" ;
+.
+
+wfprov:usedInput
+    a owl:ObjectProperty ;
+    rdfs:domain wfprov:ProcessRun ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:range wfprov:Artifact ;
+    schema:description "This property specifies that a wfprov:ProcessRun used an wfprov:Artifact as an input" ;
+    schema:name "used input" ;
+.
+
+wfprov:wasOutputFrom
+    a owl:ObjectProperty ;
+    rdfs:domain wfprov:Artifact ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:range wfprov:ProcessRun ;
+    schema:description "This property specifies that a wfprov:Artifact was generated as an output from a wfprov:ProcessRun" ;
+    schema:name "was output from" ;
+.
+
+wfprov:Artifact
+    a owl:Class ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:seeAlso
+        <http://purl.org/wf4ever/ro#ResearchObject> ,
+        <http://purl.org/wf4ever/ro#Resource> ,
+        wfprov:ProcessRun ,
+        wfprov:usedInput ,
+        wfprov:wasOutputFrom ,
+        wfprov:workflowRun ;
+    schema:description "Artifact is a general concept that represents immutable piece of state, which may have a physical embodiment in a physical object, or a digital representation in a computer system. In the case of wfprov, an artifact is used as input to a process run, or produced by the output of a process run." ;
+    schema:name "Artifact" ;
+.
+
+wfprov:WorkflowRun
+    a owl:Class ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:seeAlso
+        wfdesc:Process ,
+        wfdesc:Workflow ,
+        wfprov:WorkflowEngine ;
+    rdfs:subClassOf wfprov:ProcessRun ;
+    schema:description "A workflow run is a wfprov:ProcessRun which have been enacted by a wfprov:WorkflowEngine, according to a workflow definition (which could be wfdesc:describedByWorkflow a wfdesc:Workflow). Such a process typically contains several subprocesses (wfprov:wasPartOfWorkflowRun) corresponding to wfdesc:Process descriptions" ;
+    schema:name "Workflow Run" ;
+.
+
+wfprov:ProcessRun
+    a owl:Class ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:seeAlso
+        wfdesc:Process ,
+        wfprov:Artifact ,
+        wfprov:WorkflowRun ,
+        wfprov:describedByProcess ,
+        wfprov:usedInput ,
+        wfprov:wasOutputFrom ;
+    schema:description "A process run is a particular execution of a wfdesc:Process description (wfprov:describedByProcess), which can wfprov:usedInput some wfprov:Artifact instances, and produce new artifacts (wfprov:wasOutputFrom). A wfprov:WorkflowRun is a specialisation of this class." ;
+    schema:name "Process Run" ;
+.
+
+ont:
+    a owl:Ontology ;
+    rdfs:seeAlso <http://purl.org/wf4ever/ro> ;
+    owl:imports
+        <http://purl.org/wf4ever/wfdesc> ,
+        foaf: ;
+    owl:versionIRI <https://raw.github.com/wf4ever/ro/0.1.1/wfprov.owl> ;
+    owl:versionInfo "0.1.1"^^xsd:string ;
+    skos:historyNote "Ontology annotations added for the OGC's Open Science Persistent Demonstrator 2025 project" ;
+    schema:copyrightHolder <https://wf4ever.github.io> ;
+    schema:creator <https://wf4ever.github.io> ;
+    schema:dateCreated "2025-12-19"^^xsd:date ;
+    schema:dateIssued "2025-12-19"^^xsd:date ;
+    schema:dateModified "2025-12-19"^^xsd:date ;
+    schema:description """The wfprov ontology shows how to express minimal provenance information about the execution of a workflow described using the wf ontology.
+
+Here the concern is mainly the provenance which affects the research object, so in particular how some ro:Resource's might have been generated or used by the execution of a wfdesc:Workflow.
+
+The main class here is a wfprov:WorkflowRun which shows how wfprov:Artifact instances (the data) wfprov:wasOutputFrom a wfprov:ProcessRun for generated artifacts, or wfprov:usedInput for consumed artifacts. The WorkflowRun is also a ProcessRun, and so the overall inputs and outputs of thw workflow execution can be described in the same manner.
+
+These provenance details are linked to the corresponding wfdesc descriptions using wfdesc:describedbyProcess, wfdesc:describedByWorkflow and wfdesc:describedByParameter.
+
+
+This ontology can be further linked to more specific provenance ontologies like OPM-V or W3C PROV-O, but this should be done separately.""" ;
+    schema:license <http://purl.org/NET/rdflicense/cc-by3.0> ;
+    schema:name "Workflow 4Ever Provenance Ontology" ;
+    schema:publisher <https://wf4ever.github.io> ;
+    schema:version "0.1.2" ;
+.
+
+<https://wf4ever.github.io>
+    a schema:Organization ;
+    schema:name "Workflow 4Ever Project Team" ;
+    schema:url "https://wf4ever.github.io/"^^xsd:anyURI ;
+.

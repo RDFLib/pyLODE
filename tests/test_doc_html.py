@@ -14,7 +14,7 @@ from pylode.utils import de_space_html
 # without regeneration in this testing session
 @pytest.fixture(scope="session")
 def fix_html():
-    od = OntPub(Path(__file__).parent / "prof.ttl")
+    od = OntPub(Path(__file__).parent / "data" / "prof.ttl")
     return od.make_html()
 
 

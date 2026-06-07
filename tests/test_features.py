@@ -4,7 +4,7 @@ from pylode.profiles import OntPub
 
 
 def test_example_preformatting():
-    input_rdf = Path(__file__).parent / "abisdm.ttl"
+    input_rdf = Path(__file__).parent / "data" / "abisdm.ttl"
 
     html = OntPub(input_rdf).make_html()
 
