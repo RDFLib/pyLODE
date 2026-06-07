@@ -2,6 +2,7 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX olis: <https://olis.dev/>
 PREFIX ont: <http://purl.org/wf4ever/wfprov>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX schema: <https://schema.org/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -132,7 +133,6 @@ ont:
         foaf: ;
     owl:versionIRI <https://raw.github.com/wf4ever/ro/0.1.1/wfprov.owl> ;
     owl:versionInfo "0.1.1"^^xsd:string ;
-    skos:historyNote "Ontology annotations added for the OGC's Open Science Persistent Demonstrator 2025 project" ;
     schema:copyrightHolder <https://wf4ever.github.io> ;
     schema:creator <https://wf4ever.github.io> ;
     schema:dateCreated "2025-12-19"^^xsd:date ;
@@ -147,11 +147,22 @@ The main class here is a wfprov:WorkflowRun which shows how wfprov:Artifact inst
 These provenance details are linked to the corresponding wfdesc descriptions using wfdesc:describedbyProcess, wfdesc:describedByWorkflow and wfdesc:describedByParameter.
 
 
-This ontology can be further linked to more specific provenance ontologies like OPM-V or W3C PROV-O, but this should be done separately.""" ;
+This ontology can be further linked to more specific provenance ontologies like OPM-V or W3C PROV-O, but this should be done separately.
+
+
+Is **THIS** Markdown _working_ correctly? If so, [this](https://google.com) is a hyperlink to Google.
+"""  ;
     schema:license <http://purl.org/NET/rdflicense/cc-by3.0> ;
     schema:name "Workflow 4Ever Provenance Ontology" ;
     schema:publisher <https://wf4ever.github.io> ;
     schema:version "0.1.2" ;
+    skos:historyNote """<p>2026-06: added this HTML literal history note for testing</p>
+<p>2026-05: a fake history note for testing</p>
+<p>Foods Nick likes:</p>
+<ul>
+   <li>smoked chicken</li>
+   <li>gorgonzola cheese</li>
+</ul>"""^^rdf:HTML ;
 .
 
 <https://wf4ever.github.io>

@@ -7,7 +7,16 @@ from rdflib import Literal, URIRef
 from rdflib.namespace import DCTERMS, RDFS, XSD
 
 from pylode.profiles import OntPub
-from pylode.utils import load_background_onts, get_ns, make_title_from_iri, generate_fid, rdf_obj_html, de_space_html, load_ontology, prop_obj_pair_html
+from pylode.utils import (
+    de_space_html,
+    generate_fid,
+    get_ns,
+    load_background_onts,
+    load_ontology,
+    make_title_from_iri,
+    prop_obj_pair_html,
+    rdf_obj_html,
+)
 
 current_dir = Path(__file__).parent
 

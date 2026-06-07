@@ -508,6 +508,8 @@ def rdf_obj_html(
             else:
                 if prop == SKOS.example:
                     return pre(str(obj__))
+                elif obj__.datatype == RDF.HTML:
+                    return raw(str(obj__))
                 else:
                     return raw(markdown.markdown(str(obj__)))
 
@@ -740,7 +742,7 @@ def rdf_obj_html(
             ont, back_onts, ns, obj[0], fids, rdf_type_=rdf_type, prop=prop
         )
     else:
-        u_ = ul()
+        u_ = ul(_class="pylodelitlist")
         for x in obj:
             u_.appendChild(
                 li(
@@ -920,7 +922,7 @@ def de_space_html(html):
     # s = "".join([l_.strip().replace("\n", " ") for l_ in html.split("\n")])
     # return re.sub(" +", " ", s)
     s = re.sub(r">\s+<", "><", html)
-    return re.sub(r"\s+", " ", s)
+    return re.sub(r"\s+", " ", s).strip()
 
 
 def make_pylode_logo(doc, version, profile_name, profile_iri):
