@@ -643,11 +643,7 @@ def test_properties(fix_html):
       </div>"""
     e = de_space_html(expected)
     a = de_space_html(fix_html)
-    open("expected.html", "w").write(e)
-    open("actual.html", "w").write(a)
     assert e in a, "Properties section not generated correctly"
-    Path("expected.html").unlink()
-    Path("actual.html").unlink()
 
 
 def test_namespaces(fix_html):
