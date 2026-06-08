@@ -27,7 +27,7 @@ wfprov:describedByWorkflow
     rdfs:range wfdesc:WorkflowTemplate ;
     rdfs:subPropertyOf wfprov:describedByProcess ;
     schema:description "This property associates a wfprov:WorkflowRun to its corresponding wfdesc:Workflow description." ;
-    schema:name "" ;
+    schema:name "described by workflow" ;
 .
 
 wfprov:wasEnactedBy

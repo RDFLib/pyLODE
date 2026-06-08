@@ -16,7 +16,10 @@ def fix_html():
 
 
 def test_concept_hierarchy(fix_html):
-
+    """
+    This tests the generation of the Concept Hierarchy using the generic _make_hierarchy_html function in utils.py
+    after having moved from VocPub using its own function
+    """
     expected_html = de_space_html(
         """
 <ul>
@@ -75,6 +78,5 @@ def test_concept_hierarchy(fix_html):
 </ul>        
         """
     )
-
     assert expected_html in de_space_html(fix_html)
     # open("reg-statuses.html", "w").write(fix_html)

@@ -796,7 +796,7 @@ def _make_hierarchy_html(
         for s in ont.subjects(RDF.type, obj_class):
             c = {
                 "iri": str(s),
-                "name": str(ont.value(s, SDO.name|SKOS.prefLabel)),
+                "name": str(ont.value(s, DCTERMS.title|SDO.name)),  # need 2 x for OntPub (title) and VocPub (prefLabel) profiles
             }
             for o2 in ont.objects(s, parent_indicator):
                 c["parent"] = str(o2)
@@ -913,7 +913,11 @@ def section_html(
         elems.appendChild(h3("Class Hierarchy", id="class-hierarchy"))
         elems.appendChild(_make_hierarchy_html(ont, OWL.Class, RDFS.subClassOf, fids))
         elems.appendChild(h3("Class Definitions", id="class-definitions"))
-    
+    elif obj_class == OWL.ObjectProperty:
+        elems.appendChild(h3("Object Property Hierarchy", id="object-property-hierarchy"))
+        elems.appendChild(_make_hierarchy_html(ont, OWL.ObjectProperty, RDFS.subPropertyOf, fids))
+        elems.appendChild(h3("Object Property Definitions", id="object-property-definitions"))
+
     # get all objects of this class
     for s_ in ont.subjects(predicate=RDF.type, object=obj_class):
         if obj_class == RDF.Property:

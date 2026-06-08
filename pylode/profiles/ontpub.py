@@ -597,9 +597,11 @@ class OntPub:
                     ):
                         with li():
                             h4(a("Object Properties", href="#objectproperties"))
+                            h5(a("Object Property Hierarchy", href="#object-property-hierarchy", style="margin-left:10px;"))
+                            h5(a("Object Property Definitions", href="#object-property-definitions", style="margin-left:10px;"))
                             with ul(_class="second"):
                                 for c in self.toc["objectproperties"]:
-                                    li(a(c[1], href=c[0]))
+                                    li(a(c[1], href=c[0]), style="margin-left:10px;")
 
                     if (
                         self.toc.get("datatypeproperties") is not None
