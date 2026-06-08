@@ -229,6 +229,16 @@ fruits:Lemon
     schema:name "Lemon" ;
 .
 
+wfprov:auspixDggsLiteral
+    a rdfs:Datatype ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:seeAlso "https://github.com/GeoscienceAustralia/AusPIX_DGGS"^^xsd:anyURI ;
+    skos:definition """A textual serialization of an AusPix Discrete Global Grid System (DGGS) geometry object."""@en ;
+    skos:example """ "OrdinateList (R3234)"^^geo:auspixDggsLiteral""" ;
+    skos:scopeNote "This datatype is to be used only for a specific DGGS implementation - AusPix. Other DGGS implementations should declare their own datatypes." ;
+    skos:prefLabel "AusPIX DGGS Literal"@en ;
+.
+
 ont:
     a owl:Ontology ;
     rdfs:seeAlso <http://purl.org/wf4ever/ro> ;

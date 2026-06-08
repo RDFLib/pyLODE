@@ -476,6 +476,22 @@ class OntPub:
                 )
                 d.render()
 
+            if (None, RDF.type, RDFS.Datatype) in self.ont:
+                print("DATATYPES")
+                d = section_html(
+                    "Custom Datatypes",
+                    self.ont,
+                    self.back_onts,
+                    self.ns,
+                    RDFS.Datatype,
+                    PROP_PROPS,
+                    self.toc,
+                    "datatypes",
+                    self.fids,
+                    self.props_labeled,
+                )
+                d.render()
+
     def _make_legend(self):
         with self.content:
             with div(id="legend"):
@@ -631,6 +647,16 @@ class OntPub:
                             h4(a("Functional Properties", href="#functionalproperties"))
                             with ul(_class="second"):
                                 for c in self.toc["functionalproperties"]:
+                                    li(a(c[1], href=c[0]))
+
+                    if (
+                        self.toc.get("datatypes") is not None
+                        and len(self.toc["datatypes"]) > 0
+                    ):
+                        with li():
+                            h4(a("Custom Datatypes", href="#datatypes"))
+                            with ul(_class="second"):
+                                for c in self.toc["datatypes"]:
                                     li(a(c[1], href=c[0]))
 
                     with li():

@@ -69,3 +69,57 @@ def test_issue_30_html(fix_html):
     # open("issues.html", "w").write(de_space_html(fix_html))
     assert expected_html in de_space_html(fix_html)
 
+
+def test_issue_141(fix_html):
+    open("issues.html", "w").write(fix_html)
+    assert (
+        de_space_html(
+            """
+      <div class="section" id="datatypes">
+        <h2>Custom Datatypes</h2>
+        <div class="property entity" id="AusPIXDGGSLiteral">
+          <h3>AusPIX DGGS Literal
+            <sup class="sup-dt" title="RDFS Datatypes">dt</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://purl.org/wf4ever/wfprov#auspixDggsLiteral</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#wfprov">Workflow 4Ever Provenance Ontology</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>A textual serialization of an AusPix Discrete Global Grid System (DGGS) geometry object.</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#scopeNote" title="A note that helps to clarify the meaning and/or the use of a concept. Defined in SKOS Vocabulary">Scope Note</a>
+              </th>
+              <td><p>This datatype is to be used only for a specific DGGS implementation - AusPix. Other DGGS implementations should declare their own datatypes.</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre> &quot;OrdinateList (R3234)&quot;^^geo:auspixDggsLiteral</pre>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>            
+            """
+        )
+        in de_space_html(fix_html)
+    ), "Datatypes not catered for correctly"

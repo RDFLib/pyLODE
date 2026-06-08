@@ -160,6 +160,7 @@ ONT_TYPES = {
     OWL.AnnotationProperty: ("ap", "OWL Annotation Property"),
     OWL.FunctionalProperty: ("fp", "OWL Functional Property"),
     OWL.InverseFunctionalProperty: ("ifp", "OWL Inverse Functional Property"),
+    RDFS.Datatype: ("dt", "RDFS Datatypes"),
     OWL.NamedIndividual: ("ni", "OWL Named Individual"),
 }
 
