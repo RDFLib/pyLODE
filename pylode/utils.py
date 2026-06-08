@@ -819,7 +819,14 @@ def _make_hierarchy_html(
             # Recursive renderer
             def render_nodes(nodes):
                 container = ul()
-                for node in nodes:
+                for node in sorted(
+                    nodes,
+                    key=lambda node: (
+                        node["name"].casefold(),
+                        node["name"],
+                        node["iri"],
+                    ),
+                ):
                     node_li = li(
                         a(
                             node["name"],

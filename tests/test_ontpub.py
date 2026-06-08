@@ -147,24 +147,32 @@ def test_metadata(fix_html):
     ), "Metadata section not generated correctly"
 
 
-def test_classes(fix_html):
+def test_classes_hierarchy(fix_html):
     assert (
         de_space_html(
             """
-      <div class="section" id="classes">
-        <h2>Classes</h2>
         <h3 id="class-hierarchy">Class Hierarchy</h3>
         <ul>
+          <li>
+            <a href="#Profile">Profile</a>
+          </li>
           <li>
             <a href="#ResourceDescriptor">Resource Descriptor</a>
           </li>
           <li>
             <a href="#ResourceRole">Resource Role</a>
           </li>
-          <li>
-            <a href="#Profile">Profile</a>
-          </li>
-        </ul>
+        </ul>            
+            """
+        )
+        in de_space_html(fix_html)
+    ), "Classes hierarchy section not generated correctly"
+
+
+def test_classes_definitions(fix_html):
+    assert (
+        de_space_html(
+            """
         <h3 id="class-definitions">Class Definitions</h3>
         <div class="property entity" id="ResourceDescriptor">
           <h3>Resource Descriptor
@@ -326,24 +334,27 @@ def test_classes(fix_html):
               </td>
             </tr>
           </table>
-        </div>
-      </div>        
-        """
+        </div>         
+            """
         )
         in de_space_html(fix_html)
-    ), "Classes section not generated correctly"
+    ), "Classes definitions section not generated correctly"
 
 
-def test_properties(fix_html):
+def test_object_properties_hierarchy(fix_html):
     assert (
         de_space_html(
             """
-      <div class="section" id="objectproperties">
-        <h2>Object Properties</h2>
         <h3 id="object-property-hierarchy">Object Property Hierarchy</h3>
         <ul>
           <li>
             <a href="#hasArtifact">has artifact</a>
+          </li>
+          <li>
+            <a href="#hasResource">has resource</a>
+          </li>
+          <li>
+            <a href="#hasRole">has role</a>
           </li>
           <li>
             <a href="#isInheritedFrom">is inherited from</a>
@@ -356,259 +367,11 @@ def test_properties(fix_html):
               </li>
             </ul>
           </li>
-          <li>
-            <a href="#hasResource">has resource</a>
-          </li>
-          <li>
-            <a href="#hasRole">has role</a>
-          </li>
-        </ul>
-        <h3 id="object-property-definitions">Object Property Definitions</h3>
-        <div class="property entity" id="hasArtifact">
-          <h3>has artifact
-            <sup class="sup-op" title="OWL Object Property">op</sup>
-          </h3>
-          <table>
-            <tr>
-              <th>IRI</th>
-              <td>
-                <code>http://www.w3.org/ns/dx/prof/hasArtifact</code>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
-              </th>
-              <td><p>The URL of a downloadable file with particulars such as its format and role indicated by the Resource Descriptor</p></td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
-              </th>
-              <td>
-                <span>
-                  <a href="#ResourceDescriptor">Resource Descriptor</a>
-                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-                </span>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="property entity" id="isInheritedFrom">
-          <h3>is inherited from
-            <sup class="sup-op" title="OWL Object Property">op</sup>
-          </h3>
-          <table>
-            <tr>
-              <th>IRI</th>
-              <td>
-                <code>http://www.w3.org/ns/dx/prof/isInheritedFrom</code>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
-              </th>
-              <td><p>A base specification, a Resource Descriptor from which is to be considered a Resource Descriptor for this Profile also</p></td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
-              </th>
-              <td>
-                <span>
-                  <a href="#ResourceDescriptor">Resource Descriptor</a>
-                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
-              </th>
-              <td>
-                <span>
-                  <a href="#Profile">Profile</a>
-                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-                </span>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="property entity" id="isProfileOf">
-          <h3>is profile of
-            <sup class="sup-op" title="OWL Object Property">op</sup>
-          </h3>
-          <table>
-            <tr>
-              <th>IRI</th>
-              <td>
-                <code>http://www.w3.org/ns/dx/prof/isProfileOf</code>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
-              </th>
-              <td><p>A specification for which this Profile defines constraints, extensions, or which it uses in combination with other specifications, or provides guidance or explanation about its usage</p></td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
-              </th>
-              <td>
-                <span>
-                  <a href="#isTransitiveProfileOf">is transitive profile of</a>
-                  <sup class="sup-op" title="OWL Object Property">op</sup>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
-              </th>
-              <td>
-                <span>
-                  <a href="#Profile">Profile</a>
-                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
-              </th>
-              <td>
-                <a href="http://purl.org/dc/terms/Standard">Standard</a>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="property entity" id="isTransitiveProfileOf">
-          <h3>is transitive profile of
-            <sup class="sup-op" title="OWL Object Property">op</sup>
-          </h3>
-          <table>
-            <tr>
-              <th>IRI</th>
-              <td>
-                <code>http://www.w3.org/ns/dx/prof/isTransitiveProfileOf</code>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
-              </th>
-              <td><p>The transitive closure of the prof:isProfileOf property. Relates a profile to another specification that it is a profile of, possibly via a chain of intermediate profiles that are in prof:isProfileOf relationships</p></td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
-              </th>
-              <td>
-                <span>
-                  <a href="#isProfileOf">is profile of</a>
-                  <sup class="sup-op" title="OWL Object Property">op</sup>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
-              </th>
-              <td>
-                <span>
-                  <a href="#Profile">Profile</a>
-                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
-              </th>
-              <td>
-                <a href="http://purl.org/dc/terms/Standard">Standard</a>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="property entity" id="hasResource">
-          <h3>has resource
-            <sup class="sup-op" title="OWL Object Property">op</sup>
-          </h3>
-          <table>
-            <tr>
-              <th>IRI</th>
-              <td>
-                <code>http://www.w3.org/ns/dx/prof/hasResource</code>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
-              </th>
-              <td><p>A resource which describes the nature of an artifact and the role it plays in relation to the Profile</p></td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
-              </th>
-              <td>
-                <span>
-                  <a href="#ResourceDescriptor">Resource Descriptor</a>
-                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-                </span>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="property entity" id="hasRole">
-          <h3>has role
-            <sup class="sup-op" title="OWL Object Property">op</sup>
-          </h3>
-          <table>
-            <tr>
-              <th>IRI</th>
-              <td>
-                <code>http://www.w3.org/ns/dx/prof/hasRole</code>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
-              </th>
-              <td><p>The function of an artifact described by a Resource Descriptor, such as specification, guidance etc.</p></td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
-              </th>
-              <td>
-                <span>
-                  <a href="#ResourceDescriptor">Resource Descriptor</a>
-                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
-              </th>
-              <td>
-                <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
-                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-                </span>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </div>        
-        """
+        </ul>            
+            """
         )
         in de_space_html(fix_html)
-    ), "Properties section not generated correctly"
+    ), "Object properties hierarchy section not generated correctly"
 
 
 def test_namespaces(fix_html):
