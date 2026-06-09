@@ -5,14 +5,14 @@
     <style>
         #pylode {
             position: fixed;
-            top: 205px;
-            left: -150px;
+            top: 130px;
+            left: -80px;
             font-size: small;
             transform: rotate(-90deg);
             color: grey;
         }
         #pylode a {
-            font-size: 1.5em;
+            font-size: 2em;
             font-weight: bold;
             text-decoration: none;
             color: #005A9C;
@@ -28,12 +28,6 @@
         }
         #pylode #version {
             font-size: 1.0em;
-        }
-
-        #profile {
-            font-style: italic;
-            font-size: 1.25em;
-            color: darkred!important;
         }
 
         .cardinality {
@@ -56,18 +50,14 @@
             padding-top: 7px;
         }
 
-        ul.pylodelitlist {
+        #metadata ul,
+        #classes ul {
             list-style-type: none;
-            margin-left: -40px;
         }
 
         #metadata ul li,
         #classes ul li {
-            margin-bottom: 10px;
-        }
-
-        #metadata dd p {
-          margin: 0 0 1em 0;
+            margin-left: -40px;
         }
 
         ul.hlist {
@@ -134,10 +124,7 @@
             border-bottom: 1px solid navy;
         }
         h4 { font: bold 100% sans-serif }
-        h5 {
-            font: italic 100% sans-serif;
-            margin-bottom: 10px;
-        }
+        h5 { font: italic 100% sans-serif }
         h6 { font: small-caps 100% sans-serif }
 
         body {
@@ -226,69 +213,97 @@
             text-decoration: none;
         }
 
-        #toc {
-            position: fixed;
-            top: 0;
-            right: 0;
-            z-index: 2;
-            height: 100%;
-            overflow-y: auto;
-            padding: 10px;
-            border: solid 1px navy;
-            font-size: small;
-            width: 180px;
-        }
-        #toc h3 {
-            margin-top: 5px;
-        }
+#toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    height: 100%;
+    overflow-y: auto;
+    padding: 10px;
+    border: solid 1px navy;
+    font-size: small;
+    width: 180px;
+}
+#toc h3 {
+    margin-top: 5px;
+}
 
-        #toc ul {
-            list-style: none;
-            padding-left: 0;
-        }
+#toc ul {
+    list-style: none;
+    padding-left: 0;
+}
 
-        #toc .first > li {
-            margin-top: 5px;
-        }
+#toc .first > li {
+    margin-top: 5px;
+}
 
-        #toc .second,
-        #toc .third {
-            padding-left: 10px;
-        }
+#toc .second,
+#toc .third {
+    padding-left: 10px;
+}
 
-        #content {
-            width: calc(100% - 150px);
-        }
+#content {
+    width: calc(100% - 150px);
+}
 
-        .hover_property {
-            cursor: help;
-            text-decoration: none;
-            border-bottom: dashed 1px;
-        }
+.hover_property {
+    cursor: help;
+    text-decoration: none;
+    border-bottom: dashed 1px;
+}
 
-        .setclass {
-            list-style-type: none;
-        }
+.setclass {
+    list-style-type: none;
+}
 
-        code{
-            word-wrap: break-word;
-          }
-        table {
-            table-layout: fixed;
-            width: 100%;
-        }
-        td {
-            word-wrap: break-word;
-        }
-        #legend table.entity {
-            width: 25%;
-        }
+code{
+    word-wrap: break-word;
+  }
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
+  td {
+    word-wrap: break-word;
+  }
 	</style>
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png">
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png">
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <script id="schema.org" type="application/ld+json">
 [
+  {
+    "@id": "http://linked.data.gov.au/org/abs",
+    "https://schema.org/name": [
+      {
+        "@value": "Australian Bureau of Statistics"
+      }
+    ],
+    "https://schema.org/url": [
+      {
+        "@id": "https://www.abs.gov.au"
+      }
+    ]
+  },
+  {
+    "@id": "https://orcid.org/0000-0002-8742-7730",
+    "https://schema.org/affiliation": [
+      {
+        "@id": "https://surroundaustralia.com"
+      }
+    ],
+    "https://schema.org/email": [
+      {
+        "@id": "mailto:nicholas.car@surroundaustralia.com"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Nicholas J. Car"
+      }
+    ]
+  },
   {
     "@id": "http://linked.data.gov.au/def/asgs",
     "@type": [
@@ -340,19 +355,6 @@
     ]
   },
   {
-    "@id": "http://linked.data.gov.au/org/abs",
-    "https://schema.org/name": [
-      {
-        "@value": "Australian Bureau of Statistics"
-      }
-    ],
-    "https://schema.org/url": [
-      {
-        "@id": "https://www.abs.gov.au"
-      }
-    ]
-  },
-  {
     "@id": "https://orcid.org/0000-0002-3884-3420",
     "https://schema.org/affiliation": [
       {
@@ -367,24 +369,6 @@
     "https://schema.org/name": [
       {
         "@value": "Simon J.D. Cox"
-      }
-    ]
-  },
-  {
-    "@id": "https://orcid.org/0000-0002-8742-7730",
-    "https://schema.org/affiliation": [
-      {
-        "@id": "https://surroundaustralia.com"
-      }
-    ],
-    "https://schema.org/email": [
-      {
-        "@id": "mailto:nicholas.car@surroundaustralia.com"
-      }
-    ],
-    "https://schema.org/name": [
-      {
-        "@value": "Nicholas J. Car"
       }
     ]
   },
@@ -434,9 +418,7 @@
               <a class="hover_property" href="http://purl.org/dc/terms/publisher" title="An entity responsible for making the resource available. Defined in DCMI Metadata Terms">Publisher</a>
             </dt>
             <dd>
-              <span>
-                <a href="https://www.abs.gov.au">Australian Bureau of Statistics</a>
-              </span>
+              <a href="http://linked.data.gov.au/org/abs">ns2:abs</a>
             </dd>
           </div>
           <div>
@@ -444,69 +426,12 @@
               <a class="hover_property" href="http://purl.org/dc/terms/creator" title="An entity responsible for making the resource. Defined in DCMI Metadata Terms">Creator</a>
             </dt>
             <dd>
-              <ul class="pylodelitlist">
+              <ul>
                 <li>
-                  <span>
-                    <span>Simon J.D. Cox</span>
-                    <a href="https://orcid.org/0000-0002-3884-3420">
-                    <svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <title>https://orcid.org/0000-0002-3884-3420</title>
-                        <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
-                                <g id="Group-4">
-                                    <g id="vector_iD_icon" transform="translate(924.000000, 72.000000)">
-                                        <path d="M72,36 C72,55.884375 55.884375,72 36,72 C16.115625,72 0,55.884375 0,36 C0,16.115625 16.115625,0 36,0 C55.884375,0 72,16.115625 72,36 Z" id="Path" fill="#A6CE39"></path>
-                                        <g id="Group" transform="translate(18.868966, 12.910345)" fill="#FFFFFF">
-                                            <polygon id="Path" points="5.03734929 39.1250878 0.695429861 39.1250878 0.695429861 9.14431787 5.03734929 9.14431787 5.03734929 22.6930505 5.03734929 39.1250878"></polygon>
-                                            <path d="M11.409257,9.14431787 L23.1380784,9.14431787 C34.303014,9.14431787 39.2088191,17.0664074 39.2088191,24.1486995 C39.2088191,31.846843 33.1470485,39.1530811 23.1944669,39.1530811 L11.409257,39.1530811 L11.409257,9.14431787 Z M15.7511765,35.2620194 L22.6587756,35.2620194 C32.49858,35.2620194 34.7541226,27.8438084 34.7541226,24.1486995 C34.7541226,18.1301509 30.8915059,13.0353795 22.4332213,13.0353795 L15.7511765,13.0353795 L15.7511765,35.2620194 Z" id="Shape"></path>
-                                            <path d="M5.71401206,2.90182329 C5.71401206,4.441452 4.44526937,5.72914146 2.86638958,5.72914146 C1.28750978,5.72914146 0.0187670918,4.441452 0.0187670918,2.90182329 C0.0187670918,1.33420133 1.28750978,0.0745051096 2.86638958,0.0745051096 C4.44526937,0.0745051096 5.71401206,1.36219458 5.71401206,2.90182329 Z" id="Path"></path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
-                    </svg></a>
-                    <span>(
-                      <a href="mailto:simon.cox@csiro.au">simon.cox@csiro.au</a> )
-                    </span>
-                    <span>
-                      <em> of 
-                        <a href="https://www.csiro.au">CSIRO</a>
-                      </em>
-                    </span>
-                  </span>
+                  <a href="https://orcid.org/0000-0002-3884-3420">ns3:0000-0002-3884-3420</a>
                 </li>
                 <li>
-                  <span>
-                    <span>Laurent Lefort</span>
-                    <a href="https://orcid.org/0000-0002-4305-6085">
-                    <svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <title>https://orcid.org/0000-0002-4305-6085</title>
-                        <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
-                                <g id="Group-4">
-                                    <g id="vector_iD_icon" transform="translate(924.000000, 72.000000)">
-                                        <path d="M72,36 C72,55.884375 55.884375,72 36,72 C16.115625,72 0,55.884375 0,36 C0,16.115625 16.115625,0 36,0 C55.884375,0 72,16.115625 72,36 Z" id="Path" fill="#A6CE39"></path>
-                                        <g id="Group" transform="translate(18.868966, 12.910345)" fill="#FFFFFF">
-                                            <polygon id="Path" points="5.03734929 39.1250878 0.695429861 39.1250878 0.695429861 9.14431787 5.03734929 9.14431787 5.03734929 22.6930505 5.03734929 39.1250878"></polygon>
-                                            <path d="M11.409257,9.14431787 L23.1380784,9.14431787 C34.303014,9.14431787 39.2088191,17.0664074 39.2088191,24.1486995 C39.2088191,31.846843 33.1470485,39.1530811 23.1944669,39.1530811 L11.409257,39.1530811 L11.409257,9.14431787 Z M15.7511765,35.2620194 L22.6587756,35.2620194 C32.49858,35.2620194 34.7541226,27.8438084 34.7541226,24.1486995 C34.7541226,18.1301509 30.8915059,13.0353795 22.4332213,13.0353795 L15.7511765,13.0353795 L15.7511765,35.2620194 Z" id="Shape"></path>
-                                            <path d="M5.71401206,2.90182329 C5.71401206,4.441452 4.44526937,5.72914146 2.86638958,5.72914146 C1.28750978,5.72914146 0.0187670918,4.441452 0.0187670918,2.90182329 C0.0187670918,1.33420133 1.28750978,0.0745051096 2.86638958,0.0745051096 C4.44526937,0.0745051096 5.71401206,1.36219458 5.71401206,2.90182329 Z" id="Path"></path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
-                    </svg></a>
-                    <span>
-                      <em> of 
-                        <a href="https://www.abs.gov.au">Australian Bureau of Statistics</a>
-                      </em>
-                    </span>
-                  </span>
+                  <a href="https://orcid.org/0000-0002-4305-6085">ns3:0000-0002-4305-6085</a>
                 </li>
               </ul>
             </dd>
@@ -516,37 +441,7 @@
               <a class="hover_property" href="http://purl.org/dc/terms/contributor" title="An entity responsible for making contributions to the resource. Defined in DCMI Metadata Terms">Contributor</a>
             </dt>
             <dd>
-              <span>
-                <span>Nicholas J. Car</span>
-                <a href="https://orcid.org/0000-0002-8742-7730">
-                    <svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <title>https://orcid.org/0000-0002-8742-7730</title>
-                        <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
-                                <g id="Group-4">
-                                    <g id="vector_iD_icon" transform="translate(924.000000, 72.000000)">
-                                        <path d="M72,36 C72,55.884375 55.884375,72 36,72 C16.115625,72 0,55.884375 0,36 C0,16.115625 16.115625,0 36,0 C55.884375,0 72,16.115625 72,36 Z" id="Path" fill="#A6CE39"></path>
-                                        <g id="Group" transform="translate(18.868966, 12.910345)" fill="#FFFFFF">
-                                            <polygon id="Path" points="5.03734929 39.1250878 0.695429861 39.1250878 0.695429861 9.14431787 5.03734929 9.14431787 5.03734929 22.6930505 5.03734929 39.1250878"></polygon>
-                                            <path d="M11.409257,9.14431787 L23.1380784,9.14431787 C34.303014,9.14431787 39.2088191,17.0664074 39.2088191,24.1486995 C39.2088191,31.846843 33.1470485,39.1530811 23.1944669,39.1530811 L11.409257,39.1530811 L11.409257,9.14431787 Z M15.7511765,35.2620194 L22.6587756,35.2620194 C32.49858,35.2620194 34.7541226,27.8438084 34.7541226,24.1486995 C34.7541226,18.1301509 30.8915059,13.0353795 22.4332213,13.0353795 L15.7511765,13.0353795 L15.7511765,35.2620194 Z" id="Shape"></path>
-                                            <path d="M5.71401206,2.90182329 C5.71401206,4.441452 4.44526937,5.72914146 2.86638958,5.72914146 C1.28750978,5.72914146 0.0187670918,4.441452 0.0187670918,2.90182329 C0.0187670918,1.33420133 1.28750978,0.0745051096 2.86638958,0.0745051096 C4.44526937,0.0745051096 5.71401206,1.36219458 5.71401206,2.90182329 Z" id="Path"></path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
-                    </svg></a>
-                <span>(
-                  <a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a> )
-                </span>
-                <span>
-                  <em> of 
-                    <a href="https://surroundaustralia.com">SURROUND Australia Pty Ltd</a>
-                  </em>
-                </span>
-              </span>
+              <a href="https://orcid.org/0000-0002-8742-7730">ns3:0000-0002-8742-7730</a>
             </dd>
           </div>
           <div>
@@ -572,7 +467,7 @@
               <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
             </dt>
             <dd>
-              <a href="https://www.abs.gov.au/websitedbs/D3310114.nsf/home/Australian+Statistical+Geography+Standard+(ASGS)">https://www.abs.gov.au/websitedbs/D3310114.nsf/home/Australian+Statistical+Geography+Standard+(ASGS)</a>
+              <a href="https://www.abs.gov.au/websitedbs/D3310114.nsf/home/Australian+Statistical+Geography+Standard+(ASGS)">ns4:ASGS)</a>
             </dd>
           </div>
           <div>
@@ -601,7 +496,7 @@
 <p>The publication of the ASGS ontology is part of the Australian Bureau of Statistics contribution to a joint effort to publish authoritative, interconnected spatial products (Location Index project).</p>
 <p>The ASGS Ontology is packaged in multiple graphs:</p>
 <ul>
-	<li>http://linked.data.gov.au/def/asgs (this graph) contains the core classes for ASGS statistical units, and a small number of properties relating to their identity, classification, and containment hierarchy</li>
+    <li>http://linked.data.gov.au/def/asgs (this graph) contains the core classes for ASGS statistical units, and a small number of properties relating to their identity, classification, and containment hierarchy</li>
   <li>http://linked.data.gov.au/def/asgs-cat contains the meshblock classification scheme</li>
   <li>http://linked.data.gov.au/def/asgs-id contains specialised string types for identifiers and labels</li>
   <li>http://linked.data.gov.au/def/asgs-path contains association classes and properties relating to paths between instances of the core classes</li>
@@ -610,113 +505,10 @@
   <li>http://linked.data.gov.au/def/asgs-prop (deprecated) contains specialised ASGS properties for relationships, classifiers, identifiers and labels - this functionality has been superseded by use of types from standardized RDF vocabularies</li>
 </u></dd>
           </div>
-          <div>
-            <dt>
-              <a class="hover_property" href="http://www.w3.org/2002/07/owl#imports" title="The property that is used for importing other ontologies into a given ontology. Defined in The OWL 2 Schema vocabulary (OWL 2)">Imports</a>
-            </dt>
-            <dd>
-              <a href="http://www.opengis.net/ont/geosparql">http://www.opengis.net/ont/geosparql</a>
-            </dd>
-          </div>
-          <div>
-            <dt>
-              <a class="hover_property" href="https://schema.org/codeRepository" title="Link to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex). Defined in None">Coderepository</a>
-            </dt>
-            <dd>
-              <a href="https://github.com/AGLDWG/asgs-ont/">https://github.com/AGLDWG/asgs-ont/</a>
-            </dd>
-          </div>
         </dl>
       </div>
       <div class="section" id="classes">
         <h2>Classes</h2>
-        <h3 id="class-hierarchy">Class Hierarchy</h3>
-        <ul>
-          <li>
-            <a href="#Feature">ASGS Feature</a>
-            <ul>
-              <li>
-                <a href="#AustralianDrainageDivision">Australian Drainage Division</a>
-              </li>
-              <li>
-                <a href="#CommonwealthElectoralDivision">Commonwealth Electoral Division</a>
-              </li>
-              <li>
-                <a href="#Country">Country</a>
-              </li>
-              <li>
-                <a href="#DestinationZone">DestinationZone</a>
-              </li>
-              <li>
-                <a href="#GreaterCapitalCityStatisticalArea">Greater Capital City Statistical Area</a>
-              </li>
-              <li>
-                <a href="#IndigenousArea">Indigenous Area</a>
-              </li>
-              <li>
-                <a href="#IndigenousLocation">Indigenous Location</a>
-              </li>
-              <li>
-                <a href="#IndigenousRegion">Indigenous Region</a>
-              </li>
-              <li>
-                <a href="#LocalGovernmentArea">Local Government Area</a>
-              </li>
-              <li>
-                <a href="#MeshBlock">Mesh Block</a>
-              </li>
-              <li>
-                <a href="#NaturalResourceManagementRegion">Natural Resource Management Region</a>
-              </li>
-              <li>
-                <a href="#PostalArea">Postal area</a>
-              </li>
-              <li>
-                <a href="#RemotenessArea">Remoteness Area</a>
-              </li>
-              <li>
-                <a href="#SectionOfState">Section of State</a>
-              </li>
-              <li>
-                <a href="#SectionOfStateRange">Section of State Range</a>
-              </li>
-              <li>
-                <a href="#SignificantUrbanArea">Significant Urban Area</a>
-              </li>
-              <li>
-                <a href="#StateElectoralDivision">State Electoral Division</a>
-              </li>
-              <li>
-                <a href="#StateSuburb">State Suburb</a>
-              </li>
-              <li>
-                <a href="#StateOrTerritory">StateOrTerritory</a>
-              </li>
-              <li>
-                <a href="#StatisticalAreaLevel1">Statistical Area Level 1</a>
-              </li>
-              <li>
-                <a href="#StatisticalAreaLevel2">Statistical Area Level 2</a>
-              </li>
-              <li>
-                <a href="#StatisticalAreaLevel3">Statistical Area Level 3</a>
-              </li>
-              <li>
-                <a href="#StatisticalAreaLevel4">Statistical Area Level 4</a>
-              </li>
-              <li>
-                <a href="#TourismRegion">Tourism Region</a>
-              </li>
-              <li>
-                <a href="#UrbanCentreAndLocality">UrbanCentreAndLocality</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#MeshblockCategory">Meshblock category</a>
-          </li>
-        </ul>
-        <h3 id="class-definitions">Class Definitions</h3>
         <div class="property entity" id="AustralianDrainageDivision">
           <h3>Australian Drainage Division
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
@@ -733,7 +525,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -748,7 +540,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -764,10 +556,6 @@
                     <span>
                       <span class="cardinality">min</span>
                       <span>1</span>
-                    </span>
-                    <span>
-                      <a href="#MeshBlock">Mesh Block</a>
-                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span><br>
                   </span>
                 </span>
@@ -791,7 +579,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -806,7 +594,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -816,7 +604,7 @@
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul class="pylodelitlist">
+                <ul>
                   <li>
                     <span>
                       <span>
@@ -824,10 +612,6 @@
                         <span>
                           <span class="cardinality">min</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#StatisticalAreaLevel1">Statistical Area Level 1</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -839,10 +623,6 @@
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#StateOrTerritory">StateOrTerritory</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -868,7 +648,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -876,7 +656,7 @@
                 <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
               </th>
               <td>
-                <ul class="pylodelitlist">
+                <ul>
                   <li><p>Australia (AUS) represents the geographic extent of Australia. This is set out in section 2B of the Acts Interpretation Act 1901 which currently defines Australia or the Commonwealth as meaning:Ã¢â‚¬ËœÃ¢â‚¬Â¦the Commonwealth of Australia and when used in a geographical sense includes Norfolk Island the Territory of Christmas Island and the Territory of Cocos (Keeling) Islands but does not include any other external TerritoryÃ¢â‚¬â„¢.Prior to 2016 Norfolk Island was not included in the ASGS. However in line with Australian Government announced reforms to the governance of Norfolk Island and its inclusion into the definition of Geographic Australia the Territory of Norfolk Island was included in the 2016 ASGS. An additional code (Outside Australia) has also been added to represent areas not covered by Geographical Australia</p></li>
                   <li><p>Australia (AUS) represents the geographic extent of Australia. This is set out in section 2B of the Acts Interpretation Act 1901 which currently defines Australia or the Commonwealth as meaning:â€˜â€¦the Commonwealth of Australia and when used in a geographical sense includes Norfolk Island the Territory of Christmas Island and the Territory of Cocos (Keeling) Islands but does not include any other external Territoryâ€™.Prior to 2016 Norfolk Island was not included in the ASGS. However in line with Australian Government announced reforms to the governance of Norfolk Island and its inclusion into the definition of Geographic Australia the Territory of Norfolk Island was included in the 2016 ASGS. An additional code (Outside Australia) has also been added to represent areas not covered by Geographical Australia</p></li>
                 </ul>
@@ -888,7 +668,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -911,7 +691,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -926,7 +706,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -936,7 +716,7 @@
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul class="pylodelitlist">
+                <ul>
                   <li>
                     <span>
                       <span>
@@ -944,10 +724,6 @@
                         <span>
                           <span class="cardinality">min</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#MeshBlock">Mesh Block</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -959,10 +735,6 @@
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#StatisticalAreaLevel2">Statistical Area Level 2</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -988,7 +760,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -997,8 +769,8 @@
               </th>
               <td><p>Super-class for all ABS Structures and Non-ABS Structures. Use</p>
 <ul>
-<li>dcterms:identifier for the code, with a suitable datatype from <a href="http://linked.data.gov.au/def/asgs-id">ASGS-id</a></li>
-<li>rdfs:label for the name, with a suitable datatype from <a href="http://linked.data.gov.au/def/asgs-id">ASGS-id</a></li>
+<li>dcterms:identifier for the code, with a suitable datatype from <a href='http://linked.data.gov.au/def/asgs-id'>ASGS-id</a></li>
+<li>rdfs:label for the name, with a suitable datatype from <a href='http://linked.data.gov.au/def/asgs-id'>ASGS-id</a></li>
 <li>geo:sfWithin, geo:sfContains for containment and nesting relations</li>
 </ul></td>
             </tr>
@@ -1015,154 +787,154 @@
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul class="pylodelitlist">
+                <ul>
                   <li>
                     <span>
-                      <a href="#AustralianDrainageDivision">Australian Drainage Division</a>
+                      <a href="#AustralianDrainageDivision">asgs:AustralianDrainageDivision</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#CommonwealthElectoralDivision">Commonwealth Electoral Division</a>
+                      <a href="#CommonwealthElectoralDivision">asgs:CommonwealthElectoralDivision</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#Country">Country</a>
+                      <a href="#Country">asgs:Country</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#DestinationZone">DestinationZone</a>
+                      <a href="#DestinationZone">asgs:DestinationZone</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#GreaterCapitalCityStatisticalArea">Greater Capital City Statistical Area</a>
+                      <a href="#GreaterCapitalCityStatisticalArea">asgs:GreaterCapitalCityStatisticalArea</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#IndigenousArea">Indigenous Area</a>
+                      <a href="#IndigenousArea">asgs:IndigenousArea</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#IndigenousLocation">Indigenous Location</a>
+                      <a href="#IndigenousLocation">asgs:IndigenousLocation</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#IndigenousRegion">Indigenous Region</a>
+                      <a href="#IndigenousRegion">asgs:IndigenousRegion</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#LocalGovernmentArea">Local Government Area</a>
+                      <a href="#LocalGovernmentArea">asgs:LocalGovernmentArea</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#MeshBlock">Mesh Block</a>
+                      <a href="#MeshBlock">asgs:MeshBlock</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#NaturalResourceManagementRegion">Natural Resource Management Region</a>
+                      <a href="#NaturalResourceManagementRegion">asgs:NaturalResourceManagementRegion</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#PostalArea">Postal area</a>
+                      <a href="#PostalArea">asgs:PostalArea</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#RemotenessArea">Remoteness Area</a>
+                      <a href="#RemotenessArea">asgs:RemotenessArea</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#SectionOfState">Section of State</a>
+                      <a href="#SectionOfState">asgs:SectionOfState</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#SectionOfStateRange">Section of State Range</a>
+                      <a href="#SectionOfStateRange">asgs:SectionOfStateRange</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#SignificantUrbanArea">Significant Urban Area</a>
+                      <a href="#SignificantUrbanArea">asgs:SignificantUrbanArea</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#StateElectoralDivision">State Electoral Division</a>
+                      <a href="#StateElectoralDivision">asgs:StateElectoralDivision</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#StateOrTerritory">StateOrTerritory</a>
+                      <a href="#StateOrTerritory">asgs:StateOrTerritory</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#StateSuburb">State Suburb</a>
+                      <a href="#StateSuburb">asgs:StateSuburb</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#StatisticalAreaLevel1">Statistical Area Level 1</a>
+                      <a href="#StatisticalAreaLevel1">asgs:StatisticalAreaLevel1</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#StatisticalAreaLevel2">Statistical Area Level 2</a>
+                      <a href="#StatisticalAreaLevel2">asgs:StatisticalAreaLevel2</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#StatisticalAreaLevel3">Statistical Area Level 3</a>
+                      <a href="#StatisticalAreaLevel3">asgs:StatisticalAreaLevel3</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#StatisticalAreaLevel4">Statistical Area Level 4</a>
+                      <a href="#StatisticalAreaLevel4">asgs:StatisticalAreaLevel4</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#TourismRegion">Tourism Region</a>
+                      <a href="#TourismRegion">asgs:TourismRegion</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#UrbanCentreAndLocality">UrbanCentreAndLocality</a>
+                      <a href="#UrbanCentreAndLocality">asgs:UrbanCentreAndLocality</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1187,7 +959,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -1202,7 +974,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1218,10 +990,6 @@
                     <span>
                       <span class="cardinality">exactly</span>
                       <span>1</span>
-                    </span>
-                    <span>
-                      <a href="#StateOrTerritory">StateOrTerritory</a>
-                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span><br>
                   </span>
                 </span>
@@ -1245,7 +1013,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -1260,7 +1028,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1276,10 +1044,6 @@
                     <span>
                       <span class="cardinality">exactly</span>
                       <span>1</span>
-                    </span>
-                    <span>
-                      <a href="#IndigenousRegion">Indigenous Region</a>
-                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span><br>
                   </span>
                 </span>
@@ -1303,7 +1067,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -1318,7 +1082,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1334,10 +1098,6 @@
                     <span>
                       <span class="cardinality">exactly</span>
                       <span>1</span>
-                    </span>
-                    <span>
-                      <a href="#IndigenousArea">Indigenous Area</a>
-                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span><br>
                   </span>
                 </span>
@@ -1361,7 +1121,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -1376,7 +1136,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1392,10 +1152,6 @@
                     <span>
                       <span class="cardinality">exactly</span>
                       <span>1</span>
-                    </span>
-                    <span>
-                      <a href="#StateOrTerritory">StateOrTerritory</a>
-                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span><br>
                   </span>
                 </span>
@@ -1419,7 +1175,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -1427,7 +1183,7 @@
                 <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
               </th>
               <td>
-                <ul class="pylodelitlist">
+                <ul>
                   <li><p>Local Government Areas (LGAs) are an ABS approximation of gazetted local government boundaries as defined by each State and Territory Local Government Department. LGAs cover incorporated areas of Australia. Incorporated areas are legally designated parts of a State or Territory over which incorporated local governing bodies have responsibility. The major areas of Australia not administered by incorporated bodies are the northern parts of South Australia and all of the Australian Capital Territory and the Other Territories. These regions are identified as Ã¢â‚¬ËœUnincorporatedÃ¢â‚¬â„¢ in the Australian Statistical Geography Standard (ASGS) LGA structure. A small number of LGA boundaries and names change each year and the ABS LGAs are updated on an annual basis to reflect these changes. LGAs are approximated using whole Mesh Blocks (MBs). In aggregation LGAs cover Australia without gaps or overlaps. The LGAs are Non ABS Structures within the ASGS. These are mostly administrative areas which are not defined or maintained by the ABS but for which the ABS is committed to providing a range of statistics.</p></li>
                   <li><p>Local Government Areas (LGAs) are an ABS approximation of gazetted local government boundaries as defined by each State and Territory Local Government Department. LGAs cover incorporated areas of Australia. Incorporated areas are legally designated parts of a State or Territory over which incorporated local governing bodies have responsibility. The major areas of Australia not administered by incorporated bodies are the northern parts of South Australia and all of the Australian Capital Territory and the Other Territories. These regions are identified as â€˜Unincorporatedâ€™ in the Australian Statistical Geography Standard (ASGS) LGA structure. A small number of LGA boundaries and names change each year and the ABS LGAs are updated on an annual basis to reflect these changes. LGAs are approximated using whole Mesh Blocks (MBs). In aggregation LGAs cover Australia without gaps or overlaps. The LGAs are Non ABS Structures within the ASGS. These are mostly administrative areas which are not defined or maintained by the ABS but for which the ABS is committed to providing a range of statistics.</p></li>
                 </ul>
@@ -1439,7 +1195,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1449,7 +1205,7 @@
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul class="pylodelitlist">
+                <ul>
                   <li>
                     <span>
                       <span>
@@ -1457,10 +1213,6 @@
                         <span>
                           <span class="cardinality">min</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#MeshBlock">Mesh Block</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -1472,10 +1224,6 @@
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#StateOrTerritory">StateOrTerritory</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -1501,7 +1249,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -1516,7 +1264,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1526,21 +1274,17 @@
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul class="pylodelitlist">
+                <ul>
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/dc/terms/type">Type</a>
+                          <a href="http://purl.org/dc/terms/type">dcterms:type</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#MeshblockCategory">Meshblock category</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -1552,10 +1296,6 @@
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#StatisticalAreaLevel1">Statistical Area Level 1</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -1565,7 +1305,7 @@
             </tr>
           </table>
         </div>
-        <div class="property entity" id="MeshblockCategory">
+        <div class="property entity" id="Meshblockcategory">
           <h3>Meshblock category
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -1588,7 +1328,7 @@
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1611,7 +1351,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -1626,7 +1366,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1636,7 +1376,7 @@
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul class="pylodelitlist">
+                <ul>
                   <li>
                     <span>
                       <span>
@@ -1644,10 +1384,6 @@
                         <span>
                           <span class="cardinality">min</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#MeshBlock">Mesh Block</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -1659,10 +1395,6 @@
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#StateOrTerritory">StateOrTerritory</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -1688,7 +1420,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -1703,7 +1435,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1719,10 +1451,6 @@
                     <span>
                       <span class="cardinality">min</span>
                       <span>1</span>
-                    </span>
-                    <span>
-                      <a href="#MeshBlock">Mesh Block</a>
-                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span><br>
                   </span>
                 </span>
@@ -1746,7 +1474,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -1761,7 +1489,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1777,10 +1505,6 @@
                     <span>
                       <span class="cardinality">exactly</span>
                       <span>1</span>
-                    </span>
-                    <span>
-                      <a href="#StateOrTerritory">StateOrTerritory</a>
-                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span><br>
                   </span>
                 </span>
@@ -1804,7 +1528,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -1819,7 +1543,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1835,10 +1559,6 @@
                     <span>
                       <span class="cardinality">exactly</span>
                       <span>1</span>
-                    </span>
-                    <span>
-                      <a href="#StateOrTerritory">StateOrTerritory</a>
-                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span><br>
                   </span>
                 </span>
@@ -1862,7 +1582,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -1877,7 +1597,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1893,10 +1613,6 @@
                     <span>
                       <span class="cardinality">exactly</span>
                       <span>1</span>
-                    </span>
-                    <span>
-                      <a href="#SectionOfState">Section of State</a>
-                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span><br>
                   </span>
                 </span>
@@ -1920,7 +1636,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -1935,7 +1651,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1958,7 +1674,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -1973,7 +1689,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1983,7 +1699,7 @@
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul class="pylodelitlist">
+                <ul>
                   <li>
                     <span>
                       <span>
@@ -1991,10 +1707,6 @@
                         <span>
                           <span class="cardinality">min</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#StatisticalAreaLevel1">Statistical Area Level 1</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -2006,10 +1718,6 @@
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#StateOrTerritory">StateOrTerritory</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -2035,7 +1743,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -2050,7 +1758,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2066,10 +1774,6 @@
                     <span>
                       <span class="cardinality">exactly</span>
                       <span>1</span>
-                    </span>
-                    <span>
-                      <a href="#Country">Country</a>
-                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span><br>
                   </span>
                 </span>
@@ -2093,7 +1797,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -2108,7 +1812,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2118,7 +1822,7 @@
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul class="pylodelitlist">
+                <ul>
                   <li>
                     <span>
                       <span>
@@ -2126,10 +1830,6 @@
                         <span>
                           <span class="cardinality">min</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#MeshBlock">Mesh Block</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -2141,10 +1841,6 @@
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#StateOrTerritory">StateOrTerritory</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -2170,7 +1866,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -2185,7 +1881,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2195,7 +1891,7 @@
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul class="pylodelitlist">
+                <ul>
                   <li>
                     <span>
                       <span>
@@ -2203,10 +1899,6 @@
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#StatisticalAreaLevel2">Statistical Area Level 2</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -2218,10 +1910,6 @@
                         <span>
                           <span class="cardinality">max</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#IndigenousLocation">Indigenous Location</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -2233,10 +1921,6 @@
                         <span>
                           <span class="cardinality">max</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#RemotenessArea">Remoteness Area</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -2248,10 +1932,6 @@
                         <span>
                           <span class="cardinality">max</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#UrbanCentreAndLocality">UrbanCentreAndLocality</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -2277,7 +1957,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -2292,7 +1972,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2302,7 +1982,7 @@
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul class="pylodelitlist">
+                <ul>
                   <li>
                     <span>
                       <span>
@@ -2310,10 +1990,6 @@
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#StatisticalAreaLevel3">Statistical Area Level 3</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -2325,10 +2001,6 @@
                         <span>
                           <span class="cardinality">max</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#SignificantUrbanArea">Significant Urban Area</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -2354,7 +2026,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -2369,7 +2041,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2385,10 +2057,6 @@
                     <span>
                       <span class="cardinality">exactly</span>
                       <span>1</span>
-                    </span>
-                    <span>
-                      <a href="#StatisticalAreaLevel4">Statistical Area Level 4</a>
-                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span><br>
                   </span>
                 </span>
@@ -2412,7 +2080,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -2427,7 +2095,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2437,7 +2105,7 @@
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul class="pylodelitlist">
+                <ul>
                   <li>
                     <span>
                       <span>
@@ -2445,10 +2113,6 @@
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#StateOrTerritory">StateOrTerritory</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -2460,10 +2124,6 @@
                         <span>
                           <span class="cardinality">max</span>
                           <span>1</span>
-                        </span>
-                        <span>
-                          <a href="#GreaterCapitalCityStatisticalArea">Greater Capital City Statistical Area</a>
-                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -2489,7 +2149,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -2504,7 +2164,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2520,10 +2180,6 @@
                     <span>
                       <span class="cardinality">min</span>
                       <span>1</span>
-                    </span>
-                    <span>
-                      <a href="#StatisticalAreaLevel2">Statistical Area Level 2</a>
-                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span><br>
                   </span>
                 </span>
@@ -2547,7 +2203,7 @@
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#asgs">ASGS Ontology</a>
+                <a href="#asgs">ns1:asgs</a>
               </td>
             </tr>
             <tr>
@@ -2562,7 +2218,7 @@
               </th>
               <td>
                 <span>
-                  <a href="#Feature">ASGS Feature</a>
+                  <a href="#Feature">asgs:Feature</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2578,10 +2234,6 @@
                     <span>
                       <span class="cardinality">exactly</span>
                       <span>1</span>
-                    </span>
-                    <span>
-                      <a href="#SectionOfStateRange">Section of State Range</a>
-                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span><br>
                   </span>
                 </span>
@@ -2592,13 +2244,6 @@
       </div>
       <div class="section" id="objectproperties">
         <h2>Object Properties</h2>
-        <h3 id="object-property-hierarchy">Object Property Hierarchy</h3>
-        <ul>
-          <li>
-            <a href="#type">None</a>
-          </li>
-        </ul>
-        <h3 id="object-property-definitions">Object Property Definitions</h3>
         <div class="property entity" id="type">
           <h3>type
             <sup class="sup-op" title="OWL Object Property">op</sup>
@@ -2788,25 +2433,13 @@
           </table>
         </div>
       </div>
-      <div class="section" id="datatypes">
-        <h2>Custom Datatypes</h2>
-        <div class="property entity" id="HTML">
-          <h3>Html
-            <sup class="sup-dt" title="RDFS Datatypes">dt</sup>
-          </h3>
-          <table>
-            <tr>
-              <th>IRI</th>
-              <td>
-                <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML</code>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </div>
       <div id="namespaces">
         <h2>Namespaces</h2>
         <dl>
+          <dt id=":">:</dt>
+          <dd>
+            <code>http://linked.data.gov.au/def/asgs#</code>
+          </dd>
           <dt id="asgs">asgs</dt>
           <dd>
             <code>http://linked.data.gov.au/def/asgs#</code>
@@ -2823,6 +2456,18 @@
           <dd>
             <code>http://linked.data.gov.au/def/</code>
           </dd>
+          <dt id="ns2">ns2</dt>
+          <dd>
+            <code>http://linked.data.gov.au/org/</code>
+          </dd>
+          <dt id="ns3">ns3</dt>
+          <dd>
+            <code>https://orcid.org/</code>
+          </dd>
+          <dt id="ns4">ns4</dt>
+          <dd>
+            <code>https://www.abs.gov.au/websitedbs/D3310114.nsf/home/Australian+Statistical+Geography+Standard+(</code>
+          </dd>
           <dt id="owl">owl</dt>
           <dd>
             <code>http://www.w3.org/2002/07/owl#</code>
@@ -2838,6 +2483,10 @@
           <dt id="rdfs">rdfs</dt>
           <dd>
             <code>http://www.w3.org/2000/01/rdf-schema#</code>
+          </dd>
+          <dt id="schema">schema</dt>
+          <dd>
+            <code>https://schema.org/</code>
           </dd>
           <dt id="sdo">sdo</dt>
           <dd>
@@ -2886,10 +2535,7 @@
           <span id="y">y</span>
           <span>LODE</span>
         </a>
-        <a href="https://github.com/rdflib/pyLODE/release/3.4.5a0" id="version">3.4.5a0</a>
-        <span> with the </span>
-        <a href="https://linked.data.gov.au/def/ontpub" id="profile">OntPub</a>
-        <span>profile</span>
+        <a href="https://github.com/rdflib/pyLODE/release/3.0.2" id="version">3.0.2</a>
       </p>
     </div>
     <div id="toc">
@@ -2904,92 +2550,86 @@
           <h4>
             <a href="#classes">Classes</a>
           </h4>
-          <h5>
-            <a href="#class-hierarchy" style="margin-left:10px;">Class Hierarchy</a>
-          </h5>
-          <h5>
-            <a href="#class-definitions" style="margin-left:10px;">Class Definitions</a>
-          </h5>
           <ul class="second">
-            <li style="margin-left:10px;">
+            <li>
               <a href="#AustralianDrainageDivision">Australian Drainage Division</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#CommonwealthElectoralDivision">Commonwealth Electoral Division</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#Country">Country</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#DestinationZone">DestinationZone</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#Feature">ASGS Feature</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#GreaterCapitalCityStatisticalArea">Greater Capital City Statistical Area</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#IndigenousArea">Indigenous Area</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#IndigenousLocation">Indigenous Location</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#IndigenousRegion">Indigenous Region</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#LocalGovernmentArea">Local Government Area</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#MeshBlock">Mesh Block</a>
             </li>
-            <li style="margin-left:10px;">
-              <a href="#MeshblockCategory">Meshblock category</a>
+            <li>
+              <a href="#Meshblockcategory">Meshblock category</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#NaturalResourceManagementRegion">Natural Resource Management Region</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#PostalArea">Postal area</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#RemotenessArea">Remoteness Area</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#SectionOfState">Section of State</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#SectionOfStateRange">Section of State Range</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#SignificantUrbanArea">Significant Urban Area</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#StateElectoralDivision">State Electoral Division</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#StateOrTerritory">StateOrTerritory</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#StateSuburb">State Suburb</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#StatisticalAreaLevel1">Statistical Area Level 1</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#StatisticalAreaLevel2">Statistical Area Level 2</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#StatisticalAreaLevel3">Statistical Area Level 3</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#StatisticalAreaLevel4">Statistical Area Level 4</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#TourismRegion">Tourism Region</a>
             </li>
-            <li style="margin-left:10px;">
+            <li>
               <a href="#UrbanCentreAndLocality">UrbanCentreAndLocality</a>
             </li>
           </ul>
@@ -2998,14 +2638,8 @@
           <h4>
             <a href="#objectproperties">Object Properties</a>
           </h4>
-          <h5>
-            <a href="#object-property-hierarchy" style="margin-left:10px;">Object Property Hierarchy</a>
-          </h5>
-          <h5>
-            <a href="#object-property-definitions" style="margin-left:10px;">Object Property Definitions</a>
-          </h5>
           <ul class="second">
-            <li style="margin-left:10px;">
+            <li>
               <a href="#type">type</a>
             </li>
           </ul>
@@ -3065,19 +2699,12 @@
         </li>
         <li>
           <h4>
-            <a href="#datatypes">Custom Datatypes</a>
-          </h4>
-          <ul class="second">
-            <li>
-              <a href="#HTML">Html</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <h4>
             <a href="#namespaces">Namespaces</a>
           </h4>
           <ul class="second">
+            <li>
+              <a href="#"></a>
+            </li>
             <li>
               <a href="#asgs">asgs</a>
             </li>
@@ -3091,6 +2718,15 @@
               <a href="#ns1">ns1</a>
             </li>
             <li>
+              <a href="#ns2">ns2</a>
+            </li>
+            <li>
+              <a href="#ns3">ns3</a>
+            </li>
+            <li>
+              <a href="#ns4">ns4</a>
+            </li>
+            <li>
               <a href="#owl">owl</a>
             </li>
             <li>
@@ -3101,6 +2737,9 @@
             </li>
             <li>
               <a href="#rdfs">rdfs</a>
+            </li>
+            <li>
+              <a href="#schema">schema</a>
             </li>
             <li>
               <a href="#sdo">sdo</a>
