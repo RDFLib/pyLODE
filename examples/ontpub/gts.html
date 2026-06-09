@@ -1,0 +1,4111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geologic Timescale model</title>
+    <style>
+        #pylode {
+            position: fixed;
+            top: 205px;
+            left: -150px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+        #pylode #p {
+            color: #329545;
+        }
+        #pylode #y {
+            color: #f9cb33;
+        }
+        #pylode #version {
+            font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dl {
+            /*border: 1px solid navy;*/
+            /*padding:5px;*/
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 0;
+        }
+
+        dd {
+            margin-bottom: 10px;
+            padding-top: 7px;
+        }
+
+        ul.pylodelitlist {
+            list-style-type: none;
+            margin-left: -40px;
+        }
+
+        #metadata ul li,
+        #classes ul li {
+            margin-bottom: 10px;
+        }
+
+        #metadata dd p {
+          margin: 0 0 1em 0;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 {
+            font: italic 100% sans-serif;
+            margin-bottom: 10px;
+        }
+        h6 { font: small-caps 100% sans-serif }
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: left;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-con,
+        .sup-col {
+            cursor:help;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-con {
+            color:orange;
+        }
+
+        .sup-col {
+            color:darkred;
+        }
+
+        sup {
+            margin-left: -3px;
+        }
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+
+        #toc {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            padding: 10px;
+            border: solid 1px navy;
+            font-size: small;
+            width: 180px;
+        }
+        #toc h3 {
+            margin-top: 5px;
+        }
+
+        #toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #toc .first > li {
+            margin-top: 5px;
+        }
+
+        #toc .second,
+        #toc .third {
+            padding-left: 10px;
+        }
+
+        #content {
+            width: calc(100% - 150px);
+        }
+
+        .hover_property {
+            cursor: help;
+            text-decoration: none;
+            border-bottom: dashed 1px;
+        }
+
+        .setclass {
+            list-style-type: none;
+        }
+
+        code{
+            word-wrap: break-word;
+          }
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        td {
+            word-wrap: break-word;
+        }
+        #legend table.entity {
+            width: 25%;
+        }
+	</style>
+    <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png">
+    <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <script id="schema.org" type="application/ld+json">
+[
+  {
+    "@id": "http://resource.geosciml.org/ontology/timescale/gts",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/contributor": [
+      {
+        "@id": "https://orcid.org/0000-0001-6041-5302"
+      }
+    ],
+    "https://schema.org/copyrightNotice": [
+      {
+        "@value": "Copyright 2012-2020 CSIRO"
+      }
+    ],
+    "https://schema.org/creator": [
+      {
+        "@id": "https://orcid.org/0000-0002-3884-3420"
+      }
+    ],
+    "https://schema.org/dateCreated": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2011-01-01"
+      }
+    ],
+    "https://schema.org/dateModified": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2020-05-31"
+      }
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "This is an RDF/OWL representation of the GeoSciML Geologic Timescale model, which has been adapted from the model described in Cox, S.J.D, & Richard, S.M. (2005) A formal model for the geologic timescale and GSSP, compatible with geospatial information transfer standards, Geosphere, Geological Society of America 1/3, 119–137.\n\nThe permitted nesting relationships between eras of different ranks are axiomatized as local constraints using interval relationships from OWL-Time. "
+      }
+    ],
+    "https://schema.org/license": [
+      {
+        "@id": "https://creativecommons.org/publicdomain/zero/1.0/"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Geologic Timescale model"
+      }
+    ]
+  },
+  {
+    "@id": "https://orcid.org/0000-0002-3884-3420",
+    "https://schema.org/affiliation": [
+      {
+        "@id": "_:n8800bfbda69c4947a7c2908a63385f5cb188"
+      }
+    ],
+    "https://schema.org/email": [
+      {
+        "@id": "mailto:simon.cox@csiro.au"
+      }
+    ],
+    "https://schema.org/identifier": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
+        "@value": "https://orcid.org/0000-0002-3884-3420"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@language": "en",
+        "@value": "Simon J D Cox"
+      }
+    ]
+  },
+  {
+    "@id": "_:n8800bfbda69c4947a7c2908a63385f5cb188"
+  },
+  {
+    "@id": "https://orcid.org/0000-0001-6041-5302",
+    "https://schema.org/email": [
+      {
+        "@id": "mailto:smrTucson@gmail.com"
+      }
+    ],
+    "https://schema.org/identifier": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
+        "@value": "https://orcid.org/0000-0001-6041-5302"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@language": "en",
+        "@value": "Stephen M Richard"
+      }
+    ]
+  }
+]
+	</script>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section" id="metadata">
+        <h1>Geologic Timescale model</h1>
+        <h2>Metadata</h2>
+        <dl>
+          <div>
+            <dt>
+              <strong>IRI</strong>
+            </dt>
+            <dd>
+              <code>http://resource.geosciml.org/ontology/timescale/gts</code>
+            </dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/dc/terms/title" title="A name given to the resource. Defined in DCMI Metadata Terms">Title</a>
+            </dt>
+            <dd><p>Geologic Timescale model</p></dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/dc/terms/creator" title="An entity responsible for making the resource. Defined in DCMI Metadata Terms">Creator</a>
+            </dt>
+            <dd>
+              <span>
+                <span>Simon J D Cox</span>
+                <a href="https://orcid.org/0000-0002-3884-3420">
+                    <svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <title>https://orcid.org/0000-0002-3884-3420</title>
+                        <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
+                                <g id="Group-4">
+                                    <g id="vector_iD_icon" transform="translate(924.000000, 72.000000)">
+                                        <path d="M72,36 C72,55.884375 55.884375,72 36,72 C16.115625,72 0,55.884375 0,36 C0,16.115625 16.115625,0 36,0 C55.884375,0 72,16.115625 72,36 Z" id="Path" fill="#A6CE39"></path>
+                                        <g id="Group" transform="translate(18.868966, 12.910345)" fill="#FFFFFF">
+                                            <polygon id="Path" points="5.03734929 39.1250878 0.695429861 39.1250878 0.695429861 9.14431787 5.03734929 9.14431787 5.03734929 22.6930505 5.03734929 39.1250878"></polygon>
+                                            <path d="M11.409257,9.14431787 L23.1380784,9.14431787 C34.303014,9.14431787 39.2088191,17.0664074 39.2088191,24.1486995 C39.2088191,31.846843 33.1470485,39.1530811 23.1944669,39.1530811 L11.409257,39.1530811 L11.409257,9.14431787 Z M15.7511765,35.2620194 L22.6587756,35.2620194 C32.49858,35.2620194 34.7541226,27.8438084 34.7541226,24.1486995 C34.7541226,18.1301509 30.8915059,13.0353795 22.4332213,13.0353795 L15.7511765,13.0353795 L15.7511765,35.2620194 Z" id="Shape"></path>
+                                            <path d="M5.71401206,2.90182329 C5.71401206,4.441452 4.44526937,5.72914146 2.86638958,5.72914146 C1.28750978,5.72914146 0.0187670918,4.441452 0.0187670918,2.90182329 C0.0187670918,1.33420133 1.28750978,0.0745051096 2.86638958,0.0745051096 C4.44526937,0.0745051096 5.71401206,1.36219458 5.71401206,2.90182329 Z" id="Path"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg></a>
+                <span>(
+                  <a href="mailto:simon.cox@csiro.au">simon.cox@csiro.au</a> )
+                </span>
+                <span>
+                  <em> of CSIRO</em>
+                </span>
+              </span>
+            </dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/dc/terms/contributor" title="An entity responsible for making contributions to the resource. Defined in DCMI Metadata Terms">Contributor</a>
+            </dt>
+            <dd>
+              <span>
+                <span>Stephen M Richard</span>
+                <a href="https://orcid.org/0000-0001-6041-5302">
+                    <svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <title>https://orcid.org/0000-0001-6041-5302</title>
+                        <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
+                                <g id="Group-4">
+                                    <g id="vector_iD_icon" transform="translate(924.000000, 72.000000)">
+                                        <path d="M72,36 C72,55.884375 55.884375,72 36,72 C16.115625,72 0,55.884375 0,36 C0,16.115625 16.115625,0 36,0 C55.884375,0 72,16.115625 72,36 Z" id="Path" fill="#A6CE39"></path>
+                                        <g id="Group" transform="translate(18.868966, 12.910345)" fill="#FFFFFF">
+                                            <polygon id="Path" points="5.03734929 39.1250878 0.695429861 39.1250878 0.695429861 9.14431787 5.03734929 9.14431787 5.03734929 22.6930505 5.03734929 39.1250878"></polygon>
+                                            <path d="M11.409257,9.14431787 L23.1380784,9.14431787 C34.303014,9.14431787 39.2088191,17.0664074 39.2088191,24.1486995 C39.2088191,31.846843 33.1470485,39.1530811 23.1944669,39.1530811 L11.409257,39.1530811 L11.409257,9.14431787 Z M15.7511765,35.2620194 L22.6587756,35.2620194 C32.49858,35.2620194 34.7541226,27.8438084 34.7541226,24.1486995 C34.7541226,18.1301509 30.8915059,13.0353795 22.4332213,13.0353795 L15.7511765,13.0353795 L15.7511765,35.2620194 Z" id="Shape"></path>
+                                            <path d="M5.71401206,2.90182329 C5.71401206,4.441452 4.44526937,5.72914146 2.86638958,5.72914146 C1.28750978,5.72914146 0.0187670918,4.441452 0.0187670918,2.90182329 C0.0187670918,1.33420133 1.28750978,0.0745051096 2.86638958,0.0745051096 C4.44526937,0.0745051096 5.71401206,1.36219458 5.71401206,2.90182329 Z" id="Path"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg></a>
+                <span>(
+                  <a href="mailto:smrTucson@gmail.com">smrTucson@gmail.com</a> )
+                </span>
+              </span>
+            </dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/dc/terms/created" title="Date of creation of the resource. Defined in DCMI Metadata Terms">Date Created</a>
+            </dt>
+            <dd><p>2011-01-01</p></dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/dc/terms/modified" title="Date on which the resource was changed. Defined in DCMI Metadata Terms">Date Modified</a>
+            </dt>
+            <dd><p>2020-05-31</p></dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/dc/terms/license" title="A legal document giving official permission to do something with the resource. Defined in DCMI Metadata Terms">License</a>
+            </dt>
+            <dd>
+              <a href="https://creativecommons.org/publicdomain/zero/1.0/">https://creativecommons.org/publicdomain/zero/1.0/</a>
+            </dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/dc/terms/rights" title="Information about rights held in and over the resource. Defined in DCMI Metadata Terms">Rights</a>
+            </dt>
+            <dd><p>Copyright 2012-2020 CSIRO</p></dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespacePrefix" title="None. Defined in None">Preferred Namespace Prefix</a>
+            </dt>
+            <dd><p>gts</p></dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespaceUri" title="None. Defined in None">Preferred Namespace Uri</a>
+            </dt>
+            <dd>
+              <a href="http://resource.geosciml.org/ontology/timescale/gts#">gts:</a>
+            </dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
+            </dt>
+            <dd><p>Cox, S.J.D, &amp; Richard, S.M. (2005) A formal model for the geologic timescale and GSSP, compatible with geospatial information transfer standards, Geosphere, Geological Society of America 1/3, 119–137.</p></dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+            </dt>
+            <dd><p>This is an RDF/OWL representation of the GeoSciML Geologic Timescale model, which has been adapted from the model described in Cox, S.J.D, &amp; Richard, S.M. (2005) A formal model for the geologic timescale and GSSP, compatible with geospatial information transfer standards, Geosphere, Geological Society of America 1/3, 119–137.</p>
+<p>The permitted nesting relationships between eras of different ranks are axiomatized as local constraints using interval relationships from OWL-Time. </p></dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://www.w3.org/2002/07/owl#imports" title="The property that is used for importing other ontologies into a given ontology. Defined in The OWL 2 Schema vocabulary (OWL 2)">Imports</a>
+            </dt>
+            <dd>
+              <ul class="pylodelitlist">
+                <li>
+                  <a href="http://resource.geosciml.org/ontology/timescale/thors">http://resource.geosciml.org/ontology/timescale/thors</a>
+                </li>
+                <li>
+                  <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                </li>
+              </ul>
+            </dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="https://schema.org/codeRepository" title="Link to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex). Defined in None">Coderepository</a>
+            </dt>
+            <dd>
+              <a href="https://github.com/CGI-IUGS/timescale-ont">https://github.com/CGI-IUGS/timescale-ont</a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+      <div class="section" id="classes">
+        <h2>Classes</h2>
+        <h3 id="class-hierarchy">Class Hierarchy</h3>
+        <ul>
+          <li>
+            <a href="#GeochronologicBoundary">Geochronologic Boundary</a>
+          </li>
+          <li>
+            <a href="#GeochronologicEra">Geochronologic Era</a>
+            <ul>
+              <li>
+                <a href="#Age">Age</a>
+              </li>
+              <li>
+                <a href="#Eon">Eon</a>
+              </li>
+              <li>
+                <a href="#Epoch">Epoch</a>
+              </li>
+              <li>
+                <a href="#Era">Era</a>
+              </li>
+              <li>
+                <a href="#Period">Period</a>
+              </li>
+              <li>
+                <a href="#Sub-Period">Sub-Period</a>
+              </li>
+              <li>
+                <a href="#Super-Eon">Super-Eon</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#GeologicTimescale">Geologic Timescale</a>
+          </li>
+          <li>
+            <a href="#NumericEraBoundary">Numeric Era Boundary</a>
+          </li>
+          <li>
+            <a href="#StratigraphicEvent">Stratigraphic Event</a>
+          </li>
+          <li>
+            <a href="#StratigraphicPoint">Stratigraphic Point</a>
+          </li>
+          <li>
+            <a href="#StratigraphicSection">Stratigraphic Section</a>
+          </li>
+        </ul>
+        <h3 id="class-definitions">Class Definitions</h3>
+        <div class="property entity" id="Age">
+          <h3>Age
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#Age</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Geochronologic era of rank 'Age'</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:Calabrian
+  rdf:type gts:Age ;
+  rdf:type gts:GeochronologicEra ;
+  rdf:type skos:Concept ;
+  rdf:type time:ProperInterval ;
+  gts:rank rank:Age ;
+  rdfs:comment &quot;older bound -1.80 Ma&quot;@en ;
+  rdfs:comment &quot;younger bound -0.781 Ma&quot;@en ;
+  rdfs:label &quot;Calabrian Age&quot;@en ;
+  skos:notation &quot;a1.1.1.1.2.3&quot;^^gts:EraCode ;
+  skos:prefLabel &quot;Calabr&quot;@cs ;
+  skos:prefLabel &quot;Calabrian&quot;@en ;
+  time:hasBeginning isc:BaseCalabrian ;
+  time:hasEnd isc:BaseMiddlePleistocene ;
+  time:intervalDuring isc:Pleistocene ;
+  time:intervalIn isc:Pleistocene ;
+  time:intervalMeets isc:MiddlePleistocene ;
+  time:intervalMetBy isc:Gelasian ;
+.
+</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#GeochronologicEra">Geochronologic Era</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <span>
+                        <span>
+                          <a href="#rank">Geochronologic era rank</a>
+                          <sup class="sup-op" title="OWL Object Property">op</sup>
+                        </span>
+                        <span>
+                          <span class="cardinality">value</span>
+                          <span>
+                            <span>
+                              <a href="http://resource.geosciml.org/ontology/timescale/rank/Age">Age</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalIn">time:intervalIn</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Epoch">Epoch</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalContains">time:intervalContains</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Epoch">Epoch</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Age">Age</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Sub-Period">Sub-Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Period">Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalFinishedBy">time:intervalFinishedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Epoch">Epoch</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Age">Age</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Sub-Period">Sub-Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Period">Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalStartedBy">time:intervalStartedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Epoch">Epoch</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Age">Age</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Sub-Period">Sub-Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Period">Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="Eon">
+          <h3>Eon
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#Eon</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Geochronologic era of rank 'Eon'</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:Proterozoic
+  rdf:type gts:Eon ;
+  rdf:type gts:GeochronologicEra ;
+  rdf:type skos:Concept ;
+  rdf:type time:ProperInterval ;
+  gts:rank rank:Eon ;
+  rdfs:comment &quot;older bound -2500 Ma&quot;@en ;
+  rdfs:comment &quot;younger bound -541.0 +|-1.0 Ma&quot;@en ;
+  rdfs:label &quot;Proterozoic Eon&quot;@en ;
+  skos:notation &quot;a2.1&quot;^^gts:EraCode ;
+  skos:prefLabel &quot;Proterosoikum&quot;@et ;
+  skos:prefLabel &quot;Proterozoic&quot;@en ;
+  time:hasBeginning isc:BaseProterozoic ;
+  time:hasEnd isc:BasePhanerozoic ;
+  time:intervalContains isc:Mesoproterozoic ;
+  time:intervalFinishedBy isc:Neoproterozoic ;
+  time:intervalFinishes isc:Precambrian ;
+  time:intervalIn isc:Precambrian ;
+  time:intervalMeets isc:Cambrian ;
+  time:intervalMeets isc:Fortunian ;
+  time:intervalMeets isc:Paleozoic ;
+  time:intervalMeets isc:Phanerozoic ;
+  time:intervalMeets isc:Terreneuvian ;
+  time:intervalMetBy isc:Archean ;
+  time:intervalMetBy isc:Neoarchean ;
+  time:intervalStartedBy isc:Paleoproterozoic ;
+.</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#GeochronologicEra">Geochronologic Era</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <span>
+                        <span>
+                          <a href="#rank">Geochronologic era rank</a>
+                          <sup class="sup-op" title="OWL Object Property">op</sup>
+                        </span>
+                        <span>
+                          <span class="cardinality">value</span>
+                          <span>
+                            <span>
+                              <a href="http://resource.geosciml.org/ontology/timescale/rank/Eon">Eon</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalIn">time:intervalIn</a>
+                        <span>
+                          <span class="cardinality">is a</span>
+                          <span>http://resource.geosciml.org/ontology/timescale/gts#Super-Eon</span>
+                        </span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalFinishedBy">time:intervalFinishedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalStartedBy">time:intervalStartedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalContains">time:intervalContains</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalFinishedBy">time:intervalFinishedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalStartedBy">time:intervalStartedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalContains">time:intervalContains</a>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Era">Era</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="Epoch">
+          <h3>Epoch
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#Epoch</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Geochronologic era of rank 'Epoch'</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:Cisuralian
+  rdf:type gts:Epoch ;
+  rdf:type gts:GeochronologicEra ;
+  rdf:type skos:Concept ;
+  rdf:type time:ProperInterval ;
+  gts:rank rank:Epoch ;
+  rdfs:comment &quot;older bound -298.9 +|-0.15 Ma&quot;@en ;
+  rdfs:comment &quot;younger bound -272.95 +|-0.11 Ma&quot;@en ;
+  rdfs:label &quot;Cisuralian Epoch&quot;@en ;
+  skos:notation &quot;a1.1.3.1.3&quot;^^gts:EraCode ;
+  skos:prefLabel &quot;Cisural&quot;@cs ;
+  skos:prefLabel &quot;Cisuralian&quot;@en ;
+  skos:prefLabel &quot;Kisuralis&quot;@lt ;
+  time:hasBeginning isc:BasePermian ;
+  time:hasEnd isc:BaseGuadalupian ;
+  time:intervalContains isc:Artinskian ;
+  time:intervalContains isc:Sakmarian ;
+  time:intervalFinishedBy isc:Kungurian ;
+  time:intervalIn isc:Permian ;
+  time:intervalMeets isc:Guadalupian ;
+  time:intervalMeets isc:Roadian ;
+  time:intervalMetBy isc:Carboniferous ;
+  time:intervalMetBy isc:Gzhelian ;
+  time:intervalMetBy isc:Pennsylvanian ;
+  time:intervalMetBy isc:UpperMississippian ;
+  time:intervalMetBy isc:UpperPennsylvanian ;
+  time:intervalStartedBy isc:Asselian ;
+  time:intervalStarts isc:Permian ;
+.
+</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#GeochronologicEra">Geochronologic Era</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <span>
+                        <span>
+                          <a href="#rank">Geochronologic era rank</a>
+                          <sup class="sup-op" title="OWL Object Property">op</sup>
+                        </span>
+                        <span>
+                          <span class="cardinality">value</span>
+                          <span>
+                            <span>
+                              <a href="http://resource.geosciml.org/ontology/timescale/rank/Epoch">Epoch</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalFinishedBy">time:intervalFinishedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Age">Age</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalStartedBy">time:intervalStartedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Age">Age</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalContains">time:intervalContains</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Epoch">Epoch</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Period">Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Sub-Period">Sub-Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalFinishedBy">time:intervalFinishedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Epoch">Epoch</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Period">Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Sub-Period">Sub-Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalStartedBy">time:intervalStartedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Epoch">Epoch</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Period">Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Sub-Period">Sub-Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalIn">time:intervalIn</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Period">Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Sub-Period">Sub-Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalContains">time:intervalContains</a>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Age">Age</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="Era">
+          <h3>Era
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#Era</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Geochronologic era of rank 'Era'</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:Mesoproterozoic
+  rdf:type gts:Era ;
+  rdf:type gts:GeochronologicEra ;
+  rdf:type skos:Concept ;
+  rdf:type time:ProperInterval ;
+  gts:rank rank:Era ;
+  rdfs:comment &quot;older bound -1600 Ma&quot;@en ;
+  rdfs:comment &quot;younger bound -1000 Ma&quot;@en ;
+  rdfs:label &quot;Mesoproterozoic Era&quot;@en ;
+  skos:notation &quot;a2.1.2&quot;^^gts:EraCode ;
+  skos:prefLabel &quot;Mesoproterozoic&quot;@en ;
+  skos:prefLabel &quot;Mesoproterozoico&quot;@es ;
+  time:hasBeginning isc:BaseMesoproterozoic ;
+  time:hasEnd isc:BaseNeoproterozoic ;
+  time:intervalContains isc:Ectasian ;
+  time:intervalDuring isc:Proterozoic ;
+  time:intervalFinishedBy isc:Stenian ;
+  time:intervalIn isc:Proterozoic ;
+  time:intervalMeets isc:Neoproterozoic ;
+  time:intervalMeets isc:Tonian ;
+  time:intervalMetBy isc:Paleoproterozoic ;
+  time:intervalMetBy isc:Statherian ;
+  time:intervalStartedBy isc:Calymmian ;
+.
+</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#GeochronologicEra">Geochronologic Era</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <span>
+                        <span>
+                          <a href="#rank">Geochronologic era rank</a>
+                          <sup class="sup-op" title="OWL Object Property">op</sup>
+                        </span>
+                        <span>
+                          <span class="cardinality">value</span>
+                          <span>
+                            <span>
+                              <a href="http://resource.geosciml.org/ontology/timescale/rank/Era">Era</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalIn">time:intervalIn</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalFinishedBy">time:intervalFinishedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Period">Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalStartedBy">time:intervalStartedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Period">Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalContains">time:intervalContains</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalFinishedBy">time:intervalFinishedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalStartedBy">time:intervalStartedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalContains">time:intervalContains</a>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Period">Period</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="GeochronologicBoundary">
+          <h3>Geochronologic Boundary
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#GeochronologicBoundary</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Boundary between geochronologic eras, defined with reference to an agreed stratigraphic point. Typically denoted as the 'base of' the succeeding era</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:BaseJurassic
+  rdf:type gts:GeochronologicBoundary ;
+  rdf:type thors:EraBoundary ;
+  rdf:type skos:Concept ;
+  rdf:type time:Instant ;
+  gts:stratotype isc:BaseJurassicSP ;
+  rdfs:label &quot;Base of Jurassic&quot;@en ;
+  skos:altLabel &quot;Base of Hettangian&quot;@en ;
+  skos:altLabel &quot;Base of Lower Jurassic&quot;@en ;
+  skos:prefLabel &quot;Base of Jurassic&quot;@en ;
+  time:inTemporalPosition isc:BaseJurassicTime ;
+.</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/thors#EraBoundary">thors:EraBoundary</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#representsBoundary">geochronologic boundary</a>
+                  <sup class="sup-op" title="OWL Object Property">op</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+              </th>
+              <td>
+                <span>
+                  <span>
+                    <span>
+                      <a href="#stratotype">stratotype</a>
+                      <sup class="sup-op" title="OWL Object Property">op</sup>
+                    </span>
+                    <span>
+                      <span class="cardinality">only</span>
+                      <span>
+                        <span>
+                          <a href="#StratigraphicPoint">Stratigraphic Point</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
+                  </span>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="GeochronologicEra">
+          <h3>Geochronologic Era
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#GeochronologicEra</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Named interval within the geologic timescale, of any rank</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:Mesozoic
+  rdf:type gts:Era ;
+  rdf:type gts:GeochronologicEra ;
+  rdf:type skos:Concept ;
+  rdf:type time:ProperInterval ;
+  rdfs:label &quot;Mesozoic Era&quot;@en ;
+  skos:notation &quot;a1.1.2&quot;^^gts:EraCode ;
+  skos:prefLabel &quot;Mesosoikum&quot;@et ;
+  skos:prefLabel &quot;Mesozoic&quot;@en ;
+  time:hasBeginning isc:BaseMesozoic ;
+  time:hasEnd isc:BaseCenozoic ;
+.
+</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/thors#Era">thors:Era</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#rank">Geochronologic era rank</a>
+                  <sup class="sup-op" title="OWL Object Property">op</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#representsEra">geochronologic era</a>
+                  <sup class="sup-op" title="OWL Object Property">op</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <span>
+                        <span>
+                          <a href="#stratotype">stratotype</a>
+                          <sup class="sup-op" title="OWL Object Property">op</sup>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#StratigraphicSection">Stratigraphic Section</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <span>
+                          <a href="#rank">Geochronologic era rank</a>
+                          <sup class="sup-op" title="OWL Object Property">op</sup>
+                        </span>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <span>
+                          <a href="http://www.w3.org/2004/02/skos/core#notation">notation</a>
+                          <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#EraCode">Era code</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="#Age">Age</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="#Eon">Eon</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="#Epoch">Epoch</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="#Era">Era</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="#Period">Period</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="#Sub-Period">Sub-Period</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="#Super-Eon">Super-Eon</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="GeologicTimescale">
+          <h3>Geologic Timescale
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#GeologicTimescale</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>The hierarchical ordinal/nominal reference system known as the Geologic Timescale</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+ts:gts2019
+  rdf:type gts:GeologicTimescale ;
+  rdf:type skos:ConceptScheme ;
+  rdf:type time:TRS ;
+  thors:component isc:Phanerozoic ;
+  thors:component isc:Precambrian ;
+  thors:referencePoint isc:BasePhanerozoic ;
+  thors:referencePoint isc:FormationOfEarth ;
+  thors:referencePoint isc:Present ;
+  rdfs:label &quot;Geologic Time Scale (2019)&quot;@en ;
+.
+</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/thors#ReferenceSystem">thors:ReferenceSystem</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://resource.geosciml.org/ontology/timescale/thors#component">thors:component</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#GeochronologicEra">Geochronologic Era</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://resource.geosciml.org/ontology/timescale/thors#referencePoint">thors:referencePoint</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="n8800bfbda69c4947a7c2908a63385f5cb108">n8800bfbda69c4947a7c2908a63385f5cb108</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="NumericEraBoundary">
+          <h3>Numeric Era Boundary
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#NumericEraBoundary</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Boundary between geochronologic eras, defined by an agreed chronometric position (i.e. numeric age). Typically denoted as the 'base of' the succeeding era</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:BaseProterozoic
+  rdf:type gts:NumericEraBoundary ;
+  rdf:type thors:EraBoundary ;
+  rdf:type skos:Concept ;
+  rdf:type time:Instant ;
+  gts:ratifiedGSSP true ;
+  rdfs:label &quot;Base of Proterozoic&quot;@en ;
+  skos:prefLabel &quot;Base of Proterozoic&quot;@en ;
+  time:inTemporalPosition isc:BaseProterozoicTime ;
+.</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/thors#EraBoundary">thors:EraBoundary</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+              </th>
+              <td>
+                <span>
+                  <span>
+                    <span>
+                      <a href="#status">status</a>
+                      <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+                    </span>
+                    <span>
+                      <span class="cardinality">exactly</span>
+                      <span>1</span>
+                    </span><br>
+                  </span>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="Period">
+          <h3>Period
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#Period</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Geochronologic era of rank 'Period'</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:Stenian
+  rdf:type gts:GeochronologicEra ;
+  rdf:type gts:Period ;
+  rdf:type skos:Concept ;
+  rdf:type time:ProperInterval ;
+  gts:rank rank:Period ;
+  rdfs:comment &quot;older bound -1200 Ma&quot;@en ;
+  rdfs:comment &quot;younger bound -1000 Ma&quot;@en ;
+  rdfs:label &quot;Stenian Period&quot;@en ;
+  skos:notation &quot;a2.1.2.1&quot;^^gts:EraCode ;
+  skos:prefLabel &quot;Esteniense&quot;@es ;
+  skos:prefLabel &quot;Stenian&quot;@en ;
+  time:hasBeginning isc:BaseStenian ;
+  time:hasEnd isc:BaseNeoproterozoic ;
+  time:intervalFinishes isc:Mesoproterozoic ;
+  time:intervalIn isc:Mesoproterozoic ;
+  time:intervalMeets isc:Neoproterozoic ;
+  time:intervalMeets isc:Tonian ;
+  time:intervalMetBy isc:Ectasian ;
+.</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#GeochronologicEra">Geochronologic Era</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <span>
+                        <span>
+                          <a href="#rank">Geochronologic era rank</a>
+                          <sup class="sup-op" title="OWL Object Property">op</sup>
+                        </span>
+                        <span>
+                          <span class="cardinality">value</span>
+                          <span>
+                            <span>
+                              <a href="http://resource.geosciml.org/ontology/timescale/rank/Period">Period</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalFinishedBy">time:intervalFinishedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Epoch">Epoch</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalStartedBy">time:intervalStartedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Epoch">Epoch</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalIn">time:intervalIn</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalContains">time:intervalContains</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Period">Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalFinishedBy">time:intervalFinishedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Period">Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalStartedBy">time:intervalStartedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Period">Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalContains">time:intervalContains</a>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Epoch">Epoch</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="StratigraphicEvent">
+          <h3>Stratigraphic Event
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#StratigraphicEvent</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li><p>A subclass of Geologic Event (placeholder) </p></li>
+                  <li><p>Geologic event correlated with a specified stratotype. </p></li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#event">stratigraphic event</a>
+                  <sup class="sup-op" title="OWL Object Property">op</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="StratigraphicPoint">
+          <h3>Stratigraphic Point
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#StratigraphicPoint</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>A specified position within an agreed stratigraphic section, used to calibrate the temporal position (age) of a boundary within the geologic timescale. </p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:BaseJurassicSP
+  rdf:type gts:StratigraphicPoint ;
+  dct:source &quot;Episodes 36/3, p. 162-198, 2013&quot;@en ;
+  gts:boundaryLevel &quot;5.80 m above top of Koessen Formation&quot;@en ;
+  gts:correlationEvent &quot;FO of ammonite Psiloceras spelae tirolicum, FO of aragonitic foraminifer Praegubkinella turgescens&quot;@en ;
+  gts:ratifiedGSSP true ;
+  gts:status &quot;Ratified 2010&quot;@en ;
+  geo:hasGeometry isc:BaseJurassic-location ;
+  rdfs:comment &quot;Kuhjoch section,Tyrol, Austria &quot;@en ;
+  rdfs:label &quot;Stratotype Point Base of Jurassic&quot;@en ;
+  rdfs:seeAlso &lt;http://www.stratigraphy.org/GSSP/Hettangian.pdf&gt; ;
+  rdfs:seeAlso &lt;http://www.stratigraphy.org/GSSP/index.html&gt; ;
+  skos:prefLabel &quot;Stratotype Point Base of Jurassic&quot;@en ;
+.</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <a href="http://www.w3.org/ns/sosa/Sample">sosa:Sample</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="#boundaryLevel">boundary level</a>
+                      <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="#correlationEvent">correlation event</a>
+                      <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="#representsBoundary">geochronologic boundary</a>
+                      <sup class="sup-op" title="OWL Object Property">op</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <span>
+                        <span>
+                          <a href="#correlationEvent">correlation event</a>
+                          <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+                        </span>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <span>
+                          <a href="#status">status</a>
+                          <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+                        </span>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <span>
+                          <a href="#ratifiedGSSP">ratified</a>
+                          <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+                        </span>
+                        <span>
+                          <span class="cardinality">max</span>
+                          <span>1</span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="StratigraphicSection">
+          <h3>Stratigraphic Section
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#StratigraphicSection</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>An agreed stratigraphic section, which hosts a stratigraphic point that is used to calibrate the temporal position (age) of a boundary within the geologic timescale. </p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <a href="http://www.w3.org/ns/sosa/Sample">sosa:Sample</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="#geologicDescription">geologic description</a>
+                      <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="#geologicSetting">geologic setting</a>
+                      <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="#representsEra">geochronologic era</a>
+                      <sup class="sup-op" title="OWL Object Property">op</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <span>
+                        <span>
+                          <a href="#geologicDescription">geologic description</a>
+                          <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+                        </span>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <span>
+                          <a href="#geologicSetting">geologic setting</a>
+                          <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+                        </span>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="Sub-Period">
+          <h3>Sub-Period
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#Sub-Period</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Geochronologic era of rank 'Sub-Period'</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:Mississippian
+  rdf:type gts:GeochronologicEra ;
+  rdf:type gts:Sub-Period ;
+  rdf:type skos:Concept ;
+  rdf:type time:ProperInterval ;
+  gts:rank rank:Sub-Period ;
+  rdfs:comment &quot;older bound -358.9 +|-0.4 Ma&quot;@en ;
+  rdfs:comment &quot;younger bound -323.2 +|-0.4 Ma&quot;@en ;
+  rdfs:label &quot;Mississippian Sub-period&quot;@en ;
+  skos:notation &quot;a1.1.3.2.2&quot;^^gts:EraCode ;
+  skos:prefLabel &quot;Misisipis&quot;@lt ;
+  skos:prefLabel &quot;Mississippian&quot;@en ;
+  time:hasBeginning isc:BaseCarboniferous ;
+  time:hasEnd isc:BasePennsylvanian ;
+  time:intervalContains isc:MiddleMississippian ;
+  time:intervalFinishedBy isc:UpperMississippian ;
+  time:intervalIn isc:Carboniferous ;
+  time:intervalMeets isc:Bashkirian ;
+  time:intervalMeets isc:LowerPennsylvanian ;
+  time:intervalMeets isc:Pennsylvanian ;
+  time:intervalMetBy isc:Devonian ;
+  time:intervalMetBy isc:Famennian ;
+  time:intervalMetBy isc:UpperDevonian ;
+  time:intervalStartedBy isc:LowerMississippian ;
+  time:intervalStarts isc:Carboniferous ;
+.</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#GeochronologicEra">Geochronologic Era</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <span>
+                        <span>
+                          <a href="#rank">Geochronologic era rank</a>
+                          <sup class="sup-op" title="OWL Object Property">op</sup>
+                        </span>
+                        <span>
+                          <span class="cardinality">value</span>
+                          <span>
+                            <span>
+                              <a href="http://resource.geosciml.org/ontology/timescale/rank/Sub-Period">Sub-Period</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalFinishedBy">time:intervalFinishedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Epoch">Epoch</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalStartedBy">time:intervalStartedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Epoch">Epoch</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalIn">time:intervalIn</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Period">Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalContains">time:intervalContains</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Period">Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Sub-Period">Sub-Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalFinishedBy">time:intervalFinishedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Period">Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Sub-Period">Sub-Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalStartedBy">time:intervalStartedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Era">Era</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Period">Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                        <span class="cardinality">or</span>
+                        <span>
+                          <a href="#Sub-Period">Sub-Period</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalContains">time:intervalContains</a>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Epoch">Epoch</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="Super-Eon">
+          <h3>Super-Eon
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#Super-Eon</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Geochronologic era of rank 'Super-Eon'</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:Precambrian
+  rdf:type gts:GeochronologicEra ;
+  rdf:type gts:Super-Eon ;
+  rdf:type skos:Concept ;
+  rdf:type time:ProperInterval ;
+  gts:rank rank:Super-Eon ;
+  rdfs:comment &quot;older bound -4567 +|-1 Ma&quot;@en ;
+  rdfs:comment &quot;younger bound -541.0 +|-1.0 Ma&quot;@en ;
+  rdfs:label &quot;Precambrian Supereon&quot;@en ;
+  skos:notation &quot;a2&quot;^^gts:EraCode ;
+  skos:prefLabel &quot;Precambrian&quot;@en ;
+  skos:prefLabel &quot;Précambrien&quot;@fr ;
+  time:hasBeginning isc:FormationOfEarth ;
+  time:hasEnd isc:BasePhanerozoic ;
+  time:intervalContains isc:Archean ;
+  time:intervalFinishedBy isc:Proterozoic ;
+  time:intervalMeets isc:Cambrian ;
+  time:intervalMeets isc:Fortunian ;
+  time:intervalMeets isc:Paleozoic ;
+  time:intervalMeets isc:Phanerozoic ;
+  time:intervalMeets isc:Terreneuvian ;
+  time:intervalStartedBy isc:Hadean ;
+.</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#GeochronologicEra">Geochronologic Era</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalFinishedBy">time:intervalFinishedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalStartedBy">time:intervalStartedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Eon">Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalContains">time:intervalContains</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalFinishedBy">time:intervalFinishedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalStartedBy">time:intervalStartedBy</a>
+                        <span>
+                          <span class="cardinality">exactly</span>
+                          <span>0</span>
+                        </span>
+                        <span>
+                          <a href="#Super-Eon">Super-Eon</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <a href="http://www.w3.org/2006/time#intervalContains">time:intervalContains</a>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Eon">Eon</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Epoch</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb4</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb13</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb22</span>
+      </span>
+      <span>
+        <span class="cardinality">max</span>
+        <span>1</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Era</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Era</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb35</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb39</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb43</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Age</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Age</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb51</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb59</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb67</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb75</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Eon</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Period</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Period</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb84</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb89</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb94</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Epoch</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Epoch</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Era</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb117</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb123</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb129</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Epoch</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Epoch</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Period</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb145</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb152</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>n8800bfbda69c4947a7c2908a63385f5cb159</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Eon</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Eon</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Super-Eon</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Super-Eon</span>
+      </span>
+      <span>
+        <span class="cardinality">is a</span>
+        <span>http://resource.geosciml.org/ontology/timescale/gts#Super-Eon</span>
+      </span>
+      <div class="section" id="objectproperties">
+        <h2>Object Properties</h2>
+        <h3 id="object-property-hierarchy">Object Property Hierarchy</h3>
+        <ul>
+          <li>
+            <a href="#representsBoundary">geochronologic boundary</a>
+          </li>
+          <li>
+            <a href="#representsEra">geochronologic era</a>
+          </li>
+          <li>
+            <a href="#rank">Geochronologic era rank</a>
+          </li>
+          <li>
+            <a href="#event">stratigraphic event</a>
+          </li>
+          <li>
+            <a href="#stratotype">stratotype</a>
+          </li>
+          <li>
+            <a href="#positionalUncertainty">time position uncertainty</a>
+          </li>
+        </ul>
+        <h3 id="object-property-definitions">Object Property Definitions</h3>
+        <div class="property entity" id="event">
+          <h3>stratigraphic event
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#event</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>stratigraphic event corresponding with this boundary or point</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#GeochronologicBoundary">Geochronologic Boundary</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+                <span class="cardinality">or</span>
+                <span>
+                  <a href="#StratigraphicPoint">Stratigraphic Point</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#StratigraphicEvent">Stratigraphic Event</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="positionalUncertainty">
+          <h3>time position uncertainty
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#positionalUncertainty</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Uncertainty in a time position</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:BaseAeronianTime
+  a time:TimePosition ;
+  gts:positionalUncertainty isc:BaseAeronianUncertainty ;
+  time:hasTRS &lt;http://resource.geosciml.org/classifier/cgi/geologicage/ma&gt; ;
+  time:numericPosition 440.8 ;
+.</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+              </th>
+              <td>
+                <a href="http://www.w3.org/2006/time#TemporalPosition">time:TemporalPosition</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+              </th>
+              <td>
+                <a href="http://www.w3.org/2006/time#TemporalDuration">time:TemporalDuration</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="rank">
+          <h3>Geochronologic era rank
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#rank</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Elements of all ranks are included in the class 'gts:GeochronologicEra'.
+The rank may be indicated by membership of a sub-class, or is indicated using the 'gts:rank' property.</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:Aalenian
+  a gts:Age ;
+  a gts:GeochronologicEra ;
+  a skos:Concept ;
+  a time:ProperInterval ;
+  gts:rank rank:Age ;
+.</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#GeochronologicEra">Geochronologic Era</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+              </th>
+              <td>
+                <a href="#GeochronologicEraRank">Geochronologic Era Rank</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="representsBoundary">
+          <h3>geochronologic boundary
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#representsBoundary</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>geochronologic boundary corresponding with this stratigraphic point</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#StratigraphicPoint">Stratigraphic Point</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#GeochronologicBoundary">Geochronologic Boundary</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="representsEra">
+          <h3>geochronologic era
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#representsEra</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>geochronologic era corresponding with this stratigraphic section</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#StratigraphicSection">Stratigraphic Section</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#GeochronologicEra">Geochronologic Era</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="stratotype">
+          <h3>stratotype
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#stratotype</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>the characteristic stratigraphic point or section corresponding with a geochronologic concept</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:BaseAeronian
+  a gts:GeochronologicBoundary ;
+  a thors:EraBoundary ;
+  a skos:Concept ;
+  a time:Instant ;
+  gts:stratotype isc:BaseAeronianSP ;
+  rdfs:label &quot;Base of Aeronian&quot;@en ;
+  skos:prefLabel &quot;Base of Aeronian&quot;@en ;
+  time:inTemporalPosition isc:BaseAeronianTime ;
+.</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#GeochronologicBoundary">Geochronologic Boundary</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+                <span class="cardinality">or</span>
+                <span>
+                  <a href="#GeochronologicEra">Geochronologic Era</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#StratigraphicPoint">Stratigraphic Point</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+                <span class="cardinality">or</span>
+                <span>
+                  <a href="#StratigraphicSection">Stratigraphic Section</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section" id="datatypeproperties">
+        <h2>Datatype Properties</h2>
+        <div class="property entity" id="boundaryLevel">
+          <h3>boundary level
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#boundaryLevel</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>the level within the section of the point characterizing the boundary</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:BaseBathonianSP
+  a gts:StratigraphicPoint ;
+  gts:boundaryLevel &quot;Base of limestone bed RB07 &quot;@en ;
+  gts:correlationEvent &quot;Ammonite FAD Gonolkite convergens (defines Base of Zigzagiceras zigzag Zone)&quot;@en ;
+  gts:ratifiedGSSP true ;
+  gts:status &quot;Ratified 2008&quot;@en ;
+  geo:hasGeometry isc:BaseBathonian-location ;
+  rdfs:comment &quot;Ravin du Bes, Bas Auran area, Alpes de Haute Provence, France  &quot;@en ;
+  rdfs:label &quot;Stratotype Point Base of Bathonian&quot;@en ;
+.</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#StratigraphicPoint">Stratigraphic Point</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="correlationEvent">
+          <h3>correlation event
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#correlationEvent</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>the stratigraphic event that is intended to be represented by this stratigraphic point</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:BaseBathonianSP
+  a gts:StratigraphicPoint ;
+  gts:boundaryLevel &quot;Base of limestone bed RB07 &quot;@en ;
+  gts:correlationEvent &quot;Ammonite FAD Gonolkite convergens (defines Base of Zigzagiceras zigzag Zone)&quot;@en ;
+  gts:ratifiedGSSP true ;
+  gts:status &quot;Ratified 2008&quot;@en ;
+  geo:hasGeometry isc:BaseBathonian-location ;
+  rdfs:comment &quot;Ravin du Bes, Bas Auran area, Alpes de Haute Provence, France  &quot;@en ;
+  rdfs:label &quot;Stratotype Point Base of Bathonian&quot;@en ;
+.</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#StratigraphicPoint">Stratigraphic Point</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="geologicDescription">
+          <h3>geologic description
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#geologicDescription</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>geologic description of the stratigraphic section</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#StratigraphicSection">Stratigraphic Section</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="geologicSetting">
+          <h3>geologic setting
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#geologicSetting</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>geologic setting of the stratigraphic section</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#StratigraphicSection">Stratigraphic Section</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="ratifiedGSSP">
+          <h3>ratified
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#ratifiedGSSP</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>flag to indicate the status of the calibration details of a geochronologic boundary - 'true' if ratified by ICS</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:BaseBathonianSP
+  a gts:StratigraphicPoint ;
+  gts:boundaryLevel &quot;Base of limestone bed RB07 &quot;@en ;
+  gts:correlationEvent &quot;Ammonite FAD Gonolkite convergens (defines Base of Zigzagiceras zigzag Zone)&quot;@en ;
+  gts:ratifiedGSSP true ;
+  gts:status &quot;Ratified 2008&quot;@en ;
+  geo:hasGeometry isc:BaseBathonian-location ;
+  rdfs:comment &quot;Ravin du Bes, Bas Auran area, Alpes de Haute Provence, France  &quot;@en ;
+  rdfs:label &quot;Stratotype Point Base of Bathonian&quot;@en ;
+.</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#StratigraphicPoint">Stratigraphic Point</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+                <span class="cardinality">or</span>
+                <span>
+                  <a href="#GeochronologicBoundary">Geochronologic Boundary</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+                <span class="cardinality">or</span>
+                <span>
+                  <a href="#NumericEraBoundary">Numeric Era Boundary</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+              </th>
+              <td>
+                <a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="status">
+          <h3>status
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#status</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li><p>formal ICS status of this boundary and point</p></li>
+                  <li><p>Description of the formal ICS status of this boundary and point</p></li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:BaseBathonianSP
+  a gts:StratigraphicPoint ;
+  gts:boundaryLevel &quot;Base of limestone bed RB07 &quot;@en ;
+  gts:correlationEvent &quot;Ammonite FAD Gonolkite convergens (defines Base of Zigzagiceras zigzag Zone)&quot;@en ;
+  gts:ratifiedGSSP true ;
+  gts:status &quot;Ratified 2008&quot;@en ;
+  geo:hasGeometry isc:BaseBathonian-location ;
+  rdfs:comment &quot;Ravin du Bes, Bas Auran area, Alpes de Haute Provence, France  &quot;@en ;
+  rdfs:label &quot;Stratotype Point Base of Bathonian&quot;@en ;
+.</pre>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+              </th>
+              <td>
+                <span>
+                  <a href="#NumericEraBoundary">Numeric Era Boundary</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+                <span class="cardinality">or</span>
+                <span>
+                  <a href="#StratigraphicPoint">Stratigraphic Point</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section" id="datatypes">
+        <h2>Custom Datatypes</h2>
+        <div class="property entity" id="EraCode">
+          <h3>Era code
+            <sup class="sup-dt" title="RDFS Datatypes">dt</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://resource.geosciml.org/ontology/timescale/gts#EraCode</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://resource.geosciml.org/ontology/timescale/gts">Geologic Timescale model</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
+              </th>
+              <td>
+                <pre>
+isc:Calabrian  skos:notation &quot;a1.1.1.1.2.3&quot;^^gts:EraCode .</pre>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div id="namespaces">
+        <h2>Namespaces</h2>
+        <dl>
+          <dt id="dcterms">dcterms</dt>
+          <dd>
+            <code>http://purl.org/dc/terms/</code>
+          </dd>
+          <dt id="gts">gts</dt>
+          <dd>
+            <code>http://resource.geosciml.org/ontology/timescale/gts#</code>
+          </dd>
+          <dt id="owl">owl</dt>
+          <dd>
+            <code>http://www.w3.org/2002/07/owl#</code>
+          </dd>
+          <dt id="rank">rank</dt>
+          <dd>
+            <code>http://resource.geosciml.org/ontology/timescale/rank/</code>
+          </dd>
+          <dt id="rdf">rdf</dt>
+          <dd>
+            <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
+          </dd>
+          <dt id="rdfs">rdfs</dt>
+          <dd>
+            <code>http://www.w3.org/2000/01/rdf-schema#</code>
+          </dd>
+          <dt id="sdo">sdo</dt>
+          <dd>
+            <code>https://schema.org/</code>
+          </dd>
+          <dt id="skos">skos</dt>
+          <dd>
+            <code>http://www.w3.org/2004/02/skos/core#</code>
+          </dd>
+          <dt id="sosa">sosa</dt>
+          <dd>
+            <code>http://www.w3.org/ns/sosa/</code>
+          </dd>
+          <dt id="thors">thors</dt>
+          <dd>
+            <code>http://resource.geosciml.org/ontology/timescale/thors#</code>
+          </dd>
+          <dt id="time">time</dt>
+          <dd>
+            <code>http://www.w3.org/2006/time#</code>
+          </dd>
+          <dt id="vann">vann</dt>
+          <dd>
+            <code>http://purl.org/vocab/vann/</code>
+          </dd>
+          <dt id="voaf">voaf</dt>
+          <dd>
+            <code>http://purl.org/vocommons/voaf#</code>
+          </dd>
+          <dt id="xsd">xsd</dt>
+          <dd>
+            <code>http://www.w3.org/2001/XMLSchema#</code>
+          </dd>
+        </dl>
+      </div>
+      <div id="legend">
+        <h2>Legend</h2>
+        <table class="entity">
+          <tr>
+            <td>
+              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+            </td>
+            <td>Classes</td>
+          </tr>
+          <tr>
+            <td>
+              <sup class="sup-op" title="OWL Object Property">op</sup>
+            </td>
+            <td>Object Properties</td>
+          </tr>
+          <tr>
+            <td>
+              <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+            </td>
+            <td>Datatype Properties</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div id="pylode">
+      <p>made by 
+        <a href="https://github.com/rdflib/pyLODE">
+          <span id="p">p</span>
+          <span id="y">y</span>
+          <span>LODE</span>
+        </a>
+        <a href="https://github.com/rdflib/pyLODE/release/3.4.5a0" id="version">3.4.5a0</a>
+        <span> with the </span>
+        <a href="https://linked.data.gov.au/def/ontpub" id="profile">OntPub</a>
+        <span>profile</span>
+      </p>
+    </div>
+    <div id="toc">
+      <h3>Table of Contents</h3>
+      <ul class="first">
+        <li>
+          <h4>
+            <a href="#metadata">Metadata</a>
+          </h4>
+        </li>
+        <li>
+          <h4>
+            <a href="#classes">Classes</a>
+          </h4>
+          <h5>
+            <a href="#class-hierarchy" style="margin-left:10px;">Class Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#class-definitions" style="margin-left:10px;">Class Definitions</a>
+          </h5>
+          <ul class="second">
+            <li style="margin-left:10px;">
+              <a href="#Age">Age</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#Eon">Eon</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#Epoch">Epoch</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#Era">Era</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#GeochronologicBoundary">Geochronologic Boundary</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#GeochronologicEra">Geochronologic Era</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#GeologicTimescale">Geologic Timescale</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#NumericEraBoundary">Numeric Era Boundary</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#Period">Period</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#StratigraphicEvent">Stratigraphic Event</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#StratigraphicPoint">Stratigraphic Point</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#StratigraphicSection">Stratigraphic Section</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#Sub-Period">Sub-Period</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#Super-Eon">Super-Eon</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h4>
+            <a href="#objectproperties">Object Properties</a>
+          </h4>
+          <h5>
+            <a href="#object-property-hierarchy" style="margin-left:10px;">Object Property Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#object-property-definitions" style="margin-left:10px;">Object Property Definitions</a>
+          </h5>
+          <ul class="second">
+            <li style="margin-left:10px;">
+              <a href="#event">stratigraphic event</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#positionalUncertainty">time position uncertainty</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#rank">Geochronologic era rank</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#representsBoundary">geochronologic boundary</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#representsEra">geochronologic era</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#stratotype">stratotype</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h4>
+            <a href="#datatypeproperties">Datatype Properties</a>
+          </h4>
+          <ul class="second">
+            <li>
+              <a href="#boundaryLevel">boundary level</a>
+            </li>
+            <li>
+              <a href="#correlationEvent">correlation event</a>
+            </li>
+            <li>
+              <a href="#geologicDescription">geologic description</a>
+            </li>
+            <li>
+              <a href="#geologicSetting">geologic setting</a>
+            </li>
+            <li>
+              <a href="#ratifiedGSSP">ratified</a>
+            </li>
+            <li>
+              <a href="#status">status</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h4>
+            <a href="#datatypes">Custom Datatypes</a>
+          </h4>
+          <ul class="second">
+            <li>
+              <a href="#EraCode">Era code</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h4>
+            <a href="#namespaces">Namespaces</a>
+          </h4>
+          <ul class="second">
+            <li>
+              <a href="#dcterms">dcterms</a>
+            </li>
+            <li>
+              <a href="#gts">gts</a>
+            </li>
+            <li>
+              <a href="#owl">owl</a>
+            </li>
+            <li>
+              <a href="#rank">rank</a>
+            </li>
+            <li>
+              <a href="#rdf">rdf</a>
+            </li>
+            <li>
+              <a href="#rdfs">rdfs</a>
+            </li>
+            <li>
+              <a href="#sdo">sdo</a>
+            </li>
+            <li>
+              <a href="#skos">skos</a>
+            </li>
+            <li>
+              <a href="#sosa">sosa</a>
+            </li>
+            <li>
+              <a href="#thors">thors</a>
+            </li>
+            <li>
+              <a href="#time">time</a>
+            </li>
+            <li>
+              <a href="#vann">vann</a>
+            </li>
+            <li>
+              <a href="#voaf">voaf</a>
+            </li>
+            <li>
+              <a href="#xsd">xsd</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h4>
+            <a href="#legend">Legend</a>
+          </h4>
+          <ul class="second"></ul>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

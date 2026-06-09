@@ -1,0 +1,1185 @@
+# baseURI: http://resource.geosciml.org/ontology/timescale/gts
+# imports: http://resource.geosciml.org/ontology/timescale/thors
+# imports: http://www.w3.org/ns/sosa/
+# prefix: gts
+
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix gts: <http://resource.geosciml.org/ontology/timescale/gts#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rank: <http://resource.geosciml.org/ontology/timescale/rank/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix thors: <http://resource.geosciml.org/ontology/timescale/thors#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://resource.geosciml.org/ontology/timescale/gts>
+  a voaf:Vocabulary ;
+  a owl:Ontology ;
+  dcterms:contributor <https://orcid.org/0000-0001-6041-5302> ;
+  dcterms:created "2011-01-01"^^xsd:date ;
+  dcterms:creator <https://orcid.org/0000-0002-3884-3420> ;
+  dcterms:description """This is an RDF/OWL representation of the GeoSciML Geologic Timescale model, which has been adapted from the model described in Cox, S.J.D, & Richard, S.M. (2005) A formal model for the geologic timescale and GSSP, compatible with geospatial information transfer standards, Geosphere, Geological Society of America 1/3, 119–137.
+
+The permitted nesting relationships between eras of different ranks are axiomatized as local constraints using interval relationships from OWL-Time. """ ;
+  dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+  dcterms:modified "2020-05-31"^^xsd:date ;
+  dcterms:rights "Copyright 2012-2020 CSIRO" ;
+  dcterms:source "Cox, S.J.D, & Richard, S.M. (2005) A formal model for the geologic timescale and GSSP, compatible with geospatial information transfer standards, Geosphere, Geological Society of America 1/3, 119–137." ;
+  dcterms:title "Geologic Timescale model" ;
+  vann:preferredNamespacePrefix "gts" ;
+  vann:preferredNamespaceUri gts: ;
+  rdfs:seeAlso <doi:10.1130/GES00022.1> ;
+  rdfs:seeAlso <http://dx.doi.org/10.1130/GES00022.1> ;
+  rdfs:seeAlso <http://geosphere.gsapubs.org/cgi/doi/10.1130/GES00022.1> ;
+  rdfs:seeAlso <http://www.geosciml.org> ;
+  owl:imports <http://resource.geosciml.org/ontology/timescale/thors> ;
+  owl:imports sosa: ;
+  skos:changeNote "2017-04-28 - removed imports ISO ontologies" ;
+  sdo:codeRepository <https://github.com/CGI-IUGS/timescale-ont> ;
+.
+gts:Age
+  a owl:Class ;
+  rdfs:label "Age" ;
+  rdfs:subClassOf gts:GeochronologicEra ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:hasValue rank:Age ;
+      owl:onProperty gts:rank ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Epoch ;
+      owl:onProperty time:intervalIn ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Epoch
+              gts:Age
+              gts:Sub-Period
+              gts:Period
+              gts:Era
+              gts:Eon
+              gts:Super-Eon
+            ) ;
+        ] ;
+      owl:onProperty time:intervalContains ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Epoch
+              gts:Age
+              gts:Sub-Period
+              gts:Period
+              gts:Era
+              gts:Eon
+              gts:Super-Eon
+            ) ;
+        ] ;
+      owl:onProperty time:intervalFinishedBy ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Epoch
+              gts:Age
+              gts:Sub-Period
+              gts:Period
+              gts:Era
+              gts:Eon
+              gts:Super-Eon
+            ) ;
+        ] ;
+      owl:onProperty time:intervalStartedBy ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  skos:definition "Geochronologic era of rank 'Age'" ;
+  skos:example """
+isc:Calabrian
+  rdf:type gts:Age ;
+  rdf:type gts:GeochronologicEra ;
+  rdf:type skos:Concept ;
+  rdf:type time:ProperInterval ;
+  gts:rank rank:Age ;
+  rdfs:comment \"older bound -1.80 Ma\"@en ;
+  rdfs:comment \"younger bound -0.781 Ma\"@en ;
+  rdfs:label \"Calabrian Age\"@en ;
+  skos:notation \"a1.1.1.1.2.3\"^^gts:EraCode ;
+  skos:prefLabel \"Calabr\"@cs ;
+  skos:prefLabel \"Calabrian\"@en ;
+  time:hasBeginning isc:BaseCalabrian ;
+  time:hasEnd isc:BaseMiddlePleistocene ;
+  time:intervalDuring isc:Pleistocene ;
+  time:intervalIn isc:Pleistocene ;
+  time:intervalMeets isc:MiddlePleistocene ;
+  time:intervalMetBy isc:Gelasian ;
+.
+""" ;
+.
+gts:Eon
+  a owl:Class ;
+  rdfs:label "Eon" ;
+  rdfs:subClassOf gts:GeochronologicEra ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:hasValue rank:Eon ;
+      owl:onProperty gts:rank ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass gts:Super-Eon ;
+      owl:onProperty time:intervalIn ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Era ;
+      owl:onProperty time:intervalFinishedBy ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Era ;
+      owl:onProperty time:intervalStartedBy ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Eon
+              gts:Super-Eon
+            ) ;
+        ] ;
+      owl:onProperty time:intervalContains ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Eon
+              gts:Super-Eon
+            ) ;
+        ] ;
+      owl:onProperty time:intervalFinishedBy ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Eon
+              gts:Super-Eon
+            ) ;
+        ] ;
+      owl:onProperty time:intervalStartedBy ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty time:intervalContains ;
+      owl:someValuesFrom gts:Era ;
+    ] ;
+  skos:definition "Geochronologic era of rank 'Eon'" ;
+  skos:example """
+isc:Proterozoic
+  rdf:type gts:Eon ;
+  rdf:type gts:GeochronologicEra ;
+  rdf:type skos:Concept ;
+  rdf:type time:ProperInterval ;
+  gts:rank rank:Eon ;
+  rdfs:comment \"older bound -2500 Ma\"@en ;
+  rdfs:comment \"younger bound -541.0 +|-1.0 Ma\"@en ;
+  rdfs:label \"Proterozoic Eon\"@en ;
+  skos:notation \"a2.1\"^^gts:EraCode ;
+  skos:prefLabel \"Proterosoikum\"@et ;
+  skos:prefLabel \"Proterozoic\"@en ;
+  time:hasBeginning isc:BaseProterozoic ;
+  time:hasEnd isc:BasePhanerozoic ;
+  time:intervalContains isc:Mesoproterozoic ;
+  time:intervalFinishedBy isc:Neoproterozoic ;
+  time:intervalFinishes isc:Precambrian ;
+  time:intervalIn isc:Precambrian ;
+  time:intervalMeets isc:Cambrian ;
+  time:intervalMeets isc:Fortunian ;
+  time:intervalMeets isc:Paleozoic ;
+  time:intervalMeets isc:Phanerozoic ;
+  time:intervalMeets isc:Terreneuvian ;
+  time:intervalMetBy isc:Archean ;
+  time:intervalMetBy isc:Neoarchean ;
+  time:intervalStartedBy isc:Paleoproterozoic ;
+.""" ;
+.
+gts:Epoch
+  a owl:Class ;
+  rdfs:label "Epoch" ;
+  rdfs:subClassOf gts:GeochronologicEra ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:hasValue rank:Epoch ;
+      owl:onProperty gts:rank ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Age ;
+      owl:onProperty time:intervalFinishedBy ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Age ;
+      owl:onProperty time:intervalStartedBy ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Eon
+              gts:Era
+              gts:Epoch
+              gts:Period
+              gts:Sub-Period
+              gts:Super-Eon
+            ) ;
+        ] ;
+      owl:onProperty time:intervalContains ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Eon
+              gts:Era
+              gts:Epoch
+              gts:Period
+              gts:Sub-Period
+              gts:Super-Eon
+            ) ;
+        ] ;
+      owl:onProperty time:intervalFinishedBy ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Eon
+              gts:Era
+              gts:Epoch
+              gts:Period
+              gts:Sub-Period
+              gts:Super-Eon
+            ) ;
+        ] ;
+      owl:onProperty time:intervalStartedBy ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Period
+              gts:Sub-Period
+            ) ;
+        ] ;
+      owl:onProperty time:intervalIn ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty time:intervalContains ;
+      owl:someValuesFrom gts:Age ;
+    ] ;
+  skos:definition "Geochronologic era of rank 'Epoch'" ;
+  skos:example """
+isc:Cisuralian
+  rdf:type gts:Epoch ;
+  rdf:type gts:GeochronologicEra ;
+  rdf:type skos:Concept ;
+  rdf:type time:ProperInterval ;
+  gts:rank rank:Epoch ;
+  rdfs:comment \"older bound -298.9 +|-0.15 Ma\"@en ;
+  rdfs:comment \"younger bound -272.95 +|-0.11 Ma\"@en ;
+  rdfs:label \"Cisuralian Epoch\"@en ;
+  skos:notation \"a1.1.3.1.3\"^^gts:EraCode ;
+  skos:prefLabel \"Cisural\"@cs ;
+  skos:prefLabel \"Cisuralian\"@en ;
+  skos:prefLabel \"Kisuralis\"@lt ;
+  time:hasBeginning isc:BasePermian ;
+  time:hasEnd isc:BaseGuadalupian ;
+  time:intervalContains isc:Artinskian ;
+  time:intervalContains isc:Sakmarian ;
+  time:intervalFinishedBy isc:Kungurian ;
+  time:intervalIn isc:Permian ;
+  time:intervalMeets isc:Guadalupian ;
+  time:intervalMeets isc:Roadian ;
+  time:intervalMetBy isc:Carboniferous ;
+  time:intervalMetBy isc:Gzhelian ;
+  time:intervalMetBy isc:Pennsylvanian ;
+  time:intervalMetBy isc:UpperMississippian ;
+  time:intervalMetBy isc:UpperPennsylvanian ;
+  time:intervalStartedBy isc:Asselian ;
+  time:intervalStarts isc:Permian ;
+.
+""" ;
+.
+gts:Era
+  a owl:Class ;
+  rdfs:label "Era" ;
+  rdfs:subClassOf gts:GeochronologicEra ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:hasValue rank:Era ;
+      owl:onProperty gts:rank ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Eon ;
+      owl:onProperty time:intervalIn ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Period ;
+      owl:onProperty time:intervalFinishedBy ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Period ;
+      owl:onProperty time:intervalStartedBy ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Super-Eon
+              gts:Eon
+              gts:Era
+            ) ;
+        ] ;
+      owl:onProperty time:intervalContains ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Super-Eon
+              gts:Eon
+              gts:Era
+            ) ;
+        ] ;
+      owl:onProperty time:intervalFinishedBy ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Super-Eon
+              gts:Eon
+              gts:Era
+            ) ;
+        ] ;
+      owl:onProperty time:intervalStartedBy ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty time:intervalContains ;
+      owl:someValuesFrom gts:Period ;
+    ] ;
+  skos:definition "Geochronologic era of rank 'Era'" ;
+  skos:example """
+isc:Mesoproterozoic
+  rdf:type gts:Era ;
+  rdf:type gts:GeochronologicEra ;
+  rdf:type skos:Concept ;
+  rdf:type time:ProperInterval ;
+  gts:rank rank:Era ;
+  rdfs:comment \"older bound -1600 Ma\"@en ;
+  rdfs:comment \"younger bound -1000 Ma\"@en ;
+  rdfs:label \"Mesoproterozoic Era\"@en ;
+  skos:notation \"a2.1.2\"^^gts:EraCode ;
+  skos:prefLabel \"Mesoproterozoic\"@en ;
+  skos:prefLabel \"Mesoproterozoico\"@es ;
+  time:hasBeginning isc:BaseMesoproterozoic ;
+  time:hasEnd isc:BaseNeoproterozoic ;
+  time:intervalContains isc:Ectasian ;
+  time:intervalDuring isc:Proterozoic ;
+  time:intervalFinishedBy isc:Stenian ;
+  time:intervalIn isc:Proterozoic ;
+  time:intervalMeets isc:Neoproterozoic ;
+  time:intervalMeets isc:Tonian ;
+  time:intervalMetBy isc:Paleoproterozoic ;
+  time:intervalMetBy isc:Statherian ;
+  time:intervalStartedBy isc:Calymmian ;
+.
+""" ;
+.
+gts:EraCode
+  a rdfs:Datatype ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "Era code" ;
+  owl:equivalentClass [
+      a rdfs:Datatype ;
+      owl:onDatatype xsd:string ;
+      owl:withRestrictions (
+          [
+            xsd:pattern "[ax][12](.[1-9])*" ;
+          ]
+        ) ;
+    ] ;
+  skos:example """
+isc:Calabrian  skos:notation \"a1.1.1.1.2.3\"^^gts:EraCode .""" ;
+.
+gts:GeochronologicBoundary
+  a owl:Class ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "Geochronologic Boundary"@en ;
+  rdfs:subClassOf thors:EraBoundary ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom gts:StratigraphicPoint ;
+      owl:onProperty gts:stratotype ;
+    ] ;
+  owl:disjointWith gts:NumericEraBoundary ;
+  skos:definition "Boundary between geochronologic eras, defined with reference to an agreed stratigraphic point. Typically denoted as the 'base of' the succeeding era" ;
+  skos:example """
+isc:BaseJurassic
+  rdf:type gts:GeochronologicBoundary ;
+  rdf:type thors:EraBoundary ;
+  rdf:type skos:Concept ;
+  rdf:type time:Instant ;
+  gts:stratotype isc:BaseJurassicSP ;
+  rdfs:label \"Base of Jurassic\"@en ;
+  skos:altLabel \"Base of Hettangian\"@en ;
+  skos:altLabel \"Base of Lower Jurassic\"@en ;
+  skos:prefLabel \"Base of Jurassic\"@en ;
+  time:inTemporalPosition isc:BaseJurassicTime ;
+.""" ;
+.
+gts:GeochronologicEra
+  a owl:Class ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "Geochronologic Era"@en ;
+  rdfs:subClassOf thors:Era ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom gts:StratigraphicSection ;
+      owl:onProperty gts:stratotype ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty gts:rank ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty skos:notation ;
+      owl:someValuesFrom gts:EraCode ;
+    ] ;
+  skos:definition "Named interval within the geologic timescale, of any rank" ;
+  skos:example """
+isc:Mesozoic
+  rdf:type gts:Era ;
+  rdf:type gts:GeochronologicEra ;
+  rdf:type skos:Concept ;
+  rdf:type time:ProperInterval ;
+  rdfs:label \"Mesozoic Era\"@en ;
+  skos:notation \"a1.1.2\"^^gts:EraCode ;
+  skos:prefLabel \"Mesosoikum\"@et ;
+  skos:prefLabel \"Mesozoic\"@en ;
+  time:hasBeginning isc:BaseMesozoic ;
+  time:hasEnd isc:BaseCenozoic ;
+.
+""" ;
+.
+gts:GeochronologicEraRank
+  a rdfs:Class ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "Geochronologic Era Rank"@en ;
+  rdfs:subClassOf skos:Concept ;
+  skos:definition "Rank of geologic era within the standard hierarchy: Eon, Era, Period, Epoch, Age" ;
+  skos:example """
+rank:Period
+  rdf:type gts:GeochronologicEraRank ;
+  rdf:type skos:Concept ;
+  rdfs:label \"Period\" ;
+.""" ;
+.
+gts:GeologicTimescale
+  a owl:Class ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "Geologic Timescale"@en ;
+  rdfs:subClassOf thors:ReferenceSystem ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom gts:GeochronologicEra ;
+      owl:onProperty thors:component ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom [
+          a owl:Class ;
+          owl:unionOf (
+              gts:GeochronologicBoundary
+              gts:NumericEraBoundary
+            ) ;
+        ] ;
+      owl:onProperty thors:referencePoint ;
+    ] ;
+  skos:definition "The hierarchical ordinal/nominal reference system known as the Geologic Timescale" ;
+  skos:example """
+ts:gts2019
+  rdf:type gts:GeologicTimescale ;
+  rdf:type skos:ConceptScheme ;
+  rdf:type time:TRS ;
+  thors:component isc:Phanerozoic ;
+  thors:component isc:Precambrian ;
+  thors:referencePoint isc:BasePhanerozoic ;
+  thors:referencePoint isc:FormationOfEarth ;
+  thors:referencePoint isc:Present ;
+  rdfs:label \"Geologic Time Scale (2019)\"@en ;
+.
+""" ;
+.
+gts:NumericEraBoundary
+  a owl:Class ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "Numeric Era Boundary"@en ;
+  rdfs:subClassOf thors:EraBoundary ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty gts:status ;
+    ] ;
+  owl:disjointWith gts:GeochronologicBoundary ;
+  skos:definition "Boundary between geochronologic eras, defined by an agreed chronometric position (i.e. numeric age). Typically denoted as the 'base of' the succeeding era" ;
+  skos:example """
+isc:BaseProterozoic
+  rdf:type gts:NumericEraBoundary ;
+  rdf:type thors:EraBoundary ;
+  rdf:type skos:Concept ;
+  rdf:type time:Instant ;
+  gts:ratifiedGSSP true ;
+  rdfs:label \"Base of Proterozoic\"@en ;
+  skos:prefLabel \"Base of Proterozoic\"@en ;
+  time:inTemporalPosition isc:BaseProterozoicTime ;
+.""" ;
+.
+gts:Period
+  a owl:Class ;
+  rdfs:label "Period"@en ;
+  rdfs:subClassOf gts:GeochronologicEra ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:hasValue rank:Period ;
+      owl:onProperty gts:rank ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Epoch ;
+      owl:onProperty time:intervalFinishedBy ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Epoch ;
+      owl:onProperty time:intervalStartedBy ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Era ;
+      owl:onProperty time:intervalIn ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Super-Eon
+              gts:Eon
+              gts:Era
+              gts:Period
+            ) ;
+        ] ;
+      owl:onProperty time:intervalContains ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Super-Eon
+              gts:Eon
+              gts:Era
+              gts:Period
+            ) ;
+        ] ;
+      owl:onProperty time:intervalFinishedBy ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Super-Eon
+              gts:Eon
+              gts:Era
+              gts:Period
+            ) ;
+        ] ;
+      owl:onProperty time:intervalStartedBy ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty time:intervalContains ;
+      owl:someValuesFrom gts:Epoch ;
+    ] ;
+  skos:definition "Geochronologic era of rank 'Period'" ;
+  skos:example """
+isc:Stenian
+  rdf:type gts:GeochronologicEra ;
+  rdf:type gts:Period ;
+  rdf:type skos:Concept ;
+  rdf:type time:ProperInterval ;
+  gts:rank rank:Period ;
+  rdfs:comment \"older bound -1200 Ma\"@en ;
+  rdfs:comment \"younger bound -1000 Ma\"@en ;
+  rdfs:label \"Stenian Period\"@en ;
+  skos:notation \"a2.1.2.1\"^^gts:EraCode ;
+  skos:prefLabel \"Esteniense\"@es ;
+  skos:prefLabel \"Stenian\"@en ;
+  time:hasBeginning isc:BaseStenian ;
+  time:hasEnd isc:BaseNeoproterozoic ;
+  time:intervalFinishes isc:Mesoproterozoic ;
+  time:intervalIn isc:Mesoproterozoic ;
+  time:intervalMeets isc:Neoproterozoic ;
+  time:intervalMeets isc:Tonian ;
+  time:intervalMetBy isc:Ectasian ;
+.""" ;
+.
+gts:StratigraphicEvent
+  a owl:Class ;
+  rdfs:comment "A subclass of Geologic Event (placeholder) " ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "Stratigraphic Event"@en ;
+  skos:definition "Geologic event correlated with a specified stratotype. " ;
+.
+gts:StratigraphicPoint
+  a owl:Class ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "Stratigraphic Point"@en ;
+  rdfs:subClassOf sosa:Sample ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty gts:correlationEvent ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty gts:status ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty gts:ratifiedGSSP ;
+    ] ;
+  skos:definition "A specified position within an agreed stratigraphic section, used to calibrate the temporal position (age) of a boundary within the geologic timescale. " ;
+  skos:example """
+isc:BaseJurassicSP
+  rdf:type gts:StratigraphicPoint ;
+  dct:source \"Episodes 36/3, p. 162-198, 2013\"@en ;
+  gts:boundaryLevel \"5.80 m above top of Koessen Formation\"@en ;
+  gts:correlationEvent \"FO of ammonite Psiloceras spelae tirolicum, FO of aragonitic foraminifer Praegubkinella turgescens\"@en ;
+  gts:ratifiedGSSP true ;
+  gts:status \"Ratified 2010\"@en ;
+  geo:hasGeometry isc:BaseJurassic-location ;
+  rdfs:comment \"Kuhjoch section,Tyrol, Austria \"@en ;
+  rdfs:label \"Stratotype Point Base of Jurassic\"@en ;
+  rdfs:seeAlso <http://www.stratigraphy.org/GSSP/Hettangian.pdf> ;
+  rdfs:seeAlso <http://www.stratigraphy.org/GSSP/index.html> ;
+  skos:prefLabel \"Stratotype Point Base of Jurassic\"@en ;
+.""" ;
+.
+gts:StratigraphicSection
+  a owl:Class ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "Stratigraphic Section"@en ;
+  rdfs:subClassOf sosa:Sample ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty gts:geologicDescription ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty gts:geologicSetting ;
+    ] ;
+  skos:definition "An agreed stratigraphic section, which hosts a stratigraphic point that is used to calibrate the temporal position (age) of a boundary within the geologic timescale. " ;
+.
+gts:Sub-Period
+  a owl:Class ;
+  rdfs:label "Sub-Period" ;
+  rdfs:subClassOf gts:GeochronologicEra ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:hasValue rank:Sub-Period ;
+      owl:onProperty gts:rank ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Epoch ;
+      owl:onProperty time:intervalFinishedBy ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Epoch ;
+      owl:onProperty time:intervalStartedBy ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Period ;
+      owl:onProperty time:intervalIn ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Super-Eon
+              gts:Eon
+              gts:Era
+              gts:Period
+              gts:Sub-Period
+            ) ;
+        ] ;
+      owl:onProperty time:intervalContains ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Super-Eon
+              gts:Eon
+              gts:Era
+              gts:Period
+              gts:Sub-Period
+            ) ;
+        ] ;
+      owl:onProperty time:intervalFinishedBy ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass [
+          a owl:Class ;
+          owl:unionOf (
+              gts:Super-Eon
+              gts:Eon
+              gts:Era
+              gts:Period
+              gts:Sub-Period
+            ) ;
+        ] ;
+      owl:onProperty time:intervalStartedBy ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty time:intervalContains ;
+      owl:someValuesFrom gts:Epoch ;
+    ] ;
+  skos:definition "Geochronologic era of rank 'Sub-Period'" ;
+  skos:example """
+isc:Mississippian
+  rdf:type gts:GeochronologicEra ;
+  rdf:type gts:Sub-Period ;
+  rdf:type skos:Concept ;
+  rdf:type time:ProperInterval ;
+  gts:rank rank:Sub-Period ;
+  rdfs:comment \"older bound -358.9 +|-0.4 Ma\"@en ;
+  rdfs:comment \"younger bound -323.2 +|-0.4 Ma\"@en ;
+  rdfs:label \"Mississippian Sub-period\"@en ;
+  skos:notation \"a1.1.3.2.2\"^^gts:EraCode ;
+  skos:prefLabel \"Misisipis\"@lt ;
+  skos:prefLabel \"Mississippian\"@en ;
+  time:hasBeginning isc:BaseCarboniferous ;
+  time:hasEnd isc:BasePennsylvanian ;
+  time:intervalContains isc:MiddleMississippian ;
+  time:intervalFinishedBy isc:UpperMississippian ;
+  time:intervalIn isc:Carboniferous ;
+  time:intervalMeets isc:Bashkirian ;
+  time:intervalMeets isc:LowerPennsylvanian ;
+  time:intervalMeets isc:Pennsylvanian ;
+  time:intervalMetBy isc:Devonian ;
+  time:intervalMetBy isc:Famennian ;
+  time:intervalMetBy isc:UpperDevonian ;
+  time:intervalStartedBy isc:LowerMississippian ;
+  time:intervalStarts isc:Carboniferous ;
+.""" ;
+.
+gts:Super-Eon
+  a owl:Class ;
+  rdfs:label "Super-Eon" ;
+  rdfs:subClassOf gts:GeochronologicEra ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Eon ;
+      owl:onProperty time:intervalFinishedBy ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Eon ;
+      owl:onProperty time:intervalStartedBy ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Super-Eon ;
+      owl:onProperty time:intervalContains ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Super-Eon ;
+      owl:onProperty time:intervalFinishedBy ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onClass gts:Super-Eon ;
+      owl:onProperty time:intervalStartedBy ;
+      owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty time:intervalContains ;
+      owl:someValuesFrom gts:Eon ;
+    ] ;
+  skos:definition "Geochronologic era of rank 'Super-Eon'" ;
+  skos:example """
+isc:Precambrian
+  rdf:type gts:GeochronologicEra ;
+  rdf:type gts:Super-Eon ;
+  rdf:type skos:Concept ;
+  rdf:type time:ProperInterval ;
+  gts:rank rank:Super-Eon ;
+  rdfs:comment \"older bound -4567 +|-1 Ma\"@en ;
+  rdfs:comment \"younger bound -541.0 +|-1.0 Ma\"@en ;
+  rdfs:label \"Precambrian Supereon\"@en ;
+  skos:notation \"a2\"^^gts:EraCode ;
+  skos:prefLabel \"Precambrian\"@en ;
+  skos:prefLabel \"Précambrien\"@fr ;
+  time:hasBeginning isc:FormationOfEarth ;
+  time:hasEnd isc:BasePhanerozoic ;
+  time:intervalContains isc:Archean ;
+  time:intervalFinishedBy isc:Proterozoic ;
+  time:intervalMeets isc:Cambrian ;
+  time:intervalMeets isc:Fortunian ;
+  time:intervalMeets isc:Paleozoic ;
+  time:intervalMeets isc:Phanerozoic ;
+  time:intervalMeets isc:Terreneuvian ;
+  time:intervalStartedBy isc:Hadean ;
+.""" ;
+.
+gts:boundaryLevel
+  a owl:DatatypeProperty ;
+  rdfs:comment "the level within the section of the point characterizing the boundary" ;
+  rdfs:domain gts:StratigraphicPoint ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "boundary level" ;
+  skos:example """
+isc:BaseBathonianSP
+  a gts:StratigraphicPoint ;
+  gts:boundaryLevel \"Base of limestone bed RB07 \"@en ;
+  gts:correlationEvent \"Ammonite FAD Gonolkite convergens (defines Base of Zigzagiceras zigzag Zone)\"@en ;
+  gts:ratifiedGSSP true ;
+  gts:status \"Ratified 2008\"@en ;
+  geo:hasGeometry isc:BaseBathonian-location ;
+  rdfs:comment \"Ravin du Bes, Bas Auran area, Alpes de Haute Provence, France  \"@en ;
+  rdfs:label \"Stratotype Point Base of Bathonian\"@en ;
+.""" ;
+.
+gts:correlationEvent
+  a owl:DatatypeProperty ;
+  rdfs:comment "the stratigraphic event that is intended to be represented by this stratigraphic point" ;
+  rdfs:domain gts:StratigraphicPoint ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "correlation event" ;
+  skos:example """
+isc:BaseBathonianSP
+  a gts:StratigraphicPoint ;
+  gts:boundaryLevel \"Base of limestone bed RB07 \"@en ;
+  gts:correlationEvent \"Ammonite FAD Gonolkite convergens (defines Base of Zigzagiceras zigzag Zone)\"@en ;
+  gts:ratifiedGSSP true ;
+  gts:status \"Ratified 2008\"@en ;
+  geo:hasGeometry isc:BaseBathonian-location ;
+  rdfs:comment \"Ravin du Bes, Bas Auran area, Alpes de Haute Provence, France  \"@en ;
+  rdfs:label \"Stratotype Point Base of Bathonian\"@en ;
+.""" ;
+.
+gts:event
+  a owl:ObjectProperty ;
+  rdfs:comment "stratigraphic event corresponding with this boundary or point" ;
+  rdfs:domain [
+      a owl:Class ;
+      owl:unionOf (
+          gts:GeochronologicBoundary
+          gts:StratigraphicPoint
+        ) ;
+    ] ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "stratigraphic event" ;
+  rdfs:range gts:StratigraphicEvent ;
+.
+gts:geologicDescription
+  a owl:DatatypeProperty ;
+  rdfs:domain gts:StratigraphicSection ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "geologic description" ;
+  skos:definition "geologic description of the stratigraphic section" ;
+.
+gts:geologicSetting
+  a owl:DatatypeProperty ;
+  rdfs:domain gts:StratigraphicSection ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "geologic setting" ;
+  skos:definition "geologic setting of the stratigraphic section" ;
+.
+gts:positionalUncertainty
+  a owl:ObjectProperty ;
+  rdfs:domain time:TemporalPosition ;
+  rdfs:label "time position uncertainty" ;
+  rdfs:range time:TemporalDuration ;
+  skos:definition "Uncertainty in a time position" ;
+  skos:example """
+isc:BaseAeronianTime
+  a time:TimePosition ;
+  gts:positionalUncertainty isc:BaseAeronianUncertainty ;
+  time:hasTRS <http://resource.geosciml.org/classifier/cgi/geologicage/ma> ;
+  time:numericPosition 440.8 ;
+.""" ;
+.
+gts:rank
+  a owl:ObjectProperty ;
+  rdfs:comment """Elements of all ranks are included in the class 'gts:GeochronologicEra'.
+The rank may be indicated by membership of a sub-class, or is indicated using the 'gts:rank' property.""" ;
+  rdfs:domain gts:GeochronologicEra ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "Geochronologic era rank" ;
+  rdfs:range gts:GeochronologicEraRank ;
+  skos:example """
+isc:Aalenian
+  a gts:Age ;
+  a gts:GeochronologicEra ;
+  a skos:Concept ;
+  a time:ProperInterval ;
+  gts:rank rank:Age ;
+.""" ;
+.
+gts:ratifiedGSSP
+  a owl:DatatypeProperty ;
+  rdfs:comment "flag to indicate the status of the calibration details of a geochronologic boundary - 'true' if ratified by ICS" ;
+  rdfs:domain [
+      a owl:Class ;
+      owl:unionOf (
+          gts:StratigraphicPoint
+          gts:GeochronologicBoundary
+          gts:NumericEraBoundary
+        ) ;
+    ] ;
+  rdfs:label "ratified" ;
+  rdfs:range xsd:boolean ;
+  skos:example """
+isc:BaseBathonianSP
+  a gts:StratigraphicPoint ;
+  gts:boundaryLevel \"Base of limestone bed RB07 \"@en ;
+  gts:correlationEvent \"Ammonite FAD Gonolkite convergens (defines Base of Zigzagiceras zigzag Zone)\"@en ;
+  gts:ratifiedGSSP true ;
+  gts:status \"Ratified 2008\"@en ;
+  geo:hasGeometry isc:BaseBathonian-location ;
+  rdfs:comment \"Ravin du Bes, Bas Auran area, Alpes de Haute Provence, France  \"@en ;
+  rdfs:label \"Stratotype Point Base of Bathonian\"@en ;
+.""" ;
+.
+gts:representsBoundary
+  a owl:ObjectProperty ;
+  rdfs:comment "geochronologic boundary corresponding with this stratigraphic point" ;
+  rdfs:domain gts:StratigraphicPoint ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "geochronologic boundary" ;
+  rdfs:range gts:GeochronologicBoundary ;
+.
+gts:representsEra
+  a owl:ObjectProperty ;
+  rdfs:comment "geochronologic era corresponding with this stratigraphic section" ;
+  rdfs:domain gts:StratigraphicSection ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "geochronologic era" ;
+  rdfs:range gts:GeochronologicEra ;
+.
+gts:status
+  a owl:DatatypeProperty ;
+  rdfs:comment "formal ICS status of this boundary and point" ;
+  rdfs:domain [
+      a owl:Class ;
+      owl:unionOf (
+          gts:NumericEraBoundary
+          gts:StratigraphicPoint
+        ) ;
+    ] ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "status" ;
+  skos:definition "Description of the formal ICS status of this boundary and point" ;
+  skos:example """
+isc:BaseBathonianSP
+  a gts:StratigraphicPoint ;
+  gts:boundaryLevel \"Base of limestone bed RB07 \"@en ;
+  gts:correlationEvent \"Ammonite FAD Gonolkite convergens (defines Base of Zigzagiceras zigzag Zone)\"@en ;
+  gts:ratifiedGSSP true ;
+  gts:status \"Ratified 2008\"@en ;
+  geo:hasGeometry isc:BaseBathonian-location ;
+  rdfs:comment \"Ravin du Bes, Bas Auran area, Alpes de Haute Provence, France  \"@en ;
+  rdfs:label \"Stratotype Point Base of Bathonian\"@en ;
+.""" ;
+.
+gts:stratotype
+  a owl:ObjectProperty ;
+  rdfs:comment "the characteristic stratigraphic point or section corresponding with a geochronologic concept" ;
+  rdfs:domain [
+      a owl:Class ;
+      owl:unionOf (
+          gts:GeochronologicBoundary
+          gts:GeochronologicEra
+        ) ;
+    ] ;
+  rdfs:isDefinedBy <http://resource.geosciml.org/ontology/timescale/gts> ;
+  rdfs:label "stratotype" ;
+  rdfs:range [
+      a owl:Class ;
+      owl:unionOf (
+          gts:StratigraphicPoint
+          gts:StratigraphicSection
+        ) ;
+    ] ;
+  skos:example """
+isc:BaseAeronian
+  a gts:GeochronologicBoundary ;
+  a thors:EraBoundary ;
+  a skos:Concept ;
+  a time:Instant ;
+  gts:stratotype isc:BaseAeronianSP ;
+  rdfs:label \"Base of Aeronian\"@en ;
+  skos:prefLabel \"Base of Aeronian\"@en ;
+  time:inTemporalPosition isc:BaseAeronianTime ;
+.""" ;
+.
+rank:
+  skos:member rank:Age ;
+  skos:member rank:Eon ;
+  skos:member rank:Epoch ;
+  skos:member rank:Era ;
+  skos:member rank:Period ;
+  skos:member rank:Sub-Period ;
+  skos:member rank:Super-Eon ;
+.
+rank:Age
+  a gts:GeochronologicEraRank ;
+  a skos:Concept ;
+  rdfs:label "Age" ;
+.
+rank:Eon
+  a gts:GeochronologicEraRank ;
+  a skos:Concept ;
+  rdfs:label "Eon" ;
+.
+rank:Epoch
+  a gts:GeochronologicEraRank ;
+  a skos:Concept ;
+  rdfs:label "Epoch" ;
+.
+rank:Era
+  a gts:GeochronologicEraRank ;
+  a skos:Concept ;
+  rdfs:label "Era" ;
+.
+rank:Period
+  a gts:GeochronologicEraRank ;
+  a skos:Concept ;
+  rdfs:label "Period" ;
+.
+rank:Sub-Period
+  a gts:GeochronologicEraRank ;
+  a skos:Concept ;
+  rdfs:label "Sub-Period" ;
+.
+rank:Super-Eon
+  a gts:GeochronologicEraRank ;
+  a skos:Concept ;
+  rdfs:label "Super-Eon" ;
+.
+<https://orcid.org/0000-0001-6041-5302>
+  a owl:NamedIndividual ;
+  a sdo:Person ;
+  sdo:email <mailto:smrTucson@gmail.com> ;
+  sdo:identifier "https://orcid.org/0000-0001-6041-5302"^^xsd:anyURI ;
+  sdo:name "Stephen M Richard"@en ;
+.
+<https://orcid.org/0000-0002-3884-3420>
+  a owl:NamedIndividual ;
+  a sdo:Person ;
+  sdo:affiliation [
+      sdo:identifier "http://catalogue.linked.data.gov.au/org/csiro"^^xsd:anyURI ;
+      sdo:name "CSIRO" ;
+    ] ;
+  sdo:email <mailto:simon.cox@csiro.au> ;
+  sdo:identifier "https://orcid.org/0000-0002-3884-3420"^^xsd:anyURI ;
+  sdo:name "Simon J D Cox"@en ;
+.

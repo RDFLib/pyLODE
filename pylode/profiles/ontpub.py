@@ -477,7 +477,6 @@ class OntPub:
                 d.render()
 
             if (None, RDF.type, RDFS.Datatype) in self.ont:
-                print("DATATYPES")
                 d = section_html(
                     "Custom Datatypes",
                     self.ont,

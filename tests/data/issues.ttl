@@ -227,6 +227,18 @@ fruits:Lemon
     rdfs:subClassOf fruits:Citrus ;
     schema:description "Dummy desc" ;
     schema:name "Lemon" ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onClass [
+            a owl:Class ;
+            owl:unionOf (
+                fruits:Apple
+                fruits:Orange
+            ) ;
+        ] ;
+        owl:onProperty fruits:notSameColourAs ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
 .
 
 wfprov:auspixDggsLiteral

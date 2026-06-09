@@ -70,8 +70,39 @@ def test_issue_30_html(fix_html):
     assert expected_html in de_space_html(fix_html)
 
 
-def test_issue_141(fix_html):
+def test_issue_84(fix_html):
     open("issues.html", "w").write(fix_html)
+    assert (
+        de_space_html(
+            """
+              <td>
+                <span>
+                  <span>
+                    <a href="http://example.com/ns/fruits/notSameColourAs">fruits:notSameColourAs</a>
+                    <span>
+                      <span class="cardinality">exactly</span>
+                      <span>1</span>
+                    </span>
+                    <span>
+                      <a href="http://example.com/ns/fruits/Apple">Apple</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                    <span class="cardinality">or</span>
+                    <span>
+                      <a href="http://example.com/ns/fruits/Orange">Orange</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span><br>
+                  </span>
+                </span>
+              </td>            
+            """
+        )
+        in de_space_html(fix_html)
+    ), "Datatypes not catered for correctly"
+
+
+def test_issue_141(fix_html):
+    # open("issues.html", "w").write(fix_html)
     assert (
         de_space_html(
             """

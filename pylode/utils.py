@@ -410,9 +410,9 @@ def rdf_obj_html(
     ):
         def _hyperlink_html(
             ont__: Graph,
+            iri__: URIRef,
             back_onts__: Graph,
             ns__: Tuple[str, str],
-            iri__: URIRef,
             fids__,
             rdf_type__: Optional[URIRef] = None,
         ):
@@ -470,8 +470,6 @@ def rdf_obj_html(
             else:
                 try:
                     qname = ont__.compute_qname(iri__, False)
-                    if "ASGS" in qname[2]:
-                        print(qname)
                 except Exception:
                     qname = iri__
                 prefix = "" if qname[0] == "" else f"{qname[0]}:"
@@ -503,7 +501,7 @@ def rdf_obj_html(
         def _literal_html(obj__):
             if str(obj__).startswith("http"):
                 return _hyperlink_html(
-                    ont_, back_onts_, ns_, cast(URIRef, obj__), fids_
+                    ont_, cast(URIRef, obj__), back_onts_, ns_, fids_
                 )
             else:
                 if prop == SKOS.example:
@@ -631,12 +629,15 @@ def rdf_obj_html(
             for px, o in ont__.predicate_objects(obj__):
                 if px != RDF.type:
                     if px == OWL.onProperty:
-                        prop = _hyperlink_html(ont__, back_onts_, ns__, o, fids_)
+                        prop = _hyperlink_html(ont__, o, back_onts_, ns__, fids_)
                     # Added the onClass restriction otherwise the class name is ignored in the HTML output.
                     elif px == OWL.onClass:
-                        cls = _hyperlink_html(
-                            ont__, back_onts_, ns__, o, fids_, OWL.Class
-                        )
+                        if (o, OWL.unionOf|OWL.intersectionOf, None) in ont__:
+                            cls = _setclass_html(ont__, o, back_onts_, ns__, fids_)
+                        else:
+                            cls = _hyperlink_html(
+                                ont__, o, back_onts_, ns__, fids_, OWL.Class
+                            )
                     elif px in RESTRICTION_TYPES + OWL_SET_TYPES:
                         if px in [
                             OWL.minCardinality,
@@ -678,7 +679,7 @@ def rdf_obj_html(
                                 span(card, _class="cardinality"),
                                 span(
                                     _hyperlink_html(
-                                        ont__, back_onts_, ns__, o, fids_, OWL.Class
+                                        ont__, o, back_onts_, ns__, fids_, OWL.Class
                                     )
                                 ),
                             )
@@ -703,18 +704,18 @@ def rdf_obj_html(
             else:
                 joining_word = span(",", _class="cardinality")
 
-            class_set = set()
+            class_set = []
             for o in ont__.objects(obj__, OWL.unionOf | OWL.intersectionOf):
                 for o2 in ont__.objects(o, RDF.rest * ZeroOrMore / RDF.first):
-                    class_set.add(
+                    class_set.append(
                         _rdf_obj_single_html(
-                            ont__, back_onts__, ns__, o2, fids__, OWL.Class
+                            ont__, back_onts__, ns__, o2, fids__, OWL.Class, prop=prop
                         )
                     )
 
             return intersperse(class_set, joining_word)
 
-        def _bn_html(ont__, back_onts__, ns__, fids__, obj__: BNode):
+        def _bn_html(ont__, obj__, back_onts__, ns__, fids__: BNode):
             # TODO: remove back_onts and fids if not needed by subfunctions
             # What kind of BN is it?
             # An Agent, a Restriction or a Set Class (union/intersection)
@@ -728,10 +729,10 @@ def rdf_obj_html(
 
         if isinstance(obj_, Tuple) or isinstance(obj_, URIRef):
             ret = _hyperlink_html(
-                ont_, back_onts_, ns_, obj_, fids_, rdf_type__=rdf_type_
+                ont_, obj_, back_onts_, ns_, fids_, rdf_type__=rdf_type_
             )
         elif isinstance(obj_, BNode):
-            ret = _bn_html(ont_, back_onts_, ns_, fids_, obj_)
+            ret = _bn_html(ont_, obj_, back_onts_, ns_, fids_)
         else:  # isinstance(obj, Literal):
             ret = _literal_html(obj_)
 
@@ -794,13 +795,15 @@ def _make_hierarchy_html(
     if (None, RDF.type, obj_class) in ont:
         items = []
         for s in ont.subjects(RDF.type, obj_class):
-            c = {
-                "iri": str(s),
-                "name": str(ont.value(s, DCTERMS.title|SDO.name)),  # need 2 x for OntPub (title) and VocPub (prefLabel) profiles
-            }
-            for o2 in ont.objects(s, parent_indicator):
-                c["parent"] = str(o2)
-            items.append(c)
+            if not isinstance(s, BNode):
+                c = {
+                    "iri": str(s),
+                    "name": str(ont.value(s, DCTERMS.title|SDO.name)),  # need 2 x for OntPub (title) and VocPub (prefLabel) profiles
+                }
+                for o2 in ont.objects(s, parent_indicator):
+                    if not isinstance(o2, BNode):
+                        c["parent"] = str(o2)
+                items.append(c)
 
         def build_html_tree(items):
             # Index items by id
