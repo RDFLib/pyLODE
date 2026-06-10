@@ -821,7 +821,7 @@ def _make_hierarchy_html(
 
             # Recursive renderer
             def render_nodes(nodes):
-                container = ul()
+                container = ul(_class="hierarchy")
                 for node in sorted(
                     nodes,
                     key=lambda node: (
@@ -843,7 +843,7 @@ def _make_hierarchy_html(
 
             return render_nodes(roots)
 
-        return build_html_tree(items)
+        return div(build_html_tree(items), _class="hierarchy")
 
 
 def section_html(
