@@ -97,7 +97,7 @@ def test_issue_84(fix_html):
                 </span>
               </td>            
             """
-    ) in de_space_html(fix_html), "Datatypes not catered for correctly"
+    ) in de_space_html(fix_html), "Union class restrictions not catered for correctly"
 
 
 def test_issue_141(fix_html):
