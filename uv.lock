@@ -309,7 +309,7 @@ wheels = [
 
 [[package]]
 name = "pylode"
-version = "3.4.5a0"
+version = "3.5.1a0"
 source = { editable = "." }
 dependencies = [
     { name = "dominate" },
