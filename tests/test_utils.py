@@ -85,7 +85,10 @@ def test_rdf_obj_html(fix_ont, fix_load_background_onts, fix_get_ns):
         ([Literal(1)], "<p>1</p>"),
         ([Literal(True)], "<p>true</p>"),
         ([Literal("Hello World")], "<p>Hello World</p>"),
-        ([Literal(41), Literal(42)], "<ul class=\"pylodelitlist\"><li><p>41</p></li><li><p>42</p></li></ul>"),
+        (
+            [Literal(41), Literal(42)],
+            '<ul class="pylodelitlist"><li><p>41</p></li><li><p>42</p></li></ul>',
+        ),
         (
             [URIRef("http://example.com/thing/One")],
             '<a href="#One">http://example.com/thing/One</a>',

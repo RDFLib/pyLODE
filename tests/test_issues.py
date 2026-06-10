@@ -9,6 +9,7 @@ from pylode.utils import de_space_html, get_ns
 
 current_dir = Path(__file__).parent
 
+
 @pytest.fixture(scope="session")
 def fix_html():
     od = OntPub(Path(__file__).parent / "data" / "issues.ttl")
@@ -73,9 +74,8 @@ def test_issue_30_html(fix_html):
 
 def test_issue_84(fix_html):
     # open("issues.html", "w").write(fix_html)
-    assert (
-        de_space_html(
-            """
+    assert de_space_html(
+        """
               <td>
                 <span>
                   <span>
@@ -97,16 +97,13 @@ def test_issue_84(fix_html):
                 </span>
               </td>            
             """
-        )
-        in de_space_html(fix_html)
-    ), "Datatypes not catered for correctly"
+    ) in de_space_html(fix_html), "Datatypes not catered for correctly"
 
 
 def test_issue_141(fix_html):
     # open("issues.html", "w").write(fix_html)
-    assert (
-        de_space_html(
-            """
+    assert de_space_html(
+        """
       <div class="section" id="datatypes">
         <h2>Custom Datatypes</h2>
         <div class="property entity" id="AusPIXDGGSLiteral">
@@ -152,6 +149,4 @@ def test_issue_141(fix_html):
         </div>
       </div>            
             """
-        )
-        in de_space_html(fix_html)
-    ), "Datatypes not catered for correctly"
+    ) in de_space_html(fix_html), "Datatypes not catered for correctly"

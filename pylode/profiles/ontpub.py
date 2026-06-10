@@ -386,7 +386,7 @@ class OntPub:
 
     def _make_main_sections(self):
         with self.content:
-            if (None, RDF.type, OWL.Class) in self.ont:               
+            if (None, RDF.type, OWL.Class) in self.ont:
                 d = section_html(
                     "Classes",
                     self.ont,
@@ -588,10 +588,22 @@ class OntPub:
                         self.toc.get("classes") is not None
                         and len(self.toc["classes"]) > 0
                     ):
-                        with li():                            
+                        with li():
                             h4(a("Classes", href="#classes"))
-                            h5(a("Class Hierarchy", href="#class-hierarchy", style="margin-left:10px;"))
-                            h5(a("Class Definitions", href="#class-definitions", style="margin-left:10px;"))
+                            h5(
+                                a(
+                                    "Class Hierarchy",
+                                    href="#class-hierarchy",
+                                    style="margin-left:10px;",
+                                )
+                            )
+                            h5(
+                                a(
+                                    "Class Definitions",
+                                    href="#class-definitions",
+                                    style="margin-left:10px;",
+                                )
+                            )
                             with ul(_class="second"):
                                 for c in self.toc["classes"]:
                                     li(a(c[1], href=c[0]), style="margin-left:10px;")
@@ -612,8 +624,20 @@ class OntPub:
                     ):
                         with li():
                             h4(a("Object Properties", href="#objectproperties"))
-                            h5(a("Object Property Hierarchy", href="#object-property-hierarchy", style="margin-left:10px;"))
-                            h5(a("Object Property Definitions", href="#object-property-definitions", style="margin-left:10px;"))
+                            h5(
+                                a(
+                                    "Object Property Hierarchy",
+                                    href="#object-property-hierarchy",
+                                    style="margin-left:10px;",
+                                )
+                            )
+                            h5(
+                                a(
+                                    "Object Property Definitions",
+                                    href="#object-property-definitions",
+                                    style="margin-left:10px;",
+                                )
+                            )
                             with ul(_class="second"):
                                 for c in self.toc["objectproperties"]:
                                     li(a(c[1], href=c[0]), style="margin-left:10px;")

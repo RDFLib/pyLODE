@@ -2,14 +2,12 @@ import sys
 from pathlib import Path
 
 sys.path.append(str(Path().absolute().parent / "pylode"))
-try:
-    from pylode.ontdoc import OntPub
-except ImportError:
-    from ontpub import OntDoc
 
-EXAMPLES_DIR = Path().absolute() / "ontdoc"
+from pylode.profiles.ontpub import OntPub
 
-for f in Path(EXAMPLES_DIR).glob("*.ttl"):
+EXAMPLES_DIR = Path(__file__).parent / "ontpub"
+
+for f in sorted(Path(EXAMPLES_DIR).glob("*.ttl")):
     html_file = Path(EXAMPLES_DIR / Path(f.stem + ".html")).absolute()
     print(f"regenerating {html_file}")
 

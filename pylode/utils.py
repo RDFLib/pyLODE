@@ -632,7 +632,7 @@ def rdf_obj_html(
                         prop = _hyperlink_html(ont__, o, back_onts_, ns__, fids_)
                     # Added the onClass restriction otherwise the class name is ignored in the HTML output.
                     elif px == OWL.onClass:
-                        if (o, OWL.unionOf|OWL.intersectionOf, None) in ont__:
+                        if (o, OWL.unionOf | OWL.intersectionOf, None) in ont__:
                             cls = _setclass_html(ont__, o, back_onts_, ns__, fids_)
                         else:
                             cls = _hyperlink_html(
@@ -787,10 +787,7 @@ def prop_obj_pair_html(
 
 
 def _make_hierarchy_html(
-    ont: Graph,
-    obj_class: URIRef,
-    parent_indicator: URIRef,
-    fids: dict
+    ont: Graph, obj_class: URIRef, parent_indicator: URIRef, fids: dict
 ):
     if (None, RDF.type, obj_class) in ont:
         items = []
@@ -798,7 +795,9 @@ def _make_hierarchy_html(
             if not isinstance(s, BNode):
                 c = {
                     "iri": str(s),
-                    "name": str(ont.value(s, DCTERMS.title|SDO.name)),  # need 2 x for OntPub (title) and VocPub (prefLabel) profiles
+                    "name": str(
+                        ont.value(s, DCTERMS.title | SDO.name)
+                    ),  # need 2 x for OntPub (title) and VocPub (prefLabel) profiles
                 }
                 for o2 in ont.objects(s, parent_indicator):
                     if not isinstance(o2, BNode):
@@ -918,15 +917,21 @@ def section_html(
 
     elems = div(id=toc_ul_id, _class="section")
     elems.appendChild(h2(section_title))
-    
+
     if obj_class == OWL.Class:
         elems.appendChild(h3("Class Hierarchy", id="class-hierarchy"))
         elems.appendChild(_make_hierarchy_html(ont, OWL.Class, RDFS.subClassOf, fids))
         elems.appendChild(h3("Class Definitions", id="class-definitions"))
     elif obj_class == OWL.ObjectProperty:
-        elems.appendChild(h3("Object Property Hierarchy", id="object-property-hierarchy"))
-        elems.appendChild(_make_hierarchy_html(ont, OWL.ObjectProperty, RDFS.subPropertyOf, fids))
-        elems.appendChild(h3("Object Property Definitions", id="object-property-definitions"))
+        elems.appendChild(
+            h3("Object Property Hierarchy", id="object-property-hierarchy")
+        )
+        elems.appendChild(
+            _make_hierarchy_html(ont, OWL.ObjectProperty, RDFS.subPropertyOf, fids)
+        )
+        elems.appendChild(
+            h3("Object Property Definitions", id="object-property-definitions")
+        )
 
     # get all objects of this class
     for s_ in ont.subjects(predicate=RDF.type, object=obj_class):

@@ -118,9 +118,8 @@ def test_logo(fix_html):
 
 
 def test_metadata(fix_html):
-    assert (
-        de_space_html(
-            """
+    assert de_space_html(
+        """
         <dl>
           <div>
             <dt>
@@ -142,15 +141,12 @@ def test_metadata(fix_html):
             </dt>
             <dd>
         """
-        )
-        in de_space_html(fix_html)
-    ), "Metadata section not generated correctly"
+    ) in de_space_html(fix_html), "Metadata section not generated correctly"
 
 
 def test_classes_hierarchy(fix_html):
-    assert (
-        de_space_html(
-            """
+    assert de_space_html(
+        """
         <h3 id="class-hierarchy">Class Hierarchy</h3>
         <div class="hierarchy">
             <ul class="hierarchy">
@@ -166,15 +162,12 @@ def test_classes_hierarchy(fix_html):
             </ul>
         </div>
             """
-        )
-        in de_space_html(fix_html)
-    ), "Classes hierarchy section not generated correctly"
+    ) in de_space_html(fix_html), "Classes hierarchy section not generated correctly"
 
 
 def test_classes_definitions(fix_html):
-    assert (
-        de_space_html(
-            """
+    assert de_space_html(
+        """
         <h3 id="class-definitions">Class Definitions</h3>
         <div class="property entity" id="ResourceDescriptor">
           <h3>Resource Descriptor
@@ -338,16 +331,13 @@ def test_classes_definitions(fix_html):
           </table>
         </div>         
             """
-        )
-        in de_space_html(fix_html)
-    ), "Classes definitions section not generated correctly"
+    ) in de_space_html(fix_html), "Classes definitions section not generated correctly"
 
 
 def test_object_properties_hierarchy(fix_html):
     open("prof.html", "w").write(fix_html)
-    assert (
-        de_space_html(
-            """
+    assert de_space_html(
+        """
             <div class="hierarchy">
               <ul class="hierarchy">
                 <li>
@@ -373,15 +363,14 @@ def test_object_properties_hierarchy(fix_html):
               </ul>
             </div>            
             """
-        )
-        in de_space_html(fix_html)
-    ), "Object properties hierarchy section not generated correctly"
+    ) in de_space_html(fix_html), (
+        "Object properties hierarchy section not generated correctly"
+    )
 
 
 def test_namespaces(fix_html):
-    assert (
-        de_space_html(
-            """
+    assert de_space_html(
+        """
             <div id="namespaces">
                 <h2>Namespaces</h2>
                 <dl>
@@ -428,15 +417,12 @@ def test_namespaces(fix_html):
                 </dl>
               </div>
             """
-        )
-        in de_space_html(fix_html)
-    ), "Namespaces section not generated correctly"
+    ) in de_space_html(fix_html), "Namespaces section not generated correctly"
 
 
 def test_legend(fix_html):
-    assert (
-        de_space_html(
-            """      <div id="legend">
+    assert de_space_html(
+        """      <div id="legend">
         <h2>Legend</h2>
         <table class="entity">
           <tr>
@@ -465,15 +451,12 @@ def test_legend(fix_html):
           </tr>
         </table>
       </div>"""
-        )
-        in de_space_html(fix_html)
-    ), "Legend section not generated correctly"
+    ) in de_space_html(fix_html), "Legend section not generated correctly"
 
 
 def test_toc(fix_html):
-    assert (
-        de_space_html(
-            """
+    assert de_space_html(
+        """
     <div id="toc">
       <h3>Table of Contents</h3>
       <ul class="first">
@@ -604,6 +587,4 @@ def test_toc(fix_html):
       </ul>
     </div>        
         """
-        )
-        in de_space_html(fix_html)
-    ), "ToC logo not generated correctly"
+    ) in de_space_html(fix_html), "ToC logo not generated correctly"
