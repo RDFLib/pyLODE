@@ -77,12 +77,19 @@
             background-color: #F4FFFF;
         }
 
-        ul.hierarchy {
-            border: 1px solid navy;
-            padding: 5px 25px 5px 25px;
+        div.hierarchy {
+            margin-bottom: 30px;
             background-color: #F4FFFF;
+            padding: 10px;
         }
 
+        ul.hierarchy {=
+            padding: 5px 25px 5px 25px;
+        }
+
+        ul.hierarchy li {
+            margin-top:5px;
+        }
 
         ul.hlist li {
             display: inline;
@@ -290,6 +297,54 @@
     <script id="schema.org" type="application/ld+json">
 [
   {
+    "@id": "https://orcid.org/0000-0001-6041-5302",
+    "https://schema.org/email": [
+      {
+        "@id": "mailto:smrTucson@gmail.com"
+      }
+    ],
+    "https://schema.org/identifier": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
+        "@value": "https://orcid.org/0000-0001-6041-5302"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@language": "en",
+        "@value": "Stephen M Richard"
+      }
+    ]
+  },
+  {
+    "@id": "https://orcid.org/0000-0002-3884-3420",
+    "https://schema.org/affiliation": [
+      {
+        "@id": "_:n91863251956d4dfeac1225d728a21151b188"
+      }
+    ],
+    "https://schema.org/email": [
+      {
+        "@id": "mailto:simon.cox@csiro.au"
+      }
+    ],
+    "https://schema.org/identifier": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
+        "@value": "https://orcid.org/0000-0002-3884-3420"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@language": "en",
+        "@value": "Simon J D Cox"
+      }
+    ]
+  },
+  {
+    "@id": "_:n91863251956d4dfeac1225d728a21151b188"
+  },
+  {
     "@id": "http://resource.geosciml.org/ontology/timescale/gts",
     "@type": [
       "https://schema.org/DefinedTermSet"
@@ -334,54 +389,6 @@
     "https://schema.org/name": [
       {
         "@value": "Geologic Timescale model"
-      }
-    ]
-  },
-  {
-    "@id": "https://orcid.org/0000-0002-3884-3420",
-    "https://schema.org/affiliation": [
-      {
-        "@id": "_:n8800bfbda69c4947a7c2908a63385f5cb188"
-      }
-    ],
-    "https://schema.org/email": [
-      {
-        "@id": "mailto:simon.cox@csiro.au"
-      }
-    ],
-    "https://schema.org/identifier": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
-        "@value": "https://orcid.org/0000-0002-3884-3420"
-      }
-    ],
-    "https://schema.org/name": [
-      {
-        "@language": "en",
-        "@value": "Simon J D Cox"
-      }
-    ]
-  },
-  {
-    "@id": "_:n8800bfbda69c4947a7c2908a63385f5cb188"
-  },
-  {
-    "@id": "https://orcid.org/0000-0001-6041-5302",
-    "https://schema.org/email": [
-      {
-        "@id": "mailto:smrTucson@gmail.com"
-      }
-    ],
-    "https://schema.org/identifier": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
-        "@value": "https://orcid.org/0000-0001-6041-5302"
-      }
-    ],
-    "https://schema.org/name": [
-      {
-        "@language": "en",
-        "@value": "Stephen M Richard"
       }
     ]
   }
@@ -558,52 +565,54 @@
       <div class="section" id="classes">
         <h2>Classes</h2>
         <h3 id="class-hierarchy">Class Hierarchy</h3>
-        <ul>
-          <li>
-            <a href="#GeochronologicBoundary">Geochronologic Boundary</a>
-          </li>
-          <li>
-            <a href="#GeochronologicEra">Geochronologic Era</a>
-            <ul>
-              <li>
-                <a href="#Age">Age</a>
-              </li>
-              <li>
-                <a href="#Eon">Eon</a>
-              </li>
-              <li>
-                <a href="#Epoch">Epoch</a>
-              </li>
-              <li>
-                <a href="#Era">Era</a>
-              </li>
-              <li>
-                <a href="#Period">Period</a>
-              </li>
-              <li>
-                <a href="#Sub-Period">Sub-Period</a>
-              </li>
-              <li>
-                <a href="#Super-Eon">Super-Eon</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#GeologicTimescale">Geologic Timescale</a>
-          </li>
-          <li>
-            <a href="#NumericEraBoundary">Numeric Era Boundary</a>
-          </li>
-          <li>
-            <a href="#StratigraphicEvent">Stratigraphic Event</a>
-          </li>
-          <li>
-            <a href="#StratigraphicPoint">Stratigraphic Point</a>
-          </li>
-          <li>
-            <a href="#StratigraphicSection">Stratigraphic Section</a>
-          </li>
-        </ul>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#GeochronologicBoundary">Geochronologic Boundary</a>
+            </li>
+            <li>
+              <a href="#GeochronologicEra">Geochronologic Era</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#Age">Age</a>
+                </li>
+                <li>
+                  <a href="#Eon">Eon</a>
+                </li>
+                <li>
+                  <a href="#Epoch">Epoch</a>
+                </li>
+                <li>
+                  <a href="#Era">Era</a>
+                </li>
+                <li>
+                  <a href="#Period">Period</a>
+                </li>
+                <li>
+                  <a href="#Sub-Period">Sub-Period</a>
+                </li>
+                <li>
+                  <a href="#Super-Eon">Super-Eon</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#GeologicTimescale">Geologic Timescale</a>
+            </li>
+            <li>
+              <a href="#NumericEraBoundary">Numeric Era Boundary</a>
+            </li>
+            <li>
+              <a href="#StratigraphicEvent">Stratigraphic Event</a>
+            </li>
+            <li>
+              <a href="#StratigraphicPoint">Stratigraphic Point</a>
+            </li>
+            <li>
+              <a href="#StratigraphicSection">Stratigraphic Section</a>
+            </li>
+          </ul>
+        </div>
         <h3 id="class-definitions">Class Definitions</h3>
         <div class="property entity" id="Age">
           <h3>Age
@@ -934,8 +943,8 @@ isc:Proterozoic
                       <span>
                         <a href="http://www.w3.org/2006/time#intervalIn">time:intervalIn</a>
                         <span>
-                          <span class="cardinality">is a</span>
-                          <span>http://resource.geosciml.org/ontology/timescale/gts#Super-Eon</span>
+                          <span class="cardinality">max</span>
+                          <span>1</span>
                         </span>
                         <span>
                           <a href="#Super-Eon">Super-Eon</a>
@@ -1927,7 +1936,7 @@ ts:gts2019
                           <span class="cardinality">only</span>
                           <span>
                             <span>
-                              <a href="n8800bfbda69c4947a7c2908a63385f5cb108">n8800bfbda69c4947a7c2908a63385f5cb108</a>
+                              <a href="n91863251956d4dfeac1225d728a21151b108">n91863251956d4dfeac1225d728a21151b108</a>
                               <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                             </span>
                           </span>
@@ -2946,185 +2955,31 @@ isc:Precambrian
           </table>
         </div>
       </div>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Epoch</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb4</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb13</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb22</span>
-      </span>
-      <span>
-        <span class="cardinality">max</span>
-        <span>1</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Era</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Era</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb35</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb39</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb43</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Age</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Age</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb51</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb59</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb67</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb75</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Eon</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Period</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Period</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb84</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb89</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb94</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Epoch</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Epoch</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Era</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb117</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb123</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb129</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Epoch</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Epoch</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Period</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb145</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb152</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>n8800bfbda69c4947a7c2908a63385f5cb159</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Eon</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Eon</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Super-Eon</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Super-Eon</span>
-      </span>
-      <span>
-        <span class="cardinality">is a</span>
-        <span>http://resource.geosciml.org/ontology/timescale/gts#Super-Eon</span>
-      </span>
       <div class="section" id="objectproperties">
         <h2>Object Properties</h2>
         <h3 id="object-property-hierarchy">Object Property Hierarchy</h3>
-        <ul>
-          <li>
-            <a href="#representsBoundary">geochronologic boundary</a>
-          </li>
-          <li>
-            <a href="#representsEra">geochronologic era</a>
-          </li>
-          <li>
-            <a href="#rank">Geochronologic era rank</a>
-          </li>
-          <li>
-            <a href="#event">stratigraphic event</a>
-          </li>
-          <li>
-            <a href="#stratotype">stratotype</a>
-          </li>
-          <li>
-            <a href="#positionalUncertainty">time position uncertainty</a>
-          </li>
-        </ul>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#representsBoundary">geochronologic boundary</a>
+            </li>
+            <li>
+              <a href="#representsEra">geochronologic era</a>
+            </li>
+            <li>
+              <a href="#rank">Geochronologic era rank</a>
+            </li>
+            <li>
+              <a href="#event">stratigraphic event</a>
+            </li>
+            <li>
+              <a href="#stratotype">stratotype</a>
+            </li>
+            <li>
+              <a href="#positionalUncertainty">time position uncertainty</a>
+            </li>
+          </ul>
+        </div>
         <h3 id="object-property-definitions">Object Property Definitions</h3>
         <div class="property entity" id="event">
           <h3>stratigraphic event

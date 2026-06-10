@@ -5,14 +5,14 @@
     <style>
         #pylode {
             position: fixed;
-            top: 130px;
-            left: -80px;
+            top: 205px;
+            left: -150px;
             font-size: small;
             transform: rotate(-90deg);
             color: grey;
         }
         #pylode a {
-            font-size: 2em;
+            font-size: 1.5em;
             font-weight: bold;
             text-decoration: none;
             color: #005A9C;
@@ -28,6 +28,12 @@
         }
         #pylode #version {
             font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
         }
 
         .cardinality {
@@ -50,14 +56,18 @@
             padding-top: 7px;
         }
 
-        #metadata ul,
-        #classes ul {
+        ul.pylodelitlist {
             list-style-type: none;
+            margin-left: -40px;
         }
 
         #metadata ul li,
         #classes ul li {
-            margin-left: -40px;
+            margin-bottom: 10px;
+        }
+
+        #metadata dd p {
+          margin: 0 0 1em 0;
         }
 
         ul.hlist {
@@ -67,12 +77,19 @@
             background-color: #F4FFFF;
         }
 
-        ul.hierarchy {
-            border: 1px solid navy;
-            padding: 5px 25px 5px 25px;
+        div.hierarchy {
+            margin-bottom: 30px;
             background-color: #F4FFFF;
+            padding: 10px;
         }
 
+        ul.hierarchy {=
+            padding: 5px 25px 5px 25px;
+        }
+
+        ul.hierarchy li {
+            margin-top:5px;
+        }
 
         ul.hlist li {
             display: inline;
@@ -124,7 +141,10 @@
             border-bottom: 1px solid navy;
         }
         h4 { font: bold 100% sans-serif }
-        h5 { font: italic 100% sans-serif }
+        h5 {
+            font: italic 100% sans-serif;
+            margin-bottom: 10px;
+        }
         h6 { font: small-caps 100% sans-serif }
 
         body {
@@ -213,60 +233,63 @@
             text-decoration: none;
         }
 
-#toc {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    height: 100%;
-    overflow-y: auto;
-    padding: 10px;
-    border: solid 1px navy;
-    font-size: small;
-    width: 180px;
-}
-#toc h3 {
-    margin-top: 5px;
-}
+        #toc {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            padding: 10px;
+            border: solid 1px navy;
+            font-size: small;
+            width: 180px;
+        }
+        #toc h3 {
+            margin-top: 5px;
+        }
 
-#toc ul {
-    list-style: none;
-    padding-left: 0;
-}
+        #toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
 
-#toc .first > li {
-    margin-top: 5px;
-}
+        #toc .first > li {
+            margin-top: 5px;
+        }
 
-#toc .second,
-#toc .third {
-    padding-left: 10px;
-}
+        #toc .second,
+        #toc .third {
+            padding-left: 10px;
+        }
 
-#content {
-    width: calc(100% - 150px);
-}
+        #content {
+            width: calc(100% - 150px);
+        }
 
-.hover_property {
-    cursor: help;
-    text-decoration: none;
-    border-bottom: dashed 1px;
-}
+        .hover_property {
+            cursor: help;
+            text-decoration: none;
+            border-bottom: dashed 1px;
+        }
 
-.setclass {
-    list-style-type: none;
-}
+        .setclass {
+            list-style-type: none;
+        }
 
-code{
-    word-wrap: break-word;
-  }
-  table {
-    table-layout: fixed;
-    width: 100%;
-  }
-  td {
-    word-wrap: break-word;
-  }
+        code{
+            word-wrap: break-word;
+          }
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        td {
+            word-wrap: break-word;
+        }
+        #legend table.entity {
+            width: 25%;
+        }
 	</style>
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png">
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png">
@@ -285,7 +308,7 @@ code{
     ],
     "https://schema.org/creator": [
       {
-        "@id": "_:n3ab405cc4e8244908ceb4fe1e22a4119b1"
+        "@id": "_:n111df30c55e048d69bae0f65b1e7b5ceb1"
       }
     ],
     "https://schema.org/dateCreated": [
@@ -316,7 +339,7 @@ code{
     ]
   },
   {
-    "@id": "_:n3ab405cc4e8244908ceb4fe1e22a4119b1",
+    "@id": "_:n111df30c55e048d69bae0f65b1e7b5ceb1",
     "https://schema.org/name": [
       {
         "@language": "en",
@@ -368,12 +391,12 @@ code{
               <a class="hover_property" href="http://purl.org/dc/terms/license" title="A legal document giving official permission to do something with the resource. Defined in DCMI Metadata Terms">License</a>
             </dt>
             <dd>
-              <ul>
+              <ul class="pylodelitlist">
                 <li>
-                  <a href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">ns1:copyright-software-and-document</a>
+                  <a href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document</a>
                 </li>
                 <li>
-                  <a href="http://www.opengeospatial.org/ogc/Software">ns2:Software</a>
+                  <a href="http://www.opengeospatial.org/ogc/Software">http://www.opengeospatial.org/ogc/Software</a>
                 </li>
               </ul>
             </dd>
@@ -408,6 +431,60 @@ code{
       </div>
       <div class="section" id="classes">
         <h2>Classes</h2>
+        <h3 id="class-hierarchy">Class Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#ActuatableProperty">Actuatable Property</a>
+            </li>
+            <li>
+              <a href="#Actuation">Actuation</a>
+            </li>
+            <li>
+              <a href="#Actuator">Actuator</a>
+            </li>
+            <li>
+              <a href="#FeatureOfInterest">Feature Of Interest</a>
+            </li>
+            <li>
+              <a href="#Vocabulary">None</a>
+            </li>
+            <li>
+              <a href="#TemporalEntity">None</a>
+            </li>
+            <li>
+              <a href="#Agent">None</a>
+            </li>
+            <li>
+              <a href="#ObservableProperty">Observable Property</a>
+            </li>
+            <li>
+              <a href="#Observation">Observation</a>
+            </li>
+            <li>
+              <a href="#Platform">Platform</a>
+            </li>
+            <li>
+              <a href="#Procedure">Procedure</a>
+            </li>
+            <li>
+              <a href="#Result">Result</a>
+            </li>
+            <li>
+              <a href="#Sample">Sample</a>
+            </li>
+            <li>
+              <a href="#Sampler">Sampler</a>
+            </li>
+            <li>
+              <a href="#Sampling">Sampling</a>
+            </li>
+            <li>
+              <a href="#Sensor">Sensor</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="class-definitions">Class Definitions</h3>
         <div class="property entity" id="Agent">
           <h3>Agent
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
@@ -463,7 +540,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -498,7 +575,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -533,7 +610,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -568,7 +645,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -576,7 +653,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li><p>Feature which is intended to be representative of a FeatureOfInterest on which Observations may be made.</p></li>
                   <li><p>Physical samples are sometimes known as 'specimens'.</p></li>
                   <li><p>A Sample is the result from an act of Sampling.</p></li>
@@ -590,7 +667,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <pre>A 'station' is essentially an identifiable locality where a sensor system or Procedure may be deployed and an observation made. In the context of the observation model, it connotes the 'world in the vicinity of the station', so the observed properties relate to the physical medium at the station, and not to any physical artifact such as a mooring, buoy, benchmark, monument, well, etc.</pre>
                   </li>
@@ -624,7 +701,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -659,7 +736,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -700,7 +777,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -735,7 +812,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -770,7 +847,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -805,7 +882,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -840,7 +917,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -875,7 +952,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -889,7 +966,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#example" title="An example of the use of a concept. Defined in SKOS Vocabulary">Example</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <pre>Crushing a rock sample in a ball mill.</pre>
                   </li>
@@ -944,7 +1021,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -966,7 +1043,76 @@ code{
       </div>
       <div class="section" id="objectproperties">
         <h2>Object Properties</h2>
-        <div class="property entity" id="hassample">
+        <h3 id="object-property-hierarchy">Object Property Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#actsOnProperty">acts on property</a>
+            </li>
+            <li>
+              <a href="#hasFeatureOfInterest">has feature of interest</a>
+            </li>
+            <li>
+              <a href="#hasResult">has result</a>
+            </li>
+            <li>
+              <a href="#hasSample">has sample</a>
+            </li>
+            <li>
+              <a href="#hosts">hosts</a>
+            </li>
+            <li>
+              <a href="#isActedOnBy">is acted on by</a>
+            </li>
+            <li>
+              <a href="#isFeatureOfInterestOf">is feature of interest of</a>
+            </li>
+            <li>
+              <a href="#isHostedBy">is hosted by</a>
+            </li>
+            <li>
+              <a href="#isObservedBy">is observed by</a>
+            </li>
+            <li>
+              <a href="#isResultOf">is result of</a>
+            </li>
+            <li>
+              <a href="#isSampleOf">is sample of</a>
+            </li>
+            <li>
+              <a href="#madeActuation">made actuation</a>
+            </li>
+            <li>
+              <a href="#madeByActuator">made by actuator</a>
+            </li>
+            <li>
+              <a href="#madeBySampler">made by sampler</a>
+            </li>
+            <li>
+              <a href="#madeBySensor">made by sensor</a>
+            </li>
+            <li>
+              <a href="#madeObservation">made observation</a>
+            </li>
+            <li>
+              <a href="#madeSampling">made sampling</a>
+            </li>
+            <li>
+              <a href="#observedProperty">observed property</a>
+            </li>
+            <li>
+              <a href="#observes">observes</a>
+            </li>
+            <li>
+              <a href="#phenomenonTime">phenomenon time</a>
+            </li>
+            <li>
+              <a href="#usedProcedure">used procedure</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="object-property-definitions">Object Property Definitions</h3>
+        <div class="property entity" id="hasSample">
           <h3>has sample
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -982,7 +1128,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -993,7 +1139,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="issampleof">
+        <div class="property entity" id="isSampleOf">
           <h3>is sample of
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1009,7 +1155,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1036,7 +1182,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1047,7 +1193,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="ishostedby">
+        <div class="property entity" id="isHostedBy">
           <h3>is hosted by
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1063,7 +1209,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1090,7 +1236,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1101,7 +1247,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="isobservedby">
+        <div class="property entity" id="isObservedBy">
           <h3>is observed by
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1117,7 +1263,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1128,7 +1274,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="usedprocedure">
+        <div class="property entity" id="usedProcedure">
           <h3>used procedure
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1144,7 +1290,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1155,7 +1301,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="hasfeatureofinterest">
+        <div class="property entity" id="hasFeatureOfInterest">
           <h3>has feature of interest
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1171,7 +1317,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1190,7 +1336,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="isfeatureofinterestof">
+        <div class="property entity" id="isFeatureOfInterestOf">
           <h3>is feature of interest of
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1206,7 +1352,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1217,7 +1363,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="madeobservation">
+        <div class="property entity" id="madeObservation">
           <h3>made observation
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1233,7 +1379,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1244,7 +1390,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="madebysensor">
+        <div class="property entity" id="madeBySensor">
           <h3>made by sensor
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1260,7 +1406,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1271,7 +1417,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="observedproperty">
+        <div class="property entity" id="observedProperty">
           <h3>observed property
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1287,7 +1433,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1298,7 +1444,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="madeactuation">
+        <div class="property entity" id="madeActuation">
           <h3>made actuation
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1314,7 +1460,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1325,7 +1471,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="madebyactuator">
+        <div class="property entity" id="madeByActuator">
           <h3>made by actuator
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1341,7 +1487,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1352,7 +1498,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="actsonproperty">
+        <div class="property entity" id="actsOnProperty">
           <h3>acts on property
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1368,7 +1514,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1387,7 +1533,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="isactedonby">
+        <div class="property entity" id="isActedOnBy">
           <h3>is acted on by
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1403,7 +1549,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1422,7 +1568,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="madesampling">
+        <div class="property entity" id="madeSampling">
           <h3>made sampling
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1438,7 +1584,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1449,7 +1595,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="madebysampler">
+        <div class="property entity" id="madeBySampler">
           <h3>made by sampler
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1465,7 +1611,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1476,7 +1622,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="hasresult">
+        <div class="property entity" id="hasResult">
           <h3>has result
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1492,7 +1638,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1503,7 +1649,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="isresultof">
+        <div class="property entity" id="isResultOf">
           <h3>is result of
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1519,7 +1665,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1530,7 +1676,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="phenomenontime">
+        <div class="property entity" id="phenomenonTime">
           <h3>phenomenon time
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1546,7 +1692,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1576,7 +1722,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1611,7 +1757,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/sosa/">sosa:</a>
+                <a href="http://www.w3.org/ns/sosa/">Sensor, Observation, Sample, and Actuator (SOSA) Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1827,21 +1973,9 @@ code{
           <dd>
             <code>http://xmlns.com/foaf/0.1/</code>
           </dd>
-          <dt id="ns1">ns1</dt>
-          <dd>
-            <code>http://www.w3.org/Consortium/Legal/2015/</code>
-          </dd>
-          <dt id="ns2">ns2</dt>
-          <dd>
-            <code>http://www.opengeospatial.org/ogc/</code>
-          </dd>
           <dt id="owl">owl</dt>
           <dd>
             <code>http://www.w3.org/2002/07/owl#</code>
-          </dd>
-          <dt id="prov">prov</dt>
-          <dd>
-            <code>http://www.w3.org/ns/prov#</code>
           </dd>
           <dt id="rdf">rdf</dt>
           <dd>
@@ -1852,10 +1986,6 @@ code{
             <code>http://www.w3.org/2000/01/rdf-schema#</code>
           </dd>
           <dt id="schema">schema</dt>
-          <dd>
-            <code>https://schema.org/</code>
-          </dd>
-          <dt id="schema1">schema1</dt>
           <dd>
             <code>http://schema.org/</code>
           </dd>
@@ -1922,7 +2052,10 @@ code{
           <span id="y">y</span>
           <span>LODE</span>
         </a>
-        <a href="https://github.com/rdflib/pyLODE/release/3.0.2" id="version">3.0.2</a>
+        <a href="https://github.com/rdflib/pyLODE/release/3.4.5a0" id="version">3.4.5a0</a>
+        <span> with the </span>
+        <a href="https://linked.data.gov.au/def/ontpub" id="profile">OntPub</a>
+        <span>profile</span>
       </p>
     </div>
     <div id="toc">
@@ -1937,53 +2070,59 @@ code{
           <h4>
             <a href="#classes">Classes</a>
           </h4>
+          <h5>
+            <a href="#class-hierarchy" style="margin-left:10px;">Class Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#class-definitions" style="margin-left:10px;">Class Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Agent">Agent</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Vocabulary">Vocabulary</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#TemporalEntity">Temporal Entity</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#FeatureOfInterest">Feature Of Interest</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#ObservableProperty">Observable Property</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#ActuatableProperty">Actuatable Property</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Sample">Sample</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Platform">Platform</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Procedure">Procedure</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Sensor">Sensor</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Actuator">Actuator</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Sampler">Sampler</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Observation">Observation</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Actuation">Actuation</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Sampling">Sampling</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Result">Result</a>
             </li>
           </ul>
@@ -1992,69 +2131,75 @@ code{
           <h4>
             <a href="#objectproperties">Object Properties</a>
           </h4>
+          <h5>
+            <a href="#object-property-hierarchy" style="margin-left:10px;">Object Property Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#object-property-definitions" style="margin-left:10px;">Object Property Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
-              <a href="#hassample">has sample</a>
+            <li style="margin-left:10px;">
+              <a href="#hasSample">has sample</a>
             </li>
-            <li>
-              <a href="#issampleof">is sample of</a>
+            <li style="margin-left:10px;">
+              <a href="#isSampleOf">is sample of</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hosts">hosts</a>
             </li>
-            <li>
-              <a href="#ishostedby">is hosted by</a>
+            <li style="margin-left:10px;">
+              <a href="#isHostedBy">is hosted by</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#observes">observes</a>
             </li>
-            <li>
-              <a href="#isobservedby">is observed by</a>
+            <li style="margin-left:10px;">
+              <a href="#isObservedBy">is observed by</a>
             </li>
-            <li>
-              <a href="#usedprocedure">used procedure</a>
+            <li style="margin-left:10px;">
+              <a href="#usedProcedure">used procedure</a>
             </li>
-            <li>
-              <a href="#hasfeatureofinterest">has feature of interest</a>
+            <li style="margin-left:10px;">
+              <a href="#hasFeatureOfInterest">has feature of interest</a>
             </li>
-            <li>
-              <a href="#isfeatureofinterestof">is feature of interest of</a>
+            <li style="margin-left:10px;">
+              <a href="#isFeatureOfInterestOf">is feature of interest of</a>
             </li>
-            <li>
-              <a href="#madeobservation">made observation</a>
+            <li style="margin-left:10px;">
+              <a href="#madeObservation">made observation</a>
             </li>
-            <li>
-              <a href="#madebysensor">made by sensor</a>
+            <li style="margin-left:10px;">
+              <a href="#madeBySensor">made by sensor</a>
             </li>
-            <li>
-              <a href="#observedproperty">observed property</a>
+            <li style="margin-left:10px;">
+              <a href="#observedProperty">observed property</a>
             </li>
-            <li>
-              <a href="#madeactuation">made actuation</a>
+            <li style="margin-left:10px;">
+              <a href="#madeActuation">made actuation</a>
             </li>
-            <li>
-              <a href="#madebyactuator">made by actuator</a>
+            <li style="margin-left:10px;">
+              <a href="#madeByActuator">made by actuator</a>
             </li>
-            <li>
-              <a href="#actsonproperty">acts on property</a>
+            <li style="margin-left:10px;">
+              <a href="#actsOnProperty">acts on property</a>
             </li>
-            <li>
-              <a href="#isactedonby">is acted on by</a>
+            <li style="margin-left:10px;">
+              <a href="#isActedOnBy">is acted on by</a>
             </li>
-            <li>
-              <a href="#madesampling">made sampling</a>
+            <li style="margin-left:10px;">
+              <a href="#madeSampling">made sampling</a>
             </li>
-            <li>
-              <a href="#madebysampler">made by sampler</a>
+            <li style="margin-left:10px;">
+              <a href="#madeBySampler">made by sampler</a>
             </li>
-            <li>
-              <a href="#hasresult">has result</a>
+            <li style="margin-left:10px;">
+              <a href="#hasResult">has result</a>
             </li>
-            <li>
-              <a href="#isresultof">is result of</a>
+            <li style="margin-left:10px;">
+              <a href="#isResultOf">is result of</a>
             </li>
-            <li>
-              <a href="#phenomenontime">phenomenon time</a>
+            <li style="margin-left:10px;">
+              <a href="#phenomenonTime">phenomenon time</a>
             </li>
           </ul>
         </li>
@@ -2132,16 +2277,7 @@ code{
               <a href="#foaf">foaf</a>
             </li>
             <li>
-              <a href="#ns1">ns1</a>
-            </li>
-            <li>
-              <a href="#ns2">ns2</a>
-            </li>
-            <li>
               <a href="#owl">owl</a>
-            </li>
-            <li>
-              <a href="#prov">prov</a>
             </li>
             <li>
               <a href="#rdf">rdf</a>
@@ -2151,9 +2287,6 @@ code{
             </li>
             <li>
               <a href="#schema">schema</a>
-            </li>
-            <li>
-              <a href="#schema1">schema1</a>
             </li>
             <li>
               <a href="#skos">skos</a>

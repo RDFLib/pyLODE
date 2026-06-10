@@ -77,12 +77,19 @@
             background-color: #F4FFFF;
         }
 
-        ul.hierarchy {
-            border: 1px solid navy;
-            padding: 5px 25px 5px 25px;
+        div.hierarchy {
+            margin-bottom: 30px;
             background-color: #F4FFFF;
+            padding: 10px;
         }
 
+        ul.hierarchy {=
+            padding: 5px 25px 5px 25px;
+        }
+
+        ul.hierarchy li {
+            margin-top:5px;
+        }
 
         ul.hlist li {
             display: inline;
@@ -313,7 +320,7 @@
     "@id": "https://orcid.org/0000-0002-3884-3420",
     "https://schema.org/affiliation": [
       {
-        "@id": "_:nc69a039a04c24603aeb1d56dcab4ef32b14"
+        "@id": "_:nb05f643347cd48fab778a70f5efb1640b14"
       }
     ],
     "https://schema.org/email": [
@@ -335,7 +342,7 @@
     ]
   },
   {
-    "@id": "_:nc69a039a04c24603aeb1d56dcab4ef32b14"
+    "@id": "_:nb05f643347cd48fab778a70f5efb1640b14"
   },
   {
     "@id": "http://resource.geosciml.org/ontology/timescale/thors",
@@ -565,17 +572,19 @@
       <div class="section" id="classes">
         <h2>Classes</h2>
         <h3 id="class-hierarchy">Class Hierarchy</h3>
-        <ul>
-          <li>
-            <a href="#ReferenceSystem">Hierarchical Time Ordinal Reference System</a>
-          </li>
-          <li>
-            <a href="#EraBoundary">Time Ordinal Era Boundary</a>
-          </li>
-          <li>
-            <a href="#Era">Time Ordinal Era or Interval</a>
-          </li>
-        </ul>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#ReferenceSystem">Hierarchical Time Ordinal Reference System</a>
+            </li>
+            <li>
+              <a href="#EraBoundary">Time Ordinal Era Boundary</a>
+            </li>
+            <li>
+              <a href="#Era">Time Ordinal Era or Interval</a>
+            </li>
+          </ul>
+        </div>
         <h3 id="class-definitions">Class Definitions</h3>
         <div class="property entity" id="Era">
           <h3>Time Ordinal Era or Interval
@@ -974,35 +983,37 @@
       <div class="section" id="objectproperties">
         <h2>Object Properties</h2>
         <h3 id="object-property-hierarchy">Object Property Hierarchy</h3>
-        <ul>
-          <li>
-            <a href="#begin">era beginning</a>
-          </li>
-          <li>
-            <a href="#end">era end</a>
-          </li>
-          <li>
-            <a href="#member">era member / sub-era</a>
-          </li>
-          <li>
-            <a href="#nextEra">next era</a>
-          </li>
-          <li>
-            <a href="#previousEra">previous era</a>
-          </li>
-          <li>
-            <a href="#referencePoint">reference point in timescale</a>
-          </li>
-          <li>
-            <a href="#system">system</a>
-          </li>
-          <li>
-            <a href="#component">temporal reference system component</a>
-          </li>
-          <li>
-            <a href="#positionalUncertainty">uncertainty in temporal position</a>
-          </li>
-        </ul>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#begin">era beginning</a>
+            </li>
+            <li>
+              <a href="#end">era end</a>
+            </li>
+            <li>
+              <a href="#member">era member / sub-era</a>
+            </li>
+            <li>
+              <a href="#nextEra">next era</a>
+            </li>
+            <li>
+              <a href="#previousEra">previous era</a>
+            </li>
+            <li>
+              <a href="#referencePoint">reference point in timescale</a>
+            </li>
+            <li>
+              <a href="#system">system</a>
+            </li>
+            <li>
+              <a href="#component">temporal reference system component</a>
+            </li>
+            <li>
+              <a href="#positionalUncertainty">uncertainty in temporal position</a>
+            </li>
+          </ul>
+        </div>
         <h3 id="object-property-definitions">Object Property Definitions</h3>
         <div class="property entity" id="begin">
           <h3>era beginning

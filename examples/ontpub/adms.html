@@ -5,14 +5,14 @@
     <style>
         #pylode {
             position: fixed;
-            top: 130px;
-            left: -80px;
+            top: 205px;
+            left: -150px;
             font-size: small;
             transform: rotate(-90deg);
             color: grey;
         }
         #pylode a {
-            font-size: 2em;
+            font-size: 1.5em;
             font-weight: bold;
             text-decoration: none;
             color: #005A9C;
@@ -28,6 +28,12 @@
         }
         #pylode #version {
             font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
         }
 
         .cardinality {
@@ -50,14 +56,18 @@
             padding-top: 7px;
         }
 
-        #metadata ul,
-        #classes ul {
+        ul.pylodelitlist {
             list-style-type: none;
+            margin-left: -40px;
         }
 
         #metadata ul li,
         #classes ul li {
-            margin-left: -40px;
+            margin-bottom: 10px;
+        }
+
+        #metadata dd p {
+          margin: 0 0 1em 0;
         }
 
         ul.hlist {
@@ -67,12 +77,19 @@
             background-color: #F4FFFF;
         }
 
-        ul.hierarchy {
-            border: 1px solid navy;
-            padding: 5px 25px 5px 25px;
+        div.hierarchy {
+            margin-bottom: 30px;
             background-color: #F4FFFF;
+            padding: 10px;
         }
 
+        ul.hierarchy {=
+            padding: 5px 25px 5px 25px;
+        }
+
+        ul.hierarchy li {
+            margin-top:5px;
+        }
 
         ul.hlist li {
             display: inline;
@@ -124,7 +141,10 @@
             border-bottom: 1px solid navy;
         }
         h4 { font: bold 100% sans-serif }
-        h5 { font: italic 100% sans-serif }
+        h5 {
+            font: italic 100% sans-serif;
+            margin-bottom: 10px;
+        }
         h6 { font: small-caps 100% sans-serif }
 
         body {
@@ -213,60 +233,63 @@
             text-decoration: none;
         }
 
-#toc {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    height: 100%;
-    overflow-y: auto;
-    padding: 10px;
-    border: solid 1px navy;
-    font-size: small;
-    width: 180px;
-}
-#toc h3 {
-    margin-top: 5px;
-}
+        #toc {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            padding: 10px;
+            border: solid 1px navy;
+            font-size: small;
+            width: 180px;
+        }
+        #toc h3 {
+            margin-top: 5px;
+        }
 
-#toc ul {
-    list-style: none;
-    padding-left: 0;
-}
+        #toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
 
-#toc .first > li {
-    margin-top: 5px;
-}
+        #toc .first > li {
+            margin-top: 5px;
+        }
 
-#toc .second,
-#toc .third {
-    padding-left: 10px;
-}
+        #toc .second,
+        #toc .third {
+            padding-left: 10px;
+        }
 
-#content {
-    width: calc(100% - 150px);
-}
+        #content {
+            width: calc(100% - 150px);
+        }
 
-.hover_property {
-    cursor: help;
-    text-decoration: none;
-    border-bottom: dashed 1px;
-}
+        .hover_property {
+            cursor: help;
+            text-decoration: none;
+            border-bottom: dashed 1px;
+        }
 
-.setclass {
-    list-style-type: none;
-}
+        .setclass {
+            list-style-type: none;
+        }
 
-code{
-    word-wrap: break-word;
-  }
-  table {
-    table-layout: fixed;
-    width: 100%;
-  }
-  td {
-    word-wrap: break-word;
-  }
+        code{
+            word-wrap: break-word;
+          }
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        td {
+            word-wrap: break-word;
+        }
+        #legend table.entity {
+            width: 25%;
+        }
 	</style>
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png">
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png">
@@ -280,13 +303,13 @@ code{
     ],
     "https://schema.org/creator": [
       {
-        "@id": "_:n4a0a72b1b76a4c179382ba3e20e7722bb1"
+        "@id": "_:n0d4339742d274127ac001dcbd85121a8b1"
       },
       {
-        "@id": "_:n4a0a72b1b76a4c179382ba3e20e7722bb2"
+        "@id": "_:n0d4339742d274127ac001dcbd85121a8b2"
       },
       {
-        "@id": "_:n4a0a72b1b76a4c179382ba3e20e7722bb4"
+        "@id": "_:n0d4339742d274127ac001dcbd85121a8b4"
       }
     ],
     "https://schema.org/dateModified": [
@@ -324,7 +347,7 @@ code{
     ]
   },
   {
-    "@id": "_:n4a0a72b1b76a4c179382ba3e20e7722bb1",
+    "@id": "_:n0d4339742d274127ac001dcbd85121a8b1",
     "https://schema.org/name": [
       {
         "@value": "Phil Archer"
@@ -332,7 +355,7 @@ code{
     ]
   },
   {
-    "@id": "_:n4a0a72b1b76a4c179382ba3e20e7722bb2",
+    "@id": "_:n0d4339742d274127ac001dcbd85121a8b2",
     "https://schema.org/name": [
       {
         "@value": "Andrea Perego"
@@ -340,7 +363,7 @@ code{
     ]
   },
   {
-    "@id": "_:n4a0a72b1b76a4c179382ba3e20e7722bb4",
+    "@id": "_:n0d4339742d274127ac001dcbd85121a8b4",
     "https://schema.org/name": [
       {
         "@value": "Makx Dekkers"
@@ -375,7 +398,7 @@ code{
               <a class="hover_property" href="http://purl.org/dc/terms/creator" title="An entity responsible for making the resource. Defined in DCMI Metadata Terms">Creator</a>
             </dt>
             <dd>
-              <ul>
+              <ul class="pylodelitlist">
                 <li>
                   <span>
                     <span>Phil Archer</span>
@@ -399,7 +422,7 @@ code{
               <a class="hover_property" href="http://purl.org/dc/terms/modified" title="Date on which the resource was changed. Defined in DCMI Metadata Terms">Date Modified</a>
             </dt>
             <dd>
-              <ul>
+              <ul class="pylodelitlist">
                 <li><p>2013-05-24</p></li>
                 <li><p>2013-09-16</p></li>
                 <li><p>2013-12-21</p></li>
@@ -426,7 +449,7 @@ code{
               <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
             </dt>
             <dd>
-              <ul>
+              <ul class="pylodelitlist">
                 <li><p>This is the RDF encoding of the Asset Description Metadata Schema, originally
     developed under the European Union's ISA Programme and further developed by the W3C Government Linked Data Working Group.
     It re-uses terms from several other vocabularies, notably Dublin Core, with elements of SKOS, FOAF and more. </p></li>
@@ -441,6 +464,45 @@ code{
       </div>
       <div class="section" id="objectproperties">
         <h2>Object Properties</h2>
+        <h3 id="object-property-hierarchy">Object Property Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#identifier">identifier</a>
+            </li>
+            <li>
+              <a href="#includedAsset">included asset</a>
+            </li>
+            <li>
+              <a href="#interoperabilityLevel">interoperability level</a>
+            </li>
+            <li>
+              <a href="#last">last</a>
+            </li>
+            <li>
+              <a href="#next">next</a>
+            </li>
+            <li>
+              <a href="#prev">prev</a>
+            </li>
+            <li>
+              <a href="#representationTechnique">representation technique</a>
+            </li>
+            <li>
+              <a href="#sample">sample</a>
+            </li>
+            <li>
+              <a href="#status">status</a>
+            </li>
+            <li>
+              <a href="#supportedSchema">supported schema</a>
+            </li>
+            <li>
+              <a href="#translation">translation</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="object-property-definitions">Object Property Definitions</h3>
         <div class="property entity" id="identifier">
           <h3>identifier
             <sup class="sup-op" title="OWL Object Property">op</sup>
@@ -457,7 +519,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/TR/vocab-adms">ns1:vocab-adms</a>
+                <a href="http://www.w3.org/TR/vocab-adms">http://www.w3.org/TR/vocab-adms</a>
               </td>
             </tr>
             <tr>
@@ -471,12 +533,12 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#Identifier">adms:Identifier</a>
+                <a href="#Identifier">Identifier</a>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="includedasset">
+        <div class="property entity" id="includedAsset">
           <h3>included asset
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -492,7 +554,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/TR/vocab-adms">ns1:vocab-adms</a>
+                <a href="http://www.w3.org/TR/vocab-adms">http://www.w3.org/TR/vocab-adms</a>
               </td>
             </tr>
             <tr>
@@ -506,7 +568,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#Asset">adms:Asset</a>
+                <a href="#Asset">Asset</a>
               </td>
             </tr>
             <tr>
@@ -514,12 +576,12 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#Asset">adms:Asset</a>
+                <a href="#Asset">Asset</a>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="interoperabilitylevel">
+        <div class="property entity" id="interoperabilityLevel">
           <h3>interoperability level
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -535,7 +597,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/TR/vocab-adms">ns1:vocab-adms</a>
+                <a href="http://www.w3.org/TR/vocab-adms">http://www.w3.org/TR/vocab-adms</a>
               </td>
             </tr>
             <tr>
@@ -549,7 +611,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#Asset">adms:Asset</a>
+                <a href="#Asset">Asset</a>
               </td>
             </tr>
             <tr>
@@ -558,7 +620,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -581,7 +643,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/TR/vocab-adms">ns1:vocab-adms</a>
+                <a href="http://www.w3.org/TR/vocab-adms">http://www.w3.org/TR/vocab-adms</a>
               </td>
             </tr>
             <tr>
@@ -616,7 +678,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/TR/vocab-adms">ns1:vocab-adms</a>
+                <a href="http://www.w3.org/TR/vocab-adms">http://www.w3.org/TR/vocab-adms</a>
               </td>
             </tr>
             <tr>
@@ -651,7 +713,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/TR/vocab-adms">ns1:vocab-adms</a>
+                <a href="http://www.w3.org/TR/vocab-adms">http://www.w3.org/TR/vocab-adms</a>
               </td>
             </tr>
             <tr>
@@ -670,7 +732,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="representationtechnique">
+        <div class="property entity" id="representationTechnique">
           <h3>representation technique
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -686,7 +748,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/TR/vocab-adms">ns1:vocab-adms</a>
+                <a href="http://www.w3.org/TR/vocab-adms">http://www.w3.org/TR/vocab-adms</a>
               </td>
             </tr>
             <tr>
@@ -701,7 +763,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -724,7 +786,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/TR/vocab-adms">ns1:vocab-adms</a>
+                <a href="http://www.w3.org/TR/vocab-adms">http://www.w3.org/TR/vocab-adms</a>
               </td>
             </tr>
             <tr>
@@ -738,7 +800,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#Asset">adms:Asset</a>
+                <a href="#Asset">Asset</a>
               </td>
             </tr>
             <tr>
@@ -746,7 +808,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#Asset">adms:Asset</a>
+                <a href="#Asset">Asset</a>
               </td>
             </tr>
           </table>
@@ -767,7 +829,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/TR/vocab-adms">ns1:vocab-adms</a>
+                <a href="http://www.w3.org/TR/vocab-adms">http://www.w3.org/TR/vocab-adms</a>
               </td>
             </tr>
             <tr>
@@ -782,14 +844,14 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="supportedschema">
+        <div class="property entity" id="supportedSchema">
           <h3>supported schema
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -805,7 +867,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/TR/vocab-adms">ns1:vocab-adms</a>
+                <a href="http://www.w3.org/TR/vocab-adms">http://www.w3.org/TR/vocab-adms</a>
               </td>
             </tr>
             <tr>
@@ -819,7 +881,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#Asset">adms:Asset</a>
+                <a href="#Asset">Asset</a>
               </td>
             </tr>
           </table>
@@ -840,7 +902,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/TR/vocab-adms">ns1:vocab-adms</a>
+                <a href="http://www.w3.org/TR/vocab-adms">http://www.w3.org/TR/vocab-adms</a>
               </td>
             </tr>
             <tr>
@@ -870,7 +932,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/TR/vocab-adms">ns1:vocab-adms</a>
+                <a href="http://www.w3.org/TR/vocab-adms">http://www.w3.org/TR/vocab-adms</a>
               </td>
             </tr>
             <tr>
@@ -884,7 +946,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#Identifier">adms:Identifier</a>
+                <a href="#Identifier">Identifier</a>
               </td>
             </tr>
             <tr>
@@ -892,7 +954,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Literal">Literal</a>
               </td>
             </tr>
           </table>
@@ -913,7 +975,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/TR/vocab-adms">ns1:vocab-adms</a>
+                <a href="http://www.w3.org/TR/vocab-adms">http://www.w3.org/TR/vocab-adms</a>
               </td>
             </tr>
             <tr>
@@ -927,7 +989,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Literal">Literal</a>
               </td>
             </tr>
           </table>
@@ -952,17 +1014,9 @@ code{
           <dd>
             <code>http://xmlns.com/foaf/0.1/</code>
           </dd>
-          <dt id="ns1">ns1</dt>
-          <dd>
-            <code>http://www.w3.org/TR/</code>
-          </dd>
           <dt id="owl">owl</dt>
           <dd>
             <code>http://www.w3.org/2002/07/owl#</code>
-          </dd>
-          <dt id="prov">prov</dt>
-          <dd>
-            <code>http://www.w3.org/ns/prov#</code>
           </dd>
           <dt id="rdf">rdf</dt>
           <dd>
@@ -973,10 +1027,6 @@ code{
             <code>http://www.w3.org/2000/01/rdf-schema#</code>
           </dd>
           <dt id="schema">schema</dt>
-          <dd>
-            <code>https://schema.org/</code>
-          </dd>
-          <dt id="schema1">schema1</dt>
           <dd>
             <code>http://schema.org/</code>
           </dd>
@@ -1027,7 +1077,10 @@ code{
           <span id="y">y</span>
           <span>LODE</span>
         </a>
-        <a href="https://github.com/rdflib/pyLODE/release/3.0.2" id="version">3.0.2</a>
+        <a href="https://github.com/rdflib/pyLODE/release/3.4.5a0" id="version">3.4.5a0</a>
+        <span> with the </span>
+        <a href="https://linked.data.gov.au/def/ontpub" id="profile">OntPub</a>
+        <span>profile</span>
       </p>
     </div>
     <div id="toc">
@@ -1042,38 +1095,44 @@ code{
           <h4>
             <a href="#objectproperties">Object Properties</a>
           </h4>
+          <h5>
+            <a href="#object-property-hierarchy" style="margin-left:10px;">Object Property Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#object-property-definitions" style="margin-left:10px;">Object Property Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
+            <li style="margin-left:10px;">
               <a href="#identifier">identifier</a>
             </li>
-            <li>
-              <a href="#includedasset">included asset</a>
+            <li style="margin-left:10px;">
+              <a href="#includedAsset">included asset</a>
             </li>
-            <li>
-              <a href="#interoperabilitylevel">interoperability level</a>
+            <li style="margin-left:10px;">
+              <a href="#interoperabilityLevel">interoperability level</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#last">last</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#next">next</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#prev">prev</a>
             </li>
-            <li>
-              <a href="#representationtechnique">representation technique</a>
+            <li style="margin-left:10px;">
+              <a href="#representationTechnique">representation technique</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#sample">sample</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#status">status</a>
             </li>
-            <li>
-              <a href="#supportedschema">supported schema</a>
+            <li style="margin-left:10px;">
+              <a href="#supportedSchema">supported schema</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#translation">translation</a>
             </li>
           </ul>
@@ -1109,13 +1168,7 @@ code{
               <a href="#foaf">foaf</a>
             </li>
             <li>
-              <a href="#ns1">ns1</a>
-            </li>
-            <li>
               <a href="#owl">owl</a>
-            </li>
-            <li>
-              <a href="#prov">prov</a>
             </li>
             <li>
               <a href="#rdf">rdf</a>
@@ -1125,9 +1178,6 @@ code{
             </li>
             <li>
               <a href="#schema">schema</a>
-            </li>
-            <li>
-              <a href="#schema1">schema1</a>
             </li>
             <li>
               <a href="#skos">skos</a>

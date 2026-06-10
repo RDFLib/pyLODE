@@ -5,14 +5,14 @@
     <style>
         #pylode {
             position: fixed;
-            top: 130px;
-            left: -80px;
+            top: 205px;
+            left: -150px;
             font-size: small;
             transform: rotate(-90deg);
             color: grey;
         }
         #pylode a {
-            font-size: 2em;
+            font-size: 1.5em;
             font-weight: bold;
             text-decoration: none;
             color: #005A9C;
@@ -28,6 +28,12 @@
         }
         #pylode #version {
             font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
         }
 
         .cardinality {
@@ -50,14 +56,18 @@
             padding-top: 7px;
         }
 
-        #metadata ul,
-        #classes ul {
+        ul.pylodelitlist {
             list-style-type: none;
+            margin-left: -40px;
         }
 
         #metadata ul li,
         #classes ul li {
-            margin-left: -40px;
+            margin-bottom: 10px;
+        }
+
+        #metadata dd p {
+          margin: 0 0 1em 0;
         }
 
         ul.hlist {
@@ -67,12 +77,19 @@
             background-color: #F4FFFF;
         }
 
-        ul.hierarchy {
-            border: 1px solid navy;
-            padding: 5px 25px 5px 25px;
+        div.hierarchy {
+            margin-bottom: 30px;
             background-color: #F4FFFF;
+            padding: 10px;
         }
 
+        ul.hierarchy {=
+            padding: 5px 25px 5px 25px;
+        }
+
+        ul.hierarchy li {
+            margin-top:5px;
+        }
 
         ul.hlist li {
             display: inline;
@@ -124,7 +141,10 @@
             border-bottom: 1px solid navy;
         }
         h4 { font: bold 100% sans-serif }
-        h5 { font: italic 100% sans-serif }
+        h5 {
+            font: italic 100% sans-serif;
+            margin-bottom: 10px;
+        }
         h6 { font: small-caps 100% sans-serif }
 
         body {
@@ -213,60 +233,63 @@
             text-decoration: none;
         }
 
-#toc {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    height: 100%;
-    overflow-y: auto;
-    padding: 10px;
-    border: solid 1px navy;
-    font-size: small;
-    width: 180px;
-}
-#toc h3 {
-    margin-top: 5px;
-}
+        #toc {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            padding: 10px;
+            border: solid 1px navy;
+            font-size: small;
+            width: 180px;
+        }
+        #toc h3 {
+            margin-top: 5px;
+        }
 
-#toc ul {
-    list-style: none;
-    padding-left: 0;
-}
+        #toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
 
-#toc .first > li {
-    margin-top: 5px;
-}
+        #toc .first > li {
+            margin-top: 5px;
+        }
 
-#toc .second,
-#toc .third {
-    padding-left: 10px;
-}
+        #toc .second,
+        #toc .third {
+            padding-left: 10px;
+        }
 
-#content {
-    width: calc(100% - 150px);
-}
+        #content {
+            width: calc(100% - 150px);
+        }
 
-.hover_property {
-    cursor: help;
-    text-decoration: none;
-    border-bottom: dashed 1px;
-}
+        .hover_property {
+            cursor: help;
+            text-decoration: none;
+            border-bottom: dashed 1px;
+        }
 
-.setclass {
-    list-style-type: none;
-}
+        .setclass {
+            list-style-type: none;
+        }
 
-code{
-    word-wrap: break-word;
-  }
-  table {
-    table-layout: fixed;
-    width: 100%;
-  }
-  td {
-    word-wrap: break-word;
-  }
+        code{
+            word-wrap: break-word;
+          }
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        td {
+            word-wrap: break-word;
+        }
+        #legend table.entity {
+            width: 25%;
+        }
 	</style>
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png">
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png">
@@ -338,7 +361,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">rdf:</a>
+                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">The RDF Concepts Vocabulary (RDF)</a>
               </td>
             </tr>
             <tr>
@@ -352,7 +375,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">Resource</a>
               </td>
             </tr>
             <tr>
@@ -360,7 +383,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Class">Class</a>
               </td>
             </tr>
           </table>
@@ -381,7 +404,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">rdf:</a>
+                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">The RDF Concepts Vocabulary (RDF)</a>
               </td>
             </tr>
             <tr>
@@ -395,7 +418,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#Statement">rdf:Statement</a>
+                <a href="#Statement">Statement</a>
               </td>
             </tr>
             <tr>
@@ -403,7 +426,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">Resource</a>
               </td>
             </tr>
           </table>
@@ -424,7 +447,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">rdf:</a>
+                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">The RDF Concepts Vocabulary (RDF)</a>
               </td>
             </tr>
             <tr>
@@ -438,7 +461,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#Statement">rdf:Statement</a>
+                <a href="#Statement">Statement</a>
               </td>
             </tr>
             <tr>
@@ -446,7 +469,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">Resource</a>
               </td>
             </tr>
           </table>
@@ -467,7 +490,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">rdf:</a>
+                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">The RDF Concepts Vocabulary (RDF)</a>
               </td>
             </tr>
             <tr>
@@ -481,7 +504,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#Statement">rdf:Statement</a>
+                <a href="#Statement">Statement</a>
               </td>
             </tr>
             <tr>
@@ -489,7 +512,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">Resource</a>
               </td>
             </tr>
           </table>
@@ -510,7 +533,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">rdf:</a>
+                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">The RDF Concepts Vocabulary (RDF)</a>
               </td>
             </tr>
             <tr>
@@ -524,7 +547,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">Resource</a>
               </td>
             </tr>
             <tr>
@@ -532,7 +555,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">Resource</a>
               </td>
             </tr>
           </table>
@@ -553,7 +576,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">rdf:</a>
+                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">The RDF Concepts Vocabulary (RDF)</a>
               </td>
             </tr>
             <tr>
@@ -567,7 +590,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#List">rdf:List</a>
+                <a href="#List">List</a>
               </td>
             </tr>
             <tr>
@@ -575,7 +598,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">Resource</a>
               </td>
             </tr>
           </table>
@@ -596,7 +619,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">rdf:</a>
+                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">The RDF Concepts Vocabulary (RDF)</a>
               </td>
             </tr>
             <tr>
@@ -610,7 +633,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#List">rdf:List</a>
+                <a href="#List">List</a>
               </td>
             </tr>
             <tr>
@@ -618,8 +641,119 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#List">rdf:List</a>
+                <a href="#List">List</a>
               </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section" id="datatypes">
+        <h2>Custom Datatypes</h2>
+        <div class="property entity" id="HTML">
+          <h3>HTML
+            <sup class="sup-dt" title="RDFS Datatypes">dt</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">The RDF Concepts Vocabulary (RDF)</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>The datatype of RDF literals storing fragments of HTML content</p></td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="langString">
+          <h3>langString
+            <sup class="sup-dt" title="RDFS Datatypes">dt</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#langString</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">The RDF Concepts Vocabulary (RDF)</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>The datatype of language-tagged string values</p></td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="PlainLiteral">
+          <h3>PlainLiteral
+            <sup class="sup-dt" title="RDFS Datatypes">dt</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">The RDF Concepts Vocabulary (RDF)</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>The class of plain (i.e. untyped) literal values, as used in RIF and OWL 2</p></td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="XMLLiteral">
+          <h3>XMLLiteral
+            <sup class="sup-dt" title="RDFS Datatypes">dt</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">The RDF Concepts Vocabulary (RDF)</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>The datatype of XML literal values.</p></td>
             </tr>
           </table>
         </div>
@@ -630,10 +764,6 @@ code{
           <dt id="dc">dc</dt>
           <dd>
             <code>http://purl.org/dc/elements/1.1/</code>
-          </dd>
-          <dt id="dcterms">dcterms</dt>
-          <dd>
-            <code>http://purl.org/dc/terms/</code>
           </dd>
           <dt id="owl">owl</dt>
           <dd>
@@ -668,7 +798,10 @@ code{
           <span id="y">y</span>
           <span>LODE</span>
         </a>
-        <a href="https://github.com/rdflib/pyLODE/release/3.0.2" id="version">3.0.2</a>
+        <a href="https://github.com/rdflib/pyLODE/release/3.4.5a0" id="version">3.4.5a0</a>
+        <span> with the </span>
+        <a href="https://linked.data.gov.au/def/ontpub" id="profile">OntPub</a>
+        <span>profile</span>
       </p>
     </div>
     <div id="toc">
@@ -709,14 +842,30 @@ code{
         </li>
         <li>
           <h4>
+            <a href="#datatypes">Custom Datatypes</a>
+          </h4>
+          <ul class="second">
+            <li>
+              <a href="#HTML">HTML</a>
+            </li>
+            <li>
+              <a href="#langString">langString</a>
+            </li>
+            <li>
+              <a href="#PlainLiteral">PlainLiteral</a>
+            </li>
+            <li>
+              <a href="#XMLLiteral">XMLLiteral</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h4>
             <a href="#namespaces">Namespaces</a>
           </h4>
           <ul class="second">
             <li>
               <a href="#dc">dc</a>
-            </li>
-            <li>
-              <a href="#dcterms">dcterms</a>
             </li>
             <li>
               <a href="#owl">owl</a>

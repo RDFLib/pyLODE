@@ -5,14 +5,14 @@
     <style>
         #pylode {
             position: fixed;
-            top: 130px;
-            left: -80px;
+            top: 205px;
+            left: -150px;
             font-size: small;
             transform: rotate(-90deg);
             color: grey;
         }
         #pylode a {
-            font-size: 2em;
+            font-size: 1.5em;
             font-weight: bold;
             text-decoration: none;
             color: #005A9C;
@@ -28,6 +28,12 @@
         }
         #pylode #version {
             font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
         }
 
         .cardinality {
@@ -50,14 +56,18 @@
             padding-top: 7px;
         }
 
-        #metadata ul,
-        #classes ul {
+        ul.pylodelitlist {
             list-style-type: none;
+            margin-left: -40px;
         }
 
         #metadata ul li,
         #classes ul li {
-            margin-left: -40px;
+            margin-bottom: 10px;
+        }
+
+        #metadata dd p {
+          margin: 0 0 1em 0;
         }
 
         ul.hlist {
@@ -67,12 +77,19 @@
             background-color: #F4FFFF;
         }
 
-        ul.hierarchy {
-            border: 1px solid navy;
-            padding: 5px 25px 5px 25px;
+        div.hierarchy {
+            margin-bottom: 30px;
             background-color: #F4FFFF;
+            padding: 10px;
         }
 
+        ul.hierarchy {=
+            padding: 5px 25px 5px 25px;
+        }
+
+        ul.hierarchy li {
+            margin-top:5px;
+        }
 
         ul.hlist li {
             display: inline;
@@ -124,7 +141,10 @@
             border-bottom: 1px solid navy;
         }
         h4 { font: bold 100% sans-serif }
-        h5 { font: italic 100% sans-serif }
+        h5 {
+            font: italic 100% sans-serif;
+            margin-bottom: 10px;
+        }
         h6 { font: small-caps 100% sans-serif }
 
         body {
@@ -136,7 +156,7 @@
             background-position: top left;
             background-attachment: fixed;
             background-repeat: no-repeat;
-            text-align: justify;
+            text-align: left;
         }
 
         section {
@@ -213,80 +233,69 @@
             text-decoration: none;
         }
 
-#toc {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    height: 100%;
-    overflow-y: auto;
-    padding: 10px;
-    border: solid 1px navy;
-    font-size: small;
-    width: 180px;
-}
-#toc h3 {
-    margin-top: 5px;
-}
+        #toc {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            padding: 10px;
+            border: solid 1px navy;
+            font-size: small;
+            width: 180px;
+        }
+        #toc h3 {
+            margin-top: 5px;
+        }
 
-#toc ul {
-    list-style: none;
-    padding-left: 0;
-}
+        #toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
 
-#toc .first > li {
-    margin-top: 5px;
-}
+        #toc .first > li {
+            margin-top: 5px;
+        }
 
-#toc .second,
-#toc .third {
-    padding-left: 10px;
-}
+        #toc .second,
+        #toc .third {
+            padding-left: 10px;
+        }
 
-#content {
-    width: calc(100% - 150px);
-}
+        #content {
+            width: calc(100% - 150px);
+        }
 
-.hover_property {
-    cursor: help;
-    text-decoration: none;
-    border-bottom: dashed 1px;
-}
+        .hover_property {
+            cursor: help;
+            text-decoration: none;
+            border-bottom: dashed 1px;
+        }
 
-.setclass {
-    list-style-type: none;
-}
+        .setclass {
+            list-style-type: none;
+        }
 
-code{
-    word-wrap: break-word;
-  }
-  table {
-    table-layout: fixed;
-    width: 100%;
-  }
-  td {
-    word-wrap: break-word;
-  }
+        code{
+            word-wrap: break-word;
+          }
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        td {
+            word-wrap: break-word;
+        }
+        #legend table.entity {
+            width: 25%;
+        }
 	</style>
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png">
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png">
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <script id="schema.org" type="application/ld+json">
 [
-  {
-    "@id": "https://linked.data.gov.au/org/anzlic",
-    "https://schema.org/name": [
-      {
-        "@value": "ANZLIC - the Spatial Information Council"
-      }
-    ],
-    "https://schema.org/url": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
-        "@value": "https://www.anzlic.gov.au"
-      }
-    ]
-  },
   {
     "@id": "https://linked.data.gov.au/def/fsdf",
     "@type": [
@@ -322,6 +331,20 @@ code{
     "https://schema.org/publisher": [
       {
         "@id": "https://linked.data.gov.au/org/anzlic"
+      }
+    ]
+  },
+  {
+    "@id": "https://linked.data.gov.au/org/anzlic",
+    "https://schema.org/name": [
+      {
+        "@value": "ANZLIC - the Spatial Information Council"
+      }
+    ],
+    "https://schema.org/url": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
+        "@value": "https://www.anzlic.gov.au"
       }
     ]
   },
@@ -387,9 +410,9 @@ code{
                 <span>Nicholas J. Car</span>
                 <a href="https://orcid.org/0000-0002-8742-7730">
                     <svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
-                         xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <title>Orcid logo</title>
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <title>https://orcid.org/0000-0002-8742-7730</title>
                         <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
                                 <g id="Group-4">
@@ -443,7 +466,7 @@ code{
               <a class="hover_property" href="http://www.w3.org/2002/07/owl#versionInfo" title="The annotation property that provides version information for an ontology or another OWL construct. Defined in The OWL 2 Schema vocabulary (OWL 2)">Version Info</a>
             </dt>
             <dd>
-              <ul>
+              <ul class="pylodelitlist">
                 <li><p>1.2: use of slash IRI, not hash</p></li>
                 <li><p>This 1.0 is an early version of the ontology but is a great departure from the 0.5 version that was published in 2018. This version concentrates on defining the FSDF concepts, not listing all of the FSDF datasets which are listed in a separate data graph within the overall FSDF Knolwedge Graph. This version imports the FSDF common elements ontology</p></li>
               </ul>
@@ -470,10 +493,106 @@ code{
 <p>It also contains taxonomies (vocabularies) used to categorise datasets and sub-dataset elements. The main taxonomy is the "FSDF Themes" and there are many specialised sub-taxonomies for elements within it, such as "FSDF Themes - Physcial Infrastructure".</p>
 <p>Also provided here are common properties for FSDF datasets and their contents, such as <code>hasGroundRelation</code> (relates an infrastructure Feature to the earth's surface) as well as taxonomies for many of these proerties' values.</p></dd>
           </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://www.w3.org/2002/07/owl#imports" title="The property that is used for importing other ontologies into a given ontology. Defined in The OWL 2 Schema vocabulary (OWL 2)">Imports</a>
+            </dt>
+            <dd>
+              <a href="#common">fsdf:common</a>
+            </dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="https://schema.org/codeRepository" title="Link to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex). Defined in None">Coderepository</a>
+            </dt>
+            <dd>
+              <a href="https://github.com/surroundaustralia/fsdf-kg">https://github.com/surroundaustralia/fsdf-kg</a>
+            </dd>
+          </div>
         </dl>
       </div>
       <div class="section" id="classes">
         <h2>Classes</h2>
+        <h3 id="class-hierarchy">Class Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#Agent">Agent</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#Organization">Organisation</a>
+                  <ul class="hierarchy">
+                    <li>
+                      <a href="#Agency">Agency</a>
+                    </li>
+                    <li>
+                      <a href="#Jurisdiction">Jurisdiction</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#Concept">Concept</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#Theme">FSDF Theme</a>
+                </li>
+                <li>
+                  <a href="#Fuel">Fuel</a>
+                </li>
+                <li>
+                  <a href="#GroundRelation">Ground Relation</a>
+                </li>
+                <li>
+                  <a href="#Material">Material</a>
+                </li>
+                <li>
+                  <a href="#ObservableProperty">Observable Property</a>
+                </li>
+                <li>
+                  <a href="#OperationalStatus">Operational Status</a>
+                </li>
+                <li>
+                  <a href="#PhysicalCondition">Physical Condition</a>
+                </li>
+                <li>
+                  <a href="#PSStructures">Power Station Structures</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#Dataset">Dataset</a>
+            </li>
+            <li>
+              <a href="#Feature">Feature</a>
+            </li>
+            <li>
+              <a href="#FeatureCollection">Feature Collection</a>
+            </li>
+            <li>
+              <a href="#FeatureOfInterest">Feature Of Interest</a>
+            </li>
+            <li>
+              <a href="#Mandate">Mandate</a>
+            </li>
+            <li>
+              <a href="#ObservableProperty1">Observable Property</a>
+            </li>
+            <li>
+              <a href="#Observation">Observation</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#ObservationCollection">Collection of observations</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#Result">Result</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="class-definitions">Class Definitions</h3>
         <div class="property entity" id="FeatureCollection">
           <h3>Feature Collection
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
@@ -496,7 +615,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
@@ -590,7 +709,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="PowerStationStructures">
+        <div class="property entity" id="PSStructures">
           <h3>Power Station Structures
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -688,7 +807,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
@@ -965,7 +1084,7 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="#hasPrimaryFuel">primary fuel</a>
@@ -1005,7 +1124,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <a href="http://purl.org/dc/terms/Jurisdiction">Jurisdiction</a>
                   </li>
@@ -1077,7 +1196,7 @@ mandates:clp-1994
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="#affectsAgency">affects agency</a>
@@ -1114,7 +1233,7 @@ mandates:clp-1994
             </tr>
           </table>
         </div>
-        <div class="property entity" id="FSDFTheme">
+        <div class="property entity" id="Theme">
           <h3>FSDF Theme
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -1294,7 +1413,7 @@ mandates:clp-1994
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="#themeOfFeatureWithProperty">theme of feature with property</a>
@@ -1357,7 +1476,7 @@ agencies:nntt
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="#affectsAgency">affects agency</a>
@@ -1375,7 +1494,7 @@ agencies:nntt
             </tr>
           </table>
         </div>
-        <div class="property entity" id="Organisation">
+        <div class="property entity" id="Organization">
           <h3>Organisation
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -1408,7 +1527,7 @@ agencies:nntt
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="#Jurisdiction">Jurisdiction</a>
@@ -1426,7 +1545,7 @@ agencies:nntt
             </tr>
           </table>
         </div>
-        <div class="property entity" id="Collectionofobservations">
+        <div class="property entity" id="ObservationCollection">
           <h3>Collection of observations
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -1448,7 +1567,7 @@ agencies:nntt
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
@@ -1469,7 +1588,7 @@ agencies:nntt
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="http://www.w3.org/ns/sosa/hasMember">has member</a>
@@ -1514,11 +1633,20 @@ agencies:nntt
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/ssn/wasOriginatedBy">ssn:wasOriginatedBy</a>only<br>
+                        <a href="http://www.w3.org/ns/ssn/wasOriginatedBy">ssn:wasOriginatedBy</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/ssn/Stimulus">ssn:Stimulus</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1634,14 +1762,32 @@ agencies:nntt
                         <span>
                           <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">has feature of interest</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">Feature Of Interest</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/hasUltimateFeatureOfInterest">sosa:hasUltimateFeatureOfInterest</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/hasUltimateFeatureOfInterest">sosa:hasUltimateFeatureOfInterest</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">Feature Of Interest</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1651,7 +1797,16 @@ agencies:nntt
                         <span>
                           <a href="http://www.w3.org/ns/sosa/observedProperty">observed property</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/ObservableProperty">Observable Property</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1661,14 +1816,32 @@ agencies:nntt
                         <span>
                           <a href="http://www.w3.org/ns/sosa/usedProcedure">used procedure</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/madeBySensor">sosa:madeBySensor</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/madeBySensor">sosa:madeBySensor</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1699,7 +1872,7 @@ agencies:nntt
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
@@ -1720,7 +1893,7 @@ agencies:nntt
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="#featureDataProvenance">feature data provenance</a>
@@ -1809,7 +1982,7 @@ agencies:nntt
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="#Material">Material</a>
@@ -1824,7 +1997,7 @@ agencies:nntt
                   </li>
                   <li>
                     <span>
-                      <a href="#PowerStationStructures">Power Station Structures</a>
+                      <a href="#PSStructures">Power Station Structures</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1854,7 +2027,7 @@ agencies:nntt
                   </li>
                   <li>
                     <span>
-                      <a href="#FSDFTheme">FSDF Theme</a>
+                      <a href="#Theme">FSDF Theme</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1912,7 +2085,7 @@ agencies:nntt
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="http://www.w3.org/ns/sosa/hasSimpleResult">has simple result</a>
@@ -1963,7 +2136,7 @@ agencies:nntt
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="http://www.w3.org/ns/sosa/hasMember">has member</a>
@@ -2001,6 +2174,75 @@ agencies:nntt
       </div>
       <div class="section" id="objectproperties">
         <h2>Object Properties</h2>
+        <h3 id="object-property-hierarchy">Object Property Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#affectsAgency">affects agency</a>
+            </li>
+            <li>
+              <a href="#hasEmbeddedNetworkOperator">embedded network operator</a>
+            </li>
+            <li>
+              <a href="#featureDataProvenance">feature data provenance</a>
+            </li>
+            <li>
+              <a href="#hasGeneratorNumber">generator number</a>
+            </li>
+            <li>
+              <a href="#hasCustodian">has custodian</a>
+            </li>
+            <li>
+              <a href="#hasFeatureOfInterest">has feature of interest</a>
+            </li>
+            <li>
+              <a href="#hasJurisdiction">has jurisdiction</a>
+            </li>
+            <li>
+              <a href="#hasMember">has member</a>
+            </li>
+            <li>
+              <a href="#hasOperationalStatus">has operational status</a>
+            </li>
+            <li>
+              <a href="#hasRelationToGround">has relation to ground</a>
+            </li>
+            <li>
+              <a href="#hasResult">has result</a>
+            </li>
+            <li>
+              <a href="#isFeatureOfInterestOf">is feature of interest of</a>
+            </li>
+            <li>
+              <a href="#isResultOf">is result of</a>
+            </li>
+            <li>
+              <a href="#likelyPropertyOfFeatureWithTheme">likely property of feature with theme</a>
+            </li>
+            <li>
+              <a href="#observedProperty">observed property</a>
+            </li>
+            <li>
+              <a href="#phenomenonTime">phenomenon time</a>
+            </li>
+            <li>
+              <a href="#hasPrimaryFuel">primary fuel</a>
+            </li>
+            <li>
+              <a href="#hasPrimarySubFuel">primary sub-fuel</a>
+            </li>
+            <li>
+              <a href="#hasResponsibleAuthority">responsible authority</a>
+            </li>
+            <li>
+              <a href="#themeOfFeatureWithProperty">theme of feature with property</a>
+            </li>
+            <li>
+              <a href="#usedProcedure">used procedure</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="object-property-definitions">Object Property Definitions</h3>
         <div class="property entity" id="affectsAgency">
           <h3>affects agency
             <sup class="sup-op" title="OWL Object Property">op</sup>
@@ -2106,7 +2348,7 @@ mandates:clp-1994
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="http://purl.org/dc/terms/publisher">Publisher</a>
@@ -2244,7 +2486,7 @@ mandates:clp-1994
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="http://purl.org/dc/terms/publisher">Publisher</a>
@@ -2482,7 +2724,7 @@ obsp:ratedVoltage
               </th>
               <td>
                 <span>
-                  <a href="#FSDFTheme">FSDF Theme</a>
+                  <a href="#Theme">FSDF Theme</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2523,7 +2765,7 @@ themes:electrical-infrastructure
               </th>
               <td>
                 <span>
-                  <a href="#FSDFTheme">FSDF Theme</a>
+                  <a href="#Theme">FSDF Theme</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2541,7 +2783,7 @@ themes:electrical-infrastructure
             </tr>
           </table>
         </div>
-        <div class="property entity" id="hasmember">
+        <div class="property entity" id="hasMember">
           <h3>has member
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2593,7 +2835,7 @@ themes:electrical-infrastructure
             </tr>
           </table>
         </div>
-        <div class="property entity" id="hasresult">
+        <div class="property entity" id="hasResult">
           <h3>has result
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2623,7 +2865,7 @@ themes:electrical-infrastructure
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <a href="http://www.w3.org/ns/sosa/Actuation">sosa:Actuation</a>
                   </li>
@@ -2644,7 +2886,7 @@ themes:electrical-infrastructure
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="http://www.w3.org/ns/sosa/Result">Result</a>
@@ -2659,7 +2901,7 @@ themes:electrical-infrastructure
             </tr>
           </table>
         </div>
-        <div class="property entity" id="isfeatureofinterestof">
+        <div class="property entity" id="isFeatureOfInterestOf">
           <h3>is feature of interest of
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2689,7 +2931,7 @@ themes:electrical-infrastructure
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">Feature Of Interest</a>
@@ -2707,7 +2949,7 @@ themes:electrical-infrastructure
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <a href="http://www.w3.org/ns/sosa/Actuation">sosa:Actuation</a>
                   </li>
@@ -2725,7 +2967,7 @@ themes:electrical-infrastructure
             </tr>
           </table>
         </div>
-        <div class="property entity" id="isresultof">
+        <div class="property entity" id="isResultOf">
           <h3>is result of
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2755,7 +2997,7 @@ themes:electrical-infrastructure
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="http://www.w3.org/ns/sosa/Result">Result</a>
@@ -2773,7 +3015,7 @@ themes:electrical-infrastructure
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <a href="http://www.w3.org/ns/sosa/Actuation">sosa:Actuation</a>
                   </li>
@@ -2791,7 +3033,7 @@ themes:electrical-infrastructure
             </tr>
           </table>
         </div>
-        <div class="property entity" id="phenomenontime">
+        <div class="property entity" id="phenomenonTime">
           <h3>phenomenon time
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2821,7 +3063,7 @@ themes:electrical-infrastructure
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <a href="http://www.w3.org/ns/sosa/Actuation">sosa:Actuation</a>
                   </li>
@@ -2885,17 +3127,21 @@ themes:electrical-infrastructure
               <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
-              <td><span>
-  <a href="#Jurisdiction">Jurisdiction</a>
-  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-</span> <span class="cardinality">or</span> <span>
-  <a href="#Agency">Agency</a>
-  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-</span></td>
+              <td>
+                <span>
+                  <a href="#Agency">Agency</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+                <span class="cardinality">or</span>
+                <span>
+                  <a href="#Jurisdiction">Jurisdiction</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="observedproperty">
+        <div class="property entity" id="observedProperty">
           <h3>observed property
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2925,7 +3171,7 @@ themes:electrical-infrastructure
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="http://www.w3.org/ns/sosa/Observation">Observation</a>
@@ -2954,7 +3200,7 @@ themes:electrical-infrastructure
             </tr>
           </table>
         </div>
-        <div class="property entity" id="usedprocedure">
+        <div class="property entity" id="usedProcedure">
           <h3>used procedure
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2984,7 +3230,7 @@ themes:electrical-infrastructure
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <a href="http://www.w3.org/ns/sosa/Actuation">sosa:Actuation</a>
                   </li>
@@ -3016,7 +3262,7 @@ themes:electrical-infrastructure
             </tr>
           </table>
         </div>
-        <div class="property entity" id="hasfeatureofinterest">
+        <div class="property entity" id="hasFeatureOfInterest">
           <h3>has feature of interest
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -3054,7 +3300,7 @@ themes:electrical-infrastructure
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <a href="http://www.w3.org/ns/sosa/Actuation">sosa:Actuation</a>
                   </li>
@@ -3090,14 +3336,6 @@ themes:electrical-infrastructure
           </table>
         </div>
       </div>
-      <span>
-        <a href="#Agency">Agency</a>
-        <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-      </span>
-      <span>
-        <a href="#Jurisdiction">Jurisdiction</a>
-        <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-      </span>
       <div class="section" id="datatypeproperties">
         <h2>Datatype Properties</h2>
         <div class="property entity" id="hassimpleresult">
@@ -3138,7 +3376,7 @@ themes:electrical-infrastructure
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <a href="http://www.w3.org/ns/sosa/Actuation">sosa:Actuation</a>
                   </li>
@@ -3186,7 +3424,7 @@ themes:electrical-infrastructure
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <a href="http://www.w3.org/ns/sosa/Actuation">sosa:Actuation</a>
                   </li>
@@ -3258,10 +3496,6 @@ themes:electrical-infrastructure
           <dd>
             <code>http://www.w3.org/2000/01/rdf-schema#</code>
           </dd>
-          <dt id="schema">schema</dt>
-          <dd>
-            <code>https://schema.org/</code>
-          </dd>
           <dt id="sdo">sdo</dt>
           <dd>
             <code>https://schema.org/</code>
@@ -3323,7 +3557,10 @@ themes:electrical-infrastructure
           <span id="y">y</span>
           <span>LODE</span>
         </a>
-        <a href="https://github.com/rdflib/pyLODE/release/3.0.5a" id="version">3.0.5a</a>
+        <a href="https://github.com/rdflib/pyLODE/release/3.4.5a0" id="version">3.4.5a0</a>
+        <span> with the </span>
+        <a href="https://linked.data.gov.au/def/ontpub" id="profile">OntPub</a>
+        <span>profile</span>
       </p>
     </div>
     <div id="toc">
@@ -3338,71 +3575,77 @@ themes:electrical-infrastructure
           <h4>
             <a href="#classes">Classes</a>
           </h4>
+          <h5>
+            <a href="#class-hierarchy" style="margin-left:10px;">Class Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#class-definitions" style="margin-left:10px;">Class Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
+            <li style="margin-left:10px;">
               <a href="#FeatureCollection">Feature Collection</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Material">Material</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#ObservableProperty">Observable Property</a>
             </li>
-            <li>
-              <a href="#PowerStationStructures">Power Station Structures</a>
+            <li style="margin-left:10px;">
+              <a href="#PSStructures">Power Station Structures</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#PhysicalCondition">Physical Condition</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Dataset">Dataset</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Agent">Agent</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#GroundRelation">Ground Relation</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#OperationalStatus">Operational Status</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Result">Result</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Fuel">Fuel</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Jurisdiction">Jurisdiction</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Mandate">Mandate</a>
             </li>
-            <li>
-              <a href="#FSDFTheme">FSDF Theme</a>
+            <li style="margin-left:10px;">
+              <a href="#Theme">FSDF Theme</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#FeatureOfInterest">Feature Of Interest</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#ObservableProperty1">Observable Property</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Agency">Agency</a>
             </li>
-            <li>
-              <a href="#Organisation">Organisation</a>
+            <li style="margin-left:10px;">
+              <a href="#Organization">Organisation</a>
             </li>
-            <li>
-              <a href="#Collectionofobservations">Collection of observations</a>
+            <li style="margin-left:10px;">
+              <a href="#ObservationCollection">Collection of observations</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Feature">Feature</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Concept">Concept</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Observation">Observation</a>
             </li>
           </ul>
@@ -3411,69 +3654,75 @@ themes:electrical-infrastructure
           <h4>
             <a href="#objectproperties">Object Properties</a>
           </h4>
+          <h5>
+            <a href="#object-property-hierarchy" style="margin-left:10px;">Object Property Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#object-property-definitions" style="margin-left:10px;">Object Property Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
+            <li style="margin-left:10px;">
               <a href="#affectsAgency">affects agency</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#featureDataProvenance">feature data provenance</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasCustodian">has custodian</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasEmbeddedNetworkOperator">embedded network operator</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasGeneratorNumber">generator number</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasJurisdiction">has jurisdiction</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasOperationalStatus">has operational status</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasPrimaryFuel">primary fuel</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasPrimarySubFuel">primary sub-fuel</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasRelationToGround">has relation to ground</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#likelyPropertyOfFeatureWithTheme">likely property of feature with theme</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#themeOfFeatureWithProperty">theme of feature with property</a>
             </li>
-            <li>
-              <a href="#hasmember">has member</a>
+            <li style="margin-left:10px;">
+              <a href="#hasMember">has member</a>
             </li>
-            <li>
-              <a href="#hasresult">has result</a>
+            <li style="margin-left:10px;">
+              <a href="#hasResult">has result</a>
             </li>
-            <li>
-              <a href="#isfeatureofinterestof">is feature of interest of</a>
+            <li style="margin-left:10px;">
+              <a href="#isFeatureOfInterestOf">is feature of interest of</a>
             </li>
-            <li>
-              <a href="#isresultof">is result of</a>
+            <li style="margin-left:10px;">
+              <a href="#isResultOf">is result of</a>
             </li>
-            <li>
-              <a href="#phenomenontime">phenomenon time</a>
+            <li style="margin-left:10px;">
+              <a href="#phenomenonTime">phenomenon time</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasResponsibleAuthority">responsible authority</a>
             </li>
-            <li>
-              <a href="#observedproperty">observed property</a>
+            <li style="margin-left:10px;">
+              <a href="#observedProperty">observed property</a>
             </li>
-            <li>
-              <a href="#usedprocedure">used procedure</a>
+            <li style="margin-left:10px;">
+              <a href="#usedProcedure">used procedure</a>
             </li>
-            <li>
-              <a href="#hasfeatureofinterest">has feature of interest</a>
+            <li style="margin-left:10px;">
+              <a href="#hasFeatureOfInterest">has feature of interest</a>
             </li>
           </ul>
         </li>
@@ -3521,9 +3770,6 @@ themes:electrical-infrastructure
             </li>
             <li>
               <a href="#rdfs">rdfs</a>
-            </li>
-            <li>
-              <a href="#schema">schema</a>
             </li>
             <li>
               <a href="#sdo">sdo</a>

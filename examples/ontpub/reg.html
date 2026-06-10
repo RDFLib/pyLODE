@@ -5,14 +5,14 @@
     <style>
         #pylode {
             position: fixed;
-            top: 130px;
-            left: -80px;
+            top: 205px;
+            left: -150px;
             font-size: small;
             transform: rotate(-90deg);
             color: grey;
         }
         #pylode a {
-            font-size: 2em;
+            font-size: 1.5em;
             font-weight: bold;
             text-decoration: none;
             color: #005A9C;
@@ -28,6 +28,12 @@
         }
         #pylode #version {
             font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
         }
 
         .cardinality {
@@ -50,14 +56,18 @@
             padding-top: 7px;
         }
 
-        #metadata ul,
-        #classes ul {
+        ul.pylodelitlist {
             list-style-type: none;
+            margin-left: -40px;
         }
 
         #metadata ul li,
         #classes ul li {
-            margin-left: -40px;
+            margin-bottom: 10px;
+        }
+
+        #metadata dd p {
+          margin: 0 0 1em 0;
         }
 
         ul.hlist {
@@ -67,12 +77,19 @@
             background-color: #F4FFFF;
         }
 
-        ul.hierarchy {
-            border: 1px solid navy;
-            padding: 5px 25px 5px 25px;
+        div.hierarchy {
+            margin-bottom: 30px;
             background-color: #F4FFFF;
+            padding: 10px;
         }
 
+        ul.hierarchy {=
+            padding: 5px 25px 5px 25px;
+        }
+
+        ul.hierarchy li {
+            margin-top:5px;
+        }
 
         ul.hlist li {
             display: inline;
@@ -124,7 +141,10 @@
             border-bottom: 1px solid navy;
         }
         h4 { font: bold 100% sans-serif }
-        h5 { font: italic 100% sans-serif }
+        h5 {
+            font: italic 100% sans-serif;
+            margin-bottom: 10px;
+        }
         h6 { font: small-caps 100% sans-serif }
 
         body {
@@ -213,66 +233,87 @@
             text-decoration: none;
         }
 
-#toc {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    height: 100%;
-    overflow-y: auto;
-    padding: 10px;
-    border: solid 1px navy;
-    font-size: small;
-    width: 180px;
-}
-#toc h3 {
-    margin-top: 5px;
-}
+        #toc {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            padding: 10px;
+            border: solid 1px navy;
+            font-size: small;
+            width: 180px;
+        }
+        #toc h3 {
+            margin-top: 5px;
+        }
 
-#toc ul {
-    list-style: none;
-    padding-left: 0;
-}
+        #toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
 
-#toc .first > li {
-    margin-top: 5px;
-}
+        #toc .first > li {
+            margin-top: 5px;
+        }
 
-#toc .second,
-#toc .third {
-    padding-left: 10px;
-}
+        #toc .second,
+        #toc .third {
+            padding-left: 10px;
+        }
 
-#content {
-    width: calc(100% - 150px);
-}
+        #content {
+            width: calc(100% - 150px);
+        }
 
-.hover_property {
-    cursor: help;
-    text-decoration: none;
-    border-bottom: dashed 1px;
-}
+        .hover_property {
+            cursor: help;
+            text-decoration: none;
+            border-bottom: dashed 1px;
+        }
 
-.setclass {
-    list-style-type: none;
-}
+        .setclass {
+            list-style-type: none;
+        }
 
-code{
-    word-wrap: break-word;
-  }
-  table {
-    table-layout: fixed;
-    width: 100%;
-  }
-  td {
-    word-wrap: break-word;
-  }
+        code{
+            word-wrap: break-word;
+          }
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        td {
+            word-wrap: break-word;
+        }
+        #legend table.entity {
+            width: 25%;
+        }
 	</style>
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png">
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png">
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <script id="schema.org" type="application/ld+json">
 [
+  {
+    "@id": "http://purl.org/linked-data/registry#StatusScheme",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/description": [
+      {
+        "@language": "en",
+        "@value": "Concept scheme containing registry status codes"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@language": "en",
+        "@value": "Status Scheme"
+      }
+    ]
+  },
   {
     "@id": "http://purl.org/linked-data/registry",
     "@type": [
@@ -301,24 +342,6 @@ code{
         "@value": "Registry ontology"
       }
     ]
-  },
-  {
-    "@id": "http://purl.org/linked-data/registry#StatusScheme",
-    "@type": [
-      "https://schema.org/DefinedTermSet"
-    ],
-    "https://schema.org/description": [
-      {
-        "@language": "en",
-        "@value": "Concept scheme containing registry status codes"
-      }
-    ],
-    "https://schema.org/name": [
-      {
-        "@language": "en",
-        "@value": "Status Scheme"
-      }
-    ]
   }
 ]
 	</script>
@@ -342,7 +365,7 @@ code{
               <a class="hover_property" href="http://purl.org/dc/terms/title" title="A name given to the resource. Defined in DCMI Metadata Terms">Title</a>
             </dt>
             <dd>
-              <ul>
+              <ul class="pylodelitlist">
                 <li><p>Registry ontology</p></li>
                 <li><p>Status Scheme</p></li>
               </ul>
@@ -371,7 +394,7 @@ code{
               <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
             </dt>
             <dd>
-              <ul>
+              <ul class="pylodelitlist">
                 <li><p>Core ontology for linked data registry services. Based on ISO19135 but heavily modified to suit Linked Data representations and applications.</p></li>
                 <li><p>Concept scheme containing registry status codes</p></li>
               </ul>
@@ -381,6 +404,52 @@ code{
       </div>
       <div class="section" id="classes">
         <h2>Classes</h2>
+        <h3 id="class-hierarchy">Class Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#Delegated">Delegated</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#NamespaceForward">Namespace Forward</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#EntityReference">Entity Reference</a>
+            </li>
+            <li>
+              <a href="#Register">Register</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#DelegatedRegister">Delegated Register</a>
+                </li>
+                <li>
+                  <a href="#FederatedRegister">Federated Register</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#RegisterItem">RegisterItem</a>
+            </li>
+            <li>
+              <a href="#SPARQLAskQuery">SPARQL ASK query</a>
+            </li>
+            <li>
+              <a href="#SPARQLConstructQuery">SPARQL CONSTRUCT query</a>
+            </li>
+            <li>
+              <a href="#SPARQLQuery">SPARQL query</a>
+            </li>
+            <li>
+              <a href="#SPARQLSelectQuery">SPARQL SELECT query</a>
+            </li>
+            <li>
+              <a href="#Status">Status</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="class-definitions">Class Definitions</h3>
         <div class="property entity" id="Register">
           <h3>Register
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
@@ -403,7 +472,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <a href="http://purl.org/linked-data/version#VersionedThing">version:VersionedThing</a>
                   </li>
@@ -412,7 +481,7 @@ code{
                   </li>
                   <li>
                     <span>
-                      <a href="http://rdfs.org/ns/void#Dataset">void:Dataset</a>
+                      <a href="http://rdfs.org/ns/void#Dataset">dataset</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -424,52 +493,52 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#operatingLanguage">reg:operatingLanguage</a>
+                      <a href="http://purl.org/linked-data/registry#operatingLanguage">operating language</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#owner">reg:owner</a>
+                      <a href="http://purl.org/linked-data/registry#owner">owner</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#manager">reg:manager</a>
+                      <a href="http://purl.org/linked-data/registry#manager">manager</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#containedItemClass">reg:containedItemClass</a>
+                      <a href="http://purl.org/linked-data/registry#containedItemClass">contained item class</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#subregister">reg:subregister</a>
+                      <a href="http://purl.org/linked-data/registry#subregister">subregister</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#governancePolicy">reg:governancePolicy</a>
+                      <a href="http://purl.org/linked-data/registry#governancePolicy">governance policy</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#validationQuery">reg:validationQuery</a>
+                      <a href="http://purl.org/linked-data/registry#validationQuery">validation query</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#release">reg:release</a>
+                      <a href="http://purl.org/linked-data/registry#release">release</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -481,16 +550,16 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#subregister">reg:subregister</a>
+                      <a href="http://purl.org/linked-data/registry#subregister">subregister</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#register">reg:register</a>
+                      <a href="http://purl.org/linked-data/registry#register">register</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -502,12 +571,26 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a>
+                          <a href="http://www.w3.org/2000/01/rdf-schema#label">label</a>
+                          <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                        </span>
+                        <span>
+                          <span class="cardinality">min</span>
+                          <span>1</span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <span>
+                          <a href="http://purl.org/dc/terms/description">Description</a>
                           <sup class="sup-p" title="RDF Property">p</sup>
                         </span>
                         <span>
@@ -521,21 +604,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/dc/terms/description">dct:description</a>
-                          <sup class="sup-p" title="RDF Property">p</sup>
-                        </span>
-                        <span>
-                          <span class="cardinality">min</span>
-                          <span>1</span>
-                        </span><br>
-                      </span>
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <span>
-                        <span>
-                          <a href="http://purl.org/linked-data/registry#owner">reg:owner</a>
+                          <a href="http://purl.org/linked-data/registry#owner">owner</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -549,7 +618,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#manager">reg:manager</a>
+                          <a href="http://purl.org/linked-data/registry#manager">manager</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -563,7 +632,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/dc/terms/license">dct:license</a>
+                          <a href="http://purl.org/dc/terms/license">License</a>
                           <sup class="sup-p" title="RDF Property">p</sup>
                         </span>
                         <span>
@@ -577,7 +646,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#containedItemClass">reg:containedItemClass</a>
+                          <a href="http://purl.org/linked-data/registry#containedItemClass">contained item class</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -591,7 +660,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#operatingLanguage">reg:operatingLanguage</a>
+                          <a href="http://purl.org/linked-data/registry#operatingLanguage">operating language</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -605,7 +674,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#governancePolicy">reg:governancePolicy</a>
+                          <a href="http://purl.org/linked-data/registry#governancePolicy">governance policy</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -619,7 +688,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#validationQuery">reg:validationQuery</a>
+                          <a href="http://purl.org/linked-data/registry#validationQuery">validation query</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -633,7 +702,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/dc/terms/modified">dct:modified</a>
+                          <a href="http://purl.org/dc/terms/modified">Date Modified</a>
                           <sup class="sup-p" title="RDF Property">p</sup>
                         </span>
                         <span>
@@ -647,7 +716,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://rdfs.org/ns/void#openSearchDescription">void:openSearchDescription</a>
+                          <a href="http://rdfs.org/ns/void#openSearchDescription">open search description</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -661,7 +730,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://rdfs.org/ns/void#uriLookupEndpoint">void:uriLookupEndpoint</a>
+                          <a href="http://rdfs.org/ns/void#uriLookupEndpoint">has an URI look-up endpoint at</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -675,7 +744,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://rdfs.org/ns/void#uriSpace">void:uriSpace</a>
+                          <a href="http://rdfs.org/ns/void#uriSpace">URI space</a>
                           <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                         </span>
                         <span>
@@ -689,7 +758,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://rdfs.org/ns/void#exampleResource">void:exampleResource</a>
+                          <a href="http://rdfs.org/ns/void#exampleResource">example resource of dataset</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -707,16 +776,16 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#FederatedRegister">reg:FederatedRegister</a>
+                      <a href="http://purl.org/linked-data/registry#FederatedRegister">Federated Register</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#DelegatedRegister">reg:DelegatedRegister</a>
+                      <a href="http://purl.org/linked-data/registry#DelegatedRegister">Delegated Register</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -755,76 +824,76 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#definition">reg:definition</a>
+                      <a href="http://purl.org/linked-data/registry#definition">definition</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#register">reg:register</a>
+                      <a href="http://purl.org/linked-data/registry#register">register</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#predecessor">reg:predecessor</a>
+                      <a href="http://purl.org/linked-data/registry#predecessor">predecessor</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#successor">reg:successor</a>
+                      <a href="http://purl.org/linked-data/registry#successor">successor</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#category">reg:category</a>
+                      <a href="http://purl.org/linked-data/registry#category">category</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#notation">reg:notation</a>
+                      <a href="http://purl.org/linked-data/registry#notation">notation</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#itemClass">reg:itemClass</a>
+                      <a href="http://purl.org/linked-data/registry#itemClass">item class</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#submitter">reg:submitter</a>
+                      <a href="http://purl.org/linked-data/registry#submitter">submitter</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#annotation">reg:annotation</a>
+                      <a href="http://purl.org/linked-data/registry#annotation">annotation</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#status">reg:status</a>
+                      <a href="http://purl.org/linked-data/registry#status">status</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#alias">reg:alias</a>
+                      <a href="http://purl.org/linked-data/registry#alias">alias</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#representationOf">reg:representationOf</a>
+                      <a href="http://purl.org/linked-data/registry#representationOf">representation of</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -836,16 +905,16 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#predecessor">reg:predecessor</a>
+                      <a href="http://purl.org/linked-data/registry#predecessor">predecessor</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#successor">reg:successor</a>
+                      <a href="http://purl.org/linked-data/registry#successor">successor</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -857,13 +926,13 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a>
-                          <sup class="sup-p" title="RDF Property">p</sup>
+                          <a href="http://www.w3.org/2000/01/rdf-schema#label">label</a>
+                          <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
                         </span>
                         <span>
                           <span class="cardinality">min</span>
@@ -876,7 +945,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/dc/terms/description">dct:description</a>
+                          <a href="http://purl.org/dc/terms/description">Description</a>
                           <sup class="sup-p" title="RDF Property">p</sup>
                         </span>
                         <span>
@@ -890,7 +959,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/dc/terms/dateSubmitted">dct:dateSubmitted</a>
+                          <a href="http://purl.org/dc/terms/dateSubmitted">Date Submitted</a>
                           <sup class="sup-p" title="RDF Property">p</sup>
                         </span>
                         <span>
@@ -904,7 +973,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/dc/terms/dateAccepted">dct:dateAccepted</a>
+                          <a href="http://purl.org/dc/terms/dateAccepted">Date Accepted</a>
                           <sup class="sup-p" title="RDF Property">p</sup>
                         </span>
                         <span>
@@ -918,7 +987,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#status">reg:status</a>
+                          <a href="http://purl.org/linked-data/registry#status">status</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -932,7 +1001,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#definition">reg:definition</a>
+                          <a href="http://purl.org/linked-data/registry#definition">definition</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -946,7 +1015,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#submitter">reg:submitter</a>
+                          <a href="http://purl.org/linked-data/registry#submitter">submitter</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -960,7 +1029,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#category">reg:category</a>
+                          <a href="http://purl.org/linked-data/registry#category">category</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -974,7 +1043,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#itemClass">reg:itemClass</a>
+                          <a href="http://purl.org/linked-data/registry#itemClass">item class</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -988,7 +1057,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#notation">reg:notation</a>
+                          <a href="http://purl.org/linked-data/registry#notation">notation</a>
                           <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                         </span>
                         <span>
@@ -1002,7 +1071,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/dc/terms/license">dct:license</a>
+                          <a href="http://purl.org/dc/terms/license">License</a>
                           <sup class="sup-p" title="RDF Property">p</sup>
                         </span>
                         <span>
@@ -1016,7 +1085,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#predecessor">reg:predecessor</a>
+                          <a href="http://purl.org/linked-data/registry#predecessor">predecessor</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -1030,7 +1099,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#alias">reg:alias</a>
+                          <a href="http://purl.org/linked-data/registry#alias">alias</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -1044,7 +1113,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#representationOf">reg:representationOf</a>
+                          <a href="http://purl.org/linked-data/registry#representationOf">representation of</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -1069,7 +1138,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/dc/terms/modified">dct:modified</a>
+                          <a href="http://purl.org/dc/terms/modified">Date Modified</a>
                           <sup class="sup-p" title="RDF Property">p</sup>
                         </span>
                         <span>
@@ -1107,7 +1176,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1117,22 +1186,22 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#nextState">reg:nextState</a>
+                      <a href="http://purl.org/linked-data/registry#nextState">next state</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#priorState">reg:priorState</a>
+                      <a href="http://purl.org/linked-data/registry#priorState">next state</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#presentation">reg:presentation</a>
+                      <a href="http://purl.org/linked-data/registry#presentation">presentation</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
@@ -1145,7 +1214,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#status">reg:status</a>
+                  <a href="http://purl.org/linked-data/registry#status">status</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -1174,22 +1243,22 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#entity">reg:entity</a>
+                      <a href="http://purl.org/linked-data/registry#entity">entity</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#sourceGraph">reg:sourceGraph</a>
+                      <a href="http://purl.org/linked-data/registry#sourceGraph">source graph</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#entityVersion">reg:entityVersion</a>
+                      <a href="http://purl.org/linked-data/registry#entityVersion">entity version</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -1201,16 +1270,16 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#definition">reg:definition</a>
+                      <a href="http://purl.org/linked-data/registry#definition">definition</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#alias">reg:alias</a>
+                      <a href="http://purl.org/linked-data/registry#alias">alias</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -1222,12 +1291,12 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#entity">reg:entity</a>
+                          <a href="http://purl.org/linked-data/registry#entity">entity</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -1241,7 +1310,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#sourceGraph">reg:sourceGraph</a>
+                          <a href="http://purl.org/linked-data/registry#sourceGraph">source graph</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -1255,7 +1324,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#entityVersion">reg:entityVersion</a>
+                          <a href="http://purl.org/linked-data/registry#entityVersion">entity version</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -1270,7 +1339,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="SPARQLquery">
+        <div class="property entity" id="SPARQLQuery">
           <h3>SPARQL query
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -1295,7 +1364,7 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#query">reg:query</a>
+                      <a href="http://purl.org/linked-data/registry#query">query</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                     <span>
@@ -1308,7 +1377,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="SPARQLASKquery">
+        <div class="property entity" id="SPARQLAskQuery">
           <h3>SPARQL ASK query
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -1331,14 +1400,14 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#validationQuery">reg:validationQuery</a>
+                  <a href="http://purl.org/linked-data/registry#validationQuery">validation query</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="SPARQLSELECTquery">
+        <div class="property entity" id="SPARQLSelectQuery">
           <h3>SPARQL SELECT query
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -1357,7 +1426,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="SPARQLCONSTRUCTquery">
+        <div class="property entity" id="SPARQLConstructQuery">
           <h3>SPARQL CONSTRUCT query
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -1399,7 +1468,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#delegationTarget">reg:delegationTarget</a>
+                  <a href="http://purl.org/linked-data/registry#delegationTarget">delegation target</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -1412,7 +1481,7 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#delegationTarget">reg:delegationTarget</a>
+                      <a href="http://purl.org/linked-data/registry#delegationTarget">delegation target</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                     <span>
@@ -1428,22 +1497,22 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#NamespaceForward">reg:NamespaceForward</a>
+                      <a href="http://purl.org/linked-data/registry#NamespaceForward">Namespace Forward</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#FederatedRegister">reg:FederatedRegister</a>
+                      <a href="http://purl.org/linked-data/registry#FederatedRegister">Federated Register</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#DelegatedRegister">reg:DelegatedRegister</a>
+                      <a href="http://purl.org/linked-data/registry#DelegatedRegister">Delegated Register</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1475,7 +1544,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#Delegated">reg:Delegated</a>
+                  <a href="http://purl.org/linked-data/registry#Delegated">Delegated</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1486,7 +1555,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#forwardingCode">reg:forwardingCode</a>
+                  <a href="http://purl.org/linked-data/registry#forwardingCode">forwarding code</a>
                   <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                 </span>
               </td>
@@ -1499,7 +1568,7 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#forwardingCode">reg:forwardingCode</a>
+                      <a href="http://purl.org/linked-data/registry#forwardingCode">forwarding code</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                     <span>
@@ -1534,16 +1603,16 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#Delegated">reg:Delegated</a>
+                      <a href="http://purl.org/linked-data/registry#Delegated">Delegated</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#Register">reg:Register</a>
+                      <a href="http://purl.org/linked-data/registry#Register">Register</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1574,16 +1643,16 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#Delegated">reg:Delegated</a>
+                      <a href="http://purl.org/linked-data/registry#Delegated">Delegated</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#Register">reg:Register</a>
+                      <a href="http://purl.org/linked-data/registry#Register">Register</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1595,22 +1664,22 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#enumerationSubject">reg:enumerationSubject</a>
+                      <a href="http://purl.org/linked-data/registry#enumerationSubject">enumeration subject</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#enumerationPredicate">reg:enumerationPredicate</a>
+                      <a href="http://purl.org/linked-data/registry#enumerationPredicate">enumeration predicate</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://purl.org/linked-data/registry#enumerationObject">reg:enumerationObject</a>
+                      <a href="http://purl.org/linked-data/registry#enumerationObject">enumeration object</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -1622,12 +1691,12 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#enumerationSubject">reg:enumerationSubject</a>
+                          <a href="http://purl.org/linked-data/registry#enumerationSubject">enumeration subject</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -1641,7 +1710,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#enumerationPredicate">reg:enumerationPredicate</a>
+                          <a href="http://purl.org/linked-data/registry#enumerationPredicate">enumeration predicate</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -1655,7 +1724,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/linked-data/registry#enumerationObject">reg:enumerationObject</a>
+                          <a href="http://purl.org/linked-data/registry#enumerationObject">enumeration object</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -1673,7 +1742,97 @@ code{
       </div>
       <div class="section" id="objectproperties">
         <h2>Object Properties</h2>
-        <div class="property entity" id="operatinglanguage">
+        <h3 id="object-property-hierarchy">Object Property Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#alias">alias</a>
+            </li>
+            <li>
+              <a href="#annotation">annotation</a>
+            </li>
+            <li>
+              <a href="#category">category</a>
+            </li>
+            <li>
+              <a href="#containedItemClass">contained item class</a>
+            </li>
+            <li>
+              <a href="#definition">definition</a>
+            </li>
+            <li>
+              <a href="#delegationTarget">delegation target</a>
+            </li>
+            <li>
+              <a href="#entity">entity</a>
+            </li>
+            <li>
+              <a href="#entityVersion">entity version</a>
+            </li>
+            <li>
+              <a href="#enumerationObject">enumeration object</a>
+            </li>
+            <li>
+              <a href="#enumerationPredicate">enumeration predicate</a>
+            </li>
+            <li>
+              <a href="#enumerationSubject">enumeration subject</a>
+            </li>
+            <li>
+              <a href="#governancePolicy">governance policy</a>
+            </li>
+            <li>
+              <a href="#inverseMembershipPredicate">inverse membership predicate</a>
+            </li>
+            <li>
+              <a href="#itemClass">item class</a>
+            </li>
+            <li>
+              <a href="#manager">manager</a>
+            </li>
+            <li>
+              <a href="#operatingLanguage">operating language</a>
+            </li>
+            <li>
+              <a href="#owner">owner</a>
+            </li>
+            <li>
+              <a href="#predecessor">predecessor</a>
+            </li>
+            <li>
+              <a href="#register">register</a>
+            </li>
+            <li>
+              <a href="#release">release</a>
+            </li>
+            <li>
+              <a href="#representationOf">representation of</a>
+            </li>
+            <li>
+              <a href="#sourceDataset">source dataset</a>
+            </li>
+            <li>
+              <a href="#sourceGraph">source graph</a>
+            </li>
+            <li>
+              <a href="#status">status</a>
+            </li>
+            <li>
+              <a href="#submitter">submitter</a>
+            </li>
+            <li>
+              <a href="#subregister">subregister</a>
+            </li>
+            <li>
+              <a href="#successor">successor</a>
+            </li>
+            <li>
+              <a href="#validationQuery">validation query</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="object-property-definitions">Object Property Definitions</h3>
+        <div class="property entity" id="operatingLanguage">
           <h3>operating language
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1696,7 +1855,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#Register">reg:Register</a>
+                  <a href="http://purl.org/linked-data/registry#Register">Register</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1706,7 +1865,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">Resource</a>
               </td>
             </tr>
           </table>
@@ -1734,7 +1893,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/dc/terms/publisher">dct:publisher</a>
+                  <a href="http://purl.org/dc/terms/publisher">Publisher</a>
                   <sup class="sup-p" title="RDF Property">p</sup>
                 </span>
               </td>
@@ -1745,7 +1904,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#Register">reg:Register</a>
+                  <a href="http://purl.org/linked-data/registry#Register">Register</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1783,7 +1942,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#Register">reg:Register</a>
+                  <a href="http://purl.org/linked-data/registry#Register">Register</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1798,7 +1957,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="containeditemclass">
+        <div class="property entity" id="containedItemClass">
           <h3>contained item class
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1821,7 +1980,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#Register">reg:Register</a>
+                  <a href="http://purl.org/linked-data/registry#Register">Register</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1831,7 +1990,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a>
+                <a href="http://www.w3.org/2002/07/owl#Class">Class</a>
               </td>
             </tr>
           </table>
@@ -1859,7 +2018,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#Register">reg:Register</a>
+                  <a href="http://purl.org/linked-data/registry#Register">Register</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1870,14 +2029,14 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#Register">reg:Register</a>
+                  <a href="http://purl.org/linked-data/registry#Register">Register</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="governancepolicy">
+        <div class="property entity" id="governancePolicy">
           <h3>governance policy
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1900,7 +2059,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#Register">reg:Register</a>
+                  <a href="http://purl.org/linked-data/registry#Register">Register</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1910,7 +2069,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">Resource</a>
               </td>
             </tr>
           </table>
@@ -1938,7 +2097,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#RegisterItem">reg:RegisterItem</a>
+                  <a href="http://purl.org/linked-data/registry#RegisterItem">RegisterItem</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1949,7 +2108,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#EntityReference">reg:EntityReference</a>
+                  <a href="http://purl.org/linked-data/registry#EntityReference">Entity Reference</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1979,7 +2138,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#RegisterItem">reg:RegisterItem</a>
+                  <a href="http://purl.org/linked-data/registry#RegisterItem">RegisterItem</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1990,7 +2149,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#Register">reg:Register</a>
+                  <a href="http://purl.org/linked-data/registry#Register">Register</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2020,7 +2179,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#RegisterItem">reg:RegisterItem</a>
+                  <a href="http://purl.org/linked-data/registry#RegisterItem">RegisterItem</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2031,7 +2190,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#RegisterItem">reg:RegisterItem</a>
+                  <a href="http://purl.org/linked-data/registry#RegisterItem">RegisterItem</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2061,7 +2220,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#RegisterItem">reg:RegisterItem</a>
+                  <a href="http://purl.org/linked-data/registry#RegisterItem">RegisterItem</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2072,7 +2231,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#RegisterItem">reg:RegisterItem</a>
+                  <a href="http://purl.org/linked-data/registry#RegisterItem">RegisterItem</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2102,7 +2261,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#RegisterItem">reg:RegisterItem</a>
+                  <a href="http://purl.org/linked-data/registry#RegisterItem">RegisterItem</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2113,14 +2272,14 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="itemclass">
+        <div class="property entity" id="itemClass">
           <h3>item class
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2143,7 +2302,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#RegisterItem">reg:RegisterItem</a>
+                  <a href="http://purl.org/linked-data/registry#RegisterItem">RegisterItem</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2153,7 +2312,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Class">rdfs:Class</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Class">Class</a>
               </td>
             </tr>
           </table>
@@ -2181,7 +2340,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/dc/terms/publisher">dct:publisher</a>
+                  <a href="http://purl.org/dc/terms/publisher">Publisher</a>
                   <sup class="sup-p" title="RDF Property">p</sup>
                 </span>
               </td>
@@ -2192,7 +2351,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#RegisterItem">reg:RegisterItem</a>
+                  <a href="http://purl.org/linked-data/registry#RegisterItem">RegisterItem</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2230,7 +2389,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#RegisterItem">reg:RegisterItem</a>
+                  <a href="http://purl.org/linked-data/registry#RegisterItem">RegisterItem</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2260,7 +2419,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#RegisterItem">reg:RegisterItem</a>
+                  <a href="http://purl.org/linked-data/registry#RegisterItem">RegisterItem</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2271,7 +2430,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#Status">reg:Status</a>
+                  <a href="http://purl.org/linked-data/registry#Status">Status</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2301,7 +2460,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#EntityReference">reg:EntityReference</a>
+                  <a href="http://purl.org/linked-data/registry#EntityReference">Entity Reference</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2311,12 +2470,12 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">Resource</a>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="sourcegraph">
+        <div class="property entity" id="sourceGraph">
           <h3>source graph
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2339,7 +2498,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#EntityReference">reg:EntityReference</a>
+                  <a href="http://purl.org/linked-data/registry#EntityReference">Entity Reference</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2354,7 +2513,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="entityversion">
+        <div class="property entity" id="entityVersion">
           <h3>entity version
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2377,7 +2536,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#EntityReference">reg:EntityReference</a>
+                  <a href="http://purl.org/linked-data/registry#EntityReference">Entity Reference</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2387,12 +2546,12 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">Resource</a>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="validationquery">
+        <div class="property entity" id="validationQuery">
           <h3>validation query
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2415,7 +2574,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#Register">reg:Register</a>
+                  <a href="http://purl.org/linked-data/registry#Register">Register</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2426,7 +2585,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#SPARQLAskQuery">reg:SPARQLAskQuery</a>
+                  <a href="http://purl.org/linked-data/registry#SPARQLAskQuery">SPARQL ASK query</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2456,7 +2615,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#Register">reg:Register</a>
+                  <a href="http://purl.org/linked-data/registry#Register">Register</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2466,12 +2625,15 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/prov#Collection">prov:Collection</a>
+                <span>
+                  <a href="http://www.w3.org/ns/prov#Collection">Collection</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="inversemembershippredicate">
+        <div class="property entity" id="inverseMembershipPredicate">
           <h3>inverse membership predicate
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2501,7 +2663,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">rdf:Property</a>
+                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">Property</a>
               </td>
             </tr>
           </table>
@@ -2529,7 +2691,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#RegisterItem">reg:RegisterItem</a>
+                  <a href="http://purl.org/linked-data/registry#RegisterItem">RegisterItem</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2540,14 +2702,14 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#EntityReference">reg:EntityReference</a>
+                  <a href="http://purl.org/linked-data/registry#EntityReference">Entity Reference</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="representationof">
+        <div class="property entity" id="representationOf">
           <h3>representation of
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2570,14 +2732,14 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#RegisterItem">reg:RegisterItem</a>
+                  <a href="http://purl.org/linked-data/registry#RegisterItem">RegisterItem</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="delegationtarget">
+        <div class="property entity" id="delegationTarget">
           <h3>delegation target
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2600,7 +2762,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#Delegated">reg:Delegated</a>
+                  <a href="http://purl.org/linked-data/registry#Delegated">Delegated</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2610,12 +2772,12 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">Resource</a>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="enumerationsubject">
+        <div class="property entity" id="enumerationSubject">
           <h3>enumeration subject
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2638,7 +2800,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#DelegatedRegister">reg:DelegatedRegister</a>
+                  <a href="http://purl.org/linked-data/registry#DelegatedRegister">Delegated Register</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2648,12 +2810,12 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">Resource</a>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="enumerationpredicate">
+        <div class="property entity" id="enumerationPredicate">
           <h3>enumeration predicate
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2676,7 +2838,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#DelegatedRegister">reg:DelegatedRegister</a>
+                  <a href="http://purl.org/linked-data/registry#DelegatedRegister">Delegated Register</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2686,12 +2848,12 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">Resource</a>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="enumerationobject">
+        <div class="property entity" id="enumerationObject">
           <h3>enumeration object
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2714,7 +2876,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#DelegatedRegister">reg:DelegatedRegister</a>
+                  <a href="http://purl.org/linked-data/registry#DelegatedRegister">Delegated Register</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2724,12 +2886,12 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a>
+                <a href="http://www.w3.org/2000/01/rdf-schema#Resource">Resource</a>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="sourcedataset">
+        <div class="property entity" id="sourceDataset">
           <h3>source dataset
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -2752,7 +2914,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://rdfs.org/ns/void#Linkset">void:Linkset</a>
+                  <a href="http://rdfs.org/ns/void#Linkset">linkset</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2763,7 +2925,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://rdfs.org/ns/void#Dataset">void:Dataset</a>
+                  <a href="http://rdfs.org/ns/void#Dataset">dataset</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2796,7 +2958,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#RegisterItem">reg:RegisterItem</a>
+                  <a href="http://purl.org/linked-data/registry#RegisterItem">RegisterItem</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2834,7 +2996,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#Status">reg:Status</a>
+                  <a href="http://purl.org/linked-data/registry#Status">Status</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2872,7 +3034,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#Status">reg:Status</a>
+                  <a href="http://purl.org/linked-data/registry#Status">Status</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2910,7 +3072,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#Status">reg:Status</a>
+                  <a href="http://purl.org/linked-data/registry#Status">Status</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2974,7 +3136,10 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/prov#Collection">prov:Collection</a>
+                <span>
+                  <a href="http://www.w3.org/ns/prov#Collection">Collection</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
               </td>
             </tr>
             <tr>
@@ -3010,7 +3175,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/linked-data/registry#NamespaceForward">reg:NamespaceForward</a>
+                  <a href="http://purl.org/linked-data/registry#NamespaceForward">Namespace Forward</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3030,10 +3195,6 @@ code{
         <h2>Namespaces</h2>
         <dl>
           <dt id="dct">dct</dt>
-          <dd>
-            <code>http://purl.org/dc/terms/</code>
-          </dd>
-          <dt id="dcterms">dcterms</dt>
           <dd>
             <code>http://purl.org/dc/terms/</code>
           </dd>
@@ -3122,7 +3283,10 @@ code{
           <span id="y">y</span>
           <span>LODE</span>
         </a>
-        <a href="https://github.com/rdflib/pyLODE/release/3.0.2" id="version">3.0.2</a>
+        <a href="https://github.com/rdflib/pyLODE/release/3.4.5a0" id="version">3.4.5a0</a>
+        <span> with the </span>
+        <a href="https://linked.data.gov.au/def/ontpub" id="profile">OntPub</a>
+        <span>profile</span>
       </p>
     </div>
     <div id="toc">
@@ -3137,41 +3301,47 @@ code{
           <h4>
             <a href="#classes">Classes</a>
           </h4>
+          <h5>
+            <a href="#class-hierarchy" style="margin-left:10px;">Class Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#class-definitions" style="margin-left:10px;">Class Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Register">Register</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#RegisterItem">RegisterItem</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Status">Status</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#EntityReference">Entity Reference</a>
             </li>
-            <li>
-              <a href="#SPARQLquery">SPARQL query</a>
+            <li style="margin-left:10px;">
+              <a href="#SPARQLQuery">SPARQL query</a>
             </li>
-            <li>
-              <a href="#SPARQLASKquery">SPARQL ASK query</a>
+            <li style="margin-left:10px;">
+              <a href="#SPARQLAskQuery">SPARQL ASK query</a>
             </li>
-            <li>
-              <a href="#SPARQLSELECTquery">SPARQL SELECT query</a>
+            <li style="margin-left:10px;">
+              <a href="#SPARQLSelectQuery">SPARQL SELECT query</a>
             </li>
-            <li>
-              <a href="#SPARQLCONSTRUCTquery">SPARQL CONSTRUCT query</a>
+            <li style="margin-left:10px;">
+              <a href="#SPARQLConstructQuery">SPARQL CONSTRUCT query</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Delegated">Delegated</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#NamespaceForward">Namespace Forward</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#FederatedRegister">Federated Register</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#DelegatedRegister">Delegated Register</a>
             </li>
           </ul>
@@ -3180,90 +3350,96 @@ code{
           <h4>
             <a href="#objectproperties">Object Properties</a>
           </h4>
+          <h5>
+            <a href="#object-property-hierarchy" style="margin-left:10px;">Object Property Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#object-property-definitions" style="margin-left:10px;">Object Property Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
-              <a href="#operatinglanguage">operating language</a>
+            <li style="margin-left:10px;">
+              <a href="#operatingLanguage">operating language</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#owner">owner</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#manager">manager</a>
             </li>
-            <li>
-              <a href="#containeditemclass">contained item class</a>
+            <li style="margin-left:10px;">
+              <a href="#containedItemClass">contained item class</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#subregister">subregister</a>
             </li>
-            <li>
-              <a href="#governancepolicy">governance policy</a>
+            <li style="margin-left:10px;">
+              <a href="#governancePolicy">governance policy</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#definition">definition</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#register">register</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#predecessor">predecessor</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#successor">successor</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#category">category</a>
             </li>
-            <li>
-              <a href="#itemclass">item class</a>
+            <li style="margin-left:10px;">
+              <a href="#itemClass">item class</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#submitter">submitter</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#annotation">annotation</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#status">status</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#entity">entity</a>
             </li>
-            <li>
-              <a href="#sourcegraph">source graph</a>
+            <li style="margin-left:10px;">
+              <a href="#sourceGraph">source graph</a>
             </li>
-            <li>
-              <a href="#entityversion">entity version</a>
+            <li style="margin-left:10px;">
+              <a href="#entityVersion">entity version</a>
             </li>
-            <li>
-              <a href="#validationquery">validation query</a>
+            <li style="margin-left:10px;">
+              <a href="#validationQuery">validation query</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#release">release</a>
             </li>
-            <li>
-              <a href="#inversemembershippredicate">inverse membership predicate</a>
+            <li style="margin-left:10px;">
+              <a href="#inverseMembershipPredicate">inverse membership predicate</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#alias">alias</a>
             </li>
-            <li>
-              <a href="#representationof">representation of</a>
+            <li style="margin-left:10px;">
+              <a href="#representationOf">representation of</a>
             </li>
-            <li>
-              <a href="#delegationtarget">delegation target</a>
+            <li style="margin-left:10px;">
+              <a href="#delegationTarget">delegation target</a>
             </li>
-            <li>
-              <a href="#enumerationsubject">enumeration subject</a>
+            <li style="margin-left:10px;">
+              <a href="#enumerationSubject">enumeration subject</a>
             </li>
-            <li>
-              <a href="#enumerationpredicate">enumeration predicate</a>
+            <li style="margin-left:10px;">
+              <a href="#enumerationPredicate">enumeration predicate</a>
             </li>
-            <li>
-              <a href="#enumerationobject">enumeration object</a>
+            <li style="margin-left:10px;">
+              <a href="#enumerationObject">enumeration object</a>
             </li>
-            <li>
-              <a href="#sourcedataset">source dataset</a>
+            <li style="margin-left:10px;">
+              <a href="#sourceDataset">source dataset</a>
             </li>
           </ul>
         </li>
@@ -3302,9 +3478,6 @@ code{
           <ul class="second">
             <li>
               <a href="#dct">dct</a>
-            </li>
-            <li>
-              <a href="#dcterms">dcterms</a>
             </li>
             <li>
               <a href="#foaf">foaf</a>

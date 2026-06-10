@@ -5,14 +5,14 @@
     <style>
         #pylode {
             position: fixed;
-            top: 130px;
-            left: -80px;
+            top: 205px;
+            left: -150px;
             font-size: small;
             transform: rotate(-90deg);
             color: grey;
         }
         #pylode a {
-            font-size: 2em;
+            font-size: 1.5em;
             font-weight: bold;
             text-decoration: none;
             color: #005A9C;
@@ -28,6 +28,12 @@
         }
         #pylode #version {
             font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
         }
 
         .cardinality {
@@ -50,14 +56,18 @@
             padding-top: 7px;
         }
 
-        #metadata ul,
-        #classes ul {
+        ul.pylodelitlist {
             list-style-type: none;
+            margin-left: -40px;
         }
 
         #metadata ul li,
         #classes ul li {
-            margin-left: -40px;
+            margin-bottom: 10px;
+        }
+
+        #metadata dd p {
+          margin: 0 0 1em 0;
         }
 
         ul.hlist {
@@ -67,12 +77,19 @@
             background-color: #F4FFFF;
         }
 
-        ul.hierarchy {
-            border: 1px solid navy;
-            padding: 5px 25px 5px 25px;
+        div.hierarchy {
+            margin-bottom: 30px;
             background-color: #F4FFFF;
+            padding: 10px;
         }
 
+        ul.hierarchy {=
+            padding: 5px 25px 5px 25px;
+        }
+
+        ul.hierarchy li {
+            margin-top:5px;
+        }
 
         ul.hlist li {
             display: inline;
@@ -124,7 +141,10 @@
             border-bottom: 1px solid navy;
         }
         h4 { font: bold 100% sans-serif }
-        h5 { font: italic 100% sans-serif }
+        h5 {
+            font: italic 100% sans-serif;
+            margin-bottom: 10px;
+        }
         h6 { font: small-caps 100% sans-serif }
 
         body {
@@ -213,60 +233,63 @@
             text-decoration: none;
         }
 
-#toc {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    height: 100%;
-    overflow-y: auto;
-    padding: 10px;
-    border: solid 1px navy;
-    font-size: small;
-    width: 180px;
-}
-#toc h3 {
-    margin-top: 5px;
-}
+        #toc {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            padding: 10px;
+            border: solid 1px navy;
+            font-size: small;
+            width: 180px;
+        }
+        #toc h3 {
+            margin-top: 5px;
+        }
 
-#toc ul {
-    list-style: none;
-    padding-left: 0;
-}
+        #toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
 
-#toc .first > li {
-    margin-top: 5px;
-}
+        #toc .first > li {
+            margin-top: 5px;
+        }
 
-#toc .second,
-#toc .third {
-    padding-left: 10px;
-}
+        #toc .second,
+        #toc .third {
+            padding-left: 10px;
+        }
 
-#content {
-    width: calc(100% - 150px);
-}
+        #content {
+            width: calc(100% - 150px);
+        }
 
-.hover_property {
-    cursor: help;
-    text-decoration: none;
-    border-bottom: dashed 1px;
-}
+        .hover_property {
+            cursor: help;
+            text-decoration: none;
+            border-bottom: dashed 1px;
+        }
 
-.setclass {
-    list-style-type: none;
-}
+        .setclass {
+            list-style-type: none;
+        }
 
-code{
-    word-wrap: break-word;
-  }
-  table {
-    table-layout: fixed;
-    width: 100%;
-  }
-  td {
-    word-wrap: break-word;
-  }
+        code{
+            word-wrap: break-word;
+          }
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        td {
+            word-wrap: break-word;
+        }
+        #legend table.entity {
+            width: 25%;
+        }
 	</style>
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png">
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png">
@@ -285,7 +308,7 @@ code{
     ],
     "https://schema.org/creator": [
       {
-        "@id": "_:nbd19a6241f5c4f84bc90e189607f6a48b1"
+        "@id": "_:nbd5966f722f341a6b40ffcdf7daee104b1"
       }
     ],
     "https://schema.org/dateCreated": [
@@ -320,7 +343,7 @@ code{
     ]
   },
   {
-    "@id": "_:nbd19a6241f5c4f84bc90e189607f6a48b1",
+    "@id": "_:nbd5966f722f341a6b40ffcdf7daee104b1",
     "https://schema.org/name": [
       {
         "@language": "en",
@@ -372,12 +395,12 @@ code{
               <a class="hover_property" href="http://purl.org/dc/terms/license" title="A legal document giving official permission to do something with the resource. Defined in DCMI Metadata Terms">License</a>
             </dt>
             <dd>
-              <ul>
+              <ul class="pylodelitlist">
                 <li>
-                  <a href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">ns1:copyright-software-and-document</a>
+                  <a href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document</a>
                 </li>
                 <li>
-                  <a href="http://www.opengeospatial.org/ogc/Software">ns2:Software</a>
+                  <a href="http://www.opengeospatial.org/ogc/Software">http://www.opengeospatial.org/ogc/Software</a>
                 </li>
               </ul>
             </dd>
@@ -415,16 +438,63 @@ code{
               <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
             </dt>
             <dd>
-              <ul>
+              <ul class="pylodelitlist">
                 <li><p>This ontology describes sensors, actuators and observations, and related concepts. It does not describe domain concepts, time, locations, etc. these are intended to be included from other ontologies via OWL imports.</p></li>
                 <li><p>Please report any errors to the W3C Spatial Data on the Web Working Group via the SDW WG Public List public-sdw-wg@w3.org</p></li>
               </ul>
+            </dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://www.w3.org/2002/07/owl#imports" title="The property that is used for importing other ontologies into a given ontology. Defined in The OWL 2 Schema vocabulary (OWL 2)">Imports</a>
+            </dt>
+            <dd>
+              <a href="http://www.w3.org/ns/sosa/">sosa:</a>
             </dd>
           </div>
         </dl>
       </div>
       <div class="section" id="classes">
         <h2>Classes</h2>
+        <h3 id="class-hierarchy">Class Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#Deployment">Deployment</a>
+            </li>
+            <li>
+              <a href="#Input">Input</a>
+            </li>
+            <li>
+              <a href="#Vocabulary">None</a>
+            </li>
+            <li>
+              <a href="#Actuation">None</a>
+            </li>
+            <li>
+              <a href="#Observation">None</a>
+            </li>
+            <li>
+              <a href="#Sampling">None</a>
+            </li>
+            <li>
+              <a href="#Agent">None</a>
+            </li>
+            <li>
+              <a href="#Output">Output</a>
+            </li>
+            <li>
+              <a href="#Property">Property</a>
+            </li>
+            <li>
+              <a href="#Stimulus">Stimulus</a>
+            </li>
+            <li>
+              <a href="#System">System</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="class-definitions">Class Definitions</h3>
         <div class="property entity" id="Vocabulary">
           <h3>Vocabulary
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
@@ -467,7 +537,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -484,9 +554,18 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#isPropertyOf">ssn:isPropertyOf</a>
+                      <a href="#isPropertyOf">is property of</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>only<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">only</span>
+                      <span>
+                        <span>
+                          <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">sosa:FeatureOfInterest</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -496,7 +575,7 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <a href="http://www.w3.org/ns/sosa/ObservableProperty">sosa:ObservableProperty</a>
                   </li>
@@ -524,7 +603,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -538,11 +617,11 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
-                        <a href="nbd19a6241f5c4f84bc90e189607f6a48b24">nbd19a6241f5c4f84bc90e189607f6a48b24</a>
+                        <a href="nbd5966f722f341a6b40ffcdf7daee104b24">nbd5966f722f341a6b40ffcdf7daee104b24</a>
                         <span>
                           <span class="cardinality">min</span>
                           <span>1</span>
@@ -553,7 +632,16 @@ code{
                   <li>
                     <span>
                       <span>
-                        <a href="nbd19a6241f5c4f84bc90e189607f6a48b26">nbd19a6241f5c4f84bc90e189607f6a48b26</a>only<br>
+                        <a href="nbd5966f722f341a6b40ffcdf7daee104b26">nbd5966f722f341a6b40ffcdf7daee104b26</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -578,7 +666,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -592,11 +680,11 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
-                        <a href="nbd19a6241f5c4f84bc90e189607f6a48b28">nbd19a6241f5c4f84bc90e189607f6a48b28</a>
+                        <a href="nbd5966f722f341a6b40ffcdf7daee104b28">nbd5966f722f341a6b40ffcdf7daee104b28</a>
                         <span>
                           <span class="cardinality">min</span>
                           <span>1</span>
@@ -607,7 +695,16 @@ code{
                   <li>
                     <span>
                       <span>
-                        <a href="nbd19a6241f5c4f84bc90e189607f6a48b30">nbd19a6241f5c4f84bc90e189607f6a48b30</a>only<br>
+                        <a href="nbd5966f722f341a6b40ffcdf7daee104b30">nbd5966f722f341a6b40ffcdf7daee104b30</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -640,7 +737,7 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
@@ -655,14 +752,32 @@ code{
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/madeBySensor">sosa:madeBySensor</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/madeBySensor">sosa:madeBySensor</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/usedProcedure">sosa:usedProcedure</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/usedProcedure">sosa:usedProcedure</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -680,7 +795,16 @@ code{
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">sosa:FeatureOfInterest</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -698,7 +822,16 @@ code{
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/observedProperty">sosa:observedProperty</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/observedProperty">sosa:observedProperty</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/ObservableProperty">sosa:ObservableProperty</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -706,7 +839,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#wasOriginatedBy">ssn:wasOriginatedBy</a>
+                          <a href="#wasOriginatedBy">was originated by</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -720,9 +853,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#wasOriginatedBy">ssn:wasOriginatedBy</a>
+                          <a href="#wasOriginatedBy">was originated by</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Stimulus">Stimulus</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -751,7 +893,16 @@ code{
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Result">sosa:Result</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -795,7 +946,7 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
@@ -810,14 +961,32 @@ code{
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/madeByActuator">sosa:madeByActuator</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/madeByActuator">sosa:madeByActuator</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Actuator">sosa:Actuator</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/usedProcedure">sosa:usedProcedure</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/usedProcedure">sosa:usedProcedure</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -835,7 +1004,16 @@ code{
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">sosa:FeatureOfInterest</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -853,7 +1031,16 @@ code{
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/actsOnProperty">sosa:actsOnProperty</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/actsOnProperty">sosa:actsOnProperty</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/ActuatableProperty">sosa:ActuatableProperty</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -871,7 +1058,16 @@ code{
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Result">sosa:Result</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -915,7 +1111,7 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
@@ -930,14 +1126,32 @@ code{
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/madeBySampler">sosa:madeBySampler</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/madeBySampler">sosa:madeBySampler</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Sampler">sosa:Sampler</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/usedProcedure">sosa:usedProcedure</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/usedProcedure">sosa:usedProcedure</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -955,7 +1169,16 @@ code{
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">sosa:FeatureOfInterest</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -973,7 +1196,16 @@ code{
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/hasResult">sosa:hasResult</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Sample">sosa:Sample</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1009,7 +1241,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1023,18 +1255,36 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
-                        <a href="nbd19a6241f5c4f84bc90e189607f6a48b78">nbd19a6241f5c4f84bc90e189607f6a48b78</a>only<br>
+                        <a href="nbd5966f722f341a6b40ffcdf7daee104b78">nbd5966f722f341a6b40ffcdf7daee104b78</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
                   <li>
                     <span>
                       <span>
-                        <a href="nbd19a6241f5c4f84bc90e189607f6a48b80">nbd19a6241f5c4f84bc90e189607f6a48b80</a>only<br>
+                        <a href="nbd5966f722f341a6b40ffcdf7daee104b80">nbd5966f722f341a6b40ffcdf7daee104b80</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1042,9 +1292,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#isProxyFor">ssn:isProxyFor</a>
+                          <a href="#isProxyFor">is proxy for</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/ObservableProperty">sosa:ObservableProperty</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1069,7 +1328,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1083,11 +1342,20 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/isHostedBy">sosa:isHostedBy</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/isHostedBy">sosa:isHostedBy</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Platform">sosa:Platform</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1095,9 +1363,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#implements">ssn:implements</a>
+                          <a href="#implements">implements</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1105,16 +1382,34 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasSubSystem">ssn:hasSubSystem</a>
+                          <a href="#hasSubSystem">has subsystem</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#System">System</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
                   <li>
                     <span>
                       <span>
-                        <a href="nbd19a6241f5c4f84bc90e189607f6a48b87">nbd19a6241f5c4f84bc90e189607f6a48b87</a>only<br>
+                        <a href="nbd5966f722f341a6b40ffcdf7daee104b87">nbd5966f722f341a6b40ffcdf7daee104b87</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#System">System</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1122,9 +1417,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasDeployment">ssn:hasDeployment</a>
+                          <a href="#hasDeployment">has deployment</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Deployment">Deployment</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1136,7 +1440,7 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a>
                   </li>
@@ -1167,7 +1471,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1189,14 +1493,23 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#deployedSystem">ssn:deployedSystem</a>
+                          <a href="#deployedSystem">deployed system</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#System">System</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1204,9 +1517,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#deployedOnPlatform">ssn:deployedOnPlatform</a>
+                          <a href="#deployedOnPlatform">deployed on platform</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/sosa/Platform">sosa:Platform</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1214,9 +1536,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#forProperty">ssn:forProperty</a>
+                          <a href="#forProperty">for property</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Property">Property</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1228,7 +1559,58 @@ code{
       </div>
       <div class="section" id="objectproperties">
         <h2>Object Properties</h2>
-        <div class="property entity" id="hasproperty">
+        <h3 id="object-property-hierarchy">Object Property Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#deployedOnPlatform">deployed on platform</a>
+            </li>
+            <li>
+              <a href="#deployedSystem">deployed system</a>
+            </li>
+            <li>
+              <a href="#detects">detects</a>
+            </li>
+            <li>
+              <a href="#forProperty">for property</a>
+            </li>
+            <li>
+              <a href="#hasDeployment">has deployment</a>
+            </li>
+            <li>
+              <a href="#hasInput">has input</a>
+            </li>
+            <li>
+              <a href="#hasOutput">has output</a>
+            </li>
+            <li>
+              <a href="#hasProperty">has property</a>
+            </li>
+            <li>
+              <a href="#hasSubSystem">has subsystem</a>
+            </li>
+            <li>
+              <a href="#implementedBy">implemented by</a>
+            </li>
+            <li>
+              <a href="#implements">implements</a>
+            </li>
+            <li>
+              <a href="#inDeployment">in deployment</a>
+            </li>
+            <li>
+              <a href="#isPropertyOf">is property of</a>
+            </li>
+            <li>
+              <a href="#isProxyFor">is proxy for</a>
+            </li>
+            <li>
+              <a href="#wasOriginatedBy">was originated by</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="object-property-definitions">Object Property Definitions</h3>
+        <div class="property entity" id="hasProperty">
           <h3>has property
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1244,7 +1626,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1271,7 +1653,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1282,7 +1664,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="hasinput">
+        <div class="property entity" id="hasInput">
           <h3>has input
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1298,7 +1680,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1309,7 +1691,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="hasoutput">
+        <div class="property entity" id="hasOutput">
           <h3>has output
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1325,7 +1707,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1352,7 +1734,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1371,7 +1753,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="implementedby">
+        <div class="property entity" id="implementedBy">
           <h3>implemented by
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1387,7 +1769,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1422,7 +1804,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1449,7 +1831,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1476,7 +1858,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1511,7 +1893,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1538,7 +1920,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1565,7 +1947,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1592,7 +1974,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1603,7 +1985,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="indeployment">
+        <div class="property entity" id="inDeployment">
           <h3>in deployment
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1619,7 +2001,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1654,7 +2036,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1867,7 +2249,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/ssn/">ssn:</a>
+                <a href="http://www.w3.org/ns/ssn/">Semantic Sensor Network Ontology</a>
               </td>
             </tr>
             <tr>
@@ -1890,21 +2272,9 @@ code{
           <dd>
             <code>http://xmlns.com/foaf/0.1/</code>
           </dd>
-          <dt id="ns1">ns1</dt>
-          <dd>
-            <code>http://www.w3.org/Consortium/Legal/2015/</code>
-          </dd>
-          <dt id="ns2">ns2</dt>
-          <dd>
-            <code>http://www.opengeospatial.org/ogc/</code>
-          </dd>
           <dt id="owl">owl</dt>
           <dd>
             <code>http://www.w3.org/2002/07/owl#</code>
-          </dd>
-          <dt id="prov">prov</dt>
-          <dd>
-            <code>http://www.w3.org/ns/prov#</code>
           </dd>
           <dt id="rdf">rdf</dt>
           <dd>
@@ -1913,10 +2283,6 @@ code{
           <dt id="rdfs">rdfs</dt>
           <dd>
             <code>http://www.w3.org/2000/01/rdf-schema#</code>
-          </dd>
-          <dt id="schema">schema</dt>
-          <dd>
-            <code>https://schema.org/</code>
           </dd>
           <dt id="skos">skos</dt>
           <dd>
@@ -1977,7 +2343,10 @@ code{
           <span id="y">y</span>
           <span>LODE</span>
         </a>
-        <a href="https://github.com/rdflib/pyLODE/release/3.0.2" id="version">3.0.2</a>
+        <a href="https://github.com/rdflib/pyLODE/release/3.4.5a0" id="version">3.4.5a0</a>
+        <span> with the </span>
+        <a href="https://linked.data.gov.au/def/ontpub" id="profile">OntPub</a>
+        <span>profile</span>
       </p>
     </div>
     <div id="toc">
@@ -1992,38 +2361,44 @@ code{
           <h4>
             <a href="#classes">Classes</a>
           </h4>
+          <h5>
+            <a href="#class-hierarchy" style="margin-left:10px;">Class Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#class-definitions" style="margin-left:10px;">Class Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Vocabulary">Vocabulary</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Agent">Agent</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Property">Property</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Input">Input</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Output">Output</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Observation">Observation</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Actuation">Actuation</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Sampling">Sampling</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Stimulus">Stimulus</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#System">System</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Deployment">Deployment</a>
             </li>
           </ul>
@@ -2032,50 +2407,56 @@ code{
           <h4>
             <a href="#objectproperties">Object Properties</a>
           </h4>
+          <h5>
+            <a href="#object-property-hierarchy" style="margin-left:10px;">Object Property Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#object-property-definitions" style="margin-left:10px;">Object Property Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
-              <a href="#hasproperty">has property</a>
+            <li style="margin-left:10px;">
+              <a href="#hasProperty">has property</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#isPropertyOf">is property of</a>
             </li>
-            <li>
-              <a href="#hasinput">has input</a>
+            <li style="margin-left:10px;">
+              <a href="#hasInput">has input</a>
             </li>
-            <li>
-              <a href="#hasoutput">has output</a>
+            <li style="margin-left:10px;">
+              <a href="#hasOutput">has output</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#implements">implements</a>
             </li>
-            <li>
-              <a href="#implementedby">implemented by</a>
+            <li style="margin-left:10px;">
+              <a href="#implementedBy">implemented by</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#wasOriginatedBy">was originated by</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#detects">detects</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#isProxyFor">is proxy for</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasSubSystem">has subsystem</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#deployedSystem">deployed system</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasDeployment">has deployment</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#deployedOnPlatform">deployed on platform</a>
             </li>
-            <li>
-              <a href="#indeployment">in deployment</a>
+            <li style="margin-left:10px;">
+              <a href="#inDeployment">in deployment</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#forProperty">for property</a>
             </li>
           </ul>
@@ -2145,25 +2526,13 @@ code{
               <a href="#foaf">foaf</a>
             </li>
             <li>
-              <a href="#ns1">ns1</a>
-            </li>
-            <li>
-              <a href="#ns2">ns2</a>
-            </li>
-            <li>
               <a href="#owl">owl</a>
-            </li>
-            <li>
-              <a href="#prov">prov</a>
             </li>
             <li>
               <a href="#rdf">rdf</a>
             </li>
             <li>
               <a href="#rdfs">rdfs</a>
-            </li>
-            <li>
-              <a href="#schema">schema</a>
             </li>
             <li>
               <a href="#skos">skos</a>

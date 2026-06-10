@@ -5,14 +5,14 @@
     <style>
         #pylode {
             position: fixed;
-            top: 130px;
-            left: -80px;
+            top: 205px;
+            left: -150px;
             font-size: small;
             transform: rotate(-90deg);
             color: grey;
         }
         #pylode a {
-            font-size: 2em;
+            font-size: 1.5em;
             font-weight: bold;
             text-decoration: none;
             color: #005A9C;
@@ -28,6 +28,12 @@
         }
         #pylode #version {
             font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
         }
 
         .cardinality {
@@ -50,14 +56,18 @@
             padding-top: 7px;
         }
 
-        #metadata ul,
-        #classes ul {
+        ul.pylodelitlist {
             list-style-type: none;
+            margin-left: -40px;
         }
 
         #metadata ul li,
         #classes ul li {
-            margin-left: -40px;
+            margin-bottom: 10px;
+        }
+
+        #metadata dd p {
+          margin: 0 0 1em 0;
         }
 
         ul.hlist {
@@ -67,12 +77,19 @@
             background-color: #F4FFFF;
         }
 
-        ul.hierarchy {
-            border: 1px solid navy;
-            padding: 5px 25px 5px 25px;
+        div.hierarchy {
+            margin-bottom: 30px;
             background-color: #F4FFFF;
+            padding: 10px;
         }
 
+        ul.hierarchy {=
+            padding: 5px 25px 5px 25px;
+        }
+
+        ul.hierarchy li {
+            margin-top:5px;
+        }
 
         ul.hlist li {
             display: inline;
@@ -124,7 +141,10 @@
             border-bottom: 1px solid navy;
         }
         h4 { font: bold 100% sans-serif }
-        h5 { font: italic 100% sans-serif }
+        h5 {
+            font: italic 100% sans-serif;
+            margin-bottom: 10px;
+        }
         h6 { font: small-caps 100% sans-serif }
 
         body {
@@ -213,60 +233,63 @@
             text-decoration: none;
         }
 
-#toc {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    height: 100%;
-    overflow-y: auto;
-    padding: 10px;
-    border: solid 1px navy;
-    font-size: small;
-    width: 180px;
-}
-#toc h3 {
-    margin-top: 5px;
-}
+        #toc {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            padding: 10px;
+            border: solid 1px navy;
+            font-size: small;
+            width: 180px;
+        }
+        #toc h3 {
+            margin-top: 5px;
+        }
 
-#toc ul {
-    list-style: none;
-    padding-left: 0;
-}
+        #toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
 
-#toc .first > li {
-    margin-top: 5px;
-}
+        #toc .first > li {
+            margin-top: 5px;
+        }
 
-#toc .second,
-#toc .third {
-    padding-left: 10px;
-}
+        #toc .second,
+        #toc .third {
+            padding-left: 10px;
+        }
 
-#content {
-    width: calc(100% - 150px);
-}
+        #content {
+            width: calc(100% - 150px);
+        }
 
-.hover_property {
-    cursor: help;
-    text-decoration: none;
-    border-bottom: dashed 1px;
-}
+        .hover_property {
+            cursor: help;
+            text-decoration: none;
+            border-bottom: dashed 1px;
+        }
 
-.setclass {
-    list-style-type: none;
-}
+        .setclass {
+            list-style-type: none;
+        }
 
-code{
-    word-wrap: break-word;
-  }
-  table {
-    table-layout: fixed;
-    width: 100%;
-  }
-  td {
-    word-wrap: break-word;
-  }
+        code{
+            word-wrap: break-word;
+          }
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        td {
+            word-wrap: break-word;
+        }
+        #legend table.entity {
+            width: 25%;
+        }
 	</style>
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png">
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png">
@@ -369,10 +392,49 @@ Subscription info and archive is on: http://www.niso.org/lists/25964info/
 General information about ISO 25964: http://www.niso.org/schemas/iso25964/</p>
 <p>The annotation http://www.w3.org/2003/06/sw-vocab-status/ns#term_status indicates "proposed" properties that are not part of the mapping documentation.</p></dd>
           </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://www.w3.org/2002/07/owl#imports" title="The property that is used for importing other ontologies into a given ontology. Defined in The OWL 2 Schema vocabulary (OWL 2)">Imports</a>
+            </dt>
+            <dd>
+              <ul class="pylodelitlist">
+                <li>
+                  <a href="http://www.w3.org/2004/02/skos/core">SKOS Vocabulary</a>
+                </li>
+                <li>
+                  <a href="http://www.w3.org/2008/05/skos-xl">http://www.w3.org/2008/05/skos-xl</a>
+                </li>
+              </ul>
+            </dd>
+          </div>
         </dl>
       </div>
       <div class="section" id="classes">
         <h2>Classes</h2>
+        <h3 id="class-hierarchy">Class Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#CompoundEquivalence">Compound Equivalence</a>
+            </li>
+            <li>
+              <a href="#ConceptGroup">Concept Group</a>
+            </li>
+            <li>
+              <a href="#PreferredTerm">Preferred Term</a>
+            </li>
+            <li>
+              <a href="#SimpleNonPreferredTerm">Simple Non Preferred Term</a>
+            </li>
+            <li>
+              <a href="#SplitNonPreferredTerm">Split Non Preferred Term</a>
+            </li>
+            <li>
+              <a href="#ThesaurusArray">Thesaurus Array</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="class-definitions">Class Definitions</h3>
         <div class="property entity" id="SimpleNonPreferredTerm">
           <h3>Simple Non Preferred Term
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
@@ -389,7 +451,7 @@ General information about ISO 25964: http://www.niso.org/schemas/iso25964/</p>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -431,7 +493,7 @@ General information about ISO 25964: http://www.niso.org/schemas/iso25964/</p>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -451,16 +513,16 @@ General information about ISO 25964: http://www.niso.org/schemas/iso25964/</p>
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#plusUF">isothes:plusUF</a>
+                      <a href="#plusUF">split non preferred term</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#plusUse">isothes:plusUse</a>
+                      <a href="#plusUse">component preferred term</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -472,17 +534,21 @@ General information about ISO 25964: http://www.niso.org/schemas/iso25964/</p>
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#plusUF">isothes:plusUF</a>
+                          <a href="#plusUF">split non preferred term</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#SplitNonPreferredTerm">Split Non Preferred Term</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -491,12 +557,16 @@ General information about ISO 25964: http://www.niso.org/schemas/iso25964/</p>
                     <span>
                       <span>
                         <span>
-                          <a href="#plusUse">isothes:plusUse</a>
+                          <a href="#plusUse">component preferred term</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
                           <span class="cardinality">min</span>
                           <span>2</span>
+                        </span>
+                        <span>
+                          <a href="#PreferredTerm">Preferred Term</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -522,7 +592,7 @@ General information about ISO 25964: http://www.niso.org/schemas/iso25964/</p>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -546,7 +616,7 @@ These can be attached (if needed) to the xl:Label instance that is the value of 
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Collection">skos:Collection</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Collection">Collection</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -557,7 +627,7 @@ These can be attached (if needed) to the xl:Label instance that is the value of 
               </th>
               <td>
                 <span>
-                  <a href="#superOrdinate">isothes:superOrdinate</a>
+                  <a href="#superOrdinate">super ordinate</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -568,7 +638,7 @@ These can be attached (if needed) to the xl:Label instance that is the value of 
               </th>
               <td>
                 <span>
-                  <a href="#subordinateArray">isothes:subordinateArray</a>
+                  <a href="#subordinateArray">subordinate array</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -591,7 +661,7 @@ These can be attached (if needed) to the xl:Label instance that is the value of 
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -599,7 +669,7 @@ These can be attached (if needed) to the xl:Label instance that is the value of 
                 <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li><p>ISO ConceptGroup</p>
 <p>Concept groups have several applications.</p>
 <p>One such application is illustrated by the EUROVOC and the UNESCO thesaurus.  Both of these use a super structure of domain and of micro-thesaurus.  Both of these structuring elements can be modeled using ConceptGroup.</p></li>
@@ -623,7 +693,7 @@ e.g.: EUROVOC and UNESCO use
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Collection">skos:Collection</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Collection">Collection</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -633,22 +703,22 @@ e.g.: EUROVOC and UNESCO use
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#microThesaurusOf">isothes:microThesaurusOf</a>
+                      <a href="#microThesaurusOf">micro-thesaurus of</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#subGroup">isothes:subGroup</a>
+                      <a href="#subGroup">sub group</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#superGroup">isothes:superGroup</a>
+                      <a href="#superGroup">super group</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -660,16 +730,16 @@ e.g.: EUROVOC and UNESCO use
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#subGroup">isothes:subGroup</a>
+                      <a href="#subGroup">sub group</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#superGroup">isothes:superGroup</a>
+                      <a href="#superGroup">super group</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -694,7 +764,7 @@ e.g.: EUROVOC and UNESCO use
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -719,7 +789,7 @@ e.g.: EUROVOC and UNESCO use
               </th>
               <td>
                 <span>
-                  <a href="#plusUFTerm">isothes:plusUFTerm</a>
+                  <a href="#plusUFTerm">UF+</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -729,16 +799,16 @@ e.g.: EUROVOC and UNESCO use
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#plusUse">isothes:plusUse</a>
+                      <a href="#plusUse">component preferred term</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#plusUseTerm">isothes:plusUseTerm</a>
+                      <a href="#plusUseTerm">USE+</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -763,7 +833,7 @@ e.g.: EUROVOC and UNESCO use
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -790,7 +860,7 @@ This label is provided by the object property iso thes:plusUF
               </th>
               <td>
                 <span>
-                  <a href="#plusUseTerm">isothes:plusUseTerm</a>
+                  <a href="#plusUseTerm">USE+</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -800,16 +870,16 @@ This label is provided by the object property iso thes:plusUF
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#plusUFTerm">isothes:plusUFTerm</a>
+                      <a href="#plusUFTerm">UF+</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#plusUF">isothes:plusUF</a>
+                      <a href="#plusUF">split non preferred term</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -821,7 +891,58 @@ This label is provided by the object property iso thes:plusUF
       </div>
       <div class="section" id="objectproperties">
         <h2>Object Properties</h2>
-        <div class="property entity" id="broaderterm(generic)">
+        <h3 id="object-property-hierarchy">Object Property Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#broaderGeneric">broader term (generic)</a>
+            </li>
+            <li>
+              <a href="#broaderInstantial">broader term (instantial)</a>
+            </li>
+            <li>
+              <a href="#broaderPartitive">broader term (partitive)</a>
+            </li>
+            <li>
+              <a href="#plusUse">component preferred term</a>
+            </li>
+            <li>
+              <a href="#microThesaurusOf">micro-thesaurus of</a>
+            </li>
+            <li>
+              <a href="#narrowerGeneric">narrower term (generic)</a>
+            </li>
+            <li>
+              <a href="#narrowerInstantial">narrower term (instantial)</a>
+            </li>
+            <li>
+              <a href="#narrowerPartitive">narrower term (partitive)</a>
+            </li>
+            <li>
+              <a href="#plusUF">split non preferred term</a>
+            </li>
+            <li>
+              <a href="#subGroup">sub group</a>
+            </li>
+            <li>
+              <a href="#subordinateArray">subordinate array</a>
+            </li>
+            <li>
+              <a href="#superGroup">super group</a>
+            </li>
+            <li>
+              <a href="#superOrdinate">super ordinate</a>
+            </li>
+            <li>
+              <a href="#plusUFTerm">UF+</a>
+            </li>
+            <li>
+              <a href="#plusUseTerm">USE+</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="object-property-definitions">Object Property Definitions</h3>
+        <div class="property entity" id="broaderGeneric">
           <h3>broader term (generic)
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -837,7 +958,7 @@ This label is provided by the object property iso thes:plusUF
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -853,7 +974,7 @@ The immediate (direct or one-step) class - generalized class relationship.</p></
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#broader">skos:broader</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#broader">has broader</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -864,7 +985,7 @@ The immediate (direct or one-step) class - generalized class relationship.</p></
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -875,14 +996,14 @@ The immediate (direct or one-step) class - generalized class relationship.</p></
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="broaderterm(instantial)">
+        <div class="property entity" id="broaderInstantial">
           <h3>broader term (instantial)
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -898,7 +1019,7 @@ The immediate (direct or one-step) class - generalized class relationship.</p></
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -914,7 +1035,7 @@ The immediate (direct or one-step) instance - class relationship.</p></td>
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#broader">skos:broader</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#broader">has broader</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -925,7 +1046,7 @@ The immediate (direct or one-step) instance - class relationship.</p></td>
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -936,14 +1057,14 @@ The immediate (direct or one-step) instance - class relationship.</p></td>
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="broaderterm(partitive)">
+        <div class="property entity" id="broaderPartitive">
           <h3>broader term (partitive)
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -959,7 +1080,7 @@ The immediate (direct or one-step) instance - class relationship.</p></td>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -984,7 +1105,7 @@ A BTP/NTP relationship should not be established between &quot;bicycles&quot; an
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#broader">skos:broader</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#broader">has broader</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -995,7 +1116,7 @@ A BTP/NTP relationship should not be established between &quot;bicycles&quot; an
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1006,7 +1127,7 @@ A BTP/NTP relationship should not be established between &quot;bicycles&quot; an
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1029,7 +1150,7 @@ A BTP/NTP relationship should not be established between &quot;bicycles&quot; an
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -1044,7 +1165,7 @@ A BTP/NTP relationship should not be established between &quot;bicycles&quot; an
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#inScheme">skos:inScheme</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#inScheme">is in scheme</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -1055,7 +1176,7 @@ A BTP/NTP relationship should not be established between &quot;bicycles&quot; an
               </th>
               <td>
                 <span>
-                  <a href="#ConceptGroup">isothes:ConceptGroup</a>
+                  <a href="#ConceptGroup">Concept Group</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1066,7 +1187,7 @@ A BTP/NTP relationship should not be established between &quot;bicycles&quot; an
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#ConceptScheme">skos:ConceptScheme</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#ConceptScheme">Concept Scheme</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1089,7 +1210,7 @@ A BTP/NTP relationship should not be established between &quot;bicycles&quot; an
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -1113,7 +1234,7 @@ The non-preferred term expressing a compound concept that should be represented 
               </th>
               <td>
                 <span>
-                  <a href="#PreferredTerm">isothes:PreferredTerm</a>
+                  <a href="#PreferredTerm">Preferred Term</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1124,7 +1245,7 @@ The non-preferred term expressing a compound concept that should be represented 
               </th>
               <td>
                 <span>
-                  <a href="#SplitNonPreferredTerm">isothes:SplitNonPreferredTerm</a>
+                  <a href="#SplitNonPreferredTerm">Split Non Preferred Term</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1147,7 +1268,7 @@ The non-preferred term expressing a compound concept that should be represented 
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -1162,7 +1283,7 @@ The non-preferred term expressing a compound concept that should be represented 
               </th>
               <td>
                 <span>
-                  <a href="#ConceptGroup">isothes:ConceptGroup</a>
+                  <a href="#ConceptGroup">Concept Group</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1173,7 +1294,7 @@ The non-preferred term expressing a compound concept that should be represented 
               </th>
               <td>
                 <span>
-                  <a href="#ConceptGroup">isothes:ConceptGroup</a>
+                  <a href="#ConceptGroup">Concept Group</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1196,7 +1317,7 @@ The non-preferred term expressing a compound concept that should be represented 
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -1212,7 +1333,7 @@ The non-preferred term expressing a compound concept that should be represented 
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1223,14 +1344,14 @@ The non-preferred term expressing a compound concept that should be represented 
               </th>
               <td>
                 <span>
-                  <a href="#ThesaurusArray">isothes:ThesaurusArray</a>
+                  <a href="#ThesaurusArray">Thesaurus Array</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="narrowerterm(generic)">
+        <div class="property entity" id="narrowerGeneric">
           <h3>narrower term (generic)
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1246,7 +1367,7 @@ The non-preferred term expressing a compound concept that should be represented 
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -1262,7 +1383,7 @@ The immediate (direct or one-step) class - specialized class relationship.</p></
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#narrower">skos:narrower</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#narrower">has narrower</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -1273,7 +1394,7 @@ The immediate (direct or one-step) class - specialized class relationship.</p></
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1284,14 +1405,14 @@ The immediate (direct or one-step) class - specialized class relationship.</p></
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="narrowerterm(instantial)">
+        <div class="property entity" id="narrowerInstantial">
           <h3>narrower term (instantial)
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1307,7 +1428,7 @@ The immediate (direct or one-step) class - specialized class relationship.</p></
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -1323,7 +1444,7 @@ The immediate (direct or one-step) class - instance relationship.</p></td>
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#narrower">skos:narrower</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#narrower">has narrower</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -1334,7 +1455,7 @@ The immediate (direct or one-step) class - instance relationship.</p></td>
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1345,14 +1466,14 @@ The immediate (direct or one-step) class - instance relationship.</p></td>
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="narrowerterm(partitive)">
+        <div class="property entity" id="narrowerPartitive">
           <h3>narrower term (partitive)
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1368,7 +1489,7 @@ The immediate (direct or one-step) class - instance relationship.</p></td>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -1393,7 +1514,7 @@ A BTP/NTP relationship should not be established between &quot;bicycles&quot; an
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#narrower">skos:narrower</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#narrower">has narrower</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -1404,7 +1525,7 @@ A BTP/NTP relationship should not be established between &quot;bicycles&quot; an
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1415,7 +1536,7 @@ A BTP/NTP relationship should not be established between &quot;bicycles&quot; an
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1438,7 +1559,7 @@ A BTP/NTP relationship should not be established between &quot;bicycles&quot; an
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -1455,7 +1576,7 @@ The complex concept will be identified by splitting the non preferred term into 
               </th>
               <td>
                 <span>
-                  <a href="#CompoundEquivalence">isothes:CompoundEquivalence</a>
+                  <a href="#CompoundEquivalence">Compound Equivalence</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1466,7 +1587,7 @@ The complex concept will be identified by splitting the non preferred term into 
               </th>
               <td>
                 <span>
-                  <a href="#SplitNonPreferredTerm">isothes:SplitNonPreferredTerm</a>
+                  <a href="#SplitNonPreferredTerm">Split Non Preferred Term</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1489,7 +1610,7 @@ The complex concept will be identified by splitting the non preferred term into 
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -1505,7 +1626,7 @@ One of two or more (component) preferred terms used together to represent the (c
               </th>
               <td>
                 <span>
-                  <a href="#CompoundEquivalence">isothes:CompoundEquivalence</a>
+                  <a href="#CompoundEquivalence">Compound Equivalence</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1516,7 +1637,7 @@ One of two or more (component) preferred terms used together to represent the (c
               </th>
               <td>
                 <span>
-                  <a href="#PreferredTerm">isothes:PreferredTerm</a>
+                  <a href="#PreferredTerm">Preferred Term</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1539,7 +1660,7 @@ One of two or more (component) preferred terms used together to represent the (c
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -1573,7 +1694,7 @@ The two or more (component) preferred terms following should be used together to
               </th>
               <td>
                 <span>
-                  <a href="#SplitNonPreferredTerm">isothes:SplitNonPreferredTerm</a>
+                  <a href="#SplitNonPreferredTerm">Split Non Preferred Term</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1584,7 +1705,7 @@ The two or more (component) preferred terms following should be used together to
               </th>
               <td>
                 <span>
-                  <a href="#PreferredTerm">isothes:PreferredTerm</a>
+                  <a href="#PreferredTerm">Preferred Term</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1607,7 +1728,7 @@ The two or more (component) preferred terms following should be used together to
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -1622,7 +1743,7 @@ The two or more (component) preferred terms following should be used together to
               </th>
               <td>
                 <span>
-                  <a href="#ConceptGroup">isothes:ConceptGroup</a>
+                  <a href="#ConceptGroup">Concept Group</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1633,7 +1754,7 @@ The two or more (component) preferred terms following should be used together to
               </th>
               <td>
                 <span>
-                  <a href="#ConceptGroup">isothes:ConceptGroup</a>
+                  <a href="#ConceptGroup">Concept Group</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1656,7 +1777,7 @@ The two or more (component) preferred terms following should be used together to
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -1672,7 +1793,7 @@ The (subject) array organizes a set of sibling concepts under the (object) conce
               </th>
               <td>
                 <span>
-                  <a href="#ThesaurusArray">isothes:ThesaurusArray</a>
+                  <a href="#ThesaurusArray">Thesaurus Array</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1683,7 +1804,7 @@ The (subject) array organizes a set of sibling concepts under the (object) conce
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1709,7 +1830,7 @@ The (subject) array organizes a set of sibling concepts under the (object) conce
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#skos-thes">ns1:skos-thes</a>
+                <a href="#skos-thes">SKOS THES</a>
               </td>
             </tr>
             <tr>
@@ -1724,13 +1845,17 @@ The (subject) array organizes a set of sibling concepts under the (object) conce
               <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
-              <td><span>
-  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
-  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-</span> <span class="cardinality">or</span> <span>
-  <a href="http://www.w3.org/2008/05/skos-xl#Label">skosxl:Label</a>
-  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-</span></td>
+              <td>
+                <span>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+                <span class="cardinality">or</span>
+                <span>
+                  <a href="http://www.w3.org/2008/05/skos-xl#Label">skosxl:Label</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
             </tr>
             <tr>
               <th>
@@ -1743,14 +1868,6 @@ The (subject) array organizes a set of sibling concepts under the (object) conce
           </table>
         </div>
       </div>
-      <span>
-        <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
-        <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-      </span>
-      <span>
-        <a href="http://www.w3.org/2008/05/skos-xl#Label">skosxl:Label</a>
-        <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-      </span>
       <div class="section" id="annotationproperties">
         <h2>Annotation Properties</h2>
         <div class="property entity" id="issued">
@@ -1795,7 +1912,7 @@ The (subject) array organizes a set of sibling concepts under the (object) conce
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="http://www.w3.org/2003/06/sw-vocab-status/ns">ns2:ns</a>
+                <a href="http://www.w3.org/2003/06/sw-vocab-status/ns">http://www.w3.org/2003/06/sw-vocab-status/ns</a>
               </td>
             </tr>
             <tr>
@@ -1804,6 +1921,22 @@ The (subject) array organizes a set of sibling concepts under the (object) conce
               </th>
               <td>
                 <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section" id="datatypes">
+        <h2>Custom Datatypes</h2>
+        <div class="property entity" id="date">
+          <h3>date
+            <sup class="sup-dt" title="RDFS Datatypes">dt</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://www.w3.org/2001/XMLSchema#date</code>
               </td>
             </tr>
           </table>
@@ -1828,17 +1961,9 @@ The (subject) array organizes a set of sibling concepts under the (object) conce
           <dd>
             <code>http://purl.org/iso25964/</code>
           </dd>
-          <dt id="ns2">ns2</dt>
-          <dd>
-            <code>http://www.w3.org/2003/06/sw-vocab-status/</code>
-          </dd>
           <dt id="owl">owl</dt>
           <dd>
             <code>http://www.w3.org/2002/07/owl#</code>
-          </dd>
-          <dt id="prov">prov</dt>
-          <dd>
-            <code>http://www.w3.org/ns/prov#</code>
           </dd>
           <dt id="rdf">rdf</dt>
           <dd>
@@ -1907,7 +2032,10 @@ The (subject) array organizes a set of sibling concepts under the (object) conce
           <span id="y">y</span>
           <span>LODE</span>
         </a>
-        <a href="https://github.com/rdflib/pyLODE/release/3.0.2" id="version">3.0.2</a>
+        <a href="https://github.com/rdflib/pyLODE/release/3.4.5a0" id="version">3.4.5a0</a>
+        <span> with the </span>
+        <a href="https://linked.data.gov.au/def/ontpub" id="profile">OntPub</a>
+        <span>profile</span>
       </p>
     </div>
     <div id="toc">
@@ -1922,23 +2050,29 @@ The (subject) array organizes a set of sibling concepts under the (object) conce
           <h4>
             <a href="#classes">Classes</a>
           </h4>
+          <h5>
+            <a href="#class-hierarchy" style="margin-left:10px;">Class Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#class-definitions" style="margin-left:10px;">Class Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
+            <li style="margin-left:10px;">
               <a href="#SimpleNonPreferredTerm">Simple Non Preferred Term</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#CompoundEquivalence">Compound Equivalence</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#ThesaurusArray">Thesaurus Array</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#ConceptGroup">Concept Group</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#PreferredTerm">Preferred Term</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#SplitNonPreferredTerm">Split Non Preferred Term</a>
             </li>
           </ul>
@@ -1947,50 +2081,56 @@ The (subject) array organizes a set of sibling concepts under the (object) conce
           <h4>
             <a href="#objectproperties">Object Properties</a>
           </h4>
+          <h5>
+            <a href="#object-property-hierarchy" style="margin-left:10px;">Object Property Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#object-property-definitions" style="margin-left:10px;">Object Property Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
-              <a href="#broaderterm(generic)">broader term (generic)</a>
+            <li style="margin-left:10px;">
+              <a href="#broaderGeneric">broader term (generic)</a>
             </li>
-            <li>
-              <a href="#broaderterm(instantial)">broader term (instantial)</a>
+            <li style="margin-left:10px;">
+              <a href="#broaderInstantial">broader term (instantial)</a>
             </li>
-            <li>
-              <a href="#broaderterm(partitive)">broader term (partitive)</a>
+            <li style="margin-left:10px;">
+              <a href="#broaderPartitive">broader term (partitive)</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#microThesaurusOf">micro-thesaurus of</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#plusUFTerm">UF+</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#subGroup">sub group</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#subordinateArray">subordinate array</a>
             </li>
-            <li>
-              <a href="#narrowerterm(generic)">narrower term (generic)</a>
+            <li style="margin-left:10px;">
+              <a href="#narrowerGeneric">narrower term (generic)</a>
             </li>
-            <li>
-              <a href="#narrowerterm(instantial)">narrower term (instantial)</a>
+            <li style="margin-left:10px;">
+              <a href="#narrowerInstantial">narrower term (instantial)</a>
             </li>
-            <li>
-              <a href="#narrowerterm(partitive)">narrower term (partitive)</a>
+            <li style="margin-left:10px;">
+              <a href="#narrowerPartitive">narrower term (partitive)</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#plusUF">split non preferred term</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#plusUse">component preferred term</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#plusUseTerm">USE+</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#superGroup">super group</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#superOrdinate">super ordinate</a>
             </li>
           </ul>
@@ -2023,6 +2163,16 @@ The (subject) array organizes a set of sibling concepts under the (object) conce
         </li>
         <li>
           <h4>
+            <a href="#datatypes">Custom Datatypes</a>
+          </h4>
+          <ul class="second">
+            <li>
+              <a href="#date">date</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h4>
             <a href="#namespaces">Namespaces</a>
           </h4>
           <ul class="second">
@@ -2039,13 +2189,7 @@ The (subject) array organizes a set of sibling concepts under the (object) conce
               <a href="#ns1">ns1</a>
             </li>
             <li>
-              <a href="#ns2">ns2</a>
-            </li>
-            <li>
               <a href="#owl">owl</a>
-            </li>
-            <li>
-              <a href="#prov">prov</a>
             </li>
             <li>
               <a href="#rdf">rdf</a>

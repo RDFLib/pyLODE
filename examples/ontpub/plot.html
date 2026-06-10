@@ -5,14 +5,14 @@
     <style>
         #pylode {
             position: fixed;
-            top: 130px;
-            left: -80px;
+            top: 205px;
+            left: -150px;
             font-size: small;
             transform: rotate(-90deg);
             color: grey;
         }
         #pylode a {
-            font-size: 2em;
+            font-size: 1.5em;
             font-weight: bold;
             text-decoration: none;
             color: #005A9C;
@@ -28,6 +28,12 @@
         }
         #pylode #version {
             font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
         }
 
         .cardinality {
@@ -50,14 +56,18 @@
             padding-top: 7px;
         }
 
-        #metadata ul,
-        #classes ul {
+        ul.pylodelitlist {
             list-style-type: none;
+            margin-left: -40px;
         }
 
         #metadata ul li,
         #classes ul li {
-            margin-left: -40px;
+            margin-bottom: 10px;
+        }
+
+        #metadata dd p {
+          margin: 0 0 1em 0;
         }
 
         ul.hlist {
@@ -67,12 +77,19 @@
             background-color: #F4FFFF;
         }
 
-        ul.hierarchy {
-            border: 1px solid navy;
-            padding: 5px 25px 5px 25px;
+        div.hierarchy {
+            margin-bottom: 30px;
             background-color: #F4FFFF;
+            padding: 10px;
         }
 
+        ul.hierarchy {=
+            padding: 5px 25px 5px 25px;
+        }
+
+        ul.hierarchy li {
+            margin-top:5px;
+        }
 
         ul.hlist li {
             display: inline;
@@ -124,7 +141,10 @@
             border-bottom: 1px solid navy;
         }
         h4 { font: bold 100% sans-serif }
-        h5 { font: italic 100% sans-serif }
+        h5 {
+            font: italic 100% sans-serif;
+            margin-bottom: 10px;
+        }
         h6 { font: small-caps 100% sans-serif }
 
         body {
@@ -213,60 +233,63 @@
             text-decoration: none;
         }
 
-#toc {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    height: 100%;
-    overflow-y: auto;
-    padding: 10px;
-    border: solid 1px navy;
-    font-size: small;
-    width: 180px;
-}
-#toc h3 {
-    margin-top: 5px;
-}
+        #toc {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            padding: 10px;
+            border: solid 1px navy;
+            font-size: small;
+            width: 180px;
+        }
+        #toc h3 {
+            margin-top: 5px;
+        }
 
-#toc ul {
-    list-style: none;
-    padding-left: 0;
-}
+        #toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
 
-#toc .first > li {
-    margin-top: 5px;
-}
+        #toc .first > li {
+            margin-top: 5px;
+        }
 
-#toc .second,
-#toc .third {
-    padding-left: 10px;
-}
+        #toc .second,
+        #toc .third {
+            padding-left: 10px;
+        }
 
-#content {
-    width: calc(100% - 150px);
-}
+        #content {
+            width: calc(100% - 150px);
+        }
 
-.hover_property {
-    cursor: help;
-    text-decoration: none;
-    border-bottom: dashed 1px;
-}
+        .hover_property {
+            cursor: help;
+            text-decoration: none;
+            border-bottom: dashed 1px;
+        }
 
-.setclass {
-    list-style-type: none;
-}
+        .setclass {
+            list-style-type: none;
+        }
 
-code{
-    word-wrap: break-word;
-  }
-  table {
-    table-layout: fixed;
-    width: 100%;
-  }
-  td {
-    word-wrap: break-word;
-  }
+        code{
+            word-wrap: break-word;
+          }
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        td {
+            word-wrap: break-word;
+        }
+        #legend table.entity {
+            width: 25%;
+        }
 	</style>
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png">
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png">
@@ -280,7 +303,7 @@ code{
     ],
     "https://schema.org/creator": [
       {
-        "@id": "_:ne2a9802a10c54888be7164c642547a77b1"
+        "@id": "_:n4ee7e8f5c33448979b818bb1245de8ddb1"
       }
     ],
     "https://schema.org/dateCreated": [
@@ -312,7 +335,7 @@ code{
     ]
   },
   {
-    "@id": "_:ne2a9802a10c54888be7164c642547a77b1"
+    "@id": "_:n4ee7e8f5c33448979b818bb1245de8ddb1"
   }
 ]
 	</script>
@@ -341,9 +364,7 @@ code{
             <dt>
               <a class="hover_property" href="http://purl.org/dc/terms/creator" title="An entity responsible for making the resource. Defined in DCMI Metadata Terms">Creator</a>
             </dt>
-            <dd>
-              <span></span>
-            </dd>
+            <dd>n4ee7e8f5c33448979b818bb1245de8ddb1</dd>
           </div>
           <div>
             <dt>
@@ -372,10 +393,86 @@ code{
             <dd><p>This vocabulary provides a set of classes to support capture of plot- and site-based ecological survey data. It is primary related to vegetation surveys, following the methdologies outlined in the Australian Soil and Land Survey Field Handbook.</p>
 <p>PLOT is technically an extension to the W3C SSN/SOSA vocabulary, and also uses elements from the SSN-EXT ontology.</p></dd>
           </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://www.w3.org/2002/07/owl#imports" title="The property that is used for importing other ontologies into a given ontology. Defined in The OWL 2 Schema vocabulary (OWL 2)">Imports</a>
+            </dt>
+            <dd>
+              <ul class="pylodelitlist">
+                <li>
+                  <a href="http://purl.org/dc/elements/1.1/">http://purl.org/dc/elements/1.1/</a>
+                </li>
+                <li>
+                  <a href="http://www.w3.org/ns/ssn/ext">ssn:ext</a>
+                </li>
+              </ul>
+            </dd>
+          </div>
         </dl>
       </div>
       <div class="section" id="classes">
         <h2>Classes</h2>
+        <h3 id="class-hierarchy">Class Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#Observation">Ecology Observation</a>
+            </li>
+            <li>
+              <a href="#EnvironmentalContinuant">Environmental continuant</a>
+            </li>
+            <li>
+              <a href="#EnvironmentalSystem">Environmental region defined primarily by its function and membership</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#EcologicalCommunity">Ecological Community</a>
+                  <ul class="hierarchy">
+                    <li>
+                      <a href="#Assemblage">Organism assemblage</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#EnvironmentalZone">Environmental region defined primarily by its location and extent</a>
+            </li>
+            <li>
+              <a href="#FluxTower">Flux tower</a>
+            </li>
+            <li>
+              <a href="#Location">Location</a>
+            </li>
+            <li>
+              <a href="#OrganismOccurence">Organism Occurrence </a>
+            </li>
+            <li>
+              <a href="#SiteStratumTaxon">Single taxon community</a>
+            </li>
+            <li>
+              <a href="#SiteTaxon">Single taxon community</a>
+            </li>
+            <li>
+              <a href="#Survey">Survey</a>
+            </li>
+            <li>
+              <a href="#TaxonAssignment">Taxon assignment observation</a>
+            </li>
+            <li>
+              <a href="#Stratum">Vegetation strata classification </a>
+            </li>
+            <li>
+              <a href="#SiteStratum">Vegetation stratum</a>
+            </li>
+            <li>
+              <a href="#SiteVisit">Visit to a site</a>
+            </li>
+            <li>
+              <a href="#StudyLocationVisit">Visit to a study location</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="class-definitions">Class Definitions</h3>
         <div class="property entity" id="Location">
           <h3>Location
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
@@ -392,7 +489,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <a href="http://purl.org/dc/terms/Location">dcterms:Location</a>
+                <a href="http://purl.org/dc/terms/Location">Location</a>
               </td>
             </tr>
             <tr>
@@ -401,7 +498,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#isLocationOf">plot-x:isLocationOf</a>
+                  <a href="#isLocationOf">describes the location of</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -411,12 +508,12 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#mapScale">plot:mapScale</a>
+                          <a href="#mapScale">Map scale</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -430,7 +527,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#mapsheetName">plot:mapsheetName</a>
+                          <a href="#mapsheetName">Mapsheet</a>
                           <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                         </span>
                         <span>
@@ -444,7 +541,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#mapsheetNumber">plot:mapsheetNumber</a>
+                          <a href="#mapsheetNumber">Mapsheet</a>
                           <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                         </span>
                         <span>
@@ -457,7 +554,16 @@ code{
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/locn#geometry">locn:geometry</a>some<br>
+                        <a href="http://www.w3.org/ns/locn#geometry">locn:geometry</a>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/2003/01/geo/wgs84_pos#Point">w3cgeo:Point</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -466,7 +572,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="OrganismOccurrence">
+        <div class="property entity" id="OrganismOccurence">
           <h3>Organism Occurrence 
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -492,12 +598,12 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <a href="http://www.opengis.net/ont/geosparql#SpatialObject">geosparql:SpatialObject</a>
                   </li>
                   <li>
-                    <a href="http://www.w3.org/2006/time#TemporalEntity">time:TemporalEntity</a>
+                    <a href="http://www.w3.org/2006/time#TemporalEntity">http://www.w3.org/2006/time#TemporalEntity</a>
                   </li>
                   <li>
                     <a href="http://www.w3.org/ns/sosa/Sample">sosa:Sample</a>
@@ -510,7 +616,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2002/07/owl#equivalentClass" title="The property that determines that two given classes are equivalent, and that is used to specify datatype definitions. Defined in The OWL 2 Schema vocabulary (OWL 2)">Equivalentclass</a>
               </th>
               <td>
-                <a href="http://rs.tdwg.org/dwc/terms/Occurrence">ns1:Occurrence</a>
+                <a href="http://rs.tdwg.org/dwc/terms/Occurrence">http://rs.tdwg.org/dwc/terms/Occurrence</a>
               </td>
             </tr>
             <tr>
@@ -518,18 +624,36 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a>some<br>
+                        <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#EcologicalCommunity">Ecological Community</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.opengis.net/ont/geosparql#defaultGeometry">geosparql:defaultGeometry</a>only<br>
+                        <a href="http://www.opengis.net/ont/geosparql#defaultGeometry">geosparql:defaultGeometry</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/2003/01/geo/wgs84_pos#Point">w3cgeo:Point</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -549,7 +673,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="Vegetationstratum">
+        <div class="property entity" id="SiteStratum">
           <h3>Vegetation stratum
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -579,11 +703,20 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Site">Site or location</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -591,7 +724,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#stratum">plot:stratum</a>
+                          <a href="#stratum">stratum classification</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -606,7 +739,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="Singletaxoncommunity">
+        <div class="property entity" id="SiteStratumTaxon">
           <h3>Single taxon community
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -636,12 +769,12 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#taxon">plot:taxon</a>
+                          <a href="#taxon">taxon classification</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -658,6 +791,10 @@ code{
                         <span>
                           <span class="cardinality">min</span>
                           <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Site">Site or location</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -665,14 +802,32 @@ code{
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a>some<br>
+                        <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#SiteStratum">Vegetation stratum</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a>some<br>
+                        <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#SiteTaxon">Single taxon community</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -680,7 +835,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#stratum">plot:stratum</a>
+                          <a href="#stratum">stratum classification</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -722,7 +877,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li><p>Community of a single taxon in vegetation ecosystem occurring at an observation site</p></li>
                   <li><p>Data corresponding to an individual of this class would usually be derived from observations relating to a set of SiteStratumTaxon at the same site on the same taxon</p></li>
                 </ul>
@@ -741,11 +896,20 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/isSampleOf">sosa:isSampleOf</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Site">Site or location</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -753,7 +917,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#taxon">plot:taxon</a>
+                          <a href="#taxon">taxon classification</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -768,7 +932,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="Visittoasite">
+        <div class="property entity" id="SiteVisit">
           <h3>Visit to a site
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -784,7 +948,10 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a>
+                <span>
+                  <a href="http://www.w3.org/ns/prov#Activity">Activity</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
               </td>
             </tr>
             <tr>
@@ -792,21 +959,39 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#wasSubActivityOf">plot:wasSubActivityOf</a>
+                          <a href="#wasSubActivityOf">pointer to parent activity</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Survey">Survey</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Site">Site or location</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -814,9 +999,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hadSubActivity">plot:hadSubActivity</a>
+                          <a href="#hadSubActivity">pointer to child activity</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="n4ee7e8f5c33448979b818bb1245de8ddb35">n4ee7e8f5c33448979b818bb1245de8ddb35</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -825,7 +1019,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="Vegetationstrataclassification">
+        <div class="property entity" id="Stratum">
           <h3>Vegetation strata classification 
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -842,14 +1036,14 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="Organismassemblage">
+        <div class="property entity" id="Assemblage">
           <h3>Organism assemblage
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -866,7 +1060,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#EcologicalCommunity">plot-x:EcologicalCommunity</a>
+                  <a href="#EcologicalCommunity">Ecological Community</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -890,7 +1084,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#EnvironmentalSystem">plot-x:EnvironmentalSystem</a>
+                  <a href="#EnvironmentalSystem">Environmental region defined primarily by its function and membership</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -901,14 +1095,14 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#Organismassemblage">plot-x:Assemblage</a>
+                  <a href="#Assemblage">Organism assemblage</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="Environmentalcontinuant">
+        <div class="property entity" id="EnvironmentalContinuant">
           <h3>Environmental continuant
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -938,16 +1132,16 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#EnvironmentalSystem">plot-x:EnvironmentalSystem</a>
+                      <a href="#EnvironmentalSystem">Environmental region defined primarily by its function and membership</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#EnvironmentalZone">plot-x:EnvironmentalZone</a>
+                      <a href="#EnvironmentalZone">Environmental region defined primarily by its location and extent</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -972,16 +1166,16 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#Environmentalcontinuant">plot-x:EnvironmentalContinuant</a>
+                      <a href="#EnvironmentalContinuant">Environmental continuant</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a>
+                      <a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -994,7 +1188,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#EcologicalCommunity">plot-x:EcologicalCommunity</a>
+                  <a href="#EcologicalCommunity">Ecological Community</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1017,16 +1211,16 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#Environmentalcontinuant">plot-x:EnvironmentalContinuant</a>
+                      <a href="#EnvironmentalContinuant">Environmental continuant</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a>
+                      <a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1035,7 +1229,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="Fluxtower">
+        <div class="property entity" id="FluxTower">
           <h3>Flux tower
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -1059,7 +1253,7 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
@@ -1078,6 +1272,10 @@ code{
                         <span>
                           <span class="cardinality">min</span>
                           <span>1</span>
+                        </span>
+                        <span>
+                          <a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -1087,7 +1285,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="EcologyObservation">
+        <div class="property entity" id="Observation">
           <h3>Ecology Observation
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -1111,18 +1309,36 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a>only<br>
+                        <a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="n4ee7e8f5c33448979b818bb1245de8ddb42">n4ee7e8f5c33448979b818bb1245de8ddb42</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/ssn/ext/hasUltimateFeatureOfInterest">ssn-ext:hasUltimateFeatureOfInterest</a>only<br>
+                        <a href="http://www.w3.org/ns/ssn/ext/hasUltimateFeatureOfInterest">ssn-ext:hasUltimateFeatureOfInterest</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="n4ee7e8f5c33448979b818bb1245de8ddb46">n4ee7e8f5c33448979b818bb1245de8ddb46</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1131,7 +1347,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="Visittoastudylocation">
+        <div class="property entity" id="StudyLocationVisit">
           <h3>Visit to a study location
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -1147,7 +1363,10 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a>
+                <span>
+                  <a href="http://www.w3.org/ns/prov#Activity">Activity</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
               </td>
             </tr>
             <tr>
@@ -1157,7 +1376,19 @@ code{
               <td>
                 <span>
                   <span>
-                    <a href="http://www.w3.org/ns/prov#used">prov:used</a>some<br>
+                    <span>
+                      <a href="http://www.w3.org/ns/prov#used">used</a>
+                      <sup class="sup-op" title="OWL Object Property">op</sup>
+                    </span>
+                    <span>
+                      <span class="cardinality">some</span>
+                      <span>
+                        <span>
+                          <a href="#StudyLocation">Location of study</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -1187,7 +1418,10 @@ In this context the value of feature-of-interest is expected to be the value of 
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a>
+                <span>
+                  <a href="http://www.w3.org/ns/prov#Activity">Activity</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
               </td>
             </tr>
             <tr>
@@ -1195,18 +1429,20 @@ In this context the value of feature-of-interest is expected to be the value of 
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
-                        <a href="http://www.w3.org/ns/locn#location">locn:location</a>only<br>
-                      </span>
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <span>
-                        <a href="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a>some<br>
+                        <a href="http://www.w3.org/ns/locn#location">locn:location</a>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1214,7 +1450,26 @@ In this context the value of feature-of-interest is expected to be the value of 
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/dc/terms/title">dcterms:title</a>
+                          <a href="http://www.w3.org/ns/prov#wasAssociatedWith">was associated with</a>
+                          <sup class="sup-op" title="OWL Object Property">op</sup>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/ns/prov#Organization">Organization</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
+                      </span>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <span>
+                        <span>
+                          <a href="http://purl.org/dc/terms/title">Title</a>
                           <sup class="sup-p" title="RDF Property">p</sup>
                         </span>
                         <span>
@@ -1227,7 +1482,7 @@ In this context the value of feature-of-interest is expected to be the value of 
                   <li>
                     <span>
                       <span>
-                        <a href="http://purl.org/dc/elements/1.1/creator">dc:creator</a>
+                        <a href="http://purl.org/dc/elements/1.1/creator">http://purl.org/dc/elements/1.1/creator</a>
                         <span>
                           <span class="cardinality">min</span>
                           <span>1</span>
@@ -1242,6 +1497,10 @@ In this context the value of feature-of-interest is expected to be the value of 
                         <span>
                           <span class="cardinality">min</span>
                           <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Site">Site or location</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -1250,12 +1509,16 @@ In this context the value of feature-of-interest is expected to be the value of 
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/dc/terms/accessRights">dcterms:accessRights</a>
+                          <a href="http://purl.org/dc/terms/accessRights">Access Rights</a>
                           <sup class="sup-p" title="RDF Property">p</sup>
                         </span>
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
+                        </span>
+                        <span>
+                          <a href="http://www.w3.org/ns/odrl/2/Permission">http://www.w3.org/ns/odrl/2/Permission</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -1264,12 +1527,16 @@ In this context the value of feature-of-interest is expected to be the value of 
                     <span>
                       <span>
                         <span>
-                          <a href="http://purl.org/dc/terms/license">dcterms:license</a>
+                          <a href="http://purl.org/dc/terms/license">License</a>
                           <sup class="sup-p" title="RDF Property">p</sup>
                         </span>
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
+                        </span>
+                        <span>
+                          <a href="http://www.w3.org/ns/odrl/2/Policy">http://www.w3.org/ns/odrl/2/Policy</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -1279,7 +1546,7 @@ In this context the value of feature-of-interest is expected to be the value of 
             </tr>
           </table>
         </div>
-        <div class="property entity" id="Taxonassignmentobservation">
+        <div class="property entity" id="TaxonAssignment">
           <h3>Taxon assignment observation
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -1305,7 +1572,16 @@ In this context the value of feature-of-interest is expected to be the value of 
               <td>
                 <span>
                   <span>
-                    <a href="http://www.w3.org/ns/sosa/observedProperty">sosa:observedProperty</a>value<br>
+                    <a href="http://www.w3.org/ns/sosa/observedProperty">sosa:observedProperty</a>
+                    <span>
+                      <span class="cardinality">value</span>
+                      <span>
+                        <span>
+                          <a href="http://www.tern.org.au/cv/op/Taxon-identity">op:Taxon-identity</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -1315,6 +1591,59 @@ In this context the value of feature-of-interest is expected to be the value of 
       </div>
       <div class="section" id="objectproperties">
         <h2>Object Properties</h2>
+        <h3 id="object-property-hierarchy">Object Property Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#isLocationOf">describes the location of</a>
+            </li>
+            <li>
+              <a href="#mapScale">Map scale</a>
+            </li>
+            <li>
+              <a href="#siteDescription">None</a>
+            </li>
+            <li>
+              <a href="#observer">Observer</a>
+            </li>
+            <li>
+              <a href="#hadSubActivity">pointer to child activity</a>
+            </li>
+            <li>
+              <a href="#wasSubActivityOf">pointer to parent activity</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#isMemberOf">is member of</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#hasResultQuality">Quality of individual or related observation results</a>
+            </li>
+            <li>
+              <a href="#sampleLevel">sample level classification</a>
+            </li>
+            <li>
+              <a href="#sampleType">sample type classification</a>
+            </li>
+            <li>
+              <a href="#sampler">Sampler</a>
+            </li>
+            <li>
+              <a href="#floristics">Site floristics classification</a>
+            </li>
+            <li>
+              <a href="#visitor">Site visitor</a>
+            </li>
+            <li>
+              <a href="#stratum">stratum classification</a>
+            </li>
+            <li>
+              <a href="#taxon">taxon classification</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="object-property-definitions">Object Property Definitions</h3>
         <div class="property entity" id="hadSubActivity">
           <h3>pointer to child activity
             <sup class="sup-op" title="OWL Object Property">op</sup>
@@ -1345,7 +1674,10 @@ In this context the value of feature-of-interest is expected to be the value of 
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a>
+                <span>
+                  <a href="http://www.w3.org/ns/prov#Activity">Activity</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
               </td>
             </tr>
             <tr>
@@ -1353,7 +1685,10 @@ In this context the value of feature-of-interest is expected to be the value of 
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a>
+                <span>
+                  <a href="http://www.w3.org/ns/prov#Activity">Activity</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
               </td>
             </tr>
           </table>
@@ -1395,7 +1730,7 @@ In this context the value of feature-of-interest is expected to be the value of 
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#Site">plot:Site</a>
+                <a href="#Site">Site or location</a>
               </td>
             </tr>
             <tr>
@@ -1425,7 +1760,7 @@ In this context the value of feature-of-interest is expected to be the value of 
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/dc/terms/type">dcterms:type</a>
+                  <a href="http://purl.org/dc/terms/type">Type</a>
                   <sup class="sup-p" title="RDF Property">p</sup>
                 </span>
               </td>
@@ -1436,7 +1771,7 @@ In this context the value of feature-of-interest is expected to be the value of 
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1460,7 +1795,7 @@ In this context the value of feature-of-interest is expected to be the value of 
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/dc/terms/type">dcterms:type</a>
+                  <a href="http://purl.org/dc/terms/type">Type</a>
                   <sup class="sup-p" title="RDF Property">p</sup>
                 </span>
               </td>
@@ -1471,7 +1806,7 @@ In this context the value of feature-of-interest is expected to be the value of 
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1494,7 +1829,10 @@ In this context the value of feature-of-interest is expected to be the value of 
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/prov#wasInformedBy">prov:wasInformedBy</a>
+                <span>
+                  <a href="http://www.w3.org/ns/prov#wasInformedBy">was informed by</a>
+                  <sup class="sup-op" title="OWL Object Property">op</sup>
+                </span>
               </td>
             </tr>
             <tr>
@@ -1503,14 +1841,14 @@ In this context the value of feature-of-interest is expected to be the value of 
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/ns/ssn/ext/isMemberOf">ssn-ext:isMemberOf</a>
+                  <a href="http://www.w3.org/ns/ssn/ext/isMemberOf">is member of</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="Sitefloristicsclassification">
+        <div class="property entity" id="floristics">
           <h3>Site floristics classification
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1527,7 +1865,7 @@ In this context the value of feature-of-interest is expected to be the value of 
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/dc/terms/type">dcterms:type</a>
+                  <a href="http://purl.org/dc/terms/type">Type</a>
                   <sup class="sup-p" title="RDF Property">p</sup>
                 </span>
               </td>
@@ -1537,7 +1875,7 @@ In this context the value of feature-of-interest is expected to be the value of 
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#Site">plot:Site</a>
+                <a href="#Site">Site or location</a>
               </td>
             </tr>
             <tr>
@@ -1546,14 +1884,14 @@ In this context the value of feature-of-interest is expected to be the value of 
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="Qualityofindividualorrelatedobservationresults">
+        <div class="property entity" id="hasResultQuality">
           <h3>Quality of individual or related observation results
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1574,13 +1912,17 @@ In this context the value of feature-of-interest is expected to be the value of 
               <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
-              <td><span>
-  <a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a>
-  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-</span> <span class="cardinality">or</span> <span>
-  <a href="http://www.w3.org/ns/ssn/ext/ObservationCollection">ssn-ext:ObservationCollection</a>
-  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-</span></td>
+              <td>
+                <span>
+                  <a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+                <span class="cardinality">or</span>
+                <span>
+                  <a href="http://www.w3.org/ns/ssn/ext/ObservationCollection">ssn-ext:ObservationCollection</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
             </tr>
           </table>
         </div>
@@ -1607,14 +1949,14 @@ In this context the value of feature-of-interest is expected to be the value of 
               </th>
               <td>
                 <span>
-                  <a href="#Location">plot:Location</a>
+                  <a href="#Location">Location</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="Observer">
+        <div class="property entity" id="observer">
           <h3>Observer
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1630,9 +1972,12 @@ In this context the value of feature-of-interest is expected to be the value of 
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
-                    <a href="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a>
+                    <span>
+                      <a href="http://www.w3.org/ns/prov#wasAssociatedWith">was associated with</a>
+                      <sup class="sup-op" title="OWL Object Property">op</sup>
+                    </span>
                   </li>
                   <li>
                     <a href="http://www.w3.org/ns/sosa/madeBySensor">sosa:madeBySensor</a>
@@ -1642,7 +1987,7 @@ In this context the value of feature-of-interest is expected to be the value of 
             </tr>
           </table>
         </div>
-        <div class="property entity" id="samplelevelclassification">
+        <div class="property entity" id="sampleLevel">
           <h3>sample level classification
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1659,7 +2004,7 @@ In this context the value of feature-of-interest is expected to be the value of 
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/dc/terms/type">dcterms:type</a>
+                  <a href="http://purl.org/dc/terms/type">Type</a>
                   <sup class="sup-p" title="RDF Property">p</sup>
                 </span>
               </td>
@@ -1669,7 +2014,7 @@ In this context the value of feature-of-interest is expected to be the value of 
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#Site">plot:Site</a>
+                <a href="#Site">Site or location</a>
               </td>
             </tr>
             <tr>
@@ -1678,14 +2023,14 @@ In this context the value of feature-of-interest is expected to be the value of 
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="sampletypeclassification">
+        <div class="property entity" id="sampleType">
           <h3>sample type classification
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1708,7 +2053,7 @@ In this context the value of feature-of-interest is expected to be the value of 
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/dc/terms/type">dcterms:type</a>
+                  <a href="http://purl.org/dc/terms/type">Type</a>
                   <sup class="sup-p" title="RDF Property">p</sup>
                 </span>
               </td>
@@ -1718,7 +2063,7 @@ In this context the value of feature-of-interest is expected to be the value of 
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#Site">plot:Site</a>
+                <a href="#Site">Site or location</a>
               </td>
             </tr>
             <tr>
@@ -1727,14 +2072,14 @@ In this context the value of feature-of-interest is expected to be the value of 
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="Sampler">
+        <div class="property entity" id="sampler">
           <h3>Sampler
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1750,9 +2095,12 @@ In this context the value of feature-of-interest is expected to be the value of 
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
-                    <a href="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a>
+                    <span>
+                      <a href="http://www.w3.org/ns/prov#wasAssociatedWith">was associated with</a>
+                      <sup class="sup-op" title="OWL Object Property">op</sup>
+                    </span>
                   </li>
                   <li>
                     <a href="http://www.w3.org/ns/sosa/madeBySampler">sosa:madeBySampler</a>
@@ -1762,7 +2110,7 @@ In this context the value of feature-of-interest is expected to be the value of 
             </tr>
           </table>
         </div>
-        <div class="property entity" id="Sitevisitor">
+        <div class="property entity" id="visitor">
           <h3>Site visitor
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1778,12 +2126,15 @@ In this context the value of feature-of-interest is expected to be the value of 
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
               </th>
               <td>
-                <a href="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a>
+                <span>
+                  <a href="http://www.w3.org/ns/prov#wasAssociatedWith">was associated with</a>
+                  <sup class="sup-op" title="OWL Object Property">op</sup>
+                </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="ismemberof">
+        <div class="property entity" id="isMemberOf">
           <h3>is member of
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1806,7 +2157,7 @@ In this context the value of feature-of-interest is expected to be the value of 
               </th>
               <td>
                 <span>
-                  <a href="#wasSubActivityOf">plot:wasSubActivityOf</a>
+                  <a href="#wasSubActivityOf">pointer to parent activity</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -1815,13 +2166,17 @@ In this context the value of feature-of-interest is expected to be the value of 
               <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
-              <td><span>
-  <a href="http://www.w3.org/ns/ssn/ext/ObservationCollection">ssn-ext:ObservationCollection</a>
-  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-</span> <span class="cardinality">or</span> <span>
-  <a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a>
-  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-</span></td>
+              <td>
+                <span>
+                  <a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+                <span class="cardinality">or</span>
+                <span>
+                  <a href="http://www.w3.org/ns/ssn/ext/ObservationCollection">ssn-ext:ObservationCollection</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
             </tr>
             <tr>
               <th>
@@ -1834,22 +2189,6 @@ In this context the value of feature-of-interest is expected to be the value of 
           </table>
         </div>
       </div>
-      <span>
-        <a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a>
-        <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-      </span>
-      <span>
-        <a href="http://www.w3.org/ns/ssn/ext/ObservationCollection">ssn-ext:ObservationCollection</a>
-        <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-      </span>
-      <span>
-        <a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a>
-        <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-      </span>
-      <span>
-        <a href="http://www.w3.org/ns/ssn/ext/ObservationCollection">ssn-ext:ObservationCollection</a>
-        <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-      </span>
       <div class="section" id="datatypeproperties">
         <h2>Datatype Properties</h2>
         <div class="property entity" id="mapsheetName">
@@ -1898,14 +2237,6 @@ In this context the value of feature-of-interest is expected to be the value of 
       <div id="namespaces">
         <h2>Namespaces</h2>
         <dl>
-          <dt id=":">:</dt>
-          <dd>
-            <code>http://linked.data.gov.au/def/plot/</code>
-          </dd>
-          <dt id="dc">dc</dt>
-          <dd>
-            <code>http://purl.org/dc/elements/1.1/</code>
-          </dd>
           <dt id="dcterms">dcterms</dt>
           <dd>
             <code>http://purl.org/dc/terms/</code>
@@ -1917,14 +2248,6 @@ In this context the value of feature-of-interest is expected to be the value of 
           <dt id="locn">locn</dt>
           <dd>
             <code>http://www.w3.org/ns/locn#</code>
-          </dd>
-          <dt id="ns1">ns1</dt>
-          <dd>
-            <code>http://rs.tdwg.org/dwc/terms/</code>
-          </dd>
-          <dt id="odrl">odrl</dt>
-          <dd>
-            <code>http://www.w3.org/ns/odrl/2/</code>
           </dd>
           <dt id="op">op</dt>
           <dd>
@@ -1974,10 +2297,6 @@ In this context the value of feature-of-interest is expected to be the value of 
           <dd>
             <code>http://www.w3.org/ns/ssn/ext/</code>
           </dd>
-          <dt id="time">time</dt>
-          <dd>
-            <code>http://www.w3.org/2006/time#</code>
-          </dd>
           <dt id="w3cgeo">w3cgeo</dt>
           <dd>
             <code>http://www.w3.org/2003/01/geo/wgs84_pos#</code>
@@ -2019,7 +2338,10 @@ In this context the value of feature-of-interest is expected to be the value of 
           <span id="y">y</span>
           <span>LODE</span>
         </a>
-        <a href="https://github.com/rdflib/pyLODE/release/3.0.2" id="version">3.0.2</a>
+        <a href="https://github.com/rdflib/pyLODE/release/3.4.5a0" id="version">3.4.5a0</a>
+        <span> with the </span>
+        <a href="https://linked.data.gov.au/def/ontpub" id="profile">OntPub</a>
+        <span>profile</span>
       </p>
     </div>
     <div id="toc">
@@ -2034,57 +2356,63 @@ In this context the value of feature-of-interest is expected to be the value of 
           <h4>
             <a href="#classes">Classes</a>
           </h4>
+          <h5>
+            <a href="#class-hierarchy" style="margin-left:10px;">Class Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#class-definitions" style="margin-left:10px;">Class Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Location">Location</a>
             </li>
-            <li>
-              <a href="#OrganismOccurrence">Organism Occurrence </a>
+            <li style="margin-left:10px;">
+              <a href="#OrganismOccurence">Organism Occurrence </a>
             </li>
-            <li>
-              <a href="#Vegetationstratum">Vegetation stratum</a>
+            <li style="margin-left:10px;">
+              <a href="#SiteStratum">Vegetation stratum</a>
             </li>
-            <li>
-              <a href="#Singletaxoncommunity">Single taxon community</a>
+            <li style="margin-left:10px;">
+              <a href="#SiteStratumTaxon">Single taxon community</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#SiteTaxon">Single taxon community</a>
             </li>
-            <li>
-              <a href="#Visittoasite">Visit to a site</a>
+            <li style="margin-left:10px;">
+              <a href="#SiteVisit">Visit to a site</a>
             </li>
-            <li>
-              <a href="#Vegetationstrataclassification">Vegetation strata classification </a>
+            <li style="margin-left:10px;">
+              <a href="#Stratum">Vegetation strata classification </a>
             </li>
-            <li>
-              <a href="#Organismassemblage">Organism assemblage</a>
+            <li style="margin-left:10px;">
+              <a href="#Assemblage">Organism assemblage</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#EcologicalCommunity">Ecological Community</a>
             </li>
-            <li>
-              <a href="#Environmentalcontinuant">Environmental continuant</a>
+            <li style="margin-left:10px;">
+              <a href="#EnvironmentalContinuant">Environmental continuant</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#EnvironmentalSystem">Environmental region defined primarily by its function and membership</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#EnvironmentalZone">Environmental region defined primarily by its location and extent</a>
             </li>
-            <li>
-              <a href="#Fluxtower">Flux tower</a>
+            <li style="margin-left:10px;">
+              <a href="#FluxTower">Flux tower</a>
             </li>
-            <li>
-              <a href="#EcologyObservation">Ecology Observation</a>
+            <li style="margin-left:10px;">
+              <a href="#Observation">Ecology Observation</a>
             </li>
-            <li>
-              <a href="#Visittoastudylocation">Visit to a study location</a>
+            <li style="margin-left:10px;">
+              <a href="#StudyLocationVisit">Visit to a study location</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Survey">Survey</a>
             </li>
-            <li>
-              <a href="#Taxonassignmentobservation">Taxon assignment observation</a>
+            <li style="margin-left:10px;">
+              <a href="#TaxonAssignment">Taxon assignment observation</a>
             </li>
           </ul>
         </li>
@@ -2092,51 +2420,57 @@ In this context the value of feature-of-interest is expected to be the value of 
           <h4>
             <a href="#objectproperties">Object Properties</a>
           </h4>
+          <h5>
+            <a href="#object-property-hierarchy" style="margin-left:10px;">Object Property Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#object-property-definitions" style="margin-left:10px;">Object Property Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hadSubActivity">pointer to child activity</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#mapScale">Map scale</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#siteDescription">site description</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#stratum">stratum classification</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#taxon">taxon classification</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#wasSubActivityOf">pointer to parent activity</a>
             </li>
-            <li>
-              <a href="#Sitefloristicsclassification">Site floristics classification</a>
+            <li style="margin-left:10px;">
+              <a href="#floristics">Site floristics classification</a>
             </li>
-            <li>
-              <a href="#Qualityofindividualorrelatedobservationresults">Quality of individual or related observation results</a>
+            <li style="margin-left:10px;">
+              <a href="#hasResultQuality">Quality of individual or related observation results</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#isLocationOf">describes the location of</a>
             </li>
-            <li>
-              <a href="#Observer">Observer</a>
+            <li style="margin-left:10px;">
+              <a href="#observer">Observer</a>
             </li>
-            <li>
-              <a href="#samplelevelclassification">sample level classification</a>
+            <li style="margin-left:10px;">
+              <a href="#sampleLevel">sample level classification</a>
             </li>
-            <li>
-              <a href="#sampletypeclassification">sample type classification</a>
+            <li style="margin-left:10px;">
+              <a href="#sampleType">sample type classification</a>
             </li>
-            <li>
-              <a href="#Sampler">Sampler</a>
+            <li style="margin-left:10px;">
+              <a href="#sampler">Sampler</a>
             </li>
-            <li>
-              <a href="#Sitevisitor">Site visitor</a>
+            <li style="margin-left:10px;">
+              <a href="#visitor">Site visitor</a>
             </li>
-            <li>
-              <a href="#ismemberof">is member of</a>
+            <li style="margin-left:10px;">
+              <a href="#isMemberOf">is member of</a>
             </li>
           </ul>
         </li>
@@ -2159,12 +2493,6 @@ In this context the value of feature-of-interest is expected to be the value of 
           </h4>
           <ul class="second">
             <li>
-              <a href="#"></a>
-            </li>
-            <li>
-              <a href="#dc">dc</a>
-            </li>
-            <li>
               <a href="#dcterms">dcterms</a>
             </li>
             <li>
@@ -2172,12 +2500,6 @@ In this context the value of feature-of-interest is expected to be the value of 
             </li>
             <li>
               <a href="#locn">locn</a>
-            </li>
-            <li>
-              <a href="#ns1">ns1</a>
-            </li>
-            <li>
-              <a href="#odrl">odrl</a>
             </li>
             <li>
               <a href="#op">op</a>
@@ -2214,9 +2536,6 @@ In this context the value of feature-of-interest is expected to be the value of 
             </li>
             <li>
               <a href="#ssn-ext">ssn-ext</a>
-            </li>
-            <li>
-              <a href="#time">time</a>
             </li>
             <li>
               <a href="#w3cgeo">w3cgeo</a>

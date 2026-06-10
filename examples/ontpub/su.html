@@ -5,14 +5,14 @@
     <style>
         #pylode {
             position: fixed;
-            top: 130px;
-            left: -80px;
+            top: 205px;
+            left: -150px;
             font-size: small;
             transform: rotate(-90deg);
             color: grey;
         }
         #pylode a {
-            font-size: 2em;
+            font-size: 1.5em;
             font-weight: bold;
             text-decoration: none;
             color: #005A9C;
@@ -28,6 +28,12 @@
         }
         #pylode #version {
             font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
         }
 
         .cardinality {
@@ -50,14 +56,18 @@
             padding-top: 7px;
         }
 
-        #metadata ul,
-        #classes ul {
+        ul.pylodelitlist {
             list-style-type: none;
+            margin-left: -40px;
         }
 
         #metadata ul li,
         #classes ul li {
-            margin-left: -40px;
+            margin-bottom: 10px;
+        }
+
+        #metadata dd p {
+          margin: 0 0 1em 0;
         }
 
         ul.hlist {
@@ -67,12 +77,19 @@
             background-color: #F4FFFF;
         }
 
-        ul.hierarchy {
-            border: 1px solid navy;
-            padding: 5px 25px 5px 25px;
+        div.hierarchy {
+            margin-bottom: 30px;
             background-color: #F4FFFF;
+            padding: 10px;
         }
 
+        ul.hierarchy {=
+            padding: 5px 25px 5px 25px;
+        }
+
+        ul.hierarchy li {
+            margin-top:5px;
+        }
 
         ul.hlist li {
             display: inline;
@@ -124,7 +141,10 @@
             border-bottom: 1px solid navy;
         }
         h4 { font: bold 100% sans-serif }
-        h5 { font: italic 100% sans-serif }
+        h5 {
+            font: italic 100% sans-serif;
+            margin-bottom: 10px;
+        }
         h6 { font: small-caps 100% sans-serif }
 
         body {
@@ -213,60 +233,63 @@
             text-decoration: none;
         }
 
-#toc {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    height: 100%;
-    overflow-y: auto;
-    padding: 10px;
-    border: solid 1px navy;
-    font-size: small;
-    width: 180px;
-}
-#toc h3 {
-    margin-top: 5px;
-}
+        #toc {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            padding: 10px;
+            border: solid 1px navy;
+            font-size: small;
+            width: 180px;
+        }
+        #toc h3 {
+            margin-top: 5px;
+        }
 
-#toc ul {
-    list-style: none;
-    padding-left: 0;
-}
+        #toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
 
-#toc .first > li {
-    margin-top: 5px;
-}
+        #toc .first > li {
+            margin-top: 5px;
+        }
 
-#toc .second,
-#toc .third {
-    padding-left: 10px;
-}
+        #toc .second,
+        #toc .third {
+            padding-left: 10px;
+        }
 
-#content {
-    width: calc(100% - 150px);
-}
+        #content {
+            width: calc(100% - 150px);
+        }
 
-.hover_property {
-    cursor: help;
-    text-decoration: none;
-    border-bottom: dashed 1px;
-}
+        .hover_property {
+            cursor: help;
+            text-decoration: none;
+            border-bottom: dashed 1px;
+        }
 
-.setclass {
-    list-style-type: none;
-}
+        .setclass {
+            list-style-type: none;
+        }
 
-code{
-    word-wrap: break-word;
-  }
-  table {
-    table-layout: fixed;
-    width: 100%;
-  }
-  td {
-    word-wrap: break-word;
-  }
+        code{
+            word-wrap: break-word;
+          }
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        td {
+            word-wrap: break-word;
+        }
+        #legend table.entity {
+            width: 25%;
+        }
 	</style>
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png">
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png">
@@ -316,7 +339,7 @@ code{
     "@id": "https://orcid.org/0000-0002-3884-3420",
     "https://schema.org/email": [
       {
-        "@id": "file:///Users/nick/Work/rdflib/pyLODE/examples/ontdoc/nicholas.car@surroundaustralia.com"
+        "@id": "file:///Users/nick/work/rdflib/pyLODE/examples/ontpub/nicholas.car@surroundaustralia.com"
       }
     ],
     "https://schema.org/name": [
@@ -366,7 +389,9 @@ code{
               <a class="hover_property" href="http://purl.org/dc/terms/publisher" title="An entity responsible for making the resource available. Defined in DCMI Metadata Terms">Publisher</a>
             </dt>
             <dd>
-              <a href="https://linked.data.gov.au/org/ga">ns1:ga</a>
+              <span>
+                <a href="https://www.ga.gov.au">Geoscience Australia</a>
+              </span>
             </dd>
           </div>
           <div>
@@ -374,7 +399,32 @@ code{
               <a class="hover_property" href="http://purl.org/dc/terms/creator" title="An entity responsible for making the resource. Defined in DCMI Metadata Terms">Creator</a>
             </dt>
             <dd>
-              <a href="https://orcid.org/0000-0002-3884-3420">ns2:0000-0002-3884-3420</a>
+              <span>
+                <span>Nicholas J. Car</span>
+                <a href="https://orcid.org/0000-0002-3884-3420">
+                    <svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <title>https://orcid.org/0000-0002-3884-3420</title>
+                        <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
+                                <g id="Group-4">
+                                    <g id="vector_iD_icon" transform="translate(924.000000, 72.000000)">
+                                        <path d="M72,36 C72,55.884375 55.884375,72 36,72 C16.115625,72 0,55.884375 0,36 C0,16.115625 16.115625,0 36,0 C55.884375,0 72,16.115625 72,36 Z" id="Path" fill="#A6CE39"></path>
+                                        <g id="Group" transform="translate(18.868966, 12.910345)" fill="#FFFFFF">
+                                            <polygon id="Path" points="5.03734929 39.1250878 0.695429861 39.1250878 0.695429861 9.14431787 5.03734929 9.14431787 5.03734929 22.6930505 5.03734929 39.1250878"></polygon>
+                                            <path d="M11.409257,9.14431787 L23.1380784,9.14431787 C34.303014,9.14431787 39.2088191,17.0664074 39.2088191,24.1486995 C39.2088191,31.846843 33.1470485,39.1530811 23.1944669,39.1530811 L11.409257,39.1530811 L11.409257,9.14431787 Z M15.7511765,35.2620194 L22.6587756,35.2620194 C32.49858,35.2620194 34.7541226,27.8438084 34.7541226,24.1486995 C34.7541226,18.1301509 30.8915059,13.0353795 22.4332213,13.0353795 L15.7511765,13.0353795 L15.7511765,35.2620194 Z" id="Shape"></path>
+                                            <path d="M5.71401206,2.90182329 C5.71401206,4.441452 4.44526937,5.72914146 2.86638958,5.72914146 C1.28750978,5.72914146 0.0187670918,4.441452 0.0187670918,2.90182329 C0.0187670918,1.33420133 1.28750978,0.0745051096 2.86638958,0.0745051096 C4.44526937,0.0745051096 5.71401206,1.36219458 5.71401206,2.90182329 Z" id="Path"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg></a>
+                <span>(
+                  <a href="mailto:file:///Users/nick/work/rdflib/pyLODE/examples/ontpub/nicholas.car@surroundaustralia.com">file:///Users/nick/work/rdflib/pyLODE/examples/ontpub/nicholas.car@surroundaustralia.com</a> )
+                </span>
+              </span>
             </dd>
           </div>
           <div>
@@ -401,10 +451,36 @@ code{
             </dt>
             <dd><p>This is an extremely simple ontology - part of the Stratigraphic Units profile - whos purpose is only to provide a Semantic Web view of the data contained within the <a href="http://pid.geoscience.gov.au/dataset/ga/21884">Australian Stratigraphic Units Database</a>. Data from that database is also available according to a number of other profiles which, in some cases, this ontology specialises.</p></dd>
           </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="https://schema.org/codeRepository" title="Link to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex). Defined in None">Coderepository</a>
+            </dt>
+            <dd>
+              <a href="https://github.com/surroundaustralia/su-ont">https://github.com/surroundaustralia/su-ont</a>
+            </dd>
+          </div>
         </dl>
       </div>
       <div class="section" id="classes">
         <h2>Classes</h2>
+        <h3 id="class-hierarchy">Class Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#GeologicEvent">Geologic Event</a>
+            </li>
+            <li>
+              <a href="#GeologicUnitType">Geologic Unit Type</a>
+            </li>
+            <li>
+              <a href="#StratigraphicRank">Stratigraphic Rank</a>
+            </li>
+            <li>
+              <a href="#StratigraphicUnit">Stratigraphic Unit</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="class-definitions">Class Definitions</h3>
         <div class="property entity" id="StratigraphicUnit">
           <h3>Stratigraphic Unit
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
@@ -421,7 +497,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#ont">su:ont</a>
+                <a href="#ont">Stratigraphic Units Ontology</a>
               </td>
             </tr>
             <tr>
@@ -435,7 +511,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://www.opengis.net/gsml/4.1/GeoSciML-Basic/GeologicUnit">ns3:GeologicUnit</a>
+                <a href="http://www.opengis.net/gsml/4.1/GeoSciML-Basic/GeologicUnit">http://www.opengis.net/gsml/4.1/GeoSciML-Basic/GeologicUnit</a>
               </td>
             </tr>
             <tr>
@@ -451,34 +527,34 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="https://linked.data.gov.au/def/su/stratigraphicRank">su:stratigraphicRank</a>
+                      <a href="https://linked.data.gov.au/def/su/stratigraphicRank">stratigraphic rank</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="https://linked.data.gov.au/def/su/geologicUnitType">su:geologicUnitType</a>
+                      <a href="https://linked.data.gov.au/def/su/geologicUnitType">geologic unit type</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="https://linked.data.gov.au/def/su/descriptionPurpose">su:descriptionPurpose</a>
+                      <a href="https://linked.data.gov.au/def/su/descriptionPurpose">description purpose</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="https://linked.data.gov.au/def/su/geologicHistory">su:geologicHistory</a>
+                      <a href="https://linked.data.gov.au/def/su/geologicHistory">geologic history</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="https://linked.data.gov.au/def/su/observationMethod">su:observationMethod</a>
+                      <a href="https://linked.data.gov.au/def/su/observationMethod">observation method</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -503,7 +579,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#ont">su:ont</a>
+                <a href="#ont">Stratigraphic Units Ontology</a>
               </td>
             </tr>
             <tr>
@@ -524,7 +600,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -547,7 +623,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#ont">su:ont</a>
+                <a href="#ont">Stratigraphic Units Ontology</a>
               </td>
             </tr>
             <tr>
@@ -588,7 +664,7 @@ code{
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
               </th>
               <td>
-                <a href="#ont">su:ont</a>
+                <a href="#ont">Stratigraphic Units Ontology</a>
               </td>
             </tr>
             <tr>
@@ -602,7 +678,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://www.opengis.net/gsml/4.1/GeoSciML-Basic/GeologicUnit">ns3:GeologicUnit</a>
+                <a href="http://www.opengis.net/gsml/4.1/GeoSciML-Basic/GeologicUnit">http://www.opengis.net/gsml/4.1/GeoSciML-Basic/GeologicUnit</a>
               </td>
             </tr>
             <tr>
@@ -619,7 +695,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="https://linked.data.gov.au/def/su/eventProcess">su:eventProcess</a>
+                  <a href="https://linked.data.gov.au/def/su/eventProcess">event process</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -630,7 +706,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="https://linked.data.gov.au/def/su/geologicHistory">su:geologicHistory</a>
+                  <a href="https://linked.data.gov.au/def/su/geologicHistory">geologic history</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -640,12 +716,12 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="https://linked.data.gov.au/def/su/youngerBound">su:youngerBound</a>
+                          <a href="https://linked.data.gov.au/def/su/youngerBound">younger bound</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -659,7 +735,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="https://linked.data.gov.au/def/su/olderBound">su:olderBound</a>
+                          <a href="https://linked.data.gov.au/def/su/olderBound">older bound</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -673,7 +749,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="https://linked.data.gov.au/def/su/youngerNamedAge">su:youngerNamedAge</a>
+                          <a href="https://linked.data.gov.au/def/su/youngerNamedAge">younger named age</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -687,7 +763,7 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="https://linked.data.gov.au/def/su/olderNamedAge">su:olderNamedAge</a>
+                          <a href="https://linked.data.gov.au/def/su/olderNamedAge">older named age</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
@@ -705,7 +781,55 @@ code{
       </div>
       <div class="section" id="objectproperties">
         <h2>Object Properties</h2>
-        <div class="property entity" id="stratigraphicrank">
+        <h3 id="object-property-hierarchy">Object Property Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#descriptionPurpose">description purpose</a>
+            </li>
+            <li>
+              <a href="#eventProcess">event process</a>
+            </li>
+            <li>
+              <a href="#geologicHistory">geologic history</a>
+            </li>
+            <li>
+              <a href="#geologicUnitType">geologic unit type</a>
+            </li>
+            <li>
+              <a href="#observationMethod">observation method</a>
+            </li>
+            <li>
+              <a href="#olderBound">older bound</a>
+            </li>
+            <li>
+              <a href="#olderNamedAge">older named age</a>
+            </li>
+            <li>
+              <a href="#oldestAge">oldest age</a>
+            </li>
+            <li>
+              <a href="#provinceRank">rank</a>
+            </li>
+            <li>
+              <a href="#stratigraphicRank">stratigraphic rank</a>
+            </li>
+            <li>
+              <a href="#provinceType">type</a>
+            </li>
+            <li>
+              <a href="#youngerBound">younger bound</a>
+            </li>
+            <li>
+              <a href="#youngerNamedAge">younger named age</a>
+            </li>
+            <li>
+              <a href="#youngestAge">youngest age</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="object-property-definitions">Object Property Definitions</h3>
+        <div class="property entity" id="stratigraphicRank">
           <h3>stratigraphic rank
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -727,7 +851,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://www.opengis.net/doc/geosciml/4.1">ns4:4.1</a>
+                <a href="http://www.opengis.net/doc/geosciml/4.1">http://www.opengis.net/doc/geosciml/4.1</a>
               </td>
             </tr>
             <tr>
@@ -736,7 +860,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/dc/terms/type">dcterms:type</a>
+                  <a href="http://purl.org/dc/terms/type">Type</a>
                   <sup class="sup-p" title="RDF Property">p</sup>
                 </span>
               </td>
@@ -747,7 +871,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="https://linked.data.gov.au/def/su/StratigraphicUnit">su:StratigraphicUnit</a>
+                  <a href="https://linked.data.gov.au/def/su/StratigraphicUnit">Stratigraphic Unit</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -758,14 +882,14 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="geologicunittype">
+        <div class="property entity" id="geologicUnitType">
           <h3>geologic unit type
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -787,7 +911,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://www.opengis.net/doc/geosciml/4.1">ns4:4.1</a>
+                <a href="http://www.opengis.net/doc/geosciml/4.1">http://www.opengis.net/doc/geosciml/4.1</a>
               </td>
             </tr>
             <tr>
@@ -796,7 +920,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/dc/terms/type">dcterms:type</a>
+                  <a href="http://purl.org/dc/terms/type">Type</a>
                   <sup class="sup-p" title="RDF Property">p</sup>
                 </span>
               </td>
@@ -807,7 +931,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="https://linked.data.gov.au/def/su/StratigraphicUnit">su:StratigraphicUnit</a>
+                  <a href="https://linked.data.gov.au/def/su/StratigraphicUnit">Stratigraphic Unit</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -818,14 +942,14 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="descriptionpurpose">
+        <div class="property entity" id="descriptionPurpose">
           <h3>description purpose
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -847,7 +971,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://www.opengis.net/doc/geosciml/4.1">ns4:4.1</a>
+                <a href="http://www.opengis.net/doc/geosciml/4.1">http://www.opengis.net/doc/geosciml/4.1</a>
               </td>
             </tr>
             <tr>
@@ -856,7 +980,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="https://linked.data.gov.au/def/su/StratigraphicUnit">su:StratigraphicUnit</a>
+                  <a href="https://linked.data.gov.au/def/su/StratigraphicUnit">Stratigraphic Unit</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -867,14 +991,14 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="geologichistory">
+        <div class="property entity" id="geologicHistory">
           <h3>geologic history
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -896,7 +1020,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://www.opengis.net/doc/geosciml/4.1">ns4:4.1</a>
+                <a href="http://www.opengis.net/doc/geosciml/4.1">http://www.opengis.net/doc/geosciml/4.1</a>
               </td>
             </tr>
             <tr>
@@ -905,7 +1029,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://purl.org/dc/terms/provenance">dcterms:provenance</a>
+                  <a href="http://purl.org/dc/terms/provenance">Provenance</a>
                   <sup class="sup-p" title="RDF Property">p</sup>
                 </span>
               </td>
@@ -916,7 +1040,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="https://linked.data.gov.au/def/su/StratigraphicUnit">su:StratigraphicUnit</a>
+                  <a href="https://linked.data.gov.au/def/su/StratigraphicUnit">Stratigraphic Unit</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -927,14 +1051,14 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="https://linked.data.gov.au/def/su/GeologicEvent">su:GeologicEvent</a>
+                  <a href="https://linked.data.gov.au/def/su/GeologicEvent">Geologic Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="observationmethod">
+        <div class="property entity" id="observationMethod">
           <h3>observation method
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -956,7 +1080,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://www.opengis.net/doc/geosciml/4.1">ns4:4.1</a>
+                <a href="http://www.opengis.net/doc/geosciml/4.1">http://www.opengis.net/doc/geosciml/4.1</a>
               </td>
             </tr>
             <tr>
@@ -965,7 +1089,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="https://linked.data.gov.au/def/su/StratigraphicUnit">su:StratigraphicUnit</a>
+                  <a href="https://linked.data.gov.au/def/su/StratigraphicUnit">Stratigraphic Unit</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -976,14 +1100,14 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="eventprocess">
+        <div class="property entity" id="eventProcess">
           <h3>event process
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1005,7 +1129,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://www.opengis.net/doc/geosciml/4.1">ns4:4.1</a>
+                <a href="http://www.opengis.net/doc/geosciml/4.1">http://www.opengis.net/doc/geosciml/4.1</a>
               </td>
             </tr>
             <tr>
@@ -1014,7 +1138,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="https://linked.data.gov.au/def/su/GeologicEvent">su:GeologicEvent</a>
+                  <a href="https://linked.data.gov.au/def/su/GeologicEvent">Geologic Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1025,14 +1149,14 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="youngerbound">
+        <div class="property entity" id="youngerBound">
           <h3>younger bound
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1054,7 +1178,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://www.opengis.net/doc/geosciml/4.1">ns4:4.1</a>
+                <a href="http://www.opengis.net/doc/geosciml/4.1">http://www.opengis.net/doc/geosciml/4.1</a>
               </td>
             </tr>
             <tr>
@@ -1075,7 +1199,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="olderbound">
+        <div class="property entity" id="olderBound">
           <h3>older bound
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1097,7 +1221,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://www.opengis.net/doc/geosciml/4.1">ns4:4.1</a>
+                <a href="http://www.opengis.net/doc/geosciml/4.1">http://www.opengis.net/doc/geosciml/4.1</a>
               </td>
             </tr>
             <tr>
@@ -1118,7 +1242,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="youngernamedage">
+        <div class="property entity" id="youngerNamedAge">
           <h3>younger named age
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1140,7 +1264,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://www.opengis.net/doc/geosciml/4.1">ns4:4.1</a>
+                <a href="http://www.opengis.net/doc/geosciml/4.1">http://www.opengis.net/doc/geosciml/4.1</a>
               </td>
             </tr>
             <tr>
@@ -1161,7 +1285,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="youngestage">
+        <div class="property entity" id="youngestAge">
           <h3>youngest age
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1183,7 +1307,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://www.opengis.net/doc/geosciml/4.1">ns4:4.1</a>
+                <a href="http://www.opengis.net/doc/geosciml/4.1">http://www.opengis.net/doc/geosciml/4.1</a>
               </td>
             </tr>
             <tr>
@@ -1212,7 +1336,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="oldernamedage">
+        <div class="property entity" id="olderNamedAge">
           <h3>older named age
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1234,7 +1358,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://www.opengis.net/doc/geosciml/4.1">ns4:4.1</a>
+                <a href="http://www.opengis.net/doc/geosciml/4.1">http://www.opengis.net/doc/geosciml/4.1</a>
               </td>
             </tr>
             <tr>
@@ -1255,7 +1379,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="oldestage">
+        <div class="property entity" id="oldestAge">
           <h3>oldest age
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1277,7 +1401,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://www.opengis.net/doc/geosciml/4.1">ns4:4.1</a>
+                <a href="http://www.opengis.net/doc/geosciml/4.1">http://www.opengis.net/doc/geosciml/4.1</a>
               </td>
             </tr>
             <tr>
@@ -1306,7 +1430,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="rank">
+        <div class="property entity" id="provinceRank">
           <h3>rank
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1328,7 +1452,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://www.opengis.net/doc/geosciml/4.1">ns4:4.1</a>
+                <a href="http://www.opengis.net/doc/geosciml/4.1">http://www.opengis.net/doc/geosciml/4.1</a>
               </td>
             </tr>
             <tr>
@@ -1345,14 +1469,14 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="type">
+        <div class="property entity" id="provinceType">
           <h3>type
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
@@ -1374,7 +1498,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://www.opengis.net/doc/geosciml/4.1">ns4:4.1</a>
+                <a href="http://www.opengis.net/doc/geosciml/4.1">http://www.opengis.net/doc/geosciml/4.1</a>
               </td>
             </tr>
             <tr>
@@ -1391,7 +1515,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>
+                  <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1414,22 +1538,6 @@ code{
           <dd>
             <code>http://resource.geosciml.org/ontology/timescale/gts#</code>
           </dd>
-          <dt id="ns1">ns1</dt>
-          <dd>
-            <code>https://linked.data.gov.au/org/</code>
-          </dd>
-          <dt id="ns2">ns2</dt>
-          <dd>
-            <code>https://orcid.org/</code>
-          </dd>
-          <dt id="ns3">ns3</dt>
-          <dd>
-            <code>http://www.opengis.net/gsml/4.1/GeoSciML-Basic/</code>
-          </dd>
-          <dt id="ns4">ns4</dt>
-          <dd>
-            <code>http://www.opengis.net/doc/geosciml/</code>
-          </dd>
           <dt id="owl">owl</dt>
           <dd>
             <code>http://www.w3.org/2002/07/owl#</code>
@@ -1445,10 +1553,6 @@ code{
           <dt id="rdfs">rdfs</dt>
           <dd>
             <code>http://www.w3.org/2000/01/rdf-schema#</code>
-          </dd>
-          <dt id="schema">schema</dt>
-          <dd>
-            <code>https://schema.org/</code>
           </dd>
           <dt id="sdo">sdo</dt>
           <dd>
@@ -1493,7 +1597,10 @@ code{
           <span id="y">y</span>
           <span>LODE</span>
         </a>
-        <a href="https://github.com/rdflib/pyLODE/release/3.0.2" id="version">3.0.2</a>
+        <a href="https://github.com/rdflib/pyLODE/release/3.4.5a0" id="version">3.4.5a0</a>
+        <span> with the </span>
+        <a href="https://linked.data.gov.au/def/ontpub" id="profile">OntPub</a>
+        <span>profile</span>
       </p>
     </div>
     <div id="toc">
@@ -1508,17 +1615,23 @@ code{
           <h4>
             <a href="#classes">Classes</a>
           </h4>
+          <h5>
+            <a href="#class-hierarchy" style="margin-left:10px;">Class Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#class-definitions" style="margin-left:10px;">Class Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
+            <li style="margin-left:10px;">
               <a href="#StratigraphicUnit">Stratigraphic Unit</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#StratigraphicRank">Stratigraphic Rank</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#GeologicUnitType">Geologic Unit Type</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#GeologicEvent">Geologic Event</a>
             </li>
           </ul>
@@ -1527,48 +1640,54 @@ code{
           <h4>
             <a href="#objectproperties">Object Properties</a>
           </h4>
+          <h5>
+            <a href="#object-property-hierarchy" style="margin-left:10px;">Object Property Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#object-property-definitions" style="margin-left:10px;">Object Property Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
-              <a href="#stratigraphicrank">stratigraphic rank</a>
+            <li style="margin-left:10px;">
+              <a href="#stratigraphicRank">stratigraphic rank</a>
             </li>
-            <li>
-              <a href="#geologicunittype">geologic unit type</a>
+            <li style="margin-left:10px;">
+              <a href="#geologicUnitType">geologic unit type</a>
             </li>
-            <li>
-              <a href="#descriptionpurpose">description purpose</a>
+            <li style="margin-left:10px;">
+              <a href="#descriptionPurpose">description purpose</a>
             </li>
-            <li>
-              <a href="#geologichistory">geologic history</a>
+            <li style="margin-left:10px;">
+              <a href="#geologicHistory">geologic history</a>
             </li>
-            <li>
-              <a href="#observationmethod">observation method</a>
+            <li style="margin-left:10px;">
+              <a href="#observationMethod">observation method</a>
             </li>
-            <li>
-              <a href="#eventprocess">event process</a>
+            <li style="margin-left:10px;">
+              <a href="#eventProcess">event process</a>
             </li>
-            <li>
-              <a href="#youngerbound">younger bound</a>
+            <li style="margin-left:10px;">
+              <a href="#youngerBound">younger bound</a>
             </li>
-            <li>
-              <a href="#olderbound">older bound</a>
+            <li style="margin-left:10px;">
+              <a href="#olderBound">older bound</a>
             </li>
-            <li>
-              <a href="#youngernamedage">younger named age</a>
+            <li style="margin-left:10px;">
+              <a href="#youngerNamedAge">younger named age</a>
             </li>
-            <li>
-              <a href="#youngestage">youngest age</a>
+            <li style="margin-left:10px;">
+              <a href="#youngestAge">youngest age</a>
             </li>
-            <li>
-              <a href="#oldernamedage">older named age</a>
+            <li style="margin-left:10px;">
+              <a href="#olderNamedAge">older named age</a>
             </li>
-            <li>
-              <a href="#oldestage">oldest age</a>
+            <li style="margin-left:10px;">
+              <a href="#oldestAge">oldest age</a>
             </li>
-            <li>
-              <a href="#rank">rank</a>
+            <li style="margin-left:10px;">
+              <a href="#provinceRank">rank</a>
             </li>
-            <li>
-              <a href="#type">type</a>
+            <li style="margin-left:10px;">
+              <a href="#provinceType">type</a>
             </li>
           </ul>
         </li>
@@ -1587,18 +1706,6 @@ code{
               <a href="#gts">gts</a>
             </li>
             <li>
-              <a href="#ns1">ns1</a>
-            </li>
-            <li>
-              <a href="#ns2">ns2</a>
-            </li>
-            <li>
-              <a href="#ns3">ns3</a>
-            </li>
-            <li>
-              <a href="#ns4">ns4</a>
-            </li>
-            <li>
               <a href="#owl">owl</a>
             </li>
             <li>
@@ -1609,9 +1716,6 @@ code{
             </li>
             <li>
               <a href="#rdfs">rdfs</a>
-            </li>
-            <li>
-              <a href="#schema">schema</a>
             </li>
             <li>
               <a href="#sdo">sdo</a>

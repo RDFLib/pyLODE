@@ -77,12 +77,19 @@
             background-color: #F4FFFF;
         }
 
-        ul.hierarchy {
-            border: 1px solid navy;
-            padding: 5px 25px 5px 25px;
+        div.hierarchy {
+            margin-bottom: 30px;
             background-color: #F4FFFF;
+            padding: 10px;
         }
 
+        ul.hierarchy {=
+            padding: 5px 25px 5px 25px;
+        }
+
+        ul.hierarchy li {
+            margin-top:5px;
+        }
 
         ul.hlist li {
             display: inline;
@@ -313,10 +320,10 @@
     ],
     "https://schema.org/creator": [
       {
-        "@id": "_:n92b9077f469a40bd980a8c0079a1e1b1b1"
+        "@id": "_:n670a869bb80e4eef933bea6d96deb372b1"
       },
       {
-        "@id": "_:n92b9077f469a40bd980a8c0079a1e1b1b3"
+        "@id": "_:n670a869bb80e4eef933bea6d96deb372b3"
       }
     ],
     "https://schema.org/dateCreated": [
@@ -344,10 +351,10 @@
     ]
   },
   {
-    "@id": "_:n92b9077f469a40bd980a8c0079a1e1b1b1",
+    "@id": "_:n670a869bb80e4eef933bea6d96deb372b1",
     "https://schema.org/affiliation": [
       {
-        "@id": "_:n92b9077f469a40bd980a8c0079a1e1b1b2"
+        "@id": "_:n670a869bb80e4eef933bea6d96deb372b2"
       }
     ],
     "https://schema.org/email": [
@@ -368,16 +375,16 @@
     ]
   },
   {
-    "@id": "_:n92b9077f469a40bd980a8c0079a1e1b1b2"
+    "@id": "_:n670a869bb80e4eef933bea6d96deb372b2"
   },
   {
-    "@id": "_:n92b9077f469a40bd980a8c0079a1e1b1b3",
+    "@id": "_:n670a869bb80e4eef933bea6d96deb372b3",
     "https://schema.org/affiliation": [
       {
-        "@id": "_:n92b9077f469a40bd980a8c0079a1e1b1b4"
+        "@id": "_:n670a869bb80e4eef933bea6d96deb372b4"
       },
       {
-        "@id": "_:n92b9077f469a40bd980a8c0079a1e1b1b5"
+        "@id": "_:n670a869bb80e4eef933bea6d96deb372b5"
       }
     ],
     "https://schema.org/email": [
@@ -397,10 +404,10 @@
     ]
   },
   {
-    "@id": "_:n92b9077f469a40bd980a8c0079a1e1b1b4"
+    "@id": "_:n670a869bb80e4eef933bea6d96deb372b4"
   },
   {
-    "@id": "_:n92b9077f469a40bd980a8c0079a1e1b1b5"
+    "@id": "_:n670a869bb80e4eef933bea6d96deb372b5"
   }
 ]
 	</script>
@@ -554,17 +561,19 @@
       <div class="section" id="classes">
         <h2>Classes</h2>
         <h3 id="class-hierarchy">Class Hierarchy</h3>
-        <ul>
-          <li>
-            <a href="#ResourceDescriptor">Resource Descriptor</a>
-          </li>
-          <li>
-            <a href="#ResourceRole">Resource Role</a>
-          </li>
-          <li>
-            <a href="#Profile">Profile</a>
-          </li>
-        </ul>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#Profile">Profile</a>
+            </li>
+            <li>
+              <a href="#ResourceDescriptor">Resource Descriptor</a>
+            </li>
+            <li>
+              <a href="#ResourceRole">Resource Role</a>
+            </li>
+          </ul>
+        </div>
         <h3 id="class-definitions">Class Definitions</h3>
         <div class="property entity" id="ResourceDescriptor">
           <h3>Resource Descriptor
@@ -731,28 +740,30 @@
       <div class="section" id="objectproperties">
         <h2>Object Properties</h2>
         <h3 id="object-property-hierarchy">Object Property Hierarchy</h3>
-        <ul>
-          <li>
-            <a href="#hasArtifact">has artifact</a>
-          </li>
-          <li>
-            <a href="#isInheritedFrom">is inherited from</a>
-          </li>
-          <li>
-            <a href="#isTransitiveProfileOf">is transitive profile of</a>
-            <ul>
-              <li>
-                <a href="#isProfileOf">is profile of</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#hasResource">has resource</a>
-          </li>
-          <li>
-            <a href="#hasRole">has role</a>
-          </li>
-        </ul>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#hasArtifact">has artifact</a>
+            </li>
+            <li>
+              <a href="#hasResource">has resource</a>
+            </li>
+            <li>
+              <a href="#hasRole">has role</a>
+            </li>
+            <li>
+              <a href="#isInheritedFrom">is inherited from</a>
+            </li>
+            <li>
+              <a href="#isTransitiveProfileOf">is transitive profile of</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#isProfileOf">is profile of</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
         <h3 id="object-property-definitions">Object Property Definitions</h3>
         <div class="property entity" id="hasArtifact">
           <h3>has artifact

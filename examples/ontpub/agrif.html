@@ -5,14 +5,14 @@
     <style>
         #pylode {
             position: fixed;
-            top: 130px;
-            left: -80px;
+            top: 205px;
+            left: -150px;
             font-size: small;
             transform: rotate(-90deg);
             color: grey;
         }
         #pylode a {
-            font-size: 2em;
+            font-size: 1.5em;
             font-weight: bold;
             text-decoration: none;
             color: #005A9C;
@@ -28,6 +28,12 @@
         }
         #pylode #version {
             font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
         }
 
         .cardinality {
@@ -50,14 +56,18 @@
             padding-top: 7px;
         }
 
-        #metadata ul,
-        #classes ul {
+        ul.pylodelitlist {
             list-style-type: none;
+            margin-left: -40px;
         }
 
         #metadata ul li,
         #classes ul li {
-            margin-left: -40px;
+            margin-bottom: 10px;
+        }
+
+        #metadata dd p {
+          margin: 0 0 1em 0;
         }
 
         ul.hlist {
@@ -67,12 +77,19 @@
             background-color: #F4FFFF;
         }
 
-        ul.hierarchy {
-            border: 1px solid navy;
-            padding: 5px 25px 5px 25px;
+        div.hierarchy {
+            margin-bottom: 30px;
             background-color: #F4FFFF;
+            padding: 10px;
         }
 
+        ul.hierarchy {=
+            padding: 5px 25px 5px 25px;
+        }
+
+        ul.hierarchy li {
+            margin-top:5px;
+        }
 
         ul.hlist li {
             display: inline;
@@ -124,7 +141,10 @@
             border-bottom: 1px solid navy;
         }
         h4 { font: bold 100% sans-serif }
-        h5 { font: italic 100% sans-serif }
+        h5 {
+            font: italic 100% sans-serif;
+            margin-bottom: 10px;
+        }
         h6 { font: small-caps 100% sans-serif }
 
         body {
@@ -213,66 +233,82 @@
             text-decoration: none;
         }
 
-#toc {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    height: 100%;
-    overflow-y: auto;
-    padding: 10px;
-    border: solid 1px navy;
-    font-size: small;
-    width: 180px;
-}
-#toc h3 {
-    margin-top: 5px;
-}
+        #toc {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            padding: 10px;
+            border: solid 1px navy;
+            font-size: small;
+            width: 180px;
+        }
+        #toc h3 {
+            margin-top: 5px;
+        }
 
-#toc ul {
-    list-style: none;
-    padding-left: 0;
-}
+        #toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
 
-#toc .first > li {
-    margin-top: 5px;
-}
+        #toc .first > li {
+            margin-top: 5px;
+        }
 
-#toc .second,
-#toc .third {
-    padding-left: 10px;
-}
+        #toc .second,
+        #toc .third {
+            padding-left: 10px;
+        }
 
-#content {
-    width: calc(100% - 150px);
-}
+        #content {
+            width: calc(100% - 150px);
+        }
 
-.hover_property {
-    cursor: help;
-    text-decoration: none;
-    border-bottom: dashed 1px;
-}
+        .hover_property {
+            cursor: help;
+            text-decoration: none;
+            border-bottom: dashed 1px;
+        }
 
-.setclass {
-    list-style-type: none;
-}
+        .setclass {
+            list-style-type: none;
+        }
 
-code{
-    word-wrap: break-word;
-  }
-  table {
-    table-layout: fixed;
-    width: 100%;
-  }
-  td {
-    word-wrap: break-word;
-  }
+        code{
+            word-wrap: break-word;
+          }
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        td {
+            word-wrap: break-word;
+        }
+        #legend table.entity {
+            width: 25%;
+        }
 	</style>
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png">
     <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png">
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <script id="schema.org" type="application/ld+json">
 [
+  {
+    "@id": "http://linked.data.gov.au/org/finance",
+    "https://schema.org/name": [
+      {
+        "@value": "Department of Finance"
+      }
+    ],
+    "https://schema.org/url": [
+      {
+        "@id": "https://www.finance.gov.au"
+      }
+    ]
+  },
   {
     "@id": "http://linked.data.gov.au/def/agrif",
     "@type": [
@@ -292,7 +328,7 @@ code{
         "@value": "Kerry Taylor"
       },
       {
-        "@id": "_:n91429e2b03a84a41bf76a3567cffcc17b1"
+        "@id": "_:n2411e10579124a2a90f757872abb353ab1"
       }
     ],
     "https://schema.org/copyrightNotice": [
@@ -303,13 +339,13 @@ code{
     ],
     "https://schema.org/creator": [
       {
-        "@id": "_:n91429e2b03a84a41bf76a3567cffcc17b2"
+        "@id": "_:n2411e10579124a2a90f757872abb353ab2"
       },
       {
-        "@id": "_:n91429e2b03a84a41bf76a3567cffcc17b3"
+        "@id": "_:n2411e10579124a2a90f757872abb353ab3"
       },
       {
-        "@id": "_:n91429e2b03a84a41bf76a3567cffcc17b4"
+        "@id": "_:n2411e10579124a2a90f757872abb353ab4"
       }
     ],
     "https://schema.org/dateCreated": [
@@ -348,7 +384,7 @@ code{
     ]
   },
   {
-    "@id": "_:n91429e2b03a84a41bf76a3567cffcc17b1",
+    "@id": "_:n2411e10579124a2a90f757872abb353ab1",
     "https://schema.org/affiliation": [
       {
         "@id": "https://surroundaustralia.com"
@@ -372,7 +408,7 @@ code{
     ]
   },
   {
-    "@id": "_:n91429e2b03a84a41bf76a3567cffcc17b2",
+    "@id": "_:n2411e10579124a2a90f757872abb353ab2",
     "https://schema.org/affiliation": [
       {
         "@id": "http://linked.data.gov.au/org/finance"
@@ -386,7 +422,7 @@ code{
     ]
   },
   {
-    "@id": "_:n91429e2b03a84a41bf76a3567cffcc17b3",
+    "@id": "_:n2411e10579124a2a90f757872abb353ab3",
     "https://schema.org/affiliation": [
       {
         "@id": "https://www.anu.edu.au"
@@ -410,7 +446,7 @@ code{
     ]
   },
   {
-    "@id": "_:n91429e2b03a84a41bf76a3567cffcc17b4",
+    "@id": "_:n2411e10579124a2a90f757872abb353ab4",
     "https://schema.org/affiliation": [
       {
         "@id": "http://linked.data.gov.au/org/finance"
@@ -420,19 +456,6 @@ code{
       {
         "@language": "en",
         "@value": "John Machin"
-      }
-    ]
-  },
-  {
-    "@id": "http://linked.data.gov.au/org/finance",
-    "https://schema.org/name": [
-      {
-        "@value": "Department of Finance"
-      }
-    ],
-    "https://schema.org/url": [
-      {
-        "@id": "https://www.finance.gov.au"
       }
     ]
   }
@@ -464,7 +487,9 @@ code{
               <a class="hover_property" href="http://purl.org/dc/terms/publisher" title="An entity responsible for making the resource available. Defined in DCMI Metadata Terms">Publisher</a>
             </dt>
             <dd>
-              <a href="http://linked.data.gov.au/org/finance">ns1:finance</a>
+              <span>
+                <a href="https://www.finance.gov.au">Department of Finance</a>
+              </span>
             </dd>
           </div>
           <div>
@@ -472,7 +497,7 @@ code{
               <a class="hover_property" href="http://purl.org/dc/terms/creator" title="An entity responsible for making the resource. Defined in DCMI Metadata Terms">Creator</a>
             </dt>
             <dd>
-              <ul>
+              <ul class="pylodelitlist">
                 <li>
                   <span>
                     <span>Katherine Stuart</span>
@@ -489,8 +514,8 @@ code{
                     <a href="http://orcid.org/0000-0003-3425-0780">
                     <svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
                         xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <title>Orcid logo</title>
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <title>http://orcid.org/0000-0003-3425-0780</title>
                         <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
                                 <g id="Group-4">
@@ -507,7 +532,7 @@ code{
                         </g>
                     </svg></a>
                     <span>(
-                      <a href="mailto:armin.haller@anu.edu.au">armin.haller@anu.edu.au</a>)
+                      <a href="mailto:armin.haller@anu.edu.au">armin.haller@anu.edu.au</a> )
                     </span>
                     <span>
                       <em> of 
@@ -534,7 +559,7 @@ code{
               <a class="hover_property" href="http://purl.org/dc/terms/contributor" title="An entity responsible for making contributions to the resource. Defined in DCMI Metadata Terms">Contributor</a>
             </dt>
             <dd>
-              <ul>
+              <ul class="pylodelitlist">
                 <li><p>Pouya Ghiasnezhad Omran</p></li>
                 <li><p>Sergio José Rodríguez Méndez</p></li>
                 <li><p>Kerry Taylor</p></li>
@@ -543,9 +568,9 @@ code{
                     <span>Nicholas J. Car</span>
                     <a href="http://orcid.org/0000-0002-8742-7730">
                     <svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
-                         xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <title>Orcid logo</title>
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <title>http://orcid.org/0000-0002-8742-7730</title>
                         <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
                                 <g id="Group-4">
@@ -562,7 +587,7 @@ code{
                         </g>
                     </svg></a>
                     <span>(
-                      <a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a>)
+                      <a href="mailto:nicholas.car@surroundaustralia.com">nicholas.car@surroundaustralia.com</a> )
                     </span>
                     <span>
                       <em> of 
@@ -605,7 +630,7 @@ code{
               <a class="hover_property" href="http://www.w3.org/2002/07/owl#versionIRI" title="The property that identifies the version IRI of an ontology. Defined in The OWL 2 Schema vocabulary (OWL 2)">Version Iri</a>
             </dt>
             <dd>
-              <a href="http://linked.data.gov.au/def/agrif/0.9">ns2:0.9</a>
+              <a href="http://linked.data.gov.au/def/agrif/0.9">http://linked.data.gov.au/def/agrif/0.9</a>
             </dd>
           </div>
           <div>
@@ -644,6 +669,282 @@ code{
       </div>
       <div class="section" id="classes">
         <h2>Classes</h2>
+        <h3 id="class-hierarchy">Class Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#Activity">Activity</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#AccessActivity">Access Activity</a>
+                </li>
+                <li>
+                  <a href="#MaintainActivity">Maintain Activity</a>
+                </li>
+                <li>
+                  <a href="#ShareActivity">Share Activity</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#Agent">Agent</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#Organisation">Organisation</a>
+                  <ul class="hierarchy">
+                    <li>
+                      <a href="#OrganisationalUnit">Organisational Unit</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#Person">Person</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#Artefact">Artefact</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#DigitalArtefact">Digital Artefact</a>
+                </li>
+                <li>
+                  <a href="#PhysicalArtefact">Physical Artefact</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#Association">Association</a>
+            </li>
+            <li>
+              <a href="#Classifier">Classifier</a>
+            </li>
+            <li>
+              <a href="#Collection">Collection</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#LogicalCollection">Logical Collection</a>
+                </li>
+                <li>
+                  <a href="#PhysicalCollection">Physical Collection</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#Control">Control</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#AccessControl">Access Control</a>
+                  <ul class="hierarchy">
+                    <li>
+                      <a href="#SecurityClassification">Security Classification</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#SecurityControl">Security Control</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#Coverage">Coverage</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#JurisdictionalCoverage">Jurisdictional Coverage</a>
+                </li>
+                <li>
+                  <a href="#SpatialCoverage">Spatial Coverage</a>
+                </li>
+                <li>
+                  <a href="#TemporalCoverage">Temporal Coverage</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#Event">Event</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#ArtefactChangeEvent">Artefact Change Event</a>
+                  <ul class="hierarchy">
+                    <li>
+                      <a href="#ArtefactSendEvent">Artefact Send Event</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#ArtefactControlEvent">Artefact Control Event</a>
+                  <ul class="hierarchy">
+                    <li>
+                      <a href="#ArtefactPublishEvent">Artefact Publish Event</a>
+                    </li>
+                    <li>
+                      <a href="#ArtefactShareEvent">Artefact Share Event</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#RecordControlEvent">Record Control Event</a>
+                  <ul class="hierarchy">
+                    <li>
+                      <a href="#RecordAuditEvent">Record Audit Event</a>
+                    </li>
+                    <li>
+                      <a href="#RecordDecisionEvent">Record Decision Event</a>
+                    </li>
+                    <li>
+                      <a href="#RecordDisposalEvent">Record Disposal Event</a>
+                      <ul class="hierarchy">
+                        <li>
+                          <a href="#RecordDestructionEvent">Record Destruction Event</a>
+                        </li>
+                        <li>
+                          <a href="#RecordFreezeEvent">Record Freeze Event</a>
+                        </li>
+                        <li>
+                          <a href="#RecordTransferEvent">Record Transfer Event</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="#RecordReplacementEvent">Record Replacement Event</a>
+                    </li>
+                    <li>
+                      <a href="#RecordSentencingEvent">Record Sentencing Event</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#CreationEvent">Record Creation Event</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#FormFactor">Form Factor</a>
+            </li>
+            <li>
+              <a href="#Function">Function</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#AGIFTFunction">AGIFT Function</a>
+                </li>
+                <li>
+                  <a href="#RecordsAuthorityFunction">Records Authority Function</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#InformationSystem">Information System</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#IntellectualControlSystem">Intellectual Control System</a>
+                  <ul class="hierarchy">
+                    <li>
+                      <a href="#ControlledVocabulary">Controlled Vocabulary</a>
+                    </li>
+                    <li>
+                      <a href="#Series">Series</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#Manifest">Manifest</a>
+            </li>
+            <li>
+              <a href="#Permission">Permission</a>
+            </li>
+            <li>
+              <a href="#Policy">Policy</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#DigitalPreservationPolicy">Digital Preservation Policy</a>
+                </li>
+                <li>
+                  <a href="#InformationManagementPolicy">Information Management Policy</a>
+                </li>
+                <li>
+                  <a href="#MinimumMetadataSetPolicy">Minimum Metadata Set Policy</a>
+                </li>
+                <li>
+                  <a href="#RecordStorageStandard">Record Storage Standard</a>
+                </li>
+                <li>
+                  <a href="#RecordsAuthorityPolicy">Records Authority Disposal Class Policy</a>
+                  <ul class="hierarchy">
+                    <li>
+                      <a href="#DisposalClass">Disposal Class</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#Quality">Quality</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#PreservationQuality">Preservation Quality</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#Record">Record</a>
+            </li>
+            <li>
+              <a href="#Role">Role</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#Administrator">Administrator</a>
+                </li>
+                <li>
+                  <a href="#BusinessOwner">Business Owner</a>
+                </li>
+                <li>
+                  <a href="#Creator">Creator</a>
+                </li>
+                <li>
+                  <a href="#User">User</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#SpatialLocation">Spatial Location</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#HoldingSpace">Holding Space</a>
+                  <ul class="hierarchy">
+                    <li>
+                      <a href="#DigitalHoldingSpace">Digital Holding Space</a>
+                    </li>
+                    <li>
+                      <a href="#PhysicalHoldingSpace">Physical Holding Space</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#Status">Status</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#DecisionStatus">Decision Status</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#Trigger">Trigger</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#AccessTrigger">Access Trigger</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#VersionHistory">Version History</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="class-definitions">Class Definitions</h3>
         <div class="property entity" id="AGIFTFunction">
           <h3>AGIFT Function
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
@@ -715,14 +1016,23 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#accessedBy">accessedBy</a>
+                          <a href="#accessedBy">accessed By</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Agent">Agent</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -732,7 +1042,16 @@ code{
                         <span>
                           <a href="#triggers">triggers</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#AccessTrigger">Access Trigger</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -775,7 +1094,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#SecurityClassification">SecurityClassification</a>
+                  <a href="#SecurityClassification">Security Classification</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -834,7 +1153,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="https://www.w3.org/TR/prov-o/#Activity">ns3:Activity</a>
+                <a href="https://www.w3.org/TR/prov-o/#Activity">https://www.w3.org/TR/prov-o/#Activity</a>
               </td>
             </tr>
             <tr>
@@ -842,14 +1161,23 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#qualifiedAssociation">qualifiedAssociation</a>
+                          <a href="#qualifiedAssociation">qualified Association</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Association">Association</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -857,9 +1185,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#wasAssociatedWith">wasAssociatedWith</a>
+                          <a href="#wasAssociatedWith">was Associated With</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Agent">Agent</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -867,9 +1204,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#associatedFunction">associatedFunction</a>
+                          <a href="#associatedFunction">associated Function</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Function">Function</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -877,9 +1223,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#guidingPolicy">guidingPolicy</a>
+                          <a href="#guidingPolicy">guiding Policy</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Policy">Policy</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -887,9 +1242,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasLocation">hasLocation</a>
+                          <a href="#hasLocation">has Location</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#SpatialLocation">Spatial Location</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -897,9 +1261,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasStatus">hasStatus</a>
+                          <a href="#hasStatus">has Status</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Status">Status</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -907,9 +1280,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#requiresSecurityClassification">requiresSecurityClassification</a>
+                          <a href="#requiresSecurityClassification">requires Security Classification</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#SecurityClassification">Security Classification</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -917,9 +1299,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#usedRecord">usedRecord</a>
+                          <a href="#usedRecord">used Record</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Record">Record</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -959,22 +1350,22 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#AccessActivity">AccessActivity</a>
+                      <a href="#AccessActivity">Access Activity</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#MaintainActivity">MaintainActivity</a>
+                      <a href="#MaintainActivity">Maintain Activity</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#ShareActivity">ShareActivity</a>
+                      <a href="#ShareActivity">Share Activity</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1035,7 +1426,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="https://www.w3.org/TR/prov-o/#Agent">ns3:Agent</a>
+                <a href="https://www.w3.org/TR/prov-o/#Agent">https://www.w3.org/TR/prov-o/#Agent</a>
               </td>
             </tr>
             <tr>
@@ -1043,14 +1434,23 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#actsAs">actsAs</a>
+                          <a href="#actsAs">acts As</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Role">Role</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1058,9 +1458,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasPermission">hasPermission</a>
+                          <a href="#hasPermission">has Permission</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Permission">Permission</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1068,9 +1477,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#positionIn">positionIn</a>
+                          <a href="#positionIn">position In</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Organisation">Organisation</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1082,7 +1500,7 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="#Organisation">Organisation</a>
@@ -1122,14 +1540,23 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#hasQuality">hasQuality</a>
+                          <a href="#hasQuality">has Quality</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#PreservationQuality">Preservation Quality</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1137,9 +1564,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#isAffectedBy">isAffectedBy</a>
+                          <a href="#isAffectedBy">is Affected By</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Event">Event</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1147,9 +1583,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#isChangedBy">isChangedBy</a>
+                          <a href="#isChangedBy">is Changed By</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#InformationSystem">Information System</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1157,9 +1602,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#storedIn">storedIn</a>
+                          <a href="#storedIn">stored In</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#IntellectualControlSystem">Intellectual Control System</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1167,9 +1621,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasLocation">hasLocation</a>
+                          <a href="#hasLocation">has Location</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#SpatialLocation">Spatial Location</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1177,9 +1640,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#relatedTo">relatedTo</a>
+                          <a href="#relatedTo">related To</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Artefact">Artefact</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1187,9 +1659,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#requiresSecurityClassification">requiresSecurityClassification</a>
+                          <a href="#requiresSecurityClassification">requires Security Classification</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#SecurityClassification">Security Classification</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1199,7 +1680,16 @@ code{
                         <span>
                           <a href="#softwareAssignedID">softwareAssignedID</a>
                           <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1211,16 +1701,16 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#DigitalArtefact">DigitalArtefact</a>
+                      <a href="#DigitalArtefact">Digital Artefact</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#PhysicalArtefact">PhysicalArtefact</a>
+                      <a href="#PhysicalArtefact">Physical Artefact</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1271,6 +1761,10 @@ code{
                     <span>
                       <span class="cardinality">min</span>
                       <span>2</span>
+                    </span>
+                    <span>
+                      <a href="#Artefact">Artefact</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span><br>
                   </span>
                 </span>
@@ -1282,7 +1776,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#ArtefactSendEvent">ArtefactSendEvent</a>
+                  <a href="#ArtefactSendEvent">Artefact Send Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1325,9 +1819,18 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#hasControl">hasControl</a>
+                      <a href="#hasControl">requires Control</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>only<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">only</span>
+                      <span>
+                        <span>
+                          <a href="#Control">Control</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -1337,16 +1840,16 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#ArtefactPublishEvent">ArtefactPublishEvent</a>
+                      <a href="#ArtefactPublishEvent">Artefact Publish Event</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#ArtefactShareEvent">ArtefactShareEvent</a>
+                      <a href="#ArtefactShareEvent">Artefact Share Event</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1378,7 +1881,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#ArtefactControlEvent">ArtefactControlEvent</a>
+                  <a href="#ArtefactControlEvent">Artefact Control Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1408,7 +1911,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#ArtefactChangeEvent">ArtefactChangeEvent</a>
+                  <a href="#ArtefactChangeEvent">Artefact Change Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1418,17 +1921,21 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#hasTargetAgent">hasTargetAgent</a>
+                          <a href="#hasTargetAgent">has Target Agent</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
                           <span class="cardinality">min</span>
                           <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Agent">Agent</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -1437,12 +1944,16 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasSourceAgent">hasSourceAgent</a>
+                          <a href="#hasSourceAgent">has Source Agent</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Agent">Agent</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -1475,7 +1986,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#ArtefactControlEvent">ArtefactControlEvent</a>
+                  <a href="#ArtefactControlEvent">Artefact Control Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1485,17 +1996,21 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#hasTargetAgent">hasTargetAgent</a>
+                          <a href="#hasTargetAgent">has Target Agent</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
                           <span class="cardinality">min</span>
                           <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Agent">Agent</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -1504,12 +2019,16 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasSourceAgent">hasSourceAgent</a>
+                          <a href="#hasSourceAgent">has Source Agent</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Agent">Agent</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -1541,7 +2060,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="https://www.w3.org/TR/prov-o/#Association">ns3:Association</a>
+                <a href="https://www.w3.org/TR/prov-o/#Association">https://www.w3.org/TR/prov-o/#Association</a>
               </td>
             </tr>
             <tr>
@@ -1549,14 +2068,23 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#associatedRole">associatedRole</a>
+                          <a href="#associatedRole">associated Role</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Role">Role</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1564,9 +2092,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasAgent">hasAgent</a>
+                          <a href="#hasAgent">has Agent</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Agent">Agent</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1630,9 +2167,18 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#associatedFunction">associatedFunction</a>
+                      <a href="#associatedFunction">associated Function</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>only<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">only</span>
+                      <span>
+                        <span>
+                          <a href="#Function">Function</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -1664,9 +2210,18 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#hasPart">hasPart</a>
+                      <a href="#hasPart">has Part</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>some<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">some</span>
+                      <span>
+                        <span>
+                          <a href="#Artefact">Artefact</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -1676,16 +2231,16 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#LogicalCollection">LogicalCollection</a>
+                      <a href="#LogicalCollection">Logical Collection</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#PhysicalCollection">PhysicalCollection</a>
+                      <a href="#PhysicalCollection">Physical Collection</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1716,16 +2271,16 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#AccessControl">AccessControl</a>
+                      <a href="#AccessControl">Access Control</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#SecurityControl">SecurityControl</a>
+                      <a href="#SecurityControl">Security Control</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1757,7 +2312,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#IntellectualControlSystem">IntellectualControlSystem</a>
+                  <a href="#IntellectualControlSystem">Intellectual Control System</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1770,9 +2325,18 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#associatedFunction">associatedFunction</a>
+                      <a href="#associatedFunction">associated Function</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>only<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">only</span>
+                      <span>
+                        <span>
+                          <a href="#Function">Function</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -1801,22 +2365,22 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#JurisdictionalCoverage">JurisdictionalCoverage</a>
+                      <a href="#JurisdictionalCoverage">Jurisdictional Coverage</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#SpatialCoverage">SpatialCoverage</a>
+                      <a href="#SpatialCoverage">Spatial Coverage</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#TemporalCoverage">TemporalCoverage</a>
+                      <a href="#TemporalCoverage">Temporal Coverage</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1825,7 +2389,7 @@ code{
             </tr>
           </table>
         </div>
-        <div class="property entity" id="RecordCreationEvent">
+        <div class="property entity" id="CreationEvent">
           <h3>Record Creation Event
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
@@ -1948,14 +2512,23 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#storedIn">storedIn</a>
+                          <a href="#storedIn">stored In</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#InformationSystem">Information System</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1965,7 +2538,16 @@ code{
                         <span>
                           <a href="#filename">filename</a>
                           <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/2000/01/rdf-schema#Literal">Literal</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1975,7 +2557,16 @@ code{
                         <span>
                           <a href="#filesize">filesize</a>
                           <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/2001/XMLSchema#long">xsd:long</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -1985,7 +2576,16 @@ code{
                         <span>
                           <a href="#format">format</a>
                           <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="http://www.w3.org/2000/01/rdf-schema#Literal">Literal</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -2017,7 +2617,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#HoldingSpace">HoldingSpace</a>
+                  <a href="#HoldingSpace">Holding Space</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2077,7 +2677,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#RecordsAuthorityPolicy">RecordsAuthorityPolicy</a>
+                  <a href="#RecordsAuthorityPolicy">Records Authority Disposal Class Policy</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2125,7 +2725,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="https://www.w3.org/TR/prov-o/#InstantaneousEvent">ns3:InstantaneousEvent</a>
+                <a href="https://www.w3.org/TR/prov-o/#InstantaneousEvent">https://www.w3.org/TR/prov-o/#InstantaneousEvent</a>
               </td>
             </tr>
             <tr>
@@ -2133,14 +2733,23 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
                           <a href="#affects">affects</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="n2411e10579124a2a90f757872abb353ab45">n2411e10579124a2a90f757872abb353ab45</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -2148,9 +2757,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#qualifiedAssociation">qualifiedAssociation</a>
+                          <a href="#qualifiedAssociation">qualified Association</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Association">Association</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -2158,9 +2776,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#wasAssociatedWith">wasAssociatedWith</a>
+                          <a href="#wasAssociatedWith">was Associated With</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Agent">Agent</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -2168,9 +2795,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#associatedFunction">associatedFunction</a>
+                          <a href="#associatedFunction">associated Function</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Function">Function</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -2178,9 +2814,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#guidingPolicy">guidingPolicy</a>
+                          <a href="#guidingPolicy">guiding Policy</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Policy">Policy</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -2188,9 +2833,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasStatus">hasStatus</a>
+                          <a href="#hasStatus">has Status</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Status">Status</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -2198,9 +2852,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#priorEvent">priorEvent</a>
+                          <a href="#priorEvent">prior Event</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Event">Event</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -2208,9 +2871,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#triggeredBy">triggeredBy</a>
+                          <a href="#triggeredBy">triggered By</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Trigger">Trigger</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -2222,28 +2894,28 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#ArtefactChangeEvent">ArtefactChangeEvent</a>
+                      <a href="#ArtefactChangeEvent">Artefact Change Event</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#ArtefactControlEvent">ArtefactControlEvent</a>
+                      <a href="#ArtefactControlEvent">Artefact Control Event</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#RecordCreationEvent">CreationEvent</a>
+                      <a href="#CreationEvent">Record Creation Event</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#RecordControlEvent">RecordControlEvent</a>
+                      <a href="#RecordControlEvent">Record Control Event</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -2287,7 +2959,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li><p>A Function is a process that is performed routinely to carry out a part of the mandate of an Australian Government Agency.</p></li>
                   <li><p>A Function reflects the responsibilities of an Organisation that can be delegated through official channels. [Commonwealth Records Series Manual]</p></li>
                 </ul>
@@ -2301,9 +2973,18 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#guidingPolicy">guidingPolicy</a>
+                      <a href="#guidingPolicy">guiding Policy</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>only<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">only</span>
+                      <span>
+                        <span>
+                          <a href="#Policy">Policy</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -2313,16 +2994,16 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#AGIFTFunction">AGIFTFunction</a>
+                      <a href="#AGIFTFunction">AGIFT Function</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#RecordsAuthorityFunction">RecordsAuthorityFunction</a>
+                      <a href="#RecordsAuthorityFunction">Records Authority Function</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -2354,7 +3035,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#SpatialLocation">SpatialLocation</a>
+                  <a href="#SpatialLocation">Spatial Location</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2364,16 +3045,16 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#DigitalHoldingSpace">DigitalHoldingSpace</a>
+                      <a href="#DigitalHoldingSpace">Digital Holding Space</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#PhysicalHoldingSpace">PhysicalHoldingSpace</a>
+                      <a href="#PhysicalHoldingSpace">Physical Holding Space</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -2418,9 +3099,18 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#hasDisposalClass">hasDisposalClass</a>
+                      <a href="#hasDisposalClass">has Disposal Class</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>only<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">only</span>
+                      <span>
+                        <span>
+                          <a href="#DisposalClass">Disposal Class</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -2450,7 +3140,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#IntellectualControlSystem">IntellectualControlSystem</a>
+                  <a href="#IntellectualControlSystem">Intellectual Control System</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2480,7 +3170,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#InformationSystem">InformationSystem</a>
+                  <a href="#InformationSystem">Information System</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2493,9 +3183,18 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#guidingPolicy">guidingPolicy</a>
+                      <a href="#guidingPolicy">guiding Policy</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>only<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">only</span>
+                      <span>
+                        <span>
+                          <a href="#Policy">Policy</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -2505,10 +3204,10 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#ControlledVocabulary">ControlledVocabulary</a>
+                      <a href="#ControlledVocabulary">Controlled Vocabulary</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -2619,9 +3318,18 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#hasQuality">hasQuality</a>
+                      <a href="#hasQuality">has Quality</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>some<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">some</span>
+                      <span>
+                        <span>
+                          <a href="#PreservationQuality">Preservation Quality</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -2718,7 +3426,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="https://www.w3.org/TR/prov-o/#Organization">ns3:Organization</a>
+                <a href="https://www.w3.org/TR/prov-o/#Organization">https://www.w3.org/TR/prov-o/#Organization</a>
               </td>
             </tr>
             <tr>
@@ -2740,9 +3448,18 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#associatedFunction">associatedFunction</a>
+                      <a href="#associatedFunction">associated Function</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>some<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">some</span>
+                      <span>
+                        <span>
+                          <a href="#Function">Function</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -2753,7 +3470,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#OrganisationalUnit">OrganisationalUnit</a>
+                  <a href="#OrganisationalUnit">Organisational Unit</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2796,9 +3513,18 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#partOf">partOf</a>
+                      <a href="#partOf">part Of</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>only<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">only</span>
+                      <span>
+                        <span>
+                          <a href="#Organisation">Organisation</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -2852,7 +3578,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="https://www.w3.org/TR/prov-o/#Person">ns3:Person</a>
+                <a href="https://www.w3.org/TR/prov-o/#Person">https://www.w3.org/TR/prov-o/#Person</a>
               </td>
             </tr>
             <tr>
@@ -2912,9 +3638,18 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#hasFormFactor">hasFormFactor</a>
+                      <a href="#hasFormFactor">has Form Factor</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>only<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">only</span>
+                      <span>
+                        <span>
+                          <a href="#FormFactor">Form Factor</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -2974,7 +3709,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#HoldingSpace">HoldingSpace</a>
+                  <a href="#HoldingSpace">Holding Space</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3003,7 +3738,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://purl.org/dc/terms/Policy">dcterms:Policy</a>
+                <a href="http://purl.org/dc/terms/Policy">Policy</a>
               </td>
             </tr>
             <tr>
@@ -3011,34 +3746,34 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#DigitalPreservationPolicy">DigitalPreservationPolicy</a>
+                      <a href="#DigitalPreservationPolicy">Digital Preservation Policy</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#InformationManagementPolicy">InformationManagementPolicy</a>
+                      <a href="#InformationManagementPolicy">Information Management Policy</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#MinimumMetadataSetPolicy">MinimumMetadataSetPolicy</a>
+                      <a href="#MinimumMetadataSetPolicy">Minimum Metadata Set Policy</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#RecordStorageStandard">RecordStorageStandard</a>
+                      <a href="#RecordStorageStandard">Record Storage Standard</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#RecordsAuthorityPolicy">RecordsAuthorityPolicy</a>
+                      <a href="#RecordsAuthorityPolicy">Records Authority Disposal Class Policy</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -3100,7 +3835,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#PreservationQuality">PreservationQuality</a>
+                  <a href="#PreservationQuality">Preservation Quality</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3129,14 +3864,23 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#hasClassifier">hasClassifier</a>
+                          <a href="#hasClassifier">has Classifier</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Classifier">Classifier</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3144,9 +3888,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#qualifiedAssociation">qualifiedAssociation</a>
+                          <a href="#qualifiedAssociation">qualified Association</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Association">Association</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3154,9 +3907,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasActivity">hasActivity</a>
+                          <a href="#hasActivity">has Activity</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Activity">Activity</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3164,9 +3926,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasControl">hasControl</a>
+                          <a href="#hasControl">requires Control</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Control">Control</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3174,9 +3945,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasCoverage">hasCoverage</a>
+                          <a href="#hasCoverage">has Coverage</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Coverage">Coverage</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3184,9 +3964,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasSeries">hasSeries</a>
+                          <a href="#hasSeries">has Series</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Series">Series</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3194,9 +3983,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasStatus">hasStatus</a>
+                          <a href="#hasStatus">has Status</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Status">Status</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3204,9 +4002,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#isAffectedBy">isAffectedBy</a>
+                          <a href="#isAffectedBy">is Affected By</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Event">Event</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3214,9 +4021,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#relatedTo">relatedTo</a>
+                          <a href="#relatedTo">related To</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Record">Record</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3226,7 +4042,16 @@ code{
                         <span>
                           <a href="#replaces">replaces</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Record">Record</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3234,9 +4059,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#requiresSecurityClassification">requiresSecurityClassification</a>
+                          <a href="#requiresSecurityClassification">requires Security Classification</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#SecurityClassification">Security Classification</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3244,12 +4078,16 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#associatedFunction">associatedFunction</a>
+                          <a href="#associatedFunction">associated Function</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
                           <span class="cardinality">min</span>
                           <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Function">Function</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -3258,12 +4096,16 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#recordOf">recordOf</a>
+                          <a href="#recordOf">record Of</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
                           <span class="cardinality">min</span>
                           <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Artefact">Artefact</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -3272,12 +4114,16 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasDisposalClass">hasDisposalClass</a>
+                          <a href="#hasDisposalClass">has Disposal Class</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#DisposalClass">Disposal Class</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -3286,12 +4132,16 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#isAffectedBy">isAffectedBy</a>
+                          <a href="#isAffectedBy">is Affected By</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#CreationEvent">Record Creation Event</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -3338,7 +4188,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#RecordControlEvent">RecordControlEvent</a>
+                  <a href="#RecordControlEvent">Record Control Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3381,9 +4231,18 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#hasControl">hasControl</a>
+                      <a href="#hasControl">requires Control</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>only<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">only</span>
+                      <span>
+                        <span>
+                          <a href="#Control">Control</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -3393,34 +4252,34 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#RecordAuditEvent">RecordAuditEvent</a>
+                      <a href="#RecordAuditEvent">Record Audit Event</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#RecordDecisionEvent">RecordDecisionEvent</a>
+                      <a href="#RecordDecisionEvent">Record Decision Event</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#RecordDisposalEvent">RecordDisposalEvent</a>
+                      <a href="#RecordDisposalEvent">Record Disposal Event</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#RecordReplacementEvent">RecordReplacementEvent</a>
+                      <a href="#RecordReplacementEvent">Record Replacement Event</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#RecordSentencingEvent">RecordSentencingEvent</a>
+                      <a href="#RecordSentencingEvent">Record Sentencing Event</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -3452,7 +4311,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#RecordControlEvent">RecordControlEvent</a>
+                  <a href="#RecordControlEvent">Record Control Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3462,14 +4321,23 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#hasDecisionStatus">hasDecisionStatus</a>
+                          <a href="#hasDecisionStatus">has Decision Status</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#DecisionStatus">Decision Status</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3477,9 +4345,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasPrerequisiteDecisionEvent">hasPrerequisiteDecisionEvent</a>
+                          <a href="#hasPrerequisiteDecisionEvent">prerequisite Decision Event</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#RecordDecisionEvent">Record Decision Event</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3511,7 +4388,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#RecordDisposalEvent">RecordDisposalEvent</a>
+                  <a href="#RecordDisposalEvent">Record Disposal Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3541,7 +4418,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#RecordControlEvent">RecordControlEvent</a>
+                  <a href="#RecordControlEvent">Record Control Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3551,22 +4428,22 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#RecordDestructionEvent">RecordDestructionEvent</a>
+                      <a href="#RecordDestructionEvent">Record Destruction Event</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#RecordFreezeEvent">RecordFreezeEvent</a>
+                      <a href="#RecordFreezeEvent">Record Freeze Event</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#RecordTransferEvent">RecordTransferEvent</a>
+                      <a href="#RecordTransferEvent">Record Transfer Event</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -3598,7 +4475,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#RecordDisposalEvent">RecordDisposalEvent</a>
+                  <a href="#RecordDisposalEvent">Record Disposal Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3628,7 +4505,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#RecordControlEvent">RecordControlEvent</a>
+                  <a href="#RecordControlEvent">Record Control Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3638,14 +4515,23 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#hasVersionHistory">hasVersionHistory</a>
+                          <a href="#hasVersionHistory">has Version History</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#VersionHistory">Version History</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3653,12 +4539,16 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#replacedBy">replacedBy</a>
+                          <a href="#replacedBy">replaced By</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
                         </span>
                         <span>
                           <span class="cardinality">exactly</span>
                           <span>1</span>
+                        </span>
+                        <span>
+                          <a href="#Record">Record</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                         </span><br>
                       </span>
                     </span>
@@ -3691,7 +4581,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#RecordControlEvent">RecordControlEvent</a>
+                  <a href="#RecordControlEvent">Record Control Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3759,7 +4649,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#RecordDisposalEvent">RecordDisposalEvent</a>
+                  <a href="#RecordDisposalEvent">Record Disposal Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3769,14 +4659,23 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <span>
                         <span>
-                          <a href="#transferredFrom">transferredFrom</a>
+                          <a href="#transferredFrom">transferred From</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Role">Role</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3784,9 +4683,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#transferredTo">transferredTo</a>
+                          <a href="#transferredTo">transferred To</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>some<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">some</span>
+                          <span>
+                            <span>
+                              <a href="#Role">Role</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3794,9 +4702,18 @@ code{
                     <span>
                       <span>
                         <span>
-                          <a href="#hasManifest">hasManifest</a>
+                          <a href="#hasManifest">has Manifest</a>
                           <sup class="sup-op" title="OWL Object Property">op</sup>
-                        </span>only<br>
+                        </span>
+                        <span>
+                          <span class="cardinality">only</span>
+                          <span>
+                            <span>
+                              <a href="#Manifest">Manifest</a>
+                              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                            </span>
+                          </span>
+                        </span><br>
                       </span>
                     </span>
                   </li>
@@ -3877,12 +4794,16 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#hasDisposalClass">hasDisposalClass</a>
+                      <a href="#hasDisposalClass">has Disposal Class</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                     <span>
                       <span class="cardinality">exactly</span>
                       <span>1</span>
+                    </span>
+                    <span>
+                      <a href="#DisposalClass">Disposal Class</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span><br>
                   </span>
                 </span>
@@ -3894,7 +4815,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#DisposalClass">DisposalClass</a>
+                  <a href="#DisposalClass">Disposal Class</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3923,7 +4844,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="https://www.w3.org/TR/prov-o/#Role">ns3:Role</a>
+                <a href="https://www.w3.org/TR/prov-o/#Role">https://www.w3.org/TR/prov-o/#Role</a>
               </td>
             </tr>
             <tr>
@@ -3934,9 +4855,18 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#hasPermission">hasPermission</a>
+                      <a href="#hasPermission">has Permission</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>some<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">some</span>
+                      <span>
+                        <span>
+                          <a href="#Permission">Permission</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -3946,7 +4876,7 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
                       <a href="#Administrator">Administrator</a>
@@ -3955,7 +4885,7 @@ code{
                   </li>
                   <li>
                     <span>
-                      <a href="#BusinessOwner">BusinessOwner</a>
+                      <a href="#BusinessOwner">Business Owner</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -4005,7 +4935,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#AccessControl">AccessControl</a>
+                  <a href="#AccessControl">Access Control</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -4065,7 +4995,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#IntellectualControlSystem">IntellectualControlSystem</a>
+                  <a href="#IntellectualControlSystem">Intellectual Control System</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -4078,9 +5008,18 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#associatedFunction">associatedFunction</a>
+                      <a href="#associatedFunction">associated Function</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>only<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">only</span>
+                      <span>
+                        <span>
+                          <a href="#Function">Function</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -4123,9 +5062,18 @@ code{
                 <span>
                   <span>
                     <span>
-                      <a href="#sharedWith">sharedWith</a>
+                      <a href="#sharedWith">shared With</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>some<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">some</span>
+                      <span>
+                        <span>
+                          <a href="#Agent">Agent</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -4185,7 +5133,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#HoldingSpace">HoldingSpace</a>
+                  <a href="#HoldingSpace">Holding Space</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -4215,7 +5163,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#DecisionStatus">DecisionStatus</a>
+                  <a href="#DecisionStatus">Decision Status</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -4279,7 +5227,16 @@ code{
                     <span>
                       <a href="#notifies">notifies</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
-                    </span>some<br>
+                    </span>
+                    <span>
+                      <span class="cardinality">some</span>
+                      <span>
+                        <span>
+                          <a href="#Agent">Agent</a>
+                          <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                        </span>
+                      </span>
+                    </span><br>
                   </span>
                 </span>
               </td>
@@ -4290,7 +5247,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#AccessTrigger">AccessTrigger</a>
+                  <a href="#AccessTrigger">Access Trigger</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -4349,6 +5306,176 @@ code{
       </div>
       <div class="section" id="objectproperties">
         <h2>Object Properties</h2>
+        <h3 id="object-property-hierarchy">Object Property Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#actsAs">acts As</a>
+            </li>
+            <li>
+              <a href="#affects">affects</a>
+            </li>
+            <li>
+              <a href="#associatedFunction">associated Function</a>
+            </li>
+            <li>
+              <a href="#associatedRole">associated Role</a>
+            </li>
+            <li>
+              <a href="#guidingPolicy">guiding Policy</a>
+            </li>
+            <li>
+              <a href="#hasActivity">has Activity</a>
+            </li>
+            <li>
+              <a href="#hasAgent">has Agent</a>
+            </li>
+            <li>
+              <a href="#hasClassifier">has Classifier</a>
+            </li>
+            <li>
+              <a href="#hasCoverage">has Coverage</a>
+            </li>
+            <li>
+              <a href="#hasDecisionStatus">has Decision Status</a>
+            </li>
+            <li>
+              <a href="#hasDisposalClass">has Disposal Class</a>
+            </li>
+            <li>
+              <a href="#hasFormFactor">has Form Factor</a>
+            </li>
+            <li>
+              <a href="#hasLocation">has Location</a>
+            </li>
+            <li>
+              <a href="#hasManifest">has Manifest</a>
+            </li>
+            <li>
+              <a href="#hasPart">has Part</a>
+            </li>
+            <li>
+              <a href="#hasPermission">has Permission</a>
+            </li>
+            <li>
+              <a href="#hasQuality">has Quality</a>
+            </li>
+            <li>
+              <a href="#hasSeries">has Series</a>
+            </li>
+            <li>
+              <a href="#hasStatus">has Status</a>
+            </li>
+            <li>
+              <a href="#hasVersionHistory">has Version History</a>
+            </li>
+            <li>
+              <a href="#isAffectedBy">is Affected By</a>
+            </li>
+            <li>
+              <a href="#isChangedBy">is Changed By</a>
+            </li>
+            <li>
+              <a href="#isPartOf">is Part Of</a>
+            </li>
+            <li>
+              <a href="#notifies">notifies</a>
+            </li>
+            <li>
+              <a href="#partOf">part Of</a>
+            </li>
+            <li>
+              <a href="#positionIn">position In</a>
+            </li>
+            <li>
+              <a href="#priorEvent">prior Event</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#hasPrerequisiteDecisionEvent">prerequisite Decision Event</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#qualifiedAssociation">qualified Association</a>
+            </li>
+            <li>
+              <a href="#recordOf">record Of</a>
+            </li>
+            <li>
+              <a href="#relatedTo">related To</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#hasNextVersion">has Next Version</a>
+                </li>
+                <li>
+                  <a href="#hasPreviousVersion">has Previous Version</a>
+                </li>
+                <li>
+                  <a href="#isAttachedTo">is Attached To</a>
+                </li>
+                <li>
+                  <a href="#isBasedOn">is Based On</a>
+                </li>
+                <li>
+                  <a href="#isDuplicateOf">is Duplicate Of</a>
+                </li>
+                <li>
+                  <a href="#isMentionedIn">is Mentioned In</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#replacedBy">replaced By</a>
+            </li>
+            <li>
+              <a href="#replaces">replaces</a>
+            </li>
+            <li>
+              <a href="#hasControl">requires Control</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#requiresSecurityClassification">requires Security Classification</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#storedIn">stored In</a>
+            </li>
+            <li>
+              <a href="#transferredFrom">transferred From</a>
+            </li>
+            <li>
+              <a href="#transferredTo">transferred To</a>
+            </li>
+            <li>
+              <a href="#triggeredBy">triggered By</a>
+            </li>
+            <li>
+              <a href="#triggers">triggers</a>
+            </li>
+            <li>
+              <a href="#usedRecord">used Record</a>
+            </li>
+            <li>
+              <a href="#wasAssociatedWith">was Associated With</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#accessedBy">accessed By</a>
+                </li>
+                <li>
+                  <a href="#hasSourceAgent">has Source Agent</a>
+                </li>
+                <li>
+                  <a href="#hasTargetAgent">has Target Agent</a>
+                </li>
+                <li>
+                  <a href="#sharedWith">shared With</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <h3 id="object-property-definitions">Object Property Definitions</h3>
         <div class="property entity" id="accessedBy">
           <h3>accessed By
             <sup class="sup-op" title="OWL Object Property">op</sup>
@@ -4372,7 +5499,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#wasAssociatedWith">wasAssociatedWith</a>
+                  <a href="#wasAssociatedWith">was Associated With</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -4458,7 +5585,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="https://www.w3.org/TR/prov-o/#hadRole">ns3:hadRole</a>
+                <a href="https://www.w3.org/TR/prov-o/#hadRole">https://www.w3.org/TR/prov-o/#hadRole</a>
               </td>
             </tr>
           </table>
@@ -4504,7 +5631,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="https://www.w3.org/TR/prov-o/#p_activity">ns3:p_activity</a>
+                <a href="https://www.w3.org/TR/prov-o/#p_activity">https://www.w3.org/TR/prov-o/#p_activity</a>
               </td>
             </tr>
           </table>
@@ -4531,7 +5658,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="https://www.w3.org/TR/prov-o/#p_agent">ns3:p_agent</a>
+                <a href="https://www.w3.org/TR/prov-o/#p_agent">https://www.w3.org/TR/prov-o/#p_agent</a>
               </td>
             </tr>
           </table>
@@ -4553,7 +5680,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                  <a href="http://www.w3.org/2002/07/owl#topObjectProperty">topObjectProperty</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -4583,7 +5710,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#requiresSecurityClassification">requiresSecurityClassification</a>
+                  <a href="#requiresSecurityClassification">requires Security Classification</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -4727,7 +5854,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#relatedTo">relatedTo</a>
+                  <a href="#relatedTo">related To</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -4795,7 +5922,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#priorEvent">priorEvent</a>
+                  <a href="#priorEvent">prior Event</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -4825,7 +5952,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#relatedTo">relatedTo</a>
+                  <a href="#relatedTo">related To</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -4874,7 +6001,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                  <a href="http://www.w3.org/2002/07/owl#topObjectProperty">topObjectProperty</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -4904,7 +6031,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#wasAssociatedWith">wasAssociatedWith</a>
+                  <a href="#wasAssociatedWith">was Associated With</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -4953,7 +6080,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#wasAssociatedWith">wasAssociatedWith</a>
+                  <a href="#wasAssociatedWith">was Associated With</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -5002,7 +6129,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                  <a href="http://www.w3.org/2002/07/owl#topObjectProperty">topObjectProperty</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -5032,7 +6159,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#relatedTo">relatedTo</a>
+                  <a href="#relatedTo">related To</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -5062,7 +6189,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#relatedTo">relatedTo</a>
+                  <a href="#relatedTo">related To</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -5111,7 +6238,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#relatedTo">relatedTo</a>
+                  <a href="#relatedTo">related To</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -5141,7 +6268,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#relatedTo">relatedTo</a>
+                  <a href="#relatedTo">related To</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -5247,7 +6374,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#hasPrerequisiteDecisionEvent">hasPrerequisiteDecisionEvent</a>
+                  <a href="#hasPrerequisiteDecisionEvent">prerequisite Decision Event</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -5314,40 +6441,40 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#hasNextVersion">hasNextVersion</a>
+                      <a href="#hasNextVersion">has Next Version</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasPreviousVersion">hasPreviousVersion</a>
+                      <a href="#hasPreviousVersion">has Previous Version</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#isAttachedTo">isAttachedTo</a>
+                      <a href="#isAttachedTo">is Attached To</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#isBasedOn">isBasedOn</a>
+                      <a href="#isBasedOn">is Based On</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#isDuplicateOf">isDuplicateOf</a>
+                      <a href="#isDuplicateOf">is Duplicate Of</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#isMentionedIn">isMentionedIn</a>
+                      <a href="#isMentionedIn">is Mentioned In</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -5417,7 +6544,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#hasControl">hasControl</a>
+                  <a href="#hasControl">requires Control</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -5447,7 +6574,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="#wasAssociatedWith">wasAssociatedWith</a>
+                  <a href="#wasAssociatedWith">was Associated With</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -5477,7 +6604,7 @@ code{
               </th>
               <td>
                 <span>
-                  <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                  <a href="http://www.w3.org/2002/07/owl#topObjectProperty">topObjectProperty</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -5601,7 +6728,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="https://www.w3.org/TR/prov-o/#wasAssociatedWith">ns3:wasAssociatedWith</a>
+                <a href="https://www.w3.org/TR/prov-o/#wasAssociatedWith">https://www.w3.org/TR/prov-o/#wasAssociatedWith</a>
               </td>
             </tr>
             <tr>
@@ -5609,28 +6736,28 @@ code{
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
               </th>
               <td>
-                <ul>
+                <ul class="pylodelitlist">
                   <li>
                     <span>
-                      <a href="#accessedBy">accessedBy</a>
+                      <a href="#accessedBy">accessed By</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasSourceAgent">hasSourceAgent</a>
+                      <a href="#hasSourceAgent">has Source Agent</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasTargetAgent">hasTargetAgent</a>
+                      <a href="#hasTargetAgent">has Target Agent</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#sharedWith">sharedWith</a>
+                      <a href="#sharedWith">shared With</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -5718,7 +6845,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="https://www.w3.org/TR/prov-o/#endedAtTime">ns3:endedAtTime</a>
+                <a href="https://www.w3.org/TR/prov-o/#endedAtTime">https://www.w3.org/TR/prov-o/#endedAtTime</a>
               </td>
             </tr>
             <tr>
@@ -5791,7 +6918,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="http://purl.org/dc/elements/1.1/format">dc:format</a>
+                <a href="http://purl.org/dc/elements/1.1/format">http://purl.org/dc/elements/1.1/format</a>
               </td>
             </tr>
           </table>
@@ -5872,7 +6999,7 @@ code{
                 <a class="hover_property" href="http://purl.org/dc/terms/source" title="A related resource from which the described resource is derived. Defined in DCMI Metadata Terms">Source</a>
               </th>
               <td>
-                <a href="https://www.w3.org/TR/prov-o/#startedAtTime">ns3:startedAtTime</a>
+                <a href="https://www.w3.org/TR/prov-o/#startedAtTime">https://www.w3.org/TR/prov-o/#startedAtTime</a>
               </td>
             </tr>
             <tr>
@@ -5961,33 +7088,13 @@ code{
           <dd>
             <code>http://linked.data.gov.au/def/agrif#</code>
           </dd>
-          <dt id="dc">dc</dt>
-          <dd>
-            <code>http://purl.org/dc/elements/1.1/</code>
-          </dd>
           <dt id="dcterms">dcterms</dt>
           <dd>
             <code>http://purl.org/dc/terms/</code>
           </dd>
-          <dt id="ns1">ns1</dt>
-          <dd>
-            <code>http://linked.data.gov.au/org/</code>
-          </dd>
-          <dt id="ns2">ns2</dt>
-          <dd>
-            <code>http://linked.data.gov.au/def/agrif/</code>
-          </dd>
-          <dt id="ns3">ns3</dt>
-          <dd>
-            <code>https://www.w3.org/TR/prov-o/#</code>
-          </dd>
           <dt id="owl">owl</dt>
           <dd>
             <code>http://www.w3.org/2002/07/owl#</code>
-          </dd>
-          <dt id="prov">prov</dt>
-          <dd>
-            <code>http://www.w3.org/ns/prov#</code>
           </dd>
           <dt id="rdf">rdf</dt>
           <dd>
@@ -5996,10 +7103,6 @@ code{
           <dt id="rdfs">rdfs</dt>
           <dd>
             <code>http://www.w3.org/2000/01/rdf-schema#</code>
-          </dd>
-          <dt id="schema">schema</dt>
-          <dd>
-            <code>https://schema.org/</code>
           </dd>
           <dt id="sdo">sdo</dt>
           <dd>
@@ -6056,7 +7159,10 @@ code{
           <span id="y">y</span>
           <span>LODE</span>
         </a>
-        <a href="https://github.com/rdflib/pyLODE/release/3.0.2" id="version">3.0.2</a>
+        <a href="https://github.com/rdflib/pyLODE/release/3.4.5a0" id="version">3.4.5a0</a>
+        <span> with the </span>
+        <a href="https://linked.data.gov.au/def/ontpub" id="profile">OntPub</a>
+        <span>profile</span>
       </p>
     </div>
     <div id="toc">
@@ -6071,227 +7177,233 @@ code{
           <h4>
             <a href="#classes">Classes</a>
           </h4>
+          <h5>
+            <a href="#class-hierarchy" style="margin-left:10px;">Class Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#class-definitions" style="margin-left:10px;">Class Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
+            <li style="margin-left:10px;">
               <a href="#AGIFTFunction">AGIFT Function</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#AccessActivity">Access Activity</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#AccessControl">Access Control</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#AccessTrigger">Access Trigger</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Activity">Activity</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Administrator">Administrator</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Agent">Agent</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Artefact">Artefact</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#ArtefactChangeEvent">Artefact Change Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#ArtefactControlEvent">Artefact Control Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#ArtefactPublishEvent">Artefact Publish Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#ArtefactSendEvent">Artefact Send Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#ArtefactShareEvent">Artefact Share Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Association">Association</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#BusinessOwner">Business Owner</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Classifier">Classifier</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Collection">Collection</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Control">Control</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#ControlledVocabulary">Controlled Vocabulary</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Coverage">Coverage</a>
             </li>
-            <li>
-              <a href="#RecordCreationEvent">Record Creation Event</a>
+            <li style="margin-left:10px;">
+              <a href="#CreationEvent">Record Creation Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Creator">Creator</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#DecisionStatus">Decision Status</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#DigitalArtefact">Digital Artefact</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#DigitalHoldingSpace">Digital Holding Space</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#DigitalPreservationPolicy">Digital Preservation Policy</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#DisposalClass">Disposal Class</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Event">Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#FormFactor">Form Factor</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Function">Function</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#HoldingSpace">Holding Space</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#InformationManagementPolicy">Information Management Policy</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#InformationSystem">Information System</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#IntellectualControlSystem">Intellectual Control System</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#JurisdictionalCoverage">Jurisdictional Coverage</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#LogicalCollection">Logical Collection</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#MaintainActivity">Maintain Activity</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Manifest">Manifest</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#MinimumMetadataSetPolicy">Minimum Metadata Set Policy</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Organisation">Organisation</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#OrganisationalUnit">Organisational Unit</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Permission">PermissionSecurity Clearance</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Person">Person</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#PhysicalArtefact">Physical Artefact</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#PhysicalCollection">Physical Collection</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#PhysicalHoldingSpace">Physical Holding Space</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Policy">Policy</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#PreservationQuality">Preservation Quality</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Quality">Quality</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Record">Record</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#RecordAuditEvent">Record Audit Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#RecordControlEvent">Record Control Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#RecordDecisionEvent">Record Decision Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#RecordDestructionEvent">Record Destruction Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#RecordDisposalEvent">Record Disposal Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#RecordFreezeEvent">Record Freeze Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#RecordReplacementEvent">Record Replacement Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#RecordSentencingEvent">Record Sentencing Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#RecordStorageStandard">Record Storage Standard</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#RecordTransferEvent">Record Transfer Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#RecordsAuthorityFunction">Records Authority Function</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#RecordsAuthorityPolicy">Records Authority Disposal Class Policy</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Role">Role</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#SecurityClassification">Security Classification</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#SecurityControl">Security Control</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Series">Series</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#ShareActivity">Share Activity</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#SpatialCoverage">Spatial Coverage</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#SpatialLocation">Spatial Location</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Status">Status</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#TemporalCoverage">Temporal Coverage</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#Trigger">Trigger</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#User">User</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#VersionHistory">Version History</a>
             </li>
           </ul>
@@ -6300,161 +7412,167 @@ code{
           <h4>
             <a href="#objectproperties">Object Properties</a>
           </h4>
+          <h5>
+            <a href="#object-property-hierarchy" style="margin-left:10px;">Object Property Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#object-property-definitions" style="margin-left:10px;">Object Property Definitions</a>
+          </h5>
           <ul class="second">
-            <li>
+            <li style="margin-left:10px;">
               <a href="#accessedBy">accessed By</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#actsAs">acts As</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#affects">affects</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#associatedFunction">associated Function</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#associatedRole">associated Role</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#guidingPolicy">guiding Policy</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasActivity">has Activity</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasAgent">has Agent</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasClassifier">has Classifier</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasControl">requires Control</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasCoverage">has Coverage</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasDecisionStatus">has Decision Status</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasDisposalClass">has Disposal Class</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasFormFactor">has Form Factor</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasLocation">has Location</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasManifest">has Manifest</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasNextVersion">has Next Version</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasPart">has Part</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasPermission">has Permission</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasPrerequisiteDecisionEvent">prerequisite Decision Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasPreviousVersion">has Previous Version</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasQuality">has Quality</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasSeries">has Series</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasSourceAgent">has Source Agent</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasStatus">has Status</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasTargetAgent">has Target Agent</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#hasVersionHistory">has Version History</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#isAffectedBy">is Affected By</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#isAttachedTo">is Attached To</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#isBasedOn">is Based On</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#isChangedBy">is Changed By</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#isDuplicateOf">is Duplicate Of</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#isMentionedIn">is Mentioned In</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#isPartOf">is Part Of</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#notifies">notifies</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#partOf">part Of</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#positionIn">position In</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#priorEvent">prior Event</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#qualifiedAssociation">qualified Association</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#recordOf">record Of</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#relatedTo">related To</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#replacedBy">replaced By</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#replaces">replaces</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#requiresSecurityClassification">requires Security Classification</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#sharedWith">shared With</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#storedIn">stored In</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#transferredFrom">transferred From</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#transferredTo">transferred To</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#triggeredBy">triggered By</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#triggers">triggers</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#usedRecord">used Record</a>
             </li>
-            <li>
+            <li style="margin-left:10px;">
               <a href="#wasAssociatedWith">was Associated With</a>
             </li>
           </ul>
@@ -6524,34 +7642,16 @@ code{
               <a href="#"></a>
             </li>
             <li>
-              <a href="#dc">dc</a>
-            </li>
-            <li>
               <a href="#dcterms">dcterms</a>
             </li>
             <li>
-              <a href="#ns1">ns1</a>
-            </li>
-            <li>
-              <a href="#ns2">ns2</a>
-            </li>
-            <li>
-              <a href="#ns3">ns3</a>
-            </li>
-            <li>
               <a href="#owl">owl</a>
-            </li>
-            <li>
-              <a href="#prov">prov</a>
             </li>
             <li>
               <a href="#rdf">rdf</a>
             </li>
             <li>
               <a href="#rdfs">rdfs</a>
-            </li>
-            <li>
-              <a href="#schema">schema</a>
             </li>
             <li>
               <a href="#sdo">sdo</a>
