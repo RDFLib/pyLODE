@@ -7,25 +7,7 @@ An OWL ontology documentation tool using Python, based on LODE.
 
 In addition to making web page, human-readable forms of ontologies, pyLODE encourages ontology annotation *best practice* by only producing good results for well documented inputs! pyLODE defines what it considers “well documented” in sections below, e.g. [What pyLODE understands](#what-pylode-understands).
 
-**New mode**: In v3.1.0, pyLODE now has a new mode called `supermodel`, in addition to the existing `ontpub` mode. This new mode allows for documenting **profiles and modules** of multipart models. See [supermodel.md](supermodel.md) for more information.
-
----
-
-## A note on the v 3.x change
-
-This is pyLODE version 3.0.1 and it’s vastly different from pyLODE 2.x. It doesn’t yet handle all the various “profiles” that pyLODE 2.13.2 does, such as SKOS “vocabularies” & Profiles Vocabulary “profiles”, it only handles OWL “ontologies”, nor all the special data types, such as JSON literals.
-
-However, it generates HTML in a much more straightforward manner and the code is both more efficient and much more maintainable, which is why it’s been made.
-
-v 3.x will eventually catch up to all of v 2.13.2’s features.
-
-To access v 2.13.2 of pyLODE, either:
-
-- [Download it from PyPI](https://pypi.org/project/pylode/2.13.2/)
-- [Check it out from GitHub](https://github.com/RDFLib/pyLODE/releases/tag/2.13.2)
-- Access it via the [online service](http://tools.kurrawong.ai/pylode)
-
----
+**New mode**: In v3.1.0, pyLODE now has a new mode called `supermodel`, in addition to the existing `ontpub` & `vocpub` modes. This new mode allows for documenting **profiles and modules** of multipart models. See [supermodel.md](supermodel.md) for more information.
 
 ## Contents
 
@@ -70,20 +52,23 @@ The tool can be used in multiple ways:
 ### Command line arguments
 
 ```text
-usage: cli.py [-h] [-v] [-o OUTPUTFILE] [-c {true,false}] input
+usage: pylode [-h] [-v] [-o OUTPUTFILE] [-c {true,false}] [-s] [-p {ontpub,vocpub,supermodel}] [-l {error,warning,info,debug}] input
 
 positional arguments:
-    input                 Input file location or URL
+  input                 Input file location or URL
 
-optional arguments:
-    -h, --help            show this help message and exit
-    -v, --version         show program's version number and exit
-    -o OUTPUTFILE,
-    --outputfile OUTPUTFILE
-                          Output file name (postfixed with .html if needed)
-    -c {true,false},
-    --css {true,false}
-                          Include CSS in the output HTML
+options:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  -o, --outputfile OUTPUTFILE
+                        A name you wish to assign to the output file. Will be postfixed with .html if not already added. If no output file is given, output will be printed to screen
+  -c, --css {true,false}
+                        Whether (true) or not (false) to include CSS within an output HTML file.
+  -s, --sort            Enables sorting of the subjects in the ontology in the output
+  -p, --profile {ontpub,vocpub,supermodel}
+                        Which profile to use to generate HTML. Must be one of 'ontpub' (https://linked.data.gov.au/def/ontpub) - for ontologies, 'vocpub' (https://linked.data.gov.au/def/vocpub) - for SKOS vocabularies, 'supermodel' - for profiles of profiles
+  -l, --loglevel {error,warning,info,debug}
+                        Set the logging level
 ```
 
 ### Basic Use
@@ -92,6 +77,12 @@ optional arguments:
 
 ```bash
 python pylode examples/ontpub/minimal.ttl -o minimal.html
+```
+
+for a SKOS vocabulary, indicate the `vocpub` profile:
+
+```bash
+python pylode examples/vocpub/GeologicSpecimenMaterialTypes.ttl -o GeologicSpecimenMaterialTypes.html -p vocpub
 ```
 
 #### As a Docker container
@@ -274,9 +265,6 @@ Older releases
 
 | Version | Date             | Description                                                                     |
 |---------|------------------|---------------------------------------------------------------------------------|
-| 3.0.5   | 27 April 2023    | Minor patching                                                                  |
-| 3.0.4   | 24 May 2022      | Use of Poetry                                                                   |
-| 3.0.2   | 24 May 2022      | Support for preformatted skos:example literals                                  |
 | 3.0.1   | 6 Jan 2022       | Direct HTML generation using dominate; easier to maintain and extend            |
 | 2.13.2  | 21 December 2021 | Updated RDFlib to 6.1.1, improved test to properly use pytest                   |
 | 2.10.0  | 24 May 2021      | Update Windows EXE build process, simplified versioning                         |
