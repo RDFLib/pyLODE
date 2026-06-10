@@ -215,6 +215,9 @@ pyLODE deliberately does **not** translate everything in RDF to HTML, enforcing 
 pyLODE supports simple and complex Agent objects, including ORCIDs, affiliations, and contact details.
 
 ```turtle
+PREFIX schema: <https://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
 <ontology_x>
     schema:creator [
         schema:name "Nicholas J. Car" ;

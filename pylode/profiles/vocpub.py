@@ -474,7 +474,7 @@ class VocPub:
                 remaining = {k: v for k, v in d.items() if k not in ordered}
                 return ordered | remaining
 
-            d = div(h2("Concepts"), id="concepts")
+            d = div(h2("Concept Definitions"), id="concepts")
             for iri, concept in dict(
                 sorted(concepts.items(), key=lambda item: item[1][SDO.name])
             ).items():  # order by Concept's label
@@ -559,7 +559,7 @@ class VocPub:
 
                     li(h4(a("Concepts Hierarchy", href="#concept-hierarchy")))
 
-                    li(h4(a("Concepts", href="#concepts")))
+                    li(h4(a("Concept Definitions", href="#concepts")))
 
                     with li():
                         h4(a("Namespaces", href="#namespaces"))
