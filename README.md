@@ -327,7 +327,7 @@ Nicholas Car
 5. tag with version number: `$git tag ...`
 6. push changes `$ git push`
 7. push version `git push --tags`
-8make a GitHub release
+8. make a GitHub release
     * PyPI release is automated from this in `pypi.yml`
 9. increment version number to next release alpha in `pyproject.toml`
 10. commit all changes `$ git commit -a "..."`
