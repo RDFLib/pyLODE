@@ -52,7 +52,7 @@
   <li>http://linked.data.gov.au/def/asgs-isof (deprecated) contains specialized predicates for containment relationships - this functionality is provided by the generic 'within' and 'contains' relations</li>
   <li>http://linked.data.gov.au/def/asgs-code (deprecated) contains specialised annotation properties for identifiers and labels - this functionality has been superseded by a set of data-types to be used in conjunction with more generic properties</li>
   <li>http://linked.data.gov.au/def/asgs-prop (deprecated) contains specialised ASGS properties for relationships, classifiers, identifiers and labels - this functionality has been superseded by use of types from standardized RDF vocabularies</li>
-</u>"""^^rdf:HTML ;
+</ul>"""^^rdf:HTML ;
                                       dcterms:modified "2020-02-03" ;
                                       dcterms:publisher <http://linked.data.gov.au/org/abs> ;
                                       dcterms:rights "Copyright 2018 Australian Bureau of Statistics." ;
