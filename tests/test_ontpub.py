@@ -335,7 +335,7 @@ def test_classes_definitions(fix_html):
 
 
 def test_object_properties_hierarchy(fix_html):
-    open("prof.html", "w").write(fix_html)
+    # open("prof.html", "w").write(fix_html)
     assert de_space_html(
         """
             <div class="hierarchy">
