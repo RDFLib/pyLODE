@@ -152,17 +152,19 @@ def test_classes_hierarchy(fix_html):
         de_space_html(
             """
         <h3 id="class-hierarchy">Class Hierarchy</h3>
-        <ul>
-          <li>
-            <a href="#Profile">Profile</a>
-          </li>
-          <li>
-            <a href="#ResourceDescriptor">Resource Descriptor</a>
-          </li>
-          <li>
-            <a href="#ResourceRole">Resource Role</a>
-          </li>
-        </ul>            
+        <div class="hierarchy">
+            <ul class="hierarchy">
+              <li>
+                <a href="#Profile">Profile</a>
+              </li>
+              <li>
+                <a href="#ResourceDescriptor">Resource Descriptor</a>
+              </li>
+              <li>
+                <a href="#ResourceRole">Resource Role</a>
+              </li>
+            </ul>
+        </div>
             """
         )
         in de_space_html(fix_html)
@@ -342,32 +344,34 @@ def test_classes_definitions(fix_html):
 
 
 def test_object_properties_hierarchy(fix_html):
+    open("prof.html", "w").write(fix_html)
     assert (
         de_space_html(
             """
-        <h3 id="object-property-hierarchy">Object Property Hierarchy</h3>
-        <ul>
-          <li>
-            <a href="#hasArtifact">has artifact</a>
-          </li>
-          <li>
-            <a href="#hasResource">has resource</a>
-          </li>
-          <li>
-            <a href="#hasRole">has role</a>
-          </li>
-          <li>
-            <a href="#isInheritedFrom">is inherited from</a>
-          </li>
-          <li>
-            <a href="#isTransitiveProfileOf">is transitive profile of</a>
-            <ul>
-              <li>
-                <a href="#isProfileOf">is profile of</a>
-              </li>
-            </ul>
-          </li>
-        </ul>            
+            <div class="hierarchy">
+              <ul class="hierarchy">
+                <li>
+                  <a href="#hasArtifact">has artifact</a>
+                </li>
+                <li>
+                  <a href="#hasResource">has resource</a>
+                </li>
+                <li>
+                  <a href="#hasRole">has role</a>
+                </li>
+                <li>
+                  <a href="#isInheritedFrom">is inherited from</a>
+                </li>
+                <li>
+                  <a href="#isTransitiveProfileOf">is transitive profile of</a>
+                  <ul class="hierarchy">
+                    <li>
+                      <a href="#isProfileOf">is profile of</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>            
             """
         )
         in de_space_html(fix_html)

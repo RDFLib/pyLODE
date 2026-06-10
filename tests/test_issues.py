@@ -16,7 +16,8 @@ def fix_html():
 
 
 def test_issue_5(fix_html):
-    open("issues.html", "w").write(fix_html)
+    # tested in test_vocpub::test_classes_hierarchy & test_vocpub::test_object_properties_hierarchy
+    pass
 
 
 def test_issue_13(fix_html):
@@ -71,7 +72,7 @@ def test_issue_30_html(fix_html):
 
 
 def test_issue_84(fix_html):
-    open("issues.html", "w").write(fix_html)
+    # open("issues.html", "w").write(fix_html)
     assert (
         de_space_html(
             """
