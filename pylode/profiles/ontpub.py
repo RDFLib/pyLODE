@@ -134,6 +134,9 @@ class OntPub:
         for s_ in g.subjects(RDF.type, OWL.Class):
             g.add((s_, RDF.type, RDFS.Class))
 
+        for s_ in g.subjects(RDF.type, RDFS.Class):
+            g.add((s_, RDF.type, OWL.Class))
+
         # # property types
         # for s_ in chain(
         #     g.subjects(RDF.type, OWL.ObjectProperty),

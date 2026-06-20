@@ -215,7 +215,7 @@ fruits:Citrus
 .
 
 fruits:Orange
-    a owl:Class ;
+    a rdfs:Class ;
     rdfs:isDefinedBy ont: ;
     rdfs:subClassOf fruits:Citrus ;
     schema:description "Dummy desc" ;

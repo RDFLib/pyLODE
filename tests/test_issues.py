@@ -152,6 +152,50 @@ def test_issue_141(fix_html):
     ) in de_space_html(fix_html), "Datatypes not catered for correctly"
 
 
+def test_issue_234(fix_html):
+    # open("issues.html", "w").write(fix_html)
+    assert de_space_html(
+        """<div class="property entity" id="Orange">
+          <h3>Orange
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/ns/fruits/Orange</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#wfprov">Workflow 4Ever Provenance Ontology</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Dummy desc</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://example.com/ns/fruits/Citrus">Citrus</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>"""
+    ) in de_space_html(fix_html), "ROR information not included"
+
+
 def test_issue_246(fix_html):
     # open("issues.html", "w").write(fix_html)
     assert de_space_html(
