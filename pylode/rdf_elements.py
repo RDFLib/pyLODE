@@ -1,14 +1,5 @@
 from rdflib import Namespace
-from rdflib.namespace import (
-    DCTERMS,
-    OWL,
-    RDF,
-    RDFS,
-    SDO,
-    SKOS,
-    VANN,
-    XSD
-)
+from rdflib.namespace import DCTERMS, OWL, RDF, RDFS, SDO, SKOS, VANN, XSD
 
 ONTDOC = Namespace("https://w3id.org/profile/ontdoc/")
 

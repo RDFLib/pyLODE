@@ -36,12 +36,12 @@ from rdflib.paths import ZeroOrMore
 try:
     from .rdf_elements import (
         AGENT_PROPS,
+        DATATYPE_CARDINALITIES,
         ONT_TYPES,
         ONTDOC,
         OWL_SET_TYPES,
         PROPS,
         RESTRICTION_TYPES,
-        DATATYPE_CARDINALITIES
     )
 except ImportError:
     from rdf_elements import (
@@ -559,7 +559,7 @@ def rdf_obj_html(
                             </g>
                         </g>
                     </svg>"""
-            
+
             def _ror_logo_svg(id):
                 id = id if ("http" in id) else f"https://ror.org/{id}"
                 return f"""
@@ -724,14 +724,22 @@ def rdf_obj_html(
                         for o2 in ont__.objects(o, RDFS.range):
                             for rp, ro in ont__.predicate_objects(o2):
                                 if rp == OWL.onDatatype:
-                                    prop = _hyperlink_html(ont__, ro, back_onts_, ns__, fids_)
+                                    prop = _hyperlink_html(
+                                        ont__, ro, back_onts_, ns__, fids_
+                                    )
                                 if rp == OWL.withRestrictions:
                                     cards = []
                                     for ro2 in ont__.objects(o2, OWL.withRestrictions):
-                                        for ro3 in ont__.objects(ro2, RDF.rest * ZeroOrMore / RDF.first):
-                                            for rp4, ro4 in ont__.predicate_objects(ro3):
+                                        for ro3 in ont__.objects(
+                                            ro2, RDF.rest * ZeroOrMore / RDF.first
+                                        ):
+                                            for rp4, ro4 in ont__.predicate_objects(
+                                                ro3
+                                            ):
                                                 if rp4 in DATATYPE_CARDINALITIES.keys():
-                                                    cards.append(f"{DATATYPE_CARDINALITIES[rp4]}{ro4}")
+                                                    cards.append(
+                                                        f"{DATATYPE_CARDINALITIES[rp4]}{ro4}"
+                                                    )
                                     if len(cards) > 0:
                                         card = " [" + ", ".join(cards) + "]"
                                         # XXX
@@ -852,7 +860,9 @@ def _make_hierarchy_html(
                     name = make_title_from_iri(s)
                 c = {
                     "iri": str(s),
-                    "name": str(name),  # need 2 x for OntPub (title) and VocPub (prefLabel) profiles
+                    "name": str(
+                        name
+                    ),  # need 2 x for OntPub (title) and VocPub (prefLabel) profiles
                 }
                 for o2 in ont.objects(s, parent_indicator):
                     if not isinstance(o2, BNode):
