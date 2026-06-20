@@ -811,11 +811,12 @@ def _make_hierarchy_html(
         items = []
         for s in ont.subjects(RDF.type, obj_class):
             if not isinstance(s, BNode):
+                name = ont.value(s, DCTERMS.title | SDO.name)
+                if name is None:
+                    name = make_title_from_iri(s)
                 c = {
                     "iri": str(s),
-                    "name": str(
-                        ont.value(s, DCTERMS.title | SDO.name)
-                    ),  # need 2 x for OntPub (title) and VocPub (prefLabel) profiles
+                    "name": str(name),  # need 2 x for OntPub (title) and VocPub (prefLabel) profiles
                 }
                 for o2 in ont.objects(s, parent_indicator):
                     if not isinstance(o2, BNode):
