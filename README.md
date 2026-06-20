@@ -162,22 +162,32 @@ docker run --rm -p 8000:8000 pylode-gunicorn:latest
 
 ### Module Use
 
-#### For OWL
+#### For OWL - OntPub
 
 ```python
-from pylode.profiles.ontpub import OntPub
+from pylode.profiles import OntPub
 
 od = OntPub(ontology="some-ontology-file.ttl")
 html = od.make_html()
 od.make_html(destination="some-resulting-html-file.html")
 ```
 
-#### For SKOS
+#### For SKOS - VocPub
 
 ```python
-from pylode.profiles.vocpub import VocPub
+from pylode.profiles import VocPub
 
 od = VocPub(ontology="some-ontology-file.ttl")
+html = od.make_html()
+od.make_html(destination="some-resulting-html-file.html")
+```
+
+#### For Supermodel
+
+```python
+from pylode.profiles import Supermodel
+
+od = Supermodel(ontology="some-ontology-file.ttl")
 html = od.make_html()
 od.make_html(destination="some-resulting-html-file.html")
 ```
@@ -195,9 +205,11 @@ Rendered examples:
 
 ## What pyLODE understands
 
-pyLODE understands definitional ontologies (`owl:Ontology`), classes, and properties.
+For definitional ontologies (`owl:Ontology`), pyLODE understands Classes, Properties, basic annotations of them and RDFS and OWL restraictions, such as `rdfs:domain`, `owl:qualifiedCardinality` etc.
 
-Supported properties can be found in `rdf_elements.py`.
+For vocabularies (`skos:ConceptScheme`), it understands ConceptScheme, Concepts, Collections, SKOS relations between them and basic annotations. 
+
+Supported properties for Classes, Concepts etc. can be found in `rdf_elements.py`.
 
 pyLODE deliberately does **not** translate everything in RDF to HTML, enforcing a conventional ontology documentation style. Support for new patterns can be requested via the [issue tracker](https://github.com/RDFLib/pyLODE/issues).
 
@@ -210,17 +222,25 @@ PREFIX schema: <https://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 <ontology_x>
-    schema:creator [
-        schema:name "Nicholas J. Car" ;
-        schema:identifier <http://orcid.org/0000-0002-8742-7730> ;
-        schema:email "nick@kurrawong.ai"^^xsd:anyURI ;
-        schema:affiliation [
-            schema:name "KurrawongAI" ;
-            schema:url "https://kurrawong.ai"^^xsd:anyURI ;
-        ] ;
-    ] ;
+    schema:creator <http://orcid.org/0000-0002-8742-7730> ;
+.
+
+<http://orcid.org/0000-0002-8742-7730>
+    a schema:Person ;
+    schema:name "Nicholas J. Car" ;
+    schema:identifier <http://orcid.org/0000-0002-8742-7730> ;
+    schema:email "nick@kurrawong.ai"^^xsd:anyURI ;
+    schema:affiliation <https://kurrawong.ai> ;
+.
+
+ <https://kurrawong.ai>
+     a schema:Organization ;
+     schema:name "KurrawongAI" ;
+     schema:url "https://kurrawong.ai"^^xsd:anyURI ;
 .
 ```
+
+You _can_ use Blank Nodes for agents, but you should, as much as possible, use IRIs to identify everything on the Semantic Web, including agents.
 
 ## Installation
 
