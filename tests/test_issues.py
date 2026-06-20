@@ -5,7 +5,7 @@ sys.path.append(str(Path().parent.parent.resolve() / "pylode"))
 import pytest
 
 from pylode.profiles import OntPub
-from pylode.utils import de_space_html, get_ns
+from pylode.utils import de_space_html
 
 current_dir = Path(__file__).parent
 
