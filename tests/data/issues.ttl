@@ -299,6 +299,7 @@ ont:
         foaf: ;
     owl:versionIRI <https://raw.github.com/wf4ever/ro/0.1.1/wfprov.owl> ;
     owl:versionInfo "0.1.1"^^xsd:string ;
+    schema:contributor <https://ror.org/00yczwp93> ;
     schema:copyrightHolder <https://wf4ever.github.io> ;
     schema:creator <https://wf4ever.github.io> ;
     schema:dateCreated "2025-12-19"^^xsd:date ;
@@ -335,4 +336,9 @@ Is **THIS** Markdown _working_ correctly? If so, [this](https://google.com) is a
     a schema:Organization ;
     schema:name "Workflow 4Ever Project Team" ;
     schema:url "https://wf4ever.github.io/"^^xsd:anyURI ;
+.
+
+<https://ror.org/00yczwp93>
+    a schema:Organization ;
+    schema:name "Laboratoire en Sciences et Technologies de l'Information Géographique pour la ville intelligente et les territoires durables" ;
 .
