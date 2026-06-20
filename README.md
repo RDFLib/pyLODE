@@ -312,11 +312,11 @@ Nicholas Car
 2. pass all tests: `$ task test`
 3. increment version number in `pyproject.toml`
 4. commit all changes `$ git commit -a "..."`
-5. tag with version number: `$git tag ...`
+5. tag with version number: `$ git tag ...`
 6. push changes `$ git push`
 7. push version `git push --tags`
 8. make a GitHub release
     * PyPI release is automated from this in `pypi.yml`
 9. increment version number to next release alpha in `pyproject.toml`
 10. commit all changes `$ git commit -a "..."`
-1push changes `$ git push`
+11. push changes `$ git push`
