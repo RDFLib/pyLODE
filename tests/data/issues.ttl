@@ -1,3 +1,4 @@
+PREFIX ex: <http://example.com/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX fruits: <http://example.com/ns/fruits/>
 PREFIX olis: <https://olis.dev/>
@@ -249,6 +250,45 @@ wfprov:auspixDggsLiteral
     skos:example """ "OrdinateList (R3234)"^^geo:auspixDggsLiteral""" ;
     skos:scopeNote "This datatype is to be used only for a specific DGGS implementation - AusPix. Other DGGS implementations should declare their own datatypes." ;
     skos:prefLabel "AusPIX DGGS Literal"@en ;
+.
+
+ex:input
+    a owl:DatatypeProperty ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:domain fruits:Lemon ;
+    rdfs:range [
+        a rdfs:Datatype ;
+        owl:onDatatype xsd:integer ;
+        owl:withRestrictions (
+            [ xsd:minInclusive 0 ]
+            [ xsd:maxExclusive 42 ]
+        )
+    ] ;
+    skos:definition """An example datatype property with a range restriction of >= 0 and < 42"""@en ;
+    skos:prefLabel "input"@en ;
+.
+
+ex:input2
+    a owl:DatatypeProperty ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:domain fruits:Lemon ;
+    rdfs:range [
+        a rdfs:Datatype ;
+        owl:onDatatype xsd:integer ;
+        owl:withRestrictions (
+            [ xsd:maxInclusive 42 ]
+        )
+    ] ;
+    skos:definition """An example datatype property with a range restriction of <= 42>"""@en ;
+    skos:prefLabel "input 2"@en ;
+.
+
+ex:output
+    a owl:ObjectProperty ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:range fruits:Lemon ;
+    skos:definition """An example object property with a range class fruits:Lemon"""@en ;
+    skos:prefLabel "output"@en ;
 .
 
 ont:

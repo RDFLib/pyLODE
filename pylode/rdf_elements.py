@@ -7,6 +7,7 @@ from rdflib.namespace import (
     SDO,
     SKOS,
     VANN,
+    XSD
 )
 
 ONTDOC = Namespace("https://w3id.org/profile/ontdoc/")
@@ -177,3 +178,10 @@ RESTRICTION_TYPES = [
 ]
 
 OWL_SET_TYPES = [OWL.unionOf, OWL.intersectionOf]
+
+DATATYPE_CARDINALITIES = {
+    XSD.minInclusive: ">=",
+    XSD.minExclusive: ">",
+    XSD.maxInclusive: "<=",
+    XSD.maxExclusive: "<",
+}

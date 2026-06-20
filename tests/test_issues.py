@@ -150,3 +150,14 @@ def test_issue_141(fix_html):
       </div>            
             """
     ) in de_space_html(fix_html), "Datatypes not catered for correctly"
+
+
+def test_issue_261(fix_html):
+    open("issues.html", "w").write(fix_html)
+    assert de_space_html(
+        """[&gt;=0, &lt;42]"""
+    ) in de_space_html(fix_html), "Min/Max datatype cardinality restriction incorrect"
+
+    assert de_space_html(
+        """[&lt;=42]"""
+    ) in de_space_html(fix_html), "Max datatype cardinality restriction incorrect"

@@ -41,6 +41,7 @@ try:
         OWL_SET_TYPES,
         PROPS,
         RESTRICTION_TYPES,
+        DATATYPE_CARDINALITIES
     )
 except ImportError:
     from rdf_elements import (
@@ -683,6 +684,21 @@ def rdf_obj_html(
                                     )
                                 ),
                             )
+                    elif px == ONTDOC.inRangeOf:  # rdfs:range
+                        for o2 in ont__.objects(o, RDFS.range):
+                            for rp, ro in ont__.predicate_objects(o2):
+                                if rp == OWL.onDatatype:
+                                    prop = _hyperlink_html(ont__, ro, back_onts_, ns__, fids_)
+                                if rp == OWL.withRestrictions:
+                                    cards = []
+                                    for ro2 in ont__.objects(o2, OWL.withRestrictions):
+                                        for ro3 in ont__.objects(ro2, RDF.rest * ZeroOrMore / RDF.first):
+                                            for rp4, ro4 in ont__.predicate_objects(ro3):
+                                                if rp4 in DATATYPE_CARDINALITIES.keys():
+                                                    cards.append(f"{DATATYPE_CARDINALITIES[rp4]}{ro4}")
+                                    if len(cards) > 0:
+                                        card = " [" + ", ".join(cards) + "]"
+                                        # XXX
 
             # Combined the check for card and cls so that only one br is added.
             if card is not None and cls is not None:
@@ -723,6 +739,8 @@ def rdf_obj_html(
             if (obj__, RDF.type, PROV.Agent) in ont__:
                 return _agent_html(ont__, obj__)
             elif (obj__, RDF.type, OWL.Restriction) in ont__:
+                return _restriction_html(ont__, obj__, ns__)
+            elif (obj__, RDF.type, RDFS.Datatype) in ont__:
                 return _restriction_html(ont__, obj__, ns__)
             else:  # (obj, RDF.type, OWL.Class) in ont:  # Set Class
                 return _setclass_html(ont__, obj__, back_onts__, ns__, fids__)
