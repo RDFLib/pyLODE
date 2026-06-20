@@ -1,0 +1,3214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AgriSchemas Ontology</title>
+    <style>
+        #pylode {
+            position: fixed;
+            top: 205px;
+            left: -150px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+        #pylode #p {
+            color: #329545;
+        }
+        #pylode #y {
+            color: #f9cb33;
+        }
+        #pylode #version {
+            font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dl {
+            /*border: 1px solid navy;*/
+            /*padding:5px;*/
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 0;
+        }
+
+        dd {
+            margin-bottom: 10px;
+            padding-top: 7px;
+        }
+
+        ul.pylodelitlist {
+            list-style-type: none;
+            margin-left: -40px;
+        }
+
+        #metadata ul li,
+        #classes ul li {
+            margin-bottom: 10px;
+        }
+
+        #metadata dd p {
+          margin: 0 0 1em 0;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        div.hierarchy {
+            margin-bottom: 30px;
+            background-color: #F4FFFF;
+            padding: 10px;
+        }
+
+        ul.hierarchy {=
+            padding: 5px 25px 5px 25px;
+        }
+
+        ul.hierarchy li {
+            margin-top:5px;
+        }
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 {
+            font: italic 100% sans-serif;
+            margin-bottom: 10px;
+        }
+        h6 { font: small-caps 100% sans-serif }
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: left;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-con,
+        .sup-col {
+            cursor:help;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-con {
+            color:orange;
+        }
+
+        .sup-col {
+            color:darkred;
+        }
+
+        sup {
+            margin-left: -3px;
+        }
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+
+        #toc {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            padding: 10px;
+            border: solid 1px navy;
+            font-size: small;
+            width: 180px;
+        }
+        #toc h3 {
+            margin-top: 5px;
+        }
+
+        #toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #toc .first > li {
+            margin-top: 5px;
+        }
+
+        #toc .second,
+        #toc .third {
+            padding-left: 10px;
+        }
+
+        #content {
+            width: calc(100% - 150px);
+        }
+
+        .hover_property {
+            cursor: help;
+            text-decoration: none;
+            border-bottom: dashed 1px;
+        }
+
+        .setclass {
+            list-style-type: none;
+        }
+
+        code{
+            word-wrap: break-word;
+          }
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        td {
+            word-wrap: break-word;
+        }
+        #legend table.entity {
+            width: 25%;
+        }
+	</style>
+    <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png">
+    <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <script id="schema.org" type="application/ld+json">
+[
+  {
+    "@id": "http://agrischemas.org/ontology",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/name": [
+      {
+        "@language": "en",
+        "@value": "AgriSchemas Ontology"
+      }
+    ]
+  }
+]
+	</script>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section" id="metadata">
+        <h1>AgriSchemas Ontology</h1>
+        <h2>Metadata</h2>
+        <dl>
+          <div>
+            <dt>
+              <strong>IRI</strong>
+            </dt>
+            <dd>
+              <code>http://agrischemas.org/ontology</code>
+            </dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/dc/terms/title" title="A name given to the resource. Defined in DCMI Metadata Terms">Title</a>
+            </dt>
+            <dd><p>AgriSchemas Ontology</p></dd>
+          </div>
+        </dl>
+      </div>
+      <div class="section" id="classes">
+        <h2>Classes</h2>
+        <h3 id="class-hierarchy">Class Hierarchy</h3>
+        <div class="hierarchy">
+          <ul class="hierarchy">
+            <li>
+              <a href="#Action">Action</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#StudyEvent">Study Event</a>
+                  <ul class="hierarchy">
+                    <li>
+                      <a href="#LabProtocol">Lab Protocol</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#AnnotationProperty">Annotation Property</a>
+            </li>
+            <li>
+              <a href="#BioChemEntity">Bio Chem Entity</a>
+            </li>
+            <li>
+              <a href="#BioChemEntity1">Bio Chem Entity</a>
+            </li>
+            <li>
+              <a href="#BioPathway">Bio Pathway</a>
+            </li>
+            <li>
+              <a href="#BioSchemasNewClassProposal">Bio Schemas New Class Proposal</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#LabProtocolParameterType">Lab Protocol Parameter Type</a>
+                </li>
+                <li>
+                  <a href="#StudyObservedVariable">Study Observed Variable</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#BiologicalAssociation">Biological Association</a>
+            </li>
+            <li>
+              <a href="#Class">Class</a>
+            </li>
+            <li>
+              <a href="#CreativeWork">Creative Work</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#ScholarlyPublication">Scholarly Publication</a>
+                  <ul class="hierarchy">
+                    <li>
+                      <a href="#ScholarlyArticle">Scholarly Article</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#EFO_0000001">Efo_0000001</a>
+            </li>
+            <li>
+              <a href="#EFO_0001426">Efo_0001426</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#ExperimentalDesign">Experimental Design</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#ExperimentalFactorType">Experimental Factor Type</a>
+            </li>
+            <li>
+              <a href="#ExperimentalFactorValue">Experimental Factor Value</a>
+            </li>
+            <li>
+              <a href="#experimental_design">experimental_design</a>
+            </li>
+            <li>
+              <a href="#FIeldTrialBioMaterial">F Ield Trial Bio Material</a>
+            </li>
+            <li>
+              <a href="#FieldTrialMaterialSource">Field Trial Material Source</a>
+            </li>
+            <li>
+              <a href="#FieldTrialObservationUnit">Field Trial Observation Unit</a>
+            </li>
+            <li>
+              <a href="#HostPathogenInteraction">Host Pathogen Interaction</a>
+            </li>
+            <li>
+              <a href="#Intangible">Intangible</a>
+            </li>
+            <li>
+              <a href="#NamedIndividual">Named Individual</a>
+            </li>
+            <li>
+              <a href="#OBI_0000750">Obi_0000750</a>
+            </li>
+            <li>
+              <a href="#OBI_0500000">Obi_0500000</a>
+            </li>
+            <li>
+              <a href="#observed_variable">observed_variable</a>
+            </li>
+            <li>
+              <a href="#Ontology">Ontology</a>
+            </li>
+            <li>
+              <a href="#PropertyValue">Property Value</a>
+              <ul class="hierarchy">
+                <li>
+                  <a href="#LabProtocolParameterValue">Lab Protocol Parameter Value</a>
+                </li>
+                <li>
+                  <a href="#StudyObservedValue">Study Observed Value</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#SchemaNewClassProposal">Schema New Class Proposal</a>
+            </li>
+            <li>
+              <a href="#Soil">Soil</a>
+            </li>
+          </ul>
+        </div>
+        <h3 id="class-definitions">Class Definitions</h3>
+        <div class="property entity" id="BioPathway">
+          <h3>Bio Pathway
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/BioPathway</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewClassProposal">agri:BioSchemasNewClassProposal</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://schema.org/Action">schema:Action</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <a href="http://purl.obolibrary.org/obo/GO_0008150">obo:GO_0008150</a>
+                  </li>
+                  <li>
+                    <a href="http://semanticscience.org/resource/SIO_001107">sio:SIO_001107</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="BioSchemasNewClassProposal">
+          <h3>Bio Schemas New Class Proposal
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/BioSchemasNewClassProposal</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioPathway">agri:BioPathway</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/ExperimentalDesign">agri:ExperimentalDesign</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/ExperimentalFactorType">agri:ExperimentalFactorType</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/ExperimentalFactorValue">agri:ExperimentalFactorValue</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/FIeldTrialBioMaterial">agri:FIeldTrialBioMaterial</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/FieldTrialMaterialSource">agri:FieldTrialMaterialSource</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/FieldTrialObservationUnit">agri:FieldTrialObservationUnit</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/HostPathogenInteraction">agri:HostPathogenInteraction</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/LabProtocolParameterType">agri:LabProtocolParameterType</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/LabProtocolParameterValue">agri:LabProtocolParameterValue</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/ScholarlyPublication">agri:ScholarlyPublication</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/StudyEvent">agri:StudyEvent</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/StudyObservedValue">agri:StudyObservedValue</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/StudyObservedVariable">agri:StudyObservedVariable</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="ExperimentalDesign">
+          <h3>Experimental Design
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/ExperimentalDesign</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewClassProposal">agri:BioSchemasNewClassProposal</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://purl.obolibrary.org/obo/OBI_0500000">obo:OBI_0500000</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://purl.org/ppeo/PPEO.owl#experimental_design">ppeo:experimental_design</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://schema.org/PropertyValue">schema:PropertyValue</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://www.ebi.ac.uk/efo/EFO_0001426">http://www.ebi.ac.uk/efo/EFO_0001426</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="ExperimentalFactorType">
+          <h3>Experimental Factor Type
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/ExperimentalFactorType</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewClassProposal">agri:BioSchemasNewClassProposal</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <a href="http://purl.org/ppeo/PPEO.owl#factor">ppeo:factor</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="ExperimentalFactorValue">
+          <h3>Experimental Factor Value
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/ExperimentalFactorValue</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewClassProposal">agri:BioSchemasNewClassProposal</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://purl.obolibrary.org/obo/OBI_0000750">obo:OBI_0000750</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://schema.org/PropertyValue">schema:PropertyValue</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://www.ebi.ac.uk/efo/EFO_0000001">http://www.ebi.ac.uk/efo/EFO_0000001</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <a href="http://purl.org/ppeo/PPEO.owl#factor_value">ppeo:factor_value</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="FIeldTrialBioMaterial">
+          <h3>F Ield Trial Bio Material
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/FIeldTrialBioMaterial</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewClassProposal">agri:BioSchemasNewClassProposal</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://schema.org/BioChemEntity">schema:BioChemEntity</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <a href="http://purl.org/ppeo/PPEO.owl#biological_material">ppeo:biological_material</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="FieldTrialMaterialSource">
+          <h3>Field Trial Material Source
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/FieldTrialMaterialSource</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewClassProposal">agri:BioSchemasNewClassProposal</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://schema.org/BioChemEntity">schema:BioChemEntity</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <a href="http://purl.org/ppeo/PPEO.owl#material_source">ppeo:material_source</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="FieldTrialObservationUnit">
+          <h3>Field Trial Observation Unit
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/FieldTrialObservationUnit</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewClassProposal">agri:BioSchemasNewClassProposal</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://schema.org/BioChemEntity">schema:BioChemEntity</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <a href="http://purl.org/ppeo/PPEO.owl#observation_unit">ppeo:observation_unit</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="HostPathogenInteraction">
+          <h3>Host Pathogen Interaction
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/HostPathogenInteraction</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewClassProposal">agri:BioSchemasNewClassProposal</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://schema.org/Action">schema:Action</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <a href="http://purl.obolibrary.org/obo/OHPI_0000001">obo:OHPI_0000001</a>
+                  </li>
+                  <li>
+                    <a href="http://purl.obolibrary.org/obo/GO_0044403">obo:GO_0044403</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="LabProtocolParameterType">
+          <h3>Lab Protocol Parameter Type
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/LabProtocolParameterType</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/BioSchemasNewClassProposal">agri:BioSchemasNewClassProposal</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="LabProtocolParameterValue">
+          <h3>Lab Protocol Parameter Value
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/LabProtocolParameterValue</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewClassProposal">agri:BioSchemasNewClassProposal</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://schema.org/PropertyValue">schema:PropertyValue</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="ScholarlyPublication">
+          <h3>Scholarly Publication
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/ScholarlyPublication</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewClassProposal">agri:BioSchemasNewClassProposal</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://schema.org/CreativeWork">schema:CreativeWork</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://schema.org/ScholarlyArticle">schema:ScholarlyArticle</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="StudyEvent">
+          <h3>Study Event
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/StudyEvent</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewClassProposal">agri:BioSchemasNewClassProposal</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://schema.org/Action">schema:Action</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://bioschemas.org/LabProtocol">bioschema:LabProtocol</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="StudyObservedValue">
+          <h3>Study Observed Value
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/StudyObservedValue</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewClassProposal">agri:BioSchemasNewClassProposal</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://purl.org/ppeo/PPEO.owl#observed_variable">ppeo:observed_variable</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://schema.org/PropertyValue">schema:PropertyValue</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="StudyObservedVariable">
+          <h3>Study Observed Variable
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/StudyObservedVariable</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/BioSchemasNewClassProposal">agri:BioSchemasNewClassProposal</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="LabProtocol">
+          <h3>Lab Protocol
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://bioschemas.org/LabProtocol</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/StudyEvent">agri:StudyEvent</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="OBI_0000750">
+          <h3>Obi_0000750
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://purl.obolibrary.org/obo/OBI_0000750</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/ExperimentalFactorValue">agri:ExperimentalFactorValue</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="OBI_0500000">
+          <h3>Obi_0500000
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://purl.obolibrary.org/obo/OBI_0500000</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/ExperimentalDesign">agri:ExperimentalDesign</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="experimental_design">
+          <h3>experimental_design
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://purl.org/ppeo/PPEO.owl#experimental_design</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/ExperimentalDesign">agri:ExperimentalDesign</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="observed_variable">
+          <h3>observed_variable
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://purl.org/ppeo/PPEO.owl#observed_variable</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/StudyObservedValue">agri:StudyObservedValue</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="Action">
+          <h3>Action
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://schema.org/Action</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioPathway">agri:BioPathway</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/HostPathogenInteraction">agri:HostPathogenInteraction</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/StudyEvent">agri:StudyEvent</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="BioChemEntity1">
+          <h3>Bio Chem Entity
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://schema.org/BioChemEntity</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/FIeldTrialBioMaterial">agri:FIeldTrialBioMaterial</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/FieldTrialMaterialSource">agri:FieldTrialMaterialSource</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/FieldTrialObservationUnit">agri:FieldTrialObservationUnit</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="CreativeWork">
+          <h3>Creative Work
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://schema.org/CreativeWork</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/ScholarlyPublication">agri:ScholarlyPublication</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="Intangible">
+          <h3>Intangible
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://schema.org/Intangible</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="PropertyValue">
+          <h3>Property Value
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://schema.org/PropertyValue</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/ExperimentalDesign">agri:ExperimentalDesign</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/ExperimentalFactorValue">agri:ExperimentalFactorValue</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/LabProtocolParameterValue">agri:LabProtocolParameterValue</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/StudyObservedValue">agri:StudyObservedValue</a>
+                      <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="ScholarlyArticle">
+          <h3>Scholarly Article
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://schema.org/ScholarlyArticle</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/ScholarlyPublication">agri:ScholarlyPublication</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="EFO_0000001">
+          <h3>Efo_0000001
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://www.ebi.ac.uk/efo/EFO_0000001</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/ExperimentalFactorValue">agri:ExperimentalFactorValue</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="EFO_0001426">
+          <h3>Efo_0001426
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://www.ebi.ac.uk/efo/EFO_0001426</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/ExperimentalDesign">agri:ExperimentalDesign</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="AnnotationProperty">
+          <h3>Annotation Property
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://www.w3.org/2002/07/owl#AnnotationProperty</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="Class">
+          <h3>Class
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://www.w3.org/2002/07/owl#Class</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="NamedIndividual">
+          <h3>Named Individual
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://www.w3.org/2002/07/owl#NamedIndividual</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="Ontology">
+          <h3>Ontology
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://www.w3.org/2002/07/owl#Ontology</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="BiologicalAssociation">
+          <h3>Biological Association
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/BiologicalAssociation</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="SchemaNewClassProposal">
+          <h3>Schema New Class Proposal
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/SchemaNewClassProposal</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="Soil">
+          <h3>Soil
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/Soil</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="BioChemEntity">
+          <h3>Bio Chem Entity
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://bioschemas.org/BioChemEntity</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section" id="annotationproperties">
+        <h2>Annotation Properties</h2>
+        <div class="property entity" id="BioSchemasNewPropertyProposal">
+          <h3>Bio Schemas New Property Proposal
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/BioSchemasNewPropertyProposal</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/baseCondition">agri:baseCondition</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/foldChange">agri:foldChange</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/hasExperimentalFactorType">agri:hasExperimentalFactorType</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/hasExperimentalFactorValue">agri:hasExperimentalFactorValue</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/hasGeneExpressionIn">agri:hasGeneExpressionIn</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/hasObservedValue">agri:hasObservedValue</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/hasObservedVariable">agri:hasObservedVariable</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/isBiologicallyRelatedTo">agri:isBiologicallyRelatedTo</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/log2FoldChange">agri:log2FoldChange</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/ordinalTpm">TPM level</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/pvalue">agri:pvalue</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/score">agri:score</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/timePoint">Time Point</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/tpmCount">agri:tpmCount</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="SchemaNewPropertyProposal">
+          <h3>Schema New Property Proposal
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/SchemaNewPropertyProposal</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/doiId">agri:doiId</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/evidence">agri:evidence</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/pmedId">agri:pmedId</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="authorsList">
+          <h3>authors list
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/authorsList</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://purl.org/dc/elements/1.1/creator">dc:creator</a>
+                  <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="baseCondition">
+          <h3>base condition
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/baseCondition</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewPropertyProposal">agri:BioSchemasNewPropertyProposal</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://schema.org/Property">schema:Property</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="doiId">
+          <h3>doi id
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/doiId</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/SchemaNewPropertyProposal">agri:SchemaNewPropertyProposal</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://schema.org/identifier">schema:identifier</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="evidence">
+          <h3>evidence
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/evidence</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/SchemaNewPropertyProposal">agri:SchemaNewPropertyProposal</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://www.w3.org/ns/oa#motivatedBy">oa:motivatedBy</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="foldChange">
+          <h3>fold change
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/foldChange</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewPropertyProposal">agri:BioSchemasNewPropertyProposal</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/score">agri:score</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/log2FoldChange">agri:log2FoldChange</a>
+                  <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="hasExperimentalFactorType">
+          <h3>has experimental factor type
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/hasExperimentalFactorType</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewPropertyProposal">agri:BioSchemasNewPropertyProposal</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://purl.org/dc/elements/1.1/type">dc:type</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="hasExperimentalFactorValue">
+          <h3>has experimental factor value
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/hasExperimentalFactorValue</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/BioSchemasNewPropertyProposal">agri:BioSchemasNewPropertyProposal</a>
+                  <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="hasGeneExpressionIn">
+          <h3>has gene expression in
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/hasGeneExpressionIn</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Associates an entity like a DNA sequence or protein to another entity like a sample or disease term, to tell that the former shows some (differential) gene expression upon the condition represented by the latter.</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewPropertyProposal">agri:BioSchemasNewPropertyProposal</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/isBiologicallyRelatedTo">agri:isBiologicallyRelatedTo</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="hasObservedValue">
+          <h3>has observed value
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/hasObservedValue</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/BioSchemasNewPropertyProposal">agri:BioSchemasNewPropertyProposal</a>
+                  <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="hasObservedVariable">
+          <h3>has observed variable
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/hasObservedVariable</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewPropertyProposal">agri:BioSchemasNewPropertyProposal</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://purl.org/dc/elements/1.1/type">dc:type</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="isBiologicallyRelatedTo">
+          <h3>is biologically related to
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/isBiologicallyRelatedTo</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewPropertyProposal">agri:BioSchemasNewPropertyProposal</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://schema.org/Property">schema:Property</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/hasGeneExpressionIn">agri:hasGeneExpressionIn</a>
+                  <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="log2FoldChange">
+          <h3>log2fold change
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/log2FoldChange</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewPropertyProposal">agri:BioSchemasNewPropertyProposal</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/foldChange">agri:foldChange</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="TPMlevel">
+          <h3>TPM level
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/ordinalTpm</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>The ordinal ('low', 'medium', 'high') level of TPM. This is established from the TPM count, using the EBI thresholds: [0.5-10]/low, [11-1000] med, &gt;1000. See: See: https://rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewPropertyProposal">agri:BioSchemasNewPropertyProposal</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/score">agri:score</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="pmedId">
+          <h3>pmed id
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/pmedId</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/SchemaNewPropertyProposal">agri:SchemaNewPropertyProposal</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://schema.org/identifier">schema:identifier</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="pvalue">
+          <h3>pvalue
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/pvalue</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewPropertyProposal">agri:BioSchemasNewPropertyProposal</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/score">agri:score</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="score">
+          <h3>score
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/score</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewPropertyProposal">agri:BioSchemasNewPropertyProposal</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://meta.schema.org/Property">http://meta.schema.org/Property</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/foldChange">agri:foldChange</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/ordinalTpm">TPM level</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/pvalue">agri:pvalue</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/tpmCount">agri:tpmCount</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="TimePoint">
+          <h3>Time Point
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/timePoint</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewPropertyProposal">agri:BioSchemasNewPropertyProposal</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://schema.org/Property">schema:Property</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="tpmCount">
+          <h3>tpm count
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/tpmCount</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>The transcripts per million count, as measured in RNA-Seq data. See: https://rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/BioSchemasNewPropertyProposal">agri:BioSchemasNewPropertyProposal</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/score">agri:score</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="Property">
+          <h3>Property
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://meta.schema.org/Property</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/score">agri:score</a>
+                  <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="creator">
+          <h3>creator
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://purl.org/dc/elements/1.1/creator</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/authorsList">agri:authorsList</a>
+                  <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="type">
+          <h3>type
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://purl.org/dc/elements/1.1/type</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/hasExperimentalFactorType">agri:hasExperimentalFactorType</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/hasObservedVariable">agri:hasObservedVariable</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="Property1">
+          <h3>Property
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://schema.org/Property</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/baseCondition">agri:baseCondition</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/isBiologicallyRelatedTo">agri:isBiologicallyRelatedTo</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/timePoint">Time Point</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="alternateName">
+          <h3>alternate name
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://schema.org/alternateName</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://www.w3.org/2004/02/skos/core#altLabel">alternative label</a>
+                  <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="description">
+          <h3>description
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://schema.org/description</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="domainIncludes">
+          <h3>domain includes
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://schema.org/domainIncludes</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="hasPart">
+          <h3>has part
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://schema.org/hasPart</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="identifier">
+          <h3>identifier
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://schema.org/identifier</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/doiId">agri:doiId</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="http://agrischemas.org/pmedId">agri:pmedId</a>
+                      <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                    </span>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="inverseOf">
+          <h3>inverse of
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://schema.org/inverseOf</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="name">
+          <h3>name
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://schema.org/name</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>schema:name is described and used as preferred name, so here we map to skos:prefLabel.</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://www.w3.org/2004/02/skos/core#prefLabel">preferred label</a>
+                  <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="rangeIncludes">
+          <h3>range includes
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://schema.org/rangeIncludes</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="altLabel">
+          <h3>alt label
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://www.w3.org/2004/02/skos/core#altLabel</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://schema.org/alternateName">schema:alternateName</a>
+                  <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="prefLabel">
+          <h3>pref label
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://www.w3.org/2004/02/skos/core#prefLabel</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://schema.org/name">schema:name</a>
+                  <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="motivatedBy">
+          <h3>motivated by
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://www.w3.org/ns/oa#motivatedBy</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">Super Property Of</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://agrischemas.org/evidence">agri:evidence</a>
+                  <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="Soil">
+          <h3>Soil
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/Soil</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="StudyObservedValue">
+          <h3>Study Observed Value
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/StudyObservedValue</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="interactionHost">
+          <h3>interaction host
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/interactionHost</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="interactionPathogen">
+          <h3>interaction pathogen
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://agrischemas.org/interactionPathogen</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="abstract">
+          <h3>abstract
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://schema.org/abstract</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="subClassOf">
+          <h3>sub class of
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://www.w3.org/2000/01/rdf-schema#subClassOf</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="equivalentClass">
+          <h3>equivalent class
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://www.w3.org/2002/07/owl#equivalentClass</code>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div id="namespaces">
+        <h2>Namespaces</h2>
+        <dl>
+          <dt id="agri">agri</dt>
+          <dd>
+            <code>http://agrischemas.org/</code>
+          </dd>
+          <dt id="bioschema">bioschema</dt>
+          <dd>
+            <code>http://bioschemas.org/</code>
+          </dd>
+          <dt id="dc">dc</dt>
+          <dd>
+            <code>http://purl.org/dc/elements/1.1/</code>
+          </dd>
+          <dt id="dcterms">dcterms</dt>
+          <dd>
+            <code>http://purl.org/dc/terms/</code>
+          </dd>
+          <dt id="oa">oa</dt>
+          <dd>
+            <code>http://www.w3.org/ns/oa#</code>
+          </dd>
+          <dt id="obo">obo</dt>
+          <dd>
+            <code>http://purl.obolibrary.org/obo/</code>
+          </dd>
+          <dt id="owl">owl</dt>
+          <dd>
+            <code>http://www.w3.org/2002/07/owl#</code>
+          </dd>
+          <dt id="ppeo">ppeo</dt>
+          <dd>
+            <code>http://purl.org/ppeo/PPEO.owl#</code>
+          </dd>
+          <dt id="rdf">rdf</dt>
+          <dd>
+            <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
+          </dd>
+          <dt id="rdfs">rdfs</dt>
+          <dd>
+            <code>http://www.w3.org/2000/01/rdf-schema#</code>
+          </dd>
+          <dt id="schema">schema</dt>
+          <dd>
+            <code>http://schema.org/</code>
+          </dd>
+          <dt id="sio">sio</dt>
+          <dd>
+            <code>http://semanticscience.org/resource/</code>
+          </dd>
+          <dt id="skos">skos</dt>
+          <dd>
+            <code>http://www.w3.org/2004/02/skos/core#</code>
+          </dd>
+        </dl>
+      </div>
+      <div id="legend">
+        <h2>Legend</h2>
+        <table class="entity">
+          <tr>
+            <td>
+              <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+            </td>
+            <td>Classes</td>
+          </tr>
+          <tr>
+            <td>
+              <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+            </td>
+            <td>Annotation Properties</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div id="pylode">
+      <p>made by 
+        <a href="https://github.com/rdflib/pyLODE">
+          <span id="p">p</span>
+          <span id="y">y</span>
+          <span>LODE</span>
+        </a>
+        <a href="https://github.com/rdflib/pyLODE/release/3.2.0" id="version">3.2.0</a>
+        <span> with the </span>
+        <a href="https://linked.data.gov.au/def/ontpub" id="profile">OntPub</a>
+        <span>profile</span>
+      </p>
+    </div>
+    <div id="toc">
+      <h3>Table of Contents</h3>
+      <ul class="first">
+        <li>
+          <h4>
+            <a href="#metadata">Metadata</a>
+          </h4>
+        </li>
+        <li>
+          <h4>
+            <a href="#classes">Classes</a>
+          </h4>
+          <h5>
+            <a href="#class-hierarchy" style="margin-left:10px;">Class Hierarchy</a>
+          </h5>
+          <h5>
+            <a href="#class-definitions" style="margin-left:10px;">Class Definitions</a>
+          </h5>
+          <ul class="second">
+            <li style="margin-left:10px;">
+              <a href="#BioPathway">Bio Pathway</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#BioSchemasNewClassProposal">Bio Schemas New Class Proposal</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#ExperimentalDesign">Experimental Design</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#ExperimentalFactorType">Experimental Factor Type</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#ExperimentalFactorValue">Experimental Factor Value</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#FIeldTrialBioMaterial">F Ield Trial Bio Material</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#FieldTrialMaterialSource">Field Trial Material Source</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#FieldTrialObservationUnit">Field Trial Observation Unit</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#HostPathogenInteraction">Host Pathogen Interaction</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#LabProtocolParameterType">Lab Protocol Parameter Type</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#LabProtocolParameterValue">Lab Protocol Parameter Value</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#ScholarlyPublication">Scholarly Publication</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#StudyEvent">Study Event</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#StudyObservedValue">Study Observed Value</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#StudyObservedVariable">Study Observed Variable</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#LabProtocol">Lab Protocol</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#OBI_0000750">Obi_0000750</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#OBI_0500000">Obi_0500000</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#experimental_design">experimental_design</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#observed_variable">observed_variable</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#Action">Action</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#BioChemEntity1">Bio Chem Entity</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#CreativeWork">Creative Work</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#Intangible">Intangible</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#PropertyValue">Property Value</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#ScholarlyArticle">Scholarly Article</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#EFO_0000001">Efo_0000001</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#EFO_0001426">Efo_0001426</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#AnnotationProperty">Annotation Property</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#Class">Class</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#NamedIndividual">Named Individual</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#Ontology">Ontology</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#BiologicalAssociation">Biological Association</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#SchemaNewClassProposal">Schema New Class Proposal</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#Soil">Soil</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#BioChemEntity">Bio Chem Entity</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h4>
+            <a href="#annotationproperties">Annotation Properties</a>
+          </h4>
+          <ul class="second">
+            <li>
+              <a href="#BioSchemasNewPropertyProposal">Bio Schemas New Property Proposal</a>
+            </li>
+            <li>
+              <a href="#SchemaNewPropertyProposal">Schema New Property Proposal</a>
+            </li>
+            <li>
+              <a href="#authorsList">authors list</a>
+            </li>
+            <li>
+              <a href="#baseCondition">base condition</a>
+            </li>
+            <li>
+              <a href="#doiId">doi id</a>
+            </li>
+            <li>
+              <a href="#evidence">evidence</a>
+            </li>
+            <li>
+              <a href="#foldChange">fold change</a>
+            </li>
+            <li>
+              <a href="#hasExperimentalFactorType">has experimental factor type</a>
+            </li>
+            <li>
+              <a href="#hasExperimentalFactorValue">has experimental factor value</a>
+            </li>
+            <li>
+              <a href="#hasGeneExpressionIn">has gene expression in</a>
+            </li>
+            <li>
+              <a href="#hasObservedValue">has observed value</a>
+            </li>
+            <li>
+              <a href="#hasObservedVariable">has observed variable</a>
+            </li>
+            <li>
+              <a href="#isBiologicallyRelatedTo">is biologically related to</a>
+            </li>
+            <li>
+              <a href="#log2FoldChange">log2fold change</a>
+            </li>
+            <li>
+              <a href="#TPMlevel">TPM level</a>
+            </li>
+            <li>
+              <a href="#pmedId">pmed id</a>
+            </li>
+            <li>
+              <a href="#pvalue">pvalue</a>
+            </li>
+            <li>
+              <a href="#score">score</a>
+            </li>
+            <li>
+              <a href="#TimePoint">Time Point</a>
+            </li>
+            <li>
+              <a href="#tpmCount">tpm count</a>
+            </li>
+            <li>
+              <a href="#Property">Property</a>
+            </li>
+            <li>
+              <a href="#creator">creator</a>
+            </li>
+            <li>
+              <a href="#type">type</a>
+            </li>
+            <li>
+              <a href="#Property1">Property</a>
+            </li>
+            <li>
+              <a href="#alternateName">alternate name</a>
+            </li>
+            <li>
+              <a href="#description">description</a>
+            </li>
+            <li>
+              <a href="#domainIncludes">domain includes</a>
+            </li>
+            <li>
+              <a href="#hasPart">has part</a>
+            </li>
+            <li>
+              <a href="#identifier">identifier</a>
+            </li>
+            <li>
+              <a href="#inverseOf">inverse of</a>
+            </li>
+            <li>
+              <a href="#name">name</a>
+            </li>
+            <li>
+              <a href="#rangeIncludes">range includes</a>
+            </li>
+            <li>
+              <a href="#altLabel">alt label</a>
+            </li>
+            <li>
+              <a href="#prefLabel">pref label</a>
+            </li>
+            <li>
+              <a href="#motivatedBy">motivated by</a>
+            </li>
+            <li>
+              <a href="#Soil">Soil</a>
+            </li>
+            <li>
+              <a href="#StudyObservedValue">Study Observed Value</a>
+            </li>
+            <li>
+              <a href="#interactionHost">interaction host</a>
+            </li>
+            <li>
+              <a href="#interactionPathogen">interaction pathogen</a>
+            </li>
+            <li>
+              <a href="#abstract">abstract</a>
+            </li>
+            <li>
+              <a href="#subClassOf">sub class of</a>
+            </li>
+            <li>
+              <a href="#equivalentClass">equivalent class</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h4>
+            <a href="#namespaces">Namespaces</a>
+          </h4>
+          <ul class="second">
+            <li>
+              <a href="#agri">agri</a>
+            </li>
+            <li>
+              <a href="#bioschema">bioschema</a>
+            </li>
+            <li>
+              <a href="#dc">dc</a>
+            </li>
+            <li>
+              <a href="#dcterms">dcterms</a>
+            </li>
+            <li>
+              <a href="#oa">oa</a>
+            </li>
+            <li>
+              <a href="#obo">obo</a>
+            </li>
+            <li>
+              <a href="#owl">owl</a>
+            </li>
+            <li>
+              <a href="#ppeo">ppeo</a>
+            </li>
+            <li>
+              <a href="#rdf">rdf</a>
+            </li>
+            <li>
+              <a href="#rdfs">rdfs</a>
+            </li>
+            <li>
+              <a href="#schema">schema</a>
+            </li>
+            <li>
+              <a href="#sio">sio</a>
+            </li>
+            <li>
+              <a href="#skos">skos</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h4>
+            <a href="#legend">Legend</a>
+          </h4>
+          <ul class="second"></ul>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
