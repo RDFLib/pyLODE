@@ -1715,7 +1715,7 @@ schema:code a rdf:Property ;
     schema:rangeIncludes schema:MedicalCode .
 
 schema:codeRepository a rdf:Property ;
-    rdfs:label "codeRepository" ;
+    rdfs:label "code repository" ;
     rdfs:comment "Link to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex)." ;
     schema:domainIncludes schema:SoftwareSourceCode ;
     schema:rangeIncludes schema:URL .

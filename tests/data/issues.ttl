@@ -299,6 +299,7 @@ ont:
         foaf: ;
     owl:versionIRI <https://raw.github.com/wf4ever/ro/0.1.1/wfprov.owl> ;
     owl:versionInfo "0.1.1"^^xsd:string ;
+    schema:codeRepository "https://github.com/RDFLib/pyLODE/"^^xsd:anyURI ;
     schema:contributor <https://ror.org/00yczwp93> ;
     schema:copyrightHolder <https://wf4ever.github.io> ;
     schema:creator <https://wf4ever.github.io> ;

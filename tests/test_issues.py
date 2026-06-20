@@ -152,6 +152,22 @@ def test_issue_141(fix_html):
     ) in de_space_html(fix_html), "Datatypes not catered for correctly"
 
 
+def test_issue_230(fix_html):
+    open("issues.html", "w").write(fix_html)
+    assert de_space_html(
+        """
+        <div>
+            <dt>
+              <a class="hover_property" href="https://schema.org/codeRepository" title="Link to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex). Defined in None">Code Repository</a>
+            </dt>
+            <dd>
+              <a href="https://github.com/RDFLib/pyLODE/">https://github.com/RDFLib/pyLODE/</a>
+            </dd>
+          </div>
+        """
+    ) in de_space_html(fix_html), "Code Repository information not included"
+
+
 def test_issue_234(fix_html):
     # open("issues.html", "w").write(fix_html)
     assert de_space_html(
