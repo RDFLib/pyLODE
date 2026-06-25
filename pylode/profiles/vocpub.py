@@ -105,8 +105,6 @@ class VocPub:
 
         self.cs_iri = self.ont.value(predicate=RDF.type, object=SKOS.ConceptScheme)
 
-        # self.ont += get_missing_labels(find_missing_labels(self.ont))
-
         if sort_subjects:
             self.ont = sort_ontology(self.ont)
         self._vocpub_inference(self.ont)
@@ -119,7 +117,7 @@ class VocPub:
         self.ns = get_ns(self.ont)
 
         # make HTML doc with title
-        t = self.ont.value(subject=self.cs_iri, predicate=SDO.name)
+        t = self.ont.value(subject=self.cs_iri, predicate=SKOS.prefLabel)
         self.doc = dominate.document(title=t)
 
         with self.doc:
@@ -147,68 +145,39 @@ class VocPub:
             g.subject_objects(DC.title),
             g.subject_objects(DCTERMS.title),
             g.subject_objects(RDFS.label),
-            g.subject_objects(SKOS.prefLabel),
+            g.subject_objects(SDO.name),
         ):
-            g.add((s_, SDO.name, o))
             g.remove((s_, DC.title, o))
             g.remove((s_, DCTERMS.title, o))
-            (g.remove((s_, RDFS.label, o)),)
-            g.remove((s_, SKOS.prefLabel, o))
+            g.remove((s_, RDFS.label, o))
+            g.remove((s_, SDO.name, o))
+            g.add((s_, SKOS.prefLabel, o))
 
         # description
         for s_, o in chain(
+            g.subject_objects(SDO.description),
             g.subject_objects(DC.description),
             g.subject_objects(DCTERMS.description),
             g.subject_objects(RDFS.comment),
-            g.subject_objects(SKOS.definition),
         ):
-            g.add((s_, SDO.description, o))
             g.remove((s_, DC.description, o))
             g.remove((s_, DCTERMS.description, o))
             g.remove((s_, RDFS.comment, o))
-            g.remove((s_, SKOS.definition, o))
+            g.add((s_, SKOS.definition, o))
 
         # source
-        for s_, o in g.subject_objects(DC.source):
+        for s_, o in chain(
+            g.subject_objects(DC.source),
+            g.subject_objects(SDO.citation)
+        ):
+            g.remove((s_, DC.source, o))
+            g.remove((s_, SDO.citation, o))
             g.add((s_, DCTERMS.source, o))
 
         # license
         for s_, o in g.subject_objects(SDO.license):
+            g.remove((s_, SDO.license, o))
             g.add((s_, DCTERMS.license, o))
-
-        #
-        #   Blank Node Types
-        #
-        for s_ in g.subjects(OWL.onProperty, None):
-            g.add((s_, RDF.type, OWL.Restriction))
-
-        for s_ in chain(
-            g.subjects(OWL.unionOf, None), g.subjects(OWL.intersectionOf, None)
-        ):
-            g.add((s_, RDF.type, OWL.Class))
-
-        # we do these next few so we only need to loop through
-        # Class & Property properties once: single subject
-        for s_, o in g.subject_objects(RDFS.subClassOf):
-            g.add((o, ONTDOC.superClassOf, s_))
-
-        for s_, o in g.subject_objects(RDFS.subPropertyOf):
-            g.add((o, ONTDOC.superPropertyOf, s_))
-
-        for s_, o in g.subject_objects(RDFS.domain):
-            g.add((o, ONTDOC.inDomainOf, s_))
-
-        for s_, o in g.subject_objects(SDO.domainIncludes):
-            g.add((o, ONTDOC.inDomainIncludesOf, s_))
-
-        for s_, o in g.subject_objects(RDFS.range):
-            g.add((o, ONTDOC.inRangeOf, s_))
-
-        for s_, o in g.subject_objects(SDO.rangeIncludes):
-            g.add((o, ONTDOC.inRangeIncludesOf, s_))
-
-        for s_, o in g.subject_objects(RDF.type):
-            g.add((o, ONTDOC.hasMember, s_))
 
         #
         #   Agents
@@ -235,25 +204,44 @@ class VocPub:
 
         # publisher
         for s_, o in chain(
-            g.subject_objects(DC.publisher), g.subject_objects(SDO.publisher)
+            g.subject_objects(DC.publisher), 
+                g.subject_objects(SDO.publisher)
         ):
             g.remove((s_, DC.publisher, o))
             g.remove((s_, SDO.publisher, o))
             g.add((s_, DCTERMS.publisher, o))
 
+        for s_, o in g.subject_objects(SDO.dateCreated):
+            g.remove((s_, SDO.dateCreated, o))
+            g.add((s_, DCTERMS.created, o))
+            
+        for s_, o in g.subject_objects(SDO.dateModified):
+            g.remove((s_, SDO.dateModified, o))
+            g.add((s_, DCTERMS.modified, o))
+            
+        for s_, o in g.subject_objects(SDO.dateIssued):
+            g.remove((s_, SDO.dateIssued, o))
+            g.add((s_, DCTERMS.issued, o))
+            
         # indicate Agent instances from properties
+        # ensure the have names since above would have removed SDO.name
         for o in chain(
             g.objects(None, DCTERMS.publisher),
             g.objects(None, DCTERMS.creator),
             g.objects(None, DCTERMS.contributor),
         ):
             g.add((o, RDF.type, PROV.Agent))
+            for o2 in g.objects(o, SKOS.prefLabel):
+                g.remove((o, SKOS.prefLabel, o2))
+                g.add((o, SDO.name, o2))
 
         # Agent annotations
         for s_, o in g.subject_objects(FOAF.name):
+            g.remove((s_, FOAF.name, o))
             g.add((s_, SDO.name, o))
 
         for s_, o in g.subject_objects(FOAF.mbox):
+            g.remove((s_, FOAF.mbox, o))
             g.add((s_, SDO.email, o))
 
         for s_, o in g.subject_objects(ORG.memberOf):
@@ -317,23 +305,19 @@ class VocPub:
     def _make_metadata(self):
         # get all ONT_PROPS props and their (multiple) values
         this_onts_props = defaultdict(list)
-        for s_ in chain(
-            self.ont.subjects(predicate=RDF.type, object=OWL.Ontology),
-            self.ont.subjects(predicate=RDF.type, object=SKOS.ConceptScheme),
-            self.ont.subjects(predicate=RDF.type, object=PROF.Profile),
-        ):
+        for s_ in self.ont.subjects(predicate=RDF.type, object=SKOS.ConceptScheme):
             iri = s_
             for p_, o in self.ont.predicate_objects(s_):
                 if p_ in ONT_PROPS:
                     this_onts_props[p_].append(o)
 
-        # make HTML for all props in order of ONT_PROPS
-        sec = div(h1(this_onts_props[DCTERMS.title]), id="metadata", _class="section")
-        sec.appendChild(h2("Metadata"))
-        d = dl(div(dt(strong("IRI")), dd(code(str(iri)))))
-
         # patch all missing labels
         ont_with_labels = self.ont + get_missing_labels(find_missing_labels(self.ont))
+
+        # make HTML for all props in order of ONT_PROPS
+        sec = div(h1(this_onts_props[SKOS.prefLabel]), id="metadata", _class="section")
+        sec.appendChild(h2("Metadata"))
+        d = dl(div(dt(strong("IRI")), dd(code(str(iri)))))
 
         q = f"""
             PREFIX schema: <https://schema.org/>
@@ -354,32 +338,28 @@ class VocPub:
             """
         props = {}
         for row in json.loads(kquery(ont_with_labels, q))["results"]["bindings"]:
-            p_iri = row["p"]["value"]
+            if row["p"]["value"] not in [str(SKOS.hasTopConcept)]:
+                p_iri = row["p"]["value"]
 
-            if row.get("p_name"):
-                p_label = row["p_name"]["value"].title()
-            else:
-                p_label = make_title_from_iri(row["p"]["value"])
-
-            if row.get("o_name"):
-                o_value = row["o"]["value"]
-                o_name = row["o_name"]["value"]
-            else:
-                o_value = row["o"]["value"]
-                if row["o"].get("datatype"):
-                    o_name = row["o"]["datatype"]
+                if row.get("p_name"):
+                    p_label = row["p_name"]["value"].title()
                 else:
-                    o_name = "http://www.w3.org/2001/XMLSchema#string"
+                    p_label = make_title_from_iri(row["p"]["value"])
 
-            if props.get(p_iri):
-                props[p_iri]["objects"].append((o_value, o_name))
-            else:
-                props[p_iri] = {"objects": [(o_value, o_name)], "p_name": p_label}
+                if row.get("o_name"):
+                    o_value = row["o"]["value"]
+                    o_name = row["o_name"]["value"]
+                else:
+                    o_value = row["o"]["value"]
+                    if row["o"].get("datatype"):
+                        o_name = row["o"]["datatype"]
+                    else:
+                        o_name = "http://www.w3.org/2001/XMLSchema#string"
 
-        def order_dict_by_key_list_keep_rest(d, key_order):
-            ordered = {k: d[k] for k in key_order if k in d}
-            remaining = {k: v for k, v in d.items() if k not in ordered}
-            return ordered | remaining
+                if props.get(p_iri):
+                    props[p_iri]["objects"].append((o_value, o_name))
+                else:
+                    props[p_iri] = {"objects": [(o_value, o_name)], "p_name": p_label}
 
         def render_literal(l):
             if isinstance(l, dict):
@@ -393,9 +373,7 @@ class VocPub:
                 else:
                     return l
 
-        for k, v in order_dict_by_key_list_keep_rest(
-            props, CONCEPT_SCHEME_PROPS
-        ).items():
+        for k, v in {k: props[k] for k in [str(x) for x in CONCEPT_SCHEME_PROPS] if k in props}.items():
             d.appendChild(
                 div(dt(a(v["p_name"], href=k)), dd(render_rdf_object(v["objects"])))
             )
@@ -412,7 +390,7 @@ class VocPub:
         ):
             sdo.add((ont_iri, RDF.type, SDO.DefinedTermSet))
             for p_, o in self.ont.predicate_objects(ont_iri):
-                if p_ == DCTERMS.title:
+                if p_ == SKOS.prefLabel:
                     sdo.add((ont_iri, SDO.name, o))
                 elif p_ == DCTERMS.description:
                     sdo.add((ont_iri, SDO.description, o))
@@ -476,7 +454,7 @@ class VocPub:
 
             d = div(h2("Concept Definitions"), id="concepts")
             for iri, concept in dict(
-                sorted(concepts.items(), key=lambda item: item[1][SDO.name])
+                sorted(concepts.items(), key=lambda item: item[1][SKOS.prefLabel])
             ).items():  # order by Concept's label
                 props_table = table()
                 props_table.add(
@@ -485,7 +463,7 @@ class VocPub:
                 for k, v in order_dict_by_key_list_keep_rest(
                     concept, CONCEPT_PROPS
                 ).items():
-                    if k not in [RDF.type, SDO.name, "iri", SKOS.inScheme]:
+                    if k not in [RDF.type, SKOS.prefLabel, "iri", SKOS.inScheme]:
                         if k in CONCEPT_PROPS:
                             if isinstance(v, URIRef):
                                 if v == self.cs_iri:
@@ -494,7 +472,7 @@ class VocPub:
                                     curie = self.ont.namespace_manager.qname(v).replace(
                                         ":", "_"
                                     )
-                                    lbl = self.ont.value(subject=v, predicate=SDO.name)
+                                    lbl = self.ont.value(subject=v, predicate=SKOS.prefLabel)
                                     if lbl is None:
                                         lbl = v
                                     v = a(lbl, href="#" + curie)
@@ -507,7 +485,7 @@ class VocPub:
                 d.add(
                     div(
                         h3(
-                            concept[SDO.name],
+                            concept[SKOS.prefLabel],
                             id=self.ont.namespace_manager.qname(iri).replace(":", "_"),
                         ),
                         props_table,
@@ -566,5 +544,3 @@ class VocPub:
                         with ul(_class="second"):
                             for n in self.toc["namespaces"]:
                                 li(a(n[1], href="#" + n[1]))
-
-                    li(h4(a("Legend", href="#legend")), ul(_class="second"))

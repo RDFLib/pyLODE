@@ -855,7 +855,7 @@ def _make_hierarchy_html(
         items = []
         for s in ont.subjects(RDF.type, obj_class):
             if not isinstance(s, BNode):
-                name = ont.value(s, DCTERMS.title | SDO.name)
+                name = ont.value(s, DCTERMS.title | SDO.name | SKOS.prefLabel)
                 if name is None:
                     name = make_title_from_iri(s)
                 c = {

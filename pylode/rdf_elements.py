@@ -31,19 +31,19 @@ ONT_PROPS = [
     ONTDOC.restriction,
     OWL.imports,
     SDO.codeRepository,
-    SKOS.hasTopConcept,
+    #SKOS.hasTopConcept, -- catered for in Concept Hierarchy
 ]
 
 CONCEPT_SCHEME_PROPS = [
-    SDO.name,
-    SDO.description,
-    SDO.publisher,
-    SDO.creator,
-    SDO.contributor,
-    SDO.dateCreated,
-    SDO.dateModified,
-    SDO.dateIssued,
-    SDO.license,
+    SKOS.prefLabel,
+    SKOS.definition,
+    DCTERMS.publisher,
+    DCTERMS.creator,
+    DCTERMS.contributor,
+    DCTERMS.created,
+    DCTERMS.modified,
+    DCTERMS.issued,
+    DCTERMS.license,
     SDO.copyrightNotice,
     SDO.copyrightYear,
     SDO.version,
@@ -51,6 +51,7 @@ CONCEPT_SCHEME_PROPS = [
     DCTERMS.source,
     DCTERMS.provenance,
     SDO.codeRepository,
+    SDO.identifier
 ]
 
 # properties for OWL Class instances
@@ -77,17 +78,19 @@ CLASS_PROPS = [
 
 # properties for SKOS Concept instances
 CONCEPT_PROPS = [
-    SDO.name,
-    SDO.description,
-    RDFS.isDefinedBy,
+    SKOS.prefLabel,
+    SKOS.definition,
+    SKOS.altLabel,
     SKOS.inScheme,
+    RDFS.isDefinedBy,
+    SKOS.example,
     SKOS.broader,
     SKOS.narrower,
-    SKOS.altLabel,
-    SKOS.example,
+    SKOS.related,
+    SKOS.scopeNote,
+    SKOS.note,
     DCTERMS.source,
     DCTERMS.provenance,
-    SKOS.note,
 ]
 
 # properties for instances of RDF Property and OWL specialised
