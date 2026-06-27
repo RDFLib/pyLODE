@@ -48,7 +48,7 @@ def test_get_ns(fix_ont):
 def test_make_title_from_iri():
     data = [
         ("http://linked.data.gov.au/def/gnaf#StreetAddress", "Street Address"),
-        ("http://linked.data.gov.au/def/gnaf#postalAddress", "postal address"),
+        ("http://linked.data.gov.au/def/gnaf#postalAddress", "Postal Address"),
         ("http://example.com/Something", "Something"),
         ("http://example.com/Something#Else", "Else"),
         ("http://example.com/Something/Else/Another", "Another"),

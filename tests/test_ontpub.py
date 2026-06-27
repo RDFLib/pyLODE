@@ -96,8 +96,7 @@ def test_sdo(fix_html):
 
 
 def test_logo(fix_html):
-    html = fix_html
-    actual = dedent(f"""
+    expected = dedent(f"""
     <div id="pylode">
       <p>made by 
         <a href="https://github.com/rdflib/pyLODE">
@@ -112,7 +111,9 @@ def test_logo(fix_html):
       </p>
     </div>""")
 
-    assert de_space_html(actual).strip() in de_space_html(html), (
+    # open("issues.html", "w").write(fix_html)
+
+    assert de_space_html(expected).strip() in de_space_html(fix_html), (
         "pyLODE logo not generated correctly"
     )
 
@@ -455,6 +456,7 @@ def test_legend(fix_html):
 
 
 def test_toc(fix_html):
+    open("test.html", "w").write(fix_html)
     assert de_space_html(
         """
     <div id="toc">
@@ -537,7 +539,7 @@ def test_toc(fix_html):
               <a href="#conformsto">conforms to</a>
             </li>
             <li>
-              <a href="#format">format</a>
+              <a href="#format">Format</a>
             </li>
           </ul>
         </li>
@@ -587,4 +589,4 @@ def test_toc(fix_html):
       </ul>
     </div>        
         """
-    ) in de_space_html(fix_html), "ToC logo not generated correctly"
+    ) in de_space_html(fix_html), "ToC not generated correctly"
