@@ -2,18 +2,17 @@ from pylode.utils import *
 
 
 class OntPub:
-    """Ontology Document class used to create HTML documentation
-    from OWL Ontologies.
+    """Used to create HTML documentation from OWL Ontologies.
 
     Use:
         # initialise
-        od = OntDoc(ontology="some-ontology-file.ttl")
+        x = OntPub(ontology="some-ontology-file.ttl")
 
         # produce HTML
-        html = od.make_html()
+        html = x.make_html()
 
         # or save HTML to a file
-        od.make_html(destination="some-resulting-html-file.html")
+        x.make_html(destination="some-resulting-html-file.html")
     """
 
     def __init__(self, ontology: Union[Graph, Path, str], sort_subjects: bool = False):
