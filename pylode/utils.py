@@ -1,60 +1,28 @@
 import logging
 import pickle
 import re
+import shutil
 from collections import defaultdict
 from itertools import chain
 from pathlib import Path
-from typing import List, Optional, Tuple, Union, cast
+from typing import Dict, List, Optional, Tuple, Union, cast
 
+from pylode.version import __version__ as v
+RDF_FOLDER = Path(__file__).parent / "rdf"
+import json
+from kurra.labels import get_missing_labels, find_missing_labels
+from kurra.sparql import query as kquery
 import markdown
-from dominate.tags import (
-    a,
-    br,
-    code,
-    dd,
-    div,
-    dt,
-    em,
-    h2,
-    h3,
-    li,
-    p,
-    pre,
-    span,
-    sup,
-    table,
-    td,
-    th,
-    tr,
-    ul,
-)
+import dominate
+from dominate.tags import *
 from dominate.util import raw
 from rdflib import BNode, Graph, Literal, URIRef
-from rdflib.namespace import DC, DCTERMS, OWL, PROF, PROV, RDF, RDFS, SDO, SKOS, VANN
+from rdflib.namespace import *
 from rdflib.paths import ZeroOrMore
-
-try:
-    from .rdf_elements import (
-        AGENT_PROPS,
-        DATATYPE_CARDINALITIES,
-        ONT_TYPES,
-        ONTDOC,
-        OWL_SET_TYPES,
-        PROPS,
-        RESTRICTION_TYPES,
-    )
-except ImportError:
-    from rdf_elements import (
-        AGENT_PROPS,
-        ONT_TYPES,
-        ONTDOC,
-        OWL_SET_TYPES,
-        PROPS,
-        RESTRICTION_TYPES,
-    )
+from pylode.rdf_elements import *
+import datetime
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
-
 
 def check_all_props_are_known():
     """Check all properties listed in the combined property lists in
@@ -138,10 +106,11 @@ def make_title_from_iri(iri: URIRef):
     # title case if the first char is upercase (likely a Class)
     # else lower (property/Named Individual)
     words = re.split(r"(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])", id_part)
-    if words[0][0].isupper():
-        return " ".join(words).title()
-    else:
-        return " ".join(words).lower()
+    # if words[0][0].isupper():
+    #     return " ".join(words).title()
+    # else:
+    #     return " ".join(words).lower()
+    return " ".join(words).title()
 
 
 def generate_fid(title_: Union[Literal, None], iri: URIRef, fids: dict):
@@ -848,7 +817,7 @@ def prop_obj_pair_html(
     return t
 
 
-def _make_hierarchy_html(
+def make_hierarchy_html(
     ont: Graph, obj_class: URIRef, parent_indicator: URIRef, fids: dict
 ):
     if (None, RDF.type, obj_class) in ont:
@@ -985,14 +954,14 @@ def section_html(
 
     if obj_class == OWL.Class:
         elems.appendChild(h3("Class Hierarchy", id="class-hierarchy"))
-        elems.appendChild(_make_hierarchy_html(ont, OWL.Class, RDFS.subClassOf, fids))
+        elems.appendChild(make_hierarchy_html(ont, OWL.Class, RDFS.subClassOf, fids))
         elems.appendChild(h3("Class Definitions", id="class-definitions"))
     elif obj_class == OWL.ObjectProperty:
         elems.appendChild(
             h3("Object Property Hierarchy", id="object-property-hierarchy")
         )
         elems.appendChild(
-            _make_hierarchy_html(ont, OWL.ObjectProperty, RDFS.subPropertyOf, fids)
+            make_hierarchy_html(ont, OWL.ObjectProperty, RDFS.subPropertyOf, fids)
         )
         elems.appendChild(
             h3("Object Property Definitions", id="object-property-definitions")
@@ -1066,7 +1035,7 @@ def de_space_html(html):
     return re.sub(r"\s+", " ", s).strip()
 
 
-def make_pylode_logo(doc, version, profile_name, profile_iri):
+def make_pylode_logo(doc, profile_name, profile_iri):
     with doc:
         with div(id="pylode"):
             with p("made by "):
@@ -1075,13 +1044,52 @@ def make_pylode_logo(doc, version, profile_name, profile_iri):
                     span("y", id="y")
                     span("LODE")
                 a(
-                    version,
-                    href="https://github.com/rdflib/pyLODE/release/" + version,
-                    id="version",
+                    v,
+                    href="https://github.com/rdflib/pyLODE/release/" + v,
+                    id="v",
                 )
                 span(" with the ")
                 a(profile_name, href=profile_iri, id="profile")
                 span("profile")
+
+REG_STATUS = Namespace("https://linked.data.gov.au/def/reg-statuses/")
+
+REG_STATUSES = [
+    REG_STATUS.accepted,
+    REG_STATUS.addition,
+    REG_STATUS.deprecated,
+    REG_STATUS.experimental,
+    REG_STATUS.invalid,
+    REG_STATUS.notAccepted,
+    REG_STATUS.original,
+    REG_STATUS.reserved,
+    REG_STATUS.retired,
+    REG_STATUS.stable,
+    REG_STATUS.submitted,
+    REG_STATUS.superseded,
+    REG_STATUS.unstable,
+    REG_STATUS.valid,
+]
+
+def make_status_css(status_iri: URIRef):
+    css = {
+        REG_STATUS.accepted: "display:block; width: 15em;padding:3px; background-color:#1bc13f; color:#fff;",
+        REG_STATUS.addition: "display:block; width: 15em;padding:3px; background-color:#4ac11b; color:#fff;",
+        REG_STATUS.deprecated: "display:block; width: 15em;padding:3px; background-color:#a86a0d; color:#fff;",
+        REG_STATUS.experimental: "display:block; width: 15em;padding:3px; background-color:#eae72c; color:#000;",
+        REG_STATUS.invalid: "display:block; width: 15em;padding:3px; background-color:#ea3c2c; color:#fff;",
+        REG_STATUS.notAccepted: "display:block; width: 15em;padding:3px; background-color:#ea9e2c; color:#fff;",
+        REG_STATUS.original: "display:block; width: 15em;padding:3px; background-color:#38a30e; color:#fff;",
+        REG_STATUS.reserved: "display:block; width: 15em;padding:3px; background-color:#9b8d79; color:#fff;",
+        REG_STATUS.retired: "display:block; width: 15em;padding:3px; background-color:#ad5b24; color:#fff;",
+        REG_STATUS.stable: "display:block; width: 15em;padding:3px; background-color:#2e8c09; color:#fff;",
+        REG_STATUS.submitted: "display:block; width: 15em;padding:3px; background-color:#248bad; color:#fff;",
+        REG_STATUS.superseded: "display:block; width: 15em;padding:3px; background-color:#ad7624; color:#fff;",
+        REG_STATUS.unstable: "display:block; width: 15em;padding:3px; background-color:#678c09; color:#fff;",
+        REG_STATUS.valid: "display:block; width: 15em;padding:3px; background-color:#36a80d; color:#fff;",
+    }
+
+    return css[status_iri]
 
 
 class PylodeError(Exception):

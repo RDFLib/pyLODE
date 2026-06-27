@@ -1,67 +1,4 @@
-import shutil
-from collections import defaultdict
-from itertools import chain
-from pathlib import Path
-from typing import Dict, Union
-
-import dominate
-from dominate.tags import (
-    a,
-    code,
-    dd,
-    div,
-    dl,
-    dt,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    li,
-    link,
-    meta,
-    script,
-    section,
-    strong,
-    style,
-    sup,
-    table,
-    td,
-    tr,
-    ul,
-)
-from dominate.util import raw
-from rdflib import Graph, Literal
-from rdflib.namespace import (
-    DC,
-    DCTERMS,
-    FOAF,
-    ORG,
-    OWL,
-    PROF,
-    PROV,
-    RDF,
-    RDFS,
-    SDO,
-    SKOS,
-)
-
-from ..rdf_elements import AGENT_PROPS, CLASS_PROPS, ONT_PROPS, ONTDOC, PROP_PROPS
-from ..utils import (
-    PylodeError,
-    back_onts_label_props,
-    get_ns,
-    load_background_onts,
-    load_background_onts_titles,
-    load_ontology,
-    make_pylode_logo,
-    prop_obj_pair_html,
-    section_html,
-    sort_ontology,
-)
-from ..version import __version__
-
-RDF_FOLDER = Path(__file__).parent / "rdf"
+from pylode.utils import *
 
 
 class OntPub:
@@ -299,7 +236,7 @@ class OntPub:
 
         Just calls other helper functions in order"""
         make_pylode_logo(
-            self.doc, __version__, "OntPub", "https://linked.data.gov.au/def/ontpub"
+            self.doc, "OntPub", "https://linked.data.gov.au/def/ontpub"
         )
         self._make_metadata()
         self._make_main_sections()

@@ -1,5 +1,5 @@
 from rdflib import Namespace
-from rdflib.namespace import DCTERMS, OWL, RDF, RDFS, SDO, SKOS, VANN, XSD
+from rdflib.namespace import *
 
 ONTDOC = Namespace("https://w3id.org/profile/ontdoc/")
 
@@ -51,7 +51,11 @@ CONCEPT_SCHEME_PROPS = [
     DCTERMS.source,
     DCTERMS.provenance,
     SDO.codeRepository,
-    SDO.identifier
+    SDO.identifier,
+    SDO.citation,
+    SDO.keywords,
+    DCAT.theme,
+    SDO.status,
 ]
 
 # properties for OWL Class instances
@@ -91,6 +95,8 @@ CONCEPT_PROPS = [
     SKOS.note,
     DCTERMS.source,
     DCTERMS.provenance,
+    SDO.citation,
+    SDO.status,
 ]
 
 # properties for instances of RDF Property and OWL specialised

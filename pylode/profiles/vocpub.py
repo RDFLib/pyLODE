@@ -1,70 +1,4 @@
-import json
-import shutil
-from collections import defaultdict
-from datetime import date
-from itertools import chain
-from pathlib import Path
-from typing import Dict, Union
-
-import dominate
-from dominate.tags import (
-    a,
-    code,
-    dd,
-    div,
-    dl,
-    dt,
-    h1,
-    h2,
-    h3,
-    h4,
-    li,
-    link,
-    meta,
-    p,
-    script,
-    strong,
-    style,
-    table,
-    td,
-    tr,
-    ul,
-)
-from dominate.util import raw
-from kurra.labels import find_missing_labels, get_missing_labels
-from kurra.sparql import query as kquery
-from rdflib import Graph, Literal, URIRef
-from rdflib.namespace import (
-    DC,
-    DCTERMS,
-    FOAF,
-    ORG,
-    OWL,
-    PROF,
-    PROV,
-    RDF,
-    RDFS,
-    SDO,
-    SKOS,
-)
-
-from pylode.rdf_elements import AGENT_PROPS, CONCEPT_SCHEME_PROPS, ONT_PROPS, ONTDOC
-from pylode.utils import (
-    _make_hierarchy_html,
-    back_onts_label_props,
-    get_ns,
-    load_background_onts,
-    load_background_onts_titles,
-    load_ontology,
-    make_pylode_logo,
-    make_title_from_iri,
-    sort_ontology,
-)
-from pylode.version import __version__
-
-from ..rdf_elements import CONCEPT_PROPS
-
-RDF_FOLDER = Path(__file__).parent / "rdf"
+from pylode.utils import *
 
 
 def render_rdf_object(objs):
@@ -294,8 +228,13 @@ class VocPub:
 
         Just calls other helper functions in order"""
         make_pylode_logo(
-            self.doc, __version__, "VocPub", "https://linked.data.gov.au/def/vocpub"
+            self.doc, "VocPub", "https://linked.data.gov.au/def/vocpub"
         )
+        with self.content:
+            cs_iri = self.ont.value(predicate=RDF.type, object=SKOS.ConceptScheme)
+            cs_pref_label = self.ont.value(subject=cs_iri, predicate=SKOS.prefLabel)
+            h1(cs_pref_label)
+
         self._make_metadata()
         self._make_concept_hierarchy()
         self._make_main_sections()
@@ -311,8 +250,8 @@ class VocPub:
                 if p_ in ONT_PROPS:
                     this_onts_props[p_].append(o)
 
-        # patch all missing labels
-        ont_with_labels = self.ont + get_missing_labels(find_missing_labels(self.ont))
+        # patch all missing labels with background resources
+        ont_with_labels = self.ont + self.back_onts
 
         # make HTML for all props in order of ONT_PROPS
         sec = div(h1(this_onts_props[SKOS.prefLabel]), id="metadata", _class="section")
@@ -338,7 +277,7 @@ class VocPub:
             """
         props = {}
         for row in json.loads(kquery(ont_with_labels, q))["results"]["bindings"]:
-            if row["p"]["value"] not in [str(SKOS.hasTopConcept)]:
+            if row["p"]["value"] not in [str(SKOS.prefLabel), str(SKOS.hasTopConcept)]:
                 p_iri = row["p"]["value"]
 
                 if row.get("p_name"):
@@ -365,7 +304,7 @@ class VocPub:
             if isinstance(l, dict):
                 return "BN"
 
-            if isinstance(l, date):
+            if isinstance(l, datetime.date):
                 return l.strftime("%Y-%m-%d")
             elif isinstance(l, str):
                 if l.startswith("http"):
@@ -374,8 +313,12 @@ class VocPub:
                     return l
 
         for k, v in {k: props[k] for k in [str(x) for x in CONCEPT_SCHEME_PROPS] if k in props}.items():
+            css = None
+            if URIRef(k) == SDO.status:
+                if URIRef(v["objects"][0][0]) in REG_STATUSES:
+                    css = make_status_css(URIRef(v["objects"][0][0]))
             d.appendChild(
-                div(dt(a(v["p_name"], href=k)), dd(render_rdf_object(v["objects"])))
+                div(dt(a(v["p_name"], href=k)), dd(render_rdf_object(v["objects"]), style=css))
             )
 
         sec.appendChild(d)
@@ -430,7 +373,7 @@ class VocPub:
             if (None, RDF.type, SKOS.Concept) in self.ont:
                 d = div(
                     h2("Concept Hierarchy"),
-                    _make_hierarchy_html(
+                    make_hierarchy_html(
                         self.ont, SKOS.Concept, SKOS.broader, self.fids
                     ),
                     id="concept-hierarchy",
@@ -439,7 +382,14 @@ class VocPub:
                 d.render()
 
     def _make_main_sections(self):
+        def order_dict_by_key_list_keep_rest(d, key_order):
+            ordered = {k: d[k] for k in key_order if k in d}
+            remaining = {k: v for k, v in d.items() if k not in ordered}
+            return ordered | remaining
+
         with self.content:
+            d = div(h2("Concept Definitions"), id="concepts")
+            
             if (None, RDF.type, SKOS.Concept) in self.ont:
                 concepts = {}
                 for s in self.ont.subjects(RDF.type, SKOS.Concept):
@@ -447,12 +397,6 @@ class VocPub:
                     for p, o in self.ont.predicate_objects(s):
                         concepts[s][p] = o
 
-            def order_dict_by_key_list_keep_rest(d, key_order):
-                ordered = {k: d[k] for k in key_order if k in d}
-                remaining = {k: v for k, v in d.items() if k not in ordered}
-                return ordered | remaining
-
-            d = div(h2("Concept Definitions"), id="concepts")
             for iri, concept in dict(
                 sorted(concepts.items(), key=lambda item: item[1][SKOS.prefLabel])
             ).items():  # order by Concept's label
@@ -472,16 +416,23 @@ class VocPub:
                                     curie = self.ont.namespace_manager.qname(v).replace(
                                         ":", "_"
                                     )
-                                    lbl = self.ont.value(subject=v, predicate=SKOS.prefLabel)
+                                    lbl = (self.ont + self.back_onts).value(subject=v, predicate=SKOS.prefLabel|SDO.name)
                                     if lbl is None:
                                         lbl = v
-                                    v = a(lbl, href="#" + curie)
+                                    if k == SDO.status:
+                                        if v in REG_STATUSES:
+                                            v = a(lbl, href="#" + curie, style=make_status_css(v))
+                                        else:
+                                            v = a(lbl, href="#" + curie)
+                                    else:
+                                        v = a(lbl, href="#" + curie)
                             p_label = self.props_labeled.get(k).get("title").title()
                             p_desc = self.props_labeled.get(k).get("description")
                             props_table.add(
                                 tr(td(a(p_label, href=k, title=p_desc)), td(v))
                             )
                             # props.add(tr(td(k), td(v)))
+
                 d.add(
                     div(
                         h3(
@@ -492,6 +443,7 @@ class VocPub:
                         _class="entity",
                     )
                 )
+
             d.render()
 
     def _make_namespaces(self):
