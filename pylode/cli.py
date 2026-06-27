@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).absolute().parent.parent))
-from pylode import OntPub, PylodeError, Supermodel, VocPub, __version__
+from pylode import OntPub, ValPub, VocPub, Supermodel, PylodeError, __version__
 
 parser = argparse.ArgumentParser()
 
@@ -46,9 +46,10 @@ parser.add_argument(
     "--profile",
     help="Which profile to use to generate HTML. Must be one of "
     "'ontpub' (https://linked.data.gov.au/def/ontpub) - for ontologies, "
+    "'valpub' (https://linked.data.gov.au/def/valpub) - for SHACL Shapes Graphs, "
     "'vocpub' (https://linked.data.gov.au/def/vocpub) - for SKOS vocabularies, "
     "'supermodel' - for profiles of profiles",
-    choices=["ontpub", "vocpub", "supermodel"],
+    choices=["ontpub", "valpub", "vocpub", "supermodel"],
     default="ontpub",
 )
 
@@ -79,6 +80,8 @@ def main():
         sort_subjects = args.sort
         if args.profile == "ontpub":
             html = OntPub(args.input, sort_subjects=sort_subjects)
+        elif args.profile == "valpub":
+            html = ValPub(args.input, sort_subjects=sort_subjects)
         elif args.profile == "vocpub":
             html = VocPub(args.input, sort_subjects=sort_subjects)
         elif args.profile == "supermodel":

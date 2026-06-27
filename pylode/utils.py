@@ -1046,7 +1046,7 @@ def make_pylode_logo(doc, profile_name, profile_iri):
                 a(
                     v,
                     href="https://github.com/rdflib/pyLODE/release/" + v,
-                    id="v",
+                    id="version",
                 )
                 span(" with the ")
                 a(profile_name, href=profile_iri, id="profile")
