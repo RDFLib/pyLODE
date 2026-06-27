@@ -163,6 +163,9 @@ ONT_TYPES = {
     OWL.InverseFunctionalProperty: ("ifp", "OWL Inverse Functional Property"),
     RDFS.Datatype: ("dt", "RDFS Datatypes"),
     OWL.NamedIndividual: ("ni", "OWL Named Individual"),
+
+    SH.NodeShape: ("ns", "SH NodeShape"),
+    SH.PropertyShape: ("ps", "SH PropertyShape"),
 }
 
 RESTRICTION_TYPES = [
@@ -185,3 +188,34 @@ DATATYPE_CARDINALITIES = {
     XSD.maxInclusive: "<=",
     XSD.maxExclusive: "<",
 }
+
+
+SHAPES_GRAPH_PROPS = [
+    DCTERMS.title,
+    DCTERMS.publisher,
+    DCTERMS.creator,
+    DCTERMS.contributor,
+    DCTERMS.created,
+    DCTERMS.dateAccepted,
+    DCTERMS.modified,
+    DCTERMS.issued,
+    DCTERMS.license,
+    DCTERMS.rights,
+    SDO.category,
+    OWL.versionIRI,
+    OWL.versionInfo,
+    OWL.priorVersion,
+    SDO.identifier,
+    VANN.preferredNamespacePrefix,
+    VANN.preferredNamespaceUri,
+    SKOS.historyNote,
+    SKOS.scopeNote,
+    DCTERMS.source,
+    DCTERMS.provenance,
+    SKOS.note,
+    DCTERMS.description,
+    ONTDOC.restriction,
+    OWL.imports,
+    SDO.codeRepository,
+    #SKOS.hasTopConcept, -- catered for in Concept Hierarchy
+]

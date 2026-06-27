@@ -175,7 +175,9 @@
         .sup-p,
         .sup-ni,
         .sup-con,
-        .sup-col {
+        .sup-col,
+        .sup-ns,
+        .sup-ps {
             cursor:help;
         }
 
@@ -213,6 +215,14 @@
 
         .sup-col {
             color:darkred;
+        }
+
+        .sup-ns {
+            color:lightgreen;
+        }
+
+        .sup-ps {
+            color:lightblue;
         }
 
         sup {
@@ -257,6 +267,10 @@
         #toc .second,
         #toc .third {
             padding-left: 10px;
+        }
+
+        .second li {
+            margin-top: 0.5em;
         }
 
         #content {

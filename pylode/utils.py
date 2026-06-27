@@ -59,6 +59,7 @@ def get_ns(ont: Graph) -> Tuple[str, str]:
 
         for s_ in chain(
             ont.subjects(predicate=RDF.type, object=OWL.Ontology),
+            ont.subjects(predicate=RDF.type, object=URIRef("http://www.w3.org/ns/shacl#ShapesGraph")),
             ont.subjects(predicate=RDF.type, object=SKOS.ConceptScheme),
             ont.subjects(predicate=RDF.type, object=PROF.Profile),
         ):
@@ -908,7 +909,7 @@ def section_html(
         props_labeled_,
     ):
         """Makes all the HTML (div, title & table) for one instance of a
-        given RDF class, e.g. owl:Class or owl:ObjectProperty"""
+        given ONT_TYPES"""
         d = div(
             h3(
                 title_,

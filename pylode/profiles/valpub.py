@@ -19,7 +19,7 @@ class ValPub:
         self.ont = load_ontology(ontology)
         if sort_subjects:
             self.ont = sort_ontology(self.ont)
-        self._ontdoc_inference(self.ont)
+        self._inference(self.ont)
         self.back_onts = load_background_onts()
         self.back_onts_titles = load_background_onts_titles(self.back_onts)
         self.props_labeled = back_onts_label_props(self.back_onts)
@@ -30,11 +30,7 @@ class ValPub:
 
         # make HTML doc with title
         t = None
-        for s in chain(
-            self.ont.subjects(RDF.type, OWL.Ontology),
-            self.ont.subjects(RDF.type, PROF.Profile),
-            self.ont.subjects(RDF.type, SKOS.ConceptScheme),
-        ):
+        for s in self.ont.subjects(RDF.type, URIRef("http://www.w3.org/ns/shacl#ShapesGraph")):
             for o2 in self.ont.objects(s, DCTERMS.title):
                 t = str(o2)
         if t is None:
@@ -61,28 +57,9 @@ class ValPub:
         else:
             return self.doc.render()
 
-    def _ontdoc_inference(self, g):
-        """Expands the ontology's graph to make OntDoc querying easier.
+    def _inference(self, g):
 
-        Uses axioms made up for OntDoc, but they are simple and obvious
-        and don't collide with well-known ontologies"""
-        # class types
-        for s_ in g.subjects(RDF.type, OWL.Class):
-            g.add((s_, RDF.type, RDFS.Class))
-
-        for s_ in g.subjects(RDF.type, RDFS.Class):
-            g.add((s_, RDF.type, OWL.Class))
-
-        # # property types
-        # for s_ in chain(
-        #     g.subjects(RDF.type, OWL.ObjectProperty),
-        #     g.subjects(RDF.type, OWL.FunctionalProperty),
-        #     g.subjects(RDF.type, OWL.DatatypeProperty),
-        #     g.subjects(RDF.type, OWL.AnnotationProperty),
-        # ):
-        #     g.add((s_, RDF.type, RDF.Property))
-
-        # name
+        # label
         for s_, o in chain(
             g.subject_objects(DC.title),
             g.subject_objects(RDFS.label),
@@ -111,39 +88,11 @@ class ValPub:
         #
         #   Blank Node Types
         #
-        for s_ in g.subjects(OWL.onProperty, None):
-            g.add((s_, RDF.type, OWL.Restriction))
-
-        for s_ in chain(
-            g.subjects(OWL.unionOf, None), g.subjects(OWL.intersectionOf, None)
-        ):
-            g.add((s_, RDF.type, OWL.Class))
-
-        # we do these next few so we only need to loop through
-        # Class & Property properties once: single subject
-        for s_, o in g.subject_objects(RDFS.subClassOf):
-            g.add((o, ONTDOC.superClassOf, s_))
-
-        for s_, o in g.subject_objects(RDFS.subPropertyOf):
-            g.add((o, ONTDOC.superPropertyOf, s_))
-
-        for s_, o in g.subject_objects(RDFS.domain):
-            g.add((o, ONTDOC.inDomainOf, s_))
-
-        for s_, o in g.subject_objects(SDO.domainIncludes):
-            g.add((o, ONTDOC.inDomainIncludesOf, s_))
-
-        for s_, o in g.subject_objects(RDFS.range):
-            g.add((o, ONTDOC.inRangeOf, s_))
-
-        for s_, o in g.subject_objects(SDO.rangeIncludes):
-            g.add((o, ONTDOC.inRangeIncludesOf, s_))
-
-        for s_, o in g.subject_objects(RDF.type):
-            g.add((o, ONTDOC.hasMember, s_))
+        for s_, o in g.subject_objects(SH.property):
+            g.add((s_, RDF.type, SH.PropertyShape))
 
         #
-        #   Agents
+        #   Agents - straing from OntPub
         #
         # creator
         for s_, o in chain(
@@ -235,7 +184,7 @@ class ValPub:
 
         Just calls other helper functions in order"""
         make_pylode_logo(
-            self.doc, "OntPub", "https://linked.data.gov.au/def/ontpub"
+            self.doc, "ValPub", "https://linked.data.gov.au/def/valpub"
         )
         self._make_metadata()
         self._make_main_sections()
@@ -246,10 +195,9 @@ class ValPub:
     def _make_metadata(self):
         # get all ONT_PROPS props and their (multiple) values
         this_onts_props = defaultdict(list)
-        for s_ in chain(
-            self.ont.subjects(predicate=RDF.type, object=OWL.Ontology),
-            self.ont.subjects(predicate=RDF.type, object=SKOS.ConceptScheme),
-            self.ont.subjects(predicate=RDF.type, object=PROF.Profile),
+        for s_ in self.ont.subjects(
+                predicate=RDF.type,
+                object=URIRef("http://www.w3.org/ns/shacl#ShapesGraph")
         ):
             iri = s_
             for p_, o in self.ont.predicate_objects(s_):
@@ -325,106 +273,31 @@ class ValPub:
 
     def _make_main_sections(self):
         with self.content:
-            if (None, RDF.type, OWL.Class) in self.ont:
+            if (None, RDF.type, SH.NodeShape) in self.ont:
                 d = section_html(
-                    "Classes",
+                    "Node Shapes",
                     self.ont,
                     self.back_onts,
                     self.ns,
-                    OWL.Class,
+                    SH.NodeShape,
                     CLASS_PROPS,
                     self.toc,
-                    "classes",
+                    "node-shapes",
                     self.fids,
                     self.props_labeled,
                 )
                 d.render()
 
-            if (None, RDF.type, RDF.Property) in self.ont:
+            if (None, RDF.type, SH.PropertyShape) in self.ont:
                 d = section_html(
-                    "Properties",
+                    "Property Shapes",
                     self.ont,
                     self.back_onts,
                     self.ns,
-                    RDF.Property,
+                    SH.PropertyShape,
                     PROP_PROPS,
                     self.toc,
-                    "properties",
-                    self.fids,
-                    self.props_labeled,
-                )
-                d.render()
-
-            if (None, RDF.type, OWL.ObjectProperty) in self.ont:
-                d = section_html(
-                    "Object Properties",
-                    self.ont,
-                    self.back_onts,
-                    self.ns,
-                    OWL.ObjectProperty,
-                    PROP_PROPS,
-                    self.toc,
-                    "objectproperties",
-                    self.fids,
-                    self.props_labeled,
-                )
-                d.render()
-
-            if (None, RDF.type, OWL.DatatypeProperty) in self.ont:
-                d = section_html(
-                    "Datatype Properties",
-                    self.ont,
-                    self.back_onts,
-                    self.ns,
-                    OWL.DatatypeProperty,
-                    PROP_PROPS,
-                    self.toc,
-                    "datatypeproperties",
-                    self.fids,
-                    self.props_labeled,
-                )
-                d.render()
-
-            if (None, RDF.type, OWL.AnnotationProperty) in self.ont:
-                d = section_html(
-                    "Annotation Properties",
-                    self.ont,
-                    self.back_onts,
-                    self.ns,
-                    OWL.AnnotationProperty,
-                    PROP_PROPS,
-                    self.toc,
-                    "annotationproperties",
-                    self.fids,
-                    self.props_labeled,
-                )
-                d.render()
-
-            if (None, RDF.type, OWL.FunctionalProperty) in self.ont:
-                d = section_html(
-                    "Functional Properties",
-                    self.ont,
-                    self.back_onts,
-                    self.ns,
-                    OWL.FunctionalProperty,
-                    PROP_PROPS,
-                    self.toc,
-                    "functionalproperties",
-                    self.fids,
-                    self.props_labeled,
-                )
-                d.render()
-
-            if (None, RDF.type, RDFS.Datatype) in self.ont:
-                d = section_html(
-                    "Custom Datatypes",
-                    self.ont,
-                    self.back_onts,
-                    self.ns,
-                    RDFS.Datatype,
-                    PROP_PROPS,
-                    self.toc,
-                    "datatypes",
+                    "property-shapes",
                     self.fids,
                     self.props_labeled,
                 )
@@ -435,52 +308,15 @@ class ValPub:
             with div(id="legend"):
                 h2("Legend")
                 with table(_class="entity"):
-                    if self.toc.get("classes") is not None:
+                    if self.toc.get("node-shapes") is not None:
                         with tr():
-                            td(sup("c", _class="sup-c", title="OWL/RDFS Class"))
-                            td("Classes")
-                    if self.toc.get("properties") is not None:
+                            td(sup("ns", _class="sup-ns", title="SHACL Node Shapes"))
+                            td("Node Shapes")
+                    if self.toc.get("property-shapes") is not None:
                         with tr():
-                            td(sup("p", _class="sup-p", title="RDF Property"))
-                            td("Properties")
-                    if self.toc.get("objectproperties") is not None:
-                        with tr():
-                            td(sup("op", _class="sup-op", title="OWL Object Property"))
-                            td("Object Properties")
-                    if self.toc.get("datatypeproperties") is not None:
-                        with tr():
-                            td(
-                                sup(
-                                    "dp",
-                                    _class="sup-dp",
-                                    title="OWL Datatype Property",
-                                )
-                            )
-                            td("Datatype Properties")
-                    if self.toc.get("annotationproperties") is not None:
-                        with tr():
-                            td(
-                                sup(
-                                    "ap",
-                                    _class="sup-ap",
-                                    title="OWL Annotation Property",
-                                )
-                            )
-                            td("Annotation Properties")
-                    if self.toc.get("functionalproperties") is not None:
-                        with tr():
-                            td(
-                                sup(
-                                    "fp",
-                                    _class="sup-fp",
-                                    title="OWL Functional Property",
-                                )
-                            )
-                            td("Functional Properties")
-                    if self.toc.get("named_individuals") is not None:
-                        with tr():
-                            td(sup("ni", _class="sup-ni", title="OWL Named Individual"))
-                            td("Named Individuals")
+                            td(sup("ps", _class="sup-ps", title="SHACL Property Shapes"))
+                            td("Property Shapes")
+
 
     def _make_namespaces(self):
         # only get namespaces used in ont
@@ -524,101 +360,23 @@ class ValPub:
                     li(h4(a("Metadata", href="#metadata")))
 
                     if (
-                        self.toc.get("classes") is not None
-                        and len(self.toc["classes"]) > 0
+                        self.toc.get("node-shapes") is not None
+                        and len(self.toc["node-shapes"]) > 0
                     ):
                         with li():
-                            h4(a("Classes", href="#classes"))
-                            h5(
-                                a(
-                                    "Class Hierarchy",
-                                    href="#class-hierarchy",
-                                    style="margin-left:10px;",
-                                )
-                            )
-                            h5(
-                                a(
-                                    "Class Definitions",
-                                    href="#class-definitions",
-                                    style="margin-left:10px;",
-                                )
-                            )
+                            h4(a("Node Shapes", href="#node-shapes"))
                             with ul(_class="second"):
-                                for c in self.toc["classes"]:
-                                    li(a(c[1], href=c[0]), style="margin-left:10px;")
-
-                    if (
-                        self.toc.get("properties") is not None
-                        and len(self.toc["properties"]) > 0
-                    ):
-                        with li():
-                            h4(a("Properties", href="#properties"))
-                            with ul(_class="second"):
-                                for c in self.toc["properties"]:
+                                for c in self.toc["node-shapes"]:
                                     li(a(c[1], href=c[0]))
 
                     if (
-                        self.toc.get("objectproperties") is not None
-                        and len(self.toc["objectproperties"]) > 0
+                        self.toc.get("property-shapes") is not None
+                        and len(self.toc["property-shapes"]) > 0
                     ):
                         with li():
-                            h4(a("Object Properties", href="#objectproperties"))
-                            h5(
-                                a(
-                                    "Object Property Hierarchy",
-                                    href="#object-property-hierarchy",
-                                    style="margin-left:10px;",
-                                )
-                            )
-                            h5(
-                                a(
-                                    "Object Property Definitions",
-                                    href="#object-property-definitions",
-                                    style="margin-left:10px;",
-                                )
-                            )
+                            h4(a("Property Shapes", href="#property-shapes"))
                             with ul(_class="second"):
-                                for c in self.toc["objectproperties"]:
-                                    li(a(c[1], href=c[0]), style="margin-left:10px;")
-
-                    if (
-                        self.toc.get("datatypeproperties") is not None
-                        and len(self.toc["datatypeproperties"]) > 0
-                    ):
-                        with li():
-                            h4(a("Datatype Properties", href="#datatypeproperties"))
-                            with ul(_class="second"):
-                                for c in self.toc["datatypeproperties"]:
-                                    li(a(c[1], href=c[0]))
-
-                    if (
-                        self.toc.get("annotationproperties") is not None
-                        and len(self.toc["annotationproperties"]) > 0
-                    ):
-                        with li():
-                            h4(a("Annotation Properties", href="#annotationproperties"))
-                            with ul(_class="second"):
-                                for c in self.toc["annotationproperties"]:
-                                    li(a(c[1], href=c[0]))
-
-                    if (
-                        self.toc.get("functionalproperties") is not None
-                        and len(self.toc["functionalproperties"]) > 0
-                    ):
-                        with li():
-                            h4(a("Functional Properties", href="#functionalproperties"))
-                            with ul(_class="second"):
-                                for c in self.toc["functionalproperties"]:
-                                    li(a(c[1], href=c[0]))
-
-                    if (
-                        self.toc.get("datatypes") is not None
-                        and len(self.toc["datatypes"]) > 0
-                    ):
-                        with li():
-                            h4(a("Custom Datatypes", href="#datatypes"))
-                            with ul(_class="second"):
-                                for c in self.toc["datatypes"]:
+                                for c in self.toc["property-shapes"]:
                                     li(a(c[1], href=c[0]))
 
                     with li():
