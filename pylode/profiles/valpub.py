@@ -43,6 +43,15 @@ class ValPub:
         with self.doc:
             self.content = div(id="content")
 
+        # for p, o in self.ont.predicate_objects(URIRef("http://example.com/validator/basic")):
+        #     print(p, o)
+
+        # for s, o in self.ont.subject_objects(RDFS.isDefinedBy):
+        #     print(s, o)
+
+        # for s, o in self.ont.subject_objects(RDFS.member):
+        #     print(s, o)
+
     def make_html(self, destination: Path = None, include_css: bool = True):
         """Makes the complete OntDoc HTML document.
 
@@ -58,7 +67,7 @@ class ValPub:
             return self.doc.render()
 
     def _inference(self, g):
-
+        # Shapes Graph
         # label
         for s_, o in chain(
             g.subject_objects(DC.title),
@@ -121,6 +130,19 @@ class ValPub:
             g.remove((s_, DC.publisher, o))
             g.remove((s_, SDO.publisher, o))
             g.add((s_, DCTERMS.publisher, o))
+
+        # Shapes
+        for s, o in g.subject_objects(RDFS.isDefinedBy):
+            g.add((o, ONTDOC.defines, s))
+
+        for s, o in chain(
+                g.subject_objects(SDO.memberOf),
+                g.subject_objects(SDO.hasPart),
+        ):
+            g.add((o, RDFS.member, s))
+
+        for s, o in g.subject_objects(RDFS.member):
+            g.add((o, SDO.memberOf, s))
 
         # indicate Agent instances from properties
         for o in chain(
@@ -201,14 +223,14 @@ class ValPub:
         ):
             iri = s_
             for p_, o in self.ont.predicate_objects(s_):
-                if p_ in ONT_PROPS:
+                if p_ in SHAPES_GRAPH_PROPS:
                     this_onts_props[p_].append(o)
 
         # make HTML for all props in order of ONT_PROPS
         sec = div(h1(this_onts_props[DCTERMS.title]), id="metadata", _class="section")
         sec.appendChild(h2("Metadata"))
         d = dl(div(dt(strong("IRI")), dd(code(str(iri)))))
-        for prop in ONT_PROPS:
+        for prop in SHAPES_GRAPH_PROPS:
             if prop in this_onts_props.keys():
                 d.appendChild(
                     prop_obj_pair_html(
@@ -280,7 +302,7 @@ class ValPub:
                     self.back_onts,
                     self.ns,
                     SH.NodeShape,
-                    CLASS_PROPS,
+                    NODE_SHAPE_PROPS,
                     self.toc,
                     "node-shapes",
                     self.fids,
@@ -295,7 +317,7 @@ class ValPub:
                     self.back_onts,
                     self.ns,
                     SH.PropertyShape,
-                    PROP_PROPS,
+                    PROPERTY_SHAPE_PROPS,
                     self.toc,
                     "property-shapes",
                     self.fids,
@@ -317,6 +339,16 @@ class ValPub:
                             td(sup("ps", _class="sup-ps", title="SHACL Property Shapes"))
                             td("Property Shapes")
 
+                    with tr():
+                        td(sup("op", _class="sup-op", title="Object Properties"))
+                        td("Object Properties")
+                    with tr():
+                        td(sup("ap", _class="sup-ap", title="Annotation Properties"))
+                        td("Annotation Properties")
+                    with tr():
+                        td(sup("ap", _class="sup-dp", title="Datatype Properties"))
+                        td("Datatype Properties")
+                    
 
     def _make_namespaces(self):
         # only get namespaces used in ont

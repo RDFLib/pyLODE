@@ -59,3 +59,9 @@ od:restriction
     dcterms:title "restriction" ;
     dcterms:description "Convenience property for things that subclass owl:Restriction" ;
 .
+
+od:defines
+    a rdf:Property ;
+    dcterms:title "defines" ;
+    dcterms:description "Inverse of rdfs:isDefinedBy" ;
+.

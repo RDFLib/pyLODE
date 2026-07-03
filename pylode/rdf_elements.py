@@ -80,6 +80,26 @@ CLASS_PROPS = [
     ONTDOC.superClassOf,
 ]
 
+NODE_SHAPE_PROPS = [
+    DCTERMS.title,
+    DCTERMS.description,
+
+    RDFS.isDefinedBy,
+    SDO.memberOf,
+    SH.message,
+    SH.property
+]
+
+PROPERTY_SHAPE_PROPS = [
+    DCTERMS.title,
+    DCTERMS.description,
+
+    RDFS.isDefinedBy,
+    SDO.memberOf,
+    SH.message,
+    SH.path,
+]
+
 # properties for SKOS Concept instances
 CONCEPT_PROPS = [
     SKOS.prefLabel,
@@ -143,16 +163,6 @@ RESTRICTION_PROPS = [
     OWL.maxQualifiedCardinality,
 ]
 
-# all known properties
-PROPS = set(
-    ONT_PROPS
-    + CLASS_PROPS
-    + PROP_PROPS
-    + AGENT_PROPS
-    + RESTRICTION_PROPS
-    + CONCEPT_PROPS
-)
-
 ONT_TYPES = {
     OWL.Class: ("c", "OWL/RDFS Class"),
     RDF.Property: ("p", "RDF Property"),
@@ -189,7 +199,6 @@ DATATYPE_CARDINALITIES = {
     XSD.maxExclusive: "<",
 }
 
-
 SHAPES_GRAPH_PROPS = [
     DCTERMS.title,
     DCTERMS.publisher,
@@ -214,8 +223,21 @@ SHAPES_GRAPH_PROPS = [
     DCTERMS.provenance,
     SKOS.note,
     DCTERMS.description,
-    ONTDOC.restriction,
     OWL.imports,
     SDO.codeRepository,
-    #SKOS.hasTopConcept, -- catered for in Concept Hierarchy
+    RDFS.member,
+    ONTDOC.defines
 ]
+
+# all known properties
+PROPS = set(
+    ONT_PROPS
+    + CLASS_PROPS
+    + PROP_PROPS
+    + AGENT_PROPS
+    + RESTRICTION_PROPS
+    + CONCEPT_PROPS
+    + SHAPES_GRAPH_PROPS
+    + NODE_SHAPE_PROPS
+    + PROPERTY_SHAPE_PROPS
+)
