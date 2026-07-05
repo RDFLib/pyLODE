@@ -50,7 +50,7 @@ from pylode.profiles.supermodel.query.common import (
     get_values,
 )
 from pylode.profiles.supermodel.query.property_shape import get_class_properties_by_sh
-from pylode.rdf_elements import AGENT_PROPS, ONT_PROPS, ONTDOC
+from pylode.rdf_elements import AGENT_PROPS, ONTOLOGY_PROPS, ONTPUB
 from pylode.utils import (
     back_onts_label_props,
     load_background_onts,
@@ -493,7 +493,7 @@ class Query:
         this_onts_props = defaultdict(list)
         for s_ in self.graph.subjects(predicate=RDF.type, object=PROF.Profile):
             for p_, o in self.graph.predicate_objects(s_):
-                if p_ in ONT_PROPS:
+                if p_ in ONTOLOGY_PROPS:
                     this_onts_props[p_].append(o)
 
         return this_onts_props
@@ -569,25 +569,25 @@ class Query:
         # we do these next few so we only need to loop through
         # Class & Property properties once: single subject
         for s_, o in g.subject_objects(RDFS.subClassOf):
-            g.add((o, ONTDOC.superClassOf, s_))
+            g.add((o, ONTPUB.superClassOf, s_))
 
         for s_, o in g.subject_objects(RDFS.subPropertyOf):
-            g.add((o, ONTDOC.superPropertyOf, s_))
+            g.add((o, ONTPUB.superPropertyOf, s_))
 
         for s_, o in g.subject_objects(RDFS.domain):
-            g.add((o, ONTDOC.inDomainOf, s_))
+            g.add((o, ONTPUB.inDomainOf, s_))
 
         for s_, o in g.subject_objects(SDO.domainIncludes):
-            g.add((o, ONTDOC.inDomainIncludesOf, s_))
+            g.add((o, ONTPUB.inDomainIncludesOf, s_))
 
         for s_, o in g.subject_objects(RDFS.range):
-            g.add((o, ONTDOC.inRangeOf, s_))
+            g.add((o, ONTPUB.inRangeOf, s_))
 
         for s_, o in g.subject_objects(SDO.rangeIncludes):
-            g.add((o, ONTDOC.inRangeIncludesOf, s_))
+            g.add((o, ONTPUB.inRangeIncludesOf, s_))
 
         for s_, o in g.subject_objects(RDF.type):
-            g.add((o, ONTDOC.hasMember, s_))
+            g.add((o, ONTPUB.hasMember, s_))
 
         #
         #   Agents

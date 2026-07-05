@@ -1,10 +1,10 @@
 from rdflib import Namespace
 from rdflib.namespace import *
 
-ONTDOC = Namespace("https://w3id.org/profile/ontdoc/")
+ONTPUB = Namespace("https://linked.data.gov.au/def/ontpub/")
 
-# metadata properties for OWL Ontology instances
-ONT_PROPS = [
+# OntPub
+ONTOLOGY_PROPS = [
     DCTERMS.title,
     DCTERMS.publisher,
     DCTERMS.creator,
@@ -28,12 +28,86 @@ ONT_PROPS = [
     DCTERMS.provenance,
     SKOS.note,
     DCTERMS.description,
-    ONTDOC.restriction,
+    ONTPUB.restriction,
     OWL.imports,
     SDO.codeRepository,
     #SKOS.hasTopConcept, -- catered for in Concept Hierarchy
 ]
 
+CLASS_PROPS = [
+    RDFS.isDefinedBy,
+    DCTERMS.title,
+    DCTERMS.description,
+    SKOS.scopeNote,
+    SKOS.example,
+    DCTERMS.source,
+    DCTERMS.provenance,
+    SKOS.note,
+    RDFS.subClassOf,
+    OWL.equivalentClass,
+    # OWL.restriction,
+    ONTPUB.inDomainOf,
+    ONTPUB.inDomainIncludesOf,
+    ONTPUB.inRangeOf,
+    ONTPUB.inRangeIncludesOf,
+    ONTPUB.restriction,
+    ONTPUB.hasInstance,
+    ONTPUB.superClassOf,
+]
+
+PROP_PROPS = [
+    RDFS.isDefinedBy,
+    DCTERMS.title,
+    DCTERMS.description,
+    SKOS.scopeNote,
+    SKOS.example,
+    DCTERMS.source,
+    DCTERMS.provenance,
+    SKOS.note,
+    RDFS.subPropertyOf,
+    ONTPUB.superPropertyOf,
+    RDFS.domain,
+    SDO.domainIncludes,
+    RDFS.range,
+    SDO.rangeIncludes,
+]
+
+RESTRICTION_PROPS = [
+    OWL.allValuesFrom,
+    OWL.someValuesFrom,
+    OWL.hasValue,
+    OWL.onProperty,
+    OWL.onClass,
+    OWL.cardinality,
+    OWL.qualifiedCardinality,
+    OWL.minCardinality,
+    OWL.minQualifiedCardinality,
+    OWL.maxCardinality,
+    OWL.maxQualifiedCardinality,
+]
+
+RESTRICTION_TYPES = [
+    OWL.cardinality,
+    OWL.qualifiedCardinality,
+    OWL.minCardinality,
+    OWL.minQualifiedCardinality,
+    OWL.maxCardinality,
+    OWL.maxQualifiedCardinality,
+    OWL.allValuesFrom,
+    OWL.someValuesFrom,
+    OWL.hasValue,
+]
+
+OWL_SET_TYPES = [OWL.unionOf, OWL.intersectionOf]
+
+DATATYPE_CARDINALITIES = {
+    XSD.minInclusive: ">=",
+    XSD.minExclusive: ">",
+    XSD.maxInclusive: "<=",
+    XSD.maxExclusive: "<",
+}
+
+# VocPub
 CONCEPT_SCHEME_PROPS = [
     SKOS.prefLabel,
     SKOS.definition,
@@ -58,49 +132,24 @@ CONCEPT_SCHEME_PROPS = [
     SDO.status,
 ]
 
-# properties for OWL Class instances
-CLASS_PROPS = [
+COLLECTION_PROPS = [
+    SKOS.prefLabel,
+    SKOS.definition,
+    SKOS.altLabel,
+    SKOS.inScheme,
     RDFS.isDefinedBy,
-    DCTERMS.title,
-    DCTERMS.description,
-    SKOS.scopeNote,
     SKOS.example,
+    SKOS.broader,
+    SKOS.narrower,
+    SKOS.related,
+    SKOS.scopeNote,
+    SKOS.note,
     DCTERMS.source,
     DCTERMS.provenance,
-    SKOS.note,
-    RDFS.subClassOf,
-    OWL.equivalentClass,
-    # OWL.restriction,
-    ONTDOC.inDomainOf,
-    ONTDOC.inDomainIncludesOf,
-    ONTDOC.inRangeOf,
-    ONTDOC.inRangeIncludesOf,
-    ONTDOC.restriction,
-    ONTDOC.hasInstance,
-    ONTDOC.superClassOf,
+    SDO.citation,
+    SDO.status,
 ]
 
-NODE_SHAPE_PROPS = [
-    DCTERMS.title,
-    DCTERMS.description,
-
-    RDFS.isDefinedBy,
-    SDO.memberOf,
-    SH.message,
-    SH.property
-]
-
-PROPERTY_SHAPE_PROPS = [
-    DCTERMS.title,
-    DCTERMS.description,
-
-    RDFS.isDefinedBy,
-    SDO.memberOf,
-    SH.message,
-    SH.path,
-]
-
-# properties for SKOS Concept instances
 CONCEPT_PROPS = [
     SKOS.prefLabel,
     SKOS.definition,
@@ -119,86 +168,7 @@ CONCEPT_PROPS = [
     SDO.status,
 ]
 
-# properties for instances of RDF Property and OWL specialised
-# forms, such as ObjectProperty etc.
-PROP_PROPS = [
-    RDFS.isDefinedBy,
-    DCTERMS.title,
-    DCTERMS.description,
-    SKOS.scopeNote,
-    SKOS.example,
-    DCTERMS.source,
-    DCTERMS.provenance,
-    SKOS.note,
-    RDFS.subPropertyOf,
-    ONTDOC.superPropertyOf,
-    RDFS.domain,
-    SDO.domainIncludes,
-    RDFS.range,
-    SDO.rangeIncludes,
-]
-
-# properties for Agents
-AGENT_PROPS = [
-    SDO.name,
-    SDO.affiliation,
-    SDO.identifier,
-    SDO.email,
-    SDO.honorificPrefix,
-    SDO.url,
-]
-
-# properties for OWL restriction instances
-RESTRICTION_PROPS = [
-    OWL.allValuesFrom,
-    OWL.someValuesFrom,
-    OWL.hasValue,
-    OWL.onProperty,
-    OWL.onClass,
-    OWL.cardinality,
-    OWL.qualifiedCardinality,
-    OWL.minCardinality,
-    OWL.minQualifiedCardinality,
-    OWL.maxCardinality,
-    OWL.maxQualifiedCardinality,
-]
-
-ONT_TYPES = {
-    OWL.Class: ("c", "OWL/RDFS Class"),
-    RDF.Property: ("p", "RDF Property"),
-    OWL.ObjectProperty: ("op", "OWL Object Property"),
-    OWL.DatatypeProperty: ("dp", "OWL Datatype Property"),
-    OWL.AnnotationProperty: ("ap", "OWL Annotation Property"),
-    OWL.FunctionalProperty: ("fp", "OWL Functional Property"),
-    OWL.InverseFunctionalProperty: ("ifp", "OWL Inverse Functional Property"),
-    RDFS.Datatype: ("dt", "RDFS Datatypes"),
-    OWL.NamedIndividual: ("ni", "OWL Named Individual"),
-
-    SH.NodeShape: ("ns", "SH NodeShape"),
-    SH.PropertyShape: ("ps", "SH PropertyShape"),
-}
-
-RESTRICTION_TYPES = [
-    OWL.cardinality,
-    OWL.qualifiedCardinality,
-    OWL.minCardinality,
-    OWL.minQualifiedCardinality,
-    OWL.maxCardinality,
-    OWL.maxQualifiedCardinality,
-    OWL.allValuesFrom,
-    OWL.someValuesFrom,
-    OWL.hasValue,
-]
-
-OWL_SET_TYPES = [OWL.unionOf, OWL.intersectionOf]
-
-DATATYPE_CARDINALITIES = {
-    XSD.minInclusive: ">=",
-    XSD.minExclusive: ">",
-    XSD.maxInclusive: "<=",
-    XSD.maxExclusive: "<",
-}
-
+# VocPub
 SHAPES_GRAPH_PROPS = [
     DCTERMS.title,
     DCTERMS.publisher,
@@ -226,18 +196,70 @@ SHAPES_GRAPH_PROPS = [
     OWL.imports,
     SDO.codeRepository,
     RDFS.member,
-    ONTDOC.defines
+    ONTPUB.defines
+]
+
+NODE_SHAPE_PROPS = [
+    DCTERMS.title,
+    DCTERMS.description,
+
+    RDFS.isDefinedBy,
+    SDO.memberOf,
+    SH.message,
+    SH.property
+]
+
+PROPERTY_SHAPE_PROPS = [
+    DCTERMS.title,
+    DCTERMS.description,
+
+    RDFS.isDefinedBy,
+    SDO.memberOf,
+    SH.message,
+    SH.path,
+]
+
+# properties for Agents
+AGENT_PROPS = [
+    SDO.name,
+    SDO.affiliation,
+    SDO.identifier,
+    SDO.email,
+    SDO.honorificPrefix,
+    SDO.url,
 ]
 
 # all known properties
 PROPS = set(
-    ONT_PROPS
+    ONTOLOGY_PROPS
     + CLASS_PROPS
     + PROP_PROPS
-    + AGENT_PROPS
     + RESTRICTION_PROPS
+
+    + CONCEPT_SCHEME_PROPS
+    + COLLECTION_PROPS
     + CONCEPT_PROPS
+
     + SHAPES_GRAPH_PROPS
     + NODE_SHAPE_PROPS
     + PROPERTY_SHAPE_PROPS
+
+    + AGENT_PROPS
 )
+
+ELEMENT_TYPES = {
+    OWL.Class: ("c", "OWL/RDFS Class"),
+    RDF.Property: ("p", "RDF Property"),
+    OWL.ObjectProperty: ("op", "OWL Object Property"),
+    OWL.DatatypeProperty: ("dp", "OWL Datatype Property"),
+    OWL.AnnotationProperty: ("ap", "OWL Annotation Property"),
+    OWL.FunctionalProperty: ("fp", "OWL Functional Property"),
+    OWL.InverseFunctionalProperty: ("ifp", "OWL Inverse Functional Property"),
+    RDFS.Datatype: ("dt", "RDFS Datatypes"),
+    OWL.NamedIndividual: ("ni", "OWL Named Individual"),
+    SKOS.ConceptScheme: ("cs", "SKOS Concept Scheme"),
+    SKOS.Collection: ("col", "SKOS Collection"),
+    SKOS.Concept: ("co", "SKOS Concept"),
+    SH.NodeShape: ("ns", "SH NodeShape"),
+    SH.PropertyShape: ("ps", "SH PropertyShape"),
+}

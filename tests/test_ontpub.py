@@ -167,8 +167,7 @@ def test_classes_hierarchy(fix_html):
 
 
 def test_classes_definitions(fix_html):
-    assert de_space_html(
-        """
+    expected = """
         <h3 id="class-definitions">Class Definitions</h3>
         <div class="property entity" id="ResourceDescriptor">
           <h3>Resource Descriptor
@@ -189,7 +188,7 @@ def test_classes_definitions(fix_html):
             </tr>
             <tr>
               <th>
-                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+                <a class="hover_property" href="https://linked.data.gov.au/def/ontpub/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
                 <ul class="pylodelitlist">
@@ -216,7 +215,7 @@ def test_classes_definitions(fix_html):
             </tr>
             <tr>
               <th>
-                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+                <a class="hover_property" href="https://linked.data.gov.au/def/ontpub/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
               </th>
               <td>
                 <span>
@@ -293,7 +292,7 @@ def test_classes_definitions(fix_html):
             </tr>
             <tr>
               <th>
-                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+                <a class="hover_property" href="https://linked.data.gov.au/def/ontpub/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
                 <ul class="pylodelitlist">
@@ -320,7 +319,7 @@ def test_classes_definitions(fix_html):
             </tr>
             <tr>
               <th>
-                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+                <a class="hover_property" href="https://linked.data.gov.au/def/ontpub/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
               </th>
               <td>
                 <span>
@@ -332,7 +331,11 @@ def test_classes_definitions(fix_html):
           </table>
         </div>         
             """
-    ) in de_space_html(fix_html), "Classes definitions section not generated correctly"
+    # open("expected.txt", "w").write(expected)
+    actual = fix_html
+    # open("actual.txt", "w").write(actual)
+    
+    assert de_space_html(expected) in de_space_html(actual), "Classes definitions section not generated correctly"
 
 
 def test_object_properties_hierarchy(fix_html):
@@ -456,7 +459,7 @@ def test_legend(fix_html):
 
 
 def test_toc(fix_html):
-    open("test.html", "w").write(fix_html)
+    # open("test.html", "w").write(fix_html)
     assert de_space_html(
         """
     <div id="toc">

@@ -402,7 +402,7 @@ def rdf_obj_html(
 
                 this_objects_types = []
                 for o in ont___.objects(iri___, RDF.type):
-                    if o in ONT_TYPES.keys():
+                    if o in ELEMENT_TYPES.keys():
                         this_objects_types.append(o)
 
                 for x_ in types_we_know:
@@ -410,7 +410,7 @@ def rdf_obj_html(
                         return x_
 
                 for o in back_onts___.objects(iri___, RDF.type):
-                    if o in ONT_TYPES.keys():
+                    if o in ELEMENT_TYPES.keys():
                         this_objects_types.append(o)
 
                 for x_ in types_we_know:
@@ -460,9 +460,9 @@ def rdf_obj_html(
                 ret.appendChild(anchor)
                 ret.appendChild(
                     sup(
-                        ONT_TYPES[rdf_type__][0],
-                        _class="sup-" + ONT_TYPES[rdf_type__][0],
-                        title=ONT_TYPES[rdf_type__][1],
+                        ELEMENT_TYPES[rdf_type__][0],
+                        _class="sup-" + ELEMENT_TYPES[rdf_type__][0],
+                        title=ELEMENT_TYPES[rdf_type__][1],
                     )
                 )
                 return ret
@@ -690,7 +690,7 @@ def rdf_obj_html(
                                     )
                                 ),
                             )
-                    elif px == ONTDOC.inRangeOf:  # rdfs:range
+                    elif px == ONTPUB.inRangeOf:  # rdfs:range
                         for o2 in ont__.objects(o, RDFS.range):
                             for rp, ro in ont__.predicate_objects(o2):
                                 if rp == OWL.onDatatype:
@@ -914,9 +914,9 @@ def section_html(
             h3(
                 title_,
                 sup(
-                    ONT_TYPES[ont_type][0],
-                    _class="sup-" + ONT_TYPES[ont_type][0],
-                    title=ONT_TYPES[ont_type][1],
+                    ELEMENT_TYPES[ont_type][0],
+                    _class="sup-" + ELEMENT_TYPES[ont_type][0],
+                    title=ELEMENT_TYPES[ont_type][1],
                 ),
             ),
             id=fid,
@@ -988,7 +988,7 @@ def section_html(
                 # ... in the property list for this class
                 if p_ in prop_list:
                     if p_ == RDFS.subClassOf and (o, RDF.type, OWL.Restriction) in ont:
-                        this_props[ONTDOC.restriction].append(o)
+                        this_props[ONTPUB.restriction].append(o)
                     else:
                         this_props[p_].append(o)
             if len(this_props[DCTERMS.title]) == 0:

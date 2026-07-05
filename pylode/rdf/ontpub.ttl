@@ -1,0 +1,65 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX ont: <https://linked.data.gov.au/def/ontpub>
+PREFIX op: <https://linked.data.gov.au/def/ontpub/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ont:
+    a owl:Ontology ;
+    dcterms:description "This small ontology provides only a few properties used to assist with the documentation of other ontologies' content" ;
+    dcterms:title "Ontology Documentation Profile" ;
+.
+
+op:defines
+    a rdf:Property ;
+    dcterms:description "Inverse of rdfs:isDefinedBy" ;
+    dcterms:title "defines" ;
+.
+
+op:hasInstance
+    a rdf:Property ;
+    dcterms:description "Indicates Named Individuals that are of this class" ;
+    dcterms:title "has instance" ;
+.
+
+op:inDomainIncludesOf
+    a rdf:Property ;
+    dcterms:description "Inverse of sdo:domainIncludes" ;
+    dcterms:title "in domain includes of" ;
+.
+
+op:inDomainOf
+    a rdf:Property ;
+    dcterms:description "Inverse of rdfs:domain" ;
+    dcterms:title "in domain of" ;
+.
+
+op:inRangeIncludesOf
+    a rdf:Property ;
+    dcterms:description "Inverse of sdo:rangeIncludes" ;
+    dcterms:title "in range includes of" ;
+.
+
+op:inRangeOf
+    a rdf:Property ;
+    dcterms:description "Inverse of rdfs:range" ;
+    dcterms:title "in range of" ;
+.
+
+op:restriction
+    a rdf:Property ;
+    dcterms:description "Convenience property for things that subclass owl:Restriction" ;
+    dcterms:title "restriction" ;
+.
+
+op:superClassOf
+    a rdf:Property ;
+    dcterms:description "Inverse of RDFS' subClassOf" ;
+    dcterms:title "super class of" ;
+.
+
+op:superPropertyOf
+    a rdf:Property ;
+    dcterms:description "Inverse of RDFS' subPropertyOf" ;
+    dcterms:title "super property of" ;
+.

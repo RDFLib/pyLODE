@@ -133,7 +133,7 @@ class ValPub:
 
         # Shapes
         for s, o in g.subject_objects(RDFS.isDefinedBy):
-            g.add((o, ONTDOC.defines, s))
+            g.add((o, ONTPUB.defines, s))
 
         for s, o in chain(
                 g.subject_objects(SDO.memberOf),

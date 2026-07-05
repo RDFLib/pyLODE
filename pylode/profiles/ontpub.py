@@ -122,25 +122,25 @@ class OntPub:
         # we do these next few so we only need to loop through
         # Class & Property properties once: single subject
         for s_, o in g.subject_objects(RDFS.subClassOf):
-            g.add((o, ONTDOC.superClassOf, s_))
+            g.add((o, ONTPUB.superClassOf, s_))
 
         for s_, o in g.subject_objects(RDFS.subPropertyOf):
-            g.add((o, ONTDOC.superPropertyOf, s_))
+            g.add((o, ONTPUB.superPropertyOf, s_))
 
         for s_, o in g.subject_objects(RDFS.domain):
-            g.add((o, ONTDOC.inDomainOf, s_))
+            g.add((o, ONTPUB.inDomainOf, s_))
 
         for s_, o in g.subject_objects(SDO.domainIncludes):
-            g.add((o, ONTDOC.inDomainIncludesOf, s_))
+            g.add((o, ONTPUB.inDomainIncludesOf, s_))
 
         for s_, o in g.subject_objects(RDFS.range):
-            g.add((o, ONTDOC.inRangeOf, s_))
+            g.add((o, ONTPUB.inRangeOf, s_))
 
         for s_, o in g.subject_objects(SDO.rangeIncludes):
-            g.add((o, ONTDOC.inRangeIncludesOf, s_))
+            g.add((o, ONTPUB.inRangeIncludesOf, s_))
 
         for s_, o in g.subject_objects(RDF.type):
-            g.add((o, ONTDOC.hasMember, s_))
+            g.add((o, ONTPUB.hasMember, s_))
 
         #
         #   Agents
@@ -253,14 +253,14 @@ class OntPub:
         ):
             iri = s_
             for p_, o in self.ont.predicate_objects(s_):
-                if p_ in ONT_PROPS:
+                if p_ in ONTOLOGY_PROPS:
                     this_onts_props[p_].append(o)
 
         # make HTML for all props in order of ONT_PROPS
         sec = div(h1(this_onts_props[DCTERMS.title]), id="metadata", _class="section")
         sec.appendChild(h2("Metadata"))
         d = dl(div(dt(strong("IRI")), dd(code(str(iri)))))
-        for prop in ONT_PROPS:
+        for prop in ONTOLOGY_PROPS:
             if prop in this_onts_props.keys():
                 d.appendChild(
                     prop_obj_pair_html(

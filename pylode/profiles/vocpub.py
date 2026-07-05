@@ -246,7 +246,7 @@ class VocPub:
         for s_ in self.ont.subjects(predicate=RDF.type, object=SKOS.ConceptScheme):
             iri = s_
             for p_, o in self.ont.predicate_objects(s_):
-                if p_ in ONT_PROPS:
+                if p_ in ONTOLOGY_PROPS:
                     this_onts_props[p_].append(o)
 
         # patch all missing labels with background resources

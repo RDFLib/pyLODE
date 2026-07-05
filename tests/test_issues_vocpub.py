@@ -17,7 +17,7 @@ def fix_html():
 
 
 def test_issue_230(fix_html):
-    open("issues.html", "w").write(fix_html)
+    # open("issues.html", "w").write(fix_html)
     assert de_space_html(
         """
           <div>
