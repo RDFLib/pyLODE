@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).absolute().parent.parent))
-from pylode import OntPub, ValPub, VocPub, Supermodel, PylodeError, __version__
+from pylode import OntPub, PylodeError, Supermodel, ValPub, VocPub, __version__
 
 parser = argparse.ArgumentParser()
 

@@ -331,11 +331,11 @@ def test_classes_definitions(fix_html):
           </table>
         </div>         
             """
-    # open("expected.txt", "w").write(expected)
     actual = fix_html
-    # open("actual.txt", "w").write(actual)
-    
-    assert de_space_html(expected) in de_space_html(actual), "Classes definitions section not generated correctly"
+
+    assert de_space_html(expected) in de_space_html(actual), (
+        "Classes definitions section not generated correctly"
+    )
 
 
 def test_object_properties_hierarchy(fix_html):
@@ -590,5 +590,6 @@ def test_toc(fix_html):
       </ul>
     </div>        
         """
-    open("expected.txt", "w").write(expected)
-    assert de_space_html(expected) in de_space_html(fix_html), "ToC not generated correctly"
+    assert de_space_html(expected) in de_space_html(fix_html), (
+        "ToC not generated correctly"
+    )

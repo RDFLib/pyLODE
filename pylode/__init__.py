@@ -1,4 +1,4 @@
-from .profiles import OntPub, Supermodel, VocPub, ValPub
+from .profiles import OntPub, Supermodel, ValPub, VocPub
 from .rdf_elements import *
 from .utils import *
 from .utils import PylodeError

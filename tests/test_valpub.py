@@ -5,7 +5,6 @@ sys.path.append(str(Path().parent.parent.resolve() / "pylode"))
 import pytest
 
 from pylode.profiles import ValPub
-
 from pylode.utils import de_space_html, get_ns
 
 current_dir = Path(__file__).parent
@@ -83,4 +82,3 @@ def test_basic(fix_html):
     #     """
     # )
     # assert expected_html in de_space_html(fix_html)
-

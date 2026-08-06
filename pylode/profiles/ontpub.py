@@ -234,9 +234,7 @@ class OntPub:
         """Helper function for make_html(). Makes <body>???</body> content.
 
         Just calls other helper functions in order"""
-        make_pylode_logo(
-            self.doc, "OntPub", "https://linked.data.gov.au/def/ontpub"
-        )
+        make_pylode_logo(self.doc, "OntPub", "https://linked.data.gov.au/def/ontpub")
         self._make_metadata()
         self._make_main_sections()
         self._make_namespaces()

@@ -10,20 +10,23 @@ from typing import Dict, List, Optional, Tuple, Union, cast
 from pylode.version import __version__ as v
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
+import datetime
 import json
-from kurra.labels import get_missing_labels, find_missing_labels
-from kurra.sparql import query as kquery
-import markdown
+
 import dominate
+import markdown
 from dominate.tags import *
 from dominate.util import raw
+from kurra.labels import find_missing_labels, get_missing_labels
+from kurra.sparql import query as kquery
 from rdflib import BNode, Graph, Literal, URIRef
 from rdflib.namespace import *
 from rdflib.paths import ZeroOrMore
+
 from pylode.rdf_elements import *
-import datetime
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
+
 
 def check_all_props_are_known():
     """Check all properties listed in the combined property lists in
@@ -60,7 +63,10 @@ def get_ns(ont: Graph) -> Tuple[str, str]:
 
         for s_ in chain(
             ont.subjects(predicate=RDF.type, object=OWL.Ontology),
-            ont.subjects(predicate=RDF.type, object=URIRef("http://www.w3.org/ns/shacl#ShapesGraph")),
+            ont.subjects(
+                predicate=RDF.type,
+                object=URIRef("http://www.w3.org/ns/shacl#ShapesGraph"),
+            ),
             ont.subjects(predicate=RDF.type, object=SKOS.ConceptScheme),
             ont.subjects(predicate=RDF.type, object=PROF.Profile),
         ):
@@ -1054,6 +1060,7 @@ def make_pylode_logo(doc, profile_name, profile_iri):
                 a(profile_name, href=profile_iri, id="profile")
                 span("profile")
 
+
 REG_STATUS = Namespace("https://linked.data.gov.au/def/reg-statuses/")
 
 REG_STATUSES = [
@@ -1072,6 +1079,7 @@ REG_STATUSES = [
     REG_STATUS.unstable,
     REG_STATUS.valid,
 ]
+
 
 def make_status_css(status_iri: URIRef):
     css = {

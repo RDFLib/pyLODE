@@ -31,7 +31,7 @@ ONTOLOGY_PROPS = [
     ONTPUB.restriction,
     OWL.imports,
     SDO.codeRepository,
-    #SKOS.hasTopConcept, -- catered for in Concept Hierarchy
+    # SKOS.hasTopConcept, -- catered for in Concept Hierarchy
 ]
 
 CLASS_PROPS = [
@@ -196,23 +196,21 @@ SHAPES_GRAPH_PROPS = [
     OWL.imports,
     SDO.codeRepository,
     RDFS.member,
-    ONTPUB.defines
+    ONTPUB.defines,
 ]
 
 NODE_SHAPE_PROPS = [
     DCTERMS.title,
     DCTERMS.description,
-
     RDFS.isDefinedBy,
     SDO.memberOf,
     SH.message,
-    SH.property
+    SH.property,
 ]
 
 PROPERTY_SHAPE_PROPS = [
     DCTERMS.title,
     DCTERMS.description,
-
     RDFS.isDefinedBy,
     SDO.memberOf,
     SH.message,
@@ -235,15 +233,12 @@ PROPS = set(
     + CLASS_PROPS
     + PROP_PROPS
     + RESTRICTION_PROPS
-
     + CONCEPT_SCHEME_PROPS
     + COLLECTION_PROPS
     + CONCEPT_PROPS
-
     + SHAPES_GRAPH_PROPS
     + NODE_SHAPE_PROPS
     + PROPERTY_SHAPE_PROPS
-
     + AGENT_PROPS
 )
 

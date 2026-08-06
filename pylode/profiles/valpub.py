@@ -29,12 +29,16 @@ class ValPub:
         self.ns = get_ns(self.ont)
 
         # make HTML doc with title
-        sg = self.ont.value(predicate=RDF.type, object=URIRef("http://www.w3.org/ns/shacl#ShapesGraph"))
+        sg = self.ont.value(
+            predicate=RDF.type, object=URIRef("http://www.w3.org/ns/shacl#ShapesGraph")
+        )
         if sg is None:
             raise PylodeError("ShapesGraph not found")
         t = self.ont.value(subject=sg, predicate=DCTERMS.title)
         if t is None:
-            raise PylodeError("You MUST provide a title property (dcterms:title, rdfs:label or sdo:name) for your ontology")
+            raise PylodeError(
+                "You MUST provide a title property (dcterms:title, rdfs:label or sdo:name) for your ontology"
+            )
         self.doc = dominate.document(title=t)
 
         with self.doc:
@@ -133,8 +137,8 @@ class ValPub:
             g.add((o, ONTPUB.defines, s))
 
         for s, o in chain(
-                g.subject_objects(SDO.memberOf),
-                g.subject_objects(SDO.hasPart),
+            g.subject_objects(SDO.memberOf),
+            g.subject_objects(SDO.hasPart),
         ):
             g.add((o, RDFS.member, s))
 
@@ -202,9 +206,7 @@ class ValPub:
         """Helper function for make_html(). Makes <body>???</body> content.
 
         Just calls other helper functions in order"""
-        make_pylode_logo(
-            self.doc, "ValPub", "https://linked.data.gov.au/def/valpub"
-        )
+        make_pylode_logo(self.doc, "ValPub", "https://linked.data.gov.au/def/valpub")
         self._make_metadata()
         self._make_main_sections()
         self._make_namespaces()
@@ -215,8 +217,7 @@ class ValPub:
         # get all ONT_PROPS props and their (multiple) values
         this_onts_props = defaultdict(list)
         for s_ in self.ont.subjects(
-                predicate=RDF.type,
-                object=URIRef("http://www.w3.org/ns/shacl#ShapesGraph")
+            predicate=RDF.type, object=URIRef("http://www.w3.org/ns/shacl#ShapesGraph")
         ):
             iri = s_
             for p_, o in self.ont.predicate_objects(s_):
@@ -333,7 +334,11 @@ class ValPub:
                             td("Node Shapes")
                     if self.toc.get("property-shapes") is not None:
                         with tr():
-                            td(sup("ps", _class="sup-ps", title="SHACL Property Shapes"))
+                            td(
+                                sup(
+                                    "ps", _class="sup-ps", title="SHACL Property Shapes"
+                                )
+                            )
                             td("Property Shapes")
 
                     with tr():

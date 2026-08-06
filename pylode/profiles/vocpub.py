@@ -100,8 +100,7 @@ class VocPub:
 
         # source
         for s_, o in chain(
-            g.subject_objects(DC.source),
-            g.subject_objects(SDO.citation)
+            g.subject_objects(DC.source), g.subject_objects(SDO.citation)
         ):
             g.remove((s_, DC.source, o))
             g.remove((s_, SDO.citation, o))
@@ -137,8 +136,7 @@ class VocPub:
 
         # publisher
         for s_, o in chain(
-            g.subject_objects(DC.publisher), 
-                g.subject_objects(SDO.publisher)
+            g.subject_objects(DC.publisher), g.subject_objects(SDO.publisher)
         ):
             g.remove((s_, DC.publisher, o))
             g.remove((s_, SDO.publisher, o))
@@ -147,15 +145,15 @@ class VocPub:
         for s_, o in g.subject_objects(SDO.dateCreated):
             g.remove((s_, SDO.dateCreated, o))
             g.add((s_, DCTERMS.created, o))
-            
+
         for s_, o in g.subject_objects(SDO.dateModified):
             g.remove((s_, SDO.dateModified, o))
             g.add((s_, DCTERMS.modified, o))
-            
+
         for s_, o in g.subject_objects(SDO.dateIssued):
             g.remove((s_, SDO.dateIssued, o))
             g.add((s_, DCTERMS.issued, o))
-            
+
         # indicate Agent instances from properties
         # ensure the have names since above would have removed SDO.name
         for o in chain(
@@ -226,9 +224,7 @@ class VocPub:
         """Helper function for make_html(). Makes <body>???</body> content.
 
         Just calls other helper functions in order"""
-        make_pylode_logo(
-            self.doc, "VocPub", "https://linked.data.gov.au/def/vocpub"
-        )
+        make_pylode_logo(self.doc, "VocPub", "https://linked.data.gov.au/def/vocpub")
         with self.content:
             cs_iri = self.ont.value(predicate=RDF.type, object=SKOS.ConceptScheme)
             cs_pref_label = self.ont.value(subject=cs_iri, predicate=SKOS.prefLabel)
@@ -313,13 +309,18 @@ class VocPub:
                 else:
                     return l
 
-        for k, v in {k: props[k] for k in [str(x) for x in CONCEPT_SCHEME_PROPS] if k in props}.items():
+        for k, v in {
+            k: props[k] for k in [str(x) for x in CONCEPT_SCHEME_PROPS] if k in props
+        }.items():
             css = None
             if URIRef(k) == SDO.status:
                 if URIRef(v["objects"][0][0]) in REG_STATUSES:
                     css = make_status_css(URIRef(v["objects"][0][0]))
             d.appendChild(
-                div(dt(a(v["p_name"], href=k)), dd(render_rdf_object(v["objects"]), style=css))
+                div(
+                    dt(a(v["p_name"], href=k)),
+                    dd(render_rdf_object(v["objects"]), style=css),
+                )
             )
 
         sec.appendChild(d)
@@ -390,7 +391,7 @@ class VocPub:
 
         with self.content:
             d = div(h2("Concept Definitions"), id="concepts")
-            
+
             if (None, RDF.type, SKOS.Concept) in self.ont:
                 concepts = {}
                 for s in self.ont.subjects(RDF.type, SKOS.Concept):
@@ -417,12 +418,18 @@ class VocPub:
                                     curie = self.ont.namespace_manager.qname(v).replace(
                                         ":", "_"
                                     )
-                                    lbl = (self.ont + self.back_onts).value(subject=v, predicate=SKOS.prefLabel|SDO.name)
+                                    lbl = (self.ont + self.back_onts).value(
+                                        subject=v, predicate=SKOS.prefLabel | SDO.name
+                                    )
                                     if lbl is None:
                                         lbl = v
                                     if k == SDO.status:
                                         if v in REG_STATUSES:
-                                            v = a(lbl, href="#" + curie, style=make_status_css(v))
+                                            v = a(
+                                                lbl,
+                                                href="#" + curie,
+                                                style=make_status_css(v),
+                                            )
                                         else:
                                             v = a(lbl, href="#" + curie)
                                     else:
