@@ -544,7 +544,7 @@ class OntPub:
                                 )
                             )
                             with ul(_class="second"):
-                                for c in self.toc["classes"]:
+                                for c in sorted(self.toc["classes"]):
                                     li(a(c[1], href=c[0]), style="margin-left:10px;")
 
                     if (
@@ -554,7 +554,7 @@ class OntPub:
                         with li():
                             h4(a("Properties", href="#properties"))
                             with ul(_class="second"):
-                                for c in self.toc["properties"]:
+                                for c in sorted(self.toc["properties"]):
                                     li(a(c[1], href=c[0]))
 
                     if (
@@ -578,7 +578,7 @@ class OntPub:
                                 )
                             )
                             with ul(_class="second"):
-                                for c in self.toc["objectproperties"]:
+                                for c in sorted(self.toc["objectproperties"]):
                                     li(a(c[1], href=c[0]), style="margin-left:10px;")
 
                     if (
@@ -588,7 +588,7 @@ class OntPub:
                         with li():
                             h4(a("Datatype Properties", href="#datatypeproperties"))
                             with ul(_class="second"):
-                                for c in self.toc["datatypeproperties"]:
+                                for c in sorted(self.toc["datatypeproperties"]):
                                     li(a(c[1], href=c[0]))
 
                     if (
@@ -598,7 +598,7 @@ class OntPub:
                         with li():
                             h4(a("Annotation Properties", href="#annotationproperties"))
                             with ul(_class="second"):
-                                for c in self.toc["annotationproperties"]:
+                                for c in sorted(self.toc["annotationproperties"]):
                                     li(a(c[1], href=c[0]))
 
                     if (
@@ -608,7 +608,7 @@ class OntPub:
                         with li():
                             h4(a("Functional Properties", href="#functionalproperties"))
                             with ul(_class="second"):
-                                for c in self.toc["functionalproperties"]:
+                                for c in sorted(self.toc["functionalproperties"]):
                                     li(a(c[1], href=c[0]))
 
                     if (
@@ -618,7 +618,7 @@ class OntPub:
                         with li():
                             h4(a("Custom Datatypes", href="#datatypes"))
                             with ul(_class="second"):
-                                for c in self.toc["datatypes"]:
+                                for c in sorted(self.toc["datatypes"]):
                                     li(a(c[1], href=c[0]))
 
                     with li():
