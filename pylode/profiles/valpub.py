@@ -29,15 +29,12 @@ class ValPub:
         self.ns = get_ns(self.ont)
 
         # make HTML doc with title
-        t = None
-        for s in self.ont.subjects(RDF.type, URIRef("http://www.w3.org/ns/shacl#ShapesGraph")):
-            for o2 in self.ont.objects(s, DCTERMS.title):
-                t = str(o2)
+        sg = self.ont.value(predicate=RDF.type, object=URIRef("http://www.w3.org/ns/shacl#ShapesGraph"))
+        if sg is None:
+            raise PylodeError("ShapesGraph not found")
+        t = self.ont.value(subject=sg, predicate=DCTERMS.title)
         if t is None:
-            raise PylodeError(
-                "You MUST supply a title property "
-                "(dcterms:title, rdfs:label or sdo:name) for your ontology"
-            )
+            raise PylodeError("You MUST provide a title property (dcterms:title, rdfs:label or sdo:name) for your ontology")
         self.doc = dominate.document(title=t)
 
         with self.doc:
@@ -348,7 +345,6 @@ class ValPub:
                     with tr():
                         td(sup("ap", _class="sup-dp", title="Datatype Properties"))
                         td("Datatype Properties")
-                    
 
     def _make_namespaces(self):
         # only get namespaces used in ont
@@ -398,7 +394,7 @@ class ValPub:
                         with li():
                             h4(a("Node Shapes", href="#node-shapes"))
                             with ul(_class="second"):
-                                for c in self.toc["node-shapes"]:
+                                for c in sorted(self.toc["node-shapes"]):
                                     li(a(c[1], href=c[0]))
 
                     if (
@@ -408,13 +404,13 @@ class ValPub:
                         with li():
                             h4(a("Property Shapes", href="#property-shapes"))
                             with ul(_class="second"):
-                                for c in self.toc["property-shapes"]:
+                                for c in sorted(self.toc["property-shapes"]):
                                     li(a(c[1], href=c[0]))
 
                     with li():
                         h4(a("Namespaces", href="#namespaces"))
                         with ul(_class="second"):
-                            for n in self.toc["namespaces"]:
+                            for n in sorted(self.toc["namespaces"]):
                                 li(a(n[1], href="#" + n[1]))
 
                     li(h4(a("Legend", href="#legend")), ul(_class="second"))

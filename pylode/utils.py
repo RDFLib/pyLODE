@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union, cast
 
 from pylode.version import __version__ as v
+
 RDF_FOLDER = Path(__file__).parent / "rdf"
 import json
 from kurra.labels import get_missing_labels, find_missing_labels

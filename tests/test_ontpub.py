@@ -459,9 +459,7 @@ def test_legend(fix_html):
 
 
 def test_toc(fix_html):
-    # open("test.html", "w").write(fix_html)
-    assert de_space_html(
-        """
+    expected = """
     <div id="toc">
       <h3>Table of Contents</h3>
       <ul class="first">
@@ -482,13 +480,13 @@ def test_toc(fix_html):
           </h5>
           <ul class="second">
             <li style="margin-left:10px;">
+              <a href="#Profile">Profile</a>
+            </li>
+            <li style="margin-left:10px;">
               <a href="#ResourceDescriptor">Resource Descriptor</a>
             </li>
             <li style="margin-left:10px;">
               <a href="#ResourceRole">Resource Role</a>
-            </li>
-            <li style="margin-left:10px;">
-              <a href="#Profile">Profile</a>
             </li>
           </ul>
         </li>
@@ -507,6 +505,12 @@ def test_toc(fix_html):
               <a href="#hasArtifact">has artifact</a>
             </li>
             <li style="margin-left:10px;">
+              <a href="#hasResource">has resource</a>
+            </li>
+            <li style="margin-left:10px;">
+              <a href="#hasRole">has role</a>
+            </li>            
+            <li style="margin-left:10px;">
               <a href="#isInheritedFrom">is inherited from</a>
             </li>
             <li style="margin-left:10px;">
@@ -514,12 +518,6 @@ def test_toc(fix_html):
             </li>
             <li style="margin-left:10px;">
               <a href="#isTransitiveProfileOf">is transitive profile of</a>
-            </li>
-            <li style="margin-left:10px;">
-              <a href="#hasResource">has resource</a>
-            </li>
-            <li style="margin-left:10px;">
-              <a href="#hasRole">has role</a>
             </li>
           </ul>
         </li>
@@ -592,4 +590,5 @@ def test_toc(fix_html):
       </ul>
     </div>        
         """
-    ) in de_space_html(fix_html), "ToC not generated correctly"
+    open("expected.txt", "w").write(expected)
+    assert de_space_html(expected) in de_space_html(fix_html), "ToC not generated correctly"

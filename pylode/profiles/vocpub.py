@@ -232,6 +232,8 @@ class VocPub:
         with self.content:
             cs_iri = self.ont.value(predicate=RDF.type, object=SKOS.ConceptScheme)
             cs_pref_label = self.ont.value(subject=cs_iri, predicate=SKOS.prefLabel)
+            if cs_iri is None or cs_pref_label is None:
+                raise PylodeError("A ConceptScheme with a prefLabel was not found.")
             h1(cs_pref_label)
 
         self._make_metadata()
@@ -493,5 +495,5 @@ class VocPub:
                     with li():
                         h4(a("Namespaces", href="#namespaces"))
                         with ul(_class="second"):
-                            for n in self.toc["namespaces"]:
+                            for n in sorted(self.toc["namespaces"]):
                                 li(a(n[1], href="#" + n[1]))
