@@ -1,0 +1,299 @@
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix schema: <https://schema.org/> .
+
+obo:IAO_0000002 a owl:AnnotationProperty ;
+    schema:name "example to be eventually removed" .
+
+obo:IAO_0000103 a owl:AnnotationProperty ;
+    schema:description "The term was initially used in an attempt to structure part of the ontology, but in retrospect failed to do a good job." ;
+    schema:name "failed exploratory term" .
+
+obo:IAO_0000111 a owl:AnnotationProperty ;
+    schema:description "The concise, meaningful, and human-friendly name for a class or property preferred by the ontology developers. (US-English)" ;
+    schema:name "editor preferred term" .
+
+obo:IAO_0000112 a owl:AnnotationProperty ;
+    schema:description "A phrase describing how a term should be used and/or a citation to a work which uses it. May also include other kinds of examples that facilitate immediate understanding, such as widely know prototypes or instances of a class, or cases where a relation is said to hold." ;
+    schema:name "example of usage" .
+
+obo:IAO_0000113 a owl:AnnotationProperty ;
+    schema:description "An annotation property indicating which module the terms belong to. This is currently experimental and not implemented yet." ;
+    schema:name "in branch" .
+
+obo:IAO_0000114 a owl:AnnotationProperty ;
+    schema:name "has curation status" .
+
+obo:IAO_0000115 a owl:AnnotationProperty ;
+    schema:description "The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions." ;
+    schema:name "definition" .
+
+obo:IAO_0000116 a owl:AnnotationProperty ;
+    schema:description "An administrative note intended for its editor. It may not be included in the publication version of the ontology, so it should contain nothing necessary for end users to understand the ontology." ;
+    schema:name "editor note" .
+
+obo:IAO_0000117 a owl:AnnotationProperty ;
+    schema:description "Name of editor entering the term in the file. The term editor is a point of contact for information regarding the term. The term editor may be, but is not always, the author of the definition, which may have been worked upon by several people" ;
+    schema:name "term editor" .
+
+obo:IAO_0000118 a owl:AnnotationProperty ;
+    schema:description "A label for a class or property that can be used to refer to the class or property instead of the preferred schema:name. Alternative labels should be used to indicate community- or context-specific labels, abbreviations, shorthand forms and the like." ;
+    schema:name "alternative label" .
+
+obo:IAO_0000119 a owl:AnnotationProperty ;
+    schema:description "Formal citation, e.g. identifier in external database to indicate / attribute source(s) for the definition. Free text indicate / attribute source(s) for the definition. EXAMPLE: Author Name, URI, MeSH Term C04, PUBMED ID, Wiki uri on 31.01.2007" ;
+    schema:name "definition source" .
+
+obo:IAO_0000120 a owl:AnnotationProperty ;
+    schema:description "Class has all its metadata, but is either not guaranteed to be in its final location in the asserted IS_A hierarchy or refers to another class that is not complete." ;
+    schema:name "metadata complete" .
+
+obo:IAO_0000121 a owl:AnnotationProperty ;
+    schema:description "The term was created to ease viewing/sorting terms for development purposes, but will not be included in a release." ;
+    schema:name "organizational term" .
+
+obo:IAO_0000122 a owl:AnnotationProperty ;
+    schema:description "Class has undergone final review, is ready for use, and will be included in the next release. Any class lacking \"ready_for_release\" should be considered likely to change place in hierarchy, have its definition refined, or be obsoleted in the next release. Those classes deemed \"ready_for_release\" will also derived from a chain of ancestor classes that are also \"ready_for_release.\"" ;
+    schema:name "ready for release" .
+
+obo:IAO_0000123 a owl:AnnotationProperty ;
+    schema:description "Class is being worked on; however, the metadata (including definition) are not complete or sufficiently clear to the branch editors." ;
+    schema:name "metadata incomplete" .
+
+obo:IAO_0000124 a owl:AnnotationProperty ;
+    schema:description "Nothing done yet beyond assigning a unique class ID and proposing a preferred term." ;
+    schema:name "uncurated" .
+
+obo:IAO_0000125 a owl:AnnotationProperty ;
+    schema:description "All definitions, placement in the asserted IS_A hierarchy and required minimal metadata are complete. The class is awaiting a final review by someone other than the term editor." ;
+    schema:name "pending final vetting" .
+
+obo:IAO_0000224 a owl:AnnotationProperty ;
+    schema:description "Core is an instance of a grouping of terms from an ontology or ontologies. It is used by the ontology to identify main classes." ;
+    schema:name "obsolete core" .
+
+obo:IAO_0000226 a owl:AnnotationProperty ;
+    schema:description "The term was created to temporarily stand in for a semantic purpose, but is no longer needed, typically due to another permanent term being defined." ;
+    schema:name "placeholder removed" .
+
+obo:IAO_0000227 a owl:AnnotationProperty ;
+    schema:description "The term has been combined with one or more other terms to create a more encompassing (merged) term." ;
+    schema:name "terms merged" .
+
+obo:IAO_0000228 a owl:AnnotationProperty ;
+    schema:description "The term has been replaced by a term imported from another ontology." ;
+    schema:name "term imported" .
+
+obo:IAO_0000229 a owl:AnnotationProperty ;
+    schema:description "The term has been split into two or more new terms." ;
+    schema:name "term split" .
+
+obo:IAO_0000231 a owl:AnnotationProperty ;
+    schema:description "Relates an annotation property to an obsolescence reason. The values of obsolescence reasons come from a list of predefined terms, instances of the class obsolescence reason specification." ;
+    schema:name "has obsolescence reason" .
+
+obo:IAO_0000232 a owl:AnnotationProperty ;
+    schema:description "An administrative note of use for a curator but of no use for a user" ;
+    schema:name "curator note" .
+
+obo:IAO_0000233 a owl:AnnotationProperty ;
+    schema:description "A URL for a request or discussion of an ontology term." ;
+    schema:name "term tracker item" .
+
+obo:IAO_0000234 a owl:AnnotationProperty ;
+    schema:description "The name of the person, project, or organization that motivated inclusion of an ontology term by requesting its addition." ;
+    schema:name "ontology term requester" .
+
+obo:IAO_0000410 a owl:AnnotationProperty ;
+    schema:name "universal" .
+
+obo:IAO_0000411 a owl:AnnotationProperty ;
+    schema:description "Relates an class defined in an ontology, to the type of it's denotator" ;
+    schema:name "is denotator type" .
+
+obo:IAO_0000412 a owl:AnnotationProperty ;
+    schema:description "For external terms/classes, the ontology from which the term was imported" ;
+    schema:name "imported from" .
+
+obo:IAO_0000420 a owl:AnnotationProperty ;
+    schema:description "A defined class is a class that is defined by a set of logically necessary and sufficient conditions but is not a universal" ;
+    schema:name "defined class" .
+
+obo:IAO_0000421 a owl:AnnotationProperty ;
+    schema:description "A named class expression is a logical expression that is given a name. The name can be used in place of the expression." ;
+    schema:name "named class expression" .
+
+obo:IAO_0000423 a owl:AnnotationProperty ;
+    schema:description "Terms with this status should eventually replaced with a term from another ontology." ;
+    schema:name "to be replaced with external ontology term" .
+
+obo:IAO_0000424 a owl:AnnotationProperty ;
+    schema:description "A macro expansion tag applied to an object property (or possibly a data property) which can be used by a macro-expansion engine to generate more complex expressions from simpler ones" ;
+    schema:name "expand expression to" .
+
+obo:IAO_0000425 a owl:AnnotationProperty ;
+    schema:description "A macro expansion tag applied to an annotation property which can be expanded into a more detailed axiom." ;
+    schema:name "expand assertion to" .
+
+obo:IAO_0000426 a owl:AnnotationProperty ;
+    schema:name "first order logic expression" .
+
+obo:IAO_0000427 a owl:AnnotationProperty ;
+    schema:description "Use boolean value xsd:true to indicate that the property is an antisymmetric property" ;
+    schema:name "antisymmetric property" .
+
+obo:IAO_0000428 a owl:AnnotationProperty ;
+    schema:description "A term that is metadata complete, has been reviewed, and problems have been identified that require discussion before release. Such a term requires editor note(s) to identify the outstanding issues." ;
+    schema:name "requires discussion" .
+
+obo:IAO_0000589 a owl:AnnotationProperty ;
+    schema:description "An alternative name for a class or property which is unique across the OBO Foundry." ;
+    schema:name "obo foundry unique label" .
+
+obo:IAO_0000596 a owl:AnnotationProperty ;
+    schema:description "Relates an ontology used to record id policy to the number of digits in the URI. The URI is: the 'has ID prefix\" annotation property value concatenated with an integer in the id range (left padded with \"0\"s to make this many digits)" ;
+    schema:name "has id digit count" .
+
+obo:IAO_0000597 a owl:AnnotationProperty ;
+    schema:description "Relates a datatype that encodes a range of integers to the name of the person or organization who can use those ids constructed in that range to define new terms" ;
+    schema:name "has id range allocated to" .
+
+obo:IAO_0000598 a owl:AnnotationProperty ;
+    schema:description "Relating an ontology used to record id policy to the ontology namespace whose policy it manages" ;
+    schema:name "has id policy for" .
+
+obo:IAO_0000599 a owl:AnnotationProperty ;
+    schema:description "Relates an ontology used to record id policy to a prefix concatenated with an integer in the id range (left padded with \"0\"s to make this many digits) to construct an ID for a term being created." ;
+    schema:name "has id prefix" .
+
+obo:IAO_0000600 a owl:AnnotationProperty ;
+    schema:name "elucidation" .
+
+obo:IAO_0000601 a owl:AnnotationProperty ;
+    schema:description "An axiom associated with a term expressed using natural language" ;
+    schema:name "has associated axiom(nl)" .
+
+obo:IAO_0000602 a owl:AnnotationProperty ;
+    schema:description "An axiom expressed in first order logic using CLIF syntax" ;
+    schema:name "has associated axiom(fol)" .
+
+obo:IAO_0000603 a owl:AnnotationProperty ;
+    schema:description "Relates an ontology IRI to an (inclusive) range of IRIs in an OBO name space. The range is give as, e.g. \"IAO_0020000-IAO_0020999\"" ;
+    schema:name "is allocated id range" .
+
+obo:IAO_0000700 a owl:AnnotationProperty ;
+    schema:description "Ontology annotation property. Relates an ontology to a term that is a designated root term of the ontology. Display tools like OLS can use terms annotated with this property as the starting point for rendering the ontology class hierarchy. There can be more than one root." ;
+    schema:name "has ontology root term" .
+
+obo:IAO_0006011 a owl:AnnotationProperty ;
+    schema:description "A annotation relationship between two terms in an ontology that may refer to the same (natural) type but where more evidence is required before terms are merged." ;
+    schema:name "may be identical to" .
+
+obo:IAO_0006012 a owl:AnnotationProperty ;
+    schema:description "Used when the class or object is scheduled for obsoletion/deprecation on or after a particular date." ;
+    schema:name "scheduled for obsoletion on or after" .
+
+obo:IAO_0010000 a owl:AnnotationProperty ;
+    schema:description "A URI that is intended to be unique label for an axiom used for tracking change to the ontology. For an axiom expressed in different languages, each expression is given the same URI" ;
+    schema:name "has axiom label" .
+
+obo:IAO_0100001 a owl:AnnotationProperty ;
+    schema:description "Use on obsolete terms, relating the term to another term that can be used as a substitute" ;
+    schema:name "term replaced by" .
+
+obo:OMO_0001000 a owl:AnnotationProperty ;
+    schema:description "The term was added to the ontology on the assumption it was in scope, but it turned out later that it was not." ;
+    schema:name "out of scope" .
+
+obo:OMO_0001001 a owl:AnnotationProperty ;
+    schema:description "This is an annotation used on an object property to indicate a logical characterstic beyond what is possible in OWL." ;
+    schema:name "logical characteristic of object property" .
+
+obo:OMO_0001002 a owl:AnnotationProperty ;
+    schema:description "The term was added to the ontology on the assumption it was a valid domain entity, but it turns out the entity does not exist in reality." ;
+    schema:name "domain entity does not exist" .
+
+obo:OMO_0002000 a owl:AnnotationProperty ;
+    schema:description "Links an annotation property to a SPARQL CONSTRUCT query which is meant to provide semantics for a shortcut relation." ;
+    schema:name "defined by construct" .
+
+obo:OMO_0002001 a owl:AnnotationProperty ;
+    schema:description "A provenance property that denotes a synonym to be the preferred one for a specific community." ;
+    schema:name "preferred label for community" .
+
+obo:OMO_0003000 a owl:AnnotationProperty ;
+    schema:description "A synonym type for describing abbreviations or initialisms" ;
+    schema:name "abbreviation" .
+
+obo:OMO_0003001 a owl:AnnotationProperty ;
+    schema:description "A synonym type for describing ambiguous synonyms" ;
+    schema:name "ambiguous synonym" .
+
+obo:OMO_0003002 a owl:AnnotationProperty ;
+    schema:description "A synonym type for describing dubious synonyms" ;
+    schema:name "dubious synonym" .
+
+obo:OMO_0003003 a owl:AnnotationProperty ;
+    schema:description "A synonym type for describing layperson or colloquial synonyms" ;
+    schema:name "layperson synonym" .
+
+obo:OMO_0003004 a owl:AnnotationProperty ;
+    schema:description "A synonym type for describing pluralization synonyms" ;
+    schema:name "plural form" .
+
+obo:OMO_0003005 a owl:AnnotationProperty ;
+    schema:description "A synonym type for describing UK spelling variants" ;
+    schema:name "uk spelling synonym" .
+
+obo:OMO_0003006 a owl:AnnotationProperty ;
+    schema:description "A synonym type for common misspellings" ;
+    schema:name "misspelling" .
+
+obo:OMO_0003007 a owl:AnnotationProperty ;
+    schema:description "A synonym type for misnomers, i.e., a synonym that is not technically correct but is commonly used anyway" ;
+    schema:name "misnomer" .
+
+obo:OMO_0003008 a owl:AnnotationProperty ;
+    schema:description "A synonym type for names that have been used as primary labels in the past." ;
+    schema:name "previous name" .
+
+obo:OMO_0003009 a owl:AnnotationProperty ;
+    schema:description "A synonym type for the legal entity name" ;
+    schema:name "legal name" .
+
+obo:OMO_0003010 a owl:AnnotationProperty ;
+    schema:description "The International Nonproprietary Name (INN) is a standardize name for a pharmaceutical drug or active ingredient issued by the World Health Organization (WHO) meant to address the issues with country- or language-specific brand names. These are issued in several languages, including English, Latin, French, Russian, Spanish, Arabic, and Chinese." ;
+    schema:name "international nonproprietary name" .
+
+obo:OMO_0003011 a owl:AnnotationProperty ;
+    schema:description "A synonym type for describing Latin term synonyms." ;
+    schema:name "latin term" .
+
+obo:OMO_0003012 a owl:AnnotationProperty ;
+    schema:description "A synonym type for describing abbreviations that are a part of the full name's words, such as initialisms or alphabetisms." ;
+    schema:name "acronym" .
+
+obo:OMO_0003014 a owl:AnnotationProperty ;
+    schema:description "Relates an ontology to predicates/properties that should be used by user interfaces to render the hierarchical structure of the ontology. Typically, this is rdfs:subClassOf, but in ontologies that are partonomies, this might also include BFO:0000050 (part of). Tools like OLS can use predicates annotated with this property for rendering the ontology class hierarchy. There can be more than one hierarchical property. In the absence of any, it should be assumed that it is rdfs:subClassOf." ;
+    schema:name "has ontology hierarchical property" .
+
+obo:OMO_0004000 a owl:AnnotationProperty ;
+    schema:description "An information content entity that is a mark(s) or character(s) used as a conventional representation of another entity." ;
+    schema:name "has symbol" .
+
+oboInOwl:hasBroadSynonym a owl:AnnotationProperty ;
+    schema:name "has broad synonym" .
+
+oboInOwl:hasDbXref a owl:AnnotationProperty ;
+    schema:name "has cross reference" .
+
+oboInOwl:hasExactSynonym a owl:AnnotationProperty ;
+    schema:name "has exact synonym" .
+
+oboInOwl:hasNarrowSynonym a owl:AnnotationProperty ;
+    schema:name "has narrow synonym" .
+
+oboInOwl:hasRelatedSynonym a owl:AnnotationProperty ;
+    schema:name "has related synonym" .
+
