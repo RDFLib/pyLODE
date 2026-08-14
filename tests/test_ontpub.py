@@ -287,7 +287,10 @@ def test_classes_definitions(fix_html):
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <a href="http://purl.org/dc/terms/Standard">Standard</a>
+                <span>
+                  <a href="http://purl.org/dc/terms/Standard">Standard</a>
+                  <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+                </span>
               </td>
             </tr>
             <tr>
