@@ -432,8 +432,11 @@ class VocPub:
                                             )
                                         else:
                                             v = a(lbl, href="#" + curie)
-                                    else:
+                                    elif (v, None, None) in self.ont:
+                                        # documented in this vocabulary
                                         v = a(lbl, href="#" + curie)
+                                    else:  # an external resource
+                                        v = a(lbl, href=str(v))
                             p_label = self.props_labeled.get(k).get("title").title()
                             p_desc = self.props_labeled.get(k).get("description")
                             props_table.add(

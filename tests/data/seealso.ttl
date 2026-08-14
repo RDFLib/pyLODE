@@ -1,0 +1,16 @@
+PREFIX : <https://example.com/sa/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+<https://example.com/sa> a owl:Ontology ;
+    dcterms:title "SeeAlso Test" ;
+    rdfs:seeAlso <https://example.org/more-about-this-ontology> .
+
+:MyClass a owl:Class ;
+    rdfs:label "My Class" ;
+    rdfs:seeAlso <https://example.org/more-about-myclass> .
+
+:myProp a owl:ObjectProperty ;
+    rdfs:label "my prop" ;
+    rdfs:seeAlso <https://example.org/more-about-myprop> .

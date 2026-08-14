@@ -31,6 +31,7 @@ ONTOLOGY_PROPS = [
     ONTPUB.restriction,
     OWL.imports,
     SDO.codeRepository,
+    RDFS.seeAlso,
     # SKOS.hasTopConcept, -- catered for in Concept Hierarchy
 ]
 
@@ -43,6 +44,7 @@ CLASS_PROPS = [
     DCTERMS.source,
     DCTERMS.provenance,
     SKOS.note,
+    RDFS.seeAlso,
     RDFS.subClassOf,
     OWL.equivalentClass,
     # OWL.restriction,
@@ -64,6 +66,7 @@ PROP_PROPS = [
     DCTERMS.source,
     DCTERMS.provenance,
     SKOS.note,
+    RDFS.seeAlso,
     RDFS.subPropertyOf,
     ONTPUB.superPropertyOf,
     RDFS.domain,
@@ -147,6 +150,7 @@ COLLECTION_PROPS = [
     DCTERMS.source,
     DCTERMS.provenance,
     SDO.citation,
+    RDFS.seeAlso,
     SDO.status,
 ]
 
@@ -165,6 +169,7 @@ CONCEPT_PROPS = [
     DCTERMS.source,
     DCTERMS.provenance,
     SDO.citation,
+    RDFS.seeAlso,
     SDO.status,
 ]
 

@@ -61,7 +61,7 @@ rdfs:range a rdf:Property ;
 
 rdfs:seeAlso a rdf:Property ;
 	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
-	rdfs:label "seeAlso" ;
+	rdfs:label "see also" ;
 	rdfs:comment "Further information about the subject resource." ;
 	rdfs:range rdfs:Resource ;
 	rdfs:domain rdfs:Resource .

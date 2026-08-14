@@ -37,8 +37,7 @@ rdfs:label
     rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> .
 
 rdfs:seeAlso
-    a owl:AnnotationProperty ;
-    rdfs:comment ""@en .
+    a owl:AnnotationProperty .
 
 owl:Thing
     a owl:Class .
@@ -1809,8 +1808,7 @@ rdfs:label
     rdfs:isDefinedBy <http://www.w3.org/ns/prov#> .
 
 rdfs:seeAlso
-    a owl:AnnotationProperty ;
-    rdfs:comment ""@en .
+    a owl:AnnotationProperty .
 
 owl:Thing
     a owl:Class .
