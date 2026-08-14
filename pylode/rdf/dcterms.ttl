@@ -1,0 +1,455 @@
+@prefix dcam: <http://purl.org/dc/dcam/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+
+dcterms: a owl:Ontology ;
+    schema:name "DCMI Metadata Terms"@en .
+
+dcterms:Agent a dcterms:AgentClass,
+        owl:Class ;
+    schema:description "A resource that acts or has the power to act."@en ;
+    schema:name "Agent"@en .
+
+dcterms:BibliographicResource a owl:Class ;
+    schema:description "A book, article, or other documentary resource."@en ;
+    schema:name "Bibliographic Resource"@en .
+
+dcterms:Box a rdfs:Datatype ;
+    schema:description "The set of regions in space defined by their geographic coordinates according to the DCMI Box Encoding Scheme."@en ;
+    schema:name "DCMI Box"@en .
+
+dcterms:DCMIType a dcam:VocabularyEncodingScheme ;
+    schema:description "The set of classes specified by the DCMI Type Vocabulary, used to categorize the nature or genre of the resource."@en ;
+    schema:name "DCMI Type Vocabulary"@en .
+
+dcterms:DDC a dcam:VocabularyEncodingScheme ;
+    schema:description "The set of conceptual resources specified by the Dewey Decimal Classification."@en ;
+    schema:name "DDC"@en .
+
+dcterms:FileFormat a owl:Class ;
+    schema:description "A digital resource format."@en ;
+    schema:name "File Format"@en .
+
+dcterms:Frequency a owl:Class ;
+    schema:description "A rate at which something recurs."@en ;
+    schema:name "Frequency"@en .
+
+dcterms:IMT a dcam:VocabularyEncodingScheme ;
+    schema:description "The set of media types specified by the Internet Assigned Numbers Authority."@en ;
+    schema:name "IMT"@en .
+
+dcterms:ISO3166 a rdfs:Datatype ;
+    schema:description "The set of codes listed in ISO 3166-1 for the representation of names of countries."@en ;
+    schema:name "ISO 3166"@en .
+
+dcterms:ISO639-2 a rdfs:Datatype ;
+    schema:description "The three-letter alphabetic codes listed in ISO639-2 for the representation of names of languages."@en ;
+    schema:name "ISO 639-2"@en .
+
+dcterms:ISO639-3 a rdfs:Datatype ;
+    schema:description "The set of three-letter codes listed in ISO 639-3 for the representation of names of languages."@en ;
+    schema:name "ISO 639-3"@en .
+
+dcterms:Jurisdiction a owl:Class ;
+    schema:description "The extent or range of judicial, law enforcement, or other authority."@en ;
+    schema:name "Jurisdiction"@en .
+
+dcterms:LCC a dcam:VocabularyEncodingScheme ;
+    schema:description "The set of conceptual resources specified by the Library of Congress Classification."@en ;
+    schema:name "LCC"@en .
+
+dcterms:LCSH a dcam:VocabularyEncodingScheme ;
+    schema:description "The set of labeled concepts specified by the Library of Congress Subject Headings."@en ;
+    schema:name "LCSH"@en .
+
+dcterms:LicenseDocument a owl:Class ;
+    schema:description "A legal document giving official permission to do something with a resource."@en ;
+    schema:name "License Document"@en .
+
+dcterms:LinguisticSystem a owl:Class ;
+    schema:description "A system of signs, symbols, sounds, gestures, or rules used in communication."@en,
+        "Written, spoken, sign, and computer languages are linguistic systems."@en ;
+    schema:name "Linguistic System"@en .
+
+dcterms:Location a owl:Class ;
+    schema:description "A spatial region or named place."@en ;
+    schema:name "Location"@en .
+
+dcterms:LocationPeriodOrJurisdiction a owl:Class ;
+    schema:description "A location, period of time, or jurisdiction."@en ;
+    schema:name "Location, Period, Or Jurisdiction"@en .
+
+dcterms:MESH a dcam:VocabularyEncodingScheme ;
+    schema:description "The set of labeled concepts specified by the Medical Subject Headings."@en ;
+    schema:name "MeSH"@en .
+
+dcterms:MediaType a owl:Class ;
+    schema:description "A file format or physical medium."@en ;
+    schema:name "Media Type"@en .
+
+dcterms:MediaTypeOrExtent a owl:Class ;
+    schema:description "A media type or extent."@en ;
+    schema:name "Media Type Or Extent"@en .
+
+dcterms:MethodOfAccrual a owl:Class ;
+    schema:description "A method by which resources are added to a collection."@en ;
+    schema:name "Method Of Accrual"@en .
+
+dcterms:MethodOfInstruction a owl:Class ;
+    schema:description "A process that is used to engender knowledge, attitudes, and skills."@en ;
+    schema:name "Method Of Instruction"@en .
+
+dcterms:NLM a dcam:VocabularyEncodingScheme ;
+    schema:description "The set of conceptual resources specified by the National Library of Medicine Classification."@en ;
+    schema:name "NLM"@en .
+
+dcterms:Period a rdfs:Datatype ;
+    schema:description "The set of time intervals defined by their limits according to the DCMI Period Encoding Scheme."@en ;
+    schema:name "DCMI Period"@en .
+
+dcterms:PeriodOfTime a owl:Class ;
+    schema:description "An interval of time that is named or defined by its start and end dates."@en ;
+    schema:name "Period Of Time"@en .
+
+dcterms:PhysicalMedium a owl:Class ;
+    schema:description "A physical material or carrier."@en,
+        "Examples include paper, canvas, or DVD."@en ;
+    schema:name "Physical Medium"@en .
+
+dcterms:PhysicalResource a owl:Class ;
+    schema:description "A material thing."@en ;
+    schema:name "Physical Resource"@en .
+
+dcterms:Point a rdfs:Datatype ;
+    schema:description "The set of points in space defined by their geographic coordinates according to the DCMI Point Encoding Scheme."@en ;
+    schema:name "DCMI Point"@en .
+
+dcterms:Policy a owl:Class ;
+    schema:description "A plan or course of action by an authority, intended to influence and determine decisions, actions, and other matters."@en ;
+    schema:name "Policy"@en .
+
+dcterms:ProvenanceStatement a owl:Class ;
+    schema:description "Any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation."@en ;
+    schema:name "Provenance Statement"@en .
+
+dcterms:RFC1766 a rdfs:Datatype ;
+    schema:description "The set of tags, constructed according to RFC 1766, for the identification of languages."@en ;
+    schema:name "RFC 1766"@en .
+
+dcterms:RFC3066 a rdfs:Datatype ;
+    schema:description "RFC 3066 has been obsoleted by RFC 4646."@en,
+        "The set of tags constructed according to RFC 3066 for the identification of languages."@en ;
+    schema:name "RFC 3066"@en .
+
+dcterms:RFC4646 a rdfs:Datatype ;
+    schema:description "RFC 4646 obsoletes RFC 3066."@en,
+        "The set of tags constructed according to RFC 4646 for the identification of languages."@en ;
+    schema:name "RFC 4646"@en .
+
+dcterms:RFC5646 a rdfs:Datatype ;
+    schema:description "RFC 5646 obsoletes RFC 4646."@en,
+        "The set of tags constructed according to RFC 5646 for the identification of languages."@en ;
+    schema:name "RFC 5646"@en .
+
+dcterms:RightsStatement a owl:Class ;
+    schema:description "A statement about the intellectual property rights (IPR) held in or over a resource, a legal document giving official permission to do something with a resource, or a statement about access rights."@en ;
+    schema:name "Rights Statement"@en .
+
+dcterms:SizeOrDuration a owl:Class ;
+    schema:description "A dimension or extent, or a time taken to play or execute."@en,
+        "Examples include a number of pages, a specification of length, width, and breadth, or a period in hours, minutes, and seconds."@en ;
+    schema:name "Size Or Duration"@en .
+
+dcterms:Standard a owl:Class ;
+    schema:description "A reference point against which other things can be evaluated or compared."@en ;
+    schema:name "Standard"@en .
+
+dcterms:TGN a dcam:VocabularyEncodingScheme ;
+    schema:description "The set of places specified by the Getty Thesaurus of Geographic Names."@en ;
+    schema:name "TGN"@en .
+
+dcterms:UDC a dcam:VocabularyEncodingScheme ;
+    schema:description "The set of conceptual resources specified by the Universal Decimal Classification."@en ;
+    schema:name "UDC"@en .
+
+dcterms:URI a rdfs:Datatype ;
+    schema:description "The set of identifiers constructed according to the generic syntax for Uniform Resource Identifiers as specified by the Internet Engineering Task Force."@en ;
+    schema:name "URI"@en .
+
+dcterms:W3CDTF a rdfs:Datatype ;
+    schema:description "The set of dates and times constructed according to the W3C Date and Time Formats Specification."@en ;
+    schema:name "W3C-DTF"@en .
+
+dcterms:abstract a rdf:Property ;
+    schema:description "A summary of the resource."@en ;
+    schema:name "abstract"@en .
+
+dcterms:accessRights a rdf:Property ;
+    schema:description "Access Rights may include information regarding access or restrictions based on privacy, security, or other policies."@en,
+        "Information about who access the resource or an indication of its security status."@en ;
+    schema:name "access rights"@en .
+
+dcterms:accrualMethod a rdf:Property ;
+    schema:description "Recommended practice is to use a value from the Collection Description Accrual Method Vocabulary [[DCMI-ACCRUALMETHOD](https://dublincore.org/groups/collections/accrual-method/)]."@en,
+        "The method by which items are added to a collection."@en ;
+    schema:name "accrual method"@en .
+
+dcterms:accrualPeriodicity a rdf:Property ;
+    schema:description "Recommended practice is to use a value from the Collection Description Frequency Vocabulary [[DCMI-COLLFREQ](https://dublincore.org/groups/collections/frequency/)]."@en,
+        "The frequency with which items are added to a collection."@en ;
+    schema:name "accrual periodicity"@en .
+
+dcterms:accrualPolicy a rdf:Property ;
+    schema:description "Recommended practice is to use a value from the Collection Description Accrual Policy Vocabulary [[DCMI-ACCRUALPOLICY](https://dublincore.org/groups/collections/accrual-policy/)]."@en,
+        "The policy governing the addition of items to a collection."@en ;
+    schema:name "accrual policy"@en .
+
+dcterms:alternative a rdf:Property ;
+    schema:description "An alternative name for the resource."@en,
+        "The distinction between titles and alternative titles is application-specific."@en ;
+    schema:name "alternative title"@en .
+
+dcterms:audience a rdf:Property ;
+    schema:description "A class of agents for whom the resource is intended or useful."@en,
+        "Recommended practice is to use this property with non-literal values from a vocabulary of audience types."@en ;
+    schema:name "audience"@en .
+
+dcterms:available a rdf:Property ;
+    schema:description "Date that the resource became or will become available."@en,
+        "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."@en ;
+    schema:name "date available"@en .
+
+dcterms:bibliographicCitation a rdf:Property ;
+    schema:description "A bibliographic reference for the resource."@en,
+        "Recommended practice is to include sufficient bibliographic detail to identify the resource as unambiguously as possible."@en ;
+    schema:name "bibliographic citation"@en .
+
+dcterms:conformsTo a rdf:Property ;
+    schema:description "An established standard to which the described resource conforms."@en ;
+    schema:name "conforms to"@en .
+
+dcterms:contributor a rdf:Property ;
+    schema:description "An entity responsible for making contributions to the resource."@en,
+        "The guidelines for using names of persons or organizations as creators apply to contributors."@en ;
+    schema:name "contributor"@en .
+
+dcterms:coverage a rdf:Property ;
+    schema:description "Spatial topic and spatial applicability may be a named place or a location specified by its geographic coordinates. Temporal topic may be a named period, date, or date range. A jurisdiction may be a named administrative entity or a geographic place to which the resource applies. Recommended practice is to use a controlled vocabulary such as the Getty Thesaurus of Geographic Names [[TGN](https://www.getty.edu/research/tools/vocabulary/tgn/index.html)]. Where appropriate, named places or time periods may be used in preference to numeric identifiers such as sets of coordinates or date ranges.  Because coverage is so broadly defined, it is preferable to use the more specific subproperties Temporal Coverage and Spatial Coverage."@en,
+        "The spatial or temporal topic of the resource, spatial applicability of the resource, or jurisdiction under which the resource is relevant."@en ;
+    schema:name "coverage"@en .
+
+dcterms:created a rdf:Property ;
+    schema:description "Date of creation of the resource."@en,
+        "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."@en ;
+    schema:name "date created"@en .
+
+dcterms:creator a rdf:Property ;
+    schema:description "An entity responsible for making the resource."@en,
+        "Recommended practice is to identify the creator with a URI.  If this is not possible or feasible, a literal value that identifies the creator may be provided."@en ;
+    schema:name "creator"@en .
+
+dcterms:date a rdf:Property ;
+    schema:description "A point or period of time associated with an event in the lifecycle of the resource."@en,
+        "Date may be used to express temporal information at any level of granularity.  Recommended practice is to express the date, date/time, or period of time according to ISO 8601-1 [[ISO 8601-1](https://www.iso.org/iso-8601-date-and-time-format.html)] or a published profile of the ISO standard, such as the W3C Note on Date and Time Formats [[W3CDTF](https://www.w3.org/TR/NOTE-datetime)] or the Extended Date/Time Format Specification [[EDTF](http://www.loc.gov/standards/datetime/)].  If the full date is unknown, month and year (YYYY-MM) or just year (YYYY) may be used. Date ranges may be specified using ISO 8601 period of time specification in which start and end dates are separated by a '/' (slash) character.  Either the start or end date may be missing."@en ;
+    schema:name "date"@en .
+
+dcterms:dateAccepted a rdf:Property ;
+    schema:description "Date of acceptance of the resource."@en,
+        "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.  Examples of resources to which a date of acceptance may be relevant are a thesis (accepted by a university department) or an article (accepted by a journal)."@en ;
+    schema:name "date accepted"@en .
+
+dcterms:dateCopyrighted a rdf:Property ;
+    schema:description "Date of copyright of the resource."@en,
+        "Typically a year.  Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."@en ;
+    schema:name "date copyrighted"@en .
+
+dcterms:dateSubmitted a rdf:Property ;
+    schema:description "Date of submission of the resource."@en,
+        "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.  Examples of resources to which a 'Date Submitted' may be relevant include a thesis (submitted to a university department) or an article (submitted to a journal)."@en ;
+    schema:name "date submitted"@en .
+
+dcterms:description a rdf:Property ;
+    schema:description "An account of the resource."@en,
+        "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en ;
+    schema:name "description"@en .
+
+dcterms:educationLevel a rdf:Property ;
+    schema:description "A class of agents, defined in terms of progression through an educational or training context, for which the described resource is intended."@en ;
+    schema:name "audience education level"@en .
+
+dcterms:extent a rdf:Property ;
+    schema:description "Recommended practice is to specify the file size in megabytes and duration in ISO 8601 format."@en,
+        "The size or duration of the resource."@en ;
+    schema:name "extent"@en .
+
+dcterms:format a rdf:Property ;
+    schema:description "Recommended practice is to use a controlled vocabulary where available. For example, for file formats one could use the list of Internet Media Types [[MIME](https://www.iana.org/assignments/media-types/media-types.xhtml)].  Examples of dimensions include size and duration."@en,
+        "The file format, physical medium, or dimensions of the resource."@en ;
+    schema:name "format"@en .
+
+dcterms:hasFormat a rdf:Property ;
+    schema:description "A related resource that is substantially the same as the pre-existing described resource, but in another format."@en,
+        "This property is intended to be used with non-literal values. This property is an inverse property of Is Format Of."@en ;
+    schema:name "has format"@en .
+
+dcterms:hasPart a rdf:Property ;
+    schema:description "A related resource that is included either physically or logically in the described resource."@en,
+        "This property is intended to be used with non-literal values. This property is an inverse property of Is Part Of."@en ;
+    schema:name "has part"@en .
+
+dcterms:hasVersion a rdf:Property ;
+    schema:description "A related resource that is a version, edition, or adaptation of the described resource."@en,
+        "Changes in version imply substantive changes in content rather than differences in format. This property is intended to be used with non-literal values. This property is an inverse property of Is Version Of."@en ;
+    schema:name "has version"@en .
+
+dcterms:identifier a rdf:Property ;
+    schema:description "An unambiguous reference to the resource within a given context."@en,
+        "Recommended practice is to identify the resource by means of a string conforming to an identification system. Examples include International Standard Book Number (ISBN), Digital Object Identifier (DOI), and Uniform Resource Name (URN).  Persistent identifiers should be provided as HTTP URIs."@en ;
+    schema:name "identifier"@en .
+
+dcterms:instructionalMethod a rdf:Property ;
+    schema:description "A process, used to engender knowledge, attitudes and skills, that the described resource is designed to support."@en,
+        "Instructional Method typically includes ways of presenting instructional materials or conducting instructional activities, patterns of learner-to-learner and learner-to-instructor interactions, and mechanisms by which group and individual levels of learning are measured.  Instructional methods include all aspects of the instruction and learning processes from planning and implementation through evaluation and feedback."@en ;
+    schema:name "instructional method"@en .
+
+dcterms:isFormatOf a rdf:Property ;
+    schema:description "A pre-existing related resource that is substantially the same as the described resource, but in another format."@en,
+        "This property is intended to be used with non-literal values. This property is an inverse property of Has Format."@en ;
+    schema:name "is format of"@en .
+
+dcterms:isPartOf a rdf:Property ;
+    schema:description "A related resource in which the described resource is physically or logically included."@en,
+        "This property is intended to be used with non-literal values. This property is an inverse property of Has Part."@en ;
+    schema:name "is part of"@en .
+
+dcterms:isReferencedBy a rdf:Property ;
+    schema:description "A related resource that references, cites, or otherwise points to the described resource."@en,
+        "This property is intended to be used with non-literal values. This property is an inverse property of References."@en ;
+    schema:name "is referenced by"@en .
+
+dcterms:isReplacedBy a rdf:Property ;
+    schema:description "A related resource that supplants, displaces, or supersedes the described resource."@en,
+        "This property is intended to be used with non-literal values. This property is an inverse property of Replaces."@en ;
+    schema:name "is replaced by"@en .
+
+dcterms:isRequiredBy a rdf:Property ;
+    schema:description "A related resource that requires the described resource to support its function, delivery, or coherence."@en,
+        "This property is intended to be used with non-literal values. This property is an inverse property of Requires."@en ;
+    schema:name "is required by"@en .
+
+dcterms:isVersionOf a rdf:Property ;
+    schema:description "A related resource of which the described resource is a version, edition, or adaptation."@en,
+        "Changes in version imply substantive changes in content rather than differences in format. This property is intended to be used with non-literal values. This property is an inverse property of Has Version."@en ;
+    schema:name "is version of"@en .
+
+dcterms:issued a rdf:Property ;
+    schema:description "Date of formal issuance of the resource."@en,
+        "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."@en ;
+    schema:name "date issued"@en .
+
+dcterms:language a rdf:Property ;
+    schema:description "A language of the resource."@en,
+        "Recommended practice is to use either a non-literal value representing a language from a controlled vocabulary such as ISO 639-2 or ISO 639-3, or a literal value consisting of an IETF Best Current Practice 47 [[IETF-BCP47](https://tools.ietf.org/html/bcp47)] language tag."@en ;
+    schema:name "language"@en .
+
+dcterms:license a rdf:Property ;
+    schema:description "A legal document giving official permission to do something with the resource."@en,
+        "Recommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided."@en ;
+    schema:name "license"@en .
+
+dcterms:mediator a rdf:Property ;
+    schema:description "An entity that mediates access to the resource."@en,
+        "In an educational context, a mediator might be a parent, teacher, teaching assistant, or care-giver."@en ;
+    schema:name "mediator"@en .
+
+dcterms:medium a rdf:Property ;
+    schema:description "The material or physical carrier of the resource."@en ;
+    schema:name "medium"@en .
+
+dcterms:modified a rdf:Property ;
+    schema:description "Date on which the resource was changed."@en,
+        "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."@en ;
+    schema:name "date modified"@en .
+
+dcterms:provenance a rdf:Property ;
+    schema:description "A statement of any changes in ownership and custody of the resource since its creation that are significant for its authenticity, integrity, and interpretation."@en,
+        "The statement may include a description of any changes successive custodians made to the resource."@en ;
+    schema:name "provenance"@en .
+
+dcterms:publisher a rdf:Property ;
+    schema:description "An entity responsible for making the resource available."@en ;
+    schema:name "publisher"@en .
+
+dcterms:references a rdf:Property ;
+    schema:description "A related resource that is referenced, cited, or otherwise pointed to by the described resource."@en,
+        "This property is intended to be used with non-literal values. This property is an inverse property of Is Referenced By."@en ;
+    schema:name "references"@en .
+
+dcterms:relation a rdf:Property ;
+    schema:description "A related resource."@en,
+        "Recommended practice is to identify the related resource by means of a URI.  If this is not possible or feasible, a string conforming to a formal identification system may be provided."@en ;
+    schema:name "relation"@en .
+
+dcterms:replaces a rdf:Property ;
+    schema:description "A related resource that is supplanted, displaced, or superseded by the described resource."@en,
+        "This property is intended to be used with non-literal values. This property is an inverse property of Is Replaced By."@en ;
+    schema:name "replaces"@en .
+
+dcterms:requires a rdf:Property ;
+    schema:description "A related resource that is required by the described resource to support its function, delivery, or coherence."@en,
+        "This property is intended to be used with non-literal values. This property is an inverse property of Is Required By."@en ;
+    schema:name "requires"@en .
+
+dcterms:rights a rdf:Property ;
+    schema:description "Information about rights held in and over the resource."@en,
+        "Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights.  Recommended practice is to refer to a rights statement with a URI.  If this is not possible or feasible, a literal value (name, label, or short text) may be provided."@en ;
+    schema:name "rights"@en .
+
+dcterms:rightsHolder a rdf:Property ;
+    schema:description "A person or organization owning or managing rights over the resource."@en,
+        "Recommended practice is to refer to the rights holder with a URI. If this is not possible or feasible, a literal value that identifies the rights holder may be provided."@en ;
+    schema:name "rights holder"@en .
+
+dcterms:source a rdf:Property ;
+    schema:description "A related resource from which the described resource is derived."@en,
+        "This property is intended to be used with non-literal values. The described resource may be derived from the related resource in whole or in part. Best practice is to identify the related resource by means of a URI or a string conforming to a formal identification system."@en ;
+    schema:name "source"@en .
+
+dcterms:spatial a rdf:Property ;
+    schema:description "Spatial characteristics of the resource."@en ;
+    schema:name "spatial coverage"@en .
+
+dcterms:subject a rdf:Property ;
+    schema:description "A topic of the resource."@en,
+        "Recommended practice is to refer to the subject with a URI. If this is not possible or feasible, a literal value that identifies the subject may be provided. Both should preferably refer to a subject in a controlled vocabulary."@en ;
+    schema:name "subject"@en .
+
+dcterms:tableOfContents a rdf:Property ;
+    schema:description "A list of subunits of the resource."@en ;
+    schema:name "table of contents"@en .
+
+dcterms:temporal a rdf:Property ;
+    schema:description "Temporal characteristics of the resource."@en ;
+    schema:name "temporal coverage"@en .
+
+dcterms:title a rdf:Property ;
+    schema:description "A name given to the resource."@en ;
+    schema:name "title"@en .
+
+dcterms:type a rdf:Property ;
+    schema:description "Recommended practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [[DCMI-TYPE](http://dublincore.org/documents/dcmi-type-vocabulary/)]. To describe the file format, physical medium, or dimensions of the resource, use the property Format."@en,
+        "The nature or genre of the resource."@en ;
+    schema:name "type"@en .
+
+dcterms:valid a rdf:Property ;
+    schema:description "Date (often a range) of validity of a resource."@en,
+        "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."@en ;
+    schema:name "date valid"@en .
+
+dcterms:AgentClass a owl:Class ;
+    schema:description "A group of agents."@en ;
+    schema:name "Agent Class"@en .
+

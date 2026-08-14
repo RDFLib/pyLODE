@@ -1,14 +1,9 @@
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix grddl: <http://www.w3.org/2003/g/data-view#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
 
 <http://www.w3.org/2002/07/owl> a owl:Ontology ;
-     dc:title "The OWL 2 Schema vocabulary (OWL 2)" ;
-     rdfs:comment """
+    schema:description """
   This ontology partially describes the built-in classes and
   properties that together form the basis of the RDF/XML syntax of OWL 2.
   The content of this ontology is based on Tables 6.1 and 6.2
@@ -26,527 +21,316 @@
   will cause it to become an OWL 2 Full ontology and may have other,
   unexpected, consequences.
    """ ;
-     rdfs:isDefinedBy
-          <http://www.w3.org/TR/owl2-mapping-to-rdf/>,
-          <http://www.w3.org/TR/owl2-rdf-based-semantics/>,
-          <http://www.w3.org/TR/owl2-syntax/> ;
-     rdfs:seeAlso   <http://www.w3.org/TR/owl2-rdf-based-semantics/#table-axiomatic-classes>,
-                    <http://www.w3.org/TR/owl2-rdf-based-semantics/#table-axiomatic-properties> ;
-     owl:imports <http://www.w3.org/2000/01/rdf-schema> ;
-     owl:versionIRI <http://www.w3.org/2002/07/owl> ;
-     owl:versionInfo "$Date: 2009/11/15 10:54:12 $" ;
-     grddl:namespaceTransformation <http://dev.w3.org/cvsweb/2009/owl-grddl/owx2rdf.xsl> . 
+    schema:name "The OWL 2 Schema vocabulary (OWL 2)" .
 
+owl:AllDifferent a owl:Class ;
+    schema:description "The class of collections of pairwise different individuals." ;
+    schema:name "All Different" .
 
-owl:AllDifferent a rdfs:Class ;
-     rdfs:label "AllDifferent" ;
-     rdfs:comment "The class of collections of pairwise different individuals." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf rdfs:Resource . 
+owl:AllDisjointClasses a owl:Class ;
+    schema:description "The class of collections of pairwise disjoint classes." ;
+    schema:name "All Disjoint Classes" .
 
-owl:AllDisjointClasses a rdfs:Class ;
-     rdfs:label "AllDisjointClasses" ;
-     rdfs:comment "The class of collections of pairwise disjoint classes." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf rdfs:Resource . 
+owl:AllDisjointProperties a owl:Class ;
+    schema:description "The class of collections of pairwise disjoint properties." ;
+    schema:name "All Disjoint Properties" .
 
-owl:AllDisjointProperties a rdfs:Class ;
-     rdfs:label "AllDisjointProperties" ;
-     rdfs:comment "The class of collections of pairwise disjoint properties." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf rdfs:Resource . 
+owl:Annotation a owl:Class ;
+    schema:description "The class of annotated annotations for which the RDF serialization consists of an annotated subject, predicate and object." ;
+    schema:name "Annotation" .
 
-owl:Annotation a rdfs:Class ;
-     rdfs:label "Annotation" ;
-     rdfs:comment "The class of annotated annotations for which the RDF serialization consists of an annotated subject, predicate and object." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf rdfs:Resource . 
+owl:AsymmetricProperty a owl:Class ;
+    schema:description "The class of asymmetric properties." ;
+    schema:name "Asymmetric Property" .
 
-owl:AnnotationProperty a rdfs:Class ;
-     rdfs:label "AnnotationProperty" ;
-     rdfs:comment "The class of annotation properties." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf rdf:Property . 
+owl:Axiom a owl:Class ;
+    schema:description "The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object." ;
+    schema:name "Axiom" .
 
-owl:AsymmetricProperty a rdfs:Class ;
-     rdfs:label "AsymmetricProperty" ;
-     rdfs:comment "The class of asymmetric properties." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf owl:ObjectProperty . 
+owl:DataRange a owl:Class ;
+    schema:description "The class of OWL data ranges, which are special kinds of datatypes. Note: The use of the IRI owl:DataRange has been deprecated as of OWL 2. The IRI rdfs:Datatype SHOULD be used instead." ;
+    schema:name "Data Range" .
 
-owl:Axiom a rdfs:Class ;
-     rdfs:label "Axiom" ;
-     rdfs:comment "The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf rdfs:Resource . 
+owl:DeprecatedClass a owl:Class ;
+    schema:description "The class of deprecated classes." ;
+    schema:name "Deprecated Class" .
 
-owl:Class a rdfs:Class ;
-     rdfs:label "Class" ;
-     rdfs:comment "The class of OWL classes." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf rdfs:Class . 
+owl:DeprecatedProperty a owl:Class ;
+    schema:description "The class of deprecated properties." ;
+    schema:name "Deprecated Property" .
 
-owl:DataRange a rdfs:Class ;
-     rdfs:label "DataRange" ;
-     rdfs:comment "The class of OWL data ranges, which are special kinds of datatypes. Note: The use of the IRI owl:DataRange has been deprecated as of OWL 2. The IRI rdfs:Datatype SHOULD be used instead." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf rdfs:Datatype . 
+owl:FunctionalProperty a owl:Class ;
+    schema:description "The class of functional properties." ;
+    schema:name "Functional Property" .
 
-owl:DatatypeProperty a rdfs:Class ;
-     rdfs:label "DatatypeProperty" ;
-     rdfs:comment "The class of data properties." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf rdf:Property . 
+owl:InverseFunctionalProperty a owl:Class ;
+    schema:description "The class of inverse-functional properties." ;
+    schema:name "Inverse Functional Property" .
 
-owl:DeprecatedClass a rdfs:Class ;
-     rdfs:label "DeprecatedClass" ;
-     rdfs:comment "The class of deprecated classes." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf rdfs:Class . 
+owl:IrreflexiveProperty a owl:Class ;
+    schema:description "The class of irreflexive properties." ;
+    schema:name "Irreflexive Property" .
 
-owl:DeprecatedProperty a rdfs:Class ;
-     rdfs:label "DeprecatedProperty" ;
-     rdfs:comment "The class of deprecated properties." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf rdf:Property . 
+owl:NamedIndividual a owl:Class ;
+    schema:description "The class of named individuals." ;
+    schema:name "Named Individual" .
 
-owl:FunctionalProperty a rdfs:Class ;
-     rdfs:label "FunctionalProperty" ;
-     rdfs:comment "The class of functional properties." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf rdf:Property . 
-
-owl:InverseFunctionalProperty a rdfs:Class ;
-     rdfs:label "InverseFunctionalProperty" ;
-     rdfs:comment "The class of inverse-functional properties." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf owl:ObjectProperty . 
-
-owl:IrreflexiveProperty a rdfs:Class ;
-     rdfs:label "IrreflexiveProperty" ;
-     rdfs:comment "The class of irreflexive properties." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf owl:ObjectProperty . 
-
-owl:NamedIndividual a rdfs:Class ;
-     rdfs:label "NamedIndividual" ;
-     rdfs:comment "The class of named individuals." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf owl:Thing . 
-
-owl:NegativePropertyAssertion a rdfs:Class ;
-     rdfs:label "NegativePropertyAssertion" ;
-     rdfs:comment "The class of negative property assertions." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf rdfs:Resource . 
+owl:NegativePropertyAssertion a owl:Class ;
+    schema:description "The class of negative property assertions." ;
+    schema:name "Negative Property Assertion" .
 
 owl:Nothing a owl:Class ;
-     rdfs:label "Nothing" ;
-     rdfs:comment "This is the empty class." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf owl:Thing . 
+    schema:description "This is the empty class." ;
+    schema:name "Nothing" .
 
-owl:ObjectProperty a rdfs:Class ;
-     rdfs:label "ObjectProperty" ;
-     rdfs:comment "The class of object properties." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf rdf:Property . 
+owl:ReflexiveProperty a owl:Class ;
+    schema:description "The class of reflexive properties." ;
+    schema:name "Reflexive Property" .
 
-owl:Ontology a rdfs:Class ;
-     rdfs:label "Ontology" ;
-     rdfs:comment "The class of ontologies." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf rdfs:Resource . 
+owl:Restriction a owl:Class ;
+    schema:description "The class of property restrictions." ;
+    schema:name "Restriction" .
 
-owl:OntologyProperty a rdfs:Class ;
-     rdfs:label "OntologyProperty" ;
-     rdfs:comment "The class of ontology properties." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf rdf:Property . 
-
-owl:ReflexiveProperty a rdfs:Class ;
-     rdfs:label "ReflexiveProperty" ;
-     rdfs:comment "The class of reflexive properties." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf owl:ObjectProperty . 
-
-owl:Restriction a rdfs:Class ;
-     rdfs:label "Restriction" ;
-     rdfs:comment "The class of property restrictions." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf owl:Class . 
-
-owl:SymmetricProperty a rdfs:Class ;
-     rdfs:label "SymmetricProperty" ;
-     rdfs:comment "The class of symmetric properties." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf owl:ObjectProperty . 
-
-owl:TransitiveProperty a rdfs:Class ;
-     rdfs:label "TransitiveProperty" ;
-     rdfs:comment "The class of transitive properties." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:subClassOf owl:ObjectProperty . 
+owl:SymmetricProperty a owl:Class ;
+    schema:description "The class of symmetric properties." ;
+    schema:name "Symmetric Property" .
 
 owl:Thing a owl:Class ;
-     rdfs:label "Thing" ;
-     rdfs:comment "The class of OWL individuals." ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> .
-     
+    schema:description "The class of OWL individuals." ;
+    schema:name "Thing" .
+
+owl:TransitiveProperty a owl:Class ;
+    schema:description "The class of transitive properties." ;
+    schema:name "Transitive Property" .
+
 owl:allValuesFrom a rdf:Property ;
-     rdfs:label "allValuesFrom" ;
-     rdfs:comment "The property that determines the class that a universal property restriction refers to." ;
-     rdfs:domain owl:Restriction ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdfs:Class . 
+    schema:description "The property that determines the class that a universal property restriction refers to." ;
+    schema:name "all values from" .
 
 owl:annotatedProperty a rdf:Property ;
-     rdfs:label "annotatedProperty" ;
-     rdfs:comment "The property that determines the predicate of an annotated axiom or annotated annotation." ;
-     rdfs:domain rdfs:Resource ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdfs:Resource . 
+    schema:description "The property that determines the predicate of an annotated axiom or annotated annotation." ;
+    schema:name "annotated property" .
 
 owl:annotatedSource a rdf:Property ;
-     rdfs:label "annotatedSource" ;
-     rdfs:comment "The property that determines the subject of an annotated axiom or annotated annotation." ;
-     rdfs:domain rdfs:Resource ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdfs:Resource . 
+    schema:description "The property that determines the subject of an annotated axiom or annotated annotation." ;
+    schema:name "annotated source" .
 
 owl:annotatedTarget a rdf:Property ;
-     rdfs:label "annotatedTarget" ;
-     rdfs:comment "The property that determines the object of an annotated axiom or annotated annotation." ;
-     rdfs:domain rdfs:Resource ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdfs:Resource . 
+    schema:description "The property that determines the object of an annotated axiom or annotated annotation." ;
+    schema:name "annotated target" .
 
 owl:assertionProperty a rdf:Property ;
-     rdfs:label "assertionProperty" ;
-     rdfs:comment "The property that determines the predicate of a negative property assertion." ;
-     rdfs:domain owl:NegativePropertyAssertion ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdf:Property . 
+    schema:description "The property that determines the predicate of a negative property assertion." ;
+    schema:name "assertion property" .
 
-owl:backwardCompatibleWith a owl:AnnotationProperty, owl:OntologyProperty ;
-     rdfs:label "backwardCompatibleWith" ;
-     rdfs:comment "The annotation property that indicates that a given ontology is backward compatible with another ontology." ;
-     rdfs:domain owl:Ontology ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range owl:Ontology . 
+owl:backwardCompatibleWith a owl:AnnotationProperty,
+        owl:OntologyProperty ;
+    schema:description "The annotation property that indicates that a given ontology is backward compatible with another ontology." ;
+    schema:name "backward compatible with" .
 
 owl:bottomDataProperty a owl:DatatypeProperty ;
-     rdfs:label "bottomDataProperty" ;
-     rdfs:comment "The data property that does not relate any individual to any data value." ;
-     rdfs:domain owl:Thing ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdfs:Literal . 
+    schema:description "The data property that does not relate any individual to any data value." ;
+    schema:name "bottom data property" .
 
 owl:bottomObjectProperty a owl:ObjectProperty ;
-     rdfs:label "bottomObjectProperty" ;
-     rdfs:comment "The object property that does not relate any two individuals." ;
-     rdfs:domain owl:Thing ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range owl:Thing . 
+    schema:description "The object property that does not relate any two individuals." ;
+    schema:name "bottom object property" .
 
 owl:cardinality a rdf:Property ;
-     rdfs:label "cardinality" ;
-     rdfs:comment "The property that determines the cardinality of an exact cardinality restriction." ;
-     rdfs:domain owl:Restriction ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range xsd:nonNegativeInteger . 
+    schema:description "The property that determines the cardinality of an exact cardinality restriction." ;
+    schema:name "cardinality" .
 
 owl:complementOf a rdf:Property ;
-     rdfs:label "complementOf" ;
-     rdfs:comment "The property that determines that a given class is the complement of another class." ;
-     rdfs:domain owl:Class ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range owl:Class . 
+    schema:description "The property that determines that a given class is the complement of another class." ;
+    schema:name "complement of" .
 
 owl:datatypeComplementOf a rdf:Property ;
-     rdfs:label "datatypeComplementOf" ;
-     rdfs:comment "The property that determines that a given data range is the complement of another data range with respect to the data domain." ;
-     rdfs:domain rdfs:Datatype ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdfs:Datatype . 
+    schema:description "The property that determines that a given data range is the complement of another data range with respect to the data domain." ;
+    schema:name "datatype complement of" .
 
 owl:deprecated a owl:AnnotationProperty ;
-     rdfs:label "deprecated" ;
-     rdfs:comment "The annotation property that indicates that a given entity has been deprecated." ;
-     rdfs:domain rdfs:Resource ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdfs:Resource . 
+    schema:description "The annotation property that indicates that a given entity has been deprecated." ;
+    schema:name "deprecated" .
 
 owl:differentFrom a rdf:Property ;
-     rdfs:label "differentFrom" ;
-     rdfs:comment "The property that determines that two given individuals are different." ;
-     rdfs:domain owl:Thing ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range owl:Thing . 
+    schema:description "The property that determines that two given individuals are different." ;
+    schema:name "different from" .
 
 owl:disjointUnionOf a rdf:Property ;
-     rdfs:label "disjointUnionOf" ;
-     rdfs:comment "The property that determines that a given class is equivalent to the disjoint union of a collection of other classes." ;
-     rdfs:domain owl:Class ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdf:List . 
+    schema:description "The property that determines that a given class is equivalent to the disjoint union of a collection of other classes." ;
+    schema:name "disjoint union of" .
 
 owl:disjointWith a rdf:Property ;
-     rdfs:label "disjointWith" ;
-     rdfs:comment "The property that determines that two given classes are disjoint." ;
-     rdfs:domain owl:Class ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range owl:Class . 
+    schema:description "The property that determines that two given classes are disjoint." ;
+    schema:name "disjoint with" .
 
 owl:distinctMembers a rdf:Property ;
-     rdfs:label "distinctMembers" ;
-     rdfs:comment "The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom." ;
-     rdfs:domain owl:AllDifferent ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdf:List . 
+    schema:description "The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom." ;
+    schema:name "distinct members" .
 
 owl:equivalentClass a rdf:Property ;
-     rdfs:label "equivalentClass" ;
-     rdfs:comment "The property that determines that two given classes are equivalent, and that is used to specify datatype definitions." ;
-     rdfs:domain rdfs:Class ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdfs:Class . 
+    schema:description "The property that determines that two given classes are equivalent, and that is used to specify datatype definitions." ;
+    schema:name "equivalent class" .
 
 owl:equivalentProperty a rdf:Property ;
-     rdfs:label "equivalentProperty" ;
-     rdfs:comment "The property that determines that two given properties are equivalent." ;
-     rdfs:domain rdf:Property ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdf:Property . 
+    schema:description "The property that determines that two given properties are equivalent." ;
+    schema:name "equivalent property" .
 
 owl:hasKey a rdf:Property ;
-     rdfs:label "hasKey" ;
-     rdfs:comment "The property that determines the collection of properties that jointly build a key." ;
-     rdfs:domain owl:Class ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdf:List . 
+    schema:description "The property that determines the collection of properties that jointly build a key." ;
+    schema:name "has key" .
 
 owl:hasSelf a rdf:Property ;
-     rdfs:label "hasSelf" ;
-     rdfs:comment "The property that determines the property that a self restriction refers to." ;
-     rdfs:domain owl:Restriction ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdfs:Resource . 
+    schema:description "The property that determines the property that a self restriction refers to." ;
+    schema:name "has self" .
 
 owl:hasValue a rdf:Property ;
-     rdfs:label "hasValue" ;
-     rdfs:comment "The property that determines the individual that a has-value restriction refers to." ;
-     rdfs:domain owl:Restriction ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdfs:Resource . 
+    schema:description "The property that determines the individual that a has-value restriction refers to." ;
+    schema:name "has value" .
 
 owl:imports a owl:OntologyProperty ;
-     rdfs:label "imports" ;
-     rdfs:comment "The property that is used for importing other ontologies into a given ontology." ;
-     rdfs:domain owl:Ontology ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range owl:Ontology . 
+    schema:description "The property that is used for importing other ontologies into a given ontology." ;
+    schema:name "imports" .
 
-owl:incompatibleWith a owl:AnnotationProperty, owl:OntologyProperty ;
-     rdfs:label "incompatibleWith" ;
-     rdfs:comment "The annotation property that indicates that a given ontology is incompatible with another ontology." ;
-     rdfs:domain owl:Ontology ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range owl:Ontology . 
+owl:incompatibleWith a owl:AnnotationProperty,
+        owl:OntologyProperty ;
+    schema:description "The annotation property that indicates that a given ontology is incompatible with another ontology." ;
+    schema:name "incompatible with" .
 
 owl:intersectionOf a rdf:Property ;
-     rdfs:label "intersectionOf" ;
-     rdfs:comment "The property that determines the collection of classes or data ranges that build an intersection." ;
-     rdfs:domain rdfs:Class ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdf:List . 
+    schema:description "The property that determines the collection of classes or data ranges that build an intersection." ;
+    schema:name "intersection of" .
 
 owl:inverseOf a rdf:Property ;
-     rdfs:label "inverseOf" ;
-     rdfs:comment "The property that determines that two given properties are inverse." ;
-     rdfs:domain owl:ObjectProperty ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range owl:ObjectProperty . 
+    schema:description "The property that determines that two given properties are inverse." ;
+    schema:name "inverse of" .
 
 owl:maxCardinality a rdf:Property ;
-     rdfs:label "maxCardinality" ;
-     rdfs:comment "The property that determines the cardinality of a maximum cardinality restriction." ;
-     rdfs:domain owl:Restriction ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range xsd:nonNegativeInteger . 
+    schema:description "The property that determines the cardinality of a maximum cardinality restriction." ;
+    schema:name "max cardinality" .
 
 owl:maxQualifiedCardinality a rdf:Property ;
-     rdfs:label "maxQualifiedCardinality" ;
-     rdfs:comment "The property that determines the cardinality of a maximum qualified cardinality restriction." ;
-     rdfs:domain owl:Restriction ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range xsd:nonNegativeInteger . 
+    schema:description "The property that determines the cardinality of a maximum qualified cardinality restriction." ;
+    schema:name "max qualified cardinality" .
 
 owl:members a rdf:Property ;
-     rdfs:label "members" ;
-     rdfs:comment "The property that determines the collection of members in either a owl:AllDifferent, owl:AllDisjointClasses or owl:AllDisjointProperties axiom." ;
-     rdfs:domain rdfs:Resource ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdf:List . 
+    schema:description "The property that determines the collection of members in either a owl:AllDifferent, owl:AllDisjointClasses or owl:AllDisjointProperties axiom." ;
+    schema:name "members" .
 
 owl:minCardinality a rdf:Property ;
-     rdfs:label "minCardinality" ;
-     rdfs:comment "The property that determines the cardinality of a minimum cardinality restriction." ;
-     rdfs:domain owl:Restriction ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range xsd:nonNegativeInteger . 
+    schema:description "The property that determines the cardinality of a minimum cardinality restriction." ;
+    schema:name "min cardinality" .
 
 owl:minQualifiedCardinality a rdf:Property ;
-     rdfs:label "minQualifiedCardinality" ;
-     rdfs:comment "The property that determines the cardinality of a minimum qualified cardinality restriction." ;
-     rdfs:domain owl:Restriction ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range xsd:nonNegativeInteger . 
+    schema:description "The property that determines the cardinality of a minimum qualified cardinality restriction." ;
+    schema:name "min qualified cardinality" .
 
 owl:onClass a rdf:Property ;
-     rdfs:label "onClass" ;
-     rdfs:comment "The property that determines the class that a qualified object cardinality restriction refers to." ;
-     rdfs:domain owl:Restriction ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range owl:Class . 
+    schema:description "The property that determines the class that a qualified object cardinality restriction refers to." ;
+    schema:name "on class" .
 
 owl:onDataRange a rdf:Property ;
-     rdfs:label "onDataRange" ;
-     rdfs:comment "The property that determines the data range that a qualified data cardinality restriction refers to." ;
-     rdfs:domain owl:Restriction ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdfs:Datatype . 
+    schema:description "The property that determines the data range that a qualified data cardinality restriction refers to." ;
+    schema:name "on data range" .
 
 owl:onDatatype a rdf:Property ;
-     rdfs:label "onDatatype" ;
-     rdfs:comment "The property that determines the datatype that a datatype restriction refers to." ;
-     rdfs:domain rdfs:Datatype ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdfs:Datatype . 
-
-owl:oneOf a rdf:Property ;
-     rdfs:label "oneOf" ;
-     rdfs:comment "The property that determines the collection of individuals or data values that build an enumeration." ;
-     rdfs:domain rdfs:Class ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdf:List . 
+    schema:description "The property that determines the datatype that a datatype restriction refers to." ;
+    schema:name "on datatype" .
 
 owl:onProperties a rdf:Property ;
-     rdfs:label "onProperties" ;
-     rdfs:comment "The property that determines the n-tuple of properties that a property restriction on an n-ary data range refers to." ;
-     rdfs:domain owl:Restriction ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdf:List .
+    schema:description "The property that determines the n-tuple of properties that a property restriction on an n-ary data range refers to." ;
+    schema:name "on properties" .
 
 owl:onProperty a rdf:Property ;
-     rdfs:label "onProperty" ;
-     rdfs:comment "The property that determines the property that a property restriction refers to." ;
-     rdfs:domain owl:Restriction ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdf:Property . 
+    schema:description "The property that determines the property that a property restriction refers to." ;
+    schema:name "on property" .
 
-owl:priorVersion a owl:AnnotationProperty, owl:OntologyProperty ;
-     rdfs:label "prior version" ;
-     rdfs:comment "The annotation property that indicates the predecessor ontology of a given ontology." ;
-     rdfs:domain owl:Ontology ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range owl:Ontology . 
+owl:oneOf a rdf:Property ;
+    schema:description "The property that determines the collection of individuals or data values that build an enumeration." ;
+    schema:name "one of" .
+
+owl:priorVersion a owl:AnnotationProperty,
+        owl:OntologyProperty ;
+    schema:description "The annotation property that indicates the predecessor ontology of a given ontology." ;
+    schema:name "prior version" .
 
 owl:propertyChainAxiom a rdf:Property ;
-     rdfs:label "propertyChainAxiom" ;
-     rdfs:comment "The property that determines the n-tuple of properties that build a sub property chain of a given property." ;
-     rdfs:domain owl:ObjectProperty ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdf:List . 
+    schema:description "The property that determines the n-tuple of properties that build a sub property chain of a given property." ;
+    schema:name "property chain axiom" .
 
 owl:propertyDisjointWith a rdf:Property ;
-     rdfs:label "propertyDisjointWith" ;
-     rdfs:comment "The property that determines that two given properties are disjoint." ;
-     rdfs:domain rdf:Property ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdf:Property . 
+    schema:description "The property that determines that two given properties are disjoint." ;
+    schema:name "property disjoint with" .
 
 owl:qualifiedCardinality a rdf:Property ;
-     rdfs:label "qualifiedCardinality" ;
-     rdfs:comment "The property that determines the cardinality of an exact qualified cardinality restriction." ;
-     rdfs:domain owl:Restriction ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range xsd:nonNegativeInteger . 
+    schema:description "The property that determines the cardinality of an exact qualified cardinality restriction." ;
+    schema:name "qualified cardinality" .
 
 owl:sameAs a rdf:Property ;
-     rdfs:label "sameAs" ;
-     rdfs:comment "The property that determines that two given individuals are equal." ;
-     rdfs:domain owl:Thing ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range owl:Thing . 
+    schema:description "The property that determines that two given individuals are equal." ;
+    schema:name "same as" .
 
 owl:someValuesFrom a rdf:Property ;
-     rdfs:label "someValuesFrom" ;
-     rdfs:comment "The property that determines the class that an existential property restriction refers to." ;
-     rdfs:domain owl:Restriction ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdfs:Class . 
+    schema:description "The property that determines the class that an existential property restriction refers to." ;
+    schema:name "some values from" .
 
 owl:sourceIndividual a rdf:Property ;
-     rdfs:label "sourceIndividual" ;
-     rdfs:comment "The property that determines the subject of a negative property assertion." ;
-     rdfs:domain owl:NegativePropertyAssertion ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range owl:Thing . 
+    schema:description "The property that determines the subject of a negative property assertion." ;
+    schema:name "source individual" .
 
 owl:targetIndividual a rdf:Property ;
-     rdfs:label "targetIndividual" ;
-     rdfs:comment "The property that determines the object of a negative object property assertion." ;
-     rdfs:domain owl:NegativePropertyAssertion ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range owl:Thing . 
+    schema:description "The property that determines the object of a negative object property assertion." ;
+    schema:name "target individual" .
 
 owl:targetValue a rdf:Property ;
-     rdfs:label "targetValue" ;
-     rdfs:comment "The property that determines the value of a negative data property assertion." ;
-     rdfs:domain owl:NegativePropertyAssertion ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdfs:Literal . 
+    schema:description "The property that determines the value of a negative data property assertion." ;
+    schema:name "target value" .
 
 owl:topDataProperty a owl:DatatypeProperty ;
-     rdfs:label "topDataProperty" ;
-     rdfs:comment "The data property that relates every individual to every data value." ;
-     rdfs:domain owl:Thing ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdfs:Literal . 
+    schema:description "The data property that relates every individual to every data value." ;
+    schema:name "top data property" .
 
 owl:topObjectProperty a owl:ObjectProperty ;
-     rdfs:label "topObjectProperty" ;
-     rdfs:comment "The object property that relates every two individuals." ;
-     rdfs:domain owl:Thing ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range owl:Thing . 
+    schema:description "The object property that relates every two individuals." ;
+    schema:name "top object property" .
 
 owl:unionOf a rdf:Property ;
-     rdfs:label "unionOf" ;
-     rdfs:comment "The property that determines the collection of classes or data ranges that build a union." ;
-     rdfs:domain rdfs:Class ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdf:List . 
+    schema:description "The property that determines the collection of classes or data ranges that build a union." ;
+    schema:name "union of" .
+
+owl:versionIRI a owl:OntologyProperty ;
+    schema:description "The property that identifies the version IRI of an ontology." ;
+    schema:name "version iri" .
 
 owl:versionInfo a owl:AnnotationProperty ;
-     rdfs:label "version info" ;
-     rdfs:comment "The annotation property that provides version information for an ontology or another OWL construct." ;
-     rdfs:domain rdfs:Resource ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdfs:Resource .
-     
-owl:versionIRI a owl:OntologyProperty ;
-     rdfs:label "version IRI" ;
-     rdfs:comment "The property that identifies the version IRI of an ontology." ;
-     rdfs:domain owl:Ontology ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range owl:Ontology . 
+    schema:description "The annotation property that provides version information for an ontology or another OWL construct." ;
+    schema:name "version info" .
 
 owl:withRestrictions a rdf:Property ;
-     rdfs:label "withRestrictions" ;
-     rdfs:comment "The property that determines the collection of facet-value pairs that define a datatype restriction." ;
-     rdfs:domain rdfs:Datatype ;
-     rdfs:isDefinedBy <http://www.w3.org/2002/07/owl#> ;
-     rdfs:range rdf:List .
-     
+    schema:description "The property that determines the collection of facet-value pairs that define a datatype restriction." ;
+    schema:name "with restrictions" .
+
+owl:Ontology a owl:Class ;
+    schema:description "The class of ontologies." ;
+    schema:name "Ontology" .
+
+owl:DatatypeProperty a owl:Class ;
+    schema:description "The class of data properties." ;
+    schema:name "Datatype Property" .
+
+owl:ObjectProperty a owl:Class ;
+    schema:description "The class of object properties." ;
+    schema:name "Object Property" .
+
+owl:AnnotationProperty a owl:Class ;
+    schema:description "The class of annotation properties." ;
+    schema:name "Annotation Property" .
+
+owl:OntologyProperty a owl:Class ;
+    schema:description "The class of ontology properties." ;
+    schema:name "Ontology Property" .
+
+owl:Class a owl:Class ;
+    schema:description "The class of OWL classes." ;
+    schema:name "Class" .
+
