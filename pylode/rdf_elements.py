@@ -69,6 +69,7 @@ PROP_PROPS = [
     RDFS.seeAlso,
     RDFS.subPropertyOf,
     ONTPUB.superPropertyOf,
+    OWL.equivalentProperty,
     RDFS.domain,
     SDO.domainIncludes,
     RDFS.range,

@@ -1,0 +1,15 @@
+PREFIX : <https://example.com/ep/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX sdo: <https://schema.org/>
+
+<https://example.com/ep> a owl:Ontology ;
+    dcterms:title "EquivalentProperty Test" .
+
+:familyName a owl:DatatypeProperty ;
+    rdfs:label "family name" ;
+    owl:equivalentProperty sdo:familyName , :surname .
+
+:surname a owl:DatatypeProperty ;
+    rdfs:label "surname" .
