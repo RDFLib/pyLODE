@@ -145,9 +145,17 @@ def test_issue_141(fix_html):
                 <pre> &quot;OrdinateList (R3234)&quot;^^geo:auspixDggsLiteral</pre>
               </td>
             </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#seeAlso" title="Further information about the subject resource. Defined in The RDF Schema vocabulary (RDFS)">See Also</a>
+              </th>
+              <td>
+                <a href="https://github.com/GeoscienceAustralia/AusPIX_DGGS">https://github.com/GeoscienceAustralia/AusPIX_DGGS</a>
+              </td>
+            </tr>
           </table>
         </div>
-      </div>            
+      </div>
             """
     ) in de_space_html(fix_html), "Datatypes not catered for correctly"
 
