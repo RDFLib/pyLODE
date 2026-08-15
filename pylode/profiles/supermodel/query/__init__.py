@@ -929,6 +929,32 @@ class Query:
             key=lambda x: x.name,
         )
 
+    def get_equivalent_classes(
+        self, iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
+    ) -> list[Class]:
+        """Extract the equivalent classes of a class and return the supermodel
+        representation.
+
+        Args:
+            iri: The IRI of the class whose equivalent classes are being resolved.
+            graph: The profile graph to read the owl:equivalentClass statements from.
+            ignored_classes: Class IRIs to exclude from the result.
+
+        Return:
+            A list of he super model class representations, sorted by name.
+        """
+        equivalent_classes = filter(
+            lambda x: x not in ignored_classes and isinstance(x, URIRef),
+            list(graph.objects(iri, OWL.equivalentClass)),
+        )
+        return sorted(
+            [
+                Class(iri=equivalent_class, name=get_name(equivalent_class, graph, self.db))
+                for equivalent_class in equivalent_classes
+            ],
+            key=lambda x: x.name,
+        )
+
     def get_component_model_class(
         self, iri: URIRef, graph: Graph, ignored_classes: list[URIRef]
     ):
@@ -938,6 +964,7 @@ class Query:
         # TODO: Add memoization to remove the need to recalculate the same classes.
         #       Reuse self.class_index or something similar for memoize data structure.
         superclasses = self.get_superclasses(iri, graph, ignored_classes)
+        equivalent_classes = self.get_equivalent_classes(iri, graph, ignored_classes)
         properties = self.get_component_model_class_properties(iri, ignored_classes)
 
         def _merge_superclass_properties(superclasses: list[Class]):
@@ -968,6 +995,7 @@ class Query:
             description=descriptions,
             subclasses=subclasses,
             superclasses=superclasses,
+            equivalent_classes=equivalent_classes,
             properties=properties,
             examples=examples,
             notes=notes,

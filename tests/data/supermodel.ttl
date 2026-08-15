@@ -1,0 +1,18 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.com/ont/> .
+
+ex: a owl:Ontology ;
+    dcterms:title "Supermodel Test Ontology" ;
+    dcterms:description "A minimal ontology used in the unit tests for the supermodel profile." .
+
+# ex:Person is equivalent to ex:Human (another class documented in this same
+# ontology, so the rendered link must be an in-page fragment) and to the
+# external foaf:Agent (which must render as an external link).
+ex:Person a owl:Class ;
+    rdfs:label "Person" ;
+    owl:equivalentClass ex:Human, <http://xmlns.com/foaf/0.1/Agent> .
+
+ex:Human a owl:Class ;
+    rdfs:label "Human" .
