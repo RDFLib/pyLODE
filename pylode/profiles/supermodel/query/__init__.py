@@ -24,6 +24,7 @@ from rdflib.namespace import (
 )
 
 from pylode.profiles.supermodel.loader import load_profiles
+from pylode.rdf_elements import OBJECT_PROPERTY_SUBCLASSES
 from pylode.profiles.supermodel.model import (
     Class,
     CodedProperty,
@@ -262,7 +263,11 @@ def get_rdf_property(iri, graph, db: Dataset) -> RDFProperty:
 def get_rdf_properties(
     rdf_property_type: URIRef, graph: Graph, db: Dataset
 ) -> list[RDFProperty]:
-    property_iris = graph.subjects(RDF.type, rdf_property_type)
+    property_iris = set(graph.subjects(RDF.type, rdf_property_type))
+    if rdf_property_type == OWL.ObjectProperty:
+        # OWL 2 declares these to be subclasses of owl:ObjectProperty
+        for prop_type in OBJECT_PROPERTY_SUBCLASSES:
+            property_iris.update(graph.subjects(RDF.type, prop_type))
     properties = []
     for property_iri in property_iris:
         prop = get_rdf_property(property_iri, graph, db)

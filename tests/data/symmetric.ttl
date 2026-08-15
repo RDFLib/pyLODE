@@ -1,0 +1,18 @@
+PREFIX : <https://example.com/sym/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+<https://example.com/sym> a owl:Ontology ;
+    dcterms:title "Symmetric Property Test" .
+
+# typical: dual-typed
+:adjacentTo a owl:ObjectProperty , owl:SymmetricProperty ;
+    rdfs:label "adjacent to" .
+
+# only typed symmetric
+:touches a owl:SymmetricProperty ;
+    rdfs:label "touches" .
+
+:regularProp a owl:ObjectProperty ;
+    rdfs:label "regular prop" .

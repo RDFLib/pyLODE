@@ -104,6 +104,17 @@ RESTRICTION_TYPES = [
 
 OWL_SET_TYPES = [OWL.unionOf, OWL.intersectionOf]
 
+# OWL 2 defines these property characteristic classes as
+# rdfs:subClassOf owl:ObjectProperty
+OBJECT_PROPERTY_SUBCLASSES = [
+    OWL.SymmetricProperty,
+    OWL.AsymmetricProperty,
+    OWL.TransitiveProperty,
+    OWL.ReflexiveProperty,
+    OWL.IrreflexiveProperty,
+    OWL.InverseFunctionalProperty,
+]
+
 DATATYPE_CARDINALITIES = {
     XSD.minInclusive: ">=",
     XSD.minExclusive: ">",
