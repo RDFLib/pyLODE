@@ -1,0 +1,355 @@
+PREFIX : <http://example.com/validator/basic/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX sg: <http://example.com/validator/basic>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <https://schema.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+:node-01-cat-resource-exists
+    a sh:NodeShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:property :prop-01-exists ;
+    sh:targetNode schema:CreativeWork ;
+    schema:description "Check that a Resource exists" ;
+    schema:name "Catalogued Resource exists" ;
+.
+
+:node-02-cat-resource-basic-props
+    a sh:NodeShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:property [
+        sh:maxCount 1 ;
+        sh:message "Catalogued resources MUST have a label (rdfs:label, schema:name or skos:prefLabel) predicate and it MUST indicate a string or a language string literal value" ;
+        sh:minCount 1 ;
+        sh:or (
+            [ sh:datatype rdf:langString ]
+            [ sh:datatype xsd:string ]
+        ) ;
+        sh:path [
+            sh:alternativePath (
+                rdfs:label
+                dcterms:title
+                schema:name
+                skos:prefLabel
+            ) ;
+        ] ;
+    ] ;
+    sh:property
+        :prop-03-description ,
+        :prop-04-creator ,
+        :prop-05-publisher ,
+        :prop-06-created ,
+        :prop-07-modified ,
+        :prop-08-license ;
+    sh:targetClass schema:CreativeWork ;
+    schema:description "Checks all the property shapes for Resource" ;
+    schema:name "Catalogued Resource Node Shape" ;
+.
+
+:node-03-cat-resource-prov-props
+    a sh:NodeShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:message "A catalogued resource MUST have at least one value for schema:citation (URL or string), skos:historyNote (string) or wasDerivedFrom (IRI)" ;
+    sh:or (
+        :prop-provenance-wdf
+        :prop-provenance-citation
+        :prop-provenance-history-note
+    ) ;
+    sh:targetClass schema:CreativeWork ;
+    schema:name "Catalogued Resource name Node Shape" ;
+.
+
+:node-04-org-props
+    a sh:NodeShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:property
+        :prop-02-name ,
+        :prop-org-url ;
+    sh:targetClass schema:Organization ;
+    schema:description "Checks all the property shapes for Organization" ;
+    schema:name "Organization Node Shape" ;
+.
+
+:node-05-person-props
+    a sh:NodeShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:property
+        :prop-02-name ,
+        :prop-person-email ;
+    sh:targetClass schema:Person ;
+    schema:description "Checks all the property shapes for Person" ;
+    schema:name "Person Node Shape" ;
+.
+
+:prop-01-exists
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:message "Each graph MUST have at least one catalogued resource instance" ;
+    sh:minCount 1 ;
+    sh:path
+        [
+            sh:inversePath rdf:type ;
+        ] ;
+    schema:name "Catalogued resource exists property" ;
+.
+
+:prop-03-description
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:maxCount 1 ;
+    sh:message "The subject MUST have a description (rdfs:comment, dcterms:description, schema:description or skos:definition) predicate and it MUST indicate a string or a language string literal value" ;
+    sh:minCount 1 ;
+    sh:or (
+        
+        [
+            sh:datatype rdf:langString ;
+        ]
+        
+        [
+            sh:datatype xsd:string ;
+        ]
+    ) ;
+    sh:path
+        [
+            sh:alternativePath (
+                rdfs:comment
+                dcterms:description
+                schema:description
+                skos:definition
+            ) ;
+        ] ;
+    schema:name "Catalogued resource description property" ;
+.
+
+:prop-04-creator
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:message "Each catalogued resource MUST indicate one or more Agents with the schema:creator predicate, typed as an schema:Person or schema:Organization" ;
+    sh:minCount 1 ;
+    sh:or (
+        
+        [
+            sh:class schema:Organization ;
+        ]
+        
+        [
+            sh:class schema:Person ;
+        ]
+    ) ;
+    sh:path schema:creator ;
+    schema:name "Catalogued resource creator property" ;
+.
+
+:prop-05-publisher
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:message "Each catalogued resource MUST indicate one or more agents with the schema:publisher predicate, typed as an schema:Person or schema:Organization" ;
+    sh:minCount 1 ;
+    sh:or (
+        
+        [
+            sh:class schema:Organization ;
+        ]
+        
+        [
+            sh:class schema:Person ;
+        ]
+    ) ;
+    sh:path schema:publisher ;
+    schema:name "Catalogued resource publisher property" ;
+.
+
+:prop-06-created
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:maxCount 1 ;
+    sh:message "Each catalogued resource MUST have exactly one created date indicated using the schema:dateCreated predicate with a literal value of either xsd:date, xsd:dateTime or xsd:dateTimeStamp type" ;
+    sh:minCount 1 ;
+    sh:or (
+        
+        [
+            sh:datatype xsd:dateTime ;
+        ]
+        
+        [
+            sh:datatype xsd:date ;
+        ]
+        
+        [
+            sh:datatype xsd:dateTimeStamp ;
+        ]
+        
+        [
+            sh:datatype xsd:gYear ;
+        ]
+    ) ;
+    sh:path schema:dateCreated ;
+    schema:name "Catalogued resource created date property" ;
+.
+
+:prop-07-modified
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:maxCount 1 ;
+    sh:message "Each catalogued resource MUST have exactly one created date indicated using the schema:dateModified predicate with a literal value of either xsd:date, xsd:dateTime or xsd:dateTimeStamp type" ;
+    sh:minCount 1 ;
+    sh:or (
+        
+        [
+            sh:datatype xsd:dateTime ;
+        ]
+        
+        [
+            sh:datatype xsd:date ;
+        ]
+        
+        [
+            sh:datatype xsd:dateTimeStamp ;
+        ]
+    ) ;
+    sh:path schema:dateModified ;
+    schema:name "Catalogued resource modified date property" ;
+.
+
+:prop-08-license
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:maxCount 1 ;
+    sh:message "Each catalogued resource MUST indicate a license that defines conditions for its use with the schema:license predicate" ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:path schema:license ;
+    schema:name "Catalogued resource license property" ;
+.
+
+:prop-org-url
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:datatype xsd:anyURI ;
+    sh:maxCount 1 ;
+    sh:message "The subject MUST must indicate exactly one schema:url predicate with an xsd:anyURI value" ;
+    sh:minCount 1 ;
+    sh:path schema:url ;
+    schema:name "Catalogued resource creator property" ;
+.
+
+:prop-person-email
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:datatype xsd:anyURI ;
+    sh:maxCount 1 ;
+    sh:message "The subject MUST indicate exactly one schema:email predicate with an xsd:anyURI value" ;
+    sh:minCount 1 ;
+    sh:path schema:email ;
+    schema:name "Catalogued resource creator property" ;
+.
+
+:prop-provenance-citation
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:message "schema:citation must indicate a URL or a string" ;
+    sh:minCount 1 ;
+    sh:or (
+        
+        [
+            sh:datatype xsd:anyURI ;
+        ]
+        
+        [
+            sh:datatype xsd:string ;
+        ]
+    ) ;
+    sh:path schema:citation ;
+    schema:name "Catalogued resource provenance property 02" ;
+.
+
+:prop-provenance-history-note
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:message "skos:historyNote must indicate a string, with or without language indicated" ;
+    sh:minCount 1 ;
+    sh:or (
+        
+        [
+            sh:datatype rdf:langString ;
+        ]
+        
+        [
+            sh:datatype xsd:string ;
+        ]
+    ) ;
+    sh:path skos:historyNote ;
+    schema:name "Catalogued resource provenance property 03" ;
+.
+
+:prop-provenance-wdf
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:message "prov:wasDerivedFrom must indicate an IRI" ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:path prov:wasDerivedFrom ;
+    schema:name "Catalogued resource provenance property 01" ;
+.
+
+:prop-02-name
+    a sh:PropertyShape ;
+    rdfs:isDefinedBy sg: ;
+    sh:maxCount 1 ;
+    sh:message "The subject MUST have a label (rdfs:label, schema:name or skos:prefLabel) predicate and it MUST indicate a string or a language string literal value" ;
+    sh:minCount 1 ;
+    sh:or (
+        
+        [
+            sh:datatype rdf:langString ;
+        ]
+        
+        [
+            sh:datatype xsd:string ;
+        ]
+    ) ;
+    sh:path
+        [
+            sh:alternativePath (
+                rdfs:label
+                dcterms:title
+                schema:name
+                skos:prefLabel
+            ) ;
+        ] ;
+    schema:name "Catalogued resource name property" ;
+.
+
+sg:
+    a sh:ShapesGraph ;
+    schema:creator <https://orcid.org/0000-0002-8742-7730> ;
+    schema:dateCreated "2025-05-30"^^xsd:date ;
+    schema:dateModified "2026-04-12"^^xsd:date ;
+    schema:description "The Basic Catalogue Resource Profile validator" ;
+    schema:hasPart
+        :node-cat-resource-exists ,
+        :node-cat-resource-props ;
+    schema:license <http://purl.org/NET/rdflicense/cc-by4.0> ;
+    schema:name "Basic Catalogue Resource Profile Validator" ;
+    schema:publisher <https://kurrawong.ai> ;
+    schema:version "5" ;
+.
+
+
+<https://orcid.org/0000-0002-8742-7730>
+    a schema:Person ;
+    schema:name "Nicholas J. Car" ;
+    schema:email "nick@kurrawong.ai"^^xsd:anyURI ;
+    schema:affiliation <https://kurrawong.ai> ;
+.
+
+<https://kurrawong.ai>
+    a schema:Organization ;
+    schema:name "KurrawongAI" ;
+    schema:url "https://kurrawong.ai"^^xsd:anyURI ;
+.

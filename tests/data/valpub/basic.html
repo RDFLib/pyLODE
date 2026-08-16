@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Basic Catalogue Resource Profile Validator</title>
+    <style>
+        #pylode {
+            position: fixed;
+            top: 205px;
+            left: -150px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+        #pylode #p {
+            color: #329545;
+        }
+        #pylode #y {
+            color: #f9cb33;
+        }
+        #pylode #version {
+            font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dl {
+            /*border: 1px solid navy;*/
+            /*padding:5px;*/
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 0;
+        }
+
+        dd {
+            margin-bottom: 10px;
+            padding-top: 7px;
+            line-height: 1.6em;
+        }
+
+        ul.pylodelitlist {
+            list-style-type: none;
+            margin-left: -40px;
+        }
+
+        #metadata ul li,
+        #classes ul li {
+            margin-bottom: 10px;
+        }
+
+        #metadata dd p {
+          margin: 0 0 1em 0;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        div.hierarchy {
+            margin-bottom: 30px;
+            background-color: #F4FFFF;
+            padding: 10px;
+        }
+
+        ul.hierarchy {
+            padding: 5px 25px 5px 25px;
+        }
+
+        ul.hierarchy li {
+            margin-top:5px;
+        }
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 {
+            font: italic 100% sans-serif;
+            margin-bottom: 10px;
+        }
+        h6 { font: small-caps 100% sans-serif }
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: left;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-con,
+        .sup-col,
+        .sup-ns,
+        .sup-ps {
+            cursor:help;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-con {
+            color:orange;
+        }
+
+        .sup-col {
+            color:darkred;
+        }
+
+        .sup-ns {
+            color:lightgreen;
+        }
+
+        .sup-ps {
+            color:lightblue;
+        }
+
+        sup {
+            margin-left: -3px;
+        }
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+
+        #toc {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            height: 100%;
+            overflow-y: auto;
+            padding: 10px;
+            border: solid 1px navy;
+            font-size: small;
+            width: 180px;
+        }
+        #toc h3 {
+            margin-top: 5px;
+        }
+
+        #toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #toc .first > li {
+            margin-top: 5px;
+        }
+
+        #toc .second,
+        #toc .third {
+            padding-left: 10px;
+        }
+
+        .second li {
+            margin-top: 0.5em;
+        }
+
+        #content {
+            width: calc(100% - 150px);
+        }
+
+        .hover_property {
+            cursor: help;
+            text-decoration: none;
+            border-bottom: dashed 1px;
+        }
+
+        .setclass {
+            list-style-type: none;
+        }
+
+        code{
+            word-wrap: break-word;
+          }
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        td {
+            word-wrap: break-word;
+            line-height: 1.6em ;
+        }
+        #legend table.entity {
+            width: 25%;
+        }
+        @media (max-width: 768px) {
+            /* #toc and #pylode are siblings of #content directly under
+               body; flex ordering pulls the ToC (last in the document)
+               to the top of the page */
+            body {
+                display: flex;
+                flex-direction: column;
+                padding: 1em 16px;
+            }
+
+            dd {
+                margin-left: 20px;
+            }
+
+            #pylode {
+                display: none;
+            }
+
+            #content {
+                width: 100%;
+            }
+
+            #toc {
+                order: -1;
+                position: static;
+                width: auto;
+                height: auto;
+                overflow-y: visible;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            /* long IRIs in link text must be able to break anywhere */
+            a {
+                overflow-wrap: anywhere;
+            }
+
+            /* stack property tables otherwise columns are squeezed */
+            table,
+            thead,
+            tbody,
+            tr,
+            th,
+            td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .entity th,
+            .entity td {
+                padding-bottom: 6px;
+            }
+
+            .entity td {
+                padding-bottom: 16px;
+            }
+
+            #legend table.entity {
+                width: 100%;
+            }
+        }
+
+	</style>
+    <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png">
+    <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <script id="schema.org" type="application/ld+json">
+[]
+	</script>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section" id="metadata">
+        <h1>Basic Catalogue Resource Profile Validator</h1>
+        <h2>Metadata</h2>
+        <dl>
+          <div>
+            <dt>
+              <strong>IRI</strong>
+            </dt>
+            <dd>
+              <code>http://example.com/validator/basic</code>
+            </dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/dc/terms/title" title="A name given to the resource. Defined in DCMI Metadata Terms">Title</a>
+            </dt>
+            <dd><p>Basic Catalogue Resource Profile Validator</p></dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/dc/terms/publisher" title="An entity responsible for making the resource available. Defined in DCMI Metadata Terms">Publisher</a>
+            </dt>
+            <dd>
+              <span>
+                <a href="https://kurrawong.ai">KurrawongAI</a>
+              </span>
+            </dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/dc/terms/creator" title="An entity responsible for making the resource. Defined in DCMI Metadata Terms">Creator</a>
+            </dt>
+            <dd>
+              <span>
+                <span>Nicholas J. Car</span>
+                <a href="https://orcid.org/0000-0002-8742-7730">
+                    <svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <title>https://orcid.org/0000-0002-8742-7730</title>
+                        <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
+                                <g id="Group-4">
+                                    <g id="vector_iD_icon" transform="translate(924.000000, 72.000000)">
+                                        <path d="M72,36 C72,55.884375 55.884375,72 36,72 C16.115625,72 0,55.884375 0,36 C0,16.115625 16.115625,0 36,0 C55.884375,0 72,16.115625 72,36 Z" id="Path" fill="#A6CE39"></path>
+                                        <g id="Group" transform="translate(18.868966, 12.910345)" fill="#FFFFFF">
+                                            <polygon id="Path" points="5.03734929 39.1250878 0.695429861 39.1250878 0.695429861 9.14431787 5.03734929 9.14431787 5.03734929 22.6930505 5.03734929 39.1250878"></polygon>
+                                            <path d="M11.409257,9.14431787 L23.1380784,9.14431787 C34.303014,9.14431787 39.2088191,17.0664074 39.2088191,24.1486995 C39.2088191,31.846843 33.1470485,39.1530811 23.1944669,39.1530811 L11.409257,39.1530811 L11.409257,9.14431787 Z M15.7511765,35.2620194 L22.6587756,35.2620194 C32.49858,35.2620194 34.7541226,27.8438084 34.7541226,24.1486995 C34.7541226,18.1301509 30.8915059,13.0353795 22.4332213,13.0353795 L15.7511765,13.0353795 L15.7511765,35.2620194 Z" id="Shape"></path>
+                                            <path d="M5.71401206,2.90182329 C5.71401206,4.441452 4.44526937,5.72914146 2.86638958,5.72914146 C1.28750978,5.72914146 0.0187670918,4.441452 0.0187670918,2.90182329 C0.0187670918,1.33420133 1.28750978,0.0745051096 2.86638958,0.0745051096 C4.44526937,0.0745051096 5.71401206,1.36219458 5.71401206,2.90182329 Z" id="Path"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg></a>
+                <span>(
+                  <a href="mailto:nick@kurrawong.ai">nick@kurrawong.ai</a> )
+                </span>
+                <span>
+                  <em> of 
+                    <a href="https://kurrawong.ai">KurrawongAI</a>
+                  </em>
+                </span>
+              </span>
+            </dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/dc/terms/license" title="Recommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided. Defined in DCMI Metadata Terms">License</a>
+            </dt>
+            <dd>
+              <a href="http://purl.org/NET/rdflicense/cc-by4.0">Attribution 4.0 International (CC BY 4.0)</a>
+            </dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+            </dt>
+            <dd><p>The Basic Catalogue Resource Profile validator</p></dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="https://linked.data.gov.au/def/ontpub/defines" title="Inverse of rdfs:isDefinedBy. Defined in Ontology Documentation Profile">Defines</a>
+            </dt>
+            <dd>
+              <ul class="pylodelitlist">
+                <li>
+                  <a href="#node-01-cat-resource-exists">Catalogued Resource exists</a>
+                </li>
+                <li>
+                  <a href="#node-02-cat-resource-basic-props">Catalogued Resource Node Shape</a>
+                </li>
+                <li>
+                  <a href="#node-03-cat-resource-prov-props">Catalogued Resource name Node Shape</a>
+                </li>
+                <li>
+                  <a href="#node-04-org-props">Organization Node Shape</a>
+                </li>
+                <li>
+                  <a href="#node-05-person-props">Person Node Shape</a>
+                </li>
+                <li>
+                  <a href="#prop-01-exists">Catalogued resource exists property</a>
+                </li>
+                <li>
+                  <a href="#prop-03-description">Catalogued resource description property</a>
+                </li>
+                <li>
+                  <a href="#prop-04-creator">Catalogued resource creator property</a>
+                </li>
+                <li>
+                  <a href="#prop-05-publisher">Catalogued resource publisher property</a>
+                </li>
+                <li>
+                  <a href="#prop-06-created">Catalogued resource created date property</a>
+                </li>
+                <li>
+                  <a href="#prop-07-modified">Catalogued resource modified date property</a>
+                </li>
+                <li>
+                  <a href="#prop-08-license">Catalogued resource license property</a>
+                </li>
+                <li>
+                  <a href="#prop-org-url">Catalogued resource creator property</a>
+                </li>
+                <li>
+                  <a href="#prop-person-email">Catalogued resource creator property</a>
+                </li>
+                <li>
+                  <a href="#prop-provenance-citation">Catalogued resource provenance property 02</a>
+                </li>
+                <li>
+                  <a href="#prop-provenance-history-note">Catalogued resource provenance property 03</a>
+                </li>
+                <li>
+                  <a href="#prop-provenance-wdf">Catalogued resource provenance property 01</a>
+                </li>
+                <li>
+                  <a href="#prop-02-name">Catalogued resource name property</a>
+                </li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+      </div>
+      <div class="section" id="node-shapes">
+        <h2>Node Shapes</h2>
+        <div class="property entity" id="node-01-cat-resource-exists">
+          <h3>Catalogued Resource exists
+            <sup class="sup-ns" title="SH NodeShape">ns</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/node-01-cat-resource-exists</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Check that a Resource exists</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#property" title="Links a shape to its property shapes. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Property</a>
+              </th>
+              <td>
+                <a href="#prop-01-exists">Catalogued resource exists property</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="node-02-cat-resource-basic-props">
+          <h3>Catalogued Resource Node Shape
+            <sup class="sup-ns" title="SH NodeShape">ns</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/node-02-cat-resource-basic-props</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Checks all the property shapes for Resource</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#property" title="Links a shape to its property shapes. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Property</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li></li>
+                  <li>
+                    <a href="#prop-03-description">Catalogued resource description property</a>
+                  </li>
+                  <li>
+                    <a href="#prop-04-creator">Catalogued resource creator property</a>
+                  </li>
+                  <li>
+                    <a href="#prop-05-publisher">Catalogued resource publisher property</a>
+                  </li>
+                  <li>
+                    <a href="#prop-06-created">Catalogued resource created date property</a>
+                  </li>
+                  <li>
+                    <a href="#prop-07-modified">Catalogued resource modified date property</a>
+                  </li>
+                  <li>
+                    <a href="#prop-08-license">Catalogued resource license property</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="node-03-cat-resource-prov-props">
+          <h3>Catalogued Resource name Node Shape
+            <sup class="sup-ns" title="SH NodeShape">ns</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/node-03-cat-resource-prov-props</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#message" title="A human-readable message (possibly with placeholders for variables) explaining the cause of the result. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Message</a>
+              </th>
+              <td><p>A catalogued resource MUST have at least one value for schema:citation (URL or string), skos:historyNote (string) or wasDerivedFrom (IRI)</p></td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="node-04-org-props">
+          <h3>Organization Node Shape
+            <sup class="sup-ns" title="SH NodeShape">ns</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/node-04-org-props</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Checks all the property shapes for Organization</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#property" title="Links a shape to its property shapes. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Property</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <a href="#prop-02-name">Catalogued resource name property</a>
+                  </li>
+                  <li>
+                    <a href="#prop-org-url">Catalogued resource creator property</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="node-05-person-props">
+          <h3>Person Node Shape
+            <sup class="sup-ns" title="SH NodeShape">ns</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/node-05-person-props</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Checks all the property shapes for Person</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#property" title="Links a shape to its property shapes. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Property</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <a href="#prop-02-name">Catalogued resource name property</a>
+                  </li>
+                  <li>
+                    <a href="#prop-person-email">Catalogued resource creator property</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <span class="cardinality">,</span>
+      <div class="section" id="property-shapes">
+        <h2>Property Shapes</h2>
+        <div class="property entity" id="prop-01-exists">
+          <h3>Catalogued resource exists property
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/prop-01-exists</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#message" title="A human-readable message (possibly with placeholders for variables) explaining the cause of the result. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Message</a>
+              </th>
+              <td><p>Each graph MUST have at least one catalogued resource instance</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#path" title="Specifies the property path of a property shape. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Path</a>
+              </th>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="prop-03-description">
+          <h3>Catalogued resource description property
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/prop-03-description</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#message" title="A human-readable message (possibly with placeholders for variables) explaining the cause of the result. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Message</a>
+              </th>
+              <td><p>The subject MUST have a description (rdfs:comment, dcterms:description, schema:description or skos:definition) predicate and it MUST indicate a string or a language string literal value</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#path" title="Specifies the property path of a property shape. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Path</a>
+              </th>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="prop-04-creator">
+          <h3>Catalogued resource creator property
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/prop-04-creator</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#message" title="A human-readable message (possibly with placeholders for variables) explaining the cause of the result. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Message</a>
+              </th>
+              <td><p>Each catalogued resource MUST indicate one or more Agents with the schema:creator predicate, typed as an schema:Person or schema:Organization</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#path" title="Specifies the property path of a property shape. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Path</a>
+              </th>
+              <td>
+                <span>
+                  <a href="https://schema.org/creator">creator</a>
+                  <sup class="sup-p" title="RDF Property">p</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="prop-05-publisher">
+          <h3>Catalogued resource publisher property
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/prop-05-publisher</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#message" title="A human-readable message (possibly with placeholders for variables) explaining the cause of the result. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Message</a>
+              </th>
+              <td><p>Each catalogued resource MUST indicate one or more agents with the schema:publisher predicate, typed as an schema:Person or schema:Organization</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#path" title="Specifies the property path of a property shape. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Path</a>
+              </th>
+              <td>
+                <span>
+                  <a href="https://schema.org/publisher">publisher</a>
+                  <sup class="sup-p" title="RDF Property">p</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="prop-06-created">
+          <h3>Catalogued resource created date property
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/prop-06-created</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#message" title="A human-readable message (possibly with placeholders for variables) explaining the cause of the result. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Message</a>
+              </th>
+              <td><p>Each catalogued resource MUST have exactly one created date indicated using the schema:dateCreated predicate with a literal value of either xsd:date, xsd:dateTime or xsd:dateTimeStamp type</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#path" title="Specifies the property path of a property shape. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Path</a>
+              </th>
+              <td>
+                <span>
+                  <a href="https://schema.org/dateCreated">date created</a>
+                  <sup class="sup-p" title="RDF Property">p</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="prop-07-modified">
+          <h3>Catalogued resource modified date property
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/prop-07-modified</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#message" title="A human-readable message (possibly with placeholders for variables) explaining the cause of the result. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Message</a>
+              </th>
+              <td><p>Each catalogued resource MUST have exactly one created date indicated using the schema:dateModified predicate with a literal value of either xsd:date, xsd:dateTime or xsd:dateTimeStamp type</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#path" title="Specifies the property path of a property shape. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Path</a>
+              </th>
+              <td>
+                <span>
+                  <a href="https://schema.org/dateModified">date modified</a>
+                  <sup class="sup-p" title="RDF Property">p</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="prop-08-license">
+          <h3>Catalogued resource license property
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/prop-08-license</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#message" title="A human-readable message (possibly with placeholders for variables) explaining the cause of the result. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Message</a>
+              </th>
+              <td><p>Each catalogued resource MUST indicate a license that defines conditions for its use with the schema:license predicate</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#path" title="Specifies the property path of a property shape. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Path</a>
+              </th>
+              <td>
+                <span>
+                  <a href="https://schema.org/license">license</a>
+                  <sup class="sup-p" title="RDF Property">p</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="prop-org-url">
+          <h3>Catalogued resource creator property
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/prop-org-url</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#message" title="A human-readable message (possibly with placeholders for variables) explaining the cause of the result. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Message</a>
+              </th>
+              <td><p>The subject MUST must indicate exactly one schema:url predicate with an xsd:anyURI value</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#path" title="Specifies the property path of a property shape. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Path</a>
+              </th>
+              <td>
+                <span>
+                  <a href="https://schema.org/url">url</a>
+                  <sup class="sup-p" title="RDF Property">p</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="prop-person-email">
+          <h3>Catalogued resource creator property
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/prop-person-email</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#message" title="A human-readable message (possibly with placeholders for variables) explaining the cause of the result. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Message</a>
+              </th>
+              <td><p>The subject MUST indicate exactly one schema:email predicate with an xsd:anyURI value</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#path" title="Specifies the property path of a property shape. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Path</a>
+              </th>
+              <td>
+                <span>
+                  <a href="https://schema.org/email">email</a>
+                  <sup class="sup-p" title="RDF Property">p</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="prop-provenance-citation">
+          <h3>Catalogued resource provenance property 02
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/prop-provenance-citation</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#message" title="A human-readable message (possibly with placeholders for variables) explaining the cause of the result. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Message</a>
+              </th>
+              <td><p>schema:citation must indicate a URL or a string</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#path" title="Specifies the property path of a property shape. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Path</a>
+              </th>
+              <td>
+                <span>
+                  <a href="https://schema.org/citation">citation</a>
+                  <sup class="sup-p" title="RDF Property">p</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="prop-provenance-history-note">
+          <h3>Catalogued resource provenance property 03
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/prop-provenance-history-note</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#message" title="A human-readable message (possibly with placeholders for variables) explaining the cause of the result. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Message</a>
+              </th>
+              <td><p>skos:historyNote must indicate a string, with or without language indicated</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#path" title="Specifies the property path of a property shape. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Path</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://www.w3.org/2004/02/skos/core#historyNote">history note</a>
+                  <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="prop-provenance-wdf">
+          <h3>Catalogued resource provenance property 01
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/prop-provenance-wdf</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#message" title="A human-readable message (possibly with placeholders for variables) explaining the cause of the result. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Message</a>
+              </th>
+              <td><p>prov:wasDerivedFrom must indicate an IRI</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#path" title="Specifies the property path of a property shape. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Path</a>
+              </th>
+              <td>
+                <span>
+                  <a href="http://www.w3.org/ns/prov#wasDerivedFrom">was derived from</a>
+                  <sup class="sup-op" title="OWL Object Property">op</sup>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="prop-02-name">
+          <h3>Catalogued resource name property
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/prop-02-name</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#message" title="A human-readable message (possibly with placeholders for variables) explaining the cause of the result. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Message</a>
+              </th>
+              <td><p>The subject MUST have a label (rdfs:label, schema:name or skos:prefLabel) predicate and it MUST indicate a string or a language string literal value</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#path" title="Specifies the property path of a property shape. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Path</a>
+              </th>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="node-01-cat-resource-exists">
+          <h3>Catalogued Resource exists
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/node-01-cat-resource-exists</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Check that a Resource exists</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="node-02-cat-resource-basic-props">
+          <h3>Catalogued Resource Node Shape
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/node-02-cat-resource-basic-props</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Checks all the property shapes for Resource</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="node-04-org-props">
+          <h3>Organization Node Shape
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/node-04-org-props</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Checks all the property shapes for Organization</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="property entity" id="node-05-person-props">
+          <h3>Person Node Shape
+            <sup class="sup-ps" title="SH PropertyShape">ps</sup>
+          </h3>
+          <table>
+            <tr>
+              <th>IRI</th>
+              <td>
+                <code>http://example.com/validator/basic/node-05-person-props</code>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Checks all the property shapes for Person</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+              </th>
+              <td>
+                <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <span class="cardinality">,</span>
+      <span class="cardinality">,</span>
+      <span class="cardinality">,</span>
+      <div id="namespaces">
+        <h2>Namespaces</h2>
+        <dl>
+          <dt id=":">:</dt>
+          <dd>
+            <code>http://example.com/validator/basic/</code>
+          </dd>
+          <dt id="dcterms">dcterms</dt>
+          <dd>
+            <code>http://purl.org/dc/terms/</code>
+          </dd>
+          <dt id="prov">prov</dt>
+          <dd>
+            <code>http://www.w3.org/ns/prov#</code>
+          </dd>
+          <dt id="rdf">rdf</dt>
+          <dd>
+            <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
+          </dd>
+          <dt id="rdfs">rdfs</dt>
+          <dd>
+            <code>http://www.w3.org/2000/01/rdf-schema#</code>
+          </dd>
+          <dt id="schema">schema</dt>
+          <dd>
+            <code>https://schema.org/</code>
+          </dd>
+          <dt id="sg">sg</dt>
+          <dd>
+            <code>http://example.com/validator/basic</code>
+          </dd>
+          <dt id="sh">sh</dt>
+          <dd>
+            <code>http://www.w3.org/ns/shacl#</code>
+          </dd>
+          <dt id="skos">skos</dt>
+          <dd>
+            <code>http://www.w3.org/2004/02/skos/core#</code>
+          </dd>
+          <dt id="xsd">xsd</dt>
+          <dd>
+            <code>http://www.w3.org/2001/XMLSchema#</code>
+          </dd>
+        </dl>
+      </div>
+      <div id="legend">
+        <h2>Legend</h2>
+        <table class="entity">
+          <tr>
+            <td>
+              <sup class="sup-ns" title="SHACL Node Shapes">ns</sup>
+            </td>
+            <td>Node Shapes</td>
+          </tr>
+          <tr>
+            <td>
+              <sup class="sup-ps" title="SHACL Property Shapes">ps</sup>
+            </td>
+            <td>Property Shapes</td>
+          </tr>
+          <tr>
+            <td>
+              <sup class="sup-op" title="Object Properties">op</sup>
+            </td>
+            <td>Object Properties</td>
+          </tr>
+          <tr>
+            <td>
+              <sup class="sup-ap" title="Annotation Properties">ap</sup>
+            </td>
+            <td>Annotation Properties</td>
+          </tr>
+          <tr>
+            <td>
+              <sup class="sup-dp" title="Datatype Properties">ap</sup>
+            </td>
+            <td>Datatype Properties</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div id="pylode">
+      <p>made by 
+        <a href="https://github.com/rdflib/pyLODE">
+          <span id="p">p</span>
+          <span id="y">y</span>
+          <span>LODE</span>
+        </a>
+        <a href="https://github.com/rdflib/pyLODE/release/3.5.3a0" id="version">3.5.3a0</a>
+        <span> with the </span>
+        <a href="https://linked.data.gov.au/def/valpub" id="profile">ValPub</a>
+        <span>profile</span>
+      </p>
+    </div>
+    <div id="toc">
+      <h3>Table of Contents</h3>
+      <ul class="first">
+        <li>
+          <h4>
+            <a href="#metadata">Metadata</a>
+          </h4>
+        </li>
+        <li>
+          <h4>
+            <a href="#node-shapes">Node Shapes</a>
+          </h4>
+          <ul class="second">
+            <li>
+              <a href="#node-01-cat-resource-exists">Catalogued Resource exists</a>
+            </li>
+            <li>
+              <a href="#node-02-cat-resource-basic-props">Catalogued Resource Node Shape</a>
+            </li>
+            <li>
+              <a href="#node-03-cat-resource-prov-props">Catalogued Resource name Node Shape</a>
+            </li>
+            <li>
+              <a href="#node-04-org-props">Organization Node Shape</a>
+            </li>
+            <li>
+              <a href="#node-05-person-props">Person Node Shape</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h4>
+            <a href="#property-shapes">Property Shapes</a>
+          </h4>
+          <ul class="second">
+            <li>
+              <a href="#node-01-cat-resource-exists">Catalogued Resource exists</a>
+            </li>
+            <li>
+              <a href="#node-02-cat-resource-basic-props">Catalogued Resource Node Shape</a>
+            </li>
+            <li>
+              <a href="#node-04-org-props">Organization Node Shape</a>
+            </li>
+            <li>
+              <a href="#node-05-person-props">Person Node Shape</a>
+            </li>
+            <li>
+              <a href="#prop-01-exists">Catalogued resource exists property</a>
+            </li>
+            <li>
+              <a href="#prop-02-name">Catalogued resource name property</a>
+            </li>
+            <li>
+              <a href="#prop-03-description">Catalogued resource description property</a>
+            </li>
+            <li>
+              <a href="#prop-04-creator">Catalogued resource creator property</a>
+            </li>
+            <li>
+              <a href="#prop-05-publisher">Catalogued resource publisher property</a>
+            </li>
+            <li>
+              <a href="#prop-06-created">Catalogued resource created date property</a>
+            </li>
+            <li>
+              <a href="#prop-07-modified">Catalogued resource modified date property</a>
+            </li>
+            <li>
+              <a href="#prop-08-license">Catalogued resource license property</a>
+            </li>
+            <li>
+              <a href="#prop-org-url">Catalogued resource creator property</a>
+            </li>
+            <li>
+              <a href="#prop-person-email">Catalogued resource creator property</a>
+            </li>
+            <li>
+              <a href="#prop-provenance-citation">Catalogued resource provenance property 02</a>
+            </li>
+            <li>
+              <a href="#prop-provenance-history-note">Catalogued resource provenance property 03</a>
+            </li>
+            <li>
+              <a href="#prop-provenance-wdf">Catalogued resource provenance property 01</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h4>
+            <a href="#namespaces">Namespaces</a>
+          </h4>
+          <ul class="second">
+            <li>
+              <a href="#"></a>
+            </li>
+            <li>
+              <a href="#dcterms">dcterms</a>
+            </li>
+            <li>
+              <a href="#prov">prov</a>
+            </li>
+            <li>
+              <a href="#rdf">rdf</a>
+            </li>
+            <li>
+              <a href="#rdfs">rdfs</a>
+            </li>
+            <li>
+              <a href="#schema">schema</a>
+            </li>
+            <li>
+              <a href="#sg">sg</a>
+            </li>
+            <li>
+              <a href="#sh">sh</a>
+            </li>
+            <li>
+              <a href="#skos">skos</a>
+            </li>
+            <li>
+              <a href="#xsd">xsd</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h4>
+            <a href="#legend">Legend</a>
+          </h4>
+          <ul class="second"></ul>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
