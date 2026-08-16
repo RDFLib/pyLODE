@@ -9,7 +9,7 @@ def test_symmetric_property():
     """Properties typed only owl:SymmetricProperty (or other OWL 2 property
     characteristics) are documented as object properties"""
     html = OntPub(current_dir / "data" / "symmetric.ttl").make_html()
-    toc = html[html.find('id="toc"'):]
+    toc = html[html.find('id="toc"') :]
 
     # dual-typed and characteristic-only properties both render...
     assert 'id="adjacentTo"' in html

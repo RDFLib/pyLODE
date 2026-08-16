@@ -487,7 +487,9 @@ class Supermodel:
                                             in self.query.class_index
                                         ):
                                             fragment = make_html_fragment(
-                                                CLASS_STRING.format(equivalent_class.iri)
+                                                CLASS_STRING.format(
+                                                    equivalent_class.iri
+                                                )
                                             )
                                             a(
                                                 equivalent_class.name,

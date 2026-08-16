@@ -1,8 +1,3 @@
-import sys
-from pathlib import Path
-
-sys.path.append(str(Path().absolute().parent.parent / "pylode"))
-
 import pytest
 
 from pylode.profiles import OntPub

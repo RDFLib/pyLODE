@@ -1,11 +1,9 @@
-import sys
 from pathlib import Path
 
-sys.path.append(str(Path().parent.parent.resolve() / "pylode"))
 import pytest
 
+from pylode import __version__
 from pylode.profiles import ValPub
-from pylode.utils import de_space_html
 
 current_dir = Path(__file__).parent
 
@@ -18,5 +16,6 @@ def fix_html():
 
 def test_basic(fix_html):
     expected_html = open(current_dir / "data" / "valpub" / "basic.html").read()
+    expected_html = expected_html.replace("3.5.1", __version__)
 
     assert fix_html == expected_html

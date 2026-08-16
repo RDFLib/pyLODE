@@ -229,6 +229,29 @@ def _is_file(filepath: str) -> bool:
         return False
 
 
+class SubjectOrderedGraph(Graph):
+    """An RDF graph that retains the order subjects are first encountered."""
+
+    def __init__(self, *args, **kwargs):
+        self._subject_order = {}
+        super().__init__(*args, **kwargs)
+
+    def add(self, triple):
+        subject = triple[0]
+        if subject not in self._subject_order:
+            self._subject_order[subject] = len(self._subject_order)
+        return super().add(triple)
+
+    def subjects(self, predicate=None, object=None, unique=False):
+        subjects = list(super().subjects(predicate, object, unique=unique))
+        subjects.sort(
+            key=lambda subject: self._subject_order.get(
+                subject, len(self._subject_order)
+            )
+        )
+        yield from subjects
+
+
 def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
     """Loads and ontology into an RDFLib Graph.
 
@@ -236,10 +259,10 @@ def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
     try:
         # try URL
         if isinstance(ontology, str) and ontology.startswith("http"):
-            return Graph(bind_namespaces="core").parse(location=ontology)
+            return SubjectOrderedGraph(bind_namespaces="core").parse(location=ontology)
         elif isinstance(ontology, str):
             if _is_file(ontology):
-                return Graph(bind_namespaces="core").parse(ontology)
+                return SubjectOrderedGraph(bind_namespaces="core").parse(ontology)
             else:  # it's data
                 if ontology.startswith("[") or ontology.startswith("{"):
                     input_format = "json-ld"
@@ -251,13 +274,13 @@ def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
                     input_format = "xml"
                 else:
                     input_format = "turtle"  # this will also cover n-triples
-                return Graph(bind_namespaces="core").parse(
+                return SubjectOrderedGraph(bind_namespaces="core").parse(
                     data=ontology, format=input_format
                 )
         elif isinstance(ontology, Graph):
             return cast(Graph, ontology)
         elif isinstance(ontology, Path):
-            return Graph(bind_namespaces="core").parse(ontology)
+            return SubjectOrderedGraph(bind_namespaces="core").parse(ontology)
         else:
             raise ValueError(
                 "The ontology you supply to OntDoc must be either "
@@ -292,10 +315,17 @@ def select_profile(ontology: Union[Graph, Path, str]) -> str:
         return "valpub"
 
     has_classes = any(
-        (None, RDF.type, class_type) in graph
-        for class_type in (OWL.Class, RDFS.Class)
+        (None, RDF.type, class_type) in graph for class_type in (OWL.Class, RDFS.Class)
     )
-    if has_ontology and not has_shapes and has_classes:
+    has_properties = any(
+        (None, RDF.type, property_type) in graph
+        for property_type in (
+            RDF.Property,
+            OWL.ObjectProperty,
+            OWL.AnnotationProperty,
+        )
+    )
+    if has_ontology and not has_shapes and (has_classes or has_properties):
         return "ontpub"
 
     raise PylodeError("Unable to determine a profile for the supplied RDF input")
@@ -305,7 +335,7 @@ def sort_ontology(ont_orig: Graph) -> Graph:
     """Creates a copy of the supplied ontology, sorted by subjects"""
     trpls = ont_orig.triples((None, None, None))
     trpls_srt = sorted(trpls)
-    ont_sorted = Graph(bind_namespaces="core")
+    ont_sorted = SubjectOrderedGraph(bind_namespaces="core")
 
     # Recover the namespaces from the original file
     for prefix, namespace in ont_orig.namespace_manager.namespaces():

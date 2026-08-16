@@ -17,21 +17,18 @@ def test_seealso_ontpub():
     ]:
         assert f'<a href="{target}">' in html, f"seeAlso link to {target} not rendered"
 
-    assert (
-        de_space_html(
-            """
+    assert de_space_html(
+        """
             <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#seeAlso"
             title="Further information about the subject resource.
             Defined in The RDF Schema vocabulary (RDFS)">See Also</a>
             """
-        )
-        in de_space_html(html)
-    ), "seeAlso property header not labeled correctly"
+    ) in de_space_html(html), "seeAlso property header not labeled correctly"
 
 
 def test_seealso_vocpub():
     """rdfs:seeAlso renders on SKOS Concepts in the VocPub profile (issue #174)"""
     html = VocPub(current_dir / "data" / "seealso-vocpub.ttl").make_html()
-    assert (
-        '<a href="https://example.org/more-about-c1">' in html
-    ), "concept seeAlso link not rendered"
+    assert '<a href="https://example.org/more-about-c1">' in html, (
+        "concept seeAlso link not rendered"
+    )

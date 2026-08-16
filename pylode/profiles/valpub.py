@@ -16,6 +16,7 @@ class ValPub:
     """
 
     def __init__(self, ontology: Union[Graph, Path, str], sort_subjects: bool = False):
+        self.sort_subjects = sort_subjects
         self.ont = load_ontology(ontology)
         if sort_subjects:
             self.ont = sort_ontology(self.ont)
@@ -387,6 +388,10 @@ class ValPub:
                         self.toc["namespaces"].append(("#" + prefix, prefix))
 
     def _make_toc(self):
+        def toc_entries(key):
+            entries = self.toc[key]
+            return sorted(entries) if self.sort_subjects else entries
+
         with self.doc:
             with div(id="toc"):
                 h3("Table of Contents")
@@ -400,7 +405,7 @@ class ValPub:
                         with li():
                             h4(a("Node Shapes", href="#node-shapes"))
                             with ul(_class="second"):
-                                for c in sorted(self.toc["node-shapes"]):
+                                for c in toc_entries("node-shapes"):
                                     li(a(c[1], href=c[0]))
 
                     if (
@@ -410,7 +415,7 @@ class ValPub:
                         with li():
                             h4(a("Property Shapes", href="#property-shapes"))
                             with ul(_class="second"):
-                                for c in sorted(self.toc["property-shapes"]):
+                                for c in toc_entries("property-shapes"):
                                     li(a(c[1], href=c[0]))
 
                     with li():

@@ -38,8 +38,9 @@ parser.add_argument(
 parser.add_argument(
     "-s",
     "--sort",
-    help="Enables sorting of the subjects in the ontology in the output",
-    action="store_true",
+    help="Whether (true) or not (false) to sort ontology subjects in the output.",
+    choices=["true", "false"],
+    default="true",
 )
 
 parser.add_argument(
@@ -79,7 +80,7 @@ def main():
         logger.setLevel(level=logging.DEBUG)
 
     try:
-        sort_subjects = args.sort
+        sort_subjects = args.sort == "true"
         profile = args.profile or select_profile(args.input)
         if profile == "ontpub":
             html = OntPub(args.input, sort_subjects=sort_subjects)

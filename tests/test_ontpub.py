@@ -480,16 +480,16 @@ def test_toc(fix_html):
           </h5>
           <h5>
             <a href="#class-definitions" style="margin-left:10px;">Class Definitions</a>
-          </h5>
-          <ul class="second">
-            <li style="margin-left:10px;">
-              <a href="#Profile">Profile</a>
-            </li>
-            <li style="margin-left:10px;">
-              <a href="#ResourceDescriptor">Resource Descriptor</a>
-            </li>
-            <li style="margin-left:10px;">
-              <a href="#ResourceRole">Resource Role</a>
+              </h5>
+              <ul class="second">
+                <li style="margin-left:10px;">
+                  <a href="#ResourceDescriptor">Resource Descriptor</a>
+                </li>
+                <li style="margin-left:10px;">
+                  <a href="#ResourceRole">Resource Role</a>
+                </li>
+                <li style="margin-left:10px;">
+                  <a href="#Profile">Profile</a>
             </li>
           </ul>
         </li>
@@ -504,23 +504,23 @@ def test_toc(fix_html):
             <a href="#object-property-definitions" style="margin-left:10px;">Object Property Definitions</a>
           </h5>
           <ul class="second">
-            <li style="margin-left:10px;">
-              <a href="#hasArtifact">has artifact</a>
-            </li>
-            <li style="margin-left:10px;">
-              <a href="#hasResource">has resource</a>
-            </li>
-            <li style="margin-left:10px;">
-              <a href="#hasRole">has role</a>
-            </li>            
-            <li style="margin-left:10px;">
-              <a href="#isInheritedFrom">is inherited from</a>
-            </li>
-            <li style="margin-left:10px;">
-              <a href="#isProfileOf">is profile of</a>
-            </li>
-            <li style="margin-left:10px;">
-              <a href="#isTransitiveProfileOf">is transitive profile of</a>
+                <li style="margin-left:10px;">
+                  <a href="#hasArtifact">has artifact</a>
+                </li>
+                <li style="margin-left:10px;">
+                  <a href="#isInheritedFrom">is inherited from</a>
+                </li>
+                <li style="margin-left:10px;">
+                  <a href="#isProfileOf">is profile of</a>
+                </li>
+                <li style="margin-left:10px;">
+                  <a href="#isTransitiveProfileOf">is transitive profile of</a>
+                </li>
+                <li style="margin-left:10px;">
+                  <a href="#hasResource">has resource</a>
+                </li>
+                <li style="margin-left:10px;">
+                  <a href="#hasRole">has role</a>
             </li>
           </ul>
         </li>

@@ -16,6 +16,7 @@ class OntPub:
     """
 
     def __init__(self, ontology: Union[Graph, Path, str], sort_subjects: bool = False):
+        self.sort_subjects = sort_subjects
         self.ont = load_ontology(ontology)
         if sort_subjects:
             self.ont = sort_ontology(self.ont)
@@ -512,6 +513,10 @@ class OntPub:
                         self.toc["namespaces"].append(("#" + prefix, prefix))
 
     def _make_toc(self):
+        def toc_entries(key):
+            entries = self.toc[key]
+            return sorted(entries) if self.sort_subjects else entries
+
         with self.doc:
             with div(id="toc"):
                 h3("Table of Contents")
@@ -539,7 +544,7 @@ class OntPub:
                                 )
                             )
                             with ul(_class="second"):
-                                for c in sorted(self.toc["classes"]):
+                                for c in toc_entries("classes"):
                                     li(a(c[1], href=c[0]), style="margin-left:10px;")
 
                     if (
@@ -549,7 +554,7 @@ class OntPub:
                         with li():
                             h4(a("Properties", href="#properties"))
                             with ul(_class="second"):
-                                for c in sorted(self.toc["properties"]):
+                                for c in toc_entries("properties"):
                                     li(a(c[1], href=c[0]))
 
                     if (
@@ -573,7 +578,7 @@ class OntPub:
                                 )
                             )
                             with ul(_class="second"):
-                                for c in sorted(self.toc["objectproperties"]):
+                                for c in toc_entries("objectproperties"):
                                     li(a(c[1], href=c[0]), style="margin-left:10px;")
 
                     if (
@@ -583,7 +588,7 @@ class OntPub:
                         with li():
                             h4(a("Datatype Properties", href="#datatypeproperties"))
                             with ul(_class="second"):
-                                for c in sorted(self.toc["datatypeproperties"]):
+                                for c in toc_entries("datatypeproperties"):
                                     li(a(c[1], href=c[0]))
 
                     if (
@@ -593,7 +598,7 @@ class OntPub:
                         with li():
                             h4(a("Annotation Properties", href="#annotationproperties"))
                             with ul(_class="second"):
-                                for c in sorted(self.toc["annotationproperties"]):
+                                for c in toc_entries("annotationproperties"):
                                     li(a(c[1], href=c[0]))
 
                     if (
@@ -603,7 +608,7 @@ class OntPub:
                         with li():
                             h4(a("Functional Properties", href="#functionalproperties"))
                             with ul(_class="second"):
-                                for c in sorted(self.toc["functionalproperties"]):
+                                for c in toc_entries("functionalproperties"):
                                     li(a(c[1], href=c[0]))
 
                     if (
@@ -613,7 +618,7 @@ class OntPub:
                         with li():
                             h4(a("Custom Datatypes", href="#datatypes"))
                             with ul(_class="second"):
-                                for c in sorted(self.toc["datatypes"]):
+                                for c in toc_entries("datatypes"):
                                     li(a(c[1], href=c[0]))
 
                     with li():

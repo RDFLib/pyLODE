@@ -24,7 +24,6 @@ from rdflib.namespace import (
 )
 
 from pylode.profiles.supermodel.loader import load_profiles
-from pylode.rdf_elements import OBJECT_PROPERTY_SUBCLASSES
 from pylode.profiles.supermodel.model import (
     Class,
     CodedProperty,
@@ -51,7 +50,12 @@ from pylode.profiles.supermodel.query.common import (
     get_values,
 )
 from pylode.profiles.supermodel.query.property_shape import get_class_properties_by_sh
-from pylode.rdf_elements import AGENT_PROPS, ONTOLOGY_PROPS, ONTPUB
+from pylode.rdf_elements import (
+    AGENT_PROPS,
+    OBJECT_PROPERTY_SUBCLASSES,
+    ONTOLOGY_PROPS,
+    ONTPUB,
+)
 from pylode.utils import (
     back_onts_label_props,
     load_background_onts,
@@ -954,7 +958,10 @@ class Query:
         )
         return sorted(
             [
-                Class(iri=equivalent_class, name=get_name(equivalent_class, graph, self.db))
+                Class(
+                    iri=equivalent_class,
+                    name=get_name(equivalent_class, graph, self.db),
+                )
                 for equivalent_class in equivalent_classes
             ],
             key=lambda x: x.name,

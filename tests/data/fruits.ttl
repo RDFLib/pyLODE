@@ -1,0 +1,69 @@
+PREFIX : <https://example.com/fruit/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <https://schema.org/>
+
+<https://example.com/fruit>
+    a owl:Ontology ;
+    schema:name "Fruit Ontology" ;
+    schema:description "A minimal ontology describing several types of fruit." ;
+.
+
+:Peach
+    a owl:Class ;
+    rdfs:subClassOf :StoneFruit ;
+    schema:name "Peach" ;
+.
+
+:Fruit
+    a owl:Class ;
+    schema:name "Fruit" ;
+.
+
+:Lemon
+    a owl:Class ;
+    rdfs:subClassOf :CitrusFruit ;
+    schema:name "Lemon" ;
+.
+
+:Berry
+    a owl:Class ;
+    rdfs:subClassOf :Fruit ;
+    schema:name "Berry" ;
+.
+
+:Cherry
+    a owl:Class ;
+    rdfs:subClassOf :StoneFruit ;
+    schema:name "Cherry" ;
+.
+
+:CitrusFruit
+    a owl:Class ;
+    rdfs:subClassOf :Fruit ;
+    schema:name "Citrus Fruit" ;
+.
+
+:Strawberry
+    a owl:Class ;
+    rdfs:subClassOf :Berry ;
+    schema:name "Strawberry" ;
+.
+
+:StoneFruit
+    a owl:Class ;
+    rdfs:subClassOf :Fruit ;
+    schema:name "Stone Fruit" ;
+.
+
+:Orange
+    a owl:Class ;
+    rdfs:subClassOf :CitrusFruit ;
+    schema:name "Orange" ;
+.
+
+:Blueberry
+    a owl:Class ;
+    rdfs:subClassOf :Berry ;
+    schema:name "Blueberry" ;
+.

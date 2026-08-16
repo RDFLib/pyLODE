@@ -1,7 +1,5 @@
-import sys
 from pathlib import Path
 
-sys.path.append(str(Path().parent.parent.resolve() / "pylode"))
 import pytest
 from rdflib import Literal, URIRef
 from rdflib.namespace import DCTERMS, RDFS, XSD
@@ -65,6 +63,24 @@ def test_select_profile_ontpub_ontology_with_classes(class_type):
         @prefix owl: <http://www.w3.org/2002/07/owl#> .
         ex:ontology a owl:Ontology .
         ex:Class a {class_type} .
+    """
+    assert select_profile(graph) == "ontpub"
+
+
+@pytest.mark.parametrize(
+    "property_type",
+    [
+        "<http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>",
+        "<http://www.w3.org/2002/07/owl#ObjectProperty>",
+        "<http://www.w3.org/2002/07/owl#AnnotationProperty>",
+    ],
+)
+def test_select_profile_ontpub_ontology_with_properties(property_type):
+    graph = f"""
+        @prefix ex: <https://example.com/> .
+        @prefix owl: <http://www.w3.org/2002/07/owl#> .
+        ex:ontology a owl:Ontology .
+        ex:property a {property_type} .
     """
     assert select_profile(graph) == "ontpub"
 
