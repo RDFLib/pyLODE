@@ -5,6 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).absolute().parent.parent))
 from pylode import OntPub, PylodeError, Supermodel, ValPub, VocPub, __version__
+from pylode.utils import select_profile
 
 parser = argparse.ArgumentParser()
 
@@ -48,9 +49,10 @@ parser.add_argument(
     "'ontpub' (https://linked.data.gov.au/def/ontpub) - for ontologies, "
     "'valpub' (https://linked.data.gov.au/def/valpub) - for SHACL Shapes Graphs, "
     "'vocpub' (https://linked.data.gov.au/def/vocpub) - for SKOS vocabularies, "
-    "'supermodel' - for profiles of profiles",
+    "'supermodel' - for profiles of profiles. If omitted, the profile is "
+    "inferred from the input RDF.",
     choices=["ontpub", "valpub", "vocpub", "supermodel"],
-    default="ontpub",
+    default=None,
 )
 
 parser.add_argument(
@@ -78,16 +80,17 @@ def main():
 
     try:
         sort_subjects = args.sort
-        if args.profile == "ontpub":
+        profile = args.profile or select_profile(args.input)
+        if profile == "ontpub":
             html = OntPub(args.input, sort_subjects=sort_subjects)
-        elif args.profile == "valpub":
+        elif profile == "valpub":
             html = ValPub(args.input, sort_subjects=sort_subjects)
-        elif args.profile == "vocpub":
+        elif profile == "vocpub":
             html = VocPub(args.input, sort_subjects=sort_subjects)
-        elif args.profile == "supermodel":
+        elif profile == "supermodel":
             html = Supermodel(args.input, sort_subjects=sort_subjects)
         else:
-            raise ValueError(f"Unexpected profile type '{args.profile}'")
+            raise ValueError(f"Unexpected profile type '{profile}'")
     except PylodeError as e:
         print("ERROR: " + str(e))
         exit(1)

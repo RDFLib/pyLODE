@@ -269,6 +269,38 @@ def load_ontology(ontology: Union[Graph, Path, str]) -> Graph:
         exit()
 
 
+def select_profile(ontology: Union[Graph, Path, str]) -> str:
+    """Select the pyLODE profile appropriate for an RDF graph."""
+    graph = load_ontology(ontology)
+    shapes_graph = URIRef("http://www.w3.org/ns/shacl#ShapesGraph")
+    node_shape = URIRef("http://www.w3.org/ns/shacl#NodeShape")
+    property_shape = URIRef("http://www.w3.org/ns/shacl#PropertyShape")
+
+    # TODO: Add Supermodel profile selection logic and a test for it later.
+    if (None, RDF.type, SKOS.ConceptScheme) in graph:
+        return "vocpub"
+
+    if (None, RDF.type, shapes_graph) in graph:
+        return "valpub"
+
+    has_ontology = (None, RDF.type, OWL.Ontology) in graph
+    has_shapes = any(
+        (None, RDF.type, shape_type) in graph
+        for shape_type in (node_shape, property_shape)
+    )
+    if has_ontology and has_shapes:
+        return "valpub"
+
+    has_classes = any(
+        (None, RDF.type, class_type) in graph
+        for class_type in (OWL.Class, RDFS.Class)
+    )
+    if has_ontology and not has_shapes and has_classes:
+        return "ontpub"
+
+    raise PylodeError("Unable to determine a profile for the supplied RDF input")
+
+
 def sort_ontology(ont_orig: Graph) -> Graph:
     """Creates a copy of the supplied ontology, sorted by subjects"""
     trpls = ont_orig.triples((None, None, None))

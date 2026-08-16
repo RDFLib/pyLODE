@@ -16,9 +16,57 @@ from pylode.utils import (
     make_title_from_iri,
     prop_obj_pair_html,
     rdf_obj_html,
+    select_profile,
 )
 
 current_dir = Path(__file__).parent
+
+
+def test_select_profile_vocpub():
+    graph = """
+        @prefix ex: <https://example.com/> .
+        @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+        ex:vocabulary a skos:ConceptScheme .
+    """
+    assert select_profile(graph) == "vocpub"
+
+
+def test_select_profile_valpub_shapes_graph():
+    graph = """
+        @prefix ex: <https://example.com/> .
+        @prefix sh: <http://www.w3.org/ns/shacl#> .
+        ex:shapes a sh:ShapesGraph .
+    """
+    assert select_profile(graph) == "valpub"
+
+
+@pytest.mark.parametrize("shape_type", ["NodeShape", "PropertyShape"])
+def test_select_profile_valpub_ontology_with_shapes(shape_type):
+    graph = f"""
+        @prefix ex: <https://example.com/> .
+        @prefix owl: <http://www.w3.org/2002/07/owl#> .
+        @prefix sh: <http://www.w3.org/ns/shacl#> .
+        ex:ontology a owl:Ontology .
+        ex:shape a sh:{shape_type} .
+    """
+    assert select_profile(graph) == "valpub"
+
+
+@pytest.mark.parametrize(
+    "class_type",
+    [
+        "<http://www.w3.org/2002/07/owl#Class>",
+        "<http://www.w3.org/2000/01/rdf-schema#Class>",
+    ],
+)
+def test_select_profile_ontpub_ontology_with_classes(class_type):
+    graph = f"""
+        @prefix ex: <https://example.com/> .
+        @prefix owl: <http://www.w3.org/2002/07/owl#> .
+        ex:ontology a owl:Ontology .
+        ex:Class a {class_type} .
+    """
+    assert select_profile(graph) == "ontpub"
 
 
 # scope="session" so that this is reused without regeneration in this testing session

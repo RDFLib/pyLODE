@@ -59,3 +59,8 @@ build-backend = "uv_build"
 
 [tool.ruff.lint]
 extend-select = ["I"]
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore:There is no current event loop:DeprecationWarning:dominate.dom_tag",
+]
