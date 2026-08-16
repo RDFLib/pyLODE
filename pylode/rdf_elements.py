@@ -2,6 +2,8 @@ from rdflib import Namespace
 from rdflib.namespace import *
 
 ONTPUB = Namespace("https://linked.data.gov.au/def/ontpub/")
+OBO = Namespace("http://purl.obolibrary.org/obo/")
+OBOINOWL = Namespace("http://www.geneontology.org/formats/oboInOwl#")
 
 # OntPub
 ONTOLOGY_PROPS = [
@@ -33,6 +35,10 @@ ONTOLOGY_PROPS = [
     SDO.codeRepository,
     RDFS.seeAlso,
     # SKOS.hasTopConcept, -- catered for in Concept Hierarchy
+    # OBO
+    OBO.IAO_0000700,
+    OBOINOWL["default-namespace"],
+    OBOINOWL.hasOBOFormatVersion,
 ]
 
 CLASS_PROPS = [
@@ -55,6 +61,29 @@ CLASS_PROPS = [
     ONTPUB.restriction,
     ONTPUB.hasInstance,
     ONTPUB.superClassOf,
+    # OBO
+    OBOINOWL.hasExactSynonym,
+    OBO.IAO_0000115,
+    OBOINOWL.id,
+    OBOINOWL.hasOBONamespace,
+    OBOINOWL.hasDbXref,
+    OBOINOWL.hasRelatedSynonym,
+    OBO.IAO_0000233,
+    OBOINOWL.creation_date,
+    OBOINOWL.hasNarrowSynonym,
+    OBOINOWL.created_by,
+    OBOINOWL.inSubset,
+    OBO.IAO_0100001,
+    OBO.IAO_0000117,
+    OBO.IAO_0000111,
+    OBOINOWL.hasBroadSynonym,
+    OBO.IAO_0000119,
+    OBO.IAO_0000114,
+    OBO.IAO_0000231,
+    OBOINOWL.hasAlternativeId,
+    OBOINOWL.consider,
+    OBO.IAO_0000118,
+    OBO.IAO_0000112,
 ]
 
 PROP_PROPS = [
@@ -74,6 +103,23 @@ PROP_PROPS = [
     SDO.domainIncludes,
     RDFS.range,
     SDO.rangeIncludes,
+    OBO.IAO_0000115,
+    OBO.IAO_0000117,
+    OBO.IAO_0000112,
+    OBOINOWL.inSubset,
+    OBO.IAO_0000111,
+    OBO.IAO_0000114,
+    OBO.IAO_0000119,
+    OBO.IAO_0000118,
+    OBO.IAO_0000116,
+    OBOINOWL.hasExactSynonym,
+    OBOINOWL.created_by,
+    OBOINOWL.creation_date,
+    OBO.IAO_0000232,
+    OBO.IAO_0000233,
+    OBOINOWL.hasDbXref,
+    OBO.RO_0001900,
+    OBOINOWL.hasRelatedSynonym,
 ]
 
 RESTRICTION_PROPS = [
