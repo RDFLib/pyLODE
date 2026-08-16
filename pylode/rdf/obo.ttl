@@ -282,6 +282,24 @@ obo:OMO_0004000 a owl:AnnotationProperty ;
     schema:description "An information content entity that is a mark(s) or character(s) used as a conventional representation of another entity." ;
     schema:name "has symbol" .
 
+obo:RO_0001900 a owl:AnnotationProperty ;
+    schema:description "An assertion that holds between an OWL Object Property and a temporal interpretation that elucidates how OWL Class Axioms that use this property are to be interpreted in a temporal context." ;
+    schema:name "temporal interpretation" .
+
+oboInOwl:consider a owl:AnnotationProperty ;
+    schema:description "Gives a term which may be an appropriate substitute for an obsolete term, but needs to be looked at carefully by a human expert before the replacement is done" ;
+    schema:name "consider" .
+
+oboInOwl:created_by a owl:AnnotationProperty ;
+    schema:name "created by" .
+
+oboInOwl:creation_date a owl:AnnotationProperty ;
+    schema:name "creation date" .
+
+oboInOwl:hasAlternativeId a owl:AnnotationProperty ;
+    schema:description "An alternative identifier for this class; should follow ID syntax. These can result from class merges" ;
+    schema:name "has alternative id" .
+
 oboInOwl:hasBroadSynonym a owl:AnnotationProperty ;
     schema:name "has broad synonym" .
 
@@ -294,6 +312,17 @@ oboInOwl:hasExactSynonym a owl:AnnotationProperty ;
 oboInOwl:hasNarrowSynonym a owl:AnnotationProperty ;
     schema:name "has narrow synonym" .
 
+oboInOwl:hasOBONamespace a owl:AnnotationProperty ;
+    schema:description "A relation between a class and an OBO namespace string. OBO namespaces are to be distinguished from IDspaces; for example, biological_process is a namespace, GO is an idspace." ;
+    schema:name "has obo namespace" .
+
 oboInOwl:hasRelatedSynonym a owl:AnnotationProperty ;
     schema:name "has related synonym" .
 
+oboInOwl:id a owl:AnnotationProperty ;
+    schema:description "relation between a class and its identifier as an OBO ID" ;
+    schema:name "id" .
+
+oboInOwl:inSubset a owl:AnnotationProperty ;
+    schema:description "relation between a class and a oboInOwl:Subset, indicating the class belongs (is a member of) the subset" ;
+    schema:name "in subset" .
