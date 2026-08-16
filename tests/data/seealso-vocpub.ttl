@@ -1,0 +1,6 @@
+PREFIX : <https://example.com/sav/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+:cs a skos:ConceptScheme ; skos:prefLabel "SeeAlso Vocab"@en .
+:c1 a skos:Concept ; skos:prefLabel "C One"@en ; skos:inScheme :cs ;
+    rdfs:seeAlso <https://example.org/more-about-c1> .

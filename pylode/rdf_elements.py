@@ -31,6 +31,7 @@ ONTOLOGY_PROPS = [
     ONTPUB.restriction,
     OWL.imports,
     SDO.codeRepository,
+    RDFS.seeAlso,
     # SKOS.hasTopConcept, -- catered for in Concept Hierarchy
 ]
 
@@ -43,6 +44,7 @@ CLASS_PROPS = [
     DCTERMS.source,
     DCTERMS.provenance,
     SKOS.note,
+    RDFS.seeAlso,
     RDFS.subClassOf,
     OWL.equivalentClass,
     # OWL.restriction,
@@ -64,8 +66,10 @@ PROP_PROPS = [
     DCTERMS.source,
     DCTERMS.provenance,
     SKOS.note,
+    RDFS.seeAlso,
     RDFS.subPropertyOf,
     ONTPUB.superPropertyOf,
+    OWL.equivalentProperty,
     RDFS.domain,
     SDO.domainIncludes,
     RDFS.range,
@@ -99,6 +103,17 @@ RESTRICTION_TYPES = [
 ]
 
 OWL_SET_TYPES = [OWL.unionOf, OWL.intersectionOf]
+
+# OWL 2 defines these property characteristic classes as
+# rdfs:subClassOf owl:ObjectProperty
+OBJECT_PROPERTY_SUBCLASSES = [
+    OWL.SymmetricProperty,
+    OWL.AsymmetricProperty,
+    OWL.TransitiveProperty,
+    OWL.ReflexiveProperty,
+    OWL.IrreflexiveProperty,
+    OWL.InverseFunctionalProperty,
+]
 
 DATATYPE_CARDINALITIES = {
     XSD.minInclusive: ">=",
@@ -147,6 +162,7 @@ COLLECTION_PROPS = [
     DCTERMS.source,
     DCTERMS.provenance,
     SDO.citation,
+    RDFS.seeAlso,
     SDO.status,
 ]
 
@@ -165,6 +181,7 @@ CONCEPT_PROPS = [
     DCTERMS.source,
     DCTERMS.provenance,
     SDO.citation,
+    RDFS.seeAlso,
     SDO.status,
 ]
 

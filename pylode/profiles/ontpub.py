@@ -73,14 +73,10 @@ class OntPub:
         for s_ in g.subjects(RDF.type, RDFS.Class):
             g.add((s_, RDF.type, OWL.Class))
 
-        # # property types
-        # for s_ in chain(
-        #     g.subjects(RDF.type, OWL.ObjectProperty),
-        #     g.subjects(RDF.type, OWL.FunctionalProperty),
-        #     g.subjects(RDF.type, OWL.DatatypeProperty),
-        #     g.subjects(RDF.type, OWL.AnnotationProperty),
-        # ):
-        #     g.add((s_, RDF.type, RDF.Property))
+        # property types
+        for prop_type in OBJECT_PROPERTY_SUBCLASSES:
+            for s_ in g.subjects(RDF.type, prop_type):
+                g.add((s_, RDF.type, OWL.ObjectProperty))
 
         # name
         for s_, o in chain(
