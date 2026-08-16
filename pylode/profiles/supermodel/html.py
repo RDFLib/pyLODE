@@ -474,6 +474,31 @@ class Supermodel:
                                         else:
                                             external_link(subclass.name, subclass.iri)
 
+            if cls.equivalent_classes:
+                h5("Equivalent to")
+                with div(_class="sect5"):
+                    with div(_class="ulist"):
+                        with ul():
+                            for equivalent_class in cls.equivalent_classes:
+                                with li():
+                                    with p():
+                                        if (
+                                            equivalent_class.iri
+                                            in self.query.class_index
+                                        ):
+                                            fragment = make_html_fragment(
+                                                CLASS_STRING.format(equivalent_class.iri)
+                                            )
+                                            a(
+                                                equivalent_class.name,
+                                                href=f"#{fragment}",
+                                            )
+                                        else:
+                                            external_link(
+                                                equivalent_class.name,
+                                                equivalent_class.iri,
+                                            )
+
             if cls.properties:
                 h5("Properties")
                 self._make_component_model_class_properties(cls.properties)

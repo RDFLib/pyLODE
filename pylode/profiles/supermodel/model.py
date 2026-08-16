@@ -171,6 +171,7 @@ class Class:
     description: str = None
     subclasses: list["Class"] = field(default_factory=list)
     superclasses: list["Class"] = field(default_factory=list)
+    equivalent_classes: list["Class"] = field(default_factory=list)
     properties: dict[str, list[Property]] = field(default_factory=dict)
     examples: list[MediaObject] = field(default_factory=list)
     notes: list[Note] = field(default_factory=list)
