@@ -248,30 +248,35 @@ class OntPub:
             self.ont.subjects(predicate=RDF.type, object=PROF.Profile),
         ):
             iri = s_
-            for p_, o in self.ont.predicate_objects(s_):
-                if p_ in ONTOLOGY_PROPS:
-                    this_onts_props[p_].append(o)
+            for p_, objects in ordered_subject_properties(self.ont, s_, ONTOLOGY_PROPS):
+                this_onts_props[p_].extend(objects)
 
         # make HTML for all props in order of ONT_PROPS
         sec = div(h1(this_onts_props[DCTERMS.title]), id="metadata", _class="section")
         sec.appendChild(h2("Metadata"))
         d = dl(div(dt(strong("IRI")), dd(code(str(iri)))))
-        for prop in ONTOLOGY_PROPS:
-            if prop in this_onts_props.keys():
-                d.appendChild(
-                    prop_obj_pair_html(
-                        self.ont,
-                        self.back_onts,
-                        self.ns,
-                        "dl",
-                        prop,
-                        self.props_labeled[prop]["title"],
-                        self.props_labeled[prop]["description"],
-                        self.props_labeled[prop]["ont_title"],
-                        self.fids,
-                        this_onts_props[prop],
-                    )
+        ordered_props = [p for p in ONTOLOGY_PROPS if p in this_onts_props]
+        ordered_props.extend(
+            sorted((p for p in this_onts_props if p not in ONTOLOGY_PROPS), key=str)
+        )
+        for prop in ordered_props:
+            details = property_details(
+                prop, self.ont, self.back_onts, self.props_labeled
+            )
+            d.appendChild(
+                prop_obj_pair_html(
+                    self.ont,
+                    self.back_onts,
+                    self.ns,
+                    "dl",
+                    prop,
+                    details["title"],
+                    details["description"],
+                    details["ont_title"],
+                    self.fids,
+                    this_onts_props[prop],
                 )
+            )
         sec.appendChild(d)
         self.content.appendChild(sec)
 

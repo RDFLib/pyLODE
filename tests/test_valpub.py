@@ -15,7 +15,9 @@ def fix_html():
 
 
 def test_basic(fix_html):
-    expected_html = open(current_dir / "data" / "valpub" / "basic.html").read()
+    expected_html = (
+        open(current_dir / "data" / "valpub" / "basic.html").read().rstrip("\n")
+    )
     expected_html = expected_html.replace("3.5.1", __version__)
 
     assert fix_html == expected_html

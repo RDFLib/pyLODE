@@ -223,9 +223,15 @@ def test_classes_definitions(fix_html):
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
-            </tr>
-          </table>
-        </div>
+                </tr>
+                <tr>
+                  <th>
+                    <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#usageNote" title="None. Defined in None">Usage Note</a>
+                  </th>
+                  <td><p>Can be use to indicate the formalism (via dct:format) and any adherence to a dct:Standard (via dct:conformsTo) to allow for machine mediation as well as its purpose via relation to a ResourceRole (via hasRole)</p></td>
+                </tr>
+              </table>
+            </div>
         <div class="property entity" id="ResourceRole">
           <h3>Resource Role
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
@@ -253,9 +259,15 @@ def test_classes_definitions(fix_html):
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
-            </tr>
-          </table>
-        </div>
+                </tr>
+                <tr>
+                  <th>
+                    <a class="hover_property" href="http://www.w3.org/2004/02/skos/core#usageNote" title="None. Defined in None">Usage Note</a>
+                  </th>
+                  <td><p>Specific terms must come from a vocabulary</p></td>
+                </tr>
+              </table>
+            </div>
         <div class="property entity" id="Profile">
           <h3>Profile
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>

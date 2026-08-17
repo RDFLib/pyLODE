@@ -310,9 +310,14 @@ class VocPub:
                 else:
                     return l
 
-        for k, v in {
-            k: props[k] for k in [str(x) for x in CONCEPT_SCHEME_PROPS] if k in props
-        }.items():
+        known_keys = [str(x) for x in CONCEPT_SCHEME_PROPS if str(x) in props]
+        remaining_keys = sorted(
+            k
+            for k in props
+            if k not in known_keys and URIRef(k) not in DISPLAY_EXCLUDED_PROPERTIES
+        )
+        for k in known_keys + remaining_keys:
+            v = props[k]
             css = None
             if URIRef(k) == SDO.status:
                 if URIRef(v["objects"][0][0]) in REG_STATUSES:
@@ -410,40 +415,52 @@ class VocPub:
                 for k, v in order_dict_by_key_list_keep_rest(
                     concept, CONCEPT_PROPS
                 ).items():
-                    if k not in [RDF.type, SKOS.prefLabel, "iri", SKOS.inScheme]:
-                        if k in CONCEPT_PROPS:
-                            if isinstance(v, URIRef):
-                                if v == self.cs_iri:
-                                    v = "This vocabulary"
-                                else:
-                                    curie = self.ont.namespace_manager.qname(v).replace(
-                                        ":", "_"
-                                    )
-                                    lbl = (self.ont + self.back_onts).value(
-                                        subject=v, predicate=SKOS.prefLabel | SDO.name
-                                    )
-                                    if lbl is None:
-                                        lbl = v
-                                    if k == SDO.status:
-                                        if v in REG_STATUSES:
-                                            v = a(
-                                                lbl,
-                                                href="#" + curie,
-                                                style=make_status_css(v),
-                                            )
-                                        else:
-                                            v = a(lbl, href="#" + curie)
-                                    elif (v, None, None) in self.ont:
-                                        # documented in this vocabulary
+                    if k not in ["iri", SKOS.inScheme] and (
+                        k in CONCEPT_PROPS or k not in DISPLAY_EXCLUDED_PROPERTIES
+                    ):
+                        if isinstance(v, URIRef):
+                            if v == self.cs_iri:
+                                v = "This vocabulary"
+                            else:
+                                curie = self.ont.namespace_manager.qname(v).replace(
+                                    ":", "_"
+                                )
+                                lbl = (self.ont + self.back_onts).value(
+                                    subject=v, predicate=SKOS.prefLabel | SDO.name
+                                )
+                                if lbl is None:
+                                    lbl = v
+                                if k == SDO.status:
+                                    if v in REG_STATUSES:
+                                        v = a(
+                                            lbl,
+                                            href="#" + curie,
+                                            style=make_status_css(v),
+                                        )
+                                    else:
                                         v = a(lbl, href="#" + curie)
-                                    else:  # an external resource
-                                        v = a(lbl, href=str(v))
-                            p_label = self.props_labeled.get(k).get("title").title()
-                            p_desc = self.props_labeled.get(k).get("description")
-                            props_table.add(
-                                tr(td(a(p_label, href=k, title=p_desc)), td(v))
+                                elif (v, None, None) in self.ont:
+                                    # documented in this vocabulary
+                                    v = a(lbl, href="#" + curie)
+                                else:  # an external resource
+                                    v = a(lbl, href=str(v))
+                        details = property_details(
+                            k, self.ont, self.back_onts, self.props_labeled
+                        )
+                        prop_attributes = {"href": k}
+                        if details["description"] is not None:
+                            prop_attributes["title"] = details["description"]
+                        props_table.add(
+                            tr(
+                                td(
+                                    a(
+                                        str(details["title"]).title(),
+                                        **prop_attributes,
+                                    )
+                                ),
+                                td(v),
                             )
-                            # props.add(tr(td(k), td(v)))
+                        )
 
                 d.add(
                     div(

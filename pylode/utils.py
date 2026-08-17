@@ -9,7 +9,6 @@ from typing import Dict, List, Optional, Tuple, Union, cast
 
 from pylode.version import __version__ as v
 
-RDF_FOLDER = Path(__file__).parent / "rdf"
 import datetime
 import json
 
@@ -26,6 +25,20 @@ from rdflib.paths import ZeroOrMore
 from pylode.rdf_elements import *
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
+
+DISPLAY_EXCLUDED_PROPERTIES = (
+    RDF.type,
+    DC.title,
+    RDFS.label,
+    SKOS.prefLabel,
+    SDO.name,
+    DC.description,
+    RDFS.comment,
+    SKOS.definition,
+    SDO.description,
+    DC.source,
+    SDO.license,
+)
 
 
 def check_all_props_are_known():
@@ -218,6 +231,50 @@ def back_onts_label_props(back_onts: Graph):
     for prop in PROPS:
         pl[prop] = _get_prop_label(prop, back_onts)
     return pl
+
+
+def ordered_subject_properties(
+    ont: Graph,
+    subject: URIRef,
+    known_properties: list,
+    excluded_properties=DISPLAY_EXCLUDED_PROPERTIES,
+):
+    """Return a subject's values with known predicates first.
+
+    Known predicates retain the order defined by ``rdf_elements.py``. Any
+    other predicates follow in IRI order so that generated HTML is stable.
+    Structural predicates such as ``rdf:type`` may be excluded by callers.
+    """
+    values = defaultdict(list)
+    for predicate, obj in ont.predicate_objects(subject):
+        if predicate not in excluded_properties:
+            values[predicate].append(obj)
+
+    ordered = [predicate for predicate in known_properties if predicate in values]
+    ordered.extend(
+        sorted(
+            (predicate for predicate in values if predicate not in known_properties),
+            key=str,
+        )
+    )
+    return [(predicate, values[predicate]) for predicate in ordered]
+
+
+def property_details(prop: URIRef, ont: Graph, back_onts: Graph, props_labeled: dict):
+    """Get display metadata for known and previously unknown predicates."""
+    if prop in props_labeled:
+        return props_labeled[prop]
+
+    combined = ont + back_onts
+    title = combined.value(prop, SDO.name | DCTERMS.title | RDFS.label | SKOS.prefLabel)
+    description = combined.value(
+        prop, SDO.description | DCTERMS.description | RDFS.comment | SKOS.definition
+    )
+    return {
+        "title": title if title is not None else make_title_from_iri(prop),
+        "description": description,
+        "ont_title": None,
+    }
 
 
 def _is_file(filepath: str) -> bool:
@@ -992,30 +1049,24 @@ def section_html(
             _class="property entity",
         )
         t = table(tr(th("IRI"), td(code(str(iri)))))
-        # order the properties as per PROP_PROPS list order
-        for prop in props_list:
+        # Known properties use rdf_elements.py order; unknown properties follow.
+        for prop in this_props_:
             if prop != DCTERMS.title:
-                if prop in this_props_.keys():
-                    t.appendChild(
-                        prop_obj_pair_html(
-                            ont_,
-                            back_onts_,
-                            ns_,
-                            "table",
-                            prop,
-                            props_labeled_.get(prop).get("title")
-                            if props_labeled_.get(prop) is not None
-                            else None,
-                            props_labeled_.get(prop).get("description")
-                            if props_labeled_.get(prop) is not None
-                            else None,
-                            props_labeled_.get(prop).get("ont_title")
-                            if props_labeled_.get(prop) is not None
-                            else None,
-                            fids_,
-                            this_props_[prop],
-                        )
+                details = property_details(prop, ont_, back_onts_, props_labeled_)
+                t.appendChild(
+                    prop_obj_pair_html(
+                        ont_,
+                        back_onts_,
+                        ns_,
+                        "table",
+                        prop,
+                        details["title"],
+                        details["description"],
+                        details["ont_title"],
+                        fids_,
+                        this_props_[prop],
                     )
+                )
         d.appendChild(t)
         return d
 
@@ -1051,16 +1102,33 @@ def section_html(
         if isinstance(
             s_, URIRef
         ):  # ignore blank nodes for things like [ owl:unionOf ( ... ) ]
-            this_props = defaultdict(list)
-            # get all properties of this object
-            for p_, o in ont.predicate_objects(subject=s_):
-                # ... in the property list for this class
-                if p_ in prop_list:
-                    if p_ == RDFS.subClassOf and (o, RDF.type, OWL.Restriction) in ont:
-                        this_props[ONTPUB.restriction].append(o)
-                    else:
-                        this_props[p_].append(o)
-            if len(this_props[DCTERMS.title]) == 0:
+            this_props = dict(ordered_subject_properties(ont, s_, prop_list))
+            if RDFS.subClassOf in this_props:
+                restrictions = [
+                    obj
+                    for obj in this_props[RDFS.subClassOf]
+                    if (obj, RDF.type, OWL.Restriction) in ont
+                ]
+                if restrictions:
+                    this_props[RDFS.subClassOf] = [
+                        obj
+                        for obj in this_props[RDFS.subClassOf]
+                        if obj not in restrictions
+                    ]
+                    if not this_props[RDFS.subClassOf]:
+                        del this_props[RDFS.subClassOf]
+                    insertion_point = next(
+                        (
+                            index
+                            for index, prop in enumerate(this_props)
+                            if prop not in prop_list
+                        ),
+                        len(this_props),
+                    )
+                    items = list(this_props.items())
+                    items.insert(insertion_point, (ONTPUB.restriction, restrictions))
+                    this_props = dict(items)
+            if DCTERMS.title not in this_props:
                 this_fid = generate_fid(None, s_, fids)
                 this_title = make_title_from_iri(s_)
             else:
