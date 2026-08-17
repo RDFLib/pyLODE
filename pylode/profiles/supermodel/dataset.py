@@ -12,7 +12,7 @@ class Dataset(_Dataset):
     ) -> Graph:
         """Add a graph to dataset with correct context set.
 
-        If we use self.add_graph(graph), it doesn't add the context correctly. Then if we
+        If we use self.add_graph(graph), it doesn't add the context correctly. Then, if we
         try and query the default graph like, self.objects(None, None), it returns nothing.
 
         This function fixes the above issue.
@@ -27,6 +27,7 @@ class Dataset(_Dataset):
             _graph = Graph(identifier=identifier)
             _graph.__iadd__(g)
             super().add_graph(_graph)
+
         for s, p, o in tqdm(g, desc="Adding triples", unit="triple"):
             self.add((s, p, o, _graph))
 

@@ -443,7 +443,7 @@ class Query:
         self.component_models = self.load_component_models()
         if not self.component_models:
             self.component_models = [
-                self.load_component_model(URIRef(self.ns[1]), self.db)
+                self.load_component_model(self.root_profile_iri, self.db)
             ]
         self.ontdoc_inference()
 
@@ -498,7 +498,7 @@ class Query:
             iri = s
 
         if iri is None:
-            raise ValueError("No profile found.")
+            iri = self.root_profile_iri
 
         return iri
 
