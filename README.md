@@ -52,7 +52,7 @@ The tool can be used in multiple ways:
 ### Command line arguments
 
 ```text
-usage: pylode [-h] [-v] [-o OUTPUTFILE] [-c {true,false}] [-s] [-p {ontpub,vocpub,supermodel}] [-l {error,warning,info,debug}] input
+usage: pylode [-h] [-v] [-o OUTPUTFILE] [-c {true,false}] [-s {true,false}] [-p {ontpub,valpub,vocpub,supermodel}] [-l {error,warning,info,debug}] input
 
 positional arguments:
   input                 Input file location or URL
@@ -64,9 +64,11 @@ options:
                         A name you wish to assign to the output file. Will be postfixed with .html if not already added. If no output file is given, output will be printed to screen
   -c, --css {true,false}
                         Whether (true) or not (false) to include CSS within an output HTML file.
-  -s, --sort            Enables sorting of the subjects in the ontology in the output
-  -p, --profile {ontpub,vocpub,supermodel}
-                        Which profile to use to generate HTML. Must be one of 'ontpub' (https://linked.data.gov.au/def/ontpub) - for ontologies, 'vocpub' (https://linked.data.gov.au/def/vocpub) - for SKOS vocabularies, 'supermodel' - for profiles of profiles
+  -s, --sort {true,false}
+                        Whether (true) or not (false) to sort ontology subjects in the output.
+  -p, --profile {ontpub,valpub,vocpub,supermodel}
+                        Which profile to use to generate HTML. Must be one of 'ontpub' (https://linked.data.gov.au/def/ontpub) - for ontologies, 'valpub' (https://linked.data.gov.au/def/valpub) - for SHACL
+                        Shapes Graphs, 'vocpub' (https://linked.data.gov.au/def/vocpub) - for SKOS vocabularies, 'supermodel' - for profiles of profiles. If omitted, the profile is inferred from the input RDF.
   -l, --loglevel {error,warning,info,debug}
                         Set the logging level
 ```
@@ -79,7 +81,13 @@ options:
 python pylode examples/ontpub/minimal.ttl -o minimal.html
 ```
 
-for a SKOS vocabulary, indicate the `vocpub` profile:
+for a SKOS vocabulary:
+
+```bash
+python pylode examples/vocpub/GeologicSpecimenMaterialTypes.ttl -o GeologicSpecimenMaterialTypes.html
+```
+
+for the same SKOS vocabulary with the `vocpub` being forciply selected:
 
 ```bash
 python pylode examples/vocpub/GeologicSpecimenMaterialTypes.ttl -o GeologicSpecimenMaterialTypes.html -p vocpub
@@ -109,8 +117,9 @@ The active endpoint accepts the following querystring parameters:
 * `url` for the absolute URL of the ontology document that you wish to render. The server hosting that ontology document must be capable of responding to Content Negotiation,
 i.e. it must supply RDF according to an HTTP `Accept` request for `text/turtle`, `application/rdf+xml` etc.
 * `profile` for the profile to use to generate HTML. Must be one of:
-    * `ontpub` (https://linked.data.gov.au/def/ontpub) for ontologies. This is the default if no ``profile`` is provided.
-    * `vocpub` (https://linked.data.gov.au/def/vocpub) for SKOS vocabularies
+    * [`ontpub`](https://linked.data.gov.au/def/ontpub) for ontologies. This is the default if no ``profile`` is provided.
+    * [`vocpub`](https://linked.data.gov.au/def/vocpub) for SKOS vocabularies
+    * [`valpub`](https://linked.data.gov.au/def/valupub) for [SHACL](https://www.w3.org/TR/shacl/) ShapesGraphs
     * `supermodel` for profiles of profiles
 * `sort` to indicate whether subjects should be sorted in the rendered output. Must be one of:
     * `true` to sort the subjects (this is the default)
@@ -192,11 +201,9 @@ Rendered examples:
 
 ## What pyLODE understands
 
-pyLODE understands definitional ontologies (`owl:Ontology`), classes, and properties.
+pyLODE understands definitional ontologies (`owl:Ontology`), classes, properties & axioms, vocabularies (`skos:ConceptScheme`), concepts and collections and SHACL Shapes Graphs (`sh:ShapesGraph` or `owl:Ontology` when containing shapes), Node and Property Shapes. 
 
-Supported properties can be found in `rdf_elements.py`.
-
-pyLODE deliberately does **not** translate everything in RDF to HTML, enforcing a conventional ontology documentation style. Support for new patterns can be requested via the [issue tracker](https://github.com/RDFLib/pyLODE/issues).
+pyLODE will try and render all ontology/vocab annotation elements, in an order starting with those listed per type of element in `rdf_elements.py` and then anything else it finds.
 
 ### Notes on Agents
 
