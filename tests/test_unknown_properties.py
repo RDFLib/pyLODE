@@ -5,7 +5,6 @@ from rdflib.namespace import DCTERMS, OWL, RDF, RDFS, SH, SKOS
 
 from pylode.profiles import OntPub, ValPub, VocPub
 
-
 EX = Namespace("https://example.com/")
 
 

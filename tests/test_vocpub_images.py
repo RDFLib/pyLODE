@@ -6,7 +6,6 @@ from rdflib.namespace import DCTERMS, OWL, RDF, RDFS, SDO, SH
 
 from pylode.profiles import OntPub, ValPub, VocPub
 
-
 EX = Namespace("https://example.com/")
 SVG = Literal(
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">'

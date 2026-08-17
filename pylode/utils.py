@@ -1,3 +1,5 @@
+import datetime
+import json
 import logging
 import pickle
 import re
@@ -7,11 +9,6 @@ from collections import defaultdict
 from itertools import chain
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union, cast
-
-from pylode.version import __version__ as v
-
-import datetime
-import json
 
 import dominate
 import markdown
@@ -24,6 +21,7 @@ from rdflib.namespace import *
 from rdflib.paths import ZeroOrMore
 
 from pylode.rdf_elements import *
+from pylode.version import __version__ as v
 
 RDF_FOLDER = Path(__file__).parent / "rdf"
 
