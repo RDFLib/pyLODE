@@ -526,6 +526,54 @@
               </ul>
             </dd>
           </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="https://schema.org/dateCreated" title="The date on which the CreativeWork was created or the item was added to a DataFeed. Defined in None">Date Created</a>
+            </dt>
+            <dd><p>2025-05-30</p></dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="https://schema.org/dateModified" title="The date on which the CreativeWork was most recently modified or when the item's entry was modified within a DataFeed. Defined in None">Date Modified</a>
+            </dt>
+            <dd><p>2026-04-12</p></dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="https://schema.org/hasPart" title="Indicates an item or CreativeWork that is part of this item, or CreativeWork (in some sense). Defined in None">Has Part</a>
+            </dt>
+            <dd>
+              <ul class="pylodelitlist">
+                <li>
+                  <a href="#node-cat-resource-exists">node-cat-resource-exists</a>
+                </li>
+                <li>
+                  <a href="#node-cat-resource-props">node-cat-resource-props</a>
+                </li>
+              </ul>
+            </dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="https://schema.org/memberOf" title="An Organization (or ProgramMembership) to which this Person or Organization belongs. Defined in None">Member Of</a>
+            </dt>
+            <dd>
+              <ul class="pylodelitlist">
+                <li>
+                  <a href="#node-cat-resource-exists">node-cat-resource-exists</a>
+                </li>
+                <li>
+                  <a href="#node-cat-resource-props">node-cat-resource-props</a>
+                </li>
+              </ul>
+            </dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="https://schema.org/version" title="The version of the CreativeWork embodied by a specified resource. Defined in None">Version</a>
+            </dt>
+            <dd><p>5</p></dd>
+          </div>
         </dl>
       </div>
       <div class="section" id="node-shapes">
@@ -561,6 +609,14 @@
               </th>
               <td>
                 <a href="#prop-01-exists">Catalogued resource exists property</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#targetNode" title="Links a shape to node expressions, indicating that the output nodes must conform to the shape. Defined in None">Target Node</a>
+              </th>
+              <td>
+                <a href="https://schema.org/CreativeWork">schema:CreativeWork</a>
               </td>
             </tr>
           </table>
@@ -618,6 +674,14 @@
                 </ul>
               </td>
             </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#targetClass" title="Links a shape to a class, indicating that all instances of the class must conform to the shape. Defined in None">Target Class</a>
+              </th>
+              <td>
+                <a href="https://schema.org/CreativeWork">schema:CreativeWork</a>
+              </td>
+            </tr>
           </table>
         </div>
         <div class="property entity" id="node-03-cat-resource-prov-props">
@@ -644,6 +708,20 @@
                 <a class="hover_property" href="http://www.w3.org/ns/shacl#message" title="A human-readable message (possibly with placeholders for variables) explaining the cause of the result. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Message</a>
               </th>
               <td><p>A catalogued resource MUST have at least one value for schema:citation (URL or string), skos:historyNote (string) or wasDerivedFrom (IRI)</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#or" title="Specifies a list of shapes so that the value nodes must conform to at least one of the shapes. Defined in None">Or</a>
+              </th>
+              <td></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#targetClass" title="Links a shape to a class, indicating that all instances of the class must conform to the shape. Defined in None">Target Class</a>
+              </th>
+              <td>
+                <a href="https://schema.org/CreativeWork">schema:CreativeWork</a>
+              </td>
             </tr>
           </table>
         </div>
@@ -685,6 +763,14 @@
                     <a href="#prop-org-url">Catalogued resource creator property</a>
                   </li>
                 </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#targetClass" title="Links a shape to a class, indicating that all instances of the class must conform to the shape. Defined in None">Target Class</a>
+              </th>
+              <td>
+                <a href="https://schema.org/Organization">schema:Organization</a>
               </td>
             </tr>
           </table>
@@ -729,9 +815,18 @@
                 </ul>
               </td>
             </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#targetClass" title="Links a shape to a class, indicating that all instances of the class must conform to the shape. Defined in None">Target Class</a>
+              </th>
+              <td>
+                <a href="https://schema.org/Person">schema:Person</a>
+              </td>
+            </tr>
           </table>
         </div>
       </div>
+      <span class="cardinality">,</span>
       <span class="cardinality">,</span>
       <div class="section" id="property-shapes">
         <h2>Property Shapes</h2>
@@ -758,6 +853,22 @@
               </th>
               <td>
                 <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#property" title="Links a shape to its property shapes. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Property</a>
+              </th>
+              <td>
+                <a href="#prop-01-exists">Catalogued resource exists property</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#targetNode" title="Links a shape to node expressions, indicating that the output nodes must conform to the shape. Defined in None">Target Node</a>
+              </th>
+              <td>
+                <a href="https://schema.org/CreativeWork">schema:CreativeWork</a>
               </td>
             </tr>
           </table>
@@ -787,6 +898,42 @@
                 <a href="#basic">Basic Catalogue Resource Profile Validator</a>
               </td>
             </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#property" title="Links a shape to its property shapes. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Property</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li></li>
+                  <li>
+                    <a href="#prop-03-description">Catalogued resource description property</a>
+                  </li>
+                  <li>
+                    <a href="#prop-04-creator">Catalogued resource creator property</a>
+                  </li>
+                  <li>
+                    <a href="#prop-05-publisher">Catalogued resource publisher property</a>
+                  </li>
+                  <li>
+                    <a href="#prop-06-created">Catalogued resource created date property</a>
+                  </li>
+                  <li>
+                    <a href="#prop-07-modified">Catalogued resource modified date property</a>
+                  </li>
+                  <li>
+                    <a href="#prop-08-license">Catalogued resource license property</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#targetClass" title="Links a shape to a class, indicating that all instances of the class must conform to the shape. Defined in None">Target Class</a>
+              </th>
+              <td>
+                <a href="https://schema.org/CreativeWork">schema:CreativeWork</a>
+              </td>
+            </tr>
           </table>
         </div>
         <div class="property entity" id="node-04-org-props">
@@ -814,6 +961,29 @@
                 <a href="#basic">Basic Catalogue Resource Profile Validator</a>
               </td>
             </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#property" title="Links a shape to its property shapes. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Property</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <a href="#prop-02-name">Catalogued resource name property</a>
+                  </li>
+                  <li>
+                    <a href="#prop-org-url">Catalogued resource creator property</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#targetClass" title="Links a shape to a class, indicating that all instances of the class must conform to the shape. Defined in None">Target Class</a>
+              </th>
+              <td>
+                <a href="https://schema.org/Organization">schema:Organization</a>
+              </td>
+            </tr>
           </table>
         </div>
         <div class="property entity" id="node-05-person-props">
@@ -839,6 +1009,29 @@
               </th>
               <td>
                 <a href="#basic">Basic Catalogue Resource Profile Validator</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#property" title="Links a shape to its property shapes. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Property</a>
+              </th>
+              <td>
+                <ul class="pylodelitlist">
+                  <li>
+                    <a href="#prop-02-name">Catalogued resource name property</a>
+                  </li>
+                  <li>
+                    <a href="#prop-person-email">Catalogued resource creator property</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#targetClass" title="Links a shape to a class, indicating that all instances of the class must conform to the shape. Defined in None">Target Class</a>
+              </th>
+              <td>
+                <a href="https://schema.org/Person">schema:Person</a>
               </td>
             </tr>
           </table>
@@ -874,6 +1067,12 @@
               </th>
               <td></td>
             </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#minCount" title="Specifies the minimum number of values in the set of value nodes. Defined in None">Min Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
           </table>
         </div>
         <div class="property entity" id="prop-03-description">
@@ -904,6 +1103,24 @@
             <tr>
               <th>
                 <a class="hover_property" href="http://www.w3.org/ns/shacl#path" title="Specifies the property path of a property shape. Defined in W3C Shapes Constraint Language (SHACL) Vocabulary">Path</a>
+              </th>
+              <td></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#maxCount" title="Specifies the maximum number of values in the set of value nodes. Defined in None">Max Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#minCount" title="Specifies the minimum number of values in the set of value nodes. Defined in None">Min Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#or" title="Specifies a list of shapes so that the value nodes must conform to at least one of the shapes. Defined in None">Or</a>
               </th>
               <td></td>
             </tr>
@@ -945,6 +1162,18 @@
                 </span>
               </td>
             </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#minCount" title="Specifies the minimum number of values in the set of value nodes. Defined in None">Min Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#or" title="Specifies a list of shapes so that the value nodes must conform to at least one of the shapes. Defined in None">Or</a>
+              </th>
+              <td></td>
+            </tr>
           </table>
         </div>
         <div class="property entity" id="prop-05-publisher">
@@ -982,6 +1211,18 @@
                   <sup class="sup-p" title="RDF Property">p</sup>
                 </span>
               </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#minCount" title="Specifies the minimum number of values in the set of value nodes. Defined in None">Min Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#or" title="Specifies a list of shapes so that the value nodes must conform to at least one of the shapes. Defined in None">Or</a>
+              </th>
+              <td></td>
             </tr>
           </table>
         </div>
@@ -1021,6 +1262,24 @@
                 </span>
               </td>
             </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#maxCount" title="Specifies the maximum number of values in the set of value nodes. Defined in None">Max Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#minCount" title="Specifies the minimum number of values in the set of value nodes. Defined in None">Min Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#or" title="Specifies a list of shapes so that the value nodes must conform to at least one of the shapes. Defined in None">Or</a>
+              </th>
+              <td></td>
+            </tr>
           </table>
         </div>
         <div class="property entity" id="prop-07-modified">
@@ -1059,6 +1318,24 @@
                 </span>
               </td>
             </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#maxCount" title="Specifies the maximum number of values in the set of value nodes. Defined in None">Max Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#minCount" title="Specifies the minimum number of values in the set of value nodes. Defined in None">Min Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#or" title="Specifies a list of shapes so that the value nodes must conform to at least one of the shapes. Defined in None">Or</a>
+              </th>
+              <td></td>
+            </tr>
           </table>
         </div>
         <div class="property entity" id="prop-08-license">
@@ -1095,6 +1372,26 @@
                   <a href="https://schema.org/license">license</a>
                   <sup class="sup-p" title="RDF Property">p</sup>
                 </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#maxCount" title="Specifies the maximum number of values in the set of value nodes. Defined in None">Max Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#minCount" title="Specifies the minimum number of values in the set of value nodes. Defined in None">Min Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#nodeKind" title="Specifies the node kind (e.g. IRI or literal) each value node. Defined in None">Node Kind</a>
+              </th>
+              <td>
+                <a href="http://www.w3.org/ns/shacl#IRI">IRI</a>
               </td>
             </tr>
           </table>
@@ -1135,6 +1432,26 @@
                 </span>
               </td>
             </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#datatype" title="Specifies an RDF datatype that all value nodes must have. Defined in None">Datatype</a>
+              </th>
+              <td>
+                <a href="http://www.w3.org/2001/XMLSchema#anyURI">xsd:anyURI</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#maxCount" title="Specifies the maximum number of values in the set of value nodes. Defined in None">Max Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#minCount" title="Specifies the minimum number of values in the set of value nodes. Defined in None">Min Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
           </table>
         </div>
         <div class="property entity" id="prop-person-email">
@@ -1172,6 +1489,26 @@
                   <sup class="sup-p" title="RDF Property">p</sup>
                 </span>
               </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#datatype" title="Specifies an RDF datatype that all value nodes must have. Defined in None">Datatype</a>
+              </th>
+              <td>
+                <a href="http://www.w3.org/2001/XMLSchema#anyURI">xsd:anyURI</a>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#maxCount" title="Specifies the maximum number of values in the set of value nodes. Defined in None">Max Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#minCount" title="Specifies the minimum number of values in the set of value nodes. Defined in None">Min Count</a>
+              </th>
+              <td><p>1</p></td>
             </tr>
           </table>
         </div>
@@ -1211,6 +1548,18 @@
                 </span>
               </td>
             </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#minCount" title="Specifies the minimum number of values in the set of value nodes. Defined in None">Min Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#or" title="Specifies a list of shapes so that the value nodes must conform to at least one of the shapes. Defined in None">Or</a>
+              </th>
+              <td></td>
+            </tr>
           </table>
         </div>
         <div class="property entity" id="prop-provenance-history-note">
@@ -1248,6 +1597,18 @@
                   <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
                 </span>
               </td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#minCount" title="Specifies the minimum number of values in the set of value nodes. Defined in None">Min Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#or" title="Specifies a list of shapes so that the value nodes must conform to at least one of the shapes. Defined in None">Or</a>
+              </th>
+              <td></td>
             </tr>
           </table>
         </div>
@@ -1287,6 +1648,20 @@
                 </span>
               </td>
             </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#minCount" title="Specifies the minimum number of values in the set of value nodes. Defined in None">Min Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#nodeKind" title="Specifies the node kind (e.g. IRI or literal) each value node. Defined in None">Node Kind</a>
+              </th>
+              <td>
+                <a href="http://www.w3.org/ns/shacl#IRI">IRI</a>
+              </td>
+            </tr>
           </table>
         </div>
         <div class="property entity" id="prop-02-name">
@@ -1320,9 +1695,36 @@
               </th>
               <td></td>
             </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#maxCount" title="Specifies the maximum number of values in the set of value nodes. Defined in None">Max Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#minCount" title="Specifies the minimum number of values in the set of value nodes. Defined in None">Min Count</a>
+              </th>
+              <td><p>1</p></td>
+            </tr>
+            <tr>
+              <th>
+                <a class="hover_property" href="http://www.w3.org/ns/shacl#or" title="Specifies a list of shapes so that the value nodes must conform to at least one of the shapes. Defined in None">Or</a>
+              </th>
+              <td></td>
+            </tr>
           </table>
         </div>
       </div>
+      <span class="cardinality">,</span>
+      <span class="cardinality">,</span>
+      <span class="cardinality">,</span>
+      <span class="cardinality">,</span>
+      <span class="cardinality">,</span>
+      <span class="cardinality">,</span>
+      <span class="cardinality">,</span>
+      <span class="cardinality">,</span>
+      <span class="cardinality">,</span>
       <span class="cardinality">,</span>
       <span class="cardinality">,</span>
       <span class="cardinality">,</span>
