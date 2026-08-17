@@ -4,6 +4,9 @@ on:
   release:
     types: [ published ]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -11,6 +14,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        ref: master
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -43,6 +48,22 @@ jobs:
           --collect-all rdflib `
           --collect-all kurra `
           pylode\cli.py
+
+    - name: Commit executable to master
+      shell: pwsh
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add --force bin/pyLODE.exe
+
+        $changes = git status --porcelain -- bin/pyLODE.exe
+        if ([string]::IsNullOrWhiteSpace($changes)) {
+          Write-Host "bin/pyLODE.exe is unchanged"
+        }
+        else {
+          git commit -m "Update Windows pyLODE executable"
+          git push origin HEAD:master
+        }
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
