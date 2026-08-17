@@ -57,6 +57,7 @@ from pylode.profiles.supermodel.query import Query
 from pylode.utils import (
     PylodeError,
     load_ontology,
+    render_svg_image,
     sort_ontology,
 )
 
@@ -418,6 +419,9 @@ class Supermodel:
                 with div(_class="paragraph"):
                     p(cls.description)
 
+            for image in cls.images:
+                div(render_svg_image(image), _class="imageblock text-center")
+
             if cls.notes:
                 for note in cls.notes:
                     with div(_class="admonitionblock note"):
@@ -521,6 +525,9 @@ class Supermodel:
             if prop.description:
                 with div(_class="paragraph"):
                     p(prop.description)
+
+            for image in prop.images:
+                div(render_svg_image(image), _class="imageblock text-center")
 
             if prop.notes:
                 for note in prop.notes:

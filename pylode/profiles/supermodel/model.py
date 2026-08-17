@@ -176,6 +176,7 @@ class Class:
     examples: list[MediaObject] = field(default_factory=list)
     notes: list[Note] = field(default_factory=list)
     is_defined_by: "Ontology" = None
+    images: list[Literal] = field(default_factory=list)
 
     def __eq__(self, other):
         if not isinstance(other, Class):
@@ -194,6 +195,7 @@ class RDFProperty:
     super_properties: list["RDFProperty"] = field(default_factory=list)
     domain_includes: list[Class] = field(default_factory=list)
     range_includes: list[Class] = field(default_factory=list)
+    images: list[Literal] = field(default_factory=list)
 
 
 @dataclass

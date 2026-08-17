@@ -243,6 +243,13 @@ def get_range_includes(iri: URIRef, graph: Graph, db: Dataset) -> list[Class]:
     return range_includes
 
 
+def get_svg_images(iri: URIRef, graph: Graph) -> list[Literal]:
+    """Get literal image values attached directly to a documented resource."""
+    return [
+        image for image in graph.objects(iri, SDO.image) if isinstance(image, Literal)
+    ]
+
+
 def get_rdf_property(iri, graph, db: Dataset) -> RDFProperty:
     name = get_name(iri, graph, db)
     description = get_descriptions(iri, graph)
@@ -251,6 +258,7 @@ def get_rdf_property(iri, graph, db: Dataset) -> RDFProperty:
     super_properties = get_super_properties(iri, graph, db)
     domain_includes = get_domain_includes(iri, graph, db)
     range_includes = get_range_includes(iri, graph, db)
+    images = get_svg_images(iri, graph)
 
     return RDFProperty(
         iri,
@@ -261,6 +269,7 @@ def get_rdf_property(iri, graph, db: Dataset) -> RDFProperty:
         super_properties,
         domain_includes,
         range_includes,
+        images,
     )
 
 
@@ -1000,6 +1009,7 @@ class Query:
         examples = get_examples(iri, graph)
         notes = get_notes(iri, graph)
         is_defined_by = get_is_defined_by(iri, graph, self.db)
+        images = get_svg_images(iri, graph)
 
         return Class(
             iri=iri,
@@ -1012,6 +1022,7 @@ class Query:
             examples=examples,
             notes=notes,
             is_defined_by=is_defined_by,
+            images=images,
         )
 
     def get_component_model_classes(

@@ -2,6 +2,7 @@ import logging
 import pickle
 import re
 import shutil
+import xml.etree.ElementTree as ET
 from collections import defaultdict
 from itertools import chain
 from pathlib import Path
@@ -275,6 +276,22 @@ def property_details(prop: URIRef, ont: Graph, back_onts: Graph, props_labeled: 
         "description": description,
         "ont_title": None,
     }
+
+
+def render_svg_image(value):
+    """Render an SVG literal as markup, leaving non-SVG values as text."""
+    if not isinstance(value, Literal):
+        return value
+
+    svg = str(value).strip()
+    try:
+        root = ET.fromstring(svg)
+    except ET.ParseError:
+        return value
+
+    if root.tag == "{http://www.w3.org/2000/svg}svg":
+        return raw(svg)
+    return value
 
 
 def _is_file(filepath: str) -> bool:
@@ -596,6 +613,10 @@ def rdf_obj_html(
                 return anchor
 
         def _literal_html(obj__):
+            if prop == SDO.image:
+                svg = render_svg_image(obj__)
+                if svg is not obj__:
+                    return svg
             if str(obj__).startswith("http"):
                 return _hyperlink_html(
                     ont_, cast(URIRef, obj__), back_onts_, ns_, fids_

@@ -447,6 +447,8 @@ class VocPub:
                         details = property_details(
                             k, self.ont, self.back_onts, self.props_labeled
                         )
+                        if k == SDO.image:
+                            v = render_svg_image(v)
                         prop_attributes = {"href": k}
                         if details["description"] is not None:
                             prop_attributes["title"] = details["description"]

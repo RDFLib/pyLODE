@@ -29,3 +29,8 @@ def test_equivalent_class_internal_link(fix_html):
 def test_equivalent_class_external_link(fix_html):
     """An equivalent class outside the ontology renders as an external link."""
     assert 'href="http://xmlns.com/foaf/0.1/Agent"' in fix_html
+
+
+def test_class_and_property_svg_image_literals_render_as_images(fix_html):
+    assert fix_html.count('<svg xmlns="http://www.w3.org/2000/svg"') == 2
+    assert "&lt;svg" not in fix_html

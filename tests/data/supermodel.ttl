@@ -2,6 +2,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ex: <http://example.com/ont/> .
+@prefix schema: <https://schema.org/> .
 
 ex: a owl:Ontology ;
     dcterms:title "Supermodel Test Ontology" ;
@@ -12,7 +13,12 @@ ex: a owl:Ontology ;
 # external foaf:Agent (which must render as an external link).
 ex:Person a owl:Class ;
     rdfs:label "Person" ;
+    schema:image """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" /></svg>""" ;
     owl:equivalentClass ex:Human, <http://xmlns.com/foaf/0.1/Agent> .
 
 ex:Human a owl:Class ;
     rdfs:label "Human" .
+
+ex:relatedTo a owl:ObjectProperty ;
+    rdfs:label "related to" ;
+    schema:image """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect width="10" height="10" /></svg>""" .
