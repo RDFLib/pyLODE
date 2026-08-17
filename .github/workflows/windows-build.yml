@@ -1,0 +1,51 @@
+name: Build Windows EXE with PyInstaller
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install uv pyinstaller
+        uv export --frozen --no-dev --no-emit-project --format requirements.txt --output-file requirements.txt
+        pip install -r requirements.txt
+
+    - name: Build executable
+      run: |
+        if (Test-Path bin\pyLODE.exe) {
+          Remove-Item bin\pyLODE.exe -Force
+        }
+        pyinstaller `
+          --noconfirm `
+          --clean `
+          --onefile `
+          --console `
+          --name pyLODE `
+          --distpath bin `
+          --workpath build\windows `
+          --specpath build\windows `
+          --collect-data pylode `
+          --collect-all rdflib `
+          --collect-all kurra `
+          pylode\cli.py
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: windows-executable
+        path: bin/pyLODE.exe
