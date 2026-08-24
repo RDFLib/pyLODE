@@ -441,7 +441,7 @@ class Supermodel:
                     a(cls.is_defined_by.name, href=f"#{fragment}")
 
             if cls.superclasses:
-                h5("Subclass of")
+                h5("Subclass of", identifier=f"{cls.iri} subclass of")
                 with div(_class="sect5"):
                     with div(_class="ulist"):
                         with ul():
@@ -460,7 +460,7 @@ class Supermodel:
                                             external_link(subclass.name, subclass.iri)
 
             if cls.subclasses:
-                h5("Superclass of")
+                h5("Superclass of", identifier=f"{cls.iri} superclass of")
                 with div(_class="sect5"):
                     with div(_class="ulist"):
                         with ul():
@@ -479,7 +479,7 @@ class Supermodel:
                                             external_link(subclass.name, subclass.iri)
 
             if cls.equivalent_classes:
-                h5("Equivalent to")
+                h5("Equivalent to", identifier=f"{cls.iri} equivalent to")
                 with div(_class="sect5"):
                     with div(_class="ulist"):
                         with ul():
@@ -506,11 +506,11 @@ class Supermodel:
                                             )
 
             if cls.properties:
-                h5("Properties")
+                h5("Properties", identifier=f"{cls.iri} properties")
                 self._make_component_model_class_properties(cls.properties)
 
             if cls.examples:
-                h5("Examples")
+                h5("Examples", identifier=f"{cls.iri} examples")
                 with div(_class="sect5"):
                     for ex in cls.examples:
                         example(ex, 6)
@@ -1036,7 +1036,19 @@ class Supermodel:
             meta(http_equiv="Content-Type", content="text/html; charset=utf-8")
             meta(name="viewport", content="width=device-width, initial-scale=1")
             script(
-                raw("\n" + schema_org.serialize(format="json-ld") + "\n\t"),
+                raw("\n" + _sorted_json_ld(schema_org) + "\n\t"),
                 type="application/ld+json",
                 id="schema.org",
             )
+
+
+def _sorted_json_ld(graph) -> str:
+    """Deterministic JSON-LD: rdflib's serializer emits subjects and keys in
+    store-iteration order, which varies with hash randomization across
+    processes. Sort the node array by @id and every object's keys."""
+    import json
+
+    data = json.loads(graph.serialize(format="json-ld"))
+    if isinstance(data, list):
+        data.sort(key=lambda node: str(node.get("@id", "")))
+    return json.dumps(data, sort_keys=True, indent=2)

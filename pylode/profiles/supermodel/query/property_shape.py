@@ -181,7 +181,7 @@ def get_property_by_property_shape(
                 for term in Collection(profile_graph, language_in_coll)
             ]
         ),
-        unique_lang=unique_lang.toPython(),
+        unique_lang=unique_lang.toPython() if unique_lang is not None else None,
         min_length=int(min_length) if min_length is not None else None,
         max_length=int(max_length) if max_length is not None else None,
         min_exclusive=min_exclusive.toPython() if min_exclusive is not None else None,
