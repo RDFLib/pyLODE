@@ -1036,7 +1036,19 @@ class Supermodel:
             meta(http_equiv="Content-Type", content="text/html; charset=utf-8")
             meta(name="viewport", content="width=device-width, initial-scale=1")
             script(
-                raw("\n" + schema_org.serialize(format="json-ld") + "\n\t"),
+                raw("\n" + _sorted_json_ld(schema_org) + "\n\t"),
                 type="application/ld+json",
                 id="schema.org",
             )
+
+
+def _sorted_json_ld(graph) -> str:
+    """Deterministic JSON-LD: rdflib's serializer emits subjects and keys in
+    store-iteration order, which varies with hash randomization across
+    processes. Sort the node array by @id and every object's keys."""
+    import json
+
+    data = json.loads(graph.serialize(format="json-ld"))
+    if isinstance(data, list):
+        data.sort(key=lambda node: str(node.get("@id", "")))
+    return json.dumps(data, sort_keys=True, indent=2)
