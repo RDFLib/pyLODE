@@ -271,7 +271,7 @@ class VocPub:
                 ?o schema:name ?o_name
               }}
             }}
-            ORDER BY ?p
+            ORDER BY ?p ?o
             """
         props = {}
         for row in json.loads(kquery(ont_with_labels, q))["results"]["bindings"]:
