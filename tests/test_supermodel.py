@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import pytest
-from rdflib import Graph, Literal, Namespace, URIRef
+from rdflib import BNode, Graph, Literal, Namespace, URIRef
 from rdflib.namespace import DCTERMS, OWL, RDF, RDFS, SH, VANN, XSD
 
 from pylode.profiles.supermodel.html import Supermodel
@@ -96,3 +96,18 @@ def test_has_value_without_node_kind_renders(property_shape_graph):
 
     assert "Expected value" in html
     assert "fixed" in html
+
+
+def test_sh_in_values_render(property_shape_graph):
+    """sh:in enumerations must render as 'Allowable values', independently of
+    sh:languageIn."""
+    ex = Namespace("https://example.com/ontology#")
+    values = BNode()
+    property_shape_graph.add((ex.thingNameShape, SH["in"], values))
+    property_shape_graph.add((values, RDF.first, Literal("alpha")))
+    property_shape_graph.add((values, RDF.rest, RDF.nil))
+
+    html = Supermodel(property_shape_graph).make_html()
+
+    assert "Allowable values" in html
+    assert "alpha" in html
