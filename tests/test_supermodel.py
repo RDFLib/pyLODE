@@ -82,3 +82,17 @@ def test_property_shape_without_unique_lang_renders(property_shape_graph):
 
     assert "name" in html
     assert "Cardinality" in html
+
+
+def test_has_value_without_node_kind_renders(property_shape_graph):
+    """sh:hasValue without sh:nodeKind is legal SHACL and must render the
+    expected value, not crash rendering the absent value type."""
+    ex = Namespace("https://example.com/ontology#")
+    property_shape_graph.add(
+        (ex.thingNameShape, SH.hasValue, Literal("fixed"))
+    )
+
+    html = Supermodel(property_shape_graph).make_html()
+
+    assert "Expected value" in html
+    assert "fixed" in html

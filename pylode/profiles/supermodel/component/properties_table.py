@@ -183,7 +183,7 @@ def property_table_row(
                 p(f"Cardinality: {cardinality}")
 
             # Other constraints
-            if property_.has_value:
+            if property_.has_value and property_.value_type is not None:
                 with p("Value kind: "):
                     render_resource_or_literal(
                         Resource(property_.value_type.iri, property_.value_type.name),
