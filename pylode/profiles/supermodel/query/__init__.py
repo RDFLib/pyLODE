@@ -846,21 +846,27 @@ class Query:
         return properties
 
     def sort_properties_by_profile(self, properties: list[Property]) -> list[Property]:
-        """Sort each property based on most specific profile to most broad."""
+        """Sort each property based on most specific profile to most broad.
+
+        Within a profile, properties are sorted by name so that same-path
+        property shapes render in a deterministic order."""
         order_dict = {profile: i for i, profile in enumerate(self.profiles_order)}
         order_dict.update({None: math.inf})
         return sorted(
             properties,
-            key=lambda p: order_dict[
-                next(
-                    (
-                        profile
-                        for profile in self.profiles_order
-                        if p.profile.iri == profile
-                    ),
-                    None,
-                )
-            ],
+            key=lambda p: (
+                order_dict[
+                    next(
+                        (
+                            profile
+                            for profile in self.profiles_order
+                            if p.profile.iri == profile
+                        ),
+                        None,
+                    )
+                ],
+                p.name or "",
+            ),
         )
 
     def sort_properties(self, iri: URIRef, properties: dict[str, list[Property]]):

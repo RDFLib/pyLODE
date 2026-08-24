@@ -441,7 +441,7 @@ class Supermodel:
                     a(cls.is_defined_by.name, href=f"#{fragment}")
 
             if cls.superclasses:
-                h5("Subclass of")
+                h5("Subclass of", identifier=f"{cls.iri} subclass of")
                 with div(_class="sect5"):
                     with div(_class="ulist"):
                         with ul():
@@ -460,7 +460,7 @@ class Supermodel:
                                             external_link(subclass.name, subclass.iri)
 
             if cls.subclasses:
-                h5("Superclass of")
+                h5("Superclass of", identifier=f"{cls.iri} superclass of")
                 with div(_class="sect5"):
                     with div(_class="ulist"):
                         with ul():
@@ -479,7 +479,7 @@ class Supermodel:
                                             external_link(subclass.name, subclass.iri)
 
             if cls.equivalent_classes:
-                h5("Equivalent to")
+                h5("Equivalent to", identifier=f"{cls.iri} equivalent to")
                 with div(_class="sect5"):
                     with div(_class="ulist"):
                         with ul():
@@ -506,11 +506,11 @@ class Supermodel:
                                             )
 
             if cls.properties:
-                h5("Properties")
+                h5("Properties", identifier=f"{cls.iri} properties")
                 self._make_component_model_class_properties(cls.properties)
 
             if cls.examples:
-                h5("Examples")
+                h5("Examples", identifier=f"{cls.iri} examples")
                 with div(_class="sect5"):
                     for ex in cls.examples:
                         example(ex, 6)

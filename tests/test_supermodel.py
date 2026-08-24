@@ -111,3 +111,24 @@ def test_sh_in_values_render(property_shape_graph):
 
     assert "Allowable values" in html
     assert "alpha" in html
+
+
+def test_rendering_is_deterministic():
+    """Rendering the same ontology twice must yield byte-identical HTML:
+    heading fragment ids must not come from os.urandom and same-path
+    property shapes must be ordered deterministically."""
+    turtle = """@prefix ex: <https://example.com/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:ont a owl:Ontology ; dct:title "Determinism ontology" .
+ex:Thing a owl:Class , sh:NodeShape ; rdfs:label "Thing" ;
+    sh:property ex:shapeB , ex:shapeA .
+ex:shapeA sh:path ex:name ; sh:name "A name" .
+ex:shapeB sh:path ex:name ; sh:name "B name" .
+"""
+    htmls = [Supermodel(Graph().parse(data=turtle, format="turtle")).make_html() for _ in range(2)]
+
+    assert htmls[0] == htmls[1]
