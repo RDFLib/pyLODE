@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import pytest
-from rdflib import Graph, Literal, Namespace
+from rdflib import Graph, Literal, Namespace, URIRef
 from rdflib.namespace import DCTERMS, OWL, RDF, RDFS, VANN
 
 from pylode.profiles.supermodel.html import Supermodel
@@ -52,3 +52,14 @@ def test_ontology_iri_can_differ_from_preferred_namespace():
 
     assert "Hash namespace ontology" in html
     assert "Thing" in html
+
+
+def test_ontology_iri_ending_in_slash():
+    ontology = URIRef("https://example.com/ontology/")
+    graph = Graph()
+    graph.add((ontology, RDF.type, OWL.Ontology))
+    graph.add((ontology, DCTERMS.title, Literal("Slash namespace ontology")))
+
+    html = Supermodel(graph).make_html()
+
+    assert "Slash namespace ontology" in html
