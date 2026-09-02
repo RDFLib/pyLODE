@@ -687,7 +687,10 @@ class Query:
                         ont.add((s_, RDF.type, PROF.Profile))
 
             if default_iri is not None:
-                prefix = ont.compute_qname(default_iri, True)[0]
+                try:
+                    prefix = ont.compute_qname(default_iri, True)[0]
+                except ValueError:
+                    prefix = ont.compute_qname(default_iri.rstrip("/"), True)[0]
                 if prefix is not None:
                     return prefix, default_iri
             else:
