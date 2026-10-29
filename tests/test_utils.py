@@ -10,6 +10,7 @@ from pylode.utils import (
     generate_fid,
     get_ns,
     load_background_onts,
+    load_background_onts_titles,
     load_ontology,
     make_title_from_iri,
     prop_obj_pair_html,
@@ -280,3 +281,25 @@ def test_load_ontology_file():
 
     graph = load_ontology(str(filepath))
     assert len(graph)
+
+
+def test_load_background_onts_in_a_read_only_install(tmp_path, monkeypatch):
+    # The caches live in the installed package; where it can't be written to,
+    # pyLODE must still load the background ontologies, just without caching.
+    import pylode.utils
+
+    for f in pylode.utils.RDF_FOLDER.glob("*.ttl"):
+        (tmp_path / f.name).write_bytes(f.read_bytes())
+    monkeypatch.setattr(pylode.utils, "RDF_FOLDER", tmp_path)
+
+    def read_only_open(file, mode="r", *args, **kwargs):
+        if "w" in mode:
+            raise PermissionError(13, "Permission denied", str(file))
+        return open(file, mode, *args, **kwargs)
+
+    monkeypatch.setattr(pylode.utils, "open", read_only_open, raising=False)
+
+    g = load_background_onts()
+    assert len(g) > 0
+    assert load_background_onts_titles(g)
+    assert not list(tmp_path.glob("*.pickle"))
