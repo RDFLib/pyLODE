@@ -14,7 +14,7 @@ import dominate
 import markdown
 from dominate.tags import *
 from dominate.util import raw
-from kurra.labels import find_missing_labels, get_missing_labels
+from kurra.labels import find_missing_labels, get_labels
 from kurra.sparql import query as kquery
 from rdflib import BNode, Graph, Literal, URIRef
 from rdflib.namespace import *

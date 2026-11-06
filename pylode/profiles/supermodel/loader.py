@@ -1,7 +1,7 @@
 import logging
 import time
 
-import httpx
+import httpx2
 from rdflib import DCTERMS, OWL, PROF, RDF, Graph, URIRef
 
 from pylode.profiles.supermodel.dataset import Dataset
@@ -25,7 +25,7 @@ MEDIA_TYPES = {
 
 
 def fetch(
-    url: str, client: httpx.Client, content_type: str = "text/turtle"
+    url: str, client: httpx2.Client, content_type: str = "text/turtle"
 ) -> tuple[str, str]:
     # TODO: Remove proxies
     # http://localhost:8001/profiles/nz-profile.ttl
@@ -59,7 +59,7 @@ def fetch(
         url = proxies[url]
     response = client.get(url, headers={"Accept": content_type})
     if response.status_code != 200:
-        raise httpx.HTTPError(
+        raise httpx2.HTTPError(
             f"HTTP {response.status_code}: Failed to fetch remote resource from {url}. {response.text}"
         )
 
@@ -148,7 +148,7 @@ class ProfilesDataset(Dataset):
     def __init__(self, root_profile_iri: str, data: str):
         super().__init__(default_union=True)
         self.root_profile_iri = root_profile_iri
-        self.client = httpx.Client(follow_redirects=True)
+        self.client = httpx2.Client(follow_redirects=True)
 
         # Tracks what we have loaded so far.
         self.external_resources = set()
