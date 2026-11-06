@@ -455,7 +455,7 @@ def load_background_onts():
         try:
             with open(RDF_FOLDER / "refs.pickle", "wb") as f_:
                 pickle.dump(back_ont, f_)
-        except FileNotFoundError:
+        except OSError:
             logging.warning("Could not cache background ontologies graph")
 
     if Path(RDF_FOLDER / "refs.pickle").is_file():
@@ -486,7 +486,7 @@ def load_background_onts_titles(ont: Graph):
         try:
             with open(RDF_FOLDER / "refs_titles.pickle", "wb") as f_:
                 pickle.dump(ont_titles, f_)
-        except FileNotFoundError:
+        except OSError:
             logging.warning("Could not cache background ontologies' titles graph")
 
     if Path(RDF_FOLDER / "refs_titles.pickle").is_file():
