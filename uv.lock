@@ -311,7 +311,7 @@ wheels = [
 
 [[package]]
 name = "pylode"
-version = "3.6.1"
+version = "3.6.2a0"
 source = { editable = "." }
 default-groups = "all"
 dependencies = [
